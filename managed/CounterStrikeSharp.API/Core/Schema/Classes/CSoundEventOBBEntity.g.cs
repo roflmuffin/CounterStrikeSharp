@@ -21,7 +21,7 @@ public partial class CSoundEventOBBEntity : CSoundEventEntity
 
 	// m_vMins
 	[SchemaMember("CSoundEventOBBEntity", "m_vMins")]
-	public Vector3 Mins
+	public virtual Vector3 Mins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMins", value); }
@@ -29,12 +29,12 @@ public partial class CSoundEventOBBEntity : CSoundEventEntity
 
 	// m_vMaxs
 	[SchemaMember("CSoundEventOBBEntity", "m_vMaxs")]
-	public Vector3 Maxs
+	public virtual Vector3 Maxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMaxs", value); }
 	}
 
-	public void MinsPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventOBBEntity", "m_vMins");
-	public void MaxsPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventOBBEntity", "m_vMaxs");
+	public virtual void MinsPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventOBBEntity", "m_vMins");
+	public virtual void MaxsPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventOBBEntity", "m_vMaxs");
 }

@@ -21,11 +21,11 @@ public partial class CPathSimple : CBaseEntity
 
 	// m_CPathQueryComponent
 	[SchemaMember("CPathSimple", "m_CPathQueryComponent")]
-	public CPathQueryComponent CPathQueryComponent => Schema.GetDeclaredClass<CPathQueryComponent>(this.Handle, "CPathSimple", "m_CPathQueryComponent");
+	public virtual CPathQueryComponent CPathQueryComponent => Schema.GetDeclaredClass<CPathQueryComponent>(this.Handle, "CPathSimple", "m_CPathQueryComponent");
 
 	// m_pathString
 	[SchemaMember("CPathSimple", "m_pathString")]
-	public string PathString
+	public virtual string PathString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPathSimple", "m_pathString"); }
 		set { Schema.SetString(this.Handle, "CPathSimple", "m_pathString", value); }
@@ -33,12 +33,12 @@ public partial class CPathSimple : CBaseEntity
 
 	// m_bClosedLoop
 	[SchemaMember("CPathSimple", "m_bClosedLoop")]
-	public bool ClosedLoop
+	public virtual bool ClosedLoop
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPathSimple", "m_bClosedLoop"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPathSimple", "m_bClosedLoop", value); }
 	}
 
-	public void CPathQueryComponentPropertyChanged() => Utilities.SetStateChanged(this, "CPathSimple", "m_CPathQueryComponent");
-	public void PathStringPropertyChanged() => Utilities.SetStateChanged(this, "CPathSimple", "m_pathString");
+	public virtual void CPathQueryComponentPropertyChanged() => Utilities.SetStateChanged(this, "CPathSimple", "m_CPathQueryComponent");
+	public virtual void PathStringPropertyChanged() => Utilities.SetStateChanged(this, "CPathSimple", "m_pathString");
 }

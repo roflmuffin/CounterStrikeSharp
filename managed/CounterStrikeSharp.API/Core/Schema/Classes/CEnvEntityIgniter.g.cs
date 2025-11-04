@@ -21,7 +21,7 @@ public partial class CEnvEntityIgniter : CBaseEntity
 
 	// m_flLifetime
 	[SchemaMember("CEnvEntityIgniter", "m_flLifetime")]
-	public float Lifetime
+	public virtual float Lifetime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvEntityIgniter", "m_flLifetime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvEntityIgniter", "m_flLifetime", value); }

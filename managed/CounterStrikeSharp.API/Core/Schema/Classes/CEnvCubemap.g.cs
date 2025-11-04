@@ -21,11 +21,11 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_hCubemapTexture
 	[SchemaMember("CEnvCubemap", "m_Entity_hCubemapTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hCubemapTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCubemap", "m_Entity_hCubemapTexture");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hCubemapTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCubemap", "m_Entity_hCubemapTexture");
 
 	// m_Entity_bCustomCubemapTexture
 	[SchemaMember("CEnvCubemap", "m_Entity_bCustomCubemapTexture")]
-	public bool Entity_bCustomCubemapTexture
+	public virtual bool Entity_bCustomCubemapTexture
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCustomCubemapTexture"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCustomCubemapTexture", value); }
@@ -33,7 +33,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_flInfluenceRadius
 	[SchemaMember("CEnvCubemap", "m_Entity_flInfluenceRadius")]
-	public float Entity_flInfluenceRadius
+	public virtual float Entity_flInfluenceRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flInfluenceRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flInfluenceRadius", value); }
@@ -41,7 +41,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_vBoxProjectMins
 	[SchemaMember("CEnvCubemap", "m_Entity_vBoxProjectMins")]
-	public Vector3 Entity_vBoxProjectMins
+	public virtual Vector3 Entity_vBoxProjectMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMins", value); }
@@ -49,7 +49,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_vBoxProjectMaxs
 	[SchemaMember("CEnvCubemap", "m_Entity_vBoxProjectMaxs")]
-	public Vector3 Entity_vBoxProjectMaxs
+	public virtual Vector3 Entity_vBoxProjectMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMaxs", value); }
@@ -57,7 +57,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bMoveable
 	[SchemaMember("CEnvCubemap", "m_Entity_bMoveable")]
-	public bool Entity_bMoveable
+	public virtual bool Entity_bMoveable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bMoveable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bMoveable", value); }
@@ -65,7 +65,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_nHandshake
 	[SchemaMember("CEnvCubemap", "m_Entity_nHandshake")]
-	public Int32 Entity_nHandshake
+	public virtual Int32 Entity_nHandshake
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nHandshake"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nHandshake", value); }
@@ -73,7 +73,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_nEnvCubeMapArrayIndex
 	[SchemaMember("CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex")]
-	public Int32 Entity_nEnvCubeMapArrayIndex
+	public virtual Int32 Entity_nEnvCubeMapArrayIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex", value); }
@@ -81,7 +81,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_nPriority
 	[SchemaMember("CEnvCubemap", "m_Entity_nPriority")]
-	public Int32 Entity_nPriority
+	public virtual Int32 Entity_nPriority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nPriority", value); }
@@ -89,7 +89,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_flEdgeFadeDist
 	[SchemaMember("CEnvCubemap", "m_Entity_flEdgeFadeDist")]
-	public float Entity_flEdgeFadeDist
+	public virtual float Entity_flEdgeFadeDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flEdgeFadeDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flEdgeFadeDist", value); }
@@ -97,7 +97,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_vEdgeFadeDists
 	[SchemaMember("CEnvCubemap", "m_Entity_vEdgeFadeDists")]
-	public Vector3 Entity_vEdgeFadeDists
+	public virtual Vector3 Entity_vEdgeFadeDists
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vEdgeFadeDists"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vEdgeFadeDists", value); }
@@ -105,7 +105,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_flDiffuseScale
 	[SchemaMember("CEnvCubemap", "m_Entity_flDiffuseScale")]
-	public float Entity_flDiffuseScale
+	public virtual float Entity_flDiffuseScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flDiffuseScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flDiffuseScale", value); }
@@ -113,7 +113,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bStartDisabled
 	[SchemaMember("CEnvCubemap", "m_Entity_bStartDisabled")]
-	public bool Entity_bStartDisabled
+	public virtual bool Entity_bStartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bStartDisabled", value); }
@@ -121,7 +121,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bDefaultEnvMap
 	[SchemaMember("CEnvCubemap", "m_Entity_bDefaultEnvMap")]
-	public bool Entity_bDefaultEnvMap
+	public virtual bool Entity_bDefaultEnvMap
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultEnvMap"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultEnvMap", value); }
@@ -129,7 +129,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bDefaultSpecEnvMap
 	[SchemaMember("CEnvCubemap", "m_Entity_bDefaultSpecEnvMap")]
-	public bool Entity_bDefaultSpecEnvMap
+	public virtual bool Entity_bDefaultSpecEnvMap
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap", value); }
@@ -137,7 +137,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bIndoorCubeMap
 	[SchemaMember("CEnvCubemap", "m_Entity_bIndoorCubeMap")]
-	public bool Entity_bIndoorCubeMap
+	public virtual bool Entity_bIndoorCubeMap
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bIndoorCubeMap"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bIndoorCubeMap", value); }
@@ -145,7 +145,7 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bCopyDiffuseFromDefaultCubemap
 	[SchemaMember("CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap")]
-	public bool Entity_bCopyDiffuseFromDefaultCubemap
+	public virtual bool Entity_bCopyDiffuseFromDefaultCubemap
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap", value); }
@@ -153,28 +153,28 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bEnabled
 	[SchemaMember("CEnvCubemap", "m_Entity_bEnabled")]
-	public bool Entity_bEnabled
+	public virtual bool Entity_bEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bEnabled", value); }
 	}
 
-	public void Entity_hCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_hCubemapTexture");
-	public void Entity_bCustomCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bCustomCubemapTexture");
-	public void Entity_flInfluenceRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flInfluenceRadius");
-	public void Entity_vBoxProjectMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vBoxProjectMins");
-	public void Entity_vBoxProjectMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vBoxProjectMaxs");
-	public void Entity_bMoveablePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bMoveable");
-	public void Entity_nHandshakePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nHandshake");
-	public void Entity_nEnvCubeMapArrayIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex");
-	public void Entity_nPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nPriority");
-	public void Entity_flEdgeFadeDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flEdgeFadeDist");
-	public void Entity_vEdgeFadeDistsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vEdgeFadeDists");
-	public void Entity_flDiffuseScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flDiffuseScale");
-	public void Entity_bStartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bStartDisabled");
-	public void Entity_bDefaultEnvMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bDefaultEnvMap");
-	public void Entity_bDefaultSpecEnvMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap");
-	public void Entity_bIndoorCubeMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bIndoorCubeMap");
-	public void Entity_bCopyDiffuseFromDefaultCubemapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap");
-	public void Entity_bEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bEnabled");
+	public virtual void Entity_hCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_hCubemapTexture");
+	public virtual void Entity_bCustomCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bCustomCubemapTexture");
+	public virtual void Entity_flInfluenceRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flInfluenceRadius");
+	public virtual void Entity_vBoxProjectMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vBoxProjectMins");
+	public virtual void Entity_vBoxProjectMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vBoxProjectMaxs");
+	public virtual void Entity_bMoveablePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bMoveable");
+	public virtual void Entity_nHandshakePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nHandshake");
+	public virtual void Entity_nEnvCubeMapArrayIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex");
+	public virtual void Entity_nPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nPriority");
+	public virtual void Entity_flEdgeFadeDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flEdgeFadeDist");
+	public virtual void Entity_vEdgeFadeDistsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vEdgeFadeDists");
+	public virtual void Entity_flDiffuseScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flDiffuseScale");
+	public virtual void Entity_bStartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bStartDisabled");
+	public virtual void Entity_bDefaultEnvMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bDefaultEnvMap");
+	public virtual void Entity_bDefaultSpecEnvMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap");
+	public virtual void Entity_bIndoorCubeMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bIndoorCubeMap");
+	public virtual void Entity_bCopyDiffuseFromDefaultCubemapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap");
+	public virtual void Entity_bEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bEnabled");
 }

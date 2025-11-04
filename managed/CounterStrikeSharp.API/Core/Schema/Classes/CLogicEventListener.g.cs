@@ -21,7 +21,7 @@ public partial class CLogicEventListener : CLogicalEntity
 
 	// m_strEventName
 	[SchemaMember("CLogicEventListener", "m_strEventName")]
-	public string StrEventName
+	public virtual string StrEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicEventListener", "m_strEventName"); }
 		set { Schema.SetString(this.Handle, "CLogicEventListener", "m_strEventName", value); }
@@ -29,7 +29,7 @@ public partial class CLogicEventListener : CLogicalEntity
 
 	// m_bIsEnabled
 	[SchemaMember("CLogicEventListener", "m_bIsEnabled")]
-	public bool IsEnabled
+	public virtual bool IsEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicEventListener", "m_bIsEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicEventListener", "m_bIsEnabled", value); }
@@ -37,7 +37,7 @@ public partial class CLogicEventListener : CLogicalEntity
 
 	// m_nTeam
 	[SchemaMember("CLogicEventListener", "m_nTeam")]
-	public Int32 Team
+	public virtual Int32 Team
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicEventListener", "m_nTeam"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicEventListener", "m_nTeam", value); }
@@ -45,6 +45,6 @@ public partial class CLogicEventListener : CLogicalEntity
 
 	// m_OnEventFired
 	[SchemaMember("CLogicEventListener", "m_OnEventFired")]
-	public CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicEventListener", "m_OnEventFired");
+	public virtual CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicEventListener", "m_OnEventFired");
 
 }

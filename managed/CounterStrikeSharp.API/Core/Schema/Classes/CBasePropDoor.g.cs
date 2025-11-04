@@ -21,7 +21,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_flAutoReturnDelay
 	[SchemaMember("CBasePropDoor", "m_flAutoReturnDelay")]
-	public float AutoReturnDelay
+	public virtual float AutoReturnDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePropDoor", "m_flAutoReturnDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePropDoor", "m_flAutoReturnDelay", value); }
@@ -29,11 +29,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hDoorList
 	[SchemaMember("CBasePropDoor", "m_hDoorList")]
-	public NetworkedVector<CHandle<CBasePropDoor>> DoorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePropDoor>>>(this.Handle, "CBasePropDoor", "m_hDoorList");
+	public virtual NetworkedVector<CHandle<CBasePropDoor>> DoorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePropDoor>>>(this.Handle, "CBasePropDoor", "m_hDoorList");
 
 	// m_nHardwareType
 	[SchemaMember("CBasePropDoor", "m_nHardwareType")]
-	public Int32 HardwareType
+	public virtual Int32 HardwareType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePropDoor", "m_nHardwareType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePropDoor", "m_nHardwareType", value); }
@@ -41,7 +41,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_bNeedsHardware
 	[SchemaMember("CBasePropDoor", "m_bNeedsHardware")]
-	public bool NeedsHardware
+	public virtual bool NeedsHardware
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNeedsHardware"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNeedsHardware", value); }
@@ -49,7 +49,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_eDoorState
 	[SchemaMember("CBasePropDoor", "m_eDoorState")]
-	public DoorState_t DoorState
+	public virtual DoorState_t DoorState
 	{
 		get { return Schema.GetValueType<DoorState_t>(this.Handle, "CBasePropDoor", "m_eDoorState"); }
 		set { Schema.SetValueType<DoorState_t>(this.Handle, "CBasePropDoor", "m_eDoorState", value); }
@@ -57,7 +57,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_bLocked
 	[SchemaMember("CBasePropDoor", "m_bLocked")]
-	public bool Locked
+	public virtual bool Locked
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bLocked"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bLocked", value); }
@@ -65,7 +65,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_bNoNPCs
 	[SchemaMember("CBasePropDoor", "m_bNoNPCs")]
-	public bool NoNPCs
+	public virtual bool NoNPCs
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNoNPCs"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNoNPCs", value); }
@@ -73,7 +73,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_closedPosition
 	[SchemaMember("CBasePropDoor", "m_closedPosition")]
-	public Vector3 ClosedPosition
+	public virtual Vector3 ClosedPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_closedPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_closedPosition", value); }
@@ -81,7 +81,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_closedAngles
 	[SchemaMember("CBasePropDoor", "m_closedAngles")]
-	public QAngle ClosedAngles
+	public virtual QAngle ClosedAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBasePropDoor", "m_closedAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBasePropDoor", "m_closedAngles", value); }
@@ -89,11 +89,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hBlocker
 	[SchemaMember("CBasePropDoor", "m_hBlocker")]
-	public new CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
+	public virtual new CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
 
 	// m_bFirstBlocked
 	[SchemaMember("CBasePropDoor", "m_bFirstBlocked")]
-	public bool FirstBlocked
+	public virtual bool FirstBlocked
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bFirstBlocked"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bFirstBlocked", value); }
@@ -101,11 +101,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_ls
 	[SchemaMember("CBasePropDoor", "m_ls")]
-	public locksound_t Ls => Schema.GetDeclaredClass<locksound_t>(this.Handle, "CBasePropDoor", "m_ls");
+	public virtual locksound_t Ls => Schema.GetDeclaredClass<locksound_t>(this.Handle, "CBasePropDoor", "m_ls");
 
 	// m_bForceClosed
 	[SchemaMember("CBasePropDoor", "m_bForceClosed")]
-	public bool ForceClosed
+	public virtual bool ForceClosed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bForceClosed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bForceClosed", value); }
@@ -113,7 +113,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_vecLatchWorldPosition
 	[SchemaMember("CBasePropDoor", "m_vecLatchWorldPosition")]
-	public Vector3 LatchWorldPosition
+	public virtual Vector3 LatchWorldPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_vecLatchWorldPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_vecLatchWorldPosition", value); }
@@ -121,11 +121,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hActivator
 	[SchemaMember("CBasePropDoor", "m_hActivator")]
-	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hActivator");
 
 	// m_SoundMoving
 	[SchemaMember("CBasePropDoor", "m_SoundMoving")]
-	public string SoundMoving
+	public virtual string SoundMoving
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundMoving"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundMoving", value); }
@@ -133,7 +133,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundOpen
 	[SchemaMember("CBasePropDoor", "m_SoundOpen")]
-	public string SoundOpen
+	public virtual string SoundOpen
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundOpen"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundOpen", value); }
@@ -141,7 +141,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundClose
 	[SchemaMember("CBasePropDoor", "m_SoundClose")]
-	public string SoundClose
+	public virtual string SoundClose
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundClose"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundClose", value); }
@@ -149,7 +149,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundLock
 	[SchemaMember("CBasePropDoor", "m_SoundLock")]
-	public string SoundLock
+	public virtual string SoundLock
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLock"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLock", value); }
@@ -157,7 +157,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundUnlock
 	[SchemaMember("CBasePropDoor", "m_SoundUnlock")]
-	public string SoundUnlock
+	public virtual string SoundUnlock
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundUnlock"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundUnlock", value); }
@@ -165,7 +165,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundLatch
 	[SchemaMember("CBasePropDoor", "m_SoundLatch")]
-	public string SoundLatch
+	public virtual string SoundLatch
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLatch"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLatch", value); }
@@ -173,7 +173,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundPound
 	[SchemaMember("CBasePropDoor", "m_SoundPound")]
-	public string SoundPound
+	public virtual string SoundPound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundPound"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundPound", value); }
@@ -181,7 +181,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundJiggle
 	[SchemaMember("CBasePropDoor", "m_SoundJiggle")]
-	public string SoundJiggle
+	public virtual string SoundJiggle
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundJiggle"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundJiggle", value); }
@@ -189,7 +189,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_SoundLockedAnim
 	[SchemaMember("CBasePropDoor", "m_SoundLockedAnim")]
-	public string SoundLockedAnim
+	public virtual string SoundLockedAnim
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLockedAnim"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLockedAnim", value); }
@@ -197,7 +197,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_numCloseAttempts
 	[SchemaMember("CBasePropDoor", "m_numCloseAttempts")]
-	public Int32 NumCloseAttempts
+	public virtual Int32 NumCloseAttempts
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePropDoor", "m_numCloseAttempts"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePropDoor", "m_numCloseAttempts", value); }
@@ -205,11 +205,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_nPhysicsMaterial
 	[SchemaMember("CBasePropDoor", "m_nPhysicsMaterial")]
-	public CUtlStringToken PhysicsMaterial => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBasePropDoor", "m_nPhysicsMaterial");
+	public virtual CUtlStringToken PhysicsMaterial => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBasePropDoor", "m_nPhysicsMaterial");
 
 	// m_SlaveName
 	[SchemaMember("CBasePropDoor", "m_SlaveName")]
-	public string SlaveName
+	public virtual string SlaveName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SlaveName"); }
 		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SlaveName", value); }
@@ -217,52 +217,52 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hMaster
 	[SchemaMember("CBasePropDoor", "m_hMaster")]
-	public CHandle<CBasePropDoor> Master => Schema.GetDeclaredClass<CHandle<CBasePropDoor>>(this.Handle, "CBasePropDoor", "m_hMaster");
+	public virtual CHandle<CBasePropDoor> Master => Schema.GetDeclaredClass<CHandle<CBasePropDoor>>(this.Handle, "CBasePropDoor", "m_hMaster");
 
 	// m_OnBlockedClosing
 	[SchemaMember("CBasePropDoor", "m_OnBlockedClosing")]
-	public CEntityIOOutput OnBlockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnBlockedClosing");
+	public virtual CEntityIOOutput OnBlockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnBlockedClosing");
 
 	// m_OnBlockedOpening
 	[SchemaMember("CBasePropDoor", "m_OnBlockedOpening")]
-	public CEntityIOOutput OnBlockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnBlockedOpening");
+	public virtual CEntityIOOutput OnBlockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnBlockedOpening");
 
 	// m_OnUnblockedClosing
 	[SchemaMember("CBasePropDoor", "m_OnUnblockedClosing")]
-	public CEntityIOOutput OnUnblockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnUnblockedClosing");
+	public virtual CEntityIOOutput OnUnblockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnUnblockedClosing");
 
 	// m_OnUnblockedOpening
 	[SchemaMember("CBasePropDoor", "m_OnUnblockedOpening")]
-	public CEntityIOOutput OnUnblockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnUnblockedOpening");
+	public virtual CEntityIOOutput OnUnblockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnUnblockedOpening");
 
 	// m_OnFullyClosed
 	[SchemaMember("CBasePropDoor", "m_OnFullyClosed")]
-	public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnFullyClosed");
+	public virtual CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnFullyClosed");
 
 	// m_OnFullyOpen
 	[SchemaMember("CBasePropDoor", "m_OnFullyOpen")]
-	public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnFullyOpen");
+	public virtual CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnFullyOpen");
 
 	// m_OnClose
 	[SchemaMember("CBasePropDoor", "m_OnClose")]
-	public CEntityIOOutput OnClose => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnClose");
+	public virtual CEntityIOOutput OnClose => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnClose");
 
 	// m_OnOpen
 	[SchemaMember("CBasePropDoor", "m_OnOpen")]
-	public CEntityIOOutput OnOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnOpen");
+	public virtual CEntityIOOutput OnOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnOpen");
 
 	// m_OnLockedUse
 	[SchemaMember("CBasePropDoor", "m_OnLockedUse")]
-	public CEntityIOOutput OnLockedUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnLockedUse");
+	public virtual CEntityIOOutput OnLockedUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnLockedUse");
 
 	// m_OnAjarOpen
 	[SchemaMember("CBasePropDoor", "m_OnAjarOpen")]
-	public CEntityIOOutput OnAjarOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnAjarOpen");
+	public virtual CEntityIOOutput OnAjarOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnAjarOpen");
 
-	public void DoorStatePropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_eDoorState");
-	public void LockedPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_bLocked");
-	public void NoNPCsPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_bNoNPCs");
-	public void ClosedPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_closedPosition");
-	public void ClosedAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_closedAngles");
-	public void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_hMaster");
+	public virtual void DoorStatePropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_eDoorState");
+	public virtual void LockedPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_bLocked");
+	public virtual void NoNPCsPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_bNoNPCs");
+	public virtual void ClosedPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_closedPosition");
+	public virtual void ClosedAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_closedAngles");
+	public virtual void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_hMaster");
 }

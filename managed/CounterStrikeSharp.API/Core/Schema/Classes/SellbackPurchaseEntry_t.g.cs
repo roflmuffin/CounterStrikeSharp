@@ -21,7 +21,7 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_unDefIdx
 	[SchemaMember("SellbackPurchaseEntry_t", "m_unDefIdx")]
-	public UInt16 DefIdx
+	public virtual UInt16 DefIdx
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "SellbackPurchaseEntry_t", "m_unDefIdx"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "SellbackPurchaseEntry_t", "m_unDefIdx", value); }
@@ -29,7 +29,7 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_nCost
 	[SchemaMember("SellbackPurchaseEntry_t", "m_nCost")]
-	public Int32 Cost
+	public virtual Int32 Cost
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nCost"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nCost", value); }
@@ -37,7 +37,7 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_nPrevArmor
 	[SchemaMember("SellbackPurchaseEntry_t", "m_nPrevArmor")]
-	public Int32 PrevArmor
+	public virtual Int32 PrevArmor
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nPrevArmor"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nPrevArmor", value); }
@@ -45,7 +45,7 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_bPrevHelmet
 	[SchemaMember("SellbackPurchaseEntry_t", "m_bPrevHelmet")]
-	public bool PrevHelmet
+	public virtual bool PrevHelmet
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "SellbackPurchaseEntry_t", "m_bPrevHelmet"); }
 		set { Schema.SetValueType<bool>(this.Handle, "SellbackPurchaseEntry_t", "m_bPrevHelmet", value); }
@@ -53,11 +53,11 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_hItem
 	[SchemaMember("SellbackPurchaseEntry_t", "m_hItem")]
-	public CHandle<CEntityInstance> Item => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem");
+	public virtual CHandle<CEntityInstance> Item => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem");
 
-	public void DefIdxPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_unDefIdx");
-	public void CostPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_nCost");
-	public void PrevArmorPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_nPrevArmor");
-	public void PrevHelmetPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_bPrevHelmet");
-	public void ItemPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_hItem");
+	public virtual void DefIdxPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_unDefIdx");
+	public virtual void CostPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_nCost");
+	public virtual void PrevArmorPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_nPrevArmor");
+	public virtual void PrevHelmetPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_bPrevHelmet");
+	public virtual void ItemPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_hItem");
 }

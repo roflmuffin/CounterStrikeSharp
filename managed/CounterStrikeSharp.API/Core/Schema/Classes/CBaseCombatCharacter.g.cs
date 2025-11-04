@@ -21,7 +21,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_bForceServerRagdoll
 	[SchemaMember("CBaseCombatCharacter", "m_bForceServerRagdoll")]
-	public bool ForceServerRagdoll
+	public virtual bool ForceServerRagdoll
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bForceServerRagdoll"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bForceServerRagdoll", value); }
@@ -29,11 +29,11 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_hMyWearables
 	[SchemaMember("CBaseCombatCharacter", "m_hMyWearables")]
-	public NetworkedVector<CHandle<CEconWearable>> MyWearables => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEconWearable>>>(this.Handle, "CBaseCombatCharacter", "m_hMyWearables");
+	public virtual NetworkedVector<CHandle<CEconWearable>> MyWearables => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEconWearable>>>(this.Handle, "CBaseCombatCharacter", "m_hMyWearables");
 
 	// m_impactEnergyScale
 	[SchemaMember("CBaseCombatCharacter", "m_impactEnergyScale")]
-	public float ImpactEnergyScale
+	public virtual float ImpactEnergyScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale", value); }
@@ -41,7 +41,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_bApplyStressDamage
 	[SchemaMember("CBaseCombatCharacter", "m_bApplyStressDamage")]
-	public bool ApplyStressDamage
+	public virtual bool ApplyStressDamage
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage", value); }
@@ -49,7 +49,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_bDeathEventsDispatched
 	[SchemaMember("CBaseCombatCharacter", "m_bDeathEventsDispatched")]
-	public bool DeathEventsDispatched
+	public virtual bool DeathEventsDispatched
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched", value); }
@@ -57,7 +57,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_strRelationships
 	[SchemaMember("CBaseCombatCharacter", "m_strRelationships")]
-	public string StrRelationships
+	public virtual string StrRelationships
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseCombatCharacter", "m_strRelationships"); }
 		set { Schema.SetString(this.Handle, "CBaseCombatCharacter", "m_strRelationships", value); }
@@ -65,7 +65,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_eHull
 	[SchemaMember("CBaseCombatCharacter", "m_eHull")]
-	public Hull_t Hull
+	public virtual Hull_t Hull
 	{
 		get { return Schema.GetValueType<Hull_t>(this.Handle, "CBaseCombatCharacter", "m_eHull"); }
 		set { Schema.SetValueType<Hull_t>(this.Handle, "CBaseCombatCharacter", "m_eHull", value); }
@@ -73,7 +73,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_nNavHullIdx
 	[SchemaMember("CBaseCombatCharacter", "m_nNavHullIdx")]
-	public UInt32 NavHullIdx
+	public virtual UInt32 NavHullIdx
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseCombatCharacter", "m_nNavHullIdx"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseCombatCharacter", "m_nNavHullIdx", value); }
@@ -81,7 +81,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_movementStats
 	[SchemaMember("CBaseCombatCharacter", "m_movementStats")]
-	public CMovementStatsProperty MovementStats => Schema.GetDeclaredClass<CMovementStatsProperty>(this.Handle, "CBaseCombatCharacter", "m_movementStats");
+	public virtual CMovementStatsProperty MovementStats => Schema.GetDeclaredClass<CMovementStatsProperty>(this.Handle, "CBaseCombatCharacter", "m_movementStats");
 
-	public void MyWearablesPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCombatCharacter", "m_hMyWearables");
+	public virtual void MyWearablesPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCombatCharacter", "m_hMyWearables");
 }

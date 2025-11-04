@@ -21,11 +21,11 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_hTargetEntity
 	[SchemaMember("CPointAngularVelocitySensor", "m_hTargetEntity")]
-	public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngularVelocitySensor", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngularVelocitySensor", "m_hTargetEntity");
 
 	// m_flThreshold
 	[SchemaMember("CPointAngularVelocitySensor", "m_flThreshold")]
-	public float Threshold
+	public virtual float Threshold
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flThreshold"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flThreshold", value); }
@@ -33,7 +33,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_nLastCompareResult
 	[SchemaMember("CPointAngularVelocitySensor", "m_nLastCompareResult")]
-	public Int32 LastCompareResult
+	public virtual Int32 LastCompareResult
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastCompareResult"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastCompareResult", value); }
@@ -41,7 +41,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_nLastFireResult
 	[SchemaMember("CPointAngularVelocitySensor", "m_nLastFireResult")]
-	public Int32 LastFireResult
+	public virtual Int32 LastFireResult
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastFireResult"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastFireResult", value); }
@@ -49,7 +49,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_flFireTime
 	[SchemaMember("CPointAngularVelocitySensor", "m_flFireTime")]
-	public float FireTime
+	public virtual float FireTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireTime", value); }
@@ -57,7 +57,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_flFireInterval
 	[SchemaMember("CPointAngularVelocitySensor", "m_flFireInterval")]
-	public float FireInterval
+	public virtual float FireInterval
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireInterval"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireInterval", value); }
@@ -65,7 +65,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_flLastAngVelocity
 	[SchemaMember("CPointAngularVelocitySensor", "m_flLastAngVelocity")]
-	public float LastAngVelocity
+	public virtual float LastAngVelocity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flLastAngVelocity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flLastAngVelocity", value); }
@@ -73,7 +73,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_lastOrientation
 	[SchemaMember("CPointAngularVelocitySensor", "m_lastOrientation")]
-	public QAngle LastOrientation
+	public virtual QAngle LastOrientation
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPointAngularVelocitySensor", "m_lastOrientation"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPointAngularVelocitySensor", "m_lastOrientation", value); }
@@ -81,7 +81,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_vecAxis
 	[SchemaMember("CPointAngularVelocitySensor", "m_vecAxis")]
-	public Vector3 Axis
+	public virtual Vector3 Axis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointAngularVelocitySensor", "m_vecAxis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPointAngularVelocitySensor", "m_vecAxis", value); }
@@ -89,7 +89,7 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_bUseHelper
 	[SchemaMember("CPointAngularVelocitySensor", "m_bUseHelper")]
-	public bool UseHelper
+	public virtual bool UseHelper
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointAngularVelocitySensor", "m_bUseHelper"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointAngularVelocitySensor", "m_bUseHelper", value); }
@@ -97,22 +97,22 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_OnLessThan
 	[SchemaMember("CPointAngularVelocitySensor", "m_OnLessThan")]
-	public CEntityIOOutput OnLessThan => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnLessThan");
+	public virtual CEntityIOOutput OnLessThan => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnLessThan");
 
 	// m_OnLessThanOrEqualTo
 	[SchemaMember("CPointAngularVelocitySensor", "m_OnLessThanOrEqualTo")]
-	public CEntityIOOutput OnLessThanOrEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnLessThanOrEqualTo");
+	public virtual CEntityIOOutput OnLessThanOrEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnLessThanOrEqualTo");
 
 	// m_OnGreaterThan
 	[SchemaMember("CPointAngularVelocitySensor", "m_OnGreaterThan")]
-	public CEntityIOOutput OnGreaterThan => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnGreaterThan");
+	public virtual CEntityIOOutput OnGreaterThan => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnGreaterThan");
 
 	// m_OnGreaterThanOrEqualTo
 	[SchemaMember("CPointAngularVelocitySensor", "m_OnGreaterThanOrEqualTo")]
-	public CEntityIOOutput OnGreaterThanOrEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnGreaterThanOrEqualTo");
+	public virtual CEntityIOOutput OnGreaterThanOrEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnGreaterThanOrEqualTo");
 
 	// m_OnEqualTo
 	[SchemaMember("CPointAngularVelocitySensor", "m_OnEqualTo")]
-	public CEntityIOOutput OnEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnEqualTo");
+	public virtual CEntityIOOutput OnEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnEqualTo");
 
 }

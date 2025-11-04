@@ -21,7 +21,7 @@ public partial class Relationship_t : NativeObject
 
 	// disposition
 	[SchemaMember("Relationship_t", "disposition")]
-	public Disposition_t Disposition
+	public virtual Disposition_t Disposition
 	{
 		get { return Schema.GetValueType<Disposition_t>(this.Handle, "Relationship_t", "disposition"); }
 		set { Schema.SetValueType<Disposition_t>(this.Handle, "Relationship_t", "disposition", value); }
@@ -29,7 +29,7 @@ public partial class Relationship_t : NativeObject
 
 	// priority
 	[SchemaMember("Relationship_t", "priority")]
-	public Int32 Priority
+	public virtual Int32 Priority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "Relationship_t", "priority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "Relationship_t", "priority", value); }

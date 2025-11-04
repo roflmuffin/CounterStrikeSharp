@@ -21,11 +21,11 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_OnPlay
 	[SchemaMember("CEnvSoundscape", "m_OnPlay")]
-	public CEntityIOOutput OnPlay => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSoundscape", "m_OnPlay");
+	public virtual CEntityIOOutput OnPlay => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSoundscape", "m_OnPlay");
 
 	// m_flRadius
 	[SchemaMember("CEnvSoundscape", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSoundscape", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSoundscape", "m_flRadius", value); }
@@ -33,7 +33,7 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_soundEventName
 	[SchemaMember("CEnvSoundscape", "m_soundEventName")]
-	public string SoundEventName
+	public virtual string SoundEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundEventName"); }
 		set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundEventName", value); }
@@ -41,7 +41,7 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_bOverrideWithEvent
 	[SchemaMember("CEnvSoundscape", "m_bOverrideWithEvent")]
-	public bool OverrideWithEvent
+	public virtual bool OverrideWithEvent
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bOverrideWithEvent"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bOverrideWithEvent", value); }
@@ -49,7 +49,7 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_soundscapeIndex
 	[SchemaMember("CEnvSoundscape", "m_soundscapeIndex")]
-	public Int32 SoundscapeIndex
+	public virtual Int32 SoundscapeIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeIndex", value); }
@@ -57,7 +57,7 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_soundscapeEntityListId
 	[SchemaMember("CEnvSoundscape", "m_soundscapeEntityListId")]
-	public Int32 SoundscapeEntityListId
+	public virtual Int32 SoundscapeEntityListId
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeEntityListId"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeEntityListId", value); }
@@ -65,15 +65,15 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_positionNames
 	[SchemaMember("CEnvSoundscape", "m_positionNames")]
-	public Span<string> PositionNames => Schema.GetFixedArray<string>(this.Handle, "CEnvSoundscape", "m_positionNames", 8);
+	public virtual Span<string> PositionNames => Schema.GetFixedArray<string>(this.Handle, "CEnvSoundscape", "m_positionNames", 8);
 
 	// m_hProxySoundscape
 	[SchemaMember("CEnvSoundscape", "m_hProxySoundscape")]
-	public CHandle<CEnvSoundscape> ProxySoundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscape>>(this.Handle, "CEnvSoundscape", "m_hProxySoundscape");
+	public virtual CHandle<CEnvSoundscape> ProxySoundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscape>>(this.Handle, "CEnvSoundscape", "m_hProxySoundscape");
 
 	// m_bDisabled
 	[SchemaMember("CEnvSoundscape", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bDisabled", value); }
@@ -81,7 +81,7 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_soundscapeName
 	[SchemaMember("CEnvSoundscape", "m_soundscapeName")]
-	public string SoundscapeName
+	public virtual string SoundscapeName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundscapeName"); }
 		set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundscapeName", value); }
@@ -89,7 +89,7 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_soundEventHash
 	[SchemaMember("CEnvSoundscape", "m_soundEventHash")]
-	public UInt32 SoundEventHash
+	public virtual UInt32 SoundEventHash
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash", value); }

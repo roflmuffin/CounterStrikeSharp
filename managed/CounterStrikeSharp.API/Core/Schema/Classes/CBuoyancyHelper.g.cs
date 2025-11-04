@@ -21,11 +21,11 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_nFluidType
 	[SchemaMember("CBuoyancyHelper", "m_nFluidType")]
-	public CUtlStringToken FluidType => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBuoyancyHelper", "m_nFluidType");
+	public virtual CUtlStringToken FluidType => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBuoyancyHelper", "m_nFluidType");
 
 	// m_flFluidDensity
 	[SchemaMember("CBuoyancyHelper", "m_flFluidDensity")]
-	public float FluidDensity
+	public virtual float FluidDensity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity", value); }
@@ -33,7 +33,7 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_flNeutrallyBuoyantGravity
 	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantGravity")]
-	public float NeutrallyBuoyantGravity
+	public virtual float NeutrallyBuoyantGravity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantGravity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantGravity", value); }
@@ -41,7 +41,7 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_flNeutrallyBuoyantLinearDamping
 	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping")]
-	public float NeutrallyBuoyantLinearDamping
+	public virtual float NeutrallyBuoyantLinearDamping
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping", value); }
@@ -49,7 +49,7 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_flNeutrallyBuoyantAngularDamping
 	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping")]
-	public float NeutrallyBuoyantAngularDamping
+	public virtual float NeutrallyBuoyantAngularDamping
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping", value); }
@@ -57,7 +57,7 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_bNeutrallyBuoyant
 	[SchemaMember("CBuoyancyHelper", "m_bNeutrallyBuoyant")]
-	public bool NeutrallyBuoyant
+	public virtual bool NeutrallyBuoyant
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBuoyancyHelper", "m_bNeutrallyBuoyant"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBuoyancyHelper", "m_bNeutrallyBuoyant", value); }
@@ -65,18 +65,18 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_vecFractionOfWheelSubmergedForWheelFriction
 	[SchemaMember("CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelFriction")]
-	public NetworkedVector<float> FractionOfWheelSubmergedForWheelFriction => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelFriction");
+	public virtual NetworkedVector<float> FractionOfWheelSubmergedForWheelFriction => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelFriction");
 
 	// m_vecWheelFrictionScales
 	[SchemaMember("CBuoyancyHelper", "m_vecWheelFrictionScales")]
-	public NetworkedVector<float> WheelFrictionScales => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecWheelFrictionScales");
+	public virtual NetworkedVector<float> WheelFrictionScales => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecWheelFrictionScales");
 
 	// m_vecFractionOfWheelSubmergedForWheelDrag
 	[SchemaMember("CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelDrag")]
-	public NetworkedVector<float> FractionOfWheelSubmergedForWheelDrag => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelDrag");
+	public virtual NetworkedVector<float> FractionOfWheelSubmergedForWheelDrag => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelDrag");
 
 	// m_vecWheelDrag
 	[SchemaMember("CBuoyancyHelper", "m_vecWheelDrag")]
-	public NetworkedVector<float> WheelDrag => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecWheelDrag");
+	public virtual NetworkedVector<float> WheelDrag => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecWheelDrag");
 
 }

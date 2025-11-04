@@ -21,7 +21,7 @@ public partial class CEnvGlobal : CLogicalEntity
 
 	// m_globalstate
 	[SchemaMember("CEnvGlobal", "m_globalstate")]
-	public string Globalstate
+	public virtual string Globalstate
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvGlobal", "m_globalstate"); }
 		set { Schema.SetString(this.Handle, "CEnvGlobal", "m_globalstate", value); }
@@ -29,7 +29,7 @@ public partial class CEnvGlobal : CLogicalEntity
 
 	// m_triggermode
 	[SchemaMember("CEnvGlobal", "m_triggermode")]
-	public Int32 Triggermode
+	public virtual Int32 Triggermode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvGlobal", "m_triggermode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvGlobal", "m_triggermode", value); }
@@ -37,7 +37,7 @@ public partial class CEnvGlobal : CLogicalEntity
 
 	// m_initialstate
 	[SchemaMember("CEnvGlobal", "m_initialstate")]
-	public Int32 Initialstate
+	public virtual Int32 Initialstate
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvGlobal", "m_initialstate"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvGlobal", "m_initialstate", value); }
@@ -45,7 +45,7 @@ public partial class CEnvGlobal : CLogicalEntity
 
 	// m_counter
 	[SchemaMember("CEnvGlobal", "m_counter")]
-	public Int32 Counter
+	public virtual Int32 Counter
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvGlobal", "m_counter"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvGlobal", "m_counter", value); }

@@ -21,7 +21,7 @@ public partial class CPointProximitySensor : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CPointProximitySensor", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointProximitySensor", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointProximitySensor", "m_bDisabled", value); }
@@ -29,6 +29,6 @@ public partial class CPointProximitySensor : CPointEntity
 
 	// m_hTargetEntity
 	[SchemaMember("CPointProximitySensor", "m_hTargetEntity")]
-	public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity");
 
 }

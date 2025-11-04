@@ -21,7 +21,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flEndDistance
 	[SchemaMember("CEnvCubemapFog", "m_flEndDistance")]
-	public float EndDistance
+	public virtual float EndDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flEndDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flEndDistance", value); }
@@ -29,7 +29,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flStartDistance
 	[SchemaMember("CEnvCubemapFog", "m_flStartDistance")]
-	public float StartDistance
+	public virtual float StartDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flStartDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flStartDistance", value); }
@@ -37,7 +37,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flFogFalloffExponent
 	[SchemaMember("CEnvCubemapFog", "m_flFogFalloffExponent")]
-	public float FogFalloffExponent
+	public virtual float FogFalloffExponent
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogFalloffExponent"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogFalloffExponent", value); }
@@ -45,7 +45,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_bHeightFogEnabled
 	[SchemaMember("CEnvCubemapFog", "m_bHeightFogEnabled")]
-	public bool HeightFogEnabled
+	public virtual bool HeightFogEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHeightFogEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHeightFogEnabled", value); }
@@ -53,7 +53,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flFogHeightWidth
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightWidth")]
-	public float FogHeightWidth
+	public virtual float FogHeightWidth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightWidth", value); }
@@ -61,7 +61,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flFogHeightEnd
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightEnd")]
-	public float FogHeightEnd
+	public virtual float FogHeightEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightEnd", value); }
@@ -69,7 +69,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flFogHeightStart
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightStart")]
-	public float FogHeightStart
+	public virtual float FogHeightStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightStart", value); }
@@ -77,7 +77,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flFogHeightExponent
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightExponent")]
-	public float FogHeightExponent
+	public virtual float FogHeightExponent
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightExponent"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightExponent", value); }
@@ -85,7 +85,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flLODBias
 	[SchemaMember("CEnvCubemapFog", "m_flLODBias")]
-	public float LODBias
+	public virtual float LODBias
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flLODBias"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flLODBias", value); }
@@ -93,7 +93,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CEnvCubemapFog", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bActive", value); }
@@ -101,7 +101,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvCubemapFog", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bStartDisabled", value); }
@@ -109,7 +109,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flFogMaxOpacity
 	[SchemaMember("CEnvCubemapFog", "m_flFogMaxOpacity")]
-	public float FogMaxOpacity
+	public virtual float FogMaxOpacity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogMaxOpacity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogMaxOpacity", value); }
@@ -117,7 +117,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_nCubemapSourceType
 	[SchemaMember("CEnvCubemapFog", "m_nCubemapSourceType")]
-	public Int32 CubemapSourceType
+	public virtual Int32 CubemapSourceType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemapFog", "m_nCubemapSourceType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemapFog", "m_nCubemapSourceType", value); }
@@ -125,11 +125,11 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_hSkyMaterial
 	[SchemaMember("CEnvCubemapFog", "m_hSkyMaterial")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvCubemapFog", "m_hSkyMaterial");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvCubemapFog", "m_hSkyMaterial");
 
 	// m_iszSkyEntity
 	[SchemaMember("CEnvCubemapFog", "m_iszSkyEntity")]
-	public string SkyEntity
+	public virtual string SkyEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity"); }
 		set { Schema.SetString(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity", value); }
@@ -137,11 +137,11 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_hFogCubemapTexture
 	[SchemaMember("CEnvCubemapFog", "m_hFogCubemapTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> FogCubemapTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCubemapFog", "m_hFogCubemapTexture");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> FogCubemapTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCubemapFog", "m_hFogCubemapTexture");
 
 	// m_bHasHeightFogEnd
 	[SchemaMember("CEnvCubemapFog", "m_bHasHeightFogEnd")]
-	public bool HasHeightFogEnd
+	public virtual bool HasHeightFogEnd
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHasHeightFogEnd"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHasHeightFogEnd", value); }
@@ -149,27 +149,27 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_bFirstTime
 	[SchemaMember("CEnvCubemapFog", "m_bFirstTime")]
-	public bool FirstTime
+	public virtual bool FirstTime
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bFirstTime"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bFirstTime", value); }
 	}
 
-	public void EndDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flEndDistance");
-	public void StartDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flStartDistance");
-	public void FogFalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogFalloffExponent");
-	public void HeightFogEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bHeightFogEnabled");
-	public void FogHeightWidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightWidth");
-	public void FogHeightEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightEnd");
-	public void FogHeightStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightStart");
-	public void FogHeightExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightExponent");
-	public void LODBiasPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flLODBias");
-	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bActive");
-	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bStartDisabled");
-	public void FogMaxOpacityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogMaxOpacity");
-	public void CubemapSourceTypePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_nCubemapSourceType");
-	public void SkyMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_hSkyMaterial");
-	public void SkyEntityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_iszSkyEntity");
-	public void FogCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_hFogCubemapTexture");
-	public void HasHeightFogEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bHasHeightFogEnd");
+	public virtual void EndDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flEndDistance");
+	public virtual void StartDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flStartDistance");
+	public virtual void FogFalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogFalloffExponent");
+	public virtual void HeightFogEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bHeightFogEnabled");
+	public virtual void FogHeightWidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightWidth");
+	public virtual void FogHeightEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightEnd");
+	public virtual void FogHeightStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightStart");
+	public virtual void FogHeightExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightExponent");
+	public virtual void LODBiasPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flLODBias");
+	public virtual void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bActive");
+	public virtual void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bStartDisabled");
+	public virtual void FogMaxOpacityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogMaxOpacity");
+	public virtual void CubemapSourceTypePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_nCubemapSourceType");
+	public virtual void SkyMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_hSkyMaterial");
+	public virtual void SkyEntityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_iszSkyEntity");
+	public virtual void FogCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_hFogCubemapTexture");
+	public virtual void HasHeightFogEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bHasHeightFogEnd");
 }

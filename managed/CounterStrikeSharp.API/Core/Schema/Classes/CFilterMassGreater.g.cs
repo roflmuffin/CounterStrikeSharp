@@ -21,7 +21,7 @@ public partial class CFilterMassGreater : CBaseFilter
 
 	// m_fFilterMass
 	[SchemaMember("CFilterMassGreater", "m_fFilterMass")]
-	public float FilterMass
+	public virtual float FilterMass
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass", value); }

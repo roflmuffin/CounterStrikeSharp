@@ -21,11 +21,11 @@ public partial class CPhysLength : CPhysConstraint
 
 	// m_offset
 	[SchemaMember("CPhysLength", "m_offset")]
-	public Span<Vector3> Offset => Schema.GetFixedArray<Vector3>(this.Handle, "CPhysLength", "m_offset", 2);
+	public virtual Span<Vector3> Offset => Schema.GetFixedArray<Vector3>(this.Handle, "CPhysLength", "m_offset", 2);
 
 	// m_vecAttach
 	[SchemaMember("CPhysLength", "m_vecAttach")]
-	public Vector3 Attach
+	public virtual Vector3 Attach
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysLength", "m_vecAttach"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysLength", "m_vecAttach", value); }
@@ -33,7 +33,7 @@ public partial class CPhysLength : CPhysConstraint
 
 	// m_addLength
 	[SchemaMember("CPhysLength", "m_addLength")]
-	public float AddLength
+	public virtual float AddLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysLength", "m_addLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysLength", "m_addLength", value); }
@@ -41,7 +41,7 @@ public partial class CPhysLength : CPhysConstraint
 
 	// m_minLength
 	[SchemaMember("CPhysLength", "m_minLength")]
-	public float MinLength
+	public virtual float MinLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysLength", "m_minLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysLength", "m_minLength", value); }
@@ -49,7 +49,7 @@ public partial class CPhysLength : CPhysConstraint
 
 	// m_totalLength
 	[SchemaMember("CPhysLength", "m_totalLength")]
-	public float TotalLength
+	public virtual float TotalLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysLength", "m_totalLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysLength", "m_totalLength", value); }
@@ -57,7 +57,7 @@ public partial class CPhysLength : CPhysConstraint
 
 	// m_bEnableCollision
 	[SchemaMember("CPhysLength", "m_bEnableCollision")]
-	public bool EnableCollision
+	public virtual bool EnableCollision
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysLength", "m_bEnableCollision"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysLength", "m_bEnableCollision", value); }

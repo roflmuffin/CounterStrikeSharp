@@ -21,11 +21,11 @@ public partial class audioparams_t : NativeObject
 
 	// localSound
 	[SchemaMember("audioparams_t", "localSound")]
-	public Span<Vector3> LocalSound => Schema.GetFixedArray<Vector3>(this.Handle, "audioparams_t", "localSound", 8);
+	public virtual Span<Vector3> LocalSound => Schema.GetFixedArray<Vector3>(this.Handle, "audioparams_t", "localSound", 8);
 
 	// soundscapeIndex
 	[SchemaMember("audioparams_t", "soundscapeIndex")]
-	public Int32 SoundscapeIndex
+	public virtual Int32 SoundscapeIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeIndex", value); }
@@ -33,7 +33,7 @@ public partial class audioparams_t : NativeObject
 
 	// localBits
 	[SchemaMember("audioparams_t", "localBits")]
-	public byte LocalBits
+	public virtual byte LocalBits
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "audioparams_t", "localBits"); }
 		set { Schema.SetValueType<byte>(this.Handle, "audioparams_t", "localBits", value); }
@@ -41,7 +41,7 @@ public partial class audioparams_t : NativeObject
 
 	// soundscapeEntityListIndex
 	[SchemaMember("audioparams_t", "soundscapeEntityListIndex")]
-	public Int32 SoundscapeEntityListIndex
+	public virtual Int32 SoundscapeEntityListIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeEntityListIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeEntityListIndex", value); }
@@ -49,15 +49,15 @@ public partial class audioparams_t : NativeObject
 
 	// soundEventHash
 	[SchemaMember("audioparams_t", "soundEventHash")]
-	public UInt32 SoundEventHash
+	public virtual UInt32 SoundEventHash
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "audioparams_t", "soundEventHash"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "audioparams_t", "soundEventHash", value); }
 	}
 
-	public void LocalSoundPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "localSound");
-	public void SoundscapeIndexPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundscapeIndex");
-	public void LocalBitsPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "localBits");
-	public void SoundscapeEntityListIndexPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundscapeEntityListIndex");
-	public void SoundEventHashPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundEventHash");
+	public virtual void LocalSoundPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "localSound");
+	public virtual void SoundscapeIndexPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundscapeIndex");
+	public virtual void LocalBitsPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "localBits");
+	public virtual void SoundscapeEntityListIndexPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundscapeEntityListIndex");
+	public virtual void SoundEventHashPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundEventHash");
 }

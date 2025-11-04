@@ -21,14 +21,14 @@ public partial class CPathMover : CPathSimple
 
 	// m_vecPathNodes
 	[SchemaMember("CPathMover", "m_vecPathNodes")]
-	public NetworkedVector<CHandle<CMoverPathNode>> PathNodes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CMoverPathNode>>>(this.Handle, "CPathMover", "m_vecPathNodes");
+	public virtual NetworkedVector<CHandle<CMoverPathNode>> PathNodes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CMoverPathNode>>>(this.Handle, "CPathMover", "m_vecPathNodes");
 
 	// m_vecMovers
 	[SchemaMember("CPathMover", "m_vecMovers")]
-	public NetworkedVector<CHandle<CFuncMover>> Movers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFuncMover>>>(this.Handle, "CPathMover", "m_vecMovers");
+	public virtual NetworkedVector<CHandle<CFuncMover>> Movers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFuncMover>>>(this.Handle, "CPathMover", "m_vecMovers");
 
 	// m_xInitialPathWorldToLocal
 	[SchemaMember("CPathMover", "m_xInitialPathWorldToLocal")]
-	public CTransform XInitialPathWorldToLocal => Schema.GetDeclaredClass<CTransform>(this.Handle, "CPathMover", "m_xInitialPathWorldToLocal");
+	public virtual CTransform XInitialPathWorldToLocal => Schema.GetDeclaredClass<CTransform>(this.Handle, "CPathMover", "m_xInitialPathWorldToLocal");
 
 }

@@ -21,27 +21,27 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_flHeadDamageMultiplier
 	[SchemaMember("CBasePlayerVData", "m_flHeadDamageMultiplier")]
-	public CSkillFloat HeadDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flHeadDamageMultiplier");
+	public virtual CSkillFloat HeadDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flHeadDamageMultiplier");
 
 	// m_flChestDamageMultiplier
 	[SchemaMember("CBasePlayerVData", "m_flChestDamageMultiplier")]
-	public CSkillFloat ChestDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flChestDamageMultiplier");
+	public virtual CSkillFloat ChestDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flChestDamageMultiplier");
 
 	// m_flStomachDamageMultiplier
 	[SchemaMember("CBasePlayerVData", "m_flStomachDamageMultiplier")]
-	public CSkillFloat StomachDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flStomachDamageMultiplier");
+	public virtual CSkillFloat StomachDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flStomachDamageMultiplier");
 
 	// m_flArmDamageMultiplier
 	[SchemaMember("CBasePlayerVData", "m_flArmDamageMultiplier")]
-	public CSkillFloat ArmDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flArmDamageMultiplier");
+	public virtual CSkillFloat ArmDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flArmDamageMultiplier");
 
 	// m_flLegDamageMultiplier
 	[SchemaMember("CBasePlayerVData", "m_flLegDamageMultiplier")]
-	public CSkillFloat LegDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flLegDamageMultiplier");
+	public virtual CSkillFloat LegDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flLegDamageMultiplier");
 
 	// m_flHoldBreathTime
 	[SchemaMember("CBasePlayerVData", "m_flHoldBreathTime")]
-	public float HoldBreathTime
+	public virtual float HoldBreathTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flHoldBreathTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flHoldBreathTime", value); }
@@ -49,7 +49,7 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_flDrowningDamageInterval
 	[SchemaMember("CBasePlayerVData", "m_flDrowningDamageInterval")]
-	public float DrowningDamageInterval
+	public virtual float DrowningDamageInterval
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flDrowningDamageInterval"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flDrowningDamageInterval", value); }
@@ -57,7 +57,7 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_nDrowningDamageInitial
 	[SchemaMember("CBasePlayerVData", "m_nDrowningDamageInitial")]
-	public Int32 DrowningDamageInitial
+	public virtual Int32 DrowningDamageInitial
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageInitial"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageInitial", value); }
@@ -65,7 +65,7 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_nDrowningDamageMax
 	[SchemaMember("CBasePlayerVData", "m_nDrowningDamageMax")]
-	public Int32 DrowningDamageMax
+	public virtual Int32 DrowningDamageMax
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageMax"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageMax", value); }
@@ -73,7 +73,7 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_nWaterSpeed
 	[SchemaMember("CBasePlayerVData", "m_nWaterSpeed")]
-	public Int32 WaterSpeed
+	public virtual Int32 WaterSpeed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nWaterSpeed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nWaterSpeed", value); }
@@ -81,7 +81,7 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_flUseRange
 	[SchemaMember("CBasePlayerVData", "m_flUseRange")]
-	public float UseRange
+	public virtual float UseRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseRange", value); }
@@ -89,7 +89,7 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_flUseAngleTolerance
 	[SchemaMember("CBasePlayerVData", "m_flUseAngleTolerance")]
-	public float UseAngleTolerance
+	public virtual float UseAngleTolerance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseAngleTolerance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseAngleTolerance", value); }
@@ -97,7 +97,7 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_flCrouchTime
 	[SchemaMember("CBasePlayerVData", "m_flCrouchTime")]
-	public float CrouchTime
+	public virtual float CrouchTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flCrouchTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flCrouchTime", value); }

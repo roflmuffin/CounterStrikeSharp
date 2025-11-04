@@ -21,11 +21,11 @@ public partial class CFogController : CBaseEntity
 
 	// m_fog
 	[SchemaMember("CFogController", "m_fog")]
-	public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogController", "m_fog");
+	public virtual fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogController", "m_fog");
 
 	// m_bUseAngles
 	[SchemaMember("CFogController", "m_bUseAngles")]
-	public bool UseAngles
+	public virtual bool UseAngles
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFogController", "m_bUseAngles"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFogController", "m_bUseAngles", value); }
@@ -33,11 +33,11 @@ public partial class CFogController : CBaseEntity
 
 	// m_iChangedVariables
 	[SchemaMember("CFogController", "m_iChangedVariables")]
-	public Int32 ChangedVariables
+	public virtual Int32 ChangedVariables
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFogController", "m_iChangedVariables"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFogController", "m_iChangedVariables", value); }
 	}
 
-	public void FogPropertyChanged() => Utilities.SetStateChanged(this, "CFogController", "m_fog");
+	public virtual void FogPropertyChanged() => Utilities.SetStateChanged(this, "CFogController", "m_fog");
 }

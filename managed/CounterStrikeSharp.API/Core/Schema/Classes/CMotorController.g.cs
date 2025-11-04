@@ -21,7 +21,7 @@ public partial class CMotorController : NativeObject
 
 	// m_speed
 	[SchemaMember("CMotorController", "m_speed")]
-	public float Speed
+	public virtual float Speed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMotorController", "m_speed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMotorController", "m_speed", value); }
@@ -29,7 +29,7 @@ public partial class CMotorController : NativeObject
 
 	// m_maxTorque
 	[SchemaMember("CMotorController", "m_maxTorque")]
-	public float MaxTorque
+	public virtual float MaxTorque
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMotorController", "m_maxTorque"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMotorController", "m_maxTorque", value); }
@@ -37,7 +37,7 @@ public partial class CMotorController : NativeObject
 
 	// m_axis
 	[SchemaMember("CMotorController", "m_axis")]
-	public Vector3 Axis
+	public virtual Vector3 Axis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CMotorController", "m_axis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CMotorController", "m_axis", value); }
@@ -45,7 +45,7 @@ public partial class CMotorController : NativeObject
 
 	// m_inertiaFactor
 	[SchemaMember("CMotorController", "m_inertiaFactor")]
-	public float InertiaFactor
+	public virtual float InertiaFactor
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMotorController", "m_inertiaFactor"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMotorController", "m_inertiaFactor", value); }

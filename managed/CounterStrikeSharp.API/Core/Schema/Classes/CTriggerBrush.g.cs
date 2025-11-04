@@ -21,19 +21,19 @@ public partial class CTriggerBrush : CBaseModelEntity
 
 	// m_OnStartTouch
 	[SchemaMember("CTriggerBrush", "m_OnStartTouch")]
-	public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnStartTouch");
+	public virtual CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnStartTouch");
 
 	// m_OnEndTouch
 	[SchemaMember("CTriggerBrush", "m_OnEndTouch")]
-	public CEntityIOOutput OnEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnEndTouch");
+	public virtual CEntityIOOutput OnEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnEndTouch");
 
 	// m_OnUse
 	[SchemaMember("CTriggerBrush", "m_OnUse")]
-	public CEntityIOOutput OnUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnUse");
+	public virtual CEntityIOOutput OnUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnUse");
 
 	// m_iInputFilter
 	[SchemaMember("CTriggerBrush", "m_iInputFilter")]
-	public Int32 InputFilter
+	public virtual Int32 InputFilter
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iInputFilter"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iInputFilter", value); }
@@ -41,7 +41,7 @@ public partial class CTriggerBrush : CBaseModelEntity
 
 	// m_iDontMessageParent
 	[SchemaMember("CTriggerBrush", "m_iDontMessageParent")]
-	public Int32 DontMessageParent
+	public virtual Int32 DontMessageParent
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iDontMessageParent"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iDontMessageParent", value); }

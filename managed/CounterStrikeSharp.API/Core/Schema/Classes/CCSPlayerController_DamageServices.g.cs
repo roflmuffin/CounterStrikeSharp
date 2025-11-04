@@ -21,7 +21,7 @@ public partial class CCSPlayerController_DamageServices : CPlayerControllerCompo
 
 	// m_nSendUpdate
 	[SchemaMember("CCSPlayerController_DamageServices", "m_nSendUpdate")]
-	public Int32 SendUpdate
+	public virtual Int32 SendUpdate
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate", value); }
@@ -29,8 +29,8 @@ public partial class CCSPlayerController_DamageServices : CPlayerControllerCompo
 
 	// m_DamageList
 	[SchemaMember("CCSPlayerController_DamageServices", "m_DamageList")]
-	public NetworkedVector<CDamageRecord> DamageList => Schema.GetDeclaredClass<NetworkedVector<CDamageRecord>>(this.Handle, "CCSPlayerController_DamageServices", "m_DamageList");
+	public virtual NetworkedVector<CDamageRecord> DamageList => Schema.GetDeclaredClass<NetworkedVector<CDamageRecord>>(this.Handle, "CCSPlayerController_DamageServices", "m_DamageList");
 
-	public void SendUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_DamageServices", "m_nSendUpdate");
-	public void DamageListPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_DamageServices", "m_DamageList");
+	public virtual void SendUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_DamageServices", "m_nSendUpdate");
+	public virtual void DamageListPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_DamageServices", "m_DamageList");
 }

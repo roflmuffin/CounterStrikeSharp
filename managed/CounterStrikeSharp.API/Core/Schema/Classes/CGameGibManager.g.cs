@@ -21,7 +21,7 @@ public partial class CGameGibManager : CBaseEntity
 
 	// m_bAllowNewGibs
 	[SchemaMember("CGameGibManager", "m_bAllowNewGibs")]
-	public bool AllowNewGibs
+	public virtual bool AllowNewGibs
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGameGibManager", "m_bAllowNewGibs"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGameGibManager", "m_bAllowNewGibs", value); }
@@ -29,7 +29,7 @@ public partial class CGameGibManager : CBaseEntity
 
 	// m_iCurrentMaxPieces
 	[SchemaMember("CGameGibManager", "m_iCurrentMaxPieces")]
-	public Int32 CurrentMaxPieces
+	public virtual Int32 CurrentMaxPieces
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGameGibManager", "m_iCurrentMaxPieces"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGameGibManager", "m_iCurrentMaxPieces", value); }
@@ -37,7 +37,7 @@ public partial class CGameGibManager : CBaseEntity
 
 	// m_iMaxPieces
 	[SchemaMember("CGameGibManager", "m_iMaxPieces")]
-	public Int32 MaxPieces
+	public virtual Int32 MaxPieces
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGameGibManager", "m_iMaxPieces"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGameGibManager", "m_iMaxPieces", value); }
@@ -45,7 +45,7 @@ public partial class CGameGibManager : CBaseEntity
 
 	// m_iLastFrame
 	[SchemaMember("CGameGibManager", "m_iLastFrame")]
-	public Int32 LastFrame
+	public virtual Int32 LastFrame
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGameGibManager", "m_iLastFrame"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGameGibManager", "m_iLastFrame", value); }

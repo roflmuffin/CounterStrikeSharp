@@ -21,7 +21,7 @@ public partial class CPhysPulley : CPhysConstraint
 
 	// m_position2
 	[SchemaMember("CPhysPulley", "m_position2")]
-	public Vector3 Position2
+	public virtual Vector3 Position2
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysPulley", "m_position2"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysPulley", "m_position2", value); }
@@ -29,11 +29,11 @@ public partial class CPhysPulley : CPhysConstraint
 
 	// m_offset
 	[SchemaMember("CPhysPulley", "m_offset")]
-	public Span<Vector3> Offset => Schema.GetFixedArray<Vector3>(this.Handle, "CPhysPulley", "m_offset", 2);
+	public virtual Span<Vector3> Offset => Schema.GetFixedArray<Vector3>(this.Handle, "CPhysPulley", "m_offset", 2);
 
 	// m_addLength
 	[SchemaMember("CPhysPulley", "m_addLength")]
-	public float AddLength
+	public virtual float AddLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysPulley", "m_addLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysPulley", "m_addLength", value); }
@@ -41,7 +41,7 @@ public partial class CPhysPulley : CPhysConstraint
 
 	// m_gearRatio
 	[SchemaMember("CPhysPulley", "m_gearRatio")]
-	public float GearRatio
+	public virtual float GearRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysPulley", "m_gearRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysPulley", "m_gearRatio", value); }

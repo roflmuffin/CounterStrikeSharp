@@ -21,7 +21,7 @@ public partial class CLogicNavigation : CLogicalEntity
 
 	// m_isOn
 	[SchemaMember("CLogicNavigation", "m_isOn")]
-	public bool IsOn
+	public virtual bool IsOn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNavigation", "m_isOn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicNavigation", "m_isOn", value); }
@@ -29,7 +29,7 @@ public partial class CLogicNavigation : CLogicalEntity
 
 	// m_navProperty
 	[SchemaMember("CLogicNavigation", "m_navProperty")]
-	public navproperties_t NavProperty
+	public virtual navproperties_t NavProperty
 	{
 		get { return Schema.GetValueType<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty"); }
 		set { Schema.SetValueType<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty", value); }

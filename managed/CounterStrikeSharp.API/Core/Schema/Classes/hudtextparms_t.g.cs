@@ -21,7 +21,7 @@ public partial class hudtextparms_t : NativeObject
 
 	// color1
 	[SchemaMember("hudtextparms_t", "color1")]
-	public Color Color1
+	public virtual Color Color1
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1", value); }
@@ -29,7 +29,7 @@ public partial class hudtextparms_t : NativeObject
 
 	// color2
 	[SchemaMember("hudtextparms_t", "color2")]
-	public Color Color2
+	public virtual Color Color2
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2", value); }
@@ -37,7 +37,7 @@ public partial class hudtextparms_t : NativeObject
 
 	// effect
 	[SchemaMember("hudtextparms_t", "effect")]
-	public byte Effect
+	public virtual byte Effect
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "hudtextparms_t", "effect"); }
 		set { Schema.SetValueType<byte>(this.Handle, "hudtextparms_t", "effect", value); }
@@ -45,7 +45,7 @@ public partial class hudtextparms_t : NativeObject
 
 	// channel
 	[SchemaMember("hudtextparms_t", "channel")]
-	public byte Channel
+	public virtual byte Channel
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "hudtextparms_t", "channel"); }
 		set { Schema.SetValueType<byte>(this.Handle, "hudtextparms_t", "channel", value); }
@@ -53,7 +53,7 @@ public partial class hudtextparms_t : NativeObject
 
 	// x
 	[SchemaMember("hudtextparms_t", "x")]
-	public float X
+	public virtual float X
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "hudtextparms_t", "x"); }
 		set { Schema.SetValueType<float>(this.Handle, "hudtextparms_t", "x", value); }
@@ -61,7 +61,7 @@ public partial class hudtextparms_t : NativeObject
 
 	// y
 	[SchemaMember("hudtextparms_t", "y")]
-	public float Y
+	public virtual float Y
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "hudtextparms_t", "y"); }
 		set { Schema.SetValueType<float>(this.Handle, "hudtextparms_t", "y", value); }

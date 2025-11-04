@@ -21,6 +21,6 @@ public partial class CSkeletonAnimationController : ISkeletonAnimationController
 
 	// m_pSkeletonInstance
 	[SchemaMember("CSkeletonAnimationController", "m_pSkeletonInstance")]
-	public CSkeletonInstance? SkeletonInstance => Schema.GetPointer<CSkeletonInstance>(this.Handle, "CSkeletonAnimationController", "m_pSkeletonInstance");
+	public virtual CSkeletonInstance? SkeletonInstance => Schema.GetPointer<CSkeletonInstance>(this.Handle, "CSkeletonAnimationController", "m_pSkeletonInstance");
 
 }

@@ -21,7 +21,7 @@ public partial class CPhysBallSocket : CPhysConstraint
 
 	// m_flJointFriction
 	[SchemaMember("CPhysBallSocket", "m_flJointFriction")]
-	public float JointFriction
+	public virtual float JointFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flJointFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flJointFriction", value); }
@@ -29,7 +29,7 @@ public partial class CPhysBallSocket : CPhysConstraint
 
 	// m_bEnableSwingLimit
 	[SchemaMember("CPhysBallSocket", "m_bEnableSwingLimit")]
-	public bool EnableSwingLimit
+	public virtual bool EnableSwingLimit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableSwingLimit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableSwingLimit", value); }
@@ -37,7 +37,7 @@ public partial class CPhysBallSocket : CPhysConstraint
 
 	// m_flSwingLimit
 	[SchemaMember("CPhysBallSocket", "m_flSwingLimit")]
-	public float SwingLimit
+	public virtual float SwingLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flSwingLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flSwingLimit", value); }
@@ -45,7 +45,7 @@ public partial class CPhysBallSocket : CPhysConstraint
 
 	// m_bEnableTwistLimit
 	[SchemaMember("CPhysBallSocket", "m_bEnableTwistLimit")]
-	public bool EnableTwistLimit
+	public virtual bool EnableTwistLimit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableTwistLimit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableTwistLimit", value); }
@@ -53,7 +53,7 @@ public partial class CPhysBallSocket : CPhysConstraint
 
 	// m_flMinTwistAngle
 	[SchemaMember("CPhysBallSocket", "m_flMinTwistAngle")]
-	public float MinTwistAngle
+	public virtual float MinTwistAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMinTwistAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMinTwistAngle", value); }
@@ -61,7 +61,7 @@ public partial class CPhysBallSocket : CPhysConstraint
 
 	// m_flMaxTwistAngle
 	[SchemaMember("CPhysBallSocket", "m_flMaxTwistAngle")]
-	public float MaxTwistAngle
+	public virtual float MaxTwistAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMaxTwistAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMaxTwistAngle", value); }

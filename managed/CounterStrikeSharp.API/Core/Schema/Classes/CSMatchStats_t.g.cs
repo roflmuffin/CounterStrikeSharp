@@ -21,7 +21,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEnemy5Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy5Ks")]
-	public Int32 Enemy5Ks
+	public virtual Int32 Enemy5Ks
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy5Ks"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy5Ks", value); }
@@ -29,7 +29,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEnemy4Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy4Ks")]
-	public Int32 Enemy4Ks
+	public virtual Int32 Enemy4Ks
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy4Ks"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy4Ks", value); }
@@ -37,7 +37,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEnemy3Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy3Ks")]
-	public Int32 Enemy3Ks
+	public virtual Int32 Enemy3Ks
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy3Ks"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy3Ks", value); }
@@ -45,7 +45,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEnemyKnifeKills
 	[SchemaMember("CSMatchStats_t", "m_iEnemyKnifeKills")]
-	public Int32 EnemyKnifeKills
+	public virtual Int32 EnemyKnifeKills
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyKnifeKills"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyKnifeKills", value); }
@@ -53,7 +53,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEnemyTaserKills
 	[SchemaMember("CSMatchStats_t", "m_iEnemyTaserKills")]
-	public Int32 EnemyTaserKills
+	public virtual Int32 EnemyTaserKills
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyTaserKills"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyTaserKills", value); }
@@ -61,7 +61,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEnemy2Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy2Ks")]
-	public Int32 Enemy2Ks
+	public virtual Int32 Enemy2Ks
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy2Ks"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy2Ks", value); }
@@ -69,7 +69,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iUtility_Count
 	[SchemaMember("CSMatchStats_t", "m_iUtility_Count")]
-	public Int32 Utility_Count
+	public virtual Int32 Utility_Count
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Count"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Count", value); }
@@ -77,7 +77,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iUtility_Successes
 	[SchemaMember("CSMatchStats_t", "m_iUtility_Successes")]
-	public Int32 Utility_Successes
+	public virtual Int32 Utility_Successes
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Successes"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Successes", value); }
@@ -85,7 +85,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iUtility_Enemies
 	[SchemaMember("CSMatchStats_t", "m_iUtility_Enemies")]
-	public Int32 Utility_Enemies
+	public virtual Int32 Utility_Enemies
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Enemies"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Enemies", value); }
@@ -93,7 +93,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iFlash_Count
 	[SchemaMember("CSMatchStats_t", "m_iFlash_Count")]
-	public Int32 Flash_Count
+	public virtual Int32 Flash_Count
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Count"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Count", value); }
@@ -101,7 +101,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iFlash_Successes
 	[SchemaMember("CSMatchStats_t", "m_iFlash_Successes")]
-	public Int32 Flash_Successes
+	public virtual Int32 Flash_Successes
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Successes"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Successes", value); }
@@ -109,7 +109,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_flHealthPointsRemovedTotal
 	[SchemaMember("CSMatchStats_t", "m_flHealthPointsRemovedTotal")]
-	public float HealthPointsRemovedTotal
+	public virtual float HealthPointsRemovedTotal
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsRemovedTotal"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsRemovedTotal", value); }
@@ -117,7 +117,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_flHealthPointsDealtTotal
 	[SchemaMember("CSMatchStats_t", "m_flHealthPointsDealtTotal")]
-	public float HealthPointsDealtTotal
+	public virtual float HealthPointsDealtTotal
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsDealtTotal"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsDealtTotal", value); }
@@ -125,7 +125,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_nShotsFiredTotal
 	[SchemaMember("CSMatchStats_t", "m_nShotsFiredTotal")]
-	public Int32 ShotsFiredTotal
+	public virtual Int32 ShotsFiredTotal
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsFiredTotal"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsFiredTotal", value); }
@@ -133,7 +133,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_nShotsOnTargetTotal
 	[SchemaMember("CSMatchStats_t", "m_nShotsOnTargetTotal")]
-	public Int32 ShotsOnTargetTotal
+	public virtual Int32 ShotsOnTargetTotal
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsOnTargetTotal"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsOnTargetTotal", value); }
@@ -141,7 +141,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_i1v1Count
 	[SchemaMember("CSMatchStats_t", "m_i1v1Count")]
-	public Int32 I1v1Count
+	public virtual Int32 I1v1Count
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Count"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Count", value); }
@@ -149,7 +149,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_i1v1Wins
 	[SchemaMember("CSMatchStats_t", "m_i1v1Wins")]
-	public Int32 I1v1Wins
+	public virtual Int32 I1v1Wins
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Wins"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Wins", value); }
@@ -157,7 +157,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_i1v2Count
 	[SchemaMember("CSMatchStats_t", "m_i1v2Count")]
-	public Int32 I1v2Count
+	public virtual Int32 I1v2Count
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Count"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Count", value); }
@@ -165,7 +165,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_i1v2Wins
 	[SchemaMember("CSMatchStats_t", "m_i1v2Wins")]
-	public Int32 I1v2Wins
+	public virtual Int32 I1v2Wins
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Wins"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Wins", value); }
@@ -173,7 +173,7 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEntryCount
 	[SchemaMember("CSMatchStats_t", "m_iEntryCount")]
-	public Int32 EntryCount
+	public virtual Int32 EntryCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryCount", value); }
@@ -181,15 +181,15 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEntryWins
 	[SchemaMember("CSMatchStats_t", "m_iEntryWins")]
-	public Int32 EntryWins
+	public virtual Int32 EntryWins
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryWins"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryWins", value); }
 	}
 
-	public void Enemy5KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy5Ks");
-	public void Enemy4KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy4Ks");
-	public void Enemy3KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy3Ks");
-	public void EnemyKnifeKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemyKnifeKills");
-	public void EnemyTaserKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemyTaserKills");
+	public virtual void Enemy5KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy5Ks");
+	public virtual void Enemy4KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy4Ks");
+	public virtual void Enemy3KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy3Ks");
+	public virtual void EnemyKnifeKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemyKnifeKills");
+	public virtual void EnemyTaserKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemyTaserKills");
 }

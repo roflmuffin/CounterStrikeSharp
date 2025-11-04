@@ -21,7 +21,7 @@ public partial class CNetworkTransmitComponent : NativeObject
 
 	// m_nTransmitStateOwnedCounter
 	[SchemaMember("CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter")]
-	public byte TransmitStateOwnedCounter
+	public virtual byte TransmitStateOwnedCounter
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter", value); }

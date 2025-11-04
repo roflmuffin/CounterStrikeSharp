@@ -21,7 +21,7 @@ public partial class FilterHealth : CBaseFilter
 
 	// m_bAdrenalineActive
 	[SchemaMember("FilterHealth", "m_bAdrenalineActive")]
-	public bool AdrenalineActive
+	public virtual bool AdrenalineActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive", value); }
@@ -29,7 +29,7 @@ public partial class FilterHealth : CBaseFilter
 
 	// m_iHealthMin
 	[SchemaMember("FilterHealth", "m_iHealthMin")]
-	public Int32 HealthMin
+	public virtual Int32 HealthMin
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMin"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMin", value); }
@@ -37,7 +37,7 @@ public partial class FilterHealth : CBaseFilter
 
 	// m_iHealthMax
 	[SchemaMember("FilterHealth", "m_iHealthMax")]
-	public Int32 HealthMax
+	public virtual Int32 HealthMax
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMax"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMax", value); }

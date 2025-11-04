@@ -21,23 +21,23 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_OnSpawnGroupLoadStarted
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadStarted")]
-	public CEntityIOOutput OnSpawnGroupLoadStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadStarted");
+	public virtual CEntityIOOutput OnSpawnGroupLoadStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadStarted");
 
 	// m_OnSpawnGroupLoadFinished
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadFinished")]
-	public CEntityIOOutput OnSpawnGroupLoadFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadFinished");
+	public virtual CEntityIOOutput OnSpawnGroupLoadFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadFinished");
 
 	// m_OnSpawnGroupUnloadStarted
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadStarted")]
-	public CEntityIOOutput OnSpawnGroupUnloadStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadStarted");
+	public virtual CEntityIOOutput OnSpawnGroupUnloadStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadStarted");
 
 	// m_OnSpawnGroupUnloadFinished
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadFinished")]
-	public CEntityIOOutput OnSpawnGroupUnloadFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadFinished");
+	public virtual CEntityIOOutput OnSpawnGroupUnloadFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadFinished");
 
 	// m_iszSpawnGroupName
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName")]
-	public string SpawnGroupName
+	public virtual string SpawnGroupName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName"); }
 		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName", value); }
@@ -45,7 +45,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_iszSpawnGroupFilterName
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName")]
-	public string SpawnGroupFilterName
+	public virtual string SpawnGroupFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName"); }
 		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName", value); }
@@ -53,7 +53,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_iszLandmarkName
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_iszLandmarkName")]
-	public string LandmarkName
+	public virtual string LandmarkName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszLandmarkName"); }
 		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszLandmarkName", value); }
@@ -61,7 +61,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_sFixedSpawnGroupName
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName")]
-	public string FixedSpawnGroupName
+	public virtual string FixedSpawnGroupName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName"); }
 		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName", value); }
@@ -69,7 +69,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_flTimeoutInterval
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval")]
-	public float TimeoutInterval
+	public virtual float TimeoutInterval
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval", value); }
@@ -77,7 +77,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_bAutoActivate
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bAutoActivate")]
-	public bool AutoActivate
+	public virtual bool AutoActivate
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bAutoActivate"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bAutoActivate", value); }
@@ -85,7 +85,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_bUnloadingStarted
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted")]
-	public bool UnloadingStarted
+	public virtual bool UnloadingStarted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted", value); }
@@ -93,7 +93,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_bQueueActiveSpawnGroupChange
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange")]
-	public bool QueueActiveSpawnGroupChange
+	public virtual bool QueueActiveSpawnGroupChange
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange", value); }
@@ -101,7 +101,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_bQueueFinishLoading
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading")]
-	public bool QueueFinishLoading
+	public virtual bool QueueFinishLoading
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading", value); }

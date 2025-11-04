@@ -21,11 +21,11 @@ public partial class CCredits : CPointEntity
 
 	// m_OnCreditsDone
 	[SchemaMember("CCredits", "m_OnCreditsDone")]
-	public CEntityIOOutput OnCreditsDone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCredits", "m_OnCreditsDone");
+	public virtual CEntityIOOutput OnCreditsDone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCredits", "m_OnCreditsDone");
 
 	// m_bRolledOutroCredits
 	[SchemaMember("CCredits", "m_bRolledOutroCredits")]
-	public bool RolledOutroCredits
+	public virtual bool RolledOutroCredits
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits", value); }
@@ -33,7 +33,7 @@ public partial class CCredits : CPointEntity
 
 	// m_flLogoLength
 	[SchemaMember("CCredits", "m_flLogoLength")]
-	public float LogoLength
+	public virtual float LogoLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCredits", "m_flLogoLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCredits", "m_flLogoLength", value); }

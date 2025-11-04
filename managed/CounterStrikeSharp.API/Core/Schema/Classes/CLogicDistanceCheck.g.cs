@@ -21,7 +21,7 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 
 	// m_iszEntityA
 	[SchemaMember("CLogicDistanceCheck", "m_iszEntityA")]
-	public string EntityA
+	public virtual string EntityA
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceCheck", "m_iszEntityA"); }
 		set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityA", value); }
@@ -29,7 +29,7 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 
 	// m_iszEntityB
 	[SchemaMember("CLogicDistanceCheck", "m_iszEntityB")]
-	public string EntityB
+	public virtual string EntityB
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceCheck", "m_iszEntityB"); }
 		set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityB", value); }
@@ -37,7 +37,7 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 
 	// m_flZone1Distance
 	[SchemaMember("CLogicDistanceCheck", "m_flZone1Distance")]
-	public float Zone1Distance
+	public virtual float Zone1Distance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone1Distance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone1Distance", value); }
@@ -45,7 +45,7 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 
 	// m_flZone2Distance
 	[SchemaMember("CLogicDistanceCheck", "m_flZone2Distance")]
-	public float Zone2Distance
+	public virtual float Zone2Distance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone2Distance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone2Distance", value); }
@@ -53,14 +53,14 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 
 	// m_InZone1
 	[SchemaMember("CLogicDistanceCheck", "m_InZone1")]
-	public CEntityIOOutput InZone1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone1");
+	public virtual CEntityIOOutput InZone1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone1");
 
 	// m_InZone2
 	[SchemaMember("CLogicDistanceCheck", "m_InZone2")]
-	public CEntityIOOutput InZone2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone2");
+	public virtual CEntityIOOutput InZone2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone2");
 
 	// m_InZone3
 	[SchemaMember("CLogicDistanceCheck", "m_InZone3")]
-	public CEntityIOOutput InZone3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone3");
+	public virtual CEntityIOOutput InZone3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone3");
 
 }

@@ -21,7 +21,7 @@ public partial class SceneEventId_t : NativeObject
 
 	// m_Value
 	[SchemaMember("SceneEventId_t", "m_Value")]
-	public UInt32 Value
+	public virtual UInt32 Value
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "SceneEventId_t", "m_Value"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "SceneEventId_t", "m_Value", value); }

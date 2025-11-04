@@ -21,7 +21,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 
 	// m_fogName
 	[SchemaMember("CFogVolume", "m_fogName")]
-	public string FogName
+	public virtual string FogName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_fogName"); }
 		set { Schema.SetString(this.Handle, "CFogVolume", "m_fogName", value); }
@@ -29,7 +29,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 
 	// m_postProcessName
 	[SchemaMember("CFogVolume", "m_postProcessName")]
-	public string PostProcessName
+	public virtual string PostProcessName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_postProcessName"); }
 		set { Schema.SetString(this.Handle, "CFogVolume", "m_postProcessName", value); }
@@ -37,7 +37,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 
 	// m_colorCorrectionName
 	[SchemaMember("CFogVolume", "m_colorCorrectionName")]
-	public string ColorCorrectionName
+	public virtual string ColorCorrectionName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_colorCorrectionName"); }
 		set { Schema.SetString(this.Handle, "CFogVolume", "m_colorCorrectionName", value); }
@@ -45,7 +45,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFogVolume", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFogVolume", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFogVolume", "m_bDisabled", value); }
@@ -53,7 +53,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 
 	// m_bInFogVolumesList
 	[SchemaMember("CFogVolume", "m_bInFogVolumesList")]
-	public bool InFogVolumesList
+	public virtual bool InFogVolumesList
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList", value); }

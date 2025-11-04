@@ -21,7 +21,7 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_vecEntityMins
 	[SchemaMember("CEnvEntityMaker", "m_vecEntityMins")]
-	public Vector3 EntityMins
+	public virtual Vector3 EntityMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins", value); }
@@ -29,7 +29,7 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_vecEntityMaxs
 	[SchemaMember("CEnvEntityMaker", "m_vecEntityMaxs")]
-	public Vector3 EntityMaxs
+	public virtual Vector3 EntityMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs", value); }
@@ -37,15 +37,15 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_hCurrentInstance
 	[SchemaMember("CEnvEntityMaker", "m_hCurrentInstance")]
-	public CHandle<CBaseEntity> CurrentInstance => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance");
+	public virtual CHandle<CBaseEntity> CurrentInstance => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance");
 
 	// m_hCurrentBlocker
 	[SchemaMember("CEnvEntityMaker", "m_hCurrentBlocker")]
-	public CHandle<CBaseEntity> CurrentBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker");
+	public virtual CHandle<CBaseEntity> CurrentBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker");
 
 	// m_vecBlockerOrigin
 	[SchemaMember("CEnvEntityMaker", "m_vecBlockerOrigin")]
-	public Vector3 BlockerOrigin
+	public virtual Vector3 BlockerOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin", value); }
@@ -53,7 +53,7 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_angPostSpawnDirection
 	[SchemaMember("CEnvEntityMaker", "m_angPostSpawnDirection")]
-	public QAngle PostSpawnDirection
+	public virtual QAngle PostSpawnDirection
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection", value); }
@@ -61,7 +61,7 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_flPostSpawnDirectionVariance
 	[SchemaMember("CEnvEntityMaker", "m_flPostSpawnDirectionVariance")]
-	public float PostSpawnDirectionVariance
+	public virtual float PostSpawnDirectionVariance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance", value); }
@@ -69,7 +69,7 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_flPostSpawnSpeed
 	[SchemaMember("CEnvEntityMaker", "m_flPostSpawnSpeed")]
-	public float PostSpawnSpeed
+	public virtual float PostSpawnSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed", value); }
@@ -77,7 +77,7 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_bPostSpawnUseAngles
 	[SchemaMember("CEnvEntityMaker", "m_bPostSpawnUseAngles")]
-	public bool PostSpawnUseAngles
+	public virtual bool PostSpawnUseAngles
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles", value); }
@@ -85,7 +85,7 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_iszTemplate
 	[SchemaMember("CEnvEntityMaker", "m_iszTemplate")]
-	public string Template
+	public virtual string Template
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvEntityMaker", "m_iszTemplate"); }
 		set { Schema.SetString(this.Handle, "CEnvEntityMaker", "m_iszTemplate", value); }
@@ -93,10 +93,10 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_pOutputOnSpawned
 	[SchemaMember("CEnvEntityMaker", "m_pOutputOnSpawned")]
-	public CEntityIOOutput OutputOnSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnSpawned");
+	public virtual CEntityIOOutput OutputOnSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnSpawned");
 
 	// m_pOutputOnFailedSpawn
 	[SchemaMember("CEnvEntityMaker", "m_pOutputOnFailedSpawn")]
-	public CEntityIOOutput OutputOnFailedSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnFailedSpawn");
+	public virtual CEntityIOOutput OutputOnFailedSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnFailedSpawn");
 
 }

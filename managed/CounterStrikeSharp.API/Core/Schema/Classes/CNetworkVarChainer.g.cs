@@ -21,6 +21,6 @@ public partial class CNetworkVarChainer : NativeObject
 
 	// m_PathIndex
 	[SchemaMember("CNetworkVarChainer", "m_PathIndex")]
-	public ChangeAccessorFieldPathIndex_t PathIndex => Schema.GetDeclaredClass<ChangeAccessorFieldPathIndex_t>(this.Handle, "CNetworkVarChainer", "m_PathIndex");
+	public virtual ChangeAccessorFieldPathIndex_t PathIndex => Schema.GetDeclaredClass<ChangeAccessorFieldPathIndex_t>(this.Handle, "CNetworkVarChainer", "m_PathIndex");
 
 }

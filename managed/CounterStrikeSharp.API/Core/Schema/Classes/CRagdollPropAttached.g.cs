@@ -21,7 +21,7 @@ public partial class CRagdollPropAttached : CRagdollProp
 
 	// m_boneIndexAttached
 	[SchemaMember("CRagdollPropAttached", "m_boneIndexAttached")]
-	public UInt32 BoneIndexAttached
+	public virtual UInt32 BoneIndexAttached
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_boneIndexAttached"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_boneIndexAttached", value); }
@@ -29,7 +29,7 @@ public partial class CRagdollPropAttached : CRagdollProp
 
 	// m_ragdollAttachedObjectIndex
 	[SchemaMember("CRagdollPropAttached", "m_ragdollAttachedObjectIndex")]
-	public UInt32 RagdollAttachedObjectIndex
+	public virtual UInt32 RagdollAttachedObjectIndex
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex", value); }
@@ -37,7 +37,7 @@ public partial class CRagdollPropAttached : CRagdollProp
 
 	// m_attachmentPointBoneSpace
 	[SchemaMember("CRagdollPropAttached", "m_attachmentPointBoneSpace")]
-	public Vector3 AttachmentPointBoneSpace
+	public virtual Vector3 AttachmentPointBoneSpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointBoneSpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointBoneSpace", value); }
@@ -45,7 +45,7 @@ public partial class CRagdollPropAttached : CRagdollProp
 
 	// m_attachmentPointRagdollSpace
 	[SchemaMember("CRagdollPropAttached", "m_attachmentPointRagdollSpace")]
-	public Vector3 AttachmentPointRagdollSpace
+	public virtual Vector3 AttachmentPointRagdollSpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointRagdollSpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointRagdollSpace", value); }
@@ -53,7 +53,7 @@ public partial class CRagdollPropAttached : CRagdollProp
 
 	// m_bShouldDetach
 	[SchemaMember("CRagdollPropAttached", "m_bShouldDetach")]
-	public bool ShouldDetach
+	public virtual bool ShouldDetach
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDetach"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDetach", value); }
@@ -61,14 +61,14 @@ public partial class CRagdollPropAttached : CRagdollProp
 
 	// m_bShouldDeleteAttachedActivationRecord
 	[SchemaMember("CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord")]
-	public bool ShouldDeleteAttachedActivationRecord
+	public virtual bool ShouldDeleteAttachedActivationRecord
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord", value); }
 	}
 
-	public void BoneIndexAttachedPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_boneIndexAttached");
-	public void RagdollAttachedObjectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex");
-	public void AttachmentPointBoneSpacePropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_attachmentPointBoneSpace");
-	public void AttachmentPointRagdollSpacePropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_attachmentPointRagdollSpace");
+	public virtual void BoneIndexAttachedPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_boneIndexAttached");
+	public virtual void RagdollAttachedObjectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex");
+	public virtual void AttachmentPointBoneSpacePropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_attachmentPointBoneSpace");
+	public virtual void AttachmentPointRagdollSpacePropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_attachmentPointRagdollSpace");
 }

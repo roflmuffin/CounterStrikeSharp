@@ -21,7 +21,7 @@ public partial class CSpotlightEnd : CBaseModelEntity
 
 	// m_flLightScale
 	[SchemaMember("CSpotlightEnd", "m_flLightScale")]
-	public float LightScale
+	public virtual float LightScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSpotlightEnd", "m_flLightScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSpotlightEnd", "m_flLightScale", value); }
@@ -29,7 +29,7 @@ public partial class CSpotlightEnd : CBaseModelEntity
 
 	// m_Radius
 	[SchemaMember("CSpotlightEnd", "m_Radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSpotlightEnd", "m_Radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSpotlightEnd", "m_Radius", value); }
@@ -37,7 +37,7 @@ public partial class CSpotlightEnd : CBaseModelEntity
 
 	// m_vSpotlightDir
 	[SchemaMember("CSpotlightEnd", "m_vSpotlightDir")]
-	public Vector3 SpotlightDir
+	public virtual Vector3 SpotlightDir
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir", value); }
@@ -45,12 +45,12 @@ public partial class CSpotlightEnd : CBaseModelEntity
 
 	// m_vSpotlightOrg
 	[SchemaMember("CSpotlightEnd", "m_vSpotlightOrg")]
-	public Vector3 SpotlightOrg
+	public virtual Vector3 SpotlightOrg
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg", value); }
 	}
 
-	public void LightScalePropertyChanged() => Utilities.SetStateChanged(this, "CSpotlightEnd", "m_flLightScale");
-	public void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CSpotlightEnd", "m_Radius");
+	public virtual void LightScalePropertyChanged() => Utilities.SetStateChanged(this, "CSpotlightEnd", "m_flLightScale");
+	public virtual void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CSpotlightEnd", "m_Radius");
 }

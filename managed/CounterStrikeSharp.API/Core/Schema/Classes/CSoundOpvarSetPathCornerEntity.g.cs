@@ -21,7 +21,7 @@ public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 
 	// m_flDistMinSqr
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr")]
-	public float DistMinSqr
+	public virtual float DistMinSqr
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr", value); }
@@ -29,7 +29,7 @@ public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 
 	// m_flDistMaxSqr
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr")]
-	public float DistMaxSqr
+	public virtual float DistMaxSqr
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr", value); }
@@ -37,7 +37,7 @@ public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 
 	// m_iszPathCornerEntityName
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName")]
-	public string PathCornerEntityName
+	public virtual string PathCornerEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName", value); }

@@ -21,7 +21,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flSuspensionFrequency
 	[SchemaMember("CPhysWheelConstraint", "m_flSuspensionFrequency")]
-	public float SuspensionFrequency
+	public virtual float SuspensionFrequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionFrequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionFrequency", value); }
@@ -29,7 +29,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flSuspensionDampingRatio
 	[SchemaMember("CPhysWheelConstraint", "m_flSuspensionDampingRatio")]
-	public float SuspensionDampingRatio
+	public virtual float SuspensionDampingRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionDampingRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionDampingRatio", value); }
@@ -37,7 +37,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flSuspensionHeightOffset
 	[SchemaMember("CPhysWheelConstraint", "m_flSuspensionHeightOffset")]
-	public float SuspensionHeightOffset
+	public virtual float SuspensionHeightOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionHeightOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionHeightOffset", value); }
@@ -45,7 +45,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_bEnableSuspensionLimit
 	[SchemaMember("CPhysWheelConstraint", "m_bEnableSuspensionLimit")]
-	public bool EnableSuspensionLimit
+	public virtual bool EnableSuspensionLimit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSuspensionLimit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSuspensionLimit", value); }
@@ -53,7 +53,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flMinSuspensionOffset
 	[SchemaMember("CPhysWheelConstraint", "m_flMinSuspensionOffset")]
-	public float MinSuspensionOffset
+	public virtual float MinSuspensionOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSuspensionOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSuspensionOffset", value); }
@@ -61,7 +61,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flMaxSuspensionOffset
 	[SchemaMember("CPhysWheelConstraint", "m_flMaxSuspensionOffset")]
-	public float MaxSuspensionOffset
+	public virtual float MaxSuspensionOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSuspensionOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSuspensionOffset", value); }
@@ -69,7 +69,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_bEnableSteeringLimit
 	[SchemaMember("CPhysWheelConstraint", "m_bEnableSteeringLimit")]
-	public bool EnableSteeringLimit
+	public virtual bool EnableSteeringLimit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSteeringLimit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSteeringLimit", value); }
@@ -77,7 +77,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flMinSteeringAngle
 	[SchemaMember("CPhysWheelConstraint", "m_flMinSteeringAngle")]
-	public float MinSteeringAngle
+	public virtual float MinSteeringAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSteeringAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSteeringAngle", value); }
@@ -85,7 +85,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flMaxSteeringAngle
 	[SchemaMember("CPhysWheelConstraint", "m_flMaxSteeringAngle")]
-	public float MaxSteeringAngle
+	public virtual float MaxSteeringAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSteeringAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSteeringAngle", value); }
@@ -93,7 +93,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flSteeringAxisFriction
 	[SchemaMember("CPhysWheelConstraint", "m_flSteeringAxisFriction")]
-	public float SteeringAxisFriction
+	public virtual float SteeringAxisFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSteeringAxisFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSteeringAxisFriction", value); }
@@ -101,7 +101,7 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flSpinAxisFriction
 	[SchemaMember("CPhysWheelConstraint", "m_flSpinAxisFriction")]
-	public float SpinAxisFriction
+	public virtual float SpinAxisFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSpinAxisFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysWheelConstraint", "m_flSpinAxisFriction", value); }
@@ -109,6 +109,6 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_hSteeringMimicsEntity
 	[SchemaMember("CPhysWheelConstraint", "m_hSteeringMimicsEntity")]
-	public CHandle<CBaseEntity> SteeringMimicsEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysWheelConstraint", "m_hSteeringMimicsEntity");
+	public virtual CHandle<CBaseEntity> SteeringMimicsEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysWheelConstraint", "m_hSteeringMimicsEntity");
 
 }

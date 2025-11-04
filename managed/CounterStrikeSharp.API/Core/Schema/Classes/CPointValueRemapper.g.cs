@@ -21,7 +21,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CPointValueRemapper", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_bUpdateOnClient
 	[SchemaMember("CPointValueRemapper", "m_bUpdateOnClient")]
-	public bool UpdateOnClient
+	public virtual bool UpdateOnClient
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bUpdateOnClient"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bUpdateOnClient", value); }
@@ -37,7 +37,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_nInputType
 	[SchemaMember("CPointValueRemapper", "m_nInputType")]
-	public ValueRemapperInputType_t InputType
+	public virtual ValueRemapperInputType_t InputType
 	{
 		get { return Schema.GetValueType<ValueRemapperInputType_t>(this.Handle, "CPointValueRemapper", "m_nInputType"); }
 		set { Schema.SetValueType<ValueRemapperInputType_t>(this.Handle, "CPointValueRemapper", "m_nInputType", value); }
@@ -45,7 +45,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszRemapLineStartName
 	[SchemaMember("CPointValueRemapper", "m_iszRemapLineStartName")]
-	public string RemapLineStartName
+	public virtual string RemapLineStartName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszRemapLineStartName"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineStartName", value); }
@@ -53,7 +53,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszRemapLineEndName
 	[SchemaMember("CPointValueRemapper", "m_iszRemapLineEndName")]
-	public string RemapLineEndName
+	public virtual string RemapLineEndName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszRemapLineEndName"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineEndName", value); }
@@ -61,15 +61,15 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_hRemapLineStart
 	[SchemaMember("CPointValueRemapper", "m_hRemapLineStart")]
-	public CHandle<CBaseEntity> RemapLineStart => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineStart");
+	public virtual CHandle<CBaseEntity> RemapLineStart => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineStart");
 
 	// m_hRemapLineEnd
 	[SchemaMember("CPointValueRemapper", "m_hRemapLineEnd")]
-	public CHandle<CBaseEntity> RemapLineEnd => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineEnd");
+	public virtual CHandle<CBaseEntity> RemapLineEnd => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineEnd");
 
 	// m_flMaximumChangePerSecond
 	[SchemaMember("CPointValueRemapper", "m_flMaximumChangePerSecond")]
-	public float MaximumChangePerSecond
+	public virtual float MaximumChangePerSecond
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMaximumChangePerSecond"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMaximumChangePerSecond", value); }
@@ -77,7 +77,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flDisengageDistance
 	[SchemaMember("CPointValueRemapper", "m_flDisengageDistance")]
-	public float DisengageDistance
+	public virtual float DisengageDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flDisengageDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flDisengageDistance", value); }
@@ -85,7 +85,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flEngageDistance
 	[SchemaMember("CPointValueRemapper", "m_flEngageDistance")]
-	public float EngageDistance
+	public virtual float EngageDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flEngageDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flEngageDistance", value); }
@@ -93,7 +93,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_bRequiresUseKey
 	[SchemaMember("CPointValueRemapper", "m_bRequiresUseKey")]
-	public bool RequiresUseKey
+	public virtual bool RequiresUseKey
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bRequiresUseKey"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bRequiresUseKey", value); }
@@ -101,7 +101,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_nOutputType
 	[SchemaMember("CPointValueRemapper", "m_nOutputType")]
-	public ValueRemapperOutputType_t OutputType
+	public virtual ValueRemapperOutputType_t OutputType
 	{
 		get { return Schema.GetValueType<ValueRemapperOutputType_t>(this.Handle, "CPointValueRemapper", "m_nOutputType"); }
 		set { Schema.SetValueType<ValueRemapperOutputType_t>(this.Handle, "CPointValueRemapper", "m_nOutputType", value); }
@@ -109,7 +109,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszOutputEntityName
 	[SchemaMember("CPointValueRemapper", "m_iszOutputEntityName")]
-	public string OutputEntityName
+	public virtual string OutputEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntityName"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntityName", value); }
@@ -117,7 +117,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszOutputEntity2Name
 	[SchemaMember("CPointValueRemapper", "m_iszOutputEntity2Name")]
-	public string OutputEntity2Name
+	public virtual string OutputEntity2Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity2Name"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity2Name", value); }
@@ -125,7 +125,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszOutputEntity3Name
 	[SchemaMember("CPointValueRemapper", "m_iszOutputEntity3Name")]
-	public string OutputEntity3Name
+	public virtual string OutputEntity3Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity3Name"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity3Name", value); }
@@ -133,7 +133,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszOutputEntity4Name
 	[SchemaMember("CPointValueRemapper", "m_iszOutputEntity4Name")]
-	public string OutputEntity4Name
+	public virtual string OutputEntity4Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity4Name"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity4Name", value); }
@@ -141,11 +141,11 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_hOutputEntities
 	[SchemaMember("CPointValueRemapper", "m_hOutputEntities")]
-	public NetworkedVector<CHandle<CBaseEntity>> OutputEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CPointValueRemapper", "m_hOutputEntities");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> OutputEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CPointValueRemapper", "m_hOutputEntities");
 
 	// m_nHapticsType
 	[SchemaMember("CPointValueRemapper", "m_nHapticsType")]
-	public ValueRemapperHapticsType_t HapticsType
+	public virtual ValueRemapperHapticsType_t HapticsType
 	{
 		get { return Schema.GetValueType<ValueRemapperHapticsType_t>(this.Handle, "CPointValueRemapper", "m_nHapticsType"); }
 		set { Schema.SetValueType<ValueRemapperHapticsType_t>(this.Handle, "CPointValueRemapper", "m_nHapticsType", value); }
@@ -153,7 +153,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_nMomentumType
 	[SchemaMember("CPointValueRemapper", "m_nMomentumType")]
-	public ValueRemapperMomentumType_t MomentumType
+	public virtual ValueRemapperMomentumType_t MomentumType
 	{
 		get { return Schema.GetValueType<ValueRemapperMomentumType_t>(this.Handle, "CPointValueRemapper", "m_nMomentumType"); }
 		set { Schema.SetValueType<ValueRemapperMomentumType_t>(this.Handle, "CPointValueRemapper", "m_nMomentumType", value); }
@@ -161,7 +161,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flMomentumModifier
 	[SchemaMember("CPointValueRemapper", "m_flMomentumModifier")]
-	public float MomentumModifier
+	public virtual float MomentumModifier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMomentumModifier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMomentumModifier", value); }
@@ -169,7 +169,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flSnapValue
 	[SchemaMember("CPointValueRemapper", "m_flSnapValue")]
-	public float SnapValue
+	public virtual float SnapValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flSnapValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flSnapValue", value); }
@@ -177,7 +177,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flCurrentMomentum
 	[SchemaMember("CPointValueRemapper", "m_flCurrentMomentum")]
-	public float CurrentMomentum
+	public virtual float CurrentMomentum
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCurrentMomentum"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCurrentMomentum", value); }
@@ -185,7 +185,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_nRatchetType
 	[SchemaMember("CPointValueRemapper", "m_nRatchetType")]
-	public ValueRemapperRatchetType_t RatchetType
+	public virtual ValueRemapperRatchetType_t RatchetType
 	{
 		get { return Schema.GetValueType<ValueRemapperRatchetType_t>(this.Handle, "CPointValueRemapper", "m_nRatchetType"); }
 		set { Schema.SetValueType<ValueRemapperRatchetType_t>(this.Handle, "CPointValueRemapper", "m_nRatchetType", value); }
@@ -193,7 +193,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flRatchetOffset
 	[SchemaMember("CPointValueRemapper", "m_flRatchetOffset")]
-	public float RatchetOffset
+	public virtual float RatchetOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flRatchetOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flRatchetOffset", value); }
@@ -201,7 +201,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flInputOffset
 	[SchemaMember("CPointValueRemapper", "m_flInputOffset")]
-	public float InputOffset
+	public virtual float InputOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flInputOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flInputOffset", value); }
@@ -209,7 +209,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_bEngaged
 	[SchemaMember("CPointValueRemapper", "m_bEngaged")]
-	public bool Engaged
+	public virtual bool Engaged
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bEngaged"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bEngaged", value); }
@@ -217,7 +217,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_bFirstUpdate
 	[SchemaMember("CPointValueRemapper", "m_bFirstUpdate")]
-	public bool FirstUpdate
+	public virtual bool FirstUpdate
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bFirstUpdate"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bFirstUpdate", value); }
@@ -225,7 +225,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flPreviousValue
 	[SchemaMember("CPointValueRemapper", "m_flPreviousValue")]
-	public float PreviousValue
+	public virtual float PreviousValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousValue", value); }
@@ -233,7 +233,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flPreviousUpdateTickTime
 	[SchemaMember("CPointValueRemapper", "m_flPreviousUpdateTickTime")]
-	public float PreviousUpdateTickTime
+	public virtual float PreviousUpdateTickTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousUpdateTickTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousUpdateTickTime", value); }
@@ -241,7 +241,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_vecPreviousTestPoint
 	[SchemaMember("CPointValueRemapper", "m_vecPreviousTestPoint")]
-	public Vector3 PreviousTestPoint
+	public virtual Vector3 PreviousTestPoint
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointValueRemapper", "m_vecPreviousTestPoint"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPointValueRemapper", "m_vecPreviousTestPoint", value); }
@@ -249,11 +249,11 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_hUsingPlayer
 	[SchemaMember("CPointValueRemapper", "m_hUsingPlayer")]
-	public CHandle<CBasePlayerPawn> UsingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPointValueRemapper", "m_hUsingPlayer");
+	public virtual CHandle<CBasePlayerPawn> UsingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPointValueRemapper", "m_hUsingPlayer");
 
 	// m_flCustomOutputValue
 	[SchemaMember("CPointValueRemapper", "m_flCustomOutputValue")]
-	public float CustomOutputValue
+	public virtual float CustomOutputValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCustomOutputValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCustomOutputValue", value); }
@@ -261,7 +261,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszSoundEngage
 	[SchemaMember("CPointValueRemapper", "m_iszSoundEngage")]
-	public string SoundEngage
+	public virtual string SoundEngage
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundEngage"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundEngage", value); }
@@ -269,7 +269,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszSoundDisengage
 	[SchemaMember("CPointValueRemapper", "m_iszSoundDisengage")]
-	public string SoundDisengage
+	public virtual string SoundDisengage
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundDisengage"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundDisengage", value); }
@@ -277,7 +277,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszSoundReachedValueZero
 	[SchemaMember("CPointValueRemapper", "m_iszSoundReachedValueZero")]
-	public string SoundReachedValueZero
+	public virtual string SoundReachedValueZero
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueZero"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueZero", value); }
@@ -285,7 +285,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszSoundReachedValueOne
 	[SchemaMember("CPointValueRemapper", "m_iszSoundReachedValueOne")]
-	public string SoundReachedValueOne
+	public virtual string SoundReachedValueOne
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueOne"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueOne", value); }
@@ -293,7 +293,7 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_iszSoundMovingLoop
 	[SchemaMember("CPointValueRemapper", "m_iszSoundMovingLoop")]
-	public string SoundMovingLoop
+	public virtual string SoundMovingLoop
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundMovingLoop"); }
 		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundMovingLoop", value); }
@@ -301,39 +301,39 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_OnReachedValueZero
 	[SchemaMember("CPointValueRemapper", "m_OnReachedValueZero")]
-	public CEntityIOOutput OnReachedValueZero => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueZero");
+	public virtual CEntityIOOutput OnReachedValueZero => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueZero");
 
 	// m_OnReachedValueOne
 	[SchemaMember("CPointValueRemapper", "m_OnReachedValueOne")]
-	public CEntityIOOutput OnReachedValueOne => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueOne");
+	public virtual CEntityIOOutput OnReachedValueOne => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueOne");
 
 	// m_OnReachedValueCustom
 	[SchemaMember("CPointValueRemapper", "m_OnReachedValueCustom")]
-	public CEntityIOOutput OnReachedValueCustom => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueCustom");
+	public virtual CEntityIOOutput OnReachedValueCustom => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueCustom");
 
 	// m_OnEngage
 	[SchemaMember("CPointValueRemapper", "m_OnEngage")]
-	public CEntityIOOutput OnEngage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnEngage");
+	public virtual CEntityIOOutput OnEngage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnEngage");
 
 	// m_OnDisengage
 	[SchemaMember("CPointValueRemapper", "m_OnDisengage")]
-	public CEntityIOOutput OnDisengage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnDisengage");
+	public virtual CEntityIOOutput OnDisengage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnDisengage");
 
-	public void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bDisabled");
-	public void UpdateOnClientPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bUpdateOnClient");
-	public void InputTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nInputType");
-	public void RemapLineStartPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hRemapLineStart");
-	public void RemapLineEndPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hRemapLineEnd");
-	public void MaximumChangePerSecondPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flMaximumChangePerSecond");
-	public void DisengageDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flDisengageDistance");
-	public void EngageDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flEngageDistance");
-	public void RequiresUseKeyPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bRequiresUseKey");
-	public void OutputTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nOutputType");
-	public void OutputEntitiesPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hOutputEntities");
-	public void HapticsTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nHapticsType");
-	public void MomentumTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nMomentumType");
-	public void MomentumModifierPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flMomentumModifier");
-	public void SnapValuePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flSnapValue");
-	public void RatchetTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nRatchetType");
-	public void InputOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flInputOffset");
+	public virtual void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bDisabled");
+	public virtual void UpdateOnClientPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bUpdateOnClient");
+	public virtual void InputTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nInputType");
+	public virtual void RemapLineStartPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hRemapLineStart");
+	public virtual void RemapLineEndPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hRemapLineEnd");
+	public virtual void MaximumChangePerSecondPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flMaximumChangePerSecond");
+	public virtual void DisengageDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flDisengageDistance");
+	public virtual void EngageDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flEngageDistance");
+	public virtual void RequiresUseKeyPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bRequiresUseKey");
+	public virtual void OutputTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nOutputType");
+	public virtual void OutputEntitiesPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hOutputEntities");
+	public virtual void HapticsTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nHapticsType");
+	public virtual void MomentumTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nMomentumType");
+	public virtual void MomentumModifierPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flMomentumModifier");
+	public virtual void SnapValuePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flSnapValue");
+	public virtual void RatchetTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nRatchetType");
+	public virtual void InputOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flInputOffset");
 }

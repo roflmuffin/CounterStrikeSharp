@@ -21,7 +21,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iszName
 	[SchemaMember("CEnvInstructorVRHint", "m_iszName")]
-	public string Name
+	public virtual string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszName"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszName", value); }
@@ -29,7 +29,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iszHintTargetEntity
 	[SchemaMember("CEnvInstructorVRHint", "m_iszHintTargetEntity")]
-	public string HintTargetEntity
+	public virtual string HintTargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity", value); }
@@ -37,7 +37,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iTimeout
 	[SchemaMember("CEnvInstructorVRHint", "m_iTimeout")]
-	public Int32 Timeout
+	public virtual Int32 Timeout
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout", value); }
@@ -45,7 +45,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iszCaption
 	[SchemaMember("CEnvInstructorVRHint", "m_iszCaption")]
-	public string Caption
+	public virtual string Caption
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCaption"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCaption", value); }
@@ -53,7 +53,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iszStartSound
 	[SchemaMember("CEnvInstructorVRHint", "m_iszStartSound")]
-	public string StartSound
+	public virtual string StartSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound", value); }
@@ -61,7 +61,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iLayoutFileType
 	[SchemaMember("CEnvInstructorVRHint", "m_iLayoutFileType")]
-	public Int32 LayoutFileType
+	public virtual Int32 LayoutFileType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType", value); }
@@ -69,7 +69,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iszCustomLayoutFile
 	[SchemaMember("CEnvInstructorVRHint", "m_iszCustomLayoutFile")]
-	public string CustomLayoutFile
+	public virtual string CustomLayoutFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile", value); }
@@ -77,7 +77,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iAttachType
 	[SchemaMember("CEnvInstructorVRHint", "m_iAttachType")]
-	public Int32 AttachType
+	public virtual Int32 AttachType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType", value); }
@@ -85,7 +85,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_flHeightOffset
 	[SchemaMember("CEnvInstructorVRHint", "m_flHeightOffset")]
-	public float HeightOffset
+	public virtual float HeightOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset", value); }

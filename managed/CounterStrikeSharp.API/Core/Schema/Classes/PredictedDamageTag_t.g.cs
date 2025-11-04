@@ -21,7 +21,7 @@ public partial class PredictedDamageTag_t : NativeObject
 
 	// nTagTick
 	[SchemaMember("PredictedDamageTag_t", "nTagTick")]
-	public Int32 NTagTick
+	public virtual Int32 NTagTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "PredictedDamageTag_t", "nTagTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "PredictedDamageTag_t", "nTagTick", value); }
@@ -29,7 +29,7 @@ public partial class PredictedDamageTag_t : NativeObject
 
 	// flFlinchModSmall
 	[SchemaMember("PredictedDamageTag_t", "flFlinchModSmall")]
-	public float FlFlinchModSmall
+	public virtual float FlFlinchModSmall
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModSmall"); }
 		set { Schema.SetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModSmall", value); }
@@ -37,7 +37,7 @@ public partial class PredictedDamageTag_t : NativeObject
 
 	// flFlinchModLarge
 	[SchemaMember("PredictedDamageTag_t", "flFlinchModLarge")]
-	public float FlFlinchModLarge
+	public virtual float FlFlinchModLarge
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModLarge"); }
 		set { Schema.SetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModLarge", value); }
@@ -45,14 +45,14 @@ public partial class PredictedDamageTag_t : NativeObject
 
 	// flFriendlyFireDamageReductionRatio
 	[SchemaMember("PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio")]
-	public float FlFriendlyFireDamageReductionRatio
+	public virtual float FlFriendlyFireDamageReductionRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio", value); }
 	}
 
-	public void NTagTickPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "nTagTick");
-	public void FlFlinchModSmallPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFlinchModSmall");
-	public void FlFlinchModLargePropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFlinchModLarge");
-	public void FlFriendlyFireDamageReductionRatioPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio");
+	public virtual void NTagTickPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "nTagTick");
+	public virtual void FlFlinchModSmallPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFlinchModSmall");
+	public virtual void FlFlinchModLargePropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFlinchModLarge");
+	public virtual void FlFriendlyFireDamageReductionRatioPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio");
 }

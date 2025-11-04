@@ -21,7 +21,7 @@ public partial class CChangeLevel : CBaseTrigger
 
 	// m_sMapName
 	[SchemaMember("CChangeLevel", "m_sMapName")]
-	public string MapName
+	public virtual string MapName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CChangeLevel", "m_sMapName"); }
 		set { Schema.SetString(this.Handle, "CChangeLevel", "m_sMapName", value); }
@@ -29,7 +29,7 @@ public partial class CChangeLevel : CBaseTrigger
 
 	// m_sLandmarkName
 	[SchemaMember("CChangeLevel", "m_sLandmarkName")]
-	public string LandmarkName
+	public virtual string LandmarkName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CChangeLevel", "m_sLandmarkName"); }
 		set { Schema.SetString(this.Handle, "CChangeLevel", "m_sLandmarkName", value); }
@@ -37,11 +37,11 @@ public partial class CChangeLevel : CBaseTrigger
 
 	// m_OnChangeLevel
 	[SchemaMember("CChangeLevel", "m_OnChangeLevel")]
-	public CEntityIOOutput OnChangeLevel => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CChangeLevel", "m_OnChangeLevel");
+	public virtual CEntityIOOutput OnChangeLevel => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CChangeLevel", "m_OnChangeLevel");
 
 	// m_bTouched
 	[SchemaMember("CChangeLevel", "m_bTouched")]
-	public bool Touched
+	public virtual bool Touched
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bTouched"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bTouched", value); }
@@ -49,7 +49,7 @@ public partial class CChangeLevel : CBaseTrigger
 
 	// m_bNoTouch
 	[SchemaMember("CChangeLevel", "m_bNoTouch")]
-	public bool NoTouch
+	public virtual bool NoTouch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bNoTouch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bNoTouch", value); }
@@ -57,7 +57,7 @@ public partial class CChangeLevel : CBaseTrigger
 
 	// m_bNewChapter
 	[SchemaMember("CChangeLevel", "m_bNewChapter")]
-	public bool NewChapter
+	public virtual bool NewChapter
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bNewChapter"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bNewChapter", value); }
@@ -65,7 +65,7 @@ public partial class CChangeLevel : CBaseTrigger
 
 	// m_bOnChangeLevelFired
 	[SchemaMember("CChangeLevel", "m_bOnChangeLevelFired")]
-	public bool OnChangeLevelFired
+	public virtual bool OnChangeLevelFired
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bOnChangeLevelFired"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bOnChangeLevelFired", value); }

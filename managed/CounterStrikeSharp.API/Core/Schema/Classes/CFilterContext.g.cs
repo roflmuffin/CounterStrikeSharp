@@ -21,7 +21,7 @@ public partial class CFilterContext : CBaseFilter
 
 	// m_iFilterContext
 	[SchemaMember("CFilterContext", "m_iFilterContext")]
-	public string FilterContext
+	public virtual string FilterContext
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFilterContext", "m_iFilterContext"); }
 		set { Schema.SetString(this.Handle, "CFilterContext", "m_iFilterContext", value); }

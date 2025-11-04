@@ -21,19 +21,19 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_soundInfo
 	[SchemaMember("CPhysHinge", "m_soundInfo")]
-	public ConstraintSoundInfo SoundInfo => Schema.GetDeclaredClass<ConstraintSoundInfo>(this.Handle, "CPhysHinge", "m_soundInfo");
+	public virtual ConstraintSoundInfo SoundInfo => Schema.GetDeclaredClass<ConstraintSoundInfo>(this.Handle, "CPhysHinge", "m_soundInfo");
 
 	// m_NotifyMinLimitReached
 	[SchemaMember("CPhysHinge", "m_NotifyMinLimitReached")]
-	public CEntityIOOutput NotifyMinLimitReached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_NotifyMinLimitReached");
+	public virtual CEntityIOOutput NotifyMinLimitReached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_NotifyMinLimitReached");
 
 	// m_NotifyMaxLimitReached
 	[SchemaMember("CPhysHinge", "m_NotifyMaxLimitReached")]
-	public CEntityIOOutput NotifyMaxLimitReached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_NotifyMaxLimitReached");
+	public virtual CEntityIOOutput NotifyMaxLimitReached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_NotifyMaxLimitReached");
 
 	// m_bAtMinLimit
 	[SchemaMember("CPhysHinge", "m_bAtMinLimit")]
-	public bool AtMinLimit
+	public virtual bool AtMinLimit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMinLimit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMinLimit", value); }
@@ -41,7 +41,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_bAtMaxLimit
 	[SchemaMember("CPhysHinge", "m_bAtMaxLimit")]
-	public bool AtMaxLimit
+	public virtual bool AtMaxLimit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMaxLimit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMaxLimit", value); }
@@ -49,11 +49,11 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_hinge
 	[SchemaMember("CPhysHinge", "m_hinge")]
-	public constraint_hingeparams_t Hinge => Schema.GetDeclaredClass<constraint_hingeparams_t>(this.Handle, "CPhysHinge", "m_hinge");
+	public virtual constraint_hingeparams_t Hinge => Schema.GetDeclaredClass<constraint_hingeparams_t>(this.Handle, "CPhysHinge", "m_hinge");
 
 	// m_hingeFriction
 	[SchemaMember("CPhysHinge", "m_hingeFriction")]
-	public float HingeFriction
+	public virtual float HingeFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_hingeFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_hingeFriction", value); }
@@ -61,7 +61,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_systemLoadScale
 	[SchemaMember("CPhysHinge", "m_systemLoadScale")]
-	public float SystemLoadScale
+	public virtual float SystemLoadScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_systemLoadScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_systemLoadScale", value); }
@@ -69,7 +69,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_bIsAxisLocal
 	[SchemaMember("CPhysHinge", "m_bIsAxisLocal")]
-	public bool IsAxisLocal
+	public virtual bool IsAxisLocal
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysHinge", "m_bIsAxisLocal"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysHinge", "m_bIsAxisLocal", value); }
@@ -77,7 +77,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_flMinRotation
 	[SchemaMember("CPhysHinge", "m_flMinRotation")]
-	public float MinRotation
+	public virtual float MinRotation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMinRotation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMinRotation", value); }
@@ -85,7 +85,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_flMaxRotation
 	[SchemaMember("CPhysHinge", "m_flMaxRotation")]
-	public float MaxRotation
+	public virtual float MaxRotation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMaxRotation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMaxRotation", value); }
@@ -93,7 +93,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_flInitialRotation
 	[SchemaMember("CPhysHinge", "m_flInitialRotation")]
-	public float InitialRotation
+	public virtual float InitialRotation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flInitialRotation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flInitialRotation", value); }
@@ -101,7 +101,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_flMotorFrequency
 	[SchemaMember("CPhysHinge", "m_flMotorFrequency")]
-	public float MotorFrequency
+	public virtual float MotorFrequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorFrequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorFrequency", value); }
@@ -109,7 +109,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_flMotorDampingRatio
 	[SchemaMember("CPhysHinge", "m_flMotorDampingRatio")]
-	public float MotorDampingRatio
+	public virtual float MotorDampingRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorDampingRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorDampingRatio", value); }
@@ -117,7 +117,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_flAngleSpeed
 	[SchemaMember("CPhysHinge", "m_flAngleSpeed")]
-	public float AngleSpeed
+	public virtual float AngleSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeed", value); }
@@ -125,7 +125,7 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_flAngleSpeedThreshold
 	[SchemaMember("CPhysHinge", "m_flAngleSpeedThreshold")]
-	public float AngleSpeedThreshold
+	public virtual float AngleSpeedThreshold
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeedThreshold"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeedThreshold", value); }
@@ -133,10 +133,10 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_OnStartMoving
 	[SchemaMember("CPhysHinge", "m_OnStartMoving")]
-	public CEntityIOOutput OnStartMoving => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_OnStartMoving");
+	public virtual CEntityIOOutput OnStartMoving => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_OnStartMoving");
 
 	// m_OnStopMoving
 	[SchemaMember("CPhysHinge", "m_OnStopMoving")]
-	public CEntityIOOutput OnStopMoving => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_OnStopMoving");
+	public virtual CEntityIOOutput OnStopMoving => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_OnStopMoving");
 
 }

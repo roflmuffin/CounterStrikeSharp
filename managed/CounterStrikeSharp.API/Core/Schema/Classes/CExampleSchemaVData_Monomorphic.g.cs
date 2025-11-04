@@ -21,7 +21,7 @@ public partial class CExampleSchemaVData_Monomorphic : NativeObject
 
 	// m_nExample1
 	[SchemaMember("CExampleSchemaVData_Monomorphic", "m_nExample1")]
-	public Int32 Example1
+	public virtual Int32 Example1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample1", value); }
@@ -29,7 +29,7 @@ public partial class CExampleSchemaVData_Monomorphic : NativeObject
 
 	// m_nExample2
 	[SchemaMember("CExampleSchemaVData_Monomorphic", "m_nExample2")]
-	public Int32 Example2
+	public virtual Int32 Example2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample2", value); }

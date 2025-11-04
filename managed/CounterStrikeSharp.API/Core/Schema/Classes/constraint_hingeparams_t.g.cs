@@ -21,7 +21,7 @@ public partial class constraint_hingeparams_t : NativeObject
 
 	// worldPosition
 	[SchemaMember("constraint_hingeparams_t", "worldPosition")]
-	public Vector3 WorldPosition
+	public virtual Vector3 WorldPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldPosition", value); }
@@ -29,7 +29,7 @@ public partial class constraint_hingeparams_t : NativeObject
 
 	// worldAxisDirection
 	[SchemaMember("constraint_hingeparams_t", "worldAxisDirection")]
-	public Vector3 WorldAxisDirection
+	public virtual Vector3 WorldAxisDirection
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection", value); }
@@ -37,10 +37,10 @@ public partial class constraint_hingeparams_t : NativeObject
 
 	// hingeAxis
 	[SchemaMember("constraint_hingeparams_t", "hingeAxis")]
-	public constraint_axislimit_t HingeAxis => Schema.GetDeclaredClass<constraint_axislimit_t>(this.Handle, "constraint_hingeparams_t", "hingeAxis");
+	public virtual constraint_axislimit_t HingeAxis => Schema.GetDeclaredClass<constraint_axislimit_t>(this.Handle, "constraint_hingeparams_t", "hingeAxis");
 
 	// constraint
 	[SchemaMember("constraint_hingeparams_t", "constraint")]
-	public constraint_breakableparams_t Constraint => Schema.GetDeclaredClass<constraint_breakableparams_t>(this.Handle, "constraint_hingeparams_t", "constraint");
+	public virtual constraint_breakableparams_t Constraint => Schema.GetDeclaredClass<constraint_breakableparams_t>(this.Handle, "constraint_hingeparams_t", "constraint");
 
 }

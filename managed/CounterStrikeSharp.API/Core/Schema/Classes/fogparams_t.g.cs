@@ -21,7 +21,7 @@ public partial class fogparams_t : NativeObject
 
 	// dirPrimary
 	[SchemaMember("fogparams_t", "dirPrimary")]
-	public Vector3 DirPrimary
+	public virtual Vector3 DirPrimary
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "fogparams_t", "dirPrimary"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "fogparams_t", "dirPrimary", value); }
@@ -29,7 +29,7 @@ public partial class fogparams_t : NativeObject
 
 	// colorPrimary
 	[SchemaMember("fogparams_t", "colorPrimary")]
-	public Color ColorPrimary
+	public virtual Color ColorPrimary
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimary"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimary", value); }
@@ -37,7 +37,7 @@ public partial class fogparams_t : NativeObject
 
 	// colorSecondary
 	[SchemaMember("fogparams_t", "colorSecondary")]
-	public Color ColorSecondary
+	public virtual Color ColorSecondary
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondary"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondary", value); }
@@ -45,7 +45,7 @@ public partial class fogparams_t : NativeObject
 
 	// colorPrimaryLerpTo
 	[SchemaMember("fogparams_t", "colorPrimaryLerpTo")]
-	public Color ColorPrimaryLerpTo
+	public virtual Color ColorPrimaryLerpTo
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimaryLerpTo"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimaryLerpTo", value); }
@@ -53,7 +53,7 @@ public partial class fogparams_t : NativeObject
 
 	// colorSecondaryLerpTo
 	[SchemaMember("fogparams_t", "colorSecondaryLerpTo")]
-	public Color ColorSecondaryLerpTo
+	public virtual Color ColorSecondaryLerpTo
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondaryLerpTo"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondaryLerpTo", value); }
@@ -61,7 +61,7 @@ public partial class fogparams_t : NativeObject
 
 	// start
 	[SchemaMember("fogparams_t", "start")]
-	public float Start
+	public virtual float Start
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "start"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "start", value); }
@@ -69,7 +69,7 @@ public partial class fogparams_t : NativeObject
 
 	// end
 	[SchemaMember("fogparams_t", "end")]
-	public float End
+	public virtual float End
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "end"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "end", value); }
@@ -77,7 +77,7 @@ public partial class fogparams_t : NativeObject
 
 	// farz
 	[SchemaMember("fogparams_t", "farz")]
-	public float Farz
+	public virtual float Farz
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "farz"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "farz", value); }
@@ -85,7 +85,7 @@ public partial class fogparams_t : NativeObject
 
 	// maxdensity
 	[SchemaMember("fogparams_t", "maxdensity")]
-	public float Maxdensity
+	public virtual float Maxdensity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "maxdensity"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "maxdensity", value); }
@@ -93,7 +93,7 @@ public partial class fogparams_t : NativeObject
 
 	// exponent
 	[SchemaMember("fogparams_t", "exponent")]
-	public float Exponent
+	public virtual float Exponent
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "exponent"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "exponent", value); }
@@ -101,7 +101,7 @@ public partial class fogparams_t : NativeObject
 
 	// HDRColorScale
 	[SchemaMember("fogparams_t", "HDRColorScale")]
-	public float HDRColorScale
+	public virtual float HDRColorScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "HDRColorScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "HDRColorScale", value); }
@@ -109,7 +109,7 @@ public partial class fogparams_t : NativeObject
 
 	// skyboxFogFactor
 	[SchemaMember("fogparams_t", "skyboxFogFactor")]
-	public float SkyboxFogFactor
+	public virtual float SkyboxFogFactor
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactor"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactor", value); }
@@ -117,7 +117,7 @@ public partial class fogparams_t : NativeObject
 
 	// skyboxFogFactorLerpTo
 	[SchemaMember("fogparams_t", "skyboxFogFactorLerpTo")]
-	public float SkyboxFogFactorLerpTo
+	public virtual float SkyboxFogFactorLerpTo
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactorLerpTo"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactorLerpTo", value); }
@@ -125,7 +125,7 @@ public partial class fogparams_t : NativeObject
 
 	// startLerpTo
 	[SchemaMember("fogparams_t", "startLerpTo")]
-	public float StartLerpTo
+	public virtual float StartLerpTo
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "startLerpTo"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "startLerpTo", value); }
@@ -133,7 +133,7 @@ public partial class fogparams_t : NativeObject
 
 	// endLerpTo
 	[SchemaMember("fogparams_t", "endLerpTo")]
-	public float EndLerpTo
+	public virtual float EndLerpTo
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "endLerpTo"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "endLerpTo", value); }
@@ -141,7 +141,7 @@ public partial class fogparams_t : NativeObject
 
 	// maxdensityLerpTo
 	[SchemaMember("fogparams_t", "maxdensityLerpTo")]
-	public float MaxdensityLerpTo
+	public virtual float MaxdensityLerpTo
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "maxdensityLerpTo"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "maxdensityLerpTo", value); }
@@ -149,7 +149,7 @@ public partial class fogparams_t : NativeObject
 
 	// lerptime
 	[SchemaMember("fogparams_t", "lerptime")]
-	public float Lerptime
+	public virtual float Lerptime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "lerptime"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "lerptime", value); }
@@ -157,7 +157,7 @@ public partial class fogparams_t : NativeObject
 
 	// duration
 	[SchemaMember("fogparams_t", "duration")]
-	public float Duration
+	public virtual float Duration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "duration"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "duration", value); }
@@ -165,7 +165,7 @@ public partial class fogparams_t : NativeObject
 
 	// blendtobackground
 	[SchemaMember("fogparams_t", "blendtobackground")]
-	public float Blendtobackground
+	public virtual float Blendtobackground
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "blendtobackground"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "blendtobackground", value); }
@@ -173,7 +173,7 @@ public partial class fogparams_t : NativeObject
 
 	// scattering
 	[SchemaMember("fogparams_t", "scattering")]
-	public float Scattering
+	public virtual float Scattering
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "scattering"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "scattering", value); }
@@ -181,7 +181,7 @@ public partial class fogparams_t : NativeObject
 
 	// locallightscale
 	[SchemaMember("fogparams_t", "locallightscale")]
-	public float Locallightscale
+	public virtual float Locallightscale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "locallightscale"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "locallightscale", value); }
@@ -189,7 +189,7 @@ public partial class fogparams_t : NativeObject
 
 	// enable
 	[SchemaMember("fogparams_t", "enable")]
-	public bool Enable
+	public virtual bool Enable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "enable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "enable", value); }
@@ -197,7 +197,7 @@ public partial class fogparams_t : NativeObject
 
 	// blend
 	[SchemaMember("fogparams_t", "blend")]
-	public bool Blend
+	public virtual bool Blend
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "blend"); }
 		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "blend", value); }
@@ -205,7 +205,7 @@ public partial class fogparams_t : NativeObject
 
 	// m_bPadding2
 	[SchemaMember("fogparams_t", "m_bPadding2")]
-	public bool Padding2
+	public virtual bool Padding2
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding2"); }
 		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding2", value); }
@@ -213,33 +213,33 @@ public partial class fogparams_t : NativeObject
 
 	// m_bPadding
 	[SchemaMember("fogparams_t", "m_bPadding")]
-	public bool Padding
+	public virtual bool Padding
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding"); }
 		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding", value); }
 	}
 
-	public void DirPrimaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "dirPrimary");
-	public void ColorPrimaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorPrimary");
-	public void ColorSecondaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorSecondary");
-	public void ColorPrimaryLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorPrimaryLerpTo");
-	public void ColorSecondaryLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorSecondaryLerpTo");
-	public void StartPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "start");
-	public void EndPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "end");
-	public void FarzPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "farz");
-	public void MaxdensityPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "maxdensity");
-	public void ExponentPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "exponent");
-	public void HDRColorScalePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "HDRColorScale");
-	public void SkyboxFogFactorPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "skyboxFogFactor");
-	public void SkyboxFogFactorLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "skyboxFogFactorLerpTo");
-	public void StartLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "startLerpTo");
-	public void EndLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "endLerpTo");
-	public void MaxdensityLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "maxdensityLerpTo");
-	public void LerptimePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "lerptime");
-	public void DurationPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "duration");
-	public void BlendtobackgroundPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "blendtobackground");
-	public void ScatteringPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "scattering");
-	public void LocallightscalePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "locallightscale");
-	public void EnablePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "enable");
-	public void BlendPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "blend");
+	public virtual void DirPrimaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "dirPrimary");
+	public virtual void ColorPrimaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorPrimary");
+	public virtual void ColorSecondaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorSecondary");
+	public virtual void ColorPrimaryLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorPrimaryLerpTo");
+	public virtual void ColorSecondaryLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorSecondaryLerpTo");
+	public virtual void StartPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "start");
+	public virtual void EndPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "end");
+	public virtual void FarzPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "farz");
+	public virtual void MaxdensityPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "maxdensity");
+	public virtual void ExponentPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "exponent");
+	public virtual void HDRColorScalePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "HDRColorScale");
+	public virtual void SkyboxFogFactorPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "skyboxFogFactor");
+	public virtual void SkyboxFogFactorLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "skyboxFogFactorLerpTo");
+	public virtual void StartLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "startLerpTo");
+	public virtual void EndLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "endLerpTo");
+	public virtual void MaxdensityLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "maxdensityLerpTo");
+	public virtual void LerptimePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "lerptime");
+	public virtual void DurationPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "duration");
+	public virtual void BlendtobackgroundPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "blendtobackground");
+	public virtual void ScatteringPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "scattering");
+	public virtual void LocallightscalePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "locallightscale");
+	public virtual void EnablePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "enable");
+	public virtual void BlendPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "blend");
 }

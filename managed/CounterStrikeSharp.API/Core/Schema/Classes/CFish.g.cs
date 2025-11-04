@@ -21,11 +21,11 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_pool
 	[SchemaMember("CFish", "m_pool")]
-	public CHandle<CFishPool> Pool => Schema.GetDeclaredClass<CHandle<CFishPool>>(this.Handle, "CFish", "m_pool");
+	public virtual CHandle<CFishPool> Pool => Schema.GetDeclaredClass<CHandle<CFishPool>>(this.Handle, "CFish", "m_pool");
 
 	// m_id
 	[SchemaMember("CFish", "m_id")]
-	public UInt32 Id
+	public virtual UInt32 Id
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CFish", "m_id"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CFish", "m_id", value); }
@@ -33,7 +33,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_x
 	[SchemaMember("CFish", "m_x")]
-	public float X
+	public virtual float X
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_x"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_x", value); }
@@ -41,7 +41,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_y
 	[SchemaMember("CFish", "m_y")]
-	public float Y
+	public virtual float Y
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_y"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_y", value); }
@@ -49,7 +49,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_z
 	[SchemaMember("CFish", "m_z")]
-	public float Z
+	public virtual float Z
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_z"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_z", value); }
@@ -57,7 +57,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_angle
 	[SchemaMember("CFish", "m_angle")]
-	public float Angle
+	public virtual float Angle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_angle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_angle", value); }
@@ -65,7 +65,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_angleChange
 	[SchemaMember("CFish", "m_angleChange")]
-	public float AngleChange
+	public virtual float AngleChange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_angleChange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_angleChange", value); }
@@ -73,7 +73,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_forward
 	[SchemaMember("CFish", "m_forward")]
-	public Vector3 Forward
+	public virtual Vector3 Forward
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFish", "m_forward"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFish", "m_forward", value); }
@@ -81,7 +81,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_perp
 	[SchemaMember("CFish", "m_perp")]
-	public Vector3 Perp
+	public virtual Vector3 Perp
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFish", "m_perp"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFish", "m_perp", value); }
@@ -89,7 +89,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_poolOrigin
 	[SchemaMember("CFish", "m_poolOrigin")]
-	public Vector3 PoolOrigin
+	public virtual Vector3 PoolOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFish", "m_poolOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFish", "m_poolOrigin", value); }
@@ -97,7 +97,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_waterLevel
 	[SchemaMember("CFish", "m_waterLevel")]
-	public float FishWaterLevel
+	public virtual float FishWaterLevel
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_waterLevel"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_waterLevel", value); }
@@ -105,7 +105,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_speed
 	[SchemaMember("CFish", "m_speed")]
-	public new float Speed
+	public virtual new float Speed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_speed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_speed", value); }
@@ -113,7 +113,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_desiredSpeed
 	[SchemaMember("CFish", "m_desiredSpeed")]
-	public float DesiredSpeed
+	public virtual float DesiredSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_desiredSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_desiredSpeed", value); }
@@ -121,7 +121,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_calmSpeed
 	[SchemaMember("CFish", "m_calmSpeed")]
-	public float CalmSpeed
+	public virtual float CalmSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_calmSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_calmSpeed", value); }
@@ -129,7 +129,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_panicSpeed
 	[SchemaMember("CFish", "m_panicSpeed")]
-	public float PanicSpeed
+	public virtual float PanicSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_panicSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_panicSpeed", value); }
@@ -137,7 +137,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_avoidRange
 	[SchemaMember("CFish", "m_avoidRange")]
-	public float AvoidRange
+	public virtual float AvoidRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_avoidRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_avoidRange", value); }
@@ -145,11 +145,11 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_turnTimer
 	[SchemaMember("CFish", "m_turnTimer")]
-	public CountdownTimer TurnTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_turnTimer");
+	public virtual CountdownTimer TurnTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_turnTimer");
 
 	// m_turnClockwise
 	[SchemaMember("CFish", "m_turnClockwise")]
-	public bool TurnClockwise
+	public virtual bool TurnClockwise
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFish", "m_turnClockwise"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFish", "m_turnClockwise", value); }
@@ -157,32 +157,32 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_goTimer
 	[SchemaMember("CFish", "m_goTimer")]
-	public CountdownTimer GoTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_goTimer");
+	public virtual CountdownTimer GoTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_goTimer");
 
 	// m_moveTimer
 	[SchemaMember("CFish", "m_moveTimer")]
-	public CountdownTimer MoveTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_moveTimer");
+	public virtual CountdownTimer MoveTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_moveTimer");
 
 	// m_panicTimer
 	[SchemaMember("CFish", "m_panicTimer")]
-	public CountdownTimer PanicTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_panicTimer");
+	public virtual CountdownTimer PanicTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_panicTimer");
 
 	// m_disperseTimer
 	[SchemaMember("CFish", "m_disperseTimer")]
-	public CountdownTimer DisperseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_disperseTimer");
+	public virtual CountdownTimer DisperseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_disperseTimer");
 
 	// m_proximityTimer
 	[SchemaMember("CFish", "m_proximityTimer")]
-	public CountdownTimer ProximityTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_proximityTimer");
+	public virtual CountdownTimer ProximityTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_proximityTimer");
 
 	// m_visible
 	[SchemaMember("CFish", "m_visible")]
-	public NetworkedVector<CFish?> Visible => Schema.GetDeclaredClass<NetworkedVector<CFish?>>(this.Handle, "CFish", "m_visible");
+	public virtual NetworkedVector<CFish?> Visible => Schema.GetDeclaredClass<NetworkedVector<CFish?>>(this.Handle, "CFish", "m_visible");
 
-	public void XPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_x");
-	public void YPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_y");
-	public void ZPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_z");
-	public void AnglePropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_angle");
-	public void PoolOriginPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_poolOrigin");
-	public void FishWaterLevelPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_waterLevel");
+	public virtual void XPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_x");
+	public virtual void YPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_y");
+	public virtual void ZPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_z");
+	public virtual void AnglePropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_angle");
+	public virtual void PoolOriginPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_poolOrigin");
+	public virtual void FishWaterLevelPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_waterLevel");
 }

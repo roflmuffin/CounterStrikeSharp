@@ -21,7 +21,7 @@ public partial class SoundOpvarTraceResult_t : NativeObject
 
 	// vPos
 	[SchemaMember("SoundOpvarTraceResult_t", "vPos")]
-	public Vector3 VPos
+	public virtual Vector3 VPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "SoundOpvarTraceResult_t", "vPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "SoundOpvarTraceResult_t", "vPos", value); }
@@ -29,7 +29,7 @@ public partial class SoundOpvarTraceResult_t : NativeObject
 
 	// bDidHit
 	[SchemaMember("SoundOpvarTraceResult_t", "bDidHit")]
-	public bool BDidHit
+	public virtual bool BDidHit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "SoundOpvarTraceResult_t", "bDidHit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "SoundOpvarTraceResult_t", "bDidHit", value); }
@@ -37,7 +37,7 @@ public partial class SoundOpvarTraceResult_t : NativeObject
 
 	// flDistSqrToCenter
 	[SchemaMember("SoundOpvarTraceResult_t", "flDistSqrToCenter")]
-	public float FlDistSqrToCenter
+	public virtual float FlDistSqrToCenter
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "SoundOpvarTraceResult_t", "flDistSqrToCenter"); }
 		set { Schema.SetValueType<float>(this.Handle, "SoundOpvarTraceResult_t", "flDistSqrToCenter", value); }

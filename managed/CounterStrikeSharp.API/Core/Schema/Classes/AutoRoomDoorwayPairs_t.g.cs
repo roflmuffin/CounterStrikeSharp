@@ -21,7 +21,7 @@ public partial class AutoRoomDoorwayPairs_t : NativeObject
 
 	// vP1
 	[SchemaMember("AutoRoomDoorwayPairs_t", "vP1")]
-	public Vector3 VP1
+	public virtual Vector3 VP1
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP1"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP1", value); }
@@ -29,7 +29,7 @@ public partial class AutoRoomDoorwayPairs_t : NativeObject
 
 	// vP2
 	[SchemaMember("AutoRoomDoorwayPairs_t", "vP2")]
-	public Vector3 VP2
+	public virtual Vector3 VP2
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP2"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP2", value); }

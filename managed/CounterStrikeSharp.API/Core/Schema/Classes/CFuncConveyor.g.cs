@@ -21,7 +21,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_szConveyorModels
 	[SchemaMember("CFuncConveyor", "m_szConveyorModels")]
-	public string SzConveyorModels
+	public virtual string SzConveyorModels
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncConveyor", "m_szConveyorModels"); }
 		set { Schema.SetString(this.Handle, "CFuncConveyor", "m_szConveyorModels", value); }
@@ -29,7 +29,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_flTransitionDurationSeconds
 	[SchemaMember("CFuncConveyor", "m_flTransitionDurationSeconds")]
-	public float TransitionDurationSeconds
+	public virtual float TransitionDurationSeconds
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds", value); }
@@ -37,7 +37,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CFuncConveyor", "m_angMoveEntitySpace")]
-	public QAngle MoveEntitySpace
+	public virtual QAngle MoveEntitySpace
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace", value); }
@@ -45,7 +45,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_vecMoveDirEntitySpace
 	[SchemaMember("CFuncConveyor", "m_vecMoveDirEntitySpace")]
-	public Vector3 MoveDirEntitySpace
+	public virtual Vector3 MoveDirEntitySpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace", value); }
@@ -53,7 +53,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_flTargetSpeed
 	[SchemaMember("CFuncConveyor", "m_flTargetSpeed")]
-	public float TargetSpeed
+	public virtual float TargetSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed", value); }
@@ -61,7 +61,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_nTransitionStartTick
 	[SchemaMember("CFuncConveyor", "m_nTransitionStartTick")]
-	public Int32 TransitionStartTick
+	public virtual Int32 TransitionStartTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick", value); }
@@ -69,7 +69,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_nTransitionDurationTicks
 	[SchemaMember("CFuncConveyor", "m_nTransitionDurationTicks")]
-	public Int32 TransitionDurationTicks
+	public virtual Int32 TransitionDurationTicks
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks", value); }
@@ -77,7 +77,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_flTransitionStartSpeed
 	[SchemaMember("CFuncConveyor", "m_flTransitionStartSpeed")]
-	public float TransitionStartSpeed
+	public virtual float TransitionStartSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed", value); }
@@ -85,12 +85,12 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_hConveyorModels
 	[SchemaMember("CFuncConveyor", "m_hConveyorModels")]
-	public NetworkedVector<CHandle<CBaseEntity>> HConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> HConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");
 
-	public void MoveDirEntitySpacePropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_vecMoveDirEntitySpace");
-	public void TargetSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_flTargetSpeed");
-	public void TransitionStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_nTransitionStartTick");
-	public void TransitionDurationTicksPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_nTransitionDurationTicks");
-	public void TransitionStartSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_flTransitionStartSpeed");
-	public void HConveyorModelsPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_hConveyorModels");
+	public virtual void MoveDirEntitySpacePropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_vecMoveDirEntitySpace");
+	public virtual void TargetSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_flTargetSpeed");
+	public virtual void TransitionStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_nTransitionStartTick");
+	public virtual void TransitionDurationTicksPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_nTransitionDurationTicks");
+	public virtual void TransitionStartSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_flTransitionStartSpeed");
+	public virtual void HConveyorModelsPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_hConveyorModels");
 }

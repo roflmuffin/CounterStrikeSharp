@@ -21,7 +21,7 @@ public partial class CBodyComponentSkeletonInstance : CBodyComponent
 
 	// m_skeletonInstance
 	[SchemaMember("CBodyComponentSkeletonInstance", "m_skeletonInstance")]
-	public CSkeletonInstance SkeletonInstance => Schema.GetDeclaredClass<CSkeletonInstance>(this.Handle, "CBodyComponentSkeletonInstance", "m_skeletonInstance");
+	public virtual CSkeletonInstance SkeletonInstance => Schema.GetDeclaredClass<CSkeletonInstance>(this.Handle, "CBodyComponentSkeletonInstance", "m_skeletonInstance");
 
-	public void SkeletonInstancePropertyChanged() => Utilities.SetStateChanged(this, "CBodyComponentSkeletonInstance", "m_skeletonInstance");
+	public virtual void SkeletonInstancePropertyChanged() => Utilities.SetStateChanged(this, "CBodyComponentSkeletonInstance", "m_skeletonInstance");
 }

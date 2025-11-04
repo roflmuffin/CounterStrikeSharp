@@ -21,11 +21,11 @@ public partial class CLogicGameEventListener : CLogicalEntity
 
 	// m_OnEventFired
 	[SchemaMember("CLogicGameEventListener", "m_OnEventFired")]
-	public CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicGameEventListener", "m_OnEventFired");
+	public virtual CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicGameEventListener", "m_OnEventFired");
 
 	// m_iszGameEventName
 	[SchemaMember("CLogicGameEventListener", "m_iszGameEventName")]
-	public string GameEventName
+	public virtual string GameEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventName"); }
 		set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventName", value); }
@@ -33,7 +33,7 @@ public partial class CLogicGameEventListener : CLogicalEntity
 
 	// m_iszGameEventItem
 	[SchemaMember("CLogicGameEventListener", "m_iszGameEventItem")]
-	public string GameEventItem
+	public virtual string GameEventItem
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem"); }
 		set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem", value); }
@@ -41,7 +41,7 @@ public partial class CLogicGameEventListener : CLogicalEntity
 
 	// m_bEnabled
 	[SchemaMember("CLogicGameEventListener", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled", value); }
@@ -49,11 +49,11 @@ public partial class CLogicGameEventListener : CLogicalEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CLogicGameEventListener", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled", value); }
 	}
 
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CLogicGameEventListener", "m_bEnabled");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CLogicGameEventListener", "m_bEnabled");
 }

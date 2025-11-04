@@ -21,7 +21,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_nSmokeEffectTickBegin
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin")]
-	public Int32 SmokeEffectTickBegin
+	public virtual Int32 SmokeEffectTickBegin
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin", value); }
@@ -29,7 +29,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_bDidSmokeEffect
 	[SchemaMember("CSmokeGrenadeProjectile", "m_bDidSmokeEffect")]
-	public bool DidSmokeEffect
+	public virtual bool DidSmokeEffect
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect", value); }
@@ -37,7 +37,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_nRandomSeed
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nRandomSeed")]
-	public Int32 RandomSeed
+	public virtual Int32 RandomSeed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nRandomSeed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nRandomSeed", value); }
@@ -45,7 +45,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_vSmokeColor
 	[SchemaMember("CSmokeGrenadeProjectile", "m_vSmokeColor")]
-	public Vector3 SmokeColor
+	public virtual Vector3 SmokeColor
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeColor"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeColor", value); }
@@ -53,7 +53,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_vSmokeDetonationPos
 	[SchemaMember("CSmokeGrenadeProjectile", "m_vSmokeDetonationPos")]
-	public Vector3 SmokeDetonationPos
+	public virtual Vector3 SmokeDetonationPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos", value); }
@@ -61,11 +61,11 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_VoxelFrameData
 	[SchemaMember("CSmokeGrenadeProjectile", "m_VoxelFrameData")]
-	public NetworkedVector<byte> VoxelFrameData => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CSmokeGrenadeProjectile", "m_VoxelFrameData");
+	public virtual NetworkedVector<byte> VoxelFrameData => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CSmokeGrenadeProjectile", "m_VoxelFrameData");
 
 	// m_nVoxelFrameDataSize
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize")]
-	public Int32 VoxelFrameDataSize
+	public virtual Int32 VoxelFrameDataSize
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize", value); }
@@ -73,7 +73,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_nVoxelUpdate
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nVoxelUpdate")]
-	public Int32 VoxelUpdate
+	public virtual Int32 VoxelUpdate
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelUpdate"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelUpdate", value); }
@@ -81,7 +81,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_flLastBounce
 	[SchemaMember("CSmokeGrenadeProjectile", "m_flLastBounce")]
-	public float LastBounce
+	public virtual float LastBounce
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce", value); }
@@ -89,7 +89,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_fllastSimulationTime
 	[SchemaMember("CSmokeGrenadeProjectile", "m_fllastSimulationTime")]
-	public float FllastSimulationTime
+	public virtual float FllastSimulationTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime", value); }
@@ -97,7 +97,7 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_bExplodeFromInferno
 	[SchemaMember("CSmokeGrenadeProjectile", "m_bExplodeFromInferno")]
-	public bool ExplodeFromInferno
+	public virtual bool ExplodeFromInferno
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bExplodeFromInferno"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bExplodeFromInferno", value); }
@@ -105,18 +105,18 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_bDidGroundScorch
 	[SchemaMember("CSmokeGrenadeProjectile", "m_bDidGroundScorch")]
-	public bool DidGroundScorch
+	public virtual bool DidGroundScorch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidGroundScorch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidGroundScorch", value); }
 	}
 
-	public void SmokeEffectTickBeginPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin");
-	public void DidSmokeEffectPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect");
-	public void RandomSeedPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nRandomSeed");
-	public void SmokeColorPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_vSmokeColor");
-	public void SmokeDetonationPosPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos");
-	public void VoxelFrameDataPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_VoxelFrameData");
-	public void VoxelFrameDataSizePropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize");
-	public void VoxelUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nVoxelUpdate");
+	public virtual void SmokeEffectTickBeginPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin");
+	public virtual void DidSmokeEffectPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect");
+	public virtual void RandomSeedPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nRandomSeed");
+	public virtual void SmokeColorPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_vSmokeColor");
+	public virtual void SmokeDetonationPosPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos");
+	public virtual void VoxelFrameDataPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_VoxelFrameData");
+	public virtual void VoxelFrameDataSizePropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize");
+	public virtual void VoxelUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nVoxelUpdate");
 }

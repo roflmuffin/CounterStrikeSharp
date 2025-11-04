@@ -21,7 +21,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_MaxWeight
 	[SchemaMember("CColorCorrectionVolume", "m_MaxWeight")]
-	public float MaxWeight
+	public virtual float MaxWeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_MaxWeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_MaxWeight", value); }
@@ -29,7 +29,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_FadeDuration
 	[SchemaMember("CColorCorrectionVolume", "m_FadeDuration")]
-	public float FadeDuration
+	public virtual float FadeDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_FadeDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_FadeDuration", value); }
@@ -37,7 +37,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_Weight
 	[SchemaMember("CColorCorrectionVolume", "m_Weight")]
-	public float Weight
+	public virtual float Weight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_Weight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_Weight", value); }
@@ -45,7 +45,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_lookupFilename
 	[SchemaMember("CColorCorrectionVolume", "m_lookupFilename")]
-	public string LookupFilename
+	public virtual string LookupFilename
 	{
 		get { return Schema.GetString(this.Handle, "CColorCorrectionVolume", "m_lookupFilename"); }
 		set { Schema.SetStringBytes(this.Handle, "CColorCorrectionVolume", "m_lookupFilename", value, 512); }
@@ -53,7 +53,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_LastEnterWeight
 	[SchemaMember("CColorCorrectionVolume", "m_LastEnterWeight")]
-	public float LastEnterWeight
+	public virtual float LastEnterWeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterWeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterWeight", value); }
@@ -61,7 +61,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_LastEnterTime
 	[SchemaMember("CColorCorrectionVolume", "m_LastEnterTime")]
-	public float LastEnterTime
+	public virtual float LastEnterTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterTime", value); }
@@ -69,7 +69,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_LastExitWeight
 	[SchemaMember("CColorCorrectionVolume", "m_LastExitWeight")]
-	public float LastExitWeight
+	public virtual float LastExitWeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitWeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitWeight", value); }
@@ -77,14 +77,14 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_LastExitTime
 	[SchemaMember("CColorCorrectionVolume", "m_LastExitTime")]
-	public float LastExitTime
+	public virtual float LastExitTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitTime", value); }
 	}
 
-	public void MaxWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_MaxWeight");
-	public void FadeDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_FadeDuration");
-	public void WeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_Weight");
-	public void LookupFilenamePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_lookupFilename");
+	public virtual void MaxWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_MaxWeight");
+	public virtual void FadeDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_FadeDuration");
+	public virtual void WeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_Weight");
+	public virtual void LookupFilenamePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_lookupFilename");
 }

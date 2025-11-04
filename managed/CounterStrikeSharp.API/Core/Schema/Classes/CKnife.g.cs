@@ -21,11 +21,11 @@ public partial class CKnife : CCSWeaponBase
 
 	// m_bFirstAttack
 	[SchemaMember("CKnife", "m_bFirstAttack")]
-	public bool FirstAttack
+	public virtual bool FirstAttack
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CKnife", "m_bFirstAttack"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CKnife", "m_bFirstAttack", value); }
 	}
 
-	public void FirstAttackPropertyChanged() => Utilities.SetStateChanged(this, "CKnife", "m_bFirstAttack");
+	public virtual void FirstAttackPropertyChanged() => Utilities.SetStateChanged(this, "CKnife", "m_bFirstAttack");
 }

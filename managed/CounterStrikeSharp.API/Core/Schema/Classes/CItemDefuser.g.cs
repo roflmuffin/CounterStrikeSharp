@@ -21,11 +21,11 @@ public partial class CItemDefuser : CItem
 
 	// m_entitySpottedState
 	[SchemaMember("CItemDefuser", "m_entitySpottedState")]
-	public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CItemDefuser", "m_entitySpottedState");
+	public virtual EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CItemDefuser", "m_entitySpottedState");
 
 	// m_nSpotRules
 	[SchemaMember("CItemDefuser", "m_nSpotRules")]
-	public Int32 SpotRules
+	public virtual Int32 SpotRules
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules", value); }

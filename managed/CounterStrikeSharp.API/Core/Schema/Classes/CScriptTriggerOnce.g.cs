@@ -21,7 +21,7 @@ public partial class CScriptTriggerOnce : CTriggerOnce
 
 	// m_vExtent
 	[SchemaMember("CScriptTriggerOnce", "m_vExtent")]
-	public Vector3 Extent
+	public virtual Vector3 Extent
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CScriptTriggerOnce", "m_vExtent"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CScriptTriggerOnce", "m_vExtent", value); }

@@ -21,11 +21,11 @@ public partial class thinkfunc_t : NativeObject
 
 	// m_nContext
 	[SchemaMember("thinkfunc_t", "m_nContext")]
-	public CUtlStringToken Context => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "thinkfunc_t", "m_nContext");
+	public virtual CUtlStringToken Context => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "thinkfunc_t", "m_nContext");
 
 	// m_nNextThinkTick
 	[SchemaMember("thinkfunc_t", "m_nNextThinkTick")]
-	public Int32 NextThinkTick
+	public virtual Int32 NextThinkTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nNextThinkTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nNextThinkTick", value); }
@@ -33,7 +33,7 @@ public partial class thinkfunc_t : NativeObject
 
 	// m_nLastThinkTick
 	[SchemaMember("thinkfunc_t", "m_nLastThinkTick")]
-	public Int32 LastThinkTick
+	public virtual Int32 LastThinkTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nLastThinkTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nLastThinkTick", value); }

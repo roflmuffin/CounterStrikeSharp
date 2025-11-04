@@ -21,7 +21,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_flDmgModBullet
 	[SchemaMember("CPropDataComponent", "m_flDmgModBullet")]
-	public float DmgModBullet
+	public virtual float DmgModBullet
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModBullet"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModBullet", value); }
@@ -29,7 +29,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_flDmgModClub
 	[SchemaMember("CPropDataComponent", "m_flDmgModClub")]
-	public float DmgModClub
+	public virtual float DmgModClub
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModClub"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModClub", value); }
@@ -37,7 +37,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_flDmgModExplosive
 	[SchemaMember("CPropDataComponent", "m_flDmgModExplosive")]
-	public float DmgModExplosive
+	public virtual float DmgModExplosive
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModExplosive"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModExplosive", value); }
@@ -45,7 +45,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_flDmgModFire
 	[SchemaMember("CPropDataComponent", "m_flDmgModFire")]
-	public float DmgModFire
+	public virtual float DmgModFire
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModFire"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPropDataComponent", "m_flDmgModFire", value); }
@@ -53,7 +53,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_iszPhysicsDamageTableName
 	[SchemaMember("CPropDataComponent", "m_iszPhysicsDamageTableName")]
-	public string PhysicsDamageTableName
+	public virtual string PhysicsDamageTableName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPropDataComponent", "m_iszPhysicsDamageTableName"); }
 		set { Schema.SetString(this.Handle, "CPropDataComponent", "m_iszPhysicsDamageTableName", value); }
@@ -61,7 +61,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_iszBasePropData
 	[SchemaMember("CPropDataComponent", "m_iszBasePropData")]
-	public string BasePropData
+	public virtual string BasePropData
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPropDataComponent", "m_iszBasePropData"); }
 		set { Schema.SetString(this.Handle, "CPropDataComponent", "m_iszBasePropData", value); }
@@ -69,7 +69,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_nInteractions
 	[SchemaMember("CPropDataComponent", "m_nInteractions")]
-	public Int32 Interactions
+	public virtual Int32 Interactions
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPropDataComponent", "m_nInteractions"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPropDataComponent", "m_nInteractions", value); }
@@ -77,7 +77,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_bSpawnMotionDisabled
 	[SchemaMember("CPropDataComponent", "m_bSpawnMotionDisabled")]
-	public bool SpawnMotionDisabled
+	public virtual bool SpawnMotionDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPropDataComponent", "m_bSpawnMotionDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPropDataComponent", "m_bSpawnMotionDisabled", value); }
@@ -85,7 +85,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_nDisableTakePhysicsDamageSpawnFlag
 	[SchemaMember("CPropDataComponent", "m_nDisableTakePhysicsDamageSpawnFlag")]
-	public Int32 DisableTakePhysicsDamageSpawnFlag
+	public virtual Int32 DisableTakePhysicsDamageSpawnFlag
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPropDataComponent", "m_nDisableTakePhysicsDamageSpawnFlag"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPropDataComponent", "m_nDisableTakePhysicsDamageSpawnFlag", value); }
@@ -93,7 +93,7 @@ public partial class CPropDataComponent : CEntityComponent
 
 	// m_nMotionDisabledSpawnFlag
 	[SchemaMember("CPropDataComponent", "m_nMotionDisabledSpawnFlag")]
-	public Int32 MotionDisabledSpawnFlag
+	public virtual Int32 MotionDisabledSpawnFlag
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPropDataComponent", "m_nMotionDisabledSpawnFlag"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPropDataComponent", "m_nMotionDisabledSpawnFlag", value); }

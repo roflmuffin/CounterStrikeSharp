@@ -21,11 +21,11 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_hGradientFogTexture
 	[SchemaMember("CGradientFog", "m_hGradientFogTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> GradientFogTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CGradientFog", "m_hGradientFogTexture");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> GradientFogTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CGradientFog", "m_hGradientFogTexture");
 
 	// m_flFogStartDistance
 	[SchemaMember("CGradientFog", "m_flFogStartDistance")]
-	public float FogStartDistance
+	public virtual float FogStartDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartDistance", value); }
@@ -33,7 +33,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogEndDistance
 	[SchemaMember("CGradientFog", "m_flFogEndDistance")]
-	public float FogEndDistance
+	public virtual float FogEndDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndDistance", value); }
@@ -41,7 +41,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_bHeightFogEnabled
 	[SchemaMember("CGradientFog", "m_bHeightFogEnabled")]
-	public bool HeightFogEnabled
+	public virtual bool HeightFogEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bHeightFogEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bHeightFogEnabled", value); }
@@ -49,7 +49,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogStartHeight
 	[SchemaMember("CGradientFog", "m_flFogStartHeight")]
-	public float FogStartHeight
+	public virtual float FogStartHeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartHeight", value); }
@@ -57,7 +57,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogEndHeight
 	[SchemaMember("CGradientFog", "m_flFogEndHeight")]
-	public float FogEndHeight
+	public virtual float FogEndHeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndHeight", value); }
@@ -65,7 +65,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFarZ
 	[SchemaMember("CGradientFog", "m_flFarZ")]
-	public float FarZ
+	public virtual float FarZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFarZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFarZ", value); }
@@ -73,7 +73,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogMaxOpacity
 	[SchemaMember("CGradientFog", "m_flFogMaxOpacity")]
-	public float FogMaxOpacity
+	public virtual float FogMaxOpacity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogMaxOpacity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogMaxOpacity", value); }
@@ -81,7 +81,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogFalloffExponent
 	[SchemaMember("CGradientFog", "m_flFogFalloffExponent")]
-	public float FogFalloffExponent
+	public virtual float FogFalloffExponent
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogFalloffExponent"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogFalloffExponent", value); }
@@ -89,7 +89,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogVerticalExponent
 	[SchemaMember("CGradientFog", "m_flFogVerticalExponent")]
-	public float FogVerticalExponent
+	public virtual float FogVerticalExponent
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogVerticalExponent"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogVerticalExponent", value); }
@@ -97,7 +97,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_fogColor
 	[SchemaMember("CGradientFog", "m_fogColor")]
-	public Color FogColor
+	public virtual Color FogColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CGradientFog", "m_fogColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CGradientFog", "m_fogColor", value); }
@@ -105,7 +105,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogStrength
 	[SchemaMember("CGradientFog", "m_flFogStrength")]
-	public float FogStrength
+	public virtual float FogStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogStrength", value); }
@@ -113,7 +113,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFadeTime
 	[SchemaMember("CGradientFog", "m_flFadeTime")]
-	public float FadeTime
+	public virtual float FadeTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFadeTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFadeTime", value); }
@@ -121,7 +121,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CGradientFog", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bStartDisabled", value); }
@@ -129,7 +129,7 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_bIsEnabled
 	[SchemaMember("CGradientFog", "m_bIsEnabled")]
-	public bool IsEnabled
+	public virtual bool IsEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bIsEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bIsEnabled", value); }
@@ -137,25 +137,25 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_bGradientFogNeedsTextures
 	[SchemaMember("CGradientFog", "m_bGradientFogNeedsTextures")]
-	public bool GradientFogNeedsTextures
+	public virtual bool GradientFogNeedsTextures
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bGradientFogNeedsTextures"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bGradientFogNeedsTextures", value); }
 	}
 
-	public void GradientFogTexturePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_hGradientFogTexture");
-	public void FogStartDistancePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStartDistance");
-	public void FogEndDistancePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogEndDistance");
-	public void HeightFogEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bHeightFogEnabled");
-	public void FogStartHeightPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStartHeight");
-	public void FogEndHeightPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogEndHeight");
-	public void FarZPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFarZ");
-	public void FogMaxOpacityPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogMaxOpacity");
-	public void FogFalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogFalloffExponent");
-	public void FogVerticalExponentPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogVerticalExponent");
-	public void FogColorPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_fogColor");
-	public void FogStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStrength");
-	public void FadeTimePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFadeTime");
-	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bStartDisabled");
-	public void IsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bIsEnabled");
+	public virtual void GradientFogTexturePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_hGradientFogTexture");
+	public virtual void FogStartDistancePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStartDistance");
+	public virtual void FogEndDistancePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogEndDistance");
+	public virtual void HeightFogEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bHeightFogEnabled");
+	public virtual void FogStartHeightPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStartHeight");
+	public virtual void FogEndHeightPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogEndHeight");
+	public virtual void FarZPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFarZ");
+	public virtual void FogMaxOpacityPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogMaxOpacity");
+	public virtual void FogFalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogFalloffExponent");
+	public virtual void FogVerticalExponentPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogVerticalExponent");
+	public virtual void FogColorPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_fogColor");
+	public virtual void FogStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStrength");
+	public virtual void FadeTimePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFadeTime");
+	public virtual void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bStartDisabled");
+	public virtual void IsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bIsEnabled");
 }

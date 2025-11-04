@@ -21,7 +21,7 @@ public partial class CBaseProp : CBaseAnimGraph
 
 	// m_bModelOverrodeBlockLOS
 	[SchemaMember("CBaseProp", "m_bModelOverrodeBlockLOS")]
-	public bool ModelOverrodeBlockLOS
+	public virtual bool ModelOverrodeBlockLOS
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseProp", "m_bModelOverrodeBlockLOS"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseProp", "m_bModelOverrodeBlockLOS", value); }
@@ -29,7 +29,7 @@ public partial class CBaseProp : CBaseAnimGraph
 
 	// m_iShapeType
 	[SchemaMember("CBaseProp", "m_iShapeType")]
-	public Int32 ShapeType
+	public virtual Int32 ShapeType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseProp", "m_iShapeType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseProp", "m_iShapeType", value); }
@@ -37,7 +37,7 @@ public partial class CBaseProp : CBaseAnimGraph
 
 	// m_bConformToCollisionBounds
 	[SchemaMember("CBaseProp", "m_bConformToCollisionBounds")]
-	public bool ConformToCollisionBounds
+	public virtual bool ConformToCollisionBounds
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseProp", "m_bConformToCollisionBounds"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseProp", "m_bConformToCollisionBounds", value); }
@@ -45,6 +45,6 @@ public partial class CBaseProp : CBaseAnimGraph
 
 	// m_mPreferredCatchTransform
 	[SchemaMember("CBaseProp", "m_mPreferredCatchTransform")]
-	public CTransform MPreferredCatchTransform => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseProp", "m_mPreferredCatchTransform");
+	public virtual CTransform MPreferredCatchTransform => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseProp", "m_mPreferredCatchTransform");
 
 }

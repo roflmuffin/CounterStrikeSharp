@@ -21,15 +21,15 @@ public partial class CPlayerPing : CBaseEntity
 
 	// m_hPlayer
 	[SchemaMember("CPlayerPing", "m_hPlayer")]
-	public CHandle<CCSPlayerPawn> Player => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CPlayerPing", "m_hPlayer");
+	public virtual CHandle<CCSPlayerPawn> Player => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CPlayerPing", "m_hPlayer");
 
 	// m_hPingedEntity
 	[SchemaMember("CPlayerPing", "m_hPingedEntity")]
-	public CHandle<CBaseEntity> PingedEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayerPing", "m_hPingedEntity");
+	public virtual CHandle<CBaseEntity> PingedEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayerPing", "m_hPingedEntity");
 
 	// m_iType
 	[SchemaMember("CPlayerPing", "m_iType")]
-	public Int32 Type
+	public virtual Int32 Type
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerPing", "m_iType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerPing", "m_iType", value); }
@@ -37,7 +37,7 @@ public partial class CPlayerPing : CBaseEntity
 
 	// m_bUrgent
 	[SchemaMember("CPlayerPing", "m_bUrgent")]
-	public bool Urgent
+	public virtual bool Urgent
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayerPing", "m_bUrgent"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayerPing", "m_bUrgent", value); }
@@ -45,15 +45,15 @@ public partial class CPlayerPing : CBaseEntity
 
 	// m_szPlaceName
 	[SchemaMember("CPlayerPing", "m_szPlaceName")]
-	public string PlaceName
+	public virtual string PlaceName
 	{
 		get { return Schema.GetString(this.Handle, "CPlayerPing", "m_szPlaceName"); }
 		set { Schema.SetStringBytes(this.Handle, "CPlayerPing", "m_szPlaceName", value, 18); }
 	}
 
-	public void PlayerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_hPlayer");
-	public void PingedEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_hPingedEntity");
-	public void TypePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_iType");
-	public void UrgentPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_bUrgent");
-	public void PlaceNamePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_szPlaceName");
+	public virtual void PlayerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_hPlayer");
+	public virtual void PingedEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_hPingedEntity");
+	public virtual void TypePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_iType");
+	public virtual void UrgentPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_bUrgent");
+	public virtual void PlaceNamePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_szPlaceName");
 }

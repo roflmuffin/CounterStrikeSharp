@@ -21,7 +21,7 @@ public partial class CSoundEventParameter : CBaseEntity
 
 	// m_iszParamName
 	[SchemaMember("CSoundEventParameter", "m_iszParamName")]
-	public string ParamName
+	public virtual string ParamName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventParameter", "m_iszParamName"); }
 		set { Schema.SetString(this.Handle, "CSoundEventParameter", "m_iszParamName", value); }
@@ -29,7 +29,7 @@ public partial class CSoundEventParameter : CBaseEntity
 
 	// m_flFloatValue
 	[SchemaMember("CSoundEventParameter", "m_flFloatValue")]
-	public float FloatValue
+	public virtual float FloatValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventParameter", "m_flFloatValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundEventParameter", "m_flFloatValue", value); }

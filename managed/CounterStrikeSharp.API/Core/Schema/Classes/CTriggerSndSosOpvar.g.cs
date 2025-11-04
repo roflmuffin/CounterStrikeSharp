@@ -21,11 +21,11 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_hTouchingPlayers
 	[SchemaMember("CTriggerSndSosOpvar", "m_hTouchingPlayers")]
-	public NetworkedVector<CHandle<CBaseEntity>> TouchingPlayers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CTriggerSndSosOpvar", "m_hTouchingPlayers");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> TouchingPlayers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CTriggerSndSosOpvar", "m_hTouchingPlayers");
 
 	// m_flPosition
 	[SchemaMember("CTriggerSndSosOpvar", "m_flPosition")]
-	public Vector3 Position
+	public virtual Vector3 Position
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_flPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_flPosition", value); }
@@ -33,7 +33,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_flCenterSize
 	[SchemaMember("CTriggerSndSosOpvar", "m_flCenterSize")]
-	public float CenterSize
+	public virtual float CenterSize
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flCenterSize"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flCenterSize", value); }
@@ -41,7 +41,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_flMinVal
 	[SchemaMember("CTriggerSndSosOpvar", "m_flMinVal")]
-	public float MinVal
+	public virtual float MinVal
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMinVal"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMinVal", value); }
@@ -49,7 +49,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_flMaxVal
 	[SchemaMember("CTriggerSndSosOpvar", "m_flMaxVal")]
-	public float MaxVal
+	public virtual float MaxVal
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMaxVal"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMaxVal", value); }
@@ -57,7 +57,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_opvarName
 	[SchemaMember("CTriggerSndSosOpvar", "m_opvarName")]
-	public string OpvarName
+	public virtual string OpvarName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_opvarName"); }
 		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarName", value); }
@@ -65,7 +65,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_stackName
 	[SchemaMember("CTriggerSndSosOpvar", "m_stackName")]
-	public string StackName
+	public virtual string StackName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_stackName"); }
 		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_stackName", value); }
@@ -73,7 +73,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_operatorName
 	[SchemaMember("CTriggerSndSosOpvar", "m_operatorName")]
-	public string OperatorName
+	public virtual string OperatorName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_operatorName"); }
 		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorName", value); }
@@ -81,7 +81,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_bVolIs2D
 	[SchemaMember("CTriggerSndSosOpvar", "m_bVolIs2D")]
-	public bool VolIs2D
+	public virtual bool VolIs2D
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerSndSosOpvar", "m_bVolIs2D"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerSndSosOpvar", "m_bVolIs2D", value); }
@@ -89,7 +89,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_opvarNameChar
 	[SchemaMember("CTriggerSndSosOpvar", "m_opvarNameChar")]
-	public string OpvarNameChar
+	public virtual string OpvarNameChar
 	{
 		get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarNameChar"); }
 		set { Schema.SetStringBytes(this.Handle, "CTriggerSndSosOpvar", "m_opvarNameChar", value, 256); }
@@ -97,7 +97,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_stackNameChar
 	[SchemaMember("CTriggerSndSosOpvar", "m_stackNameChar")]
-	public string StackNameChar
+	public virtual string StackNameChar
 	{
 		get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_stackNameChar"); }
 		set { Schema.SetStringBytes(this.Handle, "CTriggerSndSosOpvar", "m_stackNameChar", value, 256); }
@@ -105,7 +105,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_operatorNameChar
 	[SchemaMember("CTriggerSndSosOpvar", "m_operatorNameChar")]
-	public string OperatorNameChar
+	public virtual string OperatorNameChar
 	{
 		get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorNameChar"); }
 		set { Schema.SetStringBytes(this.Handle, "CTriggerSndSosOpvar", "m_operatorNameChar", value, 256); }
@@ -113,7 +113,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_VecNormPos
 	[SchemaMember("CTriggerSndSosOpvar", "m_VecNormPos")]
-	public Vector3 VecNormPos
+	public virtual Vector3 VecNormPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_VecNormPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_VecNormPos", value); }
@@ -121,7 +121,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_flNormCenterSize
 	[SchemaMember("CTriggerSndSosOpvar", "m_flNormCenterSize")]
-	public float NormCenterSize
+	public virtual float NormCenterSize
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flNormCenterSize"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flNormCenterSize", value); }

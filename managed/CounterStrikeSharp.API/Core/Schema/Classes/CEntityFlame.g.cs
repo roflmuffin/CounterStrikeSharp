@@ -21,11 +21,11 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_hEntAttached
 	[SchemaMember("CEntityFlame", "m_hEntAttached")]
-	public CHandle<CBaseEntity> EntAttached => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hEntAttached");
+	public virtual CHandle<CBaseEntity> EntAttached => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hEntAttached");
 
 	// m_bCheapEffect
 	[SchemaMember("CEntityFlame", "m_bCheapEffect")]
-	public bool CheapEffect
+	public virtual bool CheapEffect
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEntityFlame", "m_bCheapEffect"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEntityFlame", "m_bCheapEffect", value); }
@@ -33,7 +33,7 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_flSize
 	[SchemaMember("CEntityFlame", "m_flSize")]
-	public float Size
+	public virtual float Size
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flSize"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flSize", value); }
@@ -41,7 +41,7 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_bUseHitboxes
 	[SchemaMember("CEntityFlame", "m_bUseHitboxes")]
-	public bool UseHitboxes
+	public virtual bool UseHitboxes
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEntityFlame", "m_bUseHitboxes"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEntityFlame", "m_bUseHitboxes", value); }
@@ -49,7 +49,7 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_iNumHitboxFires
 	[SchemaMember("CEntityFlame", "m_iNumHitboxFires")]
-	public Int32 NumHitboxFires
+	public virtual Int32 NumHitboxFires
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEntityFlame", "m_iNumHitboxFires"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEntityFlame", "m_iNumHitboxFires", value); }
@@ -57,7 +57,7 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_flHitboxFireScale
 	[SchemaMember("CEntityFlame", "m_flHitboxFireScale")]
-	public float HitboxFireScale
+	public virtual float HitboxFireScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flHitboxFireScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flHitboxFireScale", value); }
@@ -65,7 +65,7 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_flLifetime
 	[SchemaMember("CEntityFlame", "m_flLifetime")]
-	public float Lifetime
+	public virtual float Lifetime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flLifetime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flLifetime", value); }
@@ -73,11 +73,11 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_hAttacker
 	[SchemaMember("CEntityFlame", "m_hAttacker")]
-	public CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hAttacker");
+	public virtual CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hAttacker");
 
 	// m_flDirectDamagePerSecond
 	[SchemaMember("CEntityFlame", "m_flDirectDamagePerSecond")]
-	public float DirectDamagePerSecond
+	public virtual float DirectDamagePerSecond
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flDirectDamagePerSecond"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flDirectDamagePerSecond", value); }
@@ -85,12 +85,12 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_iCustomDamageType
 	[SchemaMember("CEntityFlame", "m_iCustomDamageType")]
-	public Int32 CustomDamageType
+	public virtual Int32 CustomDamageType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEntityFlame", "m_iCustomDamageType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEntityFlame", "m_iCustomDamageType", value); }
 	}
 
-	public void EntAttachedPropertyChanged() => Utilities.SetStateChanged(this, "CEntityFlame", "m_hEntAttached");
-	public void CheapEffectPropertyChanged() => Utilities.SetStateChanged(this, "CEntityFlame", "m_bCheapEffect");
+	public virtual void EntAttachedPropertyChanged() => Utilities.SetStateChanged(this, "CEntityFlame", "m_hEntAttached");
+	public virtual void CheapEffectPropertyChanged() => Utilities.SetStateChanged(this, "CEntityFlame", "m_bCheapEffect");
 }

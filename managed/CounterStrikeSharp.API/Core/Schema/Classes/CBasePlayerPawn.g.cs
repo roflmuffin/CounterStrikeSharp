@@ -21,47 +21,47 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_pWeaponServices
 	[SchemaMember("CBasePlayerPawn", "m_pWeaponServices")]
-	public CPlayer_WeaponServices? WeaponServices => Schema.GetPointer<CPlayer_WeaponServices>(this.Handle, "CBasePlayerPawn", "m_pWeaponServices");
+	public virtual CPlayer_WeaponServices? WeaponServices => Schema.GetPointer<CPlayer_WeaponServices>(this.Handle, "CBasePlayerPawn", "m_pWeaponServices");
 
 	// m_pItemServices
 	[SchemaMember("CBasePlayerPawn", "m_pItemServices")]
-	public CPlayer_ItemServices? ItemServices => Schema.GetPointer<CPlayer_ItemServices>(this.Handle, "CBasePlayerPawn", "m_pItemServices");
+	public virtual CPlayer_ItemServices? ItemServices => Schema.GetPointer<CPlayer_ItemServices>(this.Handle, "CBasePlayerPawn", "m_pItemServices");
 
 	// m_pAutoaimServices
 	[SchemaMember("CBasePlayerPawn", "m_pAutoaimServices")]
-	public CPlayer_AutoaimServices? AutoaimServices => Schema.GetPointer<CPlayer_AutoaimServices>(this.Handle, "CBasePlayerPawn", "m_pAutoaimServices");
+	public virtual CPlayer_AutoaimServices? AutoaimServices => Schema.GetPointer<CPlayer_AutoaimServices>(this.Handle, "CBasePlayerPawn", "m_pAutoaimServices");
 
 	// m_pObserverServices
 	[SchemaMember("CBasePlayerPawn", "m_pObserverServices")]
-	public CPlayer_ObserverServices? ObserverServices => Schema.GetPointer<CPlayer_ObserverServices>(this.Handle, "CBasePlayerPawn", "m_pObserverServices");
+	public virtual CPlayer_ObserverServices? ObserverServices => Schema.GetPointer<CPlayer_ObserverServices>(this.Handle, "CBasePlayerPawn", "m_pObserverServices");
 
 	// m_pWaterServices
 	[SchemaMember("CBasePlayerPawn", "m_pWaterServices")]
-	public CPlayer_WaterServices? WaterServices => Schema.GetPointer<CPlayer_WaterServices>(this.Handle, "CBasePlayerPawn", "m_pWaterServices");
+	public virtual CPlayer_WaterServices? WaterServices => Schema.GetPointer<CPlayer_WaterServices>(this.Handle, "CBasePlayerPawn", "m_pWaterServices");
 
 	// m_pUseServices
 	[SchemaMember("CBasePlayerPawn", "m_pUseServices")]
-	public CPlayer_UseServices? UseServices => Schema.GetPointer<CPlayer_UseServices>(this.Handle, "CBasePlayerPawn", "m_pUseServices");
+	public virtual CPlayer_UseServices? UseServices => Schema.GetPointer<CPlayer_UseServices>(this.Handle, "CBasePlayerPawn", "m_pUseServices");
 
 	// m_pFlashlightServices
 	[SchemaMember("CBasePlayerPawn", "m_pFlashlightServices")]
-	public CPlayer_FlashlightServices? FlashlightServices => Schema.GetPointer<CPlayer_FlashlightServices>(this.Handle, "CBasePlayerPawn", "m_pFlashlightServices");
+	public virtual CPlayer_FlashlightServices? FlashlightServices => Schema.GetPointer<CPlayer_FlashlightServices>(this.Handle, "CBasePlayerPawn", "m_pFlashlightServices");
 
 	// m_pCameraServices
 	[SchemaMember("CBasePlayerPawn", "m_pCameraServices")]
-	public CPlayer_CameraServices? CameraServices => Schema.GetPointer<CPlayer_CameraServices>(this.Handle, "CBasePlayerPawn", "m_pCameraServices");
+	public virtual CPlayer_CameraServices? CameraServices => Schema.GetPointer<CPlayer_CameraServices>(this.Handle, "CBasePlayerPawn", "m_pCameraServices");
 
 	// m_pMovementServices
 	[SchemaMember("CBasePlayerPawn", "m_pMovementServices")]
-	public CPlayer_MovementServices? MovementServices => Schema.GetPointer<CPlayer_MovementServices>(this.Handle, "CBasePlayerPawn", "m_pMovementServices");
+	public virtual CPlayer_MovementServices? MovementServices => Schema.GetPointer<CPlayer_MovementServices>(this.Handle, "CBasePlayerPawn", "m_pMovementServices");
 
 	// m_ServerViewAngleChanges
 	[SchemaMember("CBasePlayerPawn", "m_ServerViewAngleChanges")]
-	public NetworkedVector<ViewAngleServerChange_t> ServerViewAngleChanges => Schema.GetDeclaredClass<NetworkedVector<ViewAngleServerChange_t>>(this.Handle, "CBasePlayerPawn", "m_ServerViewAngleChanges");
+	public virtual NetworkedVector<ViewAngleServerChange_t> ServerViewAngleChanges => Schema.GetDeclaredClass<NetworkedVector<ViewAngleServerChange_t>>(this.Handle, "CBasePlayerPawn", "m_ServerViewAngleChanges");
 
 	// v_angle
 	[SchemaMember("CBasePlayerPawn", "v_angle")]
-	public QAngle V_angle
+	public virtual QAngle V_angle
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_angle"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_angle", value); }
@@ -69,7 +69,7 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// v_anglePrevious
 	[SchemaMember("CBasePlayerPawn", "v_anglePrevious")]
-	public QAngle V_anglePrevious
+	public virtual QAngle V_anglePrevious
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_anglePrevious"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_anglePrevious", value); }
@@ -77,7 +77,7 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_iHideHUD
 	[SchemaMember("CBasePlayerPawn", "m_iHideHUD")]
-	public UInt32 HideHUD
+	public virtual UInt32 HideHUD
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBasePlayerPawn", "m_iHideHUD"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBasePlayerPawn", "m_iHideHUD", value); }
@@ -85,11 +85,11 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_skybox3d
 	[SchemaMember("CBasePlayerPawn", "m_skybox3d")]
-	public sky3dparams_t Skybox3d => Schema.GetDeclaredClass<sky3dparams_t>(this.Handle, "CBasePlayerPawn", "m_skybox3d");
+	public virtual sky3dparams_t Skybox3d => Schema.GetDeclaredClass<sky3dparams_t>(this.Handle, "CBasePlayerPawn", "m_skybox3d");
 
 	// m_fTimeLastHurt
 	[SchemaMember("CBasePlayerPawn", "m_fTimeLastHurt")]
-	public float TimeLastHurt
+	public virtual float TimeLastHurt
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fTimeLastHurt"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fTimeLastHurt", value); }
@@ -97,7 +97,7 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_flDeathTime
 	[SchemaMember("CBasePlayerPawn", "m_flDeathTime")]
-	public float DeathTime
+	public virtual float DeathTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_flDeathTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_flDeathTime", value); }
@@ -105,7 +105,7 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_fNextSuicideTime
 	[SchemaMember("CBasePlayerPawn", "m_fNextSuicideTime")]
-	public float NextSuicideTime
+	public virtual float NextSuicideTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fNextSuicideTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fNextSuicideTime", value); }
@@ -113,7 +113,7 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_fInitHUD
 	[SchemaMember("CBasePlayerPawn", "m_fInitHUD")]
-	public bool InitHUD
+	public virtual bool InitHUD
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerPawn", "m_fInitHUD"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerPawn", "m_fInitHUD", value); }
@@ -121,19 +121,19 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_pExpresser
 	[SchemaMember("CBasePlayerPawn", "m_pExpresser")]
-	public CAI_Expresser? Expresser => Schema.GetPointer<CAI_Expresser>(this.Handle, "CBasePlayerPawn", "m_pExpresser");
+	public virtual CAI_Expresser? Expresser => Schema.GetPointer<CAI_Expresser>(this.Handle, "CBasePlayerPawn", "m_pExpresser");
 
 	// m_hController
 	[SchemaMember("CBasePlayerPawn", "m_hController")]
-	public CHandle<CBasePlayerController> Controller => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController");
+	public virtual CHandle<CBasePlayerController> Controller => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController");
 
 	// m_hDefaultController
 	[SchemaMember("CBasePlayerPawn", "m_hDefaultController")]
-	public CHandle<CBasePlayerController> DefaultController => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hDefaultController");
+	public virtual CHandle<CBasePlayerController> DefaultController => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hDefaultController");
 
 	// m_fHltvReplayDelay
 	[SchemaMember("CBasePlayerPawn", "m_fHltvReplayDelay")]
-	public float HltvReplayDelay
+	public virtual float HltvReplayDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayDelay", value); }
@@ -141,7 +141,7 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_fHltvReplayEnd
 	[SchemaMember("CBasePlayerPawn", "m_fHltvReplayEnd")]
-	public float HltvReplayEnd
+	public virtual float HltvReplayEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayEnd", value); }
@@ -149,25 +149,25 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_iHltvReplayEntity
 	[SchemaMember("CBasePlayerPawn", "m_iHltvReplayEntity")]
-	public CEntityIndex HltvReplayEntity => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CBasePlayerPawn", "m_iHltvReplayEntity");
+	public virtual CEntityIndex HltvReplayEntity => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CBasePlayerPawn", "m_iHltvReplayEntity");
 
 	// m_sndOpvarLatchData
 	[SchemaMember("CBasePlayerPawn", "m_sndOpvarLatchData")]
-	public NetworkedVector<sndopvarlatchdata_t> SndOpvarLatchData => Schema.GetDeclaredClass<NetworkedVector<sndopvarlatchdata_t>>(this.Handle, "CBasePlayerPawn", "m_sndOpvarLatchData");
+	public virtual NetworkedVector<sndopvarlatchdata_t> SndOpvarLatchData => Schema.GetDeclaredClass<NetworkedVector<sndopvarlatchdata_t>>(this.Handle, "CBasePlayerPawn", "m_sndOpvarLatchData");
 
-	public void WeaponServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pWeaponServices");
-	public void ItemServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pItemServices");
-	public void AutoaimServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pAutoaimServices");
-	public void ObserverServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pObserverServices");
-	public void WaterServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pWaterServices");
-	public void UseServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pUseServices");
-	public void FlashlightServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pFlashlightServices");
-	public void CameraServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pCameraServices");
-	public void MovementServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pMovementServices");
-	public void ServerViewAngleChangesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_ServerViewAngleChanges");
-	public void HideHUDPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_iHideHUD");
-	public void Skybox3dPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_skybox3d");
-	public void DeathTimePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_flDeathTime");
-	public void ControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_hController");
-	public void DefaultControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_hDefaultController");
+	public virtual void WeaponServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pWeaponServices");
+	public virtual void ItemServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pItemServices");
+	public virtual void AutoaimServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pAutoaimServices");
+	public virtual void ObserverServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pObserverServices");
+	public virtual void WaterServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pWaterServices");
+	public virtual void UseServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pUseServices");
+	public virtual void FlashlightServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pFlashlightServices");
+	public virtual void CameraServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pCameraServices");
+	public virtual void MovementServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pMovementServices");
+	public virtual void ServerViewAngleChangesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_ServerViewAngleChanges");
+	public virtual void HideHUDPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_iHideHUD");
+	public virtual void Skybox3dPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_skybox3d");
+	public virtual void DeathTimePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_flDeathTime");
+	public virtual void ControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_hController");
+	public virtual void DefaultControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_hDefaultController");
 }

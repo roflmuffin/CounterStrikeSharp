@@ -21,7 +21,7 @@ public partial class CScriptNavBlocker : CFuncNavBlocker
 
 	// m_vExtent
 	[SchemaMember("CScriptNavBlocker", "m_vExtent")]
-	public Vector3 Extent
+	public virtual Vector3 Extent
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CScriptNavBlocker", "m_vExtent"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CScriptNavBlocker", "m_vExtent", value); }

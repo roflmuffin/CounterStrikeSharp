@@ -21,7 +21,7 @@ public partial class CTonemapController2 : CBaseEntity
 
 	// m_flAutoExposureMin
 	[SchemaMember("CTonemapController2", "m_flAutoExposureMin")]
-	public float AutoExposureMin
+	public virtual float AutoExposureMin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMin", value); }
@@ -29,7 +29,7 @@ public partial class CTonemapController2 : CBaseEntity
 
 	// m_flAutoExposureMax
 	[SchemaMember("CTonemapController2", "m_flAutoExposureMax")]
-	public float AutoExposureMax
+	public virtual float AutoExposureMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMax", value); }
@@ -37,7 +37,7 @@ public partial class CTonemapController2 : CBaseEntity
 
 	// m_flExposureAdaptationSpeedUp
 	[SchemaMember("CTonemapController2", "m_flExposureAdaptationSpeedUp")]
-	public float ExposureAdaptationSpeedUp
+	public virtual float ExposureAdaptationSpeedUp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedUp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedUp", value); }
@@ -45,7 +45,7 @@ public partial class CTonemapController2 : CBaseEntity
 
 	// m_flExposureAdaptationSpeedDown
 	[SchemaMember("CTonemapController2", "m_flExposureAdaptationSpeedDown")]
-	public float ExposureAdaptationSpeedDown
+	public virtual float ExposureAdaptationSpeedDown
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedDown"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedDown", value); }
@@ -53,15 +53,15 @@ public partial class CTonemapController2 : CBaseEntity
 
 	// m_flTonemapEVSmoothingRange
 	[SchemaMember("CTonemapController2", "m_flTonemapEVSmoothingRange")]
-	public float TonemapEVSmoothingRange
+	public virtual float TonemapEVSmoothingRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange", value); }
 	}
 
-	public void AutoExposureMinPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flAutoExposureMin");
-	public void AutoExposureMaxPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flAutoExposureMax");
-	public void ExposureAdaptationSpeedUpPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flExposureAdaptationSpeedUp");
-	public void ExposureAdaptationSpeedDownPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flExposureAdaptationSpeedDown");
-	public void TonemapEVSmoothingRangePropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flTonemapEVSmoothingRange");
+	public virtual void AutoExposureMinPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flAutoExposureMin");
+	public virtual void AutoExposureMaxPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flAutoExposureMax");
+	public virtual void ExposureAdaptationSpeedUpPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flExposureAdaptationSpeedUp");
+	public virtual void ExposureAdaptationSpeedDownPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flExposureAdaptationSpeedDown");
+	public virtual void TonemapEVSmoothingRangePropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flTonemapEVSmoothingRange");
 }

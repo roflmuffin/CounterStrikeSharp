@@ -21,7 +21,7 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_unMusicID
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unMusicID")]
-	public UInt16 MusicID
+	public virtual UInt16 MusicID
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerController_InventoryServices", "m_unMusicID"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerController_InventoryServices", "m_unMusicID", value); }
@@ -29,11 +29,11 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_rank
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_rank")]
-	public Span<MedalRank_t> Rank => Schema.GetFixedArray<MedalRank_t>(this.Handle, "CCSPlayerController_InventoryServices", "m_rank", 6);
+	public virtual Span<MedalRank_t> Rank => Schema.GetFixedArray<MedalRank_t>(this.Handle, "CCSPlayerController_InventoryServices", "m_rank", 6);
 
 	// m_nPersonaDataPublicLevel
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel")]
-	public Int32 PersonaDataPublicLevel
+	public virtual Int32 PersonaDataPublicLevel
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel", value); }
@@ -41,7 +41,7 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_nPersonaDataPublicCommendsLeader
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader")]
-	public Int32 PersonaDataPublicCommendsLeader
+	public virtual Int32 PersonaDataPublicCommendsLeader
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader", value); }
@@ -49,7 +49,7 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_nPersonaDataPublicCommendsTeacher
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher")]
-	public Int32 PersonaDataPublicCommendsTeacher
+	public virtual Int32 PersonaDataPublicCommendsTeacher
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher", value); }
@@ -57,7 +57,7 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_nPersonaDataPublicCommendsFriendly
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly")]
-	public Int32 PersonaDataPublicCommendsFriendly
+	public virtual Int32 PersonaDataPublicCommendsFriendly
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly", value); }
@@ -65,7 +65,7 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_nPersonaDataXpTrailLevel
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel")]
-	public Int32 PersonaDataXpTrailLevel
+	public virtual Int32 PersonaDataXpTrailLevel
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel", value); }
@@ -73,11 +73,11 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_unEquippedPlayerSprayIDs
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs")]
-	public Span<UInt32> EquippedPlayerSprayIDs => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs", 1);
+	public virtual Span<UInt32> EquippedPlayerSprayIDs => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs", 1);
 
 	// m_unCurrentLoadoutHash
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash")]
-	public UInt64 CurrentLoadoutHash
+	public virtual UInt64 CurrentLoadoutHash
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash", value); }
@@ -85,14 +85,14 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_vecServerAuthoritativeWeaponSlots
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots")]
-	public NetworkedVector<ServerAuthoritativeWeaponSlot_t> ServerAuthoritativeWeaponSlots => Schema.GetDeclaredClass<NetworkedVector<ServerAuthoritativeWeaponSlot_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
+	public virtual NetworkedVector<ServerAuthoritativeWeaponSlot_t> ServerAuthoritativeWeaponSlots => Schema.GetDeclaredClass<NetworkedVector<ServerAuthoritativeWeaponSlot_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
 
-	public void MusicIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_unMusicID");
-	public void RankPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_rank");
-	public void PersonaDataPublicLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel");
-	public void PersonaDataPublicCommendsLeaderPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader");
-	public void PersonaDataPublicCommendsTeacherPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher");
-	public void PersonaDataPublicCommendsFriendlyPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly");
-	public void PersonaDataXpTrailLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel");
-	public void ServerAuthoritativeWeaponSlotsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
+	public virtual void MusicIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_unMusicID");
+	public virtual void RankPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_rank");
+	public virtual void PersonaDataPublicLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel");
+	public virtual void PersonaDataPublicCommendsLeaderPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader");
+	public virtual void PersonaDataPublicCommendsTeacherPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher");
+	public virtual void PersonaDataPublicCommendsFriendlyPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly");
+	public virtual void PersonaDataXpTrailLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel");
+	public virtual void ServerAuthoritativeWeaponSlotsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
 }

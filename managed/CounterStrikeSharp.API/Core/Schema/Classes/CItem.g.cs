@@ -21,15 +21,15 @@ public partial class CItem : CBaseAnimGraph
 
 	// m_OnPlayerTouch
 	[SchemaMember("CItem", "m_OnPlayerTouch")]
-	public CEntityIOOutput OnPlayerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerTouch");
+	public virtual CEntityIOOutput OnPlayerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerTouch");
 
 	// m_OnPlayerPickup
 	[SchemaMember("CItem", "m_OnPlayerPickup")]
-	public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerPickup");
+	public virtual CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerPickup");
 
 	// m_bActivateWhenAtRest
 	[SchemaMember("CItem", "m_bActivateWhenAtRest")]
-	public bool ActivateWhenAtRest
+	public virtual bool ActivateWhenAtRest
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest", value); }
@@ -37,15 +37,15 @@ public partial class CItem : CBaseAnimGraph
 
 	// m_OnCacheInteraction
 	[SchemaMember("CItem", "m_OnCacheInteraction")]
-	public CEntityIOOutput OnCacheInteraction => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnCacheInteraction");
+	public virtual CEntityIOOutput OnCacheInteraction => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnCacheInteraction");
 
 	// m_OnGlovePulled
 	[SchemaMember("CItem", "m_OnGlovePulled")]
-	public CEntityIOOutput OnGlovePulled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnGlovePulled");
+	public virtual CEntityIOOutput OnGlovePulled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnGlovePulled");
 
 	// m_vOriginalSpawnOrigin
 	[SchemaMember("CItem", "m_vOriginalSpawnOrigin")]
-	public Vector3 OriginalSpawnOrigin
+	public virtual Vector3 OriginalSpawnOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CItem", "m_vOriginalSpawnOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CItem", "m_vOriginalSpawnOrigin", value); }
@@ -53,7 +53,7 @@ public partial class CItem : CBaseAnimGraph
 
 	// m_vOriginalSpawnAngles
 	[SchemaMember("CItem", "m_vOriginalSpawnAngles")]
-	public QAngle OriginalSpawnAngles
+	public virtual QAngle OriginalSpawnAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles", value); }
@@ -61,7 +61,7 @@ public partial class CItem : CBaseAnimGraph
 
 	// m_bPhysStartAsleep
 	[SchemaMember("CItem", "m_bPhysStartAsleep")]
-	public bool PhysStartAsleep
+	public virtual bool PhysStartAsleep
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItem", "m_bPhysStartAsleep"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItem", "m_bPhysStartAsleep", value); }

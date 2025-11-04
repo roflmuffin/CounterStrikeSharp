@@ -21,7 +21,7 @@ public partial class CCSPlace : CServerOnlyModelEntity
 
 	// m_name
 	[SchemaMember("CCSPlace", "m_name")]
-	public string Name
+	public virtual string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlace", "m_name"); }
 		set { Schema.SetString(this.Handle, "CCSPlace", "m_name", value); }

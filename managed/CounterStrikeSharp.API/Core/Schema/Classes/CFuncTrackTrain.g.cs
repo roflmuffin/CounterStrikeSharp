@@ -21,11 +21,11 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_ppath
 	[SchemaMember("CFuncTrackTrain", "m_ppath")]
-	public CHandle<CPathTrack> Ppath => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CFuncTrackTrain", "m_ppath");
+	public virtual CHandle<CPathTrack> Ppath => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CFuncTrackTrain", "m_ppath");
 
 	// m_length
 	[SchemaMember("CFuncTrackTrain", "m_length")]
-	public float Length
+	public virtual float Length
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_length"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_length", value); }
@@ -33,7 +33,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_vPosPrev
 	[SchemaMember("CFuncTrackTrain", "m_vPosPrev")]
-	public Vector3 PosPrev
+	public virtual Vector3 PosPrev
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_vPosPrev"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_vPosPrev", value); }
@@ -41,7 +41,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_angPrev
 	[SchemaMember("CFuncTrackTrain", "m_angPrev")]
-	public QAngle Prev
+	public virtual QAngle Prev
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncTrackTrain", "m_angPrev"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncTrackTrain", "m_angPrev", value); }
@@ -49,7 +49,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_controlMins
 	[SchemaMember("CFuncTrackTrain", "m_controlMins")]
-	public Vector3 ControlMins
+	public virtual Vector3 ControlMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_controlMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_controlMins", value); }
@@ -57,7 +57,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_controlMaxs
 	[SchemaMember("CFuncTrackTrain", "m_controlMaxs")]
-	public Vector3 ControlMaxs
+	public virtual Vector3 ControlMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_controlMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_controlMaxs", value); }
@@ -65,7 +65,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_lastBlockPos
 	[SchemaMember("CFuncTrackTrain", "m_lastBlockPos")]
-	public Vector3 LastBlockPos
+	public virtual Vector3 LastBlockPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_lastBlockPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncTrackTrain", "m_lastBlockPos", value); }
@@ -73,7 +73,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_lastBlockTick
 	[SchemaMember("CFuncTrackTrain", "m_lastBlockTick")]
-	public Int32 LastBlockTick
+	public virtual Int32 LastBlockTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncTrackTrain", "m_lastBlockTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncTrackTrain", "m_lastBlockTick", value); }
@@ -81,7 +81,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flVolume
 	[SchemaMember("CFuncTrackTrain", "m_flVolume")]
-	public float Volume
+	public virtual float Volume
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flVolume"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flVolume", value); }
@@ -89,7 +89,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flBank
 	[SchemaMember("CFuncTrackTrain", "m_flBank")]
-	public float Bank
+	public virtual float Bank
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flBank"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flBank", value); }
@@ -97,7 +97,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_oldSpeed
 	[SchemaMember("CFuncTrackTrain", "m_oldSpeed")]
-	public float OldSpeed
+	public virtual float OldSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_oldSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_oldSpeed", value); }
@@ -105,7 +105,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncTrackTrain", "m_flBlockDamage")]
-	public float BlockDamage
+	public virtual float BlockDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flBlockDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flBlockDamage", value); }
@@ -113,7 +113,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_height
 	[SchemaMember("CFuncTrackTrain", "m_height")]
-	public float Height
+	public virtual float Height
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_height"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_height", value); }
@@ -121,7 +121,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_maxSpeed
 	[SchemaMember("CFuncTrackTrain", "m_maxSpeed")]
-	public float MaxSpeed
+	public virtual float MaxSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_maxSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_maxSpeed", value); }
@@ -129,7 +129,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_dir
 	[SchemaMember("CFuncTrackTrain", "m_dir")]
-	public float Dir
+	public virtual float Dir
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_dir"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_dir", value); }
@@ -137,7 +137,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_iszSoundMove
 	[SchemaMember("CFuncTrackTrain", "m_iszSoundMove")]
-	public string SoundMove
+	public virtual string SoundMove
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundMove"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMove", value); }
@@ -145,7 +145,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_iszSoundMovePing
 	[SchemaMember("CFuncTrackTrain", "m_iszSoundMovePing")]
-	public string SoundMovePing
+	public virtual string SoundMovePing
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundMovePing"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMovePing", value); }
@@ -153,7 +153,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_iszSoundStart
 	[SchemaMember("CFuncTrackTrain", "m_iszSoundStart")]
-	public string SoundStart
+	public virtual string SoundStart
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundStart"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStart", value); }
@@ -161,7 +161,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_iszSoundStop
 	[SchemaMember("CFuncTrackTrain", "m_iszSoundStop")]
-	public string SoundStop
+	public virtual string SoundStop
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundStop"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStop", value); }
@@ -169,7 +169,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_strPathTarget
 	[SchemaMember("CFuncTrackTrain", "m_strPathTarget")]
-	public string StrPathTarget
+	public virtual string StrPathTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_strPathTarget"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_strPathTarget", value); }
@@ -177,7 +177,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flMoveSoundMinDuration
 	[SchemaMember("CFuncTrackTrain", "m_flMoveSoundMinDuration")]
-	public float MoveSoundMinDuration
+	public virtual float MoveSoundMinDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMinDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMinDuration", value); }
@@ -185,7 +185,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flMoveSoundMaxDuration
 	[SchemaMember("CFuncTrackTrain", "m_flMoveSoundMaxDuration")]
-	public float MoveSoundMaxDuration
+	public virtual float MoveSoundMaxDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMaxDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMaxDuration", value); }
@@ -193,7 +193,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flNextMoveSoundTime
 	[SchemaMember("CFuncTrackTrain", "m_flNextMoveSoundTime")]
-	public float NextMoveSoundTime
+	public virtual float NextMoveSoundTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flNextMoveSoundTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flNextMoveSoundTime", value); }
@@ -201,7 +201,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flMoveSoundMinPitch
 	[SchemaMember("CFuncTrackTrain", "m_flMoveSoundMinPitch")]
-	public float MoveSoundMinPitch
+	public virtual float MoveSoundMinPitch
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMinPitch"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMinPitch", value); }
@@ -209,7 +209,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flMoveSoundMaxPitch
 	[SchemaMember("CFuncTrackTrain", "m_flMoveSoundMaxPitch")]
-	public float MoveSoundMaxPitch
+	public virtual float MoveSoundMaxPitch
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMaxPitch"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMaxPitch", value); }
@@ -217,7 +217,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_eOrientationType
 	[SchemaMember("CFuncTrackTrain", "m_eOrientationType")]
-	public TrainOrientationType_t OrientationType
+	public virtual TrainOrientationType_t OrientationType
 	{
 		get { return Schema.GetValueType<TrainOrientationType_t>(this.Handle, "CFuncTrackTrain", "m_eOrientationType"); }
 		set { Schema.SetValueType<TrainOrientationType_t>(this.Handle, "CFuncTrackTrain", "m_eOrientationType", value); }
@@ -225,7 +225,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_eVelocityType
 	[SchemaMember("CFuncTrackTrain", "m_eVelocityType")]
-	public TrainVelocityType_t VelocityType
+	public virtual TrainVelocityType_t VelocityType
 	{
 		get { return Schema.GetValueType<TrainVelocityType_t>(this.Handle, "CFuncTrackTrain", "m_eVelocityType"); }
 		set { Schema.SetValueType<TrainVelocityType_t>(this.Handle, "CFuncTrackTrain", "m_eVelocityType", value); }
@@ -233,19 +233,19 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_OnStart
 	[SchemaMember("CFuncTrackTrain", "m_OnStart")]
-	public CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnStart");
+	public virtual CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnStart");
 
 	// m_OnNext
 	[SchemaMember("CFuncTrackTrain", "m_OnNext")]
-	public CEntityIOOutput OnNext => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnNext");
+	public virtual CEntityIOOutput OnNext => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnNext");
 
 	// m_OnArrivedAtDestinationNode
 	[SchemaMember("CFuncTrackTrain", "m_OnArrivedAtDestinationNode")]
-	public CEntityIOOutput OnArrivedAtDestinationNode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnArrivedAtDestinationNode");
+	public virtual CEntityIOOutput OnArrivedAtDestinationNode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnArrivedAtDestinationNode");
 
 	// m_bManualSpeedChanges
 	[SchemaMember("CFuncTrackTrain", "m_bManualSpeedChanges")]
-	public bool ManualSpeedChanges
+	public virtual bool ManualSpeedChanges
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncTrackTrain", "m_bManualSpeedChanges"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncTrackTrain", "m_bManualSpeedChanges", value); }
@@ -253,7 +253,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flDesiredSpeed
 	[SchemaMember("CFuncTrackTrain", "m_flDesiredSpeed")]
-	public float DesiredSpeed
+	public virtual float DesiredSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flDesiredSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flDesiredSpeed", value); }
@@ -261,7 +261,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flSpeedChangeTime
 	[SchemaMember("CFuncTrackTrain", "m_flSpeedChangeTime")]
-	public float SpeedChangeTime
+	public virtual float SpeedChangeTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flSpeedChangeTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flSpeedChangeTime", value); }
@@ -269,7 +269,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flAccelSpeed
 	[SchemaMember("CFuncTrackTrain", "m_flAccelSpeed")]
-	public float AccelSpeed
+	public virtual float AccelSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flAccelSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flAccelSpeed", value); }
@@ -277,7 +277,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flDecelSpeed
 	[SchemaMember("CFuncTrackTrain", "m_flDecelSpeed")]
-	public float DecelSpeed
+	public virtual float DecelSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flDecelSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flDecelSpeed", value); }
@@ -285,7 +285,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_bAccelToSpeed
 	[SchemaMember("CFuncTrackTrain", "m_bAccelToSpeed")]
-	public bool AccelToSpeed
+	public virtual bool AccelToSpeed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncTrackTrain", "m_bAccelToSpeed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncTrackTrain", "m_bAccelToSpeed", value); }
@@ -293,7 +293,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_flNextMPSoundTime
 	[SchemaMember("CFuncTrackTrain", "m_flNextMPSoundTime")]
-	public float NextMPSoundTime
+	public virtual float NextMPSoundTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flNextMPSoundTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrackTrain", "m_flNextMPSoundTime", value); }

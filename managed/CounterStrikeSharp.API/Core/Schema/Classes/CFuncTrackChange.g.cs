@@ -21,19 +21,19 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_trackTop
 	[SchemaMember("CFuncTrackChange", "m_trackTop")]
-	public CPathTrack? TrackTop => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackTop");
+	public virtual CPathTrack? TrackTop => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackTop");
 
 	// m_trackBottom
 	[SchemaMember("CFuncTrackChange", "m_trackBottom")]
-	public CPathTrack? TrackBottom => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackBottom");
+	public virtual CPathTrack? TrackBottom => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackBottom");
 
 	// m_train
 	[SchemaMember("CFuncTrackChange", "m_train")]
-	public CFuncTrackTrain? Train => Schema.GetPointer<CFuncTrackTrain>(this.Handle, "CFuncTrackChange", "m_train");
+	public virtual CFuncTrackTrain? Train => Schema.GetPointer<CFuncTrackTrain>(this.Handle, "CFuncTrackChange", "m_train");
 
 	// m_trackTopName
 	[SchemaMember("CFuncTrackChange", "m_trackTopName")]
-	public string TrackTopName
+	public virtual string TrackTopName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trackTopName"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackTopName", value); }
@@ -41,7 +41,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_trackBottomName
 	[SchemaMember("CFuncTrackChange", "m_trackBottomName")]
-	public string TrackBottomName
+	public virtual string TrackBottomName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trackBottomName"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackBottomName", value); }
@@ -49,7 +49,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_trainName
 	[SchemaMember("CFuncTrackChange", "m_trainName")]
-	public string TrainName
+	public virtual string TrainName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trainName"); }
 		set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trainName", value); }
@@ -57,7 +57,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_code
 	[SchemaMember("CFuncTrackChange", "m_code")]
-	public TRAIN_CODE Code
+	public virtual TRAIN_CODE Code
 	{
 		get { return Schema.GetValueType<TRAIN_CODE>(this.Handle, "CFuncTrackChange", "m_code"); }
 		set { Schema.SetValueType<TRAIN_CODE>(this.Handle, "CFuncTrackChange", "m_code", value); }
@@ -65,7 +65,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_targetState
 	[SchemaMember("CFuncTrackChange", "m_targetState")]
-	public Int32 TargetState
+	public virtual Int32 TargetState
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_targetState"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_targetState", value); }
@@ -73,7 +73,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_use
 	[SchemaMember("CFuncTrackChange", "m_use")]
-	public Int32 Use
+	public virtual Int32 Use
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_use"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_use", value); }

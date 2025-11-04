@@ -21,12 +21,12 @@ public partial class CItemDogtags : CItem
 
 	// m_OwningPlayer
 	[SchemaMember("CItemDogtags", "m_OwningPlayer")]
-	public CHandle<CCSPlayerPawn> OwningPlayer => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CItemDogtags", "m_OwningPlayer");
+	public virtual CHandle<CCSPlayerPawn> OwningPlayer => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CItemDogtags", "m_OwningPlayer");
 
 	// m_KillingPlayer
 	[SchemaMember("CItemDogtags", "m_KillingPlayer")]
-	public CHandle<CCSPlayerPawn> KillingPlayer => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CItemDogtags", "m_KillingPlayer");
+	public virtual CHandle<CCSPlayerPawn> KillingPlayer => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CItemDogtags", "m_KillingPlayer");
 
-	public void OwningPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CItemDogtags", "m_OwningPlayer");
-	public void KillingPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CItemDogtags", "m_KillingPlayer");
+	public virtual void OwningPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CItemDogtags", "m_OwningPlayer");
+	public virtual void KillingPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CItemDogtags", "m_KillingPlayer");
 }

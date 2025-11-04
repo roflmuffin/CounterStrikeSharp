@@ -21,7 +21,7 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_cellX
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_cellX")]
-	public UInt16 CellX
+	public virtual UInt16 CellX
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellX"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellX", value); }
@@ -29,7 +29,7 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_cellY
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_cellY")]
-	public UInt16 CellY
+	public virtual UInt16 CellY
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellY"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellY", value); }
@@ -37,7 +37,7 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_cellZ
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_cellZ")]
-	public UInt16 CellZ
+	public virtual UInt16 CellZ
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ", value); }
@@ -45,7 +45,7 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_nOutsideWorld
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld")]
-	public UInt16 OutsideWorld
+	public virtual UInt16 OutsideWorld
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld", value); }
@@ -53,7 +53,7 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_vecX
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecX")]
-	public float X
+	public virtual float X
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX", value); }
@@ -61,7 +61,7 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_vecY
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecY")]
-	public float Y
+	public virtual float Y
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY", value); }
@@ -69,17 +69,17 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_vecZ
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecZ")]
-	public float Z
+	public virtual float Z
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ", value); }
 	}
 
-	public void CellXPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellX");
-	public void CellYPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellY");
-	public void CellZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ");
-	public void OutsideWorldPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld");
-	public void XPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecX");
-	public void YPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecY");
-	public void ZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ");
+	public virtual void CellXPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellX");
+	public virtual void CellYPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellY");
+	public virtual void CellZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ");
+	public virtual void OutsideWorldPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld");
+	public virtual void XPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecX");
+	public virtual void YPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecY");
+	public virtual void ZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ");
 }

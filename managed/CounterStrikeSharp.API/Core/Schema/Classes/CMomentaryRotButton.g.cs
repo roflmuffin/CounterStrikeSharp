@@ -21,23 +21,23 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_OnUnpressed
 	[SchemaMember("CMomentaryRotButton", "m_OnUnpressed")]
-	public CEntityIOOutput OnUnpressed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnUnpressed");
+	public virtual CEntityIOOutput OnUnpressed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnUnpressed");
 
 	// m_OnFullyOpen
 	[SchemaMember("CMomentaryRotButton", "m_OnFullyOpen")]
-	public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnFullyOpen");
+	public virtual CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnFullyOpen");
 
 	// m_OnFullyClosed
 	[SchemaMember("CMomentaryRotButton", "m_OnFullyClosed")]
-	public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnFullyClosed");
+	public virtual CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnFullyClosed");
 
 	// m_OnReachedPosition
 	[SchemaMember("CMomentaryRotButton", "m_OnReachedPosition")]
-	public CEntityIOOutput OnReachedPosition => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnReachedPosition");
+	public virtual CEntityIOOutput OnReachedPosition => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnReachedPosition");
 
 	// m_lastUsed
 	[SchemaMember("CMomentaryRotButton", "m_lastUsed")]
-	public Int32 LastUsed
+	public virtual Int32 LastUsed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_lastUsed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_lastUsed", value); }
@@ -45,7 +45,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_start
 	[SchemaMember("CMomentaryRotButton", "m_start")]
-	public QAngle Start
+	public virtual QAngle Start
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_start"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_start", value); }
@@ -53,7 +53,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_end
 	[SchemaMember("CMomentaryRotButton", "m_end")]
-	public QAngle End
+	public virtual QAngle End
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_end"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_end", value); }
@@ -61,7 +61,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_IdealYaw
 	[SchemaMember("CMomentaryRotButton", "m_IdealYaw")]
-	public float IdealYaw
+	public virtual float IdealYaw
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMomentaryRotButton", "m_IdealYaw"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMomentaryRotButton", "m_IdealYaw", value); }
@@ -69,7 +69,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_sNoise
 	[SchemaMember("CMomentaryRotButton", "m_sNoise")]
-	public string Noise
+	public virtual string Noise
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMomentaryRotButton", "m_sNoise"); }
 		set { Schema.SetString(this.Handle, "CMomentaryRotButton", "m_sNoise", value); }
@@ -77,7 +77,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_bUpdateTarget
 	[SchemaMember("CMomentaryRotButton", "m_bUpdateTarget")]
-	public bool UpdateTarget
+	public virtual bool UpdateTarget
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMomentaryRotButton", "m_bUpdateTarget"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMomentaryRotButton", "m_bUpdateTarget", value); }
@@ -85,7 +85,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_direction
 	[SchemaMember("CMomentaryRotButton", "m_direction")]
-	public Int32 Direction
+	public virtual Int32 Direction
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_direction"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_direction", value); }
@@ -93,7 +93,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_returnSpeed
 	[SchemaMember("CMomentaryRotButton", "m_returnSpeed")]
-	public float ReturnSpeed
+	public virtual float ReturnSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMomentaryRotButton", "m_returnSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMomentaryRotButton", "m_returnSpeed", value); }
@@ -101,7 +101,7 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_flStartPosition
 	[SchemaMember("CMomentaryRotButton", "m_flStartPosition")]
-	public float StartPosition
+	public virtual float StartPosition
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMomentaryRotButton", "m_flStartPosition"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMomentaryRotButton", "m_flStartPosition", value); }

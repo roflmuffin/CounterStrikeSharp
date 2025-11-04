@@ -21,15 +21,15 @@ public partial class CChicken : CDynamicProp
 
 	// m_AttributeManager
 	[SchemaMember("CChicken", "m_AttributeManager")]
-	public CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CChicken", "m_AttributeManager");
+	public virtual CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CChicken", "m_AttributeManager");
 
 	// m_updateTimer
 	[SchemaMember("CChicken", "m_updateTimer")]
-	public CountdownTimer UpdateTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_updateTimer");
+	public virtual CountdownTimer UpdateTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_updateTimer");
 
 	// m_stuckAnchor
 	[SchemaMember("CChicken", "m_stuckAnchor")]
-	public Vector3 StuckAnchor
+	public virtual Vector3 StuckAnchor
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CChicken", "m_stuckAnchor"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CChicken", "m_stuckAnchor", value); }
@@ -37,15 +37,15 @@ public partial class CChicken : CDynamicProp
 
 	// m_stuckTimer
 	[SchemaMember("CChicken", "m_stuckTimer")]
-	public CountdownTimer StuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_stuckTimer");
+	public virtual CountdownTimer StuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_stuckTimer");
 
 	// m_collisionStuckTimer
 	[SchemaMember("CChicken", "m_collisionStuckTimer")]
-	public CountdownTimer CollisionStuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_collisionStuckTimer");
+	public virtual CountdownTimer CollisionStuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_collisionStuckTimer");
 
 	// m_isOnGround
 	[SchemaMember("CChicken", "m_isOnGround")]
-	public bool IsOnGround
+	public virtual bool IsOnGround
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_isOnGround"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_isOnGround", value); }
@@ -53,7 +53,7 @@ public partial class CChicken : CDynamicProp
 
 	// m_vFallVelocity
 	[SchemaMember("CChicken", "m_vFallVelocity")]
-	public Vector3 FallVelocity
+	public virtual Vector3 FallVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CChicken", "m_vFallVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CChicken", "m_vFallVelocity", value); }
@@ -61,7 +61,7 @@ public partial class CChicken : CDynamicProp
 
 	// m_desiredActivity
 	[SchemaMember("CChicken", "m_desiredActivity")]
-	public ChickenActivity DesiredActivity
+	public virtual ChickenActivity DesiredActivity
 	{
 		get { return Schema.GetValueType<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity"); }
 		set { Schema.SetValueType<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity", value); }
@@ -69,7 +69,7 @@ public partial class CChicken : CDynamicProp
 
 	// m_currentActivity
 	[SchemaMember("CChicken", "m_currentActivity")]
-	public ChickenActivity CurrentActivity
+	public virtual ChickenActivity CurrentActivity
 	{
 		get { return Schema.GetValueType<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity"); }
 		set { Schema.SetValueType<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity", value); }
@@ -77,11 +77,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_activityTimer
 	[SchemaMember("CChicken", "m_activityTimer")]
-	public CountdownTimer ActivityTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_activityTimer");
+	public virtual CountdownTimer ActivityTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_activityTimer");
 
 	// m_turnRate
 	[SchemaMember("CChicken", "m_turnRate")]
-	public float TurnRate
+	public virtual float TurnRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_turnRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_turnRate", value); }
@@ -89,23 +89,23 @@ public partial class CChicken : CDynamicProp
 
 	// m_fleeFrom
 	[SchemaMember("CChicken", "m_fleeFrom")]
-	public CHandle<CBaseEntity> FleeFrom => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CChicken", "m_fleeFrom");
+	public virtual CHandle<CBaseEntity> FleeFrom => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CChicken", "m_fleeFrom");
 
 	// m_moveRateThrottleTimer
 	[SchemaMember("CChicken", "m_moveRateThrottleTimer")]
-	public CountdownTimer MoveRateThrottleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_moveRateThrottleTimer");
+	public virtual CountdownTimer MoveRateThrottleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_moveRateThrottleTimer");
 
 	// m_startleTimer
 	[SchemaMember("CChicken", "m_startleTimer")]
-	public CountdownTimer StartleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_startleTimer");
+	public virtual CountdownTimer StartleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_startleTimer");
 
 	// m_vocalizeTimer
 	[SchemaMember("CChicken", "m_vocalizeTimer")]
-	public CountdownTimer VocalizeTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_vocalizeTimer");
+	public virtual CountdownTimer VocalizeTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_vocalizeTimer");
 
 	// m_flWhenZombified
 	[SchemaMember("CChicken", "m_flWhenZombified")]
-	public float WhenZombified
+	public virtual float WhenZombified
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_flWhenZombified"); }
 		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_flWhenZombified", value); }
@@ -113,7 +113,7 @@ public partial class CChicken : CDynamicProp
 
 	// m_jumpedThisFrame
 	[SchemaMember("CChicken", "m_jumpedThisFrame")]
-	public bool JumpedThisFrame
+	public virtual bool JumpedThisFrame
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_jumpedThisFrame"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_jumpedThisFrame", value); }
@@ -121,15 +121,15 @@ public partial class CChicken : CDynamicProp
 
 	// m_leader
 	[SchemaMember("CChicken", "m_leader")]
-	public CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader");
+	public virtual CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader");
 
 	// m_reuseTimer
 	[SchemaMember("CChicken", "m_reuseTimer")]
-	public CountdownTimer ReuseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_reuseTimer");
+	public virtual CountdownTimer ReuseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_reuseTimer");
 
 	// m_hasBeenUsed
 	[SchemaMember("CChicken", "m_hasBeenUsed")]
-	public bool HasBeenUsed
+	public virtual bool HasBeenUsed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_hasBeenUsed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_hasBeenUsed", value); }
@@ -137,11 +137,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_jumpTimer
 	[SchemaMember("CChicken", "m_jumpTimer")]
-	public CountdownTimer JumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_jumpTimer");
+	public virtual CountdownTimer JumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_jumpTimer");
 
 	// m_flLastJumpTime
 	[SchemaMember("CChicken", "m_flLastJumpTime")]
-	public float LastJumpTime
+	public virtual float LastJumpTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_flLastJumpTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_flLastJumpTime", value); }
@@ -149,7 +149,7 @@ public partial class CChicken : CDynamicProp
 
 	// m_bInJump
 	[SchemaMember("CChicken", "m_bInJump")]
-	public bool InJump
+	public virtual bool InJump
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_bInJump"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_bInJump", value); }
@@ -157,11 +157,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_repathTimer
 	[SchemaMember("CChicken", "m_repathTimer")]
-	public CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_repathTimer");
+	public virtual CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_repathTimer");
 
 	// m_vecPathGoal
 	[SchemaMember("CChicken", "m_vecPathGoal")]
-	public Vector3 PathGoal
+	public virtual Vector3 PathGoal
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CChicken", "m_vecPathGoal"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CChicken", "m_vecPathGoal", value); }
@@ -169,7 +169,7 @@ public partial class CChicken : CDynamicProp
 
 	// m_flActiveFollowStartTime
 	[SchemaMember("CChicken", "m_flActiveFollowStartTime")]
-	public float ActiveFollowStartTime
+	public virtual float ActiveFollowStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_flActiveFollowStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_flActiveFollowStartTime", value); }
@@ -177,13 +177,13 @@ public partial class CChicken : CDynamicProp
 
 	// m_followMinuteTimer
 	[SchemaMember("CChicken", "m_followMinuteTimer")]
-	public CountdownTimer FollowMinuteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_followMinuteTimer");
+	public virtual CountdownTimer FollowMinuteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_followMinuteTimer");
 
 	// m_BlockDirectionTimer
 	[SchemaMember("CChicken", "m_BlockDirectionTimer")]
-	public CountdownTimer BlockDirectionTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_BlockDirectionTimer");
+	public virtual CountdownTimer BlockDirectionTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_BlockDirectionTimer");
 
-	public void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_AttributeManager");
-	public void JumpedThisFramePropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_jumpedThisFrame");
-	public void LeaderPropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_leader");
+	public virtual void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_AttributeManager");
+	public virtual void JumpedThisFramePropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_jumpedThisFrame");
+	public virtual void LeaderPropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_leader");
 }

@@ -21,7 +21,7 @@ public partial class CMarkupVolumeTagged_Nav : CMarkupVolumeTagged
 
 	// m_nScopes
 	[SchemaMember("CMarkupVolumeTagged_Nav", "m_nScopes")]
-	public NavScopeFlags_t Scopes
+	public virtual NavScopeFlags_t Scopes
 	{
 		get { return Schema.GetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_Nav", "m_nScopes"); }
 		set { Schema.SetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_Nav", "m_nScopes", value); }

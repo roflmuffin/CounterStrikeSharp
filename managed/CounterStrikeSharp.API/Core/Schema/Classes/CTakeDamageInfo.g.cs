@@ -21,7 +21,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_vecDamageForce
 	[SchemaMember("CTakeDamageInfo", "m_vecDamageForce")]
-	public Vector3 DamageForce
+	public virtual Vector3 DamageForce
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecDamageForce"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecDamageForce", value); }
@@ -29,7 +29,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_vecDamagePosition
 	[SchemaMember("CTakeDamageInfo", "m_vecDamagePosition")]
-	public Vector3 DamagePosition
+	public virtual Vector3 DamagePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecDamagePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecDamagePosition", value); }
@@ -37,7 +37,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_vecReportedPosition
 	[SchemaMember("CTakeDamageInfo", "m_vecReportedPosition")]
-	public Vector3 ReportedPosition
+	public virtual Vector3 ReportedPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecReportedPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecReportedPosition", value); }
@@ -45,7 +45,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_vecDamageDirection
 	[SchemaMember("CTakeDamageInfo", "m_vecDamageDirection")]
-	public Vector3 DamageDirection
+	public virtual Vector3 DamageDirection
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecDamageDirection"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTakeDamageInfo", "m_vecDamageDirection", value); }
@@ -53,19 +53,19 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_hInflictor
 	[SchemaMember("CTakeDamageInfo", "m_hInflictor")]
-	public CHandle<CBaseEntity> Inflictor => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hInflictor");
+	public virtual CHandle<CBaseEntity> Inflictor => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hInflictor");
 
 	// m_hAttacker
 	[SchemaMember("CTakeDamageInfo", "m_hAttacker")]
-	public CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAttacker");
+	public virtual CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAttacker");
 
 	// m_hAbility
 	[SchemaMember("CTakeDamageInfo", "m_hAbility")]
-	public CHandle<CBaseEntity> Ability => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAbility");
+	public virtual CHandle<CBaseEntity> Ability => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAbility");
 
 	// m_flDamage
 	[SchemaMember("CTakeDamageInfo", "m_flDamage")]
-	public float Damage
+	public virtual float Damage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flDamage", value); }
@@ -73,7 +73,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_flTotalledDamage
 	[SchemaMember("CTakeDamageInfo", "m_flTotalledDamage")]
-	public float TotalledDamage
+	public virtual float TotalledDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flTotalledDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flTotalledDamage", value); }
@@ -81,7 +81,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_bitsDamageType
 	[SchemaMember("CTakeDamageInfo", "m_bitsDamageType")]
-	public DamageTypes_t BitsDamageType
+	public virtual DamageTypes_t BitsDamageType
 	{
 		get { return Schema.GetValueType<DamageTypes_t>(this.Handle, "CTakeDamageInfo", "m_bitsDamageType"); }
 		set { Schema.SetValueType<DamageTypes_t>(this.Handle, "CTakeDamageInfo", "m_bitsDamageType", value); }
@@ -89,7 +89,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_iDamageCustom
 	[SchemaMember("CTakeDamageInfo", "m_iDamageCustom")]
-	public Int32 DamageCustom
+	public virtual Int32 DamageCustom
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTakeDamageInfo", "m_iDamageCustom"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTakeDamageInfo", "m_iDamageCustom", value); }
@@ -97,7 +97,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_iAmmoType
 	[SchemaMember("CTakeDamageInfo", "m_iAmmoType")]
-	public byte AmmoType
+	public virtual byte AmmoType
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CTakeDamageInfo", "m_iAmmoType"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CTakeDamageInfo", "m_iAmmoType", value); }
@@ -105,7 +105,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_flOriginalDamage
 	[SchemaMember("CTakeDamageInfo", "m_flOriginalDamage")]
-	public float OriginalDamage
+	public virtual float OriginalDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flOriginalDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flOriginalDamage", value); }
@@ -113,7 +113,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_bShouldBleed
 	[SchemaMember("CTakeDamageInfo", "m_bShouldBleed")]
-	public bool ShouldBleed
+	public virtual bool ShouldBleed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTakeDamageInfo", "m_bShouldBleed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTakeDamageInfo", "m_bShouldBleed", value); }
@@ -121,7 +121,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_bShouldSpark
 	[SchemaMember("CTakeDamageInfo", "m_bShouldSpark")]
-	public bool ShouldSpark
+	public virtual bool ShouldSpark
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTakeDamageInfo", "m_bShouldSpark"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTakeDamageInfo", "m_bShouldSpark", value); }
@@ -129,7 +129,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_nDamageFlags
 	[SchemaMember("CTakeDamageInfo", "m_nDamageFlags")]
-	public TakeDamageFlags_t DamageFlags
+	public virtual TakeDamageFlags_t DamageFlags
 	{
 		get { return Schema.GetValueType<TakeDamageFlags_t>(this.Handle, "CTakeDamageInfo", "m_nDamageFlags"); }
 		set { Schema.SetValueType<TakeDamageFlags_t>(this.Handle, "CTakeDamageInfo", "m_nDamageFlags", value); }
@@ -137,7 +137,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_sDamageSourceName
 	[SchemaMember("CTakeDamageInfo", "m_sDamageSourceName")]
-	public string DamageSourceName
+	public virtual string DamageSourceName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTakeDamageInfo", "m_sDamageSourceName"); }
 		set { Schema.SetString(this.Handle, "CTakeDamageInfo", "m_sDamageSourceName", value); }
@@ -145,7 +145,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_iHitGroupId
 	[SchemaMember("CTakeDamageInfo", "m_iHitGroupId")]
-	public HitGroup_t HitGroupId
+	public virtual HitGroup_t HitGroupId
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CTakeDamageInfo", "m_iHitGroupId"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CTakeDamageInfo", "m_iHitGroupId", value); }
@@ -153,7 +153,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_nNumObjectsPenetrated
 	[SchemaMember("CTakeDamageInfo", "m_nNumObjectsPenetrated")]
-	public Int32 NumObjectsPenetrated
+	public virtual Int32 NumObjectsPenetrated
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTakeDamageInfo", "m_nNumObjectsPenetrated"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTakeDamageInfo", "m_nNumObjectsPenetrated", value); }
@@ -161,7 +161,7 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_flFriendlyFireDamageReductionRatio
 	[SchemaMember("CTakeDamageInfo", "m_flFriendlyFireDamageReductionRatio")]
-	public float FriendlyFireDamageReductionRatio
+	public virtual float FriendlyFireDamageReductionRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flFriendlyFireDamageReductionRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTakeDamageInfo", "m_flFriendlyFireDamageReductionRatio", value); }
@@ -169,11 +169,11 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_nDestructibleHitGroupsToForceDestroy
 	[SchemaMember("CTakeDamageInfo", "m_nDestructibleHitGroupsToForceDestroy")]
-	public NetworkedVector<DestructibleHitGroupToDestroy_t> DestructibleHitGroupsToForceDestroy => Schema.GetDeclaredClass<NetworkedVector<DestructibleHitGroupToDestroy_t>>(this.Handle, "CTakeDamageInfo", "m_nDestructibleHitGroupsToForceDestroy");
+	public virtual NetworkedVector<DestructibleHitGroupToDestroy_t> DestructibleHitGroupsToForceDestroy => Schema.GetDeclaredClass<NetworkedVector<DestructibleHitGroupToDestroy_t>>(this.Handle, "CTakeDamageInfo", "m_nDestructibleHitGroupsToForceDestroy");
 
 	// m_bInTakeDamageFlow
 	[SchemaMember("CTakeDamageInfo", "m_bInTakeDamageFlow")]
-	public bool InTakeDamageFlow
+	public virtual bool InTakeDamageFlow
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTakeDamageInfo", "m_bInTakeDamageFlow"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTakeDamageInfo", "m_bInTakeDamageFlow", value); }

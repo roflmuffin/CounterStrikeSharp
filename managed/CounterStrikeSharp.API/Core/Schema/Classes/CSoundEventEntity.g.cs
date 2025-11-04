@@ -21,7 +21,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_bStartOnSpawn
 	[SchemaMember("CSoundEventEntity", "m_bStartOnSpawn")]
-	public bool StartOnSpawn
+	public virtual bool StartOnSpawn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStartOnSpawn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStartOnSpawn", value); }
@@ -29,7 +29,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_bToLocalPlayer
 	[SchemaMember("CSoundEventEntity", "m_bToLocalPlayer")]
-	public bool ToLocalPlayer
+	public virtual bool ToLocalPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bToLocalPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bToLocalPlayer", value); }
@@ -37,7 +37,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_bStopOnNew
 	[SchemaMember("CSoundEventEntity", "m_bStopOnNew")]
-	public bool StopOnNew
+	public virtual bool StopOnNew
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStopOnNew"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStopOnNew", value); }
@@ -45,7 +45,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_bSaveRestore
 	[SchemaMember("CSoundEventEntity", "m_bSaveRestore")]
-	public bool SaveRestore
+	public virtual bool SaveRestore
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSaveRestore"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSaveRestore", value); }
@@ -53,7 +53,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_bSavedIsPlaying
 	[SchemaMember("CSoundEventEntity", "m_bSavedIsPlaying")]
-	public bool SavedIsPlaying
+	public virtual bool SavedIsPlaying
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSavedIsPlaying"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSavedIsPlaying", value); }
@@ -61,7 +61,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_flSavedElapsedTime
 	[SchemaMember("CSoundEventEntity", "m_flSavedElapsedTime")]
-	public float SavedElapsedTime
+	public virtual float SavedElapsedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventEntity", "m_flSavedElapsedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundEventEntity", "m_flSavedElapsedTime", value); }
@@ -69,7 +69,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_iszSourceEntityName
 	[SchemaMember("CSoundEventEntity", "m_iszSourceEntityName")]
-	public string SourceEntityName
+	public virtual string SourceEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszSourceEntityName"); }
 		set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSourceEntityName", value); }
@@ -77,7 +77,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_iszAttachmentName
 	[SchemaMember("CSoundEventEntity", "m_iszAttachmentName")]
-	public string AttachmentName
+	public virtual string AttachmentName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszAttachmentName"); }
 		set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszAttachmentName", value); }
@@ -85,11 +85,11 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_onSoundFinished
 	[SchemaMember("CSoundEventEntity", "m_onSoundFinished")]
-	public CEntityIOOutput OnSoundFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundEventEntity", "m_onSoundFinished");
+	public virtual CEntityIOOutput OnSoundFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundEventEntity", "m_onSoundFinished");
 
 	// m_flClientCullRadius
 	[SchemaMember("CSoundEventEntity", "m_flClientCullRadius")]
-	public float ClientCullRadius
+	public virtual float ClientCullRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventEntity", "m_flClientCullRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundEventEntity", "m_flClientCullRadius", value); }
@@ -97,7 +97,7 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_iszSoundName
 	[SchemaMember("CSoundEventEntity", "m_iszSoundName")]
-	public string SoundName
+	public virtual string SoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszSoundName"); }
 		set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSoundName", value); }
@@ -105,11 +105,11 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_hSource
 	[SchemaMember("CSoundEventEntity", "m_hSource")]
-	public CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundEventEntity", "m_hSource");
+	public virtual CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundEventEntity", "m_hSource");
 
 	// m_nEntityIndexSelection
 	[SchemaMember("CSoundEventEntity", "m_nEntityIndexSelection")]
-	public Int32 EntityIndexSelection
+	public virtual Int32 EntityIndexSelection
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundEventEntity", "m_nEntityIndexSelection"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundEventEntity", "m_nEntityIndexSelection", value); }

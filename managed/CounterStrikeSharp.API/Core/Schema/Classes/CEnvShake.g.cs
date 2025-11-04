@@ -21,7 +21,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_limitToEntity
 	[SchemaMember("CEnvShake", "m_limitToEntity")]
-	public string LimitToEntity
+	public virtual string LimitToEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvShake", "m_limitToEntity"); }
 		set { Schema.SetString(this.Handle, "CEnvShake", "m_limitToEntity", value); }
@@ -29,7 +29,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_Amplitude
 	[SchemaMember("CEnvShake", "m_Amplitude")]
-	public float Amplitude
+	public virtual float Amplitude
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvShake", "m_Amplitude"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvShake", "m_Amplitude", value); }
@@ -37,7 +37,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_Frequency
 	[SchemaMember("CEnvShake", "m_Frequency")]
-	public float Frequency
+	public virtual float Frequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvShake", "m_Frequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvShake", "m_Frequency", value); }
@@ -45,7 +45,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_Duration
 	[SchemaMember("CEnvShake", "m_Duration")]
-	public float Duration
+	public virtual float Duration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvShake", "m_Duration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvShake", "m_Duration", value); }
@@ -53,7 +53,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_Radius
 	[SchemaMember("CEnvShake", "m_Radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvShake", "m_Radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvShake", "m_Radius", value); }
@@ -61,7 +61,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_stopTime
 	[SchemaMember("CEnvShake", "m_stopTime")]
-	public float StopTime
+	public virtual float StopTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvShake", "m_stopTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvShake", "m_stopTime", value); }
@@ -69,7 +69,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_nextShake
 	[SchemaMember("CEnvShake", "m_nextShake")]
-	public float NextShake
+	public virtual float NextShake
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvShake", "m_nextShake"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvShake", "m_nextShake", value); }
@@ -77,7 +77,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_currentAmp
 	[SchemaMember("CEnvShake", "m_currentAmp")]
-	public float CurrentAmp
+	public virtual float CurrentAmp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvShake", "m_currentAmp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvShake", "m_currentAmp", value); }
@@ -85,7 +85,7 @@ public partial class CEnvShake : CPointEntity
 
 	// m_maxForce
 	[SchemaMember("CEnvShake", "m_maxForce")]
-	public Vector3 MaxForce
+	public virtual Vector3 MaxForce
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvShake", "m_maxForce"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvShake", "m_maxForce", value); }
@@ -93,6 +93,6 @@ public partial class CEnvShake : CPointEntity
 
 	// m_shakeCallback
 	[SchemaMember("CEnvShake", "m_shakeCallback")]
-	public CPhysicsShake ShakeCallback => Schema.GetDeclaredClass<CPhysicsShake>(this.Handle, "CEnvShake", "m_shakeCallback");
+	public virtual CPhysicsShake ShakeCallback => Schema.GetDeclaredClass<CPhysicsShake>(this.Handle, "CEnvShake", "m_shakeCallback");
 
 }

@@ -21,11 +21,11 @@ public partial class CAttributeList : NativeObject
 
 	// m_Attributes
 	[SchemaMember("CAttributeList", "m_Attributes")]
-	public NetworkedVector<CEconItemAttribute> Attributes => Schema.GetDeclaredClass<NetworkedVector<CEconItemAttribute>>(this.Handle, "CAttributeList", "m_Attributes");
+	public virtual NetworkedVector<CEconItemAttribute> Attributes => Schema.GetDeclaredClass<NetworkedVector<CEconItemAttribute>>(this.Handle, "CAttributeList", "m_Attributes");
 
 	// m_pManager
 	[SchemaMember("CAttributeList", "m_pManager")]
-	public CAttributeManager? Manager => Schema.GetPointer<CAttributeManager>(this.Handle, "CAttributeList", "m_pManager");
+	public virtual CAttributeManager? Manager => Schema.GetPointer<CAttributeManager>(this.Handle, "CAttributeList", "m_pManager");
 
-	public void AttributesPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeList", "m_Attributes");
+	public virtual void AttributesPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeList", "m_Attributes");
 }

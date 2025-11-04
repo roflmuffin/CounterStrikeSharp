@@ -21,7 +21,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_flStopTalkTime
 	[SchemaMember("CAI_Expresser", "m_flStopTalkTime")]
-	public float StopTalkTime
+	public virtual float StopTalkTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTime", value); }
@@ -29,7 +29,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_flStopTalkTimeWithoutDelay
 	[SchemaMember("CAI_Expresser", "m_flStopTalkTimeWithoutDelay")]
-	public float StopTalkTimeWithoutDelay
+	public virtual float StopTalkTimeWithoutDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTimeWithoutDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTimeWithoutDelay", value); }
@@ -37,7 +37,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_flQueuedSpeechTime
 	[SchemaMember("CAI_Expresser", "m_flQueuedSpeechTime")]
-	public float QueuedSpeechTime
+	public virtual float QueuedSpeechTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flQueuedSpeechTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flQueuedSpeechTime", value); }
@@ -45,7 +45,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_flBlockedTalkTime
 	[SchemaMember("CAI_Expresser", "m_flBlockedTalkTime")]
-	public float BlockedTalkTime
+	public virtual float BlockedTalkTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flBlockedTalkTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flBlockedTalkTime", value); }
@@ -53,7 +53,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_voicePitch
 	[SchemaMember("CAI_Expresser", "m_voicePitch")]
-	public Int32 VoicePitch
+	public virtual Int32 VoicePitch
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CAI_Expresser", "m_voicePitch"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CAI_Expresser", "m_voicePitch", value); }
@@ -61,7 +61,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_flLastTimeAcceptedSpeak
 	[SchemaMember("CAI_Expresser", "m_flLastTimeAcceptedSpeak")]
-	public float LastTimeAcceptedSpeak
+	public virtual float LastTimeAcceptedSpeak
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flLastTimeAcceptedSpeak"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flLastTimeAcceptedSpeak", value); }
@@ -69,7 +69,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_bAllowSpeakingInterrupts
 	[SchemaMember("CAI_Expresser", "m_bAllowSpeakingInterrupts")]
-	public bool AllowSpeakingInterrupts
+	public virtual bool AllowSpeakingInterrupts
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CAI_Expresser", "m_bAllowSpeakingInterrupts"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CAI_Expresser", "m_bAllowSpeakingInterrupts", value); }
@@ -77,7 +77,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_bConsiderSceneInvolvementAsSpeech
 	[SchemaMember("CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech")]
-	public bool ConsiderSceneInvolvementAsSpeech
+	public virtual bool ConsiderSceneInvolvementAsSpeech
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech", value); }
@@ -85,7 +85,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_bSceneEntityDisabled
 	[SchemaMember("CAI_Expresser", "m_bSceneEntityDisabled")]
-	public bool SceneEntityDisabled
+	public virtual bool SceneEntityDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CAI_Expresser", "m_bSceneEntityDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CAI_Expresser", "m_bSceneEntityDisabled", value); }
@@ -93,7 +93,7 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_nLastSpokenPriority
 	[SchemaMember("CAI_Expresser", "m_nLastSpokenPriority")]
-	public Int32 LastSpokenPriority
+	public virtual Int32 LastSpokenPriority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CAI_Expresser", "m_nLastSpokenPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CAI_Expresser", "m_nLastSpokenPriority", value); }
@@ -101,6 +101,6 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_pOuter
 	[SchemaMember("CAI_Expresser", "m_pOuter")]
-	public CBaseFlex? Outer => Schema.GetPointer<CBaseFlex>(this.Handle, "CAI_Expresser", "m_pOuter");
+	public virtual CBaseFlex? Outer => Schema.GetPointer<CBaseFlex>(this.Handle, "CAI_Expresser", "m_pOuter");
 
 }

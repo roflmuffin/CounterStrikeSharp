@@ -21,7 +21,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_active
 	[SchemaMember("CEnvBeam", "m_active")]
-	public Int32 Active
+	public virtual Int32 Active
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvBeam", "m_active"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvBeam", "m_active", value); }
@@ -29,11 +29,11 @@ public partial class CEnvBeam : CBeam
 
 	// m_spriteTexture
 	[SchemaMember("CEnvBeam", "m_spriteTexture")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> SpriteTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvBeam", "m_spriteTexture");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> SpriteTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvBeam", "m_spriteTexture");
 
 	// m_iszStartEntity
 	[SchemaMember("CEnvBeam", "m_iszStartEntity")]
-	public string StartEntity
+	public virtual string StartEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszStartEntity"); }
 		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszStartEntity", value); }
@@ -41,7 +41,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_iszEndEntity
 	[SchemaMember("CEnvBeam", "m_iszEndEntity")]
-	public new string EndEntity
+	public virtual new string EndEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszEndEntity"); }
 		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszEndEntity", value); }
@@ -49,7 +49,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_life
 	[SchemaMember("CEnvBeam", "m_life")]
-	public float Life
+	public virtual float Life
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_life"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_life", value); }
@@ -57,7 +57,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_boltWidth
 	[SchemaMember("CEnvBeam", "m_boltWidth")]
-	public float BoltWidth
+	public virtual float BoltWidth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_boltWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_boltWidth", value); }
@@ -65,7 +65,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_noiseAmplitude
 	[SchemaMember("CEnvBeam", "m_noiseAmplitude")]
-	public float NoiseAmplitude
+	public virtual float NoiseAmplitude
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_noiseAmplitude"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_noiseAmplitude", value); }
@@ -73,7 +73,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_speed
 	[SchemaMember("CEnvBeam", "m_speed")]
-	public new Int32 Speed
+	public virtual new Int32 Speed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvBeam", "m_speed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvBeam", "m_speed", value); }
@@ -81,7 +81,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_restrike
 	[SchemaMember("CEnvBeam", "m_restrike")]
-	public float Restrike
+	public virtual float Restrike
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_restrike"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_restrike", value); }
@@ -89,7 +89,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_iszSpriteName
 	[SchemaMember("CEnvBeam", "m_iszSpriteName")]
-	public string SpriteName
+	public virtual string SpriteName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszSpriteName"); }
 		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszSpriteName", value); }
@@ -97,7 +97,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_frameStart
 	[SchemaMember("CEnvBeam", "m_frameStart")]
-	public Int32 FrameStart
+	public virtual Int32 FrameStart
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvBeam", "m_frameStart"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvBeam", "m_frameStart", value); }
@@ -105,7 +105,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_vEndPointWorld
 	[SchemaMember("CEnvBeam", "m_vEndPointWorld")]
-	public Vector3 EndPointWorld
+	public virtual Vector3 EndPointWorld
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointWorld"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointWorld", value); }
@@ -113,7 +113,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_vEndPointRelative
 	[SchemaMember("CEnvBeam", "m_vEndPointRelative")]
-	public Vector3 EndPointRelative
+	public virtual Vector3 EndPointRelative
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointRelative"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointRelative", value); }
@@ -121,7 +121,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_radius
 	[SchemaMember("CEnvBeam", "m_radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_radius", value); }
@@ -129,7 +129,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_TouchType
 	[SchemaMember("CEnvBeam", "m_TouchType")]
-	public Touch_t TouchType
+	public virtual Touch_t TouchType
 	{
 		get { return Schema.GetValueType<Touch_t>(this.Handle, "CEnvBeam", "m_TouchType"); }
 		set { Schema.SetValueType<Touch_t>(this.Handle, "CEnvBeam", "m_TouchType", value); }
@@ -137,7 +137,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_iFilterName
 	[SchemaMember("CEnvBeam", "m_iFilterName")]
-	public string FilterName
+	public virtual string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iFilterName"); }
 		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iFilterName", value); }
@@ -145,11 +145,11 @@ public partial class CEnvBeam : CBeam
 
 	// m_hFilter
 	[SchemaMember("CEnvBeam", "m_hFilter")]
-	public CHandle<CBaseEntity> Filter => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvBeam", "m_hFilter");
+	public virtual CHandle<CBaseEntity> Filter => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvBeam", "m_hFilter");
 
 	// m_iszDecal
 	[SchemaMember("CEnvBeam", "m_iszDecal")]
-	public string Decal
+	public virtual string Decal
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszDecal"); }
 		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszDecal", value); }
@@ -157,6 +157,6 @@ public partial class CEnvBeam : CBeam
 
 	// m_OnTouchedByEntity
 	[SchemaMember("CEnvBeam", "m_OnTouchedByEntity")]
-	public CEntityIOOutput OnTouchedByEntity => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvBeam", "m_OnTouchedByEntity");
+	public virtual CEntityIOOutput OnTouchedByEntity => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvBeam", "m_OnTouchedByEntity");
 
 }

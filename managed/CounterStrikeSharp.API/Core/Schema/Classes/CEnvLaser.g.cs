@@ -21,7 +21,7 @@ public partial class CEnvLaser : CBeam
 
 	// m_iszLaserTarget
 	[SchemaMember("CEnvLaser", "m_iszLaserTarget")]
-	public string LaserTarget
+	public virtual string LaserTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszLaserTarget"); }
 		set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszLaserTarget", value); }
@@ -29,11 +29,11 @@ public partial class CEnvLaser : CBeam
 
 	// m_pSprite
 	[SchemaMember("CEnvLaser", "m_pSprite")]
-	public CSprite? Sprite => Schema.GetPointer<CSprite>(this.Handle, "CEnvLaser", "m_pSprite");
+	public virtual CSprite? Sprite => Schema.GetPointer<CSprite>(this.Handle, "CEnvLaser", "m_pSprite");
 
 	// m_iszSpriteName
 	[SchemaMember("CEnvLaser", "m_iszSpriteName")]
-	public string SpriteName
+	public virtual string SpriteName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszSpriteName"); }
 		set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszSpriteName", value); }
@@ -41,7 +41,7 @@ public partial class CEnvLaser : CBeam
 
 	// m_firePosition
 	[SchemaMember("CEnvLaser", "m_firePosition")]
-	public Vector3 FirePosition
+	public virtual Vector3 FirePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvLaser", "m_firePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvLaser", "m_firePosition", value); }
@@ -49,7 +49,7 @@ public partial class CEnvLaser : CBeam
 
 	// m_flStartFrame
 	[SchemaMember("CEnvLaser", "m_flStartFrame")]
-	public new float StartFrame
+	public virtual new float StartFrame
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvLaser", "m_flStartFrame"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvLaser", "m_flStartFrame", value); }

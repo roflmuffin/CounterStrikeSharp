@@ -21,7 +21,7 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_bPlayedIntroVcd
 	[SchemaMember("CMapVetoPickController", "m_bPlayedIntroVcd")]
-	public bool PlayedIntroVcd
+	public virtual bool PlayedIntroVcd
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPlayedIntroVcd"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPlayedIntroVcd", value); }
@@ -29,7 +29,7 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_bNeedToPlayFiveSecondsRemaining
 	[SchemaMember("CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining")]
-	public bool NeedToPlayFiveSecondsRemaining
+	public virtual bool NeedToPlayFiveSecondsRemaining
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining", value); }
@@ -37,7 +37,7 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_dblPreMatchDraftSequenceTime
 	[SchemaMember("CMapVetoPickController", "m_dblPreMatchDraftSequenceTime")]
-	public double DblPreMatchDraftSequenceTime
+	public virtual double DblPreMatchDraftSequenceTime
 	{
 		get { return Schema.GetValueType<double>(this.Handle, "CMapVetoPickController", "m_dblPreMatchDraftSequenceTime"); }
 		set { Schema.SetValueType<double>(this.Handle, "CMapVetoPickController", "m_dblPreMatchDraftSequenceTime", value); }
@@ -45,7 +45,7 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_bPreMatchDraftStateChanged
 	[SchemaMember("CMapVetoPickController", "m_bPreMatchDraftStateChanged")]
-	public bool PreMatchDraftStateChanged
+	public virtual bool PreMatchDraftStateChanged
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPreMatchDraftStateChanged"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPreMatchDraftStateChanged", value); }
@@ -53,7 +53,7 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_nDraftType
 	[SchemaMember("CMapVetoPickController", "m_nDraftType")]
-	public Int32 DraftType
+	public virtual Int32 DraftType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nDraftType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nDraftType", value); }
@@ -61,7 +61,7 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_nTeamWinningCoinToss
 	[SchemaMember("CMapVetoPickController", "m_nTeamWinningCoinToss")]
-	public Int32 TeamWinningCoinToss
+	public virtual Int32 TeamWinningCoinToss
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWinningCoinToss"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWinningCoinToss", value); }
@@ -69,47 +69,47 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_nTeamWithFirstChoice
 	[SchemaMember("CMapVetoPickController", "m_nTeamWithFirstChoice")]
-	public Span<Int32> TeamWithFirstChoice => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWithFirstChoice", 64);
+	public virtual Span<Int32> TeamWithFirstChoice => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWithFirstChoice", 64);
 
 	// m_nVoteMapIdsList
 	[SchemaMember("CMapVetoPickController", "m_nVoteMapIdsList")]
-	public Span<Int32> VoteMapIdsList => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nVoteMapIdsList", 7);
+	public virtual Span<Int32> VoteMapIdsList => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nVoteMapIdsList", 7);
 
 	// m_nAccountIDs
 	[SchemaMember("CMapVetoPickController", "m_nAccountIDs")]
-	public Span<Int32> AccountIDs => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nAccountIDs", 64);
+	public virtual Span<Int32> AccountIDs => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nAccountIDs", 64);
 
 	// m_nMapId0
 	[SchemaMember("CMapVetoPickController", "m_nMapId0")]
-	public Span<Int32> MapId0 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId0", 64);
+	public virtual Span<Int32> MapId0 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId0", 64);
 
 	// m_nMapId1
 	[SchemaMember("CMapVetoPickController", "m_nMapId1")]
-	public Span<Int32> MapId1 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId1", 64);
+	public virtual Span<Int32> MapId1 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId1", 64);
 
 	// m_nMapId2
 	[SchemaMember("CMapVetoPickController", "m_nMapId2")]
-	public Span<Int32> MapId2 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId2", 64);
+	public virtual Span<Int32> MapId2 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId2", 64);
 
 	// m_nMapId3
 	[SchemaMember("CMapVetoPickController", "m_nMapId3")]
-	public Span<Int32> MapId3 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId3", 64);
+	public virtual Span<Int32> MapId3 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId3", 64);
 
 	// m_nMapId4
 	[SchemaMember("CMapVetoPickController", "m_nMapId4")]
-	public Span<Int32> MapId4 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId4", 64);
+	public virtual Span<Int32> MapId4 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId4", 64);
 
 	// m_nMapId5
 	[SchemaMember("CMapVetoPickController", "m_nMapId5")]
-	public Span<Int32> MapId5 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId5", 64);
+	public virtual Span<Int32> MapId5 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId5", 64);
 
 	// m_nStartingSide0
 	[SchemaMember("CMapVetoPickController", "m_nStartingSide0")]
-	public Span<Int32> StartingSide0 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nStartingSide0", 64);
+	public virtual Span<Int32> StartingSide0 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nStartingSide0", 64);
 
 	// m_nCurrentPhase
 	[SchemaMember("CMapVetoPickController", "m_nCurrentPhase")]
-	public Int32 CurrentPhase
+	public virtual Int32 CurrentPhase
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nCurrentPhase"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nCurrentPhase", value); }
@@ -117,7 +117,7 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_nPhaseStartTick
 	[SchemaMember("CMapVetoPickController", "m_nPhaseStartTick")]
-	public Int32 PhaseStartTick
+	public virtual Int32 PhaseStartTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseStartTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseStartTick", value); }
@@ -125,25 +125,25 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_nPhaseDurationTicks
 	[SchemaMember("CMapVetoPickController", "m_nPhaseDurationTicks")]
-	public Int32 PhaseDurationTicks
+	public virtual Int32 PhaseDurationTicks
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseDurationTicks"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseDurationTicks", value); }
 	}
 
-	public void DraftTypePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nDraftType");
-	public void TeamWinningCoinTossPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nTeamWinningCoinToss");
-	public void TeamWithFirstChoicePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nTeamWithFirstChoice");
-	public void VoteMapIdsListPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nVoteMapIdsList");
-	public void AccountIDsPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nAccountIDs");
-	public void MapId0PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId0");
-	public void MapId1PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId1");
-	public void MapId2PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId2");
-	public void MapId3PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId3");
-	public void MapId4PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId4");
-	public void MapId5PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId5");
-	public void StartingSide0PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nStartingSide0");
-	public void CurrentPhasePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nCurrentPhase");
-	public void PhaseStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nPhaseStartTick");
-	public void PhaseDurationTicksPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nPhaseDurationTicks");
+	public virtual void DraftTypePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nDraftType");
+	public virtual void TeamWinningCoinTossPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nTeamWinningCoinToss");
+	public virtual void TeamWithFirstChoicePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nTeamWithFirstChoice");
+	public virtual void VoteMapIdsListPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nVoteMapIdsList");
+	public virtual void AccountIDsPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nAccountIDs");
+	public virtual void MapId0PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId0");
+	public virtual void MapId1PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId1");
+	public virtual void MapId2PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId2");
+	public virtual void MapId3PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId3");
+	public virtual void MapId4PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId4");
+	public virtual void MapId5PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId5");
+	public virtual void StartingSide0PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nStartingSide0");
+	public virtual void CurrentPhasePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nCurrentPhase");
+	public virtual void PhaseStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nPhaseStartTick");
+	public virtual void PhaseDurationTicksPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nPhaseDurationTicks");
 }

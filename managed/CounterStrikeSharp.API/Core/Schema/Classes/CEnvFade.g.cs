@@ -21,7 +21,7 @@ public partial class CEnvFade : CLogicalEntity
 
 	// m_fadeColor
 	[SchemaMember("CEnvFade", "m_fadeColor")]
-	public Color FadeColor
+	public virtual Color FadeColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor", value); }
@@ -29,7 +29,7 @@ public partial class CEnvFade : CLogicalEntity
 
 	// m_Duration
 	[SchemaMember("CEnvFade", "m_Duration")]
-	public float Duration
+	public virtual float Duration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvFade", "m_Duration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvFade", "m_Duration", value); }
@@ -37,7 +37,7 @@ public partial class CEnvFade : CLogicalEntity
 
 	// m_HoldDuration
 	[SchemaMember("CEnvFade", "m_HoldDuration")]
-	public float HoldDuration
+	public virtual float HoldDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvFade", "m_HoldDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvFade", "m_HoldDuration", value); }
@@ -45,7 +45,7 @@ public partial class CEnvFade : CLogicalEntity
 
 	// m_OnBeginFade
 	[SchemaMember("CEnvFade", "m_OnBeginFade")]
-	public CEntityIOOutput OnBeginFade => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFade", "m_OnBeginFade");
+	public virtual CEntityIOOutput OnBeginFade => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFade", "m_OnBeginFade");
 
-	public void FadeColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvFade", "m_fadeColor");
+	public virtual void FadeColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvFade", "m_fadeColor");
 }

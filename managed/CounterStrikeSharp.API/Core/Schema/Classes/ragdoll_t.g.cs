@@ -21,19 +21,19 @@ public partial class ragdoll_t : NativeObject
 
 	// list
 	[SchemaMember("ragdoll_t", "list")]
-	public NetworkedVector<ragdollelement_t> List => Schema.GetDeclaredClass<NetworkedVector<ragdollelement_t>>(this.Handle, "ragdoll_t", "list");
+	public virtual NetworkedVector<ragdollelement_t> List => Schema.GetDeclaredClass<NetworkedVector<ragdollelement_t>>(this.Handle, "ragdoll_t", "list");
 
 	// hierarchyJoints
 	[SchemaMember("ragdoll_t", "hierarchyJoints")]
-	public NetworkedVector<ragdollhierarchyjoint_t> HierarchyJoints => Schema.GetDeclaredClass<NetworkedVector<ragdollhierarchyjoint_t>>(this.Handle, "ragdoll_t", "hierarchyJoints");
+	public virtual NetworkedVector<ragdollhierarchyjoint_t> HierarchyJoints => Schema.GetDeclaredClass<NetworkedVector<ragdollhierarchyjoint_t>>(this.Handle, "ragdoll_t", "hierarchyJoints");
 
 	// boneIndex
 	[SchemaMember("ragdoll_t", "boneIndex")]
-	public NetworkedVector<Int32> BoneIndex => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "ragdoll_t", "boneIndex");
+	public virtual NetworkedVector<Int32> BoneIndex => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "ragdoll_t", "boneIndex");
 
 	// allowStretch
 	[SchemaMember("ragdoll_t", "allowStretch")]
-	public bool AllowStretch
+	public virtual bool AllowStretch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "ragdoll_t", "allowStretch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "ragdoll_t", "allowStretch", value); }
@@ -41,7 +41,7 @@ public partial class ragdoll_t : NativeObject
 
 	// unused
 	[SchemaMember("ragdoll_t", "unused")]
-	public bool Unused
+	public virtual bool Unused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "ragdoll_t", "unused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "ragdoll_t", "unused", value); }

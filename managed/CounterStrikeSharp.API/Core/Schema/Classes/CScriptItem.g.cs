@@ -21,7 +21,7 @@ public partial class CScriptItem : CItem
 
 	// m_MoveTypeOverride
 	[SchemaMember("CScriptItem", "m_MoveTypeOverride")]
-	public MoveType_t MoveTypeOverride
+	public virtual MoveType_t MoveTypeOverride
 	{
 		get { return Schema.GetValueType<MoveType_t>(this.Handle, "CScriptItem", "m_MoveTypeOverride"); }
 		set { Schema.SetValueType<MoveType_t>(this.Handle, "CScriptItem", "m_MoveTypeOverride", value); }

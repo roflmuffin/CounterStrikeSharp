@@ -21,7 +21,7 @@ public partial class DestructibleHitGroupToDestroy_t : NativeObject
 
 	// m_nHitGroup
 	[SchemaMember("DestructibleHitGroupToDestroy_t", "m_nHitGroup")]
-	public HitGroup_t HitGroup
+	public virtual HitGroup_t HitGroup
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nHitGroup"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nHitGroup", value); }
@@ -29,7 +29,7 @@ public partial class DestructibleHitGroupToDestroy_t : NativeObject
 
 	// m_nMaxDamageLevel
 	[SchemaMember("DestructibleHitGroupToDestroy_t", "m_nMaxDamageLevel")]
-	public Int32 MaxDamageLevel
+	public virtual Int32 MaxDamageLevel
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nMaxDamageLevel"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nMaxDamageLevel", value); }

@@ -21,7 +21,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_gravityScale
 	[SchemaMember("CTriggerPhysics", "m_gravityScale")]
-	public new float GravityScale
+	public virtual new float GravityScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_gravityScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_gravityScale", value); }
@@ -29,7 +29,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_linearLimit
 	[SchemaMember("CTriggerPhysics", "m_linearLimit")]
-	public float LinearLimit
+	public virtual float LinearLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearLimit", value); }
@@ -37,7 +37,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_linearDamping
 	[SchemaMember("CTriggerPhysics", "m_linearDamping")]
-	public float LinearDamping
+	public virtual float LinearDamping
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearDamping"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearDamping", value); }
@@ -45,7 +45,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_angularLimit
 	[SchemaMember("CTriggerPhysics", "m_angularLimit")]
-	public float AngularLimit
+	public virtual float AngularLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularLimit", value); }
@@ -53,7 +53,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_angularDamping
 	[SchemaMember("CTriggerPhysics", "m_angularDamping")]
-	public float AngularDamping
+	public virtual float AngularDamping
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularDamping"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularDamping", value); }
@@ -61,7 +61,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_linearForce
 	[SchemaMember("CTriggerPhysics", "m_linearForce")]
-	public float LinearForce
+	public virtual float LinearForce
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearForce"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearForce", value); }
@@ -69,7 +69,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_flFrequency
 	[SchemaMember("CTriggerPhysics", "m_flFrequency")]
-	public float Frequency
+	public virtual float Frequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_flFrequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_flFrequency", value); }
@@ -77,7 +77,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_flDampingRatio
 	[SchemaMember("CTriggerPhysics", "m_flDampingRatio")]
-	public float DampingRatio
+	public virtual float DampingRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio", value); }
@@ -85,7 +85,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_vecLinearForcePointAt
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForcePointAt")]
-	public Vector3 LinearForcePointAt
+	public virtual Vector3 LinearForcePointAt
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt", value); }
@@ -93,7 +93,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_bCollapseToForcePoint
 	[SchemaMember("CTriggerPhysics", "m_bCollapseToForcePoint")]
-	public bool CollapseToForcePoint
+	public virtual bool CollapseToForcePoint
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint", value); }
@@ -101,7 +101,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_vecLinearForcePointAtWorld
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForcePointAtWorld")]
-	public Vector3 LinearForcePointAtWorld
+	public virtual Vector3 LinearForcePointAtWorld
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld", value); }
@@ -109,7 +109,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_vecLinearForceDirection
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForceDirection")]
-	public Vector3 LinearForceDirection
+	public virtual Vector3 LinearForceDirection
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection", value); }
@@ -117,23 +117,23 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_bConvertToDebrisWhenPossible
 	[SchemaMember("CTriggerPhysics", "m_bConvertToDebrisWhenPossible")]
-	public bool ConvertToDebrisWhenPossible
+	public virtual bool ConvertToDebrisWhenPossible
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible", value); }
 	}
 
-	public void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_gravityScale");
-	public void LinearLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearLimit");
-	public void LinearDampingPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearDamping");
-	public void AngularLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_angularLimit");
-	public void AngularDampingPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_angularDamping");
-	public void LinearForcePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearForce");
-	public void FrequencyPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_flFrequency");
-	public void DampingRatioPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_flDampingRatio");
-	public void LinearForcePointAtPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForcePointAt");
-	public void CollapseToForcePointPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_bCollapseToForcePoint");
-	public void LinearForcePointAtWorldPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForcePointAtWorld");
-	public void LinearForceDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForceDirection");
-	public void ConvertToDebrisWhenPossiblePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");
+	public virtual void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_gravityScale");
+	public virtual void LinearLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearLimit");
+	public virtual void LinearDampingPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearDamping");
+	public virtual void AngularLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_angularLimit");
+	public virtual void AngularDampingPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_angularDamping");
+	public virtual void LinearForcePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearForce");
+	public virtual void FrequencyPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_flFrequency");
+	public virtual void DampingRatioPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_flDampingRatio");
+	public virtual void LinearForcePointAtPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForcePointAt");
+	public virtual void CollapseToForcePointPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_bCollapseToForcePoint");
+	public virtual void LinearForcePointAtWorldPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForcePointAtWorld");
+	public virtual void LinearForceDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForceDirection");
+	public virtual void ConvertToDebrisWhenPossiblePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");
 }

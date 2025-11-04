@@ -21,7 +21,7 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_iszTargetEntity
 	[SchemaMember("CLogicDistanceAutosave", "m_iszTargetEntity")]
-	public string TargetEntity
+	public virtual string TargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity"); }
 		set { Schema.SetString(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity", value); }
@@ -29,7 +29,7 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_flDistanceToPlayer
 	[SchemaMember("CLogicDistanceAutosave", "m_flDistanceToPlayer")]
-	public float DistanceToPlayer
+	public virtual float DistanceToPlayer
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer", value); }
@@ -37,7 +37,7 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CLogicDistanceAutosave", "m_bForceNewLevelUnit")]
-	public bool ForceNewLevelUnit
+	public virtual bool ForceNewLevelUnit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit", value); }
@@ -45,7 +45,7 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_bCheckCough
 	[SchemaMember("CLogicDistanceAutosave", "m_bCheckCough")]
-	public bool CheckCough
+	public virtual bool CheckCough
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough", value); }
@@ -53,7 +53,7 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_bThinkDangerous
 	[SchemaMember("CLogicDistanceAutosave", "m_bThinkDangerous")]
-	public bool ThinkDangerous
+	public virtual bool ThinkDangerous
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous", value); }
@@ -61,7 +61,7 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_flDangerousTime
 	[SchemaMember("CLogicDistanceAutosave", "m_flDangerousTime")]
-	public float DangerousTime
+	public virtual float DangerousTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime", value); }

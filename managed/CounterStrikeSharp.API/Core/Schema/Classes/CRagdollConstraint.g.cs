@@ -21,7 +21,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_xmin
 	[SchemaMember("CRagdollConstraint", "m_xmin")]
-	public float Xmin
+	public virtual float Xmin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmin", value); }
@@ -29,7 +29,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_xmax
 	[SchemaMember("CRagdollConstraint", "m_xmax")]
-	public float Xmax
+	public virtual float Xmax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmax", value); }
@@ -37,7 +37,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_ymin
 	[SchemaMember("CRagdollConstraint", "m_ymin")]
-	public float Ymin
+	public virtual float Ymin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymin", value); }
@@ -45,7 +45,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_ymax
 	[SchemaMember("CRagdollConstraint", "m_ymax")]
-	public float Ymax
+	public virtual float Ymax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymax", value); }
@@ -53,7 +53,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_zmin
 	[SchemaMember("CRagdollConstraint", "m_zmin")]
-	public float Zmin
+	public virtual float Zmin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmin", value); }
@@ -61,7 +61,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_zmax
 	[SchemaMember("CRagdollConstraint", "m_zmax")]
-	public float Zmax
+	public virtual float Zmax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmax", value); }
@@ -69,7 +69,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_xfriction
 	[SchemaMember("CRagdollConstraint", "m_xfriction")]
-	public float Xfriction
+	public virtual float Xfriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_xfriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_xfriction", value); }
@@ -77,7 +77,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_yfriction
 	[SchemaMember("CRagdollConstraint", "m_yfriction")]
-	public float Yfriction
+	public virtual float Yfriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_yfriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_yfriction", value); }
@@ -85,7 +85,7 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_zfriction
 	[SchemaMember("CRagdollConstraint", "m_zfriction")]
-	public float Zfriction
+	public virtual float Zfriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_zfriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_zfriction", value); }

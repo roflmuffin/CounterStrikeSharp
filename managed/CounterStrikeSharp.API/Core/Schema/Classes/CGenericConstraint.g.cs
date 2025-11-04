@@ -21,7 +21,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_nLinearMotionX
 	[SchemaMember("CGenericConstraint", "m_nLinearMotionX")]
-	public JointMotion_t LinearMotionX
+	public virtual JointMotion_t LinearMotionX
 	{
 		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionX"); }
 		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionX", value); }
@@ -29,7 +29,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_nLinearMotionY
 	[SchemaMember("CGenericConstraint", "m_nLinearMotionY")]
-	public JointMotion_t LinearMotionY
+	public virtual JointMotion_t LinearMotionY
 	{
 		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionY"); }
 		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionY", value); }
@@ -37,7 +37,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_nLinearMotionZ
 	[SchemaMember("CGenericConstraint", "m_nLinearMotionZ")]
-	public JointMotion_t LinearMotionZ
+	public virtual JointMotion_t LinearMotionZ
 	{
 		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionZ"); }
 		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionZ", value); }
@@ -45,7 +45,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flLinearFrequencyX
 	[SchemaMember("CGenericConstraint", "m_flLinearFrequencyX")]
-	public float LinearFrequencyX
+	public virtual float LinearFrequencyX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyX", value); }
@@ -53,7 +53,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flLinearFrequencyY
 	[SchemaMember("CGenericConstraint", "m_flLinearFrequencyY")]
-	public float LinearFrequencyY
+	public virtual float LinearFrequencyY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyY", value); }
@@ -61,7 +61,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flLinearFrequencyZ
 	[SchemaMember("CGenericConstraint", "m_flLinearFrequencyZ")]
-	public float LinearFrequencyZ
+	public virtual float LinearFrequencyZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyZ", value); }
@@ -69,7 +69,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flLinearDampingRatioX
 	[SchemaMember("CGenericConstraint", "m_flLinearDampingRatioX")]
-	public float LinearDampingRatioX
+	public virtual float LinearDampingRatioX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioX", value); }
@@ -77,7 +77,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flLinearDampingRatioY
 	[SchemaMember("CGenericConstraint", "m_flLinearDampingRatioY")]
-	public float LinearDampingRatioY
+	public virtual float LinearDampingRatioY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioY", value); }
@@ -85,7 +85,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flLinearDampingRatioZ
 	[SchemaMember("CGenericConstraint", "m_flLinearDampingRatioZ")]
-	public float LinearDampingRatioZ
+	public virtual float LinearDampingRatioZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioZ", value); }
@@ -93,7 +93,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flMaxLinearImpulseX
 	[SchemaMember("CGenericConstraint", "m_flMaxLinearImpulseX")]
-	public float MaxLinearImpulseX
+	public virtual float MaxLinearImpulseX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseX", value); }
@@ -101,7 +101,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flMaxLinearImpulseY
 	[SchemaMember("CGenericConstraint", "m_flMaxLinearImpulseY")]
-	public float MaxLinearImpulseY
+	public virtual float MaxLinearImpulseY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseY", value); }
@@ -109,7 +109,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flMaxLinearImpulseZ
 	[SchemaMember("CGenericConstraint", "m_flMaxLinearImpulseZ")]
-	public float MaxLinearImpulseZ
+	public virtual float MaxLinearImpulseZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseZ", value); }
@@ -117,7 +117,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeX
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeX")]
-	public float BreakAfterTimeX
+	public virtual float BreakAfterTimeX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeX", value); }
@@ -125,7 +125,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeY
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeY")]
-	public float BreakAfterTimeY
+	public virtual float BreakAfterTimeY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeY", value); }
@@ -133,7 +133,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeZ
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeZ")]
-	public float BreakAfterTimeZ
+	public virtual float BreakAfterTimeZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeZ", value); }
@@ -141,7 +141,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeStartTimeX
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeStartTimeX")]
-	public float BreakAfterTimeStartTimeX
+	public virtual float BreakAfterTimeStartTimeX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeX", value); }
@@ -149,7 +149,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeStartTimeY
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeStartTimeY")]
-	public float BreakAfterTimeStartTimeY
+	public virtual float BreakAfterTimeStartTimeY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeY", value); }
@@ -157,7 +157,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeStartTimeZ
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeStartTimeZ")]
-	public float BreakAfterTimeStartTimeZ
+	public virtual float BreakAfterTimeStartTimeZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeZ", value); }
@@ -165,7 +165,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeThresholdX
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeThresholdX")]
-	public float BreakAfterTimeThresholdX
+	public virtual float BreakAfterTimeThresholdX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdX", value); }
@@ -173,7 +173,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeThresholdY
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeThresholdY")]
-	public float BreakAfterTimeThresholdY
+	public virtual float BreakAfterTimeThresholdY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdY", value); }
@@ -181,7 +181,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flBreakAfterTimeThresholdZ
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeThresholdZ")]
-	public float BreakAfterTimeThresholdZ
+	public virtual float BreakAfterTimeThresholdZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdZ", value); }
@@ -189,7 +189,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceX
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceX")]
-	public float NotifyForceX
+	public virtual float NotifyForceX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceX", value); }
@@ -197,7 +197,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceY
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceY")]
-	public float NotifyForceY
+	public virtual float NotifyForceY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceY", value); }
@@ -205,7 +205,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceZ
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceZ")]
-	public float NotifyForceZ
+	public virtual float NotifyForceZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceZ", value); }
@@ -213,7 +213,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceMinTimeX
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceMinTimeX")]
-	public float NotifyForceMinTimeX
+	public virtual float NotifyForceMinTimeX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeX", value); }
@@ -221,7 +221,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceMinTimeY
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceMinTimeY")]
-	public float NotifyForceMinTimeY
+	public virtual float NotifyForceMinTimeY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeY", value); }
@@ -229,7 +229,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceMinTimeZ
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceMinTimeZ")]
-	public float NotifyForceMinTimeZ
+	public virtual float NotifyForceMinTimeZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeZ", value); }
@@ -237,7 +237,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceLastTimeX
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceLastTimeX")]
-	public float NotifyForceLastTimeX
+	public virtual float NotifyForceLastTimeX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeX", value); }
@@ -245,7 +245,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceLastTimeY
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceLastTimeY")]
-	public float NotifyForceLastTimeY
+	public virtual float NotifyForceLastTimeY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeY", value); }
@@ -253,7 +253,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flNotifyForceLastTimeZ
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceLastTimeZ")]
-	public float NotifyForceLastTimeZ
+	public virtual float NotifyForceLastTimeZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeZ", value); }
@@ -261,7 +261,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_bAxisNotifiedX
 	[SchemaMember("CGenericConstraint", "m_bAxisNotifiedX")]
-	public bool AxisNotifiedX
+	public virtual bool AxisNotifiedX
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedX"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedX", value); }
@@ -269,7 +269,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_bAxisNotifiedY
 	[SchemaMember("CGenericConstraint", "m_bAxisNotifiedY")]
-	public bool AxisNotifiedY
+	public virtual bool AxisNotifiedY
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedY"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedY", value); }
@@ -277,7 +277,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_bAxisNotifiedZ
 	[SchemaMember("CGenericConstraint", "m_bAxisNotifiedZ")]
-	public bool AxisNotifiedZ
+	public virtual bool AxisNotifiedZ
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedZ"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedZ", value); }
@@ -285,7 +285,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_nAngularMotionX
 	[SchemaMember("CGenericConstraint", "m_nAngularMotionX")]
-	public JointMotion_t AngularMotionX
+	public virtual JointMotion_t AngularMotionX
 	{
 		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionX"); }
 		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionX", value); }
@@ -293,7 +293,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_nAngularMotionY
 	[SchemaMember("CGenericConstraint", "m_nAngularMotionY")]
-	public JointMotion_t AngularMotionY
+	public virtual JointMotion_t AngularMotionY
 	{
 		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionY"); }
 		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionY", value); }
@@ -301,7 +301,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_nAngularMotionZ
 	[SchemaMember("CGenericConstraint", "m_nAngularMotionZ")]
-	public JointMotion_t AngularMotionZ
+	public virtual JointMotion_t AngularMotionZ
 	{
 		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionZ"); }
 		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionZ", value); }
@@ -309,7 +309,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flAngularFrequencyX
 	[SchemaMember("CGenericConstraint", "m_flAngularFrequencyX")]
-	public float AngularFrequencyX
+	public virtual float AngularFrequencyX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyX", value); }
@@ -317,7 +317,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flAngularFrequencyY
 	[SchemaMember("CGenericConstraint", "m_flAngularFrequencyY")]
-	public float AngularFrequencyY
+	public virtual float AngularFrequencyY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyY", value); }
@@ -325,7 +325,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flAngularFrequencyZ
 	[SchemaMember("CGenericConstraint", "m_flAngularFrequencyZ")]
-	public float AngularFrequencyZ
+	public virtual float AngularFrequencyZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyZ", value); }
@@ -333,7 +333,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flAngularDampingRatioX
 	[SchemaMember("CGenericConstraint", "m_flAngularDampingRatioX")]
-	public float AngularDampingRatioX
+	public virtual float AngularDampingRatioX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioX", value); }
@@ -341,7 +341,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flAngularDampingRatioY
 	[SchemaMember("CGenericConstraint", "m_flAngularDampingRatioY")]
-	public float AngularDampingRatioY
+	public virtual float AngularDampingRatioY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioY", value); }
@@ -349,7 +349,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flAngularDampingRatioZ
 	[SchemaMember("CGenericConstraint", "m_flAngularDampingRatioZ")]
-	public float AngularDampingRatioZ
+	public virtual float AngularDampingRatioZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioZ", value); }
@@ -357,7 +357,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flMaxAngularImpulseX
 	[SchemaMember("CGenericConstraint", "m_flMaxAngularImpulseX")]
-	public float MaxAngularImpulseX
+	public virtual float MaxAngularImpulseX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseX", value); }
@@ -365,7 +365,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flMaxAngularImpulseY
 	[SchemaMember("CGenericConstraint", "m_flMaxAngularImpulseY")]
-	public float MaxAngularImpulseY
+	public virtual float MaxAngularImpulseY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseY", value); }
@@ -373,7 +373,7 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_flMaxAngularImpulseZ
 	[SchemaMember("CGenericConstraint", "m_flMaxAngularImpulseZ")]
-	public float MaxAngularImpulseZ
+	public virtual float MaxAngularImpulseZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseZ", value); }
@@ -381,14 +381,14 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_NotifyForceReachedX
 	[SchemaMember("CGenericConstraint", "m_NotifyForceReachedX")]
-	public CEntityIOOutput NotifyForceReachedX => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedX");
+	public virtual CEntityIOOutput NotifyForceReachedX => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedX");
 
 	// m_NotifyForceReachedY
 	[SchemaMember("CGenericConstraint", "m_NotifyForceReachedY")]
-	public CEntityIOOutput NotifyForceReachedY => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedY");
+	public virtual CEntityIOOutput NotifyForceReachedY => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedY");
 
 	// m_NotifyForceReachedZ
 	[SchemaMember("CGenericConstraint", "m_NotifyForceReachedZ")]
-	public CEntityIOOutput NotifyForceReachedZ => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedZ");
+	public virtual CEntityIOOutput NotifyForceReachedZ => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedZ");
 
 }

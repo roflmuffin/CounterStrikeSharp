@@ -21,7 +21,7 @@ public partial class ViewAngleServerChange_t : NativeObject
 
 	// nType
 	[SchemaMember("ViewAngleServerChange_t", "nType")]
-	public FixAngleSet_t NType
+	public virtual FixAngleSet_t NType
 	{
 		get { return Schema.GetValueType<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType"); }
 		set { Schema.SetValueType<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType", value); }
@@ -29,7 +29,7 @@ public partial class ViewAngleServerChange_t : NativeObject
 
 	// qAngle
 	[SchemaMember("ViewAngleServerChange_t", "qAngle")]
-	public QAngle QAngle
+	public virtual QAngle QAngle
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle", value); }
@@ -37,13 +37,13 @@ public partial class ViewAngleServerChange_t : NativeObject
 
 	// nIndex
 	[SchemaMember("ViewAngleServerChange_t", "nIndex")]
-	public UInt32 NIndex
+	public virtual UInt32 NIndex
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex", value); }
 	}
 
-	public void NTypePropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "nType");
-	public void QAnglePropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "qAngle");
-	public void NIndexPropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "nIndex");
+	public virtual void NTypePropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "nType");
+	public virtual void QAnglePropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "qAngle");
+	public virtual void NIndexPropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "nIndex");
 }

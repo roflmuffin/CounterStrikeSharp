@@ -21,7 +21,7 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 
 	// m_iSearchType
 	[SchemaMember("CAI_ChangeHintGroup", "m_iSearchType")]
-	public Int32 SearchType
+	public virtual Int32 SearchType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CAI_ChangeHintGroup", "m_iSearchType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CAI_ChangeHintGroup", "m_iSearchType", value); }
@@ -29,7 +29,7 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 
 	// m_strSearchName
 	[SchemaMember("CAI_ChangeHintGroup", "m_strSearchName")]
-	public string StrSearchName
+	public virtual string StrSearchName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeHintGroup", "m_strSearchName"); }
 		set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strSearchName", value); }
@@ -37,7 +37,7 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 
 	// m_strNewHintGroup
 	[SchemaMember("CAI_ChangeHintGroup", "m_strNewHintGroup")]
-	public string StrNewHintGroup
+	public virtual string StrNewHintGroup
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeHintGroup", "m_strNewHintGroup"); }
 		set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strNewHintGroup", value); }
@@ -45,7 +45,7 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 
 	// m_flRadius
 	[SchemaMember("CAI_ChangeHintGroup", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAI_ChangeHintGroup", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAI_ChangeHintGroup", "m_flRadius", value); }

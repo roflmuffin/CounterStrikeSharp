@@ -21,7 +21,7 @@ public partial class VelocitySampler : NativeObject
 
 	// m_prevSample
 	[SchemaMember("VelocitySampler", "m_prevSample")]
-	public Vector3 PrevSample
+	public virtual Vector3 PrevSample
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "VelocitySampler", "m_prevSample"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "VelocitySampler", "m_prevSample", value); }
@@ -29,7 +29,7 @@ public partial class VelocitySampler : NativeObject
 
 	// m_fPrevSampleTime
 	[SchemaMember("VelocitySampler", "m_fPrevSampleTime")]
-	public float PrevSampleTime
+	public virtual float PrevSampleTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "VelocitySampler", "m_fPrevSampleTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "VelocitySampler", "m_fPrevSampleTime", value); }
@@ -37,7 +37,7 @@ public partial class VelocitySampler : NativeObject
 
 	// m_fIdealSampleRate
 	[SchemaMember("VelocitySampler", "m_fIdealSampleRate")]
-	public float IdealSampleRate
+	public virtual float IdealSampleRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "VelocitySampler", "m_fIdealSampleRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "VelocitySampler", "m_fIdealSampleRate", value); }

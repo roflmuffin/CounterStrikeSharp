@@ -21,11 +21,11 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_EnvWindShared
 	[SchemaMember("CEnvWindController", "m_EnvWindShared")]
-	public CEnvWindShared EnvWindShared => Schema.GetDeclaredClass<CEnvWindShared>(this.Handle, "CEnvWindController", "m_EnvWindShared");
+	public virtual CEnvWindShared EnvWindShared => Schema.GetDeclaredClass<CEnvWindShared>(this.Handle, "CEnvWindController", "m_EnvWindShared");
 
 	// m_fDirectionVariation
 	[SchemaMember("CEnvWindController", "m_fDirectionVariation")]
-	public float DirectionVariation
+	public virtual float DirectionVariation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fDirectionVariation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fDirectionVariation", value); }
@@ -33,7 +33,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_fSpeedVariation
 	[SchemaMember("CEnvWindController", "m_fSpeedVariation")]
-	public float SpeedVariation
+	public virtual float SpeedVariation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fSpeedVariation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fSpeedVariation", value); }
@@ -41,7 +41,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_fTurbulence
 	[SchemaMember("CEnvWindController", "m_fTurbulence")]
-	public float Turbulence
+	public virtual float Turbulence
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fTurbulence"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fTurbulence", value); }
@@ -49,7 +49,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_fVolumeHalfExtentXY
 	[SchemaMember("CEnvWindController", "m_fVolumeHalfExtentXY")]
-	public float VolumeHalfExtentXY
+	public virtual float VolumeHalfExtentXY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentXY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentXY", value); }
@@ -57,7 +57,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_fVolumeHalfExtentZ
 	[SchemaMember("CEnvWindController", "m_fVolumeHalfExtentZ")]
-	public float VolumeHalfExtentZ
+	public virtual float VolumeHalfExtentZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentZ", value); }
@@ -65,7 +65,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_nVolumeResolutionXY
 	[SchemaMember("CEnvWindController", "m_nVolumeResolutionXY")]
-	public Int32 VolumeResolutionXY
+	public virtual Int32 VolumeResolutionXY
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionXY"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionXY", value); }
@@ -73,7 +73,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_nVolumeResolutionZ
 	[SchemaMember("CEnvWindController", "m_nVolumeResolutionZ")]
-	public Int32 VolumeResolutionZ
+	public virtual Int32 VolumeResolutionZ
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionZ"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionZ", value); }
@@ -81,7 +81,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_nClipmapLevels
 	[SchemaMember("CEnvWindController", "m_nClipmapLevels")]
-	public Int32 ClipmapLevels
+	public virtual Int32 ClipmapLevels
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindController", "m_nClipmapLevels"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindController", "m_nClipmapLevels", value); }
@@ -89,7 +89,7 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_bIsMaster
 	[SchemaMember("CEnvWindController", "m_bIsMaster")]
-	public bool IsMaster
+	public virtual bool IsMaster
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindController", "m_bIsMaster"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindController", "m_bIsMaster", value); }
@@ -97,20 +97,20 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_bFirstTime
 	[SchemaMember("CEnvWindController", "m_bFirstTime")]
-	public bool FirstTime
+	public virtual bool FirstTime
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindController", "m_bFirstTime"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindController", "m_bFirstTime", value); }
 	}
 
-	public void EnvWindSharedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_EnvWindShared");
-	public void DirectionVariationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fDirectionVariation");
-	public void SpeedVariationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fSpeedVariation");
-	public void TurbulencePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fTurbulence");
-	public void VolumeHalfExtentXYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fVolumeHalfExtentXY");
-	public void VolumeHalfExtentZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fVolumeHalfExtentZ");
-	public void VolumeResolutionXYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nVolumeResolutionXY");
-	public void VolumeResolutionZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nVolumeResolutionZ");
-	public void ClipmapLevelsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nClipmapLevels");
-	public void IsMasterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_bIsMaster");
+	public virtual void EnvWindSharedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_EnvWindShared");
+	public virtual void DirectionVariationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fDirectionVariation");
+	public virtual void SpeedVariationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fSpeedVariation");
+	public virtual void TurbulencePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fTurbulence");
+	public virtual void VolumeHalfExtentXYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fVolumeHalfExtentXY");
+	public virtual void VolumeHalfExtentZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fVolumeHalfExtentZ");
+	public virtual void VolumeResolutionXYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nVolumeResolutionXY");
+	public virtual void VolumeResolutionZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nVolumeResolutionZ");
+	public virtual void ClipmapLevelsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nClipmapLevels");
+	public virtual void IsMasterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_bIsMaster");
 }

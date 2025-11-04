@@ -21,11 +21,11 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_hLookTarget
 	[SchemaMember("CTriggerLook", "m_hLookTarget")]
-	public CHandle<CBaseEntity> LookTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hLookTarget");
+	public virtual CHandle<CBaseEntity> LookTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hLookTarget");
 
 	// m_flFieldOfView
 	[SchemaMember("CTriggerLook", "m_flFieldOfView")]
-	public float FieldOfView
+	public virtual float FieldOfView
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flFieldOfView"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flFieldOfView", value); }
@@ -33,7 +33,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_flLookTime
 	[SchemaMember("CTriggerLook", "m_flLookTime")]
-	public float LookTime
+	public virtual float LookTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTime", value); }
@@ -41,7 +41,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_flLookTimeTotal
 	[SchemaMember("CTriggerLook", "m_flLookTimeTotal")]
-	public float LookTimeTotal
+	public virtual float LookTimeTotal
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeTotal"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeTotal", value); }
@@ -49,7 +49,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_flLookTimeLast
 	[SchemaMember("CTriggerLook", "m_flLookTimeLast")]
-	public float LookTimeLast
+	public virtual float LookTimeLast
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeLast"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeLast", value); }
@@ -57,7 +57,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_flTimeoutDuration
 	[SchemaMember("CTriggerLook", "m_flTimeoutDuration")]
-	public float TimeoutDuration
+	public virtual float TimeoutDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flTimeoutDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flTimeoutDuration", value); }
@@ -65,7 +65,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_bTimeoutFired
 	[SchemaMember("CTriggerLook", "m_bTimeoutFired")]
-	public bool TimeoutFired
+	public virtual bool TimeoutFired
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bTimeoutFired"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bTimeoutFired", value); }
@@ -73,7 +73,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_bIsLooking
 	[SchemaMember("CTriggerLook", "m_bIsLooking")]
-	public bool IsLooking
+	public virtual bool IsLooking
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bIsLooking"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bIsLooking", value); }
@@ -81,7 +81,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_b2DFOV
 	[SchemaMember("CTriggerLook", "m_b2DFOV")]
-	public bool B2DFOV
+	public virtual bool B2DFOV
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_b2DFOV"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_b2DFOV", value); }
@@ -89,7 +89,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_bUseVelocity
 	[SchemaMember("CTriggerLook", "m_bUseVelocity")]
-	public bool UseVelocity
+	public virtual bool UseVelocity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bUseVelocity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bUseVelocity", value); }
@@ -97,7 +97,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_bTestOcclusion
 	[SchemaMember("CTriggerLook", "m_bTestOcclusion")]
-	public bool TestOcclusion
+	public virtual bool TestOcclusion
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion", value); }
@@ -105,7 +105,7 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_bTestAllVisibleOcclusion
 	[SchemaMember("CTriggerLook", "m_bTestAllVisibleOcclusion")]
-	public bool TestAllVisibleOcclusion
+	public virtual bool TestAllVisibleOcclusion
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestAllVisibleOcclusion"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestAllVisibleOcclusion", value); }
@@ -113,16 +113,16 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_OnTimeout
 	[SchemaMember("CTriggerLook", "m_OnTimeout")]
-	public CEntityIOOutput OnTimeout => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnTimeout");
+	public virtual CEntityIOOutput OnTimeout => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnTimeout");
 
 	// m_OnStartLook
 	[SchemaMember("CTriggerLook", "m_OnStartLook")]
-	public CEntityIOOutput OnStartLook => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnStartLook");
+	public virtual CEntityIOOutput OnStartLook => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnStartLook");
 
 	// m_OnEndLook
 	[SchemaMember("CTriggerLook", "m_OnEndLook")]
-	public CEntityIOOutput OnEndLook => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnEndLook");
+	public virtual CEntityIOOutput OnEndLook => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnEndLook");
 
-	public void TestOcclusionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerLook", "m_bTestOcclusion");
-	public void TestAllVisibleOcclusionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerLook", "m_bTestAllVisibleOcclusion");
+	public virtual void TestOcclusionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerLook", "m_bTestOcclusion");
+	public virtual void TestAllVisibleOcclusionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerLook", "m_bTestAllVisibleOcclusion");
 }

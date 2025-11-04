@@ -21,7 +21,7 @@ public partial class locksound_t : NativeObject
 
 	// sLockedSound
 	[SchemaMember("locksound_t", "sLockedSound")]
-	public string SLockedSound
+	public virtual string SLockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sLockedSound"); }
 		set { Schema.SetString(this.Handle, "locksound_t", "sLockedSound", value); }
@@ -29,7 +29,7 @@ public partial class locksound_t : NativeObject
 
 	// sUnlockedSound
 	[SchemaMember("locksound_t", "sUnlockedSound")]
-	public string SUnlockedSound
+	public virtual string SUnlockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sUnlockedSound"); }
 		set { Schema.SetString(this.Handle, "locksound_t", "sUnlockedSound", value); }
@@ -37,7 +37,7 @@ public partial class locksound_t : NativeObject
 
 	// flwaitSound
 	[SchemaMember("locksound_t", "flwaitSound")]
-	public float FlwaitSound
+	public virtual float FlwaitSound
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "locksound_t", "flwaitSound"); }
 		set { Schema.SetValueType<float>(this.Handle, "locksound_t", "flwaitSound", value); }

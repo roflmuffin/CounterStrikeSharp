@@ -21,7 +21,7 @@ public partial class CPulseGameBlackboard : CBaseEntity
 
 	// m_strGraphName
 	[SchemaMember("CPulseGameBlackboard", "m_strGraphName")]
-	public string StrGraphName
+	public virtual string StrGraphName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPulseGameBlackboard", "m_strGraphName"); }
 		set { Schema.SetString(this.Handle, "CPulseGameBlackboard", "m_strGraphName", value); }
@@ -29,12 +29,12 @@ public partial class CPulseGameBlackboard : CBaseEntity
 
 	// m_strStateBlob
 	[SchemaMember("CPulseGameBlackboard", "m_strStateBlob")]
-	public string StrStateBlob
+	public virtual string StrStateBlob
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPulseGameBlackboard", "m_strStateBlob"); }
 		set { Schema.SetString(this.Handle, "CPulseGameBlackboard", "m_strStateBlob", value); }
 	}
 
-	public void StrGraphNamePropertyChanged() => Utilities.SetStateChanged(this, "CPulseGameBlackboard", "m_strGraphName");
-	public void StrStateBlobPropertyChanged() => Utilities.SetStateChanged(this, "CPulseGameBlackboard", "m_strStateBlob");
+	public virtual void StrGraphNamePropertyChanged() => Utilities.SetStateChanged(this, "CPulseGameBlackboard", "m_strGraphName");
+	public virtual void StrStateBlobPropertyChanged() => Utilities.SetStateChanged(this, "CPulseGameBlackboard", "m_strStateBlob");
 }

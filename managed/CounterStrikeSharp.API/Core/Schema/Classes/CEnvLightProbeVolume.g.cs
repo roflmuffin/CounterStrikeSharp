@@ -21,43 +21,43 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_hLightProbeTexture_AmbientCube
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_AmbientCube => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_AmbientCube => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube");
 
 	// m_Entity_hLightProbeTexture_SDF
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SDF")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SDF => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SDF");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SDF => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SDF");
 
 	// m_Entity_hLightProbeTexture_SH2_DC
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_DC => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_DC => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC");
 
 	// m_Entity_hLightProbeTexture_SH2_R
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_R => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_R => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R");
 
 	// m_Entity_hLightProbeTexture_SH2_G
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_G => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_G => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G");
 
 	// m_Entity_hLightProbeTexture_SH2_B
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_B => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_B => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B");
 
 	// m_Entity_hLightProbeDirectLightIndicesTexture
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeDirectLightIndicesTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeDirectLightIndicesTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture");
 
 	// m_Entity_hLightProbeDirectLightScalarsTexture
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightScalarsTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeDirectLightScalarsTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightScalarsTexture");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeDirectLightScalarsTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightScalarsTexture");
 
 	// m_Entity_hLightProbeDirectLightShadowsTexture
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightShadowsTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeDirectLightShadowsTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightShadowsTexture");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeDirectLightShadowsTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightShadowsTexture");
 
 	// m_Entity_vBoxMins
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_vBoxMins")]
-	public Vector3 Entity_vBoxMins
+	public virtual Vector3 Entity_vBoxMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMins", value); }
@@ -65,7 +65,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_vBoxMaxs
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_vBoxMaxs")]
-	public Vector3 Entity_vBoxMaxs
+	public virtual Vector3 Entity_vBoxMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMaxs", value); }
@@ -73,7 +73,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_bMoveable
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_bMoveable")]
-	public bool Entity_bMoveable
+	public virtual bool Entity_bMoveable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bMoveable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bMoveable", value); }
@@ -81,7 +81,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nHandshake
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nHandshake")]
-	public Int32 Entity_nHandshake
+	public virtual Int32 Entity_nHandshake
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nHandshake"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nHandshake", value); }
@@ -89,7 +89,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nPriority
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nPriority")]
-	public Int32 Entity_nPriority
+	public virtual Int32 Entity_nPriority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nPriority", value); }
@@ -97,7 +97,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_bStartDisabled
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_bStartDisabled")]
-	public bool Entity_bStartDisabled
+	public virtual bool Entity_bStartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bStartDisabled", value); }
@@ -105,7 +105,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nLightProbeSizeX
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX")]
-	public Int32 Entity_nLightProbeSizeX
+	public virtual Int32 Entity_nLightProbeSizeX
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX", value); }
@@ -113,7 +113,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nLightProbeSizeY
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY")]
-	public Int32 Entity_nLightProbeSizeY
+	public virtual Int32 Entity_nLightProbeSizeY
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY", value); }
@@ -121,7 +121,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nLightProbeSizeZ
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ")]
-	public Int32 Entity_nLightProbeSizeZ
+	public virtual Int32 Entity_nLightProbeSizeZ
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ", value); }
@@ -129,7 +129,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nLightProbeAtlasX
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX")]
-	public Int32 Entity_nLightProbeAtlasX
+	public virtual Int32 Entity_nLightProbeAtlasX
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX", value); }
@@ -137,7 +137,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nLightProbeAtlasY
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY")]
-	public Int32 Entity_nLightProbeAtlasY
+	public virtual Int32 Entity_nLightProbeAtlasY
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY", value); }
@@ -145,7 +145,7 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_nLightProbeAtlasZ
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ")]
-	public Int32 Entity_nLightProbeAtlasZ
+	public virtual Int32 Entity_nLightProbeAtlasZ
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ", value); }
@@ -153,32 +153,32 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_bEnabled
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_bEnabled")]
-	public bool Entity_bEnabled
+	public virtual bool Entity_bEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bEnabled", value); }
 	}
 
-	public void Entity_hLightProbeTexture_AmbientCubePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube");
-	public void Entity_hLightProbeTexture_SDFPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SDF");
-	public void Entity_hLightProbeTexture_SH2_DCPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC");
-	public void Entity_hLightProbeTexture_SH2_RPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R");
-	public void Entity_hLightProbeTexture_SH2_GPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G");
-	public void Entity_hLightProbeTexture_SH2_BPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B");
-	public void Entity_hLightProbeDirectLightIndicesTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture");
-	public void Entity_hLightProbeDirectLightScalarsTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightScalarsTexture");
-	public void Entity_hLightProbeDirectLightShadowsTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightShadowsTexture");
-	public void Entity_vBoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_vBoxMins");
-	public void Entity_vBoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_vBoxMaxs");
-	public void Entity_bMoveablePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_bMoveable");
-	public void Entity_nHandshakePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nHandshake");
-	public void Entity_nPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nPriority");
-	public void Entity_bStartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_bStartDisabled");
-	public void Entity_nLightProbeSizeXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX");
-	public void Entity_nLightProbeSizeYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY");
-	public void Entity_nLightProbeSizeZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ");
-	public void Entity_nLightProbeAtlasXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX");
-	public void Entity_nLightProbeAtlasYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY");
-	public void Entity_nLightProbeAtlasZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ");
-	public void Entity_bEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_bEnabled");
+	public virtual void Entity_hLightProbeTexture_AmbientCubePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube");
+	public virtual void Entity_hLightProbeTexture_SDFPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SDF");
+	public virtual void Entity_hLightProbeTexture_SH2_DCPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC");
+	public virtual void Entity_hLightProbeTexture_SH2_RPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R");
+	public virtual void Entity_hLightProbeTexture_SH2_GPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G");
+	public virtual void Entity_hLightProbeTexture_SH2_BPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B");
+	public virtual void Entity_hLightProbeDirectLightIndicesTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture");
+	public virtual void Entity_hLightProbeDirectLightScalarsTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightScalarsTexture");
+	public virtual void Entity_hLightProbeDirectLightShadowsTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_hLightProbeDirectLightShadowsTexture");
+	public virtual void Entity_vBoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_vBoxMins");
+	public virtual void Entity_vBoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_vBoxMaxs");
+	public virtual void Entity_bMoveablePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_bMoveable");
+	public virtual void Entity_nHandshakePropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nHandshake");
+	public virtual void Entity_nPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nPriority");
+	public virtual void Entity_bStartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_bStartDisabled");
+	public virtual void Entity_nLightProbeSizeXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX");
+	public virtual void Entity_nLightProbeSizeYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY");
+	public virtual void Entity_nLightProbeSizeZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ");
+	public virtual void Entity_nLightProbeAtlasXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX");
+	public virtual void Entity_nLightProbeAtlasYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY");
+	public virtual void Entity_nLightProbeAtlasZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ");
+	public virtual void Entity_bEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvLightProbeVolume", "m_Entity_bEnabled");
 }

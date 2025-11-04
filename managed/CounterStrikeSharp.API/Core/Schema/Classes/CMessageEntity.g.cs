@@ -21,7 +21,7 @@ public partial class CMessageEntity : CPointEntity
 
 	// m_radius
 	[SchemaMember("CMessageEntity", "m_radius")]
-	public Int32 Radius
+	public virtual Int32 Radius
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMessageEntity", "m_radius"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMessageEntity", "m_radius", value); }
@@ -29,7 +29,7 @@ public partial class CMessageEntity : CPointEntity
 
 	// m_messageText
 	[SchemaMember("CMessageEntity", "m_messageText")]
-	public string MessageText
+	public virtual string MessageText
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMessageEntity", "m_messageText"); }
 		set { Schema.SetString(this.Handle, "CMessageEntity", "m_messageText", value); }
@@ -37,7 +37,7 @@ public partial class CMessageEntity : CPointEntity
 
 	// m_drawText
 	[SchemaMember("CMessageEntity", "m_drawText")]
-	public bool DrawText
+	public virtual bool DrawText
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMessageEntity", "m_drawText"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMessageEntity", "m_drawText", value); }
@@ -45,7 +45,7 @@ public partial class CMessageEntity : CPointEntity
 
 	// m_bDeveloperOnly
 	[SchemaMember("CMessageEntity", "m_bDeveloperOnly")]
-	public bool DeveloperOnly
+	public virtual bool DeveloperOnly
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMessageEntity", "m_bDeveloperOnly"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMessageEntity", "m_bDeveloperOnly", value); }
@@ -53,7 +53,7 @@ public partial class CMessageEntity : CPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CMessageEntity", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMessageEntity", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMessageEntity", "m_bEnabled", value); }

@@ -21,11 +21,11 @@ public partial class CPulseGraphInstance_ServerEntity : CBasePulseGraphInstance
 
 	// m_hOwner
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_hOwner")]
-	public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_hOwner");
+	public virtual CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_hOwner");
 
 	// m_bActivated
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_bActivated")]
-	public bool Activated
+	public virtual bool Activated
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_bActivated"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_bActivated", value); }
@@ -33,7 +33,7 @@ public partial class CPulseGraphInstance_ServerEntity : CBasePulseGraphInstance
 
 	// m_sNameFixupStaticPrefix
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_sNameFixupStaticPrefix")]
-	public string NameFixupStaticPrefix
+	public virtual string NameFixupStaticPrefix
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sNameFixupStaticPrefix"); }
 		set { Schema.SetString(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sNameFixupStaticPrefix", value); }
@@ -41,7 +41,7 @@ public partial class CPulseGraphInstance_ServerEntity : CBasePulseGraphInstance
 
 	// m_sNameFixupParent
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_sNameFixupParent")]
-	public string NameFixupParent
+	public virtual string NameFixupParent
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sNameFixupParent"); }
 		set { Schema.SetString(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sNameFixupParent", value); }
@@ -49,7 +49,7 @@ public partial class CPulseGraphInstance_ServerEntity : CBasePulseGraphInstance
 
 	// m_sNameFixupLocal
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_sNameFixupLocal")]
-	public string NameFixupLocal
+	public virtual string NameFixupLocal
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sNameFixupLocal"); }
 		set { Schema.SetString(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sNameFixupLocal", value); }
@@ -57,7 +57,7 @@ public partial class CPulseGraphInstance_ServerEntity : CBasePulseGraphInstance
 
 	// m_sProceduralWorldNameForRelays
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_sProceduralWorldNameForRelays")]
-	public string ProceduralWorldNameForRelays
+	public virtual string ProceduralWorldNameForRelays
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sProceduralWorldNameForRelays"); }
 		set { Schema.SetString(this.Handle, "CPulseGraphInstance_ServerEntity", "m_sProceduralWorldNameForRelays", value); }

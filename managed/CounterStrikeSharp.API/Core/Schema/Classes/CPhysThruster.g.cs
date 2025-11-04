@@ -21,7 +21,7 @@ public partial class CPhysThruster : CPhysForce
 
 	// m_localOrigin
 	[SchemaMember("CPhysThruster", "m_localOrigin")]
-	public Vector3 LocalOrigin
+	public virtual Vector3 LocalOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysThruster", "m_localOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysThruster", "m_localOrigin", value); }

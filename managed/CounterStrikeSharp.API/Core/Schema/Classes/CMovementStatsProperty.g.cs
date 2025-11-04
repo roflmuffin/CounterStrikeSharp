@@ -21,7 +21,7 @@ public partial class CMovementStatsProperty : NativeObject
 
 	// m_nUseCounter
 	[SchemaMember("CMovementStatsProperty", "m_nUseCounter")]
-	public Int32 UseCounter
+	public virtual Int32 UseCounter
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMovementStatsProperty", "m_nUseCounter"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMovementStatsProperty", "m_nUseCounter", value); }
@@ -29,6 +29,6 @@ public partial class CMovementStatsProperty : NativeObject
 
 	// m_emaMovementDirection
 	[SchemaMember("CMovementStatsProperty", "m_emaMovementDirection")]
-	public CVectorExponentialMovingAverage EmaMovementDirection => Schema.GetDeclaredClass<CVectorExponentialMovingAverage>(this.Handle, "CMovementStatsProperty", "m_emaMovementDirection");
+	public virtual CVectorExponentialMovingAverage EmaMovementDirection => Schema.GetDeclaredClass<CVectorExponentialMovingAverage>(this.Handle, "CMovementStatsProperty", "m_emaMovementDirection");
 
 }

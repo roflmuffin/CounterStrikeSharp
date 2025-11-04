@@ -21,11 +21,11 @@ public partial class CAttributeManager : NativeObject
 
 	// m_Providers
 	[SchemaMember("CAttributeManager", "m_Providers")]
-	public NetworkedVector<CHandle<CBaseEntity>> Providers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CAttributeManager", "m_Providers");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> Providers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CAttributeManager", "m_Providers");
 
 	// m_iReapplyProvisionParity
 	[SchemaMember("CAttributeManager", "m_iReapplyProvisionParity")]
-	public Int32 ReapplyProvisionParity
+	public virtual Int32 ReapplyProvisionParity
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CAttributeManager", "m_iReapplyProvisionParity"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CAttributeManager", "m_iReapplyProvisionParity", value); }
@@ -33,11 +33,11 @@ public partial class CAttributeManager : NativeObject
 
 	// m_hOuter
 	[SchemaMember("CAttributeManager", "m_hOuter")]
-	public CHandle<CBaseEntity> Outer => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAttributeManager", "m_hOuter");
+	public virtual CHandle<CBaseEntity> Outer => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAttributeManager", "m_hOuter");
 
 	// m_bPreventLoopback
 	[SchemaMember("CAttributeManager", "m_bPreventLoopback")]
-	public bool PreventLoopback
+	public virtual bool PreventLoopback
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CAttributeManager", "m_bPreventLoopback"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CAttributeManager", "m_bPreventLoopback", value); }
@@ -45,13 +45,13 @@ public partial class CAttributeManager : NativeObject
 
 	// m_ProviderType
 	[SchemaMember("CAttributeManager", "m_ProviderType")]
-	public attributeprovidertypes_t ProviderType
+	public virtual attributeprovidertypes_t ProviderType
 	{
 		get { return Schema.GetValueType<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType"); }
 		set { Schema.SetValueType<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType", value); }
 	}
 
-	public void ReapplyProvisionParityPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_iReapplyProvisionParity");
-	public void OuterPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_hOuter");
-	public void ProviderTypePropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_ProviderType");
+	public virtual void ReapplyProvisionParityPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_iReapplyProvisionParity");
+	public virtual void OuterPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_hOuter");
+	public virtual void ProviderTypePropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_ProviderType");
 }

@@ -21,7 +21,7 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 
 	// m_bEnabled
 	[SchemaMember("CBaseClientUIEntity", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseClientUIEntity", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseClientUIEntity", "m_bEnabled", value); }
@@ -29,7 +29,7 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 
 	// m_DialogXMLName
 	[SchemaMember("CBaseClientUIEntity", "m_DialogXMLName")]
-	public string DialogXMLName
+	public virtual string DialogXMLName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName"); }
 		set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName", value); }
@@ -37,7 +37,7 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 
 	// m_PanelClassName
 	[SchemaMember("CBaseClientUIEntity", "m_PanelClassName")]
-	public string PanelClassName
+	public virtual string PanelClassName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_PanelClassName"); }
 		set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelClassName", value); }
@@ -45,7 +45,7 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 
 	// m_PanelID
 	[SchemaMember("CBaseClientUIEntity", "m_PanelID")]
-	public string PanelID
+	public virtual string PanelID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_PanelID"); }
 		set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelID", value); }
@@ -53,46 +53,46 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 
 	// m_CustomOutput0
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput0")]
-	public CEntityIOOutput CustomOutput0 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput0");
+	public virtual CEntityIOOutput CustomOutput0 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput0");
 
 	// m_CustomOutput1
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput1")]
-	public CEntityIOOutput CustomOutput1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput1");
+	public virtual CEntityIOOutput CustomOutput1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput1");
 
 	// m_CustomOutput2
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput2")]
-	public CEntityIOOutput CustomOutput2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput2");
+	public virtual CEntityIOOutput CustomOutput2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput2");
 
 	// m_CustomOutput3
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput3")]
-	public CEntityIOOutput CustomOutput3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput3");
+	public virtual CEntityIOOutput CustomOutput3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput3");
 
 	// m_CustomOutput4
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput4")]
-	public CEntityIOOutput CustomOutput4 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput4");
+	public virtual CEntityIOOutput CustomOutput4 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput4");
 
 	// m_CustomOutput5
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput5")]
-	public CEntityIOOutput CustomOutput5 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput5");
+	public virtual CEntityIOOutput CustomOutput5 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput5");
 
 	// m_CustomOutput6
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput6")]
-	public CEntityIOOutput CustomOutput6 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput6");
+	public virtual CEntityIOOutput CustomOutput6 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput6");
 
 	// m_CustomOutput7
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput7")]
-	public CEntityIOOutput CustomOutput7 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput7");
+	public virtual CEntityIOOutput CustomOutput7 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput7");
 
 	// m_CustomOutput8
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput8")]
-	public CEntityIOOutput CustomOutput8 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput8");
+	public virtual CEntityIOOutput CustomOutput8 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput8");
 
 	// m_CustomOutput9
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput9")]
-	public CEntityIOOutput CustomOutput9 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput9");
+	public virtual CEntityIOOutput CustomOutput9 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput9");
 
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_bEnabled");
-	public void DialogXMLNamePropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_DialogXMLName");
-	public void PanelClassNamePropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_PanelClassName");
-	public void PanelIDPropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_PanelID");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_bEnabled");
+	public virtual void DialogXMLNamePropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_DialogXMLName");
+	public virtual void PanelClassNamePropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_PanelClassName");
+	public virtual void PanelIDPropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_PanelID");
 }

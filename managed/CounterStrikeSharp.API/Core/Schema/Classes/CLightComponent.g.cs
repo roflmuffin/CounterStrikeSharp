@@ -21,11 +21,11 @@ public partial class CLightComponent : CEntityComponent
 
 	// __m_pChainEntity
 	[SchemaMember("CLightComponent", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CLightComponent", "__m_pChainEntity");
+	public virtual CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CLightComponent", "__m_pChainEntity");
 
 	// m_Color
 	[SchemaMember("CLightComponent", "m_Color")]
-	public Color Color
+	public virtual Color Color
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_Color"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_Color", value); }
@@ -33,7 +33,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_SecondaryColor
 	[SchemaMember("CLightComponent", "m_SecondaryColor")]
-	public Color SecondaryColor
+	public virtual Color SecondaryColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SecondaryColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SecondaryColor", value); }
@@ -41,7 +41,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flBrightness
 	[SchemaMember("CLightComponent", "m_flBrightness")]
-	public float Brightness
+	public virtual float Brightness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flBrightness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flBrightness", value); }
@@ -49,7 +49,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flBrightnessScale
 	[SchemaMember("CLightComponent", "m_flBrightnessScale")]
-	public float BrightnessScale
+	public virtual float BrightnessScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessScale", value); }
@@ -57,7 +57,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flBrightnessMult
 	[SchemaMember("CLightComponent", "m_flBrightnessMult")]
-	public float BrightnessMult
+	public virtual float BrightnessMult
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessMult"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessMult", value); }
@@ -65,7 +65,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flRange
 	[SchemaMember("CLightComponent", "m_flRange")]
-	public float Range
+	public virtual float Range
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flRange", value); }
@@ -73,7 +73,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flFalloff
 	[SchemaMember("CLightComponent", "m_flFalloff")]
-	public float Falloff
+	public virtual float Falloff
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFalloff"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFalloff", value); }
@@ -81,7 +81,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flAttenuation0
 	[SchemaMember("CLightComponent", "m_flAttenuation0")]
-	public float Attenuation0
+	public virtual float Attenuation0
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation0"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation0", value); }
@@ -89,7 +89,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flAttenuation1
 	[SchemaMember("CLightComponent", "m_flAttenuation1")]
-	public float Attenuation1
+	public virtual float Attenuation1
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation1"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation1", value); }
@@ -97,7 +97,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flAttenuation2
 	[SchemaMember("CLightComponent", "m_flAttenuation2")]
-	public float Attenuation2
+	public virtual float Attenuation2
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation2"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation2", value); }
@@ -105,7 +105,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flTheta
 	[SchemaMember("CLightComponent", "m_flTheta")]
-	public float Theta
+	public virtual float Theta
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flTheta"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flTheta", value); }
@@ -113,7 +113,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flPhi
 	[SchemaMember("CLightComponent", "m_flPhi")]
-	public float Phi
+	public virtual float Phi
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flPhi"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flPhi", value); }
@@ -121,11 +121,11 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_hLightCookie
 	[SchemaMember("CLightComponent", "m_hLightCookie")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> LightCookie => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CLightComponent", "m_hLightCookie");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> LightCookie => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CLightComponent", "m_hLightCookie");
 
 	// m_nCascades
 	[SchemaMember("CLightComponent", "m_nCascades")]
-	public Int32 Cascades
+	public virtual Int32 Cascades
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascades"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascades", value); }
@@ -133,7 +133,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nCastShadows
 	[SchemaMember("CLightComponent", "m_nCastShadows")]
-	public Int32 CastShadows
+	public virtual Int32 CastShadows
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nCastShadows"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nCastShadows", value); }
@@ -141,7 +141,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nShadowWidth
 	[SchemaMember("CLightComponent", "m_nShadowWidth")]
-	public Int32 ShadowWidth
+	public virtual Int32 ShadowWidth
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowWidth"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowWidth", value); }
@@ -149,7 +149,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nShadowHeight
 	[SchemaMember("CLightComponent", "m_nShadowHeight")]
-	public Int32 ShadowHeight
+	public virtual Int32 ShadowHeight
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowHeight"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowHeight", value); }
@@ -157,7 +157,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bRenderDiffuse
 	[SchemaMember("CLightComponent", "m_bRenderDiffuse")]
-	public bool RenderDiffuse
+	public virtual bool RenderDiffuse
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderDiffuse"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderDiffuse", value); }
@@ -165,7 +165,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nRenderSpecular
 	[SchemaMember("CLightComponent", "m_nRenderSpecular")]
-	public Int32 RenderSpecular
+	public virtual Int32 RenderSpecular
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nRenderSpecular"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nRenderSpecular", value); }
@@ -173,7 +173,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bRenderTransmissive
 	[SchemaMember("CLightComponent", "m_bRenderTransmissive")]
-	public bool RenderTransmissive
+	public virtual bool RenderTransmissive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderTransmissive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderTransmissive", value); }
@@ -181,7 +181,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flOrthoLightWidth
 	[SchemaMember("CLightComponent", "m_flOrthoLightWidth")]
-	public float OrthoLightWidth
+	public virtual float OrthoLightWidth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightWidth", value); }
@@ -189,7 +189,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flOrthoLightHeight
 	[SchemaMember("CLightComponent", "m_flOrthoLightHeight")]
-	public float OrthoLightHeight
+	public virtual float OrthoLightHeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightHeight", value); }
@@ -197,7 +197,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nStyle
 	[SchemaMember("CLightComponent", "m_nStyle")]
-	public Int32 Style
+	public virtual Int32 Style
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nStyle"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nStyle", value); }
@@ -205,7 +205,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_Pattern
 	[SchemaMember("CLightComponent", "m_Pattern")]
-	public string Pattern
+	public virtual string Pattern
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLightComponent", "m_Pattern"); }
 		set { Schema.SetString(this.Handle, "CLightComponent", "m_Pattern", value); }
@@ -213,7 +213,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nCascadeRenderStaticObjects
 	[SchemaMember("CLightComponent", "m_nCascadeRenderStaticObjects")]
-	public Int32 CascadeRenderStaticObjects
+	public virtual Int32 CascadeRenderStaticObjects
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascadeRenderStaticObjects"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascadeRenderStaticObjects", value); }
@@ -221,7 +221,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowCascadeCrossFade
 	[SchemaMember("CLightComponent", "m_flShadowCascadeCrossFade")]
-	public float ShadowCascadeCrossFade
+	public virtual float ShadowCascadeCrossFade
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeCrossFade"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeCrossFade", value); }
@@ -229,7 +229,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowCascadeDistanceFade
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistanceFade")]
-	public float ShadowCascadeDistanceFade
+	public virtual float ShadowCascadeDistanceFade
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistanceFade"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistanceFade", value); }
@@ -237,7 +237,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowCascadeDistance0
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance0")]
-	public float ShadowCascadeDistance0
+	public virtual float ShadowCascadeDistance0
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance0"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance0", value); }
@@ -245,7 +245,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowCascadeDistance1
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance1")]
-	public float ShadowCascadeDistance1
+	public virtual float ShadowCascadeDistance1
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance1"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance1", value); }
@@ -253,7 +253,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowCascadeDistance2
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance2")]
-	public float ShadowCascadeDistance2
+	public virtual float ShadowCascadeDistance2
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance2"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance2", value); }
@@ -261,7 +261,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowCascadeDistance3
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance3")]
-	public float ShadowCascadeDistance3
+	public virtual float ShadowCascadeDistance3
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance3"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance3", value); }
@@ -269,7 +269,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nShadowCascadeResolution0
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution0")]
-	public Int32 ShadowCascadeResolution0
+	public virtual Int32 ShadowCascadeResolution0
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution0"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution0", value); }
@@ -277,7 +277,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nShadowCascadeResolution1
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution1")]
-	public Int32 ShadowCascadeResolution1
+	public virtual Int32 ShadowCascadeResolution1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution1", value); }
@@ -285,7 +285,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nShadowCascadeResolution2
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution2")]
-	public Int32 ShadowCascadeResolution2
+	public virtual Int32 ShadowCascadeResolution2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution2", value); }
@@ -293,7 +293,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nShadowCascadeResolution3
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution3")]
-	public Int32 ShadowCascadeResolution3
+	public virtual Int32 ShadowCascadeResolution3
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution3"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution3", value); }
@@ -301,7 +301,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bUsesBakedShadowing
 	[SchemaMember("CLightComponent", "m_bUsesBakedShadowing")]
-	public bool UsesBakedShadowing
+	public virtual bool UsesBakedShadowing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bUsesBakedShadowing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bUsesBakedShadowing", value); }
@@ -309,7 +309,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nShadowPriority
 	[SchemaMember("CLightComponent", "m_nShadowPriority")]
-	public Int32 ShadowPriority
+	public virtual Int32 ShadowPriority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowPriority", value); }
@@ -317,7 +317,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nBakedShadowIndex
 	[SchemaMember("CLightComponent", "m_nBakedShadowIndex")]
-	public Int32 BakedShadowIndex
+	public virtual Int32 BakedShadowIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nBakedShadowIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nBakedShadowIndex", value); }
@@ -325,7 +325,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nLightPathUniqueId
 	[SchemaMember("CLightComponent", "m_nLightPathUniqueId")]
-	public Int32 LightPathUniqueId
+	public virtual Int32 LightPathUniqueId
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightPathUniqueId"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightPathUniqueId", value); }
@@ -333,7 +333,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nLightMapUniqueId
 	[SchemaMember("CLightComponent", "m_nLightMapUniqueId")]
-	public Int32 LightMapUniqueId
+	public virtual Int32 LightMapUniqueId
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightMapUniqueId"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightMapUniqueId", value); }
@@ -341,7 +341,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bRenderToCubemaps
 	[SchemaMember("CLightComponent", "m_bRenderToCubemaps")]
-	public bool RenderToCubemaps
+	public virtual bool RenderToCubemaps
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderToCubemaps"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderToCubemaps", value); }
@@ -349,7 +349,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bAllowSSTGeneration
 	[SchemaMember("CLightComponent", "m_bAllowSSTGeneration")]
-	public bool AllowSSTGeneration
+	public virtual bool AllowSSTGeneration
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bAllowSSTGeneration"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bAllowSSTGeneration", value); }
@@ -357,7 +357,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nDirectLight
 	[SchemaMember("CLightComponent", "m_nDirectLight")]
-	public Int32 DirectLight
+	public virtual Int32 DirectLight
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nDirectLight"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nDirectLight", value); }
@@ -365,7 +365,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nIndirectLight
 	[SchemaMember("CLightComponent", "m_nIndirectLight")]
-	public Int32 IndirectLight
+	public virtual Int32 IndirectLight
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nIndirectLight"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nIndirectLight", value); }
@@ -373,7 +373,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flFadeMinDist
 	[SchemaMember("CLightComponent", "m_flFadeMinDist")]
-	public float FadeMinDist
+	public virtual float FadeMinDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMinDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMinDist", value); }
@@ -381,7 +381,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flFadeMaxDist
 	[SchemaMember("CLightComponent", "m_flFadeMaxDist")]
-	public float FadeMaxDist
+	public virtual float FadeMaxDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMaxDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMaxDist", value); }
@@ -389,7 +389,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowFadeMinDist
 	[SchemaMember("CLightComponent", "m_flShadowFadeMinDist")]
-	public float ShadowFadeMinDist
+	public virtual float ShadowFadeMinDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMinDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMinDist", value); }
@@ -397,7 +397,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flShadowFadeMaxDist
 	[SchemaMember("CLightComponent", "m_flShadowFadeMaxDist")]
-	public float ShadowFadeMaxDist
+	public virtual float ShadowFadeMaxDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMaxDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMaxDist", value); }
@@ -405,7 +405,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bEnabled
 	[SchemaMember("CLightComponent", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bEnabled", value); }
@@ -413,7 +413,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bFlicker
 	[SchemaMember("CLightComponent", "m_bFlicker")]
-	public bool Flicker
+	public virtual bool Flicker
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bFlicker"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bFlicker", value); }
@@ -421,7 +421,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bPrecomputedFieldsValid
 	[SchemaMember("CLightComponent", "m_bPrecomputedFieldsValid")]
-	public bool PrecomputedFieldsValid
+	public virtual bool PrecomputedFieldsValid
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bPrecomputedFieldsValid"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bPrecomputedFieldsValid", value); }
@@ -429,7 +429,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_vPrecomputedBoundsMins
 	[SchemaMember("CLightComponent", "m_vPrecomputedBoundsMins")]
-	public Vector3 PrecomputedBoundsMins
+	public virtual Vector3 PrecomputedBoundsMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMins", value); }
@@ -437,7 +437,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_vPrecomputedBoundsMaxs
 	[SchemaMember("CLightComponent", "m_vPrecomputedBoundsMaxs")]
-	public Vector3 PrecomputedBoundsMaxs
+	public virtual Vector3 PrecomputedBoundsMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMaxs", value); }
@@ -445,7 +445,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_vPrecomputedOBBOrigin
 	[SchemaMember("CLightComponent", "m_vPrecomputedOBBOrigin")]
-	public Vector3 PrecomputedOBBOrigin
+	public virtual Vector3 PrecomputedOBBOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBOrigin", value); }
@@ -453,7 +453,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_vPrecomputedOBBAngles
 	[SchemaMember("CLightComponent", "m_vPrecomputedOBBAngles")]
-	public QAngle PrecomputedOBBAngles
+	public virtual QAngle PrecomputedOBBAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CLightComponent", "m_vPrecomputedOBBAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CLightComponent", "m_vPrecomputedOBBAngles", value); }
@@ -461,7 +461,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_vPrecomputedOBBExtent
 	[SchemaMember("CLightComponent", "m_vPrecomputedOBBExtent")]
-	public Vector3 PrecomputedOBBExtent
+	public virtual Vector3 PrecomputedOBBExtent
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBExtent"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBExtent", value); }
@@ -469,7 +469,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flPrecomputedMaxRange
 	[SchemaMember("CLightComponent", "m_flPrecomputedMaxRange")]
-	public float PrecomputedMaxRange
+	public virtual float PrecomputedMaxRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flPrecomputedMaxRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flPrecomputedMaxRange", value); }
@@ -477,7 +477,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nFogLightingMode
 	[SchemaMember("CLightComponent", "m_nFogLightingMode")]
-	public Int32 FogLightingMode
+	public virtual Int32 FogLightingMode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nFogLightingMode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nFogLightingMode", value); }
@@ -485,7 +485,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flFogContributionStength
 	[SchemaMember("CLightComponent", "m_flFogContributionStength")]
-	public float FogContributionStength
+	public virtual float FogContributionStength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFogContributionStength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFogContributionStength", value); }
@@ -493,7 +493,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flNearClipPlane
 	[SchemaMember("CLightComponent", "m_flNearClipPlane")]
-	public float NearClipPlane
+	public virtual float NearClipPlane
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flNearClipPlane"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flNearClipPlane", value); }
@@ -501,7 +501,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_SkyColor
 	[SchemaMember("CLightComponent", "m_SkyColor")]
-	public Color SkyColor
+	public virtual Color SkyColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyColor", value); }
@@ -509,7 +509,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flSkyIntensity
 	[SchemaMember("CLightComponent", "m_flSkyIntensity")]
-	public float SkyIntensity
+	public virtual float SkyIntensity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flSkyIntensity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flSkyIntensity", value); }
@@ -517,7 +517,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_SkyAmbientBounce
 	[SchemaMember("CLightComponent", "m_SkyAmbientBounce")]
-	public Color SkyAmbientBounce
+	public virtual Color SkyAmbientBounce
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyAmbientBounce"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyAmbientBounce", value); }
@@ -525,7 +525,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bUseSecondaryColor
 	[SchemaMember("CLightComponent", "m_bUseSecondaryColor")]
-	public bool UseSecondaryColor
+	public virtual bool UseSecondaryColor
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bUseSecondaryColor"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bUseSecondaryColor", value); }
@@ -533,7 +533,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bMixedShadows
 	[SchemaMember("CLightComponent", "m_bMixedShadows")]
-	public bool MixedShadows
+	public virtual bool MixedShadows
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bMixedShadows"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bMixedShadows", value); }
@@ -541,7 +541,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flLightStyleStartTime
 	[SchemaMember("CLightComponent", "m_flLightStyleStartTime")]
-	public float LightStyleStartTime
+	public virtual float LightStyleStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flLightStyleStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flLightStyleStartTime", value); }
@@ -549,7 +549,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flCapsuleLength
 	[SchemaMember("CLightComponent", "m_flCapsuleLength")]
-	public float CapsuleLength
+	public virtual float CapsuleLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flCapsuleLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flCapsuleLength", value); }
@@ -557,7 +557,7 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flMinRoughness
 	[SchemaMember("CLightComponent", "m_flMinRoughness")]
-	public float MinRoughness
+	public virtual float MinRoughness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flMinRoughness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flMinRoughness", value); }
@@ -565,78 +565,78 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bPvsModifyEntity
 	[SchemaMember("CLightComponent", "m_bPvsModifyEntity")]
-	public bool PvsModifyEntity
+	public virtual bool PvsModifyEntity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bPvsModifyEntity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bPvsModifyEntity", value); }
 	}
 
-	public void ColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_Color");
-	public void SecondaryColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_SecondaryColor");
-	public void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flBrightness");
-	public void BrightnessScalePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flBrightnessScale");
-	public void BrightnessMultPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flBrightnessMult");
-	public void RangePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flRange");
-	public void FalloffPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFalloff");
-	public void Attenuation0PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flAttenuation0");
-	public void Attenuation1PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flAttenuation1");
-	public void Attenuation2PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flAttenuation2");
-	public void ThetaPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flTheta");
-	public void PhiPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flPhi");
-	public void LightCookiePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_hLightCookie");
-	public void CascadesPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nCascades");
-	public void CastShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nCastShadows");
-	public void ShadowWidthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowWidth");
-	public void ShadowHeightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowHeight");
-	public void RenderDiffusePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bRenderDiffuse");
-	public void RenderSpecularPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nRenderSpecular");
-	public void RenderTransmissivePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bRenderTransmissive");
-	public void OrthoLightWidthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flOrthoLightWidth");
-	public void OrthoLightHeightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flOrthoLightHeight");
-	public void StylePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nStyle");
-	public void PatternPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_Pattern");
-	public void CascadeRenderStaticObjectsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nCascadeRenderStaticObjects");
-	public void ShadowCascadeCrossFadePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeCrossFade");
-	public void ShadowCascadeDistanceFadePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistanceFade");
-	public void ShadowCascadeDistance0PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance0");
-	public void ShadowCascadeDistance1PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance1");
-	public void ShadowCascadeDistance2PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance2");
-	public void ShadowCascadeDistance3PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance3");
-	public void ShadowCascadeResolution0PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution0");
-	public void ShadowCascadeResolution1PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution1");
-	public void ShadowCascadeResolution2PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution2");
-	public void ShadowCascadeResolution3PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution3");
-	public void UsesBakedShadowingPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bUsesBakedShadowing");
-	public void ShadowPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowPriority");
-	public void BakedShadowIndexPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nBakedShadowIndex");
-	public void LightPathUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nLightPathUniqueId");
-	public void LightMapUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nLightMapUniqueId");
-	public void RenderToCubemapsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bRenderToCubemaps");
-	public void AllowSSTGenerationPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bAllowSSTGeneration");
-	public void DirectLightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nDirectLight");
-	public void IndirectLightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nIndirectLight");
-	public void FadeMinDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFadeMinDist");
-	public void FadeMaxDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFadeMaxDist");
-	public void ShadowFadeMinDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowFadeMinDist");
-	public void ShadowFadeMaxDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowFadeMaxDist");
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bEnabled");
-	public void FlickerPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bFlicker");
-	public void PrecomputedFieldsValidPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bPrecomputedFieldsValid");
-	public void PrecomputedBoundsMinsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedBoundsMins");
-	public void PrecomputedBoundsMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedBoundsMaxs");
-	public void PrecomputedOBBOriginPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedOBBOrigin");
-	public void PrecomputedOBBAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedOBBAngles");
-	public void PrecomputedOBBExtentPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedOBBExtent");
-	public void PrecomputedMaxRangePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flPrecomputedMaxRange");
-	public void FogLightingModePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nFogLightingMode");
-	public void FogContributionStengthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFogContributionStength");
-	public void NearClipPlanePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flNearClipPlane");
-	public void SkyColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_SkyColor");
-	public void SkyIntensityPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flSkyIntensity");
-	public void SkyAmbientBouncePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_SkyAmbientBounce");
-	public void UseSecondaryColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bUseSecondaryColor");
-	public void MixedShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bMixedShadows");
-	public void LightStyleStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flLightStyleStartTime");
-	public void CapsuleLengthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flCapsuleLength");
-	public void MinRoughnessPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flMinRoughness");
+	public virtual void ColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_Color");
+	public virtual void SecondaryColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_SecondaryColor");
+	public virtual void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flBrightness");
+	public virtual void BrightnessScalePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flBrightnessScale");
+	public virtual void BrightnessMultPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flBrightnessMult");
+	public virtual void RangePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flRange");
+	public virtual void FalloffPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFalloff");
+	public virtual void Attenuation0PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flAttenuation0");
+	public virtual void Attenuation1PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flAttenuation1");
+	public virtual void Attenuation2PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flAttenuation2");
+	public virtual void ThetaPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flTheta");
+	public virtual void PhiPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flPhi");
+	public virtual void LightCookiePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_hLightCookie");
+	public virtual void CascadesPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nCascades");
+	public virtual void CastShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nCastShadows");
+	public virtual void ShadowWidthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowWidth");
+	public virtual void ShadowHeightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowHeight");
+	public virtual void RenderDiffusePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bRenderDiffuse");
+	public virtual void RenderSpecularPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nRenderSpecular");
+	public virtual void RenderTransmissivePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bRenderTransmissive");
+	public virtual void OrthoLightWidthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flOrthoLightWidth");
+	public virtual void OrthoLightHeightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flOrthoLightHeight");
+	public virtual void StylePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nStyle");
+	public virtual void PatternPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_Pattern");
+	public virtual void CascadeRenderStaticObjectsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nCascadeRenderStaticObjects");
+	public virtual void ShadowCascadeCrossFadePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeCrossFade");
+	public virtual void ShadowCascadeDistanceFadePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistanceFade");
+	public virtual void ShadowCascadeDistance0PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance0");
+	public virtual void ShadowCascadeDistance1PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance1");
+	public virtual void ShadowCascadeDistance2PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance2");
+	public virtual void ShadowCascadeDistance3PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowCascadeDistance3");
+	public virtual void ShadowCascadeResolution0PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution0");
+	public virtual void ShadowCascadeResolution1PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution1");
+	public virtual void ShadowCascadeResolution2PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution2");
+	public virtual void ShadowCascadeResolution3PropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowCascadeResolution3");
+	public virtual void UsesBakedShadowingPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bUsesBakedShadowing");
+	public virtual void ShadowPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nShadowPriority");
+	public virtual void BakedShadowIndexPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nBakedShadowIndex");
+	public virtual void LightPathUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nLightPathUniqueId");
+	public virtual void LightMapUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nLightMapUniqueId");
+	public virtual void RenderToCubemapsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bRenderToCubemaps");
+	public virtual void AllowSSTGenerationPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bAllowSSTGeneration");
+	public virtual void DirectLightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nDirectLight");
+	public virtual void IndirectLightPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nIndirectLight");
+	public virtual void FadeMinDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFadeMinDist");
+	public virtual void FadeMaxDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFadeMaxDist");
+	public virtual void ShadowFadeMinDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowFadeMinDist");
+	public virtual void ShadowFadeMaxDistPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flShadowFadeMaxDist");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bEnabled");
+	public virtual void FlickerPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bFlicker");
+	public virtual void PrecomputedFieldsValidPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bPrecomputedFieldsValid");
+	public virtual void PrecomputedBoundsMinsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedBoundsMins");
+	public virtual void PrecomputedBoundsMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedBoundsMaxs");
+	public virtual void PrecomputedOBBOriginPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedOBBOrigin");
+	public virtual void PrecomputedOBBAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedOBBAngles");
+	public virtual void PrecomputedOBBExtentPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_vPrecomputedOBBExtent");
+	public virtual void PrecomputedMaxRangePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flPrecomputedMaxRange");
+	public virtual void FogLightingModePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_nFogLightingMode");
+	public virtual void FogContributionStengthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flFogContributionStength");
+	public virtual void NearClipPlanePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flNearClipPlane");
+	public virtual void SkyColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_SkyColor");
+	public virtual void SkyIntensityPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flSkyIntensity");
+	public virtual void SkyAmbientBouncePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_SkyAmbientBounce");
+	public virtual void UseSecondaryColorPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bUseSecondaryColor");
+	public virtual void MixedShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_bMixedShadows");
+	public virtual void LightStyleStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flLightStyleStartTime");
+	public virtual void CapsuleLengthPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flCapsuleLength");
+	public virtual void MinRoughnessPropertyChanged() => Utilities.SetStateChanged(this, "CLightComponent", "m_flMinRoughness");
 }

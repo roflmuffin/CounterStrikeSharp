@@ -21,7 +21,7 @@ public partial class CTriggerImpact : CTriggerMultiple
 
 	// m_flMagnitude
 	[SchemaMember("CTriggerImpact", "m_flMagnitude")]
-	public float Magnitude
+	public virtual float Magnitude
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerImpact", "m_flMagnitude"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerImpact", "m_flMagnitude", value); }
@@ -29,7 +29,7 @@ public partial class CTriggerImpact : CTriggerMultiple
 
 	// m_flNoise
 	[SchemaMember("CTriggerImpact", "m_flNoise")]
-	public float Noise
+	public virtual float Noise
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerImpact", "m_flNoise"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerImpact", "m_flNoise", value); }
@@ -37,7 +37,7 @@ public partial class CTriggerImpact : CTriggerMultiple
 
 	// m_flViewkick
 	[SchemaMember("CTriggerImpact", "m_flViewkick")]
-	public float Viewkick
+	public virtual float Viewkick
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerImpact", "m_flViewkick"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerImpact", "m_flViewkick", value); }

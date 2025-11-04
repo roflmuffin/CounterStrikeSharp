@@ -21,11 +21,11 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_flexWeight
 	[SchemaMember("CBaseFlex", "m_flexWeight")]
-	public NetworkedVector<float> FlexWeight => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBaseFlex", "m_flexWeight");
+	public virtual NetworkedVector<float> FlexWeight => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBaseFlex", "m_flexWeight");
 
 	// m_vLookTargetPosition
 	[SchemaMember("CBaseFlex", "m_vLookTargetPosition")]
-	public Vector3 LookTargetPosition
+	public virtual Vector3 LookTargetPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseFlex", "m_vLookTargetPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseFlex", "m_vLookTargetPosition", value); }
@@ -33,7 +33,7 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_blinktoggle
 	[SchemaMember("CBaseFlex", "m_blinktoggle")]
-	public bool Blinktoggle
+	public virtual bool Blinktoggle
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseFlex", "m_blinktoggle"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseFlex", "m_blinktoggle", value); }
@@ -41,7 +41,7 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_flAllowResponsesEndTime
 	[SchemaMember("CBaseFlex", "m_flAllowResponsesEndTime")]
-	public float AllowResponsesEndTime
+	public virtual float AllowResponsesEndTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime", value); }
@@ -49,7 +49,7 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_flLastFlexAnimationTime
 	[SchemaMember("CBaseFlex", "m_flLastFlexAnimationTime")]
-	public float LastFlexAnimationTime
+	public virtual float LastFlexAnimationTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime", value); }
@@ -57,17 +57,17 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_nNextSceneEventId
 	[SchemaMember("CBaseFlex", "m_nNextSceneEventId")]
-	public SceneEventId_t NextSceneEventId => Schema.GetDeclaredClass<SceneEventId_t>(this.Handle, "CBaseFlex", "m_nNextSceneEventId");
+	public virtual SceneEventId_t NextSceneEventId => Schema.GetDeclaredClass<SceneEventId_t>(this.Handle, "CBaseFlex", "m_nNextSceneEventId");
 
 	// m_bUpdateLayerPriorities
 	[SchemaMember("CBaseFlex", "m_bUpdateLayerPriorities")]
-	public bool UpdateLayerPriorities
+	public virtual bool UpdateLayerPriorities
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities", value); }
 	}
 
-	public void FlexWeightPropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_flexWeight");
-	public void LookTargetPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_vLookTargetPosition");
-	public void BlinktogglePropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_blinktoggle");
+	public virtual void FlexWeightPropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_flexWeight");
+	public virtual void LookTargetPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_vLookTargetPosition");
+	public virtual void BlinktogglePropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_blinktoggle");
 }

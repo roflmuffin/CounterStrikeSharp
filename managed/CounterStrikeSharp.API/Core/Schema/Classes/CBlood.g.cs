@@ -21,7 +21,7 @@ public partial class CBlood : CPointEntity
 
 	// m_vecSprayAngles
 	[SchemaMember("CBlood", "m_vecSprayAngles")]
-	public QAngle SprayAngles
+	public virtual QAngle SprayAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBlood", "m_vecSprayAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBlood", "m_vecSprayAngles", value); }
@@ -29,7 +29,7 @@ public partial class CBlood : CPointEntity
 
 	// m_vecSprayDir
 	[SchemaMember("CBlood", "m_vecSprayDir")]
-	public Vector3 SprayDir
+	public virtual Vector3 SprayDir
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBlood", "m_vecSprayDir"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBlood", "m_vecSprayDir", value); }
@@ -37,7 +37,7 @@ public partial class CBlood : CPointEntity
 
 	// m_flAmount
 	[SchemaMember("CBlood", "m_flAmount")]
-	public float Amount
+	public virtual float Amount
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBlood", "m_flAmount"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBlood", "m_flAmount", value); }
@@ -45,7 +45,7 @@ public partial class CBlood : CPointEntity
 
 	// m_Color
 	[SchemaMember("CBlood", "m_Color")]
-	public BloodType Color
+	public virtual BloodType Color
 	{
 		get { return Schema.GetValueType<BloodType>(this.Handle, "CBlood", "m_Color"); }
 		set { Schema.SetValueType<BloodType>(this.Handle, "CBlood", "m_Color", value); }

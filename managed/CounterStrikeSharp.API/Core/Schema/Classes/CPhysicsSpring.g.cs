@@ -21,7 +21,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_flFrequency
 	[SchemaMember("CPhysicsSpring", "m_flFrequency")]
-	public float Frequency
+	public virtual float Frequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsSpring", "m_flFrequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsSpring", "m_flFrequency", value); }
@@ -29,7 +29,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_flDampingRatio
 	[SchemaMember("CPhysicsSpring", "m_flDampingRatio")]
-	public float DampingRatio
+	public virtual float DampingRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio", value); }
@@ -37,7 +37,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_flRestLength
 	[SchemaMember("CPhysicsSpring", "m_flRestLength")]
-	public float RestLength
+	public virtual float RestLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsSpring", "m_flRestLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsSpring", "m_flRestLength", value); }
@@ -45,7 +45,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_nameAttachStart
 	[SchemaMember("CPhysicsSpring", "m_nameAttachStart")]
-	public string NameAttachStart
+	public virtual string NameAttachStart
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachStart"); }
 		set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachStart", value); }
@@ -53,7 +53,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_nameAttachEnd
 	[SchemaMember("CPhysicsSpring", "m_nameAttachEnd")]
-	public string NameAttachEnd
+	public virtual string NameAttachEnd
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachEnd"); }
 		set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachEnd", value); }
@@ -61,7 +61,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_start
 	[SchemaMember("CPhysicsSpring", "m_start")]
-	public Vector3 Start
+	public virtual Vector3 Start
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_start"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_start", value); }
@@ -69,7 +69,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_end
 	[SchemaMember("CPhysicsSpring", "m_end")]
-	public Vector3 End
+	public virtual Vector3 End
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_end"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_end", value); }
@@ -77,7 +77,7 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_teleportTick
 	[SchemaMember("CPhysicsSpring", "m_teleportTick")]
-	public UInt32 TeleportTick
+	public virtual UInt32 TeleportTick
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick", value); }

@@ -21,7 +21,7 @@ public partial class CLogicAutosave : CLogicalEntity
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CLogicAutosave", "m_bForceNewLevelUnit")]
-	public bool ForceNewLevelUnit
+	public virtual bool ForceNewLevelUnit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit", value); }
@@ -29,7 +29,7 @@ public partial class CLogicAutosave : CLogicalEntity
 
 	// m_minHitPoints
 	[SchemaMember("CLogicAutosave", "m_minHitPoints")]
-	public Int32 MinHitPoints
+	public virtual Int32 MinHitPoints
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints", value); }
@@ -37,7 +37,7 @@ public partial class CLogicAutosave : CLogicalEntity
 
 	// m_minHitPointsToCommit
 	[SchemaMember("CLogicAutosave", "m_minHitPointsToCommit")]
-	public Int32 MinHitPointsToCommit
+	public virtual Int32 MinHitPointsToCommit
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit", value); }

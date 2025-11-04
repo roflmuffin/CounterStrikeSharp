@@ -21,6 +21,6 @@ public partial class CRangeFloat : NativeObject
 
 	// m_pValue
 	[SchemaMember("CRangeFloat", "m_pValue")]
-	public Span<float> Value => Schema.GetFixedArray<float>(this.Handle, "CRangeFloat", "m_pValue", 2);
+	public virtual Span<float> Value => Schema.GetFixedArray<float>(this.Handle, "CRangeFloat", "m_pValue", 2);
 
 }

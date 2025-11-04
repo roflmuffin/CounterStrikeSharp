@@ -21,7 +21,7 @@ public partial class sndopvarlatchdata_t : NativeObject
 
 	// m_iszStack
 	[SchemaMember("sndopvarlatchdata_t", "m_iszStack")]
-	public string Stack
+	public virtual string Stack
 	{
 		get { return Schema.GetUtf8String(this.Handle, "sndopvarlatchdata_t", "m_iszStack"); }
 		set { Schema.SetString(this.Handle, "sndopvarlatchdata_t", "m_iszStack", value); }
@@ -29,7 +29,7 @@ public partial class sndopvarlatchdata_t : NativeObject
 
 	// m_iszOperator
 	[SchemaMember("sndopvarlatchdata_t", "m_iszOperator")]
-	public string Operator
+	public virtual string Operator
 	{
 		get { return Schema.GetUtf8String(this.Handle, "sndopvarlatchdata_t", "m_iszOperator"); }
 		set { Schema.SetString(this.Handle, "sndopvarlatchdata_t", "m_iszOperator", value); }
@@ -37,7 +37,7 @@ public partial class sndopvarlatchdata_t : NativeObject
 
 	// m_iszOpvar
 	[SchemaMember("sndopvarlatchdata_t", "m_iszOpvar")]
-	public string Opvar
+	public virtual string Opvar
 	{
 		get { return Schema.GetUtf8String(this.Handle, "sndopvarlatchdata_t", "m_iszOpvar"); }
 		set { Schema.SetString(this.Handle, "sndopvarlatchdata_t", "m_iszOpvar", value); }
@@ -45,7 +45,7 @@ public partial class sndopvarlatchdata_t : NativeObject
 
 	// m_flVal
 	[SchemaMember("sndopvarlatchdata_t", "m_flVal")]
-	public float Val
+	public virtual float Val
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "sndopvarlatchdata_t", "m_flVal"); }
 		set { Schema.SetValueType<float>(this.Handle, "sndopvarlatchdata_t", "m_flVal", value); }
@@ -53,7 +53,7 @@ public partial class sndopvarlatchdata_t : NativeObject
 
 	// m_vPos
 	[SchemaMember("sndopvarlatchdata_t", "m_vPos")]
-	public Vector3 Pos
+	public virtual Vector3 Pos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "sndopvarlatchdata_t", "m_vPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "sndopvarlatchdata_t", "m_vPos", value); }

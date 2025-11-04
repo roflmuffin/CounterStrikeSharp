@@ -21,11 +21,11 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_hOwner
 	[SchemaMember("CInstancedSceneEntity", "m_hOwner")]
-	public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hOwner");
+	public virtual CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hOwner");
 
 	// m_bHadOwner
 	[SchemaMember("CInstancedSceneEntity", "m_bHadOwner")]
-	public bool HadOwner
+	public virtual bool HadOwner
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bHadOwner"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bHadOwner", value); }
@@ -33,7 +33,7 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_flPostSpeakDelay
 	[SchemaMember("CInstancedSceneEntity", "m_flPostSpeakDelay")]
-	public float PostSpeakDelay
+	public virtual float PostSpeakDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPostSpeakDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPostSpeakDelay", value); }
@@ -41,7 +41,7 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_flPreDelay
 	[SchemaMember("CInstancedSceneEntity", "m_flPreDelay")]
-	public float PreDelay
+	public virtual float PreDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPreDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPreDelay", value); }
@@ -49,7 +49,7 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_bIsBackground
 	[SchemaMember("CInstancedSceneEntity", "m_bIsBackground")]
-	public bool IsBackground
+	public virtual bool IsBackground
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bIsBackground"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bIsBackground", value); }
@@ -57,7 +57,7 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_bRemoveOnCompletion
 	[SchemaMember("CInstancedSceneEntity", "m_bRemoveOnCompletion")]
-	public bool RemoveOnCompletion
+	public virtual bool RemoveOnCompletion
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bRemoveOnCompletion"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bRemoveOnCompletion", value); }
@@ -65,6 +65,6 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_hTarget
 	[SchemaMember("CInstancedSceneEntity", "m_hTarget")]
-	public new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget");
+	public virtual new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget");
 
 }

@@ -21,7 +21,7 @@ public partial class CPhysicsShake : NativeObject
 
 	// m_force
 	[SchemaMember("CPhysicsShake", "m_force")]
-	public Vector3 Force
+	public virtual Vector3 Force
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsShake", "m_force"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsShake", "m_force", value); }

@@ -21,7 +21,7 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_iszWorldName
 	[SchemaMember("CPointTemplate", "m_iszWorldName")]
-	public string WorldName
+	public virtual string WorldName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszWorldName"); }
 		set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszWorldName", value); }
@@ -29,7 +29,7 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_iszSource2EntityLumpName
 	[SchemaMember("CPointTemplate", "m_iszSource2EntityLumpName")]
-	public string Source2EntityLumpName
+	public virtual string Source2EntityLumpName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszSource2EntityLumpName"); }
 		set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszSource2EntityLumpName", value); }
@@ -37,7 +37,7 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_iszEntityFilterName
 	[SchemaMember("CPointTemplate", "m_iszEntityFilterName")]
-	public string EntityFilterName
+	public virtual string EntityFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszEntityFilterName"); }
 		set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszEntityFilterName", value); }
@@ -45,7 +45,7 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_flTimeoutInterval
 	[SchemaMember("CPointTemplate", "m_flTimeoutInterval")]
-	public float TimeoutInterval
+	public virtual float TimeoutInterval
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointTemplate", "m_flTimeoutInterval"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointTemplate", "m_flTimeoutInterval", value); }
@@ -53,7 +53,7 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_bAsynchronouslySpawnEntities
 	[SchemaMember("CPointTemplate", "m_bAsynchronouslySpawnEntities")]
-	public bool AsynchronouslySpawnEntities
+	public virtual bool AsynchronouslySpawnEntities
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointTemplate", "m_bAsynchronouslySpawnEntities"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointTemplate", "m_bAsynchronouslySpawnEntities", value); }
@@ -61,7 +61,7 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_clientOnlyEntityBehavior
 	[SchemaMember("CPointTemplate", "m_clientOnlyEntityBehavior")]
-	public PointTemplateClientOnlyEntityBehavior_t ClientOnlyEntityBehavior
+	public virtual PointTemplateClientOnlyEntityBehavior_t ClientOnlyEntityBehavior
 	{
 		get { return Schema.GetValueType<PointTemplateClientOnlyEntityBehavior_t>(this.Handle, "CPointTemplate", "m_clientOnlyEntityBehavior"); }
 		set { Schema.SetValueType<PointTemplateClientOnlyEntityBehavior_t>(this.Handle, "CPointTemplate", "m_clientOnlyEntityBehavior", value); }
@@ -69,7 +69,7 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_ownerSpawnGroupType
 	[SchemaMember("CPointTemplate", "m_ownerSpawnGroupType")]
-	public PointTemplateOwnerSpawnGroupType_t OwnerSpawnGroupType
+	public virtual PointTemplateOwnerSpawnGroupType_t OwnerSpawnGroupType
 	{
 		get { return Schema.GetValueType<PointTemplateOwnerSpawnGroupType_t>(this.Handle, "CPointTemplate", "m_ownerSpawnGroupType"); }
 		set { Schema.SetValueType<PointTemplateOwnerSpawnGroupType_t>(this.Handle, "CPointTemplate", "m_ownerSpawnGroupType", value); }
@@ -77,10 +77,10 @@ public partial class CPointTemplate : CLogicalEntity
 
 	// m_createdSpawnGroupHandles
 	[SchemaMember("CPointTemplate", "m_createdSpawnGroupHandles")]
-	public NetworkedVector<UInt32> CreatedSpawnGroupHandles => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CPointTemplate", "m_createdSpawnGroupHandles");
+	public virtual NetworkedVector<UInt32> CreatedSpawnGroupHandles => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CPointTemplate", "m_createdSpawnGroupHandles");
 
 	// m_SpawnedEntityHandles
 	[SchemaMember("CPointTemplate", "m_SpawnedEntityHandles")]
-	public NetworkedVector<CHandle<CEntityInstance>> SpawnedEntityHandles => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEntityInstance>>>(this.Handle, "CPointTemplate", "m_SpawnedEntityHandles");
+	public virtual NetworkedVector<CHandle<CEntityInstance>> SpawnedEntityHandles => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEntityInstance>>>(this.Handle, "CPointTemplate", "m_SpawnedEntityHandles");
 
 }

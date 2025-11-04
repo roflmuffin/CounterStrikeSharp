@@ -459,7 +459,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetString({handleParams});";
                 var setter = $"Schema.SetString({handleParams}, value{(field.Type.ArraySize != null ? ", " + field.Type.ArraySize : "")});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -474,7 +474,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetString({handleParams});";
                 var setter = $"Schema.SetStringBytes({handleParams}, value, {field.Type.ArraySize});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -489,7 +489,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetUtf8String({handleParams});";
                 var setter = $"Schema.SetString({handleParams}, value);";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -503,7 +503,7 @@ internal static partial class Program
                 var getter =
                     $"Schema.GetFixedArray<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}>({handleParams}, {field.Type.ArraySize});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}Span<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}> {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}Span<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}> {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
             else if (field.Type.Category == SchemaTypeCategory.DeclaredClass &&
@@ -511,7 +511,7 @@ internal static partial class Program
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
             else if ((field.Type.Category == SchemaTypeCategory.Builtin ||
@@ -521,7 +521,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetValueType<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 var setter = $"Schema.SetValueType<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams}, value);";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -536,7 +536,7 @@ internal static partial class Program
                 if (inner.Category != SchemaTypeCategory.DeclaredClass) continue;
 
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => Schema.GetPointer<{SanitiseTypeName(inner.CsTypeName)}>({handleParams});");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => Schema.GetPointer<{SanitiseTypeName(inner.CsTypeName)}>({handleParams});");
                 builder.AppendLine();
             }
             else if (field.Type is { Category: SchemaTypeCategory.Atomic, Name: "Color" })
@@ -544,7 +544,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams});";
                 var setter = $"Schema.SetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams}, value);";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -557,7 +557,7 @@ internal static partial class Program
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
         }
@@ -570,7 +570,7 @@ internal static partial class Program
 
             var name = schemaClass.CsPropertyNameForField(schemaClassName, field);
             builder.AppendLine(
-                $"\tpublic void {name}PropertyChanged() => Utilities.SetStateChanged(this, \"{schemaClassName}\", \"{field.Name}\");");
+                $"\tpublic virtual void {name}PropertyChanged() => Utilities.SetStateChanged(this, \"{schemaClassName}\", \"{field.Name}\");");
         }
 
         builder.AppendLine($"}}");

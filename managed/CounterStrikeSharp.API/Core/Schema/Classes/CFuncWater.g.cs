@@ -21,6 +21,6 @@ public partial class CFuncWater : CBaseModelEntity
 
 	// m_BuoyancyHelper
 	[SchemaMember("CFuncWater", "m_BuoyancyHelper")]
-	public CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CFuncWater", "m_BuoyancyHelper");
+	public virtual CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CFuncWater", "m_BuoyancyHelper");
 
 }

@@ -21,11 +21,11 @@ public partial class CModelState : NativeObject
 
 	// m_hModel
 	[SchemaMember("CModelState", "m_hModel")]
-	public CStrongHandle<InfoForResourceTypeCModel> Model => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCModel>>(this.Handle, "CModelState", "m_hModel");
+	public virtual CStrongHandle<InfoForResourceTypeCModel> Model => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCModel>>(this.Handle, "CModelState", "m_hModel");
 
 	// m_ModelName
 	[SchemaMember("CModelState", "m_ModelName")]
-	public string ModelName
+	public virtual string ModelName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CModelState", "m_ModelName"); }
 		set { Schema.SetString(this.Handle, "CModelState", "m_ModelName", value); }
@@ -33,7 +33,7 @@ public partial class CModelState : NativeObject
 
 	// m_bClientClothCreationSuppressed
 	[SchemaMember("CModelState", "m_bClientClothCreationSuppressed")]
-	public bool ClientClothCreationSuppressed
+	public virtual bool ClientClothCreationSuppressed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CModelState", "m_bClientClothCreationSuppressed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CModelState", "m_bClientClothCreationSuppressed", value); }
@@ -41,7 +41,7 @@ public partial class CModelState : NativeObject
 
 	// m_MeshGroupMask
 	[SchemaMember("CModelState", "m_MeshGroupMask")]
-	public UInt64 MeshGroupMask
+	public virtual UInt64 MeshGroupMask
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CModelState", "m_MeshGroupMask"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CModelState", "m_MeshGroupMask", value); }
@@ -49,11 +49,11 @@ public partial class CModelState : NativeObject
 
 	// m_nBodyGroupChoices
 	[SchemaMember("CModelState", "m_nBodyGroupChoices")]
-	public NetworkedVector<Int32> BodyGroupChoices => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CModelState", "m_nBodyGroupChoices");
+	public virtual NetworkedVector<Int32> BodyGroupChoices => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CModelState", "m_nBodyGroupChoices");
 
 	// m_nIdealMotionType
 	[SchemaMember("CModelState", "m_nIdealMotionType")]
-	public sbyte IdealMotionType
+	public virtual sbyte IdealMotionType
 	{
 		get { return Schema.GetValueType<sbyte>(this.Handle, "CModelState", "m_nIdealMotionType"); }
 		set { Schema.SetValueType<sbyte>(this.Handle, "CModelState", "m_nIdealMotionType", value); }
@@ -61,7 +61,7 @@ public partial class CModelState : NativeObject
 
 	// m_nForceLOD
 	[SchemaMember("CModelState", "m_nForceLOD")]
-	public sbyte ForceLOD
+	public virtual sbyte ForceLOD
 	{
 		get { return Schema.GetValueType<sbyte>(this.Handle, "CModelState", "m_nForceLOD"); }
 		set { Schema.SetValueType<sbyte>(this.Handle, "CModelState", "m_nForceLOD", value); }
@@ -69,15 +69,15 @@ public partial class CModelState : NativeObject
 
 	// m_nClothUpdateFlags
 	[SchemaMember("CModelState", "m_nClothUpdateFlags")]
-	public sbyte ClothUpdateFlags
+	public virtual sbyte ClothUpdateFlags
 	{
 		get { return Schema.GetValueType<sbyte>(this.Handle, "CModelState", "m_nClothUpdateFlags"); }
 		set { Schema.SetValueType<sbyte>(this.Handle, "CModelState", "m_nClothUpdateFlags", value); }
 	}
 
-	public void ModelPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_hModel");
-	public void ClientClothCreationSuppressedPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_bClientClothCreationSuppressed");
-	public void MeshGroupMaskPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_MeshGroupMask");
-	public void BodyGroupChoicesPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_nBodyGroupChoices");
-	public void IdealMotionTypePropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_nIdealMotionType");
+	public virtual void ModelPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_hModel");
+	public virtual void ClientClothCreationSuppressedPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_bClientClothCreationSuppressed");
+	public virtual void MeshGroupMaskPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_MeshGroupMask");
+	public virtual void BodyGroupChoicesPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_nBodyGroupChoices");
+	public virtual void IdealMotionTypePropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_nIdealMotionType");
 }

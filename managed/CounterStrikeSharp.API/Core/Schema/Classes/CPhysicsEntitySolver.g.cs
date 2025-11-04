@@ -21,15 +21,15 @@ public partial class CPhysicsEntitySolver : CLogicalEntity
 
 	// m_hMovingEntity
 	[SchemaMember("CPhysicsEntitySolver", "m_hMovingEntity")]
-	public CHandle<CBaseEntity> MovingEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hMovingEntity");
+	public virtual CHandle<CBaseEntity> MovingEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hMovingEntity");
 
 	// m_hPhysicsBlocker
 	[SchemaMember("CPhysicsEntitySolver", "m_hPhysicsBlocker")]
-	public CHandle<CBaseEntity> PhysicsBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hPhysicsBlocker");
+	public virtual CHandle<CBaseEntity> PhysicsBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hPhysicsBlocker");
 
 	// m_separationDuration
 	[SchemaMember("CPhysicsEntitySolver", "m_separationDuration")]
-	public float SeparationDuration
+	public virtual float SeparationDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_separationDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_separationDuration", value); }
@@ -37,7 +37,7 @@ public partial class CPhysicsEntitySolver : CLogicalEntity
 
 	// m_cancelTime
 	[SchemaMember("CPhysicsEntitySolver", "m_cancelTime")]
-	public float CancelTime
+	public virtual float CancelTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_cancelTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_cancelTime", value); }

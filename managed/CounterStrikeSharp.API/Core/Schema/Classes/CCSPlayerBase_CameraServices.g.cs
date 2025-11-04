@@ -21,7 +21,7 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_iFOV
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_iFOV")]
-	public UInt32 FOV
+	public virtual UInt32 FOV
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOV"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOV", value); }
@@ -29,7 +29,7 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_iFOVStart
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_iFOVStart")]
-	public UInt32 FOVStart
+	public virtual UInt32 FOVStart
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOVStart"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOVStart", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_flFOVTime
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_flFOVTime")]
-	public float FOVTime
+	public virtual float FOVTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVTime", value); }
@@ -45,7 +45,7 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_flFOVRate
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_flFOVRate")]
-	public float FOVRate
+	public virtual float FOVRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVRate", value); }
@@ -53,19 +53,19 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_hZoomOwner
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hZoomOwner")]
-	public CHandle<CBaseEntity> ZoomOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hZoomOwner");
+	public virtual CHandle<CBaseEntity> ZoomOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hZoomOwner");
 
 	// m_hTriggerFogList
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hTriggerFogList")]
-	public NetworkedVector<CHandle<CBaseEntity>> TriggerFogList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hTriggerFogList");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> TriggerFogList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hTriggerFogList");
 
 	// m_hLastFogTrigger
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hLastFogTrigger")]
-	public CHandle<CBaseEntity> LastFogTrigger => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hLastFogTrigger");
+	public virtual CHandle<CBaseEntity> LastFogTrigger => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hLastFogTrigger");
 
-	public void FOVPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOV");
-	public void FOVStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOVStart");
-	public void FOVTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_flFOVTime");
-	public void FOVRatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_flFOVRate");
-	public void ZoomOwnerPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_hZoomOwner");
+	public virtual void FOVPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOV");
+	public virtual void FOVStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOVStart");
+	public virtual void FOVTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_flFOVTime");
+	public virtual void FOVRatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_flFOVRate");
+	public virtual void ZoomOwnerPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_hZoomOwner");
 }

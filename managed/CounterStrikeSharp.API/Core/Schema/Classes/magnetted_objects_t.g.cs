@@ -21,6 +21,6 @@ public partial class magnetted_objects_t : NativeObject
 
 	// hEntity
 	[SchemaMember("magnetted_objects_t", "hEntity")]
-	public CHandle<CBaseEntity> HEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "magnetted_objects_t", "hEntity");
+	public virtual CHandle<CBaseEntity> HEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "magnetted_objects_t", "hEntity");
 
 }

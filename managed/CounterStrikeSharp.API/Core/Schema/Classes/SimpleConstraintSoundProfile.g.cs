@@ -21,10 +21,10 @@ public partial class SimpleConstraintSoundProfile : NativeObject
 
 	// m_keyPoints
 	[SchemaMember("SimpleConstraintSoundProfile", "m_keyPoints")]
-	public Span<float> KeyPoints => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_keyPoints", 2);
+	public virtual Span<float> KeyPoints => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_keyPoints", 2);
 
 	// m_reversalSoundThresholds
 	[SchemaMember("SimpleConstraintSoundProfile", "m_reversalSoundThresholds")]
-	public Span<float> ReversalSoundThresholds => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_reversalSoundThresholds", 3);
+	public virtual Span<float> ReversalSoundThresholds => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_reversalSoundThresholds", 3);
 
 }

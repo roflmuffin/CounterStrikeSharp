@@ -21,7 +21,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_bEnabled
 	[SchemaMember("CBarnLight", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bEnabled", value); }
@@ -29,7 +29,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nColorMode
 	[SchemaMember("CBarnLight", "m_nColorMode")]
-	public Int32 ColorMode
+	public virtual Int32 ColorMode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nColorMode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nColorMode", value); }
@@ -37,7 +37,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_Color
 	[SchemaMember("CBarnLight", "m_Color")]
-	public Color Color
+	public virtual Color Color
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CBarnLight", "m_Color"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CBarnLight", "m_Color", value); }
@@ -45,7 +45,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flColorTemperature
 	[SchemaMember("CBarnLight", "m_flColorTemperature")]
-	public float ColorTemperature
+	public virtual float ColorTemperature
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flColorTemperature"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flColorTemperature", value); }
@@ -53,7 +53,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flBrightness
 	[SchemaMember("CBarnLight", "m_flBrightness")]
-	public float Brightness
+	public virtual float Brightness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flBrightness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flBrightness", value); }
@@ -61,7 +61,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flBrightnessScale
 	[SchemaMember("CBarnLight", "m_flBrightnessScale")]
-	public float BrightnessScale
+	public virtual float BrightnessScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flBrightnessScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flBrightnessScale", value); }
@@ -69,7 +69,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nDirectLight
 	[SchemaMember("CBarnLight", "m_nDirectLight")]
-	public Int32 DirectLight
+	public virtual Int32 DirectLight
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nDirectLight"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nDirectLight", value); }
@@ -77,7 +77,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nBakedShadowIndex
 	[SchemaMember("CBarnLight", "m_nBakedShadowIndex")]
-	public Int32 BakedShadowIndex
+	public virtual Int32 BakedShadowIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakedShadowIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakedShadowIndex", value); }
@@ -85,7 +85,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nLightPathUniqueId
 	[SchemaMember("CBarnLight", "m_nLightPathUniqueId")]
-	public Int32 LightPathUniqueId
+	public virtual Int32 LightPathUniqueId
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightPathUniqueId"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightPathUniqueId", value); }
@@ -93,7 +93,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nLightMapUniqueId
 	[SchemaMember("CBarnLight", "m_nLightMapUniqueId")]
-	public Int32 LightMapUniqueId
+	public virtual Int32 LightMapUniqueId
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightMapUniqueId"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightMapUniqueId", value); }
@@ -101,7 +101,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nLuminaireShape
 	[SchemaMember("CBarnLight", "m_nLuminaireShape")]
-	public Int32 LuminaireShape
+	public virtual Int32 LuminaireShape
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nLuminaireShape"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nLuminaireShape", value); }
@@ -109,7 +109,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flLuminaireSize
 	[SchemaMember("CBarnLight", "m_flLuminaireSize")]
-	public float LuminaireSize
+	public virtual float LuminaireSize
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireSize"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireSize", value); }
@@ -117,7 +117,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flLuminaireAnisotropy
 	[SchemaMember("CBarnLight", "m_flLuminaireAnisotropy")]
-	public float LuminaireAnisotropy
+	public virtual float LuminaireAnisotropy
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireAnisotropy"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireAnisotropy", value); }
@@ -125,7 +125,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_LightStyleString
 	[SchemaMember("CBarnLight", "m_LightStyleString")]
-	public string LightStyleString
+	public virtual string LightStyleString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBarnLight", "m_LightStyleString"); }
 		set { Schema.SetString(this.Handle, "CBarnLight", "m_LightStyleString", value); }
@@ -133,7 +133,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flLightStyleStartTime
 	[SchemaMember("CBarnLight", "m_flLightStyleStartTime")]
-	public float LightStyleStartTime
+	public virtual float LightStyleStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime", value); }
@@ -141,27 +141,27 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_QueuedLightStyleStrings
 	[SchemaMember("CBarnLight", "m_QueuedLightStyleStrings")]
-	public NetworkedVector<string> QueuedLightStyleStrings => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CBarnLight", "m_QueuedLightStyleStrings");
+	public virtual NetworkedVector<string> QueuedLightStyleStrings => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CBarnLight", "m_QueuedLightStyleStrings");
 
 	// m_LightStyleEvents
 	[SchemaMember("CBarnLight", "m_LightStyleEvents")]
-	public NetworkedVector<string> LightStyleEvents => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CBarnLight", "m_LightStyleEvents");
+	public virtual NetworkedVector<string> LightStyleEvents => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CBarnLight", "m_LightStyleEvents");
 
 	// m_LightStyleTargets
 	[SchemaMember("CBarnLight", "m_LightStyleTargets")]
-	public NetworkedVector<CHandle<CBaseModelEntity>> LightStyleTargets => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBarnLight", "m_LightStyleTargets");
+	public virtual NetworkedVector<CHandle<CBaseModelEntity>> LightStyleTargets => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBarnLight", "m_LightStyleTargets");
 
 	// m_StyleEvent
 	[SchemaMember("CBarnLight", "m_StyleEvent")]
-	public Span<CEntityIOOutput> StyleEvent => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CBarnLight", "m_StyleEvent", 4);
+	public virtual Span<CEntityIOOutput> StyleEvent => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CBarnLight", "m_StyleEvent", 4);
 
 	// m_hLightCookie
 	[SchemaMember("CBarnLight", "m_hLightCookie")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> LightCookie => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CBarnLight", "m_hLightCookie");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> LightCookie => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CBarnLight", "m_hLightCookie");
 
 	// m_flShape
 	[SchemaMember("CBarnLight", "m_flShape")]
-	public float Shape
+	public virtual float Shape
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flShape"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flShape", value); }
@@ -169,7 +169,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flSoftX
 	[SchemaMember("CBarnLight", "m_flSoftX")]
-	public float SoftX
+	public virtual float SoftX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSoftX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSoftX", value); }
@@ -177,7 +177,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flSoftY
 	[SchemaMember("CBarnLight", "m_flSoftY")]
-	public float SoftY
+	public virtual float SoftY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSoftY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSoftY", value); }
@@ -185,7 +185,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flSkirt
 	[SchemaMember("CBarnLight", "m_flSkirt")]
-	public float Skirt
+	public virtual float Skirt
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSkirt"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSkirt", value); }
@@ -193,7 +193,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flSkirtNear
 	[SchemaMember("CBarnLight", "m_flSkirtNear")]
-	public float SkirtNear
+	public virtual float SkirtNear
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSkirtNear"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSkirtNear", value); }
@@ -201,7 +201,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vSizeParams
 	[SchemaMember("CBarnLight", "m_vSizeParams")]
-	public Vector3 SizeParams
+	public virtual Vector3 SizeParams
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vSizeParams"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vSizeParams", value); }
@@ -209,7 +209,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flRange
 	[SchemaMember("CBarnLight", "m_flRange")]
-	public float Range
+	public virtual float Range
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flRange", value); }
@@ -217,7 +217,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vShear
 	[SchemaMember("CBarnLight", "m_vShear")]
-	public Vector3 Shear
+	public virtual Vector3 Shear
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vShear"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vShear", value); }
@@ -225,7 +225,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nBakeSpecularToCubemaps
 	[SchemaMember("CBarnLight", "m_nBakeSpecularToCubemaps")]
-	public Int32 BakeSpecularToCubemaps
+	public virtual Int32 BakeSpecularToCubemaps
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakeSpecularToCubemaps"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakeSpecularToCubemaps", value); }
@@ -233,7 +233,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vBakeSpecularToCubemapsSize
 	[SchemaMember("CBarnLight", "m_vBakeSpecularToCubemapsSize")]
-	public Vector3 BakeSpecularToCubemapsSize
+	public virtual Vector3 BakeSpecularToCubemapsSize
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vBakeSpecularToCubemapsSize"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vBakeSpecularToCubemapsSize", value); }
@@ -241,7 +241,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nCastShadows
 	[SchemaMember("CBarnLight", "m_nCastShadows")]
-	public Int32 CastShadows
+	public virtual Int32 CastShadows
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nCastShadows"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nCastShadows", value); }
@@ -249,7 +249,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nShadowMapSize
 	[SchemaMember("CBarnLight", "m_nShadowMapSize")]
-	public Int32 ShadowMapSize
+	public virtual Int32 ShadowMapSize
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowMapSize"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowMapSize", value); }
@@ -257,7 +257,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nShadowPriority
 	[SchemaMember("CBarnLight", "m_nShadowPriority")]
-	public Int32 ShadowPriority
+	public virtual Int32 ShadowPriority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowPriority", value); }
@@ -265,7 +265,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_bContactShadow
 	[SchemaMember("CBarnLight", "m_bContactShadow")]
-	public bool ContactShadow
+	public virtual bool ContactShadow
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bContactShadow"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bContactShadow", value); }
@@ -273,7 +273,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_bForceShadowsEnabled
 	[SchemaMember("CBarnLight", "m_bForceShadowsEnabled")]
-	public bool ForceShadowsEnabled
+	public virtual bool ForceShadowsEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bForceShadowsEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bForceShadowsEnabled", value); }
@@ -281,7 +281,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nBounceLight
 	[SchemaMember("CBarnLight", "m_nBounceLight")]
-	public Int32 BounceLight
+	public virtual Int32 BounceLight
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nBounceLight"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nBounceLight", value); }
@@ -289,7 +289,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flBounceScale
 	[SchemaMember("CBarnLight", "m_flBounceScale")]
-	public float BounceScale
+	public virtual float BounceScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flBounceScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flBounceScale", value); }
@@ -297,7 +297,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flMinRoughness
 	[SchemaMember("CBarnLight", "m_flMinRoughness")]
-	public float MinRoughness
+	public virtual float MinRoughness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flMinRoughness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flMinRoughness", value); }
@@ -305,7 +305,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vAlternateColor
 	[SchemaMember("CBarnLight", "m_vAlternateColor")]
-	public Vector3 AlternateColor
+	public virtual Vector3 AlternateColor
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vAlternateColor"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vAlternateColor", value); }
@@ -313,7 +313,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_fAlternateColorBrightness
 	[SchemaMember("CBarnLight", "m_fAlternateColorBrightness")]
-	public float AlternateColorBrightness
+	public virtual float AlternateColorBrightness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_fAlternateColorBrightness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_fAlternateColorBrightness", value); }
@@ -321,7 +321,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nFog
 	[SchemaMember("CBarnLight", "m_nFog")]
-	public Int32 Fog
+	public virtual Int32 Fog
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nFog"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nFog", value); }
@@ -329,7 +329,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flFogStrength
 	[SchemaMember("CBarnLight", "m_flFogStrength")]
-	public float FogStrength
+	public virtual float FogStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFogStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFogStrength", value); }
@@ -337,7 +337,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nFogShadows
 	[SchemaMember("CBarnLight", "m_nFogShadows")]
-	public Int32 FogShadows
+	public virtual Int32 FogShadows
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nFogShadows"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nFogShadows", value); }
@@ -345,7 +345,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flFogScale
 	[SchemaMember("CBarnLight", "m_flFogScale")]
-	public float FogScale
+	public virtual float FogScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFogScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFogScale", value); }
@@ -353,7 +353,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_bFogMixedShadows
 	[SchemaMember("CBarnLight", "m_bFogMixedShadows")]
-	public bool FogMixedShadows
+	public virtual bool FogMixedShadows
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bFogMixedShadows"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bFogMixedShadows", value); }
@@ -361,7 +361,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flFadeSizeStart
 	[SchemaMember("CBarnLight", "m_flFadeSizeStart")]
-	public float FadeSizeStart
+	public virtual float FadeSizeStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeStart", value); }
@@ -369,7 +369,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flFadeSizeEnd
 	[SchemaMember("CBarnLight", "m_flFadeSizeEnd")]
-	public float FadeSizeEnd
+	public virtual float FadeSizeEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeEnd", value); }
@@ -377,7 +377,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flShadowFadeSizeStart
 	[SchemaMember("CBarnLight", "m_flShadowFadeSizeStart")]
-	public float ShadowFadeSizeStart
+	public virtual float ShadowFadeSizeStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeStart", value); }
@@ -385,7 +385,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flShadowFadeSizeEnd
 	[SchemaMember("CBarnLight", "m_flShadowFadeSizeEnd")]
-	public float ShadowFadeSizeEnd
+	public virtual float ShadowFadeSizeEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeEnd", value); }
@@ -393,7 +393,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_bPrecomputedFieldsValid
 	[SchemaMember("CBarnLight", "m_bPrecomputedFieldsValid")]
-	public bool PrecomputedFieldsValid
+	public virtual bool PrecomputedFieldsValid
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bPrecomputedFieldsValid"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bPrecomputedFieldsValid", value); }
@@ -401,7 +401,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedBoundsMins
 	[SchemaMember("CBarnLight", "m_vPrecomputedBoundsMins")]
-	public Vector3 PrecomputedBoundsMins
+	public virtual Vector3 PrecomputedBoundsMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMins", value); }
@@ -409,7 +409,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedBoundsMaxs
 	[SchemaMember("CBarnLight", "m_vPrecomputedBoundsMaxs")]
-	public Vector3 PrecomputedBoundsMaxs
+	public virtual Vector3 PrecomputedBoundsMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMaxs", value); }
@@ -417,7 +417,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBOrigin
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin")]
-	public Vector3 PrecomputedOBBOrigin
+	public virtual Vector3 PrecomputedOBBOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin", value); }
@@ -425,7 +425,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBAngles
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles")]
-	public QAngle PrecomputedOBBAngles
+	public virtual QAngle PrecomputedOBBAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles", value); }
@@ -433,7 +433,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBExtent
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent")]
-	public Vector3 PrecomputedOBBExtent
+	public virtual Vector3 PrecomputedOBBExtent
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent", value); }
@@ -441,7 +441,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_nPrecomputedSubFrusta
 	[SchemaMember("CBarnLight", "m_nPrecomputedSubFrusta")]
-	public Int32 PrecomputedSubFrusta
+	public virtual Int32 PrecomputedSubFrusta
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nPrecomputedSubFrusta"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nPrecomputedSubFrusta", value); }
@@ -449,7 +449,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBOrigin0
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin0")]
-	public Vector3 PrecomputedOBBOrigin0
+	public virtual Vector3 PrecomputedOBBOrigin0
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin0"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin0", value); }
@@ -457,7 +457,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBAngles0
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles0")]
-	public QAngle PrecomputedOBBAngles0
+	public virtual QAngle PrecomputedOBBAngles0
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles0"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles0", value); }
@@ -465,7 +465,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBExtent0
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent0")]
-	public Vector3 PrecomputedOBBExtent0
+	public virtual Vector3 PrecomputedOBBExtent0
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent0"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent0", value); }
@@ -473,7 +473,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBOrigin1
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin1")]
-	public Vector3 PrecomputedOBBOrigin1
+	public virtual Vector3 PrecomputedOBBOrigin1
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin1"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin1", value); }
@@ -481,7 +481,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBAngles1
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles1")]
-	public QAngle PrecomputedOBBAngles1
+	public virtual QAngle PrecomputedOBBAngles1
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles1"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles1", value); }
@@ -489,7 +489,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBExtent1
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent1")]
-	public Vector3 PrecomputedOBBExtent1
+	public virtual Vector3 PrecomputedOBBExtent1
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent1"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent1", value); }
@@ -497,7 +497,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBOrigin2
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin2")]
-	public Vector3 PrecomputedOBBOrigin2
+	public virtual Vector3 PrecomputedOBBOrigin2
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin2"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin2", value); }
@@ -505,7 +505,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBAngles2
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles2")]
-	public QAngle PrecomputedOBBAngles2
+	public virtual QAngle PrecomputedOBBAngles2
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles2"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles2", value); }
@@ -513,7 +513,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBExtent2
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent2")]
-	public Vector3 PrecomputedOBBExtent2
+	public virtual Vector3 PrecomputedOBBExtent2
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent2"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent2", value); }
@@ -521,7 +521,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBOrigin3
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin3")]
-	public Vector3 PrecomputedOBBOrigin3
+	public virtual Vector3 PrecomputedOBBOrigin3
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin3"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin3", value); }
@@ -529,7 +529,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBAngles3
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles3")]
-	public QAngle PrecomputedOBBAngles3
+	public virtual QAngle PrecomputedOBBAngles3
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles3"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles3", value); }
@@ -537,7 +537,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBExtent3
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent3")]
-	public Vector3 PrecomputedOBBExtent3
+	public virtual Vector3 PrecomputedOBBExtent3
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent3"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent3", value); }
@@ -545,7 +545,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBOrigin4
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin4")]
-	public Vector3 PrecomputedOBBOrigin4
+	public virtual Vector3 PrecomputedOBBOrigin4
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin4"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin4", value); }
@@ -553,7 +553,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBAngles4
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles4")]
-	public QAngle PrecomputedOBBAngles4
+	public virtual QAngle PrecomputedOBBAngles4
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles4"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles4", value); }
@@ -561,7 +561,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBExtent4
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent4")]
-	public Vector3 PrecomputedOBBExtent4
+	public virtual Vector3 PrecomputedOBBExtent4
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent4"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent4", value); }
@@ -569,7 +569,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBOrigin5
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin5")]
-	public Vector3 PrecomputedOBBOrigin5
+	public virtual Vector3 PrecomputedOBBOrigin5
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin5"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin5", value); }
@@ -577,7 +577,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBAngles5
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles5")]
-	public QAngle PrecomputedOBBAngles5
+	public virtual QAngle PrecomputedOBBAngles5
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles5"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles5", value); }
@@ -585,7 +585,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_vPrecomputedOBBExtent5
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent5")]
-	public Vector3 PrecomputedOBBExtent5
+	public virtual Vector3 PrecomputedOBBExtent5
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent5"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent5", value); }
@@ -593,7 +593,7 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_bPvsModifyEntity
 	[SchemaMember("CBarnLight", "m_bPvsModifyEntity")]
-	public bool PvsModifyEntity
+	public virtual bool PvsModifyEntity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity", value); }
@@ -601,80 +601,80 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_VisClusters
 	[SchemaMember("CBarnLight", "m_VisClusters")]
-	public NetworkedVector<UInt16> VisClusters => Schema.GetDeclaredClass<NetworkedVector<UInt16>>(this.Handle, "CBarnLight", "m_VisClusters");
+	public virtual NetworkedVector<UInt16> VisClusters => Schema.GetDeclaredClass<NetworkedVector<UInt16>>(this.Handle, "CBarnLight", "m_VisClusters");
 
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bEnabled");
-	public void ColorModePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nColorMode");
-	public void ColorPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_Color");
-	public void ColorTemperaturePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flColorTemperature");
-	public void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flBrightness");
-	public void BrightnessScalePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flBrightnessScale");
-	public void DirectLightPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nDirectLight");
-	public void BakedShadowIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nBakedShadowIndex");
-	public void LightPathUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nLightPathUniqueId");
-	public void LightMapUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nLightMapUniqueId");
-	public void LuminaireShapePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nLuminaireShape");
-	public void LuminaireSizePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flLuminaireSize");
-	public void LuminaireAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flLuminaireAnisotropy");
-	public void LightStyleStringPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_LightStyleString");
-	public void LightStyleStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flLightStyleStartTime");
-	public void QueuedLightStyleStringsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_QueuedLightStyleStrings");
-	public void LightStyleEventsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_LightStyleEvents");
-	public void LightStyleTargetsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_LightStyleTargets");
-	public void LightCookiePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_hLightCookie");
-	public void ShapePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flShape");
-	public void SoftXPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSoftX");
-	public void SoftYPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSoftY");
-	public void SkirtPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSkirt");
-	public void SkirtNearPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSkirtNear");
-	public void SizeParamsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vSizeParams");
-	public void RangePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flRange");
-	public void ShearPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vShear");
-	public void BakeSpecularToCubemapsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nBakeSpecularToCubemaps");
-	public void BakeSpecularToCubemapsSizePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vBakeSpecularToCubemapsSize");
-	public void CastShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nCastShadows");
-	public void ShadowMapSizePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nShadowMapSize");
-	public void ShadowPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nShadowPriority");
-	public void ContactShadowPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bContactShadow");
-	public void ForceShadowsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bForceShadowsEnabled");
-	public void BounceLightPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nBounceLight");
-	public void BounceScalePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flBounceScale");
-	public void MinRoughnessPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flMinRoughness");
-	public void AlternateColorPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vAlternateColor");
-	public void AlternateColorBrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_fAlternateColorBrightness");
-	public void FogPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nFog");
-	public void FogStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFogStrength");
-	public void FogShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nFogShadows");
-	public void FogScalePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFogScale");
-	public void FogMixedShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bFogMixedShadows");
-	public void FadeSizeStartPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFadeSizeStart");
-	public void FadeSizeEndPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFadeSizeEnd");
-	public void ShadowFadeSizeStartPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flShadowFadeSizeStart");
-	public void ShadowFadeSizeEndPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flShadowFadeSizeEnd");
-	public void PrecomputedFieldsValidPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bPrecomputedFieldsValid");
-	public void PrecomputedBoundsMinsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedBoundsMins");
-	public void PrecomputedBoundsMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedBoundsMaxs");
-	public void PrecomputedOBBOriginPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin");
-	public void PrecomputedOBBAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles");
-	public void PrecomputedOBBExtentPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent");
-	public void PrecomputedSubFrustaPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nPrecomputedSubFrusta");
-	public void PrecomputedOBBOrigin0PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin0");
-	public void PrecomputedOBBAngles0PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles0");
-	public void PrecomputedOBBExtent0PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent0");
-	public void PrecomputedOBBOrigin1PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin1");
-	public void PrecomputedOBBAngles1PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles1");
-	public void PrecomputedOBBExtent1PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent1");
-	public void PrecomputedOBBOrigin2PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin2");
-	public void PrecomputedOBBAngles2PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles2");
-	public void PrecomputedOBBExtent2PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent2");
-	public void PrecomputedOBBOrigin3PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin3");
-	public void PrecomputedOBBAngles3PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles3");
-	public void PrecomputedOBBExtent3PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent3");
-	public void PrecomputedOBBOrigin4PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin4");
-	public void PrecomputedOBBAngles4PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles4");
-	public void PrecomputedOBBExtent4PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent4");
-	public void PrecomputedOBBOrigin5PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin5");
-	public void PrecomputedOBBAngles5PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles5");
-	public void PrecomputedOBBExtent5PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent5");
-	public void VisClustersPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_VisClusters");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bEnabled");
+	public virtual void ColorModePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nColorMode");
+	public virtual void ColorPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_Color");
+	public virtual void ColorTemperaturePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flColorTemperature");
+	public virtual void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flBrightness");
+	public virtual void BrightnessScalePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flBrightnessScale");
+	public virtual void DirectLightPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nDirectLight");
+	public virtual void BakedShadowIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nBakedShadowIndex");
+	public virtual void LightPathUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nLightPathUniqueId");
+	public virtual void LightMapUniqueIdPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nLightMapUniqueId");
+	public virtual void LuminaireShapePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nLuminaireShape");
+	public virtual void LuminaireSizePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flLuminaireSize");
+	public virtual void LuminaireAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flLuminaireAnisotropy");
+	public virtual void LightStyleStringPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_LightStyleString");
+	public virtual void LightStyleStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flLightStyleStartTime");
+	public virtual void QueuedLightStyleStringsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_QueuedLightStyleStrings");
+	public virtual void LightStyleEventsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_LightStyleEvents");
+	public virtual void LightStyleTargetsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_LightStyleTargets");
+	public virtual void LightCookiePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_hLightCookie");
+	public virtual void ShapePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flShape");
+	public virtual void SoftXPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSoftX");
+	public virtual void SoftYPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSoftY");
+	public virtual void SkirtPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSkirt");
+	public virtual void SkirtNearPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flSkirtNear");
+	public virtual void SizeParamsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vSizeParams");
+	public virtual void RangePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flRange");
+	public virtual void ShearPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vShear");
+	public virtual void BakeSpecularToCubemapsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nBakeSpecularToCubemaps");
+	public virtual void BakeSpecularToCubemapsSizePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vBakeSpecularToCubemapsSize");
+	public virtual void CastShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nCastShadows");
+	public virtual void ShadowMapSizePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nShadowMapSize");
+	public virtual void ShadowPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nShadowPriority");
+	public virtual void ContactShadowPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bContactShadow");
+	public virtual void ForceShadowsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bForceShadowsEnabled");
+	public virtual void BounceLightPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nBounceLight");
+	public virtual void BounceScalePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flBounceScale");
+	public virtual void MinRoughnessPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flMinRoughness");
+	public virtual void AlternateColorPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vAlternateColor");
+	public virtual void AlternateColorBrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_fAlternateColorBrightness");
+	public virtual void FogPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nFog");
+	public virtual void FogStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFogStrength");
+	public virtual void FogShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nFogShadows");
+	public virtual void FogScalePropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFogScale");
+	public virtual void FogMixedShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bFogMixedShadows");
+	public virtual void FadeSizeStartPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFadeSizeStart");
+	public virtual void FadeSizeEndPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flFadeSizeEnd");
+	public virtual void ShadowFadeSizeStartPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flShadowFadeSizeStart");
+	public virtual void ShadowFadeSizeEndPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_flShadowFadeSizeEnd");
+	public virtual void PrecomputedFieldsValidPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_bPrecomputedFieldsValid");
+	public virtual void PrecomputedBoundsMinsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedBoundsMins");
+	public virtual void PrecomputedBoundsMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedBoundsMaxs");
+	public virtual void PrecomputedOBBOriginPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin");
+	public virtual void PrecomputedOBBAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles");
+	public virtual void PrecomputedOBBExtentPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent");
+	public virtual void PrecomputedSubFrustaPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_nPrecomputedSubFrusta");
+	public virtual void PrecomputedOBBOrigin0PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin0");
+	public virtual void PrecomputedOBBAngles0PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles0");
+	public virtual void PrecomputedOBBExtent0PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent0");
+	public virtual void PrecomputedOBBOrigin1PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin1");
+	public virtual void PrecomputedOBBAngles1PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles1");
+	public virtual void PrecomputedOBBExtent1PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent1");
+	public virtual void PrecomputedOBBOrigin2PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin2");
+	public virtual void PrecomputedOBBAngles2PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles2");
+	public virtual void PrecomputedOBBExtent2PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent2");
+	public virtual void PrecomputedOBBOrigin3PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin3");
+	public virtual void PrecomputedOBBAngles3PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles3");
+	public virtual void PrecomputedOBBExtent3PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent3");
+	public virtual void PrecomputedOBBOrigin4PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin4");
+	public virtual void PrecomputedOBBAngles4PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles4");
+	public virtual void PrecomputedOBBExtent4PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent4");
+	public virtual void PrecomputedOBBOrigin5PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBOrigin5");
+	public virtual void PrecomputedOBBAngles5PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBAngles5");
+	public virtual void PrecomputedOBBExtent5PropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_vPrecomputedOBBExtent5");
+	public virtual void VisClustersPropertyChanged() => Utilities.SetStateChanged(this, "CBarnLight", "m_VisClusters");
 }

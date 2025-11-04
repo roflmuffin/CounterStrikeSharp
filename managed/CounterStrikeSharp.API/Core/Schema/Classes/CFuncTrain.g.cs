@@ -21,11 +21,11 @@ public partial class CFuncTrain : CBasePlatTrain
 
 	// m_hCurrentTarget
 	[SchemaMember("CFuncTrain", "m_hCurrentTarget")]
-	public CHandle<CBaseEntity> CurrentTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hCurrentTarget");
+	public virtual CHandle<CBaseEntity> CurrentTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hCurrentTarget");
 
 	// m_activated
 	[SchemaMember("CFuncTrain", "m_activated")]
-	public bool Activated
+	public virtual bool Activated
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncTrain", "m_activated"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncTrain", "m_activated", value); }
@@ -33,11 +33,11 @@ public partial class CFuncTrain : CBasePlatTrain
 
 	// m_hEnemy
 	[SchemaMember("CFuncTrain", "m_hEnemy")]
-	public CHandle<CBaseEntity> Enemy => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hEnemy");
+	public virtual CHandle<CBaseEntity> Enemy => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hEnemy");
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncTrain", "m_flBlockDamage")]
-	public float BlockDamage
+	public virtual float BlockDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrain", "m_flBlockDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrain", "m_flBlockDamage", value); }
@@ -45,7 +45,7 @@ public partial class CFuncTrain : CBasePlatTrain
 
 	// m_flNextBlockTime
 	[SchemaMember("CFuncTrain", "m_flNextBlockTime")]
-	public float NextBlockTime
+	public virtual float NextBlockTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTrain", "m_flNextBlockTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTrain", "m_flNextBlockTime", value); }
@@ -53,7 +53,7 @@ public partial class CFuncTrain : CBasePlatTrain
 
 	// m_iszLastTarget
 	[SchemaMember("CFuncTrain", "m_iszLastTarget")]
-	public string LastTarget
+	public virtual string LastTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrain", "m_iszLastTarget"); }
 		set { Schema.SetString(this.Handle, "CFuncTrain", "m_iszLastTarget", value); }

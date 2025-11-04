@@ -21,7 +21,7 @@ public partial class ragdollelement_t : NativeObject
 
 	// originParentSpace
 	[SchemaMember("ragdollelement_t", "originParentSpace")]
-	public Vector3 OriginParentSpace
+	public virtual Vector3 OriginParentSpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "ragdollelement_t", "originParentSpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "ragdollelement_t", "originParentSpace", value); }
@@ -29,7 +29,7 @@ public partial class ragdollelement_t : NativeObject
 
 	// parentIndex
 	[SchemaMember("ragdollelement_t", "parentIndex")]
-	public Int32 ParentIndex
+	public virtual Int32 ParentIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollelement_t", "parentIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "ragdollelement_t", "parentIndex", value); }
@@ -37,7 +37,7 @@ public partial class ragdollelement_t : NativeObject
 
 	// m_flRadius
 	[SchemaMember("ragdollelement_t", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "ragdollelement_t", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "ragdollelement_t", "m_flRadius", value); }
@@ -45,7 +45,7 @@ public partial class ragdollelement_t : NativeObject
 
 	// m_nHeight
 	[SchemaMember("ragdollelement_t", "m_nHeight")]
-	public Int32 Height
+	public virtual Int32 Height
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollelement_t", "m_nHeight"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "ragdollelement_t", "m_nHeight", value); }

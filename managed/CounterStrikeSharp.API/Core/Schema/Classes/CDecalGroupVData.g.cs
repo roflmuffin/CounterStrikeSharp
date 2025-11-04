@@ -21,11 +21,11 @@ public partial class CDecalGroupVData : NativeObject
 
 	// m_vecOptions
 	[SchemaMember("CDecalGroupVData", "m_vecOptions")]
-	public NetworkedVector<DecalGroupOption_t> Options => Schema.GetDeclaredClass<NetworkedVector<DecalGroupOption_t>>(this.Handle, "CDecalGroupVData", "m_vecOptions");
+	public virtual NetworkedVector<DecalGroupOption_t> Options => Schema.GetDeclaredClass<NetworkedVector<DecalGroupOption_t>>(this.Handle, "CDecalGroupVData", "m_vecOptions");
 
 	// m_flTotalProbability
 	[SchemaMember("CDecalGroupVData", "m_flTotalProbability")]
-	public float TotalProbability
+	public virtual float TotalProbability
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDecalGroupVData", "m_flTotalProbability"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDecalGroupVData", "m_flTotalProbability", value); }

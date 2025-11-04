@@ -21,11 +21,11 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_hPostSettings
 	[SchemaMember("CPostProcessingVolume", "m_hPostSettings")]
-	public CStrongHandle<InfoForResourceTypeCPostProcessingResource> PostSettings => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCPostProcessingResource>>(this.Handle, "CPostProcessingVolume", "m_hPostSettings");
+	public virtual CStrongHandle<InfoForResourceTypeCPostProcessingResource> PostSettings => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCPostProcessingResource>>(this.Handle, "CPostProcessingVolume", "m_hPostSettings");
 
 	// m_flFadeDuration
 	[SchemaMember("CPostProcessingVolume", "m_flFadeDuration")]
-	public float FadeDuration
+	public virtual float FadeDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flFadeDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flFadeDuration", value); }
@@ -33,7 +33,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flMinLogExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMinLogExposure")]
-	public float MinLogExposure
+	public virtual float MinLogExposure
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinLogExposure"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinLogExposure", value); }
@@ -41,7 +41,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flMaxLogExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMaxLogExposure")]
-	public float MaxLogExposure
+	public virtual float MaxLogExposure
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxLogExposure"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxLogExposure", value); }
@@ -49,7 +49,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flMinExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMinExposure")]
-	public float MinExposure
+	public virtual float MinExposure
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinExposure"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinExposure", value); }
@@ -57,7 +57,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flMaxExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMaxExposure")]
-	public float MaxExposure
+	public virtual float MaxExposure
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxExposure"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxExposure", value); }
@@ -65,7 +65,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flExposureCompensation
 	[SchemaMember("CPostProcessingVolume", "m_flExposureCompensation")]
-	public float ExposureCompensation
+	public virtual float ExposureCompensation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureCompensation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureCompensation", value); }
@@ -73,7 +73,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flExposureFadeSpeedUp
 	[SchemaMember("CPostProcessingVolume", "m_flExposureFadeSpeedUp")]
-	public float ExposureFadeSpeedUp
+	public virtual float ExposureFadeSpeedUp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedUp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedUp", value); }
@@ -81,7 +81,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flExposureFadeSpeedDown
 	[SchemaMember("CPostProcessingVolume", "m_flExposureFadeSpeedDown")]
-	public float ExposureFadeSpeedDown
+	public virtual float ExposureFadeSpeedDown
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedDown"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedDown", value); }
@@ -89,7 +89,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flTonemapEVSmoothingRange
 	[SchemaMember("CPostProcessingVolume", "m_flTonemapEVSmoothingRange")]
-	public float TonemapEVSmoothingRange
+	public virtual float TonemapEVSmoothingRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange", value); }
@@ -97,7 +97,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_bMaster
 	[SchemaMember("CPostProcessingVolume", "m_bMaster")]
-	public new bool Master
+	public virtual new bool Master
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bMaster"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bMaster", value); }
@@ -105,22 +105,22 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_bExposureControl
 	[SchemaMember("CPostProcessingVolume", "m_bExposureControl")]
-	public bool ExposureControl
+	public virtual bool ExposureControl
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bExposureControl"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bExposureControl", value); }
 	}
 
-	public void PostSettingsPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_hPostSettings");
-	public void FadeDurationPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flFadeDuration");
-	public void MinLogExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMinLogExposure");
-	public void MaxLogExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMaxLogExposure");
-	public void MinExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMinExposure");
-	public void MaxExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMaxExposure");
-	public void ExposureCompensationPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureCompensation");
-	public void ExposureFadeSpeedUpPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureFadeSpeedUp");
-	public void ExposureFadeSpeedDownPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureFadeSpeedDown");
-	public void TonemapEVSmoothingRangePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange");
-	public void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_bMaster");
-	public void ExposureControlPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_bExposureControl");
+	public virtual void PostSettingsPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_hPostSettings");
+	public virtual void FadeDurationPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flFadeDuration");
+	public virtual void MinLogExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMinLogExposure");
+	public virtual void MaxLogExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMaxLogExposure");
+	public virtual void MinExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMinExposure");
+	public virtual void MaxExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMaxExposure");
+	public virtual void ExposureCompensationPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureCompensation");
+	public virtual void ExposureFadeSpeedUpPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureFadeSpeedUp");
+	public virtual void ExposureFadeSpeedDownPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureFadeSpeedDown");
+	public virtual void TonemapEVSmoothingRangePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange");
+	public virtual void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_bMaster");
+	public virtual void ExposureControlPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_bExposureControl");
 }

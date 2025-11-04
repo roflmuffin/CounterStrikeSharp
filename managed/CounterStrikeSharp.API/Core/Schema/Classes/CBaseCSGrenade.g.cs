@@ -21,7 +21,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_bRedraw
 	[SchemaMember("CBaseCSGrenade", "m_bRedraw")]
-	public bool Redraw
+	public virtual bool Redraw
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bRedraw"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bRedraw", value); }
@@ -29,7 +29,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_bIsHeldByPlayer
 	[SchemaMember("CBaseCSGrenade", "m_bIsHeldByPlayer")]
-	public bool IsHeldByPlayer
+	public virtual bool IsHeldByPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bIsHeldByPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bIsHeldByPlayer", value); }
@@ -37,7 +37,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_bPinPulled
 	[SchemaMember("CBaseCSGrenade", "m_bPinPulled")]
-	public bool PinPulled
+	public virtual bool PinPulled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bPinPulled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bPinPulled", value); }
@@ -45,7 +45,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_bJumpThrow
 	[SchemaMember("CBaseCSGrenade", "m_bJumpThrow")]
-	public bool JumpThrow
+	public virtual bool JumpThrow
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJumpThrow"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJumpThrow", value); }
@@ -53,7 +53,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_bThrowAnimating
 	[SchemaMember("CBaseCSGrenade", "m_bThrowAnimating")]
-	public bool ThrowAnimating
+	public virtual bool ThrowAnimating
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bThrowAnimating"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bThrowAnimating", value); }
@@ -61,7 +61,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_fThrowTime
 	[SchemaMember("CBaseCSGrenade", "m_fThrowTime")]
-	public float ThrowTime
+	public virtual float ThrowTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fThrowTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fThrowTime", value); }
@@ -69,7 +69,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_flThrowStrength
 	[SchemaMember("CBaseCSGrenade", "m_flThrowStrength")]
-	public float ThrowStrength
+	public virtual float ThrowStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrength", value); }
@@ -77,7 +77,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_fDropTime
 	[SchemaMember("CBaseCSGrenade", "m_fDropTime")]
-	public float DropTime
+	public virtual float DropTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime", value); }
@@ -85,7 +85,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_fPinPullTime
 	[SchemaMember("CBaseCSGrenade", "m_fPinPullTime")]
-	public float PinPullTime
+	public virtual float PinPullTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fPinPullTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fPinPullTime", value); }
@@ -93,7 +93,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_bJustPulledPin
 	[SchemaMember("CBaseCSGrenade", "m_bJustPulledPin")]
-	public bool JustPulledPin
+	public virtual bool JustPulledPin
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJustPulledPin"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJustPulledPin", value); }
@@ -101,7 +101,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_nNextHoldTick
 	[SchemaMember("CBaseCSGrenade", "m_nNextHoldTick")]
-	public Int32 NextHoldTick
+	public virtual Int32 NextHoldTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseCSGrenade", "m_nNextHoldTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseCSGrenade", "m_nNextHoldTick", value); }
@@ -109,7 +109,7 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_flNextHoldFrac
 	[SchemaMember("CBaseCSGrenade", "m_flNextHoldFrac")]
-	public float NextHoldFrac
+	public virtual float NextHoldFrac
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flNextHoldFrac"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flNextHoldFrac", value); }
@@ -117,19 +117,19 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_hSwitchToWeaponAfterThrow
 	[SchemaMember("CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow")]
-	public CHandle<CCSWeaponBase> SwitchToWeaponAfterThrow => Schema.GetDeclaredClass<CHandle<CCSWeaponBase>>(this.Handle, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow");
+	public virtual CHandle<CCSWeaponBase> SwitchToWeaponAfterThrow => Schema.GetDeclaredClass<CHandle<CCSWeaponBase>>(this.Handle, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow");
 
-	public void RedrawPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bRedraw");
-	public void IsHeldByPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bIsHeldByPlayer");
-	public void PinPulledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bPinPulled");
-	public void JumpThrowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bJumpThrow");
-	public void ThrowAnimatingPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bThrowAnimating");
-	public void ThrowTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fThrowTime");
-	public void ThrowStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_flThrowStrength");
-	public void DropTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fDropTime");
-	public void PinPullTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fPinPullTime");
-	public void JustPulledPinPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bJustPulledPin");
-	public void NextHoldTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_nNextHoldTick");
-	public void NextHoldFracPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_flNextHoldFrac");
-	public void SwitchToWeaponAfterThrowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow");
+	public virtual void RedrawPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bRedraw");
+	public virtual void IsHeldByPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bIsHeldByPlayer");
+	public virtual void PinPulledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bPinPulled");
+	public virtual void JumpThrowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bJumpThrow");
+	public virtual void ThrowAnimatingPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bThrowAnimating");
+	public virtual void ThrowTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fThrowTime");
+	public virtual void ThrowStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_flThrowStrength");
+	public virtual void DropTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fDropTime");
+	public virtual void PinPullTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fPinPullTime");
+	public virtual void JustPulledPinPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bJustPulledPin");
+	public virtual void NextHoldTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_nNextHoldTick");
+	public virtual void NextHoldFracPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_flNextHoldFrac");
+	public virtual void SwitchToWeaponAfterThrowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow");
 }

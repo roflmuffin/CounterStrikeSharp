@@ -21,7 +21,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_flFrameRate
 	[SchemaMember("CBeam", "m_flFrameRate")]
-	public float FrameRate
+	public virtual float FrameRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flFrameRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flFrameRate", value); }
@@ -29,7 +29,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_flHDRColorScale
 	[SchemaMember("CBeam", "m_flHDRColorScale")]
-	public float HDRColorScale
+	public virtual float HDRColorScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flHDRColorScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flHDRColorScale", value); }
@@ -37,7 +37,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_flFireTime
 	[SchemaMember("CBeam", "m_flFireTime")]
-	public float FireTime
+	public virtual float FireTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flFireTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flFireTime", value); }
@@ -45,7 +45,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_flDamage
 	[SchemaMember("CBeam", "m_flDamage")]
-	public float Damage
+	public virtual float Damage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flDamage", value); }
@@ -53,7 +53,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_nNumBeamEnts
 	[SchemaMember("CBeam", "m_nNumBeamEnts")]
-	public byte NumBeamEnts
+	public virtual byte NumBeamEnts
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBeam", "m_nNumBeamEnts"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBeam", "m_nNumBeamEnts", value); }
@@ -61,15 +61,15 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_hBaseMaterial
 	[SchemaMember("CBeam", "m_hBaseMaterial")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> BaseMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CBeam", "m_hBaseMaterial");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> BaseMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CBeam", "m_hBaseMaterial");
 
 	// m_nHaloIndex
 	[SchemaMember("CBeam", "m_nHaloIndex")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> HaloIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CBeam", "m_nHaloIndex");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> HaloIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CBeam", "m_nHaloIndex");
 
 	// m_nBeamType
 	[SchemaMember("CBeam", "m_nBeamType")]
-	public BeamType_t BeamType
+	public virtual BeamType_t BeamType
 	{
 		get { return Schema.GetValueType<BeamType_t>(this.Handle, "CBeam", "m_nBeamType"); }
 		set { Schema.SetValueType<BeamType_t>(this.Handle, "CBeam", "m_nBeamType", value); }
@@ -77,7 +77,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_nBeamFlags
 	[SchemaMember("CBeam", "m_nBeamFlags")]
-	public UInt32 BeamFlags
+	public virtual UInt32 BeamFlags
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBeam", "m_nBeamFlags"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBeam", "m_nBeamFlags", value); }
@@ -85,15 +85,15 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_hAttachEntity
 	[SchemaMember("CBeam", "m_hAttachEntity")]
-	public Span<CHandle<CBaseEntity>> AttachEntity => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hAttachEntity", 10);
+	public virtual Span<CHandle<CBaseEntity>> AttachEntity => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hAttachEntity", 10);
 
 	// m_nAttachIndex
 	[SchemaMember("CBeam", "m_nAttachIndex")]
-	public Span<AttachmentHandle_t> AttachIndex => Schema.GetFixedArray<AttachmentHandle_t>(this.Handle, "CBeam", "m_nAttachIndex", 10);
+	public virtual Span<AttachmentHandle_t> AttachIndex => Schema.GetFixedArray<AttachmentHandle_t>(this.Handle, "CBeam", "m_nAttachIndex", 10);
 
 	// m_fWidth
 	[SchemaMember("CBeam", "m_fWidth")]
-	public float Width
+	public virtual float Width
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fWidth", value); }
@@ -101,7 +101,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fEndWidth
 	[SchemaMember("CBeam", "m_fEndWidth")]
-	public float EndWidth
+	public virtual float EndWidth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fEndWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fEndWidth", value); }
@@ -109,7 +109,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fFadeLength
 	[SchemaMember("CBeam", "m_fFadeLength")]
-	public float FadeLength
+	public virtual float FadeLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fFadeLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fFadeLength", value); }
@@ -117,7 +117,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fHaloScale
 	[SchemaMember("CBeam", "m_fHaloScale")]
-	public float HaloScale
+	public virtual float HaloScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fHaloScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fHaloScale", value); }
@@ -125,7 +125,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fAmplitude
 	[SchemaMember("CBeam", "m_fAmplitude")]
-	public float Amplitude
+	public virtual float Amplitude
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fAmplitude"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fAmplitude", value); }
@@ -133,7 +133,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fStartFrame
 	[SchemaMember("CBeam", "m_fStartFrame")]
-	public float StartFrame
+	public virtual float StartFrame
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fStartFrame"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fStartFrame", value); }
@@ -141,7 +141,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fSpeed
 	[SchemaMember("CBeam", "m_fSpeed")]
-	public new float Speed
+	public virtual new float Speed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fSpeed", value); }
@@ -149,7 +149,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_flFrame
 	[SchemaMember("CBeam", "m_flFrame")]
-	public float Frame
+	public virtual float Frame
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flFrame"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flFrame", value); }
@@ -157,7 +157,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_nClipStyle
 	[SchemaMember("CBeam", "m_nClipStyle")]
-	public BeamClipStyle_t ClipStyle
+	public virtual BeamClipStyle_t ClipStyle
 	{
 		get { return Schema.GetValueType<BeamClipStyle_t>(this.Handle, "CBeam", "m_nClipStyle"); }
 		set { Schema.SetValueType<BeamClipStyle_t>(this.Handle, "CBeam", "m_nClipStyle", value); }
@@ -165,7 +165,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_bTurnedOff
 	[SchemaMember("CBeam", "m_bTurnedOff")]
-	public bool TurnedOff
+	public virtual bool TurnedOff
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBeam", "m_bTurnedOff"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBeam", "m_bTurnedOff", value); }
@@ -173,7 +173,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_vecEndPos
 	[SchemaMember("CBeam", "m_vecEndPos")]
-	public Vector3 EndPos
+	public virtual Vector3 EndPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBeam", "m_vecEndPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBeam", "m_vecEndPos", value); }
@@ -181,34 +181,34 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_hEndEntity
 	[SchemaMember("CBeam", "m_hEndEntity")]
-	public CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hEndEntity");
+	public virtual CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hEndEntity");
 
 	// m_nDissolveType
 	[SchemaMember("CBeam", "m_nDissolveType")]
-	public Int32 DissolveType
+	public virtual Int32 DissolveType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBeam", "m_nDissolveType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBeam", "m_nDissolveType", value); }
 	}
 
-	public void FrameRatePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flFrameRate");
-	public void HDRColorScalePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flHDRColorScale");
-	public void NumBeamEntsPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nNumBeamEnts");
-	public void BaseMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_hBaseMaterial");
-	public void HaloIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nHaloIndex");
-	public void BeamTypePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nBeamType");
-	public void BeamFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nBeamFlags");
-	public void AttachEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_hAttachEntity");
-	public void AttachIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nAttachIndex");
-	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fWidth");
-	public void EndWidthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fEndWidth");
-	public void FadeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fFadeLength");
-	public void HaloScalePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fHaloScale");
-	public void AmplitudePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fAmplitude");
-	public void StartFramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fStartFrame");
-	public void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fSpeed");
-	public void FramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flFrame");
-	public void ClipStylePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nClipStyle");
-	public void TurnedOffPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_bTurnedOff");
-	public void EndPosPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_vecEndPos");
+	public virtual void FrameRatePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flFrameRate");
+	public virtual void HDRColorScalePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flHDRColorScale");
+	public virtual void NumBeamEntsPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nNumBeamEnts");
+	public virtual void BaseMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_hBaseMaterial");
+	public virtual void HaloIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nHaloIndex");
+	public virtual void BeamTypePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nBeamType");
+	public virtual void BeamFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nBeamFlags");
+	public virtual void AttachEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_hAttachEntity");
+	public virtual void AttachIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nAttachIndex");
+	public virtual void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fWidth");
+	public virtual void EndWidthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fEndWidth");
+	public virtual void FadeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fFadeLength");
+	public virtual void HaloScalePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fHaloScale");
+	public virtual void AmplitudePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fAmplitude");
+	public virtual void StartFramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fStartFrame");
+	public virtual void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fSpeed");
+	public virtual void FramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flFrame");
+	public virtual void ClipStylePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nClipStyle");
+	public virtual void TurnedOffPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_bTurnedOff");
+	public virtual void EndPosPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_vecEndPos");
 }

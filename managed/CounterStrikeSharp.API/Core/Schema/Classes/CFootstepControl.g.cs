@@ -21,7 +21,7 @@ public partial class CFootstepControl : CBaseTrigger
 
 	// m_source
 	[SchemaMember("CFootstepControl", "m_source")]
-	public string Source
+	public virtual string Source
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_source"); }
 		set { Schema.SetString(this.Handle, "CFootstepControl", "m_source", value); }
@@ -29,12 +29,12 @@ public partial class CFootstepControl : CBaseTrigger
 
 	// m_destination
 	[SchemaMember("CFootstepControl", "m_destination")]
-	public string Destination
+	public virtual string Destination
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_destination"); }
 		set { Schema.SetString(this.Handle, "CFootstepControl", "m_destination", value); }
 	}
 
-	public void SourcePropertyChanged() => Utilities.SetStateChanged(this, "CFootstepControl", "m_source");
-	public void DestinationPropertyChanged() => Utilities.SetStateChanged(this, "CFootstepControl", "m_destination");
+	public virtual void SourcePropertyChanged() => Utilities.SetStateChanged(this, "CFootstepControl", "m_source");
+	public virtual void DestinationPropertyChanged() => Utilities.SetStateChanged(this, "CFootstepControl", "m_destination");
 }

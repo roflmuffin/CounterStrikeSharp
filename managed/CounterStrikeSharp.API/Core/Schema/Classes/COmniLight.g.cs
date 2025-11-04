@@ -21,7 +21,7 @@ public partial class COmniLight : CBarnLight
 
 	// m_flInnerAngle
 	[SchemaMember("COmniLight", "m_flInnerAngle")]
-	public float InnerAngle
+	public virtual float InnerAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "COmniLight", "m_flInnerAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "COmniLight", "m_flInnerAngle", value); }
@@ -29,7 +29,7 @@ public partial class COmniLight : CBarnLight
 
 	// m_flOuterAngle
 	[SchemaMember("COmniLight", "m_flOuterAngle")]
-	public float OuterAngle
+	public virtual float OuterAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "COmniLight", "m_flOuterAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "COmniLight", "m_flOuterAngle", value); }
@@ -37,13 +37,13 @@ public partial class COmniLight : CBarnLight
 
 	// m_bShowLight
 	[SchemaMember("COmniLight", "m_bShowLight")]
-	public bool ShowLight
+	public virtual bool ShowLight
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "COmniLight", "m_bShowLight"); }
 		set { Schema.SetValueType<bool>(this.Handle, "COmniLight", "m_bShowLight", value); }
 	}
 
-	public void InnerAnglePropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_flInnerAngle");
-	public void OuterAnglePropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_flOuterAngle");
-	public void ShowLightPropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_bShowLight");
+	public virtual void InnerAnglePropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_flInnerAngle");
+	public virtual void OuterAnglePropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_flOuterAngle");
+	public virtual void ShowLightPropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_bShowLight");
 }

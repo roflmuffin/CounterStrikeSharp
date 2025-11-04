@@ -21,7 +21,7 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_iszPathCorner
 	[SchemaMember("CSoundEventPathCornerEntity", "m_iszPathCorner")]
-	public string PathCorner
+	public virtual string PathCorner
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner"); }
 		set { Schema.SetString(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner", value); }
@@ -29,7 +29,7 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_iCountMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_iCountMax")]
-	public Int32 CountMax
+	public virtual Int32 CountMax
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax", value); }
@@ -37,7 +37,7 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_flDistanceMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDistanceMax")]
-	public float DistanceMax
+	public virtual float DistanceMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax", value); }
@@ -45,7 +45,7 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_flDistMaxSqr
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDistMaxSqr")]
-	public float DistMaxSqr
+	public virtual float DistMaxSqr
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr", value); }
@@ -53,7 +53,7 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_flDotProductMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDotProductMax")]
-	public float DotProductMax
+	public virtual float DotProductMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax", value); }
@@ -61,11 +61,11 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_bPlaying
 	[SchemaMember("CSoundEventPathCornerEntity", "m_bPlaying")]
-	public bool Playing
+	public virtual bool Playing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventPathCornerEntity", "m_bPlaying"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventPathCornerEntity", "m_bPlaying", value); }
 	}
 
-	public void CornerPairsNetworkedPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventPathCornerEntity", "m_vecCornerPairsNetworked");
+	public virtual void CornerPairsNetworkedPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventPathCornerEntity", "m_vecCornerPairsNetworked");
 }

@@ -21,7 +21,7 @@ public partial class CDebugHistory : CBaseEntity
 
 	// m_nNpcEvents
 	[SchemaMember("CDebugHistory", "m_nNpcEvents")]
-	public Int32 NpcEvents
+	public virtual Int32 NpcEvents
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents", value); }

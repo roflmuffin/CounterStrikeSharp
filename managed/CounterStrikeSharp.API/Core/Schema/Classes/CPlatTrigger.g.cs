@@ -21,6 +21,6 @@ public partial class CPlatTrigger : CBaseModelEntity
 
 	// m_pPlatform
 	[SchemaMember("CPlatTrigger", "m_pPlatform")]
-	public CHandle<CFuncPlat> Platform => Schema.GetDeclaredClass<CHandle<CFuncPlat>>(this.Handle, "CPlatTrigger", "m_pPlatform");
+	public virtual CHandle<CFuncPlat> Platform => Schema.GetDeclaredClass<CHandle<CFuncPlat>>(this.Handle, "CPlatTrigger", "m_pPlatform");
 
 }

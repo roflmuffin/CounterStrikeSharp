@@ -21,7 +21,7 @@ public partial class CIronSightController : NativeObject
 
 	// m_bIronSightAvailable
 	[SchemaMember("CIronSightController", "m_bIronSightAvailable")]
-	public bool IronSightAvailable
+	public virtual bool IronSightAvailable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable", value); }
@@ -29,7 +29,7 @@ public partial class CIronSightController : NativeObject
 
 	// m_flIronSightAmount
 	[SchemaMember("CIronSightController", "m_flIronSightAmount")]
-	public float IronSightAmount
+	public virtual float IronSightAmount
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmount"); }
 		set { Schema.SetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmount", value); }
@@ -37,7 +37,7 @@ public partial class CIronSightController : NativeObject
 
 	// m_flIronSightAmountGained
 	[SchemaMember("CIronSightController", "m_flIronSightAmountGained")]
-	public float IronSightAmountGained
+	public virtual float IronSightAmountGained
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained"); }
 		set { Schema.SetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained", value); }
@@ -45,7 +45,7 @@ public partial class CIronSightController : NativeObject
 
 	// m_flIronSightAmountBiased
 	[SchemaMember("CIronSightController", "m_flIronSightAmountBiased")]
-	public float IronSightAmountBiased
+	public virtual float IronSightAmountBiased
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased"); }
 		set { Schema.SetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased", value); }

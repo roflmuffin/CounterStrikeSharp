@@ -21,7 +21,7 @@ public partial class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint
 
 	// m_vBoxMins
 	[SchemaMember("CInfoDynamicShadowHintBox", "m_vBoxMins")]
-	public Vector3 BoxMins
+	public virtual Vector3 BoxMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMins", value); }
@@ -29,7 +29,7 @@ public partial class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint
 
 	// m_vBoxMaxs
 	[SchemaMember("CInfoDynamicShadowHintBox", "m_vBoxMaxs")]
-	public Vector3 BoxMaxs
+	public virtual Vector3 BoxMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMaxs", value); }

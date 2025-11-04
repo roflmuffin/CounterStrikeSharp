@@ -21,7 +21,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bActive", value); }
@@ -29,7 +29,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_vBoxMins
 	[SchemaMember("CEnvVolumetricFogVolume", "m_vBoxMins")]
-	public Vector3 BoxMins
+	public virtual Vector3 BoxMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMins", value); }
@@ -37,7 +37,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_vBoxMaxs
 	[SchemaMember("CEnvVolumetricFogVolume", "m_vBoxMaxs")]
-	public Vector3 BoxMaxs
+	public virtual Vector3 BoxMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMaxs", value); }
@@ -45,7 +45,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bStartDisabled", value); }
@@ -53,7 +53,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bIndirectUseLPVs
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bIndirectUseLPVs")]
-	public bool IndirectUseLPVs
+	public virtual bool IndirectUseLPVs
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bIndirectUseLPVs"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bIndirectUseLPVs", value); }
@@ -61,7 +61,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_flStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_flStrength")]
-	public float Strength
+	public virtual float Strength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flStrength", value); }
@@ -69,7 +69,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_nFalloffShape
 	[SchemaMember("CEnvVolumetricFogVolume", "m_nFalloffShape")]
-	public Int32 FalloffShape
+	public virtual Int32 FalloffShape
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogVolume", "m_nFalloffShape"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogVolume", "m_nFalloffShape", value); }
@@ -77,7 +77,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_flFalloffExponent
 	[SchemaMember("CEnvVolumetricFogVolume", "m_flFalloffExponent")]
-	public float FalloffExponent
+	public virtual float FalloffExponent
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flFalloffExponent"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flFalloffExponent", value); }
@@ -85,7 +85,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_flHeightFogDepth
 	[SchemaMember("CEnvVolumetricFogVolume", "m_flHeightFogDepth")]
-	public float HeightFogDepth
+	public virtual float HeightFogDepth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flHeightFogDepth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flHeightFogDepth", value); }
@@ -93,7 +93,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_fHeightFogEdgeWidth
 	[SchemaMember("CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth")]
-	public float HeightFogEdgeWidth
+	public virtual float HeightFogEdgeWidth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth", value); }
@@ -101,7 +101,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_fIndirectLightStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_fIndirectLightStrength")]
-	public float IndirectLightStrength
+	public virtual float IndirectLightStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fIndirectLightStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fIndirectLightStrength", value); }
@@ -109,7 +109,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_fSunLightStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_fSunLightStrength")]
-	public float SunLightStrength
+	public virtual float SunLightStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fSunLightStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fSunLightStrength", value); }
@@ -117,7 +117,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_fNoiseStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_fNoiseStrength")]
-	public float NoiseStrength
+	public virtual float NoiseStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fNoiseStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fNoiseStrength", value); }
@@ -125,7 +125,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_TintColor
 	[SchemaMember("CEnvVolumetricFogVolume", "m_TintColor")]
-	public Color TintColor
+	public virtual Color TintColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogVolume", "m_TintColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogVolume", "m_TintColor", value); }
@@ -133,7 +133,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bOverrideTintColor
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideTintColor")]
-	public bool OverrideTintColor
+	public virtual bool OverrideTintColor
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideTintColor"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideTintColor", value); }
@@ -141,7 +141,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bOverrideIndirectLightStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength")]
-	public bool OverrideIndirectLightStrength
+	public virtual bool OverrideIndirectLightStrength
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength", value); }
@@ -149,7 +149,7 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bOverrideSunLightStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength")]
-	public bool OverrideSunLightStrength
+	public virtual bool OverrideSunLightStrength
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength", value); }
@@ -157,28 +157,28 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bOverrideNoiseStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength")]
-	public bool OverrideNoiseStrength
+	public virtual bool OverrideNoiseStrength
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength", value); }
 	}
 
-	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bActive");
-	public void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_vBoxMins");
-	public void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_vBoxMaxs");
-	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bStartDisabled");
-	public void IndirectUseLPVsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bIndirectUseLPVs");
-	public void StrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flStrength");
-	public void FalloffShapePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_nFalloffShape");
-	public void FalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flFalloffExponent");
-	public void HeightFogDepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flHeightFogDepth");
-	public void HeightFogEdgeWidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth");
-	public void IndirectLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fIndirectLightStrength");
-	public void SunLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fSunLightStrength");
-	public void NoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fNoiseStrength");
-	public void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_TintColor");
-	public void OverrideTintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideTintColor");
-	public void OverrideIndirectLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength");
-	public void OverrideSunLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength");
-	public void OverrideNoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength");
+	public virtual void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bActive");
+	public virtual void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_vBoxMins");
+	public virtual void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_vBoxMaxs");
+	public virtual void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bStartDisabled");
+	public virtual void IndirectUseLPVsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bIndirectUseLPVs");
+	public virtual void StrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flStrength");
+	public virtual void FalloffShapePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_nFalloffShape");
+	public virtual void FalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flFalloffExponent");
+	public virtual void HeightFogDepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flHeightFogDepth");
+	public virtual void HeightFogEdgeWidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth");
+	public virtual void IndirectLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fIndirectLightStrength");
+	public virtual void SunLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fSunLightStrength");
+	public virtual void NoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fNoiseStrength");
+	public virtual void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_TintColor");
+	public virtual void OverrideTintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideTintColor");
+	public virtual void OverrideIndirectLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength");
+	public virtual void OverrideSunLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength");
+	public virtual void OverrideNoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength");
 }

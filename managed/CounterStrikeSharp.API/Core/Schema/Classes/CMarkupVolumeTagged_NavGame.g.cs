@@ -21,7 +21,7 @@ public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef
 
 	// m_nScopes
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_nScopes")]
-	public NavScopeFlags_t Scopes
+	public virtual NavScopeFlags_t Scopes
 	{
 		get { return Schema.GetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_nScopes"); }
 		set { Schema.SetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_nScopes", value); }
@@ -29,7 +29,7 @@ public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef
 
 	// m_bFloodFillAttribute
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute")]
-	public bool FloodFillAttribute
+	public virtual bool FloodFillAttribute
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute", value); }
@@ -37,7 +37,7 @@ public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef
 
 	// m_bSplitNavSpace
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace")]
-	public bool SplitNavSpace
+	public virtual bool SplitNavSpace
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace", value); }

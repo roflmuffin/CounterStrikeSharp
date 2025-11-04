@@ -21,23 +21,23 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_firePositions
 	[SchemaMember("CInferno", "m_firePositions")]
-	public Span<Vector3> FirePositions => Schema.GetFixedArray<Vector3>(this.Handle, "CInferno", "m_firePositions", 64);
+	public virtual Span<Vector3> FirePositions => Schema.GetFixedArray<Vector3>(this.Handle, "CInferno", "m_firePositions", 64);
 
 	// m_fireParentPositions
 	[SchemaMember("CInferno", "m_fireParentPositions")]
-	public Span<Vector3> FireParentPositions => Schema.GetFixedArray<Vector3>(this.Handle, "CInferno", "m_fireParentPositions", 64);
+	public virtual Span<Vector3> FireParentPositions => Schema.GetFixedArray<Vector3>(this.Handle, "CInferno", "m_fireParentPositions", 64);
 
 	// m_bFireIsBurning
 	[SchemaMember("CInferno", "m_bFireIsBurning")]
-	public Span<bool> FireIsBurning => Schema.GetFixedArray<bool>(this.Handle, "CInferno", "m_bFireIsBurning", 64);
+	public virtual Span<bool> FireIsBurning => Schema.GetFixedArray<bool>(this.Handle, "CInferno", "m_bFireIsBurning", 64);
 
 	// m_BurnNormal
 	[SchemaMember("CInferno", "m_BurnNormal")]
-	public Span<Vector3> BurnNormal => Schema.GetFixedArray<Vector3>(this.Handle, "CInferno", "m_BurnNormal", 64);
+	public virtual Span<Vector3> BurnNormal => Schema.GetFixedArray<Vector3>(this.Handle, "CInferno", "m_BurnNormal", 64);
 
 	// m_fireCount
 	[SchemaMember("CInferno", "m_fireCount")]
-	public Int32 FireCount
+	public virtual Int32 FireCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInferno", "m_fireCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInferno", "m_fireCount", value); }
@@ -45,7 +45,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_nInfernoType
 	[SchemaMember("CInferno", "m_nInfernoType")]
-	public Int32 InfernoType
+	public virtual Int32 InfernoType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInferno", "m_nInfernoType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInferno", "m_nInfernoType", value); }
@@ -53,7 +53,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_nFireEffectTickBegin
 	[SchemaMember("CInferno", "m_nFireEffectTickBegin")]
-	public Int32 FireEffectTickBegin
+	public virtual Int32 FireEffectTickBegin
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInferno", "m_nFireEffectTickBegin"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInferno", "m_nFireEffectTickBegin", value); }
@@ -61,7 +61,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_nFireLifetime
 	[SchemaMember("CInferno", "m_nFireLifetime")]
-	public float FireLifetime
+	public virtual float FireLifetime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInferno", "m_nFireLifetime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInferno", "m_nFireLifetime", value); }
@@ -69,7 +69,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_bInPostEffectTime
 	[SchemaMember("CInferno", "m_bInPostEffectTime")]
-	public bool InPostEffectTime
+	public virtual bool InPostEffectTime
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInferno", "m_bInPostEffectTime"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInferno", "m_bInPostEffectTime", value); }
@@ -77,7 +77,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_bWasCreatedInSmoke
 	[SchemaMember("CInferno", "m_bWasCreatedInSmoke")]
-	public bool WasCreatedInSmoke
+	public virtual bool WasCreatedInSmoke
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInferno", "m_bWasCreatedInSmoke"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInferno", "m_bWasCreatedInSmoke", value); }
@@ -85,19 +85,19 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_extent
 	[SchemaMember("CInferno", "m_extent")]
-	public Extent Extent => Schema.GetDeclaredClass<Extent>(this.Handle, "CInferno", "m_extent");
+	public virtual Extent Extent => Schema.GetDeclaredClass<Extent>(this.Handle, "CInferno", "m_extent");
 
 	// m_damageTimer
 	[SchemaMember("CInferno", "m_damageTimer")]
-	public CountdownTimer DamageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_damageTimer");
+	public virtual CountdownTimer DamageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_damageTimer");
 
 	// m_damageRampTimer
 	[SchemaMember("CInferno", "m_damageRampTimer")]
-	public CountdownTimer DamageRampTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_damageRampTimer");
+	public virtual CountdownTimer DamageRampTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_damageRampTimer");
 
 	// m_splashVelocity
 	[SchemaMember("CInferno", "m_splashVelocity")]
-	public Vector3 SplashVelocity
+	public virtual Vector3 SplashVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CInferno", "m_splashVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CInferno", "m_splashVelocity", value); }
@@ -105,7 +105,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_InitialSplashVelocity
 	[SchemaMember("CInferno", "m_InitialSplashVelocity")]
-	public Vector3 InitialSplashVelocity
+	public virtual Vector3 InitialSplashVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CInferno", "m_InitialSplashVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CInferno", "m_InitialSplashVelocity", value); }
@@ -113,7 +113,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_startPos
 	[SchemaMember("CInferno", "m_startPos")]
-	public Vector3 StartPos
+	public virtual Vector3 StartPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CInferno", "m_startPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CInferno", "m_startPos", value); }
@@ -121,7 +121,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_vecOriginalSpawnLocation
 	[SchemaMember("CInferno", "m_vecOriginalSpawnLocation")]
-	public Vector3 OriginalSpawnLocation
+	public virtual Vector3 OriginalSpawnLocation
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CInferno", "m_vecOriginalSpawnLocation"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CInferno", "m_vecOriginalSpawnLocation", value); }
@@ -129,11 +129,11 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_activeTimer
 	[SchemaMember("CInferno", "m_activeTimer")]
-	public IntervalTimer ActiveTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CInferno", "m_activeTimer");
+	public virtual IntervalTimer ActiveTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CInferno", "m_activeTimer");
 
 	// m_fireSpawnOffset
 	[SchemaMember("CInferno", "m_fireSpawnOffset")]
-	public Int32 FireSpawnOffset
+	public virtual Int32 FireSpawnOffset
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInferno", "m_fireSpawnOffset"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInferno", "m_fireSpawnOffset", value); }
@@ -141,7 +141,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_nMaxFlames
 	[SchemaMember("CInferno", "m_nMaxFlames")]
-	public Int32 MaxFlames
+	public virtual Int32 MaxFlames
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInferno", "m_nMaxFlames"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInferno", "m_nMaxFlames", value); }
@@ -149,7 +149,7 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_nSpreadCount
 	[SchemaMember("CInferno", "m_nSpreadCount")]
-	public Int32 SpreadCount
+	public virtual Int32 SpreadCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInferno", "m_nSpreadCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInferno", "m_nSpreadCount", value); }
@@ -157,27 +157,27 @@ public partial class CInferno : CBaseModelEntity
 
 	// m_BookkeepingTimer
 	[SchemaMember("CInferno", "m_BookkeepingTimer")]
-	public CountdownTimer BookkeepingTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_BookkeepingTimer");
+	public virtual CountdownTimer BookkeepingTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_BookkeepingTimer");
 
 	// m_NextSpreadTimer
 	[SchemaMember("CInferno", "m_NextSpreadTimer")]
-	public CountdownTimer NextSpreadTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_NextSpreadTimer");
+	public virtual CountdownTimer NextSpreadTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_NextSpreadTimer");
 
 	// m_nSourceItemDefIndex
 	[SchemaMember("CInferno", "m_nSourceItemDefIndex")]
-	public UInt16 SourceItemDefIndex
+	public virtual UInt16 SourceItemDefIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CInferno", "m_nSourceItemDefIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CInferno", "m_nSourceItemDefIndex", value); }
 	}
 
-	public void FirePositionsPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_firePositions");
-	public void FireParentPositionsPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_fireParentPositions");
-	public void FireIsBurningPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_bFireIsBurning");
-	public void BurnNormalPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_BurnNormal");
-	public void FireCountPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_fireCount");
-	public void InfernoTypePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nInfernoType");
-	public void FireEffectTickBeginPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nFireEffectTickBegin");
-	public void FireLifetimePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nFireLifetime");
-	public void InPostEffectTimePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_bInPostEffectTime");
+	public virtual void FirePositionsPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_firePositions");
+	public virtual void FireParentPositionsPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_fireParentPositions");
+	public virtual void FireIsBurningPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_bFireIsBurning");
+	public virtual void BurnNormalPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_BurnNormal");
+	public virtual void FireCountPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_fireCount");
+	public virtual void InfernoTypePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nInfernoType");
+	public virtual void FireEffectTickBeginPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nFireEffectTickBegin");
+	public virtual void FireLifetimePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nFireLifetime");
+	public virtual void InPostEffectTimePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_bInPostEffectTime");
 }

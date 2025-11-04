@@ -21,7 +21,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_flOriginalDamage
 	[SchemaMember("CTriggerHurt", "m_flOriginalDamage")]
-	public float OriginalDamage
+	public virtual float OriginalDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flOriginalDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flOriginalDamage", value); }
@@ -29,7 +29,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_flDamage
 	[SchemaMember("CTriggerHurt", "m_flDamage")]
-	public float Damage
+	public virtual float Damage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamage", value); }
@@ -37,7 +37,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_flDamageCap
 	[SchemaMember("CTriggerHurt", "m_flDamageCap")]
-	public float DamageCap
+	public virtual float DamageCap
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamageCap"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamageCap", value); }
@@ -45,7 +45,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_flLastDmgTime
 	[SchemaMember("CTriggerHurt", "m_flLastDmgTime")]
-	public float LastDmgTime
+	public virtual float LastDmgTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flLastDmgTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flLastDmgTime", value); }
@@ -53,7 +53,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_flForgivenessDelay
 	[SchemaMember("CTriggerHurt", "m_flForgivenessDelay")]
-	public float ForgivenessDelay
+	public virtual float ForgivenessDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flForgivenessDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flForgivenessDelay", value); }
@@ -61,7 +61,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_bitsDamageInflict
 	[SchemaMember("CTriggerHurt", "m_bitsDamageInflict")]
-	public DamageTypes_t BitsDamageInflict
+	public virtual DamageTypes_t BitsDamageInflict
 	{
 		get { return Schema.GetValueType<DamageTypes_t>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict"); }
 		set { Schema.SetValueType<DamageTypes_t>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict", value); }
@@ -69,7 +69,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_damageModel
 	[SchemaMember("CTriggerHurt", "m_damageModel")]
-	public Int32 DamageModel
+	public virtual Int32 DamageModel
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerHurt", "m_damageModel"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerHurt", "m_damageModel", value); }
@@ -77,7 +77,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_bNoDmgForce
 	[SchemaMember("CTriggerHurt", "m_bNoDmgForce")]
-	public bool NoDmgForce
+	public virtual bool NoDmgForce
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerHurt", "m_bNoDmgForce"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerHurt", "m_bNoDmgForce", value); }
@@ -85,7 +85,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_vDamageForce
 	[SchemaMember("CTriggerHurt", "m_vDamageForce")]
-	public Vector3 DamageForce
+	public virtual Vector3 DamageForce
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerHurt", "m_vDamageForce"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerHurt", "m_vDamageForce", value); }
@@ -93,7 +93,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_thinkAlways
 	[SchemaMember("CTriggerHurt", "m_thinkAlways")]
-	public bool ThinkAlways
+	public virtual bool ThinkAlways
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerHurt", "m_thinkAlways"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerHurt", "m_thinkAlways", value); }
@@ -101,7 +101,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_hurtThinkPeriod
 	[SchemaMember("CTriggerHurt", "m_hurtThinkPeriod")]
-	public float HurtThinkPeriod
+	public virtual float HurtThinkPeriod
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_hurtThinkPeriod"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_hurtThinkPeriod", value); }
@@ -109,14 +109,14 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_OnHurt
 	[SchemaMember("CTriggerHurt", "m_OnHurt")]
-	public CEntityIOOutput OnHurt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerHurt", "m_OnHurt");
+	public virtual CEntityIOOutput OnHurt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerHurt", "m_OnHurt");
 
 	// m_OnHurtPlayer
 	[SchemaMember("CTriggerHurt", "m_OnHurtPlayer")]
-	public CEntityIOOutput OnHurtPlayer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerHurt", "m_OnHurtPlayer");
+	public virtual CEntityIOOutput OnHurtPlayer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerHurt", "m_OnHurtPlayer");
 
 	// m_hurtEntities
 	[SchemaMember("CTriggerHurt", "m_hurtEntities")]
-	public NetworkedVector<CHandle<CBaseEntity>> HurtEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CTriggerHurt", "m_hurtEntities");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> HurtEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CTriggerHurt", "m_hurtEntities");
 
 }

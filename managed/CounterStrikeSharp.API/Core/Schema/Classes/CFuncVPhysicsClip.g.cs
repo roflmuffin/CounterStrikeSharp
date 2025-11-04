@@ -21,7 +21,7 @@ public partial class CFuncVPhysicsClip : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncVPhysicsClip", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncVPhysicsClip", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncVPhysicsClip", "m_bDisabled", value); }

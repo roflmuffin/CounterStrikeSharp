@@ -21,7 +21,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flFadeInStart
 	[SchemaMember("CEntityDissolve", "m_flFadeInStart")]
-	public float FadeInStart
+	public virtual float FadeInStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInStart", value); }
@@ -29,7 +29,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flFadeInLength
 	[SchemaMember("CEntityDissolve", "m_flFadeInLength")]
-	public float FadeInLength
+	public virtual float FadeInLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInLength", value); }
@@ -37,7 +37,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flFadeOutModelStart
 	[SchemaMember("CEntityDissolve", "m_flFadeOutModelStart")]
-	public float FadeOutModelStart
+	public virtual float FadeOutModelStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelStart", value); }
@@ -45,7 +45,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flFadeOutModelLength
 	[SchemaMember("CEntityDissolve", "m_flFadeOutModelLength")]
-	public float FadeOutModelLength
+	public virtual float FadeOutModelLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelLength", value); }
@@ -53,7 +53,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flFadeOutStart
 	[SchemaMember("CEntityDissolve", "m_flFadeOutStart")]
-	public float FadeOutStart
+	public virtual float FadeOutStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutStart", value); }
@@ -61,7 +61,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flFadeOutLength
 	[SchemaMember("CEntityDissolve", "m_flFadeOutLength")]
-	public float FadeOutLength
+	public virtual float FadeOutLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutLength", value); }
@@ -69,7 +69,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flStartTime
 	[SchemaMember("CEntityDissolve", "m_flStartTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flStartTime", value); }
@@ -77,7 +77,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_nDissolveType
 	[SchemaMember("CEntityDissolve", "m_nDissolveType")]
-	public EntityDisolveType_t DissolveType
+	public virtual EntityDisolveType_t DissolveType
 	{
 		get { return Schema.GetValueType<EntityDisolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType"); }
 		set { Schema.SetValueType<EntityDisolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType", value); }
@@ -85,7 +85,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_vDissolverOrigin
 	[SchemaMember("CEntityDissolve", "m_vDissolverOrigin")]
-	public Vector3 DissolverOrigin
+	public virtual Vector3 DissolverOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEntityDissolve", "m_vDissolverOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEntityDissolve", "m_vDissolverOrigin", value); }
@@ -93,20 +93,20 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_nMagnitude
 	[SchemaMember("CEntityDissolve", "m_nMagnitude")]
-	public UInt32 Magnitude
+	public virtual UInt32 Magnitude
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEntityDissolve", "m_nMagnitude"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEntityDissolve", "m_nMagnitude", value); }
 	}
 
-	public void FadeInStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeInStart");
-	public void FadeInLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeInLength");
-	public void FadeOutModelStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutModelStart");
-	public void FadeOutModelLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutModelLength");
-	public void FadeOutStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutStart");
-	public void FadeOutLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutLength");
-	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flStartTime");
-	public void DissolveTypePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_nDissolveType");
-	public void DissolverOriginPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_vDissolverOrigin");
-	public void MagnitudePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_nMagnitude");
+	public virtual void FadeInStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeInStart");
+	public virtual void FadeInLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeInLength");
+	public virtual void FadeOutModelStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutModelStart");
+	public virtual void FadeOutModelLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutModelLength");
+	public virtual void FadeOutStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutStart");
+	public virtual void FadeOutLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutLength");
+	public virtual void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flStartTime");
+	public virtual void DissolveTypePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_nDissolveType");
+	public virtual void DissolverOriginPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_vDissolverOrigin");
+	public virtual void MagnitudePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_nMagnitude");
 }

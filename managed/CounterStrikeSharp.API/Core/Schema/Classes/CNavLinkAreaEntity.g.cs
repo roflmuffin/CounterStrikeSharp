@@ -21,7 +21,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_flWidth
 	[SchemaMember("CNavLinkAreaEntity", "m_flWidth")]
-	public float Width
+	public virtual float Width
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CNavLinkAreaEntity", "m_flWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CNavLinkAreaEntity", "m_flWidth", value); }
@@ -29,7 +29,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_vLocatorOffset
 	[SchemaMember("CNavLinkAreaEntity", "m_vLocatorOffset")]
-	public Vector3 LocatorOffset
+	public virtual Vector3 LocatorOffset
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CNavLinkAreaEntity", "m_vLocatorOffset"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CNavLinkAreaEntity", "m_vLocatorOffset", value); }
@@ -37,7 +37,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_qLocatorAnglesOffset
 	[SchemaMember("CNavLinkAreaEntity", "m_qLocatorAnglesOffset")]
-	public QAngle LocatorAnglesOffset
+	public virtual QAngle LocatorAnglesOffset
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CNavLinkAreaEntity", "m_qLocatorAnglesOffset"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CNavLinkAreaEntity", "m_qLocatorAnglesOffset", value); }
@@ -45,7 +45,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_strMovementForward
 	[SchemaMember("CNavLinkAreaEntity", "m_strMovementForward")]
-	public string StrMovementForward
+	public virtual string StrMovementForward
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strMovementForward"); }
 		set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementForward", value); }
@@ -53,7 +53,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_strMovementReverse
 	[SchemaMember("CNavLinkAreaEntity", "m_strMovementReverse")]
-	public string StrMovementReverse
+	public virtual string StrMovementReverse
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse"); }
 		set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse", value); }
@@ -61,7 +61,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CNavLinkAreaEntity", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bEnabled", value); }
@@ -69,7 +69,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_bAllowCrossMovableConnections
 	[SchemaMember("CNavLinkAreaEntity", "m_bAllowCrossMovableConnections")]
-	public bool AllowCrossMovableConnections
+	public virtual bool AllowCrossMovableConnections
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bAllowCrossMovableConnections"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bAllowCrossMovableConnections", value); }
@@ -77,7 +77,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_strFilterName
 	[SchemaMember("CNavLinkAreaEntity", "m_strFilterName")]
-	public string StrFilterName
+	public virtual string StrFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strFilterName"); }
 		set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strFilterName", value); }
@@ -85,19 +85,19 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_hFilter
 	[SchemaMember("CNavLinkAreaEntity", "m_hFilter")]
-	public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CNavLinkAreaEntity", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CNavLinkAreaEntity", "m_hFilter");
 
 	// m_OnNavLinkStart
 	[SchemaMember("CNavLinkAreaEntity", "m_OnNavLinkStart")]
-	public CEntityIOOutput OnNavLinkStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CNavLinkAreaEntity", "m_OnNavLinkStart");
+	public virtual CEntityIOOutput OnNavLinkStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CNavLinkAreaEntity", "m_OnNavLinkStart");
 
 	// m_OnNavLinkFinish
 	[SchemaMember("CNavLinkAreaEntity", "m_OnNavLinkFinish")]
-	public CEntityIOOutput OnNavLinkFinish => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CNavLinkAreaEntity", "m_OnNavLinkFinish");
+	public virtual CEntityIOOutput OnNavLinkFinish => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CNavLinkAreaEntity", "m_OnNavLinkFinish");
 
 	// m_bIsTerminus
 	[SchemaMember("CNavLinkAreaEntity", "m_bIsTerminus")]
-	public bool IsTerminus
+	public virtual bool IsTerminus
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus", value); }
@@ -105,7 +105,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_nSplits
 	[SchemaMember("CNavLinkAreaEntity", "m_nSplits")]
-	public Int32 Splits
+	public virtual Int32 Splits
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nSplits"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nSplits", value); }

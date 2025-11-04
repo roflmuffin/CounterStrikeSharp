@@ -21,7 +21,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_messageText
 	[SchemaMember("CPointWorldText", "m_messageText")]
-	public string MessageText
+	public virtual string MessageText
 	{
 		get { return Schema.GetString(this.Handle, "CPointWorldText", "m_messageText"); }
 		set { Schema.SetStringBytes(this.Handle, "CPointWorldText", "m_messageText", value, 512); }
@@ -29,7 +29,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_FontName
 	[SchemaMember("CPointWorldText", "m_FontName")]
-	public string FontName
+	public virtual string FontName
 	{
 		get { return Schema.GetString(this.Handle, "CPointWorldText", "m_FontName"); }
 		set { Schema.SetStringBytes(this.Handle, "CPointWorldText", "m_FontName", value, 64); }
@@ -37,7 +37,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_BackgroundMaterialName
 	[SchemaMember("CPointWorldText", "m_BackgroundMaterialName")]
-	public string BackgroundMaterialName
+	public virtual string BackgroundMaterialName
 	{
 		get { return Schema.GetString(this.Handle, "CPointWorldText", "m_BackgroundMaterialName"); }
 		set { Schema.SetStringBytes(this.Handle, "CPointWorldText", "m_BackgroundMaterialName", value, 64); }
@@ -45,7 +45,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CPointWorldText", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointWorldText", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointWorldText", "m_bEnabled", value); }
@@ -53,7 +53,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_bFullbright
 	[SchemaMember("CPointWorldText", "m_bFullbright")]
-	public bool Fullbright
+	public virtual bool Fullbright
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointWorldText", "m_bFullbright"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointWorldText", "m_bFullbright", value); }
@@ -61,7 +61,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_flWorldUnitsPerPx
 	[SchemaMember("CPointWorldText", "m_flWorldUnitsPerPx")]
-	public float WorldUnitsPerPx
+	public virtual float WorldUnitsPerPx
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flWorldUnitsPerPx"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flWorldUnitsPerPx", value); }
@@ -69,7 +69,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_flFontSize
 	[SchemaMember("CPointWorldText", "m_flFontSize")]
-	public float FontSize
+	public virtual float FontSize
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flFontSize"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flFontSize", value); }
@@ -77,7 +77,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_flDepthOffset
 	[SchemaMember("CPointWorldText", "m_flDepthOffset")]
-	public float DepthOffset
+	public virtual float DepthOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flDepthOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flDepthOffset", value); }
@@ -85,7 +85,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_bDrawBackground
 	[SchemaMember("CPointWorldText", "m_bDrawBackground")]
-	public bool DrawBackground
+	public virtual bool DrawBackground
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointWorldText", "m_bDrawBackground"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointWorldText", "m_bDrawBackground", value); }
@@ -93,7 +93,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_flBackgroundBorderWidth
 	[SchemaMember("CPointWorldText", "m_flBackgroundBorderWidth")]
-	public float BackgroundBorderWidth
+	public virtual float BackgroundBorderWidth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderWidth", value); }
@@ -101,7 +101,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_flBackgroundBorderHeight
 	[SchemaMember("CPointWorldText", "m_flBackgroundBorderHeight")]
-	public float BackgroundBorderHeight
+	public virtual float BackgroundBorderHeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderHeight", value); }
@@ -109,7 +109,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_flBackgroundWorldToUV
 	[SchemaMember("CPointWorldText", "m_flBackgroundWorldToUV")]
-	public float BackgroundWorldToUV
+	public virtual float BackgroundWorldToUV
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundWorldToUV"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundWorldToUV", value); }
@@ -117,7 +117,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_Color
 	[SchemaMember("CPointWorldText", "m_Color")]
-	public Color Color
+	public virtual Color Color
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPointWorldText", "m_Color"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPointWorldText", "m_Color", value); }
@@ -125,7 +125,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_nJustifyHorizontal
 	[SchemaMember("CPointWorldText", "m_nJustifyHorizontal")]
-	public PointWorldTextJustifyHorizontal_t JustifyHorizontal
+	public virtual PointWorldTextJustifyHorizontal_t JustifyHorizontal
 	{
 		get { return Schema.GetValueType<PointWorldTextJustifyHorizontal_t>(this.Handle, "CPointWorldText", "m_nJustifyHorizontal"); }
 		set { Schema.SetValueType<PointWorldTextJustifyHorizontal_t>(this.Handle, "CPointWorldText", "m_nJustifyHorizontal", value); }
@@ -133,7 +133,7 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_nJustifyVertical
 	[SchemaMember("CPointWorldText", "m_nJustifyVertical")]
-	public PointWorldTextJustifyVertical_t JustifyVertical
+	public virtual PointWorldTextJustifyVertical_t JustifyVertical
 	{
 		get { return Schema.GetValueType<PointWorldTextJustifyVertical_t>(this.Handle, "CPointWorldText", "m_nJustifyVertical"); }
 		set { Schema.SetValueType<PointWorldTextJustifyVertical_t>(this.Handle, "CPointWorldText", "m_nJustifyVertical", value); }
@@ -141,26 +141,26 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_nReorientMode
 	[SchemaMember("CPointWorldText", "m_nReorientMode")]
-	public PointWorldTextReorientMode_t ReorientMode
+	public virtual PointWorldTextReorientMode_t ReorientMode
 	{
 		get { return Schema.GetValueType<PointWorldTextReorientMode_t>(this.Handle, "CPointWorldText", "m_nReorientMode"); }
 		set { Schema.SetValueType<PointWorldTextReorientMode_t>(this.Handle, "CPointWorldText", "m_nReorientMode", value); }
 	}
 
-	public void MessageTextPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_messageText");
-	public void FontNamePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_FontName");
-	public void BackgroundMaterialNamePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_BackgroundMaterialName");
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bEnabled");
-	public void FullbrightPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bFullbright");
-	public void WorldUnitsPerPxPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flWorldUnitsPerPx");
-	public void FontSizePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flFontSize");
-	public void DepthOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flDepthOffset");
-	public void DrawBackgroundPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bDrawBackground");
-	public void BackgroundBorderWidthPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundBorderWidth");
-	public void BackgroundBorderHeightPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundBorderHeight");
-	public void BackgroundWorldToUVPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundWorldToUV");
-	public void ColorPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_Color");
-	public void JustifyHorizontalPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nJustifyHorizontal");
-	public void JustifyVerticalPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nJustifyVertical");
-	public void ReorientModePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nReorientMode");
+	public virtual void MessageTextPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_messageText");
+	public virtual void FontNamePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_FontName");
+	public virtual void BackgroundMaterialNamePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_BackgroundMaterialName");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bEnabled");
+	public virtual void FullbrightPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bFullbright");
+	public virtual void WorldUnitsPerPxPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flWorldUnitsPerPx");
+	public virtual void FontSizePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flFontSize");
+	public virtual void DepthOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flDepthOffset");
+	public virtual void DrawBackgroundPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bDrawBackground");
+	public virtual void BackgroundBorderWidthPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundBorderWidth");
+	public virtual void BackgroundBorderHeightPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundBorderHeight");
+	public virtual void BackgroundWorldToUVPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundWorldToUV");
+	public virtual void ColorPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_Color");
+	public virtual void JustifyHorizontalPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nJustifyHorizontal");
+	public virtual void JustifyVerticalPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nJustifyVertical");
+	public virtual void ReorientModePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nReorientMode");
 }

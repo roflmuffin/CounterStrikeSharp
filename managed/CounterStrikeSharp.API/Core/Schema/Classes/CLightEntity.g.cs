@@ -21,7 +21,7 @@ public partial class CLightEntity : CBaseModelEntity
 
 	// m_CLightComponent
 	[SchemaMember("CLightEntity", "m_CLightComponent")]
-	public CLightComponent? CLightComponent => Schema.GetPointer<CLightComponent>(this.Handle, "CLightEntity", "m_CLightComponent");
+	public virtual CLightComponent? CLightComponent => Schema.GetPointer<CLightComponent>(this.Handle, "CLightEntity", "m_CLightComponent");
 
-	public void CLightComponentPropertyChanged() => Utilities.SetStateChanged(this, "CLightEntity", "m_CLightComponent");
+	public virtual void CLightComponentPropertyChanged() => Utilities.SetStateChanged(this, "CLightEntity", "m_CLightComponent");
 }

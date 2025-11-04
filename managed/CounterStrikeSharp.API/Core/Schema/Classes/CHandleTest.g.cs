@@ -21,16 +21,16 @@ public partial class CHandleTest : CBaseEntity
 
 	// m_Handle
 	[SchemaMember("CHandleTest", "m_Handle")]
-	public CHandle<CBaseEntity> TestHandle => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CHandleTest", "m_Handle");
+	public virtual CHandle<CBaseEntity> TestHandle => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CHandleTest", "m_Handle");
 
 	// m_bSendHandle
 	[SchemaMember("CHandleTest", "m_bSendHandle")]
-	public bool SendHandle
+	public virtual bool SendHandle
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CHandleTest", "m_bSendHandle"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CHandleTest", "m_bSendHandle", value); }
 	}
 
-	public void TestHandlePropertyChanged() => Utilities.SetStateChanged(this, "CHandleTest", "m_Handle");
-	public void SendHandlePropertyChanged() => Utilities.SetStateChanged(this, "CHandleTest", "m_bSendHandle");
+	public virtual void TestHandlePropertyChanged() => Utilities.SetStateChanged(this, "CHandleTest", "m_Handle");
+	public virtual void SendHandlePropertyChanged() => Utilities.SetStateChanged(this, "CHandleTest", "m_bSendHandle");
 }

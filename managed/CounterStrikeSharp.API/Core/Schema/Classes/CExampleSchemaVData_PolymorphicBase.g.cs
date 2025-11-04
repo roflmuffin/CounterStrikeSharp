@@ -21,7 +21,7 @@ public partial class CExampleSchemaVData_PolymorphicBase : NativeObject
 
 	// m_nBase
 	[SchemaMember("CExampleSchemaVData_PolymorphicBase", "m_nBase")]
-	public Int32 Base
+	public virtual Int32 Base
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicBase", "m_nBase"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicBase", "m_nBase", value); }

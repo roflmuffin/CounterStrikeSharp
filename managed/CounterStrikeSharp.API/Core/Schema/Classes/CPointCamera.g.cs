@@ -21,7 +21,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_FOV
 	[SchemaMember("CPointCamera", "m_FOV")]
-	public float FOV
+	public virtual float FOV
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_FOV"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_FOV", value); }
@@ -29,7 +29,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_Resolution
 	[SchemaMember("CPointCamera", "m_Resolution")]
-	public float Resolution
+	public virtual float Resolution
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_Resolution"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_Resolution", value); }
@@ -37,7 +37,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bFogEnable
 	[SchemaMember("CPointCamera", "m_bFogEnable")]
-	public bool FogEnable
+	public virtual bool FogEnable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bFogEnable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bFogEnable", value); }
@@ -45,7 +45,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_FogColor
 	[SchemaMember("CPointCamera", "m_FogColor")]
-	public Color FogColor
+	public virtual Color FogColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPointCamera", "m_FogColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPointCamera", "m_FogColor", value); }
@@ -53,7 +53,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flFogStart
 	[SchemaMember("CPointCamera", "m_flFogStart")]
-	public float FogStart
+	public virtual float FogStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flFogStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flFogStart", value); }
@@ -61,7 +61,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flFogEnd
 	[SchemaMember("CPointCamera", "m_flFogEnd")]
-	public float FogEnd
+	public virtual float FogEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flFogEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flFogEnd", value); }
@@ -69,7 +69,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flFogMaxDensity
 	[SchemaMember("CPointCamera", "m_flFogMaxDensity")]
-	public float FogMaxDensity
+	public virtual float FogMaxDensity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flFogMaxDensity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flFogMaxDensity", value); }
@@ -77,7 +77,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CPointCamera", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bActive", value); }
@@ -85,7 +85,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bUseScreenAspectRatio
 	[SchemaMember("CPointCamera", "m_bUseScreenAspectRatio")]
-	public bool UseScreenAspectRatio
+	public virtual bool UseScreenAspectRatio
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bUseScreenAspectRatio"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bUseScreenAspectRatio", value); }
@@ -93,7 +93,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flAspectRatio
 	[SchemaMember("CPointCamera", "m_flAspectRatio")]
-	public float AspectRatio
+	public virtual float AspectRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flAspectRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flAspectRatio", value); }
@@ -101,7 +101,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bNoSky
 	[SchemaMember("CPointCamera", "m_bNoSky")]
-	public bool NoSky
+	public virtual bool NoSky
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bNoSky"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bNoSky", value); }
@@ -109,7 +109,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_fBrightness
 	[SchemaMember("CPointCamera", "m_fBrightness")]
-	public float Brightness
+	public virtual float Brightness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_fBrightness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_fBrightness", value); }
@@ -117,7 +117,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flZFar
 	[SchemaMember("CPointCamera", "m_flZFar")]
-	public float ZFar
+	public virtual float ZFar
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flZFar"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flZFar", value); }
@@ -125,7 +125,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flZNear
 	[SchemaMember("CPointCamera", "m_flZNear")]
-	public float ZNear
+	public virtual float ZNear
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flZNear"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flZNear", value); }
@@ -133,7 +133,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bCanHLTVUse
 	[SchemaMember("CPointCamera", "m_bCanHLTVUse")]
-	public bool CanHLTVUse
+	public virtual bool CanHLTVUse
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bCanHLTVUse"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bCanHLTVUse", value); }
@@ -141,7 +141,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bAlignWithParent
 	[SchemaMember("CPointCamera", "m_bAlignWithParent")]
-	public bool AlignWithParent
+	public virtual bool AlignWithParent
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bAlignWithParent"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bAlignWithParent", value); }
@@ -149,7 +149,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bDofEnabled
 	[SchemaMember("CPointCamera", "m_bDofEnabled")]
-	public bool DofEnabled
+	public virtual bool DofEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bDofEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bDofEnabled", value); }
@@ -157,7 +157,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flDofNearBlurry
 	[SchemaMember("CPointCamera", "m_flDofNearBlurry")]
-	public float DofNearBlurry
+	public virtual float DofNearBlurry
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearBlurry"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearBlurry", value); }
@@ -165,7 +165,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flDofNearCrisp
 	[SchemaMember("CPointCamera", "m_flDofNearCrisp")]
-	public float DofNearCrisp
+	public virtual float DofNearCrisp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearCrisp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearCrisp", value); }
@@ -173,7 +173,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flDofFarCrisp
 	[SchemaMember("CPointCamera", "m_flDofFarCrisp")]
-	public float DofFarCrisp
+	public virtual float DofFarCrisp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarCrisp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarCrisp", value); }
@@ -181,7 +181,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flDofFarBlurry
 	[SchemaMember("CPointCamera", "m_flDofFarBlurry")]
-	public float DofFarBlurry
+	public virtual float DofFarBlurry
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarBlurry"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarBlurry", value); }
@@ -189,7 +189,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flDofTiltToGround
 	[SchemaMember("CPointCamera", "m_flDofTiltToGround")]
-	public float DofTiltToGround
+	public virtual float DofTiltToGround
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofTiltToGround"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofTiltToGround", value); }
@@ -197,7 +197,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_TargetFOV
 	[SchemaMember("CPointCamera", "m_TargetFOV")]
-	public float TargetFOV
+	public virtual float TargetFOV
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_TargetFOV"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_TargetFOV", value); }
@@ -205,7 +205,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_DegreesPerSecond
 	[SchemaMember("CPointCamera", "m_DegreesPerSecond")]
-	public float DegreesPerSecond
+	public virtual float DegreesPerSecond
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_DegreesPerSecond"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_DegreesPerSecond", value); }
@@ -213,7 +213,7 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_bIsOn
 	[SchemaMember("CPointCamera", "m_bIsOn")]
-	public bool IsOn
+	public virtual bool IsOn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bIsOn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bIsOn", value); }
@@ -221,28 +221,28 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_pNext
 	[SchemaMember("CPointCamera", "m_pNext")]
-	public CPointCamera? Next => Schema.GetPointer<CPointCamera>(this.Handle, "CPointCamera", "m_pNext");
+	public virtual CPointCamera? Next => Schema.GetPointer<CPointCamera>(this.Handle, "CPointCamera", "m_pNext");
 
-	public void FOVPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_FOV");
-	public void ResolutionPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_Resolution");
-	public void FogEnablePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bFogEnable");
-	public void FogColorPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_FogColor");
-	public void FogStartPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogStart");
-	public void FogEndPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogEnd");
-	public void FogMaxDensityPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogMaxDensity");
-	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bActive");
-	public void UseScreenAspectRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bUseScreenAspectRatio");
-	public void AspectRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flAspectRatio");
-	public void NoSkyPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bNoSky");
-	public void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_fBrightness");
-	public void ZFarPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flZFar");
-	public void ZNearPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flZNear");
-	public void CanHLTVUsePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bCanHLTVUse");
-	public void AlignWithParentPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bAlignWithParent");
-	public void DofEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bDofEnabled");
-	public void DofNearBlurryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofNearBlurry");
-	public void DofNearCrispPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofNearCrisp");
-	public void DofFarCrispPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofFarCrisp");
-	public void DofFarBlurryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofFarBlurry");
-	public void DofTiltToGroundPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofTiltToGround");
+	public virtual void FOVPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_FOV");
+	public virtual void ResolutionPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_Resolution");
+	public virtual void FogEnablePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bFogEnable");
+	public virtual void FogColorPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_FogColor");
+	public virtual void FogStartPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogStart");
+	public virtual void FogEndPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogEnd");
+	public virtual void FogMaxDensityPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogMaxDensity");
+	public virtual void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bActive");
+	public virtual void UseScreenAspectRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bUseScreenAspectRatio");
+	public virtual void AspectRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flAspectRatio");
+	public virtual void NoSkyPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bNoSky");
+	public virtual void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_fBrightness");
+	public virtual void ZFarPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flZFar");
+	public virtual void ZNearPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flZNear");
+	public virtual void CanHLTVUsePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bCanHLTVUse");
+	public virtual void AlignWithParentPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bAlignWithParent");
+	public virtual void DofEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bDofEnabled");
+	public virtual void DofNearBlurryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofNearBlurry");
+	public virtual void DofNearCrispPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofNearCrisp");
+	public virtual void DofFarCrispPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofFarCrisp");
+	public virtual void DofFarBlurryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofFarBlurry");
+	public virtual void DofTiltToGroundPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofTiltToGround");
 }

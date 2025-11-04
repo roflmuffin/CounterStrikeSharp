@@ -21,7 +21,7 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_flInMin
 	[SchemaMember("CMathRemap", "m_flInMin")]
-	public float InMin
+	public virtual float InMin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flInMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flInMin", value); }
@@ -29,7 +29,7 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_flInMax
 	[SchemaMember("CMathRemap", "m_flInMax")]
-	public float InMax
+	public virtual float InMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flInMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flInMax", value); }
@@ -37,7 +37,7 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_flOut1
 	[SchemaMember("CMathRemap", "m_flOut1")]
-	public float Out1
+	public virtual float Out1
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flOut1"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flOut1", value); }
@@ -45,7 +45,7 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_flOut2
 	[SchemaMember("CMathRemap", "m_flOut2")]
-	public float Out2
+	public virtual float Out2
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flOut2"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flOut2", value); }
@@ -53,7 +53,7 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_flOldInValue
 	[SchemaMember("CMathRemap", "m_flOldInValue")]
-	public float OldInValue
+	public virtual float OldInValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flOldInValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flOldInValue", value); }
@@ -61,7 +61,7 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_bEnabled
 	[SchemaMember("CMathRemap", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMathRemap", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMathRemap", "m_bEnabled", value); }
@@ -69,18 +69,18 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_OnRoseAboveMin
 	[SchemaMember("CMathRemap", "m_OnRoseAboveMin")]
-	public CEntityIOOutput OnRoseAboveMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnRoseAboveMin");
+	public virtual CEntityIOOutput OnRoseAboveMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnRoseAboveMin");
 
 	// m_OnRoseAboveMax
 	[SchemaMember("CMathRemap", "m_OnRoseAboveMax")]
-	public CEntityIOOutput OnRoseAboveMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnRoseAboveMax");
+	public virtual CEntityIOOutput OnRoseAboveMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnRoseAboveMax");
 
 	// m_OnFellBelowMin
 	[SchemaMember("CMathRemap", "m_OnFellBelowMin")]
-	public CEntityIOOutput OnFellBelowMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnFellBelowMin");
+	public virtual CEntityIOOutput OnFellBelowMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnFellBelowMin");
 
 	// m_OnFellBelowMax
 	[SchemaMember("CMathRemap", "m_OnFellBelowMax")]
-	public CEntityIOOutput OnFellBelowMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnFellBelowMax");
+	public virtual CEntityIOOutput OnFellBelowMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnFellBelowMax");
 
 }

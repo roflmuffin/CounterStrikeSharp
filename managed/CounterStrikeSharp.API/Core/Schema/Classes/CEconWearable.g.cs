@@ -21,7 +21,7 @@ public partial class CEconWearable : CEconEntity
 
 	// m_nForceSkin
 	[SchemaMember("CEconWearable", "m_nForceSkin")]
-	public Int32 ForceSkin
+	public virtual Int32 ForceSkin
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEconWearable", "m_nForceSkin"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconWearable", "m_nForceSkin", value); }
@@ -29,7 +29,7 @@ public partial class CEconWearable : CEconEntity
 
 	// m_bAlwaysAllow
 	[SchemaMember("CEconWearable", "m_bAlwaysAllow")]
-	public bool AlwaysAllow
+	public virtual bool AlwaysAllow
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow", value); }

@@ -21,7 +21,7 @@ public partial class CInstructorEventEntity : CPointEntity
 
 	// m_iszName
 	[SchemaMember("CInstructorEventEntity", "m_iszName")]
-	public string Name
+	public virtual string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInstructorEventEntity", "m_iszName"); }
 		set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszName", value); }
@@ -29,7 +29,7 @@ public partial class CInstructorEventEntity : CPointEntity
 
 	// m_iszHintTargetEntity
 	[SchemaMember("CInstructorEventEntity", "m_iszHintTargetEntity")]
-	public string HintTargetEntity
+	public virtual string HintTargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInstructorEventEntity", "m_iszHintTargetEntity"); }
 		set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszHintTargetEntity", value); }
@@ -37,6 +37,6 @@ public partial class CInstructorEventEntity : CPointEntity
 
 	// m_hTargetPlayer
 	[SchemaMember("CInstructorEventEntity", "m_hTargetPlayer")]
-	public CHandle<CBasePlayerPawn> TargetPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CInstructorEventEntity", "m_hTargetPlayer");
+	public virtual CHandle<CBasePlayerPawn> TargetPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CInstructorEventEntity", "m_hTargetPlayer");
 
 }

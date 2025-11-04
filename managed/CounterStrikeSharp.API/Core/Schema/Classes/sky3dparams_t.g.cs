@@ -21,7 +21,7 @@ public partial class sky3dparams_t : NativeObject
 
 	// scale
 	[SchemaMember("sky3dparams_t", "scale")]
-	public Int16 Scale
+	public virtual Int16 Scale
 	{
 		get { return Schema.GetValueType<Int16>(this.Handle, "sky3dparams_t", "scale"); }
 		set { Schema.SetValueType<Int16>(this.Handle, "sky3dparams_t", "scale", value); }
@@ -29,7 +29,7 @@ public partial class sky3dparams_t : NativeObject
 
 	// origin
 	[SchemaMember("sky3dparams_t", "origin")]
-	public Vector3 Origin
+	public virtual Vector3 Origin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "sky3dparams_t", "origin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "sky3dparams_t", "origin", value); }
@@ -37,7 +37,7 @@ public partial class sky3dparams_t : NativeObject
 
 	// bClip3DSkyBoxNearToWorldFar
 	[SchemaMember("sky3dparams_t", "bClip3DSkyBoxNearToWorldFar")]
-	public bool BClip3DSkyBoxNearToWorldFar
+	public virtual bool BClip3DSkyBoxNearToWorldFar
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar"); }
 		set { Schema.SetValueType<bool>(this.Handle, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar", value); }
@@ -45,7 +45,7 @@ public partial class sky3dparams_t : NativeObject
 
 	// flClip3DSkyBoxNearToWorldFarOffset
 	[SchemaMember("sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset")]
-	public float FlClip3DSkyBoxNearToWorldFarOffset
+	public virtual float FlClip3DSkyBoxNearToWorldFarOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset", value); }
@@ -53,16 +53,16 @@ public partial class sky3dparams_t : NativeObject
 
 	// fog
 	[SchemaMember("sky3dparams_t", "fog")]
-	public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "sky3dparams_t", "fog");
+	public virtual fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "sky3dparams_t", "fog");
 
 	// m_nWorldGroupID
 	[SchemaMember("sky3dparams_t", "m_nWorldGroupID")]
-	public WorldGroupId_t WorldGroupID => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "sky3dparams_t", "m_nWorldGroupID");
+	public virtual WorldGroupId_t WorldGroupID => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "sky3dparams_t", "m_nWorldGroupID");
 
-	public void ScalePropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "scale");
-	public void OriginPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "origin");
-	public void BClip3DSkyBoxNearToWorldFarPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar");
-	public void FlClip3DSkyBoxNearToWorldFarOffsetPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset");
-	public void FogPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "fog");
-	public void WorldGroupIDPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "m_nWorldGroupID");
+	public virtual void ScalePropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "scale");
+	public virtual void OriginPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "origin");
+	public virtual void BClip3DSkyBoxNearToWorldFarPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar");
+	public virtual void FlClip3DSkyBoxNearToWorldFarOffsetPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset");
+	public virtual void FogPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "fog");
+	public virtual void WorldGroupIDPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "m_nWorldGroupID");
 }

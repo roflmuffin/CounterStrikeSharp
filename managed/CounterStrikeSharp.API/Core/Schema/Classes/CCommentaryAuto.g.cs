@@ -21,14 +21,14 @@ public partial class CCommentaryAuto : CBaseEntity
 
 	// m_OnCommentaryNewGame
 	[SchemaMember("CCommentaryAuto", "m_OnCommentaryNewGame")]
-	public CEntityIOOutput OnCommentaryNewGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryNewGame");
+	public virtual CEntityIOOutput OnCommentaryNewGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryNewGame");
 
 	// m_OnCommentaryMidGame
 	[SchemaMember("CCommentaryAuto", "m_OnCommentaryMidGame")]
-	public CEntityIOOutput OnCommentaryMidGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryMidGame");
+	public virtual CEntityIOOutput OnCommentaryMidGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryMidGame");
 
 	// m_OnCommentaryMultiplayerSpawn
 	[SchemaMember("CCommentaryAuto", "m_OnCommentaryMultiplayerSpawn")]
-	public CEntityIOOutput OnCommentaryMultiplayerSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryMultiplayerSpawn");
+	public virtual CEntityIOOutput OnCommentaryMultiplayerSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryMultiplayerSpawn");
 
 }

@@ -21,11 +21,11 @@ public partial class CRotatorTarget : CPointEntity
 
 	// m_OnArrivedAt
 	[SchemaMember("CRotatorTarget", "m_OnArrivedAt")]
-	public CEntityIOOutput OnArrivedAt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CRotatorTarget", "m_OnArrivedAt");
+	public virtual CEntityIOOutput OnArrivedAt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CRotatorTarget", "m_OnArrivedAt");
 
 	// m_eSpace
 	[SchemaMember("CRotatorTarget", "m_eSpace")]
-	public RotatorTargetSpace_t Space
+	public virtual RotatorTargetSpace_t Space
 	{
 		get { return Schema.GetValueType<RotatorTargetSpace_t>(this.Handle, "CRotatorTarget", "m_eSpace"); }
 		set { Schema.SetValueType<RotatorTargetSpace_t>(this.Handle, "CRotatorTarget", "m_eSpace", value); }

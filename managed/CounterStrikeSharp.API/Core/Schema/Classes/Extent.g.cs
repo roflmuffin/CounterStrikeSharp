@@ -21,7 +21,7 @@ public partial class Extent : NativeObject
 
 	// lo
 	[SchemaMember("Extent", "lo")]
-	public Vector3 Lo
+	public virtual Vector3 Lo
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "Extent", "lo"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "Extent", "lo", value); }
@@ -29,7 +29,7 @@ public partial class Extent : NativeObject
 
 	// hi
 	[SchemaMember("Extent", "hi")]
-	public Vector3 Hi
+	public virtual Vector3 Hi
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "Extent", "hi"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "Extent", "hi", value); }

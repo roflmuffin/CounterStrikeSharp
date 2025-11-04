@@ -21,7 +21,7 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_nNextPrimaryAttackTick
 	[SchemaMember("CBasePlayerWeapon", "m_nNextPrimaryAttackTick")]
-	public Int32 NextPrimaryAttackTick
+	public virtual Int32 NextPrimaryAttackTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick", value); }
@@ -29,7 +29,7 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_flNextPrimaryAttackTickRatio
 	[SchemaMember("CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio")]
-	public float NextPrimaryAttackTickRatio
+	public virtual float NextPrimaryAttackTickRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio", value); }
@@ -37,7 +37,7 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_nNextSecondaryAttackTick
 	[SchemaMember("CBasePlayerWeapon", "m_nNextSecondaryAttackTick")]
-	public Int32 NextSecondaryAttackTick
+	public virtual Int32 NextSecondaryAttackTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick", value); }
@@ -45,7 +45,7 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_flNextSecondaryAttackTickRatio
 	[SchemaMember("CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio")]
-	public float NextSecondaryAttackTickRatio
+	public virtual float NextSecondaryAttackTickRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio", value); }
@@ -53,7 +53,7 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_iClip1
 	[SchemaMember("CBasePlayerWeapon", "m_iClip1")]
-	public Int32 Clip1
+	public virtual Int32 Clip1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip1", value); }
@@ -61,7 +61,7 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_iClip2
 	[SchemaMember("CBasePlayerWeapon", "m_iClip2")]
-	public Int32 Clip2
+	public virtual Int32 Clip2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip2", value); }
@@ -69,17 +69,17 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_pReserveAmmo
 	[SchemaMember("CBasePlayerWeapon", "m_pReserveAmmo")]
-	public Span<Int32> ReserveAmmo => Schema.GetFixedArray<Int32>(this.Handle, "CBasePlayerWeapon", "m_pReserveAmmo", 2);
+	public virtual Span<Int32> ReserveAmmo => Schema.GetFixedArray<Int32>(this.Handle, "CBasePlayerWeapon", "m_pReserveAmmo", 2);
 
 	// m_OnPlayerUse
 	[SchemaMember("CBasePlayerWeapon", "m_OnPlayerUse")]
-	public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePlayerWeapon", "m_OnPlayerUse");
+	public virtual CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePlayerWeapon", "m_OnPlayerUse");
 
-	public void NextPrimaryAttackTickPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick");
-	public void NextPrimaryAttackTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio");
-	public void NextSecondaryAttackTickPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick");
-	public void NextSecondaryAttackTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio");
-	public void Clip1PropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_iClip1");
-	public void Clip2PropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_iClip2");
-	public void ReserveAmmoPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_pReserveAmmo");
+	public virtual void NextPrimaryAttackTickPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick");
+	public virtual void NextPrimaryAttackTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio");
+	public virtual void NextSecondaryAttackTickPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick");
+	public virtual void NextSecondaryAttackTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio");
+	public virtual void Clip1PropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_iClip1");
+	public virtual void Clip2PropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_iClip2");
+	public virtual void ReserveAmmoPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_pReserveAmmo");
 }

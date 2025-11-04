@@ -21,7 +21,7 @@ public partial class CTriggerTeleport : CBaseTrigger
 
 	// m_iLandmark
 	[SchemaMember("CTriggerTeleport", "m_iLandmark")]
-	public string Landmark
+	public virtual string Landmark
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerTeleport", "m_iLandmark"); }
 		set { Schema.SetString(this.Handle, "CTriggerTeleport", "m_iLandmark", value); }
@@ -29,7 +29,7 @@ public partial class CTriggerTeleport : CBaseTrigger
 
 	// m_bUseLandmarkAngles
 	[SchemaMember("CTriggerTeleport", "m_bUseLandmarkAngles")]
-	public bool UseLandmarkAngles
+	public virtual bool UseLandmarkAngles
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles", value); }
@@ -37,7 +37,7 @@ public partial class CTriggerTeleport : CBaseTrigger
 
 	// m_bMirrorPlayer
 	[SchemaMember("CTriggerTeleport", "m_bMirrorPlayer")]
-	public bool MirrorPlayer
+	public virtual bool MirrorPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer", value); }
@@ -45,7 +45,7 @@ public partial class CTriggerTeleport : CBaseTrigger
 
 	// m_bCheckDestIfClearForPlayer
 	[SchemaMember("CTriggerTeleport", "m_bCheckDestIfClearForPlayer")]
-	public bool CheckDestIfClearForPlayer
+	public virtual bool CheckDestIfClearForPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bCheckDestIfClearForPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bCheckDestIfClearForPlayer", value); }

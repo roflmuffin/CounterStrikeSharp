@@ -21,7 +21,7 @@ public partial class CRevertSaved : CModelPointEntity
 
 	// m_loadTime
 	[SchemaMember("CRevertSaved", "m_loadTime")]
-	public float LoadTime
+	public virtual float LoadTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRevertSaved", "m_loadTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRevertSaved", "m_loadTime", value); }
@@ -29,7 +29,7 @@ public partial class CRevertSaved : CModelPointEntity
 
 	// m_Duration
 	[SchemaMember("CRevertSaved", "m_Duration")]
-	public float Duration
+	public virtual float Duration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRevertSaved", "m_Duration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRevertSaved", "m_Duration", value); }
@@ -37,7 +37,7 @@ public partial class CRevertSaved : CModelPointEntity
 
 	// m_HoldTime
 	[SchemaMember("CRevertSaved", "m_HoldTime")]
-	public float HoldTime
+	public virtual float HoldTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRevertSaved", "m_HoldTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRevertSaved", "m_HoldTime", value); }

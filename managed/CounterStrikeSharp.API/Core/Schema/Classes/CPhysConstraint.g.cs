@@ -21,7 +21,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_nameAttach1
 	[SchemaMember("CPhysConstraint", "m_nameAttach1")]
-	public string NameAttach1
+	public virtual string NameAttach1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach1"); }
 		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach1", value); }
@@ -29,7 +29,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_nameAttach2
 	[SchemaMember("CPhysConstraint", "m_nameAttach2")]
-	public string NameAttach2
+	public virtual string NameAttach2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach2"); }
 		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach2", value); }
@@ -37,15 +37,15 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_hAttach1
 	[SchemaMember("CPhysConstraint", "m_hAttach1")]
-	public CHandle<CBaseEntity> Attach1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach1");
+	public virtual CHandle<CBaseEntity> Attach1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach1");
 
 	// m_hAttach2
 	[SchemaMember("CPhysConstraint", "m_hAttach2")]
-	public CHandle<CBaseEntity> Attach2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach2");
+	public virtual CHandle<CBaseEntity> Attach2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach2");
 
 	// m_nameAttachment1
 	[SchemaMember("CPhysConstraint", "m_nameAttachment1")]
-	public string NameAttachment1
+	public virtual string NameAttachment1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttachment1"); }
 		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttachment1", value); }
@@ -53,7 +53,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_nameAttachment2
 	[SchemaMember("CPhysConstraint", "m_nameAttachment2")]
-	public string NameAttachment2
+	public virtual string NameAttachment2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttachment2"); }
 		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttachment2", value); }
@@ -61,7 +61,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_breakSound
 	[SchemaMember("CPhysConstraint", "m_breakSound")]
-	public string BreakSound
+	public virtual string BreakSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_breakSound"); }
 		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_breakSound", value); }
@@ -69,7 +69,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_forceLimit
 	[SchemaMember("CPhysConstraint", "m_forceLimit")]
-	public float ForceLimit
+	public virtual float ForceLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysConstraint", "m_forceLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysConstraint", "m_forceLimit", value); }
@@ -77,7 +77,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_torqueLimit
 	[SchemaMember("CPhysConstraint", "m_torqueLimit")]
-	public float TorqueLimit
+	public virtual float TorqueLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysConstraint", "m_torqueLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysConstraint", "m_torqueLimit", value); }
@@ -85,7 +85,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_minTeleportDistance
 	[SchemaMember("CPhysConstraint", "m_minTeleportDistance")]
-	public float MinTeleportDistance
+	public virtual float MinTeleportDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance", value); }
@@ -93,7 +93,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_bSnapObjectPositions
 	[SchemaMember("CPhysConstraint", "m_bSnapObjectPositions")]
-	public bool SnapObjectPositions
+	public virtual bool SnapObjectPositions
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysConstraint", "m_bSnapObjectPositions"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysConstraint", "m_bSnapObjectPositions", value); }
@@ -101,7 +101,7 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_bTreatEntity1AsInfiniteMass
 	[SchemaMember("CPhysConstraint", "m_bTreatEntity1AsInfiniteMass")]
-	public bool TreatEntity1AsInfiniteMass
+	public virtual bool TreatEntity1AsInfiniteMass
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysConstraint", "m_bTreatEntity1AsInfiniteMass"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysConstraint", "m_bTreatEntity1AsInfiniteMass", value); }
@@ -109,6 +109,6 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_OnBreak
 	[SchemaMember("CPhysConstraint", "m_OnBreak")]
-	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysConstraint", "m_OnBreak");
+	public virtual CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysConstraint", "m_OnBreak");
 
 }

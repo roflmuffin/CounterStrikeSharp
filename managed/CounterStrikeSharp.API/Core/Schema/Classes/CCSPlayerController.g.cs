@@ -21,23 +21,23 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_pInGameMoneyServices
 	[SchemaMember("CCSPlayerController", "m_pInGameMoneyServices")]
-	public CCSPlayerController_InGameMoneyServices? InGameMoneyServices => Schema.GetPointer<CCSPlayerController_InGameMoneyServices>(this.Handle, "CCSPlayerController", "m_pInGameMoneyServices");
+	public virtual CCSPlayerController_InGameMoneyServices? InGameMoneyServices => Schema.GetPointer<CCSPlayerController_InGameMoneyServices>(this.Handle, "CCSPlayerController", "m_pInGameMoneyServices");
 
 	// m_pInventoryServices
 	[SchemaMember("CCSPlayerController", "m_pInventoryServices")]
-	public CCSPlayerController_InventoryServices? InventoryServices => Schema.GetPointer<CCSPlayerController_InventoryServices>(this.Handle, "CCSPlayerController", "m_pInventoryServices");
+	public virtual CCSPlayerController_InventoryServices? InventoryServices => Schema.GetPointer<CCSPlayerController_InventoryServices>(this.Handle, "CCSPlayerController", "m_pInventoryServices");
 
 	// m_pActionTrackingServices
 	[SchemaMember("CCSPlayerController", "m_pActionTrackingServices")]
-	public CCSPlayerController_ActionTrackingServices? ActionTrackingServices => Schema.GetPointer<CCSPlayerController_ActionTrackingServices>(this.Handle, "CCSPlayerController", "m_pActionTrackingServices");
+	public virtual CCSPlayerController_ActionTrackingServices? ActionTrackingServices => Schema.GetPointer<CCSPlayerController_ActionTrackingServices>(this.Handle, "CCSPlayerController", "m_pActionTrackingServices");
 
 	// m_pDamageServices
 	[SchemaMember("CCSPlayerController", "m_pDamageServices")]
-	public CCSPlayerController_DamageServices? DamageServices => Schema.GetPointer<CCSPlayerController_DamageServices>(this.Handle, "CCSPlayerController", "m_pDamageServices");
+	public virtual CCSPlayerController_DamageServices? DamageServices => Schema.GetPointer<CCSPlayerController_DamageServices>(this.Handle, "CCSPlayerController", "m_pDamageServices");
 
 	// m_iPing
 	[SchemaMember("CCSPlayerController", "m_iPing")]
-	public UInt32 Ping
+	public virtual UInt32 Ping
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPing"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPing", value); }
@@ -45,7 +45,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bHasCommunicationAbuseMute
 	[SchemaMember("CCSPlayerController", "m_bHasCommunicationAbuseMute")]
-	public bool HasCommunicationAbuseMute
+	public virtual bool HasCommunicationAbuseMute
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasCommunicationAbuseMute"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasCommunicationAbuseMute", value); }
@@ -53,7 +53,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_uiCommunicationMuteFlags
 	[SchemaMember("CCSPlayerController", "m_uiCommunicationMuteFlags")]
-	public UInt32 UiCommunicationMuteFlags
+	public virtual UInt32 UiCommunicationMuteFlags
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiCommunicationMuteFlags"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiCommunicationMuteFlags", value); }
@@ -61,7 +61,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_szCrosshairCodes
 	[SchemaMember("CCSPlayerController", "m_szCrosshairCodes")]
-	public string CrosshairCodes
+	public virtual string CrosshairCodes
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlayerController", "m_szCrosshairCodes"); }
 		set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szCrosshairCodes", value); }
@@ -69,7 +69,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPendingTeamNum
 	[SchemaMember("CCSPlayerController", "m_iPendingTeamNum")]
-	public byte PendingTeamNum
+	public virtual byte PendingTeamNum
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSPlayerController", "m_iPendingTeamNum"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSPlayerController", "m_iPendingTeamNum", value); }
@@ -77,7 +77,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_flForceTeamTime
 	[SchemaMember("CCSPlayerController", "m_flForceTeamTime")]
-	public float ForceTeamTime
+	public virtual float ForceTeamTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_flForceTeamTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_flForceTeamTime", value); }
@@ -85,7 +85,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCompTeammateColor
 	[SchemaMember("CCSPlayerController", "m_iCompTeammateColor")]
-	public Int32 CompTeammateColor
+	public virtual Int32 CompTeammateColor
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompTeammateColor"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompTeammateColor", value); }
@@ -93,7 +93,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bEverPlayedOnTeam
 	[SchemaMember("CCSPlayerController", "m_bEverPlayedOnTeam")]
-	public bool EverPlayedOnTeam
+	public virtual bool EverPlayedOnTeam
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverPlayedOnTeam"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverPlayedOnTeam", value); }
@@ -101,7 +101,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bAttemptedToGetColor
 	[SchemaMember("CCSPlayerController", "m_bAttemptedToGetColor")]
-	public bool AttemptedToGetColor
+	public virtual bool AttemptedToGetColor
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAttemptedToGetColor"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAttemptedToGetColor", value); }
@@ -109,7 +109,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iTeammatePreferredColor
 	[SchemaMember("CCSPlayerController", "m_iTeammatePreferredColor")]
-	public Int32 TeammatePreferredColor
+	public virtual Int32 TeammatePreferredColor
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iTeammatePreferredColor"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iTeammatePreferredColor", value); }
@@ -117,7 +117,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bTeamChanged
 	[SchemaMember("CCSPlayerController", "m_bTeamChanged")]
-	public bool TeamChanged
+	public virtual bool TeamChanged
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bTeamChanged"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bTeamChanged", value); }
@@ -125,7 +125,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bInSwitchTeam
 	[SchemaMember("CCSPlayerController", "m_bInSwitchTeam")]
-	public bool InSwitchTeam
+	public virtual bool InSwitchTeam
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bInSwitchTeam"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bInSwitchTeam", value); }
@@ -133,7 +133,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bHasSeenJoinGame
 	[SchemaMember("CCSPlayerController", "m_bHasSeenJoinGame")]
-	public bool HasSeenJoinGame
+	public virtual bool HasSeenJoinGame
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasSeenJoinGame"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasSeenJoinGame", value); }
@@ -141,7 +141,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bJustBecameSpectator
 	[SchemaMember("CCSPlayerController", "m_bJustBecameSpectator")]
-	public bool JustBecameSpectator
+	public virtual bool JustBecameSpectator
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustBecameSpectator"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustBecameSpectator", value); }
@@ -149,7 +149,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bSwitchTeamsOnNextRoundReset
 	[SchemaMember("CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset")]
-	public bool SwitchTeamsOnNextRoundReset
+	public virtual bool SwitchTeamsOnNextRoundReset
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset", value); }
@@ -157,7 +157,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bRemoveAllItemsOnNextRoundReset
 	[SchemaMember("CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset")]
-	public bool RemoveAllItemsOnNextRoundReset
+	public virtual bool RemoveAllItemsOnNextRoundReset
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset", value); }
@@ -165,7 +165,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_flLastJoinTeamTime
 	[SchemaMember("CCSPlayerController", "m_flLastJoinTeamTime")]
-	public float LastJoinTeamTime
+	public virtual float LastJoinTeamTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_flLastJoinTeamTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_flLastJoinTeamTime", value); }
@@ -173,7 +173,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_szClan
 	[SchemaMember("CCSPlayerController", "m_szClan")]
-	public string Clan
+	public virtual string Clan
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlayerController", "m_szClan"); }
 		set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClan", value); }
@@ -181,7 +181,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCoachingTeam
 	[SchemaMember("CCSPlayerController", "m_iCoachingTeam")]
-	public Int32 CoachingTeam
+	public virtual Int32 CoachingTeam
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam", value); }
@@ -189,7 +189,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nPlayerDominated
 	[SchemaMember("CCSPlayerController", "m_nPlayerDominated")]
-	public UInt64 PlayerDominated
+	public virtual UInt64 PlayerDominated
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominated"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominated", value); }
@@ -197,7 +197,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nPlayerDominatingMe
 	[SchemaMember("CCSPlayerController", "m_nPlayerDominatingMe")]
-	public UInt64 PlayerDominatingMe
+	public virtual UInt64 PlayerDominatingMe
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominatingMe"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominatingMe", value); }
@@ -205,7 +205,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCompetitiveRanking
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRanking")]
-	public Int32 CompetitiveRanking
+	public virtual Int32 CompetitiveRanking
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRanking"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRanking", value); }
@@ -213,7 +213,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCompetitiveWins
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveWins")]
-	public Int32 CompetitiveWins
+	public virtual Int32 CompetitiveWins
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveWins"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveWins", value); }
@@ -221,7 +221,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCompetitiveRankType
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankType")]
-	public sbyte CompetitiveRankType
+	public virtual sbyte CompetitiveRankType
 	{
 		get { return Schema.GetValueType<sbyte>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankType"); }
 		set { Schema.SetValueType<sbyte>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankType", value); }
@@ -229,7 +229,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCompetitiveRankingPredicted_Win
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankingPredicted_Win")]
-	public Int32 CompetitiveRankingPredicted_Win
+	public virtual Int32 CompetitiveRankingPredicted_Win
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win", value); }
@@ -237,7 +237,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCompetitiveRankingPredicted_Loss
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss")]
-	public Int32 CompetitiveRankingPredicted_Loss
+	public virtual Int32 CompetitiveRankingPredicted_Loss
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss", value); }
@@ -245,7 +245,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCompetitiveRankingPredicted_Tie
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie")]
-	public Int32 CompetitiveRankingPredicted_Tie
+	public virtual Int32 CompetitiveRankingPredicted_Tie
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie", value); }
@@ -253,7 +253,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nEndMatchNextMapVote
 	[SchemaMember("CCSPlayerController", "m_nEndMatchNextMapVote")]
-	public Int32 EndMatchNextMapVote
+	public virtual Int32 EndMatchNextMapVote
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nEndMatchNextMapVote"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nEndMatchNextMapVote", value); }
@@ -261,7 +261,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_unActiveQuestId
 	[SchemaMember("CCSPlayerController", "m_unActiveQuestId")]
-	public UInt16 ActiveQuestId
+	public virtual UInt16 ActiveQuestId
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId", value); }
@@ -269,7 +269,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_rtActiveMissionPeriod
 	[SchemaMember("CCSPlayerController", "m_rtActiveMissionPeriod")]
-	public UInt32 RtActiveMissionPeriod
+	public virtual UInt32 RtActiveMissionPeriod
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_rtActiveMissionPeriod"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_rtActiveMissionPeriod", value); }
@@ -277,7 +277,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_unPlayerTvControlFlags
 	[SchemaMember("CCSPlayerController", "m_unPlayerTvControlFlags")]
-	public UInt32 PlayerTvControlFlags
+	public virtual UInt32 PlayerTvControlFlags
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags", value); }
@@ -285,7 +285,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iDraftIndex
 	[SchemaMember("CCSPlayerController", "m_iDraftIndex")]
-	public Int32 DraftIndex
+	public virtual Int32 DraftIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iDraftIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iDraftIndex", value); }
@@ -293,7 +293,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_msQueuedModeDisconnectionTimestamp
 	[SchemaMember("CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp")]
-	public UInt32 MsQueuedModeDisconnectionTimestamp
+	public virtual UInt32 MsQueuedModeDisconnectionTimestamp
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp", value); }
@@ -301,7 +301,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_uiAbandonRecordedReason
 	[SchemaMember("CCSPlayerController", "m_uiAbandonRecordedReason")]
-	public UInt32 UiAbandonRecordedReason
+	public virtual UInt32 UiAbandonRecordedReason
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason", value); }
@@ -309,7 +309,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_eNetworkDisconnectionReason
 	[SchemaMember("CCSPlayerController", "m_eNetworkDisconnectionReason")]
-	public UInt32 NetworkDisconnectionReason
+	public virtual UInt32 NetworkDisconnectionReason
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_eNetworkDisconnectionReason"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_eNetworkDisconnectionReason", value); }
@@ -317,7 +317,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bCannotBeKicked
 	[SchemaMember("CCSPlayerController", "m_bCannotBeKicked")]
-	public bool CannotBeKicked
+	public virtual bool CannotBeKicked
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCannotBeKicked"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCannotBeKicked", value); }
@@ -325,7 +325,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bEverFullyConnected
 	[SchemaMember("CCSPlayerController", "m_bEverFullyConnected")]
-	public bool EverFullyConnected
+	public virtual bool EverFullyConnected
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverFullyConnected"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverFullyConnected", value); }
@@ -333,7 +333,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bAbandonAllowsSurrender
 	[SchemaMember("CCSPlayerController", "m_bAbandonAllowsSurrender")]
-	public bool AbandonAllowsSurrender
+	public virtual bool AbandonAllowsSurrender
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonAllowsSurrender"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonAllowsSurrender", value); }
@@ -341,7 +341,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bAbandonOffersInstantSurrender
 	[SchemaMember("CCSPlayerController", "m_bAbandonOffersInstantSurrender")]
-	public bool AbandonOffersInstantSurrender
+	public virtual bool AbandonOffersInstantSurrender
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonOffersInstantSurrender"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonOffersInstantSurrender", value); }
@@ -349,7 +349,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bDisconnection1MinWarningPrinted
 	[SchemaMember("CCSPlayerController", "m_bDisconnection1MinWarningPrinted")]
-	public bool Disconnection1MinWarningPrinted
+	public virtual bool Disconnection1MinWarningPrinted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bDisconnection1MinWarningPrinted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bDisconnection1MinWarningPrinted", value); }
@@ -357,7 +357,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bScoreReported
 	[SchemaMember("CCSPlayerController", "m_bScoreReported")]
-	public bool ScoreReported
+	public virtual bool ScoreReported
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bScoreReported"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bScoreReported", value); }
@@ -365,7 +365,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nDisconnectionTick
 	[SchemaMember("CCSPlayerController", "m_nDisconnectionTick")]
-	public Int32 DisconnectionTick
+	public virtual Int32 DisconnectionTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nDisconnectionTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nDisconnectionTick", value); }
@@ -373,7 +373,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bControllingBot
 	[SchemaMember("CCSPlayerController", "m_bControllingBot")]
-	public bool ControllingBot
+	public virtual bool ControllingBot
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bControllingBot"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bControllingBot", value); }
@@ -381,7 +381,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bHasControlledBotThisRound
 	[SchemaMember("CCSPlayerController", "m_bHasControlledBotThisRound")]
-	public bool HasControlledBotThisRound
+	public virtual bool HasControlledBotThisRound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasControlledBotThisRound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasControlledBotThisRound", value); }
@@ -389,7 +389,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bHasBeenControlledByPlayerThisRound
 	[SchemaMember("CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound")]
-	public bool HasBeenControlledByPlayerThisRound
+	public virtual bool HasBeenControlledByPlayerThisRound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound", value); }
@@ -397,7 +397,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nBotsControlledThisRound
 	[SchemaMember("CCSPlayerController", "m_nBotsControlledThisRound")]
-	public Int32 BotsControlledThisRound
+	public virtual Int32 BotsControlledThisRound
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nBotsControlledThisRound"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nBotsControlledThisRound", value); }
@@ -405,7 +405,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bCanControlObservedBot
 	[SchemaMember("CCSPlayerController", "m_bCanControlObservedBot")]
-	public bool CanControlObservedBot
+	public virtual bool CanControlObservedBot
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCanControlObservedBot"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCanControlObservedBot", value); }
@@ -413,15 +413,15 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_hPlayerPawn
 	[SchemaMember("CCSPlayerController", "m_hPlayerPawn")]
-	public CHandle<CCSPlayerPawn> PlayerPawn => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSPlayerController", "m_hPlayerPawn");
+	public virtual CHandle<CCSPlayerPawn> PlayerPawn => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSPlayerController", "m_hPlayerPawn");
 
 	// m_hObserverPawn
 	[SchemaMember("CCSPlayerController", "m_hObserverPawn")]
-	public CHandle<CCSObserverPawn> ObserverPawn => Schema.GetDeclaredClass<CHandle<CCSObserverPawn>>(this.Handle, "CCSPlayerController", "m_hObserverPawn");
+	public virtual CHandle<CCSObserverPawn> ObserverPawn => Schema.GetDeclaredClass<CHandle<CCSObserverPawn>>(this.Handle, "CCSPlayerController", "m_hObserverPawn");
 
 	// m_DesiredObserverMode
 	[SchemaMember("CCSPlayerController", "m_DesiredObserverMode")]
-	public Int32 DesiredObserverMode
+	public virtual Int32 DesiredObserverMode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_DesiredObserverMode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_DesiredObserverMode", value); }
@@ -429,11 +429,11 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_hDesiredObserverTarget
 	[SchemaMember("CCSPlayerController", "m_hDesiredObserverTarget")]
-	public CHandle<CEntityInstance> DesiredObserverTarget => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CCSPlayerController", "m_hDesiredObserverTarget");
+	public virtual CHandle<CEntityInstance> DesiredObserverTarget => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CCSPlayerController", "m_hDesiredObserverTarget");
 
 	// m_bPawnIsAlive
 	[SchemaMember("CCSPlayerController", "m_bPawnIsAlive")]
-	public bool PawnIsAlive
+	public virtual bool PawnIsAlive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnIsAlive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnIsAlive", value); }
@@ -441,7 +441,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPawnHealth
 	[SchemaMember("CCSPlayerController", "m_iPawnHealth")]
-	public UInt32 PawnHealth
+	public virtual UInt32 PawnHealth
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPawnHealth"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPawnHealth", value); }
@@ -449,7 +449,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPawnArmor
 	[SchemaMember("CCSPlayerController", "m_iPawnArmor")]
-	public Int32 PawnArmor
+	public virtual Int32 PawnArmor
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnArmor"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnArmor", value); }
@@ -457,7 +457,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bPawnHasDefuser
 	[SchemaMember("CCSPlayerController", "m_bPawnHasDefuser")]
-	public bool PawnHasDefuser
+	public virtual bool PawnHasDefuser
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasDefuser"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasDefuser", value); }
@@ -465,7 +465,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bPawnHasHelmet
 	[SchemaMember("CCSPlayerController", "m_bPawnHasHelmet")]
-	public bool PawnHasHelmet
+	public virtual bool PawnHasHelmet
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasHelmet"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasHelmet", value); }
@@ -473,7 +473,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nPawnCharacterDefIndex
 	[SchemaMember("CCSPlayerController", "m_nPawnCharacterDefIndex")]
-	public UInt16 PawnCharacterDefIndex
+	public virtual UInt16 PawnCharacterDefIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_nPawnCharacterDefIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_nPawnCharacterDefIndex", value); }
@@ -481,7 +481,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPawnLifetimeStart
 	[SchemaMember("CCSPlayerController", "m_iPawnLifetimeStart")]
-	public Int32 PawnLifetimeStart
+	public virtual Int32 PawnLifetimeStart
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeStart"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeStart", value); }
@@ -489,7 +489,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPawnLifetimeEnd
 	[SchemaMember("CCSPlayerController", "m_iPawnLifetimeEnd")]
-	public Int32 PawnLifetimeEnd
+	public virtual Int32 PawnLifetimeEnd
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeEnd"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeEnd", value); }
@@ -497,7 +497,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPawnBotDifficulty
 	[SchemaMember("CCSPlayerController", "m_iPawnBotDifficulty")]
-	public Int32 PawnBotDifficulty
+	public virtual Int32 PawnBotDifficulty
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnBotDifficulty"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnBotDifficulty", value); }
@@ -505,11 +505,11 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_hOriginalControllerOfCurrentPawn
 	[SchemaMember("CCSPlayerController", "m_hOriginalControllerOfCurrentPawn")]
-	public CHandle<CCSPlayerController> OriginalControllerOfCurrentPawn => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn");
+	public virtual CHandle<CCSPlayerController> OriginalControllerOfCurrentPawn => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn");
 
 	// m_iScore
 	[SchemaMember("CCSPlayerController", "m_iScore")]
-	public Int32 Score
+	public virtual Int32 Score
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iScore"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iScore", value); }
@@ -517,7 +517,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iRoundScore
 	[SchemaMember("CCSPlayerController", "m_iRoundScore")]
-	public Int32 RoundScore
+	public virtual Int32 RoundScore
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundScore"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundScore", value); }
@@ -525,7 +525,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iRoundsWon
 	[SchemaMember("CCSPlayerController", "m_iRoundsWon")]
-	public Int32 RoundsWon
+	public virtual Int32 RoundsWon
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundsWon"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundsWon", value); }
@@ -533,11 +533,11 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_recentKillQueue
 	[SchemaMember("CCSPlayerController", "m_recentKillQueue")]
-	public Span<byte> RecentKillQueue => Schema.GetFixedArray<byte>(this.Handle, "CCSPlayerController", "m_recentKillQueue", 8);
+	public virtual Span<byte> RecentKillQueue => Schema.GetFixedArray<byte>(this.Handle, "CCSPlayerController", "m_recentKillQueue", 8);
 
 	// m_nFirstKill
 	[SchemaMember("CCSPlayerController", "m_nFirstKill")]
-	public byte FirstKill
+	public virtual byte FirstKill
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSPlayerController", "m_nFirstKill"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSPlayerController", "m_nFirstKill", value); }
@@ -545,7 +545,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nKillCount
 	[SchemaMember("CCSPlayerController", "m_nKillCount")]
-	public byte KillCount
+	public virtual byte KillCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSPlayerController", "m_nKillCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSPlayerController", "m_nKillCount", value); }
@@ -553,7 +553,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bMvpNoMusic
 	[SchemaMember("CCSPlayerController", "m_bMvpNoMusic")]
-	public bool MvpNoMusic
+	public virtual bool MvpNoMusic
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bMvpNoMusic"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bMvpNoMusic", value); }
@@ -561,7 +561,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_eMvpReason
 	[SchemaMember("CCSPlayerController", "m_eMvpReason")]
-	public Int32 MvpReason
+	public virtual Int32 MvpReason
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_eMvpReason"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_eMvpReason", value); }
@@ -569,7 +569,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iMusicKitID
 	[SchemaMember("CCSPlayerController", "m_iMusicKitID")]
-	public Int32 MusicKitID
+	public virtual Int32 MusicKitID
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitID"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitID", value); }
@@ -577,7 +577,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iMusicKitMVPs
 	[SchemaMember("CCSPlayerController", "m_iMusicKitMVPs")]
-	public Int32 MusicKitMVPs
+	public virtual Int32 MusicKitMVPs
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitMVPs"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitMVPs", value); }
@@ -585,7 +585,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iMVPs
 	[SchemaMember("CCSPlayerController", "m_iMVPs")]
-	public Int32 MVPs
+	public virtual Int32 MVPs
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMVPs"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMVPs", value); }
@@ -593,7 +593,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nUpdateCounter
 	[SchemaMember("CCSPlayerController", "m_nUpdateCounter")]
-	public Int32 UpdateCounter
+	public virtual Int32 UpdateCounter
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nUpdateCounter"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nUpdateCounter", value); }
@@ -601,7 +601,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_flSmoothedPing
 	[SchemaMember("CCSPlayerController", "m_flSmoothedPing")]
-	public float SmoothedPing
+	public virtual float SmoothedPing
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_flSmoothedPing"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_flSmoothedPing", value); }
@@ -609,11 +609,11 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_lastHeldVoteTimer
 	[SchemaMember("CCSPlayerController", "m_lastHeldVoteTimer")]
-	public IntervalTimer LastHeldVoteTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSPlayerController", "m_lastHeldVoteTimer");
+	public virtual IntervalTimer LastHeldVoteTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSPlayerController", "m_lastHeldVoteTimer");
 
 	// m_bShowHints
 	[SchemaMember("CCSPlayerController", "m_bShowHints")]
-	public bool ShowHints
+	public virtual bool ShowHints
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bShowHints"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bShowHints", value); }
@@ -621,7 +621,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iNextTimeCheck
 	[SchemaMember("CCSPlayerController", "m_iNextTimeCheck")]
-	public Int32 NextTimeCheck
+	public virtual Int32 NextTimeCheck
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iNextTimeCheck"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iNextTimeCheck", value); }
@@ -629,7 +629,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bJustDidTeamKill
 	[SchemaMember("CCSPlayerController", "m_bJustDidTeamKill")]
-	public bool JustDidTeamKill
+	public virtual bool JustDidTeamKill
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustDidTeamKill"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustDidTeamKill", value); }
@@ -637,7 +637,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bPunishForTeamKill
 	[SchemaMember("CCSPlayerController", "m_bPunishForTeamKill")]
-	public bool PunishForTeamKill
+	public virtual bool PunishForTeamKill
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPunishForTeamKill"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPunishForTeamKill", value); }
@@ -645,7 +645,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bGaveTeamDamageWarning
 	[SchemaMember("CCSPlayerController", "m_bGaveTeamDamageWarning")]
-	public bool GaveTeamDamageWarning
+	public virtual bool GaveTeamDamageWarning
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarning"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarning", value); }
@@ -653,7 +653,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bGaveTeamDamageWarningThisRound
 	[SchemaMember("CCSPlayerController", "m_bGaveTeamDamageWarningThisRound")]
-	public bool GaveTeamDamageWarningThisRound
+	public virtual bool GaveTeamDamageWarningThisRound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarningThisRound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarningThisRound", value); }
@@ -661,7 +661,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_dblLastReceivedPacketPlatFloatTime
 	[SchemaMember("CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime")]
-	public double DblLastReceivedPacketPlatFloatTime
+	public virtual double DblLastReceivedPacketPlatFloatTime
 	{
 		get { return Schema.GetValueType<double>(this.Handle, "CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime"); }
 		set { Schema.SetValueType<double>(this.Handle, "CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime", value); }
@@ -669,7 +669,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_LastTeamDamageWarningTime
 	[SchemaMember("CCSPlayerController", "m_LastTeamDamageWarningTime")]
-	public float LastTeamDamageWarningTime
+	public virtual float LastTeamDamageWarningTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTeamDamageWarningTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTeamDamageWarningTime", value); }
@@ -677,7 +677,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_LastTimePlayerWasDisconnectedForPawnsRemove
 	[SchemaMember("CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove")]
-	public float LastTimePlayerWasDisconnectedForPawnsRemove
+	public virtual float LastTimePlayerWasDisconnectedForPawnsRemove
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove", value); }
@@ -685,7 +685,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nSuspiciousHitCount
 	[SchemaMember("CCSPlayerController", "m_nSuspiciousHitCount")]
-	public UInt32 SuspiciousHitCount
+	public virtual UInt32 SuspiciousHitCount
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nSuspiciousHitCount"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nSuspiciousHitCount", value); }
@@ -693,7 +693,7 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nNonSuspiciousHitStreak
 	[SchemaMember("CCSPlayerController", "m_nNonSuspiciousHitStreak")]
-	public UInt32 NonSuspiciousHitStreak
+	public virtual UInt32 NonSuspiciousHitStreak
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nNonSuspiciousHitStreak"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nNonSuspiciousHitStreak", value); }
@@ -701,63 +701,63 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bFireBulletsSeedSynchronized
 	[SchemaMember("CCSPlayerController", "m_bFireBulletsSeedSynchronized")]
-	public bool FireBulletsSeedSynchronized
+	public virtual bool FireBulletsSeedSynchronized
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bFireBulletsSeedSynchronized"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bFireBulletsSeedSynchronized", value); }
 	}
 
-	public void InGameMoneyServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pInGameMoneyServices");
-	public void InventoryServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pInventoryServices");
-	public void ActionTrackingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pActionTrackingServices");
-	public void DamageServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pDamageServices");
-	public void PingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPing");
-	public void HasCommunicationAbuseMutePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bHasCommunicationAbuseMute");
-	public void UiCommunicationMuteFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_uiCommunicationMuteFlags");
-	public void CrosshairCodesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_szCrosshairCodes");
-	public void PendingTeamNumPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPendingTeamNum");
-	public void ForceTeamTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_flForceTeamTime");
-	public void CompTeammateColorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompTeammateColor");
-	public void EverPlayedOnTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bEverPlayedOnTeam");
-	public void ClanPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_szClan");
-	public void CoachingTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCoachingTeam");
-	public void PlayerDominatedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPlayerDominated");
-	public void PlayerDominatingMePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPlayerDominatingMe");
-	public void CompetitiveRankingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRanking");
-	public void CompetitiveWinsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveWins");
-	public void CompetitiveRankTypePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankType");
-	public void CompetitiveRankingPredicted_WinPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win");
-	public void CompetitiveRankingPredicted_LossPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss");
-	public void CompetitiveRankingPredicted_TiePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie");
-	public void EndMatchNextMapVotePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nEndMatchNextMapVote");
-	public void ActiveQuestIdPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_unActiveQuestId");
-	public void RtActiveMissionPeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_rtActiveMissionPeriod");
-	public void QuestProgressReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nQuestProgressReason");
-	public void PlayerTvControlFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_unPlayerTvControlFlags");
-	public void DisconnectionTickPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nDisconnectionTick");
-	public void ControllingBotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bControllingBot");
-	public void HasControlledBotThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bHasControlledBotThisRound");
-	public void CanControlObservedBotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bCanControlObservedBot");
-	public void PlayerPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hPlayerPawn");
-	public void ObserverPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hObserverPawn");
-	public void PawnIsAlivePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnIsAlive");
-	public void PawnHealthPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnHealth");
-	public void PawnArmorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnArmor");
-	public void PawnHasDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnHasDefuser");
-	public void PawnHasHelmetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnHasHelmet");
-	public void PawnCharacterDefIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPawnCharacterDefIndex");
-	public void PawnLifetimeStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnLifetimeStart");
-	public void PawnLifetimeEndPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnLifetimeEnd");
-	public void PawnBotDifficultyPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnBotDifficulty");
-	public void OriginalControllerOfCurrentPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn");
-	public void ScorePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iScore");
-	public void RecentKillQueuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_recentKillQueue");
-	public void FirstKillPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nFirstKill");
-	public void KillCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nKillCount");
-	public void MvpNoMusicPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bMvpNoMusic");
-	public void MvpReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_eMvpReason");
-	public void MusicKitIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMusicKitID");
-	public void MusicKitMVPsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMusicKitMVPs");
-	public void MVPsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMVPs");
-	public void FireBulletsSeedSynchronizedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bFireBulletsSeedSynchronized");
+	public virtual void InGameMoneyServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pInGameMoneyServices");
+	public virtual void InventoryServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pInventoryServices");
+	public virtual void ActionTrackingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pActionTrackingServices");
+	public virtual void DamageServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pDamageServices");
+	public virtual void PingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPing");
+	public virtual void HasCommunicationAbuseMutePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bHasCommunicationAbuseMute");
+	public virtual void UiCommunicationMuteFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_uiCommunicationMuteFlags");
+	public virtual void CrosshairCodesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_szCrosshairCodes");
+	public virtual void PendingTeamNumPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPendingTeamNum");
+	public virtual void ForceTeamTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_flForceTeamTime");
+	public virtual void CompTeammateColorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompTeammateColor");
+	public virtual void EverPlayedOnTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bEverPlayedOnTeam");
+	public virtual void ClanPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_szClan");
+	public virtual void CoachingTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCoachingTeam");
+	public virtual void PlayerDominatedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPlayerDominated");
+	public virtual void PlayerDominatingMePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPlayerDominatingMe");
+	public virtual void CompetitiveRankingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRanking");
+	public virtual void CompetitiveWinsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveWins");
+	public virtual void CompetitiveRankTypePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankType");
+	public virtual void CompetitiveRankingPredicted_WinPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win");
+	public virtual void CompetitiveRankingPredicted_LossPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss");
+	public virtual void CompetitiveRankingPredicted_TiePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie");
+	public virtual void EndMatchNextMapVotePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nEndMatchNextMapVote");
+	public virtual void ActiveQuestIdPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_unActiveQuestId");
+	public virtual void RtActiveMissionPeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_rtActiveMissionPeriod");
+	public virtual void QuestProgressReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nQuestProgressReason");
+	public virtual void PlayerTvControlFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_unPlayerTvControlFlags");
+	public virtual void DisconnectionTickPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nDisconnectionTick");
+	public virtual void ControllingBotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bControllingBot");
+	public virtual void HasControlledBotThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bHasControlledBotThisRound");
+	public virtual void CanControlObservedBotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bCanControlObservedBot");
+	public virtual void PlayerPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hPlayerPawn");
+	public virtual void ObserverPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hObserverPawn");
+	public virtual void PawnIsAlivePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnIsAlive");
+	public virtual void PawnHealthPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnHealth");
+	public virtual void PawnArmorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnArmor");
+	public virtual void PawnHasDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnHasDefuser");
+	public virtual void PawnHasHelmetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnHasHelmet");
+	public virtual void PawnCharacterDefIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPawnCharacterDefIndex");
+	public virtual void PawnLifetimeStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnLifetimeStart");
+	public virtual void PawnLifetimeEndPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnLifetimeEnd");
+	public virtual void PawnBotDifficultyPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnBotDifficulty");
+	public virtual void OriginalControllerOfCurrentPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn");
+	public virtual void ScorePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iScore");
+	public virtual void RecentKillQueuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_recentKillQueue");
+	public virtual void FirstKillPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nFirstKill");
+	public virtual void KillCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nKillCount");
+	public virtual void MvpNoMusicPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bMvpNoMusic");
+	public virtual void MvpReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_eMvpReason");
+	public virtual void MusicKitIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMusicKitID");
+	public virtual void MusicKitMVPsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMusicKitMVPs");
+	public virtual void MVPsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMVPs");
+	public virtual void FireBulletsSeedSynchronizedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bFireBulletsSeedSynchronized");
 }

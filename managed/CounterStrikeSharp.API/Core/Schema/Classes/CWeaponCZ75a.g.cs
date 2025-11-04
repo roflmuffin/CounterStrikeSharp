@@ -21,11 +21,11 @@ public partial class CWeaponCZ75a : CCSWeaponBaseGun
 
 	// m_bMagazineRemoved
 	[SchemaMember("CWeaponCZ75a", "m_bMagazineRemoved")]
-	public bool MagazineRemoved
+	public virtual bool MagazineRemoved
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CWeaponCZ75a", "m_bMagazineRemoved"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CWeaponCZ75a", "m_bMagazineRemoved", value); }
 	}
 
-	public void MagazineRemovedPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponCZ75a", "m_bMagazineRemoved");
+	public virtual void MagazineRemovedPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponCZ75a", "m_bMagazineRemoved");
 }

@@ -21,7 +21,7 @@ public partial class WeaponPurchaseTracker_t : NativeObject
 
 	// m_weaponPurchases
 	[SchemaMember("WeaponPurchaseTracker_t", "m_weaponPurchases")]
-	public NetworkedVector<WeaponPurchaseCount_t> WeaponPurchases => Schema.GetDeclaredClass<NetworkedVector<WeaponPurchaseCount_t>>(this.Handle, "WeaponPurchaseTracker_t", "m_weaponPurchases");
+	public virtual NetworkedVector<WeaponPurchaseCount_t> WeaponPurchases => Schema.GetDeclaredClass<NetworkedVector<WeaponPurchaseCount_t>>(this.Handle, "WeaponPurchaseTracker_t", "m_weaponPurchases");
 
-	public void WeaponPurchasesPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseTracker_t", "m_weaponPurchases");
+	public virtual void WeaponPurchasesPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseTracker_t", "m_weaponPurchases");
 }

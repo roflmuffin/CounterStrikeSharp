@@ -21,7 +21,7 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_iPositionInterpolator
 	[SchemaMember("CBaseMoveBehavior", "m_iPositionInterpolator")]
-	public Int32 PositionInterpolator
+	public virtual Int32 PositionInterpolator
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iPositionInterpolator"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iPositionInterpolator", value); }
@@ -29,7 +29,7 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_iRotationInterpolator
 	[SchemaMember("CBaseMoveBehavior", "m_iRotationInterpolator")]
-	public Int32 RotationInterpolator
+	public virtual Int32 RotationInterpolator
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iRotationInterpolator"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iRotationInterpolator", value); }
@@ -37,7 +37,7 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_flAnimStartTime
 	[SchemaMember("CBaseMoveBehavior", "m_flAnimStartTime")]
-	public float AnimStartTime
+	public virtual float AnimStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimStartTime", value); }
@@ -45,7 +45,7 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_flAnimEndTime
 	[SchemaMember("CBaseMoveBehavior", "m_flAnimEndTime")]
-	public float AnimEndTime
+	public virtual float AnimEndTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimEndTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimEndTime", value); }
@@ -53,7 +53,7 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_flAverageSpeedAcrossFrame
 	[SchemaMember("CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame")]
-	public float AverageSpeedAcrossFrame
+	public virtual float AverageSpeedAcrossFrame
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame", value); }
@@ -61,23 +61,23 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_pCurrentKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pCurrentKeyFrame")]
-	public CPathKeyFrame? CurrentKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pCurrentKeyFrame");
+	public virtual CPathKeyFrame? CurrentKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pCurrentKeyFrame");
 
 	// m_pTargetKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pTargetKeyFrame")]
-	public CPathKeyFrame? TargetKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pTargetKeyFrame");
+	public virtual CPathKeyFrame? TargetKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pTargetKeyFrame");
 
 	// m_pPreKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pPreKeyFrame")]
-	public CPathKeyFrame? PreKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPreKeyFrame");
+	public virtual CPathKeyFrame? PreKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPreKeyFrame");
 
 	// m_pPostKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pPostKeyFrame")]
-	public CPathKeyFrame? PostKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPostKeyFrame");
+	public virtual CPathKeyFrame? PostKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPostKeyFrame");
 
 	// m_flTimeIntoFrame
 	[SchemaMember("CBaseMoveBehavior", "m_flTimeIntoFrame")]
-	public float TimeIntoFrame
+	public virtual float TimeIntoFrame
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flTimeIntoFrame"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flTimeIntoFrame", value); }
@@ -85,7 +85,7 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_iDirection
 	[SchemaMember("CBaseMoveBehavior", "m_iDirection")]
-	public Int32 Direction
+	public virtual Int32 Direction
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iDirection"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iDirection", value); }

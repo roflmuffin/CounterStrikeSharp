@@ -21,7 +21,7 @@ public partial class CountdownTimer : NativeObject
 
 	// m_duration
 	[SchemaMember("CountdownTimer", "m_duration")]
-	public float Duration
+	public virtual float Duration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CountdownTimer", "m_duration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CountdownTimer", "m_duration", value); }
@@ -29,7 +29,7 @@ public partial class CountdownTimer : NativeObject
 
 	// m_timestamp
 	[SchemaMember("CountdownTimer", "m_timestamp")]
-	public float Timestamp
+	public virtual float Timestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CountdownTimer", "m_timestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CountdownTimer", "m_timestamp", value); }
@@ -37,7 +37,7 @@ public partial class CountdownTimer : NativeObject
 
 	// m_timescale
 	[SchemaMember("CountdownTimer", "m_timescale")]
-	public float Timescale
+	public virtual float Timescale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CountdownTimer", "m_timescale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CountdownTimer", "m_timescale", value); }
@@ -45,10 +45,10 @@ public partial class CountdownTimer : NativeObject
 
 	// m_nWorldGroupId
 	[SchemaMember("CountdownTimer", "m_nWorldGroupId")]
-	public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CountdownTimer", "m_nWorldGroupId");
+	public virtual WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CountdownTimer", "m_nWorldGroupId");
 
-	public void DurationPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_duration");
-	public void TimestampPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_timestamp");
-	public void TimescalePropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_timescale");
-	public void WorldGroupIdPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_nWorldGroupId");
+	public virtual void DurationPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_duration");
+	public virtual void TimestampPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_timestamp");
+	public virtual void TimescalePropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_timescale");
+	public virtual void WorldGroupIdPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_nWorldGroupId");
 }

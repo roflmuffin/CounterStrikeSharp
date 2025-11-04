@@ -21,7 +21,7 @@ public partial class CGameText : CRulePointEntity
 
 	// m_iszMessage
 	[SchemaMember("CGameText", "m_iszMessage")]
-	public string Message
+	public virtual string Message
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CGameText", "m_iszMessage"); }
 		set { Schema.SetString(this.Handle, "CGameText", "m_iszMessage", value); }
@@ -29,6 +29,6 @@ public partial class CGameText : CRulePointEntity
 
 	// m_textParms
 	[SchemaMember("CGameText", "m_textParms")]
-	public hudtextparms_t TextParms => Schema.GetDeclaredClass<hudtextparms_t>(this.Handle, "CGameText", "m_textParms");
+	public virtual hudtextparms_t TextParms => Schema.GetDeclaredClass<hudtextparms_t>(this.Handle, "CGameText", "m_textParms");
 
 }

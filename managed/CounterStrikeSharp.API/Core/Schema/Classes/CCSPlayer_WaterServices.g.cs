@@ -21,7 +21,7 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 
 	// m_NextDrownDamageTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_NextDrownDamageTime")]
-	public float NextDrownDamageTime
+	public virtual float NextDrownDamageTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_NextDrownDamageTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_NextDrownDamageTime", value); }
@@ -29,7 +29,7 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 
 	// m_nDrownDmgRate
 	[SchemaMember("CCSPlayer_WaterServices", "m_nDrownDmgRate")]
-	public Int32 DrownDmgRate
+	public virtual Int32 DrownDmgRate
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_WaterServices", "m_nDrownDmgRate"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_WaterServices", "m_nDrownDmgRate", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 
 	// m_AirFinishedTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_AirFinishedTime")]
-	public float AirFinishedTime
+	public virtual float AirFinishedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_AirFinishedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_AirFinishedTime", value); }
@@ -45,7 +45,7 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 
 	// m_flWaterJumpTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_flWaterJumpTime")]
-	public float WaterJumpTime
+	public virtual float WaterJumpTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flWaterJumpTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flWaterJumpTime", value); }
@@ -53,7 +53,7 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 
 	// m_vecWaterJumpVel
 	[SchemaMember("CCSPlayer_WaterServices", "m_vecWaterJumpVel")]
-	public Vector3 WaterJumpVel
+	public virtual Vector3 WaterJumpVel
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_WaterServices", "m_vecWaterJumpVel"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_WaterServices", "m_vecWaterJumpVel", value); }
@@ -61,7 +61,7 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 
 	// m_flSwimSoundTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_flSwimSoundTime")]
-	public float SwimSoundTime
+	public virtual float SwimSoundTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flSwimSoundTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flSwimSoundTime", value); }

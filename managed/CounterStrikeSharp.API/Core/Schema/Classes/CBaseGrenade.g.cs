@@ -21,15 +21,15 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_OnPlayerPickup
 	[SchemaMember("CBaseGrenade", "m_OnPlayerPickup")]
-	public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseGrenade", "m_OnPlayerPickup");
+	public virtual CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseGrenade", "m_OnPlayerPickup");
 
 	// m_OnExplode
 	[SchemaMember("CBaseGrenade", "m_OnExplode")]
-	public CEntityIOOutput OnExplode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseGrenade", "m_OnExplode");
+	public virtual CEntityIOOutput OnExplode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseGrenade", "m_OnExplode");
 
 	// m_bHasWarnedAI
 	[SchemaMember("CBaseGrenade", "m_bHasWarnedAI")]
-	public bool HasWarnedAI
+	public virtual bool HasWarnedAI
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseGrenade", "m_bHasWarnedAI"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseGrenade", "m_bHasWarnedAI", value); }
@@ -37,7 +37,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_bIsSmokeGrenade
 	[SchemaMember("CBaseGrenade", "m_bIsSmokeGrenade")]
-	public bool IsSmokeGrenade
+	public virtual bool IsSmokeGrenade
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsSmokeGrenade"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsSmokeGrenade", value); }
@@ -45,7 +45,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_bIsLive
 	[SchemaMember("CBaseGrenade", "m_bIsLive")]
-	public bool IsLive
+	public virtual bool IsLive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsLive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsLive", value); }
@@ -53,7 +53,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_DmgRadius
 	[SchemaMember("CBaseGrenade", "m_DmgRadius")]
-	public float DmgRadius
+	public virtual float DmgRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_DmgRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_DmgRadius", value); }
@@ -61,7 +61,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_flDetonateTime
 	[SchemaMember("CBaseGrenade", "m_flDetonateTime")]
-	public float DetonateTime
+	public virtual float DetonateTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flDetonateTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flDetonateTime", value); }
@@ -69,7 +69,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_flWarnAITime
 	[SchemaMember("CBaseGrenade", "m_flWarnAITime")]
-	public float WarnAITime
+	public virtual float WarnAITime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flWarnAITime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flWarnAITime", value); }
@@ -77,7 +77,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_flDamage
 	[SchemaMember("CBaseGrenade", "m_flDamage")]
-	public float Damage
+	public virtual float Damage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flDamage", value); }
@@ -85,7 +85,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_iszBounceSound
 	[SchemaMember("CBaseGrenade", "m_iszBounceSound")]
-	public string BounceSound
+	public virtual string BounceSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseGrenade", "m_iszBounceSound"); }
 		set { Schema.SetString(this.Handle, "CBaseGrenade", "m_iszBounceSound", value); }
@@ -93,7 +93,7 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_ExplosionSound
 	[SchemaMember("CBaseGrenade", "m_ExplosionSound")]
-	public string ExplosionSound
+	public virtual string ExplosionSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseGrenade", "m_ExplosionSound"); }
 		set { Schema.SetString(this.Handle, "CBaseGrenade", "m_ExplosionSound", value); }
@@ -101,11 +101,11 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_hThrower
 	[SchemaMember("CBaseGrenade", "m_hThrower")]
-	public CHandle<CCSPlayerPawn> Thrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hThrower");
+	public virtual CHandle<CCSPlayerPawn> Thrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hThrower");
 
 	// m_flNextAttack
 	[SchemaMember("CBaseGrenade", "m_flNextAttack")]
-	public float NextAttack
+	public virtual float NextAttack
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flNextAttack"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flNextAttack", value); }
@@ -113,11 +113,11 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_hOriginalThrower
 	[SchemaMember("CBaseGrenade", "m_hOriginalThrower")]
-	public CHandle<CCSPlayerPawn> OriginalThrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hOriginalThrower");
+	public virtual CHandle<CCSPlayerPawn> OriginalThrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hOriginalThrower");
 
-	public void IsLivePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_bIsLive");
-	public void DmgRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_DmgRadius");
-	public void DetonateTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_flDetonateTime");
-	public void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_flDamage");
-	public void ThrowerPropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_hThrower");
+	public virtual void IsLivePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_bIsLive");
+	public virtual void DmgRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_DmgRadius");
+	public virtual void DetonateTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_flDetonateTime");
+	public virtual void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_flDamage");
+	public virtual void ThrowerPropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_hThrower");
 }

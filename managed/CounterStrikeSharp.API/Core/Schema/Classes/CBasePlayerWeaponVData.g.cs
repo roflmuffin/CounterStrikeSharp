@@ -21,7 +21,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bBuiltRightHanded
 	[SchemaMember("CBasePlayerWeaponVData", "m_bBuiltRightHanded")]
-	public bool BuiltRightHanded
+	public virtual bool BuiltRightHanded
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bBuiltRightHanded"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bBuiltRightHanded", value); }
@@ -29,7 +29,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bAllowFlipping
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAllowFlipping")]
-	public bool AllowFlipping
+	public virtual bool AllowFlipping
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping", value); }
@@ -37,7 +37,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_szMuzzleFlashParticleConfig
 	[SchemaMember("CBasePlayerWeaponVData", "m_szMuzzleFlashParticleConfig")]
-	public string MuzzleFlashParticleConfig
+	public virtual string MuzzleFlashParticleConfig
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlayerWeaponVData", "m_szMuzzleFlashParticleConfig"); }
 		set { Schema.SetString(this.Handle, "CBasePlayerWeaponVData", "m_szMuzzleFlashParticleConfig", value); }
@@ -45,7 +45,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_nMuzzleSmokeShotThreshold
 	[SchemaMember("CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold")]
-	public byte MuzzleSmokeShotThreshold
+	public virtual byte MuzzleSmokeShotThreshold
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold", value); }
@@ -53,7 +53,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_flMuzzleSmokeTimeout
 	[SchemaMember("CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout")]
-	public float MuzzleSmokeTimeout
+	public virtual float MuzzleSmokeTimeout
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout", value); }
@@ -61,7 +61,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_flMuzzleSmokeDecrementRate
 	[SchemaMember("CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate")]
-	public float MuzzleSmokeDecrementRate
+	public virtual float MuzzleSmokeDecrementRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate", value); }
@@ -69,7 +69,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bLinkedCooldowns
 	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
-	public bool LinkedCooldowns
+	public virtual bool LinkedCooldowns
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns", value); }
@@ -77,7 +77,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iFlags
 	[SchemaMember("CBasePlayerWeaponVData", "m_iFlags")]
-	public ItemFlagTypes_t Flags
+	public virtual ItemFlagTypes_t Flags
 	{
 		get { return Schema.GetValueType<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags"); }
 		set { Schema.SetValueType<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags", value); }
@@ -85,7 +85,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_nPrimaryAmmoType
 	[SchemaMember("CBasePlayerWeaponVData", "m_nPrimaryAmmoType")]
-	public byte PrimaryAmmoType
+	public virtual byte PrimaryAmmoType
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nPrimaryAmmoType"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nPrimaryAmmoType", value); }
@@ -93,7 +93,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_nSecondaryAmmoType
 	[SchemaMember("CBasePlayerWeaponVData", "m_nSecondaryAmmoType")]
-	public byte SecondaryAmmoType
+	public virtual byte SecondaryAmmoType
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nSecondaryAmmoType"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nSecondaryAmmoType", value); }
@@ -101,7 +101,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iMaxClip1
 	[SchemaMember("CBasePlayerWeaponVData", "m_iMaxClip1")]
-	public Int32 MaxClip1
+	public virtual Int32 MaxClip1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip1", value); }
@@ -109,7 +109,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iMaxClip2
 	[SchemaMember("CBasePlayerWeaponVData", "m_iMaxClip2")]
-	public Int32 MaxClip2
+	public virtual Int32 MaxClip2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip2", value); }
@@ -117,7 +117,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iDefaultClip1
 	[SchemaMember("CBasePlayerWeaponVData", "m_iDefaultClip1")]
-	public Int32 DefaultClip1
+	public virtual Int32 DefaultClip1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip1", value); }
@@ -125,7 +125,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iDefaultClip2
 	[SchemaMember("CBasePlayerWeaponVData", "m_iDefaultClip2")]
-	public Int32 DefaultClip2
+	public virtual Int32 DefaultClip2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip2", value); }
@@ -133,7 +133,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bReserveAmmoAsClips
 	[SchemaMember("CBasePlayerWeaponVData", "m_bReserveAmmoAsClips")]
-	public bool ReserveAmmoAsClips
+	public virtual bool ReserveAmmoAsClips
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bReserveAmmoAsClips"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bReserveAmmoAsClips", value); }
@@ -141,7 +141,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bTreatAsSingleClip
 	[SchemaMember("CBasePlayerWeaponVData", "m_bTreatAsSingleClip")]
-	public bool TreatAsSingleClip
+	public virtual bool TreatAsSingleClip
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bTreatAsSingleClip"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bTreatAsSingleClip", value); }
@@ -149,7 +149,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bKeepLoadedAmmo
 	[SchemaMember("CBasePlayerWeaponVData", "m_bKeepLoadedAmmo")]
-	public bool KeepLoadedAmmo
+	public virtual bool KeepLoadedAmmo
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bKeepLoadedAmmo"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bKeepLoadedAmmo", value); }
@@ -157,7 +157,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iWeight
 	[SchemaMember("CBasePlayerWeaponVData", "m_iWeight")]
-	public Int32 Weight
+	public virtual Int32 Weight
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight", value); }
@@ -165,7 +165,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bAutoSwitchTo
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchTo")]
-	public bool AutoSwitchTo
+	public virtual bool AutoSwitchTo
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo", value); }
@@ -173,7 +173,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bAutoSwitchFrom
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchFrom")]
-	public bool AutoSwitchFrom
+	public virtual bool AutoSwitchFrom
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom", value); }
@@ -181,7 +181,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iRumbleEffect
 	[SchemaMember("CBasePlayerWeaponVData", "m_iRumbleEffect")]
-	public RumbleEffect_t RumbleEffect
+	public virtual RumbleEffect_t RumbleEffect
 	{
 		get { return Schema.GetValueType<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect"); }
 		set { Schema.SetValueType<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect", value); }
@@ -189,7 +189,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_flDropSpeed
 	[SchemaMember("CBasePlayerWeaponVData", "m_flDropSpeed")]
-	public float DropSpeed
+	public virtual float DropSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flDropSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flDropSpeed", value); }
@@ -197,7 +197,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iSlot
 	[SchemaMember("CBasePlayerWeaponVData", "m_iSlot")]
-	public Int32 Slot
+	public virtual Int32 Slot
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iSlot"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iSlot", value); }
@@ -205,7 +205,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_iPosition
 	[SchemaMember("CBasePlayerWeaponVData", "m_iPosition")]
-	public Int32 Position
+	public virtual Int32 Position
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iPosition"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iPosition", value); }

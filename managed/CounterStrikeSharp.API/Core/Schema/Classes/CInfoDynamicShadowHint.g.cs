@@ -21,7 +21,7 @@ public partial class CInfoDynamicShadowHint : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CInfoDynamicShadowHint", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoDynamicShadowHint", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoDynamicShadowHint", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CInfoDynamicShadowHint : CPointEntity
 
 	// m_flRange
 	[SchemaMember("CInfoDynamicShadowHint", "m_flRange")]
-	public float Range
+	public virtual float Range
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInfoDynamicShadowHint", "m_flRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInfoDynamicShadowHint", "m_flRange", value); }
@@ -37,7 +37,7 @@ public partial class CInfoDynamicShadowHint : CPointEntity
 
 	// m_nImportance
 	[SchemaMember("CInfoDynamicShadowHint", "m_nImportance")]
-	public Int32 Importance
+	public virtual Int32 Importance
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nImportance"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nImportance", value); }
@@ -45,7 +45,7 @@ public partial class CInfoDynamicShadowHint : CPointEntity
 
 	// m_nLightChoice
 	[SchemaMember("CInfoDynamicShadowHint", "m_nLightChoice")]
-	public Int32 LightChoice
+	public virtual Int32 LightChoice
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nLightChoice"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nLightChoice", value); }
@@ -53,6 +53,6 @@ public partial class CInfoDynamicShadowHint : CPointEntity
 
 	// m_hLight
 	[SchemaMember("CInfoDynamicShadowHint", "m_hLight")]
-	public CHandle<CBaseEntity> Light => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInfoDynamicShadowHint", "m_hLight");
+	public virtual CHandle<CBaseEntity> Light => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInfoDynamicShadowHint", "m_hLight");
 
 }

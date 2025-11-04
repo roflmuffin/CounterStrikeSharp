@@ -21,7 +21,7 @@ public partial class CTriggerVolume : CBaseModelEntity
 
 	// m_iFilterName
 	[SchemaMember("CTriggerVolume", "m_iFilterName")]
-	public string FilterName
+	public virtual string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerVolume", "m_iFilterName"); }
 		set { Schema.SetString(this.Handle, "CTriggerVolume", "m_iFilterName", value); }
@@ -29,6 +29,6 @@ public partial class CTriggerVolume : CBaseModelEntity
 
 	// m_hFilter
 	[SchemaMember("CTriggerVolume", "m_hFilter")]
-	public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CTriggerVolume", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CTriggerVolume", "m_hFilter");
 
 }

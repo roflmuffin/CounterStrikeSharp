@@ -21,7 +21,7 @@ public partial class ResponseContext_t : NativeObject
 
 	// m_iszName
 	[SchemaMember("ResponseContext_t", "m_iszName")]
-	public string Name
+	public virtual string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszName"); }
 		set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszName", value); }
@@ -29,7 +29,7 @@ public partial class ResponseContext_t : NativeObject
 
 	// m_iszValue
 	[SchemaMember("ResponseContext_t", "m_iszValue")]
-	public string Value
+	public virtual string Value
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszValue"); }
 		set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszValue", value); }
@@ -37,7 +37,7 @@ public partial class ResponseContext_t : NativeObject
 
 	// m_fExpirationTime
 	[SchemaMember("ResponseContext_t", "m_fExpirationTime")]
-	public float ExpirationTime
+	public virtual float ExpirationTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime", value); }

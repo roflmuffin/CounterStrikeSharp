@@ -21,7 +21,7 @@ public partial class CMoodVData : NativeObject
 
 	// m_nMoodType
 	[SchemaMember("CMoodVData", "m_nMoodType")]
-	public MoodType_t MoodType
+	public virtual MoodType_t MoodType
 	{
 		get { return Schema.GetValueType<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType"); }
 		set { Schema.SetValueType<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType", value); }

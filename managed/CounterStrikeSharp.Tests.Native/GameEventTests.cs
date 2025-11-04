@@ -10,6 +10,10 @@ public class GameEventTests
     [Fact]
     public async Task CanRegisterAndDeregisterEventHandlers()
     {
+        NativeAPI.IssueServerCommand("bot_kick all");
+        NativeAPI.IssueServerCommand("bot_quota 0");
+        await WaitOneFrame();
+
         int callCount = 0;
         var callback = FunctionReference.Create((EventPlayerConnect @event) =>
         {

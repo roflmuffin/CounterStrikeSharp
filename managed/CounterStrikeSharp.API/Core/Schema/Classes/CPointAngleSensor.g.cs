@@ -21,7 +21,7 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CPointAngleSensor", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_nLookAtName
 	[SchemaMember("CPointAngleSensor", "m_nLookAtName")]
-	public string LookAtName
+	public virtual string LookAtName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointAngleSensor", "m_nLookAtName"); }
 		set { Schema.SetString(this.Handle, "CPointAngleSensor", "m_nLookAtName", value); }
@@ -37,15 +37,15 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_hTargetEntity
 	[SchemaMember("CPointAngleSensor", "m_hTargetEntity")]
-	public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hTargetEntity");
 
 	// m_hLookAtEntity
 	[SchemaMember("CPointAngleSensor", "m_hLookAtEntity")]
-	public CHandle<CBaseEntity> LookAtEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hLookAtEntity");
+	public virtual CHandle<CBaseEntity> LookAtEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hLookAtEntity");
 
 	// m_flDuration
 	[SchemaMember("CPointAngleSensor", "m_flDuration")]
-	public float Duration
+	public virtual float Duration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDuration", value); }
@@ -53,7 +53,7 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_flDotTolerance
 	[SchemaMember("CPointAngleSensor", "m_flDotTolerance")]
-	public float DotTolerance
+	public virtual float DotTolerance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDotTolerance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDotTolerance", value); }
@@ -61,7 +61,7 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_flFacingTime
 	[SchemaMember("CPointAngleSensor", "m_flFacingTime")]
-	public float FacingTime
+	public virtual float FacingTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointAngleSensor", "m_flFacingTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointAngleSensor", "m_flFacingTime", value); }
@@ -69,7 +69,7 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_bFired
 	[SchemaMember("CPointAngleSensor", "m_bFired")]
-	public bool Fired
+	public virtual bool Fired
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bFired"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bFired", value); }
@@ -77,10 +77,10 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_OnFacingLookat
 	[SchemaMember("CPointAngleSensor", "m_OnFacingLookat")]
-	public CEntityIOOutput OnFacingLookat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngleSensor", "m_OnFacingLookat");
+	public virtual CEntityIOOutput OnFacingLookat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngleSensor", "m_OnFacingLookat");
 
 	// m_OnNotFacingLookat
 	[SchemaMember("CPointAngleSensor", "m_OnNotFacingLookat")]
-	public CEntityIOOutput OnNotFacingLookat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngleSensor", "m_OnNotFacingLookat");
+	public virtual CEntityIOOutput OnNotFacingLookat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngleSensor", "m_OnNotFacingLookat");
 
 }

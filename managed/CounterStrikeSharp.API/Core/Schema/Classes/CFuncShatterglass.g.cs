@@ -21,19 +21,19 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_matPanelTransform
 	[SchemaMember("CFuncShatterglass", "m_matPanelTransform")]
-	public matrix3x4_t MatPanelTransform => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CFuncShatterglass", "m_matPanelTransform");
+	public virtual matrix3x4_t MatPanelTransform => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CFuncShatterglass", "m_matPanelTransform");
 
 	// m_matPanelTransformWsTemp
 	[SchemaMember("CFuncShatterglass", "m_matPanelTransformWsTemp")]
-	public matrix3x4_t MatPanelTransformWsTemp => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CFuncShatterglass", "m_matPanelTransformWsTemp");
+	public virtual matrix3x4_t MatPanelTransformWsTemp => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CFuncShatterglass", "m_matPanelTransformWsTemp");
 
 	// m_vecShatterGlassShards
 	[SchemaMember("CFuncShatterglass", "m_vecShatterGlassShards")]
-	public NetworkedVector<UInt32> ShatterGlassShards => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CFuncShatterglass", "m_vecShatterGlassShards");
+	public virtual NetworkedVector<UInt32> ShatterGlassShards => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CFuncShatterglass", "m_vecShatterGlassShards");
 
 	// m_PanelSize
 	[SchemaMember("CFuncShatterglass", "m_PanelSize")]
-	public Vector2 PanelSize
+	public virtual Vector2 PanelSize
 	{
 		get { return Schema.GetValueType<Vector2>(this.Handle, "CFuncShatterglass", "m_PanelSize"); }
 		set { Schema.SetValueType<Vector2>(this.Handle, "CFuncShatterglass", "m_PanelSize", value); }
@@ -41,7 +41,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_flLastShatterSoundEmitTime
 	[SchemaMember("CFuncShatterglass", "m_flLastShatterSoundEmitTime")]
-	public float LastShatterSoundEmitTime
+	public virtual float LastShatterSoundEmitTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastShatterSoundEmitTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastShatterSoundEmitTime", value); }
@@ -49,7 +49,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_flLastCleanupTime
 	[SchemaMember("CFuncShatterglass", "m_flLastCleanupTime")]
-	public float LastCleanupTime
+	public virtual float LastCleanupTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastCleanupTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastCleanupTime", value); }
@@ -57,7 +57,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_flInitAtTime
 	[SchemaMember("CFuncShatterglass", "m_flInitAtTime")]
-	public float InitAtTime
+	public virtual float InitAtTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flInitAtTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flInitAtTime", value); }
@@ -65,7 +65,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_flGlassThickness
 	[SchemaMember("CFuncShatterglass", "m_flGlassThickness")]
-	public float GlassThickness
+	public virtual float GlassThickness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flGlassThickness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flGlassThickness", value); }
@@ -73,7 +73,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_flSpawnInvulnerability
 	[SchemaMember("CFuncShatterglass", "m_flSpawnInvulnerability")]
-	public float SpawnInvulnerability
+	public virtual float SpawnInvulnerability
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flSpawnInvulnerability"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flSpawnInvulnerability", value); }
@@ -81,7 +81,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_bBreakSilent
 	[SchemaMember("CFuncShatterglass", "m_bBreakSilent")]
-	public bool BreakSilent
+	public virtual bool BreakSilent
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakSilent"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakSilent", value); }
@@ -89,7 +89,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_bBreakShardless
 	[SchemaMember("CFuncShatterglass", "m_bBreakShardless")]
-	public bool BreakShardless
+	public virtual bool BreakShardless
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakShardless"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakShardless", value); }
@@ -97,7 +97,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_bBroken
 	[SchemaMember("CFuncShatterglass", "m_bBroken")]
-	public bool Broken
+	public virtual bool Broken
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBroken"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBroken", value); }
@@ -105,7 +105,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_bGlassNavIgnore
 	[SchemaMember("CFuncShatterglass", "m_bGlassNavIgnore")]
-	public bool GlassNavIgnore
+	public virtual bool GlassNavIgnore
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassNavIgnore"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassNavIgnore", value); }
@@ -113,7 +113,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_bGlassInFrame
 	[SchemaMember("CFuncShatterglass", "m_bGlassInFrame")]
-	public bool GlassInFrame
+	public virtual bool GlassInFrame
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassInFrame"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassInFrame", value); }
@@ -121,7 +121,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_bStartBroken
 	[SchemaMember("CFuncShatterglass", "m_bStartBroken")]
-	public bool StartBroken
+	public virtual bool StartBroken
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bStartBroken"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bStartBroken", value); }
@@ -129,7 +129,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_iInitialDamageType
 	[SchemaMember("CFuncShatterglass", "m_iInitialDamageType")]
-	public byte InitialDamageType
+	public virtual byte InitialDamageType
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iInitialDamageType"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iInitialDamageType", value); }
@@ -137,7 +137,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_szDamagePositioningEntityName01
 	[SchemaMember("CFuncShatterglass", "m_szDamagePositioningEntityName01")]
-	public string DamagePositioningEntityName01
+	public virtual string DamagePositioningEntityName01
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName01"); }
 		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName01", value); }
@@ -145,7 +145,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_szDamagePositioningEntityName02
 	[SchemaMember("CFuncShatterglass", "m_szDamagePositioningEntityName02")]
-	public string DamagePositioningEntityName02
+	public virtual string DamagePositioningEntityName02
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName02"); }
 		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName02", value); }
@@ -153,7 +153,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_szDamagePositioningEntityName03
 	[SchemaMember("CFuncShatterglass", "m_szDamagePositioningEntityName03")]
-	public string DamagePositioningEntityName03
+	public virtual string DamagePositioningEntityName03
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName03"); }
 		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName03", value); }
@@ -161,7 +161,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_szDamagePositioningEntityName04
 	[SchemaMember("CFuncShatterglass", "m_szDamagePositioningEntityName04")]
-	public string DamagePositioningEntityName04
+	public virtual string DamagePositioningEntityName04
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName04"); }
 		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName04", value); }
@@ -169,23 +169,23 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_vInitialDamagePositions
 	[SchemaMember("CFuncShatterglass", "m_vInitialDamagePositions")]
-	public NetworkedVector<Vector3> InitialDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CFuncShatterglass", "m_vInitialDamagePositions");
+	public virtual NetworkedVector<Vector3> InitialDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CFuncShatterglass", "m_vInitialDamagePositions");
 
 	// m_vExtraDamagePositions
 	[SchemaMember("CFuncShatterglass", "m_vExtraDamagePositions")]
-	public NetworkedVector<Vector3> ExtraDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CFuncShatterglass", "m_vExtraDamagePositions");
+	public virtual NetworkedVector<Vector3> ExtraDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CFuncShatterglass", "m_vExtraDamagePositions");
 
 	// m_vInitialPanelVertices
 	[SchemaMember("CFuncShatterglass", "m_vInitialPanelVertices")]
-	public NetworkedVector<Vector4> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4>>(this.Handle, "CFuncShatterglass", "m_vInitialPanelVertices");
+	public virtual NetworkedVector<Vector4> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4>>(this.Handle, "CFuncShatterglass", "m_vInitialPanelVertices");
 
 	// m_OnBroken
 	[SchemaMember("CFuncShatterglass", "m_OnBroken")]
-	public CEntityIOOutput OnBroken => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncShatterglass", "m_OnBroken");
+	public virtual CEntityIOOutput OnBroken => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncShatterglass", "m_OnBroken");
 
 	// m_iSurfaceType
 	[SchemaMember("CFuncShatterglass", "m_iSurfaceType")]
-	public byte SurfaceType
+	public virtual byte SurfaceType
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iSurfaceType"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iSurfaceType", value); }
@@ -193,6 +193,6 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_hMaterialDamageBase
 	[SchemaMember("CFuncShatterglass", "m_hMaterialDamageBase")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> MaterialDamageBase => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hMaterialDamageBase");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> MaterialDamageBase => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hMaterialDamageBase");
 
 }

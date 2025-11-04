@@ -21,7 +21,7 @@ public partial class constraint_axislimit_t : NativeObject
 
 	// flMinRotation
 	[SchemaMember("constraint_axislimit_t", "flMinRotation")]
-	public float FlMinRotation
+	public virtual float FlMinRotation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMinRotation"); }
 		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMinRotation", value); }
@@ -29,7 +29,7 @@ public partial class constraint_axislimit_t : NativeObject
 
 	// flMaxRotation
 	[SchemaMember("constraint_axislimit_t", "flMaxRotation")]
-	public float FlMaxRotation
+	public virtual float FlMaxRotation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation"); }
 		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation", value); }
@@ -37,7 +37,7 @@ public partial class constraint_axislimit_t : NativeObject
 
 	// flMotorTargetAngSpeed
 	[SchemaMember("constraint_axislimit_t", "flMotorTargetAngSpeed")]
-	public float FlMotorTargetAngSpeed
+	public virtual float FlMotorTargetAngSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed", value); }
@@ -45,7 +45,7 @@ public partial class constraint_axislimit_t : NativeObject
 
 	// flMotorMaxTorque
 	[SchemaMember("constraint_axislimit_t", "flMotorMaxTorque")]
-	public float FlMotorMaxTorque
+	public virtual float FlMotorMaxTorque
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque"); }
 		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque", value); }

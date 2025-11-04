@@ -21,7 +21,7 @@ public partial class CShatterGlassShardPhysics : CPhysicsProp
 
 	// m_bDebris
 	[SchemaMember("CShatterGlassShardPhysics", "m_bDebris")]
-	public bool Debris
+	public virtual bool Debris
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris", value); }
@@ -29,7 +29,7 @@ public partial class CShatterGlassShardPhysics : CPhysicsProp
 
 	// m_hParentShard
 	[SchemaMember("CShatterGlassShardPhysics", "m_hParentShard")]
-	public UInt32 ParentShard
+	public virtual UInt32 ParentShard
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard", value); }
@@ -37,7 +37,7 @@ public partial class CShatterGlassShardPhysics : CPhysicsProp
 
 	// m_ShardDesc
 	[SchemaMember("CShatterGlassShardPhysics", "m_ShardDesc")]
-	public shard_model_desc_t ShardDesc => Schema.GetDeclaredClass<shard_model_desc_t>(this.Handle, "CShatterGlassShardPhysics", "m_ShardDesc");
+	public virtual shard_model_desc_t ShardDesc => Schema.GetDeclaredClass<shard_model_desc_t>(this.Handle, "CShatterGlassShardPhysics", "m_ShardDesc");
 
-	public void ShardDescPropertyChanged() => Utilities.SetStateChanged(this, "CShatterGlassShardPhysics", "m_ShardDesc");
+	public virtual void ShardDescPropertyChanged() => Utilities.SetStateChanged(this, "CShatterGlassShardPhysics", "m_ShardDesc");
 }

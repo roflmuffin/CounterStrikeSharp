@@ -21,7 +21,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iszPreCommands
 	[SchemaMember("CPointCommentaryNode", "m_iszPreCommands")]
-	public string PreCommands
+	public virtual string PreCommands
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszPreCommands"); }
 		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPreCommands", value); }
@@ -29,7 +29,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iszPostCommands
 	[SchemaMember("CPointCommentaryNode", "m_iszPostCommands")]
-	public string PostCommands
+	public virtual string PostCommands
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszPostCommands"); }
 		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPostCommands", value); }
@@ -37,7 +37,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iszCommentaryFile
 	[SchemaMember("CPointCommentaryNode", "m_iszCommentaryFile")]
-	public string CommentaryFile
+	public virtual string CommentaryFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile"); }
 		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile", value); }
@@ -45,7 +45,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iszViewTarget
 	[SchemaMember("CPointCommentaryNode", "m_iszViewTarget")]
-	public string IszViewTarget
+	public virtual string IszViewTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszViewTarget"); }
 		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewTarget", value); }
@@ -53,15 +53,15 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_hViewTarget
 	[SchemaMember("CPointCommentaryNode", "m_hViewTarget")]
-	public CHandle<CBaseEntity> HViewTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTarget");
+	public virtual CHandle<CBaseEntity> HViewTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTarget");
 
 	// m_hViewTargetAngles
 	[SchemaMember("CPointCommentaryNode", "m_hViewTargetAngles")]
-	public CHandle<CBaseEntity> ViewTargetAngles => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTargetAngles");
+	public virtual CHandle<CBaseEntity> ViewTargetAngles => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTargetAngles");
 
 	// m_iszViewPosition
 	[SchemaMember("CPointCommentaryNode", "m_iszViewPosition")]
-	public string IszViewPosition
+	public virtual string IszViewPosition
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszViewPosition"); }
 		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewPosition", value); }
@@ -69,15 +69,15 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_hViewPosition
 	[SchemaMember("CPointCommentaryNode", "m_hViewPosition")]
-	public CHandle<CBaseEntity> HViewPosition => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition");
+	public virtual CHandle<CBaseEntity> HViewPosition => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition");
 
 	// m_hViewPositionMover
 	[SchemaMember("CPointCommentaryNode", "m_hViewPositionMover")]
-	public CHandle<CBaseEntity> ViewPositionMover => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPositionMover");
+	public virtual CHandle<CBaseEntity> ViewPositionMover => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPositionMover");
 
 	// m_bPreventMovement
 	[SchemaMember("CPointCommentaryNode", "m_bPreventMovement")]
-	public bool PreventMovement
+	public virtual bool PreventMovement
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bPreventMovement"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bPreventMovement", value); }
@@ -85,7 +85,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_bUnderCrosshair
 	[SchemaMember("CPointCommentaryNode", "m_bUnderCrosshair")]
-	public bool UnderCrosshair
+	public virtual bool UnderCrosshair
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bUnderCrosshair"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bUnderCrosshair", value); }
@@ -93,7 +93,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_bUnstoppable
 	[SchemaMember("CPointCommentaryNode", "m_bUnstoppable")]
-	public bool Unstoppable
+	public virtual bool Unstoppable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bUnstoppable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bUnstoppable", value); }
@@ -101,7 +101,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_flFinishedTime
 	[SchemaMember("CPointCommentaryNode", "m_flFinishedTime")]
-	public float FinishedTime
+	public virtual float FinishedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flFinishedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flFinishedTime", value); }
@@ -109,7 +109,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_vecFinishOrigin
 	[SchemaMember("CPointCommentaryNode", "m_vecFinishOrigin")]
-	public Vector3 FinishOrigin
+	public virtual Vector3 FinishOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointCommentaryNode", "m_vecFinishOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPointCommentaryNode", "m_vecFinishOrigin", value); }
@@ -117,7 +117,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_vecOriginalAngles
 	[SchemaMember("CPointCommentaryNode", "m_vecOriginalAngles")]
-	public QAngle OriginalAngles
+	public virtual QAngle OriginalAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPointCommentaryNode", "m_vecOriginalAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPointCommentaryNode", "m_vecOriginalAngles", value); }
@@ -125,7 +125,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_vecFinishAngles
 	[SchemaMember("CPointCommentaryNode", "m_vecFinishAngles")]
-	public QAngle FinishAngles
+	public virtual QAngle FinishAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPointCommentaryNode", "m_vecFinishAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPointCommentaryNode", "m_vecFinishAngles", value); }
@@ -133,7 +133,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_bPreventChangesWhileMoving
 	[SchemaMember("CPointCommentaryNode", "m_bPreventChangesWhileMoving")]
-	public bool PreventChangesWhileMoving
+	public virtual bool PreventChangesWhileMoving
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bPreventChangesWhileMoving"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bPreventChangesWhileMoving", value); }
@@ -141,7 +141,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_bDisabled
 	[SchemaMember("CPointCommentaryNode", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bDisabled", value); }
@@ -149,7 +149,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_vecTeleportOrigin
 	[SchemaMember("CPointCommentaryNode", "m_vecTeleportOrigin")]
-	public Vector3 TeleportOrigin
+	public virtual Vector3 TeleportOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointCommentaryNode", "m_vecTeleportOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPointCommentaryNode", "m_vecTeleportOrigin", value); }
@@ -157,7 +157,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_flAbortedPlaybackAt
 	[SchemaMember("CPointCommentaryNode", "m_flAbortedPlaybackAt")]
-	public float AbortedPlaybackAt
+	public virtual float AbortedPlaybackAt
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flAbortedPlaybackAt"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flAbortedPlaybackAt", value); }
@@ -165,15 +165,15 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_pOnCommentaryStarted
 	[SchemaMember("CPointCommentaryNode", "m_pOnCommentaryStarted")]
-	public CEntityIOOutput OnCommentaryStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointCommentaryNode", "m_pOnCommentaryStarted");
+	public virtual CEntityIOOutput OnCommentaryStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointCommentaryNode", "m_pOnCommentaryStarted");
 
 	// m_pOnCommentaryStopped
 	[SchemaMember("CPointCommentaryNode", "m_pOnCommentaryStopped")]
-	public CEntityIOOutput OnCommentaryStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointCommentaryNode", "m_pOnCommentaryStopped");
+	public virtual CEntityIOOutput OnCommentaryStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointCommentaryNode", "m_pOnCommentaryStopped");
 
 	// m_bActive
 	[SchemaMember("CPointCommentaryNode", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bActive", value); }
@@ -181,7 +181,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_flStartTime
 	[SchemaMember("CPointCommentaryNode", "m_flStartTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flStartTime", value); }
@@ -189,7 +189,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_flStartTimeInCommentary
 	[SchemaMember("CPointCommentaryNode", "m_flStartTimeInCommentary")]
-	public float StartTimeInCommentary
+	public virtual float StartTimeInCommentary
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flStartTimeInCommentary"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCommentaryNode", "m_flStartTimeInCommentary", value); }
@@ -197,7 +197,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iszTitle
 	[SchemaMember("CPointCommentaryNode", "m_iszTitle")]
-	public string Title
+	public virtual string Title
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszTitle"); }
 		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszTitle", value); }
@@ -205,7 +205,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iszSpeakers
 	[SchemaMember("CPointCommentaryNode", "m_iszSpeakers")]
-	public string Speakers
+	public virtual string Speakers
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszSpeakers"); }
 		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszSpeakers", value); }
@@ -213,7 +213,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iNodeNumber
 	[SchemaMember("CPointCommentaryNode", "m_iNodeNumber")]
-	public Int32 NodeNumber
+	public virtual Int32 NodeNumber
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPointCommentaryNode", "m_iNodeNumber"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPointCommentaryNode", "m_iNodeNumber", value); }
@@ -221,7 +221,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_iNodeNumberMax
 	[SchemaMember("CPointCommentaryNode", "m_iNodeNumberMax")]
-	public Int32 NodeNumberMax
+	public virtual Int32 NodeNumberMax
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPointCommentaryNode", "m_iNodeNumberMax"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPointCommentaryNode", "m_iNodeNumberMax", value); }
@@ -229,20 +229,20 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_bListenedTo
 	[SchemaMember("CPointCommentaryNode", "m_bListenedTo")]
-	public bool ListenedTo
+	public virtual bool ListenedTo
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bListenedTo"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bListenedTo", value); }
 	}
 
-	public void CommentaryFilePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszCommentaryFile");
-	public void HViewPositionPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_hViewPosition");
-	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_bActive");
-	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_flStartTime");
-	public void StartTimeInCommentaryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_flStartTimeInCommentary");
-	public void TitlePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszTitle");
-	public void SpeakersPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszSpeakers");
-	public void NodeNumberPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iNodeNumber");
-	public void NodeNumberMaxPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iNodeNumberMax");
-	public void ListenedToPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_bListenedTo");
+	public virtual void CommentaryFilePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszCommentaryFile");
+	public virtual void HViewPositionPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_hViewPosition");
+	public virtual void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_bActive");
+	public virtual void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_flStartTime");
+	public virtual void StartTimeInCommentaryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_flStartTimeInCommentary");
+	public virtual void TitlePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszTitle");
+	public virtual void SpeakersPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszSpeakers");
+	public virtual void NodeNumberPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iNodeNumber");
+	public virtual void NodeNumberMaxPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iNodeNumberMax");
+	public virtual void ListenedToPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_bListenedTo");
 }

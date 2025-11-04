@@ -21,7 +21,7 @@ public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
 
 	// m_nDecoyShotTick
 	[SchemaMember("CDecoyProjectile", "m_nDecoyShotTick")]
-	public Int32 DecoyShotTick
+	public virtual Int32 DecoyShotTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_nDecoyShotTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_nDecoyShotTick", value); }
@@ -29,7 +29,7 @@ public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
 
 	// m_shotsRemaining
 	[SchemaMember("CDecoyProjectile", "m_shotsRemaining")]
-	public Int32 ShotsRemaining
+	public virtual Int32 ShotsRemaining
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_shotsRemaining"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_shotsRemaining", value); }
@@ -37,7 +37,7 @@ public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
 
 	// m_fExpireTime
 	[SchemaMember("CDecoyProjectile", "m_fExpireTime")]
-	public float ExpireTime
+	public virtual float ExpireTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDecoyProjectile", "m_fExpireTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDecoyProjectile", "m_fExpireTime", value); }
@@ -45,11 +45,11 @@ public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
 
 	// m_decoyWeaponDefIndex
 	[SchemaMember("CDecoyProjectile", "m_decoyWeaponDefIndex")]
-	public UInt16 DecoyWeaponDefIndex
+	public virtual UInt16 DecoyWeaponDefIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CDecoyProjectile", "m_decoyWeaponDefIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CDecoyProjectile", "m_decoyWeaponDefIndex", value); }
 	}
 
-	public void DecoyShotTickPropertyChanged() => Utilities.SetStateChanged(this, "CDecoyProjectile", "m_nDecoyShotTick");
+	public virtual void DecoyShotTickPropertyChanged() => Utilities.SetStateChanged(this, "CDecoyProjectile", "m_nDecoyShotTick");
 }

@@ -21,7 +21,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszEntry
 	[SchemaMember("CScriptedSequence", "m_iszEntry")]
-	public string Entry
+	public virtual string Entry
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntry"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntry", value); }
@@ -29,7 +29,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszPreIdle
 	[SchemaMember("CScriptedSequence", "m_iszPreIdle")]
-	public string PreIdle
+	public virtual string PreIdle
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPreIdle"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPreIdle", value); }
@@ -37,7 +37,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszPlay
 	[SchemaMember("CScriptedSequence", "m_iszPlay")]
-	public string Play
+	public virtual string Play
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPlay"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPlay", value); }
@@ -45,7 +45,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszPostIdle
 	[SchemaMember("CScriptedSequence", "m_iszPostIdle")]
-	public string PostIdle
+	public virtual string PostIdle
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPostIdle"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPostIdle", value); }
@@ -53,7 +53,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszModifierToAddOnPlay
 	[SchemaMember("CScriptedSequence", "m_iszModifierToAddOnPlay")]
-	public string ModifierToAddOnPlay
+	public virtual string ModifierToAddOnPlay
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszModifierToAddOnPlay"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszModifierToAddOnPlay", value); }
@@ -61,7 +61,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszNextScript
 	[SchemaMember("CScriptedSequence", "m_iszNextScript")]
-	public string NextScript
+	public virtual string NextScript
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszNextScript"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszNextScript", value); }
@@ -69,7 +69,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszEntity
 	[SchemaMember("CScriptedSequence", "m_iszEntity")]
-	public new string Entity
+	public virtual new string Entity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntity"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntity", value); }
@@ -77,7 +77,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszSyncGroup
 	[SchemaMember("CScriptedSequence", "m_iszSyncGroup")]
-	public string SyncGroup
+	public virtual string SyncGroup
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszSyncGroup"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszSyncGroup", value); }
@@ -85,7 +85,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_nMoveTo
 	[SchemaMember("CScriptedSequence", "m_nMoveTo")]
-	public ScriptedMoveTo_t MoveTo
+	public virtual ScriptedMoveTo_t MoveTo
 	{
 		get { return Schema.GetValueType<ScriptedMoveTo_t>(this.Handle, "CScriptedSequence", "m_nMoveTo"); }
 		set { Schema.SetValueType<ScriptedMoveTo_t>(this.Handle, "CScriptedSequence", "m_nMoveTo", value); }
@@ -93,7 +93,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_nMoveToGait
 	[SchemaMember("CScriptedSequence", "m_nMoveToGait")]
-	public SharedMovementGait_t MoveToGait
+	public virtual SharedMovementGait_t MoveToGait
 	{
 		get { return Schema.GetValueType<SharedMovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait"); }
 		set { Schema.SetValueType<SharedMovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait", value); }
@@ -101,7 +101,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_nHeldWeaponBehavior
 	[SchemaMember("CScriptedSequence", "m_nHeldWeaponBehavior")]
-	public ScriptedHeldWeaponBehavior_t HeldWeaponBehavior
+	public virtual ScriptedHeldWeaponBehavior_t HeldWeaponBehavior
 	{
 		get { return Schema.GetValueType<ScriptedHeldWeaponBehavior_t>(this.Handle, "CScriptedSequence", "m_nHeldWeaponBehavior"); }
 		set { Schema.SetValueType<ScriptedHeldWeaponBehavior_t>(this.Handle, "CScriptedSequence", "m_nHeldWeaponBehavior", value); }
@@ -109,7 +109,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_nForcedCrouchState
 	[SchemaMember("CScriptedSequence", "m_nForcedCrouchState")]
-	public ForcedCrouchState_t ForcedCrouchState
+	public virtual ForcedCrouchState_t ForcedCrouchState
 	{
 		get { return Schema.GetValueType<ForcedCrouchState_t>(this.Handle, "CScriptedSequence", "m_nForcedCrouchState"); }
 		set { Schema.SetValueType<ForcedCrouchState_t>(this.Handle, "CScriptedSequence", "m_nForcedCrouchState", value); }
@@ -117,7 +117,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIsPlayingPreIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPreIdle")]
-	public bool IsPlayingPreIdle
+	public virtual bool IsPlayingPreIdle
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPreIdle"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPreIdle", value); }
@@ -125,7 +125,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIsPlayingEntry
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingEntry")]
-	public bool IsPlayingEntry
+	public virtual bool IsPlayingEntry
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingEntry"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingEntry", value); }
@@ -133,7 +133,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIsPlayingAction
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingAction")]
-	public bool IsPlayingAction
+	public virtual bool IsPlayingAction
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingAction"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingAction", value); }
@@ -141,7 +141,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIsPlayingPostIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPostIdle")]
-	public bool IsPlayingPostIdle
+	public virtual bool IsPlayingPostIdle
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPostIdle"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPostIdle", value); }
@@ -149,7 +149,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bDontRotateOther
 	[SchemaMember("CScriptedSequence", "m_bDontRotateOther")]
-	public bool DontRotateOther
+	public virtual bool DontRotateOther
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontRotateOther"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontRotateOther", value); }
@@ -157,7 +157,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIsRepeatable
 	[SchemaMember("CScriptedSequence", "m_bIsRepeatable")]
-	public bool IsRepeatable
+	public virtual bool IsRepeatable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsRepeatable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsRepeatable", value); }
@@ -165,7 +165,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bShouldLeaveCorpse
 	[SchemaMember("CScriptedSequence", "m_bShouldLeaveCorpse")]
-	public bool ShouldLeaveCorpse
+	public virtual bool ShouldLeaveCorpse
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bShouldLeaveCorpse"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bShouldLeaveCorpse", value); }
@@ -173,7 +173,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bStartOnSpawn
 	[SchemaMember("CScriptedSequence", "m_bStartOnSpawn")]
-	public bool StartOnSpawn
+	public virtual bool StartOnSpawn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bStartOnSpawn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bStartOnSpawn", value); }
@@ -181,7 +181,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bDisallowInterrupts
 	[SchemaMember("CScriptedSequence", "m_bDisallowInterrupts")]
-	public bool DisallowInterrupts
+	public virtual bool DisallowInterrupts
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisallowInterrupts"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisallowInterrupts", value); }
@@ -189,7 +189,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bCanOverrideNPCState
 	[SchemaMember("CScriptedSequence", "m_bCanOverrideNPCState")]
-	public bool CanOverrideNPCState
+	public virtual bool CanOverrideNPCState
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bCanOverrideNPCState"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bCanOverrideNPCState", value); }
@@ -197,7 +197,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bDontTeleportAtEnd
 	[SchemaMember("CScriptedSequence", "m_bDontTeleportAtEnd")]
-	public bool DontTeleportAtEnd
+	public virtual bool DontTeleportAtEnd
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontTeleportAtEnd"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontTeleportAtEnd", value); }
@@ -205,7 +205,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bHighPriority
 	[SchemaMember("CScriptedSequence", "m_bHighPriority")]
-	public bool HighPriority
+	public virtual bool HighPriority
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHighPriority"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHighPriority", value); }
@@ -213,7 +213,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bHideDebugComplaints
 	[SchemaMember("CScriptedSequence", "m_bHideDebugComplaints")]
-	public bool HideDebugComplaints
+	public virtual bool HideDebugComplaints
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHideDebugComplaints"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHideDebugComplaints", value); }
@@ -221,7 +221,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bContinueOnDeath
 	[SchemaMember("CScriptedSequence", "m_bContinueOnDeath")]
-	public bool ContinueOnDeath
+	public virtual bool ContinueOnDeath
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bContinueOnDeath"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bContinueOnDeath", value); }
@@ -229,7 +229,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bLoopPreIdleSequence
 	[SchemaMember("CScriptedSequence", "m_bLoopPreIdleSequence")]
-	public bool LoopPreIdleSequence
+	public virtual bool LoopPreIdleSequence
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPreIdleSequence"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPreIdleSequence", value); }
@@ -237,7 +237,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bLoopActionSequence
 	[SchemaMember("CScriptedSequence", "m_bLoopActionSequence")]
-	public bool LoopActionSequence
+	public virtual bool LoopActionSequence
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopActionSequence"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopActionSequence", value); }
@@ -245,7 +245,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bLoopPostIdleSequence
 	[SchemaMember("CScriptedSequence", "m_bLoopPostIdleSequence")]
-	public bool LoopPostIdleSequence
+	public virtual bool LoopPostIdleSequence
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPostIdleSequence"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPostIdleSequence", value); }
@@ -253,7 +253,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bSynchPostIdles
 	[SchemaMember("CScriptedSequence", "m_bSynchPostIdles")]
-	public bool SynchPostIdles
+	public virtual bool SynchPostIdles
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSynchPostIdles"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSynchPostIdles", value); }
@@ -261,7 +261,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIgnoreLookAt
 	[SchemaMember("CScriptedSequence", "m_bIgnoreLookAt")]
-	public bool IgnoreLookAt
+	public virtual bool IgnoreLookAt
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreLookAt"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreLookAt", value); }
@@ -269,7 +269,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIgnoreGravity
 	[SchemaMember("CScriptedSequence", "m_bIgnoreGravity")]
-	public bool IgnoreGravity
+	public virtual bool IgnoreGravity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreGravity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreGravity", value); }
@@ -277,7 +277,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bDisableNPCCollisions
 	[SchemaMember("CScriptedSequence", "m_bDisableNPCCollisions")]
-	public bool DisableNPCCollisions
+	public virtual bool DisableNPCCollisions
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableNPCCollisions"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableNPCCollisions", value); }
@@ -285,7 +285,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bKeepAnimgraphLockedPost
 	[SchemaMember("CScriptedSequence", "m_bKeepAnimgraphLockedPost")]
-	public bool KeepAnimgraphLockedPost
+	public virtual bool KeepAnimgraphLockedPost
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bKeepAnimgraphLockedPost"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bKeepAnimgraphLockedPost", value); }
@@ -293,7 +293,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bDontAddModifiers
 	[SchemaMember("CScriptedSequence", "m_bDontAddModifiers")]
-	public bool DontAddModifiers
+	public virtual bool DontAddModifiers
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontAddModifiers"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontAddModifiers", value); }
@@ -301,7 +301,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bDisableAimingWhileMoving
 	[SchemaMember("CScriptedSequence", "m_bDisableAimingWhileMoving")]
-	public bool DisableAimingWhileMoving
+	public virtual bool DisableAimingWhileMoving
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableAimingWhileMoving"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableAimingWhileMoving", value); }
@@ -309,7 +309,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIgnoreRotation
 	[SchemaMember("CScriptedSequence", "m_bIgnoreRotation")]
-	public bool IgnoreRotation
+	public virtual bool IgnoreRotation
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreRotation"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreRotation", value); }
@@ -317,7 +317,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_flRadius
 	[SchemaMember("CScriptedSequence", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flRadius", value); }
@@ -325,7 +325,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_flRepeat
 	[SchemaMember("CScriptedSequence", "m_flRepeat")]
-	public float Repeat
+	public virtual float Repeat
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flRepeat"); }
 		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flRepeat", value); }
@@ -333,7 +333,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_flPlayAnimFadeInTime
 	[SchemaMember("CScriptedSequence", "m_flPlayAnimFadeInTime")]
-	public float PlayAnimFadeInTime
+	public virtual float PlayAnimFadeInTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flPlayAnimFadeInTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flPlayAnimFadeInTime", value); }
@@ -341,7 +341,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_flMoveInterpTime
 	[SchemaMember("CScriptedSequence", "m_flMoveInterpTime")]
-	public float MoveInterpTime
+	public virtual float MoveInterpTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveInterpTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveInterpTime", value); }
@@ -349,7 +349,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_flAngRate
 	[SchemaMember("CScriptedSequence", "m_flAngRate")]
-	public float AngRate
+	public virtual float AngRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flAngRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flAngRate", value); }
@@ -357,7 +357,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_flMoveSpeed
 	[SchemaMember("CScriptedSequence", "m_flMoveSpeed")]
-	public float MoveSpeed
+	public virtual float MoveSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveSpeed", value); }
@@ -365,7 +365,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bWaitUntilMoveCompletesToStartAnimation
 	[SchemaMember("CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation")]
-	public bool WaitUntilMoveCompletesToStartAnimation
+	public virtual bool WaitUntilMoveCompletesToStartAnimation
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation", value); }
@@ -373,7 +373,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_nNotReadySequenceCount
 	[SchemaMember("CScriptedSequence", "m_nNotReadySequenceCount")]
-	public Int32 NotReadySequenceCount
+	public virtual Int32 NotReadySequenceCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_nNotReadySequenceCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_nNotReadySequenceCount", value); }
@@ -381,7 +381,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_startTime
 	[SchemaMember("CScriptedSequence", "m_startTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_startTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_startTime", value); }
@@ -389,7 +389,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bWaitForBeginSequence
 	[SchemaMember("CScriptedSequence", "m_bWaitForBeginSequence")]
-	public bool WaitForBeginSequence
+	public virtual bool WaitForBeginSequence
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitForBeginSequence"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitForBeginSequence", value); }
@@ -397,7 +397,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_saved_effects
 	[SchemaMember("CScriptedSequence", "m_saved_effects")]
-	public Int32 Saved_effects
+	public virtual Int32 Saved_effects
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_saved_effects"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_saved_effects", value); }
@@ -405,7 +405,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_savedFlags
 	[SchemaMember("CScriptedSequence", "m_savedFlags")]
-	public Int32 SavedFlags
+	public virtual Int32 SavedFlags
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedFlags"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedFlags", value); }
@@ -413,7 +413,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_savedCollisionGroup
 	[SchemaMember("CScriptedSequence", "m_savedCollisionGroup")]
-	public Int32 SavedCollisionGroup
+	public virtual Int32 SavedCollisionGroup
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedCollisionGroup"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedCollisionGroup", value); }
@@ -421,7 +421,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bInterruptable
 	[SchemaMember("CScriptedSequence", "m_bInterruptable")]
-	public bool Interruptable
+	public virtual bool Interruptable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInterruptable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInterruptable", value); }
@@ -429,7 +429,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_sequenceStarted
 	[SchemaMember("CScriptedSequence", "m_sequenceStarted")]
-	public bool SequenceStarted
+	public virtual bool SequenceStarted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_sequenceStarted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_sequenceStarted", value); }
@@ -437,7 +437,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bPositionRelativeToOtherEntity
 	[SchemaMember("CScriptedSequence", "m_bPositionRelativeToOtherEntity")]
-	public bool PositionRelativeToOtherEntity
+	public virtual bool PositionRelativeToOtherEntity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPositionRelativeToOtherEntity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPositionRelativeToOtherEntity", value); }
@@ -445,15 +445,15 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_hTargetEnt
 	[SchemaMember("CScriptedSequence", "m_hTargetEnt")]
-	public CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hTargetEnt");
+	public virtual CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hTargetEnt");
 
 	// m_hNextCine
 	[SchemaMember("CScriptedSequence", "m_hNextCine")]
-	public CHandle<CScriptedSequence> NextCine => Schema.GetDeclaredClass<CHandle<CScriptedSequence>>(this.Handle, "CScriptedSequence", "m_hNextCine");
+	public virtual CHandle<CScriptedSequence> NextCine => Schema.GetDeclaredClass<CHandle<CScriptedSequence>>(this.Handle, "CScriptedSequence", "m_hNextCine");
 
 	// m_bThinking
 	[SchemaMember("CScriptedSequence", "m_bThinking")]
-	public bool Thinking
+	public virtual bool Thinking
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bThinking"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bThinking", value); }
@@ -461,7 +461,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bInitiatedSelfDelete
 	[SchemaMember("CScriptedSequence", "m_bInitiatedSelfDelete")]
-	public bool InitiatedSelfDelete
+	public virtual bool InitiatedSelfDelete
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInitiatedSelfDelete"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInitiatedSelfDelete", value); }
@@ -469,7 +469,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bIsTeleportingDueToMoveTo
 	[SchemaMember("CScriptedSequence", "m_bIsTeleportingDueToMoveTo")]
-	public bool IsTeleportingDueToMoveTo
+	public virtual bool IsTeleportingDueToMoveTo
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsTeleportingDueToMoveTo"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsTeleportingDueToMoveTo", value); }
@@ -477,7 +477,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bAllowCustomInterruptConditions
 	[SchemaMember("CScriptedSequence", "m_bAllowCustomInterruptConditions")]
-	public bool AllowCustomInterruptConditions
+	public virtual bool AllowCustomInterruptConditions
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bAllowCustomInterruptConditions"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bAllowCustomInterruptConditions", value); }
@@ -485,11 +485,11 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_hForcedTarget
 	[SchemaMember("CScriptedSequence", "m_hForcedTarget")]
-	public CHandle<CBaseAnimGraph> ForcedTarget => Schema.GetDeclaredClass<CHandle<CBaseAnimGraph>>(this.Handle, "CScriptedSequence", "m_hForcedTarget");
+	public virtual CHandle<CBaseAnimGraph> ForcedTarget => Schema.GetDeclaredClass<CHandle<CBaseAnimGraph>>(this.Handle, "CScriptedSequence", "m_hForcedTarget");
 
 	// m_bDontCancelOtherSequences
 	[SchemaMember("CScriptedSequence", "m_bDontCancelOtherSequences")]
-	public bool DontCancelOtherSequences
+	public virtual bool DontCancelOtherSequences
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontCancelOtherSequences"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontCancelOtherSequences", value); }
@@ -497,7 +497,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bForceSynch
 	[SchemaMember("CScriptedSequence", "m_bForceSynch")]
-	public bool ForceSynch
+	public virtual bool ForceSynch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bForceSynch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bForceSynch", value); }
@@ -505,7 +505,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bPreventUpdateYawOnFinish
 	[SchemaMember("CScriptedSequence", "m_bPreventUpdateYawOnFinish")]
-	public bool PreventUpdateYawOnFinish
+	public virtual bool PreventUpdateYawOnFinish
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPreventUpdateYawOnFinish"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPreventUpdateYawOnFinish", value); }
@@ -513,7 +513,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bEnsureOnNavmeshOnFinish
 	[SchemaMember("CScriptedSequence", "m_bEnsureOnNavmeshOnFinish")]
-	public bool EnsureOnNavmeshOnFinish
+	public virtual bool EnsureOnNavmeshOnFinish
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bEnsureOnNavmeshOnFinish"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bEnsureOnNavmeshOnFinish", value); }
@@ -521,7 +521,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_onDeathBehavior
 	[SchemaMember("CScriptedSequence", "m_onDeathBehavior")]
-	public ScriptedOnDeath_t OnDeathBehavior
+	public virtual ScriptedOnDeath_t OnDeathBehavior
 	{
 		get { return Schema.GetValueType<ScriptedOnDeath_t>(this.Handle, "CScriptedSequence", "m_onDeathBehavior"); }
 		set { Schema.SetValueType<ScriptedOnDeath_t>(this.Handle, "CScriptedSequence", "m_onDeathBehavior", value); }
@@ -529,7 +529,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_ConflictResponse
 	[SchemaMember("CScriptedSequence", "m_ConflictResponse")]
-	public ScriptedConflictResponse_t ConflictResponse
+	public virtual ScriptedConflictResponse_t ConflictResponse
 	{
 		get { return Schema.GetValueType<ScriptedConflictResponse_t>(this.Handle, "CScriptedSequence", "m_ConflictResponse"); }
 		set { Schema.SetValueType<ScriptedConflictResponse_t>(this.Handle, "CScriptedSequence", "m_ConflictResponse", value); }
@@ -537,43 +537,43 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_OnBeginSequence
 	[SchemaMember("CScriptedSequence", "m_OnBeginSequence")]
-	public CEntityIOOutput OnBeginSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnBeginSequence");
+	public virtual CEntityIOOutput OnBeginSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnBeginSequence");
 
 	// m_OnActionStartOrLoop
 	[SchemaMember("CScriptedSequence", "m_OnActionStartOrLoop")]
-	public CEntityIOOutput OnActionStartOrLoop => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnActionStartOrLoop");
+	public virtual CEntityIOOutput OnActionStartOrLoop => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnActionStartOrLoop");
 
 	// m_OnEndSequence
 	[SchemaMember("CScriptedSequence", "m_OnEndSequence")]
-	public CEntityIOOutput OnEndSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnEndSequence");
+	public virtual CEntityIOOutput OnEndSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnEndSequence");
 
 	// m_OnPostIdleEndSequence
 	[SchemaMember("CScriptedSequence", "m_OnPostIdleEndSequence")]
-	public CEntityIOOutput OnPostIdleEndSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnPostIdleEndSequence");
+	public virtual CEntityIOOutput OnPostIdleEndSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnPostIdleEndSequence");
 
 	// m_OnCancelSequence
 	[SchemaMember("CScriptedSequence", "m_OnCancelSequence")]
-	public CEntityIOOutput OnCancelSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnCancelSequence");
+	public virtual CEntityIOOutput OnCancelSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnCancelSequence");
 
 	// m_OnCancelFailedSequence
 	[SchemaMember("CScriptedSequence", "m_OnCancelFailedSequence")]
-	public CEntityIOOutput OnCancelFailedSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnCancelFailedSequence");
+	public virtual CEntityIOOutput OnCancelFailedSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnCancelFailedSequence");
 
 	// m_OnScriptEvent
 	[SchemaMember("CScriptedSequence", "m_OnScriptEvent")]
-	public Span<CEntityIOOutput> OnScriptEvent => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnScriptEvent", 8);
+	public virtual Span<CEntityIOOutput> OnScriptEvent => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnScriptEvent", 8);
 
 	// m_matOtherToMain
 	[SchemaMember("CScriptedSequence", "m_matOtherToMain")]
-	public CTransform MatOtherToMain => Schema.GetDeclaredClass<CTransform>(this.Handle, "CScriptedSequence", "m_matOtherToMain");
+	public virtual CTransform MatOtherToMain => Schema.GetDeclaredClass<CTransform>(this.Handle, "CScriptedSequence", "m_matOtherToMain");
 
 	// m_hInteractionMainEntity
 	[SchemaMember("CScriptedSequence", "m_hInteractionMainEntity")]
-	public CHandle<CBaseEntity> InteractionMainEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hInteractionMainEntity");
+	public virtual CHandle<CBaseEntity> InteractionMainEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hInteractionMainEntity");
 
 	// m_iPlayerDeathBehavior
 	[SchemaMember("CScriptedSequence", "m_iPlayerDeathBehavior")]
-	public Int32 PlayerDeathBehavior
+	public virtual Int32 PlayerDeathBehavior
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_iPlayerDeathBehavior"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_iPlayerDeathBehavior", value); }
@@ -581,7 +581,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bSkipFadeIn
 	[SchemaMember("CScriptedSequence", "m_bSkipFadeIn")]
-	public bool SkipFadeIn
+	public virtual bool SkipFadeIn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSkipFadeIn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSkipFadeIn", value); }

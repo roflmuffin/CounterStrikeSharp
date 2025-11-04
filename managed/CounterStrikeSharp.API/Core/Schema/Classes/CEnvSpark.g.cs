@@ -21,7 +21,7 @@ public partial class CEnvSpark : CPointEntity
 
 	// m_flDelay
 	[SchemaMember("CEnvSpark", "m_flDelay")]
-	public float Delay
+	public virtual float Delay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSpark", "m_flDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSpark", "m_flDelay", value); }
@@ -29,7 +29,7 @@ public partial class CEnvSpark : CPointEntity
 
 	// m_nMagnitude
 	[SchemaMember("CEnvSpark", "m_nMagnitude")]
-	public Int32 Magnitude
+	public virtual Int32 Magnitude
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude", value); }
@@ -37,7 +37,7 @@ public partial class CEnvSpark : CPointEntity
 
 	// m_nTrailLength
 	[SchemaMember("CEnvSpark", "m_nTrailLength")]
-	public Int32 TrailLength
+	public virtual Int32 TrailLength
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength", value); }
@@ -45,7 +45,7 @@ public partial class CEnvSpark : CPointEntity
 
 	// m_nType
 	[SchemaMember("CEnvSpark", "m_nType")]
-	public Int32 Type
+	public virtual Int32 Type
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSpark", "m_nType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSpark", "m_nType", value); }
@@ -53,6 +53,6 @@ public partial class CEnvSpark : CPointEntity
 
 	// m_OnSpark
 	[SchemaMember("CEnvSpark", "m_OnSpark")]
-	public CEntityIOOutput OnSpark => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSpark", "m_OnSpark");
+	public virtual CEntityIOOutput OnSpark => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSpark", "m_OnSpark");
 
 }

@@ -21,19 +21,19 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_CBodyComponent
 	[SchemaMember("CBaseEntity", "m_CBodyComponent")]
-	public CBodyComponent? CBodyComponent => Schema.GetPointer<CBodyComponent>(this.Handle, "CBaseEntity", "m_CBodyComponent");
+	public virtual CBodyComponent? CBodyComponent => Schema.GetPointer<CBodyComponent>(this.Handle, "CBaseEntity", "m_CBodyComponent");
 
 	// m_NetworkTransmitComponent
 	[SchemaMember("CBaseEntity", "m_NetworkTransmitComponent")]
-	public CNetworkTransmitComponent NetworkTransmitComponent => Schema.GetDeclaredClass<CNetworkTransmitComponent>(this.Handle, "CBaseEntity", "m_NetworkTransmitComponent");
+	public virtual CNetworkTransmitComponent NetworkTransmitComponent => Schema.GetDeclaredClass<CNetworkTransmitComponent>(this.Handle, "CBaseEntity", "m_NetworkTransmitComponent");
 
 	// m_aThinkFunctions
 	[SchemaMember("CBaseEntity", "m_aThinkFunctions")]
-	public NetworkedVector<thinkfunc_t> ThinkFunctions => Schema.GetDeclaredClass<NetworkedVector<thinkfunc_t>>(this.Handle, "CBaseEntity", "m_aThinkFunctions");
+	public virtual NetworkedVector<thinkfunc_t> ThinkFunctions => Schema.GetDeclaredClass<NetworkedVector<thinkfunc_t>>(this.Handle, "CBaseEntity", "m_aThinkFunctions");
 
 	// m_iCurrentThinkContext
 	[SchemaMember("CBaseEntity", "m_iCurrentThinkContext")]
-	public Int32 CurrentThinkContext
+	public virtual Int32 CurrentThinkContext
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iCurrentThinkContext"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iCurrentThinkContext", value); }
@@ -41,7 +41,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nLastThinkTick
 	[SchemaMember("CBaseEntity", "m_nLastThinkTick")]
-	public Int32 LastThinkTick
+	public virtual Int32 LastThinkTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick", value); }
@@ -49,7 +49,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bDisabledContextThinks
 	[SchemaMember("CBaseEntity", "m_bDisabledContextThinks")]
-	public bool DisabledContextThinks
+	public virtual bool DisabledContextThinks
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisabledContextThinks"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisabledContextThinks", value); }
@@ -57,11 +57,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_isSteadyState
 	[SchemaMember("CBaseEntity", "m_isSteadyState")]
-	public Span<byte> IsSteadyState => Schema.GetFixedArray<byte>(this.Handle, "CBaseEntity", "m_isSteadyState", 8);
+	public virtual Span<byte> IsSteadyState => Schema.GetFixedArray<byte>(this.Handle, "CBaseEntity", "m_isSteadyState", 8);
 
 	// m_lastNetworkChange
 	[SchemaMember("CBaseEntity", "m_lastNetworkChange")]
-	public float LastNetworkChange
+	public virtual float LastNetworkChange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_lastNetworkChange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_lastNetworkChange", value); }
@@ -69,11 +69,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_ResponseContexts
 	[SchemaMember("CBaseEntity", "m_ResponseContexts")]
-	public NetworkedVector<ResponseContext_t> ResponseContexts => Schema.GetDeclaredClass<NetworkedVector<ResponseContext_t>>(this.Handle, "CBaseEntity", "m_ResponseContexts");
+	public virtual NetworkedVector<ResponseContext_t> ResponseContexts => Schema.GetDeclaredClass<NetworkedVector<ResponseContext_t>>(this.Handle, "CBaseEntity", "m_ResponseContexts");
 
 	// m_iszResponseContext
 	[SchemaMember("CBaseEntity", "m_iszResponseContext")]
-	public string ResponseContext
+	public virtual string ResponseContext
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iszResponseContext"); }
 		set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszResponseContext", value); }
@@ -81,7 +81,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iHealth
 	[SchemaMember("CBaseEntity", "m_iHealth")]
-	public Int32 Health
+	public virtual Int32 Health
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iHealth"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iHealth", value); }
@@ -89,7 +89,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iMaxHealth
 	[SchemaMember("CBaseEntity", "m_iMaxHealth")]
-	public Int32 MaxHealth
+	public virtual Int32 MaxHealth
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iMaxHealth"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iMaxHealth", value); }
@@ -97,7 +97,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_lifeState
 	[SchemaMember("CBaseEntity", "m_lifeState")]
-	public byte LifeState
+	public virtual byte LifeState
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_lifeState"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_lifeState", value); }
@@ -105,7 +105,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flDamageAccumulator
 	[SchemaMember("CBaseEntity", "m_flDamageAccumulator")]
-	public float DamageAccumulator
+	public virtual float DamageAccumulator
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flDamageAccumulator"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flDamageAccumulator", value); }
@@ -113,7 +113,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bTakesDamage
 	[SchemaMember("CBaseEntity", "m_bTakesDamage")]
-	public bool TakesDamage
+	public virtual bool TakesDamage
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bTakesDamage"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bTakesDamage", value); }
@@ -121,7 +121,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nTakeDamageFlags
 	[SchemaMember("CBaseEntity", "m_nTakeDamageFlags")]
-	public TakeDamageFlags_t TakeDamageFlags
+	public virtual TakeDamageFlags_t TakeDamageFlags
 	{
 		get { return Schema.GetValueType<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags"); }
 		set { Schema.SetValueType<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags", value); }
@@ -129,7 +129,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nPlatformType
 	[SchemaMember("CBaseEntity", "m_nPlatformType")]
-	public EntityPlatformTypes_t PlatformType
+	public virtual EntityPlatformTypes_t PlatformType
 	{
 		get { return Schema.GetValueType<EntityPlatformTypes_t>(this.Handle, "CBaseEntity", "m_nPlatformType"); }
 		set { Schema.SetValueType<EntityPlatformTypes_t>(this.Handle, "CBaseEntity", "m_nPlatformType", value); }
@@ -137,7 +137,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_MoveCollide
 	[SchemaMember("CBaseEntity", "m_MoveCollide")]
-	public MoveCollide_t MoveCollide
+	public virtual MoveCollide_t MoveCollide
 	{
 		get { return Schema.GetValueType<MoveCollide_t>(this.Handle, "CBaseEntity", "m_MoveCollide"); }
 		set { Schema.SetValueType<MoveCollide_t>(this.Handle, "CBaseEntity", "m_MoveCollide", value); }
@@ -145,7 +145,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_MoveType
 	[SchemaMember("CBaseEntity", "m_MoveType")]
-	public MoveType_t MoveType
+	public virtual MoveType_t MoveType
 	{
 		get { return Schema.GetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType"); }
 		set { Schema.SetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType", value); }
@@ -153,7 +153,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nActualMoveType
 	[SchemaMember("CBaseEntity", "m_nActualMoveType")]
-	public MoveType_t ActualMoveType
+	public virtual MoveType_t ActualMoveType
 	{
 		get { return Schema.GetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_nActualMoveType"); }
 		set { Schema.SetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_nActualMoveType", value); }
@@ -161,7 +161,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nWaterTouch
 	[SchemaMember("CBaseEntity", "m_nWaterTouch")]
-	public byte WaterTouch
+	public virtual byte WaterTouch
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterTouch"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterTouch", value); }
@@ -169,7 +169,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nSlimeTouch
 	[SchemaMember("CBaseEntity", "m_nSlimeTouch")]
-	public byte SlimeTouch
+	public virtual byte SlimeTouch
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_nSlimeTouch"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_nSlimeTouch", value); }
@@ -177,7 +177,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bRestoreInHierarchy
 	[SchemaMember("CBaseEntity", "m_bRestoreInHierarchy")]
-	public bool RestoreInHierarchy
+	public virtual bool RestoreInHierarchy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bRestoreInHierarchy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bRestoreInHierarchy", value); }
@@ -185,7 +185,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_target
 	[SchemaMember("CBaseEntity", "m_target")]
-	public string Target
+	public virtual string Target
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_target"); }
 		set { Schema.SetString(this.Handle, "CBaseEntity", "m_target", value); }
@@ -193,11 +193,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_hDamageFilter
 	[SchemaMember("CBaseEntity", "m_hDamageFilter")]
-	public CHandle<CBaseFilter> DamageFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseEntity", "m_hDamageFilter");
+	public virtual CHandle<CBaseFilter> DamageFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseEntity", "m_hDamageFilter");
 
 	// m_iszDamageFilterName
 	[SchemaMember("CBaseEntity", "m_iszDamageFilterName")]
-	public string DamageFilterName
+	public virtual string DamageFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iszDamageFilterName"); }
 		set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszDamageFilterName", value); }
@@ -205,7 +205,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flMoveDoneTime
 	[SchemaMember("CBaseEntity", "m_flMoveDoneTime")]
-	public float MoveDoneTime
+	public virtual float MoveDoneTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime", value); }
@@ -213,11 +213,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nSubclassID
 	[SchemaMember("CBaseEntity", "m_nSubclassID")]
-	public CUtlStringToken SubclassID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBaseEntity", "m_nSubclassID");
+	public virtual CUtlStringToken SubclassID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBaseEntity", "m_nSubclassID");
 
 	// m_flAnimTime
 	[SchemaMember("CBaseEntity", "m_flAnimTime")]
-	public float AnimTime
+	public virtual float AnimTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flAnimTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flAnimTime", value); }
@@ -225,7 +225,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flSimulationTime
 	[SchemaMember("CBaseEntity", "m_flSimulationTime")]
-	public float SimulationTime
+	public virtual float SimulationTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flSimulationTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flSimulationTime", value); }
@@ -233,7 +233,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flCreateTime
 	[SchemaMember("CBaseEntity", "m_flCreateTime")]
-	public float CreateTime
+	public virtual float CreateTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flCreateTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flCreateTime", value); }
@@ -241,7 +241,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bClientSideRagdoll
 	[SchemaMember("CBaseEntity", "m_bClientSideRagdoll")]
-	public bool ClientSideRagdoll
+	public virtual bool ClientSideRagdoll
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bClientSideRagdoll"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bClientSideRagdoll", value); }
@@ -249,7 +249,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_ubInterpolationFrame
 	[SchemaMember("CBaseEntity", "m_ubInterpolationFrame")]
-	public byte InterpolationFrame
+	public virtual byte InterpolationFrame
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_ubInterpolationFrame"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_ubInterpolationFrame", value); }
@@ -257,7 +257,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_vPrevVPhysicsUpdatePos
 	[SchemaMember("CBaseEntity", "m_vPrevVPhysicsUpdatePos")]
-	public Vector3 PrevVPhysicsUpdatePos
+	public virtual Vector3 PrevVPhysicsUpdatePos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vPrevVPhysicsUpdatePos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vPrevVPhysicsUpdatePos", value); }
@@ -265,7 +265,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iTeamNum
 	[SchemaMember("CBaseEntity", "m_iTeamNum")]
-	public byte TeamNum
+	public virtual byte TeamNum
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_iTeamNum"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_iTeamNum", value); }
@@ -273,7 +273,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iGlobalname
 	[SchemaMember("CBaseEntity", "m_iGlobalname")]
-	public string Globalname
+	public virtual string Globalname
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iGlobalname"); }
 		set { Schema.SetString(this.Handle, "CBaseEntity", "m_iGlobalname", value); }
@@ -281,7 +281,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iSentToClients
 	[SchemaMember("CBaseEntity", "m_iSentToClients")]
-	public Int32 SentToClients
+	public virtual Int32 SentToClients
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iSentToClients"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iSentToClients", value); }
@@ -289,7 +289,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flSpeed
 	[SchemaMember("CBaseEntity", "m_flSpeed")]
-	public float Speed
+	public virtual float Speed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flSpeed", value); }
@@ -297,7 +297,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_sUniqueHammerID
 	[SchemaMember("CBaseEntity", "m_sUniqueHammerID")]
-	public string UniqueHammerID
+	public virtual string UniqueHammerID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_sUniqueHammerID"); }
 		set { Schema.SetString(this.Handle, "CBaseEntity", "m_sUniqueHammerID", value); }
@@ -305,7 +305,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_spawnflags
 	[SchemaMember("CBaseEntity", "m_spawnflags")]
-	public UInt32 Spawnflags
+	public virtual UInt32 Spawnflags
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseEntity", "m_spawnflags"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseEntity", "m_spawnflags", value); }
@@ -313,7 +313,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nNextThinkTick
 	[SchemaMember("CBaseEntity", "m_nNextThinkTick")]
-	public Int32 NextThinkTick
+	public virtual Int32 NextThinkTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nNextThinkTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nNextThinkTick", value); }
@@ -321,7 +321,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nSimulationTick
 	[SchemaMember("CBaseEntity", "m_nSimulationTick")]
-	public Int32 SimulationTick
+	public virtual Int32 SimulationTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nSimulationTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nSimulationTick", value); }
@@ -329,11 +329,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_OnKilled
 	[SchemaMember("CBaseEntity", "m_OnKilled")]
-	public CEntityIOOutput OnKilled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnKilled");
+	public virtual CEntityIOOutput OnKilled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnKilled");
 
 	// m_fFlags
 	[SchemaMember("CBaseEntity", "m_fFlags")]
-	public UInt32 Flags
+	public virtual UInt32 Flags
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fFlags"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fFlags", value); }
@@ -341,7 +341,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_vecAbsVelocity
 	[SchemaMember("CBaseEntity", "m_vecAbsVelocity")]
-	public Vector3 AbsVelocity
+	public virtual Vector3 AbsVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecAbsVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecAbsVelocity", value); }
@@ -349,11 +349,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_vecVelocity
 	[SchemaMember("CBaseEntity", "m_vecVelocity")]
-	public CNetworkVelocityVector Velocity => Schema.GetDeclaredClass<CNetworkVelocityVector>(this.Handle, "CBaseEntity", "m_vecVelocity");
+	public virtual CNetworkVelocityVector Velocity => Schema.GetDeclaredClass<CNetworkVelocityVector>(this.Handle, "CBaseEntity", "m_vecVelocity");
 
 	// m_vecBaseVelocity
 	[SchemaMember("CBaseEntity", "m_vecBaseVelocity")]
-	public Vector3 BaseVelocity
+	public virtual Vector3 BaseVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecBaseVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecBaseVelocity", value); }
@@ -361,7 +361,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nPushEnumCount
 	[SchemaMember("CBaseEntity", "m_nPushEnumCount")]
-	public Int32 PushEnumCount
+	public virtual Int32 PushEnumCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nPushEnumCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nPushEnumCount", value); }
@@ -369,19 +369,19 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_pCollision
 	[SchemaMember("CBaseEntity", "m_pCollision")]
-	public CCollisionProperty? Collision => Schema.GetPointer<CCollisionProperty>(this.Handle, "CBaseEntity", "m_pCollision");
+	public virtual CCollisionProperty? Collision => Schema.GetPointer<CCollisionProperty>(this.Handle, "CBaseEntity", "m_pCollision");
 
 	// m_hEffectEntity
 	[SchemaMember("CBaseEntity", "m_hEffectEntity")]
-	public CHandle<CBaseEntity> EffectEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hEffectEntity");
+	public virtual CHandle<CBaseEntity> EffectEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hEffectEntity");
 
 	// m_hOwnerEntity
 	[SchemaMember("CBaseEntity", "m_hOwnerEntity")]
-	public CHandle<CBaseEntity> OwnerEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hOwnerEntity");
+	public virtual CHandle<CBaseEntity> OwnerEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hOwnerEntity");
 
 	// m_fEffects
 	[SchemaMember("CBaseEntity", "m_fEffects")]
-	public UInt32 Effects
+	public virtual UInt32 Effects
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fEffects"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fEffects", value); }
@@ -389,11 +389,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_hGroundEntity
 	[SchemaMember("CBaseEntity", "m_hGroundEntity")]
-	public CHandle<CBaseEntity> GroundEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hGroundEntity");
+	public virtual CHandle<CBaseEntity> GroundEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hGroundEntity");
 
 	// m_nGroundBodyIndex
 	[SchemaMember("CBaseEntity", "m_nGroundBodyIndex")]
-	public Int32 GroundBodyIndex
+	public virtual Int32 GroundBodyIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nGroundBodyIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nGroundBodyIndex", value); }
@@ -401,7 +401,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flFriction
 	[SchemaMember("CBaseEntity", "m_flFriction")]
-	public float Friction
+	public virtual float Friction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flFriction", value); }
@@ -409,7 +409,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flElasticity
 	[SchemaMember("CBaseEntity", "m_flElasticity")]
-	public float Elasticity
+	public virtual float Elasticity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flElasticity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flElasticity", value); }
@@ -417,7 +417,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flGravityScale
 	[SchemaMember("CBaseEntity", "m_flGravityScale")]
-	public float GravityScale
+	public virtual float GravityScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flGravityScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flGravityScale", value); }
@@ -425,7 +425,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flTimeScale
 	[SchemaMember("CBaseEntity", "m_flTimeScale")]
-	public float TimeScale
+	public virtual float TimeScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flTimeScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flTimeScale", value); }
@@ -433,7 +433,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flWaterLevel
 	[SchemaMember("CBaseEntity", "m_flWaterLevel")]
-	public float WaterLevel
+	public virtual float WaterLevel
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flWaterLevel"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flWaterLevel", value); }
@@ -441,7 +441,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bGravityDisabled
 	[SchemaMember("CBaseEntity", "m_bGravityDisabled")]
-	public bool GravityDisabled
+	public virtual bool GravityDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityDisabled", value); }
@@ -449,7 +449,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bAnimatedEveryTick
 	[SchemaMember("CBaseEntity", "m_bAnimatedEveryTick")]
-	public bool AnimatedEveryTick
+	public virtual bool AnimatedEveryTick
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick", value); }
@@ -457,7 +457,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flActualGravityScale
 	[SchemaMember("CBaseEntity", "m_flActualGravityScale")]
-	public float ActualGravityScale
+	public virtual float ActualGravityScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flActualGravityScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flActualGravityScale", value); }
@@ -465,7 +465,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bGravityActuallyDisabled
 	[SchemaMember("CBaseEntity", "m_bGravityActuallyDisabled")]
-	public bool GravityActuallyDisabled
+	public virtual bool GravityActuallyDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityActuallyDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityActuallyDisabled", value); }
@@ -473,7 +473,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bDisableLowViolence
 	[SchemaMember("CBaseEntity", "m_bDisableLowViolence")]
-	public bool DisableLowViolence
+	public virtual bool DisableLowViolence
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisableLowViolence"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisableLowViolence", value); }
@@ -481,7 +481,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nWaterType
 	[SchemaMember("CBaseEntity", "m_nWaterType")]
-	public byte WaterType
+	public virtual byte WaterType
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterType"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterType", value); }
@@ -489,7 +489,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iEFlags
 	[SchemaMember("CBaseEntity", "m_iEFlags")]
-	public Int32 EFlags
+	public virtual Int32 EFlags
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iEFlags"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iEFlags", value); }
@@ -497,23 +497,23 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_OnUser1
 	[SchemaMember("CBaseEntity", "m_OnUser1")]
-	public CEntityIOOutput OnUser1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser1");
+	public virtual CEntityIOOutput OnUser1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser1");
 
 	// m_OnUser2
 	[SchemaMember("CBaseEntity", "m_OnUser2")]
-	public CEntityIOOutput OnUser2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser2");
+	public virtual CEntityIOOutput OnUser2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser2");
 
 	// m_OnUser3
 	[SchemaMember("CBaseEntity", "m_OnUser3")]
-	public CEntityIOOutput OnUser3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser3");
+	public virtual CEntityIOOutput OnUser3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser3");
 
 	// m_OnUser4
 	[SchemaMember("CBaseEntity", "m_OnUser4")]
-	public CEntityIOOutput OnUser4 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser4");
+	public virtual CEntityIOOutput OnUser4 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser4");
 
 	// m_iInitialTeamNum
 	[SchemaMember("CBaseEntity", "m_iInitialTeamNum")]
-	public Int32 InitialTeamNum
+	public virtual Int32 InitialTeamNum
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iInitialTeamNum"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iInitialTeamNum", value); }
@@ -521,7 +521,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flNavIgnoreUntilTime
 	[SchemaMember("CBaseEntity", "m_flNavIgnoreUntilTime")]
-	public float NavIgnoreUntilTime
+	public virtual float NavIgnoreUntilTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flNavIgnoreUntilTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flNavIgnoreUntilTime", value); }
@@ -529,7 +529,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_vecAngVelocity
 	[SchemaMember("CBaseEntity", "m_vecAngVelocity")]
-	public QAngle AngVelocity
+	public virtual QAngle AngVelocity
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseEntity", "m_vecAngVelocity"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseEntity", "m_vecAngVelocity", value); }
@@ -537,7 +537,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bNetworkQuantizeOriginAndAngles
 	[SchemaMember("CBaseEntity", "m_bNetworkQuantizeOriginAndAngles")]
-	public bool NetworkQuantizeOriginAndAngles
+	public virtual bool NetworkQuantizeOriginAndAngles
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bNetworkQuantizeOriginAndAngles"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bNetworkQuantizeOriginAndAngles", value); }
@@ -545,7 +545,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_bLagCompensate
 	[SchemaMember("CBaseEntity", "m_bLagCompensate")]
-	public bool LagCompensate
+	public virtual bool LagCompensate
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bLagCompensate"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bLagCompensate", value); }
@@ -553,11 +553,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_pBlocker
 	[SchemaMember("CBaseEntity", "m_pBlocker")]
-	public CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_pBlocker");
+	public virtual CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_pBlocker");
 
 	// m_flLocalTime
 	[SchemaMember("CBaseEntity", "m_flLocalTime")]
-	public float LocalTime
+	public virtual float LocalTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flLocalTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flLocalTime", value); }
@@ -565,7 +565,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flVPhysicsUpdateLocalTime
 	[SchemaMember("CBaseEntity", "m_flVPhysicsUpdateLocalTime")]
-	public float VPhysicsUpdateLocalTime
+	public virtual float VPhysicsUpdateLocalTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flVPhysicsUpdateLocalTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flVPhysicsUpdateLocalTime", value); }
@@ -573,7 +573,7 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nBloodType
 	[SchemaMember("CBaseEntity", "m_nBloodType")]
-	public BloodType BloodType
+	public virtual BloodType BloodType
 	{
 		get { return Schema.GetValueType<BloodType>(this.Handle, "CBaseEntity", "m_nBloodType"); }
 		set { Schema.SetValueType<BloodType>(this.Handle, "CBaseEntity", "m_nBloodType", value); }
@@ -581,42 +581,42 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_pPulseGraphInstance
 	[SchemaMember("CBaseEntity", "m_pPulseGraphInstance")]
-	public CPulseGraphInstance_ServerEntity? PulseGraphInstance => Schema.GetPointer<CPulseGraphInstance_ServerEntity>(this.Handle, "CBaseEntity", "m_pPulseGraphInstance");
+	public virtual CPulseGraphInstance_ServerEntity? PulseGraphInstance => Schema.GetPointer<CPulseGraphInstance_ServerEntity>(this.Handle, "CBaseEntity", "m_pPulseGraphInstance");
 
-	public void CBodyComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_CBodyComponent");
-	public void HealthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iHealth");
-	public void MaxHealthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iMaxHealth");
-	public void LifeStatePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_lifeState");
-	public void TakesDamagePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bTakesDamage");
-	public void TakeDamageFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nTakeDamageFlags");
-	public void PlatformTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nPlatformType");
-	public void MoveCollidePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_MoveCollide");
-	public void MoveTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_MoveType");
-	public void SubclassIDPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nSubclassID");
-	public void AnimTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flAnimTime");
-	public void SimulationTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flSimulationTime");
-	public void CreateTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flCreateTime");
-	public void ClientSideRagdollPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bClientSideRagdoll");
-	public void InterpolationFramePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_ubInterpolationFrame");
-	public void TeamNumPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iTeamNum");
-	public void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flSpeed");
-	public void SpawnflagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_spawnflags");
-	public void NextThinkTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nNextThinkTick");
-	public void FlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_fFlags");
-	public void VelocityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_vecVelocity");
-	public void BaseVelocityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_vecBaseVelocity");
-	public void EffectEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hEffectEntity");
-	public void OwnerEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hOwnerEntity");
-	public void EffectsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_fEffects");
-	public void GroundEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hGroundEntity");
-	public void GroundBodyIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nGroundBodyIndex");
-	public void FrictionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flFriction");
-	public void ElasticityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flElasticity");
-	public void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flGravityScale");
-	public void TimeScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flTimeScale");
-	public void WaterLevelPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flWaterLevel");
-	public void GravityDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bGravityDisabled");
-	public void AnimatedEveryTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bAnimatedEveryTick");
-	public void NavIgnoreUntilTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flNavIgnoreUntilTime");
-	public void BloodTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nBloodType");
+	public virtual void CBodyComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_CBodyComponent");
+	public virtual void HealthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iHealth");
+	public virtual void MaxHealthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iMaxHealth");
+	public virtual void LifeStatePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_lifeState");
+	public virtual void TakesDamagePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bTakesDamage");
+	public virtual void TakeDamageFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nTakeDamageFlags");
+	public virtual void PlatformTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nPlatformType");
+	public virtual void MoveCollidePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_MoveCollide");
+	public virtual void MoveTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_MoveType");
+	public virtual void SubclassIDPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nSubclassID");
+	public virtual void AnimTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flAnimTime");
+	public virtual void SimulationTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flSimulationTime");
+	public virtual void CreateTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flCreateTime");
+	public virtual void ClientSideRagdollPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bClientSideRagdoll");
+	public virtual void InterpolationFramePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_ubInterpolationFrame");
+	public virtual void TeamNumPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iTeamNum");
+	public virtual void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flSpeed");
+	public virtual void SpawnflagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_spawnflags");
+	public virtual void NextThinkTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nNextThinkTick");
+	public virtual void FlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_fFlags");
+	public virtual void VelocityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_vecVelocity");
+	public virtual void BaseVelocityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_vecBaseVelocity");
+	public virtual void EffectEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hEffectEntity");
+	public virtual void OwnerEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hOwnerEntity");
+	public virtual void EffectsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_fEffects");
+	public virtual void GroundEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hGroundEntity");
+	public virtual void GroundBodyIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nGroundBodyIndex");
+	public virtual void FrictionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flFriction");
+	public virtual void ElasticityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flElasticity");
+	public virtual void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flGravityScale");
+	public virtual void TimeScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flTimeScale");
+	public virtual void WaterLevelPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flWaterLevel");
+	public virtual void GravityDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bGravityDisabled");
+	public virtual void AnimatedEveryTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bAnimatedEveryTick");
+	public virtual void NavIgnoreUntilTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flNavIgnoreUntilTime");
+	public virtual void BloodTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nBloodType");
 }

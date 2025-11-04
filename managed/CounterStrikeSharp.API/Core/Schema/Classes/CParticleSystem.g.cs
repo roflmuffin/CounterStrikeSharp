@@ -21,7 +21,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_szSnapshotFileName
 	[SchemaMember("CParticleSystem", "m_szSnapshotFileName")]
-	public string SnapshotFileName
+	public virtual string SnapshotFileName
 	{
 		get { return Schema.GetString(this.Handle, "CParticleSystem", "m_szSnapshotFileName"); }
 		set { Schema.SetStringBytes(this.Handle, "CParticleSystem", "m_szSnapshotFileName", value, 512); }
@@ -29,7 +29,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bActive
 	[SchemaMember("CParticleSystem", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bActive", value); }
@@ -37,7 +37,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bFrozen
 	[SchemaMember("CParticleSystem", "m_bFrozen")]
-	public bool Frozen
+	public virtual bool Frozen
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bFrozen"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bFrozen", value); }
@@ -45,7 +45,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_flFreezeTransitionDuration
 	[SchemaMember("CParticleSystem", "m_flFreezeTransitionDuration")]
-	public float FreezeTransitionDuration
+	public virtual float FreezeTransitionDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CParticleSystem", "m_flFreezeTransitionDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CParticleSystem", "m_flFreezeTransitionDuration", value); }
@@ -53,7 +53,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_nStopType
 	[SchemaMember("CParticleSystem", "m_nStopType")]
-	public Int32 StopType
+	public virtual Int32 StopType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CParticleSystem", "m_nStopType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CParticleSystem", "m_nStopType", value); }
@@ -61,7 +61,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bAnimateDuringGameplayPause
 	[SchemaMember("CParticleSystem", "m_bAnimateDuringGameplayPause")]
-	public bool AnimateDuringGameplayPause
+	public virtual bool AnimateDuringGameplayPause
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bAnimateDuringGameplayPause"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bAnimateDuringGameplayPause", value); }
@@ -69,11 +69,11 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_iEffectIndex
 	[SchemaMember("CParticleSystem", "m_iEffectIndex")]
-	public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> EffectIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CParticleSystem", "m_iEffectIndex");
+	public virtual CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> EffectIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CParticleSystem", "m_iEffectIndex");
 
 	// m_flStartTime
 	[SchemaMember("CParticleSystem", "m_flStartTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CParticleSystem", "m_flStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CParticleSystem", "m_flStartTime", value); }
@@ -81,7 +81,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_flPreSimTime
 	[SchemaMember("CParticleSystem", "m_flPreSimTime")]
-	public float PreSimTime
+	public virtual float PreSimTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CParticleSystem", "m_flPreSimTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CParticleSystem", "m_flPreSimTime", value); }
@@ -89,19 +89,19 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_vServerControlPoints
 	[SchemaMember("CParticleSystem", "m_vServerControlPoints")]
-	public Span<Vector3> ServerControlPoints => Schema.GetFixedArray<Vector3>(this.Handle, "CParticleSystem", "m_vServerControlPoints", 4);
+	public virtual Span<Vector3> ServerControlPoints => Schema.GetFixedArray<Vector3>(this.Handle, "CParticleSystem", "m_vServerControlPoints", 4);
 
 	// m_iServerControlPointAssignments
 	[SchemaMember("CParticleSystem", "m_iServerControlPointAssignments")]
-	public Span<byte> ServerControlPointAssignments => Schema.GetFixedArray<byte>(this.Handle, "CParticleSystem", "m_iServerControlPointAssignments", 4);
+	public virtual Span<byte> ServerControlPointAssignments => Schema.GetFixedArray<byte>(this.Handle, "CParticleSystem", "m_iServerControlPointAssignments", 4);
 
 	// m_hControlPointEnts
 	[SchemaMember("CParticleSystem", "m_hControlPointEnts")]
-	public Span<CHandle<CBaseEntity>> ControlPointEnts => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CParticleSystem", "m_hControlPointEnts", 64);
+	public virtual Span<CHandle<CBaseEntity>> ControlPointEnts => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CParticleSystem", "m_hControlPointEnts", 64);
 
 	// m_bNoSave
 	[SchemaMember("CParticleSystem", "m_bNoSave")]
-	public bool NoSave
+	public virtual bool NoSave
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoSave"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoSave", value); }
@@ -109,7 +109,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bNoFreeze
 	[SchemaMember("CParticleSystem", "m_bNoFreeze")]
-	public bool NoFreeze
+	public virtual bool NoFreeze
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoFreeze"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoFreeze", value); }
@@ -117,7 +117,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bNoRamp
 	[SchemaMember("CParticleSystem", "m_bNoRamp")]
-	public bool NoRamp
+	public virtual bool NoRamp
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoRamp"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoRamp", value); }
@@ -125,7 +125,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bStartActive
 	[SchemaMember("CParticleSystem", "m_bStartActive")]
-	public bool StartActive
+	public virtual bool StartActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bStartActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bStartActive", value); }
@@ -133,7 +133,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_iszEffectName
 	[SchemaMember("CParticleSystem", "m_iszEffectName")]
-	public string EffectName
+	public virtual string EffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CParticleSystem", "m_iszEffectName"); }
 		set { Schema.SetString(this.Handle, "CParticleSystem", "m_iszEffectName", value); }
@@ -141,11 +141,11 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_iszControlPointNames
 	[SchemaMember("CParticleSystem", "m_iszControlPointNames")]
-	public Span<string> ControlPointNames => Schema.GetFixedArray<string>(this.Handle, "CParticleSystem", "m_iszControlPointNames", 64);
+	public virtual Span<string> ControlPointNames => Schema.GetFixedArray<string>(this.Handle, "CParticleSystem", "m_iszControlPointNames", 64);
 
 	// m_nDataCP
 	[SchemaMember("CParticleSystem", "m_nDataCP")]
-	public Int32 DataCP
+	public virtual Int32 DataCP
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CParticleSystem", "m_nDataCP"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CParticleSystem", "m_nDataCP", value); }
@@ -153,7 +153,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_vecDataCPValue
 	[SchemaMember("CParticleSystem", "m_vecDataCPValue")]
-	public Vector3 DataCPValue
+	public virtual Vector3 DataCPValue
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CParticleSystem", "m_vecDataCPValue"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CParticleSystem", "m_vecDataCPValue", value); }
@@ -161,7 +161,7 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_nTintCP
 	[SchemaMember("CParticleSystem", "m_nTintCP")]
-	public Int32 TintCP
+	public virtual Int32 TintCP
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CParticleSystem", "m_nTintCP"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CParticleSystem", "m_nTintCP", value); }
@@ -169,25 +169,25 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_clrTint
 	[SchemaMember("CParticleSystem", "m_clrTint")]
-	public Color Tint
+	public virtual Color Tint
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CParticleSystem", "m_clrTint"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CParticleSystem", "m_clrTint", value); }
 	}
 
-	public void SnapshotFileNamePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_szSnapshotFileName");
-	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bActive");
-	public void FrozenPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bFrozen");
-	public void FreezeTransitionDurationPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flFreezeTransitionDuration");
-	public void StopTypePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_nStopType");
-	public void AnimateDuringGameplayPausePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bAnimateDuringGameplayPause");
-	public void EffectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_iEffectIndex");
-	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flStartTime");
-	public void PreSimTimePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flPreSimTime");
-	public void ServerControlPointsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_vServerControlPoints");
-	public void ServerControlPointAssignmentsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_iServerControlPointAssignments");
-	public void ControlPointEntsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_hControlPointEnts");
-	public void NoSavePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoSave");
-	public void NoFreezePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoFreeze");
-	public void NoRampPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoRamp");
+	public virtual void SnapshotFileNamePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_szSnapshotFileName");
+	public virtual void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bActive");
+	public virtual void FrozenPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bFrozen");
+	public virtual void FreezeTransitionDurationPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flFreezeTransitionDuration");
+	public virtual void StopTypePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_nStopType");
+	public virtual void AnimateDuringGameplayPausePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bAnimateDuringGameplayPause");
+	public virtual void EffectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_iEffectIndex");
+	public virtual void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flStartTime");
+	public virtual void PreSimTimePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flPreSimTime");
+	public virtual void ServerControlPointsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_vServerControlPoints");
+	public virtual void ServerControlPointAssignmentsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_iServerControlPointAssignments");
+	public virtual void ControlPointEntsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_hControlPointEnts");
+	public virtual void NoSavePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoSave");
+	public virtual void NoFreezePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoFreeze");
+	public virtual void NoRampPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoRamp");
 }

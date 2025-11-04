@@ -71,10 +71,7 @@ public class ConVarTests
         Assert.Equal(-1, vectorConVar.GetPrimitiveValue<Vector3>().Y);
         Assert.Equal(-1, vectorConVar.GetPrimitiveValue<Vector3>().Z);
 
-        var vec = vectorConVar.GetPrimitiveValue<Vector3>();
-        vec.X = 0;
-        vec.Y = 0;
-        vec.Z = 0;
+        vectorConVar.GetPrimitiveValue<Vector3>() = new Vector3(0, 0, 0);
         Assert.Equal(0, vectorConVar.GetPrimitiveValue<Vector3>().X);
         Assert.Equal(0, vectorConVar.GetPrimitiveValue<Vector3>().Y);
         Assert.Equal(0, vectorConVar.GetPrimitiveValue<Vector3>().Z);

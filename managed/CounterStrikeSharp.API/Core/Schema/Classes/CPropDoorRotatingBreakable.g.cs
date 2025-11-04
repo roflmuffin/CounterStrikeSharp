@@ -21,7 +21,7 @@ public partial class CPropDoorRotatingBreakable : CPropDoorRotating
 
 	// m_bBreakable
 	[SchemaMember("CPropDoorRotatingBreakable", "m_bBreakable")]
-	public bool Breakable
+	public virtual bool Breakable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_bBreakable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_bBreakable", value); }
@@ -29,7 +29,7 @@ public partial class CPropDoorRotatingBreakable : CPropDoorRotating
 
 	// m_isAbleToCloseAreaPortals
 	[SchemaMember("CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals")]
-	public bool IsAbleToCloseAreaPortals
+	public virtual bool IsAbleToCloseAreaPortals
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals", value); }
@@ -37,7 +37,7 @@ public partial class CPropDoorRotatingBreakable : CPropDoorRotating
 
 	// m_currentDamageState
 	[SchemaMember("CPropDoorRotatingBreakable", "m_currentDamageState")]
-	public Int32 CurrentDamageState
+	public virtual Int32 CurrentDamageState
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPropDoorRotatingBreakable", "m_currentDamageState"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPropDoorRotatingBreakable", "m_currentDamageState", value); }
@@ -45,6 +45,6 @@ public partial class CPropDoorRotatingBreakable : CPropDoorRotating
 
 	// m_damageStates
 	[SchemaMember("CPropDoorRotatingBreakable", "m_damageStates")]
-	public NetworkedVector<string> DamageStates => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CPropDoorRotatingBreakable", "m_damageStates");
+	public virtual NetworkedVector<string> DamageStates => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CPropDoorRotatingBreakable", "m_damageStates");
 
 }

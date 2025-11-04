@@ -21,7 +21,7 @@ public partial class CVoteController : CBaseEntity
 
 	// m_iActiveIssueIndex
 	[SchemaMember("CVoteController", "m_iActiveIssueIndex")]
-	public Int32 ActiveIssueIndex
+	public virtual Int32 ActiveIssueIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_iActiveIssueIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_iActiveIssueIndex", value); }
@@ -29,7 +29,7 @@ public partial class CVoteController : CBaseEntity
 
 	// m_iOnlyTeamToVote
 	[SchemaMember("CVoteController", "m_iOnlyTeamToVote")]
-	public Int32 OnlyTeamToVote
+	public virtual Int32 OnlyTeamToVote
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_iOnlyTeamToVote"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_iOnlyTeamToVote", value); }
@@ -37,11 +37,11 @@ public partial class CVoteController : CBaseEntity
 
 	// m_nVoteOptionCount
 	[SchemaMember("CVoteController", "m_nVoteOptionCount")]
-	public Span<Int32> VoteOptionCount => Schema.GetFixedArray<Int32>(this.Handle, "CVoteController", "m_nVoteOptionCount", 5);
+	public virtual Span<Int32> VoteOptionCount => Schema.GetFixedArray<Int32>(this.Handle, "CVoteController", "m_nVoteOptionCount", 5);
 
 	// m_nPotentialVotes
 	[SchemaMember("CVoteController", "m_nPotentialVotes")]
-	public Int32 PotentialVotes
+	public virtual Int32 PotentialVotes
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_nPotentialVotes"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_nPotentialVotes", value); }
@@ -49,7 +49,7 @@ public partial class CVoteController : CBaseEntity
 
 	// m_bIsYesNoVote
 	[SchemaMember("CVoteController", "m_bIsYesNoVote")]
-	public bool IsYesNoVote
+	public virtual bool IsYesNoVote
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CVoteController", "m_bIsYesNoVote"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CVoteController", "m_bIsYesNoVote", value); }
@@ -57,23 +57,23 @@ public partial class CVoteController : CBaseEntity
 
 	// m_acceptingVotesTimer
 	[SchemaMember("CVoteController", "m_acceptingVotesTimer")]
-	public CountdownTimer AcceptingVotesTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_acceptingVotesTimer");
+	public virtual CountdownTimer AcceptingVotesTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_acceptingVotesTimer");
 
 	// m_executeCommandTimer
 	[SchemaMember("CVoteController", "m_executeCommandTimer")]
-	public CountdownTimer ExecuteCommandTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_executeCommandTimer");
+	public virtual CountdownTimer ExecuteCommandTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_executeCommandTimer");
 
 	// m_resetVoteTimer
 	[SchemaMember("CVoteController", "m_resetVoteTimer")]
-	public CountdownTimer ResetVoteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_resetVoteTimer");
+	public virtual CountdownTimer ResetVoteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_resetVoteTimer");
 
 	// m_nVotesCast
 	[SchemaMember("CVoteController", "m_nVotesCast")]
-	public Span<Int32> VotesCast => Schema.GetFixedArray<Int32>(this.Handle, "CVoteController", "m_nVotesCast", 64);
+	public virtual Span<Int32> VotesCast => Schema.GetFixedArray<Int32>(this.Handle, "CVoteController", "m_nVotesCast", 64);
 
 	// m_playerHoldingVote
 	[SchemaMember("CVoteController", "m_playerHoldingVote")]
-	public Int32 PlayerHoldingVote
+	public virtual Int32 PlayerHoldingVote
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_playerHoldingVote"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_playerHoldingVote", value); }
@@ -81,7 +81,7 @@ public partial class CVoteController : CBaseEntity
 
 	// m_playerOverrideForVote
 	[SchemaMember("CVoteController", "m_playerOverrideForVote")]
-	public Int32 PlayerOverrideForVote
+	public virtual Int32 PlayerOverrideForVote
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_playerOverrideForVote"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_playerOverrideForVote", value); }
@@ -89,7 +89,7 @@ public partial class CVoteController : CBaseEntity
 
 	// m_nHighestCountIndex
 	[SchemaMember("CVoteController", "m_nHighestCountIndex")]
-	public Int32 HighestCountIndex
+	public virtual Int32 HighestCountIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_nHighestCountIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_nHighestCountIndex", value); }
@@ -97,11 +97,11 @@ public partial class CVoteController : CBaseEntity
 
 	// m_potentialIssues
 	[SchemaMember("CVoteController", "m_potentialIssues")]
-	public NetworkedVector<CBaseIssue?> PotentialIssues => Schema.GetDeclaredClass<NetworkedVector<CBaseIssue?>>(this.Handle, "CVoteController", "m_potentialIssues");
+	public virtual NetworkedVector<CBaseIssue?> PotentialIssues => Schema.GetDeclaredClass<NetworkedVector<CBaseIssue?>>(this.Handle, "CVoteController", "m_potentialIssues");
 
-	public void ActiveIssueIndexPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_iActiveIssueIndex");
-	public void OnlyTeamToVotePropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_iOnlyTeamToVote");
-	public void VoteOptionCountPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_nVoteOptionCount");
-	public void PotentialVotesPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_nPotentialVotes");
-	public void IsYesNoVotePropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_bIsYesNoVote");
+	public virtual void ActiveIssueIndexPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_iActiveIssueIndex");
+	public virtual void OnlyTeamToVotePropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_iOnlyTeamToVote");
+	public virtual void VoteOptionCountPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_nVoteOptionCount");
+	public virtual void PotentialVotesPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_nPotentialVotes");
+	public virtual void IsYesNoVotePropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_bIsYesNoVote");
 }

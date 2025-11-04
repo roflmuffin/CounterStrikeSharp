@@ -21,15 +21,15 @@ public partial class CBot : NativeObject
 
 	// m_pController
 	[SchemaMember("CBot", "m_pController")]
-	public CCSPlayerController? Controller => Schema.GetPointer<CCSPlayerController>(this.Handle, "CBot", "m_pController");
+	public virtual CCSPlayerController? Controller => Schema.GetPointer<CCSPlayerController>(this.Handle, "CBot", "m_pController");
 
 	// m_pPlayer
 	[SchemaMember("CBot", "m_pPlayer")]
-	public CCSPlayerPawn? Player => Schema.GetPointer<CCSPlayerPawn>(this.Handle, "CBot", "m_pPlayer");
+	public virtual CCSPlayerPawn? Player => Schema.GetPointer<CCSPlayerPawn>(this.Handle, "CBot", "m_pPlayer");
 
 	// m_bHasSpawned
 	[SchemaMember("CBot", "m_bHasSpawned")]
-	public bool HasSpawned
+	public virtual bool HasSpawned
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBot", "m_bHasSpawned"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBot", "m_bHasSpawned", value); }
@@ -37,7 +37,7 @@ public partial class CBot : NativeObject
 
 	// m_id
 	[SchemaMember("CBot", "m_id")]
-	public UInt32 Id
+	public virtual UInt32 Id
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBot", "m_id"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBot", "m_id", value); }
@@ -45,7 +45,7 @@ public partial class CBot : NativeObject
 
 	// m_isRunning
 	[SchemaMember("CBot", "m_isRunning")]
-	public bool IsRunning
+	public virtual bool IsRunning
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBot", "m_isRunning"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBot", "m_isRunning", value); }
@@ -53,7 +53,7 @@ public partial class CBot : NativeObject
 
 	// m_isCrouching
 	[SchemaMember("CBot", "m_isCrouching")]
-	public bool IsCrouching
+	public virtual bool IsCrouching
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBot", "m_isCrouching"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBot", "m_isCrouching", value); }
@@ -61,7 +61,7 @@ public partial class CBot : NativeObject
 
 	// m_forwardSpeed
 	[SchemaMember("CBot", "m_forwardSpeed")]
-	public float ForwardSpeed
+	public virtual float ForwardSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_forwardSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_forwardSpeed", value); }
@@ -69,7 +69,7 @@ public partial class CBot : NativeObject
 
 	// m_leftSpeed
 	[SchemaMember("CBot", "m_leftSpeed")]
-	public float LeftSpeed
+	public virtual float LeftSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_leftSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_leftSpeed", value); }
@@ -77,7 +77,7 @@ public partial class CBot : NativeObject
 
 	// m_verticalSpeed
 	[SchemaMember("CBot", "m_verticalSpeed")]
-	public float VerticalSpeed
+	public virtual float VerticalSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_verticalSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_verticalSpeed", value); }
@@ -85,7 +85,7 @@ public partial class CBot : NativeObject
 
 	// m_buttonFlags
 	[SchemaMember("CBot", "m_buttonFlags")]
-	public UInt64 ButtonFlags
+	public virtual UInt64 ButtonFlags
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CBot", "m_buttonFlags"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CBot", "m_buttonFlags", value); }
@@ -93,7 +93,7 @@ public partial class CBot : NativeObject
 
 	// m_jumpTimestamp
 	[SchemaMember("CBot", "m_jumpTimestamp")]
-	public float JumpTimestamp
+	public virtual float JumpTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_jumpTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_jumpTimestamp", value); }
@@ -101,7 +101,7 @@ public partial class CBot : NativeObject
 
 	// m_viewForward
 	[SchemaMember("CBot", "m_viewForward")]
-	public Vector3 ViewForward
+	public virtual Vector3 ViewForward
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBot", "m_viewForward"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBot", "m_viewForward", value); }
@@ -109,7 +109,7 @@ public partial class CBot : NativeObject
 
 	// m_postureStackIndex
 	[SchemaMember("CBot", "m_postureStackIndex")]
-	public Int32 PostureStackIndex
+	public virtual Int32 PostureStackIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBot", "m_postureStackIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBot", "m_postureStackIndex", value); }

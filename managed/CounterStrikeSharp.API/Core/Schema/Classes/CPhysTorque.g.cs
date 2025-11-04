@@ -21,7 +21,7 @@ public partial class CPhysTorque : CPhysForce
 
 	// m_axis
 	[SchemaMember("CPhysTorque", "m_axis")]
-	public Vector3 Axis
+	public virtual Vector3 Axis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysTorque", "m_axis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysTorque", "m_axis", value); }

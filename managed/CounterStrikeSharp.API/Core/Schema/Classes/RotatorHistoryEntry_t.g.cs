@@ -21,7 +21,7 @@ public partial class RotatorHistoryEntry_t : NativeObject
 
 	// qInvChange
 	[SchemaMember("RotatorHistoryEntry_t", "qInvChange")]
-	public Quaternion QInvChange
+	public virtual Quaternion QInvChange
 	{
 		get { return Schema.GetValueType<Quaternion>(this.Handle, "RotatorHistoryEntry_t", "qInvChange"); }
 		set { Schema.SetValueType<Quaternion>(this.Handle, "RotatorHistoryEntry_t", "qInvChange", value); }
@@ -29,7 +29,7 @@ public partial class RotatorHistoryEntry_t : NativeObject
 
 	// flTimeRotationStart
 	[SchemaMember("RotatorHistoryEntry_t", "flTimeRotationStart")]
-	public float FlTimeRotationStart
+	public virtual float FlTimeRotationStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "RotatorHistoryEntry_t", "flTimeRotationStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "RotatorHistoryEntry_t", "flTimeRotationStart", value); }

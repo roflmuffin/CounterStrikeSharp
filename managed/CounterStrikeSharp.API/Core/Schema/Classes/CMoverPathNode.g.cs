@@ -21,7 +21,7 @@ public partial class CMoverPathNode : CPointEntity
 
 	// m_vInTangentLocal
 	[SchemaMember("CMoverPathNode", "m_vInTangentLocal")]
-	public Vector3 InTangentLocal
+	public virtual Vector3 InTangentLocal
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vInTangentLocal"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vInTangentLocal", value); }
@@ -29,7 +29,7 @@ public partial class CMoverPathNode : CPointEntity
 
 	// m_vOutTangentLocal
 	[SchemaMember("CMoverPathNode", "m_vOutTangentLocal")]
-	public Vector3 OutTangentLocal
+	public virtual Vector3 OutTangentLocal
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vOutTangentLocal"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vOutTangentLocal", value); }
@@ -37,7 +37,7 @@ public partial class CMoverPathNode : CPointEntity
 
 	// m_szParentPathUniqueID
 	[SchemaMember("CMoverPathNode", "m_szParentPathUniqueID")]
-	public string ParentPathUniqueID
+	public virtual string ParentPathUniqueID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMoverPathNode", "m_szParentPathUniqueID"); }
 		set { Schema.SetString(this.Handle, "CMoverPathNode", "m_szParentPathUniqueID", value); }
@@ -45,7 +45,7 @@ public partial class CMoverPathNode : CPointEntity
 
 	// m_szPathNodeParameter
 	[SchemaMember("CMoverPathNode", "m_szPathNodeParameter")]
-	public string PathNodeParameter
+	public virtual string PathNodeParameter
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMoverPathNode", "m_szPathNodeParameter"); }
 		set { Schema.SetString(this.Handle, "CMoverPathNode", "m_szPathNodeParameter", value); }
@@ -53,30 +53,30 @@ public partial class CMoverPathNode : CPointEntity
 
 	// m_OnStartFromOrInSegment
 	[SchemaMember("CMoverPathNode", "m_OnStartFromOrInSegment")]
-	public CEntityIOOutput OnStartFromOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStartFromOrInSegment");
+	public virtual CEntityIOOutput OnStartFromOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStartFromOrInSegment");
 
 	// m_OnStoppedAtOrInSegment
 	[SchemaMember("CMoverPathNode", "m_OnStoppedAtOrInSegment")]
-	public CEntityIOOutput OnStoppedAtOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStoppedAtOrInSegment");
+	public virtual CEntityIOOutput OnStoppedAtOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStoppedAtOrInSegment");
 
 	// m_OnPassThrough
 	[SchemaMember("CMoverPathNode", "m_OnPassThrough")]
-	public CEntityIOOutput OnPassThrough => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThrough");
+	public virtual CEntityIOOutput OnPassThrough => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThrough");
 
 	// m_OnPassThroughForward
 	[SchemaMember("CMoverPathNode", "m_OnPassThroughForward")]
-	public CEntityIOOutput OnPassThroughForward => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThroughForward");
+	public virtual CEntityIOOutput OnPassThroughForward => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThroughForward");
 
 	// m_OnPassThroughReverse
 	[SchemaMember("CMoverPathNode", "m_OnPassThroughReverse")]
-	public CEntityIOOutput OnPassThroughReverse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThroughReverse");
+	public virtual CEntityIOOutput OnPassThroughReverse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThroughReverse");
 
 	// m_hMover
 	[SchemaMember("CMoverPathNode", "m_hMover")]
-	public CHandle<CPathMover> Mover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CMoverPathNode", "m_hMover");
+	public virtual CHandle<CPathMover> Mover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CMoverPathNode", "m_hMover");
 
 	// m_xWSPrevParent
 	[SchemaMember("CMoverPathNode", "m_xWSPrevParent")]
-	public CTransform XWSPrevParent => Schema.GetDeclaredClass<CTransform>(this.Handle, "CMoverPathNode", "m_xWSPrevParent");
+	public virtual CTransform XWSPrevParent => Schema.GetDeclaredClass<CTransform>(this.Handle, "CMoverPathNode", "m_xWSPrevParent");
 
 }

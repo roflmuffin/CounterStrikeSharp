@@ -21,7 +21,7 @@ public partial class CEnvViewPunch : CPointEntity
 
 	// m_flRadius
 	[SchemaMember("CEnvViewPunch", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvViewPunch", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvViewPunch", "m_flRadius", value); }
@@ -29,7 +29,7 @@ public partial class CEnvViewPunch : CPointEntity
 
 	// m_angViewPunch
 	[SchemaMember("CEnvViewPunch", "m_angViewPunch")]
-	public QAngle ViewPunch
+	public virtual QAngle ViewPunch
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch", value); }

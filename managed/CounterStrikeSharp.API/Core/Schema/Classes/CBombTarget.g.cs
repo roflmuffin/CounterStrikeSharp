@@ -21,19 +21,19 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_OnBombExplode
 	[SchemaMember("CBombTarget", "m_OnBombExplode")]
-	public CEntityIOOutput OnBombExplode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombExplode");
+	public virtual CEntityIOOutput OnBombExplode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombExplode");
 
 	// m_OnBombPlanted
 	[SchemaMember("CBombTarget", "m_OnBombPlanted")]
-	public CEntityIOOutput OnBombPlanted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombPlanted");
+	public virtual CEntityIOOutput OnBombPlanted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombPlanted");
 
 	// m_OnBombDefused
 	[SchemaMember("CBombTarget", "m_OnBombDefused")]
-	public CEntityIOOutput OnBombDefused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombDefused");
+	public virtual CEntityIOOutput OnBombDefused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombDefused");
 
 	// m_bIsBombSiteB
 	[SchemaMember("CBombTarget", "m_bIsBombSiteB")]
-	public bool IsBombSiteB
+	public virtual bool IsBombSiteB
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBombTarget", "m_bIsBombSiteB"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBombTarget", "m_bIsBombSiteB", value); }
@@ -41,7 +41,7 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_bIsHeistBombTarget
 	[SchemaMember("CBombTarget", "m_bIsHeistBombTarget")]
-	public bool IsHeistBombTarget
+	public virtual bool IsHeistBombTarget
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBombTarget", "m_bIsHeistBombTarget"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBombTarget", "m_bIsHeistBombTarget", value); }
@@ -49,7 +49,7 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_bBombPlantedHere
 	[SchemaMember("CBombTarget", "m_bBombPlantedHere")]
-	public bool BombPlantedHere
+	public virtual bool BombPlantedHere
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBombTarget", "m_bBombPlantedHere"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBombTarget", "m_bBombPlantedHere", value); }
@@ -57,7 +57,7 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_szMountTarget
 	[SchemaMember("CBombTarget", "m_szMountTarget")]
-	public string MountTarget
+	public virtual string MountTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBombTarget", "m_szMountTarget"); }
 		set { Schema.SetString(this.Handle, "CBombTarget", "m_szMountTarget", value); }
@@ -65,15 +65,15 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_hInstructorHint
 	[SchemaMember("CBombTarget", "m_hInstructorHint")]
-	public CHandle<CBaseEntity> InstructorHint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBombTarget", "m_hInstructorHint");
+	public virtual CHandle<CBaseEntity> InstructorHint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBombTarget", "m_hInstructorHint");
 
 	// m_nBombSiteDesignation
 	[SchemaMember("CBombTarget", "m_nBombSiteDesignation")]
-	public Int32 BombSiteDesignation
+	public virtual Int32 BombSiteDesignation
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBombTarget", "m_nBombSiteDesignation"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBombTarget", "m_nBombSiteDesignation", value); }
 	}
 
-	public void BombPlantedHerePropertyChanged() => Utilities.SetStateChanged(this, "CBombTarget", "m_bBombPlantedHere");
+	public virtual void BombPlantedHerePropertyChanged() => Utilities.SetStateChanged(this, "CBombTarget", "m_bBombPlantedHere");
 }

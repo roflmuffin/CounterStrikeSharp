@@ -21,7 +21,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_nInButtonsWhichAreToggles
 	[SchemaMember("CBasePlayerController", "m_nInButtonsWhichAreToggles")]
-	public UInt64 InButtonsWhichAreToggles
+	public virtual UInt64 InButtonsWhichAreToggles
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_nInButtonsWhichAreToggles"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_nInButtonsWhichAreToggles", value); }
@@ -29,7 +29,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_nTickBase
 	[SchemaMember("CBasePlayerController", "m_nTickBase")]
-	public UInt32 TickBase
+	public virtual UInt32 TickBase
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_nTickBase"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_nTickBase", value); }
@@ -37,11 +37,11 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_hPawn
 	[SchemaMember("CBasePlayerController", "m_hPawn")]
-	public CHandle<CBasePlayerPawn> Pawn => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBasePlayerController", "m_hPawn");
+	public virtual CHandle<CBasePlayerPawn> Pawn => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBasePlayerController", "m_hPawn");
 
 	// m_bKnownTeamMismatch
 	[SchemaMember("CBasePlayerController", "m_bKnownTeamMismatch")]
-	public bool KnownTeamMismatch
+	public virtual bool KnownTeamMismatch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bKnownTeamMismatch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bKnownTeamMismatch", value); }
@@ -49,7 +49,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_nSplitScreenSlot
 	[SchemaMember("CBasePlayerController", "m_nSplitScreenSlot")]
-	public Int32 SplitScreenSlot
+	public virtual Int32 SplitScreenSlot
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nSplitScreenSlot"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nSplitScreenSlot", value); }
@@ -57,15 +57,15 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_hSplitOwner
 	[SchemaMember("CBasePlayerController", "m_hSplitOwner")]
-	public CHandle<CBasePlayerController> SplitOwner => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerController", "m_hSplitOwner");
+	public virtual CHandle<CBasePlayerController> SplitOwner => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerController", "m_hSplitOwner");
 
 	// m_hSplitScreenPlayers
 	[SchemaMember("CBasePlayerController", "m_hSplitScreenPlayers")]
-	public NetworkedVector<CHandle<CBasePlayerController>> SplitScreenPlayers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerController>>>(this.Handle, "CBasePlayerController", "m_hSplitScreenPlayers");
+	public virtual NetworkedVector<CHandle<CBasePlayerController>> SplitScreenPlayers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerController>>>(this.Handle, "CBasePlayerController", "m_hSplitScreenPlayers");
 
 	// m_bIsHLTV
 	[SchemaMember("CBasePlayerController", "m_bIsHLTV")]
-	public bool IsHLTV
+	public virtual bool IsHLTV
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsHLTV"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsHLTV", value); }
@@ -73,7 +73,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_iConnected
 	[SchemaMember("CBasePlayerController", "m_iConnected")]
-	public PlayerConnectedState Connected
+	public virtual PlayerConnectedState Connected
 	{
 		get { return Schema.GetValueType<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected"); }
 		set { Schema.SetValueType<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected", value); }
@@ -81,7 +81,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_iszPlayerName
 	[SchemaMember("CBasePlayerController", "m_iszPlayerName")]
-	public string PlayerName
+	public virtual string PlayerName
 	{
 		get { return Schema.GetString(this.Handle, "CBasePlayerController", "m_iszPlayerName"); }
 		set { Schema.SetStringBytes(this.Handle, "CBasePlayerController", "m_iszPlayerName", value, 128); }
@@ -89,7 +89,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_szNetworkIDString
 	[SchemaMember("CBasePlayerController", "m_szNetworkIDString")]
-	public string NetworkIDString
+	public virtual string NetworkIDString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlayerController", "m_szNetworkIDString"); }
 		set { Schema.SetString(this.Handle, "CBasePlayerController", "m_szNetworkIDString", value); }
@@ -97,7 +97,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_fLerpTime
 	[SchemaMember("CBasePlayerController", "m_fLerpTime")]
-	public float LerpTime
+	public virtual float LerpTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerController", "m_fLerpTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerController", "m_fLerpTime", value); }
@@ -105,7 +105,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bLagCompensation
 	[SchemaMember("CBasePlayerController", "m_bLagCompensation")]
-	public bool LagCompensation
+	public virtual bool LagCompensation
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bLagCompensation"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bLagCompensation", value); }
@@ -113,7 +113,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bPredict
 	[SchemaMember("CBasePlayerController", "m_bPredict")]
-	public bool Predict
+	public virtual bool Predict
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bPredict"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bPredict", value); }
@@ -121,7 +121,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bIsLowViolence
 	[SchemaMember("CBasePlayerController", "m_bIsLowViolence")]
-	public bool IsLowViolence
+	public virtual bool IsLowViolence
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence", value); }
@@ -129,7 +129,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bGamePaused
 	[SchemaMember("CBasePlayerController", "m_bGamePaused")]
-	public bool GamePaused
+	public virtual bool GamePaused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused", value); }
@@ -137,7 +137,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_iIgnoreGlobalChat
 	[SchemaMember("CBasePlayerController", "m_iIgnoreGlobalChat")]
-	public ChatIgnoreType_t IgnoreGlobalChat
+	public virtual ChatIgnoreType_t IgnoreGlobalChat
 	{
 		get { return Schema.GetValueType<ChatIgnoreType_t>(this.Handle, "CBasePlayerController", "m_iIgnoreGlobalChat"); }
 		set { Schema.SetValueType<ChatIgnoreType_t>(this.Handle, "CBasePlayerController", "m_iIgnoreGlobalChat", value); }
@@ -145,7 +145,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_flLastPlayerTalkTime
 	[SchemaMember("CBasePlayerController", "m_flLastPlayerTalkTime")]
-	public float LastPlayerTalkTime
+	public virtual float LastPlayerTalkTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastPlayerTalkTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastPlayerTalkTime", value); }
@@ -153,7 +153,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_flLastEntitySteadyState
 	[SchemaMember("CBasePlayerController", "m_flLastEntitySteadyState")]
-	public float LastEntitySteadyState
+	public virtual float LastEntitySteadyState
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastEntitySteadyState"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastEntitySteadyState", value); }
@@ -161,7 +161,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_nAvailableEntitySteadyState
 	[SchemaMember("CBasePlayerController", "m_nAvailableEntitySteadyState")]
-	public Int32 AvailableEntitySteadyState
+	public virtual Int32 AvailableEntitySteadyState
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nAvailableEntitySteadyState"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nAvailableEntitySteadyState", value); }
@@ -169,7 +169,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bHasAnySteadyStateEnts
 	[SchemaMember("CBasePlayerController", "m_bHasAnySteadyStateEnts")]
-	public bool HasAnySteadyStateEnts
+	public virtual bool HasAnySteadyStateEnts
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bHasAnySteadyStateEnts"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bHasAnySteadyStateEnts", value); }
@@ -177,7 +177,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_steamID
 	[SchemaMember("CBasePlayerController", "m_steamID")]
-	public UInt64 SteamID
+	public virtual UInt64 SteamID
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_steamID"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_steamID", value); }
@@ -185,7 +185,7 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bNoClipEnabled
 	[SchemaMember("CBasePlayerController", "m_bNoClipEnabled")]
-	public bool NoClipEnabled
+	public virtual bool NoClipEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bNoClipEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bNoClipEnabled", value); }
@@ -193,18 +193,18 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_iDesiredFOV
 	[SchemaMember("CBasePlayerController", "m_iDesiredFOV")]
-	public UInt32 DesiredFOV
+	public virtual UInt32 DesiredFOV
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_iDesiredFOV"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_iDesiredFOV", value); }
 	}
 
-	public void TickBasePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_nTickBase");
-	public void PawnPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_hPawn");
-	public void KnownTeamMismatchPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_bKnownTeamMismatch");
-	public void ConnectedPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iConnected");
-	public void PlayerNamePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iszPlayerName");
-	public void SteamIDPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_steamID");
-	public void NoClipEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_bNoClipEnabled");
-	public void DesiredFOVPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iDesiredFOV");
+	public virtual void TickBasePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_nTickBase");
+	public virtual void PawnPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_hPawn");
+	public virtual void KnownTeamMismatchPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_bKnownTeamMismatch");
+	public virtual void ConnectedPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iConnected");
+	public virtual void PlayerNamePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iszPlayerName");
+	public virtual void SteamIDPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_steamID");
+	public virtual void NoClipEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_bNoClipEnabled");
+	public virtual void DesiredFOVPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iDesiredFOV");
 }

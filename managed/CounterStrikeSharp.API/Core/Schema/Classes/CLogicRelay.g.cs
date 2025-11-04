@@ -21,7 +21,7 @@ public partial class CLogicRelay : CLogicalEntity
 
 	// m_bDisabled
 	[SchemaMember("CLogicRelay", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicRelay", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicRelay", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CLogicRelay : CLogicalEntity
 
 	// m_bWaitForRefire
 	[SchemaMember("CLogicRelay", "m_bWaitForRefire")]
-	public bool WaitForRefire
+	public virtual bool WaitForRefire
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicRelay", "m_bWaitForRefire"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicRelay", "m_bWaitForRefire", value); }
@@ -37,7 +37,7 @@ public partial class CLogicRelay : CLogicalEntity
 
 	// m_bTriggerOnce
 	[SchemaMember("CLogicRelay", "m_bTriggerOnce")]
-	public bool TriggerOnce
+	public virtual bool TriggerOnce
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicRelay", "m_bTriggerOnce"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicRelay", "m_bTriggerOnce", value); }
@@ -45,7 +45,7 @@ public partial class CLogicRelay : CLogicalEntity
 
 	// m_bFastRetrigger
 	[SchemaMember("CLogicRelay", "m_bFastRetrigger")]
-	public bool FastRetrigger
+	public virtual bool FastRetrigger
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicRelay", "m_bFastRetrigger"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicRelay", "m_bFastRetrigger", value); }
@@ -53,7 +53,7 @@ public partial class CLogicRelay : CLogicalEntity
 
 	// m_bPassthoughCaller
 	[SchemaMember("CLogicRelay", "m_bPassthoughCaller")]
-	public bool PassthoughCaller
+	public virtual bool PassthoughCaller
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicRelay", "m_bPassthoughCaller"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicRelay", "m_bPassthoughCaller", value); }

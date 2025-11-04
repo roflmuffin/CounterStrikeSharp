@@ -21,39 +21,39 @@ public partial class CBaseTrigger : CBaseToggle
 
 	// m_OnStartTouch
 	[SchemaMember("CBaseTrigger", "m_OnStartTouch")]
-	public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnStartTouch");
+	public virtual CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnStartTouch");
 
 	// m_OnStartTouchAll
 	[SchemaMember("CBaseTrigger", "m_OnStartTouchAll")]
-	public CEntityIOOutput OnStartTouchAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnStartTouchAll");
+	public virtual CEntityIOOutput OnStartTouchAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnStartTouchAll");
 
 	// m_OnEndTouch
 	[SchemaMember("CBaseTrigger", "m_OnEndTouch")]
-	public CEntityIOOutput OnEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnEndTouch");
+	public virtual CEntityIOOutput OnEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnEndTouch");
 
 	// m_OnEndTouchAll
 	[SchemaMember("CBaseTrigger", "m_OnEndTouchAll")]
-	public CEntityIOOutput OnEndTouchAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnEndTouchAll");
+	public virtual CEntityIOOutput OnEndTouchAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnEndTouchAll");
 
 	// m_OnTouching
 	[SchemaMember("CBaseTrigger", "m_OnTouching")]
-	public CEntityIOOutput OnTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouching");
+	public virtual CEntityIOOutput OnTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouching");
 
 	// m_OnTouchingEachEntity
 	[SchemaMember("CBaseTrigger", "m_OnTouchingEachEntity")]
-	public CEntityIOOutput OnTouchingEachEntity => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouchingEachEntity");
+	public virtual CEntityIOOutput OnTouchingEachEntity => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouchingEachEntity");
 
 	// m_OnNotTouching
 	[SchemaMember("CBaseTrigger", "m_OnNotTouching")]
-	public CEntityIOOutput OnNotTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnNotTouching");
+	public virtual CEntityIOOutput OnNotTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnNotTouching");
 
 	// m_hTouchingEntities
 	[SchemaMember("CBaseTrigger", "m_hTouchingEntities")]
-	public NetworkedVector<CHandle<CBaseEntity>> TouchingEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CBaseTrigger", "m_hTouchingEntities");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> TouchingEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CBaseTrigger", "m_hTouchingEntities");
 
 	// m_iFilterName
 	[SchemaMember("CBaseTrigger", "m_iFilterName")]
-	public string FilterName
+	public virtual string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseTrigger", "m_iFilterName"); }
 		set { Schema.SetString(this.Handle, "CBaseTrigger", "m_iFilterName", value); }
@@ -61,11 +61,11 @@ public partial class CBaseTrigger : CBaseToggle
 
 	// m_hFilter
 	[SchemaMember("CBaseTrigger", "m_hFilter")]
-	public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter");
 
 	// m_bDisabled
 	[SchemaMember("CBaseTrigger", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseTrigger", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseTrigger", "m_bDisabled", value); }
@@ -73,11 +73,11 @@ public partial class CBaseTrigger : CBaseToggle
 
 	// m_bUseAsyncQueries
 	[SchemaMember("CBaseTrigger", "m_bUseAsyncQueries")]
-	public bool UseAsyncQueries
+	public virtual bool UseAsyncQueries
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseTrigger", "m_bUseAsyncQueries"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseTrigger", "m_bUseAsyncQueries", value); }
 	}
 
-	public void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseTrigger", "m_bDisabled");
+	public virtual void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseTrigger", "m_bDisabled");
 }

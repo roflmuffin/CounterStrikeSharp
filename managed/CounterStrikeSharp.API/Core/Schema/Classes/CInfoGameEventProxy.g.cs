@@ -21,7 +21,7 @@ public partial class CInfoGameEventProxy : CPointEntity
 
 	// m_iszEventName
 	[SchemaMember("CInfoGameEventProxy", "m_iszEventName")]
-	public string EventName
+	public virtual string EventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoGameEventProxy", "m_iszEventName"); }
 		set { Schema.SetString(this.Handle, "CInfoGameEventProxy", "m_iszEventName", value); }
@@ -29,7 +29,7 @@ public partial class CInfoGameEventProxy : CPointEntity
 
 	// m_flRange
 	[SchemaMember("CInfoGameEventProxy", "m_flRange")]
-	public float Range
+	public virtual float Range
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInfoGameEventProxy", "m_flRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInfoGameEventProxy", "m_flRange", value); }

@@ -21,15 +21,15 @@ public partial class CTankTrainAI : CPointEntity
 
 	// m_hTrain
 	[SchemaMember("CTankTrainAI", "m_hTrain")]
-	public CHandle<CFuncTrackTrain> Train => Schema.GetDeclaredClass<CHandle<CFuncTrackTrain>>(this.Handle, "CTankTrainAI", "m_hTrain");
+	public virtual CHandle<CFuncTrackTrain> Train => Schema.GetDeclaredClass<CHandle<CFuncTrackTrain>>(this.Handle, "CTankTrainAI", "m_hTrain");
 
 	// m_hTargetEntity
 	[SchemaMember("CTankTrainAI", "m_hTargetEntity")]
-	public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTankTrainAI", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTankTrainAI", "m_hTargetEntity");
 
 	// m_soundPlaying
 	[SchemaMember("CTankTrainAI", "m_soundPlaying")]
-	public Int32 SoundPlaying
+	public virtual Int32 SoundPlaying
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTankTrainAI", "m_soundPlaying"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTankTrainAI", "m_soundPlaying", value); }
@@ -37,7 +37,7 @@ public partial class CTankTrainAI : CPointEntity
 
 	// m_startSoundName
 	[SchemaMember("CTankTrainAI", "m_startSoundName")]
-	public string StartSoundName
+	public virtual string StartSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_startSoundName"); }
 		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_startSoundName", value); }
@@ -45,7 +45,7 @@ public partial class CTankTrainAI : CPointEntity
 
 	// m_engineSoundName
 	[SchemaMember("CTankTrainAI", "m_engineSoundName")]
-	public string EngineSoundName
+	public virtual string EngineSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_engineSoundName"); }
 		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_engineSoundName", value); }
@@ -53,7 +53,7 @@ public partial class CTankTrainAI : CPointEntity
 
 	// m_movementSoundName
 	[SchemaMember("CTankTrainAI", "m_movementSoundName")]
-	public string MovementSoundName
+	public virtual string MovementSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_movementSoundName"); }
 		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_movementSoundName", value); }
@@ -61,7 +61,7 @@ public partial class CTankTrainAI : CPointEntity
 
 	// m_targetEntityName
 	[SchemaMember("CTankTrainAI", "m_targetEntityName")]
-	public string TargetEntityName
+	public virtual string TargetEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_targetEntityName"); }
 		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_targetEntityName", value); }

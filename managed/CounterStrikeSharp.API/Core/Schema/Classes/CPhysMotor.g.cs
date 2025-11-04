@@ -21,7 +21,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_nameAttach
 	[SchemaMember("CPhysMotor", "m_nameAttach")]
-	public string NameAttach
+	public virtual string NameAttach
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysMotor", "m_nameAttach"); }
 		set { Schema.SetString(this.Handle, "CPhysMotor", "m_nameAttach", value); }
@@ -29,7 +29,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_nameAnchor
 	[SchemaMember("CPhysMotor", "m_nameAnchor")]
-	public string NameAnchor
+	public virtual string NameAnchor
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysMotor", "m_nameAnchor"); }
 		set { Schema.SetString(this.Handle, "CPhysMotor", "m_nameAnchor", value); }
@@ -37,15 +37,15 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_hAttachedObject
 	[SchemaMember("CPhysMotor", "m_hAttachedObject")]
-	public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAttachedObject");
+	public virtual CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAttachedObject");
 
 	// m_hAnchorObject
 	[SchemaMember("CPhysMotor", "m_hAnchorObject")]
-	public CHandle<CBaseEntity> AnchorObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAnchorObject");
+	public virtual CHandle<CBaseEntity> AnchorObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAnchorObject");
 
 	// m_spinUp
 	[SchemaMember("CPhysMotor", "m_spinUp")]
-	public float SpinUp
+	public virtual float SpinUp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_spinUp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_spinUp", value); }
@@ -53,7 +53,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_spinDown
 	[SchemaMember("CPhysMotor", "m_spinDown")]
-	public float SpinDown
+	public virtual float SpinDown
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_spinDown"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_spinDown", value); }
@@ -61,7 +61,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_flMotorFriction
 	[SchemaMember("CPhysMotor", "m_flMotorFriction")]
-	public float MotorFriction
+	public virtual float MotorFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flMotorFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flMotorFriction", value); }
@@ -69,7 +69,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_additionalAcceleration
 	[SchemaMember("CPhysMotor", "m_additionalAcceleration")]
-	public float AdditionalAcceleration
+	public virtual float AdditionalAcceleration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_additionalAcceleration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_additionalAcceleration", value); }
@@ -77,7 +77,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_angularAcceleration
 	[SchemaMember("CPhysMotor", "m_angularAcceleration")]
-	public float AngularAcceleration
+	public virtual float AngularAcceleration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_angularAcceleration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_angularAcceleration", value); }
@@ -85,7 +85,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_flTorqueScale
 	[SchemaMember("CPhysMotor", "m_flTorqueScale")]
-	public float TorqueScale
+	public virtual float TorqueScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flTorqueScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flTorqueScale", value); }
@@ -93,7 +93,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_flTargetSpeed
 	[SchemaMember("CPhysMotor", "m_flTargetSpeed")]
-	public float TargetSpeed
+	public virtual float TargetSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flTargetSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flTargetSpeed", value); }
@@ -101,7 +101,7 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_flSpeedWhenSpinUpOrSpinDownStarted
 	[SchemaMember("CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted")]
-	public float SpeedWhenSpinUpOrSpinDownStarted
+	public virtual float SpeedWhenSpinUpOrSpinDownStarted
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted", value); }
@@ -109,6 +109,6 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_motor
 	[SchemaMember("CPhysMotor", "m_motor")]
-	public CMotorController Motor => Schema.GetDeclaredClass<CMotorController>(this.Handle, "CPhysMotor", "m_motor");
+	public virtual CMotorController Motor => Schema.GetDeclaredClass<CMotorController>(this.Handle, "CPhysMotor", "m_motor");
 
 }

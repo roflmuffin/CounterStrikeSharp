@@ -21,19 +21,19 @@ public partial class CCSPlayerResource : CBaseEntity
 
 	// m_bHostageAlive
 	[SchemaMember("CCSPlayerResource", "m_bHostageAlive")]
-	public Span<bool> HostageAlive => Schema.GetFixedArray<bool>(this.Handle, "CCSPlayerResource", "m_bHostageAlive", 12);
+	public virtual Span<bool> HostageAlive => Schema.GetFixedArray<bool>(this.Handle, "CCSPlayerResource", "m_bHostageAlive", 12);
 
 	// m_isHostageFollowingSomeone
 	[SchemaMember("CCSPlayerResource", "m_isHostageFollowingSomeone")]
-	public Span<bool> IsHostageFollowingSomeone => Schema.GetFixedArray<bool>(this.Handle, "CCSPlayerResource", "m_isHostageFollowingSomeone", 12);
+	public virtual Span<bool> IsHostageFollowingSomeone => Schema.GetFixedArray<bool>(this.Handle, "CCSPlayerResource", "m_isHostageFollowingSomeone", 12);
 
 	// m_iHostageEntityIDs
 	[SchemaMember("CCSPlayerResource", "m_iHostageEntityIDs")]
-	public Span<CEntityIndex> HostageEntityIDs => Schema.GetFixedArray<CEntityIndex>(this.Handle, "CCSPlayerResource", "m_iHostageEntityIDs", 12);
+	public virtual Span<CEntityIndex> HostageEntityIDs => Schema.GetFixedArray<CEntityIndex>(this.Handle, "CCSPlayerResource", "m_iHostageEntityIDs", 12);
 
 	// m_bombsiteCenterA
 	[SchemaMember("CCSPlayerResource", "m_bombsiteCenterA")]
-	public Vector3 BombsiteCenterA
+	public virtual Vector3 BombsiteCenterA
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterA"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterA", value); }
@@ -41,7 +41,7 @@ public partial class CCSPlayerResource : CBaseEntity
 
 	// m_bombsiteCenterB
 	[SchemaMember("CCSPlayerResource", "m_bombsiteCenterB")]
-	public Vector3 BombsiteCenterB
+	public virtual Vector3 BombsiteCenterB
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterB"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterB", value); }
@@ -49,19 +49,19 @@ public partial class CCSPlayerResource : CBaseEntity
 
 	// m_hostageRescueX
 	[SchemaMember("CCSPlayerResource", "m_hostageRescueX")]
-	public Span<Int32> HostageRescueX => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueX", 4);
+	public virtual Span<Int32> HostageRescueX => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueX", 4);
 
 	// m_hostageRescueY
 	[SchemaMember("CCSPlayerResource", "m_hostageRescueY")]
-	public Span<Int32> HostageRescueY => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueY", 4);
+	public virtual Span<Int32> HostageRescueY => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueY", 4);
 
 	// m_hostageRescueZ
 	[SchemaMember("CCSPlayerResource", "m_hostageRescueZ")]
-	public Span<Int32> HostageRescueZ => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueZ", 4);
+	public virtual Span<Int32> HostageRescueZ => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueZ", 4);
 
 	// m_bEndMatchNextMapAllVoted
 	[SchemaMember("CCSPlayerResource", "m_bEndMatchNextMapAllVoted")]
-	public bool EndMatchNextMapAllVoted
+	public virtual bool EndMatchNextMapAllVoted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted", value); }
@@ -69,19 +69,19 @@ public partial class CCSPlayerResource : CBaseEntity
 
 	// m_foundGoalPositions
 	[SchemaMember("CCSPlayerResource", "m_foundGoalPositions")]
-	public bool FoundGoalPositions
+	public virtual bool FoundGoalPositions
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerResource", "m_foundGoalPositions"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerResource", "m_foundGoalPositions", value); }
 	}
 
-	public void HostageAlivePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bHostageAlive");
-	public void IsHostageFollowingSomeonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_isHostageFollowingSomeone");
-	public void HostageEntityIDsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_iHostageEntityIDs");
-	public void BombsiteCenterAPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bombsiteCenterA");
-	public void BombsiteCenterBPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bombsiteCenterB");
-	public void HostageRescueXPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueX");
-	public void HostageRescueYPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueY");
-	public void HostageRescueZPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueZ");
-	public void EndMatchNextMapAllVotedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted");
+	public virtual void HostageAlivePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bHostageAlive");
+	public virtual void IsHostageFollowingSomeonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_isHostageFollowingSomeone");
+	public virtual void HostageEntityIDsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_iHostageEntityIDs");
+	public virtual void BombsiteCenterAPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bombsiteCenterA");
+	public virtual void BombsiteCenterBPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bombsiteCenterB");
+	public virtual void HostageRescueXPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueX");
+	public virtual void HostageRescueYPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueY");
+	public virtual void HostageRescueZPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueZ");
+	public virtual void EndMatchNextMapAllVotedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted");
 }

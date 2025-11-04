@@ -21,7 +21,7 @@ public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase
 
 	// m_vMin
 	[SchemaMember("CSoundAreaEntityOrientedBox", "m_vMin")]
-	public Vector3 Min
+	public virtual Vector3 Min
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMin", value); }
@@ -29,12 +29,12 @@ public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase
 
 	// m_vMax
 	[SchemaMember("CSoundAreaEntityOrientedBox", "m_vMax")]
-	public Vector3 Max
+	public virtual Vector3 Max
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax", value); }
 	}
 
-	public void MinPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityOrientedBox", "m_vMin");
-	public void MaxPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityOrientedBox", "m_vMax");
+	public virtual void MinPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityOrientedBox", "m_vMin");
+	public virtual void MaxPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityOrientedBox", "m_vMax");
 }

@@ -21,11 +21,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_CPropDataComponent
 	[SchemaMember("CBreakable", "m_CPropDataComponent")]
-	public CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CBreakable", "m_CPropDataComponent");
+	public virtual CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CBreakable", "m_CPropDataComponent");
 
 	// m_Material
 	[SchemaMember("CBreakable", "m_Material")]
-	public Materials Material
+	public virtual Materials Material
 	{
 		get { return Schema.GetValueType<Materials>(this.Handle, "CBreakable", "m_Material"); }
 		set { Schema.SetValueType<Materials>(this.Handle, "CBreakable", "m_Material", value); }
@@ -33,11 +33,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_hBreaker
 	[SchemaMember("CBreakable", "m_hBreaker")]
-	public CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakable", "m_hBreaker");
+	public virtual CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakable", "m_hBreaker");
 
 	// m_Explosion
 	[SchemaMember("CBreakable", "m_Explosion")]
-	public Explosions Explosion
+	public virtual Explosions Explosion
 	{
 		get { return Schema.GetValueType<Explosions>(this.Handle, "CBreakable", "m_Explosion"); }
 		set { Schema.SetValueType<Explosions>(this.Handle, "CBreakable", "m_Explosion", value); }
@@ -45,7 +45,7 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_iszSpawnObject
 	[SchemaMember("CBreakable", "m_iszSpawnObject")]
-	public string SpawnObject
+	public virtual string SpawnObject
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszSpawnObject"); }
 		set { Schema.SetString(this.Handle, "CBreakable", "m_iszSpawnObject", value); }
@@ -53,7 +53,7 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_flPressureDelay
 	[SchemaMember("CBreakable", "m_flPressureDelay")]
-	public float PressureDelay
+	public virtual float PressureDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakable", "m_flPressureDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakable", "m_flPressureDelay", value); }
@@ -61,7 +61,7 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_iMinHealthDmg
 	[SchemaMember("CBreakable", "m_iMinHealthDmg")]
-	public Int32 MinHealthDmg
+	public virtual Int32 MinHealthDmg
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBreakable", "m_iMinHealthDmg"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBreakable", "m_iMinHealthDmg", value); }
@@ -69,7 +69,7 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_iszPropData
 	[SchemaMember("CBreakable", "m_iszPropData")]
-	public string PropData
+	public virtual string PropData
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszPropData"); }
 		set { Schema.SetString(this.Handle, "CBreakable", "m_iszPropData", value); }
@@ -77,7 +77,7 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_impactEnergyScale
 	[SchemaMember("CBreakable", "m_impactEnergyScale")]
-	public float ImpactEnergyScale
+	public virtual float ImpactEnergyScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakable", "m_impactEnergyScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakable", "m_impactEnergyScale", value); }
@@ -85,7 +85,7 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_nOverrideBlockLOS
 	[SchemaMember("CBreakable", "m_nOverrideBlockLOS")]
-	public EOverrideBlockLOS_t OverrideBlockLOS
+	public virtual EOverrideBlockLOS_t OverrideBlockLOS
 	{
 		get { return Schema.GetValueType<EOverrideBlockLOS_t>(this.Handle, "CBreakable", "m_nOverrideBlockLOS"); }
 		set { Schema.SetValueType<EOverrideBlockLOS_t>(this.Handle, "CBreakable", "m_nOverrideBlockLOS", value); }
@@ -93,11 +93,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_OnBreak
 	[SchemaMember("CBreakable", "m_OnBreak")]
-	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakable", "m_OnBreak");
+	public virtual CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakable", "m_OnBreak");
 
 	// m_PerformanceMode
 	[SchemaMember("CBreakable", "m_PerformanceMode")]
-	public PerformanceMode_t PerformanceMode
+	public virtual PerformanceMode_t PerformanceMode
 	{
 		get { return Schema.GetValueType<PerformanceMode_t>(this.Handle, "CBreakable", "m_PerformanceMode"); }
 		set { Schema.SetValueType<PerformanceMode_t>(this.Handle, "CBreakable", "m_PerformanceMode", value); }
@@ -105,15 +105,15 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_hPhysicsAttacker
 	[SchemaMember("CBreakable", "m_hPhysicsAttacker")]
-	public CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakable", "m_hPhysicsAttacker");
+	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakable", "m_hPhysicsAttacker");
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CBreakable", "m_flLastPhysicsInfluenceTime")]
-	public float LastPhysicsInfluenceTime
+	public virtual float LastPhysicsInfluenceTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakable", "m_flLastPhysicsInfluenceTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakable", "m_flLastPhysicsInfluenceTime", value); }
 	}
 
-	public void CPropDataComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBreakable", "m_CPropDataComponent");
+	public virtual void CPropDataComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBreakable", "m_CPropDataComponent");
 }

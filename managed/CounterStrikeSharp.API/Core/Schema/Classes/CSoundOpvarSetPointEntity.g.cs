@@ -21,15 +21,15 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_OnEnter
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_OnEnter")]
-	public CEntityIOOutput OnEnter => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundOpvarSetPointEntity", "m_OnEnter");
+	public virtual CEntityIOOutput OnEnter => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundOpvarSetPointEntity", "m_OnEnter");
 
 	// m_OnExit
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_OnExit")]
-	public CEntityIOOutput OnExit => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundOpvarSetPointEntity", "m_OnExit");
+	public virtual CEntityIOOutput OnExit => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundOpvarSetPointEntity", "m_OnExit");
 
 	// m_bAutoDisable
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_bAutoDisable")]
-	public bool AutoDisable
+	public virtual bool AutoDisable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bAutoDisable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bAutoDisable", value); }
@@ -37,7 +37,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flDistanceMin
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMin")]
-	public float DistanceMin
+	public virtual float DistanceMin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMin", value); }
@@ -45,7 +45,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flDistanceMax
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMax")]
-	public float DistanceMax
+	public virtual float DistanceMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMax", value); }
@@ -53,7 +53,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flDistanceMapMin
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMapMin")]
-	public float DistanceMapMin
+	public virtual float DistanceMapMin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMin", value); }
@@ -61,7 +61,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flDistanceMapMax
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMapMax")]
-	public float DistanceMapMax
+	public virtual float DistanceMapMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMax", value); }
@@ -69,7 +69,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flOcclusionRadius
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flOcclusionRadius")]
-	public float OcclusionRadius
+	public virtual float OcclusionRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionRadius", value); }
@@ -77,7 +77,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flOcclusionMin
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flOcclusionMin")]
-	public float OcclusionMin
+	public virtual float OcclusionMin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMin", value); }
@@ -85,7 +85,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flOcclusionMax
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flOcclusionMax")]
-	public float OcclusionMax
+	public virtual float OcclusionMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMax", value); }
@@ -93,7 +93,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flValSetOnDisable
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flValSetOnDisable")]
-	public float ValSetOnDisable
+	public virtual float ValSetOnDisable
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flValSetOnDisable"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flValSetOnDisable", value); }
@@ -101,7 +101,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_bSetValueOnDisable
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_bSetValueOnDisable")]
-	public bool SetValueOnDisable
+	public virtual bool SetValueOnDisable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bSetValueOnDisable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bSetValueOnDisable", value); }
@@ -109,7 +109,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_bReloading
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_bReloading")]
-	public bool Reloading
+	public virtual bool Reloading
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bReloading"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bReloading", value); }
@@ -117,7 +117,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_nSimulationMode
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nSimulationMode")]
-	public Int32 SimulationMode
+	public virtual Int32 SimulationMode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nSimulationMode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nSimulationMode", value); }
@@ -125,7 +125,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_nVisibilitySamples
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nVisibilitySamples")]
-	public Int32 VisibilitySamples
+	public virtual Int32 VisibilitySamples
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nVisibilitySamples"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nVisibilitySamples", value); }
@@ -133,7 +133,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_vDynamicProxyPoint
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint")]
-	public Vector3 DynamicProxyPoint
+	public virtual Vector3 DynamicProxyPoint
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint", value); }
@@ -141,7 +141,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flDynamicMaximumOcclusion
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion")]
-	public float DynamicMaximumOcclusion
+	public virtual float DynamicMaximumOcclusion
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion", value); }
@@ -149,11 +149,11 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_hDynamicEntity
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_hDynamicEntity")]
-	public CHandle<CEntityInstance> DynamicEntity => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointEntity", "m_hDynamicEntity");
+	public virtual CHandle<CEntityInstance> DynamicEntity => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointEntity", "m_hDynamicEntity");
 
 	// m_iszDynamicEntityName
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_iszDynamicEntityName")]
-	public string DynamicEntityName
+	public virtual string DynamicEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointEntity", "m_iszDynamicEntityName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetPointEntity", "m_iszDynamicEntityName", value); }
@@ -161,7 +161,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flPathingDistanceNormFactor
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor")]
-	public float PathingDistanceNormFactor
+	public virtual float PathingDistanceNormFactor
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor", value); }
@@ -169,7 +169,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_vPathingSourcePos
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingSourcePos")]
-	public Vector3 PathingSourcePos
+	public virtual Vector3 PathingSourcePos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingSourcePos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingSourcePos", value); }
@@ -177,7 +177,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_vPathingListenerPos
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingListenerPos")]
-	public Vector3 PathingListenerPos
+	public virtual Vector3 PathingListenerPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingListenerPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingListenerPos", value); }
@@ -185,7 +185,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_vPathingDirection
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingDirection")]
-	public Vector3 PathingDirection
+	public virtual Vector3 PathingDirection
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingDirection"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingDirection", value); }
@@ -193,7 +193,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_nPathingSourceIndex
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nPathingSourceIndex")]
-	public Int32 PathingSourceIndex
+	public virtual Int32 PathingSourceIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nPathingSourceIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nPathingSourceIndex", value); }

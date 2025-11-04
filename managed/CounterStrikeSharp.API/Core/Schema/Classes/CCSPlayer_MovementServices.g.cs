@@ -21,7 +21,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecLadderNormal
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLadderNormal")]
-	public Vector3 LadderNormal
+	public virtual Vector3 LadderNormal
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal", value); }
@@ -29,7 +29,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nLadderSurfacePropIndex
 	[SchemaMember("CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex")]
-	public Int32 LadderSurfacePropIndex
+	public virtual Int32 LadderSurfacePropIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flDuckAmount
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckAmount")]
-	public float DuckAmount
+	public virtual float DuckAmount
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckAmount"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckAmount", value); }
@@ -45,7 +45,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flDuckSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckSpeed")]
-	public float DuckSpeed
+	public virtual float DuckSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckSpeed", value); }
@@ -53,7 +53,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bDuckOverride
 	[SchemaMember("CCSPlayer_MovementServices", "m_bDuckOverride")]
-	public bool DuckOverride
+	public virtual bool DuckOverride
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDuckOverride"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDuckOverride", value); }
@@ -61,7 +61,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bDesiresDuck
 	[SchemaMember("CCSPlayer_MovementServices", "m_bDesiresDuck")]
-	public bool DesiresDuck
+	public virtual bool DesiresDuck
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDesiresDuck"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDesiresDuck", value); }
@@ -69,7 +69,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flDuckOffset
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckOffset")]
-	public float DuckOffset
+	public virtual float DuckOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckOffset", value); }
@@ -77,7 +77,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nDuckTimeMsecs
 	[SchemaMember("CCSPlayer_MovementServices", "m_nDuckTimeMsecs")]
-	public UInt32 DuckTimeMsecs
+	public virtual UInt32 DuckTimeMsecs
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs", value); }
@@ -85,7 +85,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nDuckJumpTimeMsecs
 	[SchemaMember("CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs")]
-	public UInt32 DuckJumpTimeMsecs
+	public virtual UInt32 DuckJumpTimeMsecs
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs", value); }
@@ -93,7 +93,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nJumpTimeMsecs
 	[SchemaMember("CCSPlayer_MovementServices", "m_nJumpTimeMsecs")]
-	public UInt32 JumpTimeMsecs
+	public virtual UInt32 JumpTimeMsecs
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs", value); }
@@ -101,7 +101,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flLastDuckTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flLastDuckTime")]
-	public float LastDuckTime
+	public virtual float LastDuckTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastDuckTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastDuckTime", value); }
@@ -109,7 +109,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecLastPositionAtFullCrouchSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed")]
-	public Vector2 LastPositionAtFullCrouchSpeed
+	public virtual Vector2 LastPositionAtFullCrouchSpeed
 	{
 		get { return Schema.GetValueType<Vector2>(this.Handle, "CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed"); }
 		set { Schema.SetValueType<Vector2>(this.Handle, "CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed", value); }
@@ -117,7 +117,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_duckUntilOnGround
 	[SchemaMember("CCSPlayer_MovementServices", "m_duckUntilOnGround")]
-	public bool DuckUntilOnGround
+	public virtual bool DuckUntilOnGround
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_duckUntilOnGround"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_duckUntilOnGround", value); }
@@ -125,7 +125,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bHasWalkMovedSinceLastJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump")]
-	public bool HasWalkMovedSinceLastJump
+	public virtual bool HasWalkMovedSinceLastJump
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump", value); }
@@ -133,7 +133,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bInStuckTest
 	[SchemaMember("CCSPlayer_MovementServices", "m_bInStuckTest")]
-	public bool InStuckTest
+	public virtual bool InStuckTest
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bInStuckTest"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bInStuckTest", value); }
@@ -141,7 +141,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nTraceCount
 	[SchemaMember("CCSPlayer_MovementServices", "m_nTraceCount")]
-	public Int32 TraceCount
+	public virtual Int32 TraceCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nTraceCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nTraceCount", value); }
@@ -149,7 +149,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_StuckLast
 	[SchemaMember("CCSPlayer_MovementServices", "m_StuckLast")]
-	public Int32 StuckLast
+	public virtual Int32 StuckLast
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_StuckLast"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_StuckLast", value); }
@@ -157,7 +157,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bSpeedCropped
 	[SchemaMember("CCSPlayer_MovementServices", "m_bSpeedCropped")]
-	public bool SpeedCropped
+	public virtual bool SpeedCropped
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped", value); }
@@ -165,7 +165,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nOldWaterLevel
 	[SchemaMember("CCSPlayer_MovementServices", "m_nOldWaterLevel")]
-	public Int32 OldWaterLevel
+	public virtual Int32 OldWaterLevel
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel", value); }
@@ -173,7 +173,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flWaterEntryTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flWaterEntryTime")]
-	public float WaterEntryTime
+	public virtual float WaterEntryTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flWaterEntryTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flWaterEntryTime", value); }
@@ -181,7 +181,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecForward
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecForward")]
-	public Vector3 Forward
+	public virtual Vector3 Forward
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecForward"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecForward", value); }
@@ -189,7 +189,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecLeft
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLeft")]
-	public Vector3 Left
+	public virtual Vector3 Left
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLeft"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLeft", value); }
@@ -197,7 +197,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecUp
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecUp")]
-	public Vector3 Up
+	public virtual Vector3 Up
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecUp"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecUp", value); }
@@ -205,7 +205,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nGameCodeHasMovedPlayerAfterCommand
 	[SchemaMember("CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand")]
-	public Int32 GameCodeHasMovedPlayerAfterCommand
+	public virtual Int32 GameCodeHasMovedPlayerAfterCommand
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand", value); }
@@ -213,7 +213,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bMadeFootstepNoise
 	[SchemaMember("CCSPlayer_MovementServices", "m_bMadeFootstepNoise")]
-	public bool MadeFootstepNoise
+	public virtual bool MadeFootstepNoise
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bMadeFootstepNoise"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bMadeFootstepNoise", value); }
@@ -221,7 +221,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_iFootsteps
 	[SchemaMember("CCSPlayer_MovementServices", "m_iFootsteps")]
-	public Int32 Footsteps
+	public virtual Int32 Footsteps
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_iFootsteps"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_iFootsteps", value); }
@@ -229,7 +229,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bOldJumpPressed
 	[SchemaMember("CCSPlayer_MovementServices", "m_bOldJumpPressed")]
-	public bool OldJumpPressed
+	public virtual bool OldJumpPressed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bOldJumpPressed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bOldJumpPressed", value); }
@@ -237,7 +237,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flJumpPressedTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flJumpPressedTime")]
-	public float JumpPressedTime
+	public virtual float JumpPressedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime", value); }
@@ -245,7 +245,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_fStashGrenadeParameterWhen
 	[SchemaMember("CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen")]
-	public float StashGrenadeParameterWhen
+	public virtual float StashGrenadeParameterWhen
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen", value); }
@@ -253,7 +253,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_nButtonDownMaskPrev
 	[SchemaMember("CCSPlayer_MovementServices", "m_nButtonDownMaskPrev")]
-	public UInt64 ButtonDownMaskPrev
+	public virtual UInt64 ButtonDownMaskPrev
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev", value); }
@@ -261,7 +261,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flOffsetTickCompleteTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime")]
-	public float OffsetTickCompleteTime
+	public virtual float OffsetTickCompleteTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime", value); }
@@ -269,7 +269,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flOffsetTickStashedSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed")]
-	public float OffsetTickStashedSpeed
+	public virtual float OffsetTickStashedSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed", value); }
@@ -277,7 +277,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flStamina
 	[SchemaMember("CCSPlayer_MovementServices", "m_flStamina")]
-	public float Stamina
+	public virtual float Stamina
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStamina"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStamina", value); }
@@ -285,7 +285,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flHeightAtJumpStart
 	[SchemaMember("CCSPlayer_MovementServices", "m_flHeightAtJumpStart")]
-	public float HeightAtJumpStart
+	public virtual float HeightAtJumpStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flHeightAtJumpStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flHeightAtJumpStart", value); }
@@ -293,7 +293,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flMaxJumpHeightThisJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump")]
-	public float MaxJumpHeightThisJump
+	public virtual float MaxJumpHeightThisJump
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump", value); }
@@ -301,7 +301,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flMaxJumpHeightLastJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump")]
-	public float MaxJumpHeightLastJump
+	public virtual float MaxJumpHeightLastJump
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump", value); }
@@ -309,7 +309,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flStaminaAtJumpStart
 	[SchemaMember("CCSPlayer_MovementServices", "m_flStaminaAtJumpStart")]
-	public float StaminaAtJumpStart
+	public virtual float StaminaAtJumpStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStaminaAtJumpStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStaminaAtJumpStart", value); }
@@ -317,7 +317,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flAccumulatedJumpError
 	[SchemaMember("CCSPlayer_MovementServices", "m_flAccumulatedJumpError")]
-	public float AccumulatedJumpError
+	public virtual float AccumulatedJumpError
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError", value); }
@@ -325,7 +325,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_flTicksSinceLastSurfingDetected
 	[SchemaMember("CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected")]
-	public float TicksSinceLastSurfingDetected
+	public virtual float TicksSinceLastSurfingDetected
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected", value); }
@@ -333,7 +333,7 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_bWasSurfing
 	[SchemaMember("CCSPlayer_MovementServices", "m_bWasSurfing")]
-	public bool WasSurfing
+	public virtual bool WasSurfing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing", value); }
@@ -341,29 +341,29 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecInputRotated
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecInputRotated")]
-	public Vector3 InputRotated
+	public virtual Vector3 InputRotated
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated", value); }
 	}
 
-	public void LadderNormalPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_vecLadderNormal");
-	public void LadderSurfacePropIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex");
-	public void DuckAmountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckAmount");
-	public void DuckSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckSpeed");
-	public void DuckOverridePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bDuckOverride");
-	public void DesiresDuckPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bDesiresDuck");
-	public void DuckOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckOffset");
-	public void DuckTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs");
-	public void DuckJumpTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs");
-	public void JumpTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs");
-	public void LastDuckTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flLastDuckTime");
-	public void GameCodeHasMovedPlayerAfterCommandPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand");
-	public void OldJumpPressedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bOldJumpPressed");
-	public void StashGrenadeParameterWhenPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
-	public void ButtonDownMaskPrevPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev");
-	public void OffsetTickCompleteTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime");
-	public void OffsetTickStashedSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed");
-	public void StaminaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flStamina");
-	public void WasSurfingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bWasSurfing");
+	public virtual void LadderNormalPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_vecLadderNormal");
+	public virtual void LadderSurfacePropIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex");
+	public virtual void DuckAmountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckAmount");
+	public virtual void DuckSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckSpeed");
+	public virtual void DuckOverridePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bDuckOverride");
+	public virtual void DesiresDuckPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bDesiresDuck");
+	public virtual void DuckOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckOffset");
+	public virtual void DuckTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs");
+	public virtual void DuckJumpTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs");
+	public virtual void JumpTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs");
+	public virtual void LastDuckTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flLastDuckTime");
+	public virtual void GameCodeHasMovedPlayerAfterCommandPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand");
+	public virtual void OldJumpPressedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bOldJumpPressed");
+	public virtual void StashGrenadeParameterWhenPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
+	public virtual void ButtonDownMaskPrevPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev");
+	public virtual void OffsetTickCompleteTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime");
+	public virtual void OffsetTickStashedSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed");
+	public virtual void StaminaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flStamina");
+	public virtual void WasSurfingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bWasSurfing");
 }

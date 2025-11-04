@@ -21,7 +21,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszName
 	[SchemaMember("CEnvInstructorHint", "m_iszName")]
-	public string Name
+	public virtual string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszName"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszName", value); }
@@ -29,7 +29,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszReplace_Key
 	[SchemaMember("CEnvInstructorHint", "m_iszReplace_Key")]
-	public string Replace_Key
+	public virtual string Replace_Key
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszReplace_Key"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszReplace_Key", value); }
@@ -37,7 +37,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszHintTargetEntity
 	[SchemaMember("CEnvInstructorHint", "m_iszHintTargetEntity")]
-	public string HintTargetEntity
+	public virtual string HintTargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszHintTargetEntity"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszHintTargetEntity", value); }
@@ -45,7 +45,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iTimeout
 	[SchemaMember("CEnvInstructorHint", "m_iTimeout")]
-	public Int32 Timeout
+	public virtual Int32 Timeout
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iTimeout"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iTimeout", value); }
@@ -53,7 +53,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iDisplayLimit
 	[SchemaMember("CEnvInstructorHint", "m_iDisplayLimit")]
-	public Int32 DisplayLimit
+	public virtual Int32 DisplayLimit
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iDisplayLimit"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iDisplayLimit", value); }
@@ -61,7 +61,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszIcon_Onscreen
 	[SchemaMember("CEnvInstructorHint", "m_iszIcon_Onscreen")]
-	public string Icon_Onscreen
+	public virtual string Icon_Onscreen
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszIcon_Onscreen"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Onscreen", value); }
@@ -69,7 +69,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszIcon_Offscreen
 	[SchemaMember("CEnvInstructorHint", "m_iszIcon_Offscreen")]
-	public string Icon_Offscreen
+	public virtual string Icon_Offscreen
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszIcon_Offscreen"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Offscreen", value); }
@@ -77,7 +77,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszCaption
 	[SchemaMember("CEnvInstructorHint", "m_iszCaption")]
-	public string Caption
+	public virtual string Caption
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszCaption"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszCaption", value); }
@@ -85,7 +85,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszActivatorCaption
 	[SchemaMember("CEnvInstructorHint", "m_iszActivatorCaption")]
-	public string ActivatorCaption
+	public virtual string ActivatorCaption
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszActivatorCaption"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszActivatorCaption", value); }
@@ -93,7 +93,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_Color
 	[SchemaMember("CEnvInstructorHint", "m_Color")]
-	public Color Color
+	public virtual Color Color
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvInstructorHint", "m_Color"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvInstructorHint", "m_Color", value); }
@@ -101,7 +101,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_fIconOffset
 	[SchemaMember("CEnvInstructorHint", "m_fIconOffset")]
-	public float IconOffset
+	public virtual float IconOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fIconOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fIconOffset", value); }
@@ -109,7 +109,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_fRange
 	[SchemaMember("CEnvInstructorHint", "m_fRange")]
-	public float Range
+	public virtual float Range
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fRange", value); }
@@ -117,7 +117,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iPulseOption
 	[SchemaMember("CEnvInstructorHint", "m_iPulseOption")]
-	public byte PulseOption
+	public virtual byte PulseOption
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iPulseOption"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iPulseOption", value); }
@@ -125,7 +125,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iAlphaOption
 	[SchemaMember("CEnvInstructorHint", "m_iAlphaOption")]
-	public byte AlphaOption
+	public virtual byte AlphaOption
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iAlphaOption"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iAlphaOption", value); }
@@ -133,7 +133,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iShakeOption
 	[SchemaMember("CEnvInstructorHint", "m_iShakeOption")]
-	public byte ShakeOption
+	public virtual byte ShakeOption
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iShakeOption"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iShakeOption", value); }
@@ -141,7 +141,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bStatic
 	[SchemaMember("CEnvInstructorHint", "m_bStatic")]
-	public bool Static
+	public virtual bool Static
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bStatic"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bStatic", value); }
@@ -149,7 +149,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bNoOffscreen
 	[SchemaMember("CEnvInstructorHint", "m_bNoOffscreen")]
-	public bool NoOffscreen
+	public virtual bool NoOffscreen
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bNoOffscreen"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bNoOffscreen", value); }
@@ -157,7 +157,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bForceCaption
 	[SchemaMember("CEnvInstructorHint", "m_bForceCaption")]
-	public bool ForceCaption
+	public virtual bool ForceCaption
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bForceCaption"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bForceCaption", value); }
@@ -165,7 +165,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iInstanceType
 	[SchemaMember("CEnvInstructorHint", "m_iInstanceType")]
-	public Int32 InstanceType
+	public virtual Int32 InstanceType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iInstanceType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iInstanceType", value); }
@@ -173,7 +173,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bSuppressRest
 	[SchemaMember("CEnvInstructorHint", "m_bSuppressRest")]
-	public bool SuppressRest
+	public virtual bool SuppressRest
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bSuppressRest"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bSuppressRest", value); }
@@ -181,7 +181,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iszBinding
 	[SchemaMember("CEnvInstructorHint", "m_iszBinding")]
-	public string Binding
+	public virtual string Binding
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszBinding"); }
 		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszBinding", value); }
@@ -189,7 +189,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bAllowNoDrawTarget
 	[SchemaMember("CEnvInstructorHint", "m_bAllowNoDrawTarget")]
-	public bool AllowNoDrawTarget
+	public virtual bool AllowNoDrawTarget
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAllowNoDrawTarget"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAllowNoDrawTarget", value); }
@@ -197,7 +197,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bAutoStart
 	[SchemaMember("CEnvInstructorHint", "m_bAutoStart")]
-	public bool AutoStart
+	public virtual bool AutoStart
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAutoStart"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAutoStart", value); }
@@ -205,7 +205,7 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bLocalPlayerOnly
 	[SchemaMember("CEnvInstructorHint", "m_bLocalPlayerOnly")]
-	public bool LocalPlayerOnly
+	public virtual bool LocalPlayerOnly
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bLocalPlayerOnly"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bLocalPlayerOnly", value); }

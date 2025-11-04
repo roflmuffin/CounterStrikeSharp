@@ -21,7 +21,7 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_targetCamera
 	[SchemaMember("CFuncMonitor", "m_targetCamera")]
-	public string TargetCamera
+	public virtual string TargetCamera
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMonitor", "m_targetCamera"); }
 		set { Schema.SetString(this.Handle, "CFuncMonitor", "m_targetCamera", value); }
@@ -29,7 +29,7 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_nResolutionEnum
 	[SchemaMember("CFuncMonitor", "m_nResolutionEnum")]
-	public Int32 ResolutionEnum
+	public virtual Int32 ResolutionEnum
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMonitor", "m_nResolutionEnum"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMonitor", "m_nResolutionEnum", value); }
@@ -37,7 +37,7 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_bRenderShadows
 	[SchemaMember("CFuncMonitor", "m_bRenderShadows")]
-	public bool RenderShadows
+	public virtual bool RenderShadows
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bRenderShadows"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bRenderShadows", value); }
@@ -45,7 +45,7 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_bUseUniqueColorTarget
 	[SchemaMember("CFuncMonitor", "m_bUseUniqueColorTarget")]
-	public bool UseUniqueColorTarget
+	public virtual bool UseUniqueColorTarget
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bUseUniqueColorTarget"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bUseUniqueColorTarget", value); }
@@ -53,7 +53,7 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_brushModelName
 	[SchemaMember("CFuncMonitor", "m_brushModelName")]
-	public string BrushModelName
+	public virtual string BrushModelName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMonitor", "m_brushModelName"); }
 		set { Schema.SetString(this.Handle, "CFuncMonitor", "m_brushModelName", value); }
@@ -61,11 +61,11 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_hTargetCamera
 	[SchemaMember("CFuncMonitor", "m_hTargetCamera")]
-	public CHandle<CBaseEntity> HTargetCamera => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMonitor", "m_hTargetCamera");
+	public virtual CHandle<CBaseEntity> HTargetCamera => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMonitor", "m_hTargetCamera");
 
 	// m_bEnabled
 	[SchemaMember("CFuncMonitor", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bEnabled", value); }
@@ -73,7 +73,7 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_bDraw3DSkybox
 	[SchemaMember("CFuncMonitor", "m_bDraw3DSkybox")]
-	public bool Draw3DSkybox
+	public virtual bool Draw3DSkybox
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bDraw3DSkybox"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bDraw3DSkybox", value); }
@@ -81,18 +81,18 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_bStartEnabled
 	[SchemaMember("CFuncMonitor", "m_bStartEnabled")]
-	public bool StartEnabled
+	public virtual bool StartEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bStartEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bStartEnabled", value); }
 	}
 
-	public void TargetCameraPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_targetCamera");
-	public void ResolutionEnumPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_nResolutionEnum");
-	public void RenderShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bRenderShadows");
-	public void UseUniqueColorTargetPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bUseUniqueColorTarget");
-	public void BrushModelNamePropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_brushModelName");
-	public void HTargetCameraPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_hTargetCamera");
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bEnabled");
-	public void Draw3DSkyboxPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bDraw3DSkybox");
+	public virtual void TargetCameraPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_targetCamera");
+	public virtual void ResolutionEnumPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_nResolutionEnum");
+	public virtual void RenderShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bRenderShadows");
+	public virtual void UseUniqueColorTargetPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bUseUniqueColorTarget");
+	public virtual void BrushModelNamePropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_brushModelName");
+	public virtual void HTargetCameraPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_hTargetCamera");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bEnabled");
+	public virtual void Draw3DSkyboxPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bDraw3DSkybox");
 }

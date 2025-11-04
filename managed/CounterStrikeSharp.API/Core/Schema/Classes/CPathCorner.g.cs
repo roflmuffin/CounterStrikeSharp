@@ -21,7 +21,7 @@ public partial class CPathCorner : CPointEntity
 
 	// m_flWait
 	[SchemaMember("CPathCorner", "m_flWait")]
-	public float Wait
+	public virtual float Wait
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPathCorner", "m_flWait"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPathCorner", "m_flWait", value); }
@@ -29,7 +29,7 @@ public partial class CPathCorner : CPointEntity
 
 	// m_flRadius
 	[SchemaMember("CPathCorner", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPathCorner", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPathCorner", "m_flRadius", value); }
@@ -37,6 +37,6 @@ public partial class CPathCorner : CPointEntity
 
 	// m_OnPass
 	[SchemaMember("CPathCorner", "m_OnPass")]
-	public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathCorner", "m_OnPass");
+	public virtual CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathCorner", "m_OnPass");
 
 }

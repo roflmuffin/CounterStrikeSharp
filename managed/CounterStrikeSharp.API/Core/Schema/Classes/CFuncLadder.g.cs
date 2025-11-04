@@ -21,7 +21,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_vecLadderDir
 	[SchemaMember("CFuncLadder", "m_vecLadderDir")]
-	public Vector3 LadderDir
+	public virtual Vector3 LadderDir
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLadderDir"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLadderDir", value); }
@@ -29,11 +29,11 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_Dismounts
 	[SchemaMember("CFuncLadder", "m_Dismounts")]
-	public NetworkedVector<CHandle<CInfoLadderDismount>> Dismounts => Schema.GetDeclaredClass<NetworkedVector<CHandle<CInfoLadderDismount>>>(this.Handle, "CFuncLadder", "m_Dismounts");
+	public virtual NetworkedVector<CHandle<CInfoLadderDismount>> Dismounts => Schema.GetDeclaredClass<NetworkedVector<CHandle<CInfoLadderDismount>>>(this.Handle, "CFuncLadder", "m_Dismounts");
 
 	// m_vecLocalTop
 	[SchemaMember("CFuncLadder", "m_vecLocalTop")]
-	public Vector3 LocalTop
+	public virtual Vector3 LocalTop
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLocalTop"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLocalTop", value); }
@@ -41,7 +41,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_vecPlayerMountPositionTop
 	[SchemaMember("CFuncLadder", "m_vecPlayerMountPositionTop")]
-	public Vector3 PlayerMountPositionTop
+	public virtual Vector3 PlayerMountPositionTop
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionTop"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionTop", value); }
@@ -49,7 +49,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_vecPlayerMountPositionBottom
 	[SchemaMember("CFuncLadder", "m_vecPlayerMountPositionBottom")]
-	public Vector3 PlayerMountPositionBottom
+	public virtual Vector3 PlayerMountPositionBottom
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionBottom"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionBottom", value); }
@@ -57,7 +57,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_flAutoRideSpeed
 	[SchemaMember("CFuncLadder", "m_flAutoRideSpeed")]
-	public float AutoRideSpeed
+	public virtual float AutoRideSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncLadder", "m_flAutoRideSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncLadder", "m_flAutoRideSpeed", value); }
@@ -65,7 +65,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncLadder", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncLadder", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncLadder", "m_bDisabled", value); }
@@ -73,7 +73,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_bFakeLadder
 	[SchemaMember("CFuncLadder", "m_bFakeLadder")]
-	public bool FakeLadder
+	public virtual bool FakeLadder
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncLadder", "m_bFakeLadder"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncLadder", "m_bFakeLadder", value); }
@@ -81,7 +81,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_bHasSlack
 	[SchemaMember("CFuncLadder", "m_bHasSlack")]
-	public bool HasSlack
+	public virtual bool HasSlack
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncLadder", "m_bHasSlack"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncLadder", "m_bHasSlack", value); }
@@ -89,7 +89,7 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_surfacePropName
 	[SchemaMember("CFuncLadder", "m_surfacePropName")]
-	public string SurfacePropName
+	public virtual string SurfacePropName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncLadder", "m_surfacePropName"); }
 		set { Schema.SetString(this.Handle, "CFuncLadder", "m_surfacePropName", value); }
@@ -97,15 +97,15 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_OnPlayerGotOnLadder
 	[SchemaMember("CFuncLadder", "m_OnPlayerGotOnLadder")]
-	public CEntityIOOutput OnPlayerGotOnLadder => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncLadder", "m_OnPlayerGotOnLadder");
+	public virtual CEntityIOOutput OnPlayerGotOnLadder => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncLadder", "m_OnPlayerGotOnLadder");
 
 	// m_OnPlayerGotOffLadder
 	[SchemaMember("CFuncLadder", "m_OnPlayerGotOffLadder")]
-	public CEntityIOOutput OnPlayerGotOffLadder => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncLadder", "m_OnPlayerGotOffLadder");
+	public virtual CEntityIOOutput OnPlayerGotOffLadder => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncLadder", "m_OnPlayerGotOffLadder");
 
-	public void LadderDirPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecLadderDir");
-	public void PlayerMountPositionTopPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecPlayerMountPositionTop");
-	public void PlayerMountPositionBottomPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecPlayerMountPositionBottom");
-	public void AutoRideSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_flAutoRideSpeed");
-	public void FakeLadderPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_bFakeLadder");
+	public virtual void LadderDirPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecLadderDir");
+	public virtual void PlayerMountPositionTopPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecPlayerMountPositionTop");
+	public virtual void PlayerMountPositionBottomPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecPlayerMountPositionBottom");
+	public virtual void AutoRideSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_flAutoRideSpeed");
+	public virtual void FakeLadderPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_bFakeLadder");
 }

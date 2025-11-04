@@ -21,7 +21,7 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_vecCsViewPunchAngle
 	[SchemaMember("CPlayer_CameraServices", "m_vecCsViewPunchAngle")]
-	public QAngle CsViewPunchAngle
+	public virtual QAngle CsViewPunchAngle
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPlayer_CameraServices", "m_vecCsViewPunchAngle"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPlayer_CameraServices", "m_vecCsViewPunchAngle", value); }
@@ -29,7 +29,7 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_nCsViewPunchAngleTick
 	[SchemaMember("CPlayer_CameraServices", "m_nCsViewPunchAngleTick")]
-	public Int32 CsViewPunchAngleTick
+	public virtual Int32 CsViewPunchAngleTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick", value); }
@@ -37,7 +37,7 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_flCsViewPunchAngleTickRatio
 	[SchemaMember("CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio")]
-	public float CsViewPunchAngleTickRatio
+	public virtual float CsViewPunchAngleTickRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio", value); }
@@ -45,31 +45,31 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_PlayerFog
 	[SchemaMember("CPlayer_CameraServices", "m_PlayerFog")]
-	public fogplayerparams_t PlayerFog => Schema.GetDeclaredClass<fogplayerparams_t>(this.Handle, "CPlayer_CameraServices", "m_PlayerFog");
+	public virtual fogplayerparams_t PlayerFog => Schema.GetDeclaredClass<fogplayerparams_t>(this.Handle, "CPlayer_CameraServices", "m_PlayerFog");
 
 	// m_hColorCorrectionCtrl
 	[SchemaMember("CPlayer_CameraServices", "m_hColorCorrectionCtrl")]
-	public CHandle<CColorCorrection> ColorCorrectionCtrl => Schema.GetDeclaredClass<CHandle<CColorCorrection>>(this.Handle, "CPlayer_CameraServices", "m_hColorCorrectionCtrl");
+	public virtual CHandle<CColorCorrection> ColorCorrectionCtrl => Schema.GetDeclaredClass<CHandle<CColorCorrection>>(this.Handle, "CPlayer_CameraServices", "m_hColorCorrectionCtrl");
 
 	// m_hViewEntity
 	[SchemaMember("CPlayer_CameraServices", "m_hViewEntity")]
-	public CHandle<CBaseEntity> ViewEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_CameraServices", "m_hViewEntity");
+	public virtual CHandle<CBaseEntity> ViewEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_CameraServices", "m_hViewEntity");
 
 	// m_hTonemapController
 	[SchemaMember("CPlayer_CameraServices", "m_hTonemapController")]
-	public CHandle<CTonemapController2> TonemapController => Schema.GetDeclaredClass<CHandle<CTonemapController2>>(this.Handle, "CPlayer_CameraServices", "m_hTonemapController");
+	public virtual CHandle<CTonemapController2> TonemapController => Schema.GetDeclaredClass<CHandle<CTonemapController2>>(this.Handle, "CPlayer_CameraServices", "m_hTonemapController");
 
 	// m_audio
 	[SchemaMember("CPlayer_CameraServices", "m_audio")]
-	public audioparams_t Audio => Schema.GetDeclaredClass<audioparams_t>(this.Handle, "CPlayer_CameraServices", "m_audio");
+	public virtual audioparams_t Audio => Schema.GetDeclaredClass<audioparams_t>(this.Handle, "CPlayer_CameraServices", "m_audio");
 
 	// m_PostProcessingVolumes
 	[SchemaMember("CPlayer_CameraServices", "m_PostProcessingVolumes")]
-	public NetworkedVector<CHandle<CPostProcessingVolume>> PostProcessingVolumes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CPostProcessingVolume>>>(this.Handle, "CPlayer_CameraServices", "m_PostProcessingVolumes");
+	public virtual NetworkedVector<CHandle<CPostProcessingVolume>> PostProcessingVolumes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CPostProcessingVolume>>>(this.Handle, "CPlayer_CameraServices", "m_PostProcessingVolumes");
 
 	// m_flOldPlayerZ
 	[SchemaMember("CPlayer_CameraServices", "m_flOldPlayerZ")]
-	public float OldPlayerZ
+	public virtual float OldPlayerZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerZ", value); }
@@ -77,7 +77,7 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_flOldPlayerViewOffsetZ
 	[SchemaMember("CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ")]
-	public float OldPlayerViewOffsetZ
+	public virtual float OldPlayerViewOffsetZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ", value); }
@@ -85,15 +85,15 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_hTriggerSoundscapeList
 	[SchemaMember("CPlayer_CameraServices", "m_hTriggerSoundscapeList")]
-	public NetworkedVector<CHandle<CEnvSoundscapeTriggerable>> TriggerSoundscapeList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEnvSoundscapeTriggerable>>>(this.Handle, "CPlayer_CameraServices", "m_hTriggerSoundscapeList");
+	public virtual NetworkedVector<CHandle<CEnvSoundscapeTriggerable>> TriggerSoundscapeList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEnvSoundscapeTriggerable>>>(this.Handle, "CPlayer_CameraServices", "m_hTriggerSoundscapeList");
 
-	public void CsViewPunchAnglePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_vecCsViewPunchAngle");
-	public void CsViewPunchAngleTickPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick");
-	public void CsViewPunchAngleTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio");
-	public void PlayerFogPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_PlayerFog");
-	public void ColorCorrectionCtrlPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hColorCorrectionCtrl");
-	public void ViewEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hViewEntity");
-	public void TonemapControllerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hTonemapController");
-	public void AudioPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_audio");
-	public void PostProcessingVolumesPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_PostProcessingVolumes");
+	public virtual void CsViewPunchAnglePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_vecCsViewPunchAngle");
+	public virtual void CsViewPunchAngleTickPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick");
+	public virtual void CsViewPunchAngleTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio");
+	public virtual void PlayerFogPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_PlayerFog");
+	public virtual void ColorCorrectionCtrlPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hColorCorrectionCtrl");
+	public virtual void ViewEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hViewEntity");
+	public virtual void TonemapControllerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hTonemapController");
+	public virtual void AudioPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_audio");
+	public virtual void PostProcessingVolumesPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_PostProcessingVolumes");
 }

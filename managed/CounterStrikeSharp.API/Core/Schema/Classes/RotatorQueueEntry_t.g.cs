@@ -21,7 +21,7 @@ public partial class RotatorQueueEntry_t : NativeObject
 
 	// qTarget
 	[SchemaMember("RotatorQueueEntry_t", "qTarget")]
-	public Quaternion QTarget
+	public virtual Quaternion QTarget
 	{
 		get { return Schema.GetValueType<Quaternion>(this.Handle, "RotatorQueueEntry_t", "qTarget"); }
 		set { Schema.SetValueType<Quaternion>(this.Handle, "RotatorQueueEntry_t", "qTarget", value); }
@@ -29,7 +29,7 @@ public partial class RotatorQueueEntry_t : NativeObject
 
 	// eSpace
 	[SchemaMember("RotatorQueueEntry_t", "eSpace")]
-	public RotatorTargetSpace_t ESpace
+	public virtual RotatorTargetSpace_t ESpace
 	{
 		get { return Schema.GetValueType<RotatorTargetSpace_t>(this.Handle, "RotatorQueueEntry_t", "eSpace"); }
 		set { Schema.SetValueType<RotatorTargetSpace_t>(this.Handle, "RotatorQueueEntry_t", "eSpace", value); }

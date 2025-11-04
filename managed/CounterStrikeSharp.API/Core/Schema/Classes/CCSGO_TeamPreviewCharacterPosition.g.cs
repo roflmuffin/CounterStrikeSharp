@@ -21,7 +21,7 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_nVariant
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nVariant")]
-	public Int32 Variant
+	public virtual Int32 Variant
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant", value); }
@@ -29,7 +29,7 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_nRandom
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nRandom")]
-	public Int32 Random
+	public virtual Int32 Random
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom", value); }
@@ -37,7 +37,7 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_nOrdinal
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal")]
-	public Int32 Ordinal
+	public virtual Int32 Ordinal
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal", value); }
@@ -45,7 +45,7 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_sWeaponName
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName")]
-	public string WeaponName
+	public virtual string WeaponName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName"); }
 		set { Schema.SetString(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName", value); }
@@ -53,7 +53,7 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_xuid
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_xuid")]
-	public UInt64 Xuid
+	public virtual UInt64 Xuid
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid", value); }
@@ -61,22 +61,22 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_agentItem
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_agentItem")]
-	public CEconItemView AgentItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
+	public virtual CEconItemView AgentItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
 
 	// m_glovesItem
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_glovesItem")]
-	public CEconItemView GlovesItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
+	public virtual CEconItemView GlovesItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
 
 	// m_weaponItem
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_weaponItem")]
-	public CEconItemView WeaponItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
+	public virtual CEconItemView WeaponItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
 
-	public void VariantPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant");
-	public void RandomPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom");
-	public void OrdinalPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal");
-	public void WeaponNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName");
-	public void XuidPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
-	public void AgentItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
-	public void GlovesItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
-	public void WeaponItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
+	public virtual void VariantPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant");
+	public virtual void RandomPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom");
+	public virtual void OrdinalPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal");
+	public virtual void WeaponNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName");
+	public virtual void XuidPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
+	public virtual void AgentItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
+	public virtual void GlovesItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
+	public virtual void WeaponItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
 }

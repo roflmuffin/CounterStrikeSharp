@@ -21,11 +21,11 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_collisionAttribute
 	[SchemaMember("CCollisionProperty", "m_collisionAttribute")]
-	public VPhysicsCollisionAttribute_t CollisionAttribute => Schema.GetDeclaredClass<VPhysicsCollisionAttribute_t>(this.Handle, "CCollisionProperty", "m_collisionAttribute");
+	public virtual VPhysicsCollisionAttribute_t CollisionAttribute => Schema.GetDeclaredClass<VPhysicsCollisionAttribute_t>(this.Handle, "CCollisionProperty", "m_collisionAttribute");
 
 	// m_vecMins
 	[SchemaMember("CCollisionProperty", "m_vecMins")]
-	public Vector3 Mins
+	public virtual Vector3 Mins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMins", value); }
@@ -33,7 +33,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vecMaxs
 	[SchemaMember("CCollisionProperty", "m_vecMaxs")]
-	public Vector3 Maxs
+	public virtual Vector3 Maxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMaxs", value); }
@@ -41,7 +41,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_usSolidFlags
 	[SchemaMember("CCollisionProperty", "m_usSolidFlags")]
-	public byte SolidFlags
+	public virtual byte SolidFlags
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_usSolidFlags"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_usSolidFlags", value); }
@@ -49,7 +49,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_nSolidType
 	[SchemaMember("CCollisionProperty", "m_nSolidType")]
-	public SolidType_t SolidType
+	public virtual SolidType_t SolidType
 	{
 		get { return Schema.GetValueType<SolidType_t>(this.Handle, "CCollisionProperty", "m_nSolidType"); }
 		set { Schema.SetValueType<SolidType_t>(this.Handle, "CCollisionProperty", "m_nSolidType", value); }
@@ -57,7 +57,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_triggerBloat
 	[SchemaMember("CCollisionProperty", "m_triggerBloat")]
-	public byte TriggerBloat
+	public virtual byte TriggerBloat
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_triggerBloat"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_triggerBloat", value); }
@@ -65,7 +65,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_nSurroundType
 	[SchemaMember("CCollisionProperty", "m_nSurroundType")]
-	public SurroundingBoundsType_t SurroundType
+	public virtual SurroundingBoundsType_t SurroundType
 	{
 		get { return Schema.GetValueType<SurroundingBoundsType_t>(this.Handle, "CCollisionProperty", "m_nSurroundType"); }
 		set { Schema.SetValueType<SurroundingBoundsType_t>(this.Handle, "CCollisionProperty", "m_nSurroundType", value); }
@@ -73,7 +73,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_CollisionGroup
 	[SchemaMember("CCollisionProperty", "m_CollisionGroup")]
-	public byte CollisionGroup
+	public virtual byte CollisionGroup
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_CollisionGroup"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_CollisionGroup", value); }
@@ -81,7 +81,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_nEnablePhysics
 	[SchemaMember("CCollisionProperty", "m_nEnablePhysics")]
-	public byte EnablePhysics
+	public virtual byte EnablePhysics
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_nEnablePhysics"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_nEnablePhysics", value); }
@@ -89,7 +89,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_flBoundingRadius
 	[SchemaMember("CCollisionProperty", "m_flBoundingRadius")]
-	public float BoundingRadius
+	public virtual float BoundingRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCollisionProperty", "m_flBoundingRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCollisionProperty", "m_flBoundingRadius", value); }
@@ -97,7 +97,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vecSpecifiedSurroundingMins
 	[SchemaMember("CCollisionProperty", "m_vecSpecifiedSurroundingMins")]
-	public Vector3 SpecifiedSurroundingMins
+	public virtual Vector3 SpecifiedSurroundingMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMins", value); }
@@ -105,7 +105,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vecSpecifiedSurroundingMaxs
 	[SchemaMember("CCollisionProperty", "m_vecSpecifiedSurroundingMaxs")]
-	public Vector3 SpecifiedSurroundingMaxs
+	public virtual Vector3 SpecifiedSurroundingMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs", value); }
@@ -113,7 +113,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vecSurroundingMaxs
 	[SchemaMember("CCollisionProperty", "m_vecSurroundingMaxs")]
-	public Vector3 SurroundingMaxs
+	public virtual Vector3 SurroundingMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMaxs", value); }
@@ -121,7 +121,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vecSurroundingMins
 	[SchemaMember("CCollisionProperty", "m_vecSurroundingMins")]
-	public Vector3 SurroundingMins
+	public virtual Vector3 SurroundingMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMins", value); }
@@ -129,7 +129,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vCapsuleCenter1
 	[SchemaMember("CCollisionProperty", "m_vCapsuleCenter1")]
-	public Vector3 CapsuleCenter1
+	public virtual Vector3 CapsuleCenter1
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter1"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter1", value); }
@@ -137,7 +137,7 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vCapsuleCenter2
 	[SchemaMember("CCollisionProperty", "m_vCapsuleCenter2")]
-	public Vector3 CapsuleCenter2
+	public virtual Vector3 CapsuleCenter2
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter2"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter2", value); }
@@ -145,24 +145,24 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_flCapsuleRadius
 	[SchemaMember("CCollisionProperty", "m_flCapsuleRadius")]
-	public float CapsuleRadius
+	public virtual float CapsuleRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCollisionProperty", "m_flCapsuleRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCollisionProperty", "m_flCapsuleRadius", value); }
 	}
 
-	public void CollisionAttributePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_collisionAttribute");
-	public void MinsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecMins");
-	public void MaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecMaxs");
-	public void SolidFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_usSolidFlags");
-	public void SolidTypePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nSolidType");
-	public void TriggerBloatPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_triggerBloat");
-	public void SurroundTypePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nSurroundType");
-	public void CollisionGroupPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_CollisionGroup");
-	public void EnablePhysicsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nEnablePhysics");
-	public void SpecifiedSurroundingMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecSpecifiedSurroundingMins");
-	public void SpecifiedSurroundingMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs");
-	public void CapsuleCenter1PropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vCapsuleCenter1");
-	public void CapsuleCenter2PropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vCapsuleCenter2");
-	public void CapsuleRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_flCapsuleRadius");
+	public virtual void CollisionAttributePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_collisionAttribute");
+	public virtual void MinsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecMins");
+	public virtual void MaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecMaxs");
+	public virtual void SolidFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_usSolidFlags");
+	public virtual void SolidTypePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nSolidType");
+	public virtual void TriggerBloatPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_triggerBloat");
+	public virtual void SurroundTypePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nSurroundType");
+	public virtual void CollisionGroupPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_CollisionGroup");
+	public virtual void EnablePhysicsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nEnablePhysics");
+	public virtual void SpecifiedSurroundingMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecSpecifiedSurroundingMins");
+	public virtual void SpecifiedSurroundingMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs");
+	public virtual void CapsuleCenter1PropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vCapsuleCenter1");
+	public virtual void CapsuleCenter2PropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vCapsuleCenter2");
+	public virtual void CapsuleRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_flCapsuleRadius");
 }

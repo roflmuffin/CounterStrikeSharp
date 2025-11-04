@@ -21,7 +21,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_iszLightNameFilter
 	[SchemaMember("CMultiLightProxy", "m_iszLightNameFilter")]
-	public string LightNameFilter
+	public virtual string LightNameFilter
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMultiLightProxy", "m_iszLightNameFilter"); }
 		set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightNameFilter", value); }
@@ -29,7 +29,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_iszLightClassFilter
 	[SchemaMember("CMultiLightProxy", "m_iszLightClassFilter")]
-	public string LightClassFilter
+	public virtual string LightClassFilter
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMultiLightProxy", "m_iszLightClassFilter"); }
 		set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightClassFilter", value); }
@@ -37,7 +37,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_flLightRadiusFilter
 	[SchemaMember("CMultiLightProxy", "m_flLightRadiusFilter")]
-	public float LightRadiusFilter
+	public virtual float LightRadiusFilter
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flLightRadiusFilter"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flLightRadiusFilter", value); }
@@ -45,7 +45,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_flBrightnessDelta
 	[SchemaMember("CMultiLightProxy", "m_flBrightnessDelta")]
-	public float BrightnessDelta
+	public virtual float BrightnessDelta
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flBrightnessDelta"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flBrightnessDelta", value); }
@@ -53,7 +53,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_bPerformScreenFade
 	[SchemaMember("CMultiLightProxy", "m_bPerformScreenFade")]
-	public bool PerformScreenFade
+	public virtual bool PerformScreenFade
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMultiLightProxy", "m_bPerformScreenFade"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMultiLightProxy", "m_bPerformScreenFade", value); }
@@ -61,7 +61,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_flTargetBrightnessMultiplier
 	[SchemaMember("CMultiLightProxy", "m_flTargetBrightnessMultiplier")]
-	public float TargetBrightnessMultiplier
+	public virtual float TargetBrightnessMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flTargetBrightnessMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flTargetBrightnessMultiplier", value); }
@@ -69,7 +69,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_flCurrentBrightnessMultiplier
 	[SchemaMember("CMultiLightProxy", "m_flCurrentBrightnessMultiplier")]
-	public float CurrentBrightnessMultiplier
+	public virtual float CurrentBrightnessMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flCurrentBrightnessMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flCurrentBrightnessMultiplier", value); }
@@ -77,6 +77,6 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_vecLights
 	[SchemaMember("CMultiLightProxy", "m_vecLights")]
-	public NetworkedVector<CHandle<CLightEntity>> Lights => Schema.GetDeclaredClass<NetworkedVector<CHandle<CLightEntity>>>(this.Handle, "CMultiLightProxy", "m_vecLights");
+	public virtual NetworkedVector<CHandle<CLightEntity>> Lights => Schema.GetDeclaredClass<NetworkedVector<CHandle<CLightEntity>>>(this.Handle, "CMultiLightProxy", "m_vecLights");
 
 }

@@ -21,18 +21,18 @@ public partial class CLogicPlayerProxy : CLogicalEntity
 
 	// m_hPlayer
 	[SchemaMember("CLogicPlayerProxy", "m_hPlayer")]
-	public CHandle<CBaseEntity> Player => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer");
+	public virtual CHandle<CBaseEntity> Player => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer");
 
 	// m_PlayerHasAmmo
 	[SchemaMember("CLogicPlayerProxy", "m_PlayerHasAmmo")]
-	public CEntityIOOutput PlayerHasAmmo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerHasAmmo");
+	public virtual CEntityIOOutput PlayerHasAmmo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerHasAmmo");
 
 	// m_PlayerHasNoAmmo
 	[SchemaMember("CLogicPlayerProxy", "m_PlayerHasNoAmmo")]
-	public CEntityIOOutput PlayerHasNoAmmo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerHasNoAmmo");
+	public virtual CEntityIOOutput PlayerHasNoAmmo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerHasNoAmmo");
 
 	// m_PlayerDied
 	[SchemaMember("CLogicPlayerProxy", "m_PlayerDied")]
-	public CEntityIOOutput PlayerDied => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerDied");
+	public virtual CEntityIOOutput PlayerDied => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerDied");
 
 }

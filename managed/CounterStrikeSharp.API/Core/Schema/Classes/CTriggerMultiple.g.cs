@@ -21,6 +21,6 @@ public partial class CTriggerMultiple : CBaseTrigger
 
 	// m_OnTrigger
 	[SchemaMember("CTriggerMultiple", "m_OnTrigger")]
-	public CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerMultiple", "m_OnTrigger");
+	public virtual CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerMultiple", "m_OnTrigger");
 
 }

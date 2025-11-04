@@ -21,7 +21,7 @@ public partial class CPhysicsPropRespawnable : CPhysicsProp
 
 	// m_vOriginalSpawnOrigin
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalSpawnOrigin")]
-	public Vector3 OriginalSpawnOrigin
+	public virtual Vector3 OriginalSpawnOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnOrigin", value); }
@@ -29,7 +29,7 @@ public partial class CPhysicsPropRespawnable : CPhysicsProp
 
 	// m_vOriginalSpawnAngles
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalSpawnAngles")]
-	public QAngle OriginalSpawnAngles
+	public virtual QAngle OriginalSpawnAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnAngles", value); }
@@ -37,7 +37,7 @@ public partial class CPhysicsPropRespawnable : CPhysicsProp
 
 	// m_vOriginalMins
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalMins")]
-	public Vector3 OriginalMins
+	public virtual Vector3 OriginalMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMins", value); }
@@ -45,7 +45,7 @@ public partial class CPhysicsPropRespawnable : CPhysicsProp
 
 	// m_vOriginalMaxs
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalMaxs")]
-	public Vector3 OriginalMaxs
+	public virtual Vector3 OriginalMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMaxs", value); }
@@ -53,7 +53,7 @@ public partial class CPhysicsPropRespawnable : CPhysicsProp
 
 	// m_flRespawnDuration
 	[SchemaMember("CPhysicsPropRespawnable", "m_flRespawnDuration")]
-	public float RespawnDuration
+	public virtual float RespawnDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsPropRespawnable", "m_flRespawnDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsPropRespawnable", "m_flRespawnDuration", value); }

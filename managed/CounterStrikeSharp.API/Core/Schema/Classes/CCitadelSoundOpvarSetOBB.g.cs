@@ -21,7 +21,7 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_iszStackName
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_iszStackName")]
-	public string StackName
+	public virtual string StackName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCitadelSoundOpvarSetOBB", "m_iszStackName"); }
 		set { Schema.SetString(this.Handle, "CCitadelSoundOpvarSetOBB", "m_iszStackName", value); }
@@ -29,7 +29,7 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_iszOperatorName
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_iszOperatorName")]
-	public string OperatorName
+	public virtual string OperatorName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCitadelSoundOpvarSetOBB", "m_iszOperatorName"); }
 		set { Schema.SetString(this.Handle, "CCitadelSoundOpvarSetOBB", "m_iszOperatorName", value); }
@@ -37,7 +37,7 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_iszOpvarName
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_iszOpvarName")]
-	public string OpvarName
+	public virtual string OpvarName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCitadelSoundOpvarSetOBB", "m_iszOpvarName"); }
 		set { Schema.SetString(this.Handle, "CCitadelSoundOpvarSetOBB", "m_iszOpvarName", value); }
@@ -45,7 +45,7 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_vDistanceInnerMins
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins")]
-	public Vector3 DistanceInnerMins
+	public virtual Vector3 DistanceInnerMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins", value); }
@@ -53,7 +53,7 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_vDistanceInnerMaxs
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs")]
-	public Vector3 DistanceInnerMaxs
+	public virtual Vector3 DistanceInnerMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs", value); }
@@ -61,7 +61,7 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_vDistanceOuterMins
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins")]
-	public Vector3 DistanceOuterMins
+	public virtual Vector3 DistanceOuterMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins", value); }
@@ -69,7 +69,7 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_vDistanceOuterMaxs
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs")]
-	public Vector3 DistanceOuterMaxs
+	public virtual Vector3 DistanceOuterMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs", value); }
@@ -77,18 +77,18 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_nAABBDirection
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_nAABBDirection")]
-	public Int32 AABBDirection
+	public virtual Int32 AABBDirection
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection", value); }
 	}
 
-	public void StackNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszStackName");
-	public void OperatorNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszOperatorName");
-	public void OpvarNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszOpvarName");
-	public void DistanceInnerMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins");
-	public void DistanceInnerMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs");
-	public void DistanceOuterMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins");
-	public void DistanceOuterMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs");
-	public void AABBDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection");
+	public virtual void StackNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszStackName");
+	public virtual void OperatorNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszOperatorName");
+	public virtual void OpvarNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszOpvarName");
+	public virtual void DistanceInnerMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins");
+	public virtual void DistanceInnerMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs");
+	public virtual void DistanceOuterMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins");
+	public virtual void DistanceOuterMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs");
+	public virtual void AABBDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection");
 }

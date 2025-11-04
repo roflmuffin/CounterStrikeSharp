@@ -21,7 +21,7 @@ public partial class CLogicAchievement : CLogicalEntity
 
 	// m_bDisabled
 	[SchemaMember("CLogicAchievement", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicAchievement", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicAchievement", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CLogicAchievement : CLogicalEntity
 
 	// m_iszAchievementEventID
 	[SchemaMember("CLogicAchievement", "m_iszAchievementEventID")]
-	public string AchievementEventID
+	public virtual string AchievementEventID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicAchievement", "m_iszAchievementEventID"); }
 		set { Schema.SetString(this.Handle, "CLogicAchievement", "m_iszAchievementEventID", value); }
@@ -37,6 +37,6 @@ public partial class CLogicAchievement : CLogicalEntity
 
 	// m_OnFired
 	[SchemaMember("CLogicAchievement", "m_OnFired")]
-	public CEntityIOOutput OnFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAchievement", "m_OnFired");
+	public virtual CEntityIOOutput OnFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAchievement", "m_OnFired");
 
 }

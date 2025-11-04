@@ -21,7 +21,7 @@ public partial class CFuncTimescale : CBaseEntity
 
 	// m_flDesiredTimescale
 	[SchemaMember("CFuncTimescale", "m_flDesiredTimescale")]
-	public float DesiredTimescale
+	public virtual float DesiredTimescale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flDesiredTimescale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flDesiredTimescale", value); }
@@ -29,7 +29,7 @@ public partial class CFuncTimescale : CBaseEntity
 
 	// m_flAcceleration
 	[SchemaMember("CFuncTimescale", "m_flAcceleration")]
-	public float Acceleration
+	public virtual float Acceleration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flAcceleration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flAcceleration", value); }
@@ -37,7 +37,7 @@ public partial class CFuncTimescale : CBaseEntity
 
 	// m_flMinBlendRate
 	[SchemaMember("CFuncTimescale", "m_flMinBlendRate")]
-	public float MinBlendRate
+	public virtual float MinBlendRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flMinBlendRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flMinBlendRate", value); }
@@ -45,7 +45,7 @@ public partial class CFuncTimescale : CBaseEntity
 
 	// m_flBlendDeltaMultiplier
 	[SchemaMember("CFuncTimescale", "m_flBlendDeltaMultiplier")]
-	public float BlendDeltaMultiplier
+	public virtual float BlendDeltaMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flBlendDeltaMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flBlendDeltaMultiplier", value); }
@@ -53,7 +53,7 @@ public partial class CFuncTimescale : CBaseEntity
 
 	// m_isStarted
 	[SchemaMember("CFuncTimescale", "m_isStarted")]
-	public bool IsStarted
+	public virtual bool IsStarted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncTimescale", "m_isStarted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncTimescale", "m_isStarted", value); }

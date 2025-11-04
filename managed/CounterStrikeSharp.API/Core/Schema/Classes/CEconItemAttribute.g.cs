@@ -21,7 +21,7 @@ public partial class CEconItemAttribute : NativeObject
 
 	// m_iAttributeDefinitionIndex
 	[SchemaMember("CEconItemAttribute", "m_iAttributeDefinitionIndex")]
-	public UInt16 AttributeDefinitionIndex
+	public virtual UInt16 AttributeDefinitionIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEconItemAttribute", "m_iAttributeDefinitionIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEconItemAttribute", "m_iAttributeDefinitionIndex", value); }
@@ -29,7 +29,7 @@ public partial class CEconItemAttribute : NativeObject
 
 	// m_flValue
 	[SchemaMember("CEconItemAttribute", "m_flValue")]
-	public float Value
+	public virtual float Value
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEconItemAttribute", "m_flValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEconItemAttribute", "m_flValue", value); }
@@ -37,7 +37,7 @@ public partial class CEconItemAttribute : NativeObject
 
 	// m_flInitialValue
 	[SchemaMember("CEconItemAttribute", "m_flInitialValue")]
-	public float InitialValue
+	public virtual float InitialValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEconItemAttribute", "m_flInitialValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEconItemAttribute", "m_flInitialValue", value); }
@@ -45,7 +45,7 @@ public partial class CEconItemAttribute : NativeObject
 
 	// m_nRefundableCurrency
 	[SchemaMember("CEconItemAttribute", "m_nRefundableCurrency")]
-	public Int32 RefundableCurrency
+	public virtual Int32 RefundableCurrency
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEconItemAttribute", "m_nRefundableCurrency"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconItemAttribute", "m_nRefundableCurrency", value); }
@@ -53,15 +53,15 @@ public partial class CEconItemAttribute : NativeObject
 
 	// m_bSetBonus
 	[SchemaMember("CEconItemAttribute", "m_bSetBonus")]
-	public bool SetBonus
+	public virtual bool SetBonus
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEconItemAttribute", "m_bSetBonus"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEconItemAttribute", "m_bSetBonus", value); }
 	}
 
-	public void AttributeDefinitionIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_iAttributeDefinitionIndex");
-	public void ValuePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_flValue");
-	public void InitialValuePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_flInitialValue");
-	public void RefundableCurrencyPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_nRefundableCurrency");
-	public void SetBonusPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_bSetBonus");
+	public virtual void AttributeDefinitionIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_iAttributeDefinitionIndex");
+	public virtual void ValuePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_flValue");
+	public virtual void InitialValuePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_flInitialValue");
+	public virtual void RefundableCurrencyPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_nRefundableCurrency");
+	public virtual void SetBonusPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_bSetBonus");
 }

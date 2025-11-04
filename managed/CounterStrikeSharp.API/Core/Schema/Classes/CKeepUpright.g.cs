@@ -21,7 +21,7 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_worldGoalAxis
 	[SchemaMember("CKeepUpright", "m_worldGoalAxis")]
-	public Vector3 WorldGoalAxis
+	public virtual Vector3 WorldGoalAxis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CKeepUpright", "m_worldGoalAxis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CKeepUpright", "m_worldGoalAxis", value); }
@@ -29,7 +29,7 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_localTestAxis
 	[SchemaMember("CKeepUpright", "m_localTestAxis")]
-	public Vector3 LocalTestAxis
+	public virtual Vector3 LocalTestAxis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CKeepUpright", "m_localTestAxis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CKeepUpright", "m_localTestAxis", value); }
@@ -37,7 +37,7 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_nameAttach
 	[SchemaMember("CKeepUpright", "m_nameAttach")]
-	public string NameAttach
+	public virtual string NameAttach
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CKeepUpright", "m_nameAttach"); }
 		set { Schema.SetString(this.Handle, "CKeepUpright", "m_nameAttach", value); }
@@ -45,11 +45,11 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_attachedObject
 	[SchemaMember("CKeepUpright", "m_attachedObject")]
-	public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject");
+	public virtual CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject");
 
 	// m_angularLimit
 	[SchemaMember("CKeepUpright", "m_angularLimit")]
-	public float AngularLimit
+	public virtual float AngularLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CKeepUpright", "m_angularLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CKeepUpright", "m_angularLimit", value); }
@@ -57,7 +57,7 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_bActive
 	[SchemaMember("CKeepUpright", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CKeepUpright", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CKeepUpright", "m_bActive", value); }
@@ -65,7 +65,7 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_bDampAllRotation
 	[SchemaMember("CKeepUpright", "m_bDampAllRotation")]
-	public bool DampAllRotation
+	public virtual bool DampAllRotation
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CKeepUpright", "m_bDampAllRotation"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CKeepUpright", "m_bDampAllRotation", value); }

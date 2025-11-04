@@ -21,11 +21,11 @@ public partial class CCSPlayer_UseServices : CPlayer_UseServices
 
 	// m_hLastKnownUseEntity
 	[SchemaMember("CCSPlayer_UseServices", "m_hLastKnownUseEntity")]
-	public CHandle<CBaseEntity> LastKnownUseEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity");
+	public virtual CHandle<CBaseEntity> LastKnownUseEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity");
 
 	// m_flLastUseTimeStamp
 	[SchemaMember("CCSPlayer_UseServices", "m_flLastUseTimeStamp")]
-	public float LastUseTimeStamp
+	public virtual float LastUseTimeStamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp", value); }
@@ -33,7 +33,7 @@ public partial class CCSPlayer_UseServices : CPlayer_UseServices
 
 	// m_flTimeLastUsedWindow
 	[SchemaMember("CCSPlayer_UseServices", "m_flTimeLastUsedWindow")]
-	public float TimeLastUsedWindow
+	public virtual float TimeLastUsedWindow
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow", value); }

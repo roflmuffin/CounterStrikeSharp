@@ -21,7 +21,7 @@ public partial class CMarkupVolume : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CMarkupVolume", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolume", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolume", "m_bDisabled", value); }

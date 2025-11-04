@@ -21,7 +21,7 @@ public partial class CInfoFan : CPointEntity
 
 	// m_fFanForceMaxRadius
 	[SchemaMember("CInfoFan", "m_fFanForceMaxRadius")]
-	public float FanForceMaxRadius
+	public virtual float FanForceMaxRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMaxRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMaxRadius", value); }
@@ -29,7 +29,7 @@ public partial class CInfoFan : CPointEntity
 
 	// m_fFanForceMinRadius
 	[SchemaMember("CInfoFan", "m_fFanForceMinRadius")]
-	public float FanForceMinRadius
+	public virtual float FanForceMinRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMinRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMinRadius", value); }
@@ -37,7 +37,7 @@ public partial class CInfoFan : CPointEntity
 
 	// m_flCurveDistRange
 	[SchemaMember("CInfoFan", "m_flCurveDistRange")]
-	public float CurveDistRange
+	public virtual float CurveDistRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CInfoFan", "m_flCurveDistRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CInfoFan", "m_flCurveDistRange", value); }
@@ -45,14 +45,14 @@ public partial class CInfoFan : CPointEntity
 
 	// m_FanForceCurveString
 	[SchemaMember("CInfoFan", "m_FanForceCurveString")]
-	public string FanForceCurveString
+	public virtual string FanForceCurveString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoFan", "m_FanForceCurveString"); }
 		set { Schema.SetString(this.Handle, "CInfoFan", "m_FanForceCurveString", value); }
 	}
 
-	public void FanForceMaxRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_fFanForceMaxRadius");
-	public void FanForceMinRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_fFanForceMinRadius");
-	public void CurveDistRangePropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_flCurveDistRange");
-	public void FanForceCurveStringPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_FanForceCurveString");
+	public virtual void FanForceMaxRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_fFanForceMaxRadius");
+	public virtual void FanForceMinRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_fFanForceMinRadius");
+	public virtual void CurveDistRangePropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_flCurveDistRange");
+	public virtual void FanForceCurveStringPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_FanForceCurveString");
 }

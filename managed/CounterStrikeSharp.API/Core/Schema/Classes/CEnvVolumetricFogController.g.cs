@@ -21,7 +21,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flScattering
 	[SchemaMember("CEnvVolumetricFogController", "m_flScattering")]
-	public float Scattering
+	public virtual float Scattering
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flScattering"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flScattering", value); }
@@ -29,7 +29,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_TintColor
 	[SchemaMember("CEnvVolumetricFogController", "m_TintColor")]
-	public Color TintColor
+	public virtual Color TintColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogController", "m_TintColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogController", "m_TintColor", value); }
@@ -37,7 +37,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flAnisotropy
 	[SchemaMember("CEnvVolumetricFogController", "m_flAnisotropy")]
-	public float Anisotropy
+	public virtual float Anisotropy
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flAnisotropy"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flAnisotropy", value); }
@@ -45,7 +45,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flFadeSpeed
 	[SchemaMember("CEnvVolumetricFogController", "m_flFadeSpeed")]
-	public float FadeSpeed
+	public virtual float FadeSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeSpeed", value); }
@@ -53,7 +53,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flDrawDistance
 	[SchemaMember("CEnvVolumetricFogController", "m_flDrawDistance")]
-	public float DrawDistance
+	public virtual float DrawDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDrawDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDrawDistance", value); }
@@ -61,7 +61,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flFadeInStart
 	[SchemaMember("CEnvVolumetricFogController", "m_flFadeInStart")]
-	public float FadeInStart
+	public virtual float FadeInStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInStart", value); }
@@ -69,7 +69,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flFadeInEnd
 	[SchemaMember("CEnvVolumetricFogController", "m_flFadeInEnd")]
-	public float FadeInEnd
+	public virtual float FadeInEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInEnd", value); }
@@ -77,7 +77,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flIndirectStrength
 	[SchemaMember("CEnvVolumetricFogController", "m_flIndirectStrength")]
-	public float IndirectStrength
+	public virtual float IndirectStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flIndirectStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flIndirectStrength", value); }
@@ -85,7 +85,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_nVolumeDepth
 	[SchemaMember("CEnvVolumetricFogController", "m_nVolumeDepth")]
-	public Int32 VolumeDepth
+	public virtual Int32 VolumeDepth
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nVolumeDepth"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nVolumeDepth", value); }
@@ -93,7 +93,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_fFirstVolumeSliceThickness
 	[SchemaMember("CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness")]
-	public float FirstVolumeSliceThickness
+	public virtual float FirstVolumeSliceThickness
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness", value); }
@@ -101,7 +101,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_nIndirectTextureDimX
 	[SchemaMember("CEnvVolumetricFogController", "m_nIndirectTextureDimX")]
-	public Int32 IndirectTextureDimX
+	public virtual Int32 IndirectTextureDimX
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimX"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimX", value); }
@@ -109,7 +109,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_nIndirectTextureDimY
 	[SchemaMember("CEnvVolumetricFogController", "m_nIndirectTextureDimY")]
-	public Int32 IndirectTextureDimY
+	public virtual Int32 IndirectTextureDimY
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimY"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimY", value); }
@@ -117,7 +117,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_nIndirectTextureDimZ
 	[SchemaMember("CEnvVolumetricFogController", "m_nIndirectTextureDimZ")]
-	public Int32 IndirectTextureDimZ
+	public virtual Int32 IndirectTextureDimZ
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ", value); }
@@ -125,7 +125,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_vBoxMins
 	[SchemaMember("CEnvVolumetricFogController", "m_vBoxMins")]
-	public Vector3 BoxMins
+	public virtual Vector3 BoxMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMins", value); }
@@ -133,7 +133,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_vBoxMaxs
 	[SchemaMember("CEnvVolumetricFogController", "m_vBoxMaxs")]
-	public Vector3 BoxMaxs
+	public virtual Vector3 BoxMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMaxs", value); }
@@ -141,7 +141,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CEnvVolumetricFogController", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bActive", value); }
@@ -149,7 +149,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flStartAnisoTime
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartAnisoTime")]
-	public float StartAnisoTime
+	public virtual float StartAnisoTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisoTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisoTime", value); }
@@ -157,7 +157,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flStartScatterTime
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartScatterTime")]
-	public float StartScatterTime
+	public virtual float StartScatterTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScatterTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScatterTime", value); }
@@ -165,7 +165,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flStartDrawDistanceTime
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartDrawDistanceTime")]
-	public float StartDrawDistanceTime
+	public virtual float StartDrawDistanceTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime", value); }
@@ -173,7 +173,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flStartAnisotropy
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartAnisotropy")]
-	public float StartAnisotropy
+	public virtual float StartAnisotropy
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisotropy"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisotropy", value); }
@@ -181,7 +181,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flStartScattering
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartScattering")]
-	public float StartScattering
+	public virtual float StartScattering
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScattering"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScattering", value); }
@@ -189,7 +189,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flStartDrawDistance
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartDrawDistance")]
-	public float StartDrawDistance
+	public virtual float StartDrawDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistance", value); }
@@ -197,7 +197,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flDefaultAnisotropy
 	[SchemaMember("CEnvVolumetricFogController", "m_flDefaultAnisotropy")]
-	public float DefaultAnisotropy
+	public virtual float DefaultAnisotropy
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultAnisotropy"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultAnisotropy", value); }
@@ -205,7 +205,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flDefaultScattering
 	[SchemaMember("CEnvVolumetricFogController", "m_flDefaultScattering")]
-	public float DefaultScattering
+	public virtual float DefaultScattering
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultScattering"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultScattering", value); }
@@ -213,7 +213,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flDefaultDrawDistance
 	[SchemaMember("CEnvVolumetricFogController", "m_flDefaultDrawDistance")]
-	public float DefaultDrawDistance
+	public virtual float DefaultDrawDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultDrawDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultDrawDistance", value); }
@@ -221,7 +221,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvVolumetricFogController", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bStartDisabled", value); }
@@ -229,7 +229,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_bEnableIndirect
 	[SchemaMember("CEnvVolumetricFogController", "m_bEnableIndirect")]
-	public bool EnableIndirect
+	public virtual bool EnableIndirect
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bEnableIndirect"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bEnableIndirect", value); }
@@ -237,7 +237,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_bIsMaster
 	[SchemaMember("CEnvVolumetricFogController", "m_bIsMaster")]
-	public bool IsMaster
+	public virtual bool IsMaster
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIsMaster"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIsMaster", value); }
@@ -245,11 +245,11 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_hFogIndirectTexture
 	[SchemaMember("CEnvVolumetricFogController", "m_hFogIndirectTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> FogIndirectTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvVolumetricFogController", "m_hFogIndirectTexture");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> FogIndirectTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvVolumetricFogController", "m_hFogIndirectTexture");
 
 	// m_nForceRefreshCount
 	[SchemaMember("CEnvVolumetricFogController", "m_nForceRefreshCount")]
-	public Int32 ForceRefreshCount
+	public virtual Int32 ForceRefreshCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nForceRefreshCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nForceRefreshCount", value); }
@@ -257,7 +257,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_fNoiseSpeed
 	[SchemaMember("CEnvVolumetricFogController", "m_fNoiseSpeed")]
-	public float NoiseSpeed
+	public virtual float NoiseSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseSpeed", value); }
@@ -265,7 +265,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_fNoiseStrength
 	[SchemaMember("CEnvVolumetricFogController", "m_fNoiseStrength")]
-	public float NoiseStrength
+	public virtual float NoiseStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseStrength", value); }
@@ -273,7 +273,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_vNoiseScale
 	[SchemaMember("CEnvVolumetricFogController", "m_vNoiseScale")]
-	public Vector3 NoiseScale
+	public virtual Vector3 NoiseScale
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vNoiseScale"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vNoiseScale", value); }
@@ -281,7 +281,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_fWindSpeed
 	[SchemaMember("CEnvVolumetricFogController", "m_fWindSpeed")]
-	public float WindSpeed
+	public virtual float WindSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fWindSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fWindSpeed", value); }
@@ -289,7 +289,7 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_vWindDirection
 	[SchemaMember("CEnvVolumetricFogController", "m_vWindDirection")]
-	public Vector3 WindDirection
+	public virtual Vector3 WindDirection
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vWindDirection"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vWindDirection", value); }
@@ -297,45 +297,45 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_bFirstTime
 	[SchemaMember("CEnvVolumetricFogController", "m_bFirstTime")]
-	public bool FirstTime
+	public virtual bool FirstTime
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bFirstTime"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bFirstTime", value); }
 	}
 
-	public void ScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flScattering");
-	public void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_TintColor");
-	public void AnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flAnisotropy");
-	public void FadeSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeSpeed");
-	public void DrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDrawDistance");
-	public void FadeInStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeInStart");
-	public void FadeInEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeInEnd");
-	public void IndirectStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flIndirectStrength");
-	public void VolumeDepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nVolumeDepth");
-	public void FirstVolumeSliceThicknessPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness");
-	public void IndirectTextureDimXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimX");
-	public void IndirectTextureDimYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimY");
-	public void IndirectTextureDimZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ");
-	public void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vBoxMins");
-	public void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vBoxMaxs");
-	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bActive");
-	public void StartAnisoTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartAnisoTime");
-	public void StartScatterTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartScatterTime");
-	public void StartDrawDistanceTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime");
-	public void StartAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartAnisotropy");
-	public void StartScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartScattering");
-	public void StartDrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartDrawDistance");
-	public void DefaultAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultAnisotropy");
-	public void DefaultScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultScattering");
-	public void DefaultDrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultDrawDistance");
-	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bStartDisabled");
-	public void EnableIndirectPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bEnableIndirect");
-	public void IsMasterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bIsMaster");
-	public void FogIndirectTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_hFogIndirectTexture");
-	public void ForceRefreshCountPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nForceRefreshCount");
-	public void NoiseSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fNoiseSpeed");
-	public void NoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fNoiseStrength");
-	public void NoiseScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vNoiseScale");
-	public void WindSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fWindSpeed");
-	public void WindDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vWindDirection");
+	public virtual void ScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flScattering");
+	public virtual void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_TintColor");
+	public virtual void AnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flAnisotropy");
+	public virtual void FadeSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeSpeed");
+	public virtual void DrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDrawDistance");
+	public virtual void FadeInStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeInStart");
+	public virtual void FadeInEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeInEnd");
+	public virtual void IndirectStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flIndirectStrength");
+	public virtual void VolumeDepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nVolumeDepth");
+	public virtual void FirstVolumeSliceThicknessPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness");
+	public virtual void IndirectTextureDimXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimX");
+	public virtual void IndirectTextureDimYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimY");
+	public virtual void IndirectTextureDimZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ");
+	public virtual void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vBoxMins");
+	public virtual void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vBoxMaxs");
+	public virtual void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bActive");
+	public virtual void StartAnisoTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartAnisoTime");
+	public virtual void StartScatterTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartScatterTime");
+	public virtual void StartDrawDistanceTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime");
+	public virtual void StartAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartAnisotropy");
+	public virtual void StartScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartScattering");
+	public virtual void StartDrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartDrawDistance");
+	public virtual void DefaultAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultAnisotropy");
+	public virtual void DefaultScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultScattering");
+	public virtual void DefaultDrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultDrawDistance");
+	public virtual void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bStartDisabled");
+	public virtual void EnableIndirectPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bEnableIndirect");
+	public virtual void IsMasterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bIsMaster");
+	public virtual void FogIndirectTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_hFogIndirectTexture");
+	public virtual void ForceRefreshCountPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nForceRefreshCount");
+	public virtual void NoiseSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fNoiseSpeed");
+	public virtual void NoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fNoiseStrength");
+	public virtual void NoiseScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vNoiseScale");
+	public virtual void WindSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fWindSpeed");
+	public virtual void WindDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vWindDirection");
 }

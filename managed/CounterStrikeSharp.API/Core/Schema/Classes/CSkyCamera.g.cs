@@ -21,15 +21,15 @@ public partial class CSkyCamera : CBaseEntity
 
 	// m_skyboxData
 	[SchemaMember("CSkyCamera", "m_skyboxData")]
-	public sky3dparams_t SkyboxData => Schema.GetDeclaredClass<sky3dparams_t>(this.Handle, "CSkyCamera", "m_skyboxData");
+	public virtual sky3dparams_t SkyboxData => Schema.GetDeclaredClass<sky3dparams_t>(this.Handle, "CSkyCamera", "m_skyboxData");
 
 	// m_skyboxSlotToken
 	[SchemaMember("CSkyCamera", "m_skyboxSlotToken")]
-	public CUtlStringToken SkyboxSlotToken => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CSkyCamera", "m_skyboxSlotToken");
+	public virtual CUtlStringToken SkyboxSlotToken => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CSkyCamera", "m_skyboxSlotToken");
 
 	// m_bUseAngles
 	[SchemaMember("CSkyCamera", "m_bUseAngles")]
-	public bool UseAngles
+	public virtual bool UseAngles
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSkyCamera", "m_bUseAngles"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSkyCamera", "m_bUseAngles", value); }
@@ -37,8 +37,8 @@ public partial class CSkyCamera : CBaseEntity
 
 	// m_pNext
 	[SchemaMember("CSkyCamera", "m_pNext")]
-	public CSkyCamera? Next => Schema.GetPointer<CSkyCamera>(this.Handle, "CSkyCamera", "m_pNext");
+	public virtual CSkyCamera? Next => Schema.GetPointer<CSkyCamera>(this.Handle, "CSkyCamera", "m_pNext");
 
-	public void SkyboxDataPropertyChanged() => Utilities.SetStateChanged(this, "CSkyCamera", "m_skyboxData");
-	public void SkyboxSlotTokenPropertyChanged() => Utilities.SetStateChanged(this, "CSkyCamera", "m_skyboxSlotToken");
+	public virtual void SkyboxDataPropertyChanged() => Utilities.SetStateChanged(this, "CSkyCamera", "m_skyboxData");
+	public virtual void SkyboxSlotTokenPropertyChanged() => Utilities.SetStateChanged(this, "CSkyCamera", "m_skyboxSlotToken");
 }

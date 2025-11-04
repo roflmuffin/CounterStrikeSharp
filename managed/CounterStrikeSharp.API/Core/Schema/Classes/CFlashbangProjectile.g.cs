@@ -21,7 +21,7 @@ public partial class CFlashbangProjectile : CBaseCSGrenadeProjectile
 
 	// m_flTimeToDetonate
 	[SchemaMember("CFlashbangProjectile", "m_flTimeToDetonate")]
-	public float TimeToDetonate
+	public virtual float TimeToDetonate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate", value); }
@@ -29,7 +29,7 @@ public partial class CFlashbangProjectile : CBaseCSGrenadeProjectile
 
 	// m_numOpponentsHit
 	[SchemaMember("CFlashbangProjectile", "m_numOpponentsHit")]
-	public byte NumOpponentsHit
+	public virtual byte NumOpponentsHit
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit", value); }
@@ -37,7 +37,7 @@ public partial class CFlashbangProjectile : CBaseCSGrenadeProjectile
 
 	// m_numTeammatesHit
 	[SchemaMember("CFlashbangProjectile", "m_numTeammatesHit")]
-	public byte NumTeammatesHit
+	public virtual byte NumTeammatesHit
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit", value); }

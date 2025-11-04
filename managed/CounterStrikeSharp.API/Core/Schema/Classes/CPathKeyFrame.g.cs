@@ -21,7 +21,7 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_Origin
 	[SchemaMember("CPathKeyFrame", "m_Origin")]
-	public Vector3 Origin
+	public virtual Vector3 Origin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPathKeyFrame", "m_Origin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPathKeyFrame", "m_Origin", value); }
@@ -29,7 +29,7 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_Angles
 	[SchemaMember("CPathKeyFrame", "m_Angles")]
-	public QAngle Angles
+	public virtual QAngle Angles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPathKeyFrame", "m_Angles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPathKeyFrame", "m_Angles", value); }
@@ -37,7 +37,7 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_qAngle
 	[SchemaMember("CPathKeyFrame", "m_qAngle")]
-	public Quaternion Angle
+	public virtual Quaternion Angle
 	{
 		get { return Schema.GetValueType<Quaternion>(this.Handle, "CPathKeyFrame", "m_qAngle"); }
 		set { Schema.SetValueType<Quaternion>(this.Handle, "CPathKeyFrame", "m_qAngle", value); }
@@ -45,7 +45,7 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_iNextKey
 	[SchemaMember("CPathKeyFrame", "m_iNextKey")]
-	public string INextKey
+	public virtual string INextKey
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPathKeyFrame", "m_iNextKey"); }
 		set { Schema.SetString(this.Handle, "CPathKeyFrame", "m_iNextKey", value); }
@@ -53,7 +53,7 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_flNextTime
 	[SchemaMember("CPathKeyFrame", "m_flNextTime")]
-	public float NextTime
+	public virtual float NextTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPathKeyFrame", "m_flNextTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPathKeyFrame", "m_flNextTime", value); }
@@ -61,15 +61,15 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_pNextKey
 	[SchemaMember("CPathKeyFrame", "m_pNextKey")]
-	public CPathKeyFrame? PNextKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pNextKey");
+	public virtual CPathKeyFrame? PNextKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pNextKey");
 
 	// m_pPrevKey
 	[SchemaMember("CPathKeyFrame", "m_pPrevKey")]
-	public CPathKeyFrame? PrevKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pPrevKey");
+	public virtual CPathKeyFrame? PrevKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pPrevKey");
 
 	// m_flMoveSpeed
 	[SchemaMember("CPathKeyFrame", "m_flMoveSpeed")]
-	public float MoveSpeed
+	public virtual float MoveSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPathKeyFrame", "m_flMoveSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPathKeyFrame", "m_flMoveSpeed", value); }

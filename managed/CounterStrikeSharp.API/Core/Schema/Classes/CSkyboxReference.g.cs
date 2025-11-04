@@ -21,10 +21,10 @@ public partial class CSkyboxReference : CBaseEntity
 
 	// m_worldGroupId
 	[SchemaMember("CSkyboxReference", "m_worldGroupId")]
-	public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CSkyboxReference", "m_worldGroupId");
+	public virtual WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CSkyboxReference", "m_worldGroupId");
 
 	// m_hSkyCamera
 	[SchemaMember("CSkyboxReference", "m_hSkyCamera")]
-	public CHandle<CSkyCamera> SkyCamera => Schema.GetDeclaredClass<CHandle<CSkyCamera>>(this.Handle, "CSkyboxReference", "m_hSkyCamera");
+	public virtual CHandle<CSkyCamera> SkyCamera => Schema.GetDeclaredClass<CHandle<CSkyCamera>>(this.Handle, "CSkyboxReference", "m_hSkyCamera");
 
 }

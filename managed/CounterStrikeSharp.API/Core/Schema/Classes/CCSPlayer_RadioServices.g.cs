@@ -21,7 +21,7 @@ public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
 
 	// m_flGotHostageTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flGotHostageTalkTimer")]
-	public float GotHostageTalkTimer
+	public virtual float GotHostageTalkTimer
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer", value); }
@@ -29,7 +29,7 @@ public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
 
 	// m_flDefusingTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flDefusingTalkTimer")]
-	public float DefusingTalkTimer
+	public virtual float DefusingTalkTimer
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
 
 	// m_flC4PlantTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flC4PlantTalkTimer")]
-	public float C4PlantTalkTimer
+	public virtual float C4PlantTalkTimer
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer", value); }
@@ -45,11 +45,11 @@ public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
 
 	// m_flRadioTokenSlots
 	[SchemaMember("CCSPlayer_RadioServices", "m_flRadioTokenSlots")]
-	public Span<float> RadioTokenSlots => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_RadioServices", "m_flRadioTokenSlots", 3);
+	public virtual Span<float> RadioTokenSlots => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_RadioServices", "m_flRadioTokenSlots", 3);
 
 	// m_bIgnoreRadio
 	[SchemaMember("CCSPlayer_RadioServices", "m_bIgnoreRadio")]
-	public bool IgnoreRadio
+	public virtual bool IgnoreRadio
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio", value); }

@@ -21,19 +21,19 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_OnStopped
 	[SchemaMember("CFuncRotating", "m_OnStopped")]
-	public CEntityIOOutput OnStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnStopped");
+	public virtual CEntityIOOutput OnStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnStopped");
 
 	// m_OnStarted
 	[SchemaMember("CFuncRotating", "m_OnStarted")]
-	public CEntityIOOutput OnStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnStarted");
+	public virtual CEntityIOOutput OnStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnStarted");
 
 	// m_OnReachedStart
 	[SchemaMember("CFuncRotating", "m_OnReachedStart")]
-	public CEntityIOOutput OnReachedStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnReachedStart");
+	public virtual CEntityIOOutput OnReachedStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnReachedStart");
 
 	// m_localRotationVector
 	[SchemaMember("CFuncRotating", "m_localRotationVector")]
-	public Vector3 LocalRotationVector
+	public virtual Vector3 LocalRotationVector
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncRotating", "m_localRotationVector"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncRotating", "m_localRotationVector", value); }
@@ -41,7 +41,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_flFanFriction
 	[SchemaMember("CFuncRotating", "m_flFanFriction")]
-	public float FanFriction
+	public virtual float FanFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flFanFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flFanFriction", value); }
@@ -49,7 +49,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_flAttenuation
 	[SchemaMember("CFuncRotating", "m_flAttenuation")]
-	public float Attenuation
+	public virtual float Attenuation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flAttenuation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flAttenuation", value); }
@@ -57,7 +57,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_flVolume
 	[SchemaMember("CFuncRotating", "m_flVolume")]
-	public float Volume
+	public virtual float Volume
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flVolume"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flVolume", value); }
@@ -65,7 +65,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_flTargetSpeed
 	[SchemaMember("CFuncRotating", "m_flTargetSpeed")]
-	public float TargetSpeed
+	public virtual float TargetSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed", value); }
@@ -73,7 +73,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_flMaxSpeed
 	[SchemaMember("CFuncRotating", "m_flMaxSpeed")]
-	public float MaxSpeed
+	public virtual float MaxSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed", value); }
@@ -81,7 +81,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncRotating", "m_flBlockDamage")]
-	public float BlockDamage
+	public virtual float BlockDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flBlockDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flBlockDamage", value); }
@@ -89,7 +89,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_NoiseRunning
 	[SchemaMember("CFuncRotating", "m_NoiseRunning")]
-	public string NoiseRunning
+	public virtual string NoiseRunning
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncRotating", "m_NoiseRunning"); }
 		set { Schema.SetString(this.Handle, "CFuncRotating", "m_NoiseRunning", value); }
@@ -97,7 +97,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_bReversed
 	[SchemaMember("CFuncRotating", "m_bReversed")]
-	public bool Reversed
+	public virtual bool Reversed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncRotating", "m_bReversed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncRotating", "m_bReversed", value); }
@@ -105,7 +105,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_bAccelDecel
 	[SchemaMember("CFuncRotating", "m_bAccelDecel")]
-	public bool AccelDecel
+	public virtual bool AccelDecel
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncRotating", "m_bAccelDecel"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncRotating", "m_bAccelDecel", value); }
@@ -113,7 +113,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_prevLocalAngles
 	[SchemaMember("CFuncRotating", "m_prevLocalAngles")]
-	public QAngle PrevLocalAngles
+	public virtual QAngle PrevLocalAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncRotating", "m_prevLocalAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncRotating", "m_prevLocalAngles", value); }
@@ -121,7 +121,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_angStart
 	[SchemaMember("CFuncRotating", "m_angStart")]
-	public QAngle Start
+	public virtual QAngle Start
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncRotating", "m_angStart"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncRotating", "m_angStart", value); }
@@ -129,7 +129,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_bStopAtStartPos
 	[SchemaMember("CFuncRotating", "m_bStopAtStartPos")]
-	public bool StopAtStartPos
+	public virtual bool StopAtStartPos
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos", value); }
@@ -137,7 +137,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_vecClientOrigin
 	[SchemaMember("CFuncRotating", "m_vecClientOrigin")]
-	public Vector3 ClientOrigin
+	public virtual Vector3 ClientOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncRotating", "m_vecClientOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncRotating", "m_vecClientOrigin", value); }
@@ -145,7 +145,7 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_vecClientAngles
 	[SchemaMember("CFuncRotating", "m_vecClientAngles")]
-	public QAngle ClientAngles
+	public virtual QAngle ClientAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles", value); }

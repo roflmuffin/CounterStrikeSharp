@@ -21,7 +21,7 @@ public partial class CLogicNPCCounterAABB : CLogicNPCCounter
 
 	// m_vDistanceOuterMins
 	[SchemaMember("CLogicNPCCounterAABB", "m_vDistanceOuterMins")]
-	public Vector3 DistanceOuterMins
+	public virtual Vector3 DistanceOuterMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMins", value); }
@@ -29,7 +29,7 @@ public partial class CLogicNPCCounterAABB : CLogicNPCCounter
 
 	// m_vDistanceOuterMaxs
 	[SchemaMember("CLogicNPCCounterAABB", "m_vDistanceOuterMaxs")]
-	public Vector3 DistanceOuterMaxs
+	public virtual Vector3 DistanceOuterMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMaxs", value); }
@@ -37,7 +37,7 @@ public partial class CLogicNPCCounterAABB : CLogicNPCCounter
 
 	// m_vOuterMins
 	[SchemaMember("CLogicNPCCounterAABB", "m_vOuterMins")]
-	public Vector3 OuterMins
+	public virtual Vector3 OuterMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMins", value); }
@@ -45,7 +45,7 @@ public partial class CLogicNPCCounterAABB : CLogicNPCCounter
 
 	// m_vOuterMaxs
 	[SchemaMember("CLogicNPCCounterAABB", "m_vOuterMaxs")]
-	public Vector3 OuterMaxs
+	public virtual Vector3 OuterMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMaxs", value); }

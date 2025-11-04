@@ -21,6 +21,6 @@ public partial class CItemGenericTriggerHelper : CBaseModelEntity
 
 	// m_hParentItem
 	[SchemaMember("CItemGenericTriggerHelper", "m_hParentItem")]
-	public CHandle<CItemGeneric> ParentItem => Schema.GetDeclaredClass<CHandle<CItemGeneric>>(this.Handle, "CItemGenericTriggerHelper", "m_hParentItem");
+	public virtual CHandle<CItemGeneric> ParentItem => Schema.GetDeclaredClass<CHandle<CItemGeneric>>(this.Handle, "CItemGenericTriggerHelper", "m_hParentItem");
 
 }

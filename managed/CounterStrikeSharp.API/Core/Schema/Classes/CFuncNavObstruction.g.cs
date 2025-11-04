@@ -21,7 +21,7 @@ public partial class CFuncNavObstruction : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncNavObstruction", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncNavObstruction", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncNavObstruction", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CFuncNavObstruction : CBaseModelEntity
 
 	// m_bUseAsyncObstacleUpdate
 	[SchemaMember("CFuncNavObstruction", "m_bUseAsyncObstacleUpdate")]
-	public bool UseAsyncObstacleUpdate
+	public virtual bool UseAsyncObstacleUpdate
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncNavObstruction", "m_bUseAsyncObstacleUpdate"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncNavObstruction", "m_bUseAsyncObstacleUpdate", value); }

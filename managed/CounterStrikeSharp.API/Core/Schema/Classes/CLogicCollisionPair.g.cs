@@ -21,7 +21,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 
 	// m_nameAttach1
 	[SchemaMember("CLogicCollisionPair", "m_nameAttach1")]
-	public string NameAttach1
+	public virtual string NameAttach1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicCollisionPair", "m_nameAttach1"); }
 		set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach1", value); }
@@ -29,7 +29,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 
 	// m_nameAttach2
 	[SchemaMember("CLogicCollisionPair", "m_nameAttach2")]
-	public string NameAttach2
+	public virtual string NameAttach2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicCollisionPair", "m_nameAttach2"); }
 		set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach2", value); }
@@ -37,7 +37,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 
 	// m_includeHierarchy
 	[SchemaMember("CLogicCollisionPair", "m_includeHierarchy")]
-	public bool IncludeHierarchy
+	public virtual bool IncludeHierarchy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_includeHierarchy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_includeHierarchy", value); }
@@ -45,7 +45,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 
 	// m_supportMultipleEntitiesWithSameName
 	[SchemaMember("CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName")]
-	public bool SupportMultipleEntitiesWithSameName
+	public virtual bool SupportMultipleEntitiesWithSameName
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName", value); }
@@ -53,7 +53,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 
 	// m_disabled
 	[SchemaMember("CLogicCollisionPair", "m_disabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_disabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_disabled", value); }
@@ -61,7 +61,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 
 	// m_succeeded
 	[SchemaMember("CLogicCollisionPair", "m_succeeded")]
-	public bool Succeeded
+	public virtual bool Succeeded
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_succeeded"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_succeeded", value); }

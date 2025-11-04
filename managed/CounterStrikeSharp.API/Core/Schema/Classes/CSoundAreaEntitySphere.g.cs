@@ -21,11 +21,11 @@ public partial class CSoundAreaEntitySphere : CSoundAreaEntityBase
 
 	// m_flRadius
 	[SchemaMember("CSoundAreaEntitySphere", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundAreaEntitySphere", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundAreaEntitySphere", "m_flRadius", value); }
 	}
 
-	public void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntitySphere", "m_flRadius");
+	public virtual void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntitySphere", "m_flRadius");
 }

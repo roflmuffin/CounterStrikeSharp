@@ -21,7 +21,7 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_bReceivesMoneyNextRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound")]
-	public bool ReceivesMoneyNextRound
+	public virtual bool ReceivesMoneyNextRound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound", value); }
@@ -29,7 +29,7 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_iMoneyEarnedForNextRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound")]
-	public Int32 MoneyEarnedForNextRound
+	public virtual Int32 MoneyEarnedForNextRound
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_iAccount
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iAccount")]
-	public Int32 Account
+	public virtual Int32 Account
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount", value); }
@@ -45,7 +45,7 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_iStartAccount
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iStartAccount")]
-	public Int32 StartAccount
+	public virtual Int32 StartAccount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount", value); }
@@ -53,7 +53,7 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_iTotalCashSpent
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent")]
-	public Int32 TotalCashSpent
+	public virtual Int32 TotalCashSpent
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent", value); }
@@ -61,14 +61,14 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_iCashSpentThisRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound")]
-	public Int32 CashSpentThisRound
+	public virtual Int32 CashSpentThisRound
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound", value); }
 	}
 
-	public void AccountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
-	public void StartAccountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount");
-	public void TotalCashSpentPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent");
-	public void CashSpentThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound");
+	public virtual void AccountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
+	public virtual void StartAccountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount");
+	public virtual void TotalCashSpentPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent");
+	public virtual void CashSpentThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound");
 }

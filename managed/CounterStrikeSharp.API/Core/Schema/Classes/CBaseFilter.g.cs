@@ -21,7 +21,7 @@ public partial class CBaseFilter : CLogicalEntity
 
 	// m_bNegated
 	[SchemaMember("CBaseFilter", "m_bNegated")]
-	public bool Negated
+	public virtual bool Negated
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseFilter", "m_bNegated"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseFilter", "m_bNegated", value); }
@@ -29,10 +29,10 @@ public partial class CBaseFilter : CLogicalEntity
 
 	// m_OnPass
 	[SchemaMember("CBaseFilter", "m_OnPass")]
-	public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnPass");
+	public virtual CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnPass");
 
 	// m_OnFail
 	[SchemaMember("CBaseFilter", "m_OnFail")]
-	public CEntityIOOutput OnFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnFail");
+	public virtual CEntityIOOutput OnFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnFail");
 
 }

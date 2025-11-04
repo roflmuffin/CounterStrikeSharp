@@ -21,7 +21,7 @@ public partial class CDynamicNavConnectionsVolume : CTriggerMultiple
 
 	// m_iszConnectionTarget
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_iszConnectionTarget")]
-	public string ConnectionTarget
+	public virtual string ConnectionTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CDynamicNavConnectionsVolume", "m_iszConnectionTarget"); }
 		set { Schema.SetString(this.Handle, "CDynamicNavConnectionsVolume", "m_iszConnectionTarget", value); }
@@ -29,11 +29,11 @@ public partial class CDynamicNavConnectionsVolume : CTriggerMultiple
 
 	// m_vecConnections
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_vecConnections")]
-	public NetworkedVector<DynamicVolumeDef_t> Connections => Schema.GetDeclaredClass<NetworkedVector<DynamicVolumeDef_t>>(this.Handle, "CDynamicNavConnectionsVolume", "m_vecConnections");
+	public virtual NetworkedVector<DynamicVolumeDef_t> Connections => Schema.GetDeclaredClass<NetworkedVector<DynamicVolumeDef_t>>(this.Handle, "CDynamicNavConnectionsVolume", "m_vecConnections");
 
 	// m_sTransitionType
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_sTransitionType")]
-	public string TransitionType
+	public virtual string TransitionType
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CDynamicNavConnectionsVolume", "m_sTransitionType"); }
 		set { Schema.SetString(this.Handle, "CDynamicNavConnectionsVolume", "m_sTransitionType", value); }
@@ -41,7 +41,7 @@ public partial class CDynamicNavConnectionsVolume : CTriggerMultiple
 
 	// m_bConnectionsEnabled
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_bConnectionsEnabled")]
-	public bool ConnectionsEnabled
+	public virtual bool ConnectionsEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicNavConnectionsVolume", "m_bConnectionsEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CDynamicNavConnectionsVolume", "m_bConnectionsEnabled", value); }
@@ -49,7 +49,7 @@ public partial class CDynamicNavConnectionsVolume : CTriggerMultiple
 
 	// m_flTargetAreaSearchRadius
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_flTargetAreaSearchRadius")]
-	public float TargetAreaSearchRadius
+	public virtual float TargetAreaSearchRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flTargetAreaSearchRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flTargetAreaSearchRadius", value); }
@@ -57,7 +57,7 @@ public partial class CDynamicNavConnectionsVolume : CTriggerMultiple
 
 	// m_flUpdateDistance
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_flUpdateDistance")]
-	public float UpdateDistance
+	public virtual float UpdateDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flUpdateDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flUpdateDistance", value); }
@@ -65,7 +65,7 @@ public partial class CDynamicNavConnectionsVolume : CTriggerMultiple
 
 	// m_flMaxConnectionDistance
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_flMaxConnectionDistance")]
-	public float MaxConnectionDistance
+	public virtual float MaxConnectionDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flMaxConnectionDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flMaxConnectionDistance", value); }

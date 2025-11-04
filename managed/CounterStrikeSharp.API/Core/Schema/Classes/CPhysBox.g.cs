@@ -21,7 +21,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_damageType
 	[SchemaMember("CPhysBox", "m_damageType")]
-	public Int32 DamageType
+	public virtual Int32 DamageType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysBox", "m_damageType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysBox", "m_damageType", value); }
@@ -29,7 +29,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_damageToEnableMotion
 	[SchemaMember("CPhysBox", "m_damageToEnableMotion")]
-	public Int32 DamageToEnableMotion
+	public virtual Int32 DamageToEnableMotion
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysBox", "m_damageToEnableMotion"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysBox", "m_damageToEnableMotion", value); }
@@ -37,7 +37,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_flForceToEnableMotion
 	[SchemaMember("CPhysBox", "m_flForceToEnableMotion")]
-	public float ForceToEnableMotion
+	public virtual float ForceToEnableMotion
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysBox", "m_flForceToEnableMotion"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysBox", "m_flForceToEnableMotion", value); }
@@ -45,7 +45,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_vHoverPosePosition
 	[SchemaMember("CPhysBox", "m_vHoverPosePosition")]
-	public Vector3 HoverPosePosition
+	public virtual Vector3 HoverPosePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysBox", "m_vHoverPosePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysBox", "m_vHoverPosePosition", value); }
@@ -53,7 +53,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_angHoverPoseAngles
 	[SchemaMember("CPhysBox", "m_angHoverPoseAngles")]
-	public QAngle HoverPoseAngles
+	public virtual QAngle HoverPoseAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPhysBox", "m_angHoverPoseAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPhysBox", "m_angHoverPoseAngles", value); }
@@ -61,7 +61,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_bNotSolidToWorld
 	[SchemaMember("CPhysBox", "m_bNotSolidToWorld")]
-	public bool NotSolidToWorld
+	public virtual bool NotSolidToWorld
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBox", "m_bNotSolidToWorld"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysBox", "m_bNotSolidToWorld", value); }
@@ -69,7 +69,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_bEnableUseOutput
 	[SchemaMember("CPhysBox", "m_bEnableUseOutput")]
-	public bool EnableUseOutput
+	public virtual bool EnableUseOutput
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBox", "m_bEnableUseOutput"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysBox", "m_bEnableUseOutput", value); }
@@ -77,7 +77,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_nHoverPoseFlags
 	[SchemaMember("CPhysBox", "m_nHoverPoseFlags")]
-	public HoverPoseFlags_t HoverPoseFlags
+	public virtual HoverPoseFlags_t HoverPoseFlags
 	{
 		get { return Schema.GetValueType<HoverPoseFlags_t>(this.Handle, "CPhysBox", "m_nHoverPoseFlags"); }
 		set { Schema.SetValueType<HoverPoseFlags_t>(this.Handle, "CPhysBox", "m_nHoverPoseFlags", value); }
@@ -85,7 +85,7 @@ public partial class CPhysBox : CBreakable
 
 	// m_flTouchOutputPerEntityDelay
 	[SchemaMember("CPhysBox", "m_flTouchOutputPerEntityDelay")]
-	public float TouchOutputPerEntityDelay
+	public virtual float TouchOutputPerEntityDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysBox", "m_flTouchOutputPerEntityDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysBox", "m_flTouchOutputPerEntityDelay", value); }
@@ -93,26 +93,26 @@ public partial class CPhysBox : CBreakable
 
 	// m_OnDamaged
 	[SchemaMember("CPhysBox", "m_OnDamaged")]
-	public CEntityIOOutput OnDamaged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnDamaged");
+	public virtual CEntityIOOutput OnDamaged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnDamaged");
 
 	// m_OnAwakened
 	[SchemaMember("CPhysBox", "m_OnAwakened")]
-	public CEntityIOOutput OnAwakened => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnAwakened");
+	public virtual CEntityIOOutput OnAwakened => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnAwakened");
 
 	// m_OnMotionEnabled
 	[SchemaMember("CPhysBox", "m_OnMotionEnabled")]
-	public CEntityIOOutput OnMotionEnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnMotionEnabled");
+	public virtual CEntityIOOutput OnMotionEnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnMotionEnabled");
 
 	// m_OnPlayerUse
 	[SchemaMember("CPhysBox", "m_OnPlayerUse")]
-	public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnPlayerUse");
+	public virtual CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnPlayerUse");
 
 	// m_OnStartTouch
 	[SchemaMember("CPhysBox", "m_OnStartTouch")]
-	public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnStartTouch");
+	public virtual CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnStartTouch");
 
 	// m_hCarryingPlayer
 	[SchemaMember("CPhysBox", "m_hCarryingPlayer")]
-	public CHandle<CBasePlayerPawn> CarryingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPhysBox", "m_hCarryingPlayer");
+	public virtual CHandle<CBasePlayerPawn> CarryingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPhysBox", "m_hCarryingPlayer");
 
 }

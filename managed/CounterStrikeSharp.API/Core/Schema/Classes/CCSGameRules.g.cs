@@ -21,7 +21,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bFreezePeriod
 	[SchemaMember("CCSGameRules", "m_bFreezePeriod")]
-	public bool FreezePeriod
+	public virtual bool FreezePeriod
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bFreezePeriod"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bFreezePeriod", value); }
@@ -29,7 +29,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bWarmupPeriod
 	[SchemaMember("CCSGameRules", "m_bWarmupPeriod")]
-	public bool WarmupPeriod
+	public virtual bool WarmupPeriod
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bWarmupPeriod"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bWarmupPeriod", value); }
@@ -37,7 +37,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fWarmupPeriodEnd
 	[SchemaMember("CCSGameRules", "m_fWarmupPeriodEnd")]
-	public float WarmupPeriodEnd
+	public virtual float WarmupPeriodEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodEnd", value); }
@@ -45,7 +45,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fWarmupPeriodStart
 	[SchemaMember("CCSGameRules", "m_fWarmupPeriodStart")]
-	public float WarmupPeriodStart
+	public virtual float WarmupPeriodStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart", value); }
@@ -53,7 +53,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bTerroristTimeOutActive
 	[SchemaMember("CCSGameRules", "m_bTerroristTimeOutActive")]
-	public bool TerroristTimeOutActive
+	public virtual bool TerroristTimeOutActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTerroristTimeOutActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTerroristTimeOutActive", value); }
@@ -61,7 +61,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bCTTimeOutActive
 	[SchemaMember("CCSGameRules", "m_bCTTimeOutActive")]
-	public bool CTTimeOutActive
+	public virtual bool CTTimeOutActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTTimeOutActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTTimeOutActive", value); }
@@ -69,7 +69,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flTerroristTimeOutRemaining
 	[SchemaMember("CCSGameRules", "m_flTerroristTimeOutRemaining")]
-	public float TerroristTimeOutRemaining
+	public virtual float TerroristTimeOutRemaining
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristTimeOutRemaining"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristTimeOutRemaining", value); }
@@ -77,7 +77,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flCTTimeOutRemaining
 	[SchemaMember("CCSGameRules", "m_flCTTimeOutRemaining")]
-	public float CTTimeOutRemaining
+	public virtual float CTTimeOutRemaining
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCTTimeOutRemaining"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCTTimeOutRemaining", value); }
@@ -85,7 +85,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nTerroristTimeOuts
 	[SchemaMember("CCSGameRules", "m_nTerroristTimeOuts")]
-	public Int32 TerroristTimeOuts
+	public virtual Int32 TerroristTimeOuts
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristTimeOuts"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristTimeOuts", value); }
@@ -93,7 +93,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nCTTimeOuts
 	[SchemaMember("CCSGameRules", "m_nCTTimeOuts")]
-	public Int32 CTTimeOuts
+	public virtual Int32 CTTimeOuts
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTimeOuts"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTimeOuts", value); }
@@ -101,7 +101,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bTechnicalTimeOut
 	[SchemaMember("CCSGameRules", "m_bTechnicalTimeOut")]
-	public bool TechnicalTimeOut
+	public virtual bool TechnicalTimeOut
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTechnicalTimeOut"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTechnicalTimeOut", value); }
@@ -109,7 +109,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bMatchWaitingForResume
 	[SchemaMember("CCSGameRules", "m_bMatchWaitingForResume")]
-	public bool MatchWaitingForResume
+	public virtual bool MatchWaitingForResume
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMatchWaitingForResume"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMatchWaitingForResume", value); }
@@ -117,7 +117,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iFreezeTime
 	[SchemaMember("CCSGameRules", "m_iFreezeTime")]
-	public Int32 FreezeTime
+	public virtual Int32 FreezeTime
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime", value); }
@@ -125,7 +125,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundTime
 	[SchemaMember("CCSGameRules", "m_iRoundTime")]
-	public Int32 RoundTime
+	public virtual Int32 RoundTime
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundTime"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundTime", value); }
@@ -133,7 +133,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fMatchStartTime
 	[SchemaMember("CCSGameRules", "m_fMatchStartTime")]
-	public float MatchStartTime
+	public virtual float MatchStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fMatchStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fMatchStartTime", value); }
@@ -141,7 +141,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fRoundStartTime
 	[SchemaMember("CCSGameRules", "m_fRoundStartTime")]
-	public float RoundStartTime
+	public virtual float RoundStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fRoundStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fRoundStartTime", value); }
@@ -149,7 +149,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flRestartRoundTime
 	[SchemaMember("CCSGameRules", "m_flRestartRoundTime")]
-	public float RestartRoundTime
+	public virtual float RestartRoundTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flRestartRoundTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flRestartRoundTime", value); }
@@ -157,7 +157,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bGameRestart
 	[SchemaMember("CCSGameRules", "m_bGameRestart")]
-	public bool GameRestart
+	public virtual bool GameRestart
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bGameRestart"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bGameRestart", value); }
@@ -165,7 +165,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flGameStartTime
 	[SchemaMember("CCSGameRules", "m_flGameStartTime")]
-	public float GameStartTime
+	public virtual float GameStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flGameStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flGameStartTime", value); }
@@ -173,7 +173,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_timeUntilNextPhaseStarts
 	[SchemaMember("CCSGameRules", "m_timeUntilNextPhaseStarts")]
-	public float TimeUntilNextPhaseStarts
+	public virtual float TimeUntilNextPhaseStarts
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_timeUntilNextPhaseStarts"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_timeUntilNextPhaseStarts", value); }
@@ -181,7 +181,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_gamePhase
 	[SchemaMember("CCSGameRules", "m_gamePhase")]
-	public Int32 GamePhase
+	public virtual Int32 GamePhase
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_gamePhase"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_gamePhase", value); }
@@ -189,7 +189,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_totalRoundsPlayed
 	[SchemaMember("CCSGameRules", "m_totalRoundsPlayed")]
-	public Int32 TotalRoundsPlayed
+	public virtual Int32 TotalRoundsPlayed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_totalRoundsPlayed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_totalRoundsPlayed", value); }
@@ -197,7 +197,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nRoundsPlayedThisPhase
 	[SchemaMember("CCSGameRules", "m_nRoundsPlayedThisPhase")]
-	public Int32 RoundsPlayedThisPhase
+	public virtual Int32 RoundsPlayedThisPhase
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nRoundsPlayedThisPhase"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nRoundsPlayedThisPhase", value); }
@@ -205,7 +205,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nOvertimePlaying
 	[SchemaMember("CCSGameRules", "m_nOvertimePlaying")]
-	public Int32 OvertimePlaying
+	public virtual Int32 OvertimePlaying
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nOvertimePlaying"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nOvertimePlaying", value); }
@@ -213,7 +213,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iHostagesRemaining
 	[SchemaMember("CCSGameRules", "m_iHostagesRemaining")]
-	public Int32 HostagesRemaining
+	public virtual Int32 HostagesRemaining
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRemaining"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRemaining", value); }
@@ -221,7 +221,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bAnyHostageReached
 	[SchemaMember("CCSGameRules", "m_bAnyHostageReached")]
-	public bool AnyHostageReached
+	public virtual bool AnyHostageReached
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bAnyHostageReached"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bAnyHostageReached", value); }
@@ -229,7 +229,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bMapHasBombTarget
 	[SchemaMember("CCSGameRules", "m_bMapHasBombTarget")]
-	public bool MapHasBombTarget
+	public virtual bool MapHasBombTarget
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombTarget"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombTarget", value); }
@@ -237,7 +237,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bMapHasRescueZone
 	[SchemaMember("CCSGameRules", "m_bMapHasRescueZone")]
-	public bool MapHasRescueZone
+	public virtual bool MapHasRescueZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasRescueZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasRescueZone", value); }
@@ -245,7 +245,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bMapHasBuyZone
 	[SchemaMember("CCSGameRules", "m_bMapHasBuyZone")]
-	public bool MapHasBuyZone
+	public virtual bool MapHasBuyZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBuyZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBuyZone", value); }
@@ -253,7 +253,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bIsQueuedMatchmaking
 	[SchemaMember("CCSGameRules", "m_bIsQueuedMatchmaking")]
-	public bool IsQueuedMatchmaking
+	public virtual bool IsQueuedMatchmaking
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQueuedMatchmaking"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQueuedMatchmaking", value); }
@@ -261,7 +261,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nQueuedMatchmakingMode
 	[SchemaMember("CCSGameRules", "m_nQueuedMatchmakingMode")]
-	public Int32 QueuedMatchmakingMode
+	public virtual Int32 QueuedMatchmakingMode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nQueuedMatchmakingMode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nQueuedMatchmakingMode", value); }
@@ -269,7 +269,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bIsValveDS
 	[SchemaMember("CCSGameRules", "m_bIsValveDS")]
-	public bool IsValveDS
+	public virtual bool IsValveDS
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsValveDS"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsValveDS", value); }
@@ -277,7 +277,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bLogoMap
 	[SchemaMember("CCSGameRules", "m_bLogoMap")]
-	public bool LogoMap
+	public virtual bool LogoMap
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bLogoMap"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bLogoMap", value); }
@@ -285,7 +285,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bPlayAllStepSoundsOnServer
 	[SchemaMember("CCSGameRules", "m_bPlayAllStepSoundsOnServer")]
-	public bool PlayAllStepSoundsOnServer
+	public virtual bool PlayAllStepSoundsOnServer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayAllStepSoundsOnServer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayAllStepSoundsOnServer", value); }
@@ -293,7 +293,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iSpectatorSlotCount
 	[SchemaMember("CCSGameRules", "m_iSpectatorSlotCount")]
-	public Int32 SpectatorSlotCount
+	public virtual Int32 SpectatorSlotCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpectatorSlotCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpectatorSlotCount", value); }
@@ -301,7 +301,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_MatchDevice
 	[SchemaMember("CCSGameRules", "m_MatchDevice")]
-	public Int32 MatchDevice
+	public virtual Int32 MatchDevice
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_MatchDevice"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_MatchDevice", value); }
@@ -309,7 +309,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bHasMatchStarted
 	[SchemaMember("CCSGameRules", "m_bHasMatchStarted")]
-	public bool HasMatchStarted
+	public virtual bool HasMatchStarted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasMatchStarted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasMatchStarted", value); }
@@ -317,7 +317,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nNextMapInMapgroup
 	[SchemaMember("CCSGameRules", "m_nNextMapInMapgroup")]
-	public Int32 NextMapInMapgroup
+	public virtual Int32 NextMapInMapgroup
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nNextMapInMapgroup"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nNextMapInMapgroup", value); }
@@ -325,7 +325,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_szTournamentEventName
 	[SchemaMember("CCSGameRules", "m_szTournamentEventName")]
-	public string TournamentEventName
+	public virtual string TournamentEventName
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventName"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szTournamentEventName", value, 512); }
@@ -333,7 +333,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_szTournamentEventStage
 	[SchemaMember("CCSGameRules", "m_szTournamentEventStage")]
-	public string TournamentEventStage
+	public virtual string TournamentEventStage
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventStage"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szTournamentEventStage", value, 512); }
@@ -341,7 +341,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_szMatchStatTxt
 	[SchemaMember("CCSGameRules", "m_szMatchStatTxt")]
-	public string MatchStatTxt
+	public virtual string MatchStatTxt
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szMatchStatTxt"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szMatchStatTxt", value, 512); }
@@ -349,7 +349,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_szTournamentPredictionsTxt
 	[SchemaMember("CCSGameRules", "m_szTournamentPredictionsTxt")]
-	public string TournamentPredictionsTxt
+	public virtual string TournamentPredictionsTxt
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt", value, 512); }
@@ -357,7 +357,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nTournamentPredictionsPct
 	[SchemaMember("CCSGameRules", "m_nTournamentPredictionsPct")]
-	public Int32 TournamentPredictionsPct
+	public virtual Int32 TournamentPredictionsPct
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTournamentPredictionsPct"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTournamentPredictionsPct", value); }
@@ -365,7 +365,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flCMMItemDropRevealStartTime
 	[SchemaMember("CCSGameRules", "m_flCMMItemDropRevealStartTime")]
-	public float CMMItemDropRevealStartTime
+	public virtual float CMMItemDropRevealStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealStartTime", value); }
@@ -373,7 +373,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flCMMItemDropRevealEndTime
 	[SchemaMember("CCSGameRules", "m_flCMMItemDropRevealEndTime")]
-	public float CMMItemDropRevealEndTime
+	public virtual float CMMItemDropRevealEndTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealEndTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealEndTime", value); }
@@ -381,7 +381,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bIsDroppingItems
 	[SchemaMember("CCSGameRules", "m_bIsDroppingItems")]
-	public bool IsDroppingItems
+	public virtual bool IsDroppingItems
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsDroppingItems"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsDroppingItems", value); }
@@ -389,7 +389,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bIsQuestEligible
 	[SchemaMember("CCSGameRules", "m_bIsQuestEligible")]
-	public bool IsQuestEligible
+	public virtual bool IsQuestEligible
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQuestEligible"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQuestEligible", value); }
@@ -397,7 +397,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bIsHltvActive
 	[SchemaMember("CCSGameRules", "m_bIsHltvActive")]
-	public bool IsHltvActive
+	public virtual bool IsHltvActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive", value); }
@@ -405,15 +405,15 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_arrProhibitedItemIndices
 	[SchemaMember("CCSGameRules", "m_arrProhibitedItemIndices")]
-	public Span<UInt16> ProhibitedItemIndices => Schema.GetFixedArray<UInt16>(this.Handle, "CCSGameRules", "m_arrProhibitedItemIndices", 100);
+	public virtual Span<UInt16> ProhibitedItemIndices => Schema.GetFixedArray<UInt16>(this.Handle, "CCSGameRules", "m_arrProhibitedItemIndices", 100);
 
 	// m_arrTournamentActiveCasterAccounts
 	[SchemaMember("CCSGameRules", "m_arrTournamentActiveCasterAccounts")]
-	public Span<UInt32> TournamentActiveCasterAccounts => Schema.GetFixedArray<UInt32>(this.Handle, "CCSGameRules", "m_arrTournamentActiveCasterAccounts", 4);
+	public virtual Span<UInt32> TournamentActiveCasterAccounts => Schema.GetFixedArray<UInt32>(this.Handle, "CCSGameRules", "m_arrTournamentActiveCasterAccounts", 4);
 
 	// m_numBestOfMaps
 	[SchemaMember("CCSGameRules", "m_numBestOfMaps")]
-	public Int32 NumBestOfMaps
+	public virtual Int32 NumBestOfMaps
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_numBestOfMaps"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_numBestOfMaps", value); }
@@ -421,7 +421,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nHalloweenMaskListSeed
 	[SchemaMember("CCSGameRules", "m_nHalloweenMaskListSeed")]
-	public Int32 HalloweenMaskListSeed
+	public virtual Int32 HalloweenMaskListSeed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nHalloweenMaskListSeed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nHalloweenMaskListSeed", value); }
@@ -429,7 +429,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bBombDropped
 	[SchemaMember("CCSGameRules", "m_bBombDropped")]
-	public bool BombDropped
+	public virtual bool BombDropped
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDropped"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDropped", value); }
@@ -437,7 +437,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bBombPlanted
 	[SchemaMember("CCSGameRules", "m_bBombPlanted")]
-	public bool BombPlanted
+	public virtual bool BombPlanted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted", value); }
@@ -445,7 +445,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundWinStatus
 	[SchemaMember("CCSGameRules", "m_iRoundWinStatus")]
-	public Int32 RoundWinStatus
+	public virtual Int32 RoundWinStatus
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundWinStatus"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundWinStatus", value); }
@@ -453,7 +453,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_eRoundWinReason
 	[SchemaMember("CCSGameRules", "m_eRoundWinReason")]
-	public Int32 RoundWinReason
+	public virtual Int32 RoundWinReason
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundWinReason"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundWinReason", value); }
@@ -461,7 +461,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bTCantBuy
 	[SchemaMember("CCSGameRules", "m_bTCantBuy")]
-	public bool TCantBuy
+	public virtual bool TCantBuy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTCantBuy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTCantBuy", value); }
@@ -469,7 +469,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bCTCantBuy
 	[SchemaMember("CCSGameRules", "m_bCTCantBuy")]
-	public bool CTCantBuy
+	public virtual bool CTCantBuy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTCantBuy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTCantBuy", value); }
@@ -477,27 +477,27 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iMatchStats_RoundResults
 	[SchemaMember("CCSGameRules", "m_iMatchStats_RoundResults")]
-	public Span<Int32> MatchStats_RoundResults => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_RoundResults", 30);
+	public virtual Span<Int32> MatchStats_RoundResults => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_RoundResults", 30);
 
 	// m_iMatchStats_PlayersAlive_CT
 	[SchemaMember("CCSGameRules", "m_iMatchStats_PlayersAlive_CT")]
-	public Span<Int32> MatchStats_PlayersAlive_CT => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_PlayersAlive_CT", 30);
+	public virtual Span<Int32> MatchStats_PlayersAlive_CT => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_PlayersAlive_CT", 30);
 
 	// m_iMatchStats_PlayersAlive_T
 	[SchemaMember("CCSGameRules", "m_iMatchStats_PlayersAlive_T")]
-	public Span<Int32> MatchStats_PlayersAlive_T => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_PlayersAlive_T", 30);
+	public virtual Span<Int32> MatchStats_PlayersAlive_T => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_PlayersAlive_T", 30);
 
 	// m_TeamRespawnWaveTimes
 	[SchemaMember("CCSGameRules", "m_TeamRespawnWaveTimes")]
-	public Span<float> TeamRespawnWaveTimes => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_TeamRespawnWaveTimes", 32);
+	public virtual Span<float> TeamRespawnWaveTimes => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_TeamRespawnWaveTimes", 32);
 
 	// m_flNextRespawnWave
 	[SchemaMember("CCSGameRules", "m_flNextRespawnWave")]
-	public Span<float> NextRespawnWave => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_flNextRespawnWave", 32);
+	public virtual Span<float> NextRespawnWave => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_flNextRespawnWave", 32);
 
 	// m_vMinimapMins
 	[SchemaMember("CCSGameRules", "m_vMinimapMins")]
-	public Vector3 MinimapMins
+	public virtual Vector3 MinimapMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMins", value); }
@@ -505,7 +505,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_vMinimapMaxs
 	[SchemaMember("CCSGameRules", "m_vMinimapMaxs")]
-	public Vector3 MinimapMaxs
+	public virtual Vector3 MinimapMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMaxs", value); }
@@ -513,11 +513,11 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_MinimapVerticalSectionHeights
 	[SchemaMember("CCSGameRules", "m_MinimapVerticalSectionHeights")]
-	public Span<float> MinimapVerticalSectionHeights => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_MinimapVerticalSectionHeights", 8);
+	public virtual Span<float> MinimapVerticalSectionHeights => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_MinimapVerticalSectionHeights", 8);
 
 	// m_ullLocalMatchID
 	[SchemaMember("CCSGameRules", "m_ullLocalMatchID")]
-	public UInt64 UllLocalMatchID
+	public virtual UInt64 UllLocalMatchID
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID", value); }
@@ -525,15 +525,15 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nEndMatchMapGroupVoteTypes
 	[SchemaMember("CCSGameRules", "m_nEndMatchMapGroupVoteTypes")]
-	public Span<Int32> EndMatchMapGroupVoteTypes => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteTypes", 10);
+	public virtual Span<Int32> EndMatchMapGroupVoteTypes => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteTypes", 10);
 
 	// m_nEndMatchMapGroupVoteOptions
 	[SchemaMember("CCSGameRules", "m_nEndMatchMapGroupVoteOptions")]
-	public Span<Int32> EndMatchMapGroupVoteOptions => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteOptions", 10);
+	public virtual Span<Int32> EndMatchMapGroupVoteOptions => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteOptions", 10);
 
 	// m_nEndMatchMapVoteWinner
 	[SchemaMember("CCSGameRules", "m_nEndMatchMapVoteWinner")]
-	public Int32 EndMatchMapVoteWinner
+	public virtual Int32 EndMatchMapVoteWinner
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapVoteWinner"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapVoteWinner", value); }
@@ -541,7 +541,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNumConsecutiveCTLoses
 	[SchemaMember("CCSGameRules", "m_iNumConsecutiveCTLoses")]
-	public Int32 NumConsecutiveCTLoses
+	public virtual Int32 NumConsecutiveCTLoses
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveCTLoses"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveCTLoses", value); }
@@ -549,7 +549,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNumConsecutiveTerroristLoses
 	[SchemaMember("CCSGameRules", "m_iNumConsecutiveTerroristLoses")]
-	public Int32 NumConsecutiveTerroristLoses
+	public virtual Int32 NumConsecutiveTerroristLoses
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveTerroristLoses"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveTerroristLoses", value); }
@@ -557,7 +557,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bHasHostageBeenTouched
 	[SchemaMember("CCSGameRules", "m_bHasHostageBeenTouched")]
-	public bool HasHostageBeenTouched
+	public virtual bool HasHostageBeenTouched
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasHostageBeenTouched"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasHostageBeenTouched", value); }
@@ -565,7 +565,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flIntermissionStartTime
 	[SchemaMember("CCSGameRules", "m_flIntermissionStartTime")]
-	public float IntermissionStartTime
+	public virtual float IntermissionStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionStartTime", value); }
@@ -573,7 +573,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flIntermissionEndTime
 	[SchemaMember("CCSGameRules", "m_flIntermissionEndTime")]
-	public float IntermissionEndTime
+	public virtual float IntermissionEndTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionEndTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionEndTime", value); }
@@ -581,7 +581,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bLevelInitialized
 	[SchemaMember("CCSGameRules", "m_bLevelInitialized")]
-	public bool LevelInitialized
+	public virtual bool LevelInitialized
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bLevelInitialized"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bLevelInitialized", value); }
@@ -589,7 +589,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iTotalRoundsPlayed
 	[SchemaMember("CCSGameRules", "m_iTotalRoundsPlayed")]
-	public Int32 ITotalRoundsPlayed
+	public virtual Int32 ITotalRoundsPlayed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iTotalRoundsPlayed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iTotalRoundsPlayed", value); }
@@ -597,7 +597,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iUnBalancedRounds
 	[SchemaMember("CCSGameRules", "m_iUnBalancedRounds")]
-	public Int32 UnBalancedRounds
+	public virtual Int32 UnBalancedRounds
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iUnBalancedRounds"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iUnBalancedRounds", value); }
@@ -605,7 +605,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_endMatchOnRoundReset
 	[SchemaMember("CCSGameRules", "m_endMatchOnRoundReset")]
-	public bool EndMatchOnRoundReset
+	public virtual bool EndMatchOnRoundReset
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnRoundReset"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnRoundReset", value); }
@@ -613,7 +613,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_endMatchOnThink
 	[SchemaMember("CCSGameRules", "m_endMatchOnThink")]
-	public bool EndMatchOnThink
+	public virtual bool EndMatchOnThink
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnThink"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnThink", value); }
@@ -621,7 +621,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNumTerrorist
 	[SchemaMember("CCSGameRules", "m_iNumTerrorist")]
-	public Int32 NumTerrorist
+	public virtual Int32 NumTerrorist
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumTerrorist"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumTerrorist", value); }
@@ -629,7 +629,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNumCT
 	[SchemaMember("CCSGameRules", "m_iNumCT")]
-	public Int32 NumCT
+	public virtual Int32 NumCT
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumCT"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumCT", value); }
@@ -637,7 +637,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNumSpawnableTerrorist
 	[SchemaMember("CCSGameRules", "m_iNumSpawnableTerrorist")]
-	public Int32 NumSpawnableTerrorist
+	public virtual Int32 NumSpawnableTerrorist
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableTerrorist"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableTerrorist", value); }
@@ -645,7 +645,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNumSpawnableCT
 	[SchemaMember("CCSGameRules", "m_iNumSpawnableCT")]
-	public Int32 NumSpawnableCT
+	public virtual Int32 NumSpawnableCT
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableCT"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableCT", value); }
@@ -653,11 +653,11 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_arrSelectedHostageSpawnIndices
 	[SchemaMember("CCSGameRules", "m_arrSelectedHostageSpawnIndices")]
-	public NetworkedVector<Int32> SelectedHostageSpawnIndices => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_arrSelectedHostageSpawnIndices");
+	public virtual NetworkedVector<Int32> SelectedHostageSpawnIndices => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_arrSelectedHostageSpawnIndices");
 
 	// m_nSpawnPointsRandomSeed
 	[SchemaMember("CCSGameRules", "m_nSpawnPointsRandomSeed")]
-	public Int32 SpawnPointsRandomSeed
+	public virtual Int32 SpawnPointsRandomSeed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nSpawnPointsRandomSeed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nSpawnPointsRandomSeed", value); }
@@ -665,7 +665,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bFirstConnected
 	[SchemaMember("CCSGameRules", "m_bFirstConnected")]
-	public bool FirstConnected
+	public virtual bool FirstConnected
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bFirstConnected"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bFirstConnected", value); }
@@ -673,7 +673,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bCompleteReset
 	[SchemaMember("CCSGameRules", "m_bCompleteReset")]
-	public bool CompleteReset
+	public virtual bool CompleteReset
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCompleteReset"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCompleteReset", value); }
@@ -681,7 +681,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bPickNewTeamsOnReset
 	[SchemaMember("CCSGameRules", "m_bPickNewTeamsOnReset")]
-	public bool PickNewTeamsOnReset
+	public virtual bool PickNewTeamsOnReset
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bPickNewTeamsOnReset"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bPickNewTeamsOnReset", value); }
@@ -689,7 +689,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bScrambleTeamsOnRestart
 	[SchemaMember("CCSGameRules", "m_bScrambleTeamsOnRestart")]
-	public bool ScrambleTeamsOnRestart
+	public virtual bool ScrambleTeamsOnRestart
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bScrambleTeamsOnRestart"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bScrambleTeamsOnRestart", value); }
@@ -697,7 +697,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bSwapTeamsOnRestart
 	[SchemaMember("CCSGameRules", "m_bSwapTeamsOnRestart")]
-	public bool SwapTeamsOnRestart
+	public virtual bool SwapTeamsOnRestart
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwapTeamsOnRestart"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwapTeamsOnRestart", value); }
@@ -705,11 +705,11 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nEndMatchTiedVotes
 	[SchemaMember("CCSGameRules", "m_nEndMatchTiedVotes")]
-	public NetworkedVector<Int32> EndMatchTiedVotes => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_nEndMatchTiedVotes");
+	public virtual NetworkedVector<Int32> EndMatchTiedVotes => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_nEndMatchTiedVotes");
 
 	// m_bNeedToAskPlayersForContinueVote
 	[SchemaMember("CCSGameRules", "m_bNeedToAskPlayersForContinueVote")]
-	public bool NeedToAskPlayersForContinueVote
+	public virtual bool NeedToAskPlayersForContinueVote
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNeedToAskPlayersForContinueVote"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNeedToAskPlayersForContinueVote", value); }
@@ -717,7 +717,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_numQueuedMatchmakingAccounts
 	[SchemaMember("CCSGameRules", "m_numQueuedMatchmakingAccounts")]
-	public UInt32 NumQueuedMatchmakingAccounts
+	public virtual UInt32 NumQueuedMatchmakingAccounts
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numQueuedMatchmakingAccounts"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numQueuedMatchmakingAccounts", value); }
@@ -725,7 +725,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fAvgPlayerRank
 	[SchemaMember("CCSGameRules", "m_fAvgPlayerRank")]
-	public float AvgPlayerRank
+	public virtual float AvgPlayerRank
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fAvgPlayerRank"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fAvgPlayerRank", value); }
@@ -733,7 +733,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_pQueuedMatchmakingReservationString
 	[SchemaMember("CCSGameRules", "m_pQueuedMatchmakingReservationString")]
-	public string QueuedMatchmakingReservationString
+	public virtual string QueuedMatchmakingReservationString
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_pQueuedMatchmakingReservationString"); }
 		set { Schema.SetString(this.Handle, "CCSGameRules", "m_pQueuedMatchmakingReservationString", value); }
@@ -741,7 +741,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_numTotalTournamentDrops
 	[SchemaMember("CCSGameRules", "m_numTotalTournamentDrops")]
-	public UInt32 NumTotalTournamentDrops
+	public virtual UInt32 NumTotalTournamentDrops
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numTotalTournamentDrops"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numTotalTournamentDrops", value); }
@@ -749,7 +749,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_numSpectatorsCountMax
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMax")]
-	public UInt32 NumSpectatorsCountMax
+	public virtual UInt32 NumSpectatorsCountMax
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMax"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMax", value); }
@@ -757,7 +757,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_numSpectatorsCountMaxTV
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMaxTV")]
-	public UInt32 NumSpectatorsCountMaxTV
+	public virtual UInt32 NumSpectatorsCountMaxTV
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxTV"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxTV", value); }
@@ -765,7 +765,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_numSpectatorsCountMaxLnk
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMaxLnk")]
-	public UInt32 NumSpectatorsCountMaxLnk
+	public virtual UInt32 NumSpectatorsCountMaxLnk
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk", value); }
@@ -773,7 +773,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nCTsAliveAtFreezetimeEnd
 	[SchemaMember("CCSGameRules", "m_nCTsAliveAtFreezetimeEnd")]
-	public Int32 CTsAliveAtFreezetimeEnd
+	public virtual Int32 CTsAliveAtFreezetimeEnd
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTsAliveAtFreezetimeEnd"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTsAliveAtFreezetimeEnd", value); }
@@ -781,7 +781,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nTerroristsAliveAtFreezetimeEnd
 	[SchemaMember("CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd")]
-	public Int32 TerroristsAliveAtFreezetimeEnd
+	public virtual Int32 TerroristsAliveAtFreezetimeEnd
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd", value); }
@@ -789,7 +789,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bForceTeamChangeSilent
 	[SchemaMember("CCSGameRules", "m_bForceTeamChangeSilent")]
-	public bool ForceTeamChangeSilent
+	public virtual bool ForceTeamChangeSilent
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bForceTeamChangeSilent"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bForceTeamChangeSilent", value); }
@@ -797,7 +797,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bLoadingRoundBackupData
 	[SchemaMember("CCSGameRules", "m_bLoadingRoundBackupData")]
-	public bool LoadingRoundBackupData
+	public virtual bool LoadingRoundBackupData
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bLoadingRoundBackupData"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bLoadingRoundBackupData", value); }
@@ -805,7 +805,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nMatchInfoShowType
 	[SchemaMember("CCSGameRules", "m_nMatchInfoShowType")]
-	public Int32 MatchInfoShowType
+	public virtual Int32 MatchInfoShowType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchInfoShowType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchInfoShowType", value); }
@@ -813,7 +813,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flMatchInfoDecidedTime
 	[SchemaMember("CCSGameRules", "m_flMatchInfoDecidedTime")]
-	public float MatchInfoDecidedTime
+	public virtual float MatchInfoDecidedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flMatchInfoDecidedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flMatchInfoDecidedTime", value); }
@@ -821,7 +821,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// mTeamDMLastWinningTeamNumber
 	[SchemaMember("CCSGameRules", "mTeamDMLastWinningTeamNumber")]
-	public Int32 MTeamDMLastWinningTeamNumber
+	public virtual Int32 MTeamDMLastWinningTeamNumber
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "mTeamDMLastWinningTeamNumber"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "mTeamDMLastWinningTeamNumber", value); }
@@ -829,7 +829,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// mTeamDMLastThinkTime
 	[SchemaMember("CCSGameRules", "mTeamDMLastThinkTime")]
-	public float MTeamDMLastThinkTime
+	public virtual float MTeamDMLastThinkTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "mTeamDMLastThinkTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "mTeamDMLastThinkTime", value); }
@@ -837,7 +837,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flTeamDMLastAnnouncementTime
 	[SchemaMember("CCSGameRules", "m_flTeamDMLastAnnouncementTime")]
-	public float TeamDMLastAnnouncementTime
+	public virtual float TeamDMLastAnnouncementTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flTeamDMLastAnnouncementTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flTeamDMLastAnnouncementTime", value); }
@@ -845,7 +845,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iAccountTerrorist
 	[SchemaMember("CCSGameRules", "m_iAccountTerrorist")]
-	public Int32 AccountTerrorist
+	public virtual Int32 AccountTerrorist
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountTerrorist"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountTerrorist", value); }
@@ -853,7 +853,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iAccountCT
 	[SchemaMember("CCSGameRules", "m_iAccountCT")]
-	public Int32 AccountCT
+	public virtual Int32 AccountCT
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountCT"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountCT", value); }
@@ -861,7 +861,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iSpawnPointCount_Terrorist
 	[SchemaMember("CCSGameRules", "m_iSpawnPointCount_Terrorist")]
-	public Int32 SpawnPointCount_Terrorist
+	public virtual Int32 SpawnPointCount_Terrorist
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_Terrorist"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_Terrorist", value); }
@@ -869,7 +869,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iSpawnPointCount_CT
 	[SchemaMember("CCSGameRules", "m_iSpawnPointCount_CT")]
-	public Int32 SpawnPointCount_CT
+	public virtual Int32 SpawnPointCount_CT
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_CT"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_CT", value); }
@@ -877,7 +877,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iMaxNumTerrorists
 	[SchemaMember("CCSGameRules", "m_iMaxNumTerrorists")]
-	public Int32 MaxNumTerrorists
+	public virtual Int32 MaxNumTerrorists
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumTerrorists"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumTerrorists", value); }
@@ -885,7 +885,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iMaxNumCTs
 	[SchemaMember("CCSGameRules", "m_iMaxNumCTs")]
-	public Int32 MaxNumCTs
+	public virtual Int32 MaxNumCTs
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumCTs"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumCTs", value); }
@@ -893,7 +893,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iLoserBonusMostRecentTeam
 	[SchemaMember("CCSGameRules", "m_iLoserBonusMostRecentTeam")]
-	public Int32 LoserBonusMostRecentTeam
+	public virtual Int32 LoserBonusMostRecentTeam
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonusMostRecentTeam"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonusMostRecentTeam", value); }
@@ -901,7 +901,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_tmNextPeriodicThink
 	[SchemaMember("CCSGameRules", "m_tmNextPeriodicThink")]
-	public float TmNextPeriodicThink
+	public virtual float TmNextPeriodicThink
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_tmNextPeriodicThink"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_tmNextPeriodicThink", value); }
@@ -909,7 +909,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bVoiceWonMatchBragFired
 	[SchemaMember("CCSGameRules", "m_bVoiceWonMatchBragFired")]
-	public bool VoiceWonMatchBragFired
+	public virtual bool VoiceWonMatchBragFired
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoiceWonMatchBragFired"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoiceWonMatchBragFired", value); }
@@ -917,7 +917,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fWarmupNextChatNoticeTime
 	[SchemaMember("CCSGameRules", "m_fWarmupNextChatNoticeTime")]
-	public float WarmupNextChatNoticeTime
+	public virtual float WarmupNextChatNoticeTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupNextChatNoticeTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupNextChatNoticeTime", value); }
@@ -925,7 +925,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iHostagesRescued
 	[SchemaMember("CCSGameRules", "m_iHostagesRescued")]
-	public Int32 HostagesRescued
+	public virtual Int32 HostagesRescued
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRescued"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRescued", value); }
@@ -933,7 +933,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iHostagesTouched
 	[SchemaMember("CCSGameRules", "m_iHostagesTouched")]
-	public Int32 HostagesTouched
+	public virtual Int32 HostagesTouched
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesTouched"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesTouched", value); }
@@ -941,7 +941,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flNextHostageAnnouncement
 	[SchemaMember("CCSGameRules", "m_flNextHostageAnnouncement")]
-	public float NextHostageAnnouncement
+	public virtual float NextHostageAnnouncement
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flNextHostageAnnouncement"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flNextHostageAnnouncement", value); }
@@ -949,7 +949,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bNoTerroristsKilled
 	[SchemaMember("CCSGameRules", "m_bNoTerroristsKilled")]
-	public bool NoTerroristsKilled
+	public virtual bool NoTerroristsKilled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoTerroristsKilled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoTerroristsKilled", value); }
@@ -957,7 +957,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bNoCTsKilled
 	[SchemaMember("CCSGameRules", "m_bNoCTsKilled")]
-	public bool NoCTsKilled
+	public virtual bool NoCTsKilled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoCTsKilled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoCTsKilled", value); }
@@ -965,7 +965,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bNoEnemiesKilled
 	[SchemaMember("CCSGameRules", "m_bNoEnemiesKilled")]
-	public bool NoEnemiesKilled
+	public virtual bool NoEnemiesKilled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoEnemiesKilled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoEnemiesKilled", value); }
@@ -973,7 +973,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bCanDonateWeapons
 	[SchemaMember("CCSGameRules", "m_bCanDonateWeapons")]
-	public bool CanDonateWeapons
+	public virtual bool CanDonateWeapons
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCanDonateWeapons"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCanDonateWeapons", value); }
@@ -981,7 +981,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_firstKillTime
 	[SchemaMember("CCSGameRules", "m_firstKillTime")]
-	public float FirstKillTime
+	public virtual float FirstKillTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_firstKillTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_firstKillTime", value); }
@@ -989,7 +989,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_firstBloodTime
 	[SchemaMember("CCSGameRules", "m_firstBloodTime")]
-	public float FirstBloodTime
+	public virtual float FirstBloodTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_firstBloodTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_firstBloodTime", value); }
@@ -997,7 +997,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_hostageWasInjured
 	[SchemaMember("CCSGameRules", "m_hostageWasInjured")]
-	public bool HostageWasInjured
+	public virtual bool HostageWasInjured
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasInjured"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasInjured", value); }
@@ -1005,7 +1005,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_hostageWasKilled
 	[SchemaMember("CCSGameRules", "m_hostageWasKilled")]
-	public bool HostageWasKilled
+	public virtual bool HostageWasKilled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasKilled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasKilled", value); }
@@ -1013,7 +1013,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bVoteCalled
 	[SchemaMember("CCSGameRules", "m_bVoteCalled")]
-	public bool VoteCalled
+	public virtual bool VoteCalled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoteCalled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoteCalled", value); }
@@ -1021,7 +1021,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bServerVoteOnReset
 	[SchemaMember("CCSGameRules", "m_bServerVoteOnReset")]
-	public bool ServerVoteOnReset
+	public virtual bool ServerVoteOnReset
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bServerVoteOnReset"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bServerVoteOnReset", value); }
@@ -1029,7 +1029,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flVoteCheckThrottle
 	[SchemaMember("CCSGameRules", "m_flVoteCheckThrottle")]
-	public float VoteCheckThrottle
+	public virtual float VoteCheckThrottle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flVoteCheckThrottle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flVoteCheckThrottle", value); }
@@ -1037,7 +1037,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bBuyTimeEnded
 	[SchemaMember("CCSGameRules", "m_bBuyTimeEnded")]
-	public bool BuyTimeEnded
+	public virtual bool BuyTimeEnded
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBuyTimeEnded"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBuyTimeEnded", value); }
@@ -1045,7 +1045,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nLastFreezeEndBeep
 	[SchemaMember("CCSGameRules", "m_nLastFreezeEndBeep")]
-	public Int32 LastFreezeEndBeep
+	public virtual Int32 LastFreezeEndBeep
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nLastFreezeEndBeep"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nLastFreezeEndBeep", value); }
@@ -1053,7 +1053,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bTargetBombed
 	[SchemaMember("CCSGameRules", "m_bTargetBombed")]
-	public bool TargetBombed
+	public virtual bool TargetBombed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTargetBombed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTargetBombed", value); }
@@ -1061,7 +1061,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bBombDefused
 	[SchemaMember("CCSGameRules", "m_bBombDefused")]
-	public bool BombDefused
+	public virtual bool BombDefused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDefused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDefused", value); }
@@ -1069,7 +1069,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bMapHasBombZone
 	[SchemaMember("CCSGameRules", "m_bMapHasBombZone")]
-	public bool MapHasBombZone
+	public virtual bool MapHasBombZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombZone", value); }
@@ -1077,7 +1077,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_vecMainCTSpawnPos
 	[SchemaMember("CCSGameRules", "m_vecMainCTSpawnPos")]
-	public Vector3 MainCTSpawnPos
+	public virtual Vector3 MainCTSpawnPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vecMainCTSpawnPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vecMainCTSpawnPos", value); }
@@ -1085,15 +1085,15 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_CTSpawnPointsMasterList
 	[SchemaMember("CCSGameRules", "m_CTSpawnPointsMasterList")]
-	public NetworkedVector<SpawnPoint?> CTSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPointsMasterList");
+	public virtual NetworkedVector<SpawnPoint?> CTSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPointsMasterList");
 
 	// m_TerroristSpawnPointsMasterList
 	[SchemaMember("CCSGameRules", "m_TerroristSpawnPointsMasterList")]
-	public NetworkedVector<SpawnPoint?> TerroristSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPointsMasterList");
+	public virtual NetworkedVector<SpawnPoint?> TerroristSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPointsMasterList");
 
 	// m_bRespawningAllRespawnablePlayers
 	[SchemaMember("CCSGameRules", "m_bRespawningAllRespawnablePlayers")]
-	public bool RespawningAllRespawnablePlayers
+	public virtual bool RespawningAllRespawnablePlayers
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRespawningAllRespawnablePlayers"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRespawningAllRespawnablePlayers", value); }
@@ -1101,7 +1101,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNextCTSpawnPoint
 	[SchemaMember("CCSGameRules", "m_iNextCTSpawnPoint")]
-	public Int32 NextCTSpawnPoint
+	public virtual Int32 NextCTSpawnPoint
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextCTSpawnPoint"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextCTSpawnPoint", value); }
@@ -1109,7 +1109,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flCTSpawnPointUsedTime
 	[SchemaMember("CCSGameRules", "m_flCTSpawnPointUsedTime")]
-	public float CTSpawnPointUsedTime
+	public virtual float CTSpawnPointUsedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCTSpawnPointUsedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCTSpawnPointUsedTime", value); }
@@ -1117,7 +1117,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iNextTerroristSpawnPoint
 	[SchemaMember("CCSGameRules", "m_iNextTerroristSpawnPoint")]
-	public Int32 NextTerroristSpawnPoint
+	public virtual Int32 NextTerroristSpawnPoint
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextTerroristSpawnPoint"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextTerroristSpawnPoint", value); }
@@ -1125,7 +1125,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flTerroristSpawnPointUsedTime
 	[SchemaMember("CCSGameRules", "m_flTerroristSpawnPointUsedTime")]
-	public float TerroristSpawnPointUsedTime
+	public virtual float TerroristSpawnPointUsedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristSpawnPointUsedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristSpawnPointUsedTime", value); }
@@ -1133,15 +1133,15 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_CTSpawnPoints
 	[SchemaMember("CCSGameRules", "m_CTSpawnPoints")]
-	public NetworkedVector<SpawnPoint?> CTSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPoints");
+	public virtual NetworkedVector<SpawnPoint?> CTSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPoints");
 
 	// m_TerroristSpawnPoints
 	[SchemaMember("CCSGameRules", "m_TerroristSpawnPoints")]
-	public NetworkedVector<SpawnPoint?> TerroristSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPoints");
+	public virtual NetworkedVector<SpawnPoint?> TerroristSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPoints");
 
 	// m_bIsUnreservedGameServer
 	[SchemaMember("CCSGameRules", "m_bIsUnreservedGameServer")]
-	public bool IsUnreservedGameServer
+	public virtual bool IsUnreservedGameServer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsUnreservedGameServer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsUnreservedGameServer", value); }
@@ -1149,7 +1149,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fAutobalanceDisplayTime
 	[SchemaMember("CCSGameRules", "m_fAutobalanceDisplayTime")]
-	public float AutobalanceDisplayTime
+	public virtual float AutobalanceDisplayTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fAutobalanceDisplayTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fAutobalanceDisplayTime", value); }
@@ -1157,7 +1157,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bAllowWeaponSwitch
 	[SchemaMember("CCSGameRules", "m_bAllowWeaponSwitch")]
-	public bool AllowWeaponSwitch
+	public virtual bool AllowWeaponSwitch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bAllowWeaponSwitch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bAllowWeaponSwitch", value); }
@@ -1165,7 +1165,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bRoundTimeWarningTriggered
 	[SchemaMember("CCSGameRules", "m_bRoundTimeWarningTriggered")]
-	public bool RoundTimeWarningTriggered
+	public virtual bool RoundTimeWarningTriggered
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundTimeWarningTriggered"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundTimeWarningTriggered", value); }
@@ -1173,7 +1173,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_phaseChangeAnnouncementTime
 	[SchemaMember("CCSGameRules", "m_phaseChangeAnnouncementTime")]
-	public float PhaseChangeAnnouncementTime
+	public virtual float PhaseChangeAnnouncementTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_phaseChangeAnnouncementTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_phaseChangeAnnouncementTime", value); }
@@ -1181,7 +1181,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fNextUpdateTeamClanNamesTime
 	[SchemaMember("CCSGameRules", "m_fNextUpdateTeamClanNamesTime")]
-	public float NextUpdateTeamClanNamesTime
+	public virtual float NextUpdateTeamClanNamesTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fNextUpdateTeamClanNamesTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fNextUpdateTeamClanNamesTime", value); }
@@ -1189,7 +1189,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flLastThinkTime
 	[SchemaMember("CCSGameRules", "m_flLastThinkTime")]
-	public float LastThinkTime
+	public virtual float LastThinkTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flLastThinkTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flLastThinkTime", value); }
@@ -1197,7 +1197,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fAccumulatedRoundOffDamage
 	[SchemaMember("CCSGameRules", "m_fAccumulatedRoundOffDamage")]
-	public float AccumulatedRoundOffDamage
+	public virtual float AccumulatedRoundOffDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fAccumulatedRoundOffDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fAccumulatedRoundOffDamage", value); }
@@ -1205,7 +1205,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nShorthandedBonusLastEvalRound
 	[SchemaMember("CCSGameRules", "m_nShorthandedBonusLastEvalRound")]
-	public Int32 ShorthandedBonusLastEvalRound
+	public virtual Int32 ShorthandedBonusLastEvalRound
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nShorthandedBonusLastEvalRound"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nShorthandedBonusLastEvalRound", value); }
@@ -1213,7 +1213,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nMatchAbortedEarlyReason
 	[SchemaMember("CCSGameRules", "m_nMatchAbortedEarlyReason")]
-	public Int32 MatchAbortedEarlyReason
+	public virtual Int32 MatchAbortedEarlyReason
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchAbortedEarlyReason"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchAbortedEarlyReason", value); }
@@ -1221,7 +1221,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bHasTriggeredRoundStartMusic
 	[SchemaMember("CCSGameRules", "m_bHasTriggeredRoundStartMusic")]
-	public bool HasTriggeredRoundStartMusic
+	public virtual bool HasTriggeredRoundStartMusic
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic", value); }
@@ -1229,7 +1229,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bSwitchingTeamsAtRoundReset
 	[SchemaMember("CCSGameRules", "m_bSwitchingTeamsAtRoundReset")]
-	public bool SwitchingTeamsAtRoundReset
+	public virtual bool SwitchingTeamsAtRoundReset
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwitchingTeamsAtRoundReset"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwitchingTeamsAtRoundReset", value); }
@@ -1237,27 +1237,27 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_pGameModeRules
 	[SchemaMember("CCSGameRules", "m_pGameModeRules")]
-	public CCSGameModeRules? GameModeRules => Schema.GetPointer<CCSGameModeRules>(this.Handle, "CCSGameRules", "m_pGameModeRules");
+	public virtual CCSGameModeRules? GameModeRules => Schema.GetPointer<CCSGameModeRules>(this.Handle, "CCSGameRules", "m_pGameModeRules");
 
 	// m_hPlayerResource
 	[SchemaMember("CCSGameRules", "m_hPlayerResource")]
-	public CHandle<CBaseEntity> PlayerResource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_hPlayerResource");
+	public virtual CHandle<CBaseEntity> PlayerResource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_hPlayerResource");
 
 	// m_RetakeRules
 	[SchemaMember("CCSGameRules", "m_RetakeRules")]
-	public CRetakeGameRules RetakeRules => Schema.GetDeclaredClass<CRetakeGameRules>(this.Handle, "CCSGameRules", "m_RetakeRules");
+	public virtual CRetakeGameRules RetakeRules => Schema.GetDeclaredClass<CRetakeGameRules>(this.Handle, "CCSGameRules", "m_RetakeRules");
 
 	// m_arrTeamUniqueKillWeaponsMatch
 	[SchemaMember("CCSGameRules", "m_arrTeamUniqueKillWeaponsMatch")]
-	public Span<NetworkedVector<Int32>> TeamUniqueKillWeaponsMatch => Schema.GetFixedArray<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_arrTeamUniqueKillWeaponsMatch", 4);
+	public virtual Span<NetworkedVector<Int32>> TeamUniqueKillWeaponsMatch => Schema.GetFixedArray<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_arrTeamUniqueKillWeaponsMatch", 4);
 
 	// m_bTeamLastKillUsedUniqueWeaponMatch
 	[SchemaMember("CCSGameRules", "m_bTeamLastKillUsedUniqueWeaponMatch")]
-	public Span<bool> TeamLastKillUsedUniqueWeaponMatch => Schema.GetFixedArray<bool>(this.Handle, "CCSGameRules", "m_bTeamLastKillUsedUniqueWeaponMatch", 4);
+	public virtual Span<bool> TeamLastKillUsedUniqueWeaponMatch => Schema.GetFixedArray<bool>(this.Handle, "CCSGameRules", "m_bTeamLastKillUsedUniqueWeaponMatch", 4);
 
 	// m_nMatchEndCount
 	[SchemaMember("CCSGameRules", "m_nMatchEndCount")]
-	public byte MatchEndCount
+	public virtual byte MatchEndCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSGameRules", "m_nMatchEndCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSGameRules", "m_nMatchEndCount", value); }
@@ -1265,7 +1265,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nTTeamIntroVariant
 	[SchemaMember("CCSGameRules", "m_nTTeamIntroVariant")]
-	public Int32 TTeamIntroVariant
+	public virtual Int32 TTeamIntroVariant
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTTeamIntroVariant"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTTeamIntroVariant", value); }
@@ -1273,7 +1273,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nCTTeamIntroVariant
 	[SchemaMember("CCSGameRules", "m_nCTTeamIntroVariant")]
-	public Int32 CTTeamIntroVariant
+	public virtual Int32 CTTeamIntroVariant
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTeamIntroVariant"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTeamIntroVariant", value); }
@@ -1281,7 +1281,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bTeamIntroPeriod
 	[SchemaMember("CCSGameRules", "m_bTeamIntroPeriod")]
-	public bool TeamIntroPeriod
+	public virtual bool TeamIntroPeriod
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTeamIntroPeriod"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTeamIntroPeriod", value); }
@@ -1289,7 +1289,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_fTeamIntroPeriodEnd
 	[SchemaMember("CCSGameRules", "m_fTeamIntroPeriodEnd")]
-	public float TeamIntroPeriodEnd
+	public virtual float TeamIntroPeriodEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fTeamIntroPeriodEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fTeamIntroPeriodEnd", value); }
@@ -1297,7 +1297,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bPlayedTeamIntroVO
 	[SchemaMember("CCSGameRules", "m_bPlayedTeamIntroVO")]
-	public bool PlayedTeamIntroVO
+	public virtual bool PlayedTeamIntroVO
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayedTeamIntroVO"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayedTeamIntroVO", value); }
@@ -1305,7 +1305,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndWinnerTeam
 	[SchemaMember("CCSGameRules", "m_iRoundEndWinnerTeam")]
-	public Int32 RoundEndWinnerTeam
+	public virtual Int32 RoundEndWinnerTeam
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndWinnerTeam"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndWinnerTeam", value); }
@@ -1313,7 +1313,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_eRoundEndReason
 	[SchemaMember("CCSGameRules", "m_eRoundEndReason")]
-	public Int32 RoundEndReason
+	public virtual Int32 RoundEndReason
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundEndReason"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundEndReason", value); }
@@ -1321,7 +1321,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bRoundEndShowTimerDefend
 	[SchemaMember("CCSGameRules", "m_bRoundEndShowTimerDefend")]
-	public bool RoundEndShowTimerDefend
+	public virtual bool RoundEndShowTimerDefend
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndShowTimerDefend"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndShowTimerDefend", value); }
@@ -1329,7 +1329,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndTimerTime
 	[SchemaMember("CCSGameRules", "m_iRoundEndTimerTime")]
-	public Int32 RoundEndTimerTime
+	public virtual Int32 RoundEndTimerTime
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndTimerTime"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndTimerTime", value); }
@@ -1337,7 +1337,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_sRoundEndFunFactToken
 	[SchemaMember("CCSGameRules", "m_sRoundEndFunFactToken")]
-	public string RoundEndFunFactToken
+	public virtual string RoundEndFunFactToken
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSGameRules", "m_sRoundEndFunFactToken"); }
 		set { Schema.SetString(this.Handle, "CCSGameRules", "m_sRoundEndFunFactToken", value); }
@@ -1345,7 +1345,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndFunFactPlayerSlot
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactPlayerSlot")]
-	public Int32 RoundEndFunFactPlayerSlot
+	public virtual Int32 RoundEndFunFactPlayerSlot
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot", value); }
@@ -1353,7 +1353,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndFunFactData1
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData1")]
-	public Int32 RoundEndFunFactData1
+	public virtual Int32 RoundEndFunFactData1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData1", value); }
@@ -1361,7 +1361,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndFunFactData2
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData2")]
-	public Int32 RoundEndFunFactData2
+	public virtual Int32 RoundEndFunFactData2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData2", value); }
@@ -1369,7 +1369,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndFunFactData3
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData3")]
-	public Int32 RoundEndFunFactData3
+	public virtual Int32 RoundEndFunFactData3
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData3"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData3", value); }
@@ -1377,7 +1377,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_sRoundEndMessage
 	[SchemaMember("CCSGameRules", "m_sRoundEndMessage")]
-	public string RoundEndMessage
+	public virtual string RoundEndMessage
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSGameRules", "m_sRoundEndMessage"); }
 		set { Schema.SetString(this.Handle, "CCSGameRules", "m_sRoundEndMessage", value); }
@@ -1385,7 +1385,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndPlayerCount
 	[SchemaMember("CCSGameRules", "m_iRoundEndPlayerCount")]
-	public Int32 RoundEndPlayerCount
+	public virtual Int32 RoundEndPlayerCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndPlayerCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndPlayerCount", value); }
@@ -1393,7 +1393,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bRoundEndNoMusic
 	[SchemaMember("CCSGameRules", "m_bRoundEndNoMusic")]
-	public bool RoundEndNoMusic
+	public virtual bool RoundEndNoMusic
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndNoMusic"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndNoMusic", value); }
@@ -1401,7 +1401,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndLegacy
 	[SchemaMember("CCSGameRules", "m_iRoundEndLegacy")]
-	public Int32 RoundEndLegacy
+	public virtual Int32 RoundEndLegacy
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndLegacy"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndLegacy", value); }
@@ -1409,7 +1409,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nRoundEndCount
 	[SchemaMember("CCSGameRules", "m_nRoundEndCount")]
-	public byte RoundEndCount
+	public virtual byte RoundEndCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundEndCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundEndCount", value); }
@@ -1417,7 +1417,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundStartRoundNumber
 	[SchemaMember("CCSGameRules", "m_iRoundStartRoundNumber")]
-	public Int32 RoundStartRoundNumber
+	public virtual Int32 RoundStartRoundNumber
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundStartRoundNumber"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundStartRoundNumber", value); }
@@ -1425,7 +1425,7 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nRoundStartCount
 	[SchemaMember("CCSGameRules", "m_nRoundStartCount")]
-	public byte RoundStartCount
+	public virtual byte RoundStartCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundStartCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundStartCount", value); }
@@ -1433,104 +1433,104 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_flLastPerfSampleTime
 	[SchemaMember("CCSGameRules", "m_flLastPerfSampleTime")]
-	public double LastPerfSampleTime
+	public virtual double LastPerfSampleTime
 	{
 		get { return Schema.GetValueType<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime"); }
 		set { Schema.SetValueType<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime", value); }
 	}
 
-	public void FreezePeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bFreezePeriod");
-	public void WarmupPeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bWarmupPeriod");
-	public void WarmupPeriodEndPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fWarmupPeriodEnd");
-	public void WarmupPeriodStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fWarmupPeriodStart");
-	public void TerroristTimeOutActivePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTerroristTimeOutActive");
-	public void CTTimeOutActivePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bCTTimeOutActive");
-	public void TerroristTimeOutRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flTerroristTimeOutRemaining");
-	public void CTTimeOutRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flCTTimeOutRemaining");
-	public void TerroristTimeOutsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nTerroristTimeOuts");
-	public void CTTimeOutsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nCTTimeOuts");
-	public void TechnicalTimeOutPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTechnicalTimeOut");
-	public void MatchWaitingForResumePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMatchWaitingForResume");
-	public void FreezeTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iFreezeTime");
-	public void RoundTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundTime");
-	public void MatchStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fMatchStartTime");
-	public void RoundStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fRoundStartTime");
-	public void RestartRoundTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flRestartRoundTime");
-	public void GameRestartPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bGameRestart");
-	public void GameStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flGameStartTime");
-	public void TimeUntilNextPhaseStartsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_timeUntilNextPhaseStarts");
-	public void GamePhasePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_gamePhase");
-	public void TotalRoundsPlayedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_totalRoundsPlayed");
-	public void RoundsPlayedThisPhasePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nRoundsPlayedThisPhase");
-	public void OvertimePlayingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nOvertimePlaying");
-	public void HostagesRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iHostagesRemaining");
-	public void AnyHostageReachedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bAnyHostageReached");
-	public void MapHasBombTargetPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMapHasBombTarget");
-	public void MapHasRescueZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMapHasRescueZone");
-	public void MapHasBuyZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMapHasBuyZone");
-	public void IsQueuedMatchmakingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsQueuedMatchmaking");
-	public void QueuedMatchmakingModePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nQueuedMatchmakingMode");
-	public void IsValveDSPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsValveDS");
-	public void LogoMapPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bLogoMap");
-	public void PlayAllStepSoundsOnServerPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bPlayAllStepSoundsOnServer");
-	public void SpectatorSlotCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iSpectatorSlotCount");
-	public void MatchDevicePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_MatchDevice");
-	public void HasMatchStartedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bHasMatchStarted");
-	public void NextMapInMapgroupPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nNextMapInMapgroup");
-	public void TournamentEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szTournamentEventName");
-	public void TournamentEventStagePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szTournamentEventStage");
-	public void MatchStatTxtPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szMatchStatTxt");
-	public void TournamentPredictionsTxtPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szTournamentPredictionsTxt");
-	public void TournamentPredictionsPctPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nTournamentPredictionsPct");
-	public void CMMItemDropRevealStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flCMMItemDropRevealStartTime");
-	public void CMMItemDropRevealEndTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flCMMItemDropRevealEndTime");
-	public void IsDroppingItemsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsDroppingItems");
-	public void IsQuestEligiblePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsQuestEligible");
-	public void IsHltvActivePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsHltvActive");
-	public void ProhibitedItemIndicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_arrProhibitedItemIndices");
-	public void TournamentActiveCasterAccountsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_arrTournamentActiveCasterAccounts");
-	public void NumBestOfMapsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_numBestOfMaps");
-	public void HalloweenMaskListSeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nHalloweenMaskListSeed");
-	public void BombDroppedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bBombDropped");
-	public void BombPlantedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bBombPlanted");
-	public void RoundWinStatusPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundWinStatus");
-	public void RoundWinReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_eRoundWinReason");
-	public void TCantBuyPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTCantBuy");
-	public void CTCantBuyPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bCTCantBuy");
-	public void MatchStats_RoundResultsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iMatchStats_RoundResults");
-	public void MatchStats_PlayersAlive_CTPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iMatchStats_PlayersAlive_CT");
-	public void MatchStats_PlayersAlive_TPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iMatchStats_PlayersAlive_T");
-	public void TeamRespawnWaveTimesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_TeamRespawnWaveTimes");
-	public void NextRespawnWavePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flNextRespawnWave");
-	public void MinimapMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_vMinimapMins");
-	public void MinimapMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_vMinimapMaxs");
-	public void MinimapVerticalSectionHeightsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_MinimapVerticalSectionHeights");
-	public void EndMatchMapGroupVoteTypesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nEndMatchMapGroupVoteTypes");
-	public void EndMatchMapGroupVoteOptionsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nEndMatchMapGroupVoteOptions");
-	public void EndMatchMapVoteWinnerPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nEndMatchMapVoteWinner");
-	public void NumConsecutiveCTLosesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iNumConsecutiveCTLoses");
-	public void NumConsecutiveTerroristLosesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iNumConsecutiveTerroristLoses");
-	public void MatchAbortedEarlyReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nMatchAbortedEarlyReason");
-	public void GameModeRulesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_pGameModeRules");
-	public void RetakeRulesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_RetakeRules");
-	public void MatchEndCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nMatchEndCount");
-	public void TTeamIntroVariantPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nTTeamIntroVariant");
-	public void CTTeamIntroVariantPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nCTTeamIntroVariant");
-	public void TeamIntroPeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTeamIntroPeriod");
-	public void RoundEndWinnerTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndWinnerTeam");
-	public void RoundEndReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_eRoundEndReason");
-	public void RoundEndShowTimerDefendPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bRoundEndShowTimerDefend");
-	public void RoundEndTimerTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndTimerTime");
-	public void RoundEndFunFactTokenPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_sRoundEndFunFactToken");
-	public void RoundEndFunFactPlayerSlotPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot");
-	public void RoundEndFunFactData1PropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactData1");
-	public void RoundEndFunFactData2PropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactData2");
-	public void RoundEndFunFactData3PropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactData3");
-	public void RoundEndMessagePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_sRoundEndMessage");
-	public void RoundEndPlayerCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndPlayerCount");
-	public void RoundEndNoMusicPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bRoundEndNoMusic");
-	public void RoundEndLegacyPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndLegacy");
-	public void RoundEndCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nRoundEndCount");
-	public void RoundStartRoundNumberPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundStartRoundNumber");
-	public void RoundStartCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nRoundStartCount");
+	public virtual void FreezePeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bFreezePeriod");
+	public virtual void WarmupPeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bWarmupPeriod");
+	public virtual void WarmupPeriodEndPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fWarmupPeriodEnd");
+	public virtual void WarmupPeriodStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fWarmupPeriodStart");
+	public virtual void TerroristTimeOutActivePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTerroristTimeOutActive");
+	public virtual void CTTimeOutActivePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bCTTimeOutActive");
+	public virtual void TerroristTimeOutRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flTerroristTimeOutRemaining");
+	public virtual void CTTimeOutRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flCTTimeOutRemaining");
+	public virtual void TerroristTimeOutsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nTerroristTimeOuts");
+	public virtual void CTTimeOutsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nCTTimeOuts");
+	public virtual void TechnicalTimeOutPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTechnicalTimeOut");
+	public virtual void MatchWaitingForResumePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMatchWaitingForResume");
+	public virtual void FreezeTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iFreezeTime");
+	public virtual void RoundTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundTime");
+	public virtual void MatchStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fMatchStartTime");
+	public virtual void RoundStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_fRoundStartTime");
+	public virtual void RestartRoundTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flRestartRoundTime");
+	public virtual void GameRestartPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bGameRestart");
+	public virtual void GameStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flGameStartTime");
+	public virtual void TimeUntilNextPhaseStartsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_timeUntilNextPhaseStarts");
+	public virtual void GamePhasePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_gamePhase");
+	public virtual void TotalRoundsPlayedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_totalRoundsPlayed");
+	public virtual void RoundsPlayedThisPhasePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nRoundsPlayedThisPhase");
+	public virtual void OvertimePlayingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nOvertimePlaying");
+	public virtual void HostagesRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iHostagesRemaining");
+	public virtual void AnyHostageReachedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bAnyHostageReached");
+	public virtual void MapHasBombTargetPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMapHasBombTarget");
+	public virtual void MapHasRescueZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMapHasRescueZone");
+	public virtual void MapHasBuyZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bMapHasBuyZone");
+	public virtual void IsQueuedMatchmakingPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsQueuedMatchmaking");
+	public virtual void QueuedMatchmakingModePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nQueuedMatchmakingMode");
+	public virtual void IsValveDSPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsValveDS");
+	public virtual void LogoMapPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bLogoMap");
+	public virtual void PlayAllStepSoundsOnServerPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bPlayAllStepSoundsOnServer");
+	public virtual void SpectatorSlotCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iSpectatorSlotCount");
+	public virtual void MatchDevicePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_MatchDevice");
+	public virtual void HasMatchStartedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bHasMatchStarted");
+	public virtual void NextMapInMapgroupPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nNextMapInMapgroup");
+	public virtual void TournamentEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szTournamentEventName");
+	public virtual void TournamentEventStagePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szTournamentEventStage");
+	public virtual void MatchStatTxtPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szMatchStatTxt");
+	public virtual void TournamentPredictionsTxtPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_szTournamentPredictionsTxt");
+	public virtual void TournamentPredictionsPctPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nTournamentPredictionsPct");
+	public virtual void CMMItemDropRevealStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flCMMItemDropRevealStartTime");
+	public virtual void CMMItemDropRevealEndTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flCMMItemDropRevealEndTime");
+	public virtual void IsDroppingItemsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsDroppingItems");
+	public virtual void IsQuestEligiblePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsQuestEligible");
+	public virtual void IsHltvActivePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bIsHltvActive");
+	public virtual void ProhibitedItemIndicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_arrProhibitedItemIndices");
+	public virtual void TournamentActiveCasterAccountsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_arrTournamentActiveCasterAccounts");
+	public virtual void NumBestOfMapsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_numBestOfMaps");
+	public virtual void HalloweenMaskListSeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nHalloweenMaskListSeed");
+	public virtual void BombDroppedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bBombDropped");
+	public virtual void BombPlantedPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bBombPlanted");
+	public virtual void RoundWinStatusPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundWinStatus");
+	public virtual void RoundWinReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_eRoundWinReason");
+	public virtual void TCantBuyPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTCantBuy");
+	public virtual void CTCantBuyPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bCTCantBuy");
+	public virtual void MatchStats_RoundResultsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iMatchStats_RoundResults");
+	public virtual void MatchStats_PlayersAlive_CTPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iMatchStats_PlayersAlive_CT");
+	public virtual void MatchStats_PlayersAlive_TPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iMatchStats_PlayersAlive_T");
+	public virtual void TeamRespawnWaveTimesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_TeamRespawnWaveTimes");
+	public virtual void NextRespawnWavePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_flNextRespawnWave");
+	public virtual void MinimapMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_vMinimapMins");
+	public virtual void MinimapMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_vMinimapMaxs");
+	public virtual void MinimapVerticalSectionHeightsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_MinimapVerticalSectionHeights");
+	public virtual void EndMatchMapGroupVoteTypesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nEndMatchMapGroupVoteTypes");
+	public virtual void EndMatchMapGroupVoteOptionsPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nEndMatchMapGroupVoteOptions");
+	public virtual void EndMatchMapVoteWinnerPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nEndMatchMapVoteWinner");
+	public virtual void NumConsecutiveCTLosesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iNumConsecutiveCTLoses");
+	public virtual void NumConsecutiveTerroristLosesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iNumConsecutiveTerroristLoses");
+	public virtual void MatchAbortedEarlyReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nMatchAbortedEarlyReason");
+	public virtual void GameModeRulesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_pGameModeRules");
+	public virtual void RetakeRulesPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_RetakeRules");
+	public virtual void MatchEndCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nMatchEndCount");
+	public virtual void TTeamIntroVariantPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nTTeamIntroVariant");
+	public virtual void CTTeamIntroVariantPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nCTTeamIntroVariant");
+	public virtual void TeamIntroPeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bTeamIntroPeriod");
+	public virtual void RoundEndWinnerTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndWinnerTeam");
+	public virtual void RoundEndReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_eRoundEndReason");
+	public virtual void RoundEndShowTimerDefendPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bRoundEndShowTimerDefend");
+	public virtual void RoundEndTimerTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndTimerTime");
+	public virtual void RoundEndFunFactTokenPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_sRoundEndFunFactToken");
+	public virtual void RoundEndFunFactPlayerSlotPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot");
+	public virtual void RoundEndFunFactData1PropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactData1");
+	public virtual void RoundEndFunFactData2PropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactData2");
+	public virtual void RoundEndFunFactData3PropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndFunFactData3");
+	public virtual void RoundEndMessagePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_sRoundEndMessage");
+	public virtual void RoundEndPlayerCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndPlayerCount");
+	public virtual void RoundEndNoMusicPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_bRoundEndNoMusic");
+	public virtual void RoundEndLegacyPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundEndLegacy");
+	public virtual void RoundEndCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nRoundEndCount");
+	public virtual void RoundStartRoundNumberPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_iRoundStartRoundNumber");
+	public virtual void RoundStartCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameRules", "m_nRoundStartCount");
 }

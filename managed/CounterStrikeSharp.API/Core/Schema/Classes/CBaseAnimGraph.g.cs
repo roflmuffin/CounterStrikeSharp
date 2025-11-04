@@ -21,7 +21,7 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_bInitiallyPopulateInterpHistory
 	[SchemaMember("CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory")]
-	public bool InitiallyPopulateInterpHistory
+	public virtual bool InitiallyPopulateInterpHistory
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory", value); }
@@ -29,11 +29,11 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_pChoreoServices
 	[SchemaMember("CBaseAnimGraph", "m_pChoreoServices")]
-	public IChoreoServices? ChoreoServices => Schema.GetPointer<IChoreoServices>(this.Handle, "CBaseAnimGraph", "m_pChoreoServices");
+	public virtual IChoreoServices? ChoreoServices => Schema.GetPointer<IChoreoServices>(this.Handle, "CBaseAnimGraph", "m_pChoreoServices");
 
 	// m_bAnimGraphUpdateEnabled
 	[SchemaMember("CBaseAnimGraph", "m_bAnimGraphUpdateEnabled")]
-	public bool AnimGraphUpdateEnabled
+	public virtual bool AnimGraphUpdateEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled", value); }
@@ -41,7 +41,7 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_flMaxSlopeDistance
 	[SchemaMember("CBaseAnimGraph", "m_flMaxSlopeDistance")]
-	public float MaxSlopeDistance
+	public virtual float MaxSlopeDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseAnimGraph", "m_flMaxSlopeDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseAnimGraph", "m_flMaxSlopeDistance", value); }
@@ -49,7 +49,7 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_vLastSlopeCheckPos
 	[SchemaMember("CBaseAnimGraph", "m_vLastSlopeCheckPos")]
-	public Vector3 LastSlopeCheckPos
+	public virtual Vector3 LastSlopeCheckPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos", value); }
@@ -57,7 +57,7 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_bAnimationUpdateScheduled
 	[SchemaMember("CBaseAnimGraph", "m_bAnimationUpdateScheduled")]
-	public bool AnimationUpdateScheduled
+	public virtual bool AnimationUpdateScheduled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimationUpdateScheduled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimationUpdateScheduled", value); }
@@ -65,7 +65,7 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_vecForce
 	[SchemaMember("CBaseAnimGraph", "m_vecForce")]
-	public Vector3 Force
+	public virtual Vector3 Force
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vecForce"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vecForce", value); }
@@ -73,7 +73,7 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_nForceBone
 	[SchemaMember("CBaseAnimGraph", "m_nForceBone")]
-	public Int32 ForceBone
+	public virtual Int32 ForceBone
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseAnimGraph", "m_nForceBone"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraph", "m_nForceBone", value); }
@@ -81,11 +81,11 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_RagdollPose
 	[SchemaMember("CBaseAnimGraph", "m_RagdollPose")]
-	public PhysicsRagdollPose_t RagdollPose => Schema.GetDeclaredClass<PhysicsRagdollPose_t>(this.Handle, "CBaseAnimGraph", "m_RagdollPose");
+	public virtual PhysicsRagdollPose_t RagdollPose => Schema.GetDeclaredClass<PhysicsRagdollPose_t>(this.Handle, "CBaseAnimGraph", "m_RagdollPose");
 
 	// m_bRagdollEnabled
 	[SchemaMember("CBaseAnimGraph", "m_bRagdollEnabled")]
-	public bool RagdollEnabled
+	public virtual bool RagdollEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollEnabled", value); }
@@ -93,7 +93,7 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_bRagdollClientSide
 	[SchemaMember("CBaseAnimGraph", "m_bRagdollClientSide")]
-	public bool RagdollClientSide
+	public virtual bool RagdollClientSide
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide", value); }
@@ -101,13 +101,13 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_xParentedRagdollRootInEntitySpace
 	[SchemaMember("CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace")]
-	public CTransform XParentedRagdollRootInEntitySpace => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace");
+	public virtual CTransform XParentedRagdollRootInEntitySpace => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace");
 
-	public void InitiallyPopulateInterpHistoryPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory");
-	public void AnimGraphUpdateEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled");
-	public void ForcePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_vecForce");
-	public void ForceBonePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_nForceBone");
-	public void RagdollPosePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_RagdollPose");
-	public void RagdollEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bRagdollEnabled");
-	public void RagdollClientSidePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bRagdollClientSide");
+	public virtual void InitiallyPopulateInterpHistoryPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory");
+	public virtual void AnimGraphUpdateEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled");
+	public virtual void ForcePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_vecForce");
+	public virtual void ForceBonePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_nForceBone");
+	public virtual void RagdollPosePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_RagdollPose");
+	public virtual void RagdollEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bRagdollEnabled");
+	public virtual void RagdollClientSidePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bRagdollClientSide");
 }

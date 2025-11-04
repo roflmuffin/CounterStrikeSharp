@@ -21,7 +21,7 @@ public partial class CPhysicsWire : CBaseEntity
 
 	// m_nDensity
 	[SchemaMember("CPhysicsWire", "m_nDensity")]
-	public Int32 Density
+	public virtual Int32 Density
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsWire", "m_nDensity"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsWire", "m_nDensity", value); }

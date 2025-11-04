@@ -21,7 +21,7 @@ public partial class CLogicCompare : CLogicalEntity
 
 	// m_flInValue
 	[SchemaMember("CLogicCompare", "m_flInValue")]
-	public float InValue
+	public virtual float InValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicCompare", "m_flInValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicCompare", "m_flInValue", value); }
@@ -29,7 +29,7 @@ public partial class CLogicCompare : CLogicalEntity
 
 	// m_flCompareValue
 	[SchemaMember("CLogicCompare", "m_flCompareValue")]
-	public float CompareValue
+	public virtual float CompareValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicCompare", "m_flCompareValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicCompare", "m_flCompareValue", value); }

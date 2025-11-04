@@ -21,11 +21,11 @@ public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 
 	// m_hLastWeaponBeforeC4AutoSwitch
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch")]
-	public CHandle<CBasePlayerWeapon> LastWeaponBeforeC4AutoSwitch => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch");
+	public virtual CHandle<CBasePlayerWeapon> LastWeaponBeforeC4AutoSwitch => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch");
 
 	// m_bIsRescuing
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_bIsRescuing")]
-	public bool IsRescuing
+	public virtual bool IsRescuing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing", value); }
@@ -33,13 +33,13 @@ public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 
 	// m_weaponPurchasesThisMatch
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch")]
-	public WeaponPurchaseTracker_t WeaponPurchasesThisMatch => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch");
+	public virtual WeaponPurchaseTracker_t WeaponPurchasesThisMatch => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch");
 
 	// m_weaponPurchasesThisRound
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound")]
-	public WeaponPurchaseTracker_t WeaponPurchasesThisRound => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
+	public virtual WeaponPurchaseTracker_t WeaponPurchasesThisRound => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
 
-	public void IsRescuingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing");
-	public void WeaponPurchasesThisMatchPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch");
-	public void WeaponPurchasesThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
+	public virtual void IsRescuingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing");
+	public virtual void WeaponPurchasesThisMatchPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch");
+	public virtual void WeaponPurchasesThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
 }

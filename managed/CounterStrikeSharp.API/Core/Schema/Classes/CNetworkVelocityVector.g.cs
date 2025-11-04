@@ -21,7 +21,7 @@ public partial class CNetworkVelocityVector : NativeObject
 
 	// m_vecX
 	[SchemaMember("CNetworkVelocityVector", "m_vecX")]
-	public float X
+	public virtual float X
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecX", value); }
@@ -29,7 +29,7 @@ public partial class CNetworkVelocityVector : NativeObject
 
 	// m_vecY
 	[SchemaMember("CNetworkVelocityVector", "m_vecY")]
-	public float Y
+	public virtual float Y
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecY", value); }
@@ -37,13 +37,13 @@ public partial class CNetworkVelocityVector : NativeObject
 
 	// m_vecZ
 	[SchemaMember("CNetworkVelocityVector", "m_vecZ")]
-	public float Z
+	public virtual float Z
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ", value); }
 	}
 
-	public void XPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecX");
-	public void YPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecY");
-	public void ZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecZ");
+	public virtual void XPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecX");
+	public virtual void YPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecY");
+	public virtual void ZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecZ");
 }

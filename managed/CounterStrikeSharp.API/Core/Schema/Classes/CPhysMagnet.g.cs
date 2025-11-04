@@ -21,15 +21,15 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_OnMagnetAttach
 	[SchemaMember("CPhysMagnet", "m_OnMagnetAttach")]
-	public CEntityIOOutput OnMagnetAttach => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysMagnet", "m_OnMagnetAttach");
+	public virtual CEntityIOOutput OnMagnetAttach => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysMagnet", "m_OnMagnetAttach");
 
 	// m_OnMagnetDetach
 	[SchemaMember("CPhysMagnet", "m_OnMagnetDetach")]
-	public CEntityIOOutput OnMagnetDetach => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysMagnet", "m_OnMagnetDetach");
+	public virtual CEntityIOOutput OnMagnetDetach => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysMagnet", "m_OnMagnetDetach");
 
 	// m_massScale
 	[SchemaMember("CPhysMagnet", "m_massScale")]
-	public float MassScale
+	public virtual float MassScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_massScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_massScale", value); }
@@ -37,7 +37,7 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_forceLimit
 	[SchemaMember("CPhysMagnet", "m_forceLimit")]
-	public float ForceLimit
+	public virtual float ForceLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_forceLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_forceLimit", value); }
@@ -45,7 +45,7 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_torqueLimit
 	[SchemaMember("CPhysMagnet", "m_torqueLimit")]
-	public float TorqueLimit
+	public virtual float TorqueLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_torqueLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_torqueLimit", value); }
@@ -53,11 +53,11 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_MagnettedEntities
 	[SchemaMember("CPhysMagnet", "m_MagnettedEntities")]
-	public NetworkedVector<magnetted_objects_t> MagnettedEntities => Schema.GetDeclaredClass<NetworkedVector<magnetted_objects_t>>(this.Handle, "CPhysMagnet", "m_MagnettedEntities");
+	public virtual NetworkedVector<magnetted_objects_t> MagnettedEntities => Schema.GetDeclaredClass<NetworkedVector<magnetted_objects_t>>(this.Handle, "CPhysMagnet", "m_MagnettedEntities");
 
 	// m_bActive
 	[SchemaMember("CPhysMagnet", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysMagnet", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysMagnet", "m_bActive", value); }
@@ -65,7 +65,7 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_bHasHitSomething
 	[SchemaMember("CPhysMagnet", "m_bHasHitSomething")]
-	public bool HasHitSomething
+	public virtual bool HasHitSomething
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysMagnet", "m_bHasHitSomething"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysMagnet", "m_bHasHitSomething", value); }
@@ -73,7 +73,7 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_flTotalMass
 	[SchemaMember("CPhysMagnet", "m_flTotalMass")]
-	public float TotalMass
+	public virtual float TotalMass
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_flTotalMass"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_flTotalMass", value); }
@@ -81,7 +81,7 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_flRadius
 	[SchemaMember("CPhysMagnet", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_flRadius", value); }
@@ -89,7 +89,7 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_flNextSuckTime
 	[SchemaMember("CPhysMagnet", "m_flNextSuckTime")]
-	public float NextSuckTime
+	public virtual float NextSuckTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_flNextSuckTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_flNextSuckTime", value); }
@@ -97,7 +97,7 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_iMaxObjectsAttached
 	[SchemaMember("CPhysMagnet", "m_iMaxObjectsAttached")]
-	public Int32 MaxObjectsAttached
+	public virtual Int32 MaxObjectsAttached
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysMagnet", "m_iMaxObjectsAttached"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysMagnet", "m_iMaxObjectsAttached", value); }

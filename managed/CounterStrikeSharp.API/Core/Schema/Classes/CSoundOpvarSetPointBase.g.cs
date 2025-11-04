@@ -21,7 +21,7 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CSoundOpvarSetPointBase", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bDisabled", value); }
@@ -29,11 +29,11 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_hSource
 	[SchemaMember("CSoundOpvarSetPointBase", "m_hSource")]
-	public CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointBase", "m_hSource");
+	public virtual CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointBase", "m_hSource");
 
 	// m_iszSourceEntityName
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iszSourceEntityName")]
-	public string SourceEntityName
+	public virtual string SourceEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszSourceEntityName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszSourceEntityName", value); }
@@ -41,7 +41,7 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_vLastPosition
 	[SchemaMember("CSoundOpvarSetPointBase", "m_vLastPosition")]
-	public Vector3 LastPosition
+	public virtual Vector3 LastPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointBase", "m_vLastPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointBase", "m_vLastPosition", value); }
@@ -49,7 +49,7 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_iszStackName
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iszStackName")]
-	public string StackName
+	public virtual string StackName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszStackName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszStackName", value); }
@@ -57,7 +57,7 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_iszOperatorName
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iszOperatorName")]
-	public string OperatorName
+	public virtual string OperatorName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszOperatorName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszOperatorName", value); }
@@ -65,7 +65,7 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_iszOpvarName
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iszOpvarName")]
-	public string OpvarName
+	public virtual string OpvarName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszOpvarName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszOpvarName", value); }
@@ -73,7 +73,7 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_iOpvarIndex
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iOpvarIndex")]
-	public Int32 OpvarIndex
+	public virtual Int32 OpvarIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointBase", "m_iOpvarIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointBase", "m_iOpvarIndex", value); }
@@ -81,15 +81,15 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_bUseAutoCompare
 	[SchemaMember("CSoundOpvarSetPointBase", "m_bUseAutoCompare")]
-	public bool UseAutoCompare
+	public virtual bool UseAutoCompare
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bUseAutoCompare"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bUseAutoCompare", value); }
 	}
 
-	public void StackNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszStackName");
-	public void OperatorNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszOperatorName");
-	public void OpvarNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszOpvarName");
-	public void OpvarIndexPropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iOpvarIndex");
-	public void UseAutoComparePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_bUseAutoCompare");
+	public virtual void StackNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszStackName");
+	public virtual void OperatorNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszOperatorName");
+	public virtual void OpvarNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszOpvarName");
+	public virtual void OpvarIndexPropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iOpvarIndex");
+	public virtual void UseAutoComparePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_bUseAutoCompare");
 }

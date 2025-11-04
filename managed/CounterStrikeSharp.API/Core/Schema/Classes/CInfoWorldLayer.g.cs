@@ -21,11 +21,11 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_pOutputOnEntitiesSpawned
 	[SchemaMember("CInfoWorldLayer", "m_pOutputOnEntitiesSpawned")]
-	public CEntityIOOutput OutputOnEntitiesSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoWorldLayer", "m_pOutputOnEntitiesSpawned");
+	public virtual CEntityIOOutput OutputOnEntitiesSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoWorldLayer", "m_pOutputOnEntitiesSpawned");
 
 	// m_worldName
 	[SchemaMember("CInfoWorldLayer", "m_worldName")]
-	public string WorldName
+	public virtual string WorldName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_worldName"); }
 		set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_worldName", value); }
@@ -33,7 +33,7 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_layerName
 	[SchemaMember("CInfoWorldLayer", "m_layerName")]
-	public string LayerName
+	public virtual string LayerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_layerName"); }
 		set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_layerName", value); }
@@ -41,7 +41,7 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_bWorldLayerVisible
 	[SchemaMember("CInfoWorldLayer", "m_bWorldLayerVisible")]
-	public bool WorldLayerVisible
+	public virtual bool WorldLayerVisible
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible", value); }
@@ -49,7 +49,7 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_bEntitiesSpawned
 	[SchemaMember("CInfoWorldLayer", "m_bEntitiesSpawned")]
-	public bool EntitiesSpawned
+	public virtual bool EntitiesSpawned
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned", value); }
@@ -57,7 +57,7 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_bCreateAsChildSpawnGroup
 	[SchemaMember("CInfoWorldLayer", "m_bCreateAsChildSpawnGroup")]
-	public bool CreateAsChildSpawnGroup
+	public virtual bool CreateAsChildSpawnGroup
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup", value); }
@@ -65,14 +65,14 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_hLayerSpawnGroup
 	[SchemaMember("CInfoWorldLayer", "m_hLayerSpawnGroup")]
-	public UInt32 LayerSpawnGroup
+	public virtual UInt32 LayerSpawnGroup
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup", value); }
 	}
 
-	public void WorldNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_worldName");
-	public void LayerNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_layerName");
-	public void WorldLayerVisiblePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_bWorldLayerVisible");
-	public void EntitiesSpawnedPropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_bEntitiesSpawned");
+	public virtual void WorldNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_worldName");
+	public virtual void LayerNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_layerName");
+	public virtual void WorldLayerVisiblePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_bWorldLayerVisible");
+	public virtual void EntitiesSpawnedPropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_bEntitiesSpawned");
 }

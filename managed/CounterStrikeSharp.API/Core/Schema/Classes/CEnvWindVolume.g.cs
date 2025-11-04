@@ -21,7 +21,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CEnvWindVolume", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bActive", value); }
@@ -29,7 +29,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_vBoxMins
 	[SchemaMember("CEnvWindVolume", "m_vBoxMins")]
-	public Vector3 BoxMins
+	public virtual Vector3 BoxMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMins", value); }
@@ -37,7 +37,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_vBoxMaxs
 	[SchemaMember("CEnvWindVolume", "m_vBoxMaxs")]
-	public Vector3 BoxMaxs
+	public virtual Vector3 BoxMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMaxs", value); }
@@ -45,7 +45,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvWindVolume", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bStartDisabled", value); }
@@ -53,7 +53,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_nShape
 	[SchemaMember("CEnvWindVolume", "m_nShape")]
-	public Int32 Shape
+	public virtual Int32 Shape
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindVolume", "m_nShape"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindVolume", "m_nShape", value); }
@@ -61,7 +61,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_fWindSpeedMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindSpeedMultiplier")]
-	public float WindSpeedMultiplier
+	public virtual float WindSpeedMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedMultiplier", value); }
@@ -69,7 +69,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_fWindTurbulenceMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindTurbulenceMultiplier")]
-	public float WindTurbulenceMultiplier
+	public virtual float WindTurbulenceMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindTurbulenceMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindTurbulenceMultiplier", value); }
@@ -77,7 +77,7 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_fWindSpeedVariationMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindSpeedVariationMultiplier")]
-	public float WindSpeedVariationMultiplier
+	public virtual float WindSpeedVariationMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier", value); }
@@ -85,19 +85,19 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_fWindDirectionVariationMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindDirectionVariationMultiplier")]
-	public float WindDirectionVariationMultiplier
+	public virtual float WindDirectionVariationMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier", value); }
 	}
 
-	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_bActive");
-	public void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_vBoxMins");
-	public void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_vBoxMaxs");
-	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_bStartDisabled");
-	public void ShapePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_nShape");
-	public void WindSpeedMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindSpeedMultiplier");
-	public void WindTurbulenceMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindTurbulenceMultiplier");
-	public void WindSpeedVariationMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier");
-	public void WindDirectionVariationMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier");
+	public virtual void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_bActive");
+	public virtual void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_vBoxMins");
+	public virtual void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_vBoxMaxs");
+	public virtual void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_bStartDisabled");
+	public virtual void ShapePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_nShape");
+	public virtual void WindSpeedMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindSpeedMultiplier");
+	public virtual void WindTurbulenceMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindTurbulenceMultiplier");
+	public virtual void WindSpeedVariationMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier");
+	public virtual void WindDirectionVariationMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier");
 }

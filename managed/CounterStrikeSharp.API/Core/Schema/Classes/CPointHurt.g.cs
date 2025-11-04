@@ -21,7 +21,7 @@ public partial class CPointHurt : CPointEntity
 
 	// m_nDamage
 	[SchemaMember("CPointHurt", "m_nDamage")]
-	public Int32 Damage
+	public virtual Int32 Damage
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPointHurt", "m_nDamage"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPointHurt", "m_nDamage", value); }
@@ -29,7 +29,7 @@ public partial class CPointHurt : CPointEntity
 
 	// m_bitsDamageType
 	[SchemaMember("CPointHurt", "m_bitsDamageType")]
-	public DamageTypes_t BitsDamageType
+	public virtual DamageTypes_t BitsDamageType
 	{
 		get { return Schema.GetValueType<DamageTypes_t>(this.Handle, "CPointHurt", "m_bitsDamageType"); }
 		set { Schema.SetValueType<DamageTypes_t>(this.Handle, "CPointHurt", "m_bitsDamageType", value); }
@@ -37,7 +37,7 @@ public partial class CPointHurt : CPointEntity
 
 	// m_flRadius
 	[SchemaMember("CPointHurt", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointHurt", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointHurt", "m_flRadius", value); }
@@ -45,7 +45,7 @@ public partial class CPointHurt : CPointEntity
 
 	// m_flDelay
 	[SchemaMember("CPointHurt", "m_flDelay")]
-	public float Delay
+	public virtual float Delay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointHurt", "m_flDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointHurt", "m_flDelay", value); }
@@ -53,7 +53,7 @@ public partial class CPointHurt : CPointEntity
 
 	// m_strTarget
 	[SchemaMember("CPointHurt", "m_strTarget")]
-	public string StrTarget
+	public virtual string StrTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointHurt", "m_strTarget"); }
 		set { Schema.SetString(this.Handle, "CPointHurt", "m_strTarget", value); }
@@ -61,6 +61,6 @@ public partial class CPointHurt : CPointEntity
 
 	// m_pActivator
 	[SchemaMember("CPointHurt", "m_pActivator")]
-	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointHurt", "m_pActivator");
+	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointHurt", "m_pActivator");
 
 }

@@ -21,7 +21,7 @@ public partial class CEnvMuzzleFlash : CPointEntity
 
 	// m_flScale
 	[SchemaMember("CEnvMuzzleFlash", "m_flScale")]
-	public float Scale
+	public virtual float Scale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvMuzzleFlash", "m_flScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvMuzzleFlash", "m_flScale", value); }
@@ -29,7 +29,7 @@ public partial class CEnvMuzzleFlash : CPointEntity
 
 	// m_iszParentAttachment
 	[SchemaMember("CEnvMuzzleFlash", "m_iszParentAttachment")]
-	public string ParentAttachment
+	public virtual string ParentAttachment
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvMuzzleFlash", "m_iszParentAttachment"); }
 		set { Schema.SetString(this.Handle, "CEnvMuzzleFlash", "m_iszParentAttachment", value); }

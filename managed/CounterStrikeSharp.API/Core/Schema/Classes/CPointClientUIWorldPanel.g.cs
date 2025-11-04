@@ -21,7 +21,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bIgnoreInput
 	[SchemaMember("CPointClientUIWorldPanel", "m_bIgnoreInput")]
-	public bool IgnoreInput
+	public virtual bool IgnoreInput
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bIgnoreInput"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bIgnoreInput", value); }
@@ -29,7 +29,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bLit
 	[SchemaMember("CPointClientUIWorldPanel", "m_bLit")]
-	public bool Lit
+	public virtual bool Lit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bLit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bLit", value); }
@@ -37,7 +37,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bFollowPlayerAcrossTeleport
 	[SchemaMember("CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport")]
-	public bool FollowPlayerAcrossTeleport
+	public virtual bool FollowPlayerAcrossTeleport
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport", value); }
@@ -45,7 +45,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_flWidth
 	[SchemaMember("CPointClientUIWorldPanel", "m_flWidth")]
-	public float Width
+	public virtual float Width
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flWidth", value); }
@@ -53,7 +53,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_flHeight
 	[SchemaMember("CPointClientUIWorldPanel", "m_flHeight")]
-	public float Height
+	public virtual float Height
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flHeight", value); }
@@ -61,7 +61,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_flDPI
 	[SchemaMember("CPointClientUIWorldPanel", "m_flDPI")]
-	public float DPI
+	public virtual float DPI
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDPI"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDPI", value); }
@@ -69,7 +69,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_flInteractDistance
 	[SchemaMember("CPointClientUIWorldPanel", "m_flInteractDistance")]
-	public float InteractDistance
+	public virtual float InteractDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flInteractDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flInteractDistance", value); }
@@ -77,7 +77,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_flDepthOffset
 	[SchemaMember("CPointClientUIWorldPanel", "m_flDepthOffset")]
-	public float DepthOffset
+	public virtual float DepthOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDepthOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDepthOffset", value); }
@@ -85,7 +85,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_unOwnerContext
 	[SchemaMember("CPointClientUIWorldPanel", "m_unOwnerContext")]
-	public UInt32 OwnerContext
+	public virtual UInt32 OwnerContext
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOwnerContext"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOwnerContext", value); }
@@ -93,7 +93,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_unHorizontalAlign
 	[SchemaMember("CPointClientUIWorldPanel", "m_unHorizontalAlign")]
-	public UInt32 HorizontalAlign
+	public virtual UInt32 HorizontalAlign
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unHorizontalAlign"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unHorizontalAlign", value); }
@@ -101,7 +101,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_unVerticalAlign
 	[SchemaMember("CPointClientUIWorldPanel", "m_unVerticalAlign")]
-	public UInt32 VerticalAlign
+	public virtual UInt32 VerticalAlign
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unVerticalAlign"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unVerticalAlign", value); }
@@ -109,7 +109,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_unOrientation
 	[SchemaMember("CPointClientUIWorldPanel", "m_unOrientation")]
-	public UInt32 Orientation
+	public virtual UInt32 Orientation
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOrientation"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOrientation", value); }
@@ -117,7 +117,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bAllowInteractionFromAllSceneWorlds
 	[SchemaMember("CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds")]
-	public bool AllowInteractionFromAllSceneWorlds
+	public virtual bool AllowInteractionFromAllSceneWorlds
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds", value); }
@@ -125,11 +125,11 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_vecCSSClasses
 	[SchemaMember("CPointClientUIWorldPanel", "m_vecCSSClasses")]
-	public NetworkedVector<string> CSSClasses => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CPointClientUIWorldPanel", "m_vecCSSClasses");
+	public virtual NetworkedVector<string> CSSClasses => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CPointClientUIWorldPanel", "m_vecCSSClasses");
 
 	// m_bOpaque
 	[SchemaMember("CPointClientUIWorldPanel", "m_bOpaque")]
-	public bool Opaque
+	public virtual bool Opaque
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOpaque"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOpaque", value); }
@@ -137,7 +137,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bNoDepth
 	[SchemaMember("CPointClientUIWorldPanel", "m_bNoDepth")]
-	public bool NoDepth
+	public virtual bool NoDepth
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bNoDepth"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bNoDepth", value); }
@@ -145,7 +145,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bVisibleWhenParentNoDraw
 	[SchemaMember("CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw")]
-	public bool VisibleWhenParentNoDraw
+	public virtual bool VisibleWhenParentNoDraw
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw", value); }
@@ -153,7 +153,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bRenderBackface
 	[SchemaMember("CPointClientUIWorldPanel", "m_bRenderBackface")]
-	public bool RenderBackface
+	public virtual bool RenderBackface
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bRenderBackface"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bRenderBackface", value); }
@@ -161,7 +161,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bUseOffScreenIndicator
 	[SchemaMember("CPointClientUIWorldPanel", "m_bUseOffScreenIndicator")]
-	public bool UseOffScreenIndicator
+	public virtual bool UseOffScreenIndicator
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator", value); }
@@ -169,7 +169,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bExcludeFromSaveGames
 	[SchemaMember("CPointClientUIWorldPanel", "m_bExcludeFromSaveGames")]
-	public bool ExcludeFromSaveGames
+	public virtual bool ExcludeFromSaveGames
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames", value); }
@@ -177,7 +177,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bGrabbable
 	[SchemaMember("CPointClientUIWorldPanel", "m_bGrabbable")]
-	public bool Grabbable
+	public virtual bool Grabbable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bGrabbable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bGrabbable", value); }
@@ -185,7 +185,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bOnlyRenderToTexture
 	[SchemaMember("CPointClientUIWorldPanel", "m_bOnlyRenderToTexture")]
-	public bool OnlyRenderToTexture
+	public virtual bool OnlyRenderToTexture
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture", value); }
@@ -193,7 +193,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bDisableMipGen
 	[SchemaMember("CPointClientUIWorldPanel", "m_bDisableMipGen")]
-	public bool DisableMipGen
+	public virtual bool DisableMipGen
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bDisableMipGen"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bDisableMipGen", value); }
@@ -201,34 +201,34 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_nExplicitImageLayout
 	[SchemaMember("CPointClientUIWorldPanel", "m_nExplicitImageLayout")]
-	public Int32 ExplicitImageLayout
+	public virtual Int32 ExplicitImageLayout
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPointClientUIWorldPanel", "m_nExplicitImageLayout"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPointClientUIWorldPanel", "m_nExplicitImageLayout", value); }
 	}
 
-	public void IgnoreInputPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bIgnoreInput");
-	public void LitPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bLit");
-	public void FollowPlayerAcrossTeleportPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport");
-	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flWidth");
-	public void HeightPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flHeight");
-	public void DPIPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flDPI");
-	public void InteractDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flInteractDistance");
-	public void DepthOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flDepthOffset");
-	public void OwnerContextPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unOwnerContext");
-	public void HorizontalAlignPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unHorizontalAlign");
-	public void VerticalAlignPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unVerticalAlign");
-	public void OrientationPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unOrientation");
-	public void AllowInteractionFromAllSceneWorldsPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds");
-	public void CSSClassesPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_vecCSSClasses");
-	public void OpaquePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bOpaque");
-	public void NoDepthPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bNoDepth");
-	public void VisibleWhenParentNoDrawPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw");
-	public void RenderBackfacePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bRenderBackface");
-	public void UseOffScreenIndicatorPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator");
-	public void ExcludeFromSaveGamesPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames");
-	public void GrabbablePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bGrabbable");
-	public void OnlyRenderToTexturePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture");
-	public void DisableMipGenPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bDisableMipGen");
-	public void ExplicitImageLayoutPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_nExplicitImageLayout");
+	public virtual void IgnoreInputPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bIgnoreInput");
+	public virtual void LitPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bLit");
+	public virtual void FollowPlayerAcrossTeleportPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport");
+	public virtual void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flWidth");
+	public virtual void HeightPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flHeight");
+	public virtual void DPIPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flDPI");
+	public virtual void InteractDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flInteractDistance");
+	public virtual void DepthOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flDepthOffset");
+	public virtual void OwnerContextPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unOwnerContext");
+	public virtual void HorizontalAlignPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unHorizontalAlign");
+	public virtual void VerticalAlignPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unVerticalAlign");
+	public virtual void OrientationPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unOrientation");
+	public virtual void AllowInteractionFromAllSceneWorldsPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds");
+	public virtual void CSSClassesPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_vecCSSClasses");
+	public virtual void OpaquePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bOpaque");
+	public virtual void NoDepthPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bNoDepth");
+	public virtual void VisibleWhenParentNoDrawPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw");
+	public virtual void RenderBackfacePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bRenderBackface");
+	public virtual void UseOffScreenIndicatorPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator");
+	public virtual void ExcludeFromSaveGamesPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames");
+	public virtual void GrabbablePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bGrabbable");
+	public virtual void OnlyRenderToTexturePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture");
+	public virtual void DisableMipGenPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bDisableMipGen");
+	public virtual void ExplicitImageLayoutPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_nExplicitImageLayout");
 }

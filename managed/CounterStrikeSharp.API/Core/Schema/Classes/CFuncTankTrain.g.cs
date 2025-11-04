@@ -21,6 +21,6 @@ public partial class CFuncTankTrain : CFuncTrackTrain
 
 	// m_OnDeath
 	[SchemaMember("CFuncTankTrain", "m_OnDeath")]
-	public CEntityIOOutput OnDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTankTrain", "m_OnDeath");
+	public virtual CEntityIOOutput OnDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTankTrain", "m_OnDeath");
 
 }

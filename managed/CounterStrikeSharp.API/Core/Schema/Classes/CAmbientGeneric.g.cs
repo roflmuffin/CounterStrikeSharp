@@ -21,7 +21,7 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_radius
 	[SchemaMember("CAmbientGeneric", "m_radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAmbientGeneric", "m_radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAmbientGeneric", "m_radius", value); }
@@ -29,7 +29,7 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_flMaxRadius
 	[SchemaMember("CAmbientGeneric", "m_flMaxRadius")]
-	public float MaxRadius
+	public virtual float MaxRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CAmbientGeneric", "m_flMaxRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CAmbientGeneric", "m_flMaxRadius", value); }
@@ -37,7 +37,7 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_iSoundLevel
 	[SchemaMember("CAmbientGeneric", "m_iSoundLevel")]
-	public soundlevel_t SoundLevel
+	public virtual soundlevel_t SoundLevel
 	{
 		get { return Schema.GetValueType<soundlevel_t>(this.Handle, "CAmbientGeneric", "m_iSoundLevel"); }
 		set { Schema.SetValueType<soundlevel_t>(this.Handle, "CAmbientGeneric", "m_iSoundLevel", value); }
@@ -45,11 +45,11 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_dpv
 	[SchemaMember("CAmbientGeneric", "m_dpv")]
-	public dynpitchvol_t Dpv => Schema.GetDeclaredClass<dynpitchvol_t>(this.Handle, "CAmbientGeneric", "m_dpv");
+	public virtual dynpitchvol_t Dpv => Schema.GetDeclaredClass<dynpitchvol_t>(this.Handle, "CAmbientGeneric", "m_dpv");
 
 	// m_fActive
 	[SchemaMember("CAmbientGeneric", "m_fActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fActive", value); }
@@ -57,7 +57,7 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_fLooping
 	[SchemaMember("CAmbientGeneric", "m_fLooping")]
-	public bool Looping
+	public virtual bool Looping
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fLooping"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fLooping", value); }
@@ -65,7 +65,7 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_iszSound
 	[SchemaMember("CAmbientGeneric", "m_iszSound")]
-	public string Sound
+	public virtual string Sound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAmbientGeneric", "m_iszSound"); }
 		set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_iszSound", value); }
@@ -73,7 +73,7 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_sSourceEntName
 	[SchemaMember("CAmbientGeneric", "m_sSourceEntName")]
-	public string SourceEntName
+	public virtual string SourceEntName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAmbientGeneric", "m_sSourceEntName"); }
 		set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_sSourceEntName", value); }
@@ -81,10 +81,10 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_hSoundSource
 	[SchemaMember("CAmbientGeneric", "m_hSoundSource")]
-	public CHandle<CBaseEntity> SoundSource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAmbientGeneric", "m_hSoundSource");
+	public virtual CHandle<CBaseEntity> SoundSource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAmbientGeneric", "m_hSoundSource");
 
 	// m_nSoundSourceEntIndex
 	[SchemaMember("CAmbientGeneric", "m_nSoundSourceEntIndex")]
-	public CEntityIndex SoundSourceEntIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CAmbientGeneric", "m_nSoundSourceEntIndex");
+	public virtual CEntityIndex SoundSourceEntIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CAmbientGeneric", "m_nSoundSourceEntIndex");
 
 }

@@ -27,7 +27,7 @@ public class TestInjectedClass
     }
 }
 
-public class TestPluginServiceCollection : IPluginServiceCollection<SamplePlugin>
+public class TestPluginServiceCollection : IPluginServiceCollection<TestPlugin>
 {
     public void ConfigureServices(IServiceCollection serviceCollection)
     {

@@ -21,7 +21,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iMagnitude
 	[SchemaMember("CEnvExplosion", "m_iMagnitude")]
-	public Int32 Magnitude
+	public virtual Int32 Magnitude
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iMagnitude"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iMagnitude", value); }
@@ -29,7 +29,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_flPlayerDamage
 	[SchemaMember("CEnvExplosion", "m_flPlayerDamage")]
-	public float PlayerDamage
+	public virtual float PlayerDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvExplosion", "m_flPlayerDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvExplosion", "m_flPlayerDamage", value); }
@@ -37,7 +37,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iRadiusOverride
 	[SchemaMember("CEnvExplosion", "m_iRadiusOverride")]
-	public Int32 RadiusOverride
+	public virtual Int32 RadiusOverride
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iRadiusOverride"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iRadiusOverride", value); }
@@ -45,7 +45,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_flInnerRadius
 	[SchemaMember("CEnvExplosion", "m_flInnerRadius")]
-	public float InnerRadius
+	public virtual float InnerRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvExplosion", "m_flInnerRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvExplosion", "m_flInnerRadius", value); }
@@ -53,7 +53,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_flDamageForce
 	[SchemaMember("CEnvExplosion", "m_flDamageForce")]
-	public float DamageForce
+	public virtual float DamageForce
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvExplosion", "m_flDamageForce"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvExplosion", "m_flDamageForce", value); }
@@ -61,11 +61,11 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_hInflictor
 	[SchemaMember("CEnvExplosion", "m_hInflictor")]
-	public CHandle<CBaseEntity> Inflictor => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvExplosion", "m_hInflictor");
+	public virtual CHandle<CBaseEntity> Inflictor => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvExplosion", "m_hInflictor");
 
 	// m_iCustomDamageType
 	[SchemaMember("CEnvExplosion", "m_iCustomDamageType")]
-	public DamageTypes_t CustomDamageType
+	public virtual DamageTypes_t CustomDamageType
 	{
 		get { return Schema.GetValueType<DamageTypes_t>(this.Handle, "CEnvExplosion", "m_iCustomDamageType"); }
 		set { Schema.SetValueType<DamageTypes_t>(this.Handle, "CEnvExplosion", "m_iCustomDamageType", value); }
@@ -73,7 +73,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_bCreateDebris
 	[SchemaMember("CEnvExplosion", "m_bCreateDebris")]
-	public bool CreateDebris
+	public virtual bool CreateDebris
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvExplosion", "m_bCreateDebris"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvExplosion", "m_bCreateDebris", value); }
@@ -81,7 +81,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iszCustomEffectName
 	[SchemaMember("CEnvExplosion", "m_iszCustomEffectName")]
-	public string CustomEffectName
+	public virtual string CustomEffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszCustomEffectName"); }
 		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomEffectName", value); }
@@ -89,7 +89,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iszCustomSoundName
 	[SchemaMember("CEnvExplosion", "m_iszCustomSoundName")]
-	public string CustomSoundName
+	public virtual string CustomSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszCustomSoundName"); }
 		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomSoundName", value); }
@@ -97,7 +97,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_bSuppressParticleImpulse
 	[SchemaMember("CEnvExplosion", "m_bSuppressParticleImpulse")]
-	public bool SuppressParticleImpulse
+	public virtual bool SuppressParticleImpulse
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvExplosion", "m_bSuppressParticleImpulse"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvExplosion", "m_bSuppressParticleImpulse", value); }
@@ -105,7 +105,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iClassIgnore
 	[SchemaMember("CEnvExplosion", "m_iClassIgnore")]
-	public Class_T ClassIgnore
+	public virtual Class_T ClassIgnore
 	{
 		get { return Schema.GetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore"); }
 		set { Schema.SetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore", value); }
@@ -113,7 +113,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iClassIgnore2
 	[SchemaMember("CEnvExplosion", "m_iClassIgnore2")]
-	public Class_T ClassIgnore2
+	public virtual Class_T ClassIgnore2
 	{
 		get { return Schema.GetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore2"); }
 		set { Schema.SetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore2", value); }
@@ -121,7 +121,7 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iszEntityIgnoreName
 	[SchemaMember("CEnvExplosion", "m_iszEntityIgnoreName")]
-	public string EntityIgnoreName
+	public virtual string EntityIgnoreName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszEntityIgnoreName"); }
 		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszEntityIgnoreName", value); }
@@ -129,6 +129,6 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_hEntityIgnore
 	[SchemaMember("CEnvExplosion", "m_hEntityIgnore")]
-	public CHandle<CBaseEntity> EntityIgnore => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvExplosion", "m_hEntityIgnore");
+	public virtual CHandle<CBaseEntity> EntityIgnore => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvExplosion", "m_hEntityIgnore");
 
 }

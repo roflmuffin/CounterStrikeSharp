@@ -21,7 +21,7 @@ public partial class CMapSharedEnvironment : CLogicalEntity
 
 	// m_targetMapName
 	[SchemaMember("CMapSharedEnvironment", "m_targetMapName")]
-	public string TargetMapName
+	public virtual string TargetMapName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMapSharedEnvironment", "m_targetMapName"); }
 		set { Schema.SetString(this.Handle, "CMapSharedEnvironment", "m_targetMapName", value); }

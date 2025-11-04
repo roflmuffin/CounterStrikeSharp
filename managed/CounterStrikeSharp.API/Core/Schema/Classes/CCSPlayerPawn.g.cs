@@ -21,31 +21,31 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_pBulletServices
 	[SchemaMember("CCSPlayerPawn", "m_pBulletServices")]
-	public CCSPlayer_BulletServices? BulletServices => Schema.GetPointer<CCSPlayer_BulletServices>(this.Handle, "CCSPlayerPawn", "m_pBulletServices");
+	public virtual CCSPlayer_BulletServices? BulletServices => Schema.GetPointer<CCSPlayer_BulletServices>(this.Handle, "CCSPlayerPawn", "m_pBulletServices");
 
 	// m_pHostageServices
 	[SchemaMember("CCSPlayerPawn", "m_pHostageServices")]
-	public CCSPlayer_HostageServices? HostageServices => Schema.GetPointer<CCSPlayer_HostageServices>(this.Handle, "CCSPlayerPawn", "m_pHostageServices");
+	public virtual CCSPlayer_HostageServices? HostageServices => Schema.GetPointer<CCSPlayer_HostageServices>(this.Handle, "CCSPlayerPawn", "m_pHostageServices");
 
 	// m_pBuyServices
 	[SchemaMember("CCSPlayerPawn", "m_pBuyServices")]
-	public CCSPlayer_BuyServices? BuyServices => Schema.GetPointer<CCSPlayer_BuyServices>(this.Handle, "CCSPlayerPawn", "m_pBuyServices");
+	public virtual CCSPlayer_BuyServices? BuyServices => Schema.GetPointer<CCSPlayer_BuyServices>(this.Handle, "CCSPlayerPawn", "m_pBuyServices");
 
 	// m_pActionTrackingServices
 	[SchemaMember("CCSPlayerPawn", "m_pActionTrackingServices")]
-	public CCSPlayer_ActionTrackingServices? ActionTrackingServices => Schema.GetPointer<CCSPlayer_ActionTrackingServices>(this.Handle, "CCSPlayerPawn", "m_pActionTrackingServices");
+	public virtual CCSPlayer_ActionTrackingServices? ActionTrackingServices => Schema.GetPointer<CCSPlayer_ActionTrackingServices>(this.Handle, "CCSPlayerPawn", "m_pActionTrackingServices");
 
 	// m_pRadioServices
 	[SchemaMember("CCSPlayerPawn", "m_pRadioServices")]
-	public CCSPlayer_RadioServices? RadioServices => Schema.GetPointer<CCSPlayer_RadioServices>(this.Handle, "CCSPlayerPawn", "m_pRadioServices");
+	public virtual CCSPlayer_RadioServices? RadioServices => Schema.GetPointer<CCSPlayer_RadioServices>(this.Handle, "CCSPlayerPawn", "m_pRadioServices");
 
 	// m_pDamageReactServices
 	[SchemaMember("CCSPlayerPawn", "m_pDamageReactServices")]
-	public CCSPlayer_DamageReactServices? DamageReactServices => Schema.GetPointer<CCSPlayer_DamageReactServices>(this.Handle, "CCSPlayerPawn", "m_pDamageReactServices");
+	public virtual CCSPlayer_DamageReactServices? DamageReactServices => Schema.GetPointer<CCSPlayer_DamageReactServices>(this.Handle, "CCSPlayerPawn", "m_pDamageReactServices");
 
 	// m_nCharacterDefIndex
 	[SchemaMember("CCSPlayerPawn", "m_nCharacterDefIndex")]
-	public UInt16 CharacterDefIndex
+	public virtual UInt16 CharacterDefIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_nCharacterDefIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_nCharacterDefIndex", value); }
@@ -53,7 +53,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bHasFemaleVoice
 	[SchemaMember("CCSPlayerPawn", "m_bHasFemaleVoice")]
-	public bool HasFemaleVoice
+	public virtual bool HasFemaleVoice
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bHasFemaleVoice"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bHasFemaleVoice", value); }
@@ -61,7 +61,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_strVOPrefix
 	[SchemaMember("CCSPlayerPawn", "m_strVOPrefix")]
-	public string StrVOPrefix
+	public virtual string StrVOPrefix
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlayerPawn", "m_strVOPrefix"); }
 		set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_strVOPrefix", value); }
@@ -69,7 +69,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_szLastPlaceName
 	[SchemaMember("CCSPlayerPawn", "m_szLastPlaceName")]
-	public string LastPlaceName
+	public virtual string LastPlaceName
 	{
 		get { return Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName", value, 18); }
@@ -77,7 +77,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bInHostageResetZone
 	[SchemaMember("CCSPlayerPawn", "m_bInHostageResetZone")]
-	public bool InHostageResetZone
+	public virtual bool InHostageResetZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInHostageResetZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInHostageResetZone", value); }
@@ -85,7 +85,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bInBuyZone
 	[SchemaMember("CCSPlayerPawn", "m_bInBuyZone")]
-	public bool InBuyZone
+	public virtual bool InBuyZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInBuyZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInBuyZone", value); }
@@ -93,11 +93,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_TouchingBuyZones
 	[SchemaMember("CCSPlayerPawn", "m_TouchingBuyZones")]
-	public NetworkedVector<CHandle<CBaseEntity>> TouchingBuyZones => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CCSPlayerPawn", "m_TouchingBuyZones");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> TouchingBuyZones => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CCSPlayerPawn", "m_TouchingBuyZones");
 
 	// m_bWasInBuyZone
 	[SchemaMember("CCSPlayerPawn", "m_bWasInBuyZone")]
-	public bool WasInBuyZone
+	public virtual bool WasInBuyZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInBuyZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInBuyZone", value); }
@@ -105,7 +105,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bInHostageRescueZone
 	[SchemaMember("CCSPlayerPawn", "m_bInHostageRescueZone")]
-	public bool InHostageRescueZone
+	public virtual bool InHostageRescueZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInHostageRescueZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInHostageRescueZone", value); }
@@ -113,7 +113,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bInBombZone
 	[SchemaMember("CCSPlayerPawn", "m_bInBombZone")]
-	public bool InBombZone
+	public virtual bool InBombZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInBombZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInBombZone", value); }
@@ -121,7 +121,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bWasInHostageRescueZone
 	[SchemaMember("CCSPlayerPawn", "m_bWasInHostageRescueZone")]
-	public bool WasInHostageRescueZone
+	public virtual bool WasInHostageRescueZone
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInHostageRescueZone"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInHostageRescueZone", value); }
@@ -129,7 +129,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iRetakesOffering
 	[SchemaMember("CCSPlayerPawn", "m_iRetakesOffering")]
-	public Int32 RetakesOffering
+	public virtual Int32 RetakesOffering
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesOffering"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesOffering", value); }
@@ -137,7 +137,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iRetakesOfferingCard
 	[SchemaMember("CCSPlayerPawn", "m_iRetakesOfferingCard")]
-	public Int32 RetakesOfferingCard
+	public virtual Int32 RetakesOfferingCard
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesOfferingCard"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesOfferingCard", value); }
@@ -145,7 +145,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bRetakesHasDefuseKit
 	[SchemaMember("CCSPlayerPawn", "m_bRetakesHasDefuseKit")]
-	public bool RetakesHasDefuseKit
+	public virtual bool RetakesHasDefuseKit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bRetakesHasDefuseKit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bRetakesHasDefuseKit", value); }
@@ -153,7 +153,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bRetakesMVPLastRound
 	[SchemaMember("CCSPlayerPawn", "m_bRetakesMVPLastRound")]
-	public bool RetakesMVPLastRound
+	public virtual bool RetakesMVPLastRound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bRetakesMVPLastRound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bRetakesMVPLastRound", value); }
@@ -161,7 +161,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iRetakesMVPBoostItem
 	[SchemaMember("CCSPlayerPawn", "m_iRetakesMVPBoostItem")]
-	public Int32 RetakesMVPBoostItem
+	public virtual Int32 RetakesMVPBoostItem
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesMVPBoostItem"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesMVPBoostItem", value); }
@@ -169,7 +169,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_RetakesMVPBoostExtraUtility
 	[SchemaMember("CCSPlayerPawn", "m_RetakesMVPBoostExtraUtility")]
-	public loadout_slot_t RetakesMVPBoostExtraUtility
+	public virtual loadout_slot_t RetakesMVPBoostExtraUtility
 	{
 		get { return Schema.GetValueType<loadout_slot_t>(this.Handle, "CCSPlayerPawn", "m_RetakesMVPBoostExtraUtility"); }
 		set { Schema.SetValueType<loadout_slot_t>(this.Handle, "CCSPlayerPawn", "m_RetakesMVPBoostExtraUtility", value); }
@@ -177,7 +177,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flHealthShotBoostExpirationTime
 	[SchemaMember("CCSPlayerPawn", "m_flHealthShotBoostExpirationTime")]
-	public float HealthShotBoostExpirationTime
+	public virtual float HealthShotBoostExpirationTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flHealthShotBoostExpirationTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flHealthShotBoostExpirationTime", value); }
@@ -185,7 +185,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flLandingTimeSeconds
 	[SchemaMember("CCSPlayerPawn", "m_flLandingTimeSeconds")]
-	public float LandingTimeSeconds
+	public virtual float LandingTimeSeconds
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flLandingTimeSeconds"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flLandingTimeSeconds", value); }
@@ -193,7 +193,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_aimPunchAngle
 	[SchemaMember("CCSPlayerPawn", "m_aimPunchAngle")]
-	public QAngle AimPunchAngle
+	public virtual QAngle AimPunchAngle
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngle"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngle", value); }
@@ -201,7 +201,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_aimPunchAngleVel
 	[SchemaMember("CCSPlayerPawn", "m_aimPunchAngleVel")]
-	public QAngle AimPunchAngleVel
+	public virtual QAngle AimPunchAngleVel
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngleVel"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngleVel", value); }
@@ -209,7 +209,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_aimPunchTickBase
 	[SchemaMember("CCSPlayerPawn", "m_aimPunchTickBase")]
-	public Int32 AimPunchTickBase
+	public virtual Int32 AimPunchTickBase
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_aimPunchTickBase"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_aimPunchTickBase", value); }
@@ -217,7 +217,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_aimPunchTickFraction
 	[SchemaMember("CCSPlayerPawn", "m_aimPunchTickFraction")]
-	public float AimPunchTickFraction
+	public virtual float AimPunchTickFraction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_aimPunchTickFraction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_aimPunchTickFraction", value); }
@@ -225,11 +225,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_aimPunchCache
 	[SchemaMember("CCSPlayerPawn", "m_aimPunchCache")]
-	public NetworkedVector<QAngle> AimPunchCache => Schema.GetDeclaredClass<NetworkedVector<QAngle>>(this.Handle, "CCSPlayerPawn", "m_aimPunchCache");
+	public virtual NetworkedVector<QAngle> AimPunchCache => Schema.GetDeclaredClass<NetworkedVector<QAngle>>(this.Handle, "CCSPlayerPawn", "m_aimPunchCache");
 
 	// m_bIsBuyMenuOpen
 	[SchemaMember("CCSPlayerPawn", "m_bIsBuyMenuOpen")]
-	public bool IsBuyMenuOpen
+	public virtual bool IsBuyMenuOpen
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsBuyMenuOpen"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsBuyMenuOpen", value); }
@@ -237,7 +237,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_lastLandTime
 	[SchemaMember("CCSPlayerPawn", "m_lastLandTime")]
-	public float LastLandTime
+	public virtual float LastLandTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_lastLandTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_lastLandTime", value); }
@@ -245,7 +245,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bOnGroundLastTick
 	[SchemaMember("CCSPlayerPawn", "m_bOnGroundLastTick")]
-	public bool OnGroundLastTick
+	public virtual bool OnGroundLastTick
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bOnGroundLastTick"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bOnGroundLastTick", value); }
@@ -253,7 +253,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iPlayerLocked
 	[SchemaMember("CCSPlayerPawn", "m_iPlayerLocked")]
-	public Int32 PlayerLocked
+	public virtual Int32 PlayerLocked
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iPlayerLocked"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iPlayerLocked", value); }
@@ -261,7 +261,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flTimeOfLastInjury
 	[SchemaMember("CCSPlayerPawn", "m_flTimeOfLastInjury")]
-	public float TimeOfLastInjury
+	public virtual float TimeOfLastInjury
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flTimeOfLastInjury"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flTimeOfLastInjury", value); }
@@ -269,7 +269,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flNextSprayDecalTime
 	[SchemaMember("CCSPlayerPawn", "m_flNextSprayDecalTime")]
-	public float NextSprayDecalTime
+	public virtual float NextSprayDecalTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flNextSprayDecalTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flNextSprayDecalTime", value); }
@@ -277,7 +277,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bNextSprayDecalTimeExpedited
 	[SchemaMember("CCSPlayerPawn", "m_bNextSprayDecalTimeExpedited")]
-	public bool NextSprayDecalTimeExpedited
+	public virtual bool NextSprayDecalTimeExpedited
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bNextSprayDecalTimeExpedited"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bNextSprayDecalTimeExpedited", value); }
@@ -285,7 +285,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_nRagdollDamageBone
 	[SchemaMember("CCSPlayerPawn", "m_nRagdollDamageBone")]
-	public Int32 RagdollDamageBone
+	public virtual Int32 RagdollDamageBone
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nRagdollDamageBone"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nRagdollDamageBone", value); }
@@ -293,7 +293,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vRagdollDamageForce
 	[SchemaMember("CCSPlayerPawn", "m_vRagdollDamageForce")]
-	public Vector3 RagdollDamageForce
+	public virtual Vector3 RagdollDamageForce
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vRagdollDamageForce"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vRagdollDamageForce", value); }
@@ -301,7 +301,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vRagdollDamagePosition
 	[SchemaMember("CCSPlayerPawn", "m_vRagdollDamagePosition")]
-	public Vector3 RagdollDamagePosition
+	public virtual Vector3 RagdollDamagePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vRagdollDamagePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vRagdollDamagePosition", value); }
@@ -309,7 +309,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_szRagdollDamageWeaponName
 	[SchemaMember("CCSPlayerPawn", "m_szRagdollDamageWeaponName")]
-	public string RagdollDamageWeaponName
+	public virtual string RagdollDamageWeaponName
 	{
 		get { return Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName", value, 64); }
@@ -317,7 +317,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bRagdollDamageHeadshot
 	[SchemaMember("CCSPlayerPawn", "m_bRagdollDamageHeadshot")]
-	public bool RagdollDamageHeadshot
+	public virtual bool RagdollDamageHeadshot
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bRagdollDamageHeadshot"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bRagdollDamageHeadshot", value); }
@@ -325,7 +325,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vRagdollServerOrigin
 	[SchemaMember("CCSPlayerPawn", "m_vRagdollServerOrigin")]
-	public Vector3 RagdollServerOrigin
+	public virtual Vector3 RagdollServerOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vRagdollServerOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vRagdollServerOrigin", value); }
@@ -333,11 +333,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_EconGloves
 	[SchemaMember("CCSPlayerPawn", "m_EconGloves")]
-	public CEconItemView EconGloves => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSPlayerPawn", "m_EconGloves");
+	public virtual CEconItemView EconGloves => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSPlayerPawn", "m_EconGloves");
 
 	// m_nEconGlovesChanged
 	[SchemaMember("CCSPlayerPawn", "m_nEconGlovesChanged")]
-	public byte EconGlovesChanged
+	public virtual byte EconGlovesChanged
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSPlayerPawn", "m_nEconGlovesChanged"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSPlayerPawn", "m_nEconGlovesChanged", value); }
@@ -345,7 +345,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_qDeathEyeAngles
 	[SchemaMember("CCSPlayerPawn", "m_qDeathEyeAngles")]
-	public QAngle DeathEyeAngles
+	public virtual QAngle DeathEyeAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_qDeathEyeAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_qDeathEyeAngles", value); }
@@ -353,7 +353,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bSkipOneHeadConstraintUpdate
 	[SchemaMember("CCSPlayerPawn", "m_bSkipOneHeadConstraintUpdate")]
-	public bool SkipOneHeadConstraintUpdate
+	public virtual bool SkipOneHeadConstraintUpdate
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bSkipOneHeadConstraintUpdate"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bSkipOneHeadConstraintUpdate", value); }
@@ -361,7 +361,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bLeftHanded
 	[SchemaMember("CCSPlayerPawn", "m_bLeftHanded")]
-	public bool LeftHanded
+	public virtual bool LeftHanded
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bLeftHanded"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bLeftHanded", value); }
@@ -369,7 +369,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_fSwitchedHandednessTime
 	[SchemaMember("CCSPlayerPawn", "m_fSwitchedHandednessTime")]
-	public float SwitchedHandednessTime
+	public virtual float SwitchedHandednessTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fSwitchedHandednessTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fSwitchedHandednessTime", value); }
@@ -377,7 +377,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flViewmodelOffsetX
 	[SchemaMember("CCSPlayerPawn", "m_flViewmodelOffsetX")]
-	public float ViewmodelOffsetX
+	public virtual float ViewmodelOffsetX
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelOffsetX"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelOffsetX", value); }
@@ -385,7 +385,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flViewmodelOffsetY
 	[SchemaMember("CCSPlayerPawn", "m_flViewmodelOffsetY")]
-	public float ViewmodelOffsetY
+	public virtual float ViewmodelOffsetY
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelOffsetY"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelOffsetY", value); }
@@ -393,7 +393,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flViewmodelOffsetZ
 	[SchemaMember("CCSPlayerPawn", "m_flViewmodelOffsetZ")]
-	public float ViewmodelOffsetZ
+	public virtual float ViewmodelOffsetZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelOffsetZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelOffsetZ", value); }
@@ -401,7 +401,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flViewmodelFOV
 	[SchemaMember("CCSPlayerPawn", "m_flViewmodelFOV")]
-	public float ViewmodelFOV
+	public virtual float ViewmodelFOV
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelFOV"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flViewmodelFOV", value); }
@@ -409,7 +409,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bIsWalking
 	[SchemaMember("CCSPlayerPawn", "m_bIsWalking")]
-	public bool IsWalking
+	public virtual bool IsWalking
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsWalking"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsWalking", value); }
@@ -417,7 +417,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_fLastGivenDefuserTime
 	[SchemaMember("CCSPlayerPawn", "m_fLastGivenDefuserTime")]
-	public float LastGivenDefuserTime
+	public virtual float LastGivenDefuserTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fLastGivenDefuserTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fLastGivenDefuserTime", value); }
@@ -425,7 +425,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_fLastGivenBombTime
 	[SchemaMember("CCSPlayerPawn", "m_fLastGivenBombTime")]
-	public float LastGivenBombTime
+	public virtual float LastGivenBombTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fLastGivenBombTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fLastGivenBombTime", value); }
@@ -433,7 +433,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flDealtDamageToEnemyMostRecentTimestamp
 	[SchemaMember("CCSPlayerPawn", "m_flDealtDamageToEnemyMostRecentTimestamp")]
-	public float DealtDamageToEnemyMostRecentTimestamp
+	public virtual float DealtDamageToEnemyMostRecentTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flDealtDamageToEnemyMostRecentTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flDealtDamageToEnemyMostRecentTimestamp", value); }
@@ -441,7 +441,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iDisplayHistoryBits
 	[SchemaMember("CCSPlayerPawn", "m_iDisplayHistoryBits")]
-	public UInt32 DisplayHistoryBits
+	public virtual UInt32 DisplayHistoryBits
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerPawn", "m_iDisplayHistoryBits"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerPawn", "m_iDisplayHistoryBits", value); }
@@ -449,7 +449,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flLastAttackedTeammate
 	[SchemaMember("CCSPlayerPawn", "m_flLastAttackedTeammate")]
-	public float LastAttackedTeammate
+	public virtual float LastAttackedTeammate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flLastAttackedTeammate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flLastAttackedTeammate", value); }
@@ -457,7 +457,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_allowAutoFollowTime
 	[SchemaMember("CCSPlayerPawn", "m_allowAutoFollowTime")]
-	public float AllowAutoFollowTime
+	public virtual float AllowAutoFollowTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_allowAutoFollowTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_allowAutoFollowTime", value); }
@@ -465,7 +465,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bResetArmorNextSpawn
 	[SchemaMember("CCSPlayerPawn", "m_bResetArmorNextSpawn")]
-	public bool ResetArmorNextSpawn
+	public virtual bool ResetArmorNextSpawn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bResetArmorNextSpawn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bResetArmorNextSpawn", value); }
@@ -473,15 +473,15 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_nLastKillerIndex
 	[SchemaMember("CCSPlayerPawn", "m_nLastKillerIndex")]
-	public CEntityIndex LastKillerIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CCSPlayerPawn", "m_nLastKillerIndex");
+	public virtual CEntityIndex LastKillerIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CCSPlayerPawn", "m_nLastKillerIndex");
 
 	// m_entitySpottedState
 	[SchemaMember("CCSPlayerPawn", "m_entitySpottedState")]
-	public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CCSPlayerPawn", "m_entitySpottedState");
+	public virtual EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CCSPlayerPawn", "m_entitySpottedState");
 
 	// m_nSpotRules
 	[SchemaMember("CCSPlayerPawn", "m_nSpotRules")]
-	public Int32 SpotRules
+	public virtual Int32 SpotRules
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nSpotRules"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nSpotRules", value); }
@@ -489,7 +489,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bIsScoped
 	[SchemaMember("CCSPlayerPawn", "m_bIsScoped")]
-	public bool IsScoped
+	public virtual bool IsScoped
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsScoped"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsScoped", value); }
@@ -497,7 +497,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bResumeZoom
 	[SchemaMember("CCSPlayerPawn", "m_bResumeZoom")]
-	public bool ResumeZoom
+	public virtual bool ResumeZoom
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bResumeZoom"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bResumeZoom", value); }
@@ -505,7 +505,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bIsDefusing
 	[SchemaMember("CCSPlayerPawn", "m_bIsDefusing")]
-	public bool IsDefusing
+	public virtual bool IsDefusing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsDefusing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsDefusing", value); }
@@ -513,7 +513,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bIsGrabbingHostage
 	[SchemaMember("CCSPlayerPawn", "m_bIsGrabbingHostage")]
-	public bool IsGrabbingHostage
+	public virtual bool IsGrabbingHostage
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsGrabbingHostage"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsGrabbingHostage", value); }
@@ -521,7 +521,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iBlockingUseActionInProgress
 	[SchemaMember("CCSPlayerPawn", "m_iBlockingUseActionInProgress")]
-	public CSPlayerBlockingUseAction_t BlockingUseActionInProgress
+	public virtual CSPlayerBlockingUseAction_t BlockingUseActionInProgress
 	{
 		get { return Schema.GetValueType<CSPlayerBlockingUseAction_t>(this.Handle, "CCSPlayerPawn", "m_iBlockingUseActionInProgress"); }
 		set { Schema.SetValueType<CSPlayerBlockingUseAction_t>(this.Handle, "CCSPlayerPawn", "m_iBlockingUseActionInProgress", value); }
@@ -529,7 +529,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flEmitSoundTime
 	[SchemaMember("CCSPlayerPawn", "m_flEmitSoundTime")]
-	public float EmitSoundTime
+	public virtual float EmitSoundTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flEmitSoundTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flEmitSoundTime", value); }
@@ -537,7 +537,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bInNoDefuseArea
 	[SchemaMember("CCSPlayerPawn", "m_bInNoDefuseArea")]
-	public bool InNoDefuseArea
+	public virtual bool InNoDefuseArea
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInNoDefuseArea"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInNoDefuseArea", value); }
@@ -545,11 +545,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iBombSiteIndex
 	[SchemaMember("CCSPlayerPawn", "m_iBombSiteIndex")]
-	public CEntityIndex BombSiteIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CCSPlayerPawn", "m_iBombSiteIndex");
+	public virtual CEntityIndex BombSiteIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CCSPlayerPawn", "m_iBombSiteIndex");
 
 	// m_nWhichBombZone
 	[SchemaMember("CCSPlayerPawn", "m_nWhichBombZone")]
-	public Int32 WhichBombZone
+	public virtual Int32 WhichBombZone
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nWhichBombZone"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nWhichBombZone", value); }
@@ -557,7 +557,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bInBombZoneTrigger
 	[SchemaMember("CCSPlayerPawn", "m_bInBombZoneTrigger")]
-	public bool InBombZoneTrigger
+	public virtual bool InBombZoneTrigger
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInBombZoneTrigger"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bInBombZoneTrigger", value); }
@@ -565,7 +565,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bWasInBombZoneTrigger
 	[SchemaMember("CCSPlayerPawn", "m_bWasInBombZoneTrigger")]
-	public bool WasInBombZoneTrigger
+	public virtual bool WasInBombZoneTrigger
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInBombZoneTrigger"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInBombZoneTrigger", value); }
@@ -573,7 +573,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iShotsFired
 	[SchemaMember("CCSPlayerPawn", "m_iShotsFired")]
-	public Int32 ShotsFired
+	public virtual Int32 ShotsFired
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iShotsFired"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iShotsFired", value); }
@@ -581,7 +581,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flFlinchStack
 	[SchemaMember("CCSPlayerPawn", "m_flFlinchStack")]
-	public float FlinchStack
+	public virtual float FlinchStack
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flFlinchStack"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flFlinchStack", value); }
@@ -589,7 +589,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flVelocityModifier
 	[SchemaMember("CCSPlayerPawn", "m_flVelocityModifier")]
-	public float VelocityModifier
+	public virtual float VelocityModifier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flVelocityModifier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flVelocityModifier", value); }
@@ -597,7 +597,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flHitHeading
 	[SchemaMember("CCSPlayerPawn", "m_flHitHeading")]
-	public float HitHeading
+	public virtual float HitHeading
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flHitHeading"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flHitHeading", value); }
@@ -605,7 +605,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_nHitBodyPart
 	[SchemaMember("CCSPlayerPawn", "m_nHitBodyPart")]
-	public Int32 HitBodyPart
+	public virtual Int32 HitBodyPart
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nHitBodyPart"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nHitBodyPart", value); }
@@ -613,7 +613,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vecTotalBulletForce
 	[SchemaMember("CCSPlayerPawn", "m_vecTotalBulletForce")]
-	public Vector3 TotalBulletForce
+	public virtual Vector3 TotalBulletForce
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecTotalBulletForce"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecTotalBulletForce", value); }
@@ -621,7 +621,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bWaitForNoAttack
 	[SchemaMember("CCSPlayerPawn", "m_bWaitForNoAttack")]
-	public bool WaitForNoAttack
+	public virtual bool WaitForNoAttack
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWaitForNoAttack"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bWaitForNoAttack", value); }
@@ -629,7 +629,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_ignoreLadderJumpTime
 	[SchemaMember("CCSPlayerPawn", "m_ignoreLadderJumpTime")]
-	public float IgnoreLadderJumpTime
+	public virtual float IgnoreLadderJumpTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_ignoreLadderJumpTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_ignoreLadderJumpTime", value); }
@@ -637,7 +637,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bKilledByHeadshot
 	[SchemaMember("CCSPlayerPawn", "m_bKilledByHeadshot")]
-	public bool KilledByHeadshot
+	public virtual bool KilledByHeadshot
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bKilledByHeadshot"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bKilledByHeadshot", value); }
@@ -645,7 +645,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_LastHitBox
 	[SchemaMember("CCSPlayerPawn", "m_LastHitBox")]
-	public Int32 LastHitBox
+	public virtual Int32 LastHitBox
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_LastHitBox"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_LastHitBox", value); }
@@ -653,11 +653,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_pBot
 	[SchemaMember("CCSPlayerPawn", "m_pBot")]
-	public CCSBot? Bot => Schema.GetPointer<CCSBot>(this.Handle, "CCSPlayerPawn", "m_pBot");
+	public virtual CCSBot? Bot => Schema.GetPointer<CCSBot>(this.Handle, "CCSPlayerPawn", "m_pBot");
 
 	// m_bBotAllowActive
 	[SchemaMember("CCSPlayerPawn", "m_bBotAllowActive")]
-	public bool BotAllowActive
+	public virtual bool BotAllowActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bBotAllowActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bBotAllowActive", value); }
@@ -665,7 +665,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_thirdPersonHeading
 	[SchemaMember("CCSPlayerPawn", "m_thirdPersonHeading")]
-	public QAngle ThirdPersonHeading
+	public virtual QAngle ThirdPersonHeading
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_thirdPersonHeading"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_thirdPersonHeading", value); }
@@ -673,7 +673,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flSlopeDropOffset
 	[SchemaMember("CCSPlayerPawn", "m_flSlopeDropOffset")]
-	public float SlopeDropOffset
+	public virtual float SlopeDropOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flSlopeDropOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flSlopeDropOffset", value); }
@@ -681,7 +681,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flSlopeDropHeight
 	[SchemaMember("CCSPlayerPawn", "m_flSlopeDropHeight")]
-	public float SlopeDropHeight
+	public virtual float SlopeDropHeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flSlopeDropHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flSlopeDropHeight", value); }
@@ -689,7 +689,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vHeadConstraintOffset
 	[SchemaMember("CCSPlayerPawn", "m_vHeadConstraintOffset")]
-	public Vector3 HeadConstraintOffset
+	public virtual Vector3 HeadConstraintOffset
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vHeadConstraintOffset"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vHeadConstraintOffset", value); }
@@ -697,7 +697,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_nLastPickupPriority
 	[SchemaMember("CCSPlayerPawn", "m_nLastPickupPriority")]
-	public Int32 LastPickupPriority
+	public virtual Int32 LastPickupPriority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nLastPickupPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nLastPickupPriority", value); }
@@ -705,7 +705,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flLastPickupPriorityTime
 	[SchemaMember("CCSPlayerPawn", "m_flLastPickupPriorityTime")]
-	public float LastPickupPriorityTime
+	public virtual float LastPickupPriorityTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flLastPickupPriorityTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flLastPickupPriorityTime", value); }
@@ -713,7 +713,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_ArmorValue
 	[SchemaMember("CCSPlayerPawn", "m_ArmorValue")]
-	public Int32 ArmorValue
+	public virtual Int32 ArmorValue
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_ArmorValue"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_ArmorValue", value); }
@@ -721,7 +721,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_unCurrentEquipmentValue
 	[SchemaMember("CCSPlayerPawn", "m_unCurrentEquipmentValue")]
-	public UInt16 CurrentEquipmentValue
+	public virtual UInt16 CurrentEquipmentValue
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_unCurrentEquipmentValue"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_unCurrentEquipmentValue", value); }
@@ -729,7 +729,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_unRoundStartEquipmentValue
 	[SchemaMember("CCSPlayerPawn", "m_unRoundStartEquipmentValue")]
-	public UInt16 RoundStartEquipmentValue
+	public virtual UInt16 RoundStartEquipmentValue
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_unRoundStartEquipmentValue"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_unRoundStartEquipmentValue", value); }
@@ -737,7 +737,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_unFreezetimeEndEquipmentValue
 	[SchemaMember("CCSPlayerPawn", "m_unFreezetimeEndEquipmentValue")]
-	public UInt16 FreezetimeEndEquipmentValue
+	public virtual UInt16 FreezetimeEndEquipmentValue
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_unFreezetimeEndEquipmentValue"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerPawn", "m_unFreezetimeEndEquipmentValue", value); }
@@ -745,7 +745,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iLastWeaponFireUsercmd
 	[SchemaMember("CCSPlayerPawn", "m_iLastWeaponFireUsercmd")]
-	public Int32 LastWeaponFireUsercmd
+	public virtual Int32 LastWeaponFireUsercmd
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iLastWeaponFireUsercmd"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iLastWeaponFireUsercmd", value); }
@@ -753,7 +753,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bIsSpawning
 	[SchemaMember("CCSPlayerPawn", "m_bIsSpawning")]
-	public bool IsSpawning
+	public virtual bool IsSpawning
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsSpawning"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bIsSpawning", value); }
@@ -761,7 +761,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_iDeathFlags
 	[SchemaMember("CCSPlayerPawn", "m_iDeathFlags")]
-	public Int32 DeathFlags
+	public virtual Int32 DeathFlags
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iDeathFlags"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_iDeathFlags", value); }
@@ -769,7 +769,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bHasDeathInfo
 	[SchemaMember("CCSPlayerPawn", "m_bHasDeathInfo")]
-	public bool HasDeathInfo
+	public virtual bool HasDeathInfo
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bHasDeathInfo"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bHasDeathInfo", value); }
@@ -777,7 +777,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_flDeathInfoTime
 	[SchemaMember("CCSPlayerPawn", "m_flDeathInfoTime")]
-	public float DeathInfoTime
+	public virtual float DeathInfoTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flDeathInfoTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_flDeathInfoTime", value); }
@@ -785,7 +785,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vecDeathInfoOrigin
 	[SchemaMember("CCSPlayerPawn", "m_vecDeathInfoOrigin")]
-	public Vector3 DeathInfoOrigin
+	public virtual Vector3 DeathInfoOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecDeathInfoOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecDeathInfoOrigin", value); }
@@ -793,11 +793,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vecPlayerPatchEconIndices
 	[SchemaMember("CCSPlayerPawn", "m_vecPlayerPatchEconIndices")]
-	public Span<UInt32> PlayerPatchEconIndices => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerPawn", "m_vecPlayerPatchEconIndices", 5);
+	public virtual Span<UInt32> PlayerPatchEconIndices => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerPawn", "m_vecPlayerPatchEconIndices", 5);
 
 	// m_GunGameImmunityColor
 	[SchemaMember("CCSPlayerPawn", "m_GunGameImmunityColor")]
-	public Color GunGameImmunityColor
+	public virtual Color GunGameImmunityColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CCSPlayerPawn", "m_GunGameImmunityColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CCSPlayerPawn", "m_GunGameImmunityColor", value); }
@@ -805,7 +805,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_grenadeParameterStashTime
 	[SchemaMember("CCSPlayerPawn", "m_grenadeParameterStashTime")]
-	public float GrenadeParameterStashTime
+	public virtual float GrenadeParameterStashTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_grenadeParameterStashTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_grenadeParameterStashTime", value); }
@@ -813,7 +813,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bGrenadeParametersStashed
 	[SchemaMember("CCSPlayerPawn", "m_bGrenadeParametersStashed")]
-	public bool GrenadeParametersStashed
+	public virtual bool GrenadeParametersStashed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bGrenadeParametersStashed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bGrenadeParametersStashed", value); }
@@ -821,7 +821,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_angStashedShootAngles
 	[SchemaMember("CCSPlayerPawn", "m_angStashedShootAngles")]
-	public QAngle StashedShootAngles
+	public virtual QAngle StashedShootAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_angStashedShootAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_angStashedShootAngles", value); }
@@ -829,7 +829,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vecStashedGrenadeThrowPosition
 	[SchemaMember("CCSPlayerPawn", "m_vecStashedGrenadeThrowPosition")]
-	public Vector3 StashedGrenadeThrowPosition
+	public virtual Vector3 StashedGrenadeThrowPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecStashedGrenadeThrowPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecStashedGrenadeThrowPosition", value); }
@@ -837,7 +837,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_vecStashedVelocity
 	[SchemaMember("CCSPlayerPawn", "m_vecStashedVelocity")]
-	public Vector3 StashedVelocity
+	public virtual Vector3 StashedVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecStashedVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecStashedVelocity", value); }
@@ -845,23 +845,23 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_angShootAngleHistory
 	[SchemaMember("CCSPlayerPawn", "m_angShootAngleHistory")]
-	public Span<QAngle> ShootAngleHistory => Schema.GetFixedArray<QAngle>(this.Handle, "CCSPlayerPawn", "m_angShootAngleHistory", 2);
+	public virtual Span<QAngle> ShootAngleHistory => Schema.GetFixedArray<QAngle>(this.Handle, "CCSPlayerPawn", "m_angShootAngleHistory", 2);
 
 	// m_vecThrowPositionHistory
 	[SchemaMember("CCSPlayerPawn", "m_vecThrowPositionHistory")]
-	public Span<Vector3> ThrowPositionHistory => Schema.GetFixedArray<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecThrowPositionHistory", 2);
+	public virtual Span<Vector3> ThrowPositionHistory => Schema.GetFixedArray<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecThrowPositionHistory", 2);
 
 	// m_vecVelocityHistory
 	[SchemaMember("CCSPlayerPawn", "m_vecVelocityHistory")]
-	public Span<Vector3> VelocityHistory => Schema.GetFixedArray<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecVelocityHistory", 2);
+	public virtual Span<Vector3> VelocityHistory => Schema.GetFixedArray<Vector3>(this.Handle, "CCSPlayerPawn", "m_vecVelocityHistory", 2);
 
 	// m_PredictedDamageTags
 	[SchemaMember("CCSPlayerPawn", "m_PredictedDamageTags")]
-	public NetworkedVector<PredictedDamageTag_t> PredictedDamageTags => Schema.GetDeclaredClass<NetworkedVector<PredictedDamageTag_t>>(this.Handle, "CCSPlayerPawn", "m_PredictedDamageTags");
+	public virtual NetworkedVector<PredictedDamageTag_t> PredictedDamageTags => Schema.GetDeclaredClass<NetworkedVector<PredictedDamageTag_t>>(this.Handle, "CCSPlayerPawn", "m_PredictedDamageTags");
 
 	// m_nHighestAppliedDamageTagTick
 	[SchemaMember("CCSPlayerPawn", "m_nHighestAppliedDamageTagTick")]
-	public Int32 HighestAppliedDamageTagTick
+	public virtual Int32 HighestAppliedDamageTagTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nHighestAppliedDamageTagTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawn", "m_nHighestAppliedDamageTagTick", value); }
@@ -869,7 +869,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bCommittingSuicideOnTeamChange
 	[SchemaMember("CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange")]
-	public bool CommittingSuicideOnTeamChange
+	public virtual bool CommittingSuicideOnTeamChange
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange", value); }
@@ -877,7 +877,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_wasNotKilledNaturally
 	[SchemaMember("CCSPlayerPawn", "m_wasNotKilledNaturally")]
-	public bool WasNotKilledNaturally
+	public virtual bool WasNotKilledNaturally
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_wasNotKilledNaturally"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_wasNotKilledNaturally", value); }
@@ -885,7 +885,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_fImmuneToGunGameDamageTime
 	[SchemaMember("CCSPlayerPawn", "m_fImmuneToGunGameDamageTime")]
-	public float ImmuneToGunGameDamageTime
+	public virtual float ImmuneToGunGameDamageTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fImmuneToGunGameDamageTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fImmuneToGunGameDamageTime", value); }
@@ -893,7 +893,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_bGunGameImmunity
 	[SchemaMember("CCSPlayerPawn", "m_bGunGameImmunity")]
-	public bool GunGameImmunity
+	public virtual bool GunGameImmunity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bGunGameImmunity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawn", "m_bGunGameImmunity", value); }
@@ -901,7 +901,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_fMolotovDamageTime
 	[SchemaMember("CCSPlayerPawn", "m_fMolotovDamageTime")]
-	public float MolotovDamageTime
+	public virtual float MolotovDamageTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fMolotovDamageTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawn", "m_fMolotovDamageTime", value); }
@@ -909,81 +909,81 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 
 	// m_angEyeAngles
 	[SchemaMember("CCSPlayerPawn", "m_angEyeAngles")]
-	public QAngle EyeAngles
+	public virtual QAngle EyeAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_angEyeAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSPlayerPawn", "m_angEyeAngles", value); }
 	}
 
-	public void BulletServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pBulletServices");
-	public void HostageServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pHostageServices");
-	public void BuyServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pBuyServices");
-	public void ActionTrackingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pActionTrackingServices");
-	public void HasFemaleVoicePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bHasFemaleVoice");
-	public void LastPlaceNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_szLastPlaceName");
-	public void InBuyZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInBuyZone");
-	public void InHostageRescueZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInHostageRescueZone");
-	public void InBombZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInBombZone");
-	public void RetakesOfferingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iRetakesOffering");
-	public void RetakesOfferingCardPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iRetakesOfferingCard");
-	public void RetakesHasDefuseKitPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bRetakesHasDefuseKit");
-	public void RetakesMVPLastRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bRetakesMVPLastRound");
-	public void RetakesMVPBoostItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iRetakesMVPBoostItem");
-	public void RetakesMVPBoostExtraUtilityPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_RetakesMVPBoostExtraUtility");
-	public void HealthShotBoostExpirationTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flHealthShotBoostExpirationTime");
-	public void AimPunchAnglePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchAngle");
-	public void AimPunchAngleVelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchAngleVel");
-	public void AimPunchTickBasePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchTickBase");
-	public void AimPunchTickFractionPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchTickFraction");
-	public void IsBuyMenuOpenPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsBuyMenuOpen");
-	public void TimeOfLastInjuryPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flTimeOfLastInjury");
-	public void NextSprayDecalTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flNextSprayDecalTime");
-	public void RagdollDamageBonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nRagdollDamageBone");
-	public void RagdollDamageForcePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vRagdollDamageForce");
-	public void RagdollDamagePositionPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vRagdollDamagePosition");
-	public void RagdollDamageWeaponNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_szRagdollDamageWeaponName");
-	public void RagdollDamageHeadshotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bRagdollDamageHeadshot");
-	public void RagdollServerOriginPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vRagdollServerOrigin");
-	public void EconGlovesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_EconGloves");
-	public void EconGlovesChangedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nEconGlovesChanged");
-	public void DeathEyeAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_qDeathEyeAngles");
-	public void LeftHandedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bLeftHanded");
-	public void SwitchedHandednessTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_fSwitchedHandednessTime");
-	public void ViewmodelOffsetXPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelOffsetX");
-	public void ViewmodelOffsetYPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelOffsetY");
-	public void ViewmodelOffsetZPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelOffsetZ");
-	public void ViewmodelFOVPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelFOV");
-	public void IsWalkingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsWalking");
-	public void LastKillerIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nLastKillerIndex");
-	public void EntitySpottedStatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_entitySpottedState");
-	public void IsScopedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsScoped");
-	public void ResumeZoomPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bResumeZoom");
-	public void IsDefusingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsDefusing");
-	public void IsGrabbingHostagePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsGrabbingHostage");
-	public void BlockingUseActionInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iBlockingUseActionInProgress");
-	public void EmitSoundTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flEmitSoundTime");
-	public void InNoDefuseAreaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInNoDefuseArea");
-	public void WhichBombZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nWhichBombZone");
-	public void ShotsFiredPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iShotsFired");
-	public void FlinchStackPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flFlinchStack");
-	public void VelocityModifierPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flVelocityModifier");
-	public void HitHeadingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flHitHeading");
-	public void HitBodyPartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nHitBodyPart");
-	public void WaitForNoAttackPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bWaitForNoAttack");
-	public void KilledByHeadshotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bKilledByHeadshot");
-	public void ThirdPersonHeadingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_thirdPersonHeading");
-	public void SlopeDropOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flSlopeDropOffset");
-	public void SlopeDropHeightPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flSlopeDropHeight");
-	public void HeadConstraintOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vHeadConstraintOffset");
-	public void ArmorValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_ArmorValue");
-	public void CurrentEquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_unCurrentEquipmentValue");
-	public void RoundStartEquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_unRoundStartEquipmentValue");
-	public void FreezetimeEndEquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_unFreezetimeEndEquipmentValue");
-	public void PlayerPatchEconIndicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vecPlayerPatchEconIndices");
-	public void GunGameImmunityColorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_GunGameImmunityColor");
-	public void PredictedDamageTagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_PredictedDamageTags");
-	public void ImmuneToGunGameDamageTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_fImmuneToGunGameDamageTime");
-	public void GunGameImmunityPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bGunGameImmunity");
-	public void MolotovDamageTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_fMolotovDamageTime");
-	public void EyeAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_angEyeAngles");
+	public virtual void BulletServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pBulletServices");
+	public virtual void HostageServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pHostageServices");
+	public virtual void BuyServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pBuyServices");
+	public virtual void ActionTrackingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_pActionTrackingServices");
+	public virtual void HasFemaleVoicePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bHasFemaleVoice");
+	public virtual void LastPlaceNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_szLastPlaceName");
+	public virtual void InBuyZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInBuyZone");
+	public virtual void InHostageRescueZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInHostageRescueZone");
+	public virtual void InBombZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInBombZone");
+	public virtual void RetakesOfferingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iRetakesOffering");
+	public virtual void RetakesOfferingCardPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iRetakesOfferingCard");
+	public virtual void RetakesHasDefuseKitPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bRetakesHasDefuseKit");
+	public virtual void RetakesMVPLastRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bRetakesMVPLastRound");
+	public virtual void RetakesMVPBoostItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iRetakesMVPBoostItem");
+	public virtual void RetakesMVPBoostExtraUtilityPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_RetakesMVPBoostExtraUtility");
+	public virtual void HealthShotBoostExpirationTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flHealthShotBoostExpirationTime");
+	public virtual void AimPunchAnglePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchAngle");
+	public virtual void AimPunchAngleVelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchAngleVel");
+	public virtual void AimPunchTickBasePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchTickBase");
+	public virtual void AimPunchTickFractionPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_aimPunchTickFraction");
+	public virtual void IsBuyMenuOpenPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsBuyMenuOpen");
+	public virtual void TimeOfLastInjuryPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flTimeOfLastInjury");
+	public virtual void NextSprayDecalTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flNextSprayDecalTime");
+	public virtual void RagdollDamageBonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nRagdollDamageBone");
+	public virtual void RagdollDamageForcePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vRagdollDamageForce");
+	public virtual void RagdollDamagePositionPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vRagdollDamagePosition");
+	public virtual void RagdollDamageWeaponNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_szRagdollDamageWeaponName");
+	public virtual void RagdollDamageHeadshotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bRagdollDamageHeadshot");
+	public virtual void RagdollServerOriginPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vRagdollServerOrigin");
+	public virtual void EconGlovesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_EconGloves");
+	public virtual void EconGlovesChangedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nEconGlovesChanged");
+	public virtual void DeathEyeAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_qDeathEyeAngles");
+	public virtual void LeftHandedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bLeftHanded");
+	public virtual void SwitchedHandednessTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_fSwitchedHandednessTime");
+	public virtual void ViewmodelOffsetXPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelOffsetX");
+	public virtual void ViewmodelOffsetYPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelOffsetY");
+	public virtual void ViewmodelOffsetZPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelOffsetZ");
+	public virtual void ViewmodelFOVPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flViewmodelFOV");
+	public virtual void IsWalkingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsWalking");
+	public virtual void LastKillerIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nLastKillerIndex");
+	public virtual void EntitySpottedStatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_entitySpottedState");
+	public virtual void IsScopedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsScoped");
+	public virtual void ResumeZoomPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bResumeZoom");
+	public virtual void IsDefusingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsDefusing");
+	public virtual void IsGrabbingHostagePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bIsGrabbingHostage");
+	public virtual void BlockingUseActionInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iBlockingUseActionInProgress");
+	public virtual void EmitSoundTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flEmitSoundTime");
+	public virtual void InNoDefuseAreaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bInNoDefuseArea");
+	public virtual void WhichBombZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nWhichBombZone");
+	public virtual void ShotsFiredPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_iShotsFired");
+	public virtual void FlinchStackPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flFlinchStack");
+	public virtual void VelocityModifierPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flVelocityModifier");
+	public virtual void HitHeadingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flHitHeading");
+	public virtual void HitBodyPartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_nHitBodyPart");
+	public virtual void WaitForNoAttackPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bWaitForNoAttack");
+	public virtual void KilledByHeadshotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bKilledByHeadshot");
+	public virtual void ThirdPersonHeadingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_thirdPersonHeading");
+	public virtual void SlopeDropOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flSlopeDropOffset");
+	public virtual void SlopeDropHeightPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_flSlopeDropHeight");
+	public virtual void HeadConstraintOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vHeadConstraintOffset");
+	public virtual void ArmorValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_ArmorValue");
+	public virtual void CurrentEquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_unCurrentEquipmentValue");
+	public virtual void RoundStartEquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_unRoundStartEquipmentValue");
+	public virtual void FreezetimeEndEquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_unFreezetimeEndEquipmentValue");
+	public virtual void PlayerPatchEconIndicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_vecPlayerPatchEconIndices");
+	public virtual void GunGameImmunityColorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_GunGameImmunityColor");
+	public virtual void PredictedDamageTagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_PredictedDamageTags");
+	public virtual void ImmuneToGunGameDamageTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_fImmuneToGunGameDamageTime");
+	public virtual void GunGameImmunityPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_bGunGameImmunity");
+	public virtual void MolotovDamageTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_fMolotovDamageTime");
+	public virtual void EyeAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawn", "m_angEyeAngles");
 }

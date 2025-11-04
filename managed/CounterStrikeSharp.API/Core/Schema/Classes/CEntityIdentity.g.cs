@@ -21,7 +21,7 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_nameStringableIndex
 	[SchemaMember("CEntityIdentity", "m_nameStringableIndex")]
-	public Int32 NameStringableIndex
+	public virtual Int32 NameStringableIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEntityIdentity", "m_nameStringableIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEntityIdentity", "m_nameStringableIndex", value); }
@@ -29,7 +29,7 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_name
 	[SchemaMember("CEntityIdentity", "m_name")]
-	public string Name
+	public virtual string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEntityIdentity", "m_name"); }
 		set { Schema.SetString(this.Handle, "CEntityIdentity", "m_name", value); }
@@ -37,7 +37,7 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_designerName
 	[SchemaMember("CEntityIdentity", "m_designerName")]
-	public string DesignerName
+	public virtual string DesignerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEntityIdentity", "m_designerName"); }
 		set { Schema.SetString(this.Handle, "CEntityIdentity", "m_designerName", value); }
@@ -45,7 +45,7 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_flags
 	[SchemaMember("CEntityIdentity", "m_flags")]
-	public UInt32 Flags
+	public virtual UInt32 Flags
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_flags"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_flags", value); }
@@ -53,11 +53,11 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_worldGroupId
 	[SchemaMember("CEntityIdentity", "m_worldGroupId")]
-	public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CEntityIdentity", "m_worldGroupId");
+	public virtual WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CEntityIdentity", "m_worldGroupId");
 
 	// m_fDataObjectTypes
 	[SchemaMember("CEntityIdentity", "m_fDataObjectTypes")]
-	public UInt32 DataObjectTypes
+	public virtual UInt32 DataObjectTypes
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_fDataObjectTypes"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_fDataObjectTypes", value); }
@@ -65,23 +65,23 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_PathIndex
 	[SchemaMember("CEntityIdentity", "m_PathIndex")]
-	public ChangeAccessorFieldPathIndex_t PathIndex => Schema.GetDeclaredClass<ChangeAccessorFieldPathIndex_t>(this.Handle, "CEntityIdentity", "m_PathIndex");
+	public virtual ChangeAccessorFieldPathIndex_t PathIndex => Schema.GetDeclaredClass<ChangeAccessorFieldPathIndex_t>(this.Handle, "CEntityIdentity", "m_PathIndex");
 
 	// m_pPrev
 	[SchemaMember("CEntityIdentity", "m_pPrev")]
-	public CEntityIdentity? Prev => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pPrev");
+	public virtual CEntityIdentity? Prev => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pPrev");
 
 	// m_pNext
 	[SchemaMember("CEntityIdentity", "m_pNext")]
-	public CEntityIdentity? Next => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pNext");
+	public virtual CEntityIdentity? Next => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pNext");
 
 	// m_pPrevByClass
 	[SchemaMember("CEntityIdentity", "m_pPrevByClass")]
-	public CEntityIdentity? PrevByClass => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pPrevByClass");
+	public virtual CEntityIdentity? PrevByClass => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pPrevByClass");
 
 	// m_pNextByClass
 	[SchemaMember("CEntityIdentity", "m_pNextByClass")]
-	public CEntityIdentity? NextByClass => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pNextByClass");
+	public virtual CEntityIdentity? NextByClass => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pNextByClass");
 
-	public void NameStringableIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEntityIdentity", "m_nameStringableIndex");
+	public virtual void NameStringableIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEntityIdentity", "m_nameStringableIndex");
 }

@@ -21,43 +21,43 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_OnMinCountAll
 	[SchemaMember("CLogicNPCCounter", "m_OnMinCountAll")]
-	public CEntityIOOutput OnMinCountAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCountAll");
+	public virtual CEntityIOOutput OnMinCountAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCountAll");
 
 	// m_OnMaxCountAll
 	[SchemaMember("CLogicNPCCounter", "m_OnMaxCountAll")]
-	public CEntityIOOutput OnMaxCountAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCountAll");
+	public virtual CEntityIOOutput OnMaxCountAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCountAll");
 
 	// m_OnMinCount_1
 	[SchemaMember("CLogicNPCCounter", "m_OnMinCount_1")]
-	public CEntityIOOutput OnMinCount_1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_1");
+	public virtual CEntityIOOutput OnMinCount_1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_1");
 
 	// m_OnMaxCount_1
 	[SchemaMember("CLogicNPCCounter", "m_OnMaxCount_1")]
-	public CEntityIOOutput OnMaxCount_1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_1");
+	public virtual CEntityIOOutput OnMaxCount_1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_1");
 
 	// m_OnMinCount_2
 	[SchemaMember("CLogicNPCCounter", "m_OnMinCount_2")]
-	public CEntityIOOutput OnMinCount_2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_2");
+	public virtual CEntityIOOutput OnMinCount_2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_2");
 
 	// m_OnMaxCount_2
 	[SchemaMember("CLogicNPCCounter", "m_OnMaxCount_2")]
-	public CEntityIOOutput OnMaxCount_2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_2");
+	public virtual CEntityIOOutput OnMaxCount_2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_2");
 
 	// m_OnMinCount_3
 	[SchemaMember("CLogicNPCCounter", "m_OnMinCount_3")]
-	public CEntityIOOutput OnMinCount_3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_3");
+	public virtual CEntityIOOutput OnMinCount_3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_3");
 
 	// m_OnMaxCount_3
 	[SchemaMember("CLogicNPCCounter", "m_OnMaxCount_3")]
-	public CEntityIOOutput OnMaxCount_3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_3");
+	public virtual CEntityIOOutput OnMaxCount_3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_3");
 
 	// m_hSource
 	[SchemaMember("CLogicNPCCounter", "m_hSource")]
-	public CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CLogicNPCCounter", "m_hSource");
+	public virtual CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CLogicNPCCounter", "m_hSource");
 
 	// m_iszSourceEntityName
 	[SchemaMember("CLogicNPCCounter", "m_iszSourceEntityName")]
-	public string SourceEntityName
+	public virtual string SourceEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszSourceEntityName"); }
 		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszSourceEntityName", value); }
@@ -65,7 +65,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_flDistanceMax
 	[SchemaMember("CLogicNPCCounter", "m_flDistanceMax")]
-	public float DistanceMax
+	public virtual float DistanceMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDistanceMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDistanceMax", value); }
@@ -73,7 +73,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CLogicNPCCounter", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bDisabled", value); }
@@ -81,7 +81,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinCountAll
 	[SchemaMember("CLogicNPCCounter", "m_nMinCountAll")]
-	public Int32 MinCountAll
+	public virtual Int32 MinCountAll
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCountAll"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCountAll", value); }
@@ -89,7 +89,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxCountAll
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCountAll")]
-	public Int32 MaxCountAll
+	public virtual Int32 MaxCountAll
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCountAll"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCountAll", value); }
@@ -97,7 +97,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinFactorAll
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactorAll")]
-	public Int32 MinFactorAll
+	public virtual Int32 MinFactorAll
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactorAll"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactorAll", value); }
@@ -105,7 +105,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxFactorAll
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactorAll")]
-	public Int32 MaxFactorAll
+	public virtual Int32 MaxFactorAll
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactorAll"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactorAll", value); }
@@ -113,7 +113,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_iszNPCClassname_1
 	[SchemaMember("CLogicNPCCounter", "m_iszNPCClassname_1")]
-	public string NPCClassname_1
+	public virtual string NPCClassname_1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_1"); }
 		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_1", value); }
@@ -121,7 +121,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nNPCState_1
 	[SchemaMember("CLogicNPCCounter", "m_nNPCState_1")]
-	public Int32 NPCState_1
+	public virtual Int32 NPCState_1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_1", value); }
@@ -129,7 +129,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_bInvertState_1
 	[SchemaMember("CLogicNPCCounter", "m_bInvertState_1")]
-	public bool InvertState_1
+	public virtual bool InvertState_1
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_1"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_1", value); }
@@ -137,7 +137,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinCount_1
 	[SchemaMember("CLogicNPCCounter", "m_nMinCount_1")]
-	public Int32 MinCount_1
+	public virtual Int32 MinCount_1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_1", value); }
@@ -145,7 +145,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxCount_1
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCount_1")]
-	public Int32 MaxCount_1
+	public virtual Int32 MaxCount_1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_1", value); }
@@ -153,7 +153,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinFactor_1
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactor_1")]
-	public Int32 MinFactor_1
+	public virtual Int32 MinFactor_1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_1", value); }
@@ -161,7 +161,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxFactor_1
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactor_1")]
-	public Int32 MaxFactor_1
+	public virtual Int32 MaxFactor_1
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_1"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_1", value); }
@@ -169,7 +169,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_flDefaultDist_1
 	[SchemaMember("CLogicNPCCounter", "m_flDefaultDist_1")]
-	public float DefaultDist_1
+	public virtual float DefaultDist_1
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_1"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_1", value); }
@@ -177,7 +177,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_iszNPCClassname_2
 	[SchemaMember("CLogicNPCCounter", "m_iszNPCClassname_2")]
-	public string NPCClassname_2
+	public virtual string NPCClassname_2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_2"); }
 		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_2", value); }
@@ -185,7 +185,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nNPCState_2
 	[SchemaMember("CLogicNPCCounter", "m_nNPCState_2")]
-	public Int32 NPCState_2
+	public virtual Int32 NPCState_2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_2", value); }
@@ -193,7 +193,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_bInvertState_2
 	[SchemaMember("CLogicNPCCounter", "m_bInvertState_2")]
-	public bool InvertState_2
+	public virtual bool InvertState_2
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_2"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_2", value); }
@@ -201,7 +201,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinCount_2
 	[SchemaMember("CLogicNPCCounter", "m_nMinCount_2")]
-	public Int32 MinCount_2
+	public virtual Int32 MinCount_2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_2", value); }
@@ -209,7 +209,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxCount_2
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCount_2")]
-	public Int32 MaxCount_2
+	public virtual Int32 MaxCount_2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_2", value); }
@@ -217,7 +217,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinFactor_2
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactor_2")]
-	public Int32 MinFactor_2
+	public virtual Int32 MinFactor_2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_2", value); }
@@ -225,7 +225,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxFactor_2
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactor_2")]
-	public Int32 MaxFactor_2
+	public virtual Int32 MaxFactor_2
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_2"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_2", value); }
@@ -233,7 +233,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_flDefaultDist_2
 	[SchemaMember("CLogicNPCCounter", "m_flDefaultDist_2")]
-	public float DefaultDist_2
+	public virtual float DefaultDist_2
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_2"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_2", value); }
@@ -241,7 +241,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_iszNPCClassname_3
 	[SchemaMember("CLogicNPCCounter", "m_iszNPCClassname_3")]
-	public string NPCClassname_3
+	public virtual string NPCClassname_3
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_3"); }
 		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_3", value); }
@@ -249,7 +249,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nNPCState_3
 	[SchemaMember("CLogicNPCCounter", "m_nNPCState_3")]
-	public Int32 NPCState_3
+	public virtual Int32 NPCState_3
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_3"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_3", value); }
@@ -257,7 +257,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_bInvertState_3
 	[SchemaMember("CLogicNPCCounter", "m_bInvertState_3")]
-	public bool InvertState_3
+	public virtual bool InvertState_3
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_3"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_3", value); }
@@ -265,7 +265,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinCount_3
 	[SchemaMember("CLogicNPCCounter", "m_nMinCount_3")]
-	public Int32 MinCount_3
+	public virtual Int32 MinCount_3
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_3"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_3", value); }
@@ -273,7 +273,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxCount_3
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCount_3")]
-	public Int32 MaxCount_3
+	public virtual Int32 MaxCount_3
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_3"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_3", value); }
@@ -281,7 +281,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMinFactor_3
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactor_3")]
-	public Int32 MinFactor_3
+	public virtual Int32 MinFactor_3
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_3"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_3", value); }
@@ -289,7 +289,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nMaxFactor_3
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactor_3")]
-	public Int32 MaxFactor_3
+	public virtual Int32 MaxFactor_3
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_3"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_3", value); }
@@ -297,7 +297,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_flDefaultDist_3
 	[SchemaMember("CLogicNPCCounter", "m_flDefaultDist_3")]
-	public float DefaultDist_3
+	public virtual float DefaultDist_3
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_3"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_3", value); }

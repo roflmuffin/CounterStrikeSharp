@@ -21,11 +21,11 @@ public partial class CCSPlayer_PingServices : CPlayerPawnComponent
 
 	// m_flPlayerPingTokens
 	[SchemaMember("CCSPlayer_PingServices", "m_flPlayerPingTokens")]
-	public Span<float> PlayerPingTokens => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_PingServices", "m_flPlayerPingTokens", 5);
+	public virtual Span<float> PlayerPingTokens => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_PingServices", "m_flPlayerPingTokens", 5);
 
 	// m_hPlayerPing
 	[SchemaMember("CCSPlayer_PingServices", "m_hPlayerPing")]
-	public CHandle<CPlayerPing> PlayerPing => Schema.GetDeclaredClass<CHandle<CPlayerPing>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
+	public virtual CHandle<CPlayerPing> PlayerPing => Schema.GetDeclaredClass<CHandle<CPlayerPing>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
 
-	public void PlayerPingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_PingServices", "m_hPlayerPing");
+	public virtual void PlayerPingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_PingServices", "m_hPlayerPing");
 }

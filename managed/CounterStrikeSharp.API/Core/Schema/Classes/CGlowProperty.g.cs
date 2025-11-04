@@ -21,7 +21,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_fGlowColor
 	[SchemaMember("CGlowProperty", "m_fGlowColor")]
-	public Vector3 GlowColor
+	public virtual Vector3 GlowColor
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CGlowProperty", "m_fGlowColor"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CGlowProperty", "m_fGlowColor", value); }
@@ -29,7 +29,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_iGlowType
 	[SchemaMember("CGlowProperty", "m_iGlowType")]
-	public Int32 GlowType
+	public virtual Int32 GlowType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowType", value); }
@@ -37,7 +37,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_iGlowTeam
 	[SchemaMember("CGlowProperty", "m_iGlowTeam")]
-	public Int32 GlowTeam
+	public virtual Int32 GlowTeam
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowTeam"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowTeam", value); }
@@ -45,7 +45,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_nGlowRange
 	[SchemaMember("CGlowProperty", "m_nGlowRange")]
-	public Int32 GlowRange
+	public virtual Int32 GlowRange
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRange"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRange", value); }
@@ -53,7 +53,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_nGlowRangeMin
 	[SchemaMember("CGlowProperty", "m_nGlowRangeMin")]
-	public Int32 GlowRangeMin
+	public virtual Int32 GlowRangeMin
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRangeMin"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRangeMin", value); }
@@ -61,7 +61,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_glowColorOverride
 	[SchemaMember("CGlowProperty", "m_glowColorOverride")]
-	public Color GlowColorOverride
+	public virtual Color GlowColorOverride
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CGlowProperty", "m_glowColorOverride"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CGlowProperty", "m_glowColorOverride", value); }
@@ -69,7 +69,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_bFlashing
 	[SchemaMember("CGlowProperty", "m_bFlashing")]
-	public bool Flashing
+	public virtual bool Flashing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGlowProperty", "m_bFlashing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGlowProperty", "m_bFlashing", value); }
@@ -77,7 +77,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_flGlowTime
 	[SchemaMember("CGlowProperty", "m_flGlowTime")]
-	public float GlowTime
+	public virtual float GlowTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowTime", value); }
@@ -85,7 +85,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_flGlowStartTime
 	[SchemaMember("CGlowProperty", "m_flGlowStartTime")]
-	public float GlowStartTime
+	public virtual float GlowStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowStartTime", value); }
@@ -93,7 +93,7 @@ public partial class CGlowProperty : NativeObject
 
 	// m_bEligibleForScreenHighlight
 	[SchemaMember("CGlowProperty", "m_bEligibleForScreenHighlight")]
-	public bool EligibleForScreenHighlight
+	public virtual bool EligibleForScreenHighlight
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGlowProperty", "m_bEligibleForScreenHighlight"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGlowProperty", "m_bEligibleForScreenHighlight", value); }
@@ -101,19 +101,19 @@ public partial class CGlowProperty : NativeObject
 
 	// m_bGlowing
 	[SchemaMember("CGlowProperty", "m_bGlowing")]
-	public bool Glowing
+	public virtual bool Glowing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGlowProperty", "m_bGlowing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGlowProperty", "m_bGlowing", value); }
 	}
 
-	public void GlowTypePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_iGlowType");
-	public void GlowTeamPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_iGlowTeam");
-	public void GlowRangePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_nGlowRange");
-	public void GlowRangeMinPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_nGlowRangeMin");
-	public void GlowColorOverridePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_glowColorOverride");
-	public void FlashingPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_bFlashing");
-	public void GlowTimePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_flGlowTime");
-	public void GlowStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_flGlowStartTime");
-	public void EligibleForScreenHighlightPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_bEligibleForScreenHighlight");
+	public virtual void GlowTypePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_iGlowType");
+	public virtual void GlowTeamPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_iGlowTeam");
+	public virtual void GlowRangePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_nGlowRange");
+	public virtual void GlowRangeMinPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_nGlowRangeMin");
+	public virtual void GlowColorOverridePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_glowColorOverride");
+	public virtual void FlashingPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_bFlashing");
+	public virtual void GlowTimePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_flGlowTime");
+	public virtual void GlowStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_flGlowStartTime");
+	public virtual void EligibleForScreenHighlightPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_bEligibleForScreenHighlight");
 }

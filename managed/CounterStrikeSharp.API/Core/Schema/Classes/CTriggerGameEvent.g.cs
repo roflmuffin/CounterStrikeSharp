@@ -21,7 +21,7 @@ public partial class CTriggerGameEvent : CBaseTrigger
 
 	// m_strStartTouchEventName
 	[SchemaMember("CTriggerGameEvent", "m_strStartTouchEventName")]
-	public string StrStartTouchEventName
+	public virtual string StrStartTouchEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName"); }
 		set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName", value); }
@@ -29,7 +29,7 @@ public partial class CTriggerGameEvent : CBaseTrigger
 
 	// m_strEndTouchEventName
 	[SchemaMember("CTriggerGameEvent", "m_strEndTouchEventName")]
-	public string StrEndTouchEventName
+	public virtual string StrEndTouchEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName"); }
 		set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName", value); }
@@ -37,13 +37,13 @@ public partial class CTriggerGameEvent : CBaseTrigger
 
 	// m_strTriggerID
 	[SchemaMember("CTriggerGameEvent", "m_strTriggerID")]
-	public string StrTriggerID
+	public virtual string StrTriggerID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strTriggerID"); }
 		set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strTriggerID", value); }
 	}
 
-	public void StrStartTouchEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strStartTouchEventName");
-	public void StrEndTouchEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strEndTouchEventName");
-	public void StrTriggerIDPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strTriggerID");
+	public virtual void StrStartTouchEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strStartTouchEventName");
+	public virtual void StrEndTouchEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strEndTouchEventName");
+	public virtual void StrTriggerIDPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strTriggerID");
 }

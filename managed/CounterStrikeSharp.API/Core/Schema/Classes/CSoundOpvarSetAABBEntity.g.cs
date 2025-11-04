@@ -21,7 +21,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vDistanceInnerMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins")]
-	public Vector3 DistanceInnerMins
+	public virtual Vector3 DistanceInnerMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins", value); }
@@ -29,7 +29,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vDistanceInnerMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs")]
-	public Vector3 DistanceInnerMaxs
+	public virtual Vector3 DistanceInnerMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs", value); }
@@ -37,7 +37,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vDistanceOuterMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins")]
-	public Vector3 DistanceOuterMins
+	public virtual Vector3 DistanceOuterMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins", value); }
@@ -45,7 +45,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vDistanceOuterMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs")]
-	public Vector3 DistanceOuterMaxs
+	public virtual Vector3 DistanceOuterMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs", value); }
@@ -53,7 +53,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_nAABBDirection
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_nAABBDirection")]
-	public Int32 AABBDirection
+	public virtual Int32 AABBDirection
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection", value); }
@@ -61,7 +61,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vInnerMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vInnerMins")]
-	public Vector3 InnerMins
+	public virtual Vector3 InnerMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins", value); }
@@ -69,7 +69,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vInnerMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vInnerMaxs")]
-	public Vector3 InnerMaxs
+	public virtual Vector3 InnerMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs", value); }
@@ -77,7 +77,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vOuterMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vOuterMins")]
-	public Vector3 OuterMins
+	public virtual Vector3 OuterMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins", value); }
@@ -85,7 +85,7 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vOuterMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vOuterMaxs")]
-	public Vector3 OuterMaxs
+	public virtual Vector3 OuterMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs", value); }

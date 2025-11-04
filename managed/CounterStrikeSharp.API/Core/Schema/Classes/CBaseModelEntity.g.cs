@@ -21,15 +21,15 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_CRenderComponent
 	[SchemaMember("CBaseModelEntity", "m_CRenderComponent")]
-	public CRenderComponent? CRenderComponent => Schema.GetPointer<CRenderComponent>(this.Handle, "CBaseModelEntity", "m_CRenderComponent");
+	public virtual CRenderComponent? CRenderComponent => Schema.GetPointer<CRenderComponent>(this.Handle, "CBaseModelEntity", "m_CRenderComponent");
 
 	// m_CHitboxComponent
 	[SchemaMember("CBaseModelEntity", "m_CHitboxComponent")]
-	public CHitboxComponent CHitboxComponent => Schema.GetDeclaredClass<CHitboxComponent>(this.Handle, "CBaseModelEntity", "m_CHitboxComponent");
+	public virtual CHitboxComponent CHitboxComponent => Schema.GetDeclaredClass<CHitboxComponent>(this.Handle, "CBaseModelEntity", "m_CHitboxComponent");
 
 	// m_nDestructiblePartInitialStateDestructed0
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0")]
-	public HitGroup_t DestructiblePartInitialStateDestructed0
+	public virtual HitGroup_t DestructiblePartInitialStateDestructed0
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0", value); }
@@ -37,7 +37,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed1
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1")]
-	public HitGroup_t DestructiblePartInitialStateDestructed1
+	public virtual HitGroup_t DestructiblePartInitialStateDestructed1
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1", value); }
@@ -45,7 +45,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed2
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2")]
-	public HitGroup_t DestructiblePartInitialStateDestructed2
+	public virtual HitGroup_t DestructiblePartInitialStateDestructed2
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2", value); }
@@ -53,7 +53,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed3
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3")]
-	public HitGroup_t DestructiblePartInitialStateDestructed3
+	public virtual HitGroup_t DestructiblePartInitialStateDestructed3
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3", value); }
@@ -61,7 +61,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed4
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4")]
-	public HitGroup_t DestructiblePartInitialStateDestructed4
+	public virtual HitGroup_t DestructiblePartInitialStateDestructed4
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4", value); }
@@ -69,7 +69,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed0_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex")]
-	public Int32 DestructiblePartInitialStateDestructed0_PartIndex
+	public virtual Int32 DestructiblePartInitialStateDestructed0_PartIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex", value); }
@@ -77,7 +77,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed1_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex")]
-	public Int32 DestructiblePartInitialStateDestructed1_PartIndex
+	public virtual Int32 DestructiblePartInitialStateDestructed1_PartIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex", value); }
@@ -85,7 +85,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed2_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex")]
-	public Int32 DestructiblePartInitialStateDestructed2_PartIndex
+	public virtual Int32 DestructiblePartInitialStateDestructed2_PartIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex", value); }
@@ -93,7 +93,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed3_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex")]
-	public Int32 DestructiblePartInitialStateDestructed3_PartIndex
+	public virtual Int32 DestructiblePartInitialStateDestructed3_PartIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex", value); }
@@ -101,7 +101,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed4_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex")]
-	public Int32 DestructiblePartInitialStateDestructed4_PartIndex
+	public virtual Int32 DestructiblePartInitialStateDestructed4_PartIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex", value); }
@@ -109,11 +109,11 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_pDestructiblePartsSystemComponent
 	[SchemaMember("CBaseModelEntity", "m_pDestructiblePartsSystemComponent")]
-	public CDestructiblePartsComponent? DestructiblePartsSystemComponent => Schema.GetPointer<CDestructiblePartsComponent>(this.Handle, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
+	public virtual CDestructiblePartsComponent? DestructiblePartsSystemComponent => Schema.GetPointer<CDestructiblePartsComponent>(this.Handle, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
 
 	// m_LastHitGroup
 	[SchemaMember("CBaseModelEntity", "m_LastHitGroup")]
-	public HitGroup_t LastHitGroup
+	public virtual HitGroup_t LastHitGroup
 	{
 		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup"); }
 		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup", value); }
@@ -121,7 +121,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_sLastDamageSourceName
 	[SchemaMember("CBaseModelEntity", "m_sLastDamageSourceName")]
-	public string LastDamageSourceName
+	public virtual string LastDamageSourceName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseModelEntity", "m_sLastDamageSourceName"); }
 		set { Schema.SetString(this.Handle, "CBaseModelEntity", "m_sLastDamageSourceName", value); }
@@ -129,7 +129,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_vLastDamagePosition
 	[SchemaMember("CBaseModelEntity", "m_vLastDamagePosition")]
-	public Vector3 LastDamagePosition
+	public virtual Vector3 LastDamagePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vLastDamagePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vLastDamagePosition", value); }
@@ -137,7 +137,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_flDissolveStartTime
 	[SchemaMember("CBaseModelEntity", "m_flDissolveStartTime")]
-	public float DissolveStartTime
+	public virtual float DissolveStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime", value); }
@@ -145,11 +145,11 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_OnIgnite
 	[SchemaMember("CBaseModelEntity", "m_OnIgnite")]
-	public CEntityIOOutput OnIgnite => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseModelEntity", "m_OnIgnite");
+	public virtual CEntityIOOutput OnIgnite => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseModelEntity", "m_OnIgnite");
 
 	// m_nRenderMode
 	[SchemaMember("CBaseModelEntity", "m_nRenderMode")]
-	public RenderMode_t RenderMode
+	public virtual RenderMode_t RenderMode
 	{
 		get { return Schema.GetValueType<RenderMode_t>(this.Handle, "CBaseModelEntity", "m_nRenderMode"); }
 		set { Schema.SetValueType<RenderMode_t>(this.Handle, "CBaseModelEntity", "m_nRenderMode", value); }
@@ -157,7 +157,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nRenderFX
 	[SchemaMember("CBaseModelEntity", "m_nRenderFX")]
-	public RenderFx_t RenderFX
+	public virtual RenderFx_t RenderFX
 	{
 		get { return Schema.GetValueType<RenderFx_t>(this.Handle, "CBaseModelEntity", "m_nRenderFX"); }
 		set { Schema.SetValueType<RenderFx_t>(this.Handle, "CBaseModelEntity", "m_nRenderFX", value); }
@@ -165,7 +165,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_bAllowFadeInView
 	[SchemaMember("CBaseModelEntity", "m_bAllowFadeInView")]
-	public bool AllowFadeInView
+	public virtual bool AllowFadeInView
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bAllowFadeInView"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bAllowFadeInView", value); }
@@ -173,7 +173,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_clrRender
 	[SchemaMember("CBaseModelEntity", "m_clrRender")]
-	public Color Render
+	public virtual Color Render
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CBaseModelEntity", "m_clrRender"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CBaseModelEntity", "m_clrRender", value); }
@@ -181,11 +181,11 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_vecRenderAttributes
 	[SchemaMember("CBaseModelEntity", "m_vecRenderAttributes")]
-	public NetworkedVector<EntityRenderAttribute_t> RenderAttributes => Schema.GetDeclaredClass<NetworkedVector<EntityRenderAttribute_t>>(this.Handle, "CBaseModelEntity", "m_vecRenderAttributes");
+	public virtual NetworkedVector<EntityRenderAttribute_t> RenderAttributes => Schema.GetDeclaredClass<NetworkedVector<EntityRenderAttribute_t>>(this.Handle, "CBaseModelEntity", "m_vecRenderAttributes");
 
 	// m_bRenderToCubemaps
 	[SchemaMember("CBaseModelEntity", "m_bRenderToCubemaps")]
-	public bool RenderToCubemaps
+	public virtual bool RenderToCubemaps
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps", value); }
@@ -193,7 +193,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_bNoInterpolate
 	[SchemaMember("CBaseModelEntity", "m_bNoInterpolate")]
-	public bool NoInterpolate
+	public virtual bool NoInterpolate
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bNoInterpolate"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bNoInterpolate", value); }
@@ -201,15 +201,15 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_Collision
 	[SchemaMember("CBaseModelEntity", "m_Collision")]
-	public new CCollisionProperty Collision => Schema.GetDeclaredClass<CCollisionProperty>(this.Handle, "CBaseModelEntity", "m_Collision");
+	public virtual new CCollisionProperty Collision => Schema.GetDeclaredClass<CCollisionProperty>(this.Handle, "CBaseModelEntity", "m_Collision");
 
 	// m_Glow
 	[SchemaMember("CBaseModelEntity", "m_Glow")]
-	public CGlowProperty Glow => Schema.GetDeclaredClass<CGlowProperty>(this.Handle, "CBaseModelEntity", "m_Glow");
+	public virtual CGlowProperty Glow => Schema.GetDeclaredClass<CGlowProperty>(this.Handle, "CBaseModelEntity", "m_Glow");
 
 	// m_flGlowBackfaceMult
 	[SchemaMember("CBaseModelEntity", "m_flGlowBackfaceMult")]
-	public float GlowBackfaceMult
+	public virtual float GlowBackfaceMult
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flGlowBackfaceMult"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flGlowBackfaceMult", value); }
@@ -217,7 +217,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_fadeMinDist
 	[SchemaMember("CBaseModelEntity", "m_fadeMinDist")]
-	public float FadeMinDist
+	public virtual float FadeMinDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMinDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMinDist", value); }
@@ -225,7 +225,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_fadeMaxDist
 	[SchemaMember("CBaseModelEntity", "m_fadeMaxDist")]
-	public float FadeMaxDist
+	public virtual float FadeMaxDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMaxDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMaxDist", value); }
@@ -233,7 +233,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_flFadeScale
 	[SchemaMember("CBaseModelEntity", "m_flFadeScale")]
-	public float FadeScale
+	public virtual float FadeScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flFadeScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flFadeScale", value); }
@@ -241,7 +241,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_flShadowStrength
 	[SchemaMember("CBaseModelEntity", "m_flShadowStrength")]
-	public float ShadowStrength
+	public virtual float ShadowStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flShadowStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flShadowStrength", value); }
@@ -249,7 +249,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nObjectCulling
 	[SchemaMember("CBaseModelEntity", "m_nObjectCulling")]
-	public byte ObjectCulling
+	public virtual byte ObjectCulling
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CBaseModelEntity", "m_nObjectCulling"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CBaseModelEntity", "m_nObjectCulling", value); }
@@ -257,7 +257,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nAddDecal
 	[SchemaMember("CBaseModelEntity", "m_nAddDecal")]
-	public Int32 AddDecal
+	public virtual Int32 AddDecal
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nAddDecal"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nAddDecal", value); }
@@ -265,7 +265,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_vDecalPosition
 	[SchemaMember("CBaseModelEntity", "m_vDecalPosition")]
-	public Vector3 DecalPosition
+	public virtual Vector3 DecalPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalPosition", value); }
@@ -273,7 +273,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_vDecalForwardAxis
 	[SchemaMember("CBaseModelEntity", "m_vDecalForwardAxis")]
-	public Vector3 DecalForwardAxis
+	public virtual Vector3 DecalForwardAxis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalForwardAxis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalForwardAxis", value); }
@@ -281,7 +281,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDecalMode
 	[SchemaMember("CBaseModelEntity", "m_nDecalMode")]
-	public DecalMode_t DecalMode
+	public virtual DecalMode_t DecalMode
 	{
 		get { return Schema.GetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode"); }
 		set { Schema.SetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode", value); }
@@ -289,7 +289,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nRequiredDecalMode
 	[SchemaMember("CBaseModelEntity", "m_nRequiredDecalMode")]
-	public DecalMode_t RequiredDecalMode
+	public virtual DecalMode_t RequiredDecalMode
 	{
 		get { return Schema.GetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nRequiredDecalMode"); }
 		set { Schema.SetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nRequiredDecalMode", value); }
@@ -297,39 +297,39 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_ConfigEntitiesToPropagateMaterialDecalsTo
 	[SchemaMember("CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo")]
-	public NetworkedVector<CHandle<CBaseModelEntity>> ConfigEntitiesToPropagateMaterialDecalsTo => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
+	public virtual NetworkedVector<CHandle<CBaseModelEntity>> ConfigEntitiesToPropagateMaterialDecalsTo => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
 
 	// m_vecViewOffset
 	[SchemaMember("CBaseModelEntity", "m_vecViewOffset")]
-	public CNetworkViewOffsetVector ViewOffset => Schema.GetDeclaredClass<CNetworkViewOffsetVector>(this.Handle, "CBaseModelEntity", "m_vecViewOffset");
+	public virtual CNetworkViewOffsetVector ViewOffset => Schema.GetDeclaredClass<CNetworkViewOffsetVector>(this.Handle, "CBaseModelEntity", "m_vecViewOffset");
 
 	// m_bvDisabledHitGroups
 	[SchemaMember("CBaseModelEntity", "m_bvDisabledHitGroups")]
-	public Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CBaseModelEntity", "m_bvDisabledHitGroups", 1);
+	public virtual Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CBaseModelEntity", "m_bvDisabledHitGroups", 1);
 
-	public void CRenderComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_CRenderComponent");
-	public void CHitboxComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_CHitboxComponent");
-	public void DestructiblePartsSystemComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
-	public void RenderModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRenderMode");
-	public void RenderFXPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRenderFX");
-	public void RenderPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_clrRender");
-	public void RenderAttributesPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vecRenderAttributes");
-	public void RenderToCubemapsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bRenderToCubemaps");
-	public void NoInterpolatePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bNoInterpolate");
-	public void CollisionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_Collision");
-	public void GlowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_Glow");
-	public void GlowBackfaceMultPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flGlowBackfaceMult");
-	public void FadeMinDistPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_fadeMinDist");
-	public void FadeMaxDistPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_fadeMaxDist");
-	public void FadeScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flFadeScale");
-	public void ShadowStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flShadowStrength");
-	public void ObjectCullingPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nObjectCulling");
-	public void AddDecalPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nAddDecal");
-	public void DecalPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vDecalPosition");
-	public void DecalForwardAxisPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vDecalForwardAxis");
-	public void DecalModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nDecalMode");
-	public void RequiredDecalModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRequiredDecalMode");
-	public void ConfigEntitiesToPropagateMaterialDecalsToPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
-	public void ViewOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vecViewOffset");
-	public void DisabledHitGroupsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bvDisabledHitGroups");
+	public virtual void CRenderComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_CRenderComponent");
+	public virtual void CHitboxComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_CHitboxComponent");
+	public virtual void DestructiblePartsSystemComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
+	public virtual void RenderModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRenderMode");
+	public virtual void RenderFXPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRenderFX");
+	public virtual void RenderPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_clrRender");
+	public virtual void RenderAttributesPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vecRenderAttributes");
+	public virtual void RenderToCubemapsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bRenderToCubemaps");
+	public virtual void NoInterpolatePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bNoInterpolate");
+	public virtual void CollisionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_Collision");
+	public virtual void GlowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_Glow");
+	public virtual void GlowBackfaceMultPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flGlowBackfaceMult");
+	public virtual void FadeMinDistPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_fadeMinDist");
+	public virtual void FadeMaxDistPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_fadeMaxDist");
+	public virtual void FadeScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flFadeScale");
+	public virtual void ShadowStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flShadowStrength");
+	public virtual void ObjectCullingPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nObjectCulling");
+	public virtual void AddDecalPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nAddDecal");
+	public virtual void DecalPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vDecalPosition");
+	public virtual void DecalForwardAxisPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vDecalForwardAxis");
+	public virtual void DecalModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nDecalMode");
+	public virtual void RequiredDecalModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRequiredDecalMode");
+	public virtual void ConfigEntitiesToPropagateMaterialDecalsToPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
+	public virtual void ViewOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vecViewOffset");
+	public virtual void DisabledHitGroupsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bvDisabledHitGroups");
 }

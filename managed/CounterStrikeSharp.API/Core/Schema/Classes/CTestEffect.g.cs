@@ -21,7 +21,7 @@ public partial class CTestEffect : CBaseEntity
 
 	// m_iLoop
 	[SchemaMember("CTestEffect", "m_iLoop")]
-	public Int32 Loop
+	public virtual Int32 Loop
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTestEffect", "m_iLoop"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTestEffect", "m_iLoop", value); }
@@ -29,7 +29,7 @@ public partial class CTestEffect : CBaseEntity
 
 	// m_iBeam
 	[SchemaMember("CTestEffect", "m_iBeam")]
-	public Int32 IBeam
+	public virtual Int32 IBeam
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTestEffect", "m_iBeam"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTestEffect", "m_iBeam", value); }
@@ -37,15 +37,15 @@ public partial class CTestEffect : CBaseEntity
 
 	// m_pBeam
 	[SchemaMember("CTestEffect", "m_pBeam")]
-	public Span<CBeam?> PBeam => Schema.GetFixedArray<CBeam?>(this.Handle, "CTestEffect", "m_pBeam", 24);
+	public virtual Span<CBeam?> PBeam => Schema.GetFixedArray<CBeam?>(this.Handle, "CTestEffect", "m_pBeam", 24);
 
 	// m_flBeamTime
 	[SchemaMember("CTestEffect", "m_flBeamTime")]
-	public Span<float> BeamTime => Schema.GetFixedArray<float>(this.Handle, "CTestEffect", "m_flBeamTime", 24);
+	public virtual Span<float> BeamTime => Schema.GetFixedArray<float>(this.Handle, "CTestEffect", "m_flBeamTime", 24);
 
 	// m_flStartTime
 	[SchemaMember("CTestEffect", "m_flStartTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTestEffect", "m_flStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTestEffect", "m_flStartTime", value); }

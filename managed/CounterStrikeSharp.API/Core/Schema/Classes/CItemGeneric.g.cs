@@ -21,7 +21,7 @@ public partial class CItemGeneric : CItem
 
 	// m_bHasTriggerRadius
 	[SchemaMember("CItemGeneric", "m_bHasTriggerRadius")]
-	public bool HasTriggerRadius
+	public virtual bool HasTriggerRadius
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasTriggerRadius"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasTriggerRadius", value); }
@@ -29,7 +29,7 @@ public partial class CItemGeneric : CItem
 
 	// m_bHasPickupRadius
 	[SchemaMember("CItemGeneric", "m_bHasPickupRadius")]
-	public bool HasPickupRadius
+	public virtual bool HasPickupRadius
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasPickupRadius"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasPickupRadius", value); }
@@ -37,7 +37,7 @@ public partial class CItemGeneric : CItem
 
 	// m_flPickupRadiusSqr
 	[SchemaMember("CItemGeneric", "m_flPickupRadiusSqr")]
-	public float PickupRadiusSqr
+	public virtual float PickupRadiusSqr
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadiusSqr"); }
 		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadiusSqr", value); }
@@ -45,7 +45,7 @@ public partial class CItemGeneric : CItem
 
 	// m_flTriggerRadiusSqr
 	[SchemaMember("CItemGeneric", "m_flTriggerRadiusSqr")]
-	public float TriggerRadiusSqr
+	public virtual float TriggerRadiusSqr
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadiusSqr"); }
 		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadiusSqr", value); }
@@ -53,7 +53,7 @@ public partial class CItemGeneric : CItem
 
 	// m_flLastPickupCheck
 	[SchemaMember("CItemGeneric", "m_flLastPickupCheck")]
-	public float LastPickupCheck
+	public virtual float LastPickupCheck
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flLastPickupCheck"); }
 		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flLastPickupCheck", value); }
@@ -61,7 +61,7 @@ public partial class CItemGeneric : CItem
 
 	// m_bPlayerCounterListenerAdded
 	[SchemaMember("CItemGeneric", "m_bPlayerCounterListenerAdded")]
-	public bool PlayerCounterListenerAdded
+	public virtual bool PlayerCounterListenerAdded
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerCounterListenerAdded"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerCounterListenerAdded", value); }
@@ -69,7 +69,7 @@ public partial class CItemGeneric : CItem
 
 	// m_bPlayerInTriggerRadius
 	[SchemaMember("CItemGeneric", "m_bPlayerInTriggerRadius")]
-	public bool PlayerInTriggerRadius
+	public virtual bool PlayerInTriggerRadius
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerInTriggerRadius"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerInTriggerRadius", value); }
@@ -77,11 +77,11 @@ public partial class CItemGeneric : CItem
 
 	// m_hSpawnParticleEffect
 	[SchemaMember("CItemGeneric", "m_hSpawnParticleEffect")]
-	public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> SpawnParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hSpawnParticleEffect");
+	public virtual CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> SpawnParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hSpawnParticleEffect");
 
 	// m_pAmbientSoundEffect
 	[SchemaMember("CItemGeneric", "m_pAmbientSoundEffect")]
-	public string AmbientSoundEffect
+	public virtual string AmbientSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pAmbientSoundEffect"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAmbientSoundEffect", value); }
@@ -89,7 +89,7 @@ public partial class CItemGeneric : CItem
 
 	// m_bAutoStartAmbientSound
 	[SchemaMember("CItemGeneric", "m_bAutoStartAmbientSound")]
-	public bool AutoStartAmbientSound
+	public virtual bool AutoStartAmbientSound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bAutoStartAmbientSound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bAutoStartAmbientSound", value); }
@@ -97,7 +97,7 @@ public partial class CItemGeneric : CItem
 
 	// m_pSpawnScriptFunction
 	[SchemaMember("CItemGeneric", "m_pSpawnScriptFunction")]
-	public string SpawnScriptFunction
+	public virtual string SpawnScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pSpawnScriptFunction"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pSpawnScriptFunction", value); }
@@ -105,11 +105,11 @@ public partial class CItemGeneric : CItem
 
 	// m_hPickupParticleEffect
 	[SchemaMember("CItemGeneric", "m_hPickupParticleEffect")]
-	public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> PickupParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hPickupParticleEffect");
+	public virtual CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> PickupParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hPickupParticleEffect");
 
 	// m_pPickupSoundEffect
 	[SchemaMember("CItemGeneric", "m_pPickupSoundEffect")]
-	public string PickupSoundEffect
+	public virtual string PickupSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupSoundEffect"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupSoundEffect", value); }
@@ -117,7 +117,7 @@ public partial class CItemGeneric : CItem
 
 	// m_pPickupScriptFunction
 	[SchemaMember("CItemGeneric", "m_pPickupScriptFunction")]
-	public string PickupScriptFunction
+	public virtual string PickupScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupScriptFunction"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupScriptFunction", value); }
@@ -125,11 +125,11 @@ public partial class CItemGeneric : CItem
 
 	// m_hTimeoutParticleEffect
 	[SchemaMember("CItemGeneric", "m_hTimeoutParticleEffect")]
-	public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> TimeoutParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hTimeoutParticleEffect");
+	public virtual CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> TimeoutParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hTimeoutParticleEffect");
 
 	// m_pTimeoutSoundEffect
 	[SchemaMember("CItemGeneric", "m_pTimeoutSoundEffect")]
-	public string TimeoutSoundEffect
+	public virtual string TimeoutSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTimeoutSoundEffect"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutSoundEffect", value); }
@@ -137,7 +137,7 @@ public partial class CItemGeneric : CItem
 
 	// m_pTimeoutScriptFunction
 	[SchemaMember("CItemGeneric", "m_pTimeoutScriptFunction")]
-	public string TimeoutScriptFunction
+	public virtual string TimeoutScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTimeoutScriptFunction"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutScriptFunction", value); }
@@ -145,7 +145,7 @@ public partial class CItemGeneric : CItem
 
 	// m_pPickupFilterName
 	[SchemaMember("CItemGeneric", "m_pPickupFilterName")]
-	public string PickupFilterName
+	public virtual string PickupFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupFilterName"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupFilterName", value); }
@@ -153,31 +153,31 @@ public partial class CItemGeneric : CItem
 
 	// m_hPickupFilter
 	[SchemaMember("CItemGeneric", "m_hPickupFilter")]
-	public CHandle<CBaseFilter> PickupFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CItemGeneric", "m_hPickupFilter");
+	public virtual CHandle<CBaseFilter> PickupFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CItemGeneric", "m_hPickupFilter");
 
 	// m_OnPickup
 	[SchemaMember("CItemGeneric", "m_OnPickup")]
-	public CEntityIOOutput OnPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnPickup");
+	public virtual CEntityIOOutput OnPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnPickup");
 
 	// m_OnTimeout
 	[SchemaMember("CItemGeneric", "m_OnTimeout")]
-	public CEntityIOOutput OnTimeout => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTimeout");
+	public virtual CEntityIOOutput OnTimeout => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTimeout");
 
 	// m_OnTriggerStartTouch
 	[SchemaMember("CItemGeneric", "m_OnTriggerStartTouch")]
-	public CEntityIOOutput OnTriggerStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerStartTouch");
+	public virtual CEntityIOOutput OnTriggerStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerStartTouch");
 
 	// m_OnTriggerTouch
 	[SchemaMember("CItemGeneric", "m_OnTriggerTouch")]
-	public CEntityIOOutput OnTriggerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerTouch");
+	public virtual CEntityIOOutput OnTriggerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerTouch");
 
 	// m_OnTriggerEndTouch
 	[SchemaMember("CItemGeneric", "m_OnTriggerEndTouch")]
-	public CEntityIOOutput OnTriggerEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerEndTouch");
+	public virtual CEntityIOOutput OnTriggerEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerEndTouch");
 
 	// m_pAllowPickupScriptFunction
 	[SchemaMember("CItemGeneric", "m_pAllowPickupScriptFunction")]
-	public string AllowPickupScriptFunction
+	public virtual string AllowPickupScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pAllowPickupScriptFunction"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAllowPickupScriptFunction", value); }
@@ -185,7 +185,7 @@ public partial class CItemGeneric : CItem
 
 	// m_flPickupRadius
 	[SchemaMember("CItemGeneric", "m_flPickupRadius")]
-	public float PickupRadius
+	public virtual float PickupRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadius", value); }
@@ -193,7 +193,7 @@ public partial class CItemGeneric : CItem
 
 	// m_flTriggerRadius
 	[SchemaMember("CItemGeneric", "m_flTriggerRadius")]
-	public float TriggerRadius
+	public virtual float TriggerRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadius", value); }
@@ -201,7 +201,7 @@ public partial class CItemGeneric : CItem
 
 	// m_pTriggerSoundEffect
 	[SchemaMember("CItemGeneric", "m_pTriggerSoundEffect")]
-	public string TriggerSoundEffect
+	public virtual string TriggerSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTriggerSoundEffect"); }
 		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTriggerSoundEffect", value); }
@@ -209,7 +209,7 @@ public partial class CItemGeneric : CItem
 
 	// m_bGlowWhenInTrigger
 	[SchemaMember("CItemGeneric", "m_bGlowWhenInTrigger")]
-	public bool GlowWhenInTrigger
+	public virtual bool GlowWhenInTrigger
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bGlowWhenInTrigger"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bGlowWhenInTrigger", value); }
@@ -217,7 +217,7 @@ public partial class CItemGeneric : CItem
 
 	// m_glowColor
 	[SchemaMember("CItemGeneric", "m_glowColor")]
-	public Color GlowColor
+	public virtual Color GlowColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CItemGeneric", "m_glowColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CItemGeneric", "m_glowColor", value); }
@@ -225,7 +225,7 @@ public partial class CItemGeneric : CItem
 
 	// m_bUseable
 	[SchemaMember("CItemGeneric", "m_bUseable")]
-	public bool Useable
+	public virtual bool Useable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bUseable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bUseable", value); }
@@ -233,6 +233,6 @@ public partial class CItemGeneric : CItem
 
 	// m_hTriggerHelper
 	[SchemaMember("CItemGeneric", "m_hTriggerHelper")]
-	public CHandle<CItemGenericTriggerHelper> TriggerHelper => Schema.GetDeclaredClass<CHandle<CItemGenericTriggerHelper>>(this.Handle, "CItemGeneric", "m_hTriggerHelper");
+	public virtual CHandle<CItemGenericTriggerHelper> TriggerHelper => Schema.GetDeclaredClass<CHandle<CItemGenericTriggerHelper>>(this.Handle, "CItemGeneric", "m_hTriggerHelper");
 
 }

@@ -21,7 +21,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_ActualFlags
 	[SchemaMember("CDynamicLight", "m_ActualFlags")]
-	public byte ActualFlags
+	public virtual byte ActualFlags
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CDynamicLight", "m_ActualFlags"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CDynamicLight", "m_ActualFlags", value); }
@@ -29,7 +29,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_Flags
 	[SchemaMember("CDynamicLight", "m_Flags")]
-	public byte DynamicLightFlags
+	public virtual byte DynamicLightFlags
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CDynamicLight", "m_Flags"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CDynamicLight", "m_Flags", value); }
@@ -37,7 +37,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_LightStyle
 	[SchemaMember("CDynamicLight", "m_LightStyle")]
-	public byte LightStyle
+	public virtual byte LightStyle
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CDynamicLight", "m_LightStyle"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CDynamicLight", "m_LightStyle", value); }
@@ -45,7 +45,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_On
 	[SchemaMember("CDynamicLight", "m_On")]
-	public bool On
+	public virtual bool On
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicLight", "m_On"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CDynamicLight", "m_On", value); }
@@ -53,7 +53,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_Radius
 	[SchemaMember("CDynamicLight", "m_Radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_Radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_Radius", value); }
@@ -61,7 +61,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_Exponent
 	[SchemaMember("CDynamicLight", "m_Exponent")]
-	public Int32 Exponent
+	public virtual Int32 Exponent
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CDynamicLight", "m_Exponent"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CDynamicLight", "m_Exponent", value); }
@@ -69,7 +69,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_InnerAngle
 	[SchemaMember("CDynamicLight", "m_InnerAngle")]
-	public float InnerAngle
+	public virtual float InnerAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_InnerAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_InnerAngle", value); }
@@ -77,7 +77,7 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_OuterAngle
 	[SchemaMember("CDynamicLight", "m_OuterAngle")]
-	public float OuterAngle
+	public virtual float OuterAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_OuterAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_OuterAngle", value); }
@@ -85,17 +85,17 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_SpotRadius
 	[SchemaMember("CDynamicLight", "m_SpotRadius")]
-	public float SpotRadius
+	public virtual float SpotRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_SpotRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_SpotRadius", value); }
 	}
 
-	public void DynamicLightFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Flags");
-	public void LightStylePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_LightStyle");
-	public void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Radius");
-	public void ExponentPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Exponent");
-	public void InnerAnglePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_InnerAngle");
-	public void OuterAnglePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_OuterAngle");
-	public void SpotRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_SpotRadius");
+	public virtual void DynamicLightFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Flags");
+	public virtual void LightStylePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_LightStyle");
+	public virtual void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Radius");
+	public virtual void ExponentPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Exponent");
+	public virtual void InnerAnglePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_InnerAngle");
+	public virtual void OuterAnglePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_OuterAngle");
+	public virtual void SpotRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_SpotRadius");
 }

@@ -21,15 +21,15 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 
 	// m_perRoundStats
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_perRoundStats")]
-	public NetworkedVector<CSPerRoundStats_t> PerRoundStats => Schema.GetDeclaredClass<NetworkedVector<CSPerRoundStats_t>>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_perRoundStats");
+	public virtual NetworkedVector<CSPerRoundStats_t> PerRoundStats => Schema.GetDeclaredClass<NetworkedVector<CSPerRoundStats_t>>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_perRoundStats");
 
 	// m_matchStats
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_matchStats")]
-	public CSMatchStats_t MatchStats => Schema.GetDeclaredClass<CSMatchStats_t>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_matchStats");
+	public virtual CSMatchStats_t MatchStats => Schema.GetDeclaredClass<CSMatchStats_t>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_matchStats");
 
 	// m_iNumRoundKills
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills")]
-	public Int32 NumRoundKills
+	public virtual Int32 NumRoundKills
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 
 	// m_iNumRoundKillsHeadshots
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots")]
-	public Int32 NumRoundKillsHeadshots
+	public virtual Int32 NumRoundKillsHeadshots
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots", value); }
@@ -45,15 +45,15 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 
 	// m_flTotalRoundDamageDealt
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt")]
-	public float TotalRoundDamageDealt
+	public virtual float TotalRoundDamageDealt
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt", value); }
 	}
 
-	public void PerRoundStatsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_perRoundStats");
-	public void MatchStatsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_matchStats");
-	public void NumRoundKillsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills");
-	public void NumRoundKillsHeadshotsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
-	public void TotalRoundDamageDealtPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt");
+	public virtual void PerRoundStatsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_perRoundStats");
+	public virtual void MatchStatsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_matchStats");
+	public virtual void NumRoundKillsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills");
+	public virtual void NumRoundKillsHeadshotsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
+	public virtual void TotalRoundDamageDealtPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt");
 }

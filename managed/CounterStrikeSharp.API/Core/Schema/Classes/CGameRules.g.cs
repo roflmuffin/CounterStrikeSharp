@@ -21,11 +21,11 @@ public partial class CGameRules : NativeObject
 
 	// __m_pChainEntity
 	[SchemaMember("CGameRules", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CGameRules", "__m_pChainEntity");
+	public virtual CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CGameRules", "__m_pChainEntity");
 
 	// m_szQuestName
 	[SchemaMember("CGameRules", "m_szQuestName")]
-	public string QuestName
+	public virtual string QuestName
 	{
 		get { return Schema.GetString(this.Handle, "CGameRules", "m_szQuestName"); }
 		set { Schema.SetStringBytes(this.Handle, "CGameRules", "m_szQuestName", value, 128); }
@@ -33,7 +33,7 @@ public partial class CGameRules : NativeObject
 
 	// m_nQuestPhase
 	[SchemaMember("CGameRules", "m_nQuestPhase")]
-	public Int32 QuestPhase
+	public virtual Int32 QuestPhase
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGameRules", "m_nQuestPhase"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGameRules", "m_nQuestPhase", value); }
@@ -41,7 +41,7 @@ public partial class CGameRules : NativeObject
 
 	// m_nTotalPausedTicks
 	[SchemaMember("CGameRules", "m_nTotalPausedTicks")]
-	public Int32 TotalPausedTicks
+	public virtual Int32 TotalPausedTicks
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGameRules", "m_nTotalPausedTicks"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGameRules", "m_nTotalPausedTicks", value); }
@@ -49,7 +49,7 @@ public partial class CGameRules : NativeObject
 
 	// m_nPauseStartTick
 	[SchemaMember("CGameRules", "m_nPauseStartTick")]
-	public Int32 PauseStartTick
+	public virtual Int32 PauseStartTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CGameRules", "m_nPauseStartTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CGameRules", "m_nPauseStartTick", value); }
@@ -57,13 +57,13 @@ public partial class CGameRules : NativeObject
 
 	// m_bGamePaused
 	[SchemaMember("CGameRules", "m_bGamePaused")]
-	public bool GamePaused
+	public virtual bool GamePaused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGameRules", "m_bGamePaused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGameRules", "m_bGamePaused", value); }
 	}
 
-	public void TotalPausedTicksPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_nTotalPausedTicks");
-	public void PauseStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_nPauseStartTick");
-	public void GamePausedPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_bGamePaused");
+	public virtual void TotalPausedTicksPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_nTotalPausedTicks");
+	public virtual void PauseStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_nPauseStartTick");
+	public virtual void GamePausedPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_bGamePaused");
 }

@@ -21,23 +21,23 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_CPropDataComponent
 	[SchemaMember("CBreakableProp", "m_CPropDataComponent")]
-	public CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CBreakableProp", "m_CPropDataComponent");
+	public virtual CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CBreakableProp", "m_CPropDataComponent");
 
 	// m_OnStartDeath
 	[SchemaMember("CBreakableProp", "m_OnStartDeath")]
-	public CEntityIOOutput OnStartDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnStartDeath");
+	public virtual CEntityIOOutput OnStartDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnStartDeath");
 
 	// m_OnBreak
 	[SchemaMember("CBreakableProp", "m_OnBreak")]
-	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnBreak");
+	public virtual CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnBreak");
 
 	// m_OnTakeDamage
 	[SchemaMember("CBreakableProp", "m_OnTakeDamage")]
-	public CEntityIOOutput OnTakeDamage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnTakeDamage");
+	public virtual CEntityIOOutput OnTakeDamage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnTakeDamage");
 
 	// m_impactEnergyScale
 	[SchemaMember("CBreakableProp", "m_impactEnergyScale")]
-	public float ImpactEnergyScale
+	public virtual float ImpactEnergyScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_impactEnergyScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_impactEnergyScale", value); }
@@ -45,7 +45,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_iMinHealthDmg
 	[SchemaMember("CBreakableProp", "m_iMinHealthDmg")]
-	public Int32 MinHealthDmg
+	public virtual Int32 MinHealthDmg
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBreakableProp", "m_iMinHealthDmg"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBreakableProp", "m_iMinHealthDmg", value); }
@@ -53,7 +53,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_preferredCarryAngles
 	[SchemaMember("CBreakableProp", "m_preferredCarryAngles")]
-	public QAngle PreferredCarryAngles
+	public virtual QAngle PreferredCarryAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBreakableProp", "m_preferredCarryAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBreakableProp", "m_preferredCarryAngles", value); }
@@ -61,7 +61,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_flPressureDelay
 	[SchemaMember("CBreakableProp", "m_flPressureDelay")]
-	public float PressureDelay
+	public virtual float PressureDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flPressureDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flPressureDelay", value); }
@@ -69,7 +69,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_flDefBurstScale
 	[SchemaMember("CBreakableProp", "m_flDefBurstScale")]
-	public float DefBurstScale
+	public virtual float DefBurstScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flDefBurstScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flDefBurstScale", value); }
@@ -77,7 +77,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_vDefBurstOffset
 	[SchemaMember("CBreakableProp", "m_vDefBurstOffset")]
-	public Vector3 DefBurstOffset
+	public virtual Vector3 DefBurstOffset
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBreakableProp", "m_vDefBurstOffset"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBreakableProp", "m_vDefBurstOffset", value); }
@@ -85,11 +85,11 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_hBreaker
 	[SchemaMember("CBreakableProp", "m_hBreaker")]
-	public CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hBreaker");
+	public virtual CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hBreaker");
 
 	// m_PerformanceMode
 	[SchemaMember("CBreakableProp", "m_PerformanceMode")]
-	public PerformanceMode_t PerformanceMode
+	public virtual PerformanceMode_t PerformanceMode
 	{
 		get { return Schema.GetValueType<PerformanceMode_t>(this.Handle, "CBreakableProp", "m_PerformanceMode"); }
 		set { Schema.SetValueType<PerformanceMode_t>(this.Handle, "CBreakableProp", "m_PerformanceMode", value); }
@@ -97,7 +97,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_flPreventDamageBeforeTime
 	[SchemaMember("CBreakableProp", "m_flPreventDamageBeforeTime")]
-	public float PreventDamageBeforeTime
+	public virtual float PreventDamageBeforeTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime", value); }
@@ -105,7 +105,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_BreakableContentsType
 	[SchemaMember("CBreakableProp", "m_BreakableContentsType")]
-	public BreakableContentsType_t BreakableContentsType
+	public virtual BreakableContentsType_t BreakableContentsType
 	{
 		get { return Schema.GetValueType<BreakableContentsType_t>(this.Handle, "CBreakableProp", "m_BreakableContentsType"); }
 		set { Schema.SetValueType<BreakableContentsType_t>(this.Handle, "CBreakableProp", "m_BreakableContentsType", value); }
@@ -113,7 +113,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_strBreakableContentsPropGroupOverride
 	[SchemaMember("CBreakableProp", "m_strBreakableContentsPropGroupOverride")]
-	public string StrBreakableContentsPropGroupOverride
+	public virtual string StrBreakableContentsPropGroupOverride
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_strBreakableContentsPropGroupOverride"); }
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_strBreakableContentsPropGroupOverride", value); }
@@ -121,7 +121,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_strBreakableContentsParticleOverride
 	[SchemaMember("CBreakableProp", "m_strBreakableContentsParticleOverride")]
-	public string StrBreakableContentsParticleOverride
+	public virtual string StrBreakableContentsParticleOverride
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_strBreakableContentsParticleOverride"); }
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_strBreakableContentsParticleOverride", value); }
@@ -129,7 +129,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_bHasBreakPiecesOrCommands
 	[SchemaMember("CBreakableProp", "m_bHasBreakPiecesOrCommands")]
-	public bool HasBreakPiecesOrCommands
+	public virtual bool HasBreakPiecesOrCommands
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBreakableProp", "m_bHasBreakPiecesOrCommands"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBreakableProp", "m_bHasBreakPiecesOrCommands", value); }
@@ -137,7 +137,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_explodeDamage
 	[SchemaMember("CBreakableProp", "m_explodeDamage")]
-	public float ExplodeDamage
+	public virtual float ExplodeDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_explodeDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_explodeDamage", value); }
@@ -145,7 +145,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_explodeRadius
 	[SchemaMember("CBreakableProp", "m_explodeRadius")]
-	public float ExplodeRadius
+	public virtual float ExplodeRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_explodeRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_explodeRadius", value); }
@@ -153,7 +153,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_explosionDelay
 	[SchemaMember("CBreakableProp", "m_explosionDelay")]
-	public float ExplosionDelay
+	public virtual float ExplosionDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_explosionDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_explosionDelay", value); }
@@ -161,7 +161,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_explosionBuildupSound
 	[SchemaMember("CBreakableProp", "m_explosionBuildupSound")]
-	public string ExplosionBuildupSound
+	public virtual string ExplosionBuildupSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionBuildupSound"); }
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionBuildupSound", value); }
@@ -169,7 +169,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_explosionCustomEffect
 	[SchemaMember("CBreakableProp", "m_explosionCustomEffect")]
-	public string ExplosionCustomEffect
+	public virtual string ExplosionCustomEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionCustomEffect"); }
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomEffect", value); }
@@ -177,7 +177,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_explosionCustomSound
 	[SchemaMember("CBreakableProp", "m_explosionCustomSound")]
-	public string ExplosionCustomSound
+	public virtual string ExplosionCustomSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionCustomSound"); }
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomSound", value); }
@@ -185,7 +185,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_explosionModifier
 	[SchemaMember("CBreakableProp", "m_explosionModifier")]
-	public string ExplosionModifier
+	public virtual string ExplosionModifier
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionModifier"); }
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionModifier", value); }
@@ -193,11 +193,11 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_hPhysicsAttacker
 	[SchemaMember("CBreakableProp", "m_hPhysicsAttacker")]
-	public CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakableProp", "m_hPhysicsAttacker");
+	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakableProp", "m_hPhysicsAttacker");
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CBreakableProp", "m_flLastPhysicsInfluenceTime")]
-	public float LastPhysicsInfluenceTime
+	public virtual float LastPhysicsInfluenceTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flLastPhysicsInfluenceTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flLastPhysicsInfluenceTime", value); }
@@ -205,7 +205,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_flDefaultFadeScale
 	[SchemaMember("CBreakableProp", "m_flDefaultFadeScale")]
-	public float DefaultFadeScale
+	public virtual float DefaultFadeScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flDefaultFadeScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flDefaultFadeScale", value); }
@@ -213,11 +213,11 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_hLastAttacker
 	[SchemaMember("CBreakableProp", "m_hLastAttacker")]
-	public CHandle<CBaseEntity> LastAttacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hLastAttacker");
+	public virtual CHandle<CBaseEntity> LastAttacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hLastAttacker");
 
 	// m_iszPuntSound
 	[SchemaMember("CBreakableProp", "m_iszPuntSound")]
-	public string PuntSound
+	public virtual string PuntSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszPuntSound"); }
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPuntSound", value); }
@@ -225,7 +225,7 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_bUsePuntSound
 	[SchemaMember("CBreakableProp", "m_bUsePuntSound")]
-	public bool UsePuntSound
+	public virtual bool UsePuntSound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound", value); }
@@ -233,11 +233,11 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_bOriginalBlockLOS
 	[SchemaMember("CBreakableProp", "m_bOriginalBlockLOS")]
-	public bool OriginalBlockLOS
+	public virtual bool OriginalBlockLOS
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS", value); }
 	}
 
-	public void CPropDataComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBreakableProp", "m_CPropDataComponent");
+	public virtual void CPropDataComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBreakableProp", "m_CPropDataComponent");
 }

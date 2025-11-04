@@ -21,7 +21,7 @@ public partial class CCSTeam : CTeam
 
 	// m_nLastRecievedShorthandedRoundBonus
 	[SchemaMember("CCSTeam", "m_nLastRecievedShorthandedRoundBonus")]
-	public Int32 LastRecievedShorthandedRoundBonus
+	public virtual Int32 LastRecievedShorthandedRoundBonus
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_nLastRecievedShorthandedRoundBonus"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_nLastRecievedShorthandedRoundBonus", value); }
@@ -29,7 +29,7 @@ public partial class CCSTeam : CTeam
 
 	// m_nShorthandedRoundBonusStartRound
 	[SchemaMember("CCSTeam", "m_nShorthandedRoundBonusStartRound")]
-	public Int32 ShorthandedRoundBonusStartRound
+	public virtual Int32 ShorthandedRoundBonusStartRound
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_nShorthandedRoundBonusStartRound"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_nShorthandedRoundBonusStartRound", value); }
@@ -37,7 +37,7 @@ public partial class CCSTeam : CTeam
 
 	// m_bSurrendered
 	[SchemaMember("CCSTeam", "m_bSurrendered")]
-	public bool Surrendered
+	public virtual bool Surrendered
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSTeam", "m_bSurrendered"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSTeam", "m_bSurrendered", value); }
@@ -45,7 +45,7 @@ public partial class CCSTeam : CTeam
 
 	// m_szTeamMatchStat
 	[SchemaMember("CCSTeam", "m_szTeamMatchStat")]
-	public string TeamMatchStat
+	public virtual string TeamMatchStat
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamMatchStat"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szTeamMatchStat", value, 512); }
@@ -53,7 +53,7 @@ public partial class CCSTeam : CTeam
 
 	// m_numMapVictories
 	[SchemaMember("CCSTeam", "m_numMapVictories")]
-	public Int32 NumMapVictories
+	public virtual Int32 NumMapVictories
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_numMapVictories"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_numMapVictories", value); }
@@ -61,7 +61,7 @@ public partial class CCSTeam : CTeam
 
 	// m_scoreFirstHalf
 	[SchemaMember("CCSTeam", "m_scoreFirstHalf")]
-	public Int32 ScoreFirstHalf
+	public virtual Int32 ScoreFirstHalf
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreFirstHalf"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreFirstHalf", value); }
@@ -69,7 +69,7 @@ public partial class CCSTeam : CTeam
 
 	// m_scoreSecondHalf
 	[SchemaMember("CCSTeam", "m_scoreSecondHalf")]
-	public Int32 ScoreSecondHalf
+	public virtual Int32 ScoreSecondHalf
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreSecondHalf"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreSecondHalf", value); }
@@ -77,7 +77,7 @@ public partial class CCSTeam : CTeam
 
 	// m_scoreOvertime
 	[SchemaMember("CCSTeam", "m_scoreOvertime")]
-	public Int32 ScoreOvertime
+	public virtual Int32 ScoreOvertime
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreOvertime"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreOvertime", value); }
@@ -85,7 +85,7 @@ public partial class CCSTeam : CTeam
 
 	// m_szClanTeamname
 	[SchemaMember("CCSTeam", "m_szClanTeamname")]
-	public string ClanTeamname
+	public virtual string ClanTeamname
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szClanTeamname"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szClanTeamname", value, 129); }
@@ -93,7 +93,7 @@ public partial class CCSTeam : CTeam
 
 	// m_iClanID
 	[SchemaMember("CCSTeam", "m_iClanID")]
-	public UInt32 ClanID
+	public virtual UInt32 ClanID
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSTeam", "m_iClanID"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CCSTeam", "m_iClanID", value); }
@@ -101,7 +101,7 @@ public partial class CCSTeam : CTeam
 
 	// m_szTeamFlagImage
 	[SchemaMember("CCSTeam", "m_szTeamFlagImage")]
-	public string TeamFlagImage
+	public virtual string TeamFlagImage
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamFlagImage"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szTeamFlagImage", value, 8); }
@@ -109,7 +109,7 @@ public partial class CCSTeam : CTeam
 
 	// m_szTeamLogoImage
 	[SchemaMember("CCSTeam", "m_szTeamLogoImage")]
-	public string TeamLogoImage
+	public virtual string TeamLogoImage
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamLogoImage"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szTeamLogoImage", value, 8); }
@@ -117,7 +117,7 @@ public partial class CCSTeam : CTeam
 
 	// m_flNextResourceTime
 	[SchemaMember("CCSTeam", "m_flNextResourceTime")]
-	public float NextResourceTime
+	public virtual float NextResourceTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSTeam", "m_flNextResourceTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSTeam", "m_flNextResourceTime", value); }
@@ -125,20 +125,20 @@ public partial class CCSTeam : CTeam
 
 	// m_iLastUpdateSentAt
 	[SchemaMember("CCSTeam", "m_iLastUpdateSentAt")]
-	public Int32 LastUpdateSentAt
+	public virtual Int32 LastUpdateSentAt
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_iLastUpdateSentAt"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_iLastUpdateSentAt", value); }
 	}
 
-	public void SurrenderedPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_bSurrendered");
-	public void TeamMatchStatPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamMatchStat");
-	public void NumMapVictoriesPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_numMapVictories");
-	public void ScoreFirstHalfPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreFirstHalf");
-	public void ScoreSecondHalfPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreSecondHalf");
-	public void ScoreOvertimePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreOvertime");
-	public void ClanTeamnamePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szClanTeamname");
-	public void ClanIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_iClanID");
-	public void TeamFlagImagePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamFlagImage");
-	public void TeamLogoImagePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamLogoImage");
+	public virtual void SurrenderedPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_bSurrendered");
+	public virtual void TeamMatchStatPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamMatchStat");
+	public virtual void NumMapVictoriesPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_numMapVictories");
+	public virtual void ScoreFirstHalfPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreFirstHalf");
+	public virtual void ScoreSecondHalfPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreSecondHalf");
+	public virtual void ScoreOvertimePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreOvertime");
+	public virtual void ClanTeamnamePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szClanTeamname");
+	public virtual void ClanIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_iClanID");
+	public virtual void TeamFlagImagePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamFlagImage");
+	public virtual void TeamLogoImagePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamLogoImage");
 }

@@ -21,11 +21,11 @@ public partial class DecalGroupOption_t : NativeObject
 
 	// m_hMaterial
 	[SchemaMember("DecalGroupOption_t", "m_hMaterial")]
-	public CStrongHandleCopyable<InfoForResourceTypeIMaterial2> Material => Schema.GetDeclaredClass<CStrongHandleCopyable<InfoForResourceTypeIMaterial2>>(this.Handle, "DecalGroupOption_t", "m_hMaterial");
+	public virtual CStrongHandleCopyable<InfoForResourceTypeIMaterial2> Material => Schema.GetDeclaredClass<CStrongHandleCopyable<InfoForResourceTypeIMaterial2>>(this.Handle, "DecalGroupOption_t", "m_hMaterial");
 
 	// m_sSequenceName
 	[SchemaMember("DecalGroupOption_t", "m_sSequenceName")]
-	public string SequenceName
+	public virtual string SequenceName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "DecalGroupOption_t", "m_sSequenceName"); }
 		set { Schema.SetString(this.Handle, "DecalGroupOption_t", "m_sSequenceName", value); }
@@ -33,7 +33,7 @@ public partial class DecalGroupOption_t : NativeObject
 
 	// m_flProbability
 	[SchemaMember("DecalGroupOption_t", "m_flProbability")]
-	public float Probability
+	public virtual float Probability
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flProbability"); }
 		set { Schema.SetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flProbability", value); }
@@ -41,7 +41,7 @@ public partial class DecalGroupOption_t : NativeObject
 
 	// m_bEnableAngleBetweenNormalAndGravityRange
 	[SchemaMember("DecalGroupOption_t", "m_bEnableAngleBetweenNormalAndGravityRange")]
-	public bool EnableAngleBetweenNormalAndGravityRange
+	public virtual bool EnableAngleBetweenNormalAndGravityRange
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "DecalGroupOption_t", "m_bEnableAngleBetweenNormalAndGravityRange"); }
 		set { Schema.SetValueType<bool>(this.Handle, "DecalGroupOption_t", "m_bEnableAngleBetweenNormalAndGravityRange", value); }
@@ -49,7 +49,7 @@ public partial class DecalGroupOption_t : NativeObject
 
 	// m_flMinAngleBetweenNormalAndGravity
 	[SchemaMember("DecalGroupOption_t", "m_flMinAngleBetweenNormalAndGravity")]
-	public float MinAngleBetweenNormalAndGravity
+	public virtual float MinAngleBetweenNormalAndGravity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMinAngleBetweenNormalAndGravity"); }
 		set { Schema.SetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMinAngleBetweenNormalAndGravity", value); }
@@ -57,7 +57,7 @@ public partial class DecalGroupOption_t : NativeObject
 
 	// m_flMaxAngleBetweenNormalAndGravity
 	[SchemaMember("DecalGroupOption_t", "m_flMaxAngleBetweenNormalAndGravity")]
-	public float MaxAngleBetweenNormalAndGravity
+	public virtual float MaxAngleBetweenNormalAndGravity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMaxAngleBetweenNormalAndGravity"); }
 		set { Schema.SetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMaxAngleBetweenNormalAndGravity", value); }

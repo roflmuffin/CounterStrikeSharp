@@ -21,7 +21,7 @@ public partial class CCSBot : CBot
 
 	// m_eyePosition
 	[SchemaMember("CCSBot", "m_eyePosition")]
-	public Vector3 EyePosition
+	public virtual Vector3 EyePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_eyePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_eyePosition", value); }
@@ -29,7 +29,7 @@ public partial class CCSBot : CBot
 
 	// m_name
 	[SchemaMember("CCSBot", "m_name")]
-	public string Name
+	public virtual string Name
 	{
 		get { return Schema.GetString(this.Handle, "CCSBot", "m_name"); }
 		set { Schema.SetStringBytes(this.Handle, "CCSBot", "m_name", value, 64); }
@@ -37,7 +37,7 @@ public partial class CCSBot : CBot
 
 	// m_combatRange
 	[SchemaMember("CCSBot", "m_combatRange")]
-	public float CombatRange
+	public virtual float CombatRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_combatRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_combatRange", value); }
@@ -45,7 +45,7 @@ public partial class CCSBot : CBot
 
 	// m_isRogue
 	[SchemaMember("CCSBot", "m_isRogue")]
-	public bool IsRogue
+	public virtual bool IsRogue
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isRogue"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isRogue", value); }
@@ -53,11 +53,11 @@ public partial class CCSBot : CBot
 
 	// m_rogueTimer
 	[SchemaMember("CCSBot", "m_rogueTimer")]
-	public CountdownTimer RogueTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_rogueTimer");
+	public virtual CountdownTimer RogueTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_rogueTimer");
 
 	// m_diedLastRound
 	[SchemaMember("CCSBot", "m_diedLastRound")]
-	public bool DiedLastRound
+	public virtual bool DiedLastRound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_diedLastRound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_diedLastRound", value); }
@@ -65,7 +65,7 @@ public partial class CCSBot : CBot
 
 	// m_safeTime
 	[SchemaMember("CCSBot", "m_safeTime")]
-	public float SafeTime
+	public virtual float SafeTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_safeTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_safeTime", value); }
@@ -73,7 +73,7 @@ public partial class CCSBot : CBot
 
 	// m_wasSafe
 	[SchemaMember("CCSBot", "m_wasSafe")]
-	public bool WasSafe
+	public virtual bool WasSafe
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_wasSafe"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_wasSafe", value); }
@@ -81,7 +81,7 @@ public partial class CCSBot : CBot
 
 	// m_blindFire
 	[SchemaMember("CCSBot", "m_blindFire")]
-	public bool BlindFire
+	public virtual bool BlindFire
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_blindFire"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_blindFire", value); }
@@ -89,11 +89,11 @@ public partial class CCSBot : CBot
 
 	// m_surpriseTimer
 	[SchemaMember("CCSBot", "m_surpriseTimer")]
-	public CountdownTimer SurpriseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_surpriseTimer");
+	public virtual CountdownTimer SurpriseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_surpriseTimer");
 
 	// m_bAllowActive
 	[SchemaMember("CCSBot", "m_bAllowActive")]
-	public bool AllowActive
+	public virtual bool AllowActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bAllowActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bAllowActive", value); }
@@ -101,7 +101,7 @@ public partial class CCSBot : CBot
 
 	// m_isFollowing
 	[SchemaMember("CCSBot", "m_isFollowing")]
-	public bool IsFollowing
+	public virtual bool IsFollowing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isFollowing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isFollowing", value); }
@@ -109,11 +109,11 @@ public partial class CCSBot : CBot
 
 	// m_leader
 	[SchemaMember("CCSBot", "m_leader")]
-	public CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_leader");
+	public virtual CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_leader");
 
 	// m_followTimestamp
 	[SchemaMember("CCSBot", "m_followTimestamp")]
-	public float FollowTimestamp
+	public virtual float FollowTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_followTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_followTimestamp", value); }
@@ -121,7 +121,7 @@ public partial class CCSBot : CBot
 
 	// m_allowAutoFollowTime
 	[SchemaMember("CCSBot", "m_allowAutoFollowTime")]
-	public float AllowAutoFollowTime
+	public virtual float AllowAutoFollowTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_allowAutoFollowTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_allowAutoFollowTime", value); }
@@ -129,23 +129,23 @@ public partial class CCSBot : CBot
 
 	// m_hurryTimer
 	[SchemaMember("CCSBot", "m_hurryTimer")]
-	public CountdownTimer HurryTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_hurryTimer");
+	public virtual CountdownTimer HurryTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_hurryTimer");
 
 	// m_alertTimer
 	[SchemaMember("CCSBot", "m_alertTimer")]
-	public CountdownTimer AlertTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_alertTimer");
+	public virtual CountdownTimer AlertTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_alertTimer");
 
 	// m_sneakTimer
 	[SchemaMember("CCSBot", "m_sneakTimer")]
-	public CountdownTimer SneakTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_sneakTimer");
+	public virtual CountdownTimer SneakTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_sneakTimer");
 
 	// m_panicTimer
 	[SchemaMember("CCSBot", "m_panicTimer")]
-	public CountdownTimer PanicTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_panicTimer");
+	public virtual CountdownTimer PanicTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_panicTimer");
 
 	// m_stateTimestamp
 	[SchemaMember("CCSBot", "m_stateTimestamp")]
-	public float StateTimestamp
+	public virtual float StateTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_stateTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_stateTimestamp", value); }
@@ -153,7 +153,7 @@ public partial class CCSBot : CBot
 
 	// m_isAttacking
 	[SchemaMember("CCSBot", "m_isAttacking")]
-	public bool IsAttacking
+	public virtual bool IsAttacking
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isAttacking"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isAttacking", value); }
@@ -161,7 +161,7 @@ public partial class CCSBot : CBot
 
 	// m_isOpeningDoor
 	[SchemaMember("CCSBot", "m_isOpeningDoor")]
-	public bool IsOpeningDoor
+	public virtual bool IsOpeningDoor
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isOpeningDoor"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isOpeningDoor", value); }
@@ -169,11 +169,11 @@ public partial class CCSBot : CBot
 
 	// m_taskEntity
 	[SchemaMember("CCSBot", "m_taskEntity")]
-	public CHandle<CBaseEntity> TaskEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_taskEntity");
+	public virtual CHandle<CBaseEntity> TaskEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_taskEntity");
 
 	// m_goalPosition
 	[SchemaMember("CCSBot", "m_goalPosition")]
-	public Vector3 GoalPosition
+	public virtual Vector3 GoalPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_goalPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_goalPosition", value); }
@@ -181,15 +181,15 @@ public partial class CCSBot : CBot
 
 	// m_goalEntity
 	[SchemaMember("CCSBot", "m_goalEntity")]
-	public CHandle<CBaseEntity> GoalEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_goalEntity");
+	public virtual CHandle<CBaseEntity> GoalEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_goalEntity");
 
 	// m_avoid
 	[SchemaMember("CCSBot", "m_avoid")]
-	public CHandle<CBaseEntity> Avoid => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_avoid");
+	public virtual CHandle<CBaseEntity> Avoid => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_avoid");
 
 	// m_avoidTimestamp
 	[SchemaMember("CCSBot", "m_avoidTimestamp")]
-	public float AvoidTimestamp
+	public virtual float AvoidTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_avoidTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_avoidTimestamp", value); }
@@ -197,7 +197,7 @@ public partial class CCSBot : CBot
 
 	// m_isStopping
 	[SchemaMember("CCSBot", "m_isStopping")]
-	public bool IsStopping
+	public virtual bool IsStopping
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isStopping"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isStopping", value); }
@@ -205,7 +205,7 @@ public partial class CCSBot : CBot
 
 	// m_hasVisitedEnemySpawn
 	[SchemaMember("CCSBot", "m_hasVisitedEnemySpawn")]
-	public bool HasVisitedEnemySpawn
+	public virtual bool HasVisitedEnemySpawn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_hasVisitedEnemySpawn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_hasVisitedEnemySpawn", value); }
@@ -213,11 +213,11 @@ public partial class CCSBot : CBot
 
 	// m_stillTimer
 	[SchemaMember("CCSBot", "m_stillTimer")]
-	public IntervalTimer StillTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_stillTimer");
+	public virtual IntervalTimer StillTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_stillTimer");
 
 	// m_bEyeAnglesUnderPathFinderControl
 	[SchemaMember("CCSBot", "m_bEyeAnglesUnderPathFinderControl")]
-	public bool EyeAnglesUnderPathFinderControl
+	public virtual bool EyeAnglesUnderPathFinderControl
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bEyeAnglesUnderPathFinderControl"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bEyeAnglesUnderPathFinderControl", value); }
@@ -225,7 +225,7 @@ public partial class CCSBot : CBot
 
 	// m_pathIndex
 	[SchemaMember("CCSBot", "m_pathIndex")]
-	public Int32 PathIndex
+	public virtual Int32 PathIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_pathIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_pathIndex", value); }
@@ -233,7 +233,7 @@ public partial class CCSBot : CBot
 
 	// m_areaEnteredTimestamp
 	[SchemaMember("CCSBot", "m_areaEnteredTimestamp")]
-	public float AreaEnteredTimestamp
+	public virtual float AreaEnteredTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_areaEnteredTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_areaEnteredTimestamp", value); }
@@ -241,15 +241,15 @@ public partial class CCSBot : CBot
 
 	// m_repathTimer
 	[SchemaMember("CCSBot", "m_repathTimer")]
-	public CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_repathTimer");
+	public virtual CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_repathTimer");
 
 	// m_avoidFriendTimer
 	[SchemaMember("CCSBot", "m_avoidFriendTimer")]
-	public CountdownTimer AvoidFriendTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_avoidFriendTimer");
+	public virtual CountdownTimer AvoidFriendTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_avoidFriendTimer");
 
 	// m_isFriendInTheWay
 	[SchemaMember("CCSBot", "m_isFriendInTheWay")]
-	public bool IsFriendInTheWay
+	public virtual bool IsFriendInTheWay
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isFriendInTheWay"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isFriendInTheWay", value); }
@@ -257,11 +257,11 @@ public partial class CCSBot : CBot
 
 	// m_politeTimer
 	[SchemaMember("CCSBot", "m_politeTimer")]
-	public CountdownTimer PoliteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_politeTimer");
+	public virtual CountdownTimer PoliteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_politeTimer");
 
 	// m_isWaitingBehindFriend
 	[SchemaMember("CCSBot", "m_isWaitingBehindFriend")]
-	public bool IsWaitingBehindFriend
+	public virtual bool IsWaitingBehindFriend
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingBehindFriend"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingBehindFriend", value); }
@@ -269,7 +269,7 @@ public partial class CCSBot : CBot
 
 	// m_pathLadderEnd
 	[SchemaMember("CCSBot", "m_pathLadderEnd")]
-	public float PathLadderEnd
+	public virtual float PathLadderEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_pathLadderEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_pathLadderEnd", value); }
@@ -277,23 +277,23 @@ public partial class CCSBot : CBot
 
 	// m_mustRunTimer
 	[SchemaMember("CCSBot", "m_mustRunTimer")]
-	public CountdownTimer MustRunTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_mustRunTimer");
+	public virtual CountdownTimer MustRunTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_mustRunTimer");
 
 	// m_waitTimer
 	[SchemaMember("CCSBot", "m_waitTimer")]
-	public CountdownTimer WaitTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_waitTimer");
+	public virtual CountdownTimer WaitTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_waitTimer");
 
 	// m_updateTravelDistanceTimer
 	[SchemaMember("CCSBot", "m_updateTravelDistanceTimer")]
-	public CountdownTimer UpdateTravelDistanceTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_updateTravelDistanceTimer");
+	public virtual CountdownTimer UpdateTravelDistanceTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_updateTravelDistanceTimer");
 
 	// m_playerTravelDistance
 	[SchemaMember("CCSBot", "m_playerTravelDistance")]
-	public Span<float> PlayerTravelDistance => Schema.GetFixedArray<float>(this.Handle, "CCSBot", "m_playerTravelDistance", 64);
+	public virtual Span<float> PlayerTravelDistance => Schema.GetFixedArray<float>(this.Handle, "CCSBot", "m_playerTravelDistance", 64);
 
 	// m_travelDistancePhase
 	[SchemaMember("CCSBot", "m_travelDistancePhase")]
-	public byte TravelDistancePhase
+	public virtual byte TravelDistancePhase
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_travelDistancePhase"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_travelDistancePhase", value); }
@@ -301,7 +301,7 @@ public partial class CCSBot : CBot
 
 	// m_hostageEscortCount
 	[SchemaMember("CCSBot", "m_hostageEscortCount")]
-	public byte HostageEscortCount
+	public virtual byte HostageEscortCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_hostageEscortCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_hostageEscortCount", value); }
@@ -309,7 +309,7 @@ public partial class CCSBot : CBot
 
 	// m_hostageEscortCountTimestamp
 	[SchemaMember("CCSBot", "m_hostageEscortCountTimestamp")]
-	public float HostageEscortCountTimestamp
+	public virtual float HostageEscortCountTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_hostageEscortCountTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_hostageEscortCountTimestamp", value); }
@@ -317,7 +317,7 @@ public partial class CCSBot : CBot
 
 	// m_desiredTeam
 	[SchemaMember("CCSBot", "m_desiredTeam")]
-	public Int32 DesiredTeam
+	public virtual Int32 DesiredTeam
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_desiredTeam"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_desiredTeam", value); }
@@ -325,7 +325,7 @@ public partial class CCSBot : CBot
 
 	// m_hasJoined
 	[SchemaMember("CCSBot", "m_hasJoined")]
-	public bool HasJoined
+	public virtual bool HasJoined
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_hasJoined"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_hasJoined", value); }
@@ -333,7 +333,7 @@ public partial class CCSBot : CBot
 
 	// m_isWaitingForHostage
 	[SchemaMember("CCSBot", "m_isWaitingForHostage")]
-	public bool IsWaitingForHostage
+	public virtual bool IsWaitingForHostage
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingForHostage"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingForHostage", value); }
@@ -341,15 +341,15 @@ public partial class CCSBot : CBot
 
 	// m_inhibitWaitingForHostageTimer
 	[SchemaMember("CCSBot", "m_inhibitWaitingForHostageTimer")]
-	public CountdownTimer InhibitWaitingForHostageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_inhibitWaitingForHostageTimer");
+	public virtual CountdownTimer InhibitWaitingForHostageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_inhibitWaitingForHostageTimer");
 
 	// m_waitForHostageTimer
 	[SchemaMember("CCSBot", "m_waitForHostageTimer")]
-	public CountdownTimer WaitForHostageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_waitForHostageTimer");
+	public virtual CountdownTimer WaitForHostageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_waitForHostageTimer");
 
 	// m_noisePosition
 	[SchemaMember("CCSBot", "m_noisePosition")]
-	public Vector3 NoisePosition
+	public virtual Vector3 NoisePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_noisePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_noisePosition", value); }
@@ -357,7 +357,7 @@ public partial class CCSBot : CBot
 
 	// m_noiseTravelDistance
 	[SchemaMember("CCSBot", "m_noiseTravelDistance")]
-	public float NoiseTravelDistance
+	public virtual float NoiseTravelDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_noiseTravelDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_noiseTravelDistance", value); }
@@ -365,7 +365,7 @@ public partial class CCSBot : CBot
 
 	// m_noiseTimestamp
 	[SchemaMember("CCSBot", "m_noiseTimestamp")]
-	public float NoiseTimestamp
+	public virtual float NoiseTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_noiseTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_noiseTimestamp", value); }
@@ -373,15 +373,15 @@ public partial class CCSBot : CBot
 
 	// m_noiseSource
 	[SchemaMember("CCSBot", "m_noiseSource")]
-	public CCSPlayerPawn? NoiseSource => Schema.GetPointer<CCSPlayerPawn>(this.Handle, "CCSBot", "m_noiseSource");
+	public virtual CCSPlayerPawn? NoiseSource => Schema.GetPointer<CCSPlayerPawn>(this.Handle, "CCSBot", "m_noiseSource");
 
 	// m_noiseBendTimer
 	[SchemaMember("CCSBot", "m_noiseBendTimer")]
-	public CountdownTimer NoiseBendTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_noiseBendTimer");
+	public virtual CountdownTimer NoiseBendTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_noiseBendTimer");
 
 	// m_bentNoisePosition
 	[SchemaMember("CCSBot", "m_bentNoisePosition")]
-	public Vector3 BentNoisePosition
+	public virtual Vector3 BentNoisePosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_bentNoisePosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_bentNoisePosition", value); }
@@ -389,7 +389,7 @@ public partial class CCSBot : CBot
 
 	// m_bendNoisePositionValid
 	[SchemaMember("CCSBot", "m_bendNoisePositionValid")]
-	public bool BendNoisePositionValid
+	public virtual bool BendNoisePositionValid
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bendNoisePositionValid"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bendNoisePositionValid", value); }
@@ -397,7 +397,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAroundStateTimestamp
 	[SchemaMember("CCSBot", "m_lookAroundStateTimestamp")]
-	public float LookAroundStateTimestamp
+	public virtual float LookAroundStateTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAroundStateTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAroundStateTimestamp", value); }
@@ -405,7 +405,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAheadAngle
 	[SchemaMember("CCSBot", "m_lookAheadAngle")]
-	public float LookAheadAngle
+	public virtual float LookAheadAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAheadAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAheadAngle", value); }
@@ -413,7 +413,7 @@ public partial class CCSBot : CBot
 
 	// m_forwardAngle
 	[SchemaMember("CCSBot", "m_forwardAngle")]
-	public float ForwardAngle
+	public virtual float ForwardAngle
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_forwardAngle"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_forwardAngle", value); }
@@ -421,7 +421,7 @@ public partial class CCSBot : CBot
 
 	// m_inhibitLookAroundTimestamp
 	[SchemaMember("CCSBot", "m_inhibitLookAroundTimestamp")]
-	public float InhibitLookAroundTimestamp
+	public virtual float InhibitLookAroundTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_inhibitLookAroundTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_inhibitLookAroundTimestamp", value); }
@@ -429,7 +429,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAtSpot
 	[SchemaMember("CCSBot", "m_lookAtSpot")]
-	public Vector3 LookAtSpot
+	public virtual Vector3 LookAtSpot
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_lookAtSpot"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_lookAtSpot", value); }
@@ -437,7 +437,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAtSpotDuration
 	[SchemaMember("CCSBot", "m_lookAtSpotDuration")]
-	public float LookAtSpotDuration
+	public virtual float LookAtSpotDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotDuration", value); }
@@ -445,7 +445,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAtSpotTimestamp
 	[SchemaMember("CCSBot", "m_lookAtSpotTimestamp")]
-	public float LookAtSpotTimestamp
+	public virtual float LookAtSpotTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotTimestamp", value); }
@@ -453,7 +453,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAtSpotAngleTolerance
 	[SchemaMember("CCSBot", "m_lookAtSpotAngleTolerance")]
-	public float LookAtSpotAngleTolerance
+	public virtual float LookAtSpotAngleTolerance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotAngleTolerance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotAngleTolerance", value); }
@@ -461,7 +461,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAtSpotClearIfClose
 	[SchemaMember("CCSBot", "m_lookAtSpotClearIfClose")]
-	public bool LookAtSpotClearIfClose
+	public virtual bool LookAtSpotClearIfClose
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotClearIfClose"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotClearIfClose", value); }
@@ -469,7 +469,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAtSpotAttack
 	[SchemaMember("CCSBot", "m_lookAtSpotAttack")]
-	public bool LookAtSpotAttack
+	public virtual bool LookAtSpotAttack
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotAttack"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotAttack", value); }
@@ -477,7 +477,7 @@ public partial class CCSBot : CBot
 
 	// m_lookAtDesc
 	[SchemaMember("CCSBot", "m_lookAtDesc")]
-	public string LookAtDesc
+	public virtual string LookAtDesc
 	{
 		get { return Schema.GetString(this.Handle, "CCSBot", "m_lookAtDesc"); }
 		set { Schema.SetString(this.Handle, "CCSBot", "m_lookAtDesc", value); }
@@ -485,7 +485,7 @@ public partial class CCSBot : CBot
 
 	// m_peripheralTimestamp
 	[SchemaMember("CCSBot", "m_peripheralTimestamp")]
-	public float PeripheralTimestamp
+	public virtual float PeripheralTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_peripheralTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_peripheralTimestamp", value); }
@@ -493,7 +493,7 @@ public partial class CCSBot : CBot
 
 	// m_approachPointCount
 	[SchemaMember("CCSBot", "m_approachPointCount")]
-	public byte ApproachPointCount
+	public virtual byte ApproachPointCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_approachPointCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_approachPointCount", value); }
@@ -501,7 +501,7 @@ public partial class CCSBot : CBot
 
 	// m_approachPointViewPosition
 	[SchemaMember("CCSBot", "m_approachPointViewPosition")]
-	public Vector3 ApproachPointViewPosition
+	public virtual Vector3 ApproachPointViewPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_approachPointViewPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_approachPointViewPosition", value); }
@@ -509,19 +509,19 @@ public partial class CCSBot : CBot
 
 	// m_viewSteadyTimer
 	[SchemaMember("CCSBot", "m_viewSteadyTimer")]
-	public IntervalTimer ViewSteadyTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_viewSteadyTimer");
+	public virtual IntervalTimer ViewSteadyTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_viewSteadyTimer");
 
 	// m_tossGrenadeTimer
 	[SchemaMember("CCSBot", "m_tossGrenadeTimer")]
-	public CountdownTimer TossGrenadeTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_tossGrenadeTimer");
+	public virtual CountdownTimer TossGrenadeTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_tossGrenadeTimer");
 
 	// m_isAvoidingGrenade
 	[SchemaMember("CCSBot", "m_isAvoidingGrenade")]
-	public CountdownTimer IsAvoidingGrenade => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_isAvoidingGrenade");
+	public virtual CountdownTimer IsAvoidingGrenade => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_isAvoidingGrenade");
 
 	// m_spotCheckTimestamp
 	[SchemaMember("CCSBot", "m_spotCheckTimestamp")]
-	public float SpotCheckTimestamp
+	public virtual float SpotCheckTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_spotCheckTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_spotCheckTimestamp", value); }
@@ -529,7 +529,7 @@ public partial class CCSBot : CBot
 
 	// m_checkedHidingSpotCount
 	[SchemaMember("CCSBot", "m_checkedHidingSpotCount")]
-	public Int32 CheckedHidingSpotCount
+	public virtual Int32 CheckedHidingSpotCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_checkedHidingSpotCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_checkedHidingSpotCount", value); }
@@ -537,7 +537,7 @@ public partial class CCSBot : CBot
 
 	// m_lookPitch
 	[SchemaMember("CCSBot", "m_lookPitch")]
-	public float LookPitch
+	public virtual float LookPitch
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookPitch"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookPitch", value); }
@@ -545,7 +545,7 @@ public partial class CCSBot : CBot
 
 	// m_lookPitchVel
 	[SchemaMember("CCSBot", "m_lookPitchVel")]
-	public float LookPitchVel
+	public virtual float LookPitchVel
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookPitchVel"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookPitchVel", value); }
@@ -553,7 +553,7 @@ public partial class CCSBot : CBot
 
 	// m_lookYaw
 	[SchemaMember("CCSBot", "m_lookYaw")]
-	public float LookYaw
+	public virtual float LookYaw
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookYaw"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookYaw", value); }
@@ -561,7 +561,7 @@ public partial class CCSBot : CBot
 
 	// m_lookYawVel
 	[SchemaMember("CCSBot", "m_lookYawVel")]
-	public float LookYawVel
+	public virtual float LookYawVel
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookYawVel"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookYawVel", value); }
@@ -569,7 +569,7 @@ public partial class CCSBot : CBot
 
 	// m_targetSpot
 	[SchemaMember("CCSBot", "m_targetSpot")]
-	public Vector3 TargetSpot
+	public virtual Vector3 TargetSpot
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpot"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpot", value); }
@@ -577,7 +577,7 @@ public partial class CCSBot : CBot
 
 	// m_targetSpotVelocity
 	[SchemaMember("CCSBot", "m_targetSpotVelocity")]
-	public Vector3 TargetSpotVelocity
+	public virtual Vector3 TargetSpotVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotVelocity", value); }
@@ -585,7 +585,7 @@ public partial class CCSBot : CBot
 
 	// m_targetSpotPredicted
 	[SchemaMember("CCSBot", "m_targetSpotPredicted")]
-	public Vector3 TargetSpotPredicted
+	public virtual Vector3 TargetSpotPredicted
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotPredicted"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotPredicted", value); }
@@ -593,7 +593,7 @@ public partial class CCSBot : CBot
 
 	// m_aimError
 	[SchemaMember("CCSBot", "m_aimError")]
-	public QAngle AimError
+	public virtual QAngle AimError
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSBot", "m_aimError"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSBot", "m_aimError", value); }
@@ -601,7 +601,7 @@ public partial class CCSBot : CBot
 
 	// m_aimGoal
 	[SchemaMember("CCSBot", "m_aimGoal")]
-	public QAngle AimGoal
+	public virtual QAngle AimGoal
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSBot", "m_aimGoal"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CCSBot", "m_aimGoal", value); }
@@ -609,7 +609,7 @@ public partial class CCSBot : CBot
 
 	// m_targetSpotTime
 	[SchemaMember("CCSBot", "m_targetSpotTime")]
-	public float TargetSpotTime
+	public virtual float TargetSpotTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_targetSpotTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_targetSpotTime", value); }
@@ -617,7 +617,7 @@ public partial class CCSBot : CBot
 
 	// m_aimFocus
 	[SchemaMember("CCSBot", "m_aimFocus")]
-	public float AimFocus
+	public virtual float AimFocus
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_aimFocus"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_aimFocus", value); }
@@ -625,7 +625,7 @@ public partial class CCSBot : CBot
 
 	// m_aimFocusInterval
 	[SchemaMember("CCSBot", "m_aimFocusInterval")]
-	public float AimFocusInterval
+	public virtual float AimFocusInterval
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_aimFocusInterval"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_aimFocusInterval", value); }
@@ -633,7 +633,7 @@ public partial class CCSBot : CBot
 
 	// m_aimFocusNextUpdate
 	[SchemaMember("CCSBot", "m_aimFocusNextUpdate")]
-	public float AimFocusNextUpdate
+	public virtual float AimFocusNextUpdate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_aimFocusNextUpdate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_aimFocusNextUpdate", value); }
@@ -641,15 +641,15 @@ public partial class CCSBot : CBot
 
 	// m_ignoreEnemiesTimer
 	[SchemaMember("CCSBot", "m_ignoreEnemiesTimer")]
-	public CountdownTimer IgnoreEnemiesTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_ignoreEnemiesTimer");
+	public virtual CountdownTimer IgnoreEnemiesTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_ignoreEnemiesTimer");
 
 	// m_enemy
 	[SchemaMember("CCSBot", "m_enemy")]
-	public CHandle<CCSPlayerPawn> Enemy => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_enemy");
+	public virtual CHandle<CCSPlayerPawn> Enemy => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_enemy");
 
 	// m_isEnemyVisible
 	[SchemaMember("CCSBot", "m_isEnemyVisible")]
-	public bool IsEnemyVisible
+	public virtual bool IsEnemyVisible
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isEnemyVisible"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isEnemyVisible", value); }
@@ -657,7 +657,7 @@ public partial class CCSBot : CBot
 
 	// m_visibleEnemyParts
 	[SchemaMember("CCSBot", "m_visibleEnemyParts")]
-	public byte VisibleEnemyParts
+	public virtual byte VisibleEnemyParts
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_visibleEnemyParts"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_visibleEnemyParts", value); }
@@ -665,7 +665,7 @@ public partial class CCSBot : CBot
 
 	// m_lastEnemyPosition
 	[SchemaMember("CCSBot", "m_lastEnemyPosition")]
-	public Vector3 LastEnemyPosition
+	public virtual Vector3 LastEnemyPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_lastEnemyPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_lastEnemyPosition", value); }
@@ -673,7 +673,7 @@ public partial class CCSBot : CBot
 
 	// m_lastSawEnemyTimestamp
 	[SchemaMember("CCSBot", "m_lastSawEnemyTimestamp")]
-	public float LastSawEnemyTimestamp
+	public virtual float LastSawEnemyTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lastSawEnemyTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lastSawEnemyTimestamp", value); }
@@ -681,7 +681,7 @@ public partial class CCSBot : CBot
 
 	// m_firstSawEnemyTimestamp
 	[SchemaMember("CCSBot", "m_firstSawEnemyTimestamp")]
-	public float FirstSawEnemyTimestamp
+	public virtual float FirstSawEnemyTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_firstSawEnemyTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_firstSawEnemyTimestamp", value); }
@@ -689,7 +689,7 @@ public partial class CCSBot : CBot
 
 	// m_currentEnemyAcquireTimestamp
 	[SchemaMember("CCSBot", "m_currentEnemyAcquireTimestamp")]
-	public float CurrentEnemyAcquireTimestamp
+	public virtual float CurrentEnemyAcquireTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_currentEnemyAcquireTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_currentEnemyAcquireTimestamp", value); }
@@ -697,7 +697,7 @@ public partial class CCSBot : CBot
 
 	// m_enemyDeathTimestamp
 	[SchemaMember("CCSBot", "m_enemyDeathTimestamp")]
-	public float EnemyDeathTimestamp
+	public virtual float EnemyDeathTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_enemyDeathTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_enemyDeathTimestamp", value); }
@@ -705,7 +705,7 @@ public partial class CCSBot : CBot
 
 	// m_friendDeathTimestamp
 	[SchemaMember("CCSBot", "m_friendDeathTimestamp")]
-	public float FriendDeathTimestamp
+	public virtual float FriendDeathTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_friendDeathTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_friendDeathTimestamp", value); }
@@ -713,7 +713,7 @@ public partial class CCSBot : CBot
 
 	// m_isLastEnemyDead
 	[SchemaMember("CCSBot", "m_isLastEnemyDead")]
-	public bool IsLastEnemyDead
+	public virtual bool IsLastEnemyDead
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isLastEnemyDead"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isLastEnemyDead", value); }
@@ -721,7 +721,7 @@ public partial class CCSBot : CBot
 
 	// m_nearbyEnemyCount
 	[SchemaMember("CCSBot", "m_nearbyEnemyCount")]
-	public Int32 NearbyEnemyCount
+	public virtual Int32 NearbyEnemyCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyEnemyCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyEnemyCount", value); }
@@ -729,11 +729,11 @@ public partial class CCSBot : CBot
 
 	// m_bomber
 	[SchemaMember("CCSBot", "m_bomber")]
-	public CHandle<CCSPlayerPawn> Bomber => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_bomber");
+	public virtual CHandle<CCSPlayerPawn> Bomber => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_bomber");
 
 	// m_nearbyFriendCount
 	[SchemaMember("CCSBot", "m_nearbyFriendCount")]
-	public Int32 NearbyFriendCount
+	public virtual Int32 NearbyFriendCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyFriendCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyFriendCount", value); }
@@ -741,23 +741,23 @@ public partial class CCSBot : CBot
 
 	// m_closestVisibleFriend
 	[SchemaMember("CCSBot", "m_closestVisibleFriend")]
-	public CHandle<CCSPlayerPawn> ClosestVisibleFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleFriend");
+	public virtual CHandle<CCSPlayerPawn> ClosestVisibleFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleFriend");
 
 	// m_closestVisibleHumanFriend
 	[SchemaMember("CCSBot", "m_closestVisibleHumanFriend")]
-	public CHandle<CCSPlayerPawn> ClosestVisibleHumanFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleHumanFriend");
+	public virtual CHandle<CCSPlayerPawn> ClosestVisibleHumanFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleHumanFriend");
 
 	// m_attentionInterval
 	[SchemaMember("CCSBot", "m_attentionInterval")]
-	public IntervalTimer AttentionInterval => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_attentionInterval");
+	public virtual IntervalTimer AttentionInterval => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_attentionInterval");
 
 	// m_attacker
 	[SchemaMember("CCSBot", "m_attacker")]
-	public CHandle<CCSPlayerPawn> Attacker => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_attacker");
+	public virtual CHandle<CCSPlayerPawn> Attacker => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_attacker");
 
 	// m_attackedTimestamp
 	[SchemaMember("CCSBot", "m_attackedTimestamp")]
-	public float AttackedTimestamp
+	public virtual float AttackedTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_attackedTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_attackedTimestamp", value); }
@@ -765,11 +765,11 @@ public partial class CCSBot : CBot
 
 	// m_burnedByFlamesTimer
 	[SchemaMember("CCSBot", "m_burnedByFlamesTimer")]
-	public IntervalTimer BurnedByFlamesTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_burnedByFlamesTimer");
+	public virtual IntervalTimer BurnedByFlamesTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_burnedByFlamesTimer");
 
 	// m_lastVictimID
 	[SchemaMember("CCSBot", "m_lastVictimID")]
-	public Int32 LastVictimID
+	public virtual Int32 LastVictimID
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_lastVictimID"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_lastVictimID", value); }
@@ -777,7 +777,7 @@ public partial class CCSBot : CBot
 
 	// m_isAimingAtEnemy
 	[SchemaMember("CCSBot", "m_isAimingAtEnemy")]
-	public bool IsAimingAtEnemy
+	public virtual bool IsAimingAtEnemy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isAimingAtEnemy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isAimingAtEnemy", value); }
@@ -785,7 +785,7 @@ public partial class CCSBot : CBot
 
 	// m_isRapidFiring
 	[SchemaMember("CCSBot", "m_isRapidFiring")]
-	public bool IsRapidFiring
+	public virtual bool IsRapidFiring
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isRapidFiring"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isRapidFiring", value); }
@@ -793,15 +793,15 @@ public partial class CCSBot : CBot
 
 	// m_equipTimer
 	[SchemaMember("CCSBot", "m_equipTimer")]
-	public IntervalTimer EquipTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_equipTimer");
+	public virtual IntervalTimer EquipTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_equipTimer");
 
 	// m_zoomTimer
 	[SchemaMember("CCSBot", "m_zoomTimer")]
-	public CountdownTimer ZoomTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_zoomTimer");
+	public virtual CountdownTimer ZoomTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_zoomTimer");
 
 	// m_fireWeaponTimestamp
 	[SchemaMember("CCSBot", "m_fireWeaponTimestamp")]
-	public float FireWeaponTimestamp
+	public virtual float FireWeaponTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_fireWeaponTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_fireWeaponTimestamp", value); }
@@ -809,11 +809,11 @@ public partial class CCSBot : CBot
 
 	// m_lookForWeaponsOnGroundTimer
 	[SchemaMember("CCSBot", "m_lookForWeaponsOnGroundTimer")]
-	public CountdownTimer LookForWeaponsOnGroundTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_lookForWeaponsOnGroundTimer");
+	public virtual CountdownTimer LookForWeaponsOnGroundTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_lookForWeaponsOnGroundTimer");
 
 	// m_bIsSleeping
 	[SchemaMember("CCSBot", "m_bIsSleeping")]
-	public bool IsSleeping
+	public virtual bool IsSleeping
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bIsSleeping"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bIsSleeping", value); }
@@ -821,7 +821,7 @@ public partial class CCSBot : CBot
 
 	// m_isEnemySniperVisible
 	[SchemaMember("CCSBot", "m_isEnemySniperVisible")]
-	public bool IsEnemySniperVisible
+	public virtual bool IsEnemySniperVisible
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isEnemySniperVisible"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isEnemySniperVisible", value); }
@@ -829,11 +829,11 @@ public partial class CCSBot : CBot
 
 	// m_sawEnemySniperTimer
 	[SchemaMember("CCSBot", "m_sawEnemySniperTimer")]
-	public CountdownTimer SawEnemySniperTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_sawEnemySniperTimer");
+	public virtual CountdownTimer SawEnemySniperTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_sawEnemySniperTimer");
 
 	// m_enemyQueueIndex
 	[SchemaMember("CCSBot", "m_enemyQueueIndex")]
-	public byte EnemyQueueIndex
+	public virtual byte EnemyQueueIndex
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueIndex"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueIndex", value); }
@@ -841,7 +841,7 @@ public partial class CCSBot : CBot
 
 	// m_enemyQueueCount
 	[SchemaMember("CCSBot", "m_enemyQueueCount")]
-	public byte EnemyQueueCount
+	public virtual byte EnemyQueueCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueCount", value); }
@@ -849,7 +849,7 @@ public partial class CCSBot : CBot
 
 	// m_enemyQueueAttendIndex
 	[SchemaMember("CCSBot", "m_enemyQueueAttendIndex")]
-	public byte EnemyQueueAttendIndex
+	public virtual byte EnemyQueueAttendIndex
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueAttendIndex"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueAttendIndex", value); }
@@ -857,7 +857,7 @@ public partial class CCSBot : CBot
 
 	// m_isStuck
 	[SchemaMember("CCSBot", "m_isStuck")]
-	public bool IsStuck
+	public virtual bool IsStuck
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isStuck"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isStuck", value); }
@@ -865,7 +865,7 @@ public partial class CCSBot : CBot
 
 	// m_stuckTimestamp
 	[SchemaMember("CCSBot", "m_stuckTimestamp")]
-	public float StuckTimestamp
+	public virtual float StuckTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_stuckTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_stuckTimestamp", value); }
@@ -873,7 +873,7 @@ public partial class CCSBot : CBot
 
 	// m_stuckSpot
 	[SchemaMember("CCSBot", "m_stuckSpot")]
-	public Vector3 StuckSpot
+	public virtual Vector3 StuckSpot
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_stuckSpot"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_stuckSpot", value); }
@@ -881,15 +881,15 @@ public partial class CCSBot : CBot
 
 	// m_wiggleTimer
 	[SchemaMember("CCSBot", "m_wiggleTimer")]
-	public CountdownTimer WiggleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_wiggleTimer");
+	public virtual CountdownTimer WiggleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_wiggleTimer");
 
 	// m_stuckJumpTimer
 	[SchemaMember("CCSBot", "m_stuckJumpTimer")]
-	public CountdownTimer StuckJumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_stuckJumpTimer");
+	public virtual CountdownTimer StuckJumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_stuckJumpTimer");
 
 	// m_nextCleanupCheckTimestamp
 	[SchemaMember("CCSBot", "m_nextCleanupCheckTimestamp")]
-	public float NextCleanupCheckTimestamp
+	public virtual float NextCleanupCheckTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_nextCleanupCheckTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_nextCleanupCheckTimestamp", value); }
@@ -897,11 +897,11 @@ public partial class CCSBot : CBot
 
 	// m_avgVel
 	[SchemaMember("CCSBot", "m_avgVel")]
-	public Span<float> AvgVel => Schema.GetFixedArray<float>(this.Handle, "CCSBot", "m_avgVel", 10);
+	public virtual Span<float> AvgVel => Schema.GetFixedArray<float>(this.Handle, "CCSBot", "m_avgVel", 10);
 
 	// m_avgVelIndex
 	[SchemaMember("CCSBot", "m_avgVelIndex")]
-	public Int32 AvgVelIndex
+	public virtual Int32 AvgVelIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelIndex", value); }
@@ -909,7 +909,7 @@ public partial class CCSBot : CBot
 
 	// m_avgVelCount
 	[SchemaMember("CCSBot", "m_avgVelCount")]
-	public Int32 AvgVelCount
+	public virtual Int32 AvgVelCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelCount", value); }
@@ -917,7 +917,7 @@ public partial class CCSBot : CBot
 
 	// m_lastOrigin
 	[SchemaMember("CCSBot", "m_lastOrigin")]
-	public Vector3 LastOrigin
+	public virtual Vector3 LastOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_lastOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_lastOrigin", value); }
@@ -925,7 +925,7 @@ public partial class CCSBot : CBot
 
 	// m_lastRadioRecievedTimestamp
 	[SchemaMember("CCSBot", "m_lastRadioRecievedTimestamp")]
-	public float LastRadioRecievedTimestamp
+	public virtual float LastRadioRecievedTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lastRadioRecievedTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lastRadioRecievedTimestamp", value); }
@@ -933,7 +933,7 @@ public partial class CCSBot : CBot
 
 	// m_lastRadioSentTimestamp
 	[SchemaMember("CCSBot", "m_lastRadioSentTimestamp")]
-	public float LastRadioSentTimestamp
+	public virtual float LastRadioSentTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lastRadioSentTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lastRadioSentTimestamp", value); }
@@ -941,11 +941,11 @@ public partial class CCSBot : CBot
 
 	// m_radioSubject
 	[SchemaMember("CCSBot", "m_radioSubject")]
-	public CHandle<CCSPlayerPawn> RadioSubject => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_radioSubject");
+	public virtual CHandle<CCSPlayerPawn> RadioSubject => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_radioSubject");
 
 	// m_radioPosition
 	[SchemaMember("CCSBot", "m_radioPosition")]
-	public Vector3 RadioPosition
+	public virtual Vector3 RadioPosition
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_radioPosition"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_radioPosition", value); }
@@ -953,7 +953,7 @@ public partial class CCSBot : CBot
 
 	// m_voiceEndTimestamp
 	[SchemaMember("CCSBot", "m_voiceEndTimestamp")]
-	public float VoiceEndTimestamp
+	public virtual float VoiceEndTimestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_voiceEndTimestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_voiceEndTimestamp", value); }
@@ -961,7 +961,7 @@ public partial class CCSBot : CBot
 
 	// m_lastValidReactionQueueFrame
 	[SchemaMember("CCSBot", "m_lastValidReactionQueueFrame")]
-	public Int32 LastValidReactionQueueFrame
+	public virtual Int32 LastValidReactionQueueFrame
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_lastValidReactionQueueFrame"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_lastValidReactionQueueFrame", value); }

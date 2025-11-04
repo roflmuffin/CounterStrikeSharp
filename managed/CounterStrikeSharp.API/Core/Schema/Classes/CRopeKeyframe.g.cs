@@ -21,7 +21,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_RopeFlags
 	[SchemaMember("CRopeKeyframe", "m_RopeFlags")]
-	public UInt16 RopeFlags
+	public virtual UInt16 RopeFlags
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CRopeKeyframe", "m_RopeFlags"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CRopeKeyframe", "m_RopeFlags", value); }
@@ -29,7 +29,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_iNextLinkName
 	[SchemaMember("CRopeKeyframe", "m_iNextLinkName")]
-	public string NextLinkName
+	public virtual string NextLinkName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRopeKeyframe", "m_iNextLinkName"); }
 		set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_iNextLinkName", value); }
@@ -37,7 +37,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_Slack
 	[SchemaMember("CRopeKeyframe", "m_Slack")]
-	public Int16 Slack
+	public virtual Int16 Slack
 	{
 		get { return Schema.GetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_Slack"); }
 		set { Schema.SetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_Slack", value); }
@@ -45,7 +45,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_Width
 	[SchemaMember("CRopeKeyframe", "m_Width")]
-	public float Width
+	public virtual float Width
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRopeKeyframe", "m_Width"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRopeKeyframe", "m_Width", value); }
@@ -53,7 +53,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_TextureScale
 	[SchemaMember("CRopeKeyframe", "m_TextureScale")]
-	public float TextureScale
+	public virtual float TextureScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRopeKeyframe", "m_TextureScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRopeKeyframe", "m_TextureScale", value); }
@@ -61,7 +61,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_nSegments
 	[SchemaMember("CRopeKeyframe", "m_nSegments")]
-	public byte Segments
+	public virtual byte Segments
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nSegments"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nSegments", value); }
@@ -69,7 +69,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_bConstrainBetweenEndpoints
 	[SchemaMember("CRopeKeyframe", "m_bConstrainBetweenEndpoints")]
-	public bool ConstrainBetweenEndpoints
+	public virtual bool ConstrainBetweenEndpoints
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bConstrainBetweenEndpoints"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bConstrainBetweenEndpoints", value); }
@@ -77,7 +77,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_strRopeMaterialModel
 	[SchemaMember("CRopeKeyframe", "m_strRopeMaterialModel")]
-	public string StrRopeMaterialModel
+	public virtual string StrRopeMaterialModel
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRopeKeyframe", "m_strRopeMaterialModel"); }
 		set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_strRopeMaterialModel", value); }
@@ -85,11 +85,11 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_iRopeMaterialModelIndex
 	[SchemaMember("CRopeKeyframe", "m_iRopeMaterialModelIndex")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> RopeMaterialModelIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CRopeKeyframe", "m_iRopeMaterialModelIndex");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> RopeMaterialModelIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CRopeKeyframe", "m_iRopeMaterialModelIndex");
 
 	// m_Subdiv
 	[SchemaMember("CRopeKeyframe", "m_Subdiv")]
-	public byte Subdiv
+	public virtual byte Subdiv
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_Subdiv"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_Subdiv", value); }
@@ -97,7 +97,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_nChangeCount
 	[SchemaMember("CRopeKeyframe", "m_nChangeCount")]
-	public byte ChangeCount
+	public virtual byte ChangeCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nChangeCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nChangeCount", value); }
@@ -105,7 +105,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_RopeLength
 	[SchemaMember("CRopeKeyframe", "m_RopeLength")]
-	public Int16 RopeLength
+	public virtual Int16 RopeLength
 	{
 		get { return Schema.GetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_RopeLength"); }
 		set { Schema.SetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_RopeLength", value); }
@@ -113,7 +113,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_fLockedPoints
 	[SchemaMember("CRopeKeyframe", "m_fLockedPoints")]
-	public byte LockedPoints
+	public virtual byte LockedPoints
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_fLockedPoints"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_fLockedPoints", value); }
@@ -121,7 +121,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_bCreatedFromMapFile
 	[SchemaMember("CRopeKeyframe", "m_bCreatedFromMapFile")]
-	public bool CreatedFromMapFile
+	public virtual bool CreatedFromMapFile
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bCreatedFromMapFile"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bCreatedFromMapFile", value); }
@@ -129,7 +129,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_flScrollSpeed
 	[SchemaMember("CRopeKeyframe", "m_flScrollSpeed")]
-	public float ScrollSpeed
+	public virtual float ScrollSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRopeKeyframe", "m_flScrollSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRopeKeyframe", "m_flScrollSpeed", value); }
@@ -137,7 +137,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_bStartPointValid
 	[SchemaMember("CRopeKeyframe", "m_bStartPointValid")]
-	public bool StartPointValid
+	public virtual bool StartPointValid
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bStartPointValid"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bStartPointValid", value); }
@@ -145,7 +145,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_bEndPointValid
 	[SchemaMember("CRopeKeyframe", "m_bEndPointValid")]
-	public bool EndPointValid
+	public virtual bool EndPointValid
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bEndPointValid"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bEndPointValid", value); }
@@ -153,26 +153,26 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_hStartPoint
 	[SchemaMember("CRopeKeyframe", "m_hStartPoint")]
-	public CHandle<CBaseEntity> StartPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hStartPoint");
+	public virtual CHandle<CBaseEntity> StartPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hStartPoint");
 
 	// m_hEndPoint
 	[SchemaMember("CRopeKeyframe", "m_hEndPoint")]
-	public CHandle<CBaseEntity> EndPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hEndPoint");
+	public virtual CHandle<CBaseEntity> EndPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hEndPoint");
 
-	public void RopeFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_RopeFlags");
-	public void SlackPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Slack");
-	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Width");
-	public void TextureScalePropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_TextureScale");
-	public void SegmentsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_nSegments");
-	public void ConstrainBetweenEndpointsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_bConstrainBetweenEndpoints");
-	public void RopeMaterialModelIndexPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iRopeMaterialModelIndex");
-	public void SubdivPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Subdiv");
-	public void ChangeCountPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_nChangeCount");
-	public void RopeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_RopeLength");
-	public void LockedPointsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_fLockedPoints");
-	public void ScrollSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_flScrollSpeed");
-	public void StartPointPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_hStartPoint");
-	public void EndPointPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_hEndPoint");
-	public void StartAttachmentPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iStartAttachment");
-	public void EndAttachmentPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iEndAttachment");
+	public virtual void RopeFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_RopeFlags");
+	public virtual void SlackPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Slack");
+	public virtual void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Width");
+	public virtual void TextureScalePropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_TextureScale");
+	public virtual void SegmentsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_nSegments");
+	public virtual void ConstrainBetweenEndpointsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_bConstrainBetweenEndpoints");
+	public virtual void RopeMaterialModelIndexPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iRopeMaterialModelIndex");
+	public virtual void SubdivPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Subdiv");
+	public virtual void ChangeCountPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_nChangeCount");
+	public virtual void RopeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_RopeLength");
+	public virtual void LockedPointsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_fLockedPoints");
+	public virtual void ScrollSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_flScrollSpeed");
+	public virtual void StartPointPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_hStartPoint");
+	public virtual void EndPointPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_hEndPoint");
+	public virtual void StartAttachmentPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iStartAttachment");
+	public virtual void EndAttachmentPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iEndAttachment");
 }

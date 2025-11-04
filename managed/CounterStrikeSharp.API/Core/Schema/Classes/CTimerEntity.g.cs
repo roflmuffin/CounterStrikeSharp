@@ -21,19 +21,19 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_OnTimer
 	[SchemaMember("CTimerEntity", "m_OnTimer")]
-	public CEntityIOOutput OnTimer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimer");
+	public virtual CEntityIOOutput OnTimer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimer");
 
 	// m_OnTimerHigh
 	[SchemaMember("CTimerEntity", "m_OnTimerHigh")]
-	public CEntityIOOutput OnTimerHigh => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimerHigh");
+	public virtual CEntityIOOutput OnTimerHigh => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimerHigh");
 
 	// m_OnTimerLow
 	[SchemaMember("CTimerEntity", "m_OnTimerLow")]
-	public CEntityIOOutput OnTimerLow => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimerLow");
+	public virtual CEntityIOOutput OnTimerLow => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimerLow");
 
 	// m_iDisabled
 	[SchemaMember("CTimerEntity", "m_iDisabled")]
-	public Int32 Disabled
+	public virtual Int32 Disabled
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTimerEntity", "m_iDisabled"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTimerEntity", "m_iDisabled", value); }
@@ -41,7 +41,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_flInitialDelay
 	[SchemaMember("CTimerEntity", "m_flInitialDelay")]
-	public float InitialDelay
+	public virtual float InitialDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flInitialDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flInitialDelay", value); }
@@ -49,7 +49,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_flRefireTime
 	[SchemaMember("CTimerEntity", "m_flRefireTime")]
-	public float RefireTime
+	public virtual float RefireTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flRefireTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flRefireTime", value); }
@@ -57,7 +57,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_bUpDownState
 	[SchemaMember("CTimerEntity", "m_bUpDownState")]
-	public bool UpDownState
+	public virtual bool UpDownState
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTimerEntity", "m_bUpDownState"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTimerEntity", "m_bUpDownState", value); }
@@ -65,7 +65,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_iUseRandomTime
 	[SchemaMember("CTimerEntity", "m_iUseRandomTime")]
-	public Int32 UseRandomTime
+	public virtual Int32 UseRandomTime
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTimerEntity", "m_iUseRandomTime"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTimerEntity", "m_iUseRandomTime", value); }
@@ -73,7 +73,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_bPauseAfterFiring
 	[SchemaMember("CTimerEntity", "m_bPauseAfterFiring")]
-	public bool PauseAfterFiring
+	public virtual bool PauseAfterFiring
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTimerEntity", "m_bPauseAfterFiring"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTimerEntity", "m_bPauseAfterFiring", value); }
@@ -81,7 +81,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_flLowerRandomBound
 	[SchemaMember("CTimerEntity", "m_flLowerRandomBound")]
-	public float LowerRandomBound
+	public virtual float LowerRandomBound
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flLowerRandomBound"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flLowerRandomBound", value); }
@@ -89,7 +89,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_flUpperRandomBound
 	[SchemaMember("CTimerEntity", "m_flUpperRandomBound")]
-	public float UpperRandomBound
+	public virtual float UpperRandomBound
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flUpperRandomBound"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flUpperRandomBound", value); }
@@ -97,7 +97,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_flRemainingTime
 	[SchemaMember("CTimerEntity", "m_flRemainingTime")]
-	public float RemainingTime
+	public virtual float RemainingTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flRemainingTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flRemainingTime", value); }
@@ -105,7 +105,7 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_bPaused
 	[SchemaMember("CTimerEntity", "m_bPaused")]
-	public bool Paused
+	public virtual bool Paused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTimerEntity", "m_bPaused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTimerEntity", "m_bPaused", value); }

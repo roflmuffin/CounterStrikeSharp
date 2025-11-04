@@ -21,7 +21,7 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_angPushEntitySpace
 	[SchemaMember("CTriggerPush", "m_angPushEntitySpace")]
-	public QAngle PushEntitySpace
+	public virtual QAngle PushEntitySpace
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace", value); }
@@ -29,7 +29,7 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_vecPushDirEntitySpace
 	[SchemaMember("CTriggerPush", "m_vecPushDirEntitySpace")]
-	public Vector3 PushDirEntitySpace
+	public virtual Vector3 PushDirEntitySpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace", value); }
@@ -37,7 +37,7 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_bTriggerOnStartTouch
 	[SchemaMember("CTriggerPush", "m_bTriggerOnStartTouch")]
-	public bool TriggerOnStartTouch
+	public virtual bool TriggerOnStartTouch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch", value); }
@@ -45,7 +45,7 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_bUsePathSimple
 	[SchemaMember("CTriggerPush", "m_bUsePathSimple")]
-	public bool UsePathSimple
+	public virtual bool UsePathSimple
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPush", "m_bUsePathSimple"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPush", "m_bUsePathSimple", value); }
@@ -53,7 +53,7 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_iszPathSimpleName
 	[SchemaMember("CTriggerPush", "m_iszPathSimpleName")]
-	public string PathSimpleName
+	public virtual string PathSimpleName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerPush", "m_iszPathSimpleName"); }
 		set { Schema.SetString(this.Handle, "CTriggerPush", "m_iszPathSimpleName", value); }
@@ -61,11 +61,11 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_PathSimple
 	[SchemaMember("CTriggerPush", "m_PathSimple")]
-	public CPathSimple? PathSimple => Schema.GetPointer<CPathSimple>(this.Handle, "CTriggerPush", "m_PathSimple");
+	public virtual CPathSimple? PathSimple => Schema.GetPointer<CPathSimple>(this.Handle, "CTriggerPush", "m_PathSimple");
 
 	// m_splinePushType
 	[SchemaMember("CTriggerPush", "m_splinePushType")]
-	public UInt32 SplinePushType
+	public virtual UInt32 SplinePushType
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CTriggerPush", "m_splinePushType"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CTriggerPush", "m_splinePushType", value); }

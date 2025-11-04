@@ -21,7 +21,7 @@ public partial class ServerAuthoritativeWeaponSlot_t : NativeObject
 
 	// unClass
 	[SchemaMember("ServerAuthoritativeWeaponSlot_t", "unClass")]
-	public UInt16 UnClass
+	public virtual UInt16 UnClass
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unClass"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unClass", value); }
@@ -29,7 +29,7 @@ public partial class ServerAuthoritativeWeaponSlot_t : NativeObject
 
 	// unSlot
 	[SchemaMember("ServerAuthoritativeWeaponSlot_t", "unSlot")]
-	public UInt16 UnSlot
+	public virtual UInt16 UnSlot
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unSlot"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unSlot", value); }
@@ -37,13 +37,13 @@ public partial class ServerAuthoritativeWeaponSlot_t : NativeObject
 
 	// unItemDefIdx
 	[SchemaMember("ServerAuthoritativeWeaponSlot_t", "unItemDefIdx")]
-	public UInt16 UnItemDefIdx
+	public virtual UInt16 UnItemDefIdx
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx", value); }
 	}
 
-	public void UnClassPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unClass");
-	public void UnSlotPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unSlot");
-	public void UnItemDefIdxPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx");
+	public virtual void UnClassPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unClass");
+	public virtual void UnSlotPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unSlot");
+	public virtual void UnItemDefIdxPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx");
 }

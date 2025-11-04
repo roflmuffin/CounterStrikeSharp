@@ -21,7 +21,7 @@ public partial class CFuncInteractionLayerClip : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncInteractionLayerClip", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncInteractionLayerClip", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncInteractionLayerClip", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CFuncInteractionLayerClip : CBaseModelEntity
 
 	// m_iszInteractsAs
 	[SchemaMember("CFuncInteractionLayerClip", "m_iszInteractsAs")]
-	public string InteractsAs
+	public virtual string InteractsAs
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs"); }
 		set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs", value); }
@@ -37,7 +37,7 @@ public partial class CFuncInteractionLayerClip : CBaseModelEntity
 
 	// m_iszInteractsWith
 	[SchemaMember("CFuncInteractionLayerClip", "m_iszInteractsWith")]
-	public string InteractsWith
+	public virtual string InteractsWith
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith"); }
 		set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith", value); }

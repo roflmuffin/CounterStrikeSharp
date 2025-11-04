@@ -21,11 +21,11 @@ public partial class CSkeletonInstance : CGameSceneNode
 
 	// m_modelState
 	[SchemaMember("CSkeletonInstance", "m_modelState")]
-	public CModelState ModelState => Schema.GetDeclaredClass<CModelState>(this.Handle, "CSkeletonInstance", "m_modelState");
+	public virtual CModelState ModelState => Schema.GetDeclaredClass<CModelState>(this.Handle, "CSkeletonInstance", "m_modelState");
 
 	// m_bIsAnimationEnabled
 	[SchemaMember("CSkeletonInstance", "m_bIsAnimationEnabled")]
-	public bool IsAnimationEnabled
+	public virtual bool IsAnimationEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bIsAnimationEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bIsAnimationEnabled", value); }
@@ -33,7 +33,7 @@ public partial class CSkeletonInstance : CGameSceneNode
 
 	// m_bUseParentRenderBounds
 	[SchemaMember("CSkeletonInstance", "m_bUseParentRenderBounds")]
-	public bool UseParentRenderBounds
+	public virtual bool UseParentRenderBounds
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bUseParentRenderBounds"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bUseParentRenderBounds", value); }
@@ -41,7 +41,7 @@ public partial class CSkeletonInstance : CGameSceneNode
 
 	// m_bDisableSolidCollisionsForHierarchy
 	[SchemaMember("CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy")]
-	public bool DisableSolidCollisionsForHierarchy
+	public virtual bool DisableSolidCollisionsForHierarchy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy", value); }
@@ -49,19 +49,19 @@ public partial class CSkeletonInstance : CGameSceneNode
 
 	// m_materialGroup
 	[SchemaMember("CSkeletonInstance", "m_materialGroup")]
-	public CUtlStringToken MaterialGroup => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CSkeletonInstance", "m_materialGroup");
+	public virtual CUtlStringToken MaterialGroup => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CSkeletonInstance", "m_materialGroup");
 
 	// m_nHitboxSet
 	[SchemaMember("CSkeletonInstance", "m_nHitboxSet")]
-	public byte HitboxSet
+	public virtual byte HitboxSet
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet", value); }
 	}
 
-	public void ModelStatePropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_modelState");
-	public void IsAnimationEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_bIsAnimationEnabled");
-	public void UseParentRenderBoundsPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_bUseParentRenderBounds");
-	public void MaterialGroupPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_materialGroup");
-	public void HitboxSetPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_nHitboxSet");
+	public virtual void ModelStatePropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_modelState");
+	public virtual void IsAnimationEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_bIsAnimationEnabled");
+	public virtual void UseParentRenderBoundsPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_bUseParentRenderBounds");
+	public virtual void MaterialGroupPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_materialGroup");
+	public virtual void HitboxSetPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_nHitboxSet");
 }

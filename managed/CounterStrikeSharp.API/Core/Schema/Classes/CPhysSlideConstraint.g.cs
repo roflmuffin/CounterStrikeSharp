@@ -21,7 +21,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_axisEnd
 	[SchemaMember("CPhysSlideConstraint", "m_axisEnd")]
-	public Vector3 AxisEnd
+	public virtual Vector3 AxisEnd
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysSlideConstraint", "m_axisEnd"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysSlideConstraint", "m_axisEnd", value); }
@@ -29,7 +29,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_slideFriction
 	[SchemaMember("CPhysSlideConstraint", "m_slideFriction")]
-	public float SlideFriction
+	public virtual float SlideFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_slideFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_slideFriction", value); }
@@ -37,7 +37,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_systemLoadScale
 	[SchemaMember("CPhysSlideConstraint", "m_systemLoadScale")]
-	public float SystemLoadScale
+	public virtual float SystemLoadScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_systemLoadScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_systemLoadScale", value); }
@@ -45,7 +45,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_initialOffset
 	[SchemaMember("CPhysSlideConstraint", "m_initialOffset")]
-	public float InitialOffset
+	public virtual float InitialOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_initialOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_initialOffset", value); }
@@ -53,7 +53,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_bEnableLinearConstraint
 	[SchemaMember("CPhysSlideConstraint", "m_bEnableLinearConstraint")]
-	public bool EnableLinearConstraint
+	public virtual bool EnableLinearConstraint
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableLinearConstraint"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableLinearConstraint", value); }
@@ -61,7 +61,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_bEnableAngularConstraint
 	[SchemaMember("CPhysSlideConstraint", "m_bEnableAngularConstraint")]
-	public bool EnableAngularConstraint
+	public virtual bool EnableAngularConstraint
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableAngularConstraint"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableAngularConstraint", value); }
@@ -69,7 +69,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_flMotorFrequency
 	[SchemaMember("CPhysSlideConstraint", "m_flMotorFrequency")]
-	public float MotorFrequency
+	public virtual float MotorFrequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorFrequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorFrequency", value); }
@@ -77,7 +77,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_flMotorDampingRatio
 	[SchemaMember("CPhysSlideConstraint", "m_flMotorDampingRatio")]
-	public float MotorDampingRatio
+	public virtual float MotorDampingRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorDampingRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorDampingRatio", value); }
@@ -85,7 +85,7 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_bUseEntityPivot
 	[SchemaMember("CPhysSlideConstraint", "m_bUseEntityPivot")]
-	public bool UseEntityPivot
+	public virtual bool UseEntityPivot
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bUseEntityPivot"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bUseEntityPivot", value); }
@@ -93,6 +93,6 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_soundInfo
 	[SchemaMember("CPhysSlideConstraint", "m_soundInfo")]
-	public ConstraintSoundInfo SoundInfo => Schema.GetDeclaredClass<ConstraintSoundInfo>(this.Handle, "CPhysSlideConstraint", "m_soundInfo");
+	public virtual ConstraintSoundInfo SoundInfo => Schema.GetDeclaredClass<ConstraintSoundInfo>(this.Handle, "CPhysSlideConstraint", "m_soundInfo");
 
 }

@@ -21,7 +21,7 @@ public partial class CFuncWall : CBaseModelEntity
 
 	// m_nState
 	[SchemaMember("CFuncWall", "m_nState")]
-	public Int32 State
+	public virtual Int32 State
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncWall", "m_nState"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncWall", "m_nState", value); }

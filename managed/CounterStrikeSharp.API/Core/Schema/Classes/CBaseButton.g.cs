@@ -21,7 +21,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CBaseButton", "m_angMoveEntitySpace")]
-	public QAngle MoveEntitySpace
+	public virtual QAngle MoveEntitySpace
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseButton", "m_angMoveEntitySpace"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseButton", "m_angMoveEntitySpace", value); }
@@ -29,7 +29,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_fStayPushed
 	[SchemaMember("CBaseButton", "m_fStayPushed")]
-	public bool StayPushed
+	public virtual bool StayPushed
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_fStayPushed"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_fStayPushed", value); }
@@ -37,7 +37,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_fRotating
 	[SchemaMember("CBaseButton", "m_fRotating")]
-	public bool Rotating
+	public virtual bool Rotating
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_fRotating"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_fRotating", value); }
@@ -45,11 +45,11 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_ls
 	[SchemaMember("CBaseButton", "m_ls")]
-	public locksound_t Ls => Schema.GetDeclaredClass<locksound_t>(this.Handle, "CBaseButton", "m_ls");
+	public virtual locksound_t Ls => Schema.GetDeclaredClass<locksound_t>(this.Handle, "CBaseButton", "m_ls");
 
 	// m_sUseSound
 	[SchemaMember("CBaseButton", "m_sUseSound")]
-	public string UseSound
+	public virtual string UseSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sUseSound"); }
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_sUseSound", value); }
@@ -57,7 +57,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_sLockedSound
 	[SchemaMember("CBaseButton", "m_sLockedSound")]
-	public string LockedSound
+	public virtual string LockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sLockedSound"); }
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_sLockedSound", value); }
@@ -65,7 +65,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_sUnlockedSound
 	[SchemaMember("CBaseButton", "m_sUnlockedSound")]
-	public string UnlockedSound
+	public virtual string UnlockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sUnlockedSound"); }
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_sUnlockedSound", value); }
@@ -73,7 +73,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_sOverrideAnticipationName
 	[SchemaMember("CBaseButton", "m_sOverrideAnticipationName")]
-	public string OverrideAnticipationName
+	public virtual string OverrideAnticipationName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sOverrideAnticipationName"); }
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_sOverrideAnticipationName", value); }
@@ -81,7 +81,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_bLocked
 	[SchemaMember("CBaseButton", "m_bLocked")]
-	public bool Locked
+	public virtual bool Locked
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bLocked"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bLocked", value); }
@@ -89,7 +89,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_bDisabled
 	[SchemaMember("CBaseButton", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bDisabled", value); }
@@ -97,7 +97,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_flUseLockedTime
 	[SchemaMember("CBaseButton", "m_flUseLockedTime")]
-	public float UseLockedTime
+	public virtual float UseLockedTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseButton", "m_flUseLockedTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseButton", "m_flUseLockedTime", value); }
@@ -105,7 +105,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_bSolidBsp
 	[SchemaMember("CBaseButton", "m_bSolidBsp")]
-	public bool SolidBsp
+	public virtual bool SolidBsp
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bSolidBsp"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bSolidBsp", value); }
@@ -113,27 +113,27 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_OnDamaged
 	[SchemaMember("CBaseButton", "m_OnDamaged")]
-	public CEntityIOOutput OnDamaged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnDamaged");
+	public virtual CEntityIOOutput OnDamaged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnDamaged");
 
 	// m_OnPressed
 	[SchemaMember("CBaseButton", "m_OnPressed")]
-	public CEntityIOOutput OnPressed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnPressed");
+	public virtual CEntityIOOutput OnPressed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnPressed");
 
 	// m_OnUseLocked
 	[SchemaMember("CBaseButton", "m_OnUseLocked")]
-	public CEntityIOOutput OnUseLocked => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnUseLocked");
+	public virtual CEntityIOOutput OnUseLocked => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnUseLocked");
 
 	// m_OnIn
 	[SchemaMember("CBaseButton", "m_OnIn")]
-	public CEntityIOOutput OnIn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnIn");
+	public virtual CEntityIOOutput OnIn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnIn");
 
 	// m_OnOut
 	[SchemaMember("CBaseButton", "m_OnOut")]
-	public CEntityIOOutput OnOut => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnOut");
+	public virtual CEntityIOOutput OnOut => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnOut");
 
 	// m_nState
 	[SchemaMember("CBaseButton", "m_nState")]
-	public Int32 State
+	public virtual Int32 State
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseButton", "m_nState"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseButton", "m_nState", value); }
@@ -141,15 +141,15 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_hConstraint
 	[SchemaMember("CBaseButton", "m_hConstraint")]
-	public CHandle<CEntityInstance> Constraint => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraint");
+	public virtual CHandle<CEntityInstance> Constraint => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraint");
 
 	// m_hConstraintParent
 	[SchemaMember("CBaseButton", "m_hConstraintParent")]
-	public CHandle<CEntityInstance> ConstraintParent => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraintParent");
+	public virtual CHandle<CEntityInstance> ConstraintParent => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraintParent");
 
 	// m_bForceNpcExclude
 	[SchemaMember("CBaseButton", "m_bForceNpcExclude")]
-	public bool ForceNpcExclude
+	public virtual bool ForceNpcExclude
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bForceNpcExclude"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bForceNpcExclude", value); }
@@ -157,7 +157,7 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_sGlowEntity
 	[SchemaMember("CBaseButton", "m_sGlowEntity")]
-	public string SGlowEntity
+	public virtual string SGlowEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sGlowEntity"); }
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_sGlowEntity", value); }
@@ -165,11 +165,11 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_glowEntity
 	[SchemaMember("CBaseButton", "m_glowEntity")]
-	public CHandle<CBaseModelEntity> GlowEntity => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CBaseButton", "m_glowEntity");
+	public virtual CHandle<CBaseModelEntity> GlowEntity => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CBaseButton", "m_glowEntity");
 
 	// m_usable
 	[SchemaMember("CBaseButton", "m_usable")]
-	public bool Usable
+	public virtual bool Usable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_usable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_usable", value); }
@@ -177,13 +177,13 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_szDisplayText
 	[SchemaMember("CBaseButton", "m_szDisplayText")]
-	public string DisplayText
+	public virtual string DisplayText
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_szDisplayText"); }
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_szDisplayText", value); }
 	}
 
-	public void GlowEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_glowEntity");
-	public void UsablePropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_usable");
-	public void DisplayTextPropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_szDisplayText");
+	public virtual void GlowEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_glowEntity");
+	public virtual void UsablePropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_usable");
+	public virtual void DisplayTextPropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_szDisplayText");
 }

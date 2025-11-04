@@ -21,7 +21,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_flStartTime
 	[SchemaMember("CEnvWindShared", "m_flStartTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flStartTime", value); }
@@ -29,7 +29,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_iWindSeed
 	[SchemaMember("CEnvWindShared", "m_iWindSeed")]
-	public UInt32 WindSeed
+	public virtual UInt32 WindSeed
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEnvWindShared", "m_iWindSeed"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEnvWindShared", "m_iWindSeed", value); }
@@ -37,7 +37,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_iMinWind
 	[SchemaMember("CEnvWindShared", "m_iMinWind")]
-	public UInt16 MinWind
+	public virtual UInt16 MinWind
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinWind"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinWind", value); }
@@ -45,7 +45,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_iMaxWind
 	[SchemaMember("CEnvWindShared", "m_iMaxWind")]
-	public UInt16 MaxWind
+	public virtual UInt16 MaxWind
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxWind"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxWind", value); }
@@ -53,7 +53,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_windRadius
 	[SchemaMember("CEnvWindShared", "m_windRadius")]
-	public Int32 WindRadius
+	public virtual Int32 WindRadius
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindShared", "m_windRadius"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindShared", "m_windRadius", value); }
@@ -61,7 +61,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_iMinGust
 	[SchemaMember("CEnvWindShared", "m_iMinGust")]
-	public UInt16 MinGust
+	public virtual UInt16 MinGust
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinGust"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinGust", value); }
@@ -69,7 +69,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_iMaxGust
 	[SchemaMember("CEnvWindShared", "m_iMaxGust")]
-	public UInt16 MaxGust
+	public virtual UInt16 MaxGust
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxGust"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxGust", value); }
@@ -77,7 +77,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_flMinGustDelay
 	[SchemaMember("CEnvWindShared", "m_flMinGustDelay")]
-	public float MinGustDelay
+	public virtual float MinGustDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flMinGustDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flMinGustDelay", value); }
@@ -85,7 +85,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_flMaxGustDelay
 	[SchemaMember("CEnvWindShared", "m_flMaxGustDelay")]
-	public float MaxGustDelay
+	public virtual float MaxGustDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flMaxGustDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flMaxGustDelay", value); }
@@ -93,7 +93,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_flGustDuration
 	[SchemaMember("CEnvWindShared", "m_flGustDuration")]
-	public float GustDuration
+	public virtual float GustDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flGustDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flGustDuration", value); }
@@ -101,7 +101,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_iGustDirChange
 	[SchemaMember("CEnvWindShared", "m_iGustDirChange")]
-	public UInt16 GustDirChange
+	public virtual UInt16 GustDirChange
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iGustDirChange"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iGustDirChange", value); }
@@ -109,7 +109,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_iInitialWindDir
 	[SchemaMember("CEnvWindShared", "m_iInitialWindDir")]
-	public UInt16 InitialWindDir
+	public virtual UInt16 InitialWindDir
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iInitialWindDir"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iInitialWindDir", value); }
@@ -117,7 +117,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_flInitialWindSpeed
 	[SchemaMember("CEnvWindShared", "m_flInitialWindSpeed")]
-	public float InitialWindSpeed
+	public virtual float InitialWindSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flInitialWindSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flInitialWindSpeed", value); }
@@ -125,7 +125,7 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_location
 	[SchemaMember("CEnvWindShared", "m_location")]
-	public Vector3 Location
+	public virtual Vector3 Location
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvWindShared", "m_location"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvWindShared", "m_location", value); }
@@ -133,28 +133,28 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_OnGustStart
 	[SchemaMember("CEnvWindShared", "m_OnGustStart")]
-	public CEntityIOOutput OnGustStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustStart");
+	public virtual CEntityIOOutput OnGustStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustStart");
 
 	// m_OnGustEnd
 	[SchemaMember("CEnvWindShared", "m_OnGustEnd")]
-	public CEntityIOOutput OnGustEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustEnd");
+	public virtual CEntityIOOutput OnGustEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustEnd");
 
 	// m_hEntOwner
 	[SchemaMember("CEnvWindShared", "m_hEntOwner")]
-	public CHandle<CBaseEntity> EntOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvWindShared", "m_hEntOwner");
+	public virtual CHandle<CBaseEntity> EntOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvWindShared", "m_hEntOwner");
 
-	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flStartTime");
-	public void WindSeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iWindSeed");
-	public void MinWindPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMinWind");
-	public void MaxWindPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMaxWind");
-	public void WindRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_windRadius");
-	public void MinGustPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMinGust");
-	public void MaxGustPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMaxGust");
-	public void MinGustDelayPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flMinGustDelay");
-	public void MaxGustDelayPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flMaxGustDelay");
-	public void GustDurationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flGustDuration");
-	public void GustDirChangePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iGustDirChange");
-	public void InitialWindDirPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iInitialWindDir");
-	public void InitialWindSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flInitialWindSpeed");
-	public void LocationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_location");
+	public virtual void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flStartTime");
+	public virtual void WindSeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iWindSeed");
+	public virtual void MinWindPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMinWind");
+	public virtual void MaxWindPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMaxWind");
+	public virtual void WindRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_windRadius");
+	public virtual void MinGustPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMinGust");
+	public virtual void MaxGustPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMaxGust");
+	public virtual void MinGustDelayPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flMinGustDelay");
+	public virtual void MaxGustDelayPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flMaxGustDelay");
+	public virtual void GustDurationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flGustDuration");
+	public virtual void GustDirChangePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iGustDirChange");
+	public virtual void InitialWindDirPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iInitialWindDir");
+	public virtual void InitialWindSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flInitialWindSpeed");
+	public virtual void LocationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_location");
 }

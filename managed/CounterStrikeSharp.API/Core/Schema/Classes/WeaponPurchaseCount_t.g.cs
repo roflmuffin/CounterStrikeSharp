@@ -21,7 +21,7 @@ public partial class WeaponPurchaseCount_t : NativeObject
 
 	// m_nItemDefIndex
 	[SchemaMember("WeaponPurchaseCount_t", "m_nItemDefIndex")]
-	public UInt16 ItemDefIndex
+	public virtual UInt16 ItemDefIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nItemDefIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nItemDefIndex", value); }
@@ -29,12 +29,12 @@ public partial class WeaponPurchaseCount_t : NativeObject
 
 	// m_nCount
 	[SchemaMember("WeaponPurchaseCount_t", "m_nCount")]
-	public UInt16 Count
+	public virtual UInt16 Count
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount", value); }
 	}
 
-	public void ItemDefIndexPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseCount_t", "m_nItemDefIndex");
-	public void CountPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseCount_t", "m_nCount");
+	public virtual void ItemDefIndexPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseCount_t", "m_nItemDefIndex");
+	public virtual void CountPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseCount_t", "m_nCount");
 }

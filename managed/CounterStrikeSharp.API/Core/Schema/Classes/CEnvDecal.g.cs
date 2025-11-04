@@ -21,11 +21,11 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_hDecalMaterial
 	[SchemaMember("CEnvDecal", "m_hDecalMaterial")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> DecalMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvDecal", "m_hDecalMaterial");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> DecalMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvDecal", "m_hDecalMaterial");
 
 	// m_flWidth
 	[SchemaMember("CEnvDecal", "m_flWidth")]
-	public float Width
+	public virtual float Width
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flWidth", value); }
@@ -33,7 +33,7 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_flHeight
 	[SchemaMember("CEnvDecal", "m_flHeight")]
-	public float Height
+	public virtual float Height
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flHeight", value); }
@@ -41,7 +41,7 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_flDepth
 	[SchemaMember("CEnvDecal", "m_flDepth")]
-	public float Depth
+	public virtual float Depth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flDepth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flDepth", value); }
@@ -49,7 +49,7 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_nRenderOrder
 	[SchemaMember("CEnvDecal", "m_nRenderOrder")]
-	public UInt32 RenderOrder
+	public virtual UInt32 RenderOrder
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEnvDecal", "m_nRenderOrder"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEnvDecal", "m_nRenderOrder", value); }
@@ -57,7 +57,7 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_bProjectOnWorld
 	[SchemaMember("CEnvDecal", "m_bProjectOnWorld")]
-	public bool ProjectOnWorld
+	public virtual bool ProjectOnWorld
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWorld"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWorld", value); }
@@ -65,7 +65,7 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_bProjectOnCharacters
 	[SchemaMember("CEnvDecal", "m_bProjectOnCharacters")]
-	public bool ProjectOnCharacters
+	public virtual bool ProjectOnCharacters
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnCharacters"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnCharacters", value); }
@@ -73,7 +73,7 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_bProjectOnWater
 	[SchemaMember("CEnvDecal", "m_bProjectOnWater")]
-	public bool ProjectOnWater
+	public virtual bool ProjectOnWater
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWater"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWater", value); }
@@ -81,19 +81,19 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_flDepthSortBias
 	[SchemaMember("CEnvDecal", "m_flDepthSortBias")]
-	public float DepthSortBias
+	public virtual float DepthSortBias
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flDepthSortBias"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flDepthSortBias", value); }
 	}
 
-	public void DecalMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_hDecalMaterial");
-	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flWidth");
-	public void HeightPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flHeight");
-	public void DepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flDepth");
-	public void RenderOrderPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_nRenderOrder");
-	public void ProjectOnWorldPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnWorld");
-	public void ProjectOnCharactersPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnCharacters");
-	public void ProjectOnWaterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnWater");
-	public void DepthSortBiasPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flDepthSortBias");
+	public virtual void DecalMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_hDecalMaterial");
+	public virtual void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flWidth");
+	public virtual void HeightPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flHeight");
+	public virtual void DepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flDepth");
+	public virtual void RenderOrderPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_nRenderOrder");
+	public virtual void ProjectOnWorldPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnWorld");
+	public virtual void ProjectOnCharactersPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnCharacters");
+	public virtual void ProjectOnWaterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnWater");
+	public virtual void DepthSortBiasPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flDepthSortBias");
 }

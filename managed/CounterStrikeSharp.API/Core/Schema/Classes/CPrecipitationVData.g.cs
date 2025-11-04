@@ -21,7 +21,7 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_flInnerDistance
 	[SchemaMember("CPrecipitationVData", "m_flInnerDistance")]
-	public float InnerDistance
+	public virtual float InnerDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance", value); }
@@ -29,7 +29,7 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_nAttachType
 	[SchemaMember("CPrecipitationVData", "m_nAttachType")]
-	public ParticleAttachment_t AttachType
+	public virtual ParticleAttachment_t AttachType
 	{
 		get { return Schema.GetValueType<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType"); }
 		set { Schema.SetValueType<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType", value); }
@@ -37,7 +37,7 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_bBatchSameVolumeType
 	[SchemaMember("CPrecipitationVData", "m_bBatchSameVolumeType")]
-	public bool BatchSameVolumeType
+	public virtual bool BatchSameVolumeType
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType", value); }
@@ -45,7 +45,7 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_nRTEnvCP
 	[SchemaMember("CPrecipitationVData", "m_nRTEnvCP")]
-	public Int32 RTEnvCP
+	public virtual Int32 RTEnvCP
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP", value); }
@@ -53,7 +53,7 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_nRTEnvCPComponent
 	[SchemaMember("CPrecipitationVData", "m_nRTEnvCPComponent")]
-	public Int32 RTEnvCPComponent
+	public virtual Int32 RTEnvCPComponent
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent", value); }
@@ -61,7 +61,7 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_szModifier
 	[SchemaMember("CPrecipitationVData", "m_szModifier")]
-	public string Modifier
+	public virtual string Modifier
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPrecipitationVData", "m_szModifier"); }
 		set { Schema.SetString(this.Handle, "CPrecipitationVData", "m_szModifier", value); }

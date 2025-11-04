@@ -21,15 +21,15 @@ public partial class CTriggerBuoyancy : CBaseTrigger
 
 	// m_BuoyancyHelper
 	[SchemaMember("CTriggerBuoyancy", "m_BuoyancyHelper")]
-	public CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CTriggerBuoyancy", "m_BuoyancyHelper");
+	public virtual CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CTriggerBuoyancy", "m_BuoyancyHelper");
 
 	// m_flFluidDensity
 	[SchemaMember("CTriggerBuoyancy", "m_flFluidDensity")]
-	public float FluidDensity
+	public virtual float FluidDensity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity", value); }
 	}
 
-	public void FluidDensityPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerBuoyancy", "m_flFluidDensity");
+	public virtual void FluidDensityPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerBuoyancy", "m_flFluidDensity");
 }

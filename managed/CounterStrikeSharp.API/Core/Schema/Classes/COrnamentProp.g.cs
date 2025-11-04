@@ -21,7 +21,7 @@ public partial class COrnamentProp : CDynamicProp
 
 	// m_initialOwner
 	[SchemaMember("COrnamentProp", "m_initialOwner")]
-	public string InitialOwner
+	public virtual string InitialOwner
 	{
 		get { return Schema.GetUtf8String(this.Handle, "COrnamentProp", "m_initialOwner"); }
 		set { Schema.SetString(this.Handle, "COrnamentProp", "m_initialOwner", value); }

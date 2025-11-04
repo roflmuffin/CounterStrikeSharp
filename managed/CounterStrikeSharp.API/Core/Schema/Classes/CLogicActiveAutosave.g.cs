@@ -21,7 +21,7 @@ public partial class CLogicActiveAutosave : CLogicAutosave
 
 	// m_TriggerHitPoints
 	[SchemaMember("CLogicActiveAutosave", "m_TriggerHitPoints")]
-	public Int32 TriggerHitPoints
+	public virtual Int32 TriggerHitPoints
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints", value); }
@@ -29,7 +29,7 @@ public partial class CLogicActiveAutosave : CLogicAutosave
 
 	// m_flTimeToTrigger
 	[SchemaMember("CLogicActiveAutosave", "m_flTimeToTrigger")]
-	public float TimeToTrigger
+	public virtual float TimeToTrigger
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger", value); }
@@ -37,7 +37,7 @@ public partial class CLogicActiveAutosave : CLogicAutosave
 
 	// m_flStartTime
 	[SchemaMember("CLogicActiveAutosave", "m_flStartTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime", value); }
@@ -45,7 +45,7 @@ public partial class CLogicActiveAutosave : CLogicAutosave
 
 	// m_flDangerousTime
 	[SchemaMember("CLogicActiveAutosave", "m_flDangerousTime")]
-	public float DangerousTime
+	public virtual float DangerousTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime", value); }

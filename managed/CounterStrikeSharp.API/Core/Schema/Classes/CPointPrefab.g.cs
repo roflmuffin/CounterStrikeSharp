@@ -21,7 +21,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_targetMapName
 	[SchemaMember("CPointPrefab", "m_targetMapName")]
-	public string TargetMapName
+	public virtual string TargetMapName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_targetMapName"); }
 		set { Schema.SetString(this.Handle, "CPointPrefab", "m_targetMapName", value); }
@@ -29,7 +29,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_forceWorldGroupID
 	[SchemaMember("CPointPrefab", "m_forceWorldGroupID")]
-	public string ForceWorldGroupID
+	public virtual string ForceWorldGroupID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_forceWorldGroupID"); }
 		set { Schema.SetString(this.Handle, "CPointPrefab", "m_forceWorldGroupID", value); }
@@ -37,7 +37,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_associatedRelayTargetName
 	[SchemaMember("CPointPrefab", "m_associatedRelayTargetName")]
-	public string AssociatedRelayTargetName
+	public virtual string AssociatedRelayTargetName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_associatedRelayTargetName"); }
 		set { Schema.SetString(this.Handle, "CPointPrefab", "m_associatedRelayTargetName", value); }
@@ -45,7 +45,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_fixupNames
 	[SchemaMember("CPointPrefab", "m_fixupNames")]
-	public bool FixupNames
+	public virtual bool FixupNames
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointPrefab", "m_fixupNames"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointPrefab", "m_fixupNames", value); }
@@ -53,7 +53,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_bLoadDynamic
 	[SchemaMember("CPointPrefab", "m_bLoadDynamic")]
-	public bool LoadDynamic
+	public virtual bool LoadDynamic
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic", value); }
@@ -61,6 +61,6 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_associatedRelayEntity
 	[SchemaMember("CPointPrefab", "m_associatedRelayEntity")]
-	public CHandle<CPointPrefab> AssociatedRelayEntity => Schema.GetDeclaredClass<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity");
+	public virtual CHandle<CPointPrefab> AssociatedRelayEntity => Schema.GetDeclaredClass<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity");
 
 }

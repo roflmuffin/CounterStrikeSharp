@@ -21,7 +21,7 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_bLoop
 	[SchemaMember("CTextureBasedAnimatable", "m_bLoop")]
-	public bool Loop
+	public virtual bool Loop
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTextureBasedAnimatable", "m_bLoop"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTextureBasedAnimatable", "m_bLoop", value); }
@@ -29,7 +29,7 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_flFPS
 	[SchemaMember("CTextureBasedAnimatable", "m_flFPS")]
-	public float FPS
+	public virtual float FPS
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flFPS"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flFPS", value); }
@@ -37,15 +37,15 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_hPositionKeys
 	[SchemaMember("CTextureBasedAnimatable", "m_hPositionKeys")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> PositionKeys => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CTextureBasedAnimatable", "m_hPositionKeys");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> PositionKeys => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CTextureBasedAnimatable", "m_hPositionKeys");
 
 	// m_hRotationKeys
 	[SchemaMember("CTextureBasedAnimatable", "m_hRotationKeys")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> RotationKeys => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CTextureBasedAnimatable", "m_hRotationKeys");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> RotationKeys => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CTextureBasedAnimatable", "m_hRotationKeys");
 
 	// m_vAnimationBoundsMin
 	[SchemaMember("CTextureBasedAnimatable", "m_vAnimationBoundsMin")]
-	public Vector3 AnimationBoundsMin
+	public virtual Vector3 AnimationBoundsMin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMin", value); }
@@ -53,7 +53,7 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_vAnimationBoundsMax
 	[SchemaMember("CTextureBasedAnimatable", "m_vAnimationBoundsMax")]
-	public Vector3 AnimationBoundsMax
+	public virtual Vector3 AnimationBoundsMax
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMax"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMax", value); }
@@ -61,7 +61,7 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_flStartTime
 	[SchemaMember("CTextureBasedAnimatable", "m_flStartTime")]
-	public float StartTime
+	public virtual float StartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartTime", value); }
@@ -69,18 +69,18 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_flStartFrame
 	[SchemaMember("CTextureBasedAnimatable", "m_flStartFrame")]
-	public float StartFrame
+	public virtual float StartFrame
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartFrame"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartFrame", value); }
 	}
 
-	public void LoopPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_bLoop");
-	public void FPSPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flFPS");
-	public void PositionKeysPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_hPositionKeys");
-	public void RotationKeysPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_hRotationKeys");
-	public void AnimationBoundsMinPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_vAnimationBoundsMin");
-	public void AnimationBoundsMaxPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_vAnimationBoundsMax");
-	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flStartTime");
-	public void StartFramePropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flStartFrame");
+	public virtual void LoopPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_bLoop");
+	public virtual void FPSPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flFPS");
+	public virtual void PositionKeysPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_hPositionKeys");
+	public virtual void RotationKeysPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_hRotationKeys");
+	public virtual void AnimationBoundsMinPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_vAnimationBoundsMin");
+	public virtual void AnimationBoundsMaxPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_vAnimationBoundsMax");
+	public virtual void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flStartTime");
+	public virtual void StartFramePropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flStartFrame");
 }

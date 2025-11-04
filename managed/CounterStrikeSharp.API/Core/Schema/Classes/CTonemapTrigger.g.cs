@@ -21,7 +21,7 @@ public partial class CTonemapTrigger : CBaseTrigger
 
 	// m_tonemapControllerName
 	[SchemaMember("CTonemapTrigger", "m_tonemapControllerName")]
-	public string TonemapControllerName
+	public virtual string TonemapControllerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTonemapTrigger", "m_tonemapControllerName"); }
 		set { Schema.SetString(this.Handle, "CTonemapTrigger", "m_tonemapControllerName", value); }
@@ -29,6 +29,6 @@ public partial class CTonemapTrigger : CBaseTrigger
 
 	// m_hTonemapController
 	[SchemaMember("CTonemapTrigger", "m_hTonemapController")]
-	public CHandle<CEntityInstance> TonemapController => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CTonemapTrigger", "m_hTonemapController");
+	public virtual CHandle<CEntityInstance> TonemapController => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CTonemapTrigger", "m_hTonemapController");
 
 }

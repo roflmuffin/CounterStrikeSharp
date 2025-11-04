@@ -21,7 +21,7 @@ public partial class CBasePlatTrain : CBaseToggle
 
 	// m_NoiseMoving
 	[SchemaMember("CBasePlatTrain", "m_NoiseMoving")]
-	public string NoiseMoving
+	public virtual string NoiseMoving
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlatTrain", "m_NoiseMoving"); }
 		set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseMoving", value); }
@@ -29,7 +29,7 @@ public partial class CBasePlatTrain : CBaseToggle
 
 	// m_NoiseArrived
 	[SchemaMember("CBasePlatTrain", "m_NoiseArrived")]
-	public string NoiseArrived
+	public virtual string NoiseArrived
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlatTrain", "m_NoiseArrived"); }
 		set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseArrived", value); }
@@ -37,7 +37,7 @@ public partial class CBasePlatTrain : CBaseToggle
 
 	// m_volume
 	[SchemaMember("CBasePlatTrain", "m_volume")]
-	public float Volume
+	public virtual float Volume
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlatTrain", "m_volume"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlatTrain", "m_volume", value); }
@@ -45,7 +45,7 @@ public partial class CBasePlatTrain : CBaseToggle
 
 	// m_flTWidth
 	[SchemaMember("CBasePlatTrain", "m_flTWidth")]
-	public float TWidth
+	public virtual float TWidth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTWidth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTWidth", value); }
@@ -53,7 +53,7 @@ public partial class CBasePlatTrain : CBaseToggle
 
 	// m_flTLength
 	[SchemaMember("CBasePlatTrain", "m_flTLength")]
-	public float TLength
+	public virtual float TLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTLength", value); }

@@ -21,7 +21,7 @@ public partial class CPointCameraVFOV : CPointCamera
 
 	// m_flVerticalFOV
 	[SchemaMember("CPointCameraVFOV", "m_flVerticalFOV")]
-	public float VerticalFOV
+	public virtual float VerticalFOV
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV", value); }

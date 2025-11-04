@@ -21,7 +21,7 @@ public partial class CRagdollManager : CBaseEntity
 
 	// m_iCurrentMaxRagdollCount
 	[SchemaMember("CRagdollManager", "m_iCurrentMaxRagdollCount")]
-	public sbyte CurrentMaxRagdollCount
+	public virtual sbyte CurrentMaxRagdollCount
 	{
 		get { return Schema.GetValueType<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount"); }
 		set { Schema.SetValueType<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount", value); }
@@ -29,7 +29,7 @@ public partial class CRagdollManager : CBaseEntity
 
 	// m_iMaxRagdollCount
 	[SchemaMember("CRagdollManager", "m_iMaxRagdollCount")]
-	public Int32 MaxRagdollCount
+	public virtual Int32 MaxRagdollCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount", value); }
@@ -37,7 +37,7 @@ public partial class CRagdollManager : CBaseEntity
 
 	// m_bSaveImportant
 	[SchemaMember("CRagdollManager", "m_bSaveImportant")]
-	public bool SaveImportant
+	public virtual bool SaveImportant
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant", value); }
@@ -45,11 +45,11 @@ public partial class CRagdollManager : CBaseEntity
 
 	// m_bCanTakeDamage
 	[SchemaMember("CRagdollManager", "m_bCanTakeDamage")]
-	public bool CanTakeDamage
+	public virtual bool CanTakeDamage
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollManager", "m_bCanTakeDamage"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollManager", "m_bCanTakeDamage", value); }
 	}
 
-	public void CurrentMaxRagdollCountPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollManager", "m_iCurrentMaxRagdollCount");
+	public virtual void CurrentMaxRagdollCountPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollManager", "m_iCurrentMaxRagdollCount");
 }

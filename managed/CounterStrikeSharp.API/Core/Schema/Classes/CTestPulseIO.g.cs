@@ -21,35 +21,35 @@ public partial class CTestPulseIO : CLogicalEntity
 
 	// m_OnVariantVoid
 	[SchemaMember("CTestPulseIO", "m_OnVariantVoid")]
-	public CEntityIOOutput OnVariantVoid => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantVoid");
+	public virtual CEntityIOOutput OnVariantVoid => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantVoid");
 
 	// m_OnVariantBool
 	[SchemaMember("CTestPulseIO", "m_OnVariantBool")]
-	public CEntityIOOutput OnVariantBool => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantBool");
+	public virtual CEntityIOOutput OnVariantBool => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantBool");
 
 	// m_OnVariantInt
 	[SchemaMember("CTestPulseIO", "m_OnVariantInt")]
-	public CEntityIOOutput OnVariantInt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantInt");
+	public virtual CEntityIOOutput OnVariantInt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantInt");
 
 	// m_OnVariantFloat
 	[SchemaMember("CTestPulseIO", "m_OnVariantFloat")]
-	public CEntityIOOutput OnVariantFloat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantFloat");
+	public virtual CEntityIOOutput OnVariantFloat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantFloat");
 
 	// m_OnVariantString
 	[SchemaMember("CTestPulseIO", "m_OnVariantString")]
-	public CEntityIOOutput OnVariantString => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantString");
+	public virtual CEntityIOOutput OnVariantString => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantString");
 
 	// m_OnVariantColor
 	[SchemaMember("CTestPulseIO", "m_OnVariantColor")]
-	public CEntityIOOutput OnVariantColor => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantColor");
+	public virtual CEntityIOOutput OnVariantColor => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantColor");
 
 	// m_OnVariantVector
 	[SchemaMember("CTestPulseIO", "m_OnVariantVector")]
-	public CEntityIOOutput OnVariantVector => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantVector");
+	public virtual CEntityIOOutput OnVariantVector => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnVariantVector");
 
 	// m_bAllowEmptyInputs
 	[SchemaMember("CTestPulseIO", "m_bAllowEmptyInputs")]
-	public bool AllowEmptyInputs
+	public virtual bool AllowEmptyInputs
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTestPulseIO", "m_bAllowEmptyInputs"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTestPulseIO", "m_bAllowEmptyInputs", value); }

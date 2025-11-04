@@ -21,7 +21,7 @@ public partial class CRulePointEntity : CRuleEntity
 
 	// m_Score
 	[SchemaMember("CRulePointEntity", "m_Score")]
-	public Int32 Score
+	public virtual Int32 Score
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CRulePointEntity", "m_Score"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CRulePointEntity", "m_Score", value); }

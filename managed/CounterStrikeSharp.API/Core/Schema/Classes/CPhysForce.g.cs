@@ -21,7 +21,7 @@ public partial class CPhysForce : CPointEntity
 
 	// m_nameAttach
 	[SchemaMember("CPhysForce", "m_nameAttach")]
-	public string NameAttach
+	public virtual string NameAttach
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysForce", "m_nameAttach"); }
 		set { Schema.SetString(this.Handle, "CPhysForce", "m_nameAttach", value); }
@@ -29,7 +29,7 @@ public partial class CPhysForce : CPointEntity
 
 	// m_force
 	[SchemaMember("CPhysForce", "m_force")]
-	public float Force
+	public virtual float Force
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysForce", "m_force"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysForce", "m_force", value); }
@@ -37,7 +37,7 @@ public partial class CPhysForce : CPointEntity
 
 	// m_forceTime
 	[SchemaMember("CPhysForce", "m_forceTime")]
-	public float ForceTime
+	public virtual float ForceTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysForce", "m_forceTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysForce", "m_forceTime", value); }
@@ -45,11 +45,11 @@ public partial class CPhysForce : CPointEntity
 
 	// m_attachedObject
 	[SchemaMember("CPhysForce", "m_attachedObject")]
-	public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysForce", "m_attachedObject");
+	public virtual CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysForce", "m_attachedObject");
 
 	// m_wasRestored
 	[SchemaMember("CPhysForce", "m_wasRestored")]
-	public bool WasRestored
+	public virtual bool WasRestored
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysForce", "m_wasRestored"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysForce", "m_wasRestored", value); }
@@ -57,6 +57,6 @@ public partial class CPhysForce : CPointEntity
 
 	// m_integrator
 	[SchemaMember("CPhysForce", "m_integrator")]
-	public CConstantForceController Integrator => Schema.GetDeclaredClass<CConstantForceController>(this.Handle, "CPhysForce", "m_integrator");
+	public virtual CConstantForceController Integrator => Schema.GetDeclaredClass<CConstantForceController>(this.Handle, "CPhysForce", "m_integrator");
 
 }

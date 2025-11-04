@@ -21,7 +21,7 @@ public partial class CFilterMultiple : CBaseFilter
 
 	// m_nFilterType
 	[SchemaMember("CFilterMultiple", "m_nFilterType")]
-	public filter_t FilterType
+	public virtual filter_t FilterType
 	{
 		get { return Schema.GetValueType<filter_t>(this.Handle, "CFilterMultiple", "m_nFilterType"); }
 		set { Schema.SetValueType<filter_t>(this.Handle, "CFilterMultiple", "m_nFilterType", value); }
@@ -29,10 +29,10 @@ public partial class CFilterMultiple : CBaseFilter
 
 	// m_iFilterName
 	[SchemaMember("CFilterMultiple", "m_iFilterName")]
-	public Span<string> FilterName => Schema.GetFixedArray<string>(this.Handle, "CFilterMultiple", "m_iFilterName", 10);
+	public virtual Span<string> FilterName => Schema.GetFixedArray<string>(this.Handle, "CFilterMultiple", "m_iFilterName", 10);
 
 	// m_hFilter
 	[SchemaMember("CFilterMultiple", "m_hFilter")]
-	public Span<CHandle<CBaseEntity>> Filter => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CFilterMultiple", "m_hFilter", 10);
+	public virtual Span<CHandle<CBaseEntity>> Filter => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CFilterMultiple", "m_hFilter", 10);
 
 }

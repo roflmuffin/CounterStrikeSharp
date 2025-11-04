@@ -21,7 +21,7 @@ public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstanc
 
 	// m_animationController
 	[SchemaMember("CBodyComponentBaseAnimGraph", "m_animationController")]
-	public CBaseAnimGraphController AnimationController => Schema.GetDeclaredClass<CBaseAnimGraphController>(this.Handle, "CBodyComponentBaseAnimGraph", "m_animationController");
+	public virtual CBaseAnimGraphController AnimationController => Schema.GetDeclaredClass<CBaseAnimGraphController>(this.Handle, "CBodyComponentBaseAnimGraph", "m_animationController");
 
-	public void AnimationControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBodyComponentBaseAnimGraph", "m_animationController");
+	public virtual void AnimationControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBodyComponentBaseAnimGraph", "m_animationController");
 }

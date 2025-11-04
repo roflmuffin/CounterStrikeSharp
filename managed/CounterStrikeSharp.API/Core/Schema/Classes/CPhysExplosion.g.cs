@@ -21,7 +21,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_bExplodeOnSpawn
 	[SchemaMember("CPhysExplosion", "m_bExplodeOnSpawn")]
-	public bool ExplodeOnSpawn
+	public virtual bool ExplodeOnSpawn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysExplosion", "m_bExplodeOnSpawn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysExplosion", "m_bExplodeOnSpawn", value); }
@@ -29,7 +29,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_flMagnitude
 	[SchemaMember("CPhysExplosion", "m_flMagnitude")]
-	public float Magnitude
+	public virtual float Magnitude
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flMagnitude"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flMagnitude", value); }
@@ -37,7 +37,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_flDamage
 	[SchemaMember("CPhysExplosion", "m_flDamage")]
-	public float Damage
+	public virtual float Damage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flDamage", value); }
@@ -45,7 +45,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_radius
 	[SchemaMember("CPhysExplosion", "m_radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_radius", value); }
@@ -53,7 +53,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_targetEntityName
 	[SchemaMember("CPhysExplosion", "m_targetEntityName")]
-	public string TargetEntityName
+	public virtual string TargetEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysExplosion", "m_targetEntityName"); }
 		set { Schema.SetString(this.Handle, "CPhysExplosion", "m_targetEntityName", value); }
@@ -61,7 +61,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_flInnerRadius
 	[SchemaMember("CPhysExplosion", "m_flInnerRadius")]
-	public float InnerRadius
+	public virtual float InnerRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flInnerRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flInnerRadius", value); }
@@ -69,7 +69,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_flPushScale
 	[SchemaMember("CPhysExplosion", "m_flPushScale")]
-	public float PushScale
+	public virtual float PushScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flPushScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flPushScale", value); }
@@ -77,7 +77,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_bConvertToDebrisWhenPossible
 	[SchemaMember("CPhysExplosion", "m_bConvertToDebrisWhenPossible")]
-	public bool ConvertToDebrisWhenPossible
+	public virtual bool ConvertToDebrisWhenPossible
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysExplosion", "m_bConvertToDebrisWhenPossible"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysExplosion", "m_bConvertToDebrisWhenPossible", value); }
@@ -85,7 +85,7 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_bAffectInvulnerableEnts
 	[SchemaMember("CPhysExplosion", "m_bAffectInvulnerableEnts")]
-	public bool AffectInvulnerableEnts
+	public virtual bool AffectInvulnerableEnts
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysExplosion", "m_bAffectInvulnerableEnts"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysExplosion", "m_bAffectInvulnerableEnts", value); }
@@ -93,6 +93,6 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_OnPushedPlayer
 	[SchemaMember("CPhysExplosion", "m_OnPushedPlayer")]
-	public CEntityIOOutput OnPushedPlayer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysExplosion", "m_OnPushedPlayer");
+	public virtual CEntityIOOutput OnPushedPlayer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysExplosion", "m_OnPushedPlayer");
 
 }

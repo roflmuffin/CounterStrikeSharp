@@ -21,7 +21,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_flNextAttack
 	[SchemaMember("CCSPlayer_WeaponServices", "m_flNextAttack")]
-	public float NextAttack
+	public virtual float NextAttack
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WeaponServices", "m_flNextAttack"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WeaponServices", "m_flNextAttack", value); }
@@ -29,7 +29,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_bIsLookingAtWeapon
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon")]
-	public bool IsLookingAtWeapon
+	public virtual bool IsLookingAtWeapon
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_bIsHoldingLookAtWeapon
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon")]
-	public bool IsHoldingLookAtWeapon
+	public virtual bool IsHoldingLookAtWeapon
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon", value); }
@@ -45,11 +45,11 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_hSavedWeapon
 	[SchemaMember("CCSPlayer_WeaponServices", "m_hSavedWeapon")]
-	public CHandle<CBasePlayerWeapon> SavedWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_WeaponServices", "m_hSavedWeapon");
+	public virtual CHandle<CBasePlayerWeapon> SavedWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_WeaponServices", "m_hSavedWeapon");
 
 	// m_nTimeToMelee
 	[SchemaMember("CCSPlayer_WeaponServices", "m_nTimeToMelee")]
-	public Int32 TimeToMelee
+	public virtual Int32 TimeToMelee
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToMelee"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToMelee", value); }
@@ -57,7 +57,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_nTimeToSecondary
 	[SchemaMember("CCSPlayer_WeaponServices", "m_nTimeToSecondary")]
-	public Int32 TimeToSecondary
+	public virtual Int32 TimeToSecondary
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToSecondary"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToSecondary", value); }
@@ -65,7 +65,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_nTimeToPrimary
 	[SchemaMember("CCSPlayer_WeaponServices", "m_nTimeToPrimary")]
-	public Int32 TimeToPrimary
+	public virtual Int32 TimeToPrimary
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToPrimary"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToPrimary", value); }
@@ -73,7 +73,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_nTimeToSniperRifle
 	[SchemaMember("CCSPlayer_WeaponServices", "m_nTimeToSniperRifle")]
-	public Int32 TimeToSniperRifle
+	public virtual Int32 TimeToSniperRifle
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToSniperRifle"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToSniperRifle", value); }
@@ -81,7 +81,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_bIsBeingGivenItem
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsBeingGivenItem")]
-	public bool IsBeingGivenItem
+	public virtual bool IsBeingGivenItem
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsBeingGivenItem"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsBeingGivenItem", value); }
@@ -89,7 +89,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_bIsPickingUpItemWithUse
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsPickingUpItemWithUse")]
-	public bool IsPickingUpItemWithUse
+	public virtual bool IsPickingUpItemWithUse
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsPickingUpItemWithUse"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsPickingUpItemWithUse", value); }
@@ -97,7 +97,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_bPickedUpWeapon
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bPickedUpWeapon")]
-	public bool PickedUpWeapon
+	public virtual bool PickedUpWeapon
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bPickedUpWeapon"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bPickedUpWeapon", value); }
@@ -105,7 +105,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_bDisableAutoDeploy
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bDisableAutoDeploy")]
-	public bool DisableAutoDeploy
+	public virtual bool DisableAutoDeploy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bDisableAutoDeploy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bDisableAutoDeploy", value); }
@@ -113,7 +113,7 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_bIsPickingUpGroundWeapon
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsPickingUpGroundWeapon")]
-	public bool IsPickingUpGroundWeapon
+	public virtual bool IsPickingUpGroundWeapon
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsPickingUpGroundWeapon"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsPickingUpGroundWeapon", value); }
@@ -121,19 +121,19 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_networkAnimTiming
 	[SchemaMember("CCSPlayer_WeaponServices", "m_networkAnimTiming")]
-	public NetworkedVector<byte> NetworkAnimTiming => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CCSPlayer_WeaponServices", "m_networkAnimTiming");
+	public virtual NetworkedVector<byte> NetworkAnimTiming => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CCSPlayer_WeaponServices", "m_networkAnimTiming");
 
 	// m_bBlockInspectUntilNextGraphUpdate
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate")]
-	public bool BlockInspectUntilNextGraphUpdate
+	public virtual bool BlockInspectUntilNextGraphUpdate
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate", value); }
 	}
 
-	public void NextAttackPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_flNextAttack");
-	public void IsLookingAtWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon");
-	public void IsHoldingLookAtWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon");
-	public void NetworkAnimTimingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_networkAnimTiming");
-	public void BlockInspectUntilNextGraphUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate");
+	public virtual void NextAttackPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_flNextAttack");
+	public virtual void IsLookingAtWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon");
+	public virtual void IsHoldingLookAtWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon");
+	public virtual void NetworkAnimTimingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_networkAnimTiming");
+	public virtual void BlockInspectUntilNextGraphUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate");
 }

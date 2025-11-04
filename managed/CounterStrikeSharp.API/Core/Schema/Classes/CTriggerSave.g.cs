@@ -21,7 +21,7 @@ public partial class CTriggerSave : CBaseTrigger
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CTriggerSave", "m_bForceNewLevelUnit")]
-	public bool ForceNewLevelUnit
+	public virtual bool ForceNewLevelUnit
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerSave", "m_bForceNewLevelUnit"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerSave", "m_bForceNewLevelUnit", value); }
@@ -29,7 +29,7 @@ public partial class CTriggerSave : CBaseTrigger
 
 	// m_fDangerousTimer
 	[SchemaMember("CTriggerSave", "m_fDangerousTimer")]
-	public float DangerousTimer
+	public virtual float DangerousTimer
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSave", "m_fDangerousTimer"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerSave", "m_fDangerousTimer", value); }
@@ -37,7 +37,7 @@ public partial class CTriggerSave : CBaseTrigger
 
 	// m_minHitPoints
 	[SchemaMember("CTriggerSave", "m_minHitPoints")]
-	public Int32 MinHitPoints
+	public virtual Int32 MinHitPoints
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerSave", "m_minHitPoints"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerSave", "m_minHitPoints", value); }

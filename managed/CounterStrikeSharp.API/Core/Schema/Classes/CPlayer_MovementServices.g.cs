@@ -21,7 +21,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nImpulse
 	[SchemaMember("CPlayer_MovementServices", "m_nImpulse")]
-	public Int32 Impulse
+	public virtual Int32 Impulse
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayer_MovementServices", "m_nImpulse"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayer_MovementServices", "m_nImpulse", value); }
@@ -29,11 +29,11 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nButtons
 	[SchemaMember("CPlayer_MovementServices", "m_nButtons")]
-	public CInButtonState Buttons => Schema.GetDeclaredClass<CInButtonState>(this.Handle, "CPlayer_MovementServices", "m_nButtons");
+	public virtual CInButtonState Buttons => Schema.GetDeclaredClass<CInButtonState>(this.Handle, "CPlayer_MovementServices", "m_nButtons");
 
 	// m_nQueuedButtonDownMask
 	[SchemaMember("CPlayer_MovementServices", "m_nQueuedButtonDownMask")]
-	public UInt64 QueuedButtonDownMask
+	public virtual UInt64 QueuedButtonDownMask
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonDownMask"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonDownMask", value); }
@@ -41,7 +41,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nQueuedButtonChangeMask
 	[SchemaMember("CPlayer_MovementServices", "m_nQueuedButtonChangeMask")]
-	public UInt64 QueuedButtonChangeMask
+	public virtual UInt64 QueuedButtonChangeMask
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonChangeMask"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonChangeMask", value); }
@@ -49,7 +49,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nButtonDoublePressed
 	[SchemaMember("CPlayer_MovementServices", "m_nButtonDoublePressed")]
-	public UInt64 ButtonDoublePressed
+	public virtual UInt64 ButtonDoublePressed
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nButtonDoublePressed"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nButtonDoublePressed", value); }
@@ -57,11 +57,11 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_pButtonPressedCmdNumber
 	[SchemaMember("CPlayer_MovementServices", "m_pButtonPressedCmdNumber")]
-	public Span<UInt32> ButtonPressedCmdNumber => Schema.GetFixedArray<UInt32>(this.Handle, "CPlayer_MovementServices", "m_pButtonPressedCmdNumber", 64);
+	public virtual Span<UInt32> ButtonPressedCmdNumber => Schema.GetFixedArray<UInt32>(this.Handle, "CPlayer_MovementServices", "m_pButtonPressedCmdNumber", 64);
 
 	// m_nLastCommandNumberProcessed
 	[SchemaMember("CPlayer_MovementServices", "m_nLastCommandNumberProcessed")]
-	public UInt32 LastCommandNumberProcessed
+	public virtual UInt32 LastCommandNumberProcessed
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayer_MovementServices", "m_nLastCommandNumberProcessed"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayer_MovementServices", "m_nLastCommandNumberProcessed", value); }
@@ -69,7 +69,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nToggleButtonDownMask
 	[SchemaMember("CPlayer_MovementServices", "m_nToggleButtonDownMask")]
-	public UInt64 ToggleButtonDownMask
+	public virtual UInt64 ToggleButtonDownMask
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nToggleButtonDownMask"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nToggleButtonDownMask", value); }
@@ -77,7 +77,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_flMaxspeed
 	[SchemaMember("CPlayer_MovementServices", "m_flMaxspeed")]
-	public float Maxspeed
+	public virtual float Maxspeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed", value); }
@@ -85,11 +85,11 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_arrForceSubtickMoveWhen
 	[SchemaMember("CPlayer_MovementServices", "m_arrForceSubtickMoveWhen")]
-	public Span<float> ForceSubtickMoveWhen => Schema.GetFixedArray<float>(this.Handle, "CPlayer_MovementServices", "m_arrForceSubtickMoveWhen", 4);
+	public virtual Span<float> ForceSubtickMoveWhen => Schema.GetFixedArray<float>(this.Handle, "CPlayer_MovementServices", "m_arrForceSubtickMoveWhen", 4);
 
 	// m_flForwardMove
 	[SchemaMember("CPlayer_MovementServices", "m_flForwardMove")]
-	public float ForwardMove
+	public virtual float ForwardMove
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flForwardMove"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flForwardMove", value); }
@@ -97,7 +97,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_flLeftMove
 	[SchemaMember("CPlayer_MovementServices", "m_flLeftMove")]
-	public float LeftMove
+	public virtual float LeftMove
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flLeftMove"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flLeftMove", value); }
@@ -105,7 +105,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_flUpMove
 	[SchemaMember("CPlayer_MovementServices", "m_flUpMove")]
-	public float UpMove
+	public virtual float UpMove
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flUpMove"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flUpMove", value); }
@@ -113,7 +113,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_vecLastMovementImpulses
 	[SchemaMember("CPlayer_MovementServices", "m_vecLastMovementImpulses")]
-	public Vector3 LastMovementImpulses
+	public virtual Vector3 LastMovementImpulses
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayer_MovementServices", "m_vecLastMovementImpulses"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayer_MovementServices", "m_vecLastMovementImpulses", value); }
@@ -121,13 +121,13 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_vecOldViewAngles
 	[SchemaMember("CPlayer_MovementServices", "m_vecOldViewAngles")]
-	public QAngle OldViewAngles
+	public virtual QAngle OldViewAngles
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles", value); }
 	}
 
-	public void ToggleButtonDownMaskPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_nToggleButtonDownMask");
-	public void MaxspeedPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_flMaxspeed");
-	public void ForceSubtickMoveWhenPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_arrForceSubtickMoveWhen");
+	public virtual void ToggleButtonDownMaskPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_nToggleButtonDownMask");
+	public virtual void MaxspeedPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_flMaxspeed");
+	public virtual void ForceSubtickMoveWhenPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_arrForceSubtickMoveWhen");
 }

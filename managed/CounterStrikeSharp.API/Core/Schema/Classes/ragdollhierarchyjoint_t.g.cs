@@ -21,7 +21,7 @@ public partial class ragdollhierarchyjoint_t : NativeObject
 
 	// parentIndex
 	[SchemaMember("ragdollhierarchyjoint_t", "parentIndex")]
-	public Int32 ParentIndex
+	public virtual Int32 ParentIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "parentIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "parentIndex", value); }
@@ -29,7 +29,7 @@ public partial class ragdollhierarchyjoint_t : NativeObject
 
 	// childIndex
 	[SchemaMember("ragdollhierarchyjoint_t", "childIndex")]
-	public Int32 ChildIndex
+	public virtual Int32 ChildIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "childIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "childIndex", value); }

@@ -21,7 +21,7 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 
 	// m_flDMBonusStartTime
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime")]
-	public float DMBonusStartTime
+	public virtual float DMBonusStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime", value); }
@@ -29,7 +29,7 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 
 	// m_flDMBonusTimeLength
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength")]
-	public float DMBonusTimeLength
+	public virtual float DMBonusTimeLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength", value); }
@@ -37,13 +37,13 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 
 	// m_sDMBonusWeapon
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon")]
-	public string DMBonusWeapon
+	public virtual string DMBonusWeapon
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon"); }
 		set { Schema.SetString(this.Handle, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon", value); }
 	}
 
-	public void DMBonusStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
-	public void DMBonusTimeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
-	public void DMBonusWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon");
+	public virtual void DMBonusStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
+	public virtual void DMBonusTimeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
+	public virtual void DMBonusWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon");
 }

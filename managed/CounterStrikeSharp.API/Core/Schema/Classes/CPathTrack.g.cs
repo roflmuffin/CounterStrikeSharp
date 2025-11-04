@@ -21,19 +21,19 @@ public partial class CPathTrack : CPointEntity
 
 	// m_pnext
 	[SchemaMember("CPathTrack", "m_pnext")]
-	public CPathTrack? Pnext => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pnext");
+	public virtual CPathTrack? Pnext => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pnext");
 
 	// m_pprevious
 	[SchemaMember("CPathTrack", "m_pprevious")]
-	public CPathTrack? Pprevious => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pprevious");
+	public virtual CPathTrack? Pprevious => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pprevious");
 
 	// m_paltpath
 	[SchemaMember("CPathTrack", "m_paltpath")]
-	public CPathTrack? Paltpath => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_paltpath");
+	public virtual CPathTrack? Paltpath => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_paltpath");
 
 	// m_flRadius
 	[SchemaMember("CPathTrack", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPathTrack", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPathTrack", "m_flRadius", value); }
@@ -41,7 +41,7 @@ public partial class CPathTrack : CPointEntity
 
 	// m_length
 	[SchemaMember("CPathTrack", "m_length")]
-	public float Length
+	public virtual float Length
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPathTrack", "m_length"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPathTrack", "m_length", value); }
@@ -49,7 +49,7 @@ public partial class CPathTrack : CPointEntity
 
 	// m_altName
 	[SchemaMember("CPathTrack", "m_altName")]
-	public string AltName
+	public virtual string AltName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPathTrack", "m_altName"); }
 		set { Schema.SetString(this.Handle, "CPathTrack", "m_altName", value); }
@@ -57,7 +57,7 @@ public partial class CPathTrack : CPointEntity
 
 	// m_nIterVal
 	[SchemaMember("CPathTrack", "m_nIterVal")]
-	public Int32 IterVal
+	public virtual Int32 IterVal
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPathTrack", "m_nIterVal"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPathTrack", "m_nIterVal", value); }
@@ -65,7 +65,7 @@ public partial class CPathTrack : CPointEntity
 
 	// m_eOrientationType
 	[SchemaMember("CPathTrack", "m_eOrientationType")]
-	public TrackOrientationType_t OrientationType
+	public virtual TrackOrientationType_t OrientationType
 	{
 		get { return Schema.GetValueType<TrackOrientationType_t>(this.Handle, "CPathTrack", "m_eOrientationType"); }
 		set { Schema.SetValueType<TrackOrientationType_t>(this.Handle, "CPathTrack", "m_eOrientationType", value); }
@@ -73,6 +73,6 @@ public partial class CPathTrack : CPointEntity
 
 	// m_OnPass
 	[SchemaMember("CPathTrack", "m_OnPass")]
-	public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathTrack", "m_OnPass");
+	public virtual CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathTrack", "m_OnPass");
 
 }

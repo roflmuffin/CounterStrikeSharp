@@ -21,7 +21,7 @@ public partial class ChangeAccessorFieldPathIndex_t : NativeObject
 
 	// m_Value
 	[SchemaMember("ChangeAccessorFieldPathIndex_t", "m_Value")]
-	public Int32 Value
+	public virtual Int32 Value
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "ChangeAccessorFieldPathIndex_t", "m_Value"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "ChangeAccessorFieldPathIndex_t", "m_Value", value); }

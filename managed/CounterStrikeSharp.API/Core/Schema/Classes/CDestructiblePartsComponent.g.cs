@@ -21,24 +21,24 @@ public partial class CDestructiblePartsComponent : NativeObject
 
 	// __m_pChainEntity
 	[SchemaMember("CDestructiblePartsComponent", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CDestructiblePartsComponent", "__m_pChainEntity");
+	public virtual CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CDestructiblePartsComponent", "__m_pChainEntity");
 
 	// m_vecDamageTakenByHitGroup
 	[SchemaMember("CDestructiblePartsComponent", "m_vecDamageTakenByHitGroup")]
-	public NetworkedVector<UInt16> DamageTakenByHitGroup => Schema.GetDeclaredClass<NetworkedVector<UInt16>>(this.Handle, "CDestructiblePartsComponent", "m_vecDamageTakenByHitGroup");
+	public virtual NetworkedVector<UInt16> DamageTakenByHitGroup => Schema.GetDeclaredClass<NetworkedVector<UInt16>>(this.Handle, "CDestructiblePartsComponent", "m_vecDamageTakenByHitGroup");
 
 	// m_hOwner
 	[SchemaMember("CDestructiblePartsComponent", "m_hOwner")]
-	public CHandle<CBaseModelEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CDestructiblePartsComponent", "m_hOwner");
+	public virtual CHandle<CBaseModelEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CDestructiblePartsComponent", "m_hOwner");
 
 	// m_nLastHitDamageLevel
 	[SchemaMember("CDestructiblePartsComponent", "m_nLastHitDamageLevel")]
-	public Int32 LastHitDamageLevel
+	public virtual Int32 LastHitDamageLevel
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CDestructiblePartsComponent", "m_nLastHitDamageLevel"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CDestructiblePartsComponent", "m_nLastHitDamageLevel", value); }
 	}
 
-	public void OwnerPropertyChanged() => Utilities.SetStateChanged(this, "CDestructiblePartsComponent", "m_hOwner");
-	public void LastHitDamageLevelPropertyChanged() => Utilities.SetStateChanged(this, "CDestructiblePartsComponent", "m_nLastHitDamageLevel");
+	public virtual void OwnerPropertyChanged() => Utilities.SetStateChanged(this, "CDestructiblePartsComponent", "m_hOwner");
+	public virtual void LastHitDamageLevelPropertyChanged() => Utilities.SetStateChanged(this, "CDestructiblePartsComponent", "m_nLastHitDamageLevel");
 }

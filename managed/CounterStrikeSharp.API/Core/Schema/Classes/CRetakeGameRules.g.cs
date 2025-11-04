@@ -21,7 +21,7 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_nMatchSeed
 	[SchemaMember("CRetakeGameRules", "m_nMatchSeed")]
-	public Int32 MatchSeed
+	public virtual Int32 MatchSeed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_nMatchSeed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_nMatchSeed", value); }
@@ -29,7 +29,7 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_bBlockersPresent
 	[SchemaMember("CRetakeGameRules", "m_bBlockersPresent")]
-	public bool BlockersPresent
+	public virtual bool BlockersPresent
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bBlockersPresent"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bBlockersPresent", value); }
@@ -37,7 +37,7 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_bRoundInProgress
 	[SchemaMember("CRetakeGameRules", "m_bRoundInProgress")]
-	public bool RoundInProgress
+	public virtual bool RoundInProgress
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bRoundInProgress"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bRoundInProgress", value); }
@@ -45,7 +45,7 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_iFirstSecondHalfRound
 	[SchemaMember("CRetakeGameRules", "m_iFirstSecondHalfRound")]
-	public Int32 FirstSecondHalfRound
+	public virtual Int32 FirstSecondHalfRound
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iFirstSecondHalfRound"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iFirstSecondHalfRound", value); }
@@ -53,7 +53,7 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_iBombSite
 	[SchemaMember("CRetakeGameRules", "m_iBombSite")]
-	public Int32 BombSite
+	public virtual Int32 BombSite
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite", value); }
@@ -61,12 +61,12 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_hBombPlanter
 	[SchemaMember("CRetakeGameRules", "m_hBombPlanter")]
-	public CHandle<CCSPlayerPawn> BombPlanter => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CRetakeGameRules", "m_hBombPlanter");
+	public virtual CHandle<CCSPlayerPawn> BombPlanter => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CRetakeGameRules", "m_hBombPlanter");
 
-	public void MatchSeedPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_nMatchSeed");
-	public void BlockersPresentPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_bBlockersPresent");
-	public void RoundInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_bRoundInProgress");
-	public void FirstSecondHalfRoundPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_iFirstSecondHalfRound");
-	public void BombSitePropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_iBombSite");
-	public void BombPlanterPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_hBombPlanter");
+	public virtual void MatchSeedPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_nMatchSeed");
+	public virtual void BlockersPresentPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_bBlockersPresent");
+	public virtual void RoundInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_bRoundInProgress");
+	public virtual void FirstSecondHalfRoundPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_iFirstSecondHalfRound");
+	public virtual void BombSitePropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_iBombSite");
+	public virtual void BombPlanterPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_hBombPlanter");
 }

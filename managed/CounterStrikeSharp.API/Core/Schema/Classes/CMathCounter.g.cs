@@ -21,7 +21,7 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_flMin
 	[SchemaMember("CMathCounter", "m_flMin")]
-	public float Min
+	public virtual float Min
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMathCounter", "m_flMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMathCounter", "m_flMin", value); }
@@ -29,7 +29,7 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_flMax
 	[SchemaMember("CMathCounter", "m_flMax")]
-	public float Max
+	public virtual float Max
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMathCounter", "m_flMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMathCounter", "m_flMax", value); }
@@ -37,7 +37,7 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_bHitMin
 	[SchemaMember("CMathCounter", "m_bHitMin")]
-	public bool HitMin
+	public virtual bool HitMin
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMin"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMin", value); }
@@ -45,7 +45,7 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_bHitMax
 	[SchemaMember("CMathCounter", "m_bHitMax")]
-	public bool HitMax
+	public virtual bool HitMax
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMax"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMax", value); }
@@ -53,7 +53,7 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_bDisabled
 	[SchemaMember("CMathCounter", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMathCounter", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMathCounter", "m_bDisabled", value); }
@@ -61,18 +61,18 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_OnHitMin
 	[SchemaMember("CMathCounter", "m_OnHitMin")]
-	public CEntityIOOutput OnHitMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMin");
+	public virtual CEntityIOOutput OnHitMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMin");
 
 	// m_OnHitMax
 	[SchemaMember("CMathCounter", "m_OnHitMax")]
-	public CEntityIOOutput OnHitMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMax");
+	public virtual CEntityIOOutput OnHitMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMax");
 
 	// m_OnChangedFromMin
 	[SchemaMember("CMathCounter", "m_OnChangedFromMin")]
-	public CEntityIOOutput OnChangedFromMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMin");
+	public virtual CEntityIOOutput OnChangedFromMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMin");
 
 	// m_OnChangedFromMax
 	[SchemaMember("CMathCounter", "m_OnChangedFromMax")]
-	public CEntityIOOutput OnChangedFromMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMax");
+	public virtual CEntityIOOutput OnChangedFromMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMax");
 
 }

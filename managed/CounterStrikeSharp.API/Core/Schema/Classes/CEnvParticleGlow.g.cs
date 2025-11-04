@@ -21,7 +21,7 @@ public partial class CEnvParticleGlow : CParticleSystem
 
 	// m_flAlphaScale
 	[SchemaMember("CEnvParticleGlow", "m_flAlphaScale")]
-	public float AlphaScale
+	public virtual float AlphaScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flAlphaScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flAlphaScale", value); }
@@ -29,7 +29,7 @@ public partial class CEnvParticleGlow : CParticleSystem
 
 	// m_flRadiusScale
 	[SchemaMember("CEnvParticleGlow", "m_flRadiusScale")]
-	public float RadiusScale
+	public virtual float RadiusScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flRadiusScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flRadiusScale", value); }
@@ -37,7 +37,7 @@ public partial class CEnvParticleGlow : CParticleSystem
 
 	// m_flSelfIllumScale
 	[SchemaMember("CEnvParticleGlow", "m_flSelfIllumScale")]
-	public float SelfIllumScale
+	public virtual float SelfIllumScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale", value); }
@@ -45,7 +45,7 @@ public partial class CEnvParticleGlow : CParticleSystem
 
 	// m_ColorTint
 	[SchemaMember("CEnvParticleGlow", "m_ColorTint")]
-	public Color ColorTint
+	public virtual Color ColorTint
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint", value); }
@@ -53,11 +53,11 @@ public partial class CEnvParticleGlow : CParticleSystem
 
 	// m_hTextureOverride
 	[SchemaMember("CEnvParticleGlow", "m_hTextureOverride")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> TextureOverride => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvParticleGlow", "m_hTextureOverride");
+	public virtual CStrongHandle<InfoForResourceTypeCTextureBase> TextureOverride => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvParticleGlow", "m_hTextureOverride");
 
-	public void AlphaScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flAlphaScale");
-	public void RadiusScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flRadiusScale");
-	public void SelfIllumScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flSelfIllumScale");
-	public void ColorTintPropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_ColorTint");
-	public void TextureOverridePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_hTextureOverride");
+	public virtual void AlphaScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flAlphaScale");
+	public virtual void RadiusScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flRadiusScale");
+	public virtual void SelfIllumScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flSelfIllumScale");
+	public virtual void ColorTintPropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_ColorTint");
+	public virtual void TextureOverridePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_hTextureOverride");
 }

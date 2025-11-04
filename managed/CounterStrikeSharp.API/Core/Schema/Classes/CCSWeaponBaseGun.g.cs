@@ -21,7 +21,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_zoomLevel
 	[SchemaMember("CCSWeaponBaseGun", "m_zoomLevel")]
-	public Int32 ZoomLevel
+	public virtual Int32 ZoomLevel
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_zoomLevel"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_zoomLevel", value); }
@@ -29,7 +29,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_iBurstShotsRemaining
 	[SchemaMember("CCSWeaponBaseGun", "m_iBurstShotsRemaining")]
-	public Int32 BurstShotsRemaining
+	public virtual Int32 BurstShotsRemaining
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_iBurstShotsRemaining"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_iBurstShotsRemaining", value); }
@@ -37,7 +37,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_silencedModelIndex
 	[SchemaMember("CCSWeaponBaseGun", "m_silencedModelIndex")]
-	public Int32 SilencedModelIndex
+	public virtual Int32 SilencedModelIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_silencedModelIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_silencedModelIndex", value); }
@@ -45,7 +45,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_inPrecache
 	[SchemaMember("CCSWeaponBaseGun", "m_inPrecache")]
-	public bool InPrecache
+	public virtual bool InPrecache
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_inPrecache"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_inPrecache", value); }
@@ -53,7 +53,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_bNeedsBoltAction
 	[SchemaMember("CCSWeaponBaseGun", "m_bNeedsBoltAction")]
-	public bool NeedsBoltAction
+	public virtual bool NeedsBoltAction
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bNeedsBoltAction"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bNeedsBoltAction", value); }
@@ -61,7 +61,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_nRevolverCylinderIdx
 	[SchemaMember("CCSWeaponBaseGun", "m_nRevolverCylinderIdx")]
-	public Int32 RevolverCylinderIdx
+	public virtual Int32 RevolverCylinderIdx
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_nRevolverCylinderIdx"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSWeaponBaseGun", "m_nRevolverCylinderIdx", value); }
@@ -69,7 +69,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_bSkillReloadAvailable
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillReloadAvailable")]
-	public bool SkillReloadAvailable
+	public virtual bool SkillReloadAvailable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadAvailable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadAvailable", value); }
@@ -77,7 +77,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_bSkillReloadLiftedReloadKey
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillReloadLiftedReloadKey")]
-	public bool SkillReloadLiftedReloadKey
+	public virtual bool SkillReloadLiftedReloadKey
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadLiftedReloadKey"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadLiftedReloadKey", value); }
@@ -85,7 +85,7 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_bSkillBoltInterruptAvailable
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillBoltInterruptAvailable")]
-	public bool SkillBoltInterruptAvailable
+	public virtual bool SkillBoltInterruptAvailable
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltInterruptAvailable"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltInterruptAvailable", value); }
@@ -93,14 +93,14 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_bSkillBoltLiftedFireKey
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey")]
-	public bool SkillBoltLiftedFireKey
+	public virtual bool SkillBoltLiftedFireKey
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey", value); }
 	}
 
-	public void ZoomLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_zoomLevel");
-	public void BurstShotsRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_iBurstShotsRemaining");
-	public void NeedsBoltActionPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_bNeedsBoltAction");
-	public void RevolverCylinderIdxPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_nRevolverCylinderIdx");
+	public virtual void ZoomLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_zoomLevel");
+	public virtual void BurstShotsRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_iBurstShotsRemaining");
+	public virtual void NeedsBoltActionPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_bNeedsBoltAction");
+	public virtual void RevolverCylinderIdxPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_nRevolverCylinderIdx");
 }

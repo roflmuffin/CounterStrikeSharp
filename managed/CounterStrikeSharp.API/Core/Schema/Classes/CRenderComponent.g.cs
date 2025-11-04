@@ -21,11 +21,11 @@ public partial class CRenderComponent : CEntityComponent
 
 	// __m_pChainEntity
 	[SchemaMember("CRenderComponent", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CRenderComponent", "__m_pChainEntity");
+	public virtual CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CRenderComponent", "__m_pChainEntity");
 
 	// m_bIsRenderingWithViewModels
 	[SchemaMember("CRenderComponent", "m_bIsRenderingWithViewModels")]
-	public bool IsRenderingWithViewModels
+	public virtual bool IsRenderingWithViewModels
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRenderComponent", "m_bIsRenderingWithViewModels"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRenderComponent", "m_bIsRenderingWithViewModels", value); }
@@ -33,7 +33,7 @@ public partial class CRenderComponent : CEntityComponent
 
 	// m_nSplitscreenFlags
 	[SchemaMember("CRenderComponent", "m_nSplitscreenFlags")]
-	public UInt32 SplitscreenFlags
+	public virtual UInt32 SplitscreenFlags
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CRenderComponent", "m_nSplitscreenFlags"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CRenderComponent", "m_nSplitscreenFlags", value); }
@@ -41,7 +41,7 @@ public partial class CRenderComponent : CEntityComponent
 
 	// m_bEnableRendering
 	[SchemaMember("CRenderComponent", "m_bEnableRendering")]
-	public bool EnableRendering
+	public virtual bool EnableRendering
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRenderComponent", "m_bEnableRendering"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRenderComponent", "m_bEnableRendering", value); }
@@ -49,7 +49,7 @@ public partial class CRenderComponent : CEntityComponent
 
 	// m_bInterpolationReadyToDraw
 	[SchemaMember("CRenderComponent", "m_bInterpolationReadyToDraw")]
-	public bool InterpolationReadyToDraw
+	public virtual bool InterpolationReadyToDraw
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRenderComponent", "m_bInterpolationReadyToDraw"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRenderComponent", "m_bInterpolationReadyToDraw", value); }

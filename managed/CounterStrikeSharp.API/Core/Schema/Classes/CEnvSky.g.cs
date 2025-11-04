@@ -21,15 +21,15 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_hSkyMaterial
 	[SchemaMember("CEnvSky", "m_hSkyMaterial")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvSky", "m_hSkyMaterial");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvSky", "m_hSkyMaterial");
 
 	// m_hSkyMaterialLightingOnly
 	[SchemaMember("CEnvSky", "m_hSkyMaterialLightingOnly")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterialLightingOnly => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvSky", "m_hSkyMaterialLightingOnly");
+	public virtual CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterialLightingOnly => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvSky", "m_hSkyMaterialLightingOnly");
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvSky", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSky", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvSky", "m_bStartDisabled", value); }
@@ -37,7 +37,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_vTintColor
 	[SchemaMember("CEnvSky", "m_vTintColor")]
-	public Color TintColor
+	public virtual Color TintColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColor", value); }
@@ -45,7 +45,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_vTintColorLightingOnly
 	[SchemaMember("CEnvSky", "m_vTintColorLightingOnly")]
-	public Color TintColorLightingOnly
+	public virtual Color TintColorLightingOnly
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColorLightingOnly"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColorLightingOnly", value); }
@@ -53,7 +53,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_flBrightnessScale
 	[SchemaMember("CEnvSky", "m_flBrightnessScale")]
-	public float BrightnessScale
+	public virtual float BrightnessScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flBrightnessScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flBrightnessScale", value); }
@@ -61,7 +61,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_nFogType
 	[SchemaMember("CEnvSky", "m_nFogType")]
-	public Int32 FogType
+	public virtual Int32 FogType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSky", "m_nFogType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSky", "m_nFogType", value); }
@@ -69,7 +69,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_flFogMinStart
 	[SchemaMember("CEnvSky", "m_flFogMinStart")]
-	public float FogMinStart
+	public virtual float FogMinStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinStart", value); }
@@ -77,7 +77,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_flFogMinEnd
 	[SchemaMember("CEnvSky", "m_flFogMinEnd")]
-	public float FogMinEnd
+	public virtual float FogMinEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinEnd", value); }
@@ -85,7 +85,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_flFogMaxStart
 	[SchemaMember("CEnvSky", "m_flFogMaxStart")]
-	public float FogMaxStart
+	public virtual float FogMaxStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxStart", value); }
@@ -93,7 +93,7 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_flFogMaxEnd
 	[SchemaMember("CEnvSky", "m_flFogMaxEnd")]
-	public float FogMaxEnd
+	public virtual float FogMaxEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxEnd", value); }
@@ -101,22 +101,22 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_bEnabled
 	[SchemaMember("CEnvSky", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSky", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvSky", "m_bEnabled", value); }
 	}
 
-	public void SkyMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_hSkyMaterial");
-	public void SkyMaterialLightingOnlyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_hSkyMaterialLightingOnly");
-	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_bStartDisabled");
-	public void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_vTintColor");
-	public void TintColorLightingOnlyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_vTintColorLightingOnly");
-	public void BrightnessScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flBrightnessScale");
-	public void FogTypePropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_nFogType");
-	public void FogMinStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMinStart");
-	public void FogMinEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMinEnd");
-	public void FogMaxStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMaxStart");
-	public void FogMaxEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMaxEnd");
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_bEnabled");
+	public virtual void SkyMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_hSkyMaterial");
+	public virtual void SkyMaterialLightingOnlyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_hSkyMaterialLightingOnly");
+	public virtual void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_bStartDisabled");
+	public virtual void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_vTintColor");
+	public virtual void TintColorLightingOnlyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_vTintColorLightingOnly");
+	public virtual void BrightnessScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flBrightnessScale");
+	public virtual void FogTypePropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_nFogType");
+	public virtual void FogMinStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMinStart");
+	public virtual void FogMinEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMinEnd");
+	public virtual void FogMaxStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMaxStart");
+	public virtual void FogMaxEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMaxEnd");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_bEnabled");
 }

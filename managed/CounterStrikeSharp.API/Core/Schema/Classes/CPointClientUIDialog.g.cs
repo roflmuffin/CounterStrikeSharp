@@ -21,15 +21,15 @@ public partial class CPointClientUIDialog : CBaseClientUIEntity
 
 	// m_hActivator
 	[SchemaMember("CPointClientUIDialog", "m_hActivator")]
-	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointClientUIDialog", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointClientUIDialog", "m_hActivator");
 
 	// m_bStartEnabled
 	[SchemaMember("CPointClientUIDialog", "m_bStartEnabled")]
-	public bool StartEnabled
+	public virtual bool StartEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIDialog", "m_bStartEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIDialog", "m_bStartEnabled", value); }
 	}
 
-	public void ActivatorPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIDialog", "m_hActivator");
+	public virtual void ActivatorPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIDialog", "m_hActivator");
 }

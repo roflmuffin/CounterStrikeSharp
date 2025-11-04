@@ -21,31 +21,31 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_nodeToWorld
 	[SchemaMember("CGameSceneNode", "m_nodeToWorld")]
-	public CTransform NodeToWorld => Schema.GetDeclaredClass<CTransform>(this.Handle, "CGameSceneNode", "m_nodeToWorld");
+	public virtual CTransform NodeToWorld => Schema.GetDeclaredClass<CTransform>(this.Handle, "CGameSceneNode", "m_nodeToWorld");
 
 	// m_pOwner
 	[SchemaMember("CGameSceneNode", "m_pOwner")]
-	public CEntityInstance? Owner => Schema.GetPointer<CEntityInstance>(this.Handle, "CGameSceneNode", "m_pOwner");
+	public virtual CEntityInstance? Owner => Schema.GetPointer<CEntityInstance>(this.Handle, "CGameSceneNode", "m_pOwner");
 
 	// m_pParent
 	[SchemaMember("CGameSceneNode", "m_pParent")]
-	public CGameSceneNode? PParent => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pParent");
+	public virtual CGameSceneNode? PParent => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pParent");
 
 	// m_pChild
 	[SchemaMember("CGameSceneNode", "m_pChild")]
-	public CGameSceneNode? Child => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pChild");
+	public virtual CGameSceneNode? Child => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pChild");
 
 	// m_pNextSibling
 	[SchemaMember("CGameSceneNode", "m_pNextSibling")]
-	public CGameSceneNode? NextSibling => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pNextSibling");
+	public virtual CGameSceneNode? NextSibling => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pNextSibling");
 
 	// m_vecOrigin
 	[SchemaMember("CGameSceneNode", "m_vecOrigin")]
-	public CNetworkOriginCellCoordQuantizedVector Origin => Schema.GetDeclaredClass<CNetworkOriginCellCoordQuantizedVector>(this.Handle, "CGameSceneNode", "m_vecOrigin");
+	public virtual CNetworkOriginCellCoordQuantizedVector Origin => Schema.GetDeclaredClass<CNetworkOriginCellCoordQuantizedVector>(this.Handle, "CGameSceneNode", "m_vecOrigin");
 
 	// m_angRotation
 	[SchemaMember("CGameSceneNode", "m_angRotation")]
-	public QAngle Rotation
+	public virtual QAngle Rotation
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angRotation"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angRotation", value); }
@@ -53,7 +53,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_flScale
 	[SchemaMember("CGameSceneNode", "m_flScale")]
-	public float Scale
+	public virtual float Scale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flScale", value); }
@@ -61,7 +61,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_vecAbsOrigin
 	[SchemaMember("CGameSceneNode", "m_vecAbsOrigin")]
-	public Vector3 AbsOrigin
+	public virtual Vector3 AbsOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vecAbsOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vecAbsOrigin", value); }
@@ -69,7 +69,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_angAbsRotation
 	[SchemaMember("CGameSceneNode", "m_angAbsRotation")]
-	public QAngle AbsRotation
+	public virtual QAngle AbsRotation
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angAbsRotation"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angAbsRotation", value); }
@@ -77,7 +77,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_flAbsScale
 	[SchemaMember("CGameSceneNode", "m_flAbsScale")]
-	public float AbsScale
+	public virtual float AbsScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flAbsScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flAbsScale", value); }
@@ -85,7 +85,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_nParentAttachmentOrBone
 	[SchemaMember("CGameSceneNode", "m_nParentAttachmentOrBone")]
-	public Int16 ParentAttachmentOrBone
+	public virtual Int16 ParentAttachmentOrBone
 	{
 		get { return Schema.GetValueType<Int16>(this.Handle, "CGameSceneNode", "m_nParentAttachmentOrBone"); }
 		set { Schema.SetValueType<Int16>(this.Handle, "CGameSceneNode", "m_nParentAttachmentOrBone", value); }
@@ -93,7 +93,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_bDebugAbsOriginChanges
 	[SchemaMember("CGameSceneNode", "m_bDebugAbsOriginChanges")]
-	public bool DebugAbsOriginChanges
+	public virtual bool DebugAbsOriginChanges
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDebugAbsOriginChanges"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDebugAbsOriginChanges", value); }
@@ -101,7 +101,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_bDormant
 	[SchemaMember("CGameSceneNode", "m_bDormant")]
-	public bool Dormant
+	public virtual bool Dormant
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDormant"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDormant", value); }
@@ -109,7 +109,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_bForceParentToBeNetworked
 	[SchemaMember("CGameSceneNode", "m_bForceParentToBeNetworked")]
-	public bool ForceParentToBeNetworked
+	public virtual bool ForceParentToBeNetworked
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CGameSceneNode", "m_bForceParentToBeNetworked"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CGameSceneNode", "m_bForceParentToBeNetworked", value); }
@@ -117,7 +117,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_nHierarchicalDepth
 	[SchemaMember("CGameSceneNode", "m_nHierarchicalDepth")]
-	public byte HierarchicalDepth
+	public virtual byte HierarchicalDepth
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchicalDepth"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchicalDepth", value); }
@@ -125,7 +125,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_nHierarchyType
 	[SchemaMember("CGameSceneNode", "m_nHierarchyType")]
-	public byte HierarchyType
+	public virtual byte HierarchyType
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchyType"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchyType", value); }
@@ -133,7 +133,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_nDoNotSetAnimTimeInInvalidatePhysicsCount
 	[SchemaMember("CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount")]
-	public byte DoNotSetAnimTimeInInvalidatePhysicsCount
+	public virtual byte DoNotSetAnimTimeInInvalidatePhysicsCount
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount", value); }
@@ -141,15 +141,15 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_name
 	[SchemaMember("CGameSceneNode", "m_name")]
-	public CUtlStringToken Name => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CGameSceneNode", "m_name");
+	public virtual CUtlStringToken Name => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CGameSceneNode", "m_name");
 
 	// m_hierarchyAttachName
 	[SchemaMember("CGameSceneNode", "m_hierarchyAttachName")]
-	public CUtlStringToken HierarchyAttachName => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CGameSceneNode", "m_hierarchyAttachName");
+	public virtual CUtlStringToken HierarchyAttachName => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CGameSceneNode", "m_hierarchyAttachName");
 
 	// m_flZOffset
 	[SchemaMember("CGameSceneNode", "m_flZOffset")]
-	public float ZOffset
+	public virtual float ZOffset
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flZOffset"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flZOffset", value); }
@@ -157,7 +157,7 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_flClientLocalScale
 	[SchemaMember("CGameSceneNode", "m_flClientLocalScale")]
-	public float ClientLocalScale
+	public virtual float ClientLocalScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flClientLocalScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flClientLocalScale", value); }
@@ -165,16 +165,16 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_vRenderOrigin
 	[SchemaMember("CGameSceneNode", "m_vRenderOrigin")]
-	public Vector3 RenderOrigin
+	public virtual Vector3 RenderOrigin
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vRenderOrigin"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vRenderOrigin", value); }
 	}
 
-	public void HParentPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_hParent");
-	public void OriginPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_vecOrigin");
-	public void RotationPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_angRotation");
-	public void ScalePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_flScale");
-	public void NamePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_name");
-	public void HierarchyAttachNamePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_hierarchyAttachName");
+	public virtual void HParentPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_hParent");
+	public virtual void OriginPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_vecOrigin");
+	public virtual void RotationPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_angRotation");
+	public virtual void ScalePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_flScale");
+	public virtual void NamePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_name");
+	public virtual void HierarchyAttachNamePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_hierarchyAttachName");
 }

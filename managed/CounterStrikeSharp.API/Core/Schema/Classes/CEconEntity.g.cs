@@ -21,11 +21,11 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_AttributeManager
 	[SchemaMember("CEconEntity", "m_AttributeManager")]
-	public CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CEconEntity", "m_AttributeManager");
+	public virtual CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CEconEntity", "m_AttributeManager");
 
 	// m_OriginalOwnerXuidLow
 	[SchemaMember("CEconEntity", "m_OriginalOwnerXuidLow")]
-	public UInt32 OriginalOwnerXuidLow
+	public virtual UInt32 OriginalOwnerXuidLow
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidLow"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidLow", value); }
@@ -33,7 +33,7 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_OriginalOwnerXuidHigh
 	[SchemaMember("CEconEntity", "m_OriginalOwnerXuidHigh")]
-	public UInt32 OriginalOwnerXuidHigh
+	public virtual UInt32 OriginalOwnerXuidHigh
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidHigh"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidHigh", value); }
@@ -41,7 +41,7 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_nFallbackPaintKit
 	[SchemaMember("CEconEntity", "m_nFallbackPaintKit")]
-	public Int32 FallbackPaintKit
+	public virtual Int32 FallbackPaintKit
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackPaintKit"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackPaintKit", value); }
@@ -49,7 +49,7 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_nFallbackSeed
 	[SchemaMember("CEconEntity", "m_nFallbackSeed")]
-	public Int32 FallbackSeed
+	public virtual Int32 FallbackSeed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackSeed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackSeed", value); }
@@ -57,7 +57,7 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_flFallbackWear
 	[SchemaMember("CEconEntity", "m_flFallbackWear")]
-	public float FallbackWear
+	public virtual float FallbackWear
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEconEntity", "m_flFallbackWear"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEconEntity", "m_flFallbackWear", value); }
@@ -65,7 +65,7 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_nFallbackStatTrak
 	[SchemaMember("CEconEntity", "m_nFallbackStatTrak")]
-	public Int32 FallbackStatTrak
+	public virtual Int32 FallbackStatTrak
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackStatTrak"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackStatTrak", value); }
@@ -73,21 +73,21 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_hOldProvidee
 	[SchemaMember("CEconEntity", "m_hOldProvidee")]
-	public CHandle<CBaseEntity> OldProvidee => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEconEntity", "m_hOldProvidee");
+	public virtual CHandle<CBaseEntity> OldProvidee => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEconEntity", "m_hOldProvidee");
 
 	// m_iOldOwnerClass
 	[SchemaMember("CEconEntity", "m_iOldOwnerClass")]
-	public Int32 OldOwnerClass
+	public virtual Int32 OldOwnerClass
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_iOldOwnerClass"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_iOldOwnerClass", value); }
 	}
 
-	public void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_AttributeManager");
-	public void OriginalOwnerXuidLowPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_OriginalOwnerXuidLow");
-	public void OriginalOwnerXuidHighPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_OriginalOwnerXuidHigh");
-	public void FallbackPaintKitPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackPaintKit");
-	public void FallbackSeedPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackSeed");
-	public void FallbackWearPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_flFallbackWear");
-	public void FallbackStatTrakPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackStatTrak");
+	public virtual void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_AttributeManager");
+	public virtual void OriginalOwnerXuidLowPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_OriginalOwnerXuidLow");
+	public virtual void OriginalOwnerXuidHighPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_OriginalOwnerXuidHigh");
+	public virtual void FallbackPaintKitPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackPaintKit");
+	public virtual void FallbackSeedPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackSeed");
+	public virtual void FallbackWearPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_flFallbackWear");
+	public virtual void FallbackStatTrakPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackStatTrak");
 }

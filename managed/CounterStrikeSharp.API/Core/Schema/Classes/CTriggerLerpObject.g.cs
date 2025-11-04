@@ -21,7 +21,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_iszLerpTarget
 	[SchemaMember("CTriggerLerpObject", "m_iszLerpTarget")]
-	public string IszLerpTarget
+	public virtual string IszLerpTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpTarget"); }
 		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTarget", value); }
@@ -29,11 +29,11 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_hLerpTarget
 	[SchemaMember("CTriggerLerpObject", "m_hLerpTarget")]
-	public CHandle<CBaseEntity> HLerpTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hLerpTarget");
+	public virtual CHandle<CBaseEntity> HLerpTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hLerpTarget");
 
 	// m_iszLerpTargetAttachment
 	[SchemaMember("CTriggerLerpObject", "m_iszLerpTargetAttachment")]
-	public string IszLerpTargetAttachment
+	public virtual string IszLerpTargetAttachment
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpTargetAttachment"); }
 		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTargetAttachment", value); }
@@ -41,7 +41,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_flLerpDuration
 	[SchemaMember("CTriggerLerpObject", "m_flLerpDuration")]
-	public float LerpDuration
+	public virtual float LerpDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLerpObject", "m_flLerpDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerLerpObject", "m_flLerpDuration", value); }
@@ -49,7 +49,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_bLerpRestoreMoveType
 	[SchemaMember("CTriggerLerpObject", "m_bLerpRestoreMoveType")]
-	public bool LerpRestoreMoveType
+	public virtual bool LerpRestoreMoveType
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bLerpRestoreMoveType"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bLerpRestoreMoveType", value); }
@@ -57,7 +57,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_bSingleLerpObject
 	[SchemaMember("CTriggerLerpObject", "m_bSingleLerpObject")]
-	public bool SingleLerpObject
+	public virtual bool SingleLerpObject
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bSingleLerpObject"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bSingleLerpObject", value); }
@@ -65,11 +65,11 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_vecLerpingObjects
 	[SchemaMember("CTriggerLerpObject", "m_vecLerpingObjects")]
-	public NetworkedVector<lerpdata_t> LerpingObjects => Schema.GetDeclaredClass<NetworkedVector<lerpdata_t>>(this.Handle, "CTriggerLerpObject", "m_vecLerpingObjects");
+	public virtual NetworkedVector<lerpdata_t> LerpingObjects => Schema.GetDeclaredClass<NetworkedVector<lerpdata_t>>(this.Handle, "CTriggerLerpObject", "m_vecLerpingObjects");
 
 	// m_iszLerpEffect
 	[SchemaMember("CTriggerLerpObject", "m_iszLerpEffect")]
-	public string LerpEffect
+	public virtual string LerpEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpEffect"); }
 		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpEffect", value); }
@@ -77,7 +77,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_iszLerpSound
 	[SchemaMember("CTriggerLerpObject", "m_iszLerpSound")]
-	public string LerpSound
+	public virtual string LerpSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpSound"); }
 		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpSound", value); }
@@ -85,7 +85,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_bAttachTouchingObject
 	[SchemaMember("CTriggerLerpObject", "m_bAttachTouchingObject")]
-	public bool AttachTouchingObject
+	public virtual bool AttachTouchingObject
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bAttachTouchingObject"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bAttachTouchingObject", value); }
@@ -93,18 +93,18 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_hEntityToWaitForDisconnect
 	[SchemaMember("CTriggerLerpObject", "m_hEntityToWaitForDisconnect")]
-	public CHandle<CBaseEntity> EntityToWaitForDisconnect => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hEntityToWaitForDisconnect");
+	public virtual CHandle<CBaseEntity> EntityToWaitForDisconnect => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hEntityToWaitForDisconnect");
 
 	// m_OnLerpStarted
 	[SchemaMember("CTriggerLerpObject", "m_OnLerpStarted")]
-	public CEntityIOOutput OnLerpStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpStarted");
+	public virtual CEntityIOOutput OnLerpStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpStarted");
 
 	// m_OnLerpFinished
 	[SchemaMember("CTriggerLerpObject", "m_OnLerpFinished")]
-	public CEntityIOOutput OnLerpFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpFinished");
+	public virtual CEntityIOOutput OnLerpFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpFinished");
 
 	// m_OnDetached
 	[SchemaMember("CTriggerLerpObject", "m_OnDetached")]
-	public CEntityIOOutput OnDetached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnDetached");
+	public virtual CEntityIOOutput OnDetached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnDetached");
 
 }

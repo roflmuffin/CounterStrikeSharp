@@ -21,7 +21,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_nUniqueID
 	[SchemaMember("CPlayerSprayDecal", "m_nUniqueID")]
-	public Int32 UniqueID
+	public virtual Int32 UniqueID
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nUniqueID"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nUniqueID", value); }
@@ -29,7 +29,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_unAccountID
 	[SchemaMember("CPlayerSprayDecal", "m_unAccountID")]
-	public UInt32 AccountID
+	public virtual UInt32 AccountID
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unAccountID"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unAccountID", value); }
@@ -37,7 +37,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_unTraceID
 	[SchemaMember("CPlayerSprayDecal", "m_unTraceID")]
-	public UInt32 TraceID
+	public virtual UInt32 TraceID
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unTraceID"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unTraceID", value); }
@@ -45,7 +45,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_rtGcTime
 	[SchemaMember("CPlayerSprayDecal", "m_rtGcTime")]
-	public UInt32 RtGcTime
+	public virtual UInt32 RtGcTime
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_rtGcTime"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_rtGcTime", value); }
@@ -53,7 +53,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_vecEndPos
 	[SchemaMember("CPlayerSprayDecal", "m_vecEndPos")]
-	public Vector3 EndPos
+	public virtual Vector3 EndPos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecEndPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecEndPos", value); }
@@ -61,7 +61,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_vecStart
 	[SchemaMember("CPlayerSprayDecal", "m_vecStart")]
-	public Vector3 Start
+	public virtual Vector3 Start
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecStart"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecStart", value); }
@@ -69,7 +69,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_vecLeft
 	[SchemaMember("CPlayerSprayDecal", "m_vecLeft")]
-	public Vector3 Left
+	public virtual Vector3 Left
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecLeft"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecLeft", value); }
@@ -77,7 +77,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_vecNormal
 	[SchemaMember("CPlayerSprayDecal", "m_vecNormal")]
-	public Vector3 Normal
+	public virtual Vector3 Normal
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecNormal"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecNormal", value); }
@@ -85,7 +85,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_nPlayer
 	[SchemaMember("CPlayerSprayDecal", "m_nPlayer")]
-	public Int32 Player
+	public virtual Int32 Player
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nPlayer"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nPlayer", value); }
@@ -93,7 +93,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_nEntity
 	[SchemaMember("CPlayerSprayDecal", "m_nEntity")]
-	public Int32 DecalEntity
+	public virtual Int32 DecalEntity
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nEntity"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nEntity", value); }
@@ -101,7 +101,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_nHitbox
 	[SchemaMember("CPlayerSprayDecal", "m_nHitbox")]
-	public Int32 Hitbox
+	public virtual Int32 Hitbox
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nHitbox"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nHitbox", value); }
@@ -109,7 +109,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_flCreationTime
 	[SchemaMember("CPlayerSprayDecal", "m_flCreationTime")]
-	public float CreationTime
+	public virtual float CreationTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayerSprayDecal", "m_flCreationTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayerSprayDecal", "m_flCreationTime", value); }
@@ -117,7 +117,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_nTintID
 	[SchemaMember("CPlayerSprayDecal", "m_nTintID")]
-	public Int32 TintID
+	public virtual Int32 TintID
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nTintID"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nTintID", value); }
@@ -125,7 +125,7 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_nVersion
 	[SchemaMember("CPlayerSprayDecal", "m_nVersion")]
-	public byte Version
+	public virtual byte Version
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CPlayerSprayDecal", "m_nVersion"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CPlayerSprayDecal", "m_nVersion", value); }
@@ -133,21 +133,21 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_ubSignature
 	[SchemaMember("CPlayerSprayDecal", "m_ubSignature")]
-	public Span<byte> Signature => Schema.GetFixedArray<byte>(this.Handle, "CPlayerSprayDecal", "m_ubSignature", 128);
+	public virtual Span<byte> Signature => Schema.GetFixedArray<byte>(this.Handle, "CPlayerSprayDecal", "m_ubSignature", 128);
 
-	public void UniqueIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nUniqueID");
-	public void AccountIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_unAccountID");
-	public void TraceIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_unTraceID");
-	public void RtGcTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_rtGcTime");
-	public void EndPosPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecEndPos");
-	public void StartPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecStart");
-	public void LeftPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecLeft");
-	public void NormalPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecNormal");
-	public void PlayerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nPlayer");
-	public void DecalEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nEntity");
-	public void HitboxPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nHitbox");
-	public void CreationTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_flCreationTime");
-	public void TintIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nTintID");
-	public void VersionPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nVersion");
-	public void SignaturePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_ubSignature");
+	public virtual void UniqueIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nUniqueID");
+	public virtual void AccountIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_unAccountID");
+	public virtual void TraceIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_unTraceID");
+	public virtual void RtGcTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_rtGcTime");
+	public virtual void EndPosPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecEndPos");
+	public virtual void StartPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecStart");
+	public virtual void LeftPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecLeft");
+	public virtual void NormalPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecNormal");
+	public virtual void PlayerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nPlayer");
+	public virtual void DecalEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nEntity");
+	public virtual void HitboxPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nHitbox");
+	public virtual void CreationTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_flCreationTime");
+	public virtual void TintIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nTintID");
+	public virtual void VersionPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nVersion");
+	public virtual void SignaturePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_ubSignature");
 }

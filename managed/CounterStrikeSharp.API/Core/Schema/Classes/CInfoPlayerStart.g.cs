@@ -21,7 +21,7 @@ public partial class CInfoPlayerStart : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CInfoPlayerStart", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CInfoPlayerStart : CPointEntity
 
 	// m_bIsMaster
 	[SchemaMember("CInfoPlayerStart", "m_bIsMaster")]
-	public bool IsMaster
+	public virtual bool IsMaster
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bIsMaster"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bIsMaster", value); }
@@ -37,7 +37,7 @@ public partial class CInfoPlayerStart : CPointEntity
 
 	// m_pPawnSubclass
 	[SchemaMember("CInfoPlayerStart", "m_pPawnSubclass")]
-	public string PawnSubclass
+	public virtual string PawnSubclass
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoPlayerStart", "m_pPawnSubclass"); }
 		set { Schema.SetString(this.Handle, "CInfoPlayerStart", "m_pPawnSubclass", value); }

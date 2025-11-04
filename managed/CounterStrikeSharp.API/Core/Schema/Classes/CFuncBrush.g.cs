@@ -21,7 +21,7 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_iSolidity
 	[SchemaMember("CFuncBrush", "m_iSolidity")]
-	public BrushSolidities_e Solidity
+	public virtual BrushSolidities_e Solidity
 	{
 		get { return Schema.GetValueType<BrushSolidities_e>(this.Handle, "CFuncBrush", "m_iSolidity"); }
 		set { Schema.SetValueType<BrushSolidities_e>(this.Handle, "CFuncBrush", "m_iSolidity", value); }
@@ -29,7 +29,7 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_iDisabled
 	[SchemaMember("CFuncBrush", "m_iDisabled")]
-	public Int32 Disabled
+	public virtual Int32 Disabled
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncBrush", "m_iDisabled"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncBrush", "m_iDisabled", value); }
@@ -37,7 +37,7 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_bSolidBsp
 	[SchemaMember("CFuncBrush", "m_bSolidBsp")]
-	public bool SolidBsp
+	public virtual bool SolidBsp
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncBrush", "m_bSolidBsp"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncBrush", "m_bSolidBsp", value); }
@@ -45,7 +45,7 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_iszExcludedClass
 	[SchemaMember("CFuncBrush", "m_iszExcludedClass")]
-	public string ExcludedClass
+	public virtual string ExcludedClass
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncBrush", "m_iszExcludedClass"); }
 		set { Schema.SetString(this.Handle, "CFuncBrush", "m_iszExcludedClass", value); }
@@ -53,7 +53,7 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_bInvertExclusion
 	[SchemaMember("CFuncBrush", "m_bInvertExclusion")]
-	public bool InvertExclusion
+	public virtual bool InvertExclusion
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncBrush", "m_bInvertExclusion"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncBrush", "m_bInvertExclusion", value); }
@@ -61,7 +61,7 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_bScriptedMovement
 	[SchemaMember("CFuncBrush", "m_bScriptedMovement")]
-	public bool ScriptedMovement
+	public virtual bool ScriptedMovement
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncBrush", "m_bScriptedMovement"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncBrush", "m_bScriptedMovement", value); }

@@ -21,7 +21,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_toggle_state
 	[SchemaMember("CBaseToggle", "m_toggle_state")]
-	public TOGGLE_STATE Toggle_state
+	public virtual TOGGLE_STATE Toggle_state
 	{
 		get { return Schema.GetValueType<TOGGLE_STATE>(this.Handle, "CBaseToggle", "m_toggle_state"); }
 		set { Schema.SetValueType<TOGGLE_STATE>(this.Handle, "CBaseToggle", "m_toggle_state", value); }
@@ -29,7 +29,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_flMoveDistance
 	[SchemaMember("CBaseToggle", "m_flMoveDistance")]
-	public float MoveDistance
+	public virtual float MoveDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flMoveDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flMoveDistance", value); }
@@ -37,7 +37,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_flWait
 	[SchemaMember("CBaseToggle", "m_flWait")]
-	public float Wait
+	public virtual float Wait
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flWait"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flWait", value); }
@@ -45,7 +45,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_flLip
 	[SchemaMember("CBaseToggle", "m_flLip")]
-	public float Lip
+	public virtual float Lip
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flLip"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flLip", value); }
@@ -53,7 +53,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_bAlwaysFireBlockedOutputs
 	[SchemaMember("CBaseToggle", "m_bAlwaysFireBlockedOutputs")]
-	public bool AlwaysFireBlockedOutputs
+	public virtual bool AlwaysFireBlockedOutputs
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CBaseToggle", "m_bAlwaysFireBlockedOutputs"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseToggle", "m_bAlwaysFireBlockedOutputs", value); }
@@ -61,7 +61,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_vecPosition1
 	[SchemaMember("CBaseToggle", "m_vecPosition1")]
-	public Vector3 Position1
+	public virtual Vector3 Position1
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition1"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition1", value); }
@@ -69,7 +69,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_vecPosition2
 	[SchemaMember("CBaseToggle", "m_vecPosition2")]
-	public Vector3 Position2
+	public virtual Vector3 Position2
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition2"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition2", value); }
@@ -77,7 +77,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_vecMoveAng
 	[SchemaMember("CBaseToggle", "m_vecMoveAng")]
-	public QAngle MoveAng
+	public virtual QAngle MoveAng
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecMoveAng"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecMoveAng", value); }
@@ -85,7 +85,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_vecAngle1
 	[SchemaMember("CBaseToggle", "m_vecAngle1")]
-	public QAngle Angle1
+	public virtual QAngle Angle1
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle1"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle1", value); }
@@ -93,7 +93,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_vecAngle2
 	[SchemaMember("CBaseToggle", "m_vecAngle2")]
-	public QAngle Angle2
+	public virtual QAngle Angle2
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle2"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle2", value); }
@@ -101,7 +101,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_flHeight
 	[SchemaMember("CBaseToggle", "m_flHeight")]
-	public float Height
+	public virtual float Height
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flHeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flHeight", value); }
@@ -109,11 +109,11 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_hActivator
 	[SchemaMember("CBaseToggle", "m_hActivator")]
-	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseToggle", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseToggle", "m_hActivator");
 
 	// m_vecFinalDest
 	[SchemaMember("CBaseToggle", "m_vecFinalDest")]
-	public Vector3 FinalDest
+	public virtual Vector3 FinalDest
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecFinalDest"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecFinalDest", value); }
@@ -121,7 +121,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_vecFinalAngle
 	[SchemaMember("CBaseToggle", "m_vecFinalAngle")]
-	public QAngle FinalAngle
+	public virtual QAngle FinalAngle
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecFinalAngle"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecFinalAngle", value); }
@@ -129,7 +129,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_movementType
 	[SchemaMember("CBaseToggle", "m_movementType")]
-	public Int32 MovementType
+	public virtual Int32 MovementType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseToggle", "m_movementType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseToggle", "m_movementType", value); }
@@ -137,7 +137,7 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_sMaster
 	[SchemaMember("CBaseToggle", "m_sMaster")]
-	public string Master
+	public virtual string Master
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseToggle", "m_sMaster"); }
 		set { Schema.SetString(this.Handle, "CBaseToggle", "m_sMaster", value); }

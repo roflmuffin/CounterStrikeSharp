@@ -21,7 +21,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_iszStackName
 	[SchemaMember("CSoundOpvarSetEntity", "m_iszStackName")]
-	public string StackName
+	public virtual string StackName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszStackName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszStackName", value); }
@@ -29,7 +29,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_iszOperatorName
 	[SchemaMember("CSoundOpvarSetEntity", "m_iszOperatorName")]
-	public string OperatorName
+	public virtual string OperatorName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszOperatorName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOperatorName", value); }
@@ -37,7 +37,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_iszOpvarName
 	[SchemaMember("CSoundOpvarSetEntity", "m_iszOpvarName")]
-	public string OpvarName
+	public virtual string OpvarName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszOpvarName"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOpvarName", value); }
@@ -45,7 +45,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_nOpvarType
 	[SchemaMember("CSoundOpvarSetEntity", "m_nOpvarType")]
-	public Int32 OpvarType
+	public virtual Int32 OpvarType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarType", value); }
@@ -53,7 +53,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_nOpvarIndex
 	[SchemaMember("CSoundOpvarSetEntity", "m_nOpvarIndex")]
-	public Int32 OpvarIndex
+	public virtual Int32 OpvarIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarIndex", value); }
@@ -61,7 +61,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_flOpvarValue
 	[SchemaMember("CSoundOpvarSetEntity", "m_flOpvarValue")]
-	public float OpvarValue
+	public virtual float OpvarValue
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetEntity", "m_flOpvarValue"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetEntity", "m_flOpvarValue", value); }
@@ -69,7 +69,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_OpvarValueString
 	[SchemaMember("CSoundOpvarSetEntity", "m_OpvarValueString")]
-	public string OpvarValueString
+	public virtual string OpvarValueString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_OpvarValueString"); }
 		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_OpvarValueString", value); }
@@ -77,7 +77,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_bSetOnSpawn
 	[SchemaMember("CSoundOpvarSetEntity", "m_bSetOnSpawn")]
-	public bool SetOnSpawn
+	public virtual bool SetOnSpawn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetEntity", "m_bSetOnSpawn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetEntity", "m_bSetOnSpawn", value); }

@@ -21,7 +21,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_flStepSoundTime
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flStepSoundTime")]
-	public float StepSoundTime
+	public virtual float StepSoundTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flStepSoundTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flStepSoundTime", value); }
@@ -29,7 +29,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_flFallVelocity
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flFallVelocity")]
-	public float FallVelocity
+	public virtual float FallVelocity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity", value); }
@@ -37,7 +37,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_bInCrouch
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bInCrouch")]
-	public bool InCrouch
+	public virtual bool InCrouch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInCrouch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInCrouch", value); }
@@ -45,7 +45,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_nCrouchState
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_nCrouchState")]
-	public UInt32 CrouchState
+	public virtual UInt32 CrouchState
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nCrouchState"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nCrouchState", value); }
@@ -53,7 +53,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_flCrouchTransitionStartTime
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime")]
-	public float CrouchTransitionStartTime
+	public virtual float CrouchTransitionStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime", value); }
@@ -61,7 +61,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_bDucked
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bDucked")]
-	public bool Ducked
+	public virtual bool Ducked
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked", value); }
@@ -69,7 +69,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_bDucking
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bDucking")]
-	public bool Ducking
+	public virtual bool Ducking
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucking"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucking", value); }
@@ -77,7 +77,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_bInDuckJump
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bInDuckJump")]
-	public bool InDuckJump
+	public virtual bool InDuckJump
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump", value); }
@@ -85,7 +85,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_groundNormal
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_groundNormal")]
-	public Vector3 GroundNormal
+	public virtual Vector3 GroundNormal
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_groundNormal"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_groundNormal", value); }
@@ -93,7 +93,7 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_flSurfaceFriction
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction")]
-	public float SurfaceFriction
+	public virtual float SurfaceFriction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction", value); }
@@ -101,11 +101,11 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_surfaceProps
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_surfaceProps")]
-	public CUtlStringToken SurfaceProps => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_surfaceProps");
+	public virtual CUtlStringToken SurfaceProps => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_surfaceProps");
 
 	// m_nStepside
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_nStepside")]
-	public Int32 Stepside
+	public virtual Int32 Stepside
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nStepside"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nStepside", value); }
@@ -113,17 +113,17 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_vecSmoothedVelocity
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity")]
-	public Vector3 SmoothedVelocity
+	public virtual Vector3 SmoothedVelocity
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity", value); }
 	}
 
-	public void FallVelocityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity");
-	public void InCrouchPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bInCrouch");
-	public void CrouchStatePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_nCrouchState");
-	public void CrouchTransitionStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime");
-	public void DuckedPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bDucked");
-	public void DuckingPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bDucking");
-	public void InDuckJumpPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump");
+	public virtual void FallVelocityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity");
+	public virtual void InCrouchPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bInCrouch");
+	public virtual void CrouchStatePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_nCrouchState");
+	public virtual void CrouchTransitionStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime");
+	public virtual void DuckedPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bDucked");
+	public virtual void DuckingPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bDucking");
+	public virtual void InDuckJumpPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump");
 }

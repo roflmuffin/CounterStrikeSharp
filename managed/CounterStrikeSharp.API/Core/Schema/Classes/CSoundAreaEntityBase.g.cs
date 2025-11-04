@@ -21,7 +21,7 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CSoundAreaEntityBase", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 
 	// m_iszSoundAreaType
 	[SchemaMember("CSoundAreaEntityBase", "m_iszSoundAreaType")]
-	public string SoundAreaType
+	public virtual string SoundAreaType
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType"); }
 		set { Schema.SetString(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType", value); }
@@ -37,13 +37,13 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 
 	// m_vPos
 	[SchemaMember("CSoundAreaEntityBase", "m_vPos")]
-	public Vector3 Pos
+	public virtual Vector3 Pos
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundAreaEntityBase", "m_vPos"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityBase", "m_vPos", value); }
 	}
 
-	public void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_bDisabled");
-	public void SoundAreaTypePropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_iszSoundAreaType");
-	public void PosPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_vPos");
+	public virtual void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_bDisabled");
+	public virtual void SoundAreaTypePropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_iszSoundAreaType");
+	public virtual void PosPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_vPos");
 }

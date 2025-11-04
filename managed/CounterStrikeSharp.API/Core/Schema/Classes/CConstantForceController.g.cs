@@ -21,7 +21,7 @@ public partial class CConstantForceController : NativeObject
 
 	// m_linear
 	[SchemaMember("CConstantForceController", "m_linear")]
-	public Vector3 Linear
+	public virtual Vector3 Linear
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linear"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linear", value); }
@@ -29,7 +29,7 @@ public partial class CConstantForceController : NativeObject
 
 	// m_angular
 	[SchemaMember("CConstantForceController", "m_angular")]
-	public Vector3 Angular
+	public virtual Vector3 Angular
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angular"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angular", value); }
@@ -37,7 +37,7 @@ public partial class CConstantForceController : NativeObject
 
 	// m_linearSave
 	[SchemaMember("CConstantForceController", "m_linearSave")]
-	public Vector3 LinearSave
+	public virtual Vector3 LinearSave
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linearSave"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linearSave", value); }
@@ -45,7 +45,7 @@ public partial class CConstantForceController : NativeObject
 
 	// m_angularSave
 	[SchemaMember("CConstantForceController", "m_angularSave")]
-	public Vector3 AngularSave
+	public virtual Vector3 AngularSave
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angularSave"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angularSave", value); }

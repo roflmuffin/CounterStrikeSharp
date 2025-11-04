@@ -21,7 +21,7 @@ public partial class CRotDoor : CBaseDoor
 
 	// m_bSolidBsp
 	[SchemaMember("CRotDoor", "m_bSolidBsp")]
-	public bool SolidBsp
+	public virtual bool SolidBsp
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRotDoor", "m_bSolidBsp"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRotDoor", "m_bSolidBsp", value); }

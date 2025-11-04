@@ -21,7 +21,7 @@ public partial class CExampleSchemaVData_PolymorphicDerivedA : CExampleSchemaVDa
 
 	// m_nDerivedA
 	[SchemaMember("CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA")]
-	public Int32 DerivedA
+	public virtual Int32 DerivedA
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA", value); }

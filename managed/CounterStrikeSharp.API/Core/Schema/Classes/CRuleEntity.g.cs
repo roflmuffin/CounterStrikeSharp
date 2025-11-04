@@ -21,7 +21,7 @@ public partial class CRuleEntity : CBaseModelEntity
 
 	// m_iszMaster
 	[SchemaMember("CRuleEntity", "m_iszMaster")]
-	public string Master
+	public virtual string Master
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRuleEntity", "m_iszMaster"); }
 		set { Schema.SetString(this.Handle, "CRuleEntity", "m_iszMaster", value); }

@@ -21,7 +21,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_flLinearFrequency
 	[SchemaMember("CPhysFixed", "m_flLinearFrequency")]
-	public float LinearFrequency
+	public virtual float LinearFrequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency", value); }
@@ -29,7 +29,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_flLinearDampingRatio
 	[SchemaMember("CPhysFixed", "m_flLinearDampingRatio")]
-	public float LinearDampingRatio
+	public virtual float LinearDampingRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio", value); }
@@ -37,7 +37,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_flAngularFrequency
 	[SchemaMember("CPhysFixed", "m_flAngularFrequency")]
-	public float AngularFrequency
+	public virtual float AngularFrequency
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency", value); }
@@ -45,7 +45,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_flAngularDampingRatio
 	[SchemaMember("CPhysFixed", "m_flAngularDampingRatio")]
-	public float AngularDampingRatio
+	public virtual float AngularDampingRatio
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio", value); }
@@ -53,7 +53,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_bEnableLinearConstraint
 	[SchemaMember("CPhysFixed", "m_bEnableLinearConstraint")]
-	public bool EnableLinearConstraint
+	public virtual bool EnableLinearConstraint
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint", value); }
@@ -61,7 +61,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_bEnableAngularConstraint
 	[SchemaMember("CPhysFixed", "m_bEnableAngularConstraint")]
-	public bool EnableAngularConstraint
+	public virtual bool EnableAngularConstraint
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint", value); }
@@ -69,7 +69,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_sBoneName1
 	[SchemaMember("CPhysFixed", "m_sBoneName1")]
-	public string BoneName1
+	public virtual string BoneName1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysFixed", "m_sBoneName1"); }
 		set { Schema.SetString(this.Handle, "CPhysFixed", "m_sBoneName1", value); }
@@ -77,7 +77,7 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_sBoneName2
 	[SchemaMember("CPhysFixed", "m_sBoneName2")]
-	public string BoneName2
+	public virtual string BoneName2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysFixed", "m_sBoneName2"); }
 		set { Schema.SetString(this.Handle, "CPhysFixed", "m_sBoneName2", value); }

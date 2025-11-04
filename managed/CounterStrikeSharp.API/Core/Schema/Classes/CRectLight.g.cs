@@ -21,11 +21,11 @@ public partial class CRectLight : CBarnLight
 
 	// m_bShowLight
 	[SchemaMember("CRectLight", "m_bShowLight")]
-	public bool ShowLight
+	public virtual bool ShowLight
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRectLight", "m_bShowLight"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRectLight", "m_bShowLight", value); }
 	}
 
-	public void ShowLightPropertyChanged() => Utilities.SetStateChanged(this, "CRectLight", "m_bShowLight");
+	public virtual void ShowLightPropertyChanged() => Utilities.SetStateChanged(this, "CRectLight", "m_bShowLight");
 }

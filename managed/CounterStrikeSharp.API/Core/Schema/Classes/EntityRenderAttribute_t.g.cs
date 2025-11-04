@@ -21,16 +21,16 @@ public partial class EntityRenderAttribute_t : NativeObject
 
 	// m_ID
 	[SchemaMember("EntityRenderAttribute_t", "m_ID")]
-	public CUtlStringToken ID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "EntityRenderAttribute_t", "m_ID");
+	public virtual CUtlStringToken ID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "EntityRenderAttribute_t", "m_ID");
 
 	// m_Values
 	[SchemaMember("EntityRenderAttribute_t", "m_Values")]
-	public Vector4 Values
+	public virtual Vector4 Values
 	{
 		get { return Schema.GetValueType<Vector4>(this.Handle, "EntityRenderAttribute_t", "m_Values"); }
 		set { Schema.SetValueType<Vector4>(this.Handle, "EntityRenderAttribute_t", "m_Values", value); }
 	}
 
-	public void IDPropertyChanged() => Utilities.SetStateChanged(this, "EntityRenderAttribute_t", "m_ID");
-	public void ValuesPropertyChanged() => Utilities.SetStateChanged(this, "EntityRenderAttribute_t", "m_Values");
+	public virtual void IDPropertyChanged() => Utilities.SetStateChanged(this, "EntityRenderAttribute_t", "m_ID");
+	public virtual void ValuesPropertyChanged() => Utilities.SetStateChanged(this, "EntityRenderAttribute_t", "m_Values");
 }

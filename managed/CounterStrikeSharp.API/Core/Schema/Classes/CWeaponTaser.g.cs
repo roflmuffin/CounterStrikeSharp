@@ -21,7 +21,7 @@ public partial class CWeaponTaser : CCSWeaponBaseGun
 
 	// m_fFireTime
 	[SchemaMember("CWeaponTaser", "m_fFireTime")]
-	public float FireTime
+	public virtual float FireTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CWeaponTaser", "m_fFireTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CWeaponTaser", "m_fFireTime", value); }
@@ -29,11 +29,11 @@ public partial class CWeaponTaser : CCSWeaponBaseGun
 
 	// m_nLastAttackTick
 	[SchemaMember("CWeaponTaser", "m_nLastAttackTick")]
-	public Int32 LastAttackTick
+	public virtual Int32 LastAttackTick
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CWeaponTaser", "m_nLastAttackTick"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CWeaponTaser", "m_nLastAttackTick", value); }
 	}
 
-	public void FireTimePropertyChanged() => Utilities.SetStateChanged(this, "CWeaponTaser", "m_fFireTime");
+	public virtual void FireTimePropertyChanged() => Utilities.SetStateChanged(this, "CWeaponTaser", "m_fFireTime");
 }

@@ -21,20 +21,20 @@ public partial class PhysicsRagdollPose_t : NativeObject
 
 	// m_Transforms
 	[SchemaMember("PhysicsRagdollPose_t", "m_Transforms")]
-	public NetworkedVector<CTransform> Transforms => Schema.GetDeclaredClass<NetworkedVector<CTransform>>(this.Handle, "PhysicsRagdollPose_t", "m_Transforms");
+	public virtual NetworkedVector<CTransform> Transforms => Schema.GetDeclaredClass<NetworkedVector<CTransform>>(this.Handle, "PhysicsRagdollPose_t", "m_Transforms");
 
 	// m_hOwner
 	[SchemaMember("PhysicsRagdollPose_t", "m_hOwner")]
-	public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner");
+	public virtual CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner");
 
 	// m_bSetFromDebugHistory
 	[SchemaMember("PhysicsRagdollPose_t", "m_bSetFromDebugHistory")]
-	public bool SetFromDebugHistory
+	public virtual bool SetFromDebugHistory
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "PhysicsRagdollPose_t", "m_bSetFromDebugHistory"); }
 		set { Schema.SetValueType<bool>(this.Handle, "PhysicsRagdollPose_t", "m_bSetFromDebugHistory", value); }
 	}
 
-	public void TransformsPropertyChanged() => Utilities.SetStateChanged(this, "PhysicsRagdollPose_t", "m_Transforms");
-	public void OwnerPropertyChanged() => Utilities.SetStateChanged(this, "PhysicsRagdollPose_t", "m_hOwner");
+	public virtual void TransformsPropertyChanged() => Utilities.SetStateChanged(this, "PhysicsRagdollPose_t", "m_Transforms");
+	public virtual void OwnerPropertyChanged() => Utilities.SetStateChanged(this, "PhysicsRagdollPose_t", "m_hOwner");
 }

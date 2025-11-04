@@ -21,7 +21,7 @@ public partial class SpawnPoint : CServerOnlyPointEntity
 
 	// m_iPriority
 	[SchemaMember("SpawnPoint", "m_iPriority")]
-	public Int32 Priority
+	public virtual Int32 Priority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "SpawnPoint", "m_iPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "SpawnPoint", "m_iPriority", value); }
@@ -29,7 +29,7 @@ public partial class SpawnPoint : CServerOnlyPointEntity
 
 	// m_bEnabled
 	[SchemaMember("SpawnPoint", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "SpawnPoint", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "SpawnPoint", "m_bEnabled", value); }
@@ -37,7 +37,7 @@ public partial class SpawnPoint : CServerOnlyPointEntity
 
 	// m_nType
 	[SchemaMember("SpawnPoint", "m_nType")]
-	public Int32 Type
+	public virtual Int32 Type
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "SpawnPoint", "m_nType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "SpawnPoint", "m_nType", value); }

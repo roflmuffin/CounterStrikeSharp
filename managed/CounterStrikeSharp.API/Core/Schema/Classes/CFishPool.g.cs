@@ -21,7 +21,7 @@ public partial class CFishPool : CBaseEntity
 
 	// m_fishCount
 	[SchemaMember("CFishPool", "m_fishCount")]
-	public Int32 FishCount
+	public virtual Int32 FishCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFishPool", "m_fishCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFishPool", "m_fishCount", value); }
@@ -29,7 +29,7 @@ public partial class CFishPool : CBaseEntity
 
 	// m_maxRange
 	[SchemaMember("CFishPool", "m_maxRange")]
-	public float MaxRange
+	public virtual float MaxRange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFishPool", "m_maxRange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFishPool", "m_maxRange", value); }
@@ -37,7 +37,7 @@ public partial class CFishPool : CBaseEntity
 
 	// m_swimDepth
 	[SchemaMember("CFishPool", "m_swimDepth")]
-	public float SwimDepth
+	public virtual float SwimDepth
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFishPool", "m_swimDepth"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFishPool", "m_swimDepth", value); }
@@ -45,7 +45,7 @@ public partial class CFishPool : CBaseEntity
 
 	// m_waterLevel
 	[SchemaMember("CFishPool", "m_waterLevel")]
-	public new float WaterLevel
+	public virtual new float WaterLevel
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFishPool", "m_waterLevel"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFishPool", "m_waterLevel", value); }
@@ -53,7 +53,7 @@ public partial class CFishPool : CBaseEntity
 
 	// m_isDormant
 	[SchemaMember("CFishPool", "m_isDormant")]
-	public bool IsDormant
+	public virtual bool IsDormant
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFishPool", "m_isDormant"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFishPool", "m_isDormant", value); }
@@ -61,10 +61,10 @@ public partial class CFishPool : CBaseEntity
 
 	// m_fishes
 	[SchemaMember("CFishPool", "m_fishes")]
-	public NetworkedVector<CHandle<CFish>> Fishes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFish>>>(this.Handle, "CFishPool", "m_fishes");
+	public virtual NetworkedVector<CHandle<CFish>> Fishes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFish>>>(this.Handle, "CFishPool", "m_fishes");
 
 	// m_visTimer
 	[SchemaMember("CFishPool", "m_visTimer")]
-	public CountdownTimer VisTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFishPool", "m_visTimer");
+	public virtual CountdownTimer VisTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFishPool", "m_visTimer");
 
 }

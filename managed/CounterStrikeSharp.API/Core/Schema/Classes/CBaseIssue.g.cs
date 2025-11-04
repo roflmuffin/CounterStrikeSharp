@@ -21,7 +21,7 @@ public partial class CBaseIssue : NativeObject
 
 	// m_szTypeString
 	[SchemaMember("CBaseIssue", "m_szTypeString")]
-	public string TypeString
+	public virtual string TypeString
 	{
 		get { return Schema.GetString(this.Handle, "CBaseIssue", "m_szTypeString"); }
 		set { Schema.SetStringBytes(this.Handle, "CBaseIssue", "m_szTypeString", value, 64); }
@@ -29,7 +29,7 @@ public partial class CBaseIssue : NativeObject
 
 	// m_szDetailsString
 	[SchemaMember("CBaseIssue", "m_szDetailsString")]
-	public string DetailsString
+	public virtual string DetailsString
 	{
 		get { return Schema.GetString(this.Handle, "CBaseIssue", "m_szDetailsString"); }
 		set { Schema.SetStringBytes(this.Handle, "CBaseIssue", "m_szDetailsString", value, 4096); }
@@ -37,7 +37,7 @@ public partial class CBaseIssue : NativeObject
 
 	// m_iNumYesVotes
 	[SchemaMember("CBaseIssue", "m_iNumYesVotes")]
-	public Int32 NumYesVotes
+	public virtual Int32 NumYesVotes
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumYesVotes"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumYesVotes", value); }
@@ -45,7 +45,7 @@ public partial class CBaseIssue : NativeObject
 
 	// m_iNumNoVotes
 	[SchemaMember("CBaseIssue", "m_iNumNoVotes")]
-	public Int32 NumNoVotes
+	public virtual Int32 NumNoVotes
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumNoVotes"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumNoVotes", value); }
@@ -53,7 +53,7 @@ public partial class CBaseIssue : NativeObject
 
 	// m_iNumPotentialVotes
 	[SchemaMember("CBaseIssue", "m_iNumPotentialVotes")]
-	public Int32 NumPotentialVotes
+	public virtual Int32 NumPotentialVotes
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumPotentialVotes"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumPotentialVotes", value); }
@@ -61,6 +61,6 @@ public partial class CBaseIssue : NativeObject
 
 	// m_pVoteController
 	[SchemaMember("CBaseIssue", "m_pVoteController")]
-	public CVoteController? VoteController => Schema.GetPointer<CVoteController>(this.Handle, "CBaseIssue", "m_pVoteController");
+	public virtual CVoteController? VoteController => Schema.GetPointer<CVoteController>(this.Handle, "CBaseIssue", "m_pVoteController");
 
 }

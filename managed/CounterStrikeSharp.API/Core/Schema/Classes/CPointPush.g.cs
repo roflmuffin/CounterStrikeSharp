@@ -21,7 +21,7 @@ public partial class CPointPush : CPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CPointPush", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointPush", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointPush", "m_bEnabled", value); }
@@ -29,7 +29,7 @@ public partial class CPointPush : CPointEntity
 
 	// m_flMagnitude
 	[SchemaMember("CPointPush", "m_flMagnitude")]
-	public float Magnitude
+	public virtual float Magnitude
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flMagnitude"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flMagnitude", value); }
@@ -37,7 +37,7 @@ public partial class CPointPush : CPointEntity
 
 	// m_flRadius
 	[SchemaMember("CPointPush", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flRadius", value); }
@@ -45,7 +45,7 @@ public partial class CPointPush : CPointEntity
 
 	// m_flInnerRadius
 	[SchemaMember("CPointPush", "m_flInnerRadius")]
-	public float InnerRadius
+	public virtual float InnerRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flInnerRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flInnerRadius", value); }
@@ -53,7 +53,7 @@ public partial class CPointPush : CPointEntity
 
 	// m_flConeOfInfluence
 	[SchemaMember("CPointPush", "m_flConeOfInfluence")]
-	public float ConeOfInfluence
+	public virtual float ConeOfInfluence
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flConeOfInfluence"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flConeOfInfluence", value); }
@@ -61,7 +61,7 @@ public partial class CPointPush : CPointEntity
 
 	// m_iszFilterName
 	[SchemaMember("CPointPush", "m_iszFilterName")]
-	public string FilterName
+	public virtual string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPush", "m_iszFilterName"); }
 		set { Schema.SetString(this.Handle, "CPointPush", "m_iszFilterName", value); }
@@ -69,6 +69,6 @@ public partial class CPointPush : CPointEntity
 
 	// m_hFilter
 	[SchemaMember("CPointPush", "m_hFilter")]
-	public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter");
 
 }

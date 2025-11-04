@@ -21,7 +21,7 @@ public partial class CPointChildModifier : CPointEntity
 
 	// m_bOrphanInsteadOfDeletingChildrenOnRemove
 	[SchemaMember("CPointChildModifier", "m_bOrphanInsteadOfDeletingChildrenOnRemove")]
-	public bool OrphanInsteadOfDeletingChildrenOnRemove
+	public virtual bool OrphanInsteadOfDeletingChildrenOnRemove
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointChildModifier", "m_bOrphanInsteadOfDeletingChildrenOnRemove"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointChildModifier", "m_bOrphanInsteadOfDeletingChildrenOnRemove", value); }

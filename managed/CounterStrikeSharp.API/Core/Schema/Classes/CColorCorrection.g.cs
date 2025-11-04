@@ -21,7 +21,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flFadeInDuration
 	[SchemaMember("CColorCorrection", "m_flFadeInDuration")]
-	public float FadeInDuration
+	public virtual float FadeInDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeInDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeInDuration", value); }
@@ -29,7 +29,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flFadeOutDuration
 	[SchemaMember("CColorCorrection", "m_flFadeOutDuration")]
-	public float FadeOutDuration
+	public virtual float FadeOutDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeOutDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeOutDuration", value); }
@@ -37,7 +37,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flStartFadeInWeight
 	[SchemaMember("CColorCorrection", "m_flStartFadeInWeight")]
-	public float StartFadeInWeight
+	public virtual float StartFadeInWeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeInWeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeInWeight", value); }
@@ -45,7 +45,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flStartFadeOutWeight
 	[SchemaMember("CColorCorrection", "m_flStartFadeOutWeight")]
-	public float StartFadeOutWeight
+	public virtual float StartFadeOutWeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeOutWeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeOutWeight", value); }
@@ -53,7 +53,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flTimeStartFadeIn
 	[SchemaMember("CColorCorrection", "m_flTimeStartFadeIn")]
-	public float TimeStartFadeIn
+	public virtual float TimeStartFadeIn
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeIn"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeIn", value); }
@@ -61,7 +61,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flTimeStartFadeOut
 	[SchemaMember("CColorCorrection", "m_flTimeStartFadeOut")]
-	public float TimeStartFadeOut
+	public virtual float TimeStartFadeOut
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeOut"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeOut", value); }
@@ -69,7 +69,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flMaxWeight
 	[SchemaMember("CColorCorrection", "m_flMaxWeight")]
-	public float MaxWeight
+	public virtual float MaxWeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flMaxWeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flMaxWeight", value); }
@@ -77,7 +77,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CColorCorrection", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bStartDisabled", value); }
@@ -85,7 +85,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_bEnabled
 	[SchemaMember("CColorCorrection", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bEnabled", value); }
@@ -93,7 +93,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_bMaster
 	[SchemaMember("CColorCorrection", "m_bMaster")]
-	public bool Master
+	public virtual bool Master
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bMaster"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bMaster", value); }
@@ -101,7 +101,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_bClientSide
 	[SchemaMember("CColorCorrection", "m_bClientSide")]
-	public bool ClientSide
+	public virtual bool ClientSide
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bClientSide"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bClientSide", value); }
@@ -109,7 +109,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_bExclusive
 	[SchemaMember("CColorCorrection", "m_bExclusive")]
-	public bool Exclusive
+	public virtual bool Exclusive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bExclusive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bExclusive", value); }
@@ -117,7 +117,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_MinFalloff
 	[SchemaMember("CColorCorrection", "m_MinFalloff")]
-	public float MinFalloff
+	public virtual float MinFalloff
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_MinFalloff"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_MinFalloff", value); }
@@ -125,7 +125,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_MaxFalloff
 	[SchemaMember("CColorCorrection", "m_MaxFalloff")]
-	public float MaxFalloff
+	public virtual float MaxFalloff
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_MaxFalloff"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_MaxFalloff", value); }
@@ -133,7 +133,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flCurWeight
 	[SchemaMember("CColorCorrection", "m_flCurWeight")]
-	public float CurWeight
+	public virtual float CurWeight
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flCurWeight"); }
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flCurWeight", value); }
@@ -141,7 +141,7 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_netlookupFilename
 	[SchemaMember("CColorCorrection", "m_netlookupFilename")]
-	public string NetlookupFilename
+	public virtual string NetlookupFilename
 	{
 		get { return Schema.GetString(this.Handle, "CColorCorrection", "m_netlookupFilename"); }
 		set { Schema.SetStringBytes(this.Handle, "CColorCorrection", "m_netlookupFilename", value, 512); }
@@ -149,21 +149,21 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_lookupFilename
 	[SchemaMember("CColorCorrection", "m_lookupFilename")]
-	public string LookupFilename
+	public virtual string LookupFilename
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CColorCorrection", "m_lookupFilename"); }
 		set { Schema.SetString(this.Handle, "CColorCorrection", "m_lookupFilename", value); }
 	}
 
-	public void FadeInDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flFadeInDuration");
-	public void FadeOutDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flFadeOutDuration");
-	public void MaxWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flMaxWeight");
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bEnabled");
-	public void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bMaster");
-	public void ClientSidePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bClientSide");
-	public void ExclusivePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bExclusive");
-	public void MinFalloffPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_MinFalloff");
-	public void MaxFalloffPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_MaxFalloff");
-	public void CurWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flCurWeight");
-	public void NetlookupFilenamePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_netlookupFilename");
+	public virtual void FadeInDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flFadeInDuration");
+	public virtual void FadeOutDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flFadeOutDuration");
+	public virtual void MaxWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flMaxWeight");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bEnabled");
+	public virtual void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bMaster");
+	public virtual void ClientSidePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bClientSide");
+	public virtual void ExclusivePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bExclusive");
+	public virtual void MinFalloffPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_MinFalloff");
+	public virtual void MaxFalloffPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_MaxFalloff");
+	public virtual void CurWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flCurWeight");
+	public virtual void NetlookupFilenamePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_netlookupFilename");
 }

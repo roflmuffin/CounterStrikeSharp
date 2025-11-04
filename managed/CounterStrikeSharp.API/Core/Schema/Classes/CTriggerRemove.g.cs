@@ -21,6 +21,6 @@ public partial class CTriggerRemove : CBaseTrigger
 
 	// m_OnRemove
 	[SchemaMember("CTriggerRemove", "m_OnRemove")]
-	public CEntityIOOutput OnRemove => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerRemove", "m_OnRemove");
+	public virtual CEntityIOOutput OnRemove => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerRemove", "m_OnRemove");
 
 }

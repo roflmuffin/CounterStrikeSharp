@@ -21,30 +21,30 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
 
 	// m_hMyWeapons
 	[SchemaMember("CPlayer_WeaponServices", "m_hMyWeapons")]
-	public NetworkedVector<CHandle<CBasePlayerWeapon>> MyWeapons => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerWeapon>>>(this.Handle, "CPlayer_WeaponServices", "m_hMyWeapons");
+	public virtual NetworkedVector<CHandle<CBasePlayerWeapon>> MyWeapons => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerWeapon>>>(this.Handle, "CPlayer_WeaponServices", "m_hMyWeapons");
 
 	// m_hActiveWeapon
 	[SchemaMember("CPlayer_WeaponServices", "m_hActiveWeapon")]
-	public CHandle<CBasePlayerWeapon> ActiveWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon");
+	public virtual CHandle<CBasePlayerWeapon> ActiveWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon");
 
 	// m_hLastWeapon
 	[SchemaMember("CPlayer_WeaponServices", "m_hLastWeapon")]
-	public CHandle<CBasePlayerWeapon> LastWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon");
+	public virtual CHandle<CBasePlayerWeapon> LastWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon");
 
 	// m_iAmmo
 	[SchemaMember("CPlayer_WeaponServices", "m_iAmmo")]
-	public Span<UInt16> Ammo => Schema.GetFixedArray<UInt16>(this.Handle, "CPlayer_WeaponServices", "m_iAmmo", 32);
+	public virtual Span<UInt16> Ammo => Schema.GetFixedArray<UInt16>(this.Handle, "CPlayer_WeaponServices", "m_iAmmo", 32);
 
 	// m_bPreventWeaponPickup
 	[SchemaMember("CPlayer_WeaponServices", "m_bPreventWeaponPickup")]
-	public bool PreventWeaponPickup
+	public virtual bool PreventWeaponPickup
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup", value); }
 	}
 
-	public void MyWeaponsPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hMyWeapons");
-	public void ActiveWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hActiveWeapon");
-	public void LastWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hLastWeapon");
-	public void AmmoPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_iAmmo");
+	public virtual void MyWeaponsPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hMyWeapons");
+	public virtual void ActiveWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hActiveWeapon");
+	public virtual void LastWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hLastWeapon");
+	public virtual void AmmoPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_iAmmo");
 }

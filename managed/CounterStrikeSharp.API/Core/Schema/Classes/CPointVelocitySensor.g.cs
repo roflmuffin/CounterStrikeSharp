@@ -21,11 +21,11 @@ public partial class CPointVelocitySensor : CPointEntity
 
 	// m_hTargetEntity
 	[SchemaMember("CPointVelocitySensor", "m_hTargetEntity")]
-	public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointVelocitySensor", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointVelocitySensor", "m_hTargetEntity");
 
 	// m_vecAxis
 	[SchemaMember("CPointVelocitySensor", "m_vecAxis")]
-	public Vector3 Axis
+	public virtual Vector3 Axis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointVelocitySensor", "m_vecAxis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPointVelocitySensor", "m_vecAxis", value); }
@@ -33,7 +33,7 @@ public partial class CPointVelocitySensor : CPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CPointVelocitySensor", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointVelocitySensor", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointVelocitySensor", "m_bEnabled", value); }
@@ -41,7 +41,7 @@ public partial class CPointVelocitySensor : CPointEntity
 
 	// m_fPrevVelocity
 	[SchemaMember("CPointVelocitySensor", "m_fPrevVelocity")]
-	public float PrevVelocity
+	public virtual float PrevVelocity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointVelocitySensor", "m_fPrevVelocity"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointVelocitySensor", "m_fPrevVelocity", value); }
@@ -49,7 +49,7 @@ public partial class CPointVelocitySensor : CPointEntity
 
 	// m_flAvgInterval
 	[SchemaMember("CPointVelocitySensor", "m_flAvgInterval")]
-	public float AvgInterval
+	public virtual float AvgInterval
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointVelocitySensor", "m_flAvgInterval"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointVelocitySensor", "m_flAvgInterval", value); }

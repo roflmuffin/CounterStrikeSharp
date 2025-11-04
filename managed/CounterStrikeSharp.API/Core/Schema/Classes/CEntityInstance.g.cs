@@ -19,7 +19,7 @@ public partial class CEntityInstance : NativeEntity
 {
 	// m_iszPrivateVScripts
 	[SchemaMember("CEntityInstance", "m_iszPrivateVScripts")]
-	public string PrivateVScripts
+	public virtual string PrivateVScripts
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEntityInstance", "m_iszPrivateVScripts"); }
 		set { Schema.SetString(this.Handle, "CEntityInstance", "m_iszPrivateVScripts", value); }
@@ -27,11 +27,11 @@ public partial class CEntityInstance : NativeEntity
 
 	// m_pEntity
 	[SchemaMember("CEntityInstance", "m_pEntity")]
-	public CEntityIdentity? Entity => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityInstance", "m_pEntity");
+	public virtual CEntityIdentity? Entity => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityInstance", "m_pEntity");
 
 	// m_CScriptComponent
 	[SchemaMember("CEntityInstance", "m_CScriptComponent")]
-	public CScriptComponent? CScriptComponent => Schema.GetPointer<CScriptComponent>(this.Handle, "CEntityInstance", "m_CScriptComponent");
+	public virtual CScriptComponent? CScriptComponent => Schema.GetPointer<CScriptComponent>(this.Handle, "CEntityInstance", "m_CScriptComponent");
 
-	public void EntityPropertyChanged() => Utilities.SetStateChanged(this, "CEntityInstance", "m_pEntity");
+	public virtual void EntityPropertyChanged() => Utilities.SetStateChanged(this, "CEntityInstance", "m_pEntity");
 }

@@ -21,7 +21,7 @@ public partial class CCSPlayer_ItemServices : CPlayer_ItemServices
 
 	// m_bHasDefuser
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasDefuser")]
-	public bool HasDefuser
+	public virtual bool HasDefuser
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasDefuser"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasDefuser", value); }
@@ -29,12 +29,12 @@ public partial class CCSPlayer_ItemServices : CPlayer_ItemServices
 
 	// m_bHasHelmet
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasHelmet")]
-	public bool HasHelmet
+	public virtual bool HasHelmet
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet", value); }
 	}
 
-	public void HasDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ItemServices", "m_bHasDefuser");
-	public void HasHelmetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ItemServices", "m_bHasHelmet");
+	public virtual void HasDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ItemServices", "m_bHasDefuser");
+	public virtual void HasHelmetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ItemServices", "m_bHasHelmet");
 }

@@ -21,7 +21,7 @@ public partial class CMolotovProjectile : CBaseCSGrenadeProjectile
 
 	// m_bIsIncGrenade
 	[SchemaMember("CMolotovProjectile", "m_bIsIncGrenade")]
-	public bool IsIncGrenade
+	public virtual bool IsIncGrenade
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bIsIncGrenade"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bIsIncGrenade", value); }
@@ -29,7 +29,7 @@ public partial class CMolotovProjectile : CBaseCSGrenadeProjectile
 
 	// m_bDetonated
 	[SchemaMember("CMolotovProjectile", "m_bDetonated")]
-	public bool Detonated
+	public virtual bool Detonated
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bDetonated"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bDetonated", value); }
@@ -37,15 +37,15 @@ public partial class CMolotovProjectile : CBaseCSGrenadeProjectile
 
 	// m_stillTimer
 	[SchemaMember("CMolotovProjectile", "m_stillTimer")]
-	public IntervalTimer StillTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CMolotovProjectile", "m_stillTimer");
+	public virtual IntervalTimer StillTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CMolotovProjectile", "m_stillTimer");
 
 	// m_bHasBouncedOffPlayer
 	[SchemaMember("CMolotovProjectile", "m_bHasBouncedOffPlayer")]
-	public bool HasBouncedOffPlayer
+	public virtual bool HasBouncedOffPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bHasBouncedOffPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bHasBouncedOffPlayer", value); }
 	}
 
-	public void IsIncGrenadePropertyChanged() => Utilities.SetStateChanged(this, "CMolotovProjectile", "m_bIsIncGrenade");
+	public virtual void IsIncGrenadePropertyChanged() => Utilities.SetStateChanged(this, "CMolotovProjectile", "m_bIsIncGrenade");
 }

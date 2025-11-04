@@ -21,7 +21,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszPathName
 	[SchemaMember("CFuncMover", "m_iszPathName")]
-	public string PathName
+	public virtual string PathName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszPathName"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszPathName", value); }
@@ -29,15 +29,15 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hPathMover
 	[SchemaMember("CFuncMover", "m_hPathMover")]
-	public CHandle<CPathMover> PathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPathMover");
+	public virtual CHandle<CPathMover> PathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPathMover");
 
 	// m_hPrevPathMover
 	[SchemaMember("CFuncMover", "m_hPrevPathMover")]
-	public CHandle<CPathMover> PrevPathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPrevPathMover");
+	public virtual CHandle<CPathMover> PrevPathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPrevPathMover");
 
 	// m_iszPathNodeStart
 	[SchemaMember("CFuncMover", "m_iszPathNodeStart")]
-	public string PathNodeStart
+	public virtual string PathNodeStart
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszPathNodeStart"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszPathNodeStart", value); }
@@ -45,7 +45,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszPathNodeEnd
 	[SchemaMember("CFuncMover", "m_iszPathNodeEnd")]
-	public string PathNodeEnd
+	public virtual string PathNodeEnd
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszPathNodeEnd"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszPathNodeEnd", value); }
@@ -53,7 +53,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_eMoveType
 	[SchemaMember("CFuncMover", "m_eMoveType")]
-	public new CFuncMoverMove_t MoveType
+	public virtual new CFuncMoverMove_t MoveType
 	{
 		get { return Schema.GetValueType<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType"); }
 		set { Schema.SetValueType<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType", value); }
@@ -61,7 +61,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bIsReversing
 	[SchemaMember("CFuncMover", "m_bIsReversing")]
-	public bool IsReversing
+	public virtual bool IsReversing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsReversing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsReversing", value); }
@@ -69,7 +69,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_vTarget
 	[SchemaMember("CFuncMover", "m_vTarget")]
-	public new Vector3 Target
+	public virtual new Vector3 Target
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMover", "m_vTarget"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMover", "m_vTarget", value); }
@@ -77,7 +77,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flStartSpeed
 	[SchemaMember("CFuncMover", "m_flStartSpeed")]
-	public float StartSpeed
+	public virtual float StartSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flStartSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flStartSpeed", value); }
@@ -85,7 +85,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flPathLocation
 	[SchemaMember("CFuncMover", "m_flPathLocation")]
-	public float PathLocation
+	public virtual float PathLocation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocation", value); }
@@ -93,7 +93,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flT
 	[SchemaMember("CFuncMover", "m_flT")]
-	public float T
+	public virtual float T
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flT"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flT", value); }
@@ -101,7 +101,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_nCurrentNodeIndex
 	[SchemaMember("CFuncMover", "m_nCurrentNodeIndex")]
-	public Int32 CurrentNodeIndex
+	public virtual Int32 CurrentNodeIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nCurrentNodeIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nCurrentNodeIndex", value); }
@@ -109,7 +109,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_nPreviousNodeIndex
 	[SchemaMember("CFuncMover", "m_nPreviousNodeIndex")]
-	public Int32 PreviousNodeIndex
+	public virtual Int32 PreviousNodeIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nPreviousNodeIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nPreviousNodeIndex", value); }
@@ -117,7 +117,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_eSolidType
 	[SchemaMember("CFuncMover", "m_eSolidType")]
-	public SolidType_t SolidType
+	public virtual SolidType_t SolidType
 	{
 		get { return Schema.GetValueType<SolidType_t>(this.Handle, "CFuncMover", "m_eSolidType"); }
 		set { Schema.SetValueType<SolidType_t>(this.Handle, "CFuncMover", "m_eSolidType", value); }
@@ -125,7 +125,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bIsMoving
 	[SchemaMember("CFuncMover", "m_bIsMoving")]
-	public bool IsMoving
+	public virtual bool IsMoving
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsMoving"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsMoving", value); }
@@ -133,7 +133,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flTimeToReachMaxSpeed
 	[SchemaMember("CFuncMover", "m_flTimeToReachMaxSpeed")]
-	public float TimeToReachMaxSpeed
+	public virtual float TimeToReachMaxSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachMaxSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachMaxSpeed", value); }
@@ -141,7 +141,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flDistanceToReachMaxSpeed
 	[SchemaMember("CFuncMover", "m_flDistanceToReachMaxSpeed")]
-	public float DistanceToReachMaxSpeed
+	public virtual float DistanceToReachMaxSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachMaxSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachMaxSpeed", value); }
@@ -149,7 +149,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flTimeToReachZeroSpeed
 	[SchemaMember("CFuncMover", "m_flTimeToReachZeroSpeed")]
-	public float TimeToReachZeroSpeed
+	public virtual float TimeToReachZeroSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachZeroSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachZeroSpeed", value); }
@@ -157,7 +157,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flDistanceToReachZeroSpeed
 	[SchemaMember("CFuncMover", "m_flDistanceToReachZeroSpeed")]
-	public float DistanceToReachZeroSpeed
+	public virtual float DistanceToReachZeroSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachZeroSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachZeroSpeed", value); }
@@ -165,7 +165,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flTimeMovementStart
 	[SchemaMember("CFuncMover", "m_flTimeMovementStart")]
-	public float TimeMovementStart
+	public virtual float TimeMovementStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStart", value); }
@@ -173,7 +173,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flTimeMovementStop
 	[SchemaMember("CFuncMover", "m_flTimeMovementStop")]
-	public float TimeMovementStop
+	public virtual float TimeMovementStop
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStop"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStop", value); }
@@ -181,11 +181,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hStopAtNode
 	[SchemaMember("CFuncMover", "m_hStopAtNode")]
-	public CHandle<CMoverPathNode> StopAtNode => Schema.GetDeclaredClass<CHandle<CMoverPathNode>>(this.Handle, "CFuncMover", "m_hStopAtNode");
+	public virtual CHandle<CMoverPathNode> StopAtNode => Schema.GetDeclaredClass<CHandle<CMoverPathNode>>(this.Handle, "CFuncMover", "m_hStopAtNode");
 
 	// m_flPathLocationToBeginStop
 	[SchemaMember("CFuncMover", "m_flPathLocationToBeginStop")]
-	public float PathLocationToBeginStop
+	public virtual float PathLocationToBeginStop
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocationToBeginStop"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocationToBeginStop", value); }
@@ -193,7 +193,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszStartForwardSound
 	[SchemaMember("CFuncMover", "m_iszStartForwardSound")]
-	public string StartForwardSound
+	public virtual string StartForwardSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszStartForwardSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszStartForwardSound", value); }
@@ -201,7 +201,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszLoopForwardSound
 	[SchemaMember("CFuncMover", "m_iszLoopForwardSound")]
-	public string LoopForwardSound
+	public virtual string LoopForwardSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszLoopForwardSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszLoopForwardSound", value); }
@@ -209,7 +209,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszStopForwardSound
 	[SchemaMember("CFuncMover", "m_iszStopForwardSound")]
-	public string StopForwardSound
+	public virtual string StopForwardSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszStopForwardSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszStopForwardSound", value); }
@@ -217,7 +217,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszStartReverseSound
 	[SchemaMember("CFuncMover", "m_iszStartReverseSound")]
-	public string StartReverseSound
+	public virtual string StartReverseSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszStartReverseSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszStartReverseSound", value); }
@@ -225,7 +225,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszLoopReverseSound
 	[SchemaMember("CFuncMover", "m_iszLoopReverseSound")]
-	public string LoopReverseSound
+	public virtual string LoopReverseSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszLoopReverseSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszLoopReverseSound", value); }
@@ -233,7 +233,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszStopReverseSound
 	[SchemaMember("CFuncMover", "m_iszStopReverseSound")]
-	public string StopReverseSound
+	public virtual string StopReverseSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszStopReverseSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszStopReverseSound", value); }
@@ -241,7 +241,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_iszArriveAtDestinationSound
 	[SchemaMember("CFuncMover", "m_iszArriveAtDestinationSound")]
-	public string ArriveAtDestinationSound
+	public virtual string ArriveAtDestinationSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszArriveAtDestinationSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszArriveAtDestinationSound", value); }
@@ -249,11 +249,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_OnMovementEnd
 	[SchemaMember("CFuncMover", "m_OnMovementEnd")]
-	public CEntityIOOutput OnMovementEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnMovementEnd");
+	public virtual CEntityIOOutput OnMovementEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnMovementEnd");
 
 	// m_bStartAtClosestPoint
 	[SchemaMember("CFuncMover", "m_bStartAtClosestPoint")]
-	public bool StartAtClosestPoint
+	public virtual bool StartAtClosestPoint
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtClosestPoint"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtClosestPoint", value); }
@@ -261,7 +261,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bStartAtEnd
 	[SchemaMember("CFuncMover", "m_bStartAtEnd")]
-	public bool StartAtEnd
+	public virtual bool StartAtEnd
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtEnd"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtEnd", value); }
@@ -269,7 +269,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_eOrientationUpdate
 	[SchemaMember("CFuncMover", "m_eOrientationUpdate")]
-	public CFuncMoverOrientationUpdate_t OrientationUpdate
+	public virtual CFuncMoverOrientationUpdate_t OrientationUpdate
 	{
 		get { return Schema.GetValueType<CFuncMoverOrientationUpdate_t>(this.Handle, "CFuncMover", "m_eOrientationUpdate"); }
 		set { Schema.SetValueType<CFuncMoverOrientationUpdate_t>(this.Handle, "CFuncMover", "m_eOrientationUpdate", value); }
@@ -277,7 +277,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flTimeStartOrientationChange
 	[SchemaMember("CFuncMover", "m_flTimeStartOrientationChange")]
-	public float TimeStartOrientationChange
+	public virtual float TimeStartOrientationChange
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeStartOrientationChange"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeStartOrientationChange", value); }
@@ -285,7 +285,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flTimeToBlendToNewOrientation
 	[SchemaMember("CFuncMover", "m_flTimeToBlendToNewOrientation")]
-	public float TimeToBlendToNewOrientation
+	public virtual float TimeToBlendToNewOrientation
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToBlendToNewOrientation"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToBlendToNewOrientation", value); }
@@ -293,7 +293,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flDurationBlendToNewOrientationRan
 	[SchemaMember("CFuncMover", "m_flDurationBlendToNewOrientationRan")]
-	public float DurationBlendToNewOrientationRan
+	public virtual float DurationBlendToNewOrientationRan
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flDurationBlendToNewOrientationRan"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flDurationBlendToNewOrientationRan", value); }
@@ -301,7 +301,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_nOriginalOrientationIndex
 	[SchemaMember("CFuncMover", "m_nOriginalOrientationIndex")]
-	public Int32 OriginalOrientationIndex
+	public virtual Int32 OriginalOrientationIndex
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nOriginalOrientationIndex"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nOriginalOrientationIndex", value); }
@@ -309,7 +309,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bCreateMovableNavMesh
 	[SchemaMember("CFuncMover", "m_bCreateMovableNavMesh")]
-	public bool CreateMovableNavMesh
+	public virtual bool CreateMovableNavMesh
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh", value); }
@@ -317,7 +317,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bAllowMovableNavMeshDockingOnEntireEntity
 	[SchemaMember("CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
-	public bool AllowMovableNavMeshDockingOnEntireEntity
+	public virtual bool AllowMovableNavMeshDockingOnEntireEntity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity", value); }
@@ -325,11 +325,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_OnNodePassed
 	[SchemaMember("CFuncMover", "m_OnNodePassed")]
-	public CEntityIOOutput OnNodePassed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnNodePassed");
+	public virtual CEntityIOOutput OnNodePassed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnNodePassed");
 
 	// m_iszOrientationMatchEntityName
 	[SchemaMember("CFuncMover", "m_iszOrientationMatchEntityName")]
-	public string OrientationMatchEntityName
+	public virtual string OrientationMatchEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszOrientationMatchEntityName"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszOrientationMatchEntityName", value); }
@@ -337,11 +337,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hOrientationMatchEntity
 	[SchemaMember("CFuncMover", "m_hOrientationMatchEntity")]
-	public CHandle<CBaseEntity> OrientationMatchEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationMatchEntity");
+	public virtual CHandle<CBaseEntity> OrientationMatchEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationMatchEntity");
 
 	// m_flTimeToTraverseToNextNode
 	[SchemaMember("CFuncMover", "m_flTimeToTraverseToNextNode")]
-	public float TimeToTraverseToNextNode
+	public virtual float TimeToTraverseToNextNode
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToTraverseToNextNode"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToTraverseToNextNode", value); }
@@ -349,7 +349,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_vLerpToNewPosStartInPathEntitySpace
 	[SchemaMember("CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace")]
-	public Vector3 LerpToNewPosStartInPathEntitySpace
+	public virtual Vector3 LerpToNewPosStartInPathEntitySpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace", value); }
@@ -357,7 +357,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_vLerpToNewPosEndInPathEntitySpace
 	[SchemaMember("CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace")]
-	public Vector3 LerpToNewPosEndInPathEntitySpace
+	public virtual Vector3 LerpToNewPosEndInPathEntitySpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace", value); }
@@ -365,7 +365,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flLerpToPositionT
 	[SchemaMember("CFuncMover", "m_flLerpToPositionT")]
-	public float LerpToPositionT
+	public virtual float LerpToPositionT
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionT"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionT", value); }
@@ -373,7 +373,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flLerpToPositionDeltaT
 	[SchemaMember("CFuncMover", "m_flLerpToPositionDeltaT")]
-	public float LerpToPositionDeltaT
+	public virtual float LerpToPositionDeltaT
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionDeltaT"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionDeltaT", value); }
@@ -381,11 +381,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_OnLerpToPositionComplete
 	[SchemaMember("CFuncMover", "m_OnLerpToPositionComplete")]
-	public CEntityIOOutput OnLerpToPositionComplete => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnLerpToPositionComplete");
+	public virtual CEntityIOOutput OnLerpToPositionComplete => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnLerpToPositionComplete");
 
 	// m_bIsPaused
 	[SchemaMember("CFuncMover", "m_bIsPaused")]
-	public bool IsPaused
+	public virtual bool IsPaused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsPaused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsPaused", value); }
@@ -393,7 +393,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_eTransitionedToPathNodeAction
 	[SchemaMember("CFuncMover", "m_eTransitionedToPathNodeAction")]
-	public CFuncMoverTransitionToPathNodeAction_t TransitionedToPathNodeAction
+	public virtual CFuncMoverTransitionToPathNodeAction_t TransitionedToPathNodeAction
 	{
 		get { return Schema.GetValueType<CFuncMoverTransitionToPathNodeAction_t>(this.Handle, "CFuncMover", "m_eTransitionedToPathNodeAction"); }
 		set { Schema.SetValueType<CFuncMoverTransitionToPathNodeAction_t>(this.Handle, "CFuncMover", "m_eTransitionedToPathNodeAction", value); }
@@ -401,7 +401,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_nDelayedTeleportToNode
 	[SchemaMember("CFuncMover", "m_nDelayedTeleportToNode")]
-	public Int32 DelayedTeleportToNode
+	public virtual Int32 DelayedTeleportToNode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nDelayedTeleportToNode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nDelayedTeleportToNode", value); }
@@ -409,7 +409,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bIsVerboseLogging
 	[SchemaMember("CFuncMover", "m_bIsVerboseLogging")]
-	public bool IsVerboseLogging
+	public virtual bool IsVerboseLogging
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsVerboseLogging"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsVerboseLogging", value); }
@@ -417,11 +417,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hFollowEntity
 	[SchemaMember("CFuncMover", "m_hFollowEntity")]
-	public CHandle<CBaseEntity> FollowEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hFollowEntity");
+	public virtual CHandle<CBaseEntity> FollowEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hFollowEntity");
 
 	// m_flFollowDistance
 	[SchemaMember("CFuncMover", "m_flFollowDistance")]
-	public float FollowDistance
+	public virtual float FollowDistance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flFollowDistance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flFollowDistance", value); }
@@ -429,7 +429,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flFollowMinimumSpeed
 	[SchemaMember("CFuncMover", "m_flFollowMinimumSpeed")]
-	public float FollowMinimumSpeed
+	public virtual float FollowMinimumSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flFollowMinimumSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flFollowMinimumSpeed", value); }
@@ -437,7 +437,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flCurFollowEntityT
 	[SchemaMember("CFuncMover", "m_flCurFollowEntityT")]
-	public float CurFollowEntityT
+	public virtual float CurFollowEntityT
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowEntityT"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowEntityT", value); }
@@ -445,7 +445,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flCurFollowSpeed
 	[SchemaMember("CFuncMover", "m_flCurFollowSpeed")]
-	public float CurFollowSpeed
+	public virtual float CurFollowSpeed
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowSpeed"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowSpeed", value); }
@@ -453,7 +453,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_strOrientationFaceEntityName
 	[SchemaMember("CFuncMover", "m_strOrientationFaceEntityName")]
-	public string StrOrientationFaceEntityName
+	public virtual string StrOrientationFaceEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_strOrientationFaceEntityName"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_strOrientationFaceEntityName", value); }
@@ -461,31 +461,31 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hOrientationFaceEntity
 	[SchemaMember("CFuncMover", "m_hOrientationFaceEntity")]
-	public CHandle<CBaseEntity> OrientationFaceEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationFaceEntity");
+	public virtual CHandle<CBaseEntity> OrientationFaceEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationFaceEntity");
 
 	// m_OnStart
 	[SchemaMember("CFuncMover", "m_OnStart")]
-	public CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStart");
+	public virtual CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStart");
 
 	// m_OnStartForward
 	[SchemaMember("CFuncMover", "m_OnStartForward")]
-	public CEntityIOOutput OnStartForward => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStartForward");
+	public virtual CEntityIOOutput OnStartForward => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStartForward");
 
 	// m_OnStartReverse
 	[SchemaMember("CFuncMover", "m_OnStartReverse")]
-	public CEntityIOOutput OnStartReverse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStartReverse");
+	public virtual CEntityIOOutput OnStartReverse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStartReverse");
 
 	// m_OnStop
 	[SchemaMember("CFuncMover", "m_OnStop")]
-	public CEntityIOOutput OnStop => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStop");
+	public virtual CEntityIOOutput OnStop => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStop");
 
 	// m_OnStopped
 	[SchemaMember("CFuncMover", "m_OnStopped")]
-	public CEntityIOOutput OnStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStopped");
+	public virtual CEntityIOOutput OnStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStopped");
 
 	// m_bNextNodeReturnsCurrent
 	[SchemaMember("CFuncMover", "m_bNextNodeReturnsCurrent")]
-	public bool NextNodeReturnsCurrent
+	public virtual bool NextNodeReturnsCurrent
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bNextNodeReturnsCurrent"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bNextNodeReturnsCurrent", value); }
@@ -493,7 +493,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bStartedMoving
 	[SchemaMember("CFuncMover", "m_bStartedMoving")]
-	public bool StartedMoving
+	public virtual bool StartedMoving
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bStartedMoving"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bStartedMoving", value); }
@@ -501,7 +501,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_eFollowEntityDirection
 	[SchemaMember("CFuncMover", "m_eFollowEntityDirection")]
-	public CFuncMoverFollowEntityDirection_t FollowEntityDirection
+	public virtual CFuncMoverFollowEntityDirection_t FollowEntityDirection
 	{
 		get { return Schema.GetValueType<CFuncMoverFollowEntityDirection_t>(this.Handle, "CFuncMover", "m_eFollowEntityDirection"); }
 		set { Schema.SetValueType<CFuncMoverFollowEntityDirection_t>(this.Handle, "CFuncMover", "m_eFollowEntityDirection", value); }

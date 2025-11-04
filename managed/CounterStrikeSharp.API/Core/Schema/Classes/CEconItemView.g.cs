@@ -21,7 +21,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iItemDefinitionIndex
 	[SchemaMember("CEconItemView", "m_iItemDefinitionIndex")]
-	public UInt16 ItemDefinitionIndex
+	public virtual UInt16 ItemDefinitionIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CEconItemView", "m_iItemDefinitionIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CEconItemView", "m_iItemDefinitionIndex", value); }
@@ -29,7 +29,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iEntityQuality
 	[SchemaMember("CEconItemView", "m_iEntityQuality")]
-	public Int32 EntityQuality
+	public virtual Int32 EntityQuality
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CEconItemView", "m_iEntityQuality"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconItemView", "m_iEntityQuality", value); }
@@ -37,7 +37,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iEntityLevel
 	[SchemaMember("CEconItemView", "m_iEntityLevel")]
-	public UInt32 EntityLevel
+	public virtual UInt32 EntityLevel
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iEntityLevel"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iEntityLevel", value); }
@@ -45,7 +45,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iItemID
 	[SchemaMember("CEconItemView", "m_iItemID")]
-	public UInt64 ItemID
+	public virtual UInt64 ItemID
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CEconItemView", "m_iItemID"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CEconItemView", "m_iItemID", value); }
@@ -53,7 +53,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iItemIDHigh
 	[SchemaMember("CEconItemView", "m_iItemIDHigh")]
-	public UInt32 ItemIDHigh
+	public virtual UInt32 ItemIDHigh
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDHigh"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDHigh", value); }
@@ -61,7 +61,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iItemIDLow
 	[SchemaMember("CEconItemView", "m_iItemIDLow")]
-	public UInt32 ItemIDLow
+	public virtual UInt32 ItemIDLow
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDLow"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDLow", value); }
@@ -69,7 +69,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iAccountID
 	[SchemaMember("CEconItemView", "m_iAccountID")]
-	public UInt32 AccountID
+	public virtual UInt32 AccountID
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iAccountID"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iAccountID", value); }
@@ -77,7 +77,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iInventoryPosition
 	[SchemaMember("CEconItemView", "m_iInventoryPosition")]
-	public UInt32 InventoryPosition
+	public virtual UInt32 InventoryPosition
 	{
 		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iInventoryPosition"); }
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iInventoryPosition", value); }
@@ -85,7 +85,7 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_bInitialized
 	[SchemaMember("CEconItemView", "m_bInitialized")]
-	public bool Initialized
+	public virtual bool Initialized
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CEconItemView", "m_bInitialized"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CEconItemView", "m_bInitialized", value); }
@@ -93,15 +93,15 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_AttributeList
 	[SchemaMember("CEconItemView", "m_AttributeList")]
-	public CAttributeList AttributeList => Schema.GetDeclaredClass<CAttributeList>(this.Handle, "CEconItemView", "m_AttributeList");
+	public virtual CAttributeList AttributeList => Schema.GetDeclaredClass<CAttributeList>(this.Handle, "CEconItemView", "m_AttributeList");
 
 	// m_NetworkedDynamicAttributes
 	[SchemaMember("CEconItemView", "m_NetworkedDynamicAttributes")]
-	public CAttributeList NetworkedDynamicAttributes => Schema.GetDeclaredClass<CAttributeList>(this.Handle, "CEconItemView", "m_NetworkedDynamicAttributes");
+	public virtual CAttributeList NetworkedDynamicAttributes => Schema.GetDeclaredClass<CAttributeList>(this.Handle, "CEconItemView", "m_NetworkedDynamicAttributes");
 
 	// m_szCustomName
 	[SchemaMember("CEconItemView", "m_szCustomName")]
-	public string CustomName
+	public virtual string CustomName
 	{
 		get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomName"); }
 		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomName", value, 161); }
@@ -109,21 +109,21 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_szCustomNameOverride
 	[SchemaMember("CEconItemView", "m_szCustomNameOverride")]
-	public string CustomNameOverride
+	public virtual string CustomNameOverride
 	{
 		get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomNameOverride"); }
 		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomNameOverride", value, 161); }
 	}
 
-	public void ItemDefinitionIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemDefinitionIndex");
-	public void EntityQualityPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iEntityQuality");
-	public void EntityLevelPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iEntityLevel");
-	public void ItemIDHighPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemIDHigh");
-	public void ItemIDLowPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemIDLow");
-	public void AccountIDPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iAccountID");
-	public void InventoryPositionPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iInventoryPosition");
-	public void InitializedPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_bInitialized");
-	public void AttributeListPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_AttributeList");
-	public void NetworkedDynamicAttributesPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_NetworkedDynamicAttributes");
-	public void CustomNamePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_szCustomName");
+	public virtual void ItemDefinitionIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemDefinitionIndex");
+	public virtual void EntityQualityPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iEntityQuality");
+	public virtual void EntityLevelPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iEntityLevel");
+	public virtual void ItemIDHighPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemIDHigh");
+	public virtual void ItemIDLowPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemIDLow");
+	public virtual void AccountIDPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iAccountID");
+	public virtual void InventoryPositionPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iInventoryPosition");
+	public virtual void InitializedPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_bInitialized");
+	public virtual void AttributeListPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_AttributeList");
+	public virtual void NetworkedDynamicAttributesPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_NetworkedDynamicAttributes");
+	public virtual void CustomNamePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_szCustomName");
 }

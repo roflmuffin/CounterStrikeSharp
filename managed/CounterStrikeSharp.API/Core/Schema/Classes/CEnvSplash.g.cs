@@ -21,7 +21,7 @@ public partial class CEnvSplash : CPointEntity
 
 	// m_flScale
 	[SchemaMember("CEnvSplash", "m_flScale")]
-	public float Scale
+	public virtual float Scale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvSplash", "m_flScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvSplash", "m_flScale", value); }

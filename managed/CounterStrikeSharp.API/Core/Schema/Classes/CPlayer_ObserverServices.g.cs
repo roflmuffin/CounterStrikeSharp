@@ -21,7 +21,7 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
 
 	// m_iObserverMode
 	[SchemaMember("CPlayer_ObserverServices", "m_iObserverMode")]
-	public byte ObserverMode
+	public virtual byte ObserverMode
 	{
 		get { return Schema.GetValueType<byte>(this.Handle, "CPlayer_ObserverServices", "m_iObserverMode"); }
 		set { Schema.SetValueType<byte>(this.Handle, "CPlayer_ObserverServices", "m_iObserverMode", value); }
@@ -29,11 +29,11 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
 
 	// m_hObserverTarget
 	[SchemaMember("CPlayer_ObserverServices", "m_hObserverTarget")]
-	public CHandle<CBaseEntity> ObserverTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_ObserverServices", "m_hObserverTarget");
+	public virtual CHandle<CBaseEntity> ObserverTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_ObserverServices", "m_hObserverTarget");
 
 	// m_iObserverLastMode
 	[SchemaMember("CPlayer_ObserverServices", "m_iObserverLastMode")]
-	public ObserverMode_t ObserverLastMode
+	public virtual ObserverMode_t ObserverLastMode
 	{
 		get { return Schema.GetValueType<ObserverMode_t>(this.Handle, "CPlayer_ObserverServices", "m_iObserverLastMode"); }
 		set { Schema.SetValueType<ObserverMode_t>(this.Handle, "CPlayer_ObserverServices", "m_iObserverLastMode", value); }
@@ -41,12 +41,12 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
 
 	// m_bForcedObserverMode
 	[SchemaMember("CPlayer_ObserverServices", "m_bForcedObserverMode")]
-	public bool ForcedObserverMode
+	public virtual bool ForcedObserverMode
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_ObserverServices", "m_bForcedObserverMode"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_ObserverServices", "m_bForcedObserverMode", value); }
 	}
 
-	public void ObserverModePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_ObserverServices", "m_iObserverMode");
-	public void ObserverTargetPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_ObserverServices", "m_hObserverTarget");
+	public virtual void ObserverModePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_ObserverServices", "m_iObserverMode");
+	public virtual void ObserverTargetPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_ObserverServices", "m_hObserverTarget");
 }

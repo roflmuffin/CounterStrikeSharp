@@ -21,7 +21,7 @@ public partial class CPointGamestatsCounter : CPointEntity
 
 	// m_strStatisticName
 	[SchemaMember("CPointGamestatsCounter", "m_strStatisticName")]
-	public string StrStatisticName
+	public virtual string StrStatisticName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointGamestatsCounter", "m_strStatisticName"); }
 		set { Schema.SetString(this.Handle, "CPointGamestatsCounter", "m_strStatisticName", value); }
@@ -29,7 +29,7 @@ public partial class CPointGamestatsCounter : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CPointGamestatsCounter", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointGamestatsCounter", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointGamestatsCounter", "m_bDisabled", value); }

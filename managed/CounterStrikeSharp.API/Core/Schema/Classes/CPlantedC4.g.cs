@@ -21,7 +21,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bBombTicking
 	[SchemaMember("CPlantedC4", "m_bBombTicking")]
-	public bool BombTicking
+	public virtual bool BombTicking
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombTicking"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombTicking", value); }
@@ -29,7 +29,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_flC4Blow
 	[SchemaMember("CPlantedC4", "m_flC4Blow")]
-	public float C4Blow
+	public virtual float C4Blow
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flC4Blow"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flC4Blow", value); }
@@ -37,7 +37,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_nBombSite
 	[SchemaMember("CPlantedC4", "m_nBombSite")]
-	public Int32 BombSite
+	public virtual Int32 BombSite
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_nBombSite"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_nBombSite", value); }
@@ -45,7 +45,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_nSourceSoundscapeHash
 	[SchemaMember("CPlantedC4", "m_nSourceSoundscapeHash")]
-	public Int32 SourceSoundscapeHash
+	public virtual Int32 SourceSoundscapeHash
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSourceSoundscapeHash"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSourceSoundscapeHash", value); }
@@ -53,7 +53,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bAbortDetonationBecauseWorldIsFrozen
 	[SchemaMember("CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen")]
-	public bool AbortDetonationBecauseWorldIsFrozen
+	public virtual bool AbortDetonationBecauseWorldIsFrozen
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen", value); }
@@ -61,23 +61,23 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_AttributeManager
 	[SchemaMember("CPlantedC4", "m_AttributeManager")]
-	public CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CPlantedC4", "m_AttributeManager");
+	public virtual CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CPlantedC4", "m_AttributeManager");
 
 	// m_OnBombDefused
 	[SchemaMember("CPlantedC4", "m_OnBombDefused")]
-	public CEntityIOOutput OnBombDefused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombDefused");
+	public virtual CEntityIOOutput OnBombDefused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombDefused");
 
 	// m_OnBombBeginDefuse
 	[SchemaMember("CPlantedC4", "m_OnBombBeginDefuse")]
-	public CEntityIOOutput OnBombBeginDefuse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombBeginDefuse");
+	public virtual CEntityIOOutput OnBombBeginDefuse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombBeginDefuse");
 
 	// m_OnBombDefuseAborted
 	[SchemaMember("CPlantedC4", "m_OnBombDefuseAborted")]
-	public CEntityIOOutput OnBombDefuseAborted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombDefuseAborted");
+	public virtual CEntityIOOutput OnBombDefuseAborted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombDefuseAborted");
 
 	// m_bCannotBeDefused
 	[SchemaMember("CPlantedC4", "m_bCannotBeDefused")]
-	public bool CannotBeDefused
+	public virtual bool CannotBeDefused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bCannotBeDefused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bCannotBeDefused", value); }
@@ -85,11 +85,11 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_entitySpottedState
 	[SchemaMember("CPlantedC4", "m_entitySpottedState")]
-	public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CPlantedC4", "m_entitySpottedState");
+	public virtual EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CPlantedC4", "m_entitySpottedState");
 
 	// m_nSpotRules
 	[SchemaMember("CPlantedC4", "m_nSpotRules")]
-	public Int32 SpotRules
+	public virtual Int32 SpotRules
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSpotRules"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSpotRules", value); }
@@ -97,7 +97,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bTrainingPlacedByPlayer
 	[SchemaMember("CPlantedC4", "m_bTrainingPlacedByPlayer")]
-	public bool TrainingPlacedByPlayer
+	public virtual bool TrainingPlacedByPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer", value); }
@@ -105,7 +105,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bHasExploded
 	[SchemaMember("CPlantedC4", "m_bHasExploded")]
-	public bool HasExploded
+	public virtual bool HasExploded
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bHasExploded"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bHasExploded", value); }
@@ -113,7 +113,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_flTimerLength
 	[SchemaMember("CPlantedC4", "m_flTimerLength")]
-	public float TimerLength
+	public virtual float TimerLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flTimerLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flTimerLength", value); }
@@ -121,7 +121,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bBeingDefused
 	[SchemaMember("CPlantedC4", "m_bBeingDefused")]
-	public bool BeingDefused
+	public virtual bool BeingDefused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bBeingDefused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bBeingDefused", value); }
@@ -129,7 +129,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_fLastDefuseTime
 	[SchemaMember("CPlantedC4", "m_fLastDefuseTime")]
-	public float LastDefuseTime
+	public virtual float LastDefuseTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_fLastDefuseTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_fLastDefuseTime", value); }
@@ -137,7 +137,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_flDefuseLength
 	[SchemaMember("CPlantedC4", "m_flDefuseLength")]
-	public float DefuseLength
+	public virtual float DefuseLength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseLength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseLength", value); }
@@ -145,7 +145,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_flDefuseCountDown
 	[SchemaMember("CPlantedC4", "m_flDefuseCountDown")]
-	public float DefuseCountDown
+	public virtual float DefuseCountDown
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseCountDown"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseCountDown", value); }
@@ -153,7 +153,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bBombDefused
 	[SchemaMember("CPlantedC4", "m_bBombDefused")]
-	public bool BombDefused
+	public virtual bool BombDefused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombDefused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombDefused", value); }
@@ -161,11 +161,11 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_hBombDefuser
 	[SchemaMember("CPlantedC4", "m_hBombDefuser")]
-	public CHandle<CCSPlayerPawn> BombDefuser => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CPlantedC4", "m_hBombDefuser");
+	public virtual CHandle<CCSPlayerPawn> BombDefuser => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CPlantedC4", "m_hBombDefuser");
 
 	// m_iProgressBarTime
 	[SchemaMember("CPlantedC4", "m_iProgressBarTime")]
-	public Int32 ProgressBarTime
+	public virtual Int32 ProgressBarTime
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_iProgressBarTime"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_iProgressBarTime", value); }
@@ -173,7 +173,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bVoiceAlertFired
 	[SchemaMember("CPlantedC4", "m_bVoiceAlertFired")]
-	public bool VoiceAlertFired
+	public virtual bool VoiceAlertFired
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertFired"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertFired", value); }
@@ -181,11 +181,11 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bVoiceAlertPlayed
 	[SchemaMember("CPlantedC4", "m_bVoiceAlertPlayed")]
-	public Span<bool> VoiceAlertPlayed => Schema.GetFixedArray<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertPlayed", 4);
+	public virtual Span<bool> VoiceAlertPlayed => Schema.GetFixedArray<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertPlayed", 4);
 
 	// m_flNextBotBeepTime
 	[SchemaMember("CPlantedC4", "m_flNextBotBeepTime")]
-	public float NextBotBeepTime
+	public virtual float NextBotBeepTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flNextBotBeepTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flNextBotBeepTime", value); }
@@ -193,7 +193,7 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_angCatchUpToPlayerEye
 	[SchemaMember("CPlantedC4", "m_angCatchUpToPlayerEye")]
-	public QAngle CatchUpToPlayerEye
+	public virtual QAngle CatchUpToPlayerEye
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CPlantedC4", "m_angCatchUpToPlayerEye"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPlantedC4", "m_angCatchUpToPlayerEye", value); }
@@ -201,24 +201,24 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_flLastSpinDetectionTime
 	[SchemaMember("CPlantedC4", "m_flLastSpinDetectionTime")]
-	public float LastSpinDetectionTime
+	public virtual float LastSpinDetectionTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flLastSpinDetectionTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flLastSpinDetectionTime", value); }
 	}
 
-	public void BombTickingPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBombTicking");
-	public void C4BlowPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flC4Blow");
-	public void BombSitePropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_nBombSite");
-	public void SourceSoundscapeHashPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_nSourceSoundscapeHash");
-	public void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_AttributeManager");
-	public void CannotBeDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bCannotBeDefused");
-	public void EntitySpottedStatePropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_entitySpottedState");
-	public void HasExplodedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bHasExploded");
-	public void TimerLengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flTimerLength");
-	public void BeingDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBeingDefused");
-	public void DefuseLengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flDefuseLength");
-	public void DefuseCountDownPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flDefuseCountDown");
-	public void BombDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBombDefused");
-	public void BombDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_hBombDefuser");
+	public virtual void BombTickingPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBombTicking");
+	public virtual void C4BlowPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flC4Blow");
+	public virtual void BombSitePropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_nBombSite");
+	public virtual void SourceSoundscapeHashPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_nSourceSoundscapeHash");
+	public virtual void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_AttributeManager");
+	public virtual void CannotBeDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bCannotBeDefused");
+	public virtual void EntitySpottedStatePropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_entitySpottedState");
+	public virtual void HasExplodedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bHasExploded");
+	public virtual void TimerLengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flTimerLength");
+	public virtual void BeingDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBeingDefused");
+	public virtual void DefuseLengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flDefuseLength");
+	public virtual void DefuseCountDownPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flDefuseCountDown");
+	public virtual void BombDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBombDefused");
+	public virtual void BombDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_hBombDefuser");
 }

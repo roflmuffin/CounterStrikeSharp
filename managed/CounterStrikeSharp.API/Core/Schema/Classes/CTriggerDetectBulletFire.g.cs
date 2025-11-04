@@ -21,7 +21,7 @@ public partial class CTriggerDetectBulletFire : CBaseTrigger
 
 	// m_bPlayerFireOnly
 	[SchemaMember("CTriggerDetectBulletFire", "m_bPlayerFireOnly")]
-	public bool PlayerFireOnly
+	public virtual bool PlayerFireOnly
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly", value); }
@@ -29,6 +29,6 @@ public partial class CTriggerDetectBulletFire : CBaseTrigger
 
 	// m_OnDetectedBulletFire
 	[SchemaMember("CTriggerDetectBulletFire", "m_OnDetectedBulletFire")]
-	public CEntityIOOutput OnDetectedBulletFire => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectBulletFire", "m_OnDetectedBulletFire");
+	public virtual CEntityIOOutput OnDetectedBulletFire => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectBulletFire", "m_OnDetectedBulletFire");
 
 }

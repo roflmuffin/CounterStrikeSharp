@@ -21,7 +21,7 @@ public partial class CEnvDetailController : CBaseEntity
 
 	// m_flFadeStartDist
 	[SchemaMember("CEnvDetailController", "m_flFadeStartDist")]
-	public float FadeStartDist
+	public virtual float FadeStartDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeStartDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeStartDist", value); }
@@ -29,12 +29,12 @@ public partial class CEnvDetailController : CBaseEntity
 
 	// m_flFadeEndDist
 	[SchemaMember("CEnvDetailController", "m_flFadeEndDist")]
-	public float FadeEndDist
+	public virtual float FadeEndDist
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeEndDist"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeEndDist", value); }
 	}
 
-	public void FadeStartDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDetailController", "m_flFadeStartDist");
-	public void FadeEndDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDetailController", "m_flFadeEndDist");
+	public virtual void FadeStartDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDetailController", "m_flFadeStartDist");
+	public virtual void FadeEndDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDetailController", "m_flFadeEndDist");
 }

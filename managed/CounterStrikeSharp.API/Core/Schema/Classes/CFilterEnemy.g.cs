@@ -21,7 +21,7 @@ public partial class CFilterEnemy : CBaseFilter
 
 	// m_iszEnemyName
 	[SchemaMember("CFilterEnemy", "m_iszEnemyName")]
-	public string EnemyName
+	public virtual string EnemyName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszEnemyName"); }
 		set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszEnemyName", value); }
@@ -29,7 +29,7 @@ public partial class CFilterEnemy : CBaseFilter
 
 	// m_flRadius
 	[SchemaMember("CFilterEnemy", "m_flRadius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFilterEnemy", "m_flRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFilterEnemy", "m_flRadius", value); }
@@ -37,7 +37,7 @@ public partial class CFilterEnemy : CBaseFilter
 
 	// m_flOuterRadius
 	[SchemaMember("CFilterEnemy", "m_flOuterRadius")]
-	public float OuterRadius
+	public virtual float OuterRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius", value); }
@@ -45,7 +45,7 @@ public partial class CFilterEnemy : CBaseFilter
 
 	// m_nMaxSquadmatesPerEnemy
 	[SchemaMember("CFilterEnemy", "m_nMaxSquadmatesPerEnemy")]
-	public Int32 MaxSquadmatesPerEnemy
+	public virtual Int32 MaxSquadmatesPerEnemy
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy", value); }
@@ -53,7 +53,7 @@ public partial class CFilterEnemy : CBaseFilter
 
 	// m_iszPlayerName
 	[SchemaMember("CFilterEnemy", "m_iszPlayerName")]
-	public string PlayerName
+	public virtual string PlayerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszPlayerName"); }
 		set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszPlayerName", value); }

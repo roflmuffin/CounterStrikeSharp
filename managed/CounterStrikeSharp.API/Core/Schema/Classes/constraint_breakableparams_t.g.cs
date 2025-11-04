@@ -21,7 +21,7 @@ public partial class constraint_breakableparams_t : NativeObject
 
 	// strength
 	[SchemaMember("constraint_breakableparams_t", "strength")]
-	public float Strength
+	public virtual float Strength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "constraint_breakableparams_t", "strength"); }
 		set { Schema.SetValueType<float>(this.Handle, "constraint_breakableparams_t", "strength", value); }
@@ -29,7 +29,7 @@ public partial class constraint_breakableparams_t : NativeObject
 
 	// forceLimit
 	[SchemaMember("constraint_breakableparams_t", "forceLimit")]
-	public float ForceLimit
+	public virtual float ForceLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "constraint_breakableparams_t", "forceLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "constraint_breakableparams_t", "forceLimit", value); }
@@ -37,7 +37,7 @@ public partial class constraint_breakableparams_t : NativeObject
 
 	// torqueLimit
 	[SchemaMember("constraint_breakableparams_t", "torqueLimit")]
-	public float TorqueLimit
+	public virtual float TorqueLimit
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "constraint_breakableparams_t", "torqueLimit"); }
 		set { Schema.SetValueType<float>(this.Handle, "constraint_breakableparams_t", "torqueLimit", value); }
@@ -45,11 +45,11 @@ public partial class constraint_breakableparams_t : NativeObject
 
 	// bodyMassScale
 	[SchemaMember("constraint_breakableparams_t", "bodyMassScale")]
-	public Span<float> BodyMassScale => Schema.GetFixedArray<float>(this.Handle, "constraint_breakableparams_t", "bodyMassScale", 2);
+	public virtual Span<float> BodyMassScale => Schema.GetFixedArray<float>(this.Handle, "constraint_breakableparams_t", "bodyMassScale", 2);
 
 	// isActive
 	[SchemaMember("constraint_breakableparams_t", "isActive")]
-	public bool IsActive
+	public virtual bool IsActive
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "constraint_breakableparams_t", "isActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "constraint_breakableparams_t", "isActive", value); }

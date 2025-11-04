@@ -21,7 +21,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_authoredPosition
 	[SchemaMember("CFuncMoveLinear", "m_authoredPosition")]
-	public MoveLinearAuthoredPos_t AuthoredPosition
+	public virtual MoveLinearAuthoredPos_t AuthoredPosition
 	{
 		get { return Schema.GetValueType<MoveLinearAuthoredPos_t>(this.Handle, "CFuncMoveLinear", "m_authoredPosition"); }
 		set { Schema.SetValueType<MoveLinearAuthoredPos_t>(this.Handle, "CFuncMoveLinear", "m_authoredPosition", value); }
@@ -29,7 +29,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CFuncMoveLinear", "m_angMoveEntitySpace")]
-	public QAngle MoveEntitySpace
+	public virtual QAngle MoveEntitySpace
 	{
 		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncMoveLinear", "m_angMoveEntitySpace"); }
 		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncMoveLinear", "m_angMoveEntitySpace", value); }
@@ -37,7 +37,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_vecMoveDirParentSpace
 	[SchemaMember("CFuncMoveLinear", "m_vecMoveDirParentSpace")]
-	public Vector3 MoveDirParentSpace
+	public virtual Vector3 MoveDirParentSpace
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMoveLinear", "m_vecMoveDirParentSpace"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMoveLinear", "m_vecMoveDirParentSpace", value); }
@@ -45,7 +45,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_soundStart
 	[SchemaMember("CFuncMoveLinear", "m_soundStart")]
-	public string SoundStart
+	public virtual string SoundStart
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_soundStart"); }
 		set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStart", value); }
@@ -53,7 +53,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_soundStop
 	[SchemaMember("CFuncMoveLinear", "m_soundStop")]
-	public string SoundStop
+	public virtual string SoundStop
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_soundStop"); }
 		set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStop", value); }
@@ -61,7 +61,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_currentSound
 	[SchemaMember("CFuncMoveLinear", "m_currentSound")]
-	public string CurrentSound
+	public virtual string CurrentSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_currentSound"); }
 		set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_currentSound", value); }
@@ -69,7 +69,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncMoveLinear", "m_flBlockDamage")]
-	public float BlockDamage
+	public virtual float BlockDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flBlockDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flBlockDamage", value); }
@@ -77,7 +77,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_flStartPosition
 	[SchemaMember("CFuncMoveLinear", "m_flStartPosition")]
-	public float StartPosition
+	public virtual float StartPosition
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flStartPosition"); }
 		set { Schema.SetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flStartPosition", value); }
@@ -85,15 +85,15 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_OnFullyOpen
 	[SchemaMember("CFuncMoveLinear", "m_OnFullyOpen")]
-	public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyOpen");
+	public virtual CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyOpen");
 
 	// m_OnFullyClosed
 	[SchemaMember("CFuncMoveLinear", "m_OnFullyClosed")]
-	public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyClosed");
+	public virtual CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyClosed");
 
 	// m_bCreateMovableNavMesh
 	[SchemaMember("CFuncMoveLinear", "m_bCreateMovableNavMesh")]
-	public bool CreateMovableNavMesh
+	public virtual bool CreateMovableNavMesh
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh", value); }
@@ -101,7 +101,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_bAllowMovableNavMeshDockingOnEntireEntity
 	[SchemaMember("CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
-	public bool AllowMovableNavMeshDockingOnEntireEntity
+	public virtual bool AllowMovableNavMeshDockingOnEntireEntity
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity", value); }
@@ -109,7 +109,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_bCreateNavObstacle
 	[SchemaMember("CFuncMoveLinear", "m_bCreateNavObstacle")]
-	public bool CreateNavObstacle
+	public virtual bool CreateNavObstacle
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateNavObstacle"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateNavObstacle", value); }

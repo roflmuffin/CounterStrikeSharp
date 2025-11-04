@@ -21,7 +21,7 @@ public partial class CHitboxComponent : CEntityComponent
 
 	// m_flBoundsExpandRadius
 	[SchemaMember("CHitboxComponent", "m_flBoundsExpandRadius")]
-	public float BoundsExpandRadius
+	public virtual float BoundsExpandRadius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CHitboxComponent", "m_flBoundsExpandRadius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CHitboxComponent", "m_flBoundsExpandRadius", value); }

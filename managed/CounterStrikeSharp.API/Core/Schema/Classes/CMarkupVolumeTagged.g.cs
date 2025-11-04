@@ -21,15 +21,15 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 
 	// m_GroupNames
 	[SchemaMember("CMarkupVolumeTagged", "m_GroupNames")]
-	public NetworkedVector<string> GroupNames => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CMarkupVolumeTagged", "m_GroupNames");
+	public virtual NetworkedVector<string> GroupNames => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CMarkupVolumeTagged", "m_GroupNames");
 
 	// m_Tags
 	[SchemaMember("CMarkupVolumeTagged", "m_Tags")]
-	public NetworkedVector<string> Tags => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CMarkupVolumeTagged", "m_Tags");
+	public virtual NetworkedVector<string> Tags => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CMarkupVolumeTagged", "m_Tags");
 
 	// m_bIsGroup
 	[SchemaMember("CMarkupVolumeTagged", "m_bIsGroup")]
-	public bool IsGroup
+	public virtual bool IsGroup
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup", value); }
@@ -37,7 +37,7 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 
 	// m_bGroupByPrefab
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupByPrefab")]
-	public bool GroupByPrefab
+	public virtual bool GroupByPrefab
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab", value); }
@@ -45,7 +45,7 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 
 	// m_bGroupByVolume
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupByVolume")]
-	public bool GroupByVolume
+	public virtual bool GroupByVolume
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume", value); }
@@ -53,7 +53,7 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 
 	// m_bGroupOtherGroups
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupOtherGroups")]
-	public bool GroupOtherGroups
+	public virtual bool GroupOtherGroups
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups", value); }
@@ -61,7 +61,7 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 
 	// m_bIsInGroup
 	[SchemaMember("CMarkupVolumeTagged", "m_bIsInGroup")]
-	public bool IsInGroup
+	public virtual bool IsInGroup
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup", value); }

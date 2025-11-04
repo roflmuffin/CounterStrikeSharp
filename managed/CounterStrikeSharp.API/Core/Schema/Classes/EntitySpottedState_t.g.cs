@@ -21,7 +21,7 @@ public partial class EntitySpottedState_t : NativeObject
 
 	// m_bSpotted
 	[SchemaMember("EntitySpottedState_t", "m_bSpotted")]
-	public bool Spotted
+	public virtual bool Spotted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "EntitySpottedState_t", "m_bSpotted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "EntitySpottedState_t", "m_bSpotted", value); }
@@ -29,8 +29,8 @@ public partial class EntitySpottedState_t : NativeObject
 
 	// m_bSpottedByMask
 	[SchemaMember("EntitySpottedState_t", "m_bSpottedByMask")]
-	public Span<UInt32> SpottedByMask => Schema.GetFixedArray<UInt32>(this.Handle, "EntitySpottedState_t", "m_bSpottedByMask", 2);
+	public virtual Span<UInt32> SpottedByMask => Schema.GetFixedArray<UInt32>(this.Handle, "EntitySpottedState_t", "m_bSpottedByMask", 2);
 
-	public void SpottedPropertyChanged() => Utilities.SetStateChanged(this, "EntitySpottedState_t", "m_bSpotted");
-	public void SpottedByMaskPropertyChanged() => Utilities.SetStateChanged(this, "EntitySpottedState_t", "m_bSpottedByMask");
+	public virtual void SpottedPropertyChanged() => Utilities.SetStateChanged(this, "EntitySpottedState_t", "m_bSpotted");
+	public virtual void SpottedByMaskPropertyChanged() => Utilities.SetStateChanged(this, "EntitySpottedState_t", "m_bSpottedByMask");
 }

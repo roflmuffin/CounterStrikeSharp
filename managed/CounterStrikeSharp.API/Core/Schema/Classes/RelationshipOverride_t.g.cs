@@ -21,11 +21,11 @@ public partial class RelationshipOverride_t : Relationship_t
 
 	// entity
 	[SchemaMember("RelationshipOverride_t", "entity")]
-	public CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "RelationshipOverride_t", "entity");
+	public virtual CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "RelationshipOverride_t", "entity");
 
 	// classType
 	[SchemaMember("RelationshipOverride_t", "classType")]
-	public Class_T ClassType
+	public virtual Class_T ClassType
 	{
 		get { return Schema.GetValueType<Class_T>(this.Handle, "RelationshipOverride_t", "classType"); }
 		set { Schema.SetValueType<Class_T>(this.Handle, "RelationshipOverride_t", "classType", value); }

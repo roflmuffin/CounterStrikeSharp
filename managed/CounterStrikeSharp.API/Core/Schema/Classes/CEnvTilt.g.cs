@@ -21,7 +21,7 @@ public partial class CEnvTilt : CPointEntity
 
 	// m_Duration
 	[SchemaMember("CEnvTilt", "m_Duration")]
-	public float Duration
+	public virtual float Duration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_Duration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_Duration", value); }
@@ -29,7 +29,7 @@ public partial class CEnvTilt : CPointEntity
 
 	// m_Radius
 	[SchemaMember("CEnvTilt", "m_Radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_Radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_Radius", value); }
@@ -37,7 +37,7 @@ public partial class CEnvTilt : CPointEntity
 
 	// m_TiltTime
 	[SchemaMember("CEnvTilt", "m_TiltTime")]
-	public float TiltTime
+	public virtual float TiltTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_TiltTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_TiltTime", value); }
@@ -45,7 +45,7 @@ public partial class CEnvTilt : CPointEntity
 
 	// m_stopTime
 	[SchemaMember("CEnvTilt", "m_stopTime")]
-	public float StopTime
+	public virtual float StopTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_stopTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_stopTime", value); }

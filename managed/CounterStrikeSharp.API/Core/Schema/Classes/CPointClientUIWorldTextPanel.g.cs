@@ -21,11 +21,11 @@ public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel
 
 	// m_messageText
 	[SchemaMember("CPointClientUIWorldTextPanel", "m_messageText")]
-	public string MessageText
+	public virtual string MessageText
 	{
 		get { return Schema.GetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText"); }
 		set { Schema.SetStringBytes(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText", value, 512); }
 	}
 
-	public void MessageTextPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldTextPanel", "m_messageText");
+	public virtual void MessageTextPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldTextPanel", "m_messageText");
 }

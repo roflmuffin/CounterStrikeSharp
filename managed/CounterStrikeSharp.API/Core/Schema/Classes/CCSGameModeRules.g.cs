@@ -21,6 +21,6 @@ public partial class CCSGameModeRules : NativeObject
 
 	// __m_pChainEntity
 	[SchemaMember("CCSGameModeRules", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CCSGameModeRules", "__m_pChainEntity");
+	public virtual CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CCSGameModeRules", "__m_pChainEntity");
 
 }

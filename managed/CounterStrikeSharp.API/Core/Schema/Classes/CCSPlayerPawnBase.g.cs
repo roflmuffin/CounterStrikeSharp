@@ -21,15 +21,15 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_CTouchExpansionComponent
 	[SchemaMember("CCSPlayerPawnBase", "m_CTouchExpansionComponent")]
-	public CTouchExpansionComponent CTouchExpansionComponent => Schema.GetDeclaredClass<CTouchExpansionComponent>(this.Handle, "CCSPlayerPawnBase", "m_CTouchExpansionComponent");
+	public virtual CTouchExpansionComponent CTouchExpansionComponent => Schema.GetDeclaredClass<CTouchExpansionComponent>(this.Handle, "CCSPlayerPawnBase", "m_CTouchExpansionComponent");
 
 	// m_pPingServices
 	[SchemaMember("CCSPlayerPawnBase", "m_pPingServices")]
-	public CCSPlayer_PingServices? PingServices => Schema.GetPointer<CCSPlayer_PingServices>(this.Handle, "CCSPlayerPawnBase", "m_pPingServices");
+	public virtual CCSPlayer_PingServices? PingServices => Schema.GetPointer<CCSPlayer_PingServices>(this.Handle, "CCSPlayerPawnBase", "m_pPingServices");
 
 	// m_blindUntilTime
 	[SchemaMember("CCSPlayerPawnBase", "m_blindUntilTime")]
-	public float BlindUntilTime
+	public virtual float BlindUntilTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindUntilTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindUntilTime", value); }
@@ -37,7 +37,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_blindStartTime
 	[SchemaMember("CCSPlayerPawnBase", "m_blindStartTime")]
-	public float BlindStartTime
+	public virtual float BlindStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindStartTime", value); }
@@ -45,7 +45,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_iPlayerState
 	[SchemaMember("CCSPlayerPawnBase", "m_iPlayerState")]
-	public CSPlayerState PlayerState
+	public virtual CSPlayerState PlayerState
 	{
 		get { return Schema.GetValueType<CSPlayerState>(this.Handle, "CCSPlayerPawnBase", "m_iPlayerState"); }
 		set { Schema.SetValueType<CSPlayerState>(this.Handle, "CCSPlayerPawnBase", "m_iPlayerState", value); }
@@ -53,7 +53,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_bRespawning
 	[SchemaMember("CCSPlayerPawnBase", "m_bRespawning")]
-	public bool Respawning
+	public virtual bool Respawning
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bRespawning"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bRespawning", value); }
@@ -61,7 +61,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_bHasMovedSinceSpawn
 	[SchemaMember("CCSPlayerPawnBase", "m_bHasMovedSinceSpawn")]
-	public bool HasMovedSinceSpawn
+	public virtual bool HasMovedSinceSpawn
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn", value); }
@@ -69,7 +69,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_iNumSpawns
 	[SchemaMember("CCSPlayerPawnBase", "m_iNumSpawns")]
-	public Int32 NumSpawns
+	public virtual Int32 NumSpawns
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iNumSpawns"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iNumSpawns", value); }
@@ -77,7 +77,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_flIdleTimeSinceLastAction
 	[SchemaMember("CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction")]
-	public float IdleTimeSinceLastAction
+	public virtual float IdleTimeSinceLastAction
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction", value); }
@@ -85,7 +85,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_fNextRadarUpdateTime
 	[SchemaMember("CCSPlayerPawnBase", "m_fNextRadarUpdateTime")]
-	public float NextRadarUpdateTime
+	public virtual float NextRadarUpdateTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_fNextRadarUpdateTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_fNextRadarUpdateTime", value); }
@@ -93,7 +93,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_flFlashDuration
 	[SchemaMember("CCSPlayerPawnBase", "m_flFlashDuration")]
-	public float FlashDuration
+	public virtual float FlashDuration
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashDuration"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashDuration", value); }
@@ -101,7 +101,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_flFlashMaxAlpha
 	[SchemaMember("CCSPlayerPawnBase", "m_flFlashMaxAlpha")]
-	public float FlashMaxAlpha
+	public virtual float FlashMaxAlpha
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashMaxAlpha"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashMaxAlpha", value); }
@@ -109,7 +109,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_flProgressBarStartTime
 	[SchemaMember("CCSPlayerPawnBase", "m_flProgressBarStartTime")]
-	public float ProgressBarStartTime
+	public virtual float ProgressBarStartTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flProgressBarStartTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flProgressBarStartTime", value); }
@@ -117,7 +117,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_iProgressBarDuration
 	[SchemaMember("CCSPlayerPawnBase", "m_iProgressBarDuration")]
-	public Int32 ProgressBarDuration
+	public virtual Int32 ProgressBarDuration
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iProgressBarDuration"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iProgressBarDuration", value); }
@@ -125,15 +125,15 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_hOriginalController
 	[SchemaMember("CCSPlayerPawnBase", "m_hOriginalController")]
-	public CHandle<CCSPlayerController> OriginalController => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController");
+	public virtual CHandle<CCSPlayerController> OriginalController => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController");
 
-	public void CTouchExpansionComponentPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_CTouchExpansionComponent");
-	public void PingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_pPingServices");
-	public void PlayerStatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_iPlayerState");
-	public void HasMovedSinceSpawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn");
-	public void FlashDurationPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flFlashDuration");
-	public void FlashMaxAlphaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flFlashMaxAlpha");
-	public void ProgressBarStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flProgressBarStartTime");
-	public void ProgressBarDurationPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_iProgressBarDuration");
-	public void OriginalControllerPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_hOriginalController");
+	public virtual void CTouchExpansionComponentPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_CTouchExpansionComponent");
+	public virtual void PingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_pPingServices");
+	public virtual void PlayerStatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_iPlayerState");
+	public virtual void HasMovedSinceSpawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn");
+	public virtual void FlashDurationPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flFlashDuration");
+	public virtual void FlashMaxAlphaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flFlashMaxAlpha");
+	public virtual void ProgressBarStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flProgressBarStartTime");
+	public virtual void ProgressBarDurationPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_iProgressBarDuration");
+	public virtual void OriginalControllerPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_hOriginalController");
 }

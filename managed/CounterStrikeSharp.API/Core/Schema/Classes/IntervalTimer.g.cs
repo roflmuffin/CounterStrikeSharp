@@ -21,7 +21,7 @@ public partial class IntervalTimer : NativeObject
 
 	// m_timestamp
 	[SchemaMember("IntervalTimer", "m_timestamp")]
-	public float Timestamp
+	public virtual float Timestamp
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "IntervalTimer", "m_timestamp"); }
 		set { Schema.SetValueType<float>(this.Handle, "IntervalTimer", "m_timestamp", value); }
@@ -29,8 +29,8 @@ public partial class IntervalTimer : NativeObject
 
 	// m_nWorldGroupId
 	[SchemaMember("IntervalTimer", "m_nWorldGroupId")]
-	public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "IntervalTimer", "m_nWorldGroupId");
+	public virtual WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "IntervalTimer", "m_nWorldGroupId");
 
-	public void TimestampPropertyChanged() => Utilities.SetStateChanged(this, "IntervalTimer", "m_timestamp");
-	public void WorldGroupIdPropertyChanged() => Utilities.SetStateChanged(this, "IntervalTimer", "m_nWorldGroupId");
+	public virtual void TimestampPropertyChanged() => Utilities.SetStateChanged(this, "IntervalTimer", "m_timestamp");
+	public virtual void WorldGroupIdPropertyChanged() => Utilities.SetStateChanged(this, "IntervalTimer", "m_nWorldGroupId");
 }

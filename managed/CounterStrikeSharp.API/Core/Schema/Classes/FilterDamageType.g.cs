@@ -21,7 +21,7 @@ public partial class FilterDamageType : CBaseFilter
 
 	// m_iDamageType
 	[SchemaMember("FilterDamageType", "m_iDamageType")]
-	public Int32 DamageType
+	public virtual Int32 DamageType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "FilterDamageType", "m_iDamageType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "FilterDamageType", "m_iDamageType", value); }

@@ -21,23 +21,23 @@ public partial class CDamageRecord : NativeObject
 
 	// m_PlayerDamager
 	[SchemaMember("CDamageRecord", "m_PlayerDamager")]
-	public CHandle<CCSPlayerPawn> PlayerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerDamager");
+	public virtual CHandle<CCSPlayerPawn> PlayerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerDamager");
 
 	// m_PlayerRecipient
 	[SchemaMember("CDamageRecord", "m_PlayerRecipient")]
-	public CHandle<CCSPlayerPawn> PlayerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerRecipient");
+	public virtual CHandle<CCSPlayerPawn> PlayerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerRecipient");
 
 	// m_hPlayerControllerDamager
 	[SchemaMember("CDamageRecord", "m_hPlayerControllerDamager")]
-	public CHandle<CCSPlayerController> PlayerControllerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerDamager");
+	public virtual CHandle<CCSPlayerController> PlayerControllerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerDamager");
 
 	// m_hPlayerControllerRecipient
 	[SchemaMember("CDamageRecord", "m_hPlayerControllerRecipient")]
-	public CHandle<CCSPlayerController> PlayerControllerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerRecipient");
+	public virtual CHandle<CCSPlayerController> PlayerControllerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerRecipient");
 
 	// m_szPlayerDamagerName
 	[SchemaMember("CDamageRecord", "m_szPlayerDamagerName")]
-	public string PlayerDamagerName
+	public virtual string PlayerDamagerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CDamageRecord", "m_szPlayerDamagerName"); }
 		set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerDamagerName", value); }
@@ -45,7 +45,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_szPlayerRecipientName
 	[SchemaMember("CDamageRecord", "m_szPlayerRecipientName")]
-	public string PlayerRecipientName
+	public virtual string PlayerRecipientName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CDamageRecord", "m_szPlayerRecipientName"); }
 		set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerRecipientName", value); }
@@ -53,7 +53,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_DamagerXuid
 	[SchemaMember("CDamageRecord", "m_DamagerXuid")]
-	public UInt64 DamagerXuid
+	public virtual UInt64 DamagerXuid
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CDamageRecord", "m_DamagerXuid"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CDamageRecord", "m_DamagerXuid", value); }
@@ -61,7 +61,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_RecipientXuid
 	[SchemaMember("CDamageRecord", "m_RecipientXuid")]
-	public UInt64 RecipientXuid
+	public virtual UInt64 RecipientXuid
 	{
 		get { return Schema.GetValueType<UInt64>(this.Handle, "CDamageRecord", "m_RecipientXuid"); }
 		set { Schema.SetValueType<UInt64>(this.Handle, "CDamageRecord", "m_RecipientXuid", value); }
@@ -69,7 +69,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_flBulletsDamage
 	[SchemaMember("CDamageRecord", "m_flBulletsDamage")]
-	public float BulletsDamage
+	public virtual float BulletsDamage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDamageRecord", "m_flBulletsDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDamageRecord", "m_flBulletsDamage", value); }
@@ -77,7 +77,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_flDamage
 	[SchemaMember("CDamageRecord", "m_flDamage")]
-	public float Damage
+	public virtual float Damage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDamageRecord", "m_flDamage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDamageRecord", "m_flDamage", value); }
@@ -85,7 +85,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_flActualHealthRemoved
 	[SchemaMember("CDamageRecord", "m_flActualHealthRemoved")]
-	public float ActualHealthRemoved
+	public virtual float ActualHealthRemoved
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CDamageRecord", "m_flActualHealthRemoved"); }
 		set { Schema.SetValueType<float>(this.Handle, "CDamageRecord", "m_flActualHealthRemoved", value); }
@@ -93,7 +93,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_iNumHits
 	[SchemaMember("CDamageRecord", "m_iNumHits")]
-	public Int32 NumHits
+	public virtual Int32 NumHits
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CDamageRecord", "m_iNumHits"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CDamageRecord", "m_iNumHits", value); }
@@ -101,7 +101,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_iLastBulletUpdate
 	[SchemaMember("CDamageRecord", "m_iLastBulletUpdate")]
-	public Int32 LastBulletUpdate
+	public virtual Int32 LastBulletUpdate
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CDamageRecord", "m_iLastBulletUpdate"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CDamageRecord", "m_iLastBulletUpdate", value); }
@@ -109,7 +109,7 @@ public partial class CDamageRecord : NativeObject
 
 	// m_bIsOtherEnemy
 	[SchemaMember("CDamageRecord", "m_bIsOtherEnemy")]
-	public bool IsOtherEnemy
+	public virtual bool IsOtherEnemy
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CDamageRecord", "m_bIsOtherEnemy"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CDamageRecord", "m_bIsOtherEnemy", value); }
@@ -117,24 +117,24 @@ public partial class CDamageRecord : NativeObject
 
 	// m_killType
 	[SchemaMember("CDamageRecord", "m_killType")]
-	public EKillTypes_t KillType
+	public virtual EKillTypes_t KillType
 	{
 		get { return Schema.GetValueType<EKillTypes_t>(this.Handle, "CDamageRecord", "m_killType"); }
 		set { Schema.SetValueType<EKillTypes_t>(this.Handle, "CDamageRecord", "m_killType", value); }
 	}
 
-	public void PlayerDamagerPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_PlayerDamager");
-	public void PlayerRecipientPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_PlayerRecipient");
-	public void PlayerControllerDamagerPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_hPlayerControllerDamager");
-	public void PlayerControllerRecipientPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_hPlayerControllerRecipient");
-	public void PlayerDamagerNamePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_szPlayerDamagerName");
-	public void PlayerRecipientNamePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_szPlayerRecipientName");
-	public void DamagerXuidPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_DamagerXuid");
-	public void RecipientXuidPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_RecipientXuid");
-	public void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_flDamage");
-	public void ActualHealthRemovedPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_flActualHealthRemoved");
-	public void NumHitsPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_iNumHits");
-	public void LastBulletUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_iLastBulletUpdate");
-	public void IsOtherEnemyPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_bIsOtherEnemy");
-	public void KillTypePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_killType");
+	public virtual void PlayerDamagerPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_PlayerDamager");
+	public virtual void PlayerRecipientPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_PlayerRecipient");
+	public virtual void PlayerControllerDamagerPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_hPlayerControllerDamager");
+	public virtual void PlayerControllerRecipientPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_hPlayerControllerRecipient");
+	public virtual void PlayerDamagerNamePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_szPlayerDamagerName");
+	public virtual void PlayerRecipientNamePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_szPlayerRecipientName");
+	public virtual void DamagerXuidPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_DamagerXuid");
+	public virtual void RecipientXuidPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_RecipientXuid");
+	public virtual void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_flDamage");
+	public virtual void ActualHealthRemovedPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_flActualHealthRemoved");
+	public virtual void NumHitsPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_iNumHits");
+	public virtual void LastBulletUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_iLastBulletUpdate");
+	public virtual void IsOtherEnemyPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_bIsOtherEnemy");
+	public virtual void KillTypePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_killType");
 }

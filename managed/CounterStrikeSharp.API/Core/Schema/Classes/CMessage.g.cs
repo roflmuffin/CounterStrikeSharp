@@ -21,7 +21,7 @@ public partial class CMessage : CPointEntity
 
 	// m_iszMessage
 	[SchemaMember("CMessage", "m_iszMessage")]
-	public string Message
+	public virtual string Message
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMessage", "m_iszMessage"); }
 		set { Schema.SetString(this.Handle, "CMessage", "m_iszMessage", value); }
@@ -29,7 +29,7 @@ public partial class CMessage : CPointEntity
 
 	// m_MessageVolume
 	[SchemaMember("CMessage", "m_MessageVolume")]
-	public float MessageVolume
+	public virtual float MessageVolume
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMessage", "m_MessageVolume"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMessage", "m_MessageVolume", value); }
@@ -37,7 +37,7 @@ public partial class CMessage : CPointEntity
 
 	// m_MessageAttenuation
 	[SchemaMember("CMessage", "m_MessageAttenuation")]
-	public Int32 MessageAttenuation
+	public virtual Int32 MessageAttenuation
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CMessage", "m_MessageAttenuation"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CMessage", "m_MessageAttenuation", value); }
@@ -45,7 +45,7 @@ public partial class CMessage : CPointEntity
 
 	// m_Radius
 	[SchemaMember("CMessage", "m_Radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CMessage", "m_Radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CMessage", "m_Radius", value); }
@@ -53,7 +53,7 @@ public partial class CMessage : CPointEntity
 
 	// m_sNoise
 	[SchemaMember("CMessage", "m_sNoise")]
-	public string Noise
+	public virtual string Noise
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMessage", "m_sNoise"); }
 		set { Schema.SetString(this.Handle, "CMessage", "m_sNoise", value); }
@@ -61,6 +61,6 @@ public partial class CMessage : CPointEntity
 
 	// m_OnShowMessage
 	[SchemaMember("CMessage", "m_OnShowMessage")]
-	public CEntityIOOutput OnShowMessage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMessage", "m_OnShowMessage");
+	public virtual CEntityIOOutput OnShowMessage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMessage", "m_OnShowMessage");
 
 }

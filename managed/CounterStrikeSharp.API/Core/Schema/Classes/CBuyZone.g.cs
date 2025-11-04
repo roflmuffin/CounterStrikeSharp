@@ -21,7 +21,7 @@ public partial class CBuyZone : CBaseTrigger
 
 	// m_LegacyTeamNum
 	[SchemaMember("CBuyZone", "m_LegacyTeamNum")]
-	public Int32 LegacyTeamNum
+	public virtual Int32 LegacyTeamNum
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum", value); }

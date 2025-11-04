@@ -21,11 +21,11 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_hCtrl
 	[SchemaMember("fogplayerparams_t", "m_hCtrl")]
-	public CHandle<CFogController> Ctrl => Schema.GetDeclaredClass<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl");
+	public virtual CHandle<CFogController> Ctrl => Schema.GetDeclaredClass<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl");
 
 	// m_flTransitionTime
 	[SchemaMember("fogplayerparams_t", "m_flTransitionTime")]
-	public float TransitionTime
+	public virtual float TransitionTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime", value); }
@@ -33,7 +33,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_OldColor
 	[SchemaMember("fogplayerparams_t", "m_OldColor")]
-	public Color OldColor
+	public virtual Color OldColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor", value); }
@@ -41,7 +41,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flOldStart
 	[SchemaMember("fogplayerparams_t", "m_flOldStart")]
-	public float OldStart
+	public virtual float OldStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldStart", value); }
@@ -49,7 +49,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flOldEnd
 	[SchemaMember("fogplayerparams_t", "m_flOldEnd")]
-	public float OldEnd
+	public virtual float OldEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd", value); }
@@ -57,7 +57,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flOldMaxDensity
 	[SchemaMember("fogplayerparams_t", "m_flOldMaxDensity")]
-	public float OldMaxDensity
+	public virtual float OldMaxDensity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity", value); }
@@ -65,7 +65,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flOldHDRColorScale
 	[SchemaMember("fogplayerparams_t", "m_flOldHDRColorScale")]
-	public float OldHDRColorScale
+	public virtual float OldHDRColorScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale", value); }
@@ -73,7 +73,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flOldFarZ
 	[SchemaMember("fogplayerparams_t", "m_flOldFarZ")]
-	public float OldFarZ
+	public virtual float OldFarZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ", value); }
@@ -81,7 +81,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_NewColor
 	[SchemaMember("fogplayerparams_t", "m_NewColor")]
-	public Color NewColor
+	public virtual Color NewColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor", value); }
@@ -89,7 +89,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flNewStart
 	[SchemaMember("fogplayerparams_t", "m_flNewStart")]
-	public float NewStart
+	public virtual float NewStart
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewStart"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewStart", value); }
@@ -97,7 +97,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flNewEnd
 	[SchemaMember("fogplayerparams_t", "m_flNewEnd")]
-	public float NewEnd
+	public virtual float NewEnd
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd", value); }
@@ -105,7 +105,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flNewMaxDensity
 	[SchemaMember("fogplayerparams_t", "m_flNewMaxDensity")]
-	public float NewMaxDensity
+	public virtual float NewMaxDensity
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity", value); }
@@ -113,7 +113,7 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flNewHDRColorScale
 	[SchemaMember("fogplayerparams_t", "m_flNewHDRColorScale")]
-	public float NewHDRColorScale
+	public virtual float NewHDRColorScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale", value); }
@@ -121,11 +121,11 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flNewFarZ
 	[SchemaMember("fogplayerparams_t", "m_flNewFarZ")]
-	public float NewFarZ
+	public virtual float NewFarZ
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ"); }
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ", value); }
 	}
 
-	public void CtrlPropertyChanged() => Utilities.SetStateChanged(this, "fogplayerparams_t", "m_hCtrl");
+	public virtual void CtrlPropertyChanged() => Utilities.SetStateChanged(this, "fogplayerparams_t", "m_hCtrl");
 }

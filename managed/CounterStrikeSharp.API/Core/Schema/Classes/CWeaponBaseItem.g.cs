@@ -21,7 +21,7 @@ public partial class CWeaponBaseItem : CCSWeaponBase
 
 	// m_bSequenceInProgress
 	[SchemaMember("CWeaponBaseItem", "m_bSequenceInProgress")]
-	public bool SequenceInProgress
+	public virtual bool SequenceInProgress
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bSequenceInProgress"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bSequenceInProgress", value); }
@@ -29,12 +29,12 @@ public partial class CWeaponBaseItem : CCSWeaponBase
 
 	// m_bRedraw
 	[SchemaMember("CWeaponBaseItem", "m_bRedraw")]
-	public bool Redraw
+	public virtual bool Redraw
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw", value); }
 	}
 
-	public void SequenceInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponBaseItem", "m_bSequenceInProgress");
-	public void RedrawPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponBaseItem", "m_bRedraw");
+	public virtual void SequenceInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponBaseItem", "m_bSequenceInProgress");
+	public virtual void RedrawPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponBaseItem", "m_bRedraw");
 }

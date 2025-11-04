@@ -21,7 +21,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszSceneFile
 	[SchemaMember("CSceneEntity", "m_iszSceneFile")]
-	public string SceneFile
+	public virtual string SceneFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSceneFile"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSceneFile", value); }
@@ -29,7 +29,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszResumeSceneFile
 	[SchemaMember("CSceneEntity", "m_iszResumeSceneFile")]
-	public string ResumeSceneFile
+	public virtual string ResumeSceneFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszResumeSceneFile"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszResumeSceneFile", value); }
@@ -37,7 +37,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget1
 	[SchemaMember("CSceneEntity", "m_iszTarget1")]
-	public string IszTarget1
+	public virtual string IszTarget1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget1"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget1", value); }
@@ -45,7 +45,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget2
 	[SchemaMember("CSceneEntity", "m_iszTarget2")]
-	public string IszTarget2
+	public virtual string IszTarget2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget2"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget2", value); }
@@ -53,7 +53,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget3
 	[SchemaMember("CSceneEntity", "m_iszTarget3")]
-	public string IszTarget3
+	public virtual string IszTarget3
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget3"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget3", value); }
@@ -61,7 +61,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget4
 	[SchemaMember("CSceneEntity", "m_iszTarget4")]
-	public string IszTarget4
+	public virtual string IszTarget4
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget4"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget4", value); }
@@ -69,7 +69,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget5
 	[SchemaMember("CSceneEntity", "m_iszTarget5")]
-	public string IszTarget5
+	public virtual string IszTarget5
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget5"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget5", value); }
@@ -77,7 +77,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget6
 	[SchemaMember("CSceneEntity", "m_iszTarget6")]
-	public string IszTarget6
+	public virtual string IszTarget6
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget6"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget6", value); }
@@ -85,7 +85,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget7
 	[SchemaMember("CSceneEntity", "m_iszTarget7")]
-	public string IszTarget7
+	public virtual string IszTarget7
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget7"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget7", value); }
@@ -93,7 +93,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszTarget8
 	[SchemaMember("CSceneEntity", "m_iszTarget8")]
-	public string IszTarget8
+	public virtual string IszTarget8
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget8"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget8", value); }
@@ -101,39 +101,39 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hTarget1
 	[SchemaMember("CSceneEntity", "m_hTarget1")]
-	public CHandle<CBaseEntity> HTarget1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget1");
+	public virtual CHandle<CBaseEntity> HTarget1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget1");
 
 	// m_hTarget2
 	[SchemaMember("CSceneEntity", "m_hTarget2")]
-	public CHandle<CBaseEntity> HTarget2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget2");
+	public virtual CHandle<CBaseEntity> HTarget2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget2");
 
 	// m_hTarget3
 	[SchemaMember("CSceneEntity", "m_hTarget3")]
-	public CHandle<CBaseEntity> HTarget3 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget3");
+	public virtual CHandle<CBaseEntity> HTarget3 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget3");
 
 	// m_hTarget4
 	[SchemaMember("CSceneEntity", "m_hTarget4")]
-	public CHandle<CBaseEntity> HTarget4 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget4");
+	public virtual CHandle<CBaseEntity> HTarget4 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget4");
 
 	// m_hTarget5
 	[SchemaMember("CSceneEntity", "m_hTarget5")]
-	public CHandle<CBaseEntity> HTarget5 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget5");
+	public virtual CHandle<CBaseEntity> HTarget5 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget5");
 
 	// m_hTarget6
 	[SchemaMember("CSceneEntity", "m_hTarget6")]
-	public CHandle<CBaseEntity> HTarget6 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget6");
+	public virtual CHandle<CBaseEntity> HTarget6 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget6");
 
 	// m_hTarget7
 	[SchemaMember("CSceneEntity", "m_hTarget7")]
-	public CHandle<CBaseEntity> HTarget7 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget7");
+	public virtual CHandle<CBaseEntity> HTarget7 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget7");
 
 	// m_hTarget8
 	[SchemaMember("CSceneEntity", "m_hTarget8")]
-	public CHandle<CBaseEntity> HTarget8 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget8");
+	public virtual CHandle<CBaseEntity> HTarget8 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget8");
 
 	// m_sTargetAttachment
 	[SchemaMember("CSceneEntity", "m_sTargetAttachment")]
-	public string TargetAttachment
+	public virtual string TargetAttachment
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_sTargetAttachment"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_sTargetAttachment", value); }
@@ -141,7 +141,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bIsPlayingBack
 	[SchemaMember("CSceneEntity", "m_bIsPlayingBack")]
-	public bool IsPlayingBack
+	public virtual bool IsPlayingBack
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bIsPlayingBack"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bIsPlayingBack", value); }
@@ -149,7 +149,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bPaused
 	[SchemaMember("CSceneEntity", "m_bPaused")]
-	public bool Paused
+	public virtual bool Paused
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bPaused"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bPaused", value); }
@@ -157,7 +157,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bMultiplayer
 	[SchemaMember("CSceneEntity", "m_bMultiplayer")]
-	public bool Multiplayer
+	public virtual bool Multiplayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bMultiplayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bMultiplayer", value); }
@@ -165,7 +165,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bAutogenerated
 	[SchemaMember("CSceneEntity", "m_bAutogenerated")]
-	public bool Autogenerated
+	public virtual bool Autogenerated
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bAutogenerated"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bAutogenerated", value); }
@@ -173,7 +173,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_flForceClientTime
 	[SchemaMember("CSceneEntity", "m_flForceClientTime")]
-	public float ForceClientTime
+	public virtual float ForceClientTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSceneEntity", "m_flForceClientTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSceneEntity", "m_flForceClientTime", value); }
@@ -181,7 +181,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_flCurrentTime
 	[SchemaMember("CSceneEntity", "m_flCurrentTime")]
-	public float CurrentTime
+	public virtual float CurrentTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSceneEntity", "m_flCurrentTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSceneEntity", "m_flCurrentTime", value); }
@@ -189,7 +189,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_flFrameTime
 	[SchemaMember("CSceneEntity", "m_flFrameTime")]
-	public float FrameTime
+	public virtual float FrameTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSceneEntity", "m_flFrameTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSceneEntity", "m_flFrameTime", value); }
@@ -197,7 +197,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bCancelAtNextInterrupt
 	[SchemaMember("CSceneEntity", "m_bCancelAtNextInterrupt")]
-	public bool CancelAtNextInterrupt
+	public virtual bool CancelAtNextInterrupt
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bCancelAtNextInterrupt"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bCancelAtNextInterrupt", value); }
@@ -205,7 +205,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_fPitch
 	[SchemaMember("CSceneEntity", "m_fPitch")]
-	public float Pitch
+	public virtual float Pitch
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSceneEntity", "m_fPitch"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSceneEntity", "m_fPitch", value); }
@@ -213,7 +213,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bAutomated
 	[SchemaMember("CSceneEntity", "m_bAutomated")]
-	public bool Automated
+	public virtual bool Automated
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bAutomated"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bAutomated", value); }
@@ -221,7 +221,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_nAutomatedAction
 	[SchemaMember("CSceneEntity", "m_nAutomatedAction")]
-	public Int32 AutomatedAction
+	public virtual Int32 AutomatedAction
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSceneEntity", "m_nAutomatedAction"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSceneEntity", "m_nAutomatedAction", value); }
@@ -229,7 +229,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_flAutomationDelay
 	[SchemaMember("CSceneEntity", "m_flAutomationDelay")]
-	public float AutomationDelay
+	public virtual float AutomationDelay
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSceneEntity", "m_flAutomationDelay"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSceneEntity", "m_flAutomationDelay", value); }
@@ -237,7 +237,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_flAutomationTime
 	[SchemaMember("CSceneEntity", "m_flAutomationTime")]
-	public float AutomationTime
+	public virtual float AutomationTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSceneEntity", "m_flAutomationTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSceneEntity", "m_flAutomationTime", value); }
@@ -245,7 +245,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_nSpeechPriority
 	[SchemaMember("CSceneEntity", "m_nSpeechPriority")]
-	public Int32 SpeechPriority
+	public virtual Int32 SpeechPriority
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSceneEntity", "m_nSpeechPriority"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSceneEntity", "m_nSpeechPriority", value); }
@@ -253,11 +253,11 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hWaitingForThisResumeScene
 	[SchemaMember("CSceneEntity", "m_hWaitingForThisResumeScene")]
-	public CHandle<CBaseEntity> WaitingForThisResumeScene => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene");
+	public virtual CHandle<CBaseEntity> WaitingForThisResumeScene => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene");
 
 	// m_bWaitingForResumeScene
 	[SchemaMember("CSceneEntity", "m_bWaitingForResumeScene")]
-	public bool WaitingForResumeScene
+	public virtual bool WaitingForResumeScene
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bWaitingForResumeScene"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bWaitingForResumeScene", value); }
@@ -265,7 +265,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bPausedViaInput
 	[SchemaMember("CSceneEntity", "m_bPausedViaInput")]
-	public bool PausedViaInput
+	public virtual bool PausedViaInput
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bPausedViaInput"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bPausedViaInput", value); }
@@ -273,7 +273,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bPauseAtNextInterrupt
 	[SchemaMember("CSceneEntity", "m_bPauseAtNextInterrupt")]
-	public bool PauseAtNextInterrupt
+	public virtual bool PauseAtNextInterrupt
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bPauseAtNextInterrupt"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bPauseAtNextInterrupt", value); }
@@ -281,7 +281,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bWaitingForActor
 	[SchemaMember("CSceneEntity", "m_bWaitingForActor")]
-	public bool WaitingForActor
+	public virtual bool WaitingForActor
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bWaitingForActor"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bWaitingForActor", value); }
@@ -289,7 +289,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bWaitingForInterrupt
 	[SchemaMember("CSceneEntity", "m_bWaitingForInterrupt")]
-	public bool WaitingForInterrupt
+	public virtual bool WaitingForInterrupt
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bWaitingForInterrupt"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bWaitingForInterrupt", value); }
@@ -297,7 +297,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bInterruptedActorsScenes
 	[SchemaMember("CSceneEntity", "m_bInterruptedActorsScenes")]
-	public bool InterruptedActorsScenes
+	public virtual bool InterruptedActorsScenes
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bInterruptedActorsScenes"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bInterruptedActorsScenes", value); }
@@ -305,7 +305,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bBreakOnNonIdle
 	[SchemaMember("CSceneEntity", "m_bBreakOnNonIdle")]
-	public bool BreakOnNonIdle
+	public virtual bool BreakOnNonIdle
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bBreakOnNonIdle"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bBreakOnNonIdle", value); }
@@ -313,7 +313,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bSceneFinished
 	[SchemaMember("CSceneEntity", "m_bSceneFinished")]
-	public bool SceneFinished
+	public virtual bool SceneFinished
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bSceneFinished"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bSceneFinished", value); }
@@ -321,15 +321,15 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hActorList
 	[SchemaMember("CSceneEntity", "m_hActorList")]
-	public NetworkedVector<CHandle<CBaseFlex>> ActorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseFlex>>>(this.Handle, "CSceneEntity", "m_hActorList");
+	public virtual NetworkedVector<CHandle<CBaseFlex>> ActorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseFlex>>>(this.Handle, "CSceneEntity", "m_hActorList");
 
 	// m_hRemoveActorList
 	[SchemaMember("CSceneEntity", "m_hRemoveActorList")]
-	public NetworkedVector<CHandle<CBaseEntity>> RemoveActorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CSceneEntity", "m_hRemoveActorList");
+	public virtual NetworkedVector<CHandle<CBaseEntity>> RemoveActorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CSceneEntity", "m_hRemoveActorList");
 
 	// m_nSceneFlushCounter
 	[SchemaMember("CSceneEntity", "m_nSceneFlushCounter")]
-	public Int32 SceneFlushCounter
+	public virtual Int32 SceneFlushCounter
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSceneEntity", "m_nSceneFlushCounter"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSceneEntity", "m_nSceneFlushCounter", value); }
@@ -337,7 +337,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_nSceneStringIndex
 	[SchemaMember("CSceneEntity", "m_nSceneStringIndex")]
-	public UInt16 SceneStringIndex
+	public virtual UInt16 SceneStringIndex
 	{
 		get { return Schema.GetValueType<UInt16>(this.Handle, "CSceneEntity", "m_nSceneStringIndex"); }
 		set { Schema.SetValueType<UInt16>(this.Handle, "CSceneEntity", "m_nSceneStringIndex", value); }
@@ -345,35 +345,35 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_OnStart
 	[SchemaMember("CSceneEntity", "m_OnStart")]
-	public CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnStart");
+	public virtual CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnStart");
 
 	// m_OnCompletion
 	[SchemaMember("CSceneEntity", "m_OnCompletion")]
-	public CEntityIOOutput OnCompletion => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnCompletion");
+	public virtual CEntityIOOutput OnCompletion => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnCompletion");
 
 	// m_OnCanceled
 	[SchemaMember("CSceneEntity", "m_OnCanceled")]
-	public CEntityIOOutput OnCanceled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnCanceled");
+	public virtual CEntityIOOutput OnCanceled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnCanceled");
 
 	// m_OnPaused
 	[SchemaMember("CSceneEntity", "m_OnPaused")]
-	public CEntityIOOutput OnPaused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnPaused");
+	public virtual CEntityIOOutput OnPaused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnPaused");
 
 	// m_OnResumed
 	[SchemaMember("CSceneEntity", "m_OnResumed")]
-	public CEntityIOOutput OnResumed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnResumed");
+	public virtual CEntityIOOutput OnResumed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnResumed");
 
 	// m_OnTrigger
 	[SchemaMember("CSceneEntity", "m_OnTrigger")]
-	public Span<CEntityIOOutput> OnTrigger => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnTrigger", 16);
+	public virtual Span<CEntityIOOutput> OnTrigger => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnTrigger", 16);
 
 	// m_hInterruptScene
 	[SchemaMember("CSceneEntity", "m_hInterruptScene")]
-	public CHandle<CSceneEntity> InterruptScene => Schema.GetDeclaredClass<CHandle<CSceneEntity>>(this.Handle, "CSceneEntity", "m_hInterruptScene");
+	public virtual CHandle<CSceneEntity> InterruptScene => Schema.GetDeclaredClass<CHandle<CSceneEntity>>(this.Handle, "CSceneEntity", "m_hInterruptScene");
 
 	// m_nInterruptCount
 	[SchemaMember("CSceneEntity", "m_nInterruptCount")]
-	public Int32 InterruptCount
+	public virtual Int32 InterruptCount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSceneEntity", "m_nInterruptCount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSceneEntity", "m_nInterruptCount", value); }
@@ -381,7 +381,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bSceneMissing
 	[SchemaMember("CSceneEntity", "m_bSceneMissing")]
-	public bool SceneMissing
+	public virtual bool SceneMissing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bSceneMissing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bSceneMissing", value); }
@@ -389,7 +389,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bInterrupted
 	[SchemaMember("CSceneEntity", "m_bInterrupted")]
-	public bool Interrupted
+	public virtual bool Interrupted
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bInterrupted"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bInterrupted", value); }
@@ -397,7 +397,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bCompletedEarly
 	[SchemaMember("CSceneEntity", "m_bCompletedEarly")]
-	public bool CompletedEarly
+	public virtual bool CompletedEarly
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bCompletedEarly"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bCompletedEarly", value); }
@@ -405,7 +405,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bInterruptSceneFinished
 	[SchemaMember("CSceneEntity", "m_bInterruptSceneFinished")]
-	public bool InterruptSceneFinished
+	public virtual bool InterruptSceneFinished
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bInterruptSceneFinished"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bInterruptSceneFinished", value); }
@@ -413,7 +413,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_bRestoring
 	[SchemaMember("CSceneEntity", "m_bRestoring")]
-	public bool Restoring
+	public virtual bool Restoring
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CSceneEntity", "m_bRestoring"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CSceneEntity", "m_bRestoring", value); }
@@ -421,15 +421,15 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hNotifySceneCompletion
 	[SchemaMember("CSceneEntity", "m_hNotifySceneCompletion")]
-	public NetworkedVector<CHandle<CSceneEntity>> NotifySceneCompletion => Schema.GetDeclaredClass<NetworkedVector<CHandle<CSceneEntity>>>(this.Handle, "CSceneEntity", "m_hNotifySceneCompletion");
+	public virtual NetworkedVector<CHandle<CSceneEntity>> NotifySceneCompletion => Schema.GetDeclaredClass<NetworkedVector<CHandle<CSceneEntity>>>(this.Handle, "CSceneEntity", "m_hNotifySceneCompletion");
 
 	// m_hListManagers
 	[SchemaMember("CSceneEntity", "m_hListManagers")]
-	public NetworkedVector<CHandle<CSceneListManager>> ListManagers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CSceneListManager>>>(this.Handle, "CSceneEntity", "m_hListManagers");
+	public virtual NetworkedVector<CHandle<CSceneListManager>> ListManagers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CSceneListManager>>>(this.Handle, "CSceneEntity", "m_hListManagers");
 
 	// m_iszSoundName
 	[SchemaMember("CSceneEntity", "m_iszSoundName")]
-	public string SoundName
+	public virtual string SoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSoundName"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSoundName", value); }
@@ -437,7 +437,7 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iszSequenceName
 	[SchemaMember("CSceneEntity", "m_iszSequenceName")]
-	public string SequenceName
+	public virtual string SequenceName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSequenceName"); }
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSequenceName", value); }
@@ -445,15 +445,15 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hActor
 	[SchemaMember("CSceneEntity", "m_hActor")]
-	public CHandle<CBaseFlex> Actor => Schema.GetDeclaredClass<CHandle<CBaseFlex>>(this.Handle, "CSceneEntity", "m_hActor");
+	public virtual CHandle<CBaseFlex> Actor => Schema.GetDeclaredClass<CHandle<CBaseFlex>>(this.Handle, "CSceneEntity", "m_hActor");
 
 	// m_hActivator
 	[SchemaMember("CSceneEntity", "m_hActivator")]
-	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hActivator");
 
 	// m_BusyActor
 	[SchemaMember("CSceneEntity", "m_BusyActor")]
-	public Int32 BusyActor
+	public virtual Int32 BusyActor
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSceneEntity", "m_BusyActor"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSceneEntity", "m_BusyActor", value); }
@@ -461,17 +461,17 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_iPlayerDeathBehavior
 	[SchemaMember("CSceneEntity", "m_iPlayerDeathBehavior")]
-	public SceneOnPlayerDeath_t PlayerDeathBehavior
+	public virtual SceneOnPlayerDeath_t PlayerDeathBehavior
 	{
 		get { return Schema.GetValueType<SceneOnPlayerDeath_t>(this.Handle, "CSceneEntity", "m_iPlayerDeathBehavior"); }
 		set { Schema.SetValueType<SceneOnPlayerDeath_t>(this.Handle, "CSceneEntity", "m_iPlayerDeathBehavior", value); }
 	}
 
-	public void IsPlayingBackPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bIsPlayingBack");
-	public void PausedPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bPaused");
-	public void MultiplayerPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bMultiplayer");
-	public void AutogeneratedPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bAutogenerated");
-	public void ForceClientTimePropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_flForceClientTime");
-	public void ActorListPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_hActorList");
-	public void SceneStringIndexPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_nSceneStringIndex");
+	public virtual void IsPlayingBackPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bIsPlayingBack");
+	public virtual void PausedPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bPaused");
+	public virtual void MultiplayerPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bMultiplayer");
+	public virtual void AutogeneratedPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_bAutogenerated");
+	public virtual void ForceClientTimePropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_flForceClientTime");
+	public virtual void ActorListPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_hActorList");
+	public virtual void SceneStringIndexPropertyChanged() => Utilities.SetStateChanged(this, "CSceneEntity", "m_nSceneStringIndex");
 }

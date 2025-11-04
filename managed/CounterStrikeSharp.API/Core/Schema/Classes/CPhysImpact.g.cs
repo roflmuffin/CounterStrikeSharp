@@ -21,7 +21,7 @@ public partial class CPhysImpact : CPointEntity
 
 	// m_damage
 	[SchemaMember("CPhysImpact", "m_damage")]
-	public float Damage
+	public virtual float Damage
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysImpact", "m_damage"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysImpact", "m_damage", value); }
@@ -29,7 +29,7 @@ public partial class CPhysImpact : CPointEntity
 
 	// m_distance
 	[SchemaMember("CPhysImpact", "m_distance")]
-	public float Distance
+	public virtual float Distance
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysImpact", "m_distance"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysImpact", "m_distance", value); }
@@ -37,7 +37,7 @@ public partial class CPhysImpact : CPointEntity
 
 	// m_directionEntityName
 	[SchemaMember("CPhysImpact", "m_directionEntityName")]
-	public string DirectionEntityName
+	public virtual string DirectionEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysImpact", "m_directionEntityName"); }
 		set { Schema.SetString(this.Handle, "CPhysImpact", "m_directionEntityName", value); }

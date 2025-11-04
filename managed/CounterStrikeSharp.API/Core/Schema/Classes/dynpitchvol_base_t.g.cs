@@ -21,7 +21,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// preset
 	[SchemaMember("dynpitchvol_base_t", "preset")]
-	public Int32 Preset
+	public virtual Int32 Preset
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "preset"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "preset", value); }
@@ -29,7 +29,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// pitchrun
 	[SchemaMember("dynpitchvol_base_t", "pitchrun")]
-	public Int32 Pitchrun
+	public virtual Int32 Pitchrun
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchrun"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchrun", value); }
@@ -37,7 +37,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// pitchstart
 	[SchemaMember("dynpitchvol_base_t", "pitchstart")]
-	public Int32 Pitchstart
+	public virtual Int32 Pitchstart
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchstart"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchstart", value); }
@@ -45,7 +45,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// spinup
 	[SchemaMember("dynpitchvol_base_t", "spinup")]
-	public Int32 Spinup
+	public virtual Int32 Spinup
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinup"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinup", value); }
@@ -53,7 +53,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// spindown
 	[SchemaMember("dynpitchvol_base_t", "spindown")]
-	public Int32 Spindown
+	public virtual Int32 Spindown
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindown"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindown", value); }
@@ -61,7 +61,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// volrun
 	[SchemaMember("dynpitchvol_base_t", "volrun")]
-	public Int32 Volrun
+	public virtual Int32 Volrun
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volrun"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volrun", value); }
@@ -69,7 +69,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// volstart
 	[SchemaMember("dynpitchvol_base_t", "volstart")]
-	public Int32 Volstart
+	public virtual Int32 Volstart
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volstart"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volstart", value); }
@@ -77,7 +77,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// fadein
 	[SchemaMember("dynpitchvol_base_t", "fadein")]
-	public Int32 Fadein
+	public virtual Int32 Fadein
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadein"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadein", value); }
@@ -85,7 +85,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// fadeout
 	[SchemaMember("dynpitchvol_base_t", "fadeout")]
-	public Int32 Fadeout
+	public virtual Int32 Fadeout
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeout"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeout", value); }
@@ -93,7 +93,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// lfotype
 	[SchemaMember("dynpitchvol_base_t", "lfotype")]
-	public Int32 Lfotype
+	public virtual Int32 Lfotype
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfotype"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfotype", value); }
@@ -101,7 +101,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// lforate
 	[SchemaMember("dynpitchvol_base_t", "lforate")]
-	public Int32 Lforate
+	public virtual Int32 Lforate
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lforate"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lforate", value); }
@@ -109,7 +109,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// lfomodpitch
 	[SchemaMember("dynpitchvol_base_t", "lfomodpitch")]
-	public Int32 Lfomodpitch
+	public virtual Int32 Lfomodpitch
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodpitch"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodpitch", value); }
@@ -117,7 +117,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// lfomodvol
 	[SchemaMember("dynpitchvol_base_t", "lfomodvol")]
-	public Int32 Lfomodvol
+	public virtual Int32 Lfomodvol
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodvol"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodvol", value); }
@@ -125,7 +125,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// cspinup
 	[SchemaMember("dynpitchvol_base_t", "cspinup")]
-	public Int32 Cspinup
+	public virtual Int32 Cspinup
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspinup"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspinup", value); }
@@ -133,7 +133,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// cspincount
 	[SchemaMember("dynpitchvol_base_t", "cspincount")]
-	public Int32 Cspincount
+	public virtual Int32 Cspincount
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspincount"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspincount", value); }
@@ -141,7 +141,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// pitch
 	[SchemaMember("dynpitchvol_base_t", "pitch")]
-	public Int32 Pitch
+	public virtual Int32 Pitch
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitch"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitch", value); }
@@ -149,7 +149,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// spinupsav
 	[SchemaMember("dynpitchvol_base_t", "spinupsav")]
-	public Int32 Spinupsav
+	public virtual Int32 Spinupsav
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinupsav"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinupsav", value); }
@@ -157,7 +157,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// spindownsav
 	[SchemaMember("dynpitchvol_base_t", "spindownsav")]
-	public Int32 Spindownsav
+	public virtual Int32 Spindownsav
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindownsav"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindownsav", value); }
@@ -165,7 +165,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// pitchfrac
 	[SchemaMember("dynpitchvol_base_t", "pitchfrac")]
-	public Int32 Pitchfrac
+	public virtual Int32 Pitchfrac
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchfrac"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchfrac", value); }
@@ -173,7 +173,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// vol
 	[SchemaMember("dynpitchvol_base_t", "vol")]
-	public Int32 Vol
+	public virtual Int32 Vol
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "vol"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "vol", value); }
@@ -181,7 +181,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// fadeinsav
 	[SchemaMember("dynpitchvol_base_t", "fadeinsav")]
-	public Int32 Fadeinsav
+	public virtual Int32 Fadeinsav
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeinsav"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeinsav", value); }
@@ -189,7 +189,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// fadeoutsav
 	[SchemaMember("dynpitchvol_base_t", "fadeoutsav")]
-	public Int32 Fadeoutsav
+	public virtual Int32 Fadeoutsav
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeoutsav"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeoutsav", value); }
@@ -197,7 +197,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// volfrac
 	[SchemaMember("dynpitchvol_base_t", "volfrac")]
-	public Int32 Volfrac
+	public virtual Int32 Volfrac
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volfrac"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volfrac", value); }
@@ -205,7 +205,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// lfofrac
 	[SchemaMember("dynpitchvol_base_t", "lfofrac")]
-	public Int32 Lfofrac
+	public virtual Int32 Lfofrac
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfofrac"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfofrac", value); }
@@ -213,7 +213,7 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// lfomult
 	[SchemaMember("dynpitchvol_base_t", "lfomult")]
-	public Int32 Lfomult
+	public virtual Int32 Lfomult
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomult"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomult", value); }

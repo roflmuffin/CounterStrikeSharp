@@ -21,7 +21,7 @@ public partial class CPlayerVisibility : CBaseEntity
 
 	// m_flVisibilityStrength
 	[SchemaMember("CPlayerVisibility", "m_flVisibilityStrength")]
-	public float VisibilityStrength
+	public virtual float VisibilityStrength
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flVisibilityStrength"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flVisibilityStrength", value); }
@@ -29,7 +29,7 @@ public partial class CPlayerVisibility : CBaseEntity
 
 	// m_flFogDistanceMultiplier
 	[SchemaMember("CPlayerVisibility", "m_flFogDistanceMultiplier")]
-	public float FogDistanceMultiplier
+	public virtual float FogDistanceMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogDistanceMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogDistanceMultiplier", value); }
@@ -37,7 +37,7 @@ public partial class CPlayerVisibility : CBaseEntity
 
 	// m_flFogMaxDensityMultiplier
 	[SchemaMember("CPlayerVisibility", "m_flFogMaxDensityMultiplier")]
-	public float FogMaxDensityMultiplier
+	public virtual float FogMaxDensityMultiplier
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogMaxDensityMultiplier"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogMaxDensityMultiplier", value); }
@@ -45,7 +45,7 @@ public partial class CPlayerVisibility : CBaseEntity
 
 	// m_flFadeTime
 	[SchemaMember("CPlayerVisibility", "m_flFadeTime")]
-	public float FadeTime
+	public virtual float FadeTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFadeTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFadeTime", value); }
@@ -53,7 +53,7 @@ public partial class CPlayerVisibility : CBaseEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CPlayerVisibility", "m_bStartDisabled")]
-	public bool StartDisabled
+	public virtual bool StartDisabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bStartDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bStartDisabled", value); }
@@ -61,16 +61,16 @@ public partial class CPlayerVisibility : CBaseEntity
 
 	// m_bIsEnabled
 	[SchemaMember("CPlayerVisibility", "m_bIsEnabled")]
-	public bool IsEnabled
+	public virtual bool IsEnabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bIsEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bIsEnabled", value); }
 	}
 
-	public void VisibilityStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flVisibilityStrength");
-	public void FogDistanceMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFogDistanceMultiplier");
-	public void FogMaxDensityMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFogMaxDensityMultiplier");
-	public void FadeTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFadeTime");
-	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_bStartDisabled");
-	public void IsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_bIsEnabled");
+	public virtual void VisibilityStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flVisibilityStrength");
+	public virtual void FogDistanceMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFogDistanceMultiplier");
+	public virtual void FogMaxDensityMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFogMaxDensityMultiplier");
+	public virtual void FadeTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFadeTime");
+	public virtual void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_bStartDisabled");
+	public virtual void IsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_bIsEnabled");
 }

@@ -21,7 +21,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iKills
 	[SchemaMember("CSPerRoundStats_t", "m_iKills")]
-	public Int32 Kills
+	public virtual Int32 Kills
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iKills"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iKills", value); }
@@ -29,7 +29,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iDeaths
 	[SchemaMember("CSPerRoundStats_t", "m_iDeaths")]
-	public Int32 Deaths
+	public virtual Int32 Deaths
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iDeaths"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iDeaths", value); }
@@ -37,7 +37,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iAssists
 	[SchemaMember("CSPerRoundStats_t", "m_iAssists")]
-	public Int32 Assists
+	public virtual Int32 Assists
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iAssists"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iAssists", value); }
@@ -45,7 +45,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iDamage
 	[SchemaMember("CSPerRoundStats_t", "m_iDamage")]
-	public Int32 Damage
+	public virtual Int32 Damage
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iDamage"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iDamage", value); }
@@ -53,7 +53,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iEquipmentValue
 	[SchemaMember("CSPerRoundStats_t", "m_iEquipmentValue")]
-	public Int32 EquipmentValue
+	public virtual Int32 EquipmentValue
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iEquipmentValue"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iEquipmentValue", value); }
@@ -61,7 +61,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iMoneySaved
 	[SchemaMember("CSPerRoundStats_t", "m_iMoneySaved")]
-	public Int32 MoneySaved
+	public virtual Int32 MoneySaved
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iMoneySaved"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iMoneySaved", value); }
@@ -69,7 +69,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iKillReward
 	[SchemaMember("CSPerRoundStats_t", "m_iKillReward")]
-	public Int32 KillReward
+	public virtual Int32 KillReward
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iKillReward"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iKillReward", value); }
@@ -77,7 +77,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iLiveTime
 	[SchemaMember("CSPerRoundStats_t", "m_iLiveTime")]
-	public Int32 LiveTime
+	public virtual Int32 LiveTime
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iLiveTime"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iLiveTime", value); }
@@ -85,7 +85,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iHeadShotKills
 	[SchemaMember("CSPerRoundStats_t", "m_iHeadShotKills")]
-	public Int32 HeadShotKills
+	public virtual Int32 HeadShotKills
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iHeadShotKills"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iHeadShotKills", value); }
@@ -93,7 +93,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iObjective
 	[SchemaMember("CSPerRoundStats_t", "m_iObjective")]
-	public Int32 Objective
+	public virtual Int32 Objective
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iObjective"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iObjective", value); }
@@ -101,7 +101,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iCashEarned
 	[SchemaMember("CSPerRoundStats_t", "m_iCashEarned")]
-	public Int32 CashEarned
+	public virtual Int32 CashEarned
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iCashEarned"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iCashEarned", value); }
@@ -109,7 +109,7 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iUtilityDamage
 	[SchemaMember("CSPerRoundStats_t", "m_iUtilityDamage")]
-	public Int32 UtilityDamage
+	public virtual Int32 UtilityDamage
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iUtilityDamage"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iUtilityDamage", value); }
@@ -117,23 +117,23 @@ public partial class CSPerRoundStats_t : NativeObject
 
 	// m_iEnemiesFlashed
 	[SchemaMember("CSPerRoundStats_t", "m_iEnemiesFlashed")]
-	public Int32 EnemiesFlashed
+	public virtual Int32 EnemiesFlashed
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iEnemiesFlashed"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iEnemiesFlashed", value); }
 	}
 
-	public void KillsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iKills");
-	public void DeathsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iDeaths");
-	public void AssistsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iAssists");
-	public void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iDamage");
-	public void EquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iEquipmentValue");
-	public void MoneySavedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iMoneySaved");
-	public void KillRewardPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iKillReward");
-	public void LiveTimePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iLiveTime");
-	public void HeadShotKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iHeadShotKills");
-	public void ObjectivePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iObjective");
-	public void CashEarnedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iCashEarned");
-	public void UtilityDamagePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iUtilityDamage");
-	public void EnemiesFlashedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iEnemiesFlashed");
+	public virtual void KillsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iKills");
+	public virtual void DeathsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iDeaths");
+	public virtual void AssistsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iAssists");
+	public virtual void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iDamage");
+	public virtual void EquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iEquipmentValue");
+	public virtual void MoneySavedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iMoneySaved");
+	public virtual void KillRewardPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iKillReward");
+	public virtual void LiveTimePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iLiveTime");
+	public virtual void HeadShotKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iHeadShotKills");
+	public virtual void ObjectivePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iObjective");
+	public virtual void CashEarnedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iCashEarned");
+	public virtual void UtilityDamagePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iUtilityDamage");
+	public virtual void EnemiesFlashedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iEnemiesFlashed");
 }

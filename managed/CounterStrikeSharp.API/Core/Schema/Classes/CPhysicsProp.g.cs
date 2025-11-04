@@ -21,35 +21,35 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_MotionEnabled
 	[SchemaMember("CPhysicsProp", "m_MotionEnabled")]
-	public CEntityIOOutput MotionEnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_MotionEnabled");
+	public virtual CEntityIOOutput MotionEnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_MotionEnabled");
 
 	// m_OnAwakened
 	[SchemaMember("CPhysicsProp", "m_OnAwakened")]
-	public CEntityIOOutput OnAwakened => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAwakened");
+	public virtual CEntityIOOutput OnAwakened => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAwakened");
 
 	// m_OnAwake
 	[SchemaMember("CPhysicsProp", "m_OnAwake")]
-	public CEntityIOOutput OnAwake => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAwake");
+	public virtual CEntityIOOutput OnAwake => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAwake");
 
 	// m_OnAsleep
 	[SchemaMember("CPhysicsProp", "m_OnAsleep")]
-	public CEntityIOOutput OnAsleep => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAsleep");
+	public virtual CEntityIOOutput OnAsleep => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAsleep");
 
 	// m_OnPlayerUse
 	[SchemaMember("CPhysicsProp", "m_OnPlayerUse")]
-	public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerUse");
+	public virtual CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerUse");
 
 	// m_OnOutOfWorld
 	[SchemaMember("CPhysicsProp", "m_OnOutOfWorld")]
-	public CEntityIOOutput OnOutOfWorld => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnOutOfWorld");
+	public virtual CEntityIOOutput OnOutOfWorld => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnOutOfWorld");
 
 	// m_OnPlayerPickup
 	[SchemaMember("CPhysicsProp", "m_OnPlayerPickup")]
-	public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerPickup");
+	public virtual CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerPickup");
 
 	// m_bForceNavIgnore
 	[SchemaMember("CPhysicsProp", "m_bForceNavIgnore")]
-	public bool ForceNavIgnore
+	public virtual bool ForceNavIgnore
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore", value); }
@@ -57,7 +57,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bNoNavmeshBlocker
 	[SchemaMember("CPhysicsProp", "m_bNoNavmeshBlocker")]
-	public bool NoNavmeshBlocker
+	public virtual bool NoNavmeshBlocker
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker", value); }
@@ -65,7 +65,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bForceNpcExclude
 	[SchemaMember("CPhysicsProp", "m_bForceNpcExclude")]
-	public bool ForceNpcExclude
+	public virtual bool ForceNpcExclude
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude", value); }
@@ -73,7 +73,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_massScale
 	[SchemaMember("CPhysicsProp", "m_massScale")]
-	public float MassScale
+	public virtual float MassScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_massScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_massScale", value); }
@@ -81,7 +81,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_buoyancyScale
 	[SchemaMember("CPhysicsProp", "m_buoyancyScale")]
-	public float BuoyancyScale
+	public virtual float BuoyancyScale
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_buoyancyScale"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_buoyancyScale", value); }
@@ -89,7 +89,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_damageType
 	[SchemaMember("CPhysicsProp", "m_damageType")]
-	public Int32 DamageType
+	public virtual Int32 DamageType
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageType"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageType", value); }
@@ -97,7 +97,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_damageToEnableMotion
 	[SchemaMember("CPhysicsProp", "m_damageToEnableMotion")]
-	public Int32 DamageToEnableMotion
+	public virtual Int32 DamageToEnableMotion
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageToEnableMotion"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageToEnableMotion", value); }
@@ -105,7 +105,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_flForceToEnableMotion
 	[SchemaMember("CPhysicsProp", "m_flForceToEnableMotion")]
-	public float ForceToEnableMotion
+	public virtual float ForceToEnableMotion
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_flForceToEnableMotion"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_flForceToEnableMotion", value); }
@@ -113,7 +113,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bThrownByPlayer
 	[SchemaMember("CPhysicsProp", "m_bThrownByPlayer")]
-	public bool ThrownByPlayer
+	public virtual bool ThrownByPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bThrownByPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bThrownByPlayer", value); }
@@ -121,7 +121,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bDroppedByPlayer
 	[SchemaMember("CPhysicsProp", "m_bDroppedByPlayer")]
-	public bool DroppedByPlayer
+	public virtual bool DroppedByPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bDroppedByPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bDroppedByPlayer", value); }
@@ -129,7 +129,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bTouchedByPlayer
 	[SchemaMember("CPhysicsProp", "m_bTouchedByPlayer")]
-	public bool TouchedByPlayer
+	public virtual bool TouchedByPlayer
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bTouchedByPlayer"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bTouchedByPlayer", value); }
@@ -137,7 +137,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bFirstCollisionAfterLaunch
 	[SchemaMember("CPhysicsProp", "m_bFirstCollisionAfterLaunch")]
-	public bool FirstCollisionAfterLaunch
+	public virtual bool FirstCollisionAfterLaunch
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bFirstCollisionAfterLaunch"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bFirstCollisionAfterLaunch", value); }
@@ -145,7 +145,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bHasBeenAwakened
 	[SchemaMember("CPhysicsProp", "m_bHasBeenAwakened")]
-	public bool HasBeenAwakened
+	public virtual bool HasBeenAwakened
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bHasBeenAwakened"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bHasBeenAwakened", value); }
@@ -153,7 +153,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bIsOverrideProp
 	[SchemaMember("CPhysicsProp", "m_bIsOverrideProp")]
-	public bool IsOverrideProp
+	public virtual bool IsOverrideProp
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp", value); }
@@ -161,7 +161,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_flLastBurn
 	[SchemaMember("CPhysicsProp", "m_flLastBurn")]
-	public float LastBurn
+	public virtual float LastBurn
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_flLastBurn"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_flLastBurn", value); }
@@ -169,7 +169,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_nDynamicContinuousContactBehavior
 	[SchemaMember("CPhysicsProp", "m_nDynamicContinuousContactBehavior")]
-	public DynamicContinuousContactBehavior_t DynamicContinuousContactBehavior
+	public virtual DynamicContinuousContactBehavior_t DynamicContinuousContactBehavior
 	{
 		get { return Schema.GetValueType<DynamicContinuousContactBehavior_t>(this.Handle, "CPhysicsProp", "m_nDynamicContinuousContactBehavior"); }
 		set { Schema.SetValueType<DynamicContinuousContactBehavior_t>(this.Handle, "CPhysicsProp", "m_nDynamicContinuousContactBehavior", value); }
@@ -177,7 +177,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_fNextCheckDisableMotionContactsTime
 	[SchemaMember("CPhysicsProp", "m_fNextCheckDisableMotionContactsTime")]
-	public float NextCheckDisableMotionContactsTime
+	public virtual float NextCheckDisableMotionContactsTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_fNextCheckDisableMotionContactsTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_fNextCheckDisableMotionContactsTime", value); }
@@ -185,7 +185,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_iInitialGlowState
 	[SchemaMember("CPhysicsProp", "m_iInitialGlowState")]
-	public Int32 InitialGlowState
+	public virtual Int32 InitialGlowState
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_iInitialGlowState"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_iInitialGlowState", value); }
@@ -193,7 +193,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_nGlowRange
 	[SchemaMember("CPhysicsProp", "m_nGlowRange")]
-	public Int32 GlowRange
+	public virtual Int32 GlowRange
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRange"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRange", value); }
@@ -201,7 +201,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_nGlowRangeMin
 	[SchemaMember("CPhysicsProp", "m_nGlowRangeMin")]
-	public Int32 GlowRangeMin
+	public virtual Int32 GlowRangeMin
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRangeMin"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRangeMin", value); }
@@ -209,7 +209,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_glowColor
 	[SchemaMember("CPhysicsProp", "m_glowColor")]
-	public Color GlowColor
+	public virtual Color GlowColor
 	{
 		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPhysicsProp", "m_glowColor"); }
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPhysicsProp", "m_glowColor", value); }
@@ -217,7 +217,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bShouldAutoConvertBackFromDebris
 	[SchemaMember("CPhysicsProp", "m_bShouldAutoConvertBackFromDebris")]
-	public bool ShouldAutoConvertBackFromDebris
+	public virtual bool ShouldAutoConvertBackFromDebris
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bShouldAutoConvertBackFromDebris"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bShouldAutoConvertBackFromDebris", value); }
@@ -225,7 +225,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bMuteImpactEffects
 	[SchemaMember("CPhysicsProp", "m_bMuteImpactEffects")]
-	public bool MuteImpactEffects
+	public virtual bool MuteImpactEffects
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bMuteImpactEffects"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bMuteImpactEffects", value); }
@@ -233,7 +233,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bAcceptDamageFromHeldObjects
 	[SchemaMember("CPhysicsProp", "m_bAcceptDamageFromHeldObjects")]
-	public bool AcceptDamageFromHeldObjects
+	public virtual bool AcceptDamageFromHeldObjects
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAcceptDamageFromHeldObjects"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAcceptDamageFromHeldObjects", value); }
@@ -241,7 +241,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bEnableUseOutput
 	[SchemaMember("CPhysicsProp", "m_bEnableUseOutput")]
-	public bool EnableUseOutput
+	public virtual bool EnableUseOutput
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput", value); }
@@ -249,7 +249,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_CrateType
 	[SchemaMember("CPhysicsProp", "m_CrateType")]
-	public CPhysicsPropCrateType_t CrateType
+	public virtual CPhysicsPropCrateType_t CrateType
 	{
 		get { return Schema.GetValueType<CPhysicsPropCrateType_t>(this.Handle, "CPhysicsProp", "m_CrateType"); }
 		set { Schema.SetValueType<CPhysicsPropCrateType_t>(this.Handle, "CPhysicsProp", "m_CrateType", value); }
@@ -257,15 +257,15 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_strItemClass
 	[SchemaMember("CPhysicsProp", "m_strItemClass")]
-	public Span<string> StrItemClass => Schema.GetFixedArray<string>(this.Handle, "CPhysicsProp", "m_strItemClass", 4);
+	public virtual Span<string> StrItemClass => Schema.GetFixedArray<string>(this.Handle, "CPhysicsProp", "m_strItemClass", 4);
 
 	// m_nItemCount
 	[SchemaMember("CPhysicsProp", "m_nItemCount")]
-	public Span<Int32> ItemCount => Schema.GetFixedArray<Int32>(this.Handle, "CPhysicsProp", "m_nItemCount", 4);
+	public virtual Span<Int32> ItemCount => Schema.GetFixedArray<Int32>(this.Handle, "CPhysicsProp", "m_nItemCount", 4);
 
 	// m_bRemovableForAmmoBalancing
 	[SchemaMember("CPhysicsProp", "m_bRemovableForAmmoBalancing")]
-	public bool RemovableForAmmoBalancing
+	public virtual bool RemovableForAmmoBalancing
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bRemovableForAmmoBalancing"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bRemovableForAmmoBalancing", value); }
@@ -273,7 +273,7 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bAwake
 	[SchemaMember("CPhysicsProp", "m_bAwake")]
-	public bool Awake
+	public virtual bool Awake
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAwake"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAwake", value); }
@@ -281,11 +281,11 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bAttachedToReferenceFrame
 	[SchemaMember("CPhysicsProp", "m_bAttachedToReferenceFrame")]
-	public bool AttachedToReferenceFrame
+	public virtual bool AttachedToReferenceFrame
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAttachedToReferenceFrame"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAttachedToReferenceFrame", value); }
 	}
 
-	public void AwakePropertyChanged() => Utilities.SetStateChanged(this, "CPhysicsProp", "m_bAwake");
+	public virtual void AwakePropertyChanged() => Utilities.SetStateChanged(this, "CPhysicsProp", "m_bAwake");
 }

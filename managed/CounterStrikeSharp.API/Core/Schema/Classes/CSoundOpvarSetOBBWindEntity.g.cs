@@ -21,7 +21,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_vMins
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_vMins")]
-	public Vector3 Mins
+	public virtual Vector3 Mins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vMins", value); }
@@ -29,7 +29,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_vMaxs
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_vMaxs")]
-	public Vector3 Maxs
+	public virtual Vector3 Maxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vMaxs", value); }
@@ -37,7 +37,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_vDistanceMins
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_vDistanceMins")]
-	public Vector3 DistanceMins
+	public virtual Vector3 DistanceMins
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vDistanceMins"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vDistanceMins", value); }
@@ -45,7 +45,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_vDistanceMaxs
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_vDistanceMaxs")]
-	public Vector3 DistanceMaxs
+	public virtual Vector3 DistanceMaxs
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vDistanceMaxs"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vDistanceMaxs", value); }
@@ -53,7 +53,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_flWindMin
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_flWindMin")]
-	public float WindMin
+	public virtual float WindMin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMin", value); }
@@ -61,7 +61,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_flWindMax
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_flWindMax")]
-	public float WindMax
+	public virtual float WindMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMax", value); }
@@ -69,7 +69,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_flWindMapMin
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_flWindMapMin")]
-	public float WindMapMin
+	public virtual float WindMapMin
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMapMin"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMapMin", value); }
@@ -77,7 +77,7 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 
 	// m_flWindMapMax
 	[SchemaMember("CSoundOpvarSetOBBWindEntity", "m_flWindMapMax")]
-	public float WindMapMax
+	public virtual float WindMapMax
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMapMax"); }
 		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMapMax", value); }

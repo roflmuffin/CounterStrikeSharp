@@ -21,15 +21,15 @@ public partial class ConstraintSoundInfo : NativeObject
 
 	// m_vSampler
 	[SchemaMember("ConstraintSoundInfo", "m_vSampler")]
-	public VelocitySampler Sampler => Schema.GetDeclaredClass<VelocitySampler>(this.Handle, "ConstraintSoundInfo", "m_vSampler");
+	public virtual VelocitySampler Sampler => Schema.GetDeclaredClass<VelocitySampler>(this.Handle, "ConstraintSoundInfo", "m_vSampler");
 
 	// m_soundProfile
 	[SchemaMember("ConstraintSoundInfo", "m_soundProfile")]
-	public SimpleConstraintSoundProfile SoundProfile => Schema.GetDeclaredClass<SimpleConstraintSoundProfile>(this.Handle, "ConstraintSoundInfo", "m_soundProfile");
+	public virtual SimpleConstraintSoundProfile SoundProfile => Schema.GetDeclaredClass<SimpleConstraintSoundProfile>(this.Handle, "ConstraintSoundInfo", "m_soundProfile");
 
 	// m_forwardAxis
 	[SchemaMember("ConstraintSoundInfo", "m_forwardAxis")]
-	public Vector3 ForwardAxis
+	public virtual Vector3 ForwardAxis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "ConstraintSoundInfo", "m_forwardAxis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "ConstraintSoundInfo", "m_forwardAxis", value); }
@@ -37,7 +37,7 @@ public partial class ConstraintSoundInfo : NativeObject
 
 	// m_iszTravelSoundFwd
 	[SchemaMember("ConstraintSoundInfo", "m_iszTravelSoundFwd")]
-	public string TravelSoundFwd
+	public virtual string TravelSoundFwd
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundFwd"); }
 		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundFwd", value); }
@@ -45,7 +45,7 @@ public partial class ConstraintSoundInfo : NativeObject
 
 	// m_iszTravelSoundBack
 	[SchemaMember("ConstraintSoundInfo", "m_iszTravelSoundBack")]
-	public string TravelSoundBack
+	public virtual string TravelSoundBack
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack"); }
 		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack", value); }
@@ -53,11 +53,11 @@ public partial class ConstraintSoundInfo : NativeObject
 
 	// m_iszReversalSounds
 	[SchemaMember("ConstraintSoundInfo", "m_iszReversalSounds")]
-	public Span<string> ReversalSounds => Schema.GetFixedArray<string>(this.Handle, "ConstraintSoundInfo", "m_iszReversalSounds", 3);
+	public virtual Span<string> ReversalSounds => Schema.GetFixedArray<string>(this.Handle, "ConstraintSoundInfo", "m_iszReversalSounds", 3);
 
 	// m_bPlayTravelSound
 	[SchemaMember("ConstraintSoundInfo", "m_bPlayTravelSound")]
-	public bool PlayTravelSound
+	public virtual bool PlayTravelSound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayTravelSound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayTravelSound", value); }
@@ -65,7 +65,7 @@ public partial class ConstraintSoundInfo : NativeObject
 
 	// m_bPlayReversalSound
 	[SchemaMember("ConstraintSoundInfo", "m_bPlayReversalSound")]
-	public bool PlayReversalSound
+	public virtual bool PlayReversalSound
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayReversalSound"); }
 		set { Schema.SetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayReversalSound", value); }

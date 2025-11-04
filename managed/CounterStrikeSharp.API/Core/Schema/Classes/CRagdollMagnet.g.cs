@@ -21,7 +21,7 @@ public partial class CRagdollMagnet : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CRagdollMagnet", "m_bDisabled")]
-	public bool Disabled
+	public virtual bool Disabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled", value); }
@@ -29,7 +29,7 @@ public partial class CRagdollMagnet : CPointEntity
 
 	// m_radius
 	[SchemaMember("CRagdollMagnet", "m_radius")]
-	public float Radius
+	public virtual float Radius
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollMagnet", "m_radius"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollMagnet", "m_radius", value); }
@@ -37,7 +37,7 @@ public partial class CRagdollMagnet : CPointEntity
 
 	// m_force
 	[SchemaMember("CRagdollMagnet", "m_force")]
-	public float Force
+	public virtual float Force
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CRagdollMagnet", "m_force"); }
 		set { Schema.SetValueType<float>(this.Handle, "CRagdollMagnet", "m_force", value); }
@@ -45,7 +45,7 @@ public partial class CRagdollMagnet : CPointEntity
 
 	// m_axis
 	[SchemaMember("CRagdollMagnet", "m_axis")]
-	public Vector3 Axis
+	public virtual Vector3 Axis
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CRagdollMagnet", "m_axis"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CRagdollMagnet", "m_axis", value); }

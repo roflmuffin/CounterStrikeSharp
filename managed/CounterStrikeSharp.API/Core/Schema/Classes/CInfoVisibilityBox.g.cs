@@ -21,7 +21,7 @@ public partial class CInfoVisibilityBox : CBaseEntity
 
 	// m_nMode
 	[SchemaMember("CInfoVisibilityBox", "m_nMode")]
-	public Int32 Mode
+	public virtual Int32 Mode
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoVisibilityBox", "m_nMode"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CInfoVisibilityBox", "m_nMode", value); }
@@ -29,7 +29,7 @@ public partial class CInfoVisibilityBox : CBaseEntity
 
 	// m_vBoxSize
 	[SchemaMember("CInfoVisibilityBox", "m_vBoxSize")]
-	public Vector3 BoxSize
+	public virtual Vector3 BoxSize
 	{
 		get { return Schema.GetValueType<Vector3>(this.Handle, "CInfoVisibilityBox", "m_vBoxSize"); }
 		set { Schema.SetValueType<Vector3>(this.Handle, "CInfoVisibilityBox", "m_vBoxSize", value); }
@@ -37,13 +37,13 @@ public partial class CInfoVisibilityBox : CBaseEntity
 
 	// m_bEnabled
 	[SchemaMember("CInfoVisibilityBox", "m_bEnabled")]
-	public bool Enabled
+	public virtual bool Enabled
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled", value); }
 	}
 
-	public void ModePropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_nMode");
-	public void BoxSizePropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_vBoxSize");
-	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_bEnabled");
+	public virtual void ModePropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_nMode");
+	public virtual void BoxSizePropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_vBoxSize");
+	public virtual void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_bEnabled");
 }

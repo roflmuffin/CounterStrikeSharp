@@ -21,7 +21,7 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_iszSpawnTargetName
 	[SchemaMember("CPointOrient", "m_iszSpawnTargetName")]
-	public string SpawnTargetName
+	public virtual string SpawnTargetName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointOrient", "m_iszSpawnTargetName"); }
 		set { Schema.SetString(this.Handle, "CPointOrient", "m_iszSpawnTargetName", value); }
@@ -29,11 +29,11 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_hTarget
 	[SchemaMember("CPointOrient", "m_hTarget")]
-	public new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointOrient", "m_hTarget");
+	public virtual new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointOrient", "m_hTarget");
 
 	// m_bActive
 	[SchemaMember("CPointOrient", "m_bActive")]
-	public bool Active
+	public virtual bool Active
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CPointOrient", "m_bActive"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CPointOrient", "m_bActive", value); }
@@ -41,7 +41,7 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_nGoalDirection
 	[SchemaMember("CPointOrient", "m_nGoalDirection")]
-	public PointOrientGoalDirectionType_t GoalDirection
+	public virtual PointOrientGoalDirectionType_t GoalDirection
 	{
 		get { return Schema.GetValueType<PointOrientGoalDirectionType_t>(this.Handle, "CPointOrient", "m_nGoalDirection"); }
 		set { Schema.SetValueType<PointOrientGoalDirectionType_t>(this.Handle, "CPointOrient", "m_nGoalDirection", value); }
@@ -49,7 +49,7 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_nConstraint
 	[SchemaMember("CPointOrient", "m_nConstraint")]
-	public PointOrientConstraint_t Constraint
+	public virtual PointOrientConstraint_t Constraint
 	{
 		get { return Schema.GetValueType<PointOrientConstraint_t>(this.Handle, "CPointOrient", "m_nConstraint"); }
 		set { Schema.SetValueType<PointOrientConstraint_t>(this.Handle, "CPointOrient", "m_nConstraint", value); }
@@ -57,7 +57,7 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_flMaxTurnRate
 	[SchemaMember("CPointOrient", "m_flMaxTurnRate")]
-	public float MaxTurnRate
+	public virtual float MaxTurnRate
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointOrient", "m_flMaxTurnRate"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointOrient", "m_flMaxTurnRate", value); }
@@ -65,7 +65,7 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_flLastGameTime
 	[SchemaMember("CPointOrient", "m_flLastGameTime")]
-	public float LastGameTime
+	public virtual float LastGameTime
 	{
 		get { return Schema.GetValueType<float>(this.Handle, "CPointOrient", "m_flLastGameTime"); }
 		set { Schema.SetValueType<float>(this.Handle, "CPointOrient", "m_flLastGameTime", value); }

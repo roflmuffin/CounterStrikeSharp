@@ -21,15 +21,15 @@ public partial class CTeam : CBaseEntity
 
 	// m_aPlayerControllers
 	[SchemaMember("CTeam", "m_aPlayerControllers")]
-	public NetworkedVector<CHandle<CBasePlayerController>> PlayerControllers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerController>>>(this.Handle, "CTeam", "m_aPlayerControllers");
+	public virtual NetworkedVector<CHandle<CBasePlayerController>> PlayerControllers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerController>>>(this.Handle, "CTeam", "m_aPlayerControllers");
 
 	// m_aPlayers
 	[SchemaMember("CTeam", "m_aPlayers")]
-	public NetworkedVector<CHandle<CBasePlayerPawn>> Players => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerPawn>>>(this.Handle, "CTeam", "m_aPlayers");
+	public virtual NetworkedVector<CHandle<CBasePlayerPawn>> Players => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerPawn>>>(this.Handle, "CTeam", "m_aPlayers");
 
 	// m_iScore
 	[SchemaMember("CTeam", "m_iScore")]
-	public Int32 Score
+	public virtual Int32 Score
 	{
 		get { return Schema.GetValueType<Int32>(this.Handle, "CTeam", "m_iScore"); }
 		set { Schema.SetValueType<Int32>(this.Handle, "CTeam", "m_iScore", value); }
@@ -37,14 +37,14 @@ public partial class CTeam : CBaseEntity
 
 	// m_szTeamname
 	[SchemaMember("CTeam", "m_szTeamname")]
-	public string Teamname
+	public virtual string Teamname
 	{
 		get { return Schema.GetString(this.Handle, "CTeam", "m_szTeamname"); }
 		set { Schema.SetStringBytes(this.Handle, "CTeam", "m_szTeamname", value, 129); }
 	}
 
-	public void PlayerControllersPropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_aPlayerControllers");
-	public void PlayersPropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_aPlayers");
-	public void ScorePropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_iScore");
-	public void TeamnamePropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_szTeamname");
+	public virtual void PlayerControllersPropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_aPlayerControllers");
+	public virtual void PlayersPropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_aPlayers");
+	public virtual void ScorePropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_iScore");
+	public virtual void TeamnamePropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_szTeamname");
 }
