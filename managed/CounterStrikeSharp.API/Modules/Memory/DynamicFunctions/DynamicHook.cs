@@ -1,5 +1,6 @@
 using System;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
@@ -19,7 +20,7 @@ public class DynamicHook : NativeObject
     {
         return GetReturn<T>();
     }
-    
+
     public T GetReturn<T>()
     {
         return NativeAPI.DynamicHookGetReturn<T>(Handle, (int)typeof(T).ToValidDataType());

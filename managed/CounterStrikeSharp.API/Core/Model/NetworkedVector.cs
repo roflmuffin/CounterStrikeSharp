@@ -7,6 +7,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.Natives;
+using CounterStrikeSharp.API.Natives.Structs;
 
 namespace CounterStrikeSharp.API.Core;
 

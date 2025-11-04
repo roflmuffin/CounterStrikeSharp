@@ -30,6 +30,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Core
 {

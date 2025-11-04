@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Natives;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Memory
@@ -72,12 +73,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
             {
                 return types[Enum.GetUnderlyingType(type)];
             }
-            
+
             Core.Application.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
 
             return null;
         }
-        
+
         public static DataType ToValidDataType(this Type type)
         {
             if (types.ContainsKey(type)) return types[type];
@@ -91,7 +92,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             {
                 return types[Enum.GetUnderlyingType(type)];
             }
-            
+
             throw new NotSupportedException("Data type not supported:" + type.FullName);
         }
     }

@@ -107,7 +107,7 @@ public class WithCheckTransmitPlugin : BasePlugin
                 {
                     // Calling 'Remove' will clear the entity index of the target player pawn from the transmission list
                     // so it won't be transmitted for the 'player'.
-                    info.TransmitEntities.Remove(targetPlayer.Pawn);
+                    info.TransmitEntities.Remove(targetPlayer.Pawn.EntityIndex);
                 }
             }
         });

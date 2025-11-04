@@ -12,6 +12,8 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Natives;
+using CounterStrikeSharp.API.Natives.Structs;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -26,6 +28,10 @@ public partial class CSprite : CBaseModelEntity
 	// m_hAttachedToEntity
 	[SchemaMember("CSprite", "m_hAttachedToEntity")]
 	public virtual CHandle<CBaseEntity> AttachedToEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSprite", "m_hAttachedToEntity");
+
+	// m_nAttachment
+	[SchemaMember("CSprite", "m_nAttachment")]
+	public virtual AttachmentHandle_t Attachment => Schema.GetDeclaredClass<AttachmentHandle_t>(this.Handle, "CSprite", "m_nAttachment");
 
 	// m_flSpriteFramerate
 	[SchemaMember("CSprite", "m_flSpriteFramerate")]

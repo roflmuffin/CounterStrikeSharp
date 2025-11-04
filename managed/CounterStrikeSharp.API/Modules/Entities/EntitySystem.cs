@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.Natives.Structs;
 
 namespace CounterStrikeSharp.API.Modules.Entities;
 
@@ -26,45 +27,51 @@ public static class EntitySystem
 
     public static IntPtr? GetEntityByHandle<T>(CHandle<T> handle) where T : NativeEntity
     {
-        if (!handle.IsValid)
-            return null;
+        unsafe
+        {
+            if (!handle.IsValid)
+                return null;
 
-        IntPtr pChunkToUse = IdentityChunks[(int)(handle.Index / MaxEntitiesPerChunk)];
-        if (pChunkToUse == IntPtr.Zero)
-            return null;
+            IntPtr pChunkToUse = IdentityChunks[(int)(handle.EntityIndex / MaxEntitiesPerChunk)];
+            if (pChunkToUse == IntPtr.Zero)
+                return null;
 
-        IntPtr pIdentityPtr = IntPtr.Add(pChunkToUse, SizeOfEntityIdentity * (int)(handle.Index % MaxEntitiesPerChunk));
+            IntPtr pIdentityPtr = IntPtr.Add(pChunkToUse, SizeOfEntityIdentity * (int)(handle.EntityIndex % MaxEntitiesPerChunk));
 
-        if (pIdentityPtr == IntPtr.Zero)
-            return null;
+            if (pIdentityPtr == IntPtr.Zero)
+                return null;
 
-        var foundHandle = new CEntityHandle(pIdentityPtr + HandleOffset);
+            var foundHandle = Unsafe.Read<CHandle<CEntityInstance>>((void*)(pIdentityPtr + HandleOffset));
 
-        if (foundHandle.Raw != handle.Raw)
-            return null;
+            if (foundHandle.Raw != handle.Raw)
+                return null;
 
-        return Marshal.ReadIntPtr(pIdentityPtr);
+            return Marshal.ReadIntPtr(pIdentityPtr);
+        }
     }
 
     public static IntPtr? GetEntityByIndex(uint index)
     {
-        if ((int)index <= -1 || index >= MaxEntities - 1) return null;
+        unsafe
+        {
+            if ((int)index <= -1 || index >= MaxEntities - 1) return null;
 
-        IntPtr pChunkToUse = IdentityChunks[(int)(index / MaxEntitiesPerChunk)];
-        if (pChunkToUse == IntPtr.Zero)
-            return null;
+            IntPtr pChunkToUse = IdentityChunks[(int)(index / MaxEntitiesPerChunk)];
+            if (pChunkToUse == IntPtr.Zero)
+                return null;
 
-        IntPtr pIdentityPtr = IntPtr.Add(pChunkToUse, SizeOfEntityIdentity * (int)(index % MaxEntitiesPerChunk));
+            IntPtr pIdentityPtr = IntPtr.Add(pChunkToUse, SizeOfEntityIdentity * (int)(index % MaxEntitiesPerChunk));
 
-        if (pIdentityPtr == IntPtr.Zero)
-            return null;
+            if (pIdentityPtr == IntPtr.Zero)
+                return null;
 
-        var foundHandle = new CEntityHandle(pIdentityPtr + HandleOffset);
+            var foundHandle = Unsafe.Read<CHandle<CEntityInstance>>((void*)(pIdentityPtr + HandleOffset));
 
-        if (foundHandle.Index != index)
-            return null;
+            if (foundHandle.EntityIndex != index)
+                return null;
 
-        return Marshal.ReadIntPtr(pIdentityPtr);
+            return Marshal.ReadIntPtr(pIdentityPtr);
+        }
     }
 
     public static uint GetRawHandleFromEntityPointer(IntPtr pointer)

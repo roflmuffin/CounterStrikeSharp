@@ -16,6 +16,7 @@
 
 using System;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Modules.Timers
 {

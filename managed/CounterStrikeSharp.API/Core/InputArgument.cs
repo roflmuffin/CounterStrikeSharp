@@ -18,6 +18,7 @@ using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Security;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -125,13 +126,13 @@ namespace CounterStrikeSharp.API.Core
         {
             return new InputArgument(value);
         }
-        
+
         [SecurityCritical]
         public static implicit operator InputArgument(NativeObject value)
         {
             return new InputArgument(value.Handle);
         }
-        
+
         [SecurityCritical]
         public static implicit operator InputArgument(NativeEntity value)
         {

@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Core;
 

@@ -12,6 +12,8 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Natives;
+using CounterStrikeSharp.API.Natives.Structs;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -158,6 +160,14 @@ public partial class CRopeKeyframe : CBaseModelEntity
 	// m_hEndPoint
 	[SchemaMember("CRopeKeyframe", "m_hEndPoint")]
 	public virtual CHandle<CBaseEntity> EndPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hEndPoint");
+
+	// m_iStartAttachment
+	[SchemaMember("CRopeKeyframe", "m_iStartAttachment")]
+	public virtual AttachmentHandle_t StartAttachment => Schema.GetDeclaredClass<AttachmentHandle_t>(this.Handle, "CRopeKeyframe", "m_iStartAttachment");
+
+	// m_iEndAttachment
+	[SchemaMember("CRopeKeyframe", "m_iEndAttachment")]
+	public virtual AttachmentHandle_t EndAttachment => Schema.GetDeclaredClass<AttachmentHandle_t>(this.Handle, "CRopeKeyframe", "m_iEndAttachment");
 
 	public virtual void RopeFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_RopeFlags");
 	public virtual void SlackPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Slack");

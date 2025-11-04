@@ -14,23 +14,18 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices;
-using System.Text;
-
-namespace CounterStrikeSharp.API
+namespace CounterStrikeSharp.API.Natives
 {
-    public abstract class NativeObject
+    public abstract class NativeObject : INativeHandle
     {
         public IntPtr Handle { get; internal set; }
+        public bool IsValid => Handle != IntPtr.Zero;
 
         protected NativeObject(IntPtr pointer)
         {
             Handle = pointer;
         }
-        
+
         /// <summary>
         /// Returns a new instance of the specified type using the pointer from the passed in object.
         /// </summary>

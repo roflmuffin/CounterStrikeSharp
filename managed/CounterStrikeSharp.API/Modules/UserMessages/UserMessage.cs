@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Modules.UserMessages;
 

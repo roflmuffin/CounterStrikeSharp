@@ -17,6 +17,7 @@
 using System;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Modules.Events
 {

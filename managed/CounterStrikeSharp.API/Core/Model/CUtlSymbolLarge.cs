@@ -1,4 +1,6 @@
-﻿namespace CounterStrikeSharp.API.Core;
+﻿using CounterStrikeSharp.API.Natives;
+
+namespace CounterStrikeSharp.API.Core;
 
 public class CUtlSymbolLarge : NativeObject
 {

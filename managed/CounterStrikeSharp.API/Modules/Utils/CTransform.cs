@@ -17,6 +17,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Modules.Utils
 {

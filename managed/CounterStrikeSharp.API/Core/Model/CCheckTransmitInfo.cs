@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Runtime.InteropServices;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Core
 {

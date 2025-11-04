@@ -16,6 +16,7 @@
 
 using System;
 using System.Drawing;
+using System.Numerics;
 using WarcraftPlugin.Effects;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Events;
@@ -67,10 +68,10 @@ namespace WarcraftPlugin.Races
 
         private void Dash(float distance)
         {
-            var directionVec = new Vector();
+            var directionVec = new Vector3();
 
-            NativeAPI.AngleVectors(Player.PlayerPawn.Value.EyeAngles.Handle, directionVec.Handle, IntPtr.Zero,
-                IntPtr.Zero);
+            // NativeAPI.AngleVectors(&Player.PlayerPawn.Value.EyeAngles, directionVec.Handle, IntPtr.Zero,
+            //     IntPtr.Zero);
 
             // Always shoot us up a little bit if were on the ground and not aiming up.
             if (Player.GroundEntity.IsValid != null && directionVec.Z < 0.275)
@@ -80,9 +81,7 @@ namespace WarcraftPlugin.Races
 
             directionVec *= distance;
 
-            Player.PlayerPawn.Value.AbsVelocity.X = directionVec.X;
-            Player.PlayerPawn.Value.AbsVelocity.Y = directionVec.Y;
-            Player.PlayerPawn.Value.AbsVelocity.Z = directionVec.Z;
+            Player.PlayerPawn.Value.AbsVelocity = directionVec;
         }
 
         private void PlayerHurtOther(GameEvent obj)

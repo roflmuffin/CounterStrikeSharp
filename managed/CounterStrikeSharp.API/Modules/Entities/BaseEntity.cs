@@ -15,6 +15,7 @@
  */
 
 using System;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Modules.Entities
 {

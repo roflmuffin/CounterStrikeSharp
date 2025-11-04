@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.Natives.Structs;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -19,17 +20,17 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     public CEntityInstance(uint rawHandle) : base(rawHandle)
     {
     }
-    
+
     /// <summary>
     /// Checks that the entity handle is valid and the handle points to a valid entity
     /// </summary>
     public bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
 
     [Obsolete("Use Index instead", true)]
-    public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.Index);
-    
-    public uint Index => EntityHandle.Index;
-    
+    public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.EntityIndex);
+
+    public uint Index => EntityHandle.EntityIndex;
+
     public string DesignerName => IsValid ? Entity?.DesignerName : null;
 
     public void Remove()
@@ -38,7 +39,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 
         VirtualFunctions.UTIL_Remove(this.Handle);
     }
-    
+
     public bool Equals(CEntityInstance? other)
     {
         return this.EntityHandle.Equals(other?.EntityHandle);
@@ -112,5 +113,5 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 public partial class CEntityIdentity
 {
     public unsafe CEntityInstance EntityInstance => new(Unsafe.Read<IntPtr>((void*)Handle));
-    public unsafe CHandle<CEntityInstance> EntityHandle => new(this.Handle + 0x10);
+    public unsafe CHandle<CEntityInstance> EntityHandle => Unsafe.Read<CHandle<CEntityInstance>>((void*)(this.Handle + 0x10));
 }

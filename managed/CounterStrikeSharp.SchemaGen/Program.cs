@@ -18,9 +18,7 @@ internal static partial class Program
     {
         "GameTime_t",
         "GameTick_t",
-        "AttachmentHandle_t",
         "CGameSceneNodeHandle",
-        "HSequence",
         "CAttributeManager::cached_attribute_float_t",
         "QuestProgress::Reason",
         "IChoreoServices::ScriptState_t",
@@ -201,6 +199,8 @@ internal static partial class Program
             builder.AppendLine("using CounterStrikeSharp.API.Modules.Memory;");
             builder.AppendLine("using CounterStrikeSharp.API.Modules.Utils;");
             builder.AppendLine("using CounterStrikeSharp.API.Core.Attributes;");
+            builder.AppendLine("using CounterStrikeSharp.API.Natives;");
+            builder.AppendLine("using CounterStrikeSharp.API.Natives.Structs;");
         }
 
         builder.AppendLine();

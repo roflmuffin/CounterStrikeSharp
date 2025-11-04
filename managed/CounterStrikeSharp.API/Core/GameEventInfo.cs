@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using CounterStrikeSharp.API.Natives;
 
 namespace CounterStrikeSharp.API.Core;
 
