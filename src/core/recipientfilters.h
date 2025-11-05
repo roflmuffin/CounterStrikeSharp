@@ -31,10 +31,7 @@ class CRecipientFilter : public IRecipientFilter
     bool IsInitMessage(void) const override { return m_bInitMessage; }
     const CPlayerBitVec& GetRecipients(void) const override { return m_Recipients; }
 
-    virtual CPlayerSlot GetExcludedPlayerDueToPrediction() const
-	{
-		return m_slotPlayerExcludedDueToPrediction;
-	}
+    virtual CPlayerSlot GetExcludedPlayerDueToPrediction() const { return m_slotPlayerExcludedDueToPrediction; }
 
     void AddRecipient(CPlayerSlot slot)
     {
@@ -55,7 +52,7 @@ class CRecipientFilter : public IRecipientFilter
   protected:
     CPlayerBitVec m_Recipients;
     CPlayerSlot m_slotPlayerExcludedDueToPrediction = -1;
-	NetChannelBufType_t m_nBufType = BUF_DEFAULT;
+    NetChannelBufType_t m_nBufType = BUF_DEFAULT;
     bool m_bInitMessage;
     bool m_bDoNotSuppressPrediction; // unused
 };
