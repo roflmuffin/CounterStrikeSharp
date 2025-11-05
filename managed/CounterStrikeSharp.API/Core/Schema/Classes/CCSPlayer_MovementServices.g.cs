@@ -182,4 +182,9 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecInputRotated")]
 	public Vector InputRotated => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated");
 
+    // m_bJumpApexPending
+	[SchemaMember("CCSPlayer_MovementServices", "m_bJumpApexPending")]
+	public ref bool JumpApexPending => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bJumpApexPending");
+
 }
+
