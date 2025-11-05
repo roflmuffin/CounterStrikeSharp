@@ -1,3 +1,9 @@
+## What's Changed in v1.0.346
+* chore: update server.json ([52550e3](https://github.com/roflmuffin/CounterStrikeSharp/commit/52550e31bc142ba672ac50b5b9e76b1681a6f510))
+* fix: changes for 2025-11-5 Update by [@himenekocn](https://github.com/himenekocn) in [#1107](https://github.com/roflmuffin/CounterStrikeSharp/pull/1107) ([e59e9cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/e59e9cf1485f6bdf26e12bce4f59f116ac68b03a))
+* feat: add localization for no permission error messages & spanish language support. by [@wiruwiru](https://github.com/wiruwiru) in [#1099](https://github.com/roflmuffin/CounterStrikeSharp/pull/1099) ([1568d07](https://github.com/roflmuffin/CounterStrikeSharp/commit/1568d077e8def7688069a91ed374b70841546b26))
+* feat: allow plugins to be loaded from subdirectories by [@Ravid-A](https://github.com/Ravid-A) in [#1031](https://github.com/roflmuffin/CounterStrikeSharp/pull/1031) ([55542db](https://github.com/roflmuffin/CounterStrikeSharp/commit/55542dba7c5318dfbb37b0862256f4dcde7cf0f4))
+
 ## What's Changed in v1.0.345
 * fix: update linux signature for GetCSWeaponDataFromKey ([b4e83df](https://github.com/roflmuffin/CounterStrikeSharp/commit/b4e83dfb4a1a1723c08ac79ea68da4ab8a0255fd))
 * feat(schema): update schema generator to use @GAMMACASE schema dumper format ([4ff2732](https://github.com/roflmuffin/CounterStrikeSharp/commit/4ff2732d8a55297c18cea6181b9022f56cd8fae3))
@@ -761,14 +767,14 @@
 * feat: add discord notify through GH actions ([59bff4f](https://github.com/roflmuffin/CounterStrikeSharp/commit/59bff4f500dfaccacb0b53584bf678c005a87598))
 
 ## What's Changed in v1.0.150
-* Log exception if plugin load fails using the `load` command by [@wiesendaniel](https://github.com/wiesendaniel) in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279) ([a2581d8](https://github.com/roflmuffin/CounterStrikeSharp/commit/a2581d8e9116e3ab505029720719a82e4dd2fac5))
+* Log exception if plugin load fails using the `load` command by [@D4n13X](https://github.com/D4n13X) in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279) ([a2581d8](https://github.com/roflmuffin/CounterStrikeSharp/commit/a2581d8e9116e3ab505029720719a82e4dd2fac5))
 * Change TerroristsPlanned to TerroristsPlanted in RoundEndReason by [@Ravid-A](https://github.com/Ravid-A) ([e7d190a](https://github.com/roflmuffin/CounterStrikeSharp/commit/e7d190a6f74f9ccbf30e16f8a6a92b36e037e9a4))
 * Menu system updates by [@B3none](https://github.com/B3none) ([5513d57](https://github.com/roflmuffin/CounterStrikeSharp/commit/5513d5710a20195922e725c9401ae1cb1291b3e8))
 * fix(Offsets/Win): CCSPlayer_ItemServices.RemoveWeapons() by [@M1kep](https://github.com/M1kep) ([e5c2236](https://github.com/roflmuffin/CounterStrikeSharp/commit/e5c223699ccb300558788f86850a8e478e893156))
 * Admin manager improvements by [@zonical](https://github.com/zonical) ([fa37c22](https://github.com/roflmuffin/CounterStrikeSharp/commit/fa37c222d9d8598a67cb2433c36b46a941813b14))
 
 ## New Contributors
-* [@wiesendaniel](https://github.com/wiesendaniel) made their first contribution in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279)
+* [@D4n13X](https://github.com/D4n13X) made their first contribution in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279)
 * [@Ravid-A](https://github.com/Ravid-A) made their first contribution
 * [@M1kep](https://github.com/M1kep) made their first contribution
 
