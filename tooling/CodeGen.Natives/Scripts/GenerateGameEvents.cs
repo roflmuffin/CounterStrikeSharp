@@ -11,6 +11,7 @@ public partial class Generators
         {
             Name = name;
         }
+
         public string Name { get; init; }
         public string NamePascalCase => Name.ToPascalCase();
         public List<GameEventKey> Keys { get; set; } = new();
@@ -23,6 +24,7 @@ public partial class Generators
             Name = name;
             Type = type;
         }
+
         public string Name { get; init; }
         public string Type { get; init; }
         public string NamePascalCase => Name.ToPascalCase();
@@ -71,7 +73,7 @@ public partial class Generators
         var allGameEvents = new Dictionary<string, GameEvent>();
 
         foreach (string url in GameEventFiles)
-        // foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(Path.GetFileName))
+            // foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(Path.GetFileName))
         {
             var file = await _httpClient.GetStringAsync($"{BaseUrl}/{url}");
             var deserialized = VdfConvert.Deserialize(file);
@@ -133,7 +135,7 @@ public partial class Generators
         // Remove the player_chat event as it's manually implemented
         allGameEvents.RemoveAll(e => e.Name == "player_chat");
 
-        var gameEventsString = string.Join("\n", allGameEvents.OrderBy(x => x.NamePascalCase).Select(gameEvent =>
+        var events = allGameEvents.OrderBy(x => x.NamePascalCase).Select(gameEvent =>
         {
             var propertyDefinition = gameEvent.Keys.OrderBy(p => p.NamePascalCase).Select(key =>
             {
@@ -142,43 +144,51 @@ public partial class Generators
                     ? $"{key.NamePascalCase}Param"
                     : key.NamePascalCase;
 
-                return $@"
-                {(!string.IsNullOrEmpty(key.Comment) ? "// " + key.Comment : "")}
-                public {key.MappedType} {propertyName}
-                {{
-                    get => {key.Getter};
-                    set => {key.Setter};
-                }}";
+                return $@"{(!string.IsNullOrEmpty(key.Comment) ? "// " + key.Comment : "")}
+    public {key.MappedType} {propertyName}
+    {{
+        get => {key.Getter};
+        set => {key.Setter};
+    }}";
             });
-            return $@"
-            [EventName(""{gameEvent.Name}"")]
-            public class Event{gameEvent.NamePascalCase} : GameEvent
-            {{
-                public Event{gameEvent.NamePascalCase}(IntPtr pointer) : base(pointer){{}}
-                public Event{gameEvent.NamePascalCase}(bool force) : base(""{gameEvent.Name}"", force){{}}
+            return (gameEvent, $@"
+[EventName(""{gameEvent.Name}"")]
+public class Event{gameEvent.NamePascalCase} : GameEvent
+{{
+    public Event{gameEvent.NamePascalCase}(IntPtr pointer) : base(pointer){{}}
+    public Event{gameEvent.NamePascalCase}(bool force) : base(""{gameEvent.Name}"", force){{}}
+    {string.Join("\n", propertyDefinition)}
+}}");
+        });
 
-                {string.Join("\n", propertyDefinition)}
-            }}";
-        }));
-
-
-        var result = $@"
-#nullable enable
+        var template = $@"#nullable enable
 using System;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Core.Attributes;
 
-namespace CounterStrikeSharp.API.Core
-{{
-    {gameEventsString}
-}}
+namespace CounterStrikeSharp.API.Core;
+<content>
 #nullable restore
 ";
 
-        Console.WriteLine($"Generated C# bindings for {allGameEvents.Count} game events successfully.");
+        var outputPath = Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Generated/GameEvents");
 
-        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/GameEvents.g.cs"),
-            result);
+        // Clear output directory
+        if (Directory.Exists(outputPath))
+        {
+            string[] files = Directory.GetFiles(outputPath, "*", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+        }
+
+        foreach (var (gameEvent, definition) in events)
+        {
+            File.WriteAllText(Path.Join(outputPath, $"Event{gameEvent.NamePascalCase}.g.cs"), template.Replace("<content>", definition));
+        }
+
+        Console.WriteLine($"Generated C# bindings for {allGameEvents.Count} game events successfully.");
     }
 }

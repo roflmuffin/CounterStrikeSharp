@@ -212,7 +212,7 @@ internal static partial class Program
     {
         var outputPath =
             args.FirstOrDefault() ??
-            "../CounterStrikeSharp.API/Core/Schema";
+            "../CounterStrikeSharp.API/Generated/Schema";
 
         // Concat together all enums and classes
         var allEnums = new SortedDictionary<string, SchemaEnum>();
@@ -407,9 +407,13 @@ internal static partial class Program
             parentFields = GetAllParentFields(schemaClass, allClasses).ToArray();
         }
 
-        if (schemaClass.Parent == null)
+        if (schemaClass.Parent == null && classNameCs != "CEntityInstance")
         {
             builder.Append($" : NativeObject");
+        }
+        else if (classNameCs == "CEntityInstance")
+        {
+            builder.Append($" : NativeEntity");
         }
 
         builder.AppendLine();
@@ -417,10 +421,12 @@ internal static partial class Program
 
         // All entity classes eventually derive from CEntityInstance,
         // which is the root networkable class.
-
-        builder.AppendLine(
-            $"    public {classNameCs} (IntPtr pointer) : base(pointer) {{}}");
-        builder.AppendLine();
+        if (classNameCs != "CEntityInstance")
+        {
+            builder.AppendLine(
+                $"    public {classNameCs} (IntPtr pointer) : base(pointer) {{}}");
+            builder.AppendLine();
+        }
 
         foreach (var field in schemaClass.Fields)
         {
