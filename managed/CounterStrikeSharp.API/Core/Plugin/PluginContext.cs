@@ -120,6 +120,11 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 Loader = eventargs.Loader;
                 Unload(hotReload: true);
                 Load(hotReload: true);
+                if (Plugin is BasePlugin basePlugin)
+                {
+                    basePlugin.UnregisterAllCapabilities();
+                    basePlugin.ReRegisterCapabilities();
+                }
                 Plugin.OnAllPluginsLoaded(hotReload: true);
             });
 
