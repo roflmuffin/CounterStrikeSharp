@@ -1,3 +1,11 @@
+## What's Changed in v1.0.347
+* chore: update signatures for GiveNamedItem by [@ianlucas](https://github.com/ianlucas) in [#1120](https://github.com/roflmuffin/CounterStrikeSharp/pull/1120) ([6461235](https://github.com/roflmuffin/CounterStrikeSharp/commit/6461235c2a5d2cafd1444cebcb0477e1c44ad670))
+* chore(generators): regenerate game events, schema & natives into `generated/` subfolder ([f32e745](https://github.com/roflmuffin/CounterStrikeSharp/commit/f32e74515b7a10beb06e1e35406ade8a80ceb6d2))
+* chore(generators): re-organise generated files ([0318713](https://github.com/roflmuffin/CounterStrikeSharp/commit/0318713cbeda9f0bda42811315fbafedf56c4ef4))
+* chore(deps): bump libraries/metamod-source from `4399ff0` to `07c708a` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1101](https://github.com/roflmuffin/CounterStrikeSharp/pull/1101) ([0322548](https://github.com/roflmuffin/CounterStrikeSharp/commit/0322548ebdeb1a0e26e21cc785af7b0bd3ee77f8))
+* chore(deps): bump libraries/hl2sdk-cs2 from `84a823d` to `da981a8` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1108](https://github.com/roflmuffin/CounterStrikeSharp/pull/1108) ([e4b1a35](https://github.com/roflmuffin/CounterStrikeSharp/commit/e4b1a35308cd85ae921205f16b6acccb3a571017))
+* chore(deps): bump libraries/Protobufs from `53da9bc` to `7af53a5` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1109](https://github.com/roflmuffin/CounterStrikeSharp/pull/1109) ([fd8defc](https://github.com/roflmuffin/CounterStrikeSharp/commit/fd8defc1b9899d8e87433d9fb0429245465dbd46))
+
 ## What's Changed in v1.0.346
 * chore: update server.json ([52550e3](https://github.com/roflmuffin/CounterStrikeSharp/commit/52550e31bc142ba672ac50b5b9e76b1681a6f510))
 * fix: changes for 2025-11-5 Update by [@himenekocn](https://github.com/himenekocn) in [#1107](https://github.com/roflmuffin/CounterStrikeSharp/pull/1107) ([e59e9cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/e59e9cf1485f6bdf26e12bce4f59f116ac68b03a))
