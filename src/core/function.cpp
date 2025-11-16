@@ -98,7 +98,20 @@ ValveFunction::ValveFunction(void* ulAddr, Convention_t callingConvention, DataT
     m_iCallingConvention = GetDynCallConvention(m_eCallingConvention);
 }
 
-ValveFunction::~ValveFunction() {}
+ValveFunction::~ValveFunction()
+{
+    if (m_precallback != nullptr)
+    {
+        globals::callbackManager.ReleaseCallback(m_precallback);
+        m_precallback = nullptr;
+    }
+
+    if (m_postcallback != nullptr)
+    {
+        globals::callbackManager.ReleaseCallback(m_postcallback);
+        m_postcallback = nullptr;
+    }
+}
 
 bool ValveFunction::IsCallable() { return (m_eCallingConvention != CONV_CUSTOM) && (m_iCallingConvention != -1); }
 
