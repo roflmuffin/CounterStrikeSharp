@@ -40,6 +40,7 @@ public static class Bootstrap
                         builder.ClearProviders();
                         builder.AddCoreLogging(contentRoot);
                     });
+                    services.AddSingleton<NativeBridge>();
 
                     services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
                     services.AddScoped<Application>();
@@ -62,6 +63,8 @@ public static class Bootstrap
             using IServiceScope rootScope = host.Services.CreateScope();
 
             // TODO: Improve static singleton access
+            var nativeBridge = rootScope.ServiceProvider.GetRequiredService<NativeBridge>();
+            nativeBridge.Initialize();
             GameData.GameDataProvider = rootScope.ServiceProvider.GetRequiredService<GameDataProvider>();
             AdminManager.CommandManagerProvider = rootScope.ServiceProvider.GetRequiredService<ICommandManager>();
 
