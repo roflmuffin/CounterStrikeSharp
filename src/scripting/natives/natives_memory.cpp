@@ -25,7 +25,12 @@
 #include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
-std::vector<ValveFunction*> m_managed_ptrs;
+
+template <class T> inline void hash_combine(std::size_t& seed, const T& v)
+{
+    std::hash<T> hasher;
+    seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+}
 
 struct VirtualFunctionCacheKey
 {
@@ -46,14 +51,16 @@ struct VirtualFunctionCacheKeyHash
 {
     std::size_t operator()(const VirtualFunctionCacheKey& key) const
     {
-        std::size_t hash = std::hash<void*>{}(key.functionAddr);
-        hash ^= std::hash<int>{}(static_cast<int>(key.callingConvention)) << 1;
-        hash ^= std::hash<int>{}(static_cast<int>(key.returnType)) << 2;
-        hash ^= std::hash<int>{}(key.vtableOffset) << 3;
+        std::size_t hash = 0;
 
-        for (size_t i = 0; i < key.args.size(); ++i)
+        hash_combine(hash, std::hash<void*>{}(key.functionAddr));
+        hash_combine(hash, std::hash<int>{}(static_cast<int>(key.callingConvention)));
+        hash_combine(hash, std::hash<int>{}(static_cast<int>(key.returnType)));
+        hash_combine(hash, std::hash<int>{}(key.vtableOffset));
+
+        for (const auto& arg : key.args)
         {
-            hash ^= std::hash<int>{}(static_cast<int>(key.args[i])) << (4 + i);
+            hash_combine(hash, std::hash<int>{}(static_cast<int>(arg)));
         }
 
         return hash;
@@ -61,6 +68,8 @@ struct VirtualFunctionCacheKeyHash
 };
 
 std::unordered_map<VirtualFunctionCacheKey, ValveFunction*, VirtualFunctionCacheKeyHash> m_virtualFunctionCache;
+
+size_t GetVirtualFunctionCacheSize() { return m_virtualFunctionCache.size(); }
 
 void* FindSignatureNative(ScriptContext& scriptContext)
 {
@@ -118,7 +127,6 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
     auto function = new ValveFunction(function_addr, CONV_CDECL, args, return_type);
     function->SetSignature(signature_hex_string);
 
-    m_managed_ptrs.push_back(function);
     m_virtualFunctionCache[cacheKey] = function;
 
     CSSHARP_CORE_TRACE("Created new virtual function, pointer found at {}, signature {}", function_addr, signature_hex_string);
@@ -165,7 +173,6 @@ ValveFunction* CreateVirtualFunction(ScriptContext& script_context)
     auto function = new ValveFunction(function_addr, CONV_THISCALL, args, return_type);
     function->SetOffset(vtable_offset);
 
-    m_managed_ptrs.push_back(function);
     m_virtualFunctionCache[cacheKey] = function;
 
     CSSHARP_CORE_TRACE("Created new virtual function at {}, offset {}", function_addr, vtable_offset);
