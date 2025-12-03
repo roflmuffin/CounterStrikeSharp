@@ -18,9 +18,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Capabilities;
 using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Modules.Admin;
@@ -540,6 +542,92 @@ namespace CounterStrikeSharp.API.Core
         public void RegisterFakeConVars(object instance)
         {
             RegisterFakeConVars(instance.GetType(), instance);
+        }
+
+        private List<Capabilities.Capabilities.RegisteredCapability> RegisteredCapabilities { get; } = new();
+
+        internal void TrackCapability(string name, Type type, bool isPlayer)
+        {
+            RegisteredCapabilities.Add(new Capabilities.Capabilities.RegisteredCapability(name, type, isPlayer));
+        }
+
+        internal void UnregisterAllCapabilities()
+        {
+            foreach (var cap in RegisteredCapabilities)
+                Capabilities.Capabilities.Unregister(cap);
+
+            RegisteredCapabilities.Clear();
+        }
+
+        internal void ReRegisterCapabilities()
+        {
+            foreach (var cap in RegisteredCapabilities)
+            {
+                // Remove stale providers first (assemblies from the previous load)
+                Capabilities.Capabilities.Unregister(cap);
+
+                // Now re-register this plugin’s current supplier methods.
+                if (cap.IsPlayer)
+                {
+                    // Retrieve correct player capability instance
+                    var field = GetType().GetFields(BindingFlags.Public | BindingFlags.Static)
+                        .FirstOrDefault(f => f.FieldType == typeof(PlayerCapability<>).MakeGenericType(cap.Type));
+
+                    if (field != null)
+                    {
+                        var capability = field.GetValue(null);
+                        var supplier = CreatePlayerSupplier(cap.Type);
+                        var registerMethod = typeof(Capabilities.Capabilities)
+                            .GetMethod(nameof(Capabilities.Capabilities.RegisterPlayerCapability))
+                            ?.MakeGenericMethod(cap.Type);
+
+                        registerMethod?.Invoke(null, new object[] { this, capability, supplier });
+                    }
+                }
+                else
+                {
+                    var field = GetType().GetFields(BindingFlags.Public | BindingFlags.Static)
+                        .FirstOrDefault(f => f.FieldType == typeof(PluginCapability<>).MakeGenericType(cap.Type));
+
+                    if (field != null)
+                    {
+                        var capability = field.GetValue(null);
+                        var supplier = CreatePluginSupplier(cap.Type);
+                        var registerMethod = typeof(Capabilities.Capabilities)
+                            .GetMethod(nameof(Capabilities.Capabilities.RegisterPluginCapability))
+                            ?.MakeGenericMethod(cap.Type);
+
+                        registerMethod?.Invoke(null, new object[] { this, capability, supplier });
+                    }
+                }
+            }
+        }
+
+        private static object CreatePluginSupplier(Type type)
+        {
+            // () => new T()
+            var ctor = type.GetConstructor(Type.EmptyTypes)
+                       ?? throw new InvalidOperationException($"Type {type} has no parameterless constructor");
+
+            var newExpr = Expression.New(ctor);
+            var lambdaType = typeof(Func<>).MakeGenericType(type);
+            var lambda = Expression.Lambda(lambdaType, newExpr);
+
+            return lambda.Compile();
+        }
+
+        private static object CreatePlayerSupplier(Type type)
+        {
+            // (CCSPlayerController p) => new T(p)
+            var ctor = type.GetConstructor(new[] { typeof(CCSPlayerController) })
+                       ?? throw new InvalidOperationException($"Type {type} has no CCSPlayerController constructor");
+
+            var param = Expression.Parameter(typeof(CCSPlayerController), "p");
+            var newExpr = Expression.New(ctor, param);
+            var lambdaType = typeof(Func<,>).MakeGenericType(typeof(CCSPlayerController), type);
+            var lambda = Expression.Lambda(lambdaType, newExpr, param);
+
+            return lambda.Compile();
         }
 
         /// <summary>
