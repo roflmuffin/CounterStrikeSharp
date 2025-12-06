@@ -1,3 +1,15 @@
+## What's Changed in v1.0.348
+* chore(deps): update hl2sdk ([ad731c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/ad731c160125b4ad4e8019d8060047cc87bacf63))
+* chore(ci): disable discord notifications for pre-release versions by [@Copilot](https://github.com/Copilot) in [#1132](https://github.com/roflmuffin/CounterStrikeSharp/pull/1132) ([1a6ff70](https://github.com/roflmuffin/CounterStrikeSharp/commit/1a6ff70df1f7cf6614bd87a5c33efd803a24477b))
+* fix: do nothing when pressing 7 (prev) on the 1st page of a menu by [@ericek111](https://github.com/ericek111) in [#1127](https://github.com/roflmuffin/CounterStrikeSharp/pull/1127) ([edb0872](https://github.com/roflmuffin/CounterStrikeSharp/commit/edb0872c70c4e3a20e96b15e26205a70a99bfc10))
+* fix: prevent VirtualFunction memory leak in native layer by [@ELDment](https://github.com/ELDment) in [#1121](https://github.com/roflmuffin/CounterStrikeSharp/pull/1121) ([ff29836](https://github.com/roflmuffin/CounterStrikeSharp/commit/ff298368c200a750c3651778dc226383549f0923))
+* feat: add translations for pt-BR by [@crashzk](https://github.com/crashzk) in [#1122](https://github.com/roflmuffin/CounterStrikeSharp/pull/1122) ([832b687](https://github.com/roflmuffin/CounterStrikeSharp/commit/832b68776cc30e5a93b6cd5faeaf5d5aeef9381c))
+
+## New Contributors
+* [@Copilot](https://github.com/Copilot) made their first contribution in [#1132](https://github.com/roflmuffin/CounterStrikeSharp/pull/1132)
+* [@ericek111](https://github.com/ericek111) made their first contribution in [#1127](https://github.com/roflmuffin/CounterStrikeSharp/pull/1127)
+* [@crashzk](https://github.com/crashzk) made their first contribution in [#1122](https://github.com/roflmuffin/CounterStrikeSharp/pull/1122)
+
 ## What's Changed in v1.0.347
 * chore: update signatures for GiveNamedItem by [@ianlucas](https://github.com/ianlucas) in [#1120](https://github.com/roflmuffin/CounterStrikeSharp/pull/1120) ([6461235](https://github.com/roflmuffin/CounterStrikeSharp/commit/6461235c2a5d2cafd1444cebcb0477e1c44ad670))
 * chore(generators): regenerate game events, schema & natives into `generated/` subfolder ([f32e745](https://github.com/roflmuffin/CounterStrikeSharp/commit/f32e74515b7a10beb06e1e35406ade8a80ceb6d2))
