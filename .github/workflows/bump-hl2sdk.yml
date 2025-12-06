@@ -1,0 +1,127 @@
+name: Bump hl2sdk
+
+on:
+  schedule:
+    # Run every 15 minutes
+    - cron: "*/15 * * * *"
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-and-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Get current submodule commit
+        id: current
+        run: |
+          cd libraries/hl2sdk-cs2
+          CURRENT_COMMIT=$(git rev-parse HEAD)
+          echo "commit=$CURRENT_COMMIT" >> $GITHUB_OUTPUT
+          echo "Current hl2sdk commit: $CURRENT_COMMIT"
+
+      - name: Fetch latest hl2sdk cs2 branch
+        id: latest
+        run: |
+          LATEST_COMMIT=$(git ls-remote https://github.com/alliedmodders/hl2sdk refs/heads/cs2 | cut -f1)
+          echo "commit=$LATEST_COMMIT" >> $GITHUB_OUTPUT
+          echo "Latest hl2sdk cs2 commit: $LATEST_COMMIT"
+
+      - name: Check if update is needed
+        id: check
+        run: |
+          if [ "${{ steps.current.outputs.commit }}" = "${{ steps.latest.outputs.commit }}" ]; then
+            echo "needs_update=false" >> $GITHUB_OUTPUT
+            echo "hl2sdk is already up to date"
+          else
+            echo "needs_update=true" >> $GITHUB_OUTPUT
+            echo "hl2sdk update available!"
+          fi
+
+      - name: Check for existing PR
+        id: existing_pr
+        if: steps.check.outputs.needs_update == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Check if there's already an open PR for hl2sdk bump
+          EXISTING_PR=$(gh pr list --state open --head "chore/bump-hl2sdk" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING_PR" ]; then
+            echo "has_existing_pr=true" >> $GITHUB_OUTPUT
+            echo "pr_number=$EXISTING_PR" >> $GITHUB_OUTPUT
+            echo "Existing PR found: #$EXISTING_PR"
+          else
+            echo "has_existing_pr=false" >> $GITHUB_OUTPUT
+            echo "No existing PR found"
+          fi
+
+      - name: Update submodule
+        if: steps.check.outputs.needs_update == 'true'
+        run: |
+          cd libraries/hl2sdk-cs2
+          git fetch origin cs2
+          git checkout ${{ steps.latest.outputs.commit }}
+          cd ../..
+          echo "Updated hl2sdk to ${{ steps.latest.outputs.commit }}"
+
+      - name: Get commit details
+        if: steps.check.outputs.needs_update == 'true'
+        id: commit_info
+        run: |
+          cd libraries/hl2sdk-cs2
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
+          COMMIT_DATE=$(git log -1 --pretty=format:"%ci")
+          SHORT_SHA=$(git rev-parse --short HEAD)
+
+          echo "message=$COMMIT_MSG" >> $GITHUB_OUTPUT
+          echo "author=$COMMIT_AUTHOR" >> $GITHUB_OUTPUT
+          echo "date=$COMMIT_DATE" >> $GITHUB_OUTPUT
+          echo "short_sha=$SHORT_SHA" >> $GITHUB_OUTPUT
+
+          # Get recent commits for PR body (last 10 since previous)
+          cd ../..
+          echo "COMMITS<<EOF" >> $GITHUB_OUTPUT
+          cd libraries/hl2sdk-cs2
+          git log --oneline ${{ steps.current.outputs.commit }}..${{ steps.latest.outputs.commit }} | head -20 >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create or update Pull Request
+        if: steps.check.outputs.needs_update == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(deps): bump hl2sdk to ${{ steps.commit_info.outputs.short_sha }}"
+          branch: chore/bump-hl2sdk
+          delete-branch: true
+          title: "chore(deps): bump hl2sdk to ${{ steps.commit_info.outputs.short_sha }}"
+          body: |
+            Automated PR to update hl2sdk submodule.
+
+            ## Changes
+            - **From:** `${{ steps.current.outputs.commit }}`
+            - **To:** `${{ steps.latest.outputs.commit }}`
+
+            ## Recent hl2sdk commits
+            ```
+            ${{ steps.commit_info.outputs.COMMITS }}
+            ```
+
+            ## Latest commit info
+            - **Message:** ${{ steps.commit_info.outputs.message }}
+            - **Author:** ${{ steps.commit_info.outputs.author }}
+            - **Date:** ${{ steps.commit_info.outputs.date }}
+
+            ---
+            🤖 This PR was automatically created by the [bump-hl2sdk workflow](https://github.com/${{ github.repository }}/actions/workflows/bump-hl2sdk.yml).
+          labels: |
+            dependencies
+            automated
