@@ -77,3 +77,5 @@ extern CounterStrikeSharpMMPlugin gPlugin;
 }
 
 PLUGIN_GLOBALVARS();
+
+// i love you
