@@ -9,8 +9,6 @@ public class CVariant : NativeObject
     {
     }
 
-    public bool IsValid => Handle != IntPtr.Zero;
-
     public fieldtype_t FieldType => (fieldtype_t)NativeAPI.GetVariantType(Handle);
 
     public T Get<T>()
@@ -36,22 +34,22 @@ public class CVariant : NativeObject
         {
             case var _ when value is float f:
                 NativeAPI.SetVariantFloat(Handle, f);
-            break;
+                break;
             case var _ when value is int i:
                 NativeAPI.SetVariantInt(Handle, i);
-            break;
+                break;
             case var _ when value is uint ui:
                 NativeAPI.SetVariantUint(Handle, ui);
-            break;
+                break;
             case var _ when value is bool b:
                 NativeAPI.SetVariantBool(Handle, b);
-            break;
+                break;
             case var _ when value is string s:
                 NativeAPI.SetVariantString(Handle, s);
-            break;
+                break;
 
             default:
-            throw new NotSupportedException();
+                throw new NotSupportedException();
         }
     }
 }

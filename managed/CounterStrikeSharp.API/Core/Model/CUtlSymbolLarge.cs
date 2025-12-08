@@ -8,13 +8,8 @@ public class CUtlSymbolLarge : NativeObject
     {
     }
 
-    public bool IsValid => Handle != IntPtr.Zero;
-
     public string String
     {
-        get
-        {
-            return NativeAPI.GetStringFromSymbolLarge(Handle);
-        }
+        get { return NativeAPI.GetStringFromSymbolLarge(Handle); }
     }
 }

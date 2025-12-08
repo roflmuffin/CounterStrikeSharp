@@ -24,10 +24,9 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     /// <summary>
     /// Checks that the entity handle is valid and the handle points to a valid entity
     /// </summary>
-    public bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
+    public new bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
 
-    [Obsolete("Use Index instead", true)]
-    public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.EntityIndex);
+    [Obsolete("Use Index instead", true)] public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.EntityIndex);
 
     public uint Index => EntityHandle.EntityIndex;
 
@@ -79,7 +78,8 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     /// <param name="value">String variant value to send with the event</param>
     /// <param name="outputId">Unknown, defaults to 0</param>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    public void AcceptInput(string inputName, CEntityInstance? activator = null, CEntityInstance? caller = null, string value = "", int outputId = 0)
+    public void AcceptInput(string inputName, CEntityInstance? activator = null, CEntityInstance? caller = null, string value = "",
+        int outputId = 0)
     {
         Guard.IsValidEntity(this);
 
@@ -102,11 +102,13 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     /// <param name="delay">Delay in seconds before calling the input</param>
     /// <param name="outputId">Unknown, defaults to 0</param>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    public void AddEntityIOEvent(string inputName, CEntityInstance? activator = null, CEntityInstance? caller = null, string value = "", float delay = 0, int outputId = 0)
+    public void AddEntityIOEvent(string inputName, CEntityInstance? activator = null, CEntityInstance? caller = null, string value = "",
+        float delay = 0, int outputId = 0)
     {
         Guard.IsValidEntity(this);
 
-        NativeAPI.AddEntityIoEvent(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, delay, outputId);
+        NativeAPI.AddEntityIoEvent(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, delay,
+            outputId);
     }
 }
 
