@@ -67,7 +67,7 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_bRemove
 	[SchemaMember("CHostage", "m_bRemove")]
-	public virtual bool Remove
+	public virtual bool ShouldRemove
 	{
 		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_bRemove"); }
 		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_bRemove", value); }
