@@ -349,6 +349,14 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated", value); }
 	}
 
+	// m_bJumpApexPending
+	[SchemaMember("CCSPlayer_MovementServices", "m_bJumpApexPending")]
+	public virtual bool JumpApexPending
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bJumpApexPending"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bJumpApexPending", value); }
+	}
+
 	public virtual void LadderNormalPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_vecLadderNormal");
 	public virtual void LadderSurfacePropIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex");
 	public virtual void DuckAmountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckAmount");
@@ -368,4 +376,5 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	public virtual void OffsetTickStashedSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed");
 	public virtual void StaminaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flStamina");
 	public virtual void WasSurfingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bWasSurfing");
+	public virtual void JumpApexPendingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bJumpApexPending");
 }

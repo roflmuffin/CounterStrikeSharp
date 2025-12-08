@@ -1,0 +1,27 @@
+{
+  "menu.button.previous": "Voltar",
+  "menu.button.next": "Próximo",
+  "menu.button.close": "Sair",
+
+  "all": "todos os jogadores",
+  "bots": "bots",
+  "humans": "humanos",
+  "alive": "jogadores vivos",
+  "dead": "jogadores mortos",
+  "notme": "todos os jogadores, exceto você",
+  "ct": "jogadores CT",
+  "t": "jogadores T",
+  "spec": "jogadores spectadores",
+
+  "No matching client": "Nenhum cliente correspondente foi encontrado.",
+  "No matching clients": "Nenhum cliente correspondente foi encontrado.",
+  "Target must be alive": "Este comando só pode ser usado em jogadores vivos.",
+  "Target must be dead": "Este comando só pode ser usado em jogadores mortos.",
+  "Unable to target": "Você não pode selecionar este jogador como alvo.",
+  "Cannot target bot": "Não é possível executar este comando em um BOT.",
+  "More than one client matched": "Mais de um cliente correspondeu ao padrão fornecido.",
+  
+  "Missing permissions": "Você não possui as permissões necessárias.",
+  "Missing one permission": "Você não tem uma das permissões necessárias.",
+  "Command permission denied": "[CSS] {0} ({1}) para executar este comando."
+}

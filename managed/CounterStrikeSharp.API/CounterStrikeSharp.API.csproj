@@ -47,7 +47,7 @@
         <PackageReference Include="Tomlyn" Version="0.19.0"/>
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Core\Schema\"/>
+        <Folder Include="Generated\Schema\" />
         <Folder Include="Modules\Errors"/>
     </ItemGroup>
     <ItemGroup>

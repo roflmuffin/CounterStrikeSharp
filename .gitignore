@@ -2,7 +2,6 @@
 .cmake/
 cmake-build-*/
 .kdev4/
-generated/
 !**/protobuf/generated/
 
 # configure_file auto generated.

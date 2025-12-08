@@ -1,3 +1,33 @@
+## What's Changed in v1.0.348
+* chore(deps): update hl2sdk ([ad731c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/ad731c160125b4ad4e8019d8060047cc87bacf63))
+* chore(ci): disable discord notifications for pre-release versions by [@Copilot](https://github.com/Copilot) in [#1132](https://github.com/roflmuffin/CounterStrikeSharp/pull/1132) ([1a6ff70](https://github.com/roflmuffin/CounterStrikeSharp/commit/1a6ff70df1f7cf6614bd87a5c33efd803a24477b))
+* fix: do nothing when pressing 7 (prev) on the 1st page of a menu by [@ericek111](https://github.com/ericek111) in [#1127](https://github.com/roflmuffin/CounterStrikeSharp/pull/1127) ([edb0872](https://github.com/roflmuffin/CounterStrikeSharp/commit/edb0872c70c4e3a20e96b15e26205a70a99bfc10))
+* fix: prevent VirtualFunction memory leak in native layer by [@ELDment](https://github.com/ELDment) in [#1121](https://github.com/roflmuffin/CounterStrikeSharp/pull/1121) ([ff29836](https://github.com/roflmuffin/CounterStrikeSharp/commit/ff298368c200a750c3651778dc226383549f0923))
+* feat: add translations for pt-BR by [@crashzk](https://github.com/crashzk) in [#1122](https://github.com/roflmuffin/CounterStrikeSharp/pull/1122) ([832b687](https://github.com/roflmuffin/CounterStrikeSharp/commit/832b68776cc30e5a93b6cd5faeaf5d5aeef9381c))
+
+## New Contributors
+* [@Copilot](https://github.com/Copilot) made their first contribution in [#1132](https://github.com/roflmuffin/CounterStrikeSharp/pull/1132)
+* [@ericek111](https://github.com/ericek111) made their first contribution in [#1127](https://github.com/roflmuffin/CounterStrikeSharp/pull/1127)
+* [@crashzk](https://github.com/crashzk) made their first contribution in [#1122](https://github.com/roflmuffin/CounterStrikeSharp/pull/1122)
+
+## What's Changed in v1.0.347
+* chore: update signatures for GiveNamedItem by [@ianlucas](https://github.com/ianlucas) in [#1120](https://github.com/roflmuffin/CounterStrikeSharp/pull/1120) ([6461235](https://github.com/roflmuffin/CounterStrikeSharp/commit/6461235c2a5d2cafd1444cebcb0477e1c44ad670))
+* chore(generators): regenerate game events, schema & natives into `generated/` subfolder ([f32e745](https://github.com/roflmuffin/CounterStrikeSharp/commit/f32e74515b7a10beb06e1e35406ade8a80ceb6d2))
+* chore(generators): re-organise generated files ([0318713](https://github.com/roflmuffin/CounterStrikeSharp/commit/0318713cbeda9f0bda42811315fbafedf56c4ef4))
+* chore(deps): bump libraries/metamod-source from `4399ff0` to `07c708a` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1101](https://github.com/roflmuffin/CounterStrikeSharp/pull/1101) ([0322548](https://github.com/roflmuffin/CounterStrikeSharp/commit/0322548ebdeb1a0e26e21cc785af7b0bd3ee77f8))
+* chore(deps): bump libraries/hl2sdk-cs2 from `84a823d` to `da981a8` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1108](https://github.com/roflmuffin/CounterStrikeSharp/pull/1108) ([e4b1a35](https://github.com/roflmuffin/CounterStrikeSharp/commit/e4b1a35308cd85ae921205f16b6acccb3a571017))
+* chore(deps): bump libraries/Protobufs from `53da9bc` to `7af53a5` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1109](https://github.com/roflmuffin/CounterStrikeSharp/pull/1109) ([fd8defc](https://github.com/roflmuffin/CounterStrikeSharp/commit/fd8defc1b9899d8e87433d9fb0429245465dbd46))
+
+## What's Changed in v1.0.346
+* chore: update server.json ([52550e3](https://github.com/roflmuffin/CounterStrikeSharp/commit/52550e31bc142ba672ac50b5b9e76b1681a6f510))
+* fix: changes for 2025-11-5 Update by [@himenekocn](https://github.com/himenekocn) in [#1107](https://github.com/roflmuffin/CounterStrikeSharp/pull/1107) ([e59e9cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/e59e9cf1485f6bdf26e12bce4f59f116ac68b03a))
+* feat: add localization for no permission error messages & spanish language support. by [@wiruwiru](https://github.com/wiruwiru) in [#1099](https://github.com/roflmuffin/CounterStrikeSharp/pull/1099) ([1568d07](https://github.com/roflmuffin/CounterStrikeSharp/commit/1568d077e8def7688069a91ed374b70841546b26))
+* feat: allow plugins to be loaded from subdirectories by [@Ravid-A](https://github.com/Ravid-A) in [#1031](https://github.com/roflmuffin/CounterStrikeSharp/pull/1031) ([55542db](https://github.com/roflmuffin/CounterStrikeSharp/commit/55542dba7c5318dfbb37b0862256f4dcde7cf0f4))
+
+## What's Changed in v1.0.345
+* fix: update linux signature for GetCSWeaponDataFromKey ([b4e83df](https://github.com/roflmuffin/CounterStrikeSharp/commit/b4e83dfb4a1a1723c08ac79ea68da4ab8a0255fd))
+* feat(schema): update schema generator to use @GAMMACASE schema dumper format ([4ff2732](https://github.com/roflmuffin/CounterStrikeSharp/commit/4ff2732d8a55297c18cea6181b9022f56cd8fae3))
+
 ## What's Changed in v1.0.344
 * chore(schema): update schema to latest ([f505405](https://github.com/roflmuffin/CounterStrikeSharp/commit/f50540583d079a6cf546ca590147905ba5eb2c83))
 * fix(schema): allow for negative enum values in source schema file ([97957f6](https://github.com/roflmuffin/CounterStrikeSharp/commit/97957f62208fa782f89e9629ddde1944aaadd149))
@@ -757,14 +787,14 @@
 * feat: add discord notify through GH actions ([59bff4f](https://github.com/roflmuffin/CounterStrikeSharp/commit/59bff4f500dfaccacb0b53584bf678c005a87598))
 
 ## What's Changed in v1.0.150
-* Log exception if plugin load fails using the `load` command by [@wiesendaniel](https://github.com/wiesendaniel) in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279) ([a2581d8](https://github.com/roflmuffin/CounterStrikeSharp/commit/a2581d8e9116e3ab505029720719a82e4dd2fac5))
+* Log exception if plugin load fails using the `load` command by [@D4n13X](https://github.com/D4n13X) in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279) ([a2581d8](https://github.com/roflmuffin/CounterStrikeSharp/commit/a2581d8e9116e3ab505029720719a82e4dd2fac5))
 * Change TerroristsPlanned to TerroristsPlanted in RoundEndReason by [@Ravid-A](https://github.com/Ravid-A) ([e7d190a](https://github.com/roflmuffin/CounterStrikeSharp/commit/e7d190a6f74f9ccbf30e16f8a6a92b36e037e9a4))
 * Menu system updates by [@B3none](https://github.com/B3none) ([5513d57](https://github.com/roflmuffin/CounterStrikeSharp/commit/5513d5710a20195922e725c9401ae1cb1291b3e8))
 * fix(Offsets/Win): CCSPlayer_ItemServices.RemoveWeapons() by [@M1kep](https://github.com/M1kep) ([e5c2236](https://github.com/roflmuffin/CounterStrikeSharp/commit/e5c223699ccb300558788f86850a8e478e893156))
 * Admin manager improvements by [@zonical](https://github.com/zonical) ([fa37c22](https://github.com/roflmuffin/CounterStrikeSharp/commit/fa37c222d9d8598a67cb2433c36b46a941813b14))
 
 ## New Contributors
-* [@wiesendaniel](https://github.com/wiesendaniel) made their first contribution in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279)
+* [@D4n13X](https://github.com/D4n13X) made their first contribution in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279)
 * [@Ravid-A](https://github.com/Ravid-A) made their first contribution
 * [@M1kep](https://github.com/M1kep) made their first contribution
 
