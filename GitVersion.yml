@@ -1,1 +1,8 @@
 workflow: GitHubFlow/v1
+
+branches:
+  release:
+    regex: ^releases?[/-]v?2
+    label: alpha
+    prevent-increment:
+      when-current-commit-tagged: true

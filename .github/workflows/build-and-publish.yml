@@ -35,6 +35,11 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Fetch tags
+      run: |
+        git fetch --tags --force
+        git tag
+
     - name: Execute GitVersion
       id: gitversion
       uses: gittools/actions/gitversion/execute@v1
