@@ -8,7 +8,6 @@ updates:
       - dependency-name: "libraries/metamod-source"
       - dependency-name: "libraries/Protobufs"
     schedule:
-      interval: "cron"
-      cronjob: "*/15 * * * *"
+      interval: "daily"
     commit-message:
       prefix: "chore(deps)"
