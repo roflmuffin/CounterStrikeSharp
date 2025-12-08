@@ -16,6 +16,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
+        <WarningsAsErrors>CS0108,CS0114</WarningsAsErrors>
         <!-- <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile> -->
     </PropertyGroup>
     <PropertyGroup>
