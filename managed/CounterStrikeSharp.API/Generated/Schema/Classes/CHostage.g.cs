@@ -52,7 +52,7 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_bRemove
 	[SchemaMember("CHostage", "m_bRemove")]
-	public ref bool Remove => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bRemove");
+	public ref bool ShouldRemove => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bRemove");
 
 	// m_vel
 	[SchemaMember("CHostage", "m_vel")]

@@ -108,9 +108,12 @@ public abstract class BaseMenuInstance : IMenuInstance
             return;
         }
 
-        if (key == 7 && HasPrevButton)
+        if (key == 7)
         {
-            PrevPage();
+            if (HasPrevButton)
+            {
+                PrevPage();
+            }
             return;
         }
 
