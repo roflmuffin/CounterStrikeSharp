@@ -49,7 +49,7 @@ public class WithVirtualFunctionsPlugin : BasePlugin
     // this is still the same, the main point here is that you can set the vtable symbol, binary path, and the offset.
     // private static VirtualFunctionVoid<nint, int> Random_Function = new("VTABLE_SYMBOL_IN_ENGINE_BINARY", Addresses.EnginePath, 51); // this offset is a random example here
 
-    private static VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, CBaseEntity?>? CCSGameRules_FindPickerEntity;
+    private static VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, double, double, CBaseEntity?>? CCSGameRules_FindPickerEntity;
 
     // Also there are wrapper classes that you can use:
     // Note that this class actually holds the vtable ptr. (.Handle)
@@ -97,7 +97,7 @@ public class WithVirtualFunctionsPlugin : BasePlugin
         // Wrapper examples
 
         // when using the generic variant of the VTable class, you only need to pass the generic parameters of the function, TArg1 is assumed to be `CCSGameRules`
-        CCSGameRules_FindPickerEntity = CCSGameRules_VTable.GetFunctionWithReturn<CBasePlayerController, CBaseEntity?>(GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+        CCSGameRules_FindPickerEntity = CCSGameRules_VTable.GetFunctionWithReturn<CBasePlayerController, IntPtr?, double, double, CBaseEntity?>(GameData.GetOffset("CCSGameRules_FindPickerEntity"));
         CCSGameRules_FindPickerEntity.Hook(OnFindPickerEntity, HookMode.Pre);
 
         // and when you are not using the generic variant, you also need to pass the `CCSGameRules` each time.
