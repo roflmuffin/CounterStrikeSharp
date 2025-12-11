@@ -1,16 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 using CounterStrikeSharp.API.Modules.Entities;
-using System.Linq;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Logging;
-using System.Text.Json.Nodes;
-using System.Numerics;
-using CounterStrikeSharp.API.Modules.Utils;
-using System.Diagnostics.Eventing.Reader;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -23,7 +15,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
         [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
 
-        // Key is the domain of the flag "e.g "css, os, kzsurf"). This should NOT include the @ character.
+        // Key is the domain of the flag "e.g "css, os, kzsurf". This should NOT include the @ character.
         // Value is a hashmap of the flags inside of the domain (e.g "@css/generic")
         public Dictionary<string, HashSet<string>> Flags { get; init; } = new();
 
@@ -81,7 +73,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 {
                     Flags[domain] = new HashSet<string>();
                 }
-                Flags[domain].UnionWith(flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet());
+
+                var matchingFlags = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/'));
+                Flags[domain].UnionWith(matchingFlags.ToHashSet());
             }
         }
 
@@ -166,14 +160,43 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
         }
 
-		/// <summary>
+        /// <summary>
+        /// Creates a blank AdminData object for a player. This is not saved to "configs/admins.json"
+        /// </summary>
+        /// <param name="player">Player controller.</param>
+        /// <returns>Blank AdminData class.</returns>
+        public static AdminData? CreateAdminData(CCSPlayerController? player)
+        {
+            if (player == null || player is { IsValid: false }) return null;
+            return CreateAdminData(player.AuthorizedSteamID);
+        }
+
+        /// <summary>
+        /// Creates a blank AdminData object for a player. This is not saved to "configs/admins.json"
+        /// </summary>
+        /// <param name="steamID">SteamID object of the player.</param>
+        /// <returns>Blank AdminData class.</returns>
+        public static AdminData? CreateAdminData(SteamID? steamID)
+        {
+            if (steamID is null) return null;
+            var adminData = new AdminData()
+            {
+                Identity = steamID.SteamId64.ToString()
+            };
+
+            Admins[steamID] = adminData;
+
+            return adminData;
+        }
+
+        /// <summary>
 		/// Grabs the admin data for a player that was loaded from "configs/admins.json" and "configs/admins_groups.json".
 		/// </summary>
 		/// <param name="player">Player controller</param>
 		/// <returns>AdminData class if data found, null if not.</returns>
 		public static AdminData? GetPlayerAdminData(CCSPlayerController? player)
 		{
-			if (player == null) return null;
+			if (player == null || player is { IsValid : false }) return null;
             return GetPlayerAdminData(player.AuthorizedSteamID);
 		}
 
@@ -194,7 +217,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 		/// <param name="player">Player controller</param>
 		public static void RemovePlayerAdminData(CCSPlayerController? player)
 		{
-			if (player == null) return;
+			if (player == null || player is { IsValid: false }) return;
 			RemovePlayerAdminData(player.AuthorizedSteamID);
 		}
 
@@ -206,6 +229,14 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (steamId == null) return;
             Admins.Remove(steamId);
+        }
+
+        /// <summary>
+        /// Removes all locally stored admin data. This is not saved to "configs/admins.json"
+        /// </summary>
+        public static void FlushLocalAdminData()
+        {
+            Admins.Clear();
         }
 
         #region Command Permission Checks
