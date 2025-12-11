@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  */
 
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -26,7 +27,7 @@ namespace CounterStrikeSharp.API.Core
     /// </summary>
     public enum FunctionLifetime
     {
-        /// <summary>Delegate will be removed after the first invocation.</summary> 
+        /// <summary>Delegate will be removed after the first invocation.</summary>
         SingleUse,
 
         /// <summary>Delegate will remain in memory for the lifetime of the application (or until <see cref="FunctionReference.Remove"/> is called).</summary>
@@ -57,7 +58,7 @@ namespace CounterStrikeSharp.API.Core
             _targetMethod = method;
             _nativeCallback = CreateWrappedCallback();
         }
-        
+
         /// <summary>
         /// <inheritdoc cref="FunctionLifetime"/>
         /// </summary>
@@ -106,6 +107,11 @@ namespace CounterStrikeSharp.API.Core
                 }
                 catch (Exception e)
                 {
+                    if ((e.InnerException ?? e) is Plugin.PluginTerminationException pluginEx)
+                    {
+                        return;
+                    }
+
                     Application.Instance.Logger.LogError(e, "Error invoking callback");
                 }
                 finally

@@ -6,8 +6,8 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core
 {
-    public class Listeners {
-        
+    public class Listeners
+    {
         /// <summary>
         /// Called when an entity is spawned.
         /// </summary>
@@ -43,6 +43,18 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         [ListenerName("OnTick")]
         public delegate void OnTick();
+
+        /// <summary>
+        /// Called on every server frame before entities think.
+        /// </summary>
+        [ListenerName("OnServerPreEntityThink")]
+        public delegate void OnServerPreEntityThink();
+
+        /// <summary>
+        /// Called on every server frame after entities think.
+        /// </summary>
+        [ListenerName("OnServerPostEntityThink")]
+        public delegate void OnServerPostEntityThink();
 
         /// <summary>
         /// Called when a new map is loaded.
@@ -107,7 +119,7 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="playerSlot">The player slot of the authorized client.</param>
         /// <param name="steamId">The Steam ID of the authorized client.</param>
         [ListenerName("OnClientAuthorized")]
-        public delegate void OnClientAuthorized(int playerSlot, [CastFrom(typeof(ulong))]SteamID steamId);
+        public delegate void OnClientAuthorized(int playerSlot, [CastFrom(typeof(ulong))] SteamID steamId);
 
         /// <summary>
         /// Called when the server is updating the hibernation state.
@@ -169,7 +181,26 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         /// <param name="infoList">Transmit info list</param>
         [ListenerName("CheckTransmit")]
-        public delegate void CheckTransmit([CastFrom(typeof(nint))]CCheckTransmitInfoList infoList);
+        public delegate void CheckTransmit([CastFrom(typeof(nint))] CCheckTransmitInfoList infoList);
+
+        /// <summary>
+        /// Called in the entity pre-think when the player's buttons have changed.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="pressed"></param>
+        /// <param name="released"></param>
+        [ListenerName("OnPlayerButtonsChanged")]
+        public delegate void OnPlayerButtonsChanged(CCSPlayerController player, PlayerButtons pressed, PlayerButtons released);
+
+
+        /// <summary>
+        /// Called when a player sends a chat message.
+        /// </summary>
+        /// <param name="player">The player who sent the chat message.</param>
+        /// <param name="message">The content of the chat message.</param>
+        /// <param name="teamChat">If the chat message was sent to team only.</param>
+        [ListenerName("OnPlayerChat")]
+        public delegate void OnPlayerChat(CCSPlayerController player, string message, bool teamChat);
 
         /// <summary>
         /// Called when all metamod plugins are loaded.

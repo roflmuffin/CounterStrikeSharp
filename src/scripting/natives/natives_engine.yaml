@@ -9,6 +9,7 @@ GET_MAX_CLIENTS: -> int
 GET_GAME_FRAME_TIME: -> float
 ISSUE_SERVER_COMMAND: command:string -> void
 PRECACHE_MODEL: name:string -> void
+ADD_RESOURCE: name:string -> void
 PRECACHE_SOUND: name:string, preload:bool -> bool
 IS_SOUND_PRECACHED: name:string -> bool
 GET_SOUND_DURATION: name:string -> float
@@ -28,3 +29,4 @@ GET_VALVE_INTERFACE: interfaceType:int, interfaceName:string -> pointer
 GET_COMMAND_PARAM_VALUE: param:string, dataType:DataType_t, defaultValue:any -> any
 PRINT_TO_SERVER_CONSOLE: msg:string -> void
 DISCONNECT_CLIENT: slot:int, reason:int -> void
+CLIENT_PRINT: slot:int, hudDestination:int, msg:string -> void

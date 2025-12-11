@@ -1,10 +1,6 @@
 #pragma once
 
-#define protected public
-#define private   public
 #include <tier1/convar.h>
-#undef protected
-#undef private
 
 #include <sourcehook/sourcehook.h>
 
@@ -41,6 +37,7 @@ class CounterStrikeSharpMMPlugin;
 class CGameEntitySystem;
 class IGameEventListener2;
 class CSchemaSystem;
+class CNetworkStateChangedInfo;
 
 namespace counterstrikesharp {
 class EntityListener;
@@ -124,11 +121,13 @@ extern const float engine_fixed_tick_interval;
 
 typedef void GameEventManagerInit_t(IGameEventManager2* gameEventManager);
 typedef IGameEventListener2* GetLegacyGameEventListener_t(CPlayerSlot slot);
+typedef void* NetworkStateChanged_t(void* chainEntity, CNetworkStateChangedInfo& info);
 
 static void DetourGameEventManagerInit(IGameEventManager2* gameEventManager);
 
 extern bool gameLoopInitialized;
 extern GetLegacyGameEventListener_t* GetLegacyGameEventListener;
+inline NetworkStateChanged_t* NetworkStateChanged = nullptr;
 extern std::thread::id gameThreadId;
 
 void Initialize();

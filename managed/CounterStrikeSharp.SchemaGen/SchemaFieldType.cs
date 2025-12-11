@@ -15,6 +15,18 @@ public record SchemaFieldType
         this.Atomic = Atomic;
         this.Inner = Inner;
 
+        // According to dev notes these currently have the same memory layout
+        if (this.Name == "VectorWS")
+        {
+            this.Name = "Vector";
+        }
+
+        // Kick this can
+        if (this.Name == "CTransformWS")
+        {
+            this.Name = "CTransform";
+        }
+
         if (this.Name == "GameTime_t" || this.Name == "CNetworkedQuantizedFloat")
         {
             this.Category = SchemaTypeCategory.Builtin;

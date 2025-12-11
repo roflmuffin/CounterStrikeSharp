@@ -131,6 +131,7 @@ class CPlayer
     ListenOverride m_listenMap[66] = {};
     VoiceFlag_t m_voiceFlag = 0;
     CPlayerBitVec m_selfMutes[64] = {};
+    uint64 m_buttonState = ~0;
     void SetName(const char* name);
     INetChannelInfo* GetNetInfo() const;
 };
@@ -143,15 +144,15 @@ class PlayerManager : public GlobalClass
     PlayerManager();
     void OnStartup() override;
     void OnAllInitialized() override;
-    bool OnClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid,
-                         const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
-    bool OnClientConnect_Post(CPlayerSlot slot, const char* pszName, uint64 xuid,
-                              const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
+    bool
+    OnClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid, const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
+    bool OnClientConnect_Post(
+        CPlayerSlot slot, const char* pszName, uint64 xuid, const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
     void OnClientPutInServer(CPlayerSlot slot, char const* pszName, int type, uint64 xuid);
-    void OnClientDisconnect(CPlayerSlot slot, ENetworkDisconnectionReason reason,
-                            const char* pszName, uint64 xuid, const char* pszNetworkID);
-    void OnClientDisconnect_Post(CPlayerSlot slot, ENetworkDisconnectionReason reason,
-                                 const char* pszName, uint64 xuid, const char* pszNetworkID) const;
+    void
+    OnClientDisconnect(CPlayerSlot slot, ENetworkDisconnectionReason reason, const char* pszName, uint64 xuid, const char* pszNetworkID);
+    void OnClientDisconnect_Post(
+        CPlayerSlot slot, ENetworkDisconnectionReason reason, const char* pszName, uint64 xuid, const char* pszNetworkID) const;
     void OnClientVoice(CPlayerSlot slot) const;
     void OnAuthorized(CPlayer* player) const;
     void OnServerActivate(edict_t* pEdictList, int edictCount, int clientMax) const;
@@ -167,6 +168,7 @@ class PlayerManager : public GlobalClass
     int MaxClients() const;
     CPlayer* GetPlayerBySlot(int client) const;
     CPlayer* GetClientOfUserId(int user_id) const;
+    void RunThink() const;
 
   private:
     void InvalidatePlayer(CPlayer* pPlayer) const;
@@ -186,6 +188,8 @@ class PlayerManager : public GlobalClass
     ScriptCallback* m_on_client_disconnect_post_callback;
     ScriptCallback* m_on_client_voice_callback;
     ScriptCallback* m_on_client_authorized_callback;
+
+    ScriptCallback* m_on_player_buttons_changed_callback;
 };
 
 } // namespace counterstrikesharp

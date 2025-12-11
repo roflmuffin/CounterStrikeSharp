@@ -70,7 +70,7 @@ public class JsonStringLocalizer : IStringLocalizer
             result = _resourceManager.GetFallbackString(name);
         }
         
-        // Fallback to the default culture (en-US) if the resource is not found for the current culture.
+        // Fallback to the default culture (whatever is in core.json) if the resource is not found for the current culture.
         if (result == null && !culture.Equals(CultureInfo.DefaultThreadCurrentUICulture))
         {
             result = _resourceManager.GetString(name, CultureInfo.DefaultThreadCurrentUICulture!);

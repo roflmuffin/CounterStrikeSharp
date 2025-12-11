@@ -60,7 +60,7 @@ public class ChatColors
             case CsTeam.CounterTerrorist:
                 return LightBlue;
             case CsTeam.Terrorist:
-                return Yellow;
+                return Orange;
             default:
                 throw new ArgumentException($"Invalid team: ${team}");
         }

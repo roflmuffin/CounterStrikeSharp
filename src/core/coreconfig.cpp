@@ -60,6 +60,8 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         ServerLanguage = m_json.value("ServerLanguage", ServerLanguage);
         UnlockConCommands = m_json.value("UnlockConCommands", UnlockConCommands);
         UnlockConVars = m_json.value("UnlockConVars", UnlockConVars);
+        AutoUpdateEnabled = m_json.value("AutoUpdateEnabled", AutoUpdateEnabled);
+        AutoUpdateURL = m_json.value("AutoUpdateURL", AutoUpdateURL);
     }
     catch (const std::exception& ex)
     {

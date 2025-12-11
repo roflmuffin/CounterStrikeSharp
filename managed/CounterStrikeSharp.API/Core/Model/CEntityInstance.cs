@@ -23,7 +23,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     /// <summary>
     /// Checks that the entity handle is valid and the handle points to a valid entity
     /// </summary>
-    public bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
+    public new bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
 
     [Obsolete("Use Index instead", true)]
     public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.Index);

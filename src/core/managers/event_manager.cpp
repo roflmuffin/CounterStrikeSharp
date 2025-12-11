@@ -212,7 +212,7 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
             pCallback->ScriptContext().Push(pEvent);
             pCallback->ScriptContext().Push(&override);
 
-            VPROF_BUDGET("CS#::OnFireEvent", "CS# Event Hooks");
+            // VPROF_BUDGET("CS#::OnFireEvent", "CS# Event Hooks");
             for (auto fnMethodToCall : pCallback->GetFunctions())
             {
                 if (!fnMethodToCall) continue;
@@ -259,7 +259,7 @@ bool EventManager::OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast)
 
         if (pCallback)
         {
-            VPROF_BUDGET("CS#::OnFireEventPost", "CS# Event Hooks");
+            // VPROF_BUDGET("CS#::OnFireEventPost", "CS# Event Hooks");
 
             auto pEventCopy = m_EventCopies.top();
             CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}", pEventCopy->GetName(), (void*)pEventCopy,
@@ -270,8 +270,15 @@ bool EventManager::OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast)
             pCallback->ScriptContext().Push(&override);
             pCallback->Execute();
 
-            globals::gameEventManager->FreeEvent(pEventCopy);
-            m_EventCopies.pop();
+            if (pEventCopy)
+            {
+                globals::gameEventManager->FreeEvent(pEventCopy);
+                m_EventCopies.pop();
+            }
+            else
+            {
+                CSSHARP_CORE_WARN("OnFireEventPost: pEventCopy is nullptr, cannot free event");
+            }
         }
     }
 

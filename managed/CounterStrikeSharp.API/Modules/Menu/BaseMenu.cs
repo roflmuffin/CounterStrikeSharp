@@ -108,9 +108,12 @@ public abstract class BaseMenuInstance : IMenuInstance
             return;
         }
 
-        if (key == 7 && HasPrevButton)
+        if (key == 7)
         {
-            PrevPage();
+            if (HasPrevButton)
+            {
+                PrevPage();
+            }
             return;
         }
 
@@ -123,6 +126,9 @@ public abstract class BaseMenuInstance : IMenuInstance
         var desiredValue = key;
 
         var menuItemIndex = CurrentOffset + desiredValue - 1;
+
+        if (Menu?.MenuOptions == null)
+            return;
 
         if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
         {

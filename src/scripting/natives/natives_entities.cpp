@@ -23,6 +23,7 @@
 #include "core/managers/entity_manager.h"
 #include "core/managers/player_manager.h"
 #include "core/memory.h"
+#include "core/recipientfilters.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
@@ -233,7 +234,7 @@ void AcceptInput(ScriptContext& script_context)
     int outputID = script_context.GetArgument<int>(5);
 
     variant_t _value = variant_t(value);
-    CEntityInstance_AcceptInput(pThis, pInputName, pActivator, pCaller, &_value, outputID);
+    CEntityInstance_AcceptInput(pThis, pInputName, pActivator, pCaller, &_value, outputID, nullptr);
 }
 
 void AddEntityIOEvent(ScriptContext& script_context)
@@ -253,7 +254,23 @@ void AddEntityIOEvent(ScriptContext& script_context)
     int outputID = script_context.GetArgument<int>(6);
 
     variant_t _value = variant_t(value);
-    CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID);
+    CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID, nullptr,
+                                   nullptr);
+}
+
+SoundEventGuid_t EmitSoundFilter(ScriptContext& script_context)
+{
+    auto filtermask = script_context.GetArgument<uint64>(0);
+    auto ent = script_context.GetArgument<uint32>(1);
+    auto sound = script_context.GetArgument<const char*>(2);
+    auto volume = script_context.GetArgument<float>(3);
+    auto pitch = script_context.GetArgument<float>(4);
+
+    CRecipientFilter filter{};
+    filter.AddRecipientsFromMask(filtermask);
+
+    SndOpEventGuid_t ret = EntityEmitSoundFilter(filter, ent, sound, volume, pitch);
+    return ret.m_nGuid;
 }
 
 REGISTER_NATIVES(entities, {
@@ -273,5 +290,6 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("UNHOOK_ENTITY_OUTPUT", UnhookEntityOutput);
     ScriptEngine::RegisterNativeHandler("ACCEPT_INPUT", AcceptInput);
     ScriptEngine::RegisterNativeHandler("ADD_ENTITY_IO_EVENT", AddEntityIOEvent);
+    ScriptEngine::RegisterNativeHandler("EMIT_SOUND_FILTER", EmitSoundFilter);
 })
 } // namespace counterstrikesharp

@@ -53,6 +53,9 @@ namespace CounterStrikeSharp.API.Core
         [JsonPropertyName("PluginAutoLoadEnabled")]
         public bool PluginAutoLoadEnabled { get; set; } = true;
 
+        [JsonPropertyName("PluginResolveNugetPackages")]
+        public bool PluginResolveNugetPackages { get; set; }
+
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
 
@@ -61,6 +64,12 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("UnlockConVars")]
         public bool UnlockConVars { get; set; } = true;
+
+        [JsonPropertyName("AutoUpdateEnabled")]
+        public bool AutoUpdateEnabled { get; set; } = true;
+
+        [JsonPropertyName("AutoUpdateURL")]
+        public string AutoUpdateURL { get; set; } = "http://gamedata.cssharp.dev";
     }
 
     /// <summary>
@@ -108,6 +117,8 @@ namespace CounterStrikeSharp.API.Core
         /// When enabled, plugins are automatically loaded from the plugins directory on server start.
         /// </summary>
         public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
+
+        public static bool PluginResolveNugetPackages => _coreConfig.PluginResolveNugetPackages;
 
         public static string ServerLanguage => _coreConfig.ServerLanguage;
 
@@ -157,7 +168,7 @@ namespace CounterStrikeSharp.API.Core
                 {
                     var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
                         new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
-    
+
                     if (data != null)
                     {
                         _coreConfig = data;

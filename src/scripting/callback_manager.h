@@ -31,8 +31,9 @@ class ScriptCallback
     ~ScriptCallback();
     void AddListener(CallbackT fnPluginFunction);
     bool RemoveListener(CallbackT fnPluginFunction);
+    bool IsContextSafe();
     std::string GetName() { return m_name; }
-    unsigned int GetFunctionCount() { return m_functions.size(); }
+    unsigned int GetFunctionCount() const { return m_functions.size(); }
     std::vector<CallbackT> GetFunctions() { return m_functions; }
 
     void Execute(bool bResetContext = true);
@@ -72,7 +73,6 @@ class CallbackPair
     ~CallbackPair();
     bool HasCallbacks() const { return pre->GetFunctionCount() > 0 || post->GetFunctionCount() > 0; }
 
-  public:
     ScriptCallback* pre;
     ScriptCallback* post;
 };

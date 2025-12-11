@@ -1,0 +1,13 @@
+SET_CONVAR_FLAGS: convar:uint16,flags:uint64 -> void
+GET_CONVAR_FLAGS: convar:uint16 -> uint64
+GET_CONVAR_TYPE: convar:uint16 -> int16
+GET_CONVAR_NAME: convar:uint16 -> string
+GET_CONVAR_HELP_TEXT: convar:uint16 -> string
+GET_CONVAR_ACCESS_INDEX_BY_NAME: name:string -> uint16
+GET_CONVAR_VALUE: convar:uint16 -> any
+GET_CONVAR_VALUE_AS_STRING: convar:uint16 -> string
+GET_CONVAR_VALUE_ADDRESS: convar:uint16 -> pointer
+SET_CONVAR_VALUE_AS_STRING: convar:uint16, value:string -> void
+SET_CONVAR_VALUE: convar:uint16, value:any -> void
+CREATE_CONVAR: name:string, type:int16, helpText:string, flags:uint64, hasMin:bool, hasMax:bool, defaultValue:any, minValue:any, maxValue:any -> uint16
+DELETE_CONVAR: convar:uint16 -> void

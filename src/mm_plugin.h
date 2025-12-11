@@ -17,7 +17,6 @@
 #ifndef _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 #define _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 
-// clang-format off
 #include <ISmmPlugin.h>
 #include <functional>
 #include <iserver.h>
@@ -27,7 +26,6 @@
 #include <vector>
 #include "entitysystem.h"
 #include "concurrentqueue.h"
-// clang-format on
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -54,6 +52,7 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
     void AddTaskForNextFrame(std::function<void()>&& task);
 
     void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory* pLoopModeFactory, void** ppGlobalPointer);
+    int Hook_LoadEventsFromFile(const char* filename, bool bSearchAll);
     IEngineService* Hook_FindService(const char* serviceName);
 
   public:
@@ -74,7 +73,7 @@ static ScriptCallback* on_activate_callback;
 static ScriptCallback* on_metamod_all_plugins_loaded_callback;
 extern CounterStrikeSharpMMPlugin gPlugin;
 
-PLUGIN_GLOBALVARS();
-
 #endif //_INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 }
+
+PLUGIN_GLOBALVARS();

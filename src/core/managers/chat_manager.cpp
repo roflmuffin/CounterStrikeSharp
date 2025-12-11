@@ -48,25 +48,14 @@ void ChatManager::OnAllInitialized()
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);
     funchook_install(m_hook, 0);
+
+    on_player_chat_callback = globals::callbackManager.CreateCallback("OnPlayerChat");
 }
 
-void ChatManager::OnShutdown() {}
+void ChatManager::OnShutdown() { globals::callbackManager.ReleaseCallback(on_player_chat_callback); }
 
 void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2)
 {
-    if (pController)
-    {
-        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
-        if (pEvent)
-        {
-            pEvent->SetBool("teamonly", teamonly);
-            pEvent->SetInt("userid", pController->GetEntityIndex().Get() - 1);
-            pEvent->SetString("text", args[1]);
-
-            globals::gameEventManager->FireEvent(pEvent, true);
-        }
-    }
-
     std::string prefix;
     bool bSilent = globals::coreConfig->IsSilentChatTrigger(args[1], prefix);
     bool bCommand = globals::coreConfig->IsPublicChatTrigger(args[1], prefix) || bSilent;
@@ -96,6 +85,30 @@ void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, 
         }
 
         globals::chatManager.OnSayCommandPost(pController, args);
+    }
+
+    if (pController)
+    {
+        auto callback = globals::chatManager.on_player_chat_callback;
+
+        if (callback && callback->GetFunctionCount())
+        {
+            callback->ScriptContext().Reset();
+            callback->ScriptContext().Push(pController);
+            callback->ScriptContext().Push(args.Arg(1));
+            callback->ScriptContext().Push(teamonly);
+            callback->Execute();
+        }
+
+        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
+        if (pEvent)
+        {
+            pEvent->SetBool("teamonly", teamonly);
+            pEvent->SetInt("userid", pController->GetEntityIndex().Get() - 1);
+            pEvent->SetString("text", args[1]);
+
+            globals::gameEventManager->FireEvent(pEvent, false);
+        }
     }
 }
 

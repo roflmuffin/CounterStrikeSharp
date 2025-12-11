@@ -16,6 +16,7 @@
 
 #include <ios>
 #include <sstream>
+#include <unordered_map>
 
 #include "core/function.h"
 #include "core/log.h"
@@ -24,7 +25,51 @@
 #include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
-std::vector<ValveFunction*> m_managed_ptrs;
+
+template <class T> inline void hash_combine(std::size_t& seed, const T& v)
+{
+    std::hash<T> hasher;
+    seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+}
+
+struct VirtualFunctionCacheKey
+{
+    void* functionAddr;
+    Convention_t callingConvention;
+    std::vector<DataType_t> args;
+    DataType_t returnType;
+    int vtableOffset;
+
+    bool operator==(const VirtualFunctionCacheKey& other) const
+    {
+        return functionAddr == other.functionAddr && callingConvention == other.callingConvention && args == other.args &&
+               returnType == other.returnType && vtableOffset == other.vtableOffset;
+    }
+};
+
+struct VirtualFunctionCacheKeyHash
+{
+    std::size_t operator()(const VirtualFunctionCacheKey& key) const
+    {
+        std::size_t hash = 0;
+
+        hash_combine(hash, std::hash<void*>{}(key.functionAddr));
+        hash_combine(hash, std::hash<int>{}(static_cast<int>(key.callingConvention)));
+        hash_combine(hash, std::hash<int>{}(static_cast<int>(key.returnType)));
+        hash_combine(hash, std::hash<int>{}(key.vtableOffset));
+
+        for (const auto& arg : key.args)
+        {
+            hash_combine(hash, std::hash<int>{}(static_cast<int>(arg)));
+        }
+
+        return hash;
+    }
+};
+
+std::unordered_map<VirtualFunctionCacheKey, ValveFunction*, VirtualFunctionCacheKeyHash> m_virtualFunctionCache;
+
+size_t GetVirtualFunctionCacheSize() { return m_virtualFunctionCache.size(); }
 
 void* FindSignatureNative(ScriptContext& scriptContext)
 {
@@ -32,6 +77,14 @@ void* FindSignatureNative(ScriptContext& scriptContext)
     auto bytesStr = scriptContext.GetArgument<const char*>(1);
 
     return FindSignature(moduleName, bytesStr);
+}
+
+void* FindVirtualTableNative(ScriptContext& scriptContext)
+{
+    auto moduleName = scriptContext.GetArgument<const char*>(0);
+    auto vtableName = scriptContext.GetArgument<const char*>(1);
+
+    return FindVirtualTable(moduleName, vtableName);
 }
 
 ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
@@ -56,12 +109,28 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
         args.push_back(script_context.GetArgument<DataType_t>(5 + i));
     }
 
+    VirtualFunctionCacheKey cacheKey;
+    cacheKey.functionAddr = function_addr;
+    cacheKey.callingConvention = CONV_CDECL;
+    cacheKey.args = args;
+    cacheKey.returnType = return_type;
+    cacheKey.vtableOffset = -1;
+
+    auto it = m_virtualFunctionCache.find(cacheKey);
+    if (it != m_virtualFunctionCache.end())
+    {
+        CSSHARP_CORE_TRACE("Virtual function found in cache, reusing existing instance at {}, signature {}", function_addr,
+                           signature_hex_string);
+        return it->second;
+    }
+
     auto function = new ValveFunction(function_addr, CONV_CDECL, args, return_type);
     function->SetSignature(signature_hex_string);
 
-    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, signature {}", function_addr, signature_hex_string);
+    m_virtualFunctionCache[cacheKey] = function;
 
-    m_managed_ptrs.push_back(function);
+    CSSHARP_CORE_TRACE("Created new virtual function, pointer found at {}, signature {}", function_addr, signature_hex_string);
+
     return function;
 }
 
@@ -87,10 +156,27 @@ ValveFunction* CreateVirtualFunction(ScriptContext& script_context)
         args.push_back(script_context.GetArgument<DataType_t>(4 + i));
     }
 
+    VirtualFunctionCacheKey cacheKey;
+    cacheKey.functionAddr = function_addr;
+    cacheKey.callingConvention = CONV_THISCALL;
+    cacheKey.args = args;
+    cacheKey.returnType = return_type;
+    cacheKey.vtableOffset = vtable_offset;
+
+    auto it = m_virtualFunctionCache.find(cacheKey);
+    if (it != m_virtualFunctionCache.end())
+    {
+        CSSHARP_CORE_TRACE("Virtual function found in cache, reusing existing instance at {}, offset {}", function_addr, vtable_offset);
+        return it->second;
+    }
+
     auto function = new ValveFunction(function_addr, CONV_THISCALL, args, return_type);
     function->SetOffset(vtable_offset);
 
-    m_managed_ptrs.push_back(function);
+    m_virtualFunctionCache[cacheKey] = function;
+
+    CSSHARP_CORE_TRACE("Created new virtual function at {}, offset {}", function_addr, vtable_offset);
+
     return function;
 }
 
@@ -127,6 +213,7 @@ void UnhookFunction(ScriptContext& script_context)
 void ExecuteVirtualFunction(ScriptContext& script_context)
 {
     auto function = script_context.GetArgument<ValveFunction*>(0);
+    auto bypasshook = script_context.GetArgument<bool>(1);
 
     if (!function)
     {
@@ -134,7 +221,7 @@ void ExecuteVirtualFunction(ScriptContext& script_context)
         return;
     }
 
-    function->Call(script_context, 1);
+    function->Call(script_context, 2, bypasshook);
 }
 
 int GetNetworkVectorSize(ScriptContext& script_context)
@@ -166,6 +253,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignatureNative);
+    ScriptEngine::RegisterNativeHandler("FIND_VIRTUAL_TABLE", FindVirtualTableNative);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("REMOVE_ALL_NETWORK_VECTOR_ELEMENTS", RemoveAllNetworkVectorElements);

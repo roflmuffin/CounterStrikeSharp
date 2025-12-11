@@ -55,6 +55,8 @@ class ChatManager : public GlobalClass
     bool OnSayCommandPre(CEntityInstance* pController, CCommand& args);
     void OnSayCommandPost(CEntityInstance* pController, CCommand& args);
 
+    ScriptCallback* on_player_chat_callback = nullptr;
+
   private:
     void InternalDispatch(CEntityInstance* pPlayerController, const char* szTriggerPhrase, CCommand& pFullCommand);
 

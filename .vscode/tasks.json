@@ -1,0 +1,50 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "sync-linux",
+            "type": "shell",
+            "command": "lftp -c \"open -u $LINUX_SERVER_SFTP_USERNAME,$LINUX_SERVER_SFTP_PASSWORD $LINUX_SERVER_SFTP_HOST; mirror -R ${workspaceFolder}/build/addons /game/csgo/addons; mirror -R ${workspaceFolder}/managed/CounterStrikeSharp.API/bin/Release/net8.0/ /game/csgo/addons/counterstrikesharp/api; mirror -R ${workspaceFolder}/managed/CounterStrikeSharp.Tests.Native/bin/Debug/net8.0/ /game/csgo/addons/counterstrikesharp/plugins/NativeTestsPlugin\"",
+            "dependsOn": [
+                "build",
+                "build-api",
+                "build-test-plugin"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "group": "build",
+            "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -G Ninja && cmake --build build -j$(nproc)",
+        },
+        {
+            "label": "build-api",
+            "type": "shell",
+            "group": "build",
+            "command": "dotnet build -c Release",
+            "options": {
+                "cwd": "${workspaceFolder}/managed/CounterStrikeSharp.API"
+            }
+        },
+        {
+            "label": "build-test-plugin",
+            "type": "shell",
+            "group": "build",
+            "command": "dotnet build -c Debug",
+            "options": {
+                "cwd": "${workspaceFolder}/managed/CounterStrikeSharp.Tests.Native"
+            }
+        },
+        {
+            "label": "generate-schema",
+            "type": "shell",
+            "command": "dotnet run -- ../CounterStrikeSharp.API/Core/Schema",
+            "options": {
+                "cwd": "${workspaceFolder}/managed/CounterStrikeSharp.SchemaGen"
+            }
+        }
+    ]
+}

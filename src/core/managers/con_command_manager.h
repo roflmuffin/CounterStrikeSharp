@@ -78,8 +78,7 @@ class ConCommandInfo
     ScriptCallback* GetCallback() { return callback_pre; }
 
   private:
-    ConCommandRefAbstract p_cmd;
-    ConCommand* command;
+    ConCommandData* command;
     ScriptCallback* callback_pre;
     ScriptCallback* callback_post;
     bool server_only;
@@ -100,8 +99,8 @@ class ConCommandManager : public GlobalClass
     bool IsValidValveCommand(const char* name);
     bool AddValveCommand(const char* name, const char* description, bool server_only, int flags);
     bool RemoveValveCommand(const char* name);
-    void Hook_DispatchConCommand(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
-    void Hook_DispatchConCommand_Post(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
+    void Hook_DispatchConCommand(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
+    void Hook_DispatchConCommand_Post(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
     HookResult ExecuteCommandCallbacks(
         const char* name, const CCommandContext& ctx, const CCommand& args, HookMode mode, CommandCallingContext callingContext);
 
