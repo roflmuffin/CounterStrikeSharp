@@ -1,8 +1,4 @@
-﻿using CounterStrikeSharp.API.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Modules.Entities;
+﻿using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -11,31 +7,28 @@ namespace CounterStrikeSharp.API.Modules.Admin
     {
         public RequiresPermissionsOr(params string[] permissions) : base(permissions) { }
 
-        public override bool CanExecuteCommand(CCSPlayerController? caller)
+        public override bool CanExecuteCommand(SteamID? steamID)
         {
-            if (caller == null) return true;
-            if (AdminManager.PlayerHasCommandOverride(caller, Command))
+            if (steamID == null) return true;
+            if (AdminManager.PlayerHasCommandOverride(steamID, Command))
             {
-                return AdminManager.GetPlayerCommandOverrideState(caller, Command);
+                return AdminManager.GetPlayerCommandOverrideState(steamID, Command);
             }
-            if (!base.CanExecuteCommand(caller)) return false;
+            if (!base.CanExecuteCommand(steamID)) return false;
 
-            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
+            var adminData = AdminManager.GetPlayerAdminData(steamID);
             if (adminData == null) return false;
             
-            // Check to see if the caller has a root flag for any of the domains in our permissions.
-            // If they do, remove all of the user flags and groups that belong to the domain
-            // from our permission check.
-            var domains = Permissions.Where(
-                flag => flag.StartsWith(PermissionCharacters.GroupPermissionChar))
-                .Distinct()
-                .Select(domain => domain.Split('/').First()[1..]);
+            var domains = Permissions
+                .Select(domain => domain.Split('/').First()[1..])
+                .Distinct();
 
+            // If we have a root flag in any of the domains, return true early.
             foreach (var domain in domains)
             {
                 if (adminData.DomainHasRootFlag(domain))
                 {
-                    Permissions.RemoveWhere(flag => flag.Contains(domain + '/'));
+                    return true;
                 }
             }
 
