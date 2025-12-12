@@ -21,8 +21,15 @@
 #include "core/function.h"
 #include "core/log.h"
 #include "core/memory.h"
+#include "core/memory_module.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
+
+#ifdef _WIN32
+#define CALL_CONV CONV_THISCALL
+#else
+#define CALL_CONV CONV_CDECL
+#endif
 
 namespace counterstrikesharp {
 
@@ -130,6 +137,121 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
     m_virtualFunctionCache[cacheKey] = function;
 
     CSSHARP_CORE_TRACE("Created new virtual function, pointer found at {}, signature {}", function_addr, signature_hex_string);
+
+    return function;
+}
+
+ValveFunction* CreateVirtualFunctionBySymbol(ScriptContext& script_context)
+{
+    const auto* binary_name = script_context.GetArgument<const char*>(0);
+    const auto* symbol_name = script_context.GetArgument<const char*>(1);
+    auto vtable_offset = script_context.GetArgument<int>(2);
+    auto num_arguments = script_context.GetArgument<int>(3);
+    auto return_type = script_context.GetArgument<DataType_t>(4);
+
+    auto module = modules::GetModuleByName(binary_name);
+
+    if (!module)
+    {
+        script_context.ThrowNativeError("Failed to get module %s", binary_name);
+        return nullptr;
+    }
+
+    auto* vtable = module->FindVirtualTable(symbol_name);
+
+    if (!vtable)
+    {
+        script_context.ThrowNativeError("Failed to get VTable %s from module %s", symbol_name, binary_name);
+        return nullptr;
+    }
+
+    auto function_addr = static_cast<void**>(vtable)[vtable_offset];
+
+    if (function_addr == nullptr)
+    {
+        script_context.ThrowNativeError("Could not find virtual function at offset %i", vtable_offset);
+        return nullptr;
+    }
+
+    auto args = std::vector<DataType_t>();
+
+    for (int i = 0; i < num_arguments; i++)
+    {
+        args.push_back(script_context.GetArgument<DataType_t>(5 + i));
+    }
+
+    VirtualFunctionCacheKey cacheKey;
+    cacheKey.functionAddr = function_addr;
+    cacheKey.callingConvention = CALL_CONV;
+    cacheKey.args = args;
+    cacheKey.returnType = return_type;
+    cacheKey.vtableOffset = vtable_offset;
+
+    auto it = m_virtualFunctionCache.find(cacheKey);
+    if (it != m_virtualFunctionCache.end())
+    {
+        CSSHARP_CORE_TRACE("Virtual function found in cache, reusing existing instance at {}, vtable offset {}", function_addr,
+                           vtable_offset);
+        return it->second;
+    }
+
+    auto function = new ValveFunction(function_addr, CALL_CONV, args, return_type);
+    function->SetOffset(vtable_offset);
+    m_virtualFunctionCache[cacheKey] = function;
+
+    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, symbol {}, offset {}", function_addr, symbol_name, vtable_offset);
+
+    return function;
+}
+
+ValveFunction* CreateVirtualFunctionFromVTable(ScriptContext& script_context)
+{
+    auto* vtable = script_context.GetArgument<void*>(0);
+    auto vtable_offset = script_context.GetArgument<int>(1);
+    auto num_arguments = script_context.GetArgument<int>(2);
+    auto return_type = script_context.GetArgument<DataType_t>(3);
+
+    if (!vtable)
+    {
+        script_context.ThrowNativeError("VTable is null");
+        return nullptr;
+    }
+
+    auto* function_addr = static_cast<void**>(vtable)[vtable_offset];
+
+    if (function_addr == nullptr)
+    {
+        script_context.ThrowNativeError("Could not find virtual function at offset %i", vtable_offset);
+        return nullptr;
+    }
+
+    auto args = std::vector<DataType_t>();
+
+    for (int i = 0; i < num_arguments; i++)
+    {
+        args.push_back(script_context.GetArgument<DataType_t>(4 + i));
+    }
+
+    VirtualFunctionCacheKey cacheKey;
+    cacheKey.functionAddr = function_addr;
+    cacheKey.callingConvention = CALL_CONV;
+    cacheKey.args = args;
+    cacheKey.returnType = return_type;
+    cacheKey.vtableOffset = vtable_offset;
+
+    auto it = m_virtualFunctionCache.find(cacheKey);
+    if (it != m_virtualFunctionCache.end())
+    {
+        CSSHARP_CORE_TRACE("Virtual function found in cache, reusing existing instance at {}, vtable offset {}", function_addr,
+                           vtable_offset);
+        return it->second;
+    }
+
+    auto* function = new ValveFunction(function_addr, CALL_CONV, args, return_type);
+    function->SetOffset(vtable_offset);
+    m_virtualFunctionCache[cacheKey] = function;
+
+    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, offset {}", function_addr, vtable_offset);
 
     return function;
 }
@@ -249,6 +371,8 @@ void RemoveAllNetworkVectorElements(ScriptContext& script_context)
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE", CreateVirtualFunctionBySignature);
+    ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SYMBOL", CreateVirtualFunctionBySymbol);
+    ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_FROM_V_TABLE", CreateVirtualFunctionFromVTable);
     ScriptEngine::RegisterNativeHandler("EXECUTE_VIRTUAL_FUNCTION", ExecuteVirtualFunction);
     ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);

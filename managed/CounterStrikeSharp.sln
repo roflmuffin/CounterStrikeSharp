@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithCheckTransmit", "..\exa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeTestsPlugin", "CounterStrikeSharp.Tests.Native\NativeTestsPlugin.csproj", "{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithVirtualFunctions", "..\examples\WithVirtualFunctions\WithVirtualFunctions.csproj", "{A12A301B-A2FD-404B-95C0-C7E654D3A03C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A12A301B-A2FD-404B-95C0-C7E654D3A03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A12A301B-A2FD-404B-95C0-C7E654D3A03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A12A301B-A2FD-404B-95C0-C7E654D3A03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A12A301B-A2FD-404B-95C0-C7E654D3A03C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +171,7 @@ Global
 		{76AD7BB0-A096-4336-83E2-B32CAE4E9933} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{A14029BA-CADE-4F25-ADC5-48CF14332F61} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{854B06B5-0E7B-438A-BA51-3F299557F884} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
+		{A12A301B-A2FD-404B-95C0-C7E654D3A03C} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {069C4CD4-BACA-446A-A6B8-0194E4F75355}
