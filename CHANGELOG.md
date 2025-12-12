@@ -1,3 +1,12 @@
+## What's Changed in v1.0.349
+* feat(memory): allow hooking of offset based virtual functions in [#1143](https://github.com/roflmuffin/CounterStrikeSharp/pull/1143) ([3990128](https://github.com/roflmuffin/CounterStrikeSharp/commit/3990128c8cfd1ba1eb97223c7b34210ca2dc9205))
+* fix(admin): root flags in RequirePermissionsOr & registering admin groups by [@zonical](https://github.com/zonical) in [#700](https://github.com/roflmuffin/CounterStrikeSharp/pull/700) ([436fca1](https://github.com/roflmuffin/CounterStrikeSharp/commit/436fca197d22051a732c780d82ddd958c767c310))
+* chore(i18n): add Simplified and Traditional Chinese translations by [@ELDment](https://github.com/ELDment) in [#1123](https://github.com/roflmuffin/CounterStrikeSharp/pull/1123) ([cfab6af](https://github.com/roflmuffin/CounterStrikeSharp/commit/cfab6af7e156dc8eb4f6289291610af7b914a0bb))
+* fix(schema): add missing `new` property specifiers ([00fccae](https://github.com/roflmuffin/CounterStrikeSharp/commit/00fccae3793bf4e136708cefc74bd5360a20cc9c))
+* chore(ci): auto merge hl2sdk dependabot PRs ([1091401](https://github.com/roflmuffin/CounterStrikeSharp/commit/109140185533a5744c3de16d299b1f4c6740d3f0))
+* chore(deps): revert back to daily dependabot updates ([1ac05e7](https://github.com/roflmuffin/CounterStrikeSharp/commit/1ac05e70dad4a9f65c0c180408756047d7d4a4dc))
+* chore(deps): run dependabot every 15 minutes ([1460830](https://github.com/roflmuffin/CounterStrikeSharp/commit/146083050e421a61afb8c1d9fdf63ddcab0d5ffb))
+
 ## What's Changed in v1.0.348
 * chore(deps): update hl2sdk ([ad731c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/ad731c160125b4ad4e8019d8060047cc87bacf63))
 * chore(ci): disable discord notifications for pre-release versions by [@Copilot](https://github.com/Copilot) in [#1132](https://github.com/roflmuffin/CounterStrikeSharp/pull/1132) ([1a6ff70](https://github.com/roflmuffin/CounterStrikeSharp/commit/1a6ff70df1f7cf6614bd87a5c33efd803a24477b))
