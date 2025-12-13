@@ -1,4 +1,8 @@
-﻿using CounterStrikeSharp.API.Modules.Entities;
+﻿using CounterStrikeSharp.API.Core;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -23,29 +27,19 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Command = "";
         }
 
-        public virtual bool CanExecuteCommand(SteamID? steamID)
+        public virtual bool CanExecuteCommand(CCSPlayerController? caller)
         {
-            if (steamID is null) return false;
-
-            var adminData = AdminManager.GetPlayerAdminData(steamID);
-            if (adminData is null) return false;
-
             // If we have a command in the "command_overrides" section in "configs/admins.json",
             // we skip the checks below and just return the defined value.
+            if (caller?.AuthorizedSteamID == null) return false;
+            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
+            if (adminData == null) return false;
             if (adminData.CommandOverrides.TryGetValue(Command, out var command))
             {
                 return command;
             }
 
             return true;
-        }
-
-        public virtual bool CanExecuteCommand(CCSPlayerController? caller)
-        {
-            if ( caller is null || caller is { IsValid: false } ) return false;
-            if ( caller.AuthorizedSteamID is null ) return false;
-
-            return CanExecuteCommand(caller.AuthorizedSteamID);
         }
     }
 }

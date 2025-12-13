@@ -1,6 +1,15 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+
+using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -148,28 +157,22 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
-
             if (data == null)
             {
                 data = new AdminData()
                 {
                     Identity = steamId.SteamId64.ToString(),
-                    Flags = new()
+                    Flags = new(),
+                    Groups = new(groups)
                 };
             }
 
             foreach (var group in groups)
             {
-                // If we're already in this group, we don't need to assign permissions again.
-                if (data.Groups.Contains(group)) continue;
-
-                data.Groups.Add(group);
-
-                // If this group exists internally, apply group permissions to the player.
                 if (Groups.TryGetValue(group, out var groupDef))
                 {
                     AddPlayerPermissions(steamId, groupDef.Flags.ToArray());
-                    groupDef.CommandOverrides.ToList().ForEach(x => data.CommandOverrides[x.Key] = x.Value);    
+                    groupDef.CommandOverrides.ToList().ForEach(x => data.CommandOverrides[x.Key] = x.Value);
                 }
             }
             Admins[steamId] = data;

@@ -1,6 +1,10 @@
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Utils;
+using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Commands;
+using CounterStrikeSharp.API.Core.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {

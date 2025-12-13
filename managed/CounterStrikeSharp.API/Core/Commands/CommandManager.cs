@@ -117,7 +117,7 @@ public class CommandManager : ICommandManager
                         }
 
                         attr.Command = name;
-                        if (!attr.CanExecuteCommand(caller.AuthorizedSteamID))
+                        if (!attr.CanExecuteCommand(caller))
                         {
                             var responseStr = (attr.GetType() == typeof(RequiresPermissions)) ?
                                 Application.Localizer["Missing permissions"] :

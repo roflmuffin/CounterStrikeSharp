@@ -1,4 +1,8 @@
-﻿using CounterStrikeSharp.API.Modules.Entities;
+﻿using CounterStrikeSharp.API.Core;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -8,23 +12,23 @@ namespace CounterStrikeSharp.API.Modules.Admin
     {
         public RequiresPermissions(params string[] permissions) : base(permissions) { }
 
-        public override bool CanExecuteCommand(SteamID? steamID)
+        public override bool CanExecuteCommand(CCSPlayerController? caller)
         {
-            if (steamID == null) return true;
-            if (AdminManager.PlayerHasCommandOverride(steamID, Command))
+            if (caller == null) return true;
+            if (AdminManager.PlayerHasCommandOverride(caller, Command))
             {
-                return AdminManager.GetPlayerCommandOverrideState(steamID, Command);
+                return AdminManager.GetPlayerCommandOverrideState(caller, Command);
             }
-            if (!base.CanExecuteCommand(steamID)) return false;
+            if (!base.CanExecuteCommand(caller)) return false;
 
             var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
             var userPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.UserPermissionChar));
 
-            if (!AdminManager.PlayerHasPermissions(steamID, userPermissions.ToArray()))
+            if (!AdminManager.PlayerHasPermissions(caller, userPermissions.ToArray()))
             {
                 return false;
             }
-            if (!AdminManager.PlayerInGroup(steamID, groupPermissions.ToArray()))
+            if (!AdminManager.PlayerInGroup(caller, groupPermissions.ToArray()))
             {
                 return false;
             }
