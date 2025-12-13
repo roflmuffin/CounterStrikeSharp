@@ -1,3 +1,6 @@
+## What's Changed in v1.0.350
+* Revert "fix(admin): root flags in RequirePermissionsOr & registering admin groups " ([50a42a2](https://github.com/roflmuffin/CounterStrikeSharp/commit/50a42a2472173b13093353e6efc652c233356555))
+
 ## What's Changed in v1.0.349
 * feat(memory): allow hooking of offset based virtual functions in [#1143](https://github.com/roflmuffin/CounterStrikeSharp/pull/1143) ([3990128](https://github.com/roflmuffin/CounterStrikeSharp/commit/3990128c8cfd1ba1eb97223c7b34210ca2dc9205))
 * fix(admin): root flags in RequirePermissionsOr & registering admin groups by [@zonical](https://github.com/zonical) in [#700](https://github.com/roflmuffin/CounterStrikeSharp/pull/700) ([436fca1](https://github.com/roflmuffin/CounterStrikeSharp/commit/436fca197d22051a732c780d82ddd958c767c310))
