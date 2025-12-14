@@ -15,12 +15,16 @@
  */
 
 using System;
-using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Modules.Commands;
 using Xunit;
+using Xunit.Abstractions;
 
 
 namespace NativeTestsPlugin
@@ -44,17 +48,38 @@ namespace NativeTestsPlugin
             AddCommand("css_run_tests", "Runs the xUnit tests for the native plugin.", (player, info) => { RunTests(); });
         }
 
-        async Task RunTests()
+        [ConsoleCommand("css_itest")]
+        public void OnCommandTest(CCSPlayerController? player, CommandInfo command)
+        {
+            var filter = command.GetArg(1);
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                Server.PrintToConsole("Usage: css_itest <filter>");
+                Server.PrintToConsole("Example: css_itest MyTestClass");
+                Server.PrintToConsole("         css_itest MyTestMethod");
+                return;
+            }
+
+            RunTests(filter);
+        }
+
+        public async Task RunTests(string? filter = null)
         {
             Console.WriteLine("*****************************************************************");
-            Console.WriteLine($"[{ModuleName}] Starting xUnit test run...");
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                Console.WriteLine($"[{ModuleName}] Starting xUnit test run with filter: {filter}");
+            }
+            else
+            {
+                Console.WriteLine($"[{ModuleName}] Starting xUnit test run...");
+            }
+
             Console.WriteLine("*****************************************************************");
 
             try
             {
                 using var reporter = new ConsoleTestReporterSink();
-
-                var project = new XunitProject();
                 using var controller = new XunitFrontController(AppDomainSupport.IfAvailable, this.ModulePath);
 
                 var executionOptions = TestFrameworkOptions.ForExecution();
@@ -63,7 +88,46 @@ namespace NativeTestsPlugin
                 executionOptions.SetSynchronousMessageReporting(true);
                 SynchronizationContext.SetSynchronizationContext(new SourceSynchronizationContext(gameThreadId));
 
-                controller.RunAll(reporter, TestFrameworkOptions.ForDiscovery(), executionOptions);
+                var discoveryOptions = TestFrameworkOptions.ForDiscovery();
+
+                if (!string.IsNullOrWhiteSpace(filter))
+                {
+                    // Discover all tests first
+                    var discoverySink = new TestDiscoverySink();
+                    controller.Find(false, discoverySink, discoveryOptions);
+                    discoverySink.Finished.WaitOne();
+
+                    // Filter test cases by class name or method name
+                    var filteredTests = new List<ITestCase>();
+                    foreach (var testCase in discoverySink.TestCases)
+                    {
+                        var testClassName = testCase.TestMethod?.TestClass?.Class?.Name ?? "";
+                        var testMethodName = testCase.TestMethod?.Method?.Name ?? "";
+                        var displayName = testCase.DisplayName ?? "";
+
+                        if (testClassName.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
+                            testMethodName.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
+                            displayName.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                        {
+                            filteredTests.Add(testCase);
+                        }
+                    }
+
+                    if (filteredTests.Count == 0)
+                    {
+                        Console.WriteLine($"[{ModuleName}] No tests matched filter: {filter}");
+                        return;
+                    }
+
+                    Console.WriteLine($"[{ModuleName}] Found {filteredTests.Count} test(s) matching filter.");
+
+                    // Run only the filtered tests
+                    controller.RunTests(filteredTests, reporter, executionOptions);
+                }
+                else
+                {
+                    controller.RunAll(reporter, discoveryOptions, executionOptions);
+                }
 
                 await reporter.Finished.Task;
                 Console.WriteLine("*****************************************************************");
@@ -90,7 +154,7 @@ namespace NativeTestsPlugin
             _mainThreadId = mainThreadId;
         }
 
-        public override void Post(SendOrPostCallback d, object state)
+        public override void Post(SendOrPostCallback d, object? state)
         {
             Server.NextWorldUpdate(() => d(state));
         }
@@ -98,6 +162,26 @@ namespace NativeTestsPlugin
         public override SynchronizationContext CreateCopy()
         {
             return this;
+        }
+    }
+
+    public class TestDiscoverySink : LongLivedMarshalByRefObject, IMessageSink
+    {
+        public List<ITestCase> TestCases { get; } = new List<ITestCase>();
+        public ManualResetEvent Finished { get; } = new ManualResetEvent(false);
+
+        public bool OnMessage(IMessageSinkMessage message)
+        {
+            if (message is ITestCaseDiscoveryMessage discoveryMessage)
+            {
+                TestCases.Add(discoveryMessage.TestCase);
+            }
+            else if (message is IDiscoveryCompleteMessage)
+            {
+                Finished.Set();
+            }
+
+            return true;
         }
     }
 }
