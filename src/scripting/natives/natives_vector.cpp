@@ -57,6 +57,14 @@ CON_COMMAND(css_dump_leaks, "dump css leaks")
     Msg("===== Dumping leaks =====\n");
 }
 
+Vector2D* Vector2DNew(ScriptContext& script_context) { return new Vector2D(); }
+
+Vector4D* Vector4DNew(ScriptContext& script_context) { return new Vector4D(); }
+
+matrix3x4_t* Matrix3x4New(ScriptContext& script_context) { return new matrix3x4_t(); }
+
+Quaternion* QuaternionNew(ScriptContext& script_context) { return new Quaternion(); }
+
 Vector* VectorNew(ScriptContext& script_context)
 {
     auto vec = new Vector();
@@ -99,6 +107,10 @@ void NativeAngleVectors(ScriptContext& script_context)
 
 REGISTER_NATIVES(vector, {
     ScriptEngine::RegisterNativeHandler("VECTOR_NEW", VectorNew);
+    ScriptEngine::RegisterNativeHandler("VECTOR2D_NEW", Vector2DNew);
+    ScriptEngine::RegisterNativeHandler("VECTOR4D_NEW", Vector4DNew);
+    ScriptEngine::RegisterNativeHandler("MATRIX3X4_NEW", Matrix3x4New);
+    ScriptEngine::RegisterNativeHandler("QUATERNION_NEW", QuaternionNew);
     ScriptEngine::RegisterNativeHandler("ANGLE_NEW", AngleNew);
 
     ScriptEngine::RegisterNativeHandler("VECTOR_SET_X", VectorSetX);

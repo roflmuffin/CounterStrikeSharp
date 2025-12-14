@@ -156,6 +156,8 @@ static void DetourFireOutputInternal(CEntityIOOutput* const pThis,
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
+inline void (*CBaseEntity_DispatchSpawn)(void* pEntity, CEntityKeyValues* pKeyValues);
+
 // Do it in here because i didn't found a good place to do this
 inline void (*CEntityInstance_AcceptInput)(CEntityInstance* pThis,
                                            const char* pInputName,
