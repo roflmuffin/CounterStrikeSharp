@@ -1,4 +1,6 @@
 #include "core/cs2_sdk/schema.h"
+#include "core/gameconfig.h"
+#include "core/globals.h"
 #include "public/variant.h"
 #include "entity2/entitysystem.h"
 #include "game/shared/ehandle.h"
@@ -184,6 +186,13 @@ class CBaseEntity : public CEntityInstance
     SCHEMA_FIELD(float32, m_flLocalTime)
     SCHEMA_FIELD(float32, m_flVPhysicsUpdateLocalTime)
     SCHEMA_FIELD(BloodType, m_nBloodType)
+
+  public:
+    bool IsPawn()
+    {
+        static int offset = counterstrikesharp::globals::gameConfig->GetOffset("CBaseEntity_IsPlayerPawn");
+        return CALL_VIRTUAL(bool, offset, this);
+    }
 };
 
 enum class PlayerConnectedState : int32
@@ -1026,4 +1035,82 @@ class CGameSceneNode
     SCHEMA_FIELD(float32, m_flZOffset)
     SCHEMA_FIELD(float32, m_flClientLocalScale)
     SCHEMA_FIELD(Vector, m_vRenderOrigin)
+};
+
+enum class DamageTypes_t : uint32
+{
+    DMG_GENERIC = 0,
+    DMG_CRUSH = 1, // (1 << 0)
+    DMG_BULLET = 2, // (1 << 1)
+    DMG_SLASH = 4, // (1 << 2)
+    DMG_BURN = 8, // (1 << 3)
+    DMG_VEHICLE = 16, // (1 << 4)
+    DMG_FALL = 32, // (1 << 5)
+    DMG_BLAST = 64, // (1 << 6)
+    DMG_CLUB = 128, // (1 << 7)
+    DMG_SHOCK = 256, // (1 << 8)
+    DMG_SONIC = 512, // (1 << 9)
+    DMG_ENERGYBEAM = 1024, // (1 << 10)
+    DMG_BUCKSHOT = 2048, // (1 << 11)
+    DMG_DROWN = 16384, // (1 << 14)
+    DMG_POISON = 32768, // (1 << 15)
+    DMG_RADIATION = 65536, // (1 << 16)
+    DMG_DROWNRECOVER = 131072, // (1 << 17)
+    DMG_ACID = 262144, // (1 << 18)
+    DMG_PHYSGUN = 1048576, // (1 << 20)
+    DMG_DISSOLVE = 2097152, // (1 << 21)
+    DMG_BLAST_SURFACE = 4194304, // (1 << 22)
+    DMG_LASTGENERICFLAG = 4194304, // (1 << 22)
+    DMG_HEADSHOT = 8388608, // (1 << 23)
+};
+
+class AmmoIndex_t
+{
+    DECLARE_SCHEMA_CLASS(AmmoIndex_t)
+
+    SCHEMA_FIELD(int8, m_Value)
+};
+
+class CTakeDamageInfo
+{
+    DECLARE_SCHEMA_CLASS(CTakeDamageInfo)
+
+  public:
+    SCHEMA_FIELD(Vector, m_vecDamageForce)
+    SCHEMA_FIELD(Vector, m_vecDamagePosition)
+    SCHEMA_FIELD(Vector, m_vecReportedPosition)
+    SCHEMA_FIELD(Vector, m_vecDamageDirection)
+    SCHEMA_FIELD(CHandle<CBaseEntity>, m_hInflictor)
+    SCHEMA_FIELD(CHandle<CBaseEntity>, m_hAttacker)
+    SCHEMA_FIELD(CHandle<CBaseEntity>, m_hAbility)
+    SCHEMA_FIELD(float32, m_flDamage)
+    SCHEMA_FIELD(float32, m_flTotalledDamage)
+    SCHEMA_FIELD(DamageTypes_t, m_bitsDamageType)
+    SCHEMA_FIELD(int32, m_iDamageCustom)
+    SCHEMA_FIELD(AmmoIndex_t, m_iAmmoType)
+    SCHEMA_FIELD(float32, m_flOriginalDamage)
+    SCHEMA_FIELD(bool, m_bShouldBleed)
+    SCHEMA_FIELD(bool, m_bShouldSpark)
+    SCHEMA_FIELD(TakeDamageFlags_t, m_nDamageFlags)
+    // SCHEMA_FIELD(CGlobalSymbol, m_sDamageSourceName)
+    SCHEMA_FIELD(HitGroup_t, m_iHitGroupId)
+    SCHEMA_FIELD(int32, m_nNumObjectsPenetrated)
+    SCHEMA_FIELD(float32, m_flFriendlyFireDamageReductionRatio)
+    // SCHEMA_FIELD(CUtlVector<DestructibleHitGroupToDestroy_t>, m_nDestructibleHitGroupsToForceDestroy)
+    SCHEMA_FIELD(bool, m_bInTakeDamageFlow)
+};
+
+class CTakeDamageResult
+{
+    DECLARE_SCHEMA_CLASS(CTakeDamageResult)
+
+  public:
+    SCHEMA_FIELD(CTakeDamageInfo*, m_pOriginatingInfo)
+    SCHEMA_FIELD(int32, m_nHealthLost)
+    SCHEMA_FIELD(int32, m_nHealthBefore)
+    SCHEMA_FIELD(int32, m_nDamageDealt)
+    SCHEMA_FIELD(float32, m_flPreModifiedDamage)
+    SCHEMA_FIELD(int32, m_nTotalledHealthLost)
+    SCHEMA_FIELD(int32, m_nTotalledDamageDealt)
+    SCHEMA_FIELD(bool, m_bWasDamageSuppressed)
 };

@@ -30,6 +30,8 @@
 
 #include "vprof.h"
 
+class CTakeDamageResult;
+class CTakeDamageInfo;
 class CCheckTransmitInfoHack
 {
   public:
@@ -79,6 +81,8 @@ class EntityManager : public GlobalClass
     void UnhookEntityOutput(const char* szClassname, const char* szOutput, CallbackT fnCallback, HookMode mode);
     CEntityListener entityListener;
     std::map<OutputKey_t, CallbackPair*> m_pHookMap;
+    bool Hook_OnTakeDamage_Alive_Pre(CBaseEntity* entity, CTakeDamageInfo* info, CTakeDamageResult* pResult);
+    void Hook_OnTakeDamage_Alive_Post(CBaseEntity* entity, CTakeDamageInfo* info, CTakeDamageResult* pResult);
 
   private:
     void CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
@@ -93,6 +97,10 @@ class EntityManager : public GlobalClass
     ScriptCallback* on_entity_created_callback;
     ScriptCallback* on_entity_deleted_callback;
     ScriptCallback* on_entity_parent_changed_callback;
+    ScriptCallback* on_entity_take_damage_pre_callback;
+    ScriptCallback* on_entity_take_damage_post_callback;
+    ScriptCallback* on_player_take_damage_pre_callback;
+    ScriptCallback* on_player_take_damage_post_callback;
     ScriptCallback* check_transmit;
 
     std::string m_profile_name;
@@ -157,6 +165,9 @@ static void DetourFireOutputInternal(CEntityIOOutput* const pThis,
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
 inline void (*CBaseEntity_DispatchSpawn)(void* pEntity, CEntityKeyValues* pKeyValues);
+
+inline int64 (*CBaseEntity_TakeDamageOld)(CBaseEntity* pThis, CTakeDamageInfo* pInfo, CTakeDamageResult* pResult);
+static int64 DetourCBaseEntity_TakeDamageOld(CBaseEntity* pThis, CTakeDamageInfo* pInfo, CTakeDamageResult* pResult);
 
 // Do it in here because i didn't found a good place to do this
 inline void (*CEntityInstance_AcceptInput)(CEntityInstance* pThis,

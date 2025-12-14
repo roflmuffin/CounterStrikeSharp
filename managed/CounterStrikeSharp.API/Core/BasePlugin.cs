@@ -292,7 +292,7 @@ namespace CounterStrikeSharp.API.Core
             Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
 
-            var wrappedHandler = new Action<ScriptContext>(context =>
+            var wrappedHandler = new Func<ScriptContext, HookResult>(context =>
             {
                 var args = new object[parameterTypes.Length];
                 for (int i = 0; i < parameterTypes.Length; i++)
@@ -302,7 +302,13 @@ namespace CounterStrikeSharp.API.Core
                         args[i] = Activator.CreateInstance(parameterTypes[i], new[] { args[i] });
                 }
 
-                handler.DynamicInvoke(args);
+                var result = handler.DynamicInvoke(args);
+                if (result is HookResult hookResult)
+                {
+                    return hookResult;
+                }
+
+                return HookResult.Continue;
             });
 
             var subscriber =
