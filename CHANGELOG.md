@@ -1,3 +1,6 @@
+## What's Changed in v1.0.351
+* feat: add `CEntityKeyValues` with dispatch in [#1146](https://github.com/roflmuffin/CounterStrikeSharp/pull/1146) ([0112853](https://github.com/roflmuffin/CounterStrikeSharp/commit/011285338148436f97768fc6849e1719f59398a7))
+
 ## What's Changed in v1.0.350
 * Revert "fix(admin): root flags in RequirePermissionsOr & registering admin groups " ([50a42a2](https://github.com/roflmuffin/CounterStrikeSharp/commit/50a42a2472173b13093353e6efc652c233356555))
 
