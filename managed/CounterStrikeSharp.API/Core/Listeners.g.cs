@@ -38,6 +38,45 @@ namespace CounterStrikeSharp.API.Core
         public delegate void OnEntityParentChanged(CEntityInstance entity, CEntityInstance newParent);
 
         /// <summary>
+        /// Called when an entity is about to take damage.
+        /// Returning HookResult.Handled or greater will prevent the entire damage application process.
+        /// </summary>
+        /// <param name="entity">The entity that is about to take damage.</param>
+        /// <param name="info">The damage info.</param>
+        [ListenerName("OnEntityTakeDamagePre")]
+        public delegate HookResult OnEntityTakeDamagePre(CBaseEntity entity, CTakeDamageInfo info);
+
+        /// <summary>
+        /// Called when an entity has taken damage.
+        /// Cannot be prevented; the damage has already been applied.
+        /// Modifications to <paramref name="info"/> at this stage have no effect.
+        /// </summary>
+        /// <param name="entity">The entity that took damage.</param>
+        /// <param name="info">The damage info.</param>
+        /// <param name="result">The result of the damage application.</param>
+        [ListenerName("OnEntityTakeDamagePost")]
+        public delegate void OnEntityTakeDamagePost(CBaseEntity entity, CTakeDamageInfo info, CTakeDamageResult result);
+
+        /// <summary>
+        /// Called when a player (pawn) is about to take damage.
+        /// Returning HookResult.Handled or greater will prevent the entire damage application process.
+        /// </summary>
+        /// <param name="player">The player (pawn) that is about to take damage.</param>
+        /// <param name="info">The damage info.</param>
+        [ListenerName("OnPlayerTakeDamagePre")]
+        public delegate HookResult OnPlayerTakeDamagePre(CCSPlayerPawn player, CTakeDamageInfo info);
+
+        /// <summary>
+        /// Called when a player (pawn) has taken damage.
+        /// Cannot be prevented; the damage has already been applied.
+        /// Modifications to <paramref name="info"/> at this stage have no effect.
+        /// </summary>
+        /// <param name="player">The player (pawn) that took damage.</param>
+        /// <param name="info">The damage info.</param>
+        [ListenerName("OnPlayerTakeDamagePost")]
+        public delegate void OnPlayerTakeDamagePost(CCSPlayerPawn player, CTakeDamageInfo info, CTakeDamageResult result);
+
+        /// <summary>
         /// Called on every server tick (64 per second).
         /// This handler should avoid containing expensive operations.
         /// </summary>

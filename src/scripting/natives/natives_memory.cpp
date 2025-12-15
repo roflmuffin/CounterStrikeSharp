@@ -19,7 +19,10 @@
 #include <unordered_map>
 
 #include "core/function.h"
+#include "core/gameconfig.h"
+#include "core/globals.h"
 #include "core/log.h"
+#include "core/managers/entity_manager.h"
 #include "core/memory.h"
 #include "core/memory_module.h"
 #include "scripting/autonative.h"
@@ -103,6 +106,12 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
     auto return_type = script_context.GetArgument<DataType_t>(4);
 
     auto* function_addr = FindSignature(binary_name, signature_hex_string);
+
+    if (signature_hex_string == std::string(globals::gameConfig->GetSignature("CBaseEntity_TakeDamageOld")))
+    {
+        // Special case for TakeDamageOld as we have detoured it
+        function_addr = (void*)CBaseEntity_TakeDamageOld;
+    }
 
     if (function_addr == nullptr)
     {
