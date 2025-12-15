@@ -1,3 +1,6 @@
+## What's Changed in v1.0.352
+* feat(listeners): add entity & player damage listeners in [#1147](https://github.com/roflmuffin/CounterStrikeSharp/pull/1147) ([395b237](https://github.com/roflmuffin/CounterStrikeSharp/commit/395b237dce74f4b1d933e8df3e5518818107b274))
+
 ## What's Changed in v1.0.351
 * feat: add `CEntityKeyValues` with dispatch in [#1146](https://github.com/roflmuffin/CounterStrikeSharp/pull/1146) ([0112853](https://github.com/roflmuffin/CounterStrikeSharp/commit/011285338148436f97768fc6849e1719f59398a7))
 
