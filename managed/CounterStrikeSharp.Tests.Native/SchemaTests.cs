@@ -29,11 +29,12 @@ public class SchemaTests
     }
 
     [Fact]
-    public void GetSchemaClassSize_ReturnsPositiveSize()
+    public void GetSchemaClassSize_ReturnsCorrectSize()
     {
-        var size = Schema.GetClassSize("CBaseEntity");
+        var size = Schema.GetClassSize("CEntityIdentity");
 
-        Assert.True(size > 0, $"Schema class size for CBaseEntity should be positive, got {size}");
+        // This seems like the most likely fixed size class to test with
+        Assert.Equal(112, size);
     }
 
     [Fact]
