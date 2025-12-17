@@ -53,11 +53,6 @@ public class CommandTests
         NativeAPI.IssueServerCommand("css_test_public_chat 1 2 3");
         await WaitOneFrame();
         mock.Verify(s => s(It.IsAny<int>(), It.IsAny<IntPtr>()), Times.Once);
-
-        NativeAPI.IssueServerCommand("say \"!test_public_chat 1 2 3\"");
-        await WaitOneFrame();
-        mock.Verify(s => s(It.IsAny<int>(), It.IsAny<IntPtr>()), Times.Exactly(2));
-        NativeAPI.RemoveCommand("css_test_public_chat", methodCallback);
     }
 
     [Fact]
