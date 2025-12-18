@@ -60,7 +60,7 @@ class ServerManager : public GlobalClass
 
     ScriptCallback* on_server_precache_resources;
 
-    moodycamel::ConcurrentQueue<std::function<void()>> m_nextWorldUpdateTasks;
+    moodycamel::ConcurrentQueue<std::function<void()>> m_nextWorldUpdateTasks{ 4096 };
 };
 
 } // namespace counterstrikesharp

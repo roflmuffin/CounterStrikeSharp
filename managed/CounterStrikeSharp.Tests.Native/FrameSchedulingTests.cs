@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+using System.Threading;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
@@ -94,5 +96,51 @@ public class FrameSchedulingTests
         await WaitOneFrame();
 
         Assert.True(called, "NextWorldUpdate callback should have been called");
+    }
+
+    [Fact]
+    public async Task NextFrameConcurrentQueueDrainsProperly()
+    {
+        int callCount = 0;
+        int targetCalls = 4096;
+        var callsByFrame = new ConcurrentDictionary<int, int>();
+        for (int i = 0; i < targetCalls; i++)
+        {
+            Server.NextFrame(() =>
+            {
+                callsByFrame.AddOrUpdate(Server.TickCount, 1, (_, count) => count + 1);
+                Interlocked.Increment(ref callCount);
+            });
+        }
+
+        // All tasks should have been drained by latest NextFrameAsync
+        await Server.NextFrameAsync(() => { }).ConfigureAwait(false);
+
+        // The task should be bucketed into multiple frames
+        Assert.All(callsByFrame.Values, count => Assert.Equal(1024, count));
+        Assert.Equal(4096, callCount);
+    }
+
+    [Fact]
+    public async Task NextWorldUpdateConcurrentQueueDrainsProperly()
+    {
+        int callCount = 0;
+        int targetCalls = 4096;
+        var callsByFrame = new ConcurrentDictionary<int, int>();
+        for (int i = 0; i < targetCalls; i++)
+        {
+            Server.NextWorldUpdate(() =>
+            {
+                callsByFrame.AddOrUpdate(Server.TickCount, 1, (_, count) => count + 1);
+                Interlocked.Increment(ref callCount);
+            });
+        }
+
+        // All tasks should have been drained by latest NextFrameAsync
+        await Server.NextWorldUpdateAsync(() => { }).ConfigureAwait(false);
+
+        // The task should be bucketed into multiple frames
+        Assert.All(callsByFrame.Values, count => Assert.Equal(1024, count));
+        Assert.Equal(4096, callCount);
     }
 }
