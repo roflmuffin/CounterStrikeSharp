@@ -249,7 +249,7 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
 
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
 {
-    auto success = m_nextTasks.enqueue(std::move(task));
+    auto success = m_nextTasks.enqueue(std::forward<decltype(task)>(task));
     if (!success)
     {
         CSSHARP_CORE_ERROR("Failed to enqueue task for next frame!");

@@ -200,7 +200,11 @@ void ServerManager::PreWorldUpdate(bool bSimulating)
 
 void ServerManager::AddTaskForNextWorldUpdate(std::function<void()>&& task)
 {
-    m_nextWorldUpdateTasks.enqueue(std::forward<decltype(task)>(task));
+    auto success = m_nextWorldUpdateTasks.enqueue(std::forward<decltype(task)>(task));
+    if (!success)
+    {
+        CSSHARP_CORE_ERROR("Failed to enqueue task for next world update!");
+    }
 }
 
 void ServerManager::OnPrecacheResources(IEntityResourceManifest* pResourceManifest)
