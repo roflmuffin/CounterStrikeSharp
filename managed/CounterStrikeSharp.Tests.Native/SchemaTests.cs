@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
@@ -14,7 +15,19 @@ public class SchemaTests
     {
         var offset = NativeAPI.GetSchemaOffset("CBaseEntity", "m_iHealth");
 
-        Assert.True(offset > 0, $"Schema offset for m_iHealth should be positive, got {offset}");
+        Assert.Equal(1464, offset); // Hardcode for now, this may change but I want to know if it changes
+    }
+
+    [Fact]
+    public async Task GetSchemaOffset_CanRunOnAnotherThread()
+    {
+        await Task.Run(async () =>
+        {
+            await Task.Yield();
+            Assert.NotEqual(Thread.CurrentThread.ManagedThreadId, NativeTestsPlugin.gameThreadId);
+            var offset = NativeAPI.GetSchemaOffset("CBaseEntity", "m_iHealth");
+            Assert.True(offset > 0);
+        });
     }
 
     [Fact]
