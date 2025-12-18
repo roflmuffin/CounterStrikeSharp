@@ -146,26 +146,6 @@ float GetSoundDuration(ScriptContext& script_context)
 
 double GetTickedTime(ScriptContext& script_context) { return globals::timerSystem.GetTickedTime(); }
 
-void QueueTaskForNextFrame(ScriptContext& script_context)
-{
-    auto func = script_context.GetArgument<void*>(0);
-
-    typedef void(voidfunc)(void);
-    globals::mmPlugin->AddTaskForNextFrame([func]() {
-        reinterpret_cast<voidfunc*>(func)();
-    });
-}
-
-void QueueTaskForNextWorldUpdate(ScriptContext& script_context)
-{
-    auto func = script_context.GetArgument<void*>(0);
-
-    typedef void(voidfunc)(void);
-    globals::serverManager.AddTaskForNextWorldUpdate([func]() {
-        reinterpret_cast<voidfunc*>(func)();
-    });
-}
-
 void QueueTaskForFrame(ScriptContext& script_context)
 {
     auto tick = script_context.GetArgument<int>(0);
@@ -289,8 +269,6 @@ REGISTER_NATIVES(engine, {
     // ScriptEngine::RegisterNativeHandler("EMIT_SOUND", EmitSound);
 
     ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
-    ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
-    ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_WORLD_UPDATE", QueueTaskForNextWorldUpdate);
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_FRAME", QueueTaskForFrame);
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);

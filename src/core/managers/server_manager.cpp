@@ -20,7 +20,6 @@
 #include "scripting/callback_manager.h"
 
 #include "core/game_system.h"
-#include <concurrentqueue.h>
 
 SH_DECL_HOOK1_void(ISource2Server, ServerHibernationUpdate, SH_NOATTRIB, 0, bool);
 SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIActivated, SH_NOATTRIB, 0);
@@ -174,20 +173,6 @@ void ServerManager::UpdateWhenNotInGame(float flFrameTime)
 
 void ServerManager::PreWorldUpdate(bool bSimulating)
 {
-    std::vector<std::function<void()>> out_list(1024);
-
-    auto size = m_nextWorldUpdateTasks.try_dequeue_bulk(out_list.begin(), 1024);
-
-    if (size > 0)
-    {
-        CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} at time {1}", size, globals::getGlobalVars()->curtime);
-
-        for (size_t i = 0; i < size; i++)
-        {
-            out_list[i]();
-        }
-    }
-
     auto callback = globals::serverManager.on_server_pre_world_update;
 
     if (callback && callback->GetFunctionCount())
@@ -195,15 +180,6 @@ void ServerManager::PreWorldUpdate(bool bSimulating)
         callback->ScriptContext().Reset();
         callback->ScriptContext().Push(bSimulating);
         callback->Execute();
-    }
-}
-
-void ServerManager::AddTaskForNextWorldUpdate(std::function<void()>&& task)
-{
-    auto success = m_nextWorldUpdateTasks.enqueue(std::forward<decltype(task)>(task));
-    if (!success)
-    {
-        CSSHARP_CORE_ERROR("Failed to enqueue task for next world update!");
     }
 }
 

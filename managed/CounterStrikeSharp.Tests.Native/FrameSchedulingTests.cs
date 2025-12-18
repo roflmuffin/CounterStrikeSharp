@@ -11,12 +11,23 @@ namespace NativeTestsPlugin;
 public class FrameSchedulingTests
 {
     [Fact]
+    public async Task QueueTaskForNextFrame_RunsOnMainThread()
+    {
+        await Task.Run(async () =>
+        {
+            await Task.Delay(10);
+            Assert.NotEqual(Thread.CurrentThread.ManagedThreadId, NativeTestsPlugin.gameThreadId);
+
+            await Server.NextFrameAsync(() => { Assert.Equal(Thread.CurrentThread.ManagedThreadId, NativeTestsPlugin.gameThreadId); });
+        });
+    }
+
+    [Fact]
     public async Task QueueTaskForNextFrame_ExecutesCallback()
     {
         var mock = new Mock<Action>();
-        var callback = FunctionReference.Create(mock.Object);
 
-        NativeAPI.QueueTaskForNextFrame(callback);
+        Server.NextFrame(mock.Object);
         await WaitOneFrame();
 
         mock.Verify(s => s(), Times.Once);
@@ -40,12 +51,27 @@ public class FrameSchedulingTests
     }
 
     [Fact]
+    public async Task QueueTaskForNextWorldUpdate_RunsOnMainThread()
+    {
+        await Task.Run(async () =>
+        {
+            await Task.Delay(10);
+            Assert.NotEqual(Thread.CurrentThread.ManagedThreadId, NativeTestsPlugin.gameThreadId);
+
+            await Server.NextWorldUpdateAsync(() =>
+            {
+                Assert.Equal(Thread.CurrentThread.ManagedThreadId, NativeTestsPlugin.gameThreadId);
+            });
+        });
+    }
+
+
+    [Fact]
     public async Task QueueTaskForNextWorldUpdate_ExecutesCallback()
     {
         var mock = new Mock<Action>();
-        var callback = FunctionReference.Create(mock.Object);
 
-        NativeAPI.QueueTaskForNextWorldUpdate(callback);
+        Server.NextWorldUpdate(mock.Object);
         await WaitOneFrame();
 
         mock.Verify(s => s(), Times.Once);
@@ -116,8 +142,6 @@ public class FrameSchedulingTests
         // All tasks should have been drained by latest NextFrameAsync
         await Server.NextFrameAsync(() => { }).ConfigureAwait(false);
 
-        // The task should be bucketed into multiple frames
-        Assert.All(callsByFrame.Values, count => Assert.Equal(1024, count));
         Assert.Equal(4096, callCount);
     }
 
@@ -139,8 +163,6 @@ public class FrameSchedulingTests
         // All tasks should have been drained by latest NextFrameAsync
         await Server.NextWorldUpdateAsync(() => { }).ConfigureAwait(false);
 
-        // The task should be bucketed into multiple frames
-        Assert.All(callsByFrame.Values, count => Assert.Equal(1024, count));
         Assert.Equal(4096, callCount);
     }
 }
