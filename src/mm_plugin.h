@@ -66,7 +66,7 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
     const char* GetLogTag() override;
 
   private:
-    moodycamel::ConcurrentQueue<std::function<void()>> m_nextTasks;
+    moodycamel::ConcurrentQueue<std::function<void()>> m_nextTasks{ 4096 };
 };
 
 static ScriptCallback* on_activate_callback;

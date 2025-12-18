@@ -249,7 +249,11 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
 
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
 {
-    m_nextTasks.try_enqueue(std::forward<decltype(task)>(task));
+    auto success = m_nextTasks.enqueue(std::move(task));
+    if (!success)
+    {
+        CSSHARP_CORE_ERROR("Failed to enqueue task for next frame!");
+    }
 }
 
 void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
