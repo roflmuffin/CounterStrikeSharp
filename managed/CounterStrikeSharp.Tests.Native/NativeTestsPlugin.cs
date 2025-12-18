@@ -38,7 +38,7 @@ namespace NativeTestsPlugin
 
         public override string ModuleDescription => "A an automated test plugin.";
 
-        private int gameThreadId;
+        public static int gameThreadId;
 
         public override void Load(bool hotReload)
         {

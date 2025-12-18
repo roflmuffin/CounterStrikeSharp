@@ -5,7 +5,7 @@ public static class TestUtils
 {
     public static async Task WaitOneFrame()
     {
-        await Server.NextWorldUpdateAsync(() => { }).ConfigureAwait(false);
+        await Server.NextFrameAsync(() => { }).ConfigureAwait(false);
     }
 
     public static async Task WaitForSeconds(float seconds)

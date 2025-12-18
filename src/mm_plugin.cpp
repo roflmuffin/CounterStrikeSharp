@@ -54,9 +54,7 @@ DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
 {
     if (context.nativeIdentifier == 0) return;
 
-    if (context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_NEXT_FRAME") &&
-        context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_NEXT_WORLD_UPDATE") &&
-        context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_FRAME") &&
+    if (context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_FRAME") &&
         counterstrikesharp::globals::gameThreadId != std::this_thread::get_id())
     {
         counterstrikesharp::ScriptContextRaw scriptContext(context);
@@ -247,15 +245,6 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
     on_metamod_all_plugins_loaded_callback->Execute();
 }
 
-void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
-{
-    auto success = m_nextTasks.enqueue(std::forward<decltype(task)>(task));
-    if (!success)
-    {
-        CSSHARP_CORE_ERROR("Failed to enqueue task for next frame!");
-    }
-}
-
 void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
 {
     /**
@@ -266,20 +255,6 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      */
     // VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
     globals::timerSystem.OnGameFrame(simulating);
-
-    std::vector<std::function<void()>> out_list(1024);
-
-    auto size = m_nextTasks.try_dequeue_bulk(out_list.begin(), 1024);
-
-    if (size > 0)
-    {
-        CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} on tick number {1}", size, globals::getGlobalVars()->tickcount);
-
-        for (size_t i = 0; i < size; i++)
-        {
-            out_list[i]();
-        }
-    }
 
     auto callbacks = globals::tickScheduler.getCallbacks(globals::getGlobalVars()->tickcount);
     if (callbacks.size() > 0)

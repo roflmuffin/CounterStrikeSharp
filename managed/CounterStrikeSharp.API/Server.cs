@@ -14,21 +14,51 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
+using System.Collections.Concurrent;
 using System.Threading.Tasks;
-using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API
 {
     public class Server
     {
+        static Server()
+        {
+            NativeAPI.AddListener("OnTick", (Delegate)(() => OnTick()));
+            NativeAPI.AddListener("OnServerPreWorldUpdate", (Delegate)((bool simulating) => OnWorldUpdate()));
+        }
+
+        private static readonly ConcurrentQueue<Action> _onTickTaskQueue = new();
+        private static readonly ConcurrentQueue<Action> _onWorldUpdateTaskQueue = new();
+
+        internal static void OnTick()
+        {
+            ExecuteTickTasks(_onTickTaskQueue);
+        }
+
+        internal static void OnWorldUpdate()
+        {
+            ExecuteTickTasks(_onWorldUpdateTaskQueue);
+        }
+
+        private static void ExecuteTickTasks(ConcurrentQueue<Action> taskQueue)
+        {
+            while (taskQueue.TryDequeue(out var task))
+            {
+                try
+                {
+                    task();
+                }
+                catch (Exception e)
+                {
+                    Application.Instance.Logger.LogError(e, "Error invoking callback");
+                }
+            }
+        }
+
+
         /// <summary>
         /// Duration of a single game tick in seconds, based on a 64 tick server (hard coded in CS2).
         /// </summary>
@@ -101,9 +131,22 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task NextFrameAsync(Action task)
         {
-            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
-            NativeAPI.QueueTaskForNextFrame(functionReference);
-            return functionReference.CompletionTask;
+            var tcs = new TaskCompletionSource();
+
+            _onTickTaskQueue.Enqueue(() =>
+            {
+                try
+                {
+                    task();
+                    tcs.SetResult();
+                }
+                catch (Exception ex)
+                {
+                    tcs.SetException(ex);
+                }
+            });
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -121,9 +164,22 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task NextWorldUpdateAsync(Action task)
         {
-            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
-            NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
-            return functionReference.CompletionTask;
+            var tcs = new TaskCompletionSource();
+
+            _onWorldUpdateTaskQueue.Enqueue(() =>
+            {
+                try
+                {
+                    task();
+                    tcs.SetResult();
+                }
+                catch (Exception ex)
+                {
+                    tcs.SetException(ex);
+                }
+            });
+
+            return tcs.Task;
         }
 
         /// <summary>
