@@ -371,6 +371,21 @@ namespace CounterStrikeSharp.API.Core
         }
 
         /// <summary>
+        /// Adds a timer that will call the given callback after the specified amount of ticks.
+        /// By default will only run once unless the <see cref="TimerFlags.REPEAT"/> flag is set.
+        /// </summary>
+        /// <param name="interval">Interval/Delay in ticks</param>
+        /// <param name="callback">Code to run when timer elapses</param>
+        /// <param name="flags">Controls if the timer is a one-off, repeat or stops on map change etc.</param>
+        /// <returns>An instance of the <see cref="Timer"/></returns>
+        public Timer AddTickTimer(int tickInterval, Action callback, TimerFlags? flags = null)
+        {
+            var timer = new Timer(tickInterval * Server.TickInterval, callback, flags ?? 0);
+            Timers.Add(timer);
+            return timer;
+        }
+
+        /// <summary>
         /// Registers all attribute handlers on the given instance.
         /// Can be used to register event handlers, console commands, entity outputs etc. from classes that are not derived from `BasePlugin`.
         /// </summary>

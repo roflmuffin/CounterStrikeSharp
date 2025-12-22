@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
@@ -57,6 +58,31 @@ public class TimerTests
         finally
         {
             NativeAPI.KillTimer(timerPtr);
+        }
+    }
+
+    [Fact]
+    public async Task CreateTimer_TickBased()
+    {
+        var startTick = Server.TickCount;
+        var tickCounts = new List<int>();
+        int timesTicked = 0;
+
+        // Run every 4 ticks
+        var timer = new Timer(4 * Server.TickInterval, () =>
+        {
+            timesTicked++;
+            tickCounts.Add(Server.TickCount);
+        }, TimerFlags.REPEAT);
+
+        await Server.RunOnTickAsync(startTick + 16, () => { });
+        timer.Kill();
+
+        Assert.Equal(4, timesTicked);
+        for (int i = 0; i < tickCounts.Count; i++)
+        {
+            var expectedTick = startTick + (i + 1) * 4;
+            Assert.Equal(expectedTick, tickCounts[i]);
         }
     }
 
