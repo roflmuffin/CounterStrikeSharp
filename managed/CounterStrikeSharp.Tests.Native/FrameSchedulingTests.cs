@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
@@ -31,6 +32,31 @@ public class FrameSchedulingTests
         await WaitOneFrame();
 
         mock.Verify(s => s(), Times.Once);
+    }
+
+    [Fact]
+    public async Task QueueTaskForNextFrame_ExecutesNestedCallbacks()
+    {
+        int startingTick = Server.TickCount;
+        List<int> executionTicks = new List<int>();
+
+        Action callback = () => executionTicks.Add(Server.TickCount);
+        Server.NextFrame(() =>
+        {
+            callback();
+            Server.NextFrame(() =>
+            {
+                callback();
+                Server.NextFrame(() => { callback(); });
+            });
+        });
+
+        await Server.RunOnTickAsync(startingTick + 4, () => { });
+        Assert.Equal(3, executionTicks.Count);
+        for (int i = 0; i < executionTicks.Count; i++)
+        {
+            Assert.Equal(startingTick + i + 1, executionTicks[i]);
+        }
     }
 
     [Fact]
@@ -75,6 +101,31 @@ public class FrameSchedulingTests
         await WaitOneFrame();
 
         mock.Verify(s => s(), Times.Once);
+    }
+
+    [Fact]
+    public async Task QueueTaskForNextWorldUpdate_ExecutesNestedCallbacks()
+    {
+        int startingTick = Server.TickCount;
+        List<int> executionTicks = new List<int>();
+
+        Action callback = () => executionTicks.Add(Server.TickCount);
+        Server.NextWorldUpdate(() =>
+        {
+            callback();
+            Server.NextWorldUpdate(() =>
+            {
+                callback();
+                Server.NextWorldUpdate(() => { callback(); });
+            });
+        });
+
+        await Server.RunOnTickAsync(startingTick + 4, () => { });
+        Assert.Equal(3, executionTicks.Count);
+        for (int i = 0; i < executionTicks.Count; i++)
+        {
+            Assert.Equal(startingTick + i + 1, executionTicks[i]);
+        }
     }
 
     [Fact]
