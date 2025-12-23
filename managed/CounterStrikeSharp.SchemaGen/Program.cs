@@ -582,9 +582,13 @@ internal static partial class Program
             if (IgnoreClassWildcards.Any(y => field.Type.Name.Contains(y)))
                 continue;
 
+            var requiresNewKeyword = parentFields.Any(x =>
+                x.clazz.CsPropertyNameForField(x.clazz.Name, x.field) == schemaClass.CsPropertyNameForField(schemaClassName, field) &&
+                x.field.IsNetworkEnabled());
+
             var name = schemaClass.CsPropertyNameForField(schemaClassName, field);
             builder.AppendLine(
-                $"\tpublic virtual void {name}PropertyChanged() => Utilities.SetStateChanged(this, \"{schemaClassName}\", \"{field.Name}\");");
+                $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}void {name}PropertyChanged() => Utilities.SetStateChanged(this, \"{schemaClassName}\", \"{field.Name}\");");
         }
 
         builder.AppendLine($"}}");

@@ -10,9 +10,6 @@ public class CUtlSymbolLarge : NativeObject
 
     public string String
     {
-        get
-        {
-            return NativeAPI.GetStringFromSymbolLarge(Handle);
-        }
+        get { return NativeAPI.GetStringFromSymbolLarge(Handle); }
     }
 }

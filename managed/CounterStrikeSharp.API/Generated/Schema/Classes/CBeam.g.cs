@@ -212,7 +212,7 @@ public partial class CBeam : CBaseModelEntity
 	public virtual void HaloScalePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fHaloScale");
 	public virtual void AmplitudePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fAmplitude");
 	public virtual void StartFramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fStartFrame");
-	public virtual void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fSpeed");
+	public virtual new void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fSpeed");
 	public virtual void FramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flFrame");
 	public virtual void ClipStylePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nClipStyle");
 	public virtual void TurnedOffPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_bTurnedOff");

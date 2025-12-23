@@ -125,7 +125,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible", value); }
 	}
 
-	public virtual void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_gravityScale");
+	public virtual new void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_gravityScale");
 	public virtual void LinearLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearLimit");
 	public virtual void LinearDampingPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearDamping");
 	public virtual void AngularLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_angularLimit");
