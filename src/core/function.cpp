@@ -347,7 +347,7 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
 
         maxResult = (std::max)(result, maxResult);
 
-        if (result >= HookResult::Stop)
+        if (maxResult >= HookResult::Stop)
         {
             break;
         }
