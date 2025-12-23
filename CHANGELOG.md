@@ -1,3 +1,6 @@
+## What's Changed in v1.0.354
+* fix(async): nested nextframes now run on expected tick ([3a0093b](https://github.com/roflmuffin/CounterStrikeSharp/commit/3a0093b3950be98166ba10953a0a7668cab7a3d8))
+
 ## What's Changed in v1.0.353
 * fix: use dynohook for take damage for compatibility in [#1159](https://github.com/roflmuffin/CounterStrikeSharp/pull/1159) ([38c64c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/38c64c1c330605817561d62bd6b7154c972c77fa))
 * feat(timers): run timer logic every tick to enable tick based timers in [#1157](https://github.com/roflmuffin/CounterStrikeSharp/pull/1157) ([55d7939](https://github.com/roflmuffin/CounterStrikeSharp/commit/55d79391693cfe3f9ddd45ed8bc4d75598a68386))
