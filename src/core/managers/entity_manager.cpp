@@ -15,6 +15,8 @@
  */
 
 #include "core/managers/entity_manager.h"
+#include "core/detours.h"
+#include "core/function.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
 #include "core/log.h"
@@ -49,6 +51,12 @@ CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInf
     : infoList(pInfoInfoList), infoCount(nInfoCount)
 {
 }
+
+#ifdef _WIN32
+#define CALL_CONV CONV_THISCALL
+#else
+#define CALL_CONV CONV_CDECL
+#endif
 
 int g_iCheckTransmit = -1;
 
@@ -117,13 +125,15 @@ void EntityManager::OnAllInitialized()
         return;
     }
 
+    Func_OnTakeDamage =
+        new ValveFunction((void*)CBaseEntity_TakeDamageOld, CALL_CONV,
+                          std::vector<DataType_t>{ DATA_TYPE_POINTER, DATA_TYPE_POINTER, DATA_TYPE_POINTER }, DATA_TYPE_LONG_LONG);
+
+    Func_OnTakeDamage->AddHook(&OnTakeDamageProxy);
+
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
     funchook_install(m_hook, 0);
-
-    auto hook = funchook_create();
-    funchook_prepare(hook, (void**)&CBaseEntity_TakeDamageOld, (void*)&DetourCBaseEntity_TakeDamageOld);
-    funchook_install(hook, 0);
 
     // Listener is added in ServerStartup as entity system is not initialised at this stage.
 }

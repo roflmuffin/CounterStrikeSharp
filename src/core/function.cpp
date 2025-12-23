@@ -29,6 +29,8 @@
 
 #include "core/function.h"
 
+#include <algorithm>
+
 #include "core/log.h"
 #include "dyncall/dyncall/dyncall.h"
 
@@ -251,9 +253,81 @@ void ValveFunction::Call(ScriptContext& script_context, int offset, bool bypass)
 
 dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
 {
-    auto vf = g_HookMap[&hook];
+    auto* vf = g_HookMap[&hook];
 
-    auto callback = hookType == dyno::HookType::Pre ? vf->m_precallback : vf->m_postcallback;
+    if (hookType == dyno::HookType::Pre)
+    {
+        auto* callback = vf->m_precallback;
+        auto global_callback = vf->m_callback;
+        HookResult maxResult = HookResult::Continue;
+
+        if (global_callback.has_value())
+        {
+            HookResult result = global_callback.value()(HookMode::Pre, hook);
+            maxResult = (std::max)(result, maxResult);
+        }
+
+        if (callback != nullptr)
+        {
+            callback->Reset();
+            callback->ScriptContext().Push(&hook);
+
+            for (auto fnMethodToCall : callback->GetFunctions())
+            {
+                if (!fnMethodToCall) continue;
+                fnMethodToCall(&callback->ScriptContextStruct());
+
+                auto result = callback->ScriptContext().GetResult<HookResult>();
+
+                maxResult = (std::max)(result, maxResult);
+
+                if (maxResult >= HookResult::Stop)
+                {
+                    break;
+                }
+            }
+        }
+
+        // Store the pre-hook result for the post-hook to check
+        vf->m_lastPreHookResult.push_back(maxResult);
+
+        if (maxResult >= HookResult::Handled)
+        {
+            return dyno::ReturnAction::Supercede;
+        }
+
+        return dyno::ReturnAction::Ignored;
+    }
+
+    // Post hook
+    HookResult preResult = HookResult::Continue;
+    if (!vf->m_lastPreHookResult.empty())
+    {
+        preResult = vf->m_lastPreHookResult.back();
+        vf->m_lastPreHookResult.pop_back();
+    }
+
+    if (preResult >= HookResult::Handled)
+    {
+        return dyno::ReturnAction::Ignored;
+    }
+
+    auto* callback = vf->m_postcallback;
+    auto global_callback = vf->m_callback;
+
+    if (callback == nullptr && !global_callback.has_value())
+    {
+        return dyno::ReturnAction::Ignored;
+    }
+
+    if (global_callback.has_value())
+    {
+        HookResult result = global_callback.value()(HookMode::Post, hook);
+        if (result >= HookResult::Handled)
+        {
+            return dyno::ReturnAction::Supercede;
+        }
+    }
 
     if (callback == nullptr)
     {
@@ -263,18 +337,25 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
     callback->Reset();
     callback->ScriptContext().Push(&hook);
 
+    HookResult maxResult = HookResult::Continue;
     for (auto fnMethodToCall : callback->GetFunctions())
     {
         if (!fnMethodToCall) continue;
         fnMethodToCall(&callback->ScriptContextStruct());
 
         auto result = callback->ScriptContext().GetResult<HookResult>();
-        CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", result, (int)hookType);
 
-        if (result >= HookResult::Handled)
+        maxResult = (std::max)(result, maxResult);
+
+        if (maxResult >= HookResult::Stop)
         {
-            return dyno::ReturnAction::Supercede;
+            break;
         }
+    }
+
+    if (maxResult >= HookResult::Handled)
+    {
+        return dyno::ReturnAction::Supercede;
     }
 
     return dyno::ReturnAction::Ignored;
@@ -291,6 +372,23 @@ std::vector<dyno::DataObject> ConvertArgsToDynoHook(const std::vector<DataType_t
     }
 
     return converted;
+}
+
+void ValveFunction::AddHook(const std::function<HookResult(HookMode, dyno::Hook&)>& callback)
+{
+    dyno::HookManager& manager = dyno::HookManager::Get();
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
+#ifdef _WIN32
+        return new dyno::x64MsFastcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
+#else
+        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
+#endif
+    });
+    g_HookMap[hook] = this;
+    hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
+    hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
+    m_trampoline = hook->getOriginal();
+    m_callback = callback;
 }
 
 void ValveFunction::AddHook(CallbackT callable, bool post)
