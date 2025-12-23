@@ -55,8 +55,13 @@ public class VirtualFunctionTests
             return HookResult.Continue;
         };
 
-        VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Hook(preHookHandler, HookMode.Pre);
-        VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Hook(postHookHandler, HookMode.Post);
+        try {
+            VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Hook(preHookHandler, HookMode.Pre);
+            VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Hook(postHookHandler, HookMode.Post);
+        } finally {
+            VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Unhook(preHookHandler, HookMode.Pre);
+            VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Unhook(postHookHandler, HookMode.Post);
+        }
 
         await WaitOneFrame();
         mock.Verify(s => s(), Times.Never, "Post hook should not be called if pre hook returns Stop.");

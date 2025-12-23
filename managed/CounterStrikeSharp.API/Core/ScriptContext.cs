@@ -30,8 +30,10 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
+using System.Numerics;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Natives;
+using CounterStrikeSharp.API.Natives.Structs;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -456,11 +458,41 @@ namespace CounterStrikeSharp.API.Core
 				return Marshaling.ColorMarshaler.NativeToManaged(pointer);
 			}
 
+			if (type == typeof(Vector3))
+			{
+				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
+				return Marshal.PtrToStructure<Vector3>(pointer);
+			}
+
+			if (type == typeof(Vector2))
+			{
+				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
+				return Marshal.PtrToStructure<Vector2>(pointer);
+			}
+
+			if (type == typeof(Vector4))
+			{
+				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
+				return Marshal.PtrToStructure<Vector4>(pointer);
+			}
+
+			if (type == typeof(Quaternion))
+			{
+				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
+				return Marshal.PtrToStructure<Quaternion>(pointer);
+			}
+
+			if (type == typeof(QAngle))
+			{
+				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
+				return Marshal.PtrToStructure<QAngle>(pointer);
+			}
+
 			// this one only works if the 'Raw'/uint is passed
 			// maybe do this with a marshaler?!
-			if (type == typeof(CEntityHandle))
+			if (type == typeof(CHandle<CEntityInstance>))
 			{
-				return new CEntityHandle((uint)GetResult(typeof(uint), ptr));
+				return new CHandle<CEntityInstance>((uint)GetResult(typeof(uint), ptr));
 			}
 
 			if (type == typeof(object))

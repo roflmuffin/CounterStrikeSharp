@@ -14,6 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using CounterStrikeSharp.API.Natives;
+
 namespace CounterStrikeSharp.API.Modules.Memory
 {
     public abstract class VTableBase : NativeObject

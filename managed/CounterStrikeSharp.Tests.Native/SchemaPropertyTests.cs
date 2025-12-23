@@ -3,6 +3,7 @@ using System.Linq;
 using System.Numerics;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Natives.Structs;
 using Xunit;
 
 namespace NativeTestsPlugin;
@@ -56,9 +57,7 @@ public class SchemaPropertyTests : IDisposable
     [Fact]
     public void SchemaProperty_Vector()
     {
-        this.entity.DecalPosition.X = 100;
-        this.entity.DecalPosition.Y = 200;
-        this.entity.DecalPosition.Z = 300;
+        this.entity.DecalPosition = new(100, 200, 300);
         Assert.Equal((Vector3)this.entity.DecalPosition, new Vector3(100, 200, 300));
     }
 
@@ -86,7 +85,7 @@ public class SchemaPropertyTests : IDisposable
     [Fact]
     public void SchemaProperty_Handle()
     {
-        this.entity.OwnerEntity.Raw = this.player.EntityHandle.Raw;
+        this.entity.OwnerEntity = new CHandle<CBaseEntity>(this.player.EntityHandle.Raw);
         Assert.True(this.entity.OwnerEntity.IsValid);
         Assert.Equal(this.player.EntityHandle.Raw, this.entity.OwnerEntity.Raw);
     }

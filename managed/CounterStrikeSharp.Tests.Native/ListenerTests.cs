@@ -12,10 +12,6 @@ public class ListenerTests
     [Fact]
     public async Task CanRegisterAndDeregisterListeners()
     {
-        NativeAPI.IssueServerCommand("bot_kick all");
-        NativeAPI.IssueServerCommand("bot_quota 0");
-        await WaitOneFrame();
-
         int callCount = 0;
         var callback = FunctionReference.Create((int playerSlot, string name, string ipAddress) =>
         {

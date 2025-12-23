@@ -16,6 +16,8 @@
 
 using System.Drawing;
 using System.Numerics;
+using CounterStrikeSharp.API.Natives;
+using CounterStrikeSharp.API.Natives.Structs;
 
 namespace CounterStrikeSharp.API.Modules.Utils
 {
@@ -73,13 +75,13 @@ namespace CounterStrikeSharp.API.Modules.Utils
                     KeyValuesType.TYPE_STRING => GetString(key),
                     KeyValuesType.TYPE_POINTER => GetPointer(key),
                     KeyValuesType.TYPE_STRING_TOKEN => GetStringToken(key),
-                    KeyValuesType.TYPE_EHANDLE => GetEHandle(key),
+                    KeyValuesType.TYPE_EHANDLE => GetEHandle(key, new CHandle<CEntityInstance>(Utilities.InvalidEHandleIndex)),
                     KeyValuesType.TYPE_COLOR => GetColor(key),
-                    KeyValuesType.TYPE_VECTOR => GetVector(key),
-                    KeyValuesType.TYPE_VECTOR2D => GetVector2D(key),
-                    KeyValuesType.TYPE_VECTOR4D => GetVector4D(key),
-                    KeyValuesType.TYPE_QUATERNION => GetQuaternion(key),
-                    KeyValuesType.TYPE_QANGLE => GetAngle(key),
+                    KeyValuesType.TYPE_VECTOR => GetVector(key, Vector3.Zero),
+                    KeyValuesType.TYPE_VECTOR2D => GetVector2D(key, Vector2.Zero),
+                    KeyValuesType.TYPE_VECTOR4D => GetVector4D(key, Vector4.Zero),
+                    KeyValuesType.TYPE_QUATERNION => GetQuaternion(key, Quaternion.Zero),
+                    KeyValuesType.TYPE_QANGLE => GetAngle(key, QAngle.Zero),
                     KeyValuesType.TYPE_MATRIX3X4 => GetMatrix3x4(key),
                     _ => null
                 };
@@ -124,19 +126,19 @@ namespace CounterStrikeSharp.API.Modules.Utils
                         SetStringToken(key, (uint)value);
                         break;
                     case KeyValuesType.TYPE_EHANDLE:
-                        SetEHandle(key, (CEntityHandle)value);
+                        SetEHandle(key, (CHandle<CEntityInstance>)value);
                         break;
                     case KeyValuesType.TYPE_COLOR:
                         SetColor(key, (Color)value);
                         break;
                     case KeyValuesType.TYPE_VECTOR:
-                        SetVector(key, (Vector)value);
+                        SetVector(key, (Vector3)value);
                         break;
                     case KeyValuesType.TYPE_VECTOR2D:
-                        SetVector2D(key, (Vector2D)value);
+                        SetVector2D(key, (Vector2)value);
                         break;
                     case KeyValuesType.TYPE_VECTOR4D:
-                        SetVector4D(key, (Vector4D)value);
+                        SetVector4D(key, (Vector4)value);
                         break;
                     case KeyValuesType.TYPE_QUATERNION:
                         SetQuaternion(key, (Quaternion)value);
@@ -179,24 +181,28 @@ namespace CounterStrikeSharp.API.Modules.Utils
         // TODO: use 'CUtlStringToken' once we have it
         public uint GetStringToken(string key, uint defaultValue = 0) => GetValue(key, KeyValuesType.TYPE_STRING_TOKEN, defaultValue);
 
-        public CEntityHandle? GetEHandle(string key, CEntityHandle? defaultValue = null) =>
-            GetValue<CEntityHandle?>(key, KeyValuesType.TYPE_EHANDLE, defaultValue);
+        public CHandle<CEntityInstance> GetEHandle(string key, CHandle<CEntityInstance> defaultValue) =>
+            GetValue<CHandle<CEntityInstance>>(key, KeyValuesType.TYPE_EHANDLE, defaultValue);
+
+        public CHandle<CEntityInstance> GetEHandle(string key) =>
+            GetValue<CHandle<CEntityInstance>>(key, KeyValuesType.TYPE_EHANDLE,
+                new CHandle<CEntityInstance>(Utilities.InvalidEHandleIndex));
 
         public Color GetColor(string key) => GetValue(key, KeyValuesType.TYPE_COLOR, Color.Empty);
 
-        public Vector? GetVector(string key, Vector? defaultValue = null) =>
-            GetValue<Vector?>(key, KeyValuesType.TYPE_VECTOR, defaultValue);
+        public Vector3 GetVector(string key, Vector3 defaultValue) =>
+            GetValue<Vector3>(key, KeyValuesType.TYPE_VECTOR, defaultValue);
 
-        public Vector2D? GetVector2D(string key, Vector2D? defaultValue = null) =>
+        public Vector2 GetVector2D(string key, Vector2 defaultValue) =>
             GetValue(key, KeyValuesType.TYPE_VECTOR2D, defaultValue);
 
-        public Vector4D? GetVector4D(string key, Vector4D? defaultValue = null) =>
-            GetValue<Vector4D?>(key, KeyValuesType.TYPE_VECTOR4D, defaultValue);
+        public Vector4 GetVector4D(string key, Vector4 defaultValue) =>
+            GetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, defaultValue);
 
-        public Quaternion? GetQuaternion(string key, Quaternion? defaultValue = null) =>
-            GetValue<Quaternion?>(key, KeyValuesType.TYPE_QUATERNION, defaultValue);
+        public Quaternion GetQuaternion(string key, Quaternion defaultValue) =>
+            GetValue<Quaternion>(key, KeyValuesType.TYPE_QUATERNION, defaultValue);
 
-        public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue<QAngle?>(key, KeyValuesType.TYPE_QANGLE, defaultValue);
+        public QAngle GetAngle(string key, QAngle defaultValue) => GetValue<QAngle>(key, KeyValuesType.TYPE_QANGLE, defaultValue);
 
         public matrix3x4_t? GetMatrix3x4(string key, matrix3x4_t? defaultValue = null) =>
             GetValue<matrix3x4_t?>(key, KeyValuesType.TYPE_MATRIX3X4, defaultValue);
@@ -226,23 +232,23 @@ namespace CounterStrikeSharp.API.Modules.Utils
         // TODO: use 'CUtlStringToken' once we have it
         public void SetStringToken(string key, uint value) => SetValue(key, KeyValuesType.TYPE_STRING_TOKEN, value);
 
-        public void SetEHandle(string key, CEntityHandle value) => SetValue(key, KeyValuesType.TYPE_EHANDLE, value);
+        public void SetEHandle(string key, CHandle<CEntityInstance> value) => SetValue(key, KeyValuesType.TYPE_EHANDLE, value);
 
         public void SetColor(string key, Color value) => SetValue(key, KeyValuesType.TYPE_COLOR, value);
 
         public void SetVector(string key, float x, float y, float z) =>
-            SetValue(key, KeyValuesType.TYPE_VECTOR, new Vector(x, y, z));
+            SetValue(key, KeyValuesType.TYPE_VECTOR, new Vector3(x, y, z));
 
-        public void SetVector(string key, Vector vector) => SetValue(key, KeyValuesType.TYPE_VECTOR, vector);
+        public void SetVector(string key, Vector3 vector) => SetValue(key, KeyValuesType.TYPE_VECTOR, vector);
 
-        public void SetVector2D(string key, float x, float y) => SetValue(key, KeyValuesType.TYPE_VECTOR2D, new Vector2D(x, y));
+        public void SetVector2D(string key, float x, float y) => SetValue(key, KeyValuesType.TYPE_VECTOR2D, new Vector2(x, y));
 
-        public void SetVector2D(string key, Vector2D value) => SetValue(key, KeyValuesType.TYPE_VECTOR2D, value);
+        public void SetVector2D(string key, Vector2 value) => SetValue(key, KeyValuesType.TYPE_VECTOR2D, value);
 
         public void SetVector4D(string key, float x, float y, float z, float w) =>
-            SetValue(key, KeyValuesType.TYPE_VECTOR4D, new Vector4D(x, y, z, w));
+            SetValue(key, KeyValuesType.TYPE_VECTOR4D, new Vector4(x, y, z, w));
 
-        public void SetVector4D(string key, Vector4D value) => SetValue(key, KeyValuesType.TYPE_VECTOR4D, value);
+        public void SetVector4D(string key, Vector4 value) => SetValue(key, KeyValuesType.TYPE_VECTOR4D, value);
 
         public void SetQuaternion(string key, float x, float y, float z, float w) =>
             SetValue(key, KeyValuesType.TYPE_QUATERNION, new Quaternion(x, y, z, w));
@@ -271,7 +277,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             {
                 case KeyValuesType.TYPE_EHANDLE:
                 {
-                    if (value is CEntityHandle entityHandle)
+                    if (value is CHandle<CEntityInstance> entityHandle)
                     {
                         arguments.Add(entityHandle.Raw);
                     }
@@ -300,7 +306,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 case KeyValuesType.TYPE_VECTOR:
                 {
-                    if (value is Vector vector)
+                    if (value is Vector3 vector)
                     {
                         arguments.Add(vector.X);
                         arguments.Add(vector.Y);
@@ -315,7 +321,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 case KeyValuesType.TYPE_VECTOR2D:
                 {
-                    if (value is Vector2D vector)
+                    if (value is Vector2 vector)
                     {
                         arguments.Add(vector.X);
                         arguments.Add(vector.Y);
@@ -329,7 +335,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 case KeyValuesType.TYPE_VECTOR4D:
                 {
-                    if (value is Vector4D vector)
+                    if (value is Vector4 vector)
                     {
                         arguments.Add(vector.X);
                         arguments.Add(vector.Y);
@@ -363,9 +369,9 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 {
                     if (value is QAngle angle)
                     {
-                        arguments.Add(angle.X);
-                        arguments.Add(angle.Y);
-                        arguments.Add(angle.Z);
+                        arguments.Add(angle.Pitch);
+                        arguments.Add(angle.Yaw);
+                        arguments.Add(angle.Roll);
                     }
                     else
                     {
