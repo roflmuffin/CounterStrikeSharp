@@ -25,7 +25,6 @@
 #include <sh_vector.h>
 #include <vector>
 #include "entitysystem.h"
-#include "concurrentqueue.h"
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -49,7 +48,6 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
     void OnLevelShutdown() override;
     void Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick);
     void Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*);
-    void AddTaskForNextFrame(std::function<void()>&& task);
 
     void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory* pLoopModeFactory, void** ppGlobalPointer);
     int Hook_LoadEventsFromFile(const char* filename, bool bSearchAll);
@@ -64,9 +62,6 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
     const char* GetVersion() override;
     const char* GetDate() override;
     const char* GetLogTag() override;
-
-  private:
-    moodycamel::ConcurrentQueue<std::function<void()>> m_nextTasks;
 };
 
 static ScriptCallback* on_activate_callback;

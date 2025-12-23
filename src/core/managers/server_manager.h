@@ -19,7 +19,6 @@
 #include "core/globals.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
-#include <concurrentqueue.h>
 
 #include "core/game_system.h"
 
@@ -35,7 +34,6 @@ class ServerManager : public GlobalClass
     void OnShutdown() override;
     void* GetEconItemSystem();
     bool IsPaused();
-    void AddTaskForNextWorldUpdate(std::function<void()>&& task);
     void OnPrecacheResources(IEntityResourceManifest* pResourceManifest);
 
     ScriptCallback* on_server_pre_entity_think;
@@ -59,8 +57,6 @@ class ServerManager : public GlobalClass
     ScriptCallback* on_server_pre_world_update;
 
     ScriptCallback* on_server_precache_resources;
-
-    moodycamel::ConcurrentQueue<std::function<void()>> m_nextWorldUpdateTasks;
 };
 
 } // namespace counterstrikesharp

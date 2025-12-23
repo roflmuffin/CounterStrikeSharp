@@ -15,9 +15,13 @@
  */
 
 #include "core/managers/entity_manager.h"
+#include "core/detours.h"
+#include "core/function.h"
 #include "core/gameconfig.h"
+#include "core/globals.h"
 #include "core/log.h"
 #include "core/recipientfilters.h"
+#include "core/cs2_sdk/entity/dump.h"
 
 #include <funchook.h>
 #include <vector>
@@ -48,6 +52,12 @@ CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInf
 {
 }
 
+#ifdef _WIN32
+#define CALL_CONV CONV_THISCALL
+#else
+#define CALL_CONV CONV_CDECL
+#endif
+
 int g_iCheckTransmit = -1;
 
 void EntityManager::OnAllInitialized()
@@ -60,6 +70,10 @@ void EntityManager::OnAllInitialized()
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");
     on_entity_deleted_callback = globals::callbackManager.CreateCallback("OnEntityDeleted");
     on_entity_parent_changed_callback = globals::callbackManager.CreateCallback("OnEntityParentChanged");
+    on_entity_take_damage_pre_callback = globals::callbackManager.CreateCallback("OnEntityTakeDamagePre");
+    on_entity_take_damage_post_callback = globals::callbackManager.CreateCallback("OnEntityTakeDamagePost");
+    on_player_take_damage_pre_callback = globals::callbackManager.CreateCallback("OnPlayerTakeDamagePre");
+    on_player_take_damage_post_callback = globals::callbackManager.CreateCallback("OnPlayerTakeDamagePost");
 
     m_pFireOutputInternal = reinterpret_cast<FireOutputInternal>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("CEntityIOOutput_FireOutputInternal")));
@@ -94,6 +108,29 @@ void EntityManager::OnAllInitialized()
         CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_EmitSoundFilter\'");
     }
 
+    CBaseEntity_DispatchSpawn = (decltype(CBaseEntity_DispatchSpawn))((
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CBaseEntity_DispatchSpawn"))));
+
+    if (!CBaseEntity_DispatchSpawn)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_DispatchSpawn\'");
+        return;
+    }
+
+    CBaseEntity_TakeDamageOld = (decltype(CBaseEntity_TakeDamageOld))((
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CBaseEntity_TakeDamageOld"))));
+    if (!CBaseEntity_TakeDamageOld)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_TakeDamageOld\'");
+        return;
+    }
+
+    Func_OnTakeDamage =
+        new ValveFunction((void*)CBaseEntity_TakeDamageOld, CALL_CONV,
+                          std::vector<DataType_t>{ DATA_TYPE_POINTER, DATA_TYPE_POINTER, DATA_TYPE_POINTER }, DATA_TYPE_LONG_LONG);
+
+    Func_OnTakeDamage->AddHook(&OnTakeDamageProxy);
+
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
     funchook_install(m_hook, 0);
@@ -107,6 +144,11 @@ void EntityManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(on_entity_created_callback);
     globals::callbackManager.ReleaseCallback(on_entity_deleted_callback);
     globals::callbackManager.ReleaseCallback(on_entity_parent_changed_callback);
+    globals::callbackManager.ReleaseCallback(on_entity_take_damage_pre_callback);
+    globals::callbackManager.ReleaseCallback(on_entity_take_damage_post_callback);
+    globals::callbackManager.ReleaseCallback(on_player_take_damage_pre_callback);
+    globals::callbackManager.ReleaseCallback(on_player_take_damage_post_callback);
+
     globals::callbackManager.ReleaseCallback(check_transmit);
     globals::entitySystem->RemoveListenerEntity(&entityListener);
     SH_REMOVE_HOOK_ID(g_iCheckTransmit);
@@ -217,6 +259,110 @@ void EntityManager::CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
         callback->Execute();
 
         delete infoList;
+    }
+}
+
+int64 DetourCBaseEntity_TakeDamageOld(CBaseEntity* pThis, CTakeDamageInfo* pInfo, CTakeDamageResult* pResult)
+{
+    if (!globals::entityManager.Hook_OnTakeDamage_Alive_Pre(pThis, pInfo, pResult))
+    {
+        return 1;
+    }
+
+    auto res = CBaseEntity_TakeDamageOld(pThis, pInfo, pResult);
+
+    globals::entityManager.Hook_OnTakeDamage_Alive_Post(pThis, pInfo, pResult);
+
+    return res;
+}
+
+// Returns "should take damage"
+bool EntityManager::Hook_OnTakeDamage_Alive_Pre(CBaseEntity* entity, CTakeDamageInfo* info, CTakeDamageResult* pResult)
+{
+    auto* cb_entity = globals::entityManager.on_entity_take_damage_pre_callback;
+
+    HookResult result = HookResult::Continue;
+    if (cb_entity && cb_entity->GetFunctionCount())
+    {
+        cb_entity->ScriptContext().Reset();
+        cb_entity->ScriptContext().Push(entity);
+        cb_entity->ScriptContext().Push(info);
+
+        for (auto fnMethodToCall : cb_entity->GetFunctions())
+        {
+            if (!fnMethodToCall) continue;
+            fnMethodToCall(&cb_entity->ScriptContextStruct());
+
+            auto hookResult = cb_entity->ScriptContext().GetResult<HookResult>();
+
+            if (hookResult >= HookResult::Stop)
+            {
+                return false;
+            }
+
+            if (hookResult >= HookResult::Handled)
+            {
+                result = hookResult;
+            }
+        }
+    }
+
+    auto* cb_player = globals::entityManager.on_player_take_damage_pre_callback;
+    if (entity->IsPawn() && cb_player && cb_player->GetFunctionCount())
+    {
+        cb_player->ScriptContext().Reset();
+        cb_player->ScriptContext().Push(entity);
+        cb_player->ScriptContext().Push(info);
+
+        for (auto fnMethodToCall : cb_player->GetFunctions())
+        {
+            if (!fnMethodToCall) continue;
+            fnMethodToCall(&cb_player->ScriptContextStruct());
+
+            auto hookResult = cb_player->ScriptContext().GetResult<HookResult>();
+
+            if (hookResult >= HookResult::Stop)
+            {
+                return false;
+            }
+
+            if (hookResult >= HookResult::Handled)
+            {
+                result = hookResult;
+            }
+        }
+    }
+
+    if (result >= HookResult::Handled)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+void EntityManager::Hook_OnTakeDamage_Alive_Post(CBaseEntity* entity, CTakeDamageInfo* info, CTakeDamageResult* pResult)
+{
+    auto* cb_entity = globals::entityManager.on_entity_take_damage_post_callback;
+
+    HookResult result = HookResult::Continue;
+    if (cb_entity && cb_entity->GetFunctionCount())
+    {
+        cb_entity->ScriptContext().Reset();
+        cb_entity->ScriptContext().Push(entity);
+        cb_entity->ScriptContext().Push(info);
+        cb_entity->ScriptContext().Push(pResult);
+        cb_entity->Execute();
+    }
+
+    auto* cb_player = globals::entityManager.on_player_take_damage_post_callback;
+    if (entity->IsPawn() && cb_player && cb_player->GetFunctionCount())
+    {
+        cb_player->ScriptContext().Reset();
+        cb_player->ScriptContext().Push(entity);
+        cb_player->ScriptContext().Push(info);
+        cb_player->ScriptContext().Push(pResult);
+        cb_player->Execute();
     }
 }
 

@@ -1,3 +1,28 @@
+## What's Changed in v1.0.353
+* fix: use dynohook for take damage for compatibility in [#1159](https://github.com/roflmuffin/CounterStrikeSharp/pull/1159) ([38c64c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/38c64c1c330605817561d62bd6b7154c972c77fa))
+* feat(timers): run timer logic every tick to enable tick based timers in [#1157](https://github.com/roflmuffin/CounterStrikeSharp/pull/1157) ([55d7939](https://github.com/roflmuffin/CounterStrikeSharp/commit/55d79391693cfe3f9ddd45ed8bc4d75598a68386))
+* perf: improve performance of next frame and next world update in [#1155](https://github.com/roflmuffin/CounterStrikeSharp/pull/1155) ([5895683](https://github.com/roflmuffin/CounterStrikeSharp/commit/5895683e5d1e989c25eb4f809f857f05dfb97cf3))
+* fix(async): Server.NextFrame not queueing after 1024 concurrent tasks in [#1154](https://github.com/roflmuffin/CounterStrikeSharp/pull/1154) ([39d26d1](https://github.com/roflmuffin/CounterStrikeSharp/commit/39d26d1e954ff320a5da0d29b5824741bf513657))
+* tests: add more in-game tests in [#1152](https://github.com/roflmuffin/CounterStrikeSharp/pull/1152) ([fb27d6f](https://github.com/roflmuffin/CounterStrikeSharp/commit/fb27d6fa6f236ba5bf6c5c008f6254e05d0c250f))
+
+## What's Changed in v1.0.352
+* feat(listeners): add entity & player damage listeners in [#1147](https://github.com/roflmuffin/CounterStrikeSharp/pull/1147) ([395b237](https://github.com/roflmuffin/CounterStrikeSharp/commit/395b237dce74f4b1d933e8df3e5518818107b274))
+
+## What's Changed in v1.0.351
+* feat: add `CEntityKeyValues` with dispatch in [#1146](https://github.com/roflmuffin/CounterStrikeSharp/pull/1146) ([0112853](https://github.com/roflmuffin/CounterStrikeSharp/commit/011285338148436f97768fc6849e1719f59398a7))
+
+## What's Changed in v1.0.350
+* Revert "fix(admin): root flags in RequirePermissionsOr & registering admin groups " ([50a42a2](https://github.com/roflmuffin/CounterStrikeSharp/commit/50a42a2472173b13093353e6efc652c233356555))
+
+## What's Changed in v1.0.349
+* feat(memory): allow hooking of offset based virtual functions in [#1143](https://github.com/roflmuffin/CounterStrikeSharp/pull/1143) ([3990128](https://github.com/roflmuffin/CounterStrikeSharp/commit/3990128c8cfd1ba1eb97223c7b34210ca2dc9205))
+* fix(admin): root flags in RequirePermissionsOr & registering admin groups by [@zonical](https://github.com/zonical) in [#700](https://github.com/roflmuffin/CounterStrikeSharp/pull/700) ([436fca1](https://github.com/roflmuffin/CounterStrikeSharp/commit/436fca197d22051a732c780d82ddd958c767c310))
+* chore(i18n): add Simplified and Traditional Chinese translations by [@ELDment](https://github.com/ELDment) in [#1123](https://github.com/roflmuffin/CounterStrikeSharp/pull/1123) ([cfab6af](https://github.com/roflmuffin/CounterStrikeSharp/commit/cfab6af7e156dc8eb4f6289291610af7b914a0bb))
+* fix(schema): add missing `new` property specifiers ([00fccae](https://github.com/roflmuffin/CounterStrikeSharp/commit/00fccae3793bf4e136708cefc74bd5360a20cc9c))
+* chore(ci): auto merge hl2sdk dependabot PRs ([1091401](https://github.com/roflmuffin/CounterStrikeSharp/commit/109140185533a5744c3de16d299b1f4c6740d3f0))
+* chore(deps): revert back to daily dependabot updates ([1ac05e7](https://github.com/roflmuffin/CounterStrikeSharp/commit/1ac05e70dad4a9f65c0c180408756047d7d4a4dc))
+* chore(deps): run dependabot every 15 minutes ([1460830](https://github.com/roflmuffin/CounterStrikeSharp/commit/146083050e421a61afb8c1d9fdf63ddcab0d5ffb))
+
 ## What's Changed in v1.0.348
 * chore(deps): update hl2sdk ([ad731c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/ad731c160125b4ad4e8019d8060047cc87bacf63))
 * chore(ci): disable discord notifications for pre-release versions by [@Copilot](https://github.com/Copilot) in [#1132](https://github.com/roflmuffin/CounterStrikeSharp/pull/1132) ([1a6ff70](https://github.com/roflmuffin/CounterStrikeSharp/commit/1a6ff70df1f7cf6614bd87a5c33efd803a24477b))

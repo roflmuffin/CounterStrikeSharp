@@ -48,6 +48,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
         private static Dictionary<Type, DataType> types = new Dictionary<Type, DataType>()
         {
             { typeof(float), DataType.DATA_TYPE_FLOAT },
+            { typeof(double), DataType.DATA_TYPE_DOUBLE },
             { typeof(IntPtr), DataType.DATA_TYPE_POINTER },
             { typeof(int), DataType.DATA_TYPE_INT },
             { typeof(uint), DataType.DATA_TYPE_UINT },
@@ -62,6 +63,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
         public static DataType? ToDataType(this Type type)
         {
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                return Nullable.GetUnderlyingType(type)!.ToDataType();
+            }
+
             if (types.ContainsKey(type)) return types[type];
 
             if (typeof(NativeObject).IsAssignableFrom(type))
@@ -81,6 +87,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
         public static DataType ToValidDataType(this Type type)
         {
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                return Nullable.GetUnderlyingType(type)!.ToValidDataType();
+            }
+
             if (types.ContainsKey(type)) return types[type];
 
             if (typeof(NativeObject).IsAssignableFrom(type))
