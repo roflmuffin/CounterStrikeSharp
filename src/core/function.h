@@ -33,10 +33,11 @@
 #include "scripting/callback_manager.h"
 #include "scripting/script_engine.h"
 #include <map>
+#include <optional>
 
 namespace dyno {
 class Hook;
-}
+} // namespace dyno
 
 namespace counterstrikesharp {
 
@@ -94,6 +95,7 @@ class ValveFunction
     void SetSignature(const char* signature) { m_signature = signature; }
 
     void Call(ScriptContext& args, int offset = 0, bool bypass = false);
+    void AddHook(const std::function<HookResult(HookMode, dyno::Hook&)>& callback);
     void AddHook(CallbackT callable, bool post);
     void RemoveHook(CallbackT callable, bool post);
 
@@ -112,6 +114,9 @@ class ValveFunction
     const char* m_signature;
     ScriptCallback* m_precallback = nullptr;
     ScriptCallback* m_postcallback = nullptr;
+    std::optional<std::function<HookResult(HookMode, dyno::Hook&)>> m_callback;
+
+    std::vector<HookResult> m_lastPreHookResult;
 };
 
 } // namespace counterstrikesharp

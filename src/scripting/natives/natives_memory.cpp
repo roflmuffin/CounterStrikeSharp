@@ -110,7 +110,7 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
     if (signature_hex_string == std::string(globals::gameConfig->GetSignature("CBaseEntity_TakeDamageOld")))
     {
         // Special case for TakeDamageOld as we have detoured it
-        function_addr = (void*)CBaseEntity_TakeDamageOld;
+        return globals::entityManager.Func_OnTakeDamage;
     }
 
     if (function_addr == nullptr)
