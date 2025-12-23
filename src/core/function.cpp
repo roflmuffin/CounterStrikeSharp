@@ -264,7 +264,7 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
         if (global_callback.has_value())
         {
             HookResult result = global_callback.value()(HookMode::Pre, hook);
-            maxResult = std::max(result, maxResult);
+            maxResult = (std::max)(result, maxResult);
         }
 
         if (callback != nullptr)
@@ -280,7 +280,7 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
                 auto result = callback->ScriptContext().GetResult<HookResult>();
                 CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", (int)result, (int)hookType);
 
-                maxResult = std::max(result, maxResult);
+                maxResult = (std::max)(result, maxResult);
 
                 if (maxResult >= HookResult::Stop)
                 {
@@ -348,7 +348,7 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
         auto result = callback->ScriptContext().GetResult<HookResult>();
         CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", result, (int)hookType);
 
-        maxResult = std::max(result, maxResult);
+        maxResult = (std::max)(result, maxResult);
 
         if (result >= HookResult::Stop)
         {
