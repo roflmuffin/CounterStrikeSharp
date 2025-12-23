@@ -13,8 +13,6 @@ namespace counterstrikesharp {
 
 inline HookResult OnTakeDamageProxy(HookMode mode, dyno::Hook& hook)
 {
-    CSSHARP_CORE_INFO("On Take Damage Proxy called in mode {}", (int)mode);
-
     auto* pThis = reinterpret_cast<CBaseEntity*>(hook.getArgument<void*>(0));
     auto* pInfo = reinterpret_cast<CTakeDamageInfo*>(hook.getArgument<void*>(1));
     auto* pResult = reinterpret_cast<CTakeDamageResult*>(hook.getArgument<void*>(2));
