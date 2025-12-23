@@ -41,4 +41,24 @@ public class VirtualFunctionTests
             mock.Verify(s => s(), Times.Never);
         }
     }
+
+    [Fact]
+    public async Task ShouldPreventPostHooks()
+    {
+        var mock = new Mock<Action>();
+
+        var preHookHandler = (DynamicHook hook) => { return HookResult.Stop; };
+
+        var postHookHandler = (DynamicHook hook) =>
+        {
+            mock.Object.Invoke();
+            return HookResult.Continue;
+        };
+
+        VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Hook(preHookHandler, HookMode.Pre);
+        VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Hook(postHookHandler, HookMode.Post);
+
+        await WaitOneFrame();
+        mock.Verify(s => s(), Times.Never, "Post hook should not be called if pre hook returns Stop.");
+    }
 }
