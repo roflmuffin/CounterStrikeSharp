@@ -278,7 +278,6 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
                 fnMethodToCall(&callback->ScriptContextStruct());
 
                 auto result = callback->ScriptContext().GetResult<HookResult>();
-                CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", (int)result, (int)hookType);
 
                 maxResult = (std::max)(result, maxResult);
 
@@ -310,7 +309,6 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
 
     if (preResult >= HookResult::Handled)
     {
-        CSSHARP_CORE_TRACE("Skipping post callback because pre-hook returned {}", preResult);
         return dyno::ReturnAction::Ignored;
     }
 
@@ -346,7 +344,6 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
         fnMethodToCall(&callback->ScriptContextStruct());
 
         auto result = callback->ScriptContext().GetResult<HookResult>();
-        CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", result, (int)hookType);
 
         maxResult = (std::max)(result, maxResult);
 
