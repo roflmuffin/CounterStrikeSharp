@@ -45,8 +45,12 @@ namespace CounterStrikeSharp.API
 
         private static void ExecuteTickTasks(ConcurrentQueue<Action> taskQueue)
         {
-            while (taskQueue.TryDequeue(out var task))
+            int count = taskQueue.Count;
+            for (int i = 0; i < count; i++)
             {
+                if (!taskQueue.TryDequeue(out var task))
+                    break;
+
                 try
                 {
                     task();
