@@ -53,26 +53,31 @@ public class ListenerTests
 
         var postCallback = FunctionReference.Create((IntPtr entityPtr, IntPtr damageInfoPtr) => { postCallCount++; });
 
-        NativeAPI.AddListener("OnEntityTakeDamagePre", preCallback);
-        NativeAPI.AddListener("OnEntityTakeDamagePost", postCallback);
+        try
+        {
+            NativeAPI.AddListener("OnEntityTakeDamagePre", preCallback);
+            NativeAPI.AddListener("OnEntityTakeDamagePost", postCallback);
 
-        // Spawn a bot and deal damage to it
-        NativeAPI.IssueServerCommand("bot_kick");
-        NativeAPI.IssueServerCommand("bot_add");
-        await WaitOneFrame();
+            // Spawn a bot and deal damage to it
+            NativeAPI.IssueServerCommand("bot_kick");
+            NativeAPI.IssueServerCommand("bot_add");
+            await WaitOneFrame();
 
-        var player = Utilities.GetPlayers().FirstOrDefault(p => p.IsBot);
-        var playerHealth = player.PlayerPawn.Value.Health;
-        DealDamageFunc(player, player, 10);
+            var player = Utilities.GetPlayers().FirstOrDefault(p => p.IsBot);
+            var playerHealth = player.PlayerPawn.Value.Health;
+            DealDamageFunc(player, player, 10);
 
-        await WaitOneFrame();
-        Assert.Equal(player.PlayerPawn.Value.Health, playerHealth - 10);
+            await WaitOneFrame();
+            Assert.Equal(playerHealth - 10, player.PlayerPawn.Value.Health);
 
-        Assert.Equal(1, preCallCount);
-        Assert.Equal(1, postCallCount);
-
-        NativeAPI.RemoveListener("OnEntityTakeDamagePre", preCallback);
-        NativeAPI.RemoveListener("OnEntityTakeDamagePost", postCallback);
+            Assert.Equal(1, preCallCount);
+            Assert.Equal(1, postCallCount);
+        }
+        finally
+        {
+            NativeAPI.RemoveListener("OnEntityTakeDamagePre", preCallback);
+            NativeAPI.RemoveListener("OnEntityTakeDamagePost", postCallback);
+        }
     }
 
     [Fact]
@@ -95,28 +100,33 @@ public class ListenerTests
 
         Listeners.OnEntityTakeDamagePost postCallback = (entity, damageInfo, damageResult) => { postCallCount++; };
 
-        NativeAPI.AddListener("OnEntityTakeDamagePre", preCallback);
-        NativeAPI.AddListener("OnEntityTakeDamagePre", secondCallback);
-        NativeAPI.AddListener("OnEntityTakeDamagePost", postCallback);
+        try
+        {
+            NativeAPI.AddListener("OnEntityTakeDamagePre", preCallback);
+            NativeAPI.AddListener("OnEntityTakeDamagePre", secondCallback);
+            NativeAPI.AddListener("OnEntityTakeDamagePost", postCallback);
 
-        // Spawn a bot and deal damage to it
-        NativeAPI.IssueServerCommand("bot_kick");
-        NativeAPI.IssueServerCommand("bot_add");
-        await WaitOneFrame();
+            // Spawn a bot and deal damage to it
+            NativeAPI.IssueServerCommand("bot_kick");
+            NativeAPI.IssueServerCommand("bot_add");
+            await WaitOneFrame();
 
-        var player = Utilities.GetPlayers().FirstOrDefault(p => p.IsBot);
-        var playerHealth = player.PlayerPawn.Value.Health;
-        DealDamageFunc(player, player, 10);
+            var player = Utilities.GetPlayers().FirstOrDefault(p => p.IsBot);
+            var playerHealth = player.PlayerPawn.Value.Health;
+            DealDamageFunc(player, player, 10);
 
-        await WaitOneFrame();
-        Assert.Equal(player.PlayerPawn.Value.Health, playerHealth);
+            await WaitOneFrame();
+            Assert.Equal(player.PlayerPawn.Value.Health, playerHealth);
 
-        Assert.Equal(1, preCallCount);
-        Assert.Equal(0, postCallCount);
-
-        NativeAPI.RemoveListener("OnEntityTakeDamagePre", preCallback);
-        NativeAPI.RemoveListener("OnEntityTakeDamagePre", secondCallback);
-        NativeAPI.RemoveListener("OnEntityTakeDamagePost", postCallback);
+            Assert.Equal(1, preCallCount);
+            Assert.Equal(0, postCallCount);
+        }
+        finally
+        {
+            NativeAPI.RemoveListener("OnEntityTakeDamagePre", preCallback);
+            NativeAPI.RemoveListener("OnEntityTakeDamagePre", secondCallback);
+            NativeAPI.RemoveListener("OnEntityTakeDamagePost", postCallback);
+        }
     }
 
     private static void DealDamageFunc(CCSPlayerController attacker, CCSPlayerController victim, int damage,
