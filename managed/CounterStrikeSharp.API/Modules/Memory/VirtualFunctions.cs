@@ -45,10 +45,22 @@ public static class VirtualFunctions
 
     public static Action<IntPtr, string> SetModel = SetModelFunc.Invoke;
 
+    [Obsolete("Use TerminateRoundFuncLinux or TerminateRoundFuncWindows instead")]
     public static MemoryFunctionVoid<nint, RoundEndReason, float, nint, byte> TerminateRoundFunc =
         new(GameData.GetSignature("CCSGameRules_TerminateRound"));
 
+    [Obsolete("Use TerminateRoundLinux or TerminateRoundWindows instead")]
     public static Action<IntPtr, RoundEndReason, float, nint, byte> TerminateRound = TerminateRoundFunc.Invoke;
+
+    public static MemoryFunctionVoid<nint, RoundEndReason, float, nint, byte> TerminateRoundFuncLinux =
+        new(GameData.GetSignature("CCSGameRules_TerminateRound"));
+
+    public static Action<nint, RoundEndReason, float, nint, byte> TerminateRoundLinux = TerminateRoundFuncLinux.Invoke;
+
+    public static MemoryFunctionVoid<nint, float, RoundEndReason, nint, byte> TerminateRoundFuncWindows =
+        new(GameData.GetSignature("CCSGameRules_TerminateRound"));
+
+    public static Action<nint, float, RoundEndReason, nint, byte> TerminateRoundWindows = TerminateRoundFuncWindows.Invoke;
 
     public static MemoryFunctionWithReturn<string, int, IntPtr> UTIL_CreateEntityByNameFunc =
         new(GameData.GetSignature("UTIL_CreateEntityByName"));
