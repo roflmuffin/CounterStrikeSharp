@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
-using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
@@ -45,10 +41,22 @@ public static class VirtualFunctions
 
     public static Action<IntPtr, string> SetModel = SetModelFunc.Invoke;
 
-    public static MemoryFunctionVoid<nint, RoundEndReason, float, nint, byte> TerminateRoundFunc =
+    [Obsolete("Use TerminateRoundFuncLinux or TerminateRoundFuncWindows instead")]
+    public static MemoryFunctionVoid<IntPtr, RoundEndReason, float, IntPtr, byte> TerminateRoundFunc =
         new(GameData.GetSignature("CCSGameRules_TerminateRound"));
 
-    public static Action<IntPtr, RoundEndReason, float, nint, byte> TerminateRound = TerminateRoundFunc.Invoke;
+    [Obsolete("Use TerminateRoundLinux or TerminateRoundWindows instead")]
+    public static Action<IntPtr, RoundEndReason, float, IntPtr, byte> TerminateRound = TerminateRoundFunc.Invoke;
+
+    public static MemoryFunctionVoid<IntPtr, RoundEndReason, float, IntPtr, byte> TerminateRoundFuncLinux =
+        new(GameData.GetSignature("CCSGameRules_TerminateRound"));
+
+    public static Action<IntPtr, RoundEndReason, float, IntPtr, byte> TerminateRoundLinux = TerminateRoundFuncLinux.Invoke;
+
+    public static MemoryFunctionVoid<IntPtr, float, RoundEndReason, IntPtr, byte> TerminateRoundFuncWindows =
+        new(GameData.GetSignature("CCSGameRules_TerminateRound"));
+
+    public static Action<IntPtr, float, RoundEndReason, IntPtr, byte> TerminateRoundWindows = TerminateRoundFuncWindows.Invoke;
 
     public static MemoryFunctionWithReturn<string, int, IntPtr> UTIL_CreateEntityByNameFunc =
         new(GameData.GetSignature("UTIL_CreateEntityByName"));
