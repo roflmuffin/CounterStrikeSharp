@@ -15,7 +15,7 @@
  */
 
 #include "core/managers/entity_manager.h"
-#include "core/detours.h"
+// #include "core/detours.h"
 #include "core/function.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
@@ -129,7 +129,7 @@ void EntityManager::OnAllInitialized()
         new ValveFunction((void*)CBaseEntity_TakeDamageOld, CALL_CONV,
                           std::vector<DataType_t>{ DATA_TYPE_POINTER, DATA_TYPE_POINTER, DATA_TYPE_POINTER }, DATA_TYPE_LONG_LONG);
 
-    Func_OnTakeDamage->AddHook(&OnTakeDamageProxy);
+    // Func_OnTakeDamage->AddHook(&OnTakeDamageProxy);
 
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
