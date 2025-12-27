@@ -16,6 +16,7 @@
 
 #include <cstdio>
 
+#include "core/detours.h"
 #include "core/coreconfig.h"
 #include "core/game_system.h"
 #include "core/gameconfig.h"
@@ -244,6 +245,11 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
      */
     on_metamod_all_plugins_loaded_callback->ScriptContext().Reset();
     on_metamod_all_plugins_loaded_callback->Execute();
+
+    if (globals::entityManager.Func_OnTakeDamage)
+    {
+        globals::entityManager.Func_OnTakeDamage->AddHook(&OnTakeDamageProxy);
+    }
 }
 
 void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
