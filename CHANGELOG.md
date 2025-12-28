@@ -1,3 +1,8 @@
+## What's Changed in v1.0.355
+* fix: ensure compatibility with `CS2Fixes` by [@ELDment](https://github.com/ELDment) in [#1163](https://github.com/roflmuffin/CounterStrikeSharp/pull/1163) ([9a8d45c](https://github.com/roflmuffin/CounterStrikeSharp/commit/9a8d45c9e646ed6419f54fbd0205cca9e2d1e612))
+* tests: fix unhooking of some functions in tests ([c0093a6](https://github.com/roflmuffin/CounterStrikeSharp/commit/c0093a6ced7767c240cf1a474ed12411f3854b57))
+* chore(deps): bump libraries/hl2sdk-cs2 from `3bb772f` to `6e735c1` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1160](https://github.com/roflmuffin/CounterStrikeSharp/pull/1160) ([3485169](https://github.com/roflmuffin/CounterStrikeSharp/commit/3485169de126aa15fa2326944898160fbbb5316a))
+
 ## What's Changed in v1.0.354
 * fix(async): nested nextframes now run on expected tick ([3a0093b](https://github.com/roflmuffin/CounterStrikeSharp/commit/3a0093b3950be98166ba10953a0a7668cab7a3d8))
 
