@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
@@ -193,6 +194,11 @@ public class FrameSchedulingTests
         // All tasks should have been drained by latest NextFrameAsync
         await Server.NextFrameAsync(() => { }).ConfigureAwait(false);
 
+        for (int i = 0; i < callsByFrame.Count; i++)
+        {
+            Assert.Equal(CoreConfig.MaximumFrameTasksExecutedPerTick, callsByFrame.Values.ElementAt(i));
+        }
+
         Assert.Equal(4096, callCount);
     }
 
@@ -213,6 +219,11 @@ public class FrameSchedulingTests
 
         // All tasks should have been drained by latest NextFrameAsync
         await Server.NextWorldUpdateAsync(() => { }).ConfigureAwait(false);
+
+        for (int i = 0; i < callsByFrame.Count; i++)
+        {
+            Assert.Equal(CoreConfig.MaximumFrameTasksExecutedPerTick, callsByFrame.Values.ElementAt(i));
+        }
 
         Assert.Equal(4096, callCount);
     }

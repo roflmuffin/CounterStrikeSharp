@@ -45,7 +45,7 @@ namespace CounterStrikeSharp.API
 
         private static void ExecuteTickTasks(ConcurrentQueue<Action> taskQueue)
         {
-            int count = taskQueue.Count;
+            int count = Math.Min(taskQueue.Count, CoreConfig.MaximumFrameTasksExecutedPerTick);
             for (int i = 0; i < count; i++)
             {
                 if (!taskQueue.TryDequeue(out var task))

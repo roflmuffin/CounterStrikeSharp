@@ -9,5 +9,6 @@
     "UnlockConCommands": true,
     "UnlockConVars": true,
     "AutoUpdateEnabled": true,
-    "AutoUpdateURL": "http://gamedata.cssharp.dev"
+    "AutoUpdateURL": "http://gamedata.cssharp.dev",
+    "MaximumFrameTasksExecutedPerTick": 1024
 }
