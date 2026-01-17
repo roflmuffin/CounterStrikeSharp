@@ -1,3 +1,8 @@
+## What's Changed in v1.0.356
+* feat: adds configurable limit to `NextFrame` tasks allowed to execute per frame ([925fec0](https://github.com/roflmuffin/CounterStrikeSharp/commit/925fec04801fc09ce294051055b761069fcb733f))
+* chore(deps): bump libraries/hl2sdk-cs2 from `6e735c1` to `aba345d` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1170](https://github.com/roflmuffin/CounterStrikeSharp/pull/1170) ([2eea759](https://github.com/roflmuffin/CounterStrikeSharp/commit/2eea759a2c8cc61bd2679157b78a6e4fb1f51a0e))
+* fix: `TerminateRound` parameter order mismatch by [@ELDment](https://github.com/ELDment) in [#1162](https://github.com/roflmuffin/CounterStrikeSharp/pull/1162) ([7dbb12f](https://github.com/roflmuffin/CounterStrikeSharp/commit/7dbb12f72ce09dff0efca71d0c3591862c222d53))
+
 ## What's Changed in v1.0.355
 * fix: ensure compatibility with `CS2Fixes` by [@ELDment](https://github.com/ELDment) in [#1163](https://github.com/roflmuffin/CounterStrikeSharp/pull/1163) ([9a8d45c](https://github.com/roflmuffin/CounterStrikeSharp/commit/9a8d45c9e646ed6419f54fbd0205cca9e2d1e612))
 * tests: fix unhooking of some functions in tests ([c0093a6](https://github.com/roflmuffin/CounterStrikeSharp/commit/c0093a6ced7767c240cf1a474ed12411f3854b57))
