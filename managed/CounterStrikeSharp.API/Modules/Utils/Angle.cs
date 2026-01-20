@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,6 +14,11 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+
+using System.Threading;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
+
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     /// <summary>
@@ -28,7 +33,33 @@ namespace CounterStrikeSharp.API.Modules.Utils
     public class Angle : NativeObject
     {
         public static readonly Angle Zero = new();
-        
+
+        private float _x;
+        private float _y;
+        private float _z;
+        private IntPtr _ownedHandle;
+
+        private unsafe ref float GetElementRef(int index)
+        {
+            var handle = RawHandle;
+            if (handle != IntPtr.Zero)
+            {
+                return ref Unsafe.Add(ref *(float*)handle, index);
+            }
+
+            switch (index)
+            {
+                case 0:
+                    return ref _x;
+                case 1:
+                    return ref _y;
+                case 2:
+                    return ref _z;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(index));
+            }
+        }
+
         public Angle(IntPtr pointer) : base(pointer)
         {
         }
@@ -39,11 +70,46 @@ namespace CounterStrikeSharp.API.Modules.Utils
         /// <param name="x">Pitch</param>
         /// <param name="y">Yaw</param>
         /// <param name="z">Roll</param>
-        public Angle(float? x = null, float? y = null, float? z = null) : this(NativeAPI.AngleNew())
+        public Angle(float? x = null, float? y = null, float? z = null) : base(IntPtr.Zero)
         {
-            this.X = x ?? 0;
-            this.Y = y ?? 0;
-            this.Z = z ?? 0;
+            _x = x ?? 0;
+            _y = y ?? 0;
+            _z = z ?? 0;
+        }
+
+        protected override void EnsureNativeHandle()
+        {
+            if (RawHandle != IntPtr.Zero)
+            {
+                return;
+            }
+
+            if (_ownedHandle != IntPtr.Zero)
+            {
+                SetHandle(_ownedHandle);
+                return;
+            }
+
+            var allocated = Marshal.AllocHGlobal(sizeof(float) * 3);
+
+            unsafe
+            {
+                var buffer = (float*)allocated;
+                buffer[0] = _x;
+                buffer[1] = _y;
+                buffer[2] = _z;
+            }
+
+            var existing = Interlocked.CompareExchange(ref _ownedHandle, allocated, IntPtr.Zero);
+            if (existing != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(allocated);
+                SetHandle(existing);
+                return;
+            }
+
+            NativeHandleTracker.Track(this, allocated);
+            SetHandle(allocated);
         }
 
         #region Accessors
@@ -83,7 +149,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             get => X;
             set => X = value;
         }
-        
+
         /// <summary>
         /// Roll of angle
         /// </summary>
@@ -100,8 +166,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
         /// </summary>
         public float X
         {
-            set => NativeAPI.VectorSetX(Handle, value);
-            get => NativeAPI.VectorGetX(Handle);
+            get => GetElementRef(0);
+            set => GetElementRef(0) = value;
         }
 
         /// <summary>
@@ -109,8 +175,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
         /// </summary>
         public float Y
         {
-            set => NativeAPI.VectorSetY(Handle, value);
-            get => NativeAPI.VectorGetY(Handle);
+            get => GetElementRef(1);
+            set => GetElementRef(1) = value;
         }
 
         /// <summary>
@@ -118,8 +184,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
         /// </summary>
         public float Z
         {
-            set => NativeAPI.VectorSetZ(Handle, value);
-            get => NativeAPI.VectorGetZ(Handle);
+            get => GetElementRef(2);
+            set => GetElementRef(2) = value;
         }
 
         /*
@@ -308,7 +374,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                         return this.X;
                     case 1:
                         return this.Y;
-                    case 2: 
+                    case 2:
                         return this.Z;
                 }
 
@@ -323,7 +389,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                     case 1:
                         this.Y = value;
                         break;
-                    case 2: 
+                    case 2:
                         this.Z = value;
                         break;
                 }
@@ -368,7 +434,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         protected override void OnDispose()
         {
         }*/
-        
+
         public override string ToString()
         {
             return $"{X:n2} {Y:n2} {Z:n2}";

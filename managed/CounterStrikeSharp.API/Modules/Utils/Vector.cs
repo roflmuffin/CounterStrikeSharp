@@ -15,6 +15,8 @@
  */
 
 using System.Numerics;
+using System.Threading;
+using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
 namespace CounterStrikeSharp.API.Modules.Utils
@@ -28,11 +30,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// <item><term>Z</term><description>+up/-down</description></item>
     /// </list>
     /// </summary>
-    public class Vector : NativeObject,
-        IAdditionOperators<Vector, Vector, Vector>,
-        ISubtractionOperators<Vector, Vector, Vector>,
-        IMultiplyOperators<Vector, float, Vector>,
-        IDivisionOperators<Vector, float, Vector>
+    public class Vector : NativeObject, IAdditionOperators<Vector, Vector, Vector>, ISubtractionOperators<Vector, Vector, Vector>, IMultiplyOperators<Vector, float, Vector>, IDivisionOperators<Vector, float, Vector>
     {
         public static readonly Vector Zero = new();
 
@@ -40,16 +38,77 @@ namespace CounterStrikeSharp.API.Modules.Utils
         {
         }
 
-        public Vector(float? x = null, float? y = null, float? z = null) : this(NativeAPI.VectorNew())
+        private float _x;
+        private float _y;
+        private float _z;
+        private IntPtr _ownedHandle;
+
+        public Vector(float? x = null, float? y = null, float? z = null) : base(IntPtr.Zero)
         {
-            this.X = x ?? 0;
-            this.Y = y ?? 0;
-            this.Z = z ?? 0;
+            _x = x ?? 0;
+            _y = y ?? 0;
+            _z = z ?? 0;
         }
 
-        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle, 0);
-        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
-        public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
+        protected override void EnsureNativeHandle()
+        {
+            if (RawHandle != IntPtr.Zero)
+            {
+                return;
+            }
+
+            if (_ownedHandle != IntPtr.Zero)
+            {
+                SetHandle(_ownedHandle);
+                return;
+            }
+
+            var allocated = Marshal.AllocHGlobal(sizeof(float) * 3);
+
+            unsafe
+            {
+                var buffer = (float*)allocated;
+                buffer[0] = _x;
+                buffer[1] = _y;
+                buffer[2] = _z;
+            }
+
+            var existing = Interlocked.CompareExchange(ref _ownedHandle, allocated, IntPtr.Zero);
+            if (existing != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(allocated);
+                SetHandle(existing);
+                return;
+            }
+
+            NativeHandleTracker.Track(this, allocated);
+            SetHandle(allocated);
+        }
+
+        public unsafe ref float X => ref GetElementRef(0);
+        public unsafe ref float Y => ref GetElementRef(1);
+        public unsafe ref float Z => ref GetElementRef(2);
+
+        private unsafe ref float GetElementRef(int index)
+        {
+            var handle = RawHandle;
+            if (handle != IntPtr.Zero)
+            {
+                return ref Unsafe.Add(ref *(float*)handle, index);
+            }
+
+            switch (index)
+            {
+                case 0:
+                    return ref _x;
+                case 1:
+                    return ref _y;
+                case 2:
+                    return ref _z;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(index));
+            }
+        }
 
         /// <summary>
         /// Returns a copy of the vector with values replaced.
@@ -88,7 +147,25 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public Angle Angle()
         {
             var angle = new Angle();
-            NativeAPI.VectorAngles(Handle, IntPtr.Zero, angle.Handle);
+            unsafe
+            {
+                float* vec = stackalloc float[3];
+                var handle = RawHandle;
+                var vecPtr = handle != IntPtr.Zero ? handle : (IntPtr)vec;
+                if (handle == IntPtr.Zero)
+                {
+                    vec[0] = X;
+                    vec[1] = Y;
+                    vec[2] = Z;
+                }
+
+                float* outAng = stackalloc float[3];
+                NativeAPI.VectorAngles(vecPtr, IntPtr.Zero, (IntPtr)outAng);
+
+                angle.X = outAng[0];
+                angle.Y = outAng[1];
+                angle.Z = outAng[2];
+            }
             return angle;
         }
 
@@ -100,7 +177,42 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public Angle Angle(Vector up)
         {
             var angle = new Angle();
-            NativeAPI.VectorAngles(Handle, up.Handle, angle.Handle);
+            unsafe
+            {
+                float* vec = stackalloc float[3];
+                var handle = RawHandle;
+                var vecPtr = handle != IntPtr.Zero ? handle : (IntPtr)vec;
+                if (handle == IntPtr.Zero)
+                {
+                    vec[0] = X;
+                    vec[1] = Y;
+                    vec[2] = Z;
+                }
+
+                var upHandle = up?.RawHandle ?? IntPtr.Zero;
+                float* upVec = stackalloc float[3];
+                var upPtr = upHandle != IntPtr.Zero ? upHandle : (IntPtr)upVec;
+                if (upHandle == IntPtr.Zero)
+                {
+                    if (up is null)
+                    {
+                        upPtr = IntPtr.Zero;
+                    }
+                    else
+                    {
+                        upVec[0] = up.X;
+                        upVec[1] = up.Y;
+                        upVec[2] = up.Z;
+                    }
+                }
+
+                float* outAng = stackalloc float[3];
+                NativeAPI.VectorAngles(vecPtr, upPtr, (IntPtr)outAng);
+
+                angle.X = outAng[0];
+                angle.Y = outAng[1];
+                angle.Z = outAng[2];
+            }
             return angle;
         }
 
@@ -183,31 +295,31 @@ namespace CounterStrikeSharp.API.Modules.Utils
         /// Returns whether all fields on the Vector are 0.
         /// </summary>
         /// <returns></returns>
-        public bool IsZero() => NativeAPI.VectorIsZero(Handle);
+        public bool IsZero() => X == 0 && Y == 0 && Z == 0;
 
         /// <summary>
         /// Returns the Euclidean length of the vector: √x² + y² + z²
         /// </summary>
         /// <returns>Euclidean length of vector</returns>
-        public float Length() => NativeAPI.VectorLength(Handle);
+        public float Length() => MathF.Sqrt(LengthSqr());
 
         /// <summary>
         /// Returns length of Vector excluding Z axis.
         /// </summary>
         /// <returns>2D Length</returns>
-        public float Length2D() => NativeAPI.VectorLength2d(Handle);
+        public float Length2D() => MathF.Sqrt(Length2DSqr());
 
         /// <summary>
         /// Returns the squared length of the vector, x² + y² + z². Faster than <see cref="Length"/>
         /// </summary>
         /// <returns></returns>
-        public float LengthSqr() => NativeAPI.VectorLengthSqr(Handle);
+        public float LengthSqr() => (X * X) + (Y * Y) + (Z * Z);
 
         /// <summary>
         /// Returns the squared length of the vectors x and y value, x² + y². Faster than <see cref="Length2D"/>
         /// </summary>
         /// <returns></returns>
-        public float Length2DSqr() => NativeAPI.VectorLength2dSqr(Handle);
+        public float Length2DSqr() => (X * X) + (Y * Y);
 
         /*
 
@@ -360,15 +472,12 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public static explicit operator Vector3(Vector v)
         {
-            unsafe
+            if (v is null)
             {
-                if (v is null)
-                {
-                    throw new ArgumentNullException(nameof(v), "Input Vector cannot be null.");
-                }
-
-                return new Vector3(new ReadOnlySpan<float>(v.Handle.ToPointer(), 3));
+                throw new ArgumentNullException(nameof(v), "Input Vector cannot be null.");
             }
+
+            return new Vector3(v.X, v.Y, v.Z);
         }
 
         #endregion
@@ -390,9 +499,5 @@ namespace CounterStrikeSharp.API.Modules.Utils
         {
             return $"{X:n2} {Y:n2} {Z:n2}";
         }
-
-        /*
-
-        */
     }
 }

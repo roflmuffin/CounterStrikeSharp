@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -13,18 +13,7 @@ public partial class CBaseEntity
     /// <exception cref="ArgumentNullException">At least one parameter must be specified</exception>
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
-        Guard.IsValidEntity(this);
-
-        if (position == null && angles == null && velocity == null)
-            throw new ArgumentException("At least one parameter must be specified");
-
-        nint _position = position?.Handle ?? 0;
-        nint _angles = angles?.Handle ?? 0;
-        nint _velocity = velocity?.Handle ?? 0;
-        nint _handle = Handle;
-
-        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(_handle, GameData.GetOffset("CBaseEntity_Teleport"))(_handle, _position,
-            _angles, _velocity);
+        Teleport(position == null ? null : (Vector3)position, angles == null ? null : (Vector3)angles, velocity == null ? null : (Vector3)velocity);
     }
 
     /// <summary>
@@ -38,7 +27,9 @@ public partial class CBaseEntity
         Guard.IsValidEntity(this);
 
         if (position == null && angles == null && velocity == null)
+        {
             throw new ArgumentException("At least one parameter must be specified");
+        }
 
         unsafe
         {
@@ -62,9 +53,7 @@ public partial class CBaseEntity
                 velocityPtr = &vel;
             }
 
-            VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(Handle,
-                (nint)positionPtr,
-                (nint)anglePtr, (nint)velocityPtr);
+            VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(Handle, (nint)positionPtr, (nint)anglePtr, (nint)velocityPtr);
         }
     }
 
