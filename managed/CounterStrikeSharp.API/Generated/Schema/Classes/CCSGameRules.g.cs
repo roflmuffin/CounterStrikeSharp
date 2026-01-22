@@ -226,6 +226,10 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_bIsHltvActive")]
 	public ref bool IsHltvActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive");
 
+	// m_bBombPlanted
+	[SchemaMember("CCSGameRules", "m_bBombPlanted")]
+	public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted");
+
 	// m_arrProhibitedItemIndices
 	[SchemaMember("CCSGameRules", "m_arrProhibitedItemIndices")]
 	public Span<UInt16> ProhibitedItemIndices => Schema.GetFixedArray<UInt16>(this.Handle, "CCSGameRules", "m_arrProhibitedItemIndices", 100);
@@ -245,10 +249,6 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_bBombDropped
 	[SchemaMember("CCSGameRules", "m_bBombDropped")]
 	public ref bool BombDropped => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombDropped");
-
-	// m_bBombPlanted
-	[SchemaMember("CCSGameRules", "m_bBombPlanted")]
-	public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted");
 
 	// m_iRoundWinStatus
 	[SchemaMember("CCSGameRules", "m_iRoundWinStatus")]

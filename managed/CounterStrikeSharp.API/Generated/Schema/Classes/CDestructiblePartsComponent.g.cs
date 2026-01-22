@@ -30,8 +30,4 @@ public partial class CDestructiblePartsComponent : NativeObject
 	[SchemaMember("CDestructiblePartsComponent", "m_hOwner")]
 	public CHandle<CBaseModelEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CDestructiblePartsComponent", "m_hOwner");
 
-	// m_nLastHitDamageLevel
-	[SchemaMember("CDestructiblePartsComponent", "m_nLastHitDamageLevel")]
-	public ref Int32 LastHitDamageLevel => ref Schema.GetRef<Int32>(this.Handle, "CDestructiblePartsComponent", "m_nLastHitDamageLevel");
-
 }

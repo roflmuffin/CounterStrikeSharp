@@ -26,14 +26,6 @@ public partial class CSceneEntity : CPointEntity
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSceneFile", value); }
 	}
 
-	// m_iszResumeSceneFile
-	[SchemaMember("CSceneEntity", "m_iszResumeSceneFile")]
-	public string ResumeSceneFile
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszResumeSceneFile"); }
-		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszResumeSceneFile", value); }
-	}
-
 	// m_iszTarget1
 	[SchemaMember("CSceneEntity", "m_iszTarget1")]
 	public string IszTarget1
@@ -194,14 +186,6 @@ public partial class CSceneEntity : CPointEntity
 	[SchemaMember("CSceneEntity", "m_nSpeechPriority")]
 	public ref Int32 SpeechPriority => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_nSpeechPriority");
 
-	// m_hWaitingForThisResumeScene
-	[SchemaMember("CSceneEntity", "m_hWaitingForThisResumeScene")]
-	public CHandle<CBaseEntity> WaitingForThisResumeScene => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene");
-
-	// m_bWaitingForResumeScene
-	[SchemaMember("CSceneEntity", "m_bWaitingForResumeScene")]
-	public ref bool WaitingForResumeScene => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bWaitingForResumeScene");
-
 	// m_bPausedViaInput
 	[SchemaMember("CSceneEntity", "m_bPausedViaInput")]
 	public ref bool PausedViaInput => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bPausedViaInput");
@@ -238,10 +222,6 @@ public partial class CSceneEntity : CPointEntity
 	[SchemaMember("CSceneEntity", "m_hRemoveActorList")]
 	public NetworkedVector<CHandle<CBaseEntity>> RemoveActorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CSceneEntity", "m_hRemoveActorList");
 
-	// m_nSceneFlushCounter
-	[SchemaMember("CSceneEntity", "m_nSceneFlushCounter")]
-	public ref Int32 SceneFlushCounter => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_nSceneFlushCounter");
-
 	// m_nSceneStringIndex
 	[SchemaMember("CSceneEntity", "m_nSceneStringIndex")]
 	public ref UInt16 SceneStringIndex => ref Schema.GetRef<UInt16>(this.Handle, "CSceneEntity", "m_nSceneStringIndex");
@@ -265,10 +245,6 @@ public partial class CSceneEntity : CPointEntity
 	// m_OnResumed
 	[SchemaMember("CSceneEntity", "m_OnResumed")]
 	public CEntityIOOutput OnResumed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnResumed");
-
-	// m_OnTrigger
-	[SchemaMember("CSceneEntity", "m_OnTrigger")]
-	public Span<CEntityIOOutput> OnTrigger => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnTrigger", 16);
 
 	// m_hInterruptScene
 	[SchemaMember("CSceneEntity", "m_hInterruptScene")]

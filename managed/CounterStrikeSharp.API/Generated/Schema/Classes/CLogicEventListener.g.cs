@@ -34,8 +34,4 @@ public partial class CLogicEventListener : CLogicalEntity
 	[SchemaMember("CLogicEventListener", "m_nTeam")]
 	public ref Int32 Team => ref Schema.GetRef<Int32>(this.Handle, "CLogicEventListener", "m_nTeam");
 
-	// m_OnEventFired
-	[SchemaMember("CLogicEventListener", "m_OnEventFired")]
-	public CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicEventListener", "m_OnEventFired");
-
 }

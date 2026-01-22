@@ -26,30 +26,6 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flFallVelocity")]
 	public ref float FallVelocity => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity");
 
-	// m_bInCrouch
-	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bInCrouch")]
-	public ref bool InCrouch => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInCrouch");
-
-	// m_nCrouchState
-	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_nCrouchState")]
-	public ref UInt32 CrouchState => ref Schema.GetRef<UInt32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nCrouchState");
-
-	// m_flCrouchTransitionStartTime
-	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime")]
-	public ref float CrouchTransitionStartTime => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime");
-
-	// m_bDucked
-	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bDucked")]
-	public ref bool Ducked => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked");
-
-	// m_bDucking
-	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bDucking")]
-	public ref bool Ducking => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucking");
-
-	// m_bInDuckJump
-	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bInDuckJump")]
-	public ref bool InDuckJump => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump");
-
 	// m_groundNormal
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_groundNormal")]
 	public Vector GroundNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_groundNormal");

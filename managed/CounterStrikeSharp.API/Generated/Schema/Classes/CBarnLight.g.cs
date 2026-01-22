@@ -174,6 +174,10 @@ public partial class CBarnLight : CBaseModelEntity
 	[SchemaMember("CBarnLight", "m_flBounceScale")]
 	public ref float BounceScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBounceScale");
 
+	// m_bDynamicBounce
+	[SchemaMember("CBarnLight", "m_bDynamicBounce")]
+	public ref bool DynamicBounce => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bDynamicBounce");
+
 	// m_flMinRoughness
 	[SchemaMember("CBarnLight", "m_flMinRoughness")]
 	public ref float MinRoughness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flMinRoughness");

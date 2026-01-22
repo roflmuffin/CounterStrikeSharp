@@ -42,6 +42,18 @@ public partial class VPhysicsCollisionAttribute_t : NativeObject
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nHierarchyId")]
 	public ref UInt16 HierarchyId => ref Schema.GetRef<UInt16>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nHierarchyId");
 
+	// m_nDetailLayerMask
+	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nDetailLayerMask")]
+	public ref UInt16 DetailLayerMask => ref Schema.GetRef<UInt16>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nDetailLayerMask");
+
+	// m_nDetailLayerMaskType
+	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nDetailLayerMaskType")]
+	public ref byte DetailLayerMaskType => ref Schema.GetRef<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nDetailLayerMaskType");
+
+	// m_nTargetDetailLayer
+	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nTargetDetailLayer")]
+	public ref byte TargetDetailLayer => ref Schema.GetRef<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nTargetDetailLayer");
+
 	// m_nCollisionGroup
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nCollisionGroup")]
 	public ref byte CollisionGroup => ref Schema.GetRef<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionGroup");

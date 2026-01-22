@@ -82,6 +82,10 @@ public partial class CPhysHinge : CPhysConstraint
 	[SchemaMember("CPhysHinge", "m_flAngleSpeedThreshold")]
 	public ref float AngleSpeedThreshold => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flAngleSpeedThreshold");
 
+	// m_flLimitsDebugVisRotation
+	[SchemaMember("CPhysHinge", "m_flLimitsDebugVisRotation")]
+	public ref float LimitsDebugVisRotation => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flLimitsDebugVisRotation");
+
 	// m_OnStartMoving
 	[SchemaMember("CPhysHinge", "m_OnStartMoving")]
 	public CEntityIOOutput OnStartMoving => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_OnStartMoving");

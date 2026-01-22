@@ -30,6 +30,14 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_nResolutionY")]
 	public ref Int32 ResolutionY => ref Schema.GetRef<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionY");
 
+	// m_szPanelType
+	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_szPanelType")]
+	public string PanelType
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szPanelType"); }
+		set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szPanelType", value); }
+	}
+
 	// m_szLayoutFileName
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_szLayoutFileName")]
 	public string LayoutFileName

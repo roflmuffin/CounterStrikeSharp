@@ -31,7 +31,8 @@ internal static partial class Program
         "MoodAnimationLayer_t",
         "SoundeventPathCornerPairNetworked_t",
         "AISound_t",
-        "CAttachmentNameSymbolWithStorage"
+        "CAttachmentNameSymbolWithStorage",
+        "CAnimGraph2ParamAutoResetOptionalRef"
     };
 
     private static readonly IReadOnlySet<string> IgnoreClassWildcards = new HashSet<string>
@@ -41,7 +42,11 @@ internal static partial class Program
         "CVariantBase",
         "HSCRIPT",
         "KeyValues3",
-        "Unknown"
+        "Unknown",
+        "CUtlOrderedMap",
+        "CAnimGraph2ParamOptionalRef",
+        "CUtlHashtable",
+        "CSmartPtr"
     };
 
     public static string SanitiseTypeName(string typeName) =>

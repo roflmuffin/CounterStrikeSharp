@@ -210,6 +210,10 @@ public partial class CLightComponent : CEntityComponent
 	[SchemaMember("CLightComponent", "m_nIndirectLight")]
 	public ref Int32 IndirectLight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nIndirectLight");
 
+	// m_bDynamicBounce
+	[SchemaMember("CLightComponent", "m_bDynamicBounce")]
+	public ref bool DynamicBounce => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bDynamicBounce");
+
 	// m_flFadeMinDist
 	[SchemaMember("CLightComponent", "m_flFadeMinDist")]
 	public ref float FadeMinDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFadeMinDist");

@@ -26,10 +26,6 @@ public partial class CBaseFlex : CBaseAnimGraph
 	[SchemaMember("CBaseFlex", "m_vLookTargetPosition")]
 	public Vector LookTargetPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseFlex", "m_vLookTargetPosition");
 
-	// m_blinktoggle
-	[SchemaMember("CBaseFlex", "m_blinktoggle")]
-	public ref bool Blinktoggle => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_blinktoggle");
-
 	// m_flAllowResponsesEndTime
 	[SchemaMember("CBaseFlex", "m_flAllowResponsesEndTime")]
 	public ref float AllowResponsesEndTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime");

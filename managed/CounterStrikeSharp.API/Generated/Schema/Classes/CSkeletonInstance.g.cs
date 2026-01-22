@@ -42,4 +42,8 @@ public partial class CSkeletonInstance : CGameSceneNode
 	[SchemaMember("CSkeletonInstance", "m_nHitboxSet")]
 	public ref byte HitboxSet => ref Schema.GetRef<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet");
 
+	// m_bForceServerConstraintsEnabled
+	[SchemaMember("CSkeletonInstance", "m_bForceServerConstraintsEnabled")]
+	public ref bool ForceServerConstraintsEnabled => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bForceServerConstraintsEnabled");
+
 }

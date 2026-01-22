@@ -9,16 +9,7 @@ namespace CounterStrikeSharp.API.Core;
 public enum RenderMode_t : byte
 {
 	kRenderNormal = 0x0,
-	kRenderTransColor = 0x1,
-	kRenderTransTexture = 0x2,
-	kRenderGlow = 0x3,
-	kRenderTransAlpha = 0x4,
-	kRenderTransAdd = 0x5,
-	kRenderEnvironmental = 0x6,
-	kRenderTransAddFrameBlend = 0x7,
-	kRenderTransAlphaAdd = 0x8,
-	kRenderWorldGlow = 0x9,
-	kRenderNone = 0xA,
-	kRenderDevVisualizer = 0xB,
-	kRenderModeCount = 0xC,
+	kRenderTransAlpha = 0x1,
+	kRenderNone = 0x2,
+	kRenderModeCount = 0x3,
 }

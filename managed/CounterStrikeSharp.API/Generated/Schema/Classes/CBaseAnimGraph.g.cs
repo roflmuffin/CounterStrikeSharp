@@ -18,6 +18,14 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 {
     public CBaseAnimGraph (IntPtr pointer) : base(pointer) {}
 
+	// m_graphControllerManager
+	[SchemaMember("CBaseAnimGraph", "m_graphControllerManager")]
+	public CAnimGraphControllerManager GraphControllerManager => Schema.GetDeclaredClass<CAnimGraphControllerManager>(this.Handle, "CBaseAnimGraph", "m_graphControllerManager");
+
+	// m_pMainGraphController
+	[SchemaMember("CBaseAnimGraph", "m_pMainGraphController")]
+	public CAnimGraphControllerBase? MainGraphController => Schema.GetPointer<CAnimGraphControllerBase>(this.Handle, "CBaseAnimGraph", "m_pMainGraphController");
+
 	// m_bInitiallyPopulateInterpHistory
 	[SchemaMember("CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory")]
 	public ref bool InitiallyPopulateInterpHistory => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory");
@@ -37,6 +45,10 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	// m_vLastSlopeCheckPos
 	[SchemaMember("CBaseAnimGraph", "m_vLastSlopeCheckPos")]
 	public Vector LastSlopeCheckPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos");
+
+	// m_nAnimGraphUpdateId
+	[SchemaMember("CBaseAnimGraph", "m_nAnimGraphUpdateId")]
+	public ref UInt32 AnimGraphUpdateId => ref Schema.GetRef<UInt32>(this.Handle, "CBaseAnimGraph", "m_nAnimGraphUpdateId");
 
 	// m_bAnimationUpdateScheduled
 	[SchemaMember("CBaseAnimGraph", "m_bAnimationUpdateScheduled")]

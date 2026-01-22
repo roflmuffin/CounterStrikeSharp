@@ -46,8 +46,20 @@ public partial class CTakeDamageResult : NativeObject
 	[SchemaMember("CTakeDamageResult", "m_nTotalledDamageDealt")]
 	public ref Int32 TotalledDamageDealt => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledDamageDealt");
 
+	// m_flTotalledPreModifiedDamage
+	[SchemaMember("CTakeDamageResult", "m_flTotalledPreModifiedDamage")]
+	public ref float TotalledPreModifiedDamage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageResult", "m_flTotalledPreModifiedDamage");
+
 	// m_bWasDamageSuppressed
 	[SchemaMember("CTakeDamageResult", "m_bWasDamageSuppressed")]
 	public ref bool WasDamageSuppressed => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageResult", "m_bWasDamageSuppressed");
+
+	// m_bSuppressFlinch
+	[SchemaMember("CTakeDamageResult", "m_bSuppressFlinch")]
+	public ref bool SuppressFlinch => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageResult", "m_bSuppressFlinch");
+
+	// m_nOverrideFlinchHitGroup
+	[SchemaMember("CTakeDamageResult", "m_nOverrideFlinchHitGroup")]
+	public ref HitGroup_t OverrideFlinchHitGroup => ref Schema.GetRef<HitGroup_t>(this.Handle, "CTakeDamageResult", "m_nOverrideFlinchHitGroup");
 
 }

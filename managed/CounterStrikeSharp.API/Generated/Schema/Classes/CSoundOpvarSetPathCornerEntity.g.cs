@@ -18,6 +18,10 @@ public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 {
     public CSoundOpvarSetPathCornerEntity (IntPtr pointer) : base(pointer) {}
 
+	// m_bUseParentedPath
+	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_bUseParentedPath")]
+	public ref bool UseParentedPath => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_bUseParentedPath");
+
 	// m_flDistMinSqr
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr")]
 	public ref float DistMinSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr");

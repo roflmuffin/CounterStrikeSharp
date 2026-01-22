@@ -70,22 +70,6 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_pDestructiblePartsSystemComponent")]
 	public CDestructiblePartsComponent? DestructiblePartsSystemComponent => Schema.GetPointer<CDestructiblePartsComponent>(this.Handle, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
 
-	// m_LastHitGroup
-	[SchemaMember("CBaseModelEntity", "m_LastHitGroup")]
-	public ref HitGroup_t LastHitGroup => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup");
-
-	// m_sLastDamageSourceName
-	[SchemaMember("CBaseModelEntity", "m_sLastDamageSourceName")]
-	public string LastDamageSourceName
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CBaseModelEntity", "m_sLastDamageSourceName"); }
-		set { Schema.SetString(this.Handle, "CBaseModelEntity", "m_sLastDamageSourceName", value); }
-	}
-
-	// m_vLastDamagePosition
-	[SchemaMember("CBaseModelEntity", "m_vLastDamagePosition")]
-	public Vector LastDamagePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vLastDamagePosition");
-
 	// m_flDissolveStartTime
 	[SchemaMember("CBaseModelEntity", "m_flDissolveStartTime")]
 	public ref float DissolveStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime");
@@ -157,30 +141,6 @@ public partial class CBaseModelEntity : CBaseEntity
 	// m_nObjectCulling
 	[SchemaMember("CBaseModelEntity", "m_nObjectCulling")]
 	public ref byte ObjectCulling => ref Schema.GetRef<byte>(this.Handle, "CBaseModelEntity", "m_nObjectCulling");
-
-	// m_nAddDecal
-	[SchemaMember("CBaseModelEntity", "m_nAddDecal")]
-	public ref Int32 AddDecal => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nAddDecal");
-
-	// m_vDecalPosition
-	[SchemaMember("CBaseModelEntity", "m_vDecalPosition")]
-	public Vector DecalPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vDecalPosition");
-
-	// m_vDecalForwardAxis
-	[SchemaMember("CBaseModelEntity", "m_vDecalForwardAxis")]
-	public Vector DecalForwardAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vDecalForwardAxis");
-
-	// m_nDecalMode
-	[SchemaMember("CBaseModelEntity", "m_nDecalMode")]
-	public ref DecalMode_t DecalMode => ref Schema.GetRef<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode");
-
-	// m_nRequiredDecalMode
-	[SchemaMember("CBaseModelEntity", "m_nRequiredDecalMode")]
-	public ref DecalMode_t RequiredDecalMode => ref Schema.GetRef<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nRequiredDecalMode");
-
-	// m_ConfigEntitiesToPropagateMaterialDecalsTo
-	[SchemaMember("CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo")]
-	public NetworkedVector<CHandle<CBaseModelEntity>> ConfigEntitiesToPropagateMaterialDecalsTo => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
 
 	// m_vecViewOffset
 	[SchemaMember("CBaseModelEntity", "m_vecViewOffset")]

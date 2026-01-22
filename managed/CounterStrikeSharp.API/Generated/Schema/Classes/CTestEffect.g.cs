@@ -28,7 +28,7 @@ public partial class CTestEffect : CBaseEntity
 
 	// m_pBeam
 	[SchemaMember("CTestEffect", "m_pBeam")]
-	public Span<CBeam?> PBeam => Schema.GetFixedArray<CBeam?>(this.Handle, "CTestEffect", "m_pBeam", 24);
+	public Span<CHandle<CBeam>> PBeam => Schema.GetFixedArray<CHandle<CBeam>>(this.Handle, "CTestEffect", "m_pBeam", 24);
 
 	// m_flBeamTime
 	[SchemaMember("CTestEffect", "m_flBeamTime")]

@@ -38,8 +38,4 @@ public partial class CPhysLength : CPhysConstraint
 	[SchemaMember("CPhysLength", "m_totalLength")]
 	public ref float TotalLength => ref Schema.GetRef<float>(this.Handle, "CPhysLength", "m_totalLength");
 
-	// m_bEnableCollision
-	[SchemaMember("CPhysLength", "m_bEnableCollision")]
-	public ref bool EnableCollision => ref Schema.GetRef<bool>(this.Handle, "CPhysLength", "m_bEnableCollision");
-
 }

@@ -38,6 +38,10 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 	[SchemaMember("CSoundOpvarSetPointBase", "m_vLastPosition")]
 	public Vector LastPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointBase", "m_vLastPosition");
 
+	// m_flRefreshTime
+	[SchemaMember("CSoundOpvarSetPointBase", "m_flRefreshTime")]
+	public ref float RefreshTime => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointBase", "m_flRefreshTime");
+
 	// m_iszStackName
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iszStackName")]
 	public string StackName
@@ -69,5 +73,9 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 	// m_bUseAutoCompare
 	[SchemaMember("CSoundOpvarSetPointBase", "m_bUseAutoCompare")]
 	public ref bool UseAutoCompare => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bUseAutoCompare");
+
+	// m_bFastRefresh
+	[SchemaMember("CSoundOpvarSetPointBase", "m_bFastRefresh")]
+	public ref bool FastRefresh => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bFastRefresh");
 
 }

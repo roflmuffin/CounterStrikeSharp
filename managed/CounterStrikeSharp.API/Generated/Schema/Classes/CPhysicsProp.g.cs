@@ -142,6 +142,18 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_bMuteImpactEffects")]
 	public ref bool MuteImpactEffects => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bMuteImpactEffects");
 
+	// m_bUpdateNavWhenMoving
+	[SchemaMember("CPhysicsProp", "m_bUpdateNavWhenMoving")]
+	public ref bool UpdateNavWhenMoving => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bUpdateNavWhenMoving");
+
+	// m_bForceNavObstacleCut
+	[SchemaMember("CPhysicsProp", "m_bForceNavObstacleCut")]
+	public ref bool ForceNavObstacleCut => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNavObstacleCut");
+
+	// m_bAllowObstacleConvexHullMerging
+	[SchemaMember("CPhysicsProp", "m_bAllowObstacleConvexHullMerging")]
+	public ref bool AllowObstacleConvexHullMerging => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAllowObstacleConvexHullMerging");
+
 	// m_bAcceptDamageFromHeldObjects
 	[SchemaMember("CPhysicsProp", "m_bAcceptDamageFromHeldObjects")]
 	public ref bool AcceptDamageFromHeldObjects => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAcceptDamageFromHeldObjects");

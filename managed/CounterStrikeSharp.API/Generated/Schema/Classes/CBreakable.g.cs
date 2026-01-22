@@ -66,6 +66,10 @@ public partial class CBreakable : CBaseModelEntity
 	[SchemaMember("CBreakable", "m_nOverrideBlockLOS")]
 	public ref EOverrideBlockLOS_t OverrideBlockLOS => ref Schema.GetRef<EOverrideBlockLOS_t>(this.Handle, "CBreakable", "m_nOverrideBlockLOS");
 
+	// m_OnStartDeath
+	[SchemaMember("CBreakable", "m_OnStartDeath")]
+	public CEntityIOOutput OnStartDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakable", "m_OnStartDeath");
+
 	// m_OnBreak
 	[SchemaMember("CBreakable", "m_OnBreak")]
 	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakable", "m_OnBreak");

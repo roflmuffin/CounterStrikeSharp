@@ -14,8 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvCombinedLightProbeVolumeAlias_func_combined_light_probe_volume : CEnvCombinedLightProbeVolume
+public partial class CChoreoInfoTarget : CPointEntity
 {
-    public CEnvCombinedLightProbeVolumeAlias_func_combined_light_probe_volume (IntPtr pointer) : base(pointer) {}
+    public CChoreoInfoTarget (IntPtr pointer) : base(pointer) {}
 
 }

@@ -26,6 +26,10 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex")]
 	public ref Int32 LadderSurfacePropIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex");
 
+	// m_bDucked
+	[SchemaMember("CCSPlayer_MovementServices", "m_bDucked")]
+	public ref bool Ducked => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDucked");
+
 	// m_flDuckAmount
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckAmount")]
 	public ref float DuckAmount => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckAmount");
@@ -41,6 +45,10 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	// m_bDesiresDuck
 	[SchemaMember("CCSPlayer_MovementServices", "m_bDesiresDuck")]
 	public ref bool DesiresDuck => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDesiresDuck");
+
+	// m_bDucking
+	[SchemaMember("CCSPlayer_MovementServices", "m_bDucking")]
+	public ref bool Ducking => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDucking");
 
 	// m_flDuckOffset
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckOffset")]
@@ -122,14 +130,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_iFootsteps")]
 	public ref Int32 Footsteps => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_iFootsteps");
 
-	// m_bOldJumpPressed
-	[SchemaMember("CCSPlayer_MovementServices", "m_bOldJumpPressed")]
-	public ref bool OldJumpPressed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bOldJumpPressed");
-
-	// m_flJumpPressedTime
-	[SchemaMember("CCSPlayer_MovementServices", "m_flJumpPressedTime")]
-	public ref float JumpPressedTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime");
-
 	// m_fStashGrenadeParameterWhen
 	[SchemaMember("CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen")]
 	public ref float StashGrenadeParameterWhen => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
@@ -166,9 +166,37 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_flStaminaAtJumpStart")]
 	public ref float StaminaAtJumpStart => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStaminaAtJumpStart");
 
+	// m_flVelMulAtJumpStart
+	[SchemaMember("CCSPlayer_MovementServices", "m_flVelMulAtJumpStart")]
+	public ref float VelMulAtJumpStart => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flVelMulAtJumpStart");
+
 	// m_flAccumulatedJumpError
 	[SchemaMember("CCSPlayer_MovementServices", "m_flAccumulatedJumpError")]
 	public ref float AccumulatedJumpError => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError");
+
+	// m_LegacyJump
+	[SchemaMember("CCSPlayer_MovementServices", "m_LegacyJump")]
+	public CCSPlayerLegacyJump LegacyJump => Schema.GetDeclaredClass<CCSPlayerLegacyJump>(this.Handle, "CCSPlayer_MovementServices", "m_LegacyJump");
+
+	// m_ModernJump
+	[SchemaMember("CCSPlayer_MovementServices", "m_ModernJump")]
+	public CCSPlayerModernJump ModernJump => Schema.GetDeclaredClass<CCSPlayerModernJump>(this.Handle, "CCSPlayer_MovementServices", "m_ModernJump");
+
+	// m_nLastJumpTick
+	[SchemaMember("CCSPlayer_MovementServices", "m_nLastJumpTick")]
+	public ref Int32 LastJumpTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nLastJumpTick");
+
+	// m_flLastJumpFrac
+	[SchemaMember("CCSPlayer_MovementServices", "m_flLastJumpFrac")]
+	public ref float LastJumpFrac => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastJumpFrac");
+
+	// m_flLastJumpVelocityZ
+	[SchemaMember("CCSPlayer_MovementServices", "m_flLastJumpVelocityZ")]
+	public ref float LastJumpVelocityZ => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastJumpVelocityZ");
+
+	// m_bJumpApexPending
+	[SchemaMember("CCSPlayer_MovementServices", "m_bJumpApexPending")]
+	public ref bool JumpApexPending => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bJumpApexPending");
 
 	// m_flTicksSinceLastSurfingDetected
 	[SchemaMember("CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected")]
@@ -181,9 +209,5 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	// m_vecInputRotated
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecInputRotated")]
 	public Vector InputRotated => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated");
-
-	// m_bJumpApexPending
-	[SchemaMember("CCSPlayer_MovementServices", "m_bJumpApexPending")]
-	public ref bool JumpApexPending => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bJumpApexPending");
 
 }

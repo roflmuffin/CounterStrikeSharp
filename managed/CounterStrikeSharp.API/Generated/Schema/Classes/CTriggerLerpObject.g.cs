@@ -42,6 +42,10 @@ public partial class CTriggerLerpObject : CBaseTrigger
 	[SchemaMember("CTriggerLerpObject", "m_flLerpDuration")]
 	public ref float LerpDuration => ref Schema.GetRef<float>(this.Handle, "CTriggerLerpObject", "m_flLerpDuration");
 
+	// m_bAttachedEntityWasParented
+	[SchemaMember("CTriggerLerpObject", "m_bAttachedEntityWasParented")]
+	public ref bool AttachedEntityWasParented => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bAttachedEntityWasParented");
+
 	// m_bLerpRestoreMoveType
 	[SchemaMember("CTriggerLerpObject", "m_bLerpRestoreMoveType")]
 	public ref bool LerpRestoreMoveType => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bLerpRestoreMoveType");

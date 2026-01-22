@@ -82,14 +82,6 @@ public partial class CTakeDamageInfo : NativeObject
 	[SchemaMember("CTakeDamageInfo", "m_nDamageFlags")]
 	public ref TakeDamageFlags_t DamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CTakeDamageInfo", "m_nDamageFlags");
 
-	// m_sDamageSourceName
-	[SchemaMember("CTakeDamageInfo", "m_sDamageSourceName")]
-	public string DamageSourceName
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CTakeDamageInfo", "m_sDamageSourceName"); }
-		set { Schema.SetString(this.Handle, "CTakeDamageInfo", "m_sDamageSourceName", value); }
-	}
-
 	// m_iHitGroupId
 	[SchemaMember("CTakeDamageInfo", "m_iHitGroupId")]
 	public ref HitGroup_t HitGroupId => ref Schema.GetRef<HitGroup_t>(this.Handle, "CTakeDamageInfo", "m_iHitGroupId");
@@ -101,6 +93,10 @@ public partial class CTakeDamageInfo : NativeObject
 	// m_flFriendlyFireDamageReductionRatio
 	[SchemaMember("CTakeDamageInfo", "m_flFriendlyFireDamageReductionRatio")]
 	public ref float FriendlyFireDamageReductionRatio => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flFriendlyFireDamageReductionRatio");
+
+	// m_bStoppedBullet
+	[SchemaMember("CTakeDamageInfo", "m_bStoppedBullet")]
+	public ref bool StoppedBullet => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageInfo", "m_bStoppedBullet");
 
 	// m_nDestructibleHitGroupsToForceDestroy
 	[SchemaMember("CTakeDamageInfo", "m_nDestructibleHitGroupsToForceDestroy")]
