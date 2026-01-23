@@ -50,4 +50,8 @@ public partial class CCSPlayerModernJump : NativeObject
 	[SchemaMember("CCSPlayerModernJump", "m_flLastLandedVelocityY")]
 	public ref float LastLandedVelocityY => ref Schema.GetRef<float>(this.Handle, "CCSPlayerModernJump", "m_flLastLandedVelocityY");
 
+	// m_flLastLandedVelocityZ
+	[SchemaMember("CCSPlayerModernJump", "m_flLastLandedVelocityZ")]
+	public ref float LastLandedVelocityZ => ref Schema.GetRef<float>(this.Handle, "CCSPlayerModernJump", "m_flLastLandedVelocityZ");
+
 }
