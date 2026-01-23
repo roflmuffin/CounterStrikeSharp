@@ -9,6 +9,7 @@ public static class Capabilities
             PluginCapability<T>.Providers.Add(capability.Name, new());
         }
 
+        PluginCapability<T>.Providers[capability.Name].Clear();
         PluginCapability<T>.Providers[capability.Name].Add(supplier);
     }
 
@@ -20,6 +21,7 @@ public static class Capabilities
             PlayerCapability<T>.Providers.Add(capability.Name, new());
         }
 
+        PlayerCapability<T>.Providers[capability.Name].Clear();
         PlayerCapability<T>.Providers[capability.Name].Add(supplier);
     }
 }
