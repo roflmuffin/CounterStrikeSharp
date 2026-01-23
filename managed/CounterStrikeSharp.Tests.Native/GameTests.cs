@@ -95,4 +95,20 @@ public class GameTests
         Assert.Equal("weapon_ak47", weapon.DesignerName);
         Assert.Single(pawn.WeaponServices.MyWeapons);
     }
+
+    [Fact]
+    public async Task Offset_CCSPlayerController_Respawn()
+    {
+        await InitializeAsync();
+        pawn.CommitSuicide(false, false);
+        await WaitOneFrame();
+        Assert.NotEqual((byte)LifeState_t.LIFE_ALIVE, pawn.LifeState);
+
+        player.Respawn();
+        await WaitOneFrame();
+
+        var newPawn = player.PlayerPawn.Value;
+        Assert.NotNull(newPawn);
+        Assert.Equal((byte)LifeState_t.LIFE_ALIVE, newPawn.LifeState);
+    }
 }
