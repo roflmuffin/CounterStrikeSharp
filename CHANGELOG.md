@@ -1,3 +1,8 @@
+## What's Changed in v1.0.357
+* fix(schema): update schema after followup update ([c1d6bf4](https://github.com/roflmuffin/CounterStrikeSharp/commit/c1d6bf4f838de75382e91f8232bbe2f9b96d2b0f))
+* fix: bump sdk & update gamedata for patch 1.41.3.x in [#1187](https://github.com/roflmuffin/CounterStrikeSharp/pull/1187) ([fe3e32f](https://github.com/roflmuffin/CounterStrikeSharp/commit/fe3e32f37984da992c6ec331525252eadc18c509))
+* fix(schema): update schema for 1.41.3.0 ([f9617b9](https://github.com/roflmuffin/CounterStrikeSharp/commit/f9617b9a7e52d30d5c5c4433aa8c7ce0e3ad7e16))
+
 ## What's Changed in v1.0.356
 * feat: adds configurable limit to `NextFrame` tasks allowed to execute per frame ([925fec0](https://github.com/roflmuffin/CounterStrikeSharp/commit/925fec04801fc09ce294051055b761069fcb733f))
 * chore(deps): bump libraries/hl2sdk-cs2 from `6e735c1` to `aba345d` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1170](https://github.com/roflmuffin/CounterStrikeSharp/pull/1170) ([2eea759](https://github.com/roflmuffin/CounterStrikeSharp/commit/2eea759a2c8cc61bd2679157b78a6e4fb1f51a0e))
