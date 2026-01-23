@@ -121,4 +121,11 @@ public class GameTests
         var worldEnt = Utilities.GetEntityFromIndex<CWorld>(0);
         Assert.False(worldEnt.IsPlayerPawn());
     }
+
+    [Fact]
+    public async Task Offset_CPlayerPawnComponent_PawnProperty()
+    {
+        await InitializeAsync();
+        Assert.Equal(pawn, pawn.WeaponServices.Pawn.Value);
+    }
 }
