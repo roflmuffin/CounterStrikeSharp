@@ -1,3 +1,6 @@
+## What's Changed in v1.0.358
+* fix: CPlayerPawnComponent pawn reference ([1614e5c](https://github.com/roflmuffin/CounterStrikeSharp/commit/1614e5c50c8f80063902fe282b28dafd46ad0135))
+
 ## What's Changed in v1.0.357
 * fix(schema): update schema after followup update ([c1d6bf4](https://github.com/roflmuffin/CounterStrikeSharp/commit/c1d6bf4f838de75382e91f8232bbe2f9b96d2b0f))
 * fix: bump sdk & update gamedata for patch 1.41.3.x in [#1187](https://github.com/roflmuffin/CounterStrikeSharp/pull/1187) ([fe3e32f](https://github.com/roflmuffin/CounterStrikeSharp/commit/fe3e32f37984da992c6ec331525252eadc18c509))
