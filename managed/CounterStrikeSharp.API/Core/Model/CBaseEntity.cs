@@ -120,4 +120,14 @@ public partial class CBaseEntity
 
         return NativeAPI.EmitSoundFilter(recipients.GetRecipientMask(), this.Index, soundEventName, volume, pitch);
     }
+
+    /// <summary>
+    /// Returns true if the entity is a player pawn.
+    /// </summary>
+    public bool IsPlayerPawn()
+    {
+        Guard.IsValidEntity(this);
+
+        return VirtualFunction.Create<IntPtr, bool>(Handle, GameData.GetOffset("CBaseEntity_IsPlayerPawn"))(Handle);
+    }
 }

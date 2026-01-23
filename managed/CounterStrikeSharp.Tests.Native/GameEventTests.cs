@@ -20,24 +20,31 @@ public class GameEventTests
             callCount++;
         });
 
-        NativeAPI.IssueServerCommand("bot_quota 0; bot_quota_mode normal");
-        await WaitOneFrame();
+        try
+        {
+            NativeAPI.IssueServerCommand("bot_quota 0; bot_quota_mode normal");
+            await WaitOneFrame();
 
-        NativeAPI.HookEvent("player_connect", callback, true);
+            NativeAPI.HookEvent("player_connect", callback, true);
 
-        // Test hooking
-        NativeAPI.IssueServerCommand("bot_kick");
-        NativeAPI.IssueServerCommand("bot_add");
-        await WaitOneFrame();
+            // Test hooking
+            NativeAPI.IssueServerCommand("bot_kick");
+            NativeAPI.IssueServerCommand("bot_add");
+            await WaitOneFrame();
 
-        Assert.Equal(1, callCount);
-        NativeAPI.UnhookEvent("player_connect", callback, true);
+            Assert.Equal(1, callCount);
+            NativeAPI.UnhookEvent("player_connect", callback, true);
 
-        // Test unhooking
-        NativeAPI.IssueServerCommand("bot_kick");
-        NativeAPI.IssueServerCommand("bot_add");
-        await WaitOneFrame();
-        Assert.Equal(1, callCount);
+            // Test unhooking
+            NativeAPI.IssueServerCommand("bot_kick");
+            NativeAPI.IssueServerCommand("bot_add");
+            await WaitOneFrame();
+            Assert.Equal(1, callCount);
+        }
+        finally
+        {
+            NativeAPI.IssueServerCommand("bot_quota 5");
+        }
     }
 
     [Fact]
