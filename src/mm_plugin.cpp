@@ -207,17 +207,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
 {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
-
-    // Temporary hack until CGameEntitySystem is updated in the sdk
-#ifdef PLATFORM_LINUX
-    int offset = 8512;
-#else
-    int offset = 8480;
-#endif
-
-    auto pListeners = (CUtlVector<IEntityListener*>*)((byte*)globals::entitySystem + offset);
-
-    if (pListeners->Find(&globals::entityManager.entityListener) == -1) pListeners->AddToTail(&globals::entityManager.entityListener);
+    globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
 
     globals::timerSystem.OnStartupServer();
 
