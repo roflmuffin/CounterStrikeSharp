@@ -111,4 +111,14 @@ public class GameTests
         Assert.NotNull(newPawn);
         Assert.Equal((byte)LifeState_t.LIFE_ALIVE, newPawn.LifeState);
     }
+
+    [Fact]
+    public async Task Offset_CBaseEntity_IsPlayerPawn()
+    {
+        await InitializeAsync();
+        Assert.True(pawn.IsPlayerPawn());
+
+        var worldEnt = Utilities.GetEntityFromIndex<CWorld>(0);
+        Assert.False(worldEnt.IsPlayerPawn());
+    }
 }
