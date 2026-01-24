@@ -1,3 +1,6 @@
+## What's Changed in v1.0.359
+* fix: update set state changed offset for linux ([3262827](https://github.com/roflmuffin/CounterStrikeSharp/commit/326282757fe094cc2eabfcb32fc8e86f6db9aabe))
+
 ## What's Changed in v1.0.358
 * fix: CPlayerPawnComponent pawn reference ([1614e5c](https://github.com/roflmuffin/CounterStrikeSharp/commit/1614e5c50c8f80063902fe282b28dafd46ad0135))
 

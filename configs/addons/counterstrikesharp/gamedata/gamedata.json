@@ -280,8 +280,8 @@
   },
   "SetStateChanged": {
     "offsets": {
-      "windows": 25,
-      "linux": 26
+      "windows": 27,
+      "linux": 28
     }
   },
   "ISource2GameEntities::CheckTransmit": {
