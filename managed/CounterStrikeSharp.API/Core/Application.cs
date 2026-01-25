@@ -123,6 +123,8 @@ namespace CounterStrikeSharp.API.Core
                         MenuManager.OnKeyPress(player, key);
                     }));
             }
+
+            Server.Initialize();
         }
 
         [RequiresPermissions("@css/generic")]
@@ -144,134 +146,134 @@ namespace CounterStrikeSharp.API.Core
             switch (info.GetArg(1))
             {
                 case "list":
+                {
+                    info.ReplyToCommand(
+                        $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.");
+
+                    foreach (var plugin in _pluginManager.GetLoadedPlugins())
                     {
-                        info.ReplyToCommand(
-                            $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.");
-
-                        foreach (var plugin in _pluginManager.GetLoadedPlugins())
+                        var sb = new StringBuilder();
+                        sb.AppendFormat("  [#{0}:{1}]: \"{2}\" ({3})", plugin.PluginId,
+                            plugin.State.ToString().ToUpper(), plugin.Plugin?.ModuleName ?? "Unknown",
+                            plugin.Plugin?.ModuleVersion ?? "Unknown");
+                        if (!string.IsNullOrEmpty(plugin.Plugin?.ModuleAuthor))
+                            sb.AppendFormat(" by {0}", plugin.Plugin.ModuleAuthor);
+                        if (!string.IsNullOrEmpty(plugin.Plugin?.ModuleDescription))
                         {
-                            var sb = new StringBuilder();
-                            sb.AppendFormat("  [#{0}:{1}]: \"{2}\" ({3})", plugin.PluginId,
-                                plugin.State.ToString().ToUpper(), plugin.Plugin?.ModuleName ?? "Unknown",
-                                plugin.Plugin?.ModuleVersion ?? "Unknown");
-                            if (!string.IsNullOrEmpty(plugin.Plugin?.ModuleAuthor))
-                                sb.AppendFormat(" by {0}", plugin.Plugin.ModuleAuthor);
-                            if (!string.IsNullOrEmpty(plugin.Plugin?.ModuleDescription))
-                            {
-                                sb.Append("\n");
-                                sb.Append("    ");
-                                sb.Append(plugin.Plugin.ModuleDescription);
-                            }
-
-                            if (plugin.State == PluginState.Unloaded && !string.IsNullOrEmpty(plugin.TerminationReason))
-                            {
-                                sb.Append("\n");
-                                sb.AppendFormat("    Termination Reason: {0}", plugin.TerminationReason);
-                            }
-
-                            info.ReplyToCommand(sb.ToString());
+                            sb.Append("\n");
+                            sb.Append("    ");
+                            sb.Append(plugin.Plugin.ModuleDescription);
                         }
 
-                        break;
+                        if (plugin.State == PluginState.Unloaded && !string.IsNullOrEmpty(plugin.TerminationReason))
+                        {
+                            sb.Append("\n");
+                            sb.AppendFormat("    Termination Reason: {0}", plugin.TerminationReason);
+                        }
+
+                        info.ReplyToCommand(sb.ToString());
                     }
+
+                    break;
+                }
                 case "start":
                 case "load":
+                {
+                    if (info.ArgCount < 3)
                     {
-                        if (info.ArgCount < 3)
-                        {
-                            info.ReplyToCommand(
-                                "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n");
-                            break;
-                        }
-
-                        // If our argument doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
-                        // We'll assume we have a full path if we have ".dll".
-                        var path = info.GetArg(2);
-
-                        path = Path.Combine(
-                            _scriptHostConfiguration.RootPath,
-                            !path.EndsWith(".dll")
-                                ? $"plugins/{path}/{Path.GetFileName(path)}.dll"
-                                : path
-                        );
-
-                        var plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
-
-                        if (plugin == null)
-                        {
-                            try
-                            {
-                                _pluginManager.LoadPlugin(path);
-                                plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
-                                plugin.Plugin.OnAllPluginsLoaded(false);
-                            }
-                            catch (Exception e)
-                            {
-                                info.ReplyToCommand($"Could not load plugin \"{path}\"");
-                                Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
-                            }
-                        }
-                        else
-                        {
-                            plugin.Load(false);
-                            plugin.Plugin.OnAllPluginsLoaded(false);
-                        }
-
+                        info.ReplyToCommand(
+                            "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n");
                         break;
                     }
+
+                    // If our argument doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
+                    // We'll assume we have a full path if we have ".dll".
+                    var path = info.GetArg(2);
+
+                    path = Path.Combine(
+                        _scriptHostConfiguration.RootPath,
+                        !path.EndsWith(".dll")
+                            ? $"plugins/{path}/{Path.GetFileName(path)}.dll"
+                            : path
+                    );
+
+                    var plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
+
+                    if (plugin == null)
+                    {
+                        try
+                        {
+                            _pluginManager.LoadPlugin(path);
+                            plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
+                            plugin.Plugin.OnAllPluginsLoaded(false);
+                        }
+                        catch (Exception e)
+                        {
+                            info.ReplyToCommand($"Could not load plugin \"{path}\"");
+                            Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
+                        }
+                    }
+                    else
+                    {
+                        plugin.Load(false);
+                        plugin.Plugin.OnAllPluginsLoaded(false);
+                    }
+
+                    break;
+                }
 
                 case "stop":
                 case "unload":
+                {
+                    if (info.ArgCount < 3)
                     {
-                        if (info.ArgCount < 3)
-                        {
-                            info.ReplyToCommand(
-                                "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n");
-                            break;
-                        }
-
-                        var pluginIdentifier = info.GetArg(2);
-                        string path;
-                        path = Path.Combine(_scriptHostConfiguration.RootPath,
-                            !pluginIdentifier.EndsWith(".dll") ? $"plugins/{pluginIdentifier}/{pluginIdentifier}.dll" : pluginIdentifier);
-
-                        var plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier)
-                                     ?? _pluginContextQueryHandler.FindPluginByModulePath(path);
-
-                        if (plugin == null)
-                        {
-                            info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"");
-                            break;
-                        }
-
-                        plugin.Unload(false);
+                        info.ReplyToCommand(
+                            "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n");
                         break;
                     }
+
+                    var pluginIdentifier = info.GetArg(2);
+                    string path;
+                    path = Path.Combine(_scriptHostConfiguration.RootPath,
+                        !pluginIdentifier.EndsWith(".dll") ? $"plugins/{pluginIdentifier}/{pluginIdentifier}.dll" : pluginIdentifier);
+
+                    var plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier)
+                                 ?? _pluginContextQueryHandler.FindPluginByModulePath(path);
+
+                    if (plugin == null)
+                    {
+                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"");
+                        break;
+                    }
+
+                    plugin.Unload(false);
+                    break;
+                }
 
                 case "restart":
                 case "reload":
+                {
+                    if (info.ArgCount < 3)
                     {
-                        if (info.ArgCount < 3)
-                        {
-                            info.ReplyToCommand(
-                                "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n");
-                            break;
-                        }
-
-                        var pluginIdentifier = info.GetArg(2);
-                        var plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
-
-                        if (plugin == null)
-                        {
-                            info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"");
-                            break;
-                        }
-
-                        plugin.Unload(true);
-                        plugin.Load(true);
-                        plugin.Plugin.OnAllPluginsLoaded(true);
+                        info.ReplyToCommand(
+                            "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n");
                         break;
                     }
+
+                    var pluginIdentifier = info.GetArg(2);
+                    var plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
+
+                    if (plugin == null)
+                    {
+                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"");
+                        break;
+                    }
+
+                    plugin.Unload(true);
+                    plugin.Load(true);
+                    plugin.Plugin.OnAllPluginsLoaded(true);
+                    break;
+                }
 
                 default:
                     info.ReplyToCommand("Valid usage: css_plugins [option]\n" +
