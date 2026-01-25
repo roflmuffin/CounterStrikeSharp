@@ -1,3 +1,6 @@
+## What's Changed in v1.0.360
+* fix: update windows signatures for CCSPlayerPawnBase and CCSGameRules by [@K4ryuu](https://github.com/K4ryuu) in [#1199](https://github.com/roflmuffin/CounterStrikeSharp/pull/1199) ([9841c92](https://github.com/roflmuffin/CounterStrikeSharp/commit/9841c92e2da1d1f389f2374e4fb0f556f2a3e1a5))
+
 ## What's Changed in v1.0.359
 * fix: update set state changed offset for linux ([3262827](https://github.com/roflmuffin/CounterStrikeSharp/commit/326282757fe094cc2eabfcb32fc8e86f6db9aabe))
 
