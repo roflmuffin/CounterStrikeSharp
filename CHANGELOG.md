@@ -1,3 +1,6 @@
+## What's Changed in v1.0.361
+* fix: setup server next frame listeners at startup ([dc138c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/dc138c16f3e63ce2fb8f364da5c1d418a3214d84))
+
 ## What's Changed in v1.0.360
 * fix: update windows signatures for CCSPlayerPawnBase and CCSGameRules by [@K4ryuu](https://github.com/K4ryuu) in [#1199](https://github.com/roflmuffin/CounterStrikeSharp/pull/1199) ([9841c92](https://github.com/roflmuffin/CounterStrikeSharp/commit/9841c92e2da1d1f389f2374e4fb0f556f2a3e1a5))
 
