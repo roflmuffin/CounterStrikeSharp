@@ -5,7 +5,7 @@ namespace CounterStrikeSharp.API
 {
     internal static class NativeHandleTracker
     {
-        private sealed class Entry
+        internal sealed class Entry
         {
             public WeakReference<NativeObject> Target { get; }
             public IntPtr Handle { get; }
@@ -17,7 +17,7 @@ namespace CounterStrikeSharp.API
             }
         }
 
-        private static readonly List<Entry> _entries = new();
+        internal static readonly List<Entry> _entries = new();
         private static readonly object _lockObj = new();
         private static int _nextCleanupIndex;
         private static Timer? _timer;
