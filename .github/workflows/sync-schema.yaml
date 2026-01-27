@@ -1,14 +1,9 @@
-name: Update Schema
+name: Synchronize - Schema
 
 on:
   schedule:
     - cron: '0 8 * * *'
   workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - 'eng/update-schema.sh'
-      - '.github/workflows/update-schema.yml'
 
 jobs:
   update-schema:
@@ -64,7 +59,7 @@ jobs:
           fi
 
       - name: Create Pull Request
-        if: steps.changes.outputs.has_changes == 'true' && github.event_name != 'pull_request'
+        if: steps.changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -82,14 +77,6 @@ jobs:
             *This is an automated PR. Please review the changes before merging.*
           branch: chore/automated/schema-update
           delete-branch: true
-
-      - name: Report changes (PR test mode)
-        if: steps.changes.outputs.has_changes == 'true' && github.event_name == 'pull_request'
-        run: |
-          echo "::notice::Schema changes detected! In a non-PR context, this would create a PR."
-          echo "Patch Version: ${{ steps.version.outputs.patch_version }}"
-          echo "Changed files:"
-          git status --porcelain managed/CounterStrikeSharp.API/Generated/
 
       - name: No changes detected
         if: steps.changes.outputs.has_changes == 'false'
