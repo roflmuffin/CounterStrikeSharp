@@ -39,6 +39,9 @@ jobs:
           SFTP_USER: ${{ secrets.SFTP_USER }}
           SFTP_PASS: ${{ secrets.SFTP_PASS }}
         run: |
+          mkdir -p ~/.lftp
+          echo "set sftp:auto-confirm yes" >> ~/.lftp/rc
+          echo "set ssl:verify-certificate no" >> ~/.lftp/rc
           chmod +x eng/update-schema.sh
           chmod +x eng/rcon
           ./eng/update-schema.sh
