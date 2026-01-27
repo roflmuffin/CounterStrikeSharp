@@ -29,4 +29,4 @@ get "$TRIMMED_PATH" -o "$HERE/../managed/CounterStrikeSharp.SchemaGen/Schema/ser
 bye
 EOF
 
-dotnet run --project managed/CounterStrikeSharp.SchemaGen/CounterStrikeSharp.SchemaGen.csproj
+dotnet run --project $HERE/../managed/CounterStrikeSharp.SchemaGen/CounterStrikeSharp.SchemaGen.csproj -- "$HERE/../managed/CounterStrikeSharp.API/Generated/Schema"
