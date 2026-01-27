@@ -62,7 +62,8 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AUTOMATED_PR_PAT }}
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           commit-message: "chore: update schema definitions to ${{ steps.version.outputs.patch_version }}"
           title: "chore: Update Schema Definitions to ${{ steps.version.outputs.patch_version }}"
           body: |
