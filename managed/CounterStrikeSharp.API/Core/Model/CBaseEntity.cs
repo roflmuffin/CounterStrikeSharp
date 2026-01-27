@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -13,18 +13,8 @@ public partial class CBaseEntity
     /// <exception cref="ArgumentNullException">At least one parameter must be specified</exception>
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
-        Guard.IsValidEntity(this);
-
-        if (position == null && angles == null && velocity == null)
-            throw new ArgumentException("At least one parameter must be specified");
-
-        nint _position = position?.Handle ?? 0;
-        nint _angles = angles?.Handle ?? 0;
-        nint _velocity = velocity?.Handle ?? 0;
-        nint _handle = Handle;
-
-        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(_handle, GameData.GetOffset("CBaseEntity_Teleport"))(_handle, _position,
-            _angles, _velocity);
+        Teleport(position == null ? null : (Vector3)position, angles == null ? null : (Vector3)angles,
+            velocity == null ? null : (Vector3)velocity);
     }
 
     /// <summary>

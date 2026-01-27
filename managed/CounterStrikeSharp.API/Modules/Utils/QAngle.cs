@@ -15,6 +15,8 @@
  */
 
 using System.Numerics;
+using System.Threading;
+using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
 namespace CounterStrikeSharp.API.Modules.Utils
@@ -27,16 +29,77 @@ namespace CounterStrikeSharp.API.Modules.Utils
         {
         }
 
-        public QAngle(float? x = null, float? y = null, float? z = null) : this(NativeAPI.AngleNew())
+        private float _x;
+        private float _y;
+        private float _z;
+        private IntPtr _ownedHandle;
+
+        public QAngle(float? x = null, float? y = null, float? z = null) : base(IntPtr.Zero)
         {
-            this.X = x ?? 0;
-            this.Y = y ?? 0;
-            this.Z = z ?? 0;
+            _x = x ?? 0;
+            _y = y ?? 0;
+            _z = z ?? 0;
         }
 
-        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
-        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
-        public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
+        protected override void EnsureNativeHandle()
+        {
+            if (RawHandle != IntPtr.Zero)
+            {
+                return;
+            }
+
+            if (_ownedHandle != IntPtr.Zero)
+            {
+                SetHandle(_ownedHandle);
+                return;
+            }
+
+            var allocated = Marshal.AllocHGlobal(sizeof(float) * 3);
+
+            unsafe
+            {
+                var buffer = (float*)allocated;
+                buffer[0] = _x;
+                buffer[1] = _y;
+                buffer[2] = _z;
+            }
+
+            var existing = Interlocked.CompareExchange(ref _ownedHandle, allocated, IntPtr.Zero);
+            if (existing != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(allocated);
+                SetHandle(existing);
+                return;
+            }
+
+            NativeHandleTracker.Track(this, allocated);
+            SetHandle(allocated);
+        }
+
+        public unsafe ref float X => ref GetElementRef(0);
+        public unsafe ref float Y => ref GetElementRef(1);
+        public unsafe ref float Z => ref GetElementRef(2);
+
+        private unsafe ref float GetElementRef(int index)
+        {
+            var handle = RawHandle;
+            if (handle != IntPtr.Zero)
+            {
+                return ref Unsafe.Add(ref *(float*)handle, index);
+            }
+
+            switch (index)
+            {
+                case 0:
+                    return ref _x;
+                case 1:
+                    return ref _y;
+                case 2:
+                    return ref _z;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(index));
+            }
+        }
 
         public override string ToString()
         {
@@ -45,15 +108,12 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public static explicit operator Vector3(QAngle q)
         {
-            unsafe
+            if (q is null)
             {
-                if (q is null)
-                {
-                    throw new ArgumentNullException(nameof(q), "Input QAngle cannot be null.");
-                }
-
-                return new Vector3(new ReadOnlySpan<float>(q.Handle.ToPointer(), 3));
+                throw new ArgumentNullException(nameof(q), "Input QAngle cannot be null.");
             }
+
+            return new Vector3(q.X, q.Y, q.Z);
         }
     }
 }
