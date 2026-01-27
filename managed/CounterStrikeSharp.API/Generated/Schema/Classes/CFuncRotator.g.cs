@@ -162,4 +162,32 @@ public partial class CFuncRotator : CBaseModelEntity
 	[SchemaMember("CFuncRotator", "m_vecRotatorQueueHistory")]
 	public NetworkedVector<RotatorHistoryEntry_t> RotatorQueueHistory => Schema.GetDeclaredClass<NetworkedVector<RotatorHistoryEntry_t>>(this.Handle, "CFuncRotator", "m_vecRotatorQueueHistory");
 
+	// m_eSolidType
+	[SchemaMember("CFuncRotator", "m_eSolidType")]
+	public ref SolidType_t SolidType => ref Schema.GetRef<SolidType_t>(this.Handle, "CFuncRotator", "m_eSolidType");
+
+	// m_hSpeedFromMover
+	[SchemaMember("CFuncRotator", "m_hSpeedFromMover")]
+	public CHandle<CFuncMover> HSpeedFromMover => Schema.GetDeclaredClass<CHandle<CFuncMover>>(this.Handle, "CFuncRotator", "m_hSpeedFromMover");
+
+	// m_iszSpeedFromMover
+	[SchemaMember("CFuncRotator", "m_iszSpeedFromMover")]
+	public string IszSpeedFromMover
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_iszSpeedFromMover"); }
+		set { Schema.SetString(this.Handle, "CFuncRotator", "m_iszSpeedFromMover", value); }
+	}
+
+	// m_flSpeedScale
+	[SchemaMember("CFuncRotator", "m_flSpeedScale")]
+	public ref float SpeedScale => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flSpeedScale");
+
+	// m_flMinYawRotation
+	[SchemaMember("CFuncRotator", "m_flMinYawRotation")]
+	public ref float MinYawRotation => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flMinYawRotation");
+
+	// m_flMaxYawRotation
+	[SchemaMember("CFuncRotator", "m_flMaxYawRotation")]
+	public ref float MaxYawRotation => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flMaxYawRotation");
+
 }

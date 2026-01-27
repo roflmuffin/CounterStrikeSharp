@@ -46,9 +46,29 @@ public partial class ConstraintSoundInfo : NativeObject
 		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack", value); }
 	}
 
-	// m_iszReversalSounds
-	[SchemaMember("ConstraintSoundInfo", "m_iszReversalSounds")]
-	public Span<string> ReversalSounds => Schema.GetFixedArray<string>(this.Handle, "ConstraintSoundInfo", "m_iszReversalSounds", 3);
+	// m_iszReversalSoundSmall
+	[SchemaMember("ConstraintSoundInfo", "m_iszReversalSoundSmall")]
+	public string ReversalSoundSmall
+	{
+		get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszReversalSoundSmall"); }
+		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszReversalSoundSmall", value); }
+	}
+
+	// m_iszReversalSoundMedium
+	[SchemaMember("ConstraintSoundInfo", "m_iszReversalSoundMedium")]
+	public string ReversalSoundMedium
+	{
+		get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszReversalSoundMedium"); }
+		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszReversalSoundMedium", value); }
+	}
+
+	// m_iszReversalSoundLarge
+	[SchemaMember("ConstraintSoundInfo", "m_iszReversalSoundLarge")]
+	public string ReversalSoundLarge
+	{
+		get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszReversalSoundLarge"); }
+		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszReversalSoundLarge", value); }
+	}
 
 	// m_bPlayTravelSound
 	[SchemaMember("ConstraintSoundInfo", "m_bPlayTravelSound")]

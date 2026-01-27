@@ -130,6 +130,10 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_flTimeSilencerSwitchComplete")]
 	public ref float TimeSilencerSwitchComplete => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flTimeSilencerSwitchComplete");
 
+	// m_flWeaponActionPlaybackRate
+	[SchemaMember("CCSWeaponBase", "m_flWeaponActionPlaybackRate")]
+	public ref float WeaponActionPlaybackRate => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flWeaponActionPlaybackRate");
+
 	// m_iOriginalTeamNumber
 	[SchemaMember("CCSWeaponBase", "m_iOriginalTeamNumber")]
 	public ref Int32 OriginalTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iOriginalTeamNumber");

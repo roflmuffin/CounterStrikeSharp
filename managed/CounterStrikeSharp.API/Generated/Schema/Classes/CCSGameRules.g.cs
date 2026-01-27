@@ -226,6 +226,10 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_bIsHltvActive")]
 	public ref bool IsHltvActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive");
 
+	// m_bBombPlanted
+	[SchemaMember("CCSGameRules", "m_bBombPlanted")]
+	public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted");
+
 	// m_arrProhibitedItemIndices
 	[SchemaMember("CCSGameRules", "m_arrProhibitedItemIndices")]
 	public Span<UInt16> ProhibitedItemIndices => Schema.GetFixedArray<UInt16>(this.Handle, "CCSGameRules", "m_arrProhibitedItemIndices", 100);
@@ -245,10 +249,6 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_bBombDropped
 	[SchemaMember("CCSGameRules", "m_bBombDropped")]
 	public ref bool BombDropped => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombDropped");
-
-	// m_bBombPlanted
-	[SchemaMember("CCSGameRules", "m_bBombPlanted")]
-	public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted");
 
 	// m_iRoundWinStatus
 	[SchemaMember("CCSGameRules", "m_iRoundWinStatus")]
@@ -596,11 +596,11 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_CTSpawnPointsMasterList
 	[SchemaMember("CCSGameRules", "m_CTSpawnPointsMasterList")]
-	public NetworkedVector<SpawnPoint?> CTSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPointsMasterList");
+	public NetworkedVector<CHandle<SpawnPoint>> CTSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<CHandle<SpawnPoint>>>(this.Handle, "CCSGameRules", "m_CTSpawnPointsMasterList");
 
 	// m_TerroristSpawnPointsMasterList
 	[SchemaMember("CCSGameRules", "m_TerroristSpawnPointsMasterList")]
-	public NetworkedVector<SpawnPoint?> TerroristSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPointsMasterList");
+	public NetworkedVector<CHandle<SpawnPoint>> TerroristSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<CHandle<SpawnPoint>>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPointsMasterList");
 
 	// m_bRespawningAllRespawnablePlayers
 	[SchemaMember("CCSGameRules", "m_bRespawningAllRespawnablePlayers")]
@@ -624,11 +624,11 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_CTSpawnPoints
 	[SchemaMember("CCSGameRules", "m_CTSpawnPoints")]
-	public NetworkedVector<SpawnPoint?> CTSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPoints");
+	public NetworkedVector<CHandle<SpawnPoint>> CTSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<CHandle<SpawnPoint>>>(this.Handle, "CCSGameRules", "m_CTSpawnPoints");
 
 	// m_TerroristSpawnPoints
 	[SchemaMember("CCSGameRules", "m_TerroristSpawnPoints")]
-	public NetworkedVector<SpawnPoint?> TerroristSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPoints");
+	public NetworkedVector<CHandle<SpawnPoint>> TerroristSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<CHandle<SpawnPoint>>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPoints");
 
 	// m_bIsUnreservedGameServer
 	[SchemaMember("CCSGameRules", "m_bIsUnreservedGameServer")]

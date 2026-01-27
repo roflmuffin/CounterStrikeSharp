@@ -10,6 +10,7 @@ public enum DecalFlags_t : uint
 {
 	eNone = 0x0,
 	eCannotClear = 0x1,
+	eDecalProjectToBackfaces = 0x2,
 	eAll = 0xFFFFFFFF,
 	eAllButCannotClear = 0xFFFFFFFE,
 }

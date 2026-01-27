@@ -46,6 +46,10 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate")]
 	public ref float MuzzleSmokeDecrementRate => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate");
 
+	// m_bGenerateMuzzleLight
+	[SchemaMember("CBasePlayerWeaponVData", "m_bGenerateMuzzleLight")]
+	public ref bool GenerateMuzzleLight => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bGenerateMuzzleLight");
+
 	// m_bLinkedCooldowns
 	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
 	public ref bool LinkedCooldowns => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns");
@@ -53,6 +57,18 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	// m_iFlags
 	[SchemaMember("CBasePlayerWeaponVData", "m_iFlags")]
 	public ref ItemFlagTypes_t Flags => ref Schema.GetRef<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags");
+
+	// m_iWeight
+	[SchemaMember("CBasePlayerWeaponVData", "m_iWeight")]
+	public ref Int32 Weight => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight");
+
+	// m_bAutoSwitchTo
+	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchTo")]
+	public ref bool AutoSwitchTo => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo");
+
+	// m_bAutoSwitchFrom
+	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchFrom")]
+	public ref bool AutoSwitchFrom => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom");
 
 	// m_nPrimaryAmmoType
 	[SchemaMember("CBasePlayerWeaponVData", "m_nPrimaryAmmoType")]
@@ -89,18 +105,6 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	// m_bKeepLoadedAmmo
 	[SchemaMember("CBasePlayerWeaponVData", "m_bKeepLoadedAmmo")]
 	public ref bool KeepLoadedAmmo => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bKeepLoadedAmmo");
-
-	// m_iWeight
-	[SchemaMember("CBasePlayerWeaponVData", "m_iWeight")]
-	public ref Int32 Weight => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight");
-
-	// m_bAutoSwitchTo
-	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchTo")]
-	public ref bool AutoSwitchTo => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo");
-
-	// m_bAutoSwitchFrom
-	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchFrom")]
-	public ref bool AutoSwitchFrom => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom");
 
 	// m_iRumbleEffect
 	[SchemaMember("CBasePlayerWeaponVData", "m_iRumbleEffect")]

@@ -14,60 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMoverPathNode : CPointEntity
+public partial class CMoverPathNode : CPathNode
 {
     public CMoverPathNode (IntPtr pointer) : base(pointer) {}
-
-	// m_vInTangentLocal
-	[SchemaMember("CMoverPathNode", "m_vInTangentLocal")]
-	public Vector InTangentLocal => Schema.GetDeclaredClass<Vector>(this.Handle, "CMoverPathNode", "m_vInTangentLocal");
-
-	// m_vOutTangentLocal
-	[SchemaMember("CMoverPathNode", "m_vOutTangentLocal")]
-	public Vector OutTangentLocal => Schema.GetDeclaredClass<Vector>(this.Handle, "CMoverPathNode", "m_vOutTangentLocal");
-
-	// m_szParentPathUniqueID
-	[SchemaMember("CMoverPathNode", "m_szParentPathUniqueID")]
-	public string ParentPathUniqueID
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CMoverPathNode", "m_szParentPathUniqueID"); }
-		set { Schema.SetString(this.Handle, "CMoverPathNode", "m_szParentPathUniqueID", value); }
-	}
-
-	// m_szPathNodeParameter
-	[SchemaMember("CMoverPathNode", "m_szPathNodeParameter")]
-	public string PathNodeParameter
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CMoverPathNode", "m_szPathNodeParameter"); }
-		set { Schema.SetString(this.Handle, "CMoverPathNode", "m_szPathNodeParameter", value); }
-	}
-
-	// m_OnStartFromOrInSegment
-	[SchemaMember("CMoverPathNode", "m_OnStartFromOrInSegment")]
-	public CEntityIOOutput OnStartFromOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStartFromOrInSegment");
-
-	// m_OnStoppedAtOrInSegment
-	[SchemaMember("CMoverPathNode", "m_OnStoppedAtOrInSegment")]
-	public CEntityIOOutput OnStoppedAtOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStoppedAtOrInSegment");
-
-	// m_OnPassThrough
-	[SchemaMember("CMoverPathNode", "m_OnPassThrough")]
-	public CEntityIOOutput OnPassThrough => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThrough");
-
-	// m_OnPassThroughForward
-	[SchemaMember("CMoverPathNode", "m_OnPassThroughForward")]
-	public CEntityIOOutput OnPassThroughForward => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThroughForward");
-
-	// m_OnPassThroughReverse
-	[SchemaMember("CMoverPathNode", "m_OnPassThroughReverse")]
-	public CEntityIOOutput OnPassThroughReverse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThroughReverse");
-
-	// m_hMover
-	[SchemaMember("CMoverPathNode", "m_hMover")]
-	public CHandle<CPathMover> Mover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CMoverPathNode", "m_hMover");
-
-	// m_xWSPrevParent
-	[SchemaMember("CMoverPathNode", "m_xWSPrevParent")]
-	public CTransform XWSPrevParent => Schema.GetDeclaredClass<CTransform>(this.Handle, "CMoverPathNode", "m_xWSPrevParent");
 
 }

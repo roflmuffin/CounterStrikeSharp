@@ -14,4 +14,5 @@ public enum NmFootPhaseCondition_t : byte
 	RightFootDown = 0x2,
 	RightFootPassing = 0x3,
 	RightPhase = 0x5,
+	None = 0x6,
 }

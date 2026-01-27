@@ -54,6 +54,10 @@ public partial class CEntityIdentity : NativeObject
 	[SchemaMember("CEntityIdentity", "m_PathIndex")]
 	public ChangeAccessorFieldPathIndex_t PathIndex => Schema.GetDeclaredClass<ChangeAccessorFieldPathIndex_t>(this.Handle, "CEntityIdentity", "m_PathIndex");
 
+	// m_pAttributes
+	[SchemaMember("CEntityIdentity", "m_pAttributes")]
+	public CEntityAttributeTable? Attributes => Schema.GetPointer<CEntityAttributeTable>(this.Handle, "CEntityIdentity", "m_pAttributes");
+
 	// m_pPrev
 	[SchemaMember("CEntityIdentity", "m_pPrev")]
 	public CEntityIdentity? Prev => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pPrev");

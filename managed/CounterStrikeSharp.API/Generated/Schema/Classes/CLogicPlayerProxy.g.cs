@@ -18,10 +18,6 @@ public partial class CLogicPlayerProxy : CLogicalEntity
 {
     public CLogicPlayerProxy (IntPtr pointer) : base(pointer) {}
 
-	// m_hPlayer
-	[SchemaMember("CLogicPlayerProxy", "m_hPlayer")]
-	public CHandle<CBaseEntity> Player => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer");
-
 	// m_PlayerHasAmmo
 	[SchemaMember("CLogicPlayerProxy", "m_PlayerHasAmmo")]
 	public CEntityIOOutput PlayerHasAmmo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerHasAmmo");
@@ -33,5 +29,9 @@ public partial class CLogicPlayerProxy : CLogicalEntity
 	// m_PlayerDied
 	[SchemaMember("CLogicPlayerProxy", "m_PlayerDied")]
 	public CEntityIOOutput PlayerDied => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerDied");
+
+	// m_hPlayer
+	[SchemaMember("CLogicPlayerProxy", "m_hPlayer")]
+	public CHandle<CBaseEntity> Player => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer");
 
 }

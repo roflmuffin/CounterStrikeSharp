@@ -13,7 +13,8 @@ public partial class CBaseEntity
     /// <exception cref="ArgumentNullException">At least one parameter must be specified</exception>
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
-        Teleport(position == null ? null : (Vector3)position, angles == null ? null : (Vector3)angles, velocity == null ? null : (Vector3)velocity);
+        Teleport(position == null ? null : (Vector3)position, angles == null ? null : (Vector3)angles,
+            velocity == null ? null : (Vector3)velocity);
     }
 
     /// <summary>
@@ -27,9 +28,7 @@ public partial class CBaseEntity
         Guard.IsValidEntity(this);
 
         if (position == null && angles == null && velocity == null)
-        {
             throw new ArgumentException("At least one parameter must be specified");
-        }
 
         unsafe
         {
@@ -53,7 +52,9 @@ public partial class CBaseEntity
                 velocityPtr = &vel;
             }
 
-            VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(Handle, (nint)positionPtr, (nint)anglePtr, (nint)velocityPtr);
+            VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(Handle,
+                (nint)positionPtr,
+                (nint)anglePtr, (nint)velocityPtr);
         }
     }
 
@@ -108,5 +109,15 @@ public partial class CBaseEntity
         }
 
         return NativeAPI.EmitSoundFilter(recipients.GetRecipientMask(), this.Index, soundEventName, volume, pitch);
+    }
+
+    /// <summary>
+    /// Returns true if the entity is a player pawn.
+    /// </summary>
+    public bool IsPlayerPawn()
+    {
+        Guard.IsValidEntity(this);
+
+        return VirtualFunction.Create<IntPtr, bool>(Handle, GameData.GetOffset("CBaseEntity_IsPlayerPawn"))(Handle);
     }
 }

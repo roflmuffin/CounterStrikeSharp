@@ -18,13 +18,29 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 {
     public CBaseAnimGraphController (IntPtr pointer) : base(pointer) {}
 
+	// m_nAnimationAlgorithm
+	[SchemaMember("CBaseAnimGraphController", "m_nAnimationAlgorithm")]
+	public ref AnimationAlgorithm_t AnimationAlgorithm => ref Schema.GetRef<AnimationAlgorithm_t>(this.Handle, "CBaseAnimGraphController", "m_nAnimationAlgorithm");
+
 	// m_animGraphNetworkedVars
 	[SchemaMember("CBaseAnimGraphController", "m_animGraphNetworkedVars")]
 	public CAnimGraphNetworkedVariables AnimGraphNetworkedVars => Schema.GetDeclaredClass<CAnimGraphNetworkedVariables>(this.Handle, "CBaseAnimGraphController", "m_animGraphNetworkedVars");
 
-	// m_bSequenceFinished
-	[SchemaMember("CBaseAnimGraphController", "m_bSequenceFinished")]
-	public ref bool SequenceFinished => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bSequenceFinished");
+	// m_nNextExternalGraphHandle
+	[SchemaMember("CBaseAnimGraphController", "m_nNextExternalGraphHandle")]
+	public ExternalAnimGraphHandle_t NextExternalGraphHandle => Schema.GetDeclaredClass<ExternalAnimGraphHandle_t>(this.Handle, "CBaseAnimGraphController", "m_nNextExternalGraphHandle");
+
+	// m_vecSecondarySkeletonNames
+	[SchemaMember("CBaseAnimGraphController", "m_vecSecondarySkeletonNames")]
+	public NetworkedVector<string> SecondarySkeletonNames => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CBaseAnimGraphController", "m_vecSecondarySkeletonNames");
+
+	// m_vecSecondarySkeletons
+	[SchemaMember("CBaseAnimGraphController", "m_vecSecondarySkeletons")]
+	public NetworkedVector<CHandle<CBaseAnimGraph>> SecondarySkeletons => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseAnimGraph>>>(this.Handle, "CBaseAnimGraphController", "m_vecSecondarySkeletons");
+
+	// m_nSecondarySkeletonMasterCount
+	[SchemaMember("CBaseAnimGraphController", "m_nSecondarySkeletonMasterCount")]
+	public ref Int32 SecondarySkeletonMasterCount => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSecondarySkeletonMasterCount");
 
 	// m_flSoundSyncTime
 	[SchemaMember("CBaseAnimGraphController", "m_flSoundSyncTime")]
@@ -70,17 +86,17 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 	[SchemaMember("CBaseAnimGraphController", "m_bLastUpdateSkipped")]
 	public ref bool LastUpdateSkipped => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bLastUpdateSkipped");
 
-	// m_flPrevAnimUpdateTime
-	[SchemaMember("CBaseAnimGraphController", "m_flPrevAnimUpdateTime")]
-	public ref float PrevAnimUpdateTime => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flPrevAnimUpdateTime");
+	// m_bSequenceFinished
+	[SchemaMember("CBaseAnimGraphController", "m_bSequenceFinished")]
+	public ref bool SequenceFinished => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bSequenceFinished");
+
+	// m_nPrevAnimUpdateTick
+	[SchemaMember("CBaseAnimGraphController", "m_nPrevAnimUpdateTick")]
+	public ref Int32 PrevAnimUpdateTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nPrevAnimUpdateTick");
 
 	// m_hGraphDefinitionAG2
 	[SchemaMember("CBaseAnimGraphController", "m_hGraphDefinitionAG2")]
 	public CStrongHandle<InfoForResourceTypeCNmGraphDefinition> GraphDefinitionAG2 => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCNmGraphDefinition>>(this.Handle, "CBaseAnimGraphController", "m_hGraphDefinitionAG2");
-
-	// m_bIsUsingAG2
-	[SchemaMember("CBaseAnimGraphController", "m_bIsUsingAG2")]
-	public ref bool IsUsingAG2 => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bIsUsingAG2");
 
 	// m_serializedPoseRecipeAG2
 	[SchemaMember("CBaseAnimGraphController", "m_serializedPoseRecipeAG2")]
@@ -94,16 +110,36 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 	[SchemaMember("CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2")]
 	public ref Int32 SerializePoseRecipeVersionAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2");
 
-	// m_nGraphCreationFlagsAG2
-	[SchemaMember("CBaseAnimGraphController", "m_nGraphCreationFlagsAG2")]
-	public ref byte GraphCreationFlagsAG2 => ref Schema.GetRef<byte>(this.Handle, "CBaseAnimGraphController", "m_nGraphCreationFlagsAG2");
-
-	// m_nServerGraphDefReloadCountAG2
-	[SchemaMember("CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2")]
-	public ref Int32 ServerGraphDefReloadCountAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2");
+	// m_nServerGraphInstanceIteration
+	[SchemaMember("CBaseAnimGraphController", "m_nServerGraphInstanceIteration")]
+	public ref Int32 ServerGraphInstanceIteration => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerGraphInstanceIteration");
 
 	// m_nServerSerializationContextIteration
 	[SchemaMember("CBaseAnimGraphController", "m_nServerSerializationContextIteration")]
 	public ref Int32 ServerSerializationContextIteration => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerSerializationContextIteration");
+
+	// m_primaryGraphId
+	[SchemaMember("CBaseAnimGraphController", "m_primaryGraphId")]
+	public ResourceId_t PrimaryGraphId => Schema.GetDeclaredClass<ResourceId_t>(this.Handle, "CBaseAnimGraphController", "m_primaryGraphId");
+
+	// m_vecExternalGraphIds
+	[SchemaMember("CBaseAnimGraphController", "m_vecExternalGraphIds")]
+	public NetworkedVector<ResourceId_t> ExternalGraphIds => Schema.GetDeclaredClass<NetworkedVector<ResourceId_t>>(this.Handle, "CBaseAnimGraphController", "m_vecExternalGraphIds");
+
+	// m_vecExternalClipIds
+	[SchemaMember("CBaseAnimGraphController", "m_vecExternalClipIds")]
+	public NetworkedVector<ResourceId_t> ExternalClipIds => Schema.GetDeclaredClass<NetworkedVector<ResourceId_t>>(this.Handle, "CBaseAnimGraphController", "m_vecExternalClipIds");
+
+	// m_sAnimGraph2Identifier
+	[SchemaMember("CBaseAnimGraphController", "m_sAnimGraph2Identifier")]
+	public string AnimGraph2Identifier
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBaseAnimGraphController", "m_sAnimGraph2Identifier"); }
+		set { Schema.SetString(this.Handle, "CBaseAnimGraphController", "m_sAnimGraph2Identifier", value); }
+	}
+
+	// m_vecExternalGraphs
+	[SchemaMember("CBaseAnimGraphController", "m_vecExternalGraphs")]
+	public NetworkedVector<ExternalAnimGraph_t> ExternalGraphs => Schema.GetDeclaredClass<NetworkedVector<ExternalAnimGraph_t>>(this.Handle, "CBaseAnimGraphController", "m_vecExternalGraphs");
 
 }

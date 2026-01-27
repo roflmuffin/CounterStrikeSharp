@@ -24,7 +24,7 @@ namespace CounterStrikeSharp.API
 {
     public class Server
     {
-        static Server()
+        internal static void Initialize()
         {
             NativeAPI.AddListener("OnTick", (Delegate)(() => OnTick()));
             NativeAPI.AddListener("OnServerPreWorldUpdate", (Delegate)((bool simulating) => OnWorldUpdate()));

@@ -18,12 +18,24 @@ public partial class SimpleConstraintSoundProfile : NativeObject
 {
     public SimpleConstraintSoundProfile (IntPtr pointer) : base(pointer) {}
 
-	// m_keyPoints
-	[SchemaMember("SimpleConstraintSoundProfile", "m_keyPoints")]
-	public Span<float> KeyPoints => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_keyPoints", 2);
+	// m_flKeyPointMinSoundThreshold
+	[SchemaMember("SimpleConstraintSoundProfile", "m_flKeyPointMinSoundThreshold")]
+	public ref float KeyPointMinSoundThreshold => ref Schema.GetRef<float>(this.Handle, "SimpleConstraintSoundProfile", "m_flKeyPointMinSoundThreshold");
 
-	// m_reversalSoundThresholds
-	[SchemaMember("SimpleConstraintSoundProfile", "m_reversalSoundThresholds")]
-	public Span<float> ReversalSoundThresholds => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_reversalSoundThresholds", 3);
+	// m_flKeyPointMaxSoundThreshold
+	[SchemaMember("SimpleConstraintSoundProfile", "m_flKeyPointMaxSoundThreshold")]
+	public ref float KeyPointMaxSoundThreshold => ref Schema.GetRef<float>(this.Handle, "SimpleConstraintSoundProfile", "m_flKeyPointMaxSoundThreshold");
+
+	// m_reversalSoundThresholdSmall
+	[SchemaMember("SimpleConstraintSoundProfile", "m_reversalSoundThresholdSmall")]
+	public ref float ReversalSoundThresholdSmall => ref Schema.GetRef<float>(this.Handle, "SimpleConstraintSoundProfile", "m_reversalSoundThresholdSmall");
+
+	// m_reversalSoundThresholdMedium
+	[SchemaMember("SimpleConstraintSoundProfile", "m_reversalSoundThresholdMedium")]
+	public ref float ReversalSoundThresholdMedium => ref Schema.GetRef<float>(this.Handle, "SimpleConstraintSoundProfile", "m_reversalSoundThresholdMedium");
+
+	// m_reversalSoundThresholdLarge
+	[SchemaMember("SimpleConstraintSoundProfile", "m_reversalSoundThresholdLarge")]
+	public ref float ReversalSoundThresholdLarge => ref Schema.GetRef<float>(this.Handle, "SimpleConstraintSoundProfile", "m_reversalSoundThresholdLarge");
 
 }

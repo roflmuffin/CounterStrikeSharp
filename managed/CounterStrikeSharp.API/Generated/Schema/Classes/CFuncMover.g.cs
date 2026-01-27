@@ -58,10 +58,6 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_bIsReversing")]
 	public ref bool IsReversing => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsReversing");
 
-	// m_vTarget
-	[SchemaMember("CFuncMover", "m_vTarget")]
-	public new Vector Target => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vTarget");
-
 	// m_flStartSpeed
 	[SchemaMember("CFuncMover", "m_flStartSpeed")]
 	public ref float StartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flStartSpeed");
@@ -102,6 +98,22 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_flTimeToReachZeroSpeed")]
 	public ref float TimeToReachZeroSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeToReachZeroSpeed");
 
+	// m_flComputedDistanceToReachMaxSpeed
+	[SchemaMember("CFuncMover", "m_flComputedDistanceToReachMaxSpeed")]
+	public ref float ComputedDistanceToReachMaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flComputedDistanceToReachMaxSpeed");
+
+	// m_flComputedDistanceToReachZeroSpeed
+	[SchemaMember("CFuncMover", "m_flComputedDistanceToReachZeroSpeed")]
+	public ref float ComputedDistanceToReachZeroSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flComputedDistanceToReachZeroSpeed");
+
+	// m_flStartCurveScale
+	[SchemaMember("CFuncMover", "m_flStartCurveScale")]
+	public ref float StartCurveScale => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flStartCurveScale");
+
+	// m_flStopCurveScale
+	[SchemaMember("CFuncMover", "m_flStopCurveScale")]
+	public ref float StopCurveScale => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flStopCurveScale");
+
 	// m_flDistanceToReachZeroSpeed
 	[SchemaMember("CFuncMover", "m_flDistanceToReachZeroSpeed")]
 	public ref float DistanceToReachZeroSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flDistanceToReachZeroSpeed");
@@ -121,6 +133,14 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_flPathLocationToBeginStop
 	[SchemaMember("CFuncMover", "m_flPathLocationToBeginStop")]
 	public ref float PathLocationToBeginStop => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flPathLocationToBeginStop");
+
+	// m_flPathLocationStart
+	[SchemaMember("CFuncMover", "m_flPathLocationStart")]
+	public ref float PathLocationStart => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flPathLocationStart");
+
+	// m_flBeginStopT
+	[SchemaMember("CFuncMover", "m_flBeginStopT")]
+	public ref float BeginStopT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flBeginStopT");
 
 	// m_iszStartForwardSound
 	[SchemaMember("CFuncMover", "m_iszStartForwardSound")]
@@ -190,6 +210,10 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_bStartAtEnd")]
 	public ref bool StartAtEnd => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartAtEnd");
 
+	// m_bStartFollowingClosestMover
+	[SchemaMember("CFuncMover", "m_bStartFollowingClosestMover")]
+	public ref bool StartFollowingClosestMover => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartFollowingClosestMover");
+
 	// m_eOrientationUpdate
 	[SchemaMember("CFuncMover", "m_eOrientationUpdate")]
 	public ref CFuncMoverOrientationUpdate_t OrientationUpdate => ref Schema.GetRef<CFuncMoverOrientationUpdate_t>(this.Handle, "CFuncMover", "m_eOrientationUpdate");
@@ -217,10 +241,6 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_bAllowMovableNavMeshDockingOnEntireEntity
 	[SchemaMember("CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
 	public ref bool AllowMovableNavMeshDockingOnEntireEntity => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity");
-
-	// m_OnNodePassed
-	[SchemaMember("CFuncMover", "m_OnNodePassed")]
-	public CEntityIOOutput OnNodePassed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnNodePassed");
 
 	// m_iszOrientationMatchEntityName
 	[SchemaMember("CFuncMover", "m_iszOrientationMatchEntityName")]
@@ -337,5 +357,49 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_eFollowEntityDirection
 	[SchemaMember("CFuncMover", "m_eFollowEntityDirection")]
 	public ref CFuncMoverFollowEntityDirection_t FollowEntityDirection => ref Schema.GetRef<CFuncMoverFollowEntityDirection_t>(this.Handle, "CFuncMover", "m_eFollowEntityDirection");
+
+	// m_hFollowMover
+	[SchemaMember("CFuncMover", "m_hFollowMover")]
+	public CHandle<CFuncMover> FollowMover => Schema.GetDeclaredClass<CHandle<CFuncMover>>(this.Handle, "CFuncMover", "m_hFollowMover");
+
+	// m_iszFollowMoverEntityName
+	[SchemaMember("CFuncMover", "m_iszFollowMoverEntityName")]
+	public string FollowMoverEntityName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszFollowMoverEntityName"); }
+		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszFollowMoverEntityName", value); }
+	}
+
+	// m_flFollowMoverDistance
+	[SchemaMember("CFuncMover", "m_flFollowMoverDistance")]
+	public ref float FollowMoverDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverDistance");
+
+	// m_flFollowMoverCalculatedDistance
+	[SchemaMember("CFuncMover", "m_flFollowMoverCalculatedDistance")]
+	public ref float FollowMoverCalculatedDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverCalculatedDistance");
+
+	// m_flFollowMoverSpringStrength
+	[SchemaMember("CFuncMover", "m_flFollowMoverSpringStrength")]
+	public ref float FollowMoverSpringStrength => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverSpringStrength");
+
+	// m_bFollowConstraintsInitialized
+	[SchemaMember("CFuncMover", "m_bFollowConstraintsInitialized")]
+	public ref bool FollowConstraintsInitialized => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bFollowConstraintsInitialized");
+
+	// m_eFollowConstraint
+	[SchemaMember("CFuncMover", "m_eFollowConstraint")]
+	public ref CFuncMoverFollowConstraint_t FollowConstraint => ref Schema.GetRef<CFuncMoverFollowConstraint_t>(this.Handle, "CFuncMover", "m_eFollowConstraint");
+
+	// m_flFollowMoverSpeed
+	[SchemaMember("CFuncMover", "m_flFollowMoverSpeed")]
+	public ref float FollowMoverSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverSpeed");
+
+	// m_flFollowMoverVelocity
+	[SchemaMember("CFuncMover", "m_flFollowMoverVelocity")]
+	public ref float FollowMoverVelocity => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverVelocity");
+
+	// m_nTickMovementRan
+	[SchemaMember("CFuncMover", "m_nTickMovementRan")]
+	public ref Int32 TickMovementRan => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nTickMovementRan");
 
 }

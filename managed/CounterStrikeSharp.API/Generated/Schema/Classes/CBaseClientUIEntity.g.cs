@@ -46,44 +46,4 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 		set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelID", value); }
 	}
 
-	// m_CustomOutput0
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput0")]
-	public CEntityIOOutput CustomOutput0 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput0");
-
-	// m_CustomOutput1
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput1")]
-	public CEntityIOOutput CustomOutput1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput1");
-
-	// m_CustomOutput2
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput2")]
-	public CEntityIOOutput CustomOutput2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput2");
-
-	// m_CustomOutput3
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput3")]
-	public CEntityIOOutput CustomOutput3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput3");
-
-	// m_CustomOutput4
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput4")]
-	public CEntityIOOutput CustomOutput4 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput4");
-
-	// m_CustomOutput5
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput5")]
-	public CEntityIOOutput CustomOutput5 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput5");
-
-	// m_CustomOutput6
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput6")]
-	public CEntityIOOutput CustomOutput6 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput6");
-
-	// m_CustomOutput7
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput7")]
-	public CEntityIOOutput CustomOutput7 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput7");
-
-	// m_CustomOutput8
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput8")]
-	public CEntityIOOutput CustomOutput8 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput8");
-
-	// m_CustomOutput9
-	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput9")]
-	public CEntityIOOutput CustomOutput9 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput9");
-
 }

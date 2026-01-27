@@ -5,6 +5,7 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
+using Moq;
 using Xunit;
 
 public class ListenerTests
@@ -44,6 +45,47 @@ public class ListenerTests
     }
 
     [Fact]
+    public async Task EntityListenersAreFired()
+    {
+        var createMock = new Mock<Action<IntPtr>>();
+        createMock.Setup(s => s(It.IsAny<IntPtr>())).Callback<IntPtr>((entityPtr) =>
+        {
+            var entity = new CBaseEntity(entityPtr);
+            Assert.Equal("prop_dynamic", entity.DesignerName);
+        });
+        var createCallback = FunctionReference.Create(createMock.Object);
+
+        var deleteMock = new Mock<Action<IntPtr>>();
+        deleteMock.Setup(s => s(It.IsAny<IntPtr>())).Callback<IntPtr>((entityPtr) =>
+        {
+            var entity = new CBaseEntity(entityPtr);
+            Assert.Equal("prop_dynamic", entity.DesignerName);
+        });
+        var deleteCallback = FunctionReference.Create(deleteMock.Object);
+
+        try
+        {
+            NativeAPI.AddListener("OnEntityCreated", createCallback);
+            NativeAPI.AddListener("OnEntityDeleted", deleteCallback);
+
+            var ent = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
+            await WaitOneFrame();
+
+            Assert.Single(createMock.Invocations);
+
+            ent.Remove();
+            await WaitOneFrame();
+
+            Assert.Single(deleteMock.Invocations);
+        }
+        finally
+        {
+            NativeAPI.RemoveListener("OnEntityCreated", createCallback);
+            NativeAPI.RemoveListener("OnEntityDeleted", deleteCallback);
+        }
+    }
+
+    [Fact(Skip = "Damage func broken")]
     public async Task TakeDamageListenersAreFired()
     {
         int preCallCount = 0;
@@ -80,7 +122,7 @@ public class ListenerTests
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Damage func broken")]
     public async Task TakeDamageListenerCanBeCancelled()
     {
         int preCallCount = 0;

@@ -21,8 +21,8 @@ public class SchemaPropertyTests : IDisposable
     [Fact]
     public void SchemaProperty_Utf8String()
     {
-        this.entity.LastDamageSourceName = "TestSource";
-        Assert.Equal("TestSource", this.entity.LastDamageSourceName);
+        this.entity.Target = "TestSource";
+        Assert.Equal("TestSource", this.entity.Target);
     }
 
     [Fact]
@@ -56,17 +56,17 @@ public class SchemaPropertyTests : IDisposable
     [Fact]
     public void SchemaProperty_Vector()
     {
-        this.entity.DecalPosition.X = 100;
-        this.entity.DecalPosition.Y = 200;
-        this.entity.DecalPosition.Z = 300;
-        Assert.Equal((Vector3)this.entity.DecalPosition, new Vector3(100, 200, 300));
+        this.entity.AbsVelocity.X = 100;
+        this.entity.AbsVelocity.Y = 200;
+        this.entity.AbsVelocity.Z = 300;
+        Assert.Equal((Vector3)this.entity.AbsVelocity, new Vector3(100, 200, 300));
     }
 
     [Fact]
     public void SchemaProperty_Enum()
     {
-        this.entity.RenderMode = RenderMode_t.kRenderTransAlphaAdd;
-        Assert.Equal(RenderMode_t.kRenderTransAlphaAdd, this.entity.RenderMode);
+        this.entity.RenderMode = RenderMode_t.kRenderTransAlpha;
+        Assert.Equal(RenderMode_t.kRenderTransAlpha, this.entity.RenderMode);
     }
 
     [Fact]

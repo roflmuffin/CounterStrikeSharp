@@ -66,13 +66,17 @@ public partial class CPlantedC4 : CBaseAnimGraph
 	[SchemaMember("CPlantedC4", "m_nSpotRules")]
 	public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nSpotRules");
 
-	// m_bTrainingPlacedByPlayer
-	[SchemaMember("CPlantedC4", "m_bTrainingPlacedByPlayer")]
-	public ref bool TrainingPlacedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer");
-
 	// m_bHasExploded
 	[SchemaMember("CPlantedC4", "m_bHasExploded")]
 	public ref bool HasExploded => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bHasExploded");
+
+	// m_bBombDefused
+	[SchemaMember("CPlantedC4", "m_bBombDefused")]
+	public ref bool BombDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBombDefused");
+
+	// m_bTrainingPlacedByPlayer
+	[SchemaMember("CPlantedC4", "m_bTrainingPlacedByPlayer")]
+	public ref bool TrainingPlacedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer");
 
 	// m_flTimerLength
 	[SchemaMember("CPlantedC4", "m_flTimerLength")]
@@ -93,10 +97,6 @@ public partial class CPlantedC4 : CBaseAnimGraph
 	// m_flDefuseCountDown
 	[SchemaMember("CPlantedC4", "m_flDefuseCountDown")]
 	public ref float DefuseCountDown => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flDefuseCountDown");
-
-	// m_bBombDefused
-	[SchemaMember("CPlantedC4", "m_bBombDefused")]
-	public ref bool BombDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBombDefused");
 
 	// m_hBombDefuser
 	[SchemaMember("CPlantedC4", "m_hBombDefuser")]

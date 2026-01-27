@@ -10,9 +10,10 @@ public enum EDestructibleParts_DestroyParameterFlags : uint
 {
 	None = 0x0,
 	GenerateBreakpieces = 0x1,
-	EnableFlinches = 0x2,
-	ForceDamageApply = 0x4,
-	IgnoreKillEntityFlag = 0x8,
-	IgnoreHealthCheck = 0x10,
-	Default = 0x3,
+	SetBodyGroupAndCollisionState = 0x2,
+	EnableFlinches = 0x4,
+	ForceDamageApply = 0x8,
+	IgnoreKillEntityFlag = 0x10,
+	IgnoreHealthCheck = 0x20,
+	Default = 0x7,
 }

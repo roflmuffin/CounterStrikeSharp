@@ -1,3 +1,20 @@
+## What's Changed in v1.0.361
+* fix: setup server next frame listeners at startup ([dc138c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/dc138c16f3e63ce2fb8f364da5c1d418a3214d84))
+
+## What's Changed in v1.0.360
+* fix: update windows signatures for CCSPlayerPawnBase and CCSGameRules by [@K4ryuu](https://github.com/K4ryuu) in [#1199](https://github.com/roflmuffin/CounterStrikeSharp/pull/1199) ([9841c92](https://github.com/roflmuffin/CounterStrikeSharp/commit/9841c92e2da1d1f389f2374e4fb0f556f2a3e1a5))
+
+## What's Changed in v1.0.359
+* fix: update set state changed offset for linux ([3262827](https://github.com/roflmuffin/CounterStrikeSharp/commit/326282757fe094cc2eabfcb32fc8e86f6db9aabe))
+
+## What's Changed in v1.0.358
+* fix: CPlayerPawnComponent pawn reference ([1614e5c](https://github.com/roflmuffin/CounterStrikeSharp/commit/1614e5c50c8f80063902fe282b28dafd46ad0135))
+
+## What's Changed in v1.0.357
+* fix(schema): update schema after followup update ([c1d6bf4](https://github.com/roflmuffin/CounterStrikeSharp/commit/c1d6bf4f838de75382e91f8232bbe2f9b96d2b0f))
+* fix: bump sdk & update gamedata for patch 1.41.3.x in [#1187](https://github.com/roflmuffin/CounterStrikeSharp/pull/1187) ([fe3e32f](https://github.com/roflmuffin/CounterStrikeSharp/commit/fe3e32f37984da992c6ec331525252eadc18c509))
+* fix(schema): update schema for 1.41.3.0 ([f9617b9](https://github.com/roflmuffin/CounterStrikeSharp/commit/f9617b9a7e52d30d5c5c4433aa8c7ce0e3ad7e16))
+
 ## What's Changed in v1.0.356
 * feat: adds configurable limit to `NextFrame` tasks allowed to execute per frame ([925fec0](https://github.com/roflmuffin/CounterStrikeSharp/commit/925fec04801fc09ce294051055b761069fcb733f))
 * chore(deps): bump libraries/hl2sdk-cs2 from `6e735c1` to `aba345d` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1170](https://github.com/roflmuffin/CounterStrikeSharp/pull/1170) ([2eea759](https://github.com/roflmuffin/CounterStrikeSharp/commit/2eea759a2c8cc61bd2679157b78a6e4fb1f51a0e))
