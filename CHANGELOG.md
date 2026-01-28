@@ -1,3 +1,9 @@
+## What's Changed in v1.0.362
+* refactor: Fix memory leak caused by allocating `Vector`, `QAngle`, etc. class objects by [@ELDment](https://github.com/ELDment) in [#1182](https://github.com/roflmuffin/CounterStrikeSharp/pull/1182) ([f06283a](https://github.com/roflmuffin/CounterStrikeSharp/commit/f06283aebc580b52e472684341583db58f9f896d))
+* chore(schema): Update Schema Definitions to 1.41.3.3 in [#1206](https://github.com/roflmuffin/CounterStrikeSharp/pull/1206) ([60db1df](https://github.com/roflmuffin/CounterStrikeSharp/commit/60db1df2a21e22c4d29c8108d0f45f92bea9f759))
+* fix: use personal PAT for cronjob PRs ([acc5744](https://github.com/roflmuffin/CounterStrikeSharp/commit/acc57441391a629ead8a4af788f4a87bf92fba5b))
+* feat(schema): add cronjob to re-generate schema in [#1204](https://github.com/roflmuffin/CounterStrikeSharp/pull/1204) ([f0d6512](https://github.com/roflmuffin/CounterStrikeSharp/commit/f0d6512e7be4bbdec8cc0f9e38d2813540985b35))
+
 ## What's Changed in v1.0.361
 * fix: setup server next frame listeners at startup ([dc138c1](https://github.com/roflmuffin/CounterStrikeSharp/commit/dc138c16f3e63ce2fb8f364da5c1d418a3214d84))
 
