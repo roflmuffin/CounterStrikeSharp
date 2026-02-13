@@ -34,6 +34,14 @@ public partial class CGameRules : NativeObject
 	[SchemaMember("CGameRules", "m_nQuestPhase")]
 	public ref Int32 QuestPhase => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nQuestPhase");
 
+	// m_nLastMatchTime
+	[SchemaMember("CGameRules", "m_nLastMatchTime")]
+	public ref UInt32 LastMatchTime => ref Schema.GetRef<UInt32>(this.Handle, "CGameRules", "m_nLastMatchTime");
+
+	// m_nLastMatchTime_MatchID64
+	[SchemaMember("CGameRules", "m_nLastMatchTime_MatchID64")]
+	public ref UInt64 LastMatchTime_MatchID64 => ref Schema.GetRef<UInt64>(this.Handle, "CGameRules", "m_nLastMatchTime_MatchID64");
+
 	// m_nTotalPausedTicks
 	[SchemaMember("CGameRules", "m_nTotalPausedTicks")]
 	public ref Int32 TotalPausedTicks => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nTotalPausedTicks");
