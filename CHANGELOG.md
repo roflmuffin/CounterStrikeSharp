@@ -1,3 +1,8 @@
+## What's Changed in v1.0.363
+* fix(gamedata): Update linux sig for CEntitySystem_AddEntityIOEvent by [@xLeviNx](https://github.com/xLeviNx) in [#1232](https://github.com/roflmuffin/CounterStrikeSharp/pull/1232) ([4006494](https://github.com/roflmuffin/CounterStrikeSharp/commit/4006494c1edd530c861cee93375c555f455e7155))
+* chore(deps): bump libraries/hl2sdk-cs2 from `2530f5d` to `1227cc3` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1228](https://github.com/roflmuffin/CounterStrikeSharp/pull/1228) ([aa89325](https://github.com/roflmuffin/CounterStrikeSharp/commit/aa89325cd7a3767f3a586e762dcb344988078d06))
+* chore: Update Schema Definitions to 1.41.3.5 in [#1222](https://github.com/roflmuffin/CounterStrikeSharp/pull/1222) ([c543797](https://github.com/roflmuffin/CounterStrikeSharp/commit/c5437970f72242619d5da44b03bdfcf803187528))
+
 ## What's Changed in v1.0.362
 * refactor: Fix memory leak caused by allocating `Vector`, `QAngle`, etc. class objects by [@ELDment](https://github.com/ELDment) in [#1182](https://github.com/roflmuffin/CounterStrikeSharp/pull/1182) ([f06283a](https://github.com/roflmuffin/CounterStrikeSharp/commit/f06283aebc580b52e472684341583db58f9f896d))
 * chore(schema): Update Schema Definitions to 1.41.3.3 in [#1206](https://github.com/roflmuffin/CounterStrikeSharp/pull/1206) ([60db1df](https://github.com/roflmuffin/CounterStrikeSharp/commit/60db1df2a21e22c4d29c8108d0f45f92bea9f759))
