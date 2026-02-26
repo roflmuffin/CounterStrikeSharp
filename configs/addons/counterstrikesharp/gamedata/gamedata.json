@@ -176,7 +176,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 4C 89 4C 24 ? 48 89 4C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 83 EC ? 49 8B F9",
-      "linux": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 FC"
+      "linux": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 FC 53 BB"
     }
   },
   "LegacyGameEventListener": {
