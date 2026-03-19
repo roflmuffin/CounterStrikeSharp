@@ -43,7 +43,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 8B C4 55 53 56 57 41 54 48 8D 68 ? 48 81 EC ? ? ? ? 4C 89 68 ? 48 8B F9",
-      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? E8 ? ? ? ? 41 80 BF"
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 81 EC ? ? ? ? E8 ? ? ? ? 80 BB ? ? ? ? ? 74"
     }
   },
   "CGameEventManager_Init": {
@@ -123,7 +123,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 56 41 56",
-      "linux": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85"
+      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85"
     }
   },
   "CCSGameRules_FindPickerEntity": {
