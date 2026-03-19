@@ -1,3 +1,6 @@
+## What's Changed in v1.0.364
+* fix: Update Linux signatures for PostThink and TerminateRound by [@ianlucas](https://github.com/ianlucas) in [#1247](https://github.com/roflmuffin/CounterStrikeSharp/pull/1247) ([03a452c](https://github.com/roflmuffin/CounterStrikeSharp/commit/03a452ca37f310d8a7d25c0370ef6787565f5116))
+
 ## What's Changed in v1.0.363
 * fix(gamedata): Update linux sig for CEntitySystem_AddEntityIOEvent by [@xLeviNx](https://github.com/xLeviNx) in [#1232](https://github.com/roflmuffin/CounterStrikeSharp/pull/1232) ([4006494](https://github.com/roflmuffin/CounterStrikeSharp/commit/4006494c1edd530c861cee93375c555f455e7155))
 * chore(deps): bump libraries/hl2sdk-cs2 from `2530f5d` to `1227cc3` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1228](https://github.com/roflmuffin/CounterStrikeSharp/pull/1228) ([aa89325](https://github.com/roflmuffin/CounterStrikeSharp/commit/aa89325cd7a3767f3a586e762dcb344988078d06))
