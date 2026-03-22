@@ -31,11 +31,11 @@ public partial class CCSGameRules
     {
         if (IsWindows.Value)
         {
-            VirtualFunctions.TerminateRoundWindows(Handle, delay, roundEndReason, 0, 0);
+            VirtualFunctions.TerminateRoundWindows(Handle, delay, roundEndReason, 0);
         }
         else
         {
-            VirtualFunctions.TerminateRoundLinux(Handle, roundEndReason, delay, 0, 0);
+            VirtualFunctions.TerminateRoundLinux(Handle, roundEndReason, 0, delay);
         }
     }
 
