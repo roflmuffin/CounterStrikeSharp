@@ -40,9 +40,12 @@ namespace NativeTestsPlugin
 
         public static int gameThreadId;
 
+        public static NativeTestsPlugin Instance { get; private set; } = null!;
+
         public override void Load(bool hotReload)
         {
             gameThreadId = Thread.CurrentThread.ManagedThreadId;
+            Instance = this;
             // Loading blocks the game thread, so we use NextFrame to run our tests asynchronously.
             // Uncomment to run the tests on load
             // Server.NextWorldUpdate(() => RunTests());
@@ -135,6 +138,9 @@ namespace NativeTestsPlugin
                 Console.WriteLine($"[{ModuleName}] Test run finished.");
                 Console.WriteLine(reporter.GetSummary());
                 Console.WriteLine("*****************************************************************");
+
+                // Export benchmark results if any were collected
+                ScriptContextBenchmarks.ExportResults();
             }
             catch (Exception ex)
             {
