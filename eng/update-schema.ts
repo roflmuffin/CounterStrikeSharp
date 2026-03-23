@@ -17,7 +17,7 @@ const config = z.object({
   SFTP_PASS: z.string().min(1, "SFTP_PASS env var is required"),
 }).parse(env);
 
-const HERE = $.path('.');
+const HERE = $.path(import.meta).parentOrThrow();
 
 $.logStep("Dumping schema from game server via RCON...");
 const output = await $`${HERE}/rcon -a ${config.GS_HOST}:${config.GS_PORT} -p ${config.GS_PASS} "dump_schema all"`.text();
