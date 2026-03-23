@@ -4,7 +4,7 @@ import $ from "https://deno.land/x/dax@0.39.2/mod.ts";
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
-const env = await load({ export: true });
+const env = { ...Deno.env.toObject(), ...await load({ export: true }) };
 
 const config = z.object({
   // Game server RCON details
