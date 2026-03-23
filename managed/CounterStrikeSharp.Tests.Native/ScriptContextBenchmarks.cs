@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -39,345 +40,235 @@ public class ScriptContextBenchmarks
     private static readonly List<BenchmarkResult> _results = new();
     private static readonly object _lock = new();
 
+    private static CWorld? GetWorld() =>
+        Utilities.FindAllEntitiesByDesignerName<CWorld>("worldent").FirstOrDefault();
+
     // ── Primitive returns, no args ──────────────────────────────────────
 
     [Fact]
-    public void Benchmark_GetTickCount_PrimitiveIntReturn()
+    public void Benchmark_GetTickCount()
     {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetTickCount();
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetTickCount();
-        sw.Stop();
-
-        Record("GetTickCount (int return, no args)", "Primitive Return", sw);
+        Run("GetTickCount (int, no args)", "Primitive Return", () => NativeAPI.GetTickCount());
     }
 
     [Fact]
-    public void Benchmark_GetTickInterval_PrimitiveFloatReturn()
+    public void Benchmark_GetTickInterval()
     {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetTickInterval();
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetTickInterval();
-        sw.Stop();
-
-        Record("GetTickInterval (float return, no args)", "Primitive Return", sw);
+        Run("GetTickInterval (float, no args)", "Primitive Return", () => NativeAPI.GetTickInterval());
     }
 
     [Fact]
-    public void Benchmark_GetEngineTime_PrimitiveDoubleReturn()
+    public void Benchmark_GetEngineTime()
     {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetEngineTime();
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetEngineTime();
-        sw.Stop();
-
-        Record("GetEngineTime (double return, no args)", "Primitive Return", sw);
+        Run("GetEngineTime (double, no args)", "Primitive Return", () => NativeAPI.GetEngineTime());
     }
 
     [Fact]
-    public void Benchmark_GetMaxClients_PrimitiveIntReturn()
+    public void Benchmark_GetMaxClients()
     {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetMaxClients();
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetMaxClients();
-        sw.Stop();
-
-        Record("GetMaxClients (int return, no args)", "Primitive Return", sw);
+        Run("GetMaxClients (int, no args)", "Primitive Return", () => NativeAPI.GetMaxClients());
     }
 
     [Fact]
-    public void Benchmark_IsServerPaused_PrimitiveBoolReturn()
+    public void Benchmark_IsServerPaused()
     {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.IsServerPaused();
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.IsServerPaused();
-        sw.Stop();
-
-        Record("IsServerPaused (bool return, no args)", "Primitive Return", sw);
+        Run("IsServerPaused (bool, no args)", "Primitive Return", () => NativeAPI.IsServerPaused());
     }
 
-    // ── String returns, no args ─────────────────────────────────────────
+    // ── String returns ──────────────────────────────────────────────────
 
     [Fact]
-    public void Benchmark_GetMapName_StringReturn()
+    public void Benchmark_GetMapName()
     {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetMapName();
+        Run("GetMapName (string, no args)", "String Return", () => NativeAPI.GetMapName());
+    }
 
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetMapName();
-        sw.Stop();
-
-        Record("GetMapName (string return, no args)", "String Return", sw);
+    [Fact]
+    public void Benchmark_GetConvarName()
+    {
+        var idx = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
+        Run("GetConvarName (ushort → string)", "String Return", () => NativeAPI.GetConvarName(idx));
     }
 
     // ── Primitive arg → primitive return ────────────────────────────────
 
     [Fact]
-    public void Benchmark_GetConvarFlags_UshortArgUlongReturn()
+    public void Benchmark_GetConvarFlags()
     {
-        var index = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
-
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetConvarFlags(index);
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetConvarFlags(index);
-        sw.Stop();
-
-        Record("GetConvarFlags (ushort arg, ulong return)", "Primitive Args", sw);
+        var idx = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
+        Run("GetConvarFlags (ushort → ulong)", "Primitive Args", () => NativeAPI.GetConvarFlags(idx));
     }
 
     [Fact]
-    public void Benchmark_GetConvarType_UshortArgShortReturn()
+    public void Benchmark_GetConvarType()
     {
-        var index = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
-
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetConvarType(index);
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetConvarType(index);
-        sw.Stop();
-
-        Record("GetConvarType (ushort arg, short return)", "Primitive Args", sw);
+        var idx = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
+        Run("GetConvarType (ushort → short)", "Primitive Args", () => NativeAPI.GetConvarType(idx));
     }
 
-    // ── Primitive arg → string return ───────────────────────────────────
+    // ── String push cost ────────────────────────────────────────────────
 
     [Fact]
-    public void Benchmark_GetConvarName_UshortArgStringReturn()
+    public void Benchmark_FindConvar()
     {
-        var index = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
-
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetConvarName(index);
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetConvarName(index);
-        sw.Stop();
-
-        Record("GetConvarName (ushort arg, string return)", "String Return", sw);
-    }
-
-    // ── String arg → pointer return (measures string push cost) ─────────
-
-    [Fact]
-    public void Benchmark_FindConvar_StringArgPointerReturn()
-    {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.FindConvar("sv_cheats");
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.FindConvar("sv_cheats");
-        sw.Stop();
-
-        Record("FindConvar (string arg, pointer return)", "String Push", sw);
-    }
-
-    // ── String push scaling (short / medium / long) ─────────────────────
-
-    [Fact]
-    public void Benchmark_PushString_ShortString()
-    {
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetConvarAccessIndexByName("sv_cheats");
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetConvarAccessIndexByName("sv_cheats");
-        sw.Stop();
-
-        Record("PushString short 'sv_cheats' (9 bytes)", "String Push", sw);
+        Run("FindConvar (string → pointer)", "String Push", () => NativeAPI.FindConvar("sv_cheats"));
     }
 
     [Fact]
-    public void Benchmark_PushString_MediumString()
+    public void Benchmark_PushString_Short()
     {
-        var mediumStr = "sv_cheats" + new string('x', 191); // 200 bytes total
-
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetConvarAccessIndexByName(mediumStr);
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetConvarAccessIndexByName(mediumStr);
-        sw.Stop();
-
-        Record("PushString medium (200 bytes)", "String Push", sw);
+        Run("PushString 9 bytes", "String Push", () => NativeAPI.GetConvarAccessIndexByName("sv_cheats"));
     }
 
     [Fact]
-    public void Benchmark_PushString_LongString()
+    public void Benchmark_PushString_Medium()
     {
-        var longStr = "sv_cheats" + new string('x', 1991); // 2000 bytes total
-
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetConvarAccessIndexByName(longStr);
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetConvarAccessIndexByName(longStr);
-        sw.Stop();
-
-        Record("PushString long (2000 bytes)", "String Push", sw);
+        var str = "sv_cheats" + new string('x', 191); // 200 bytes
+        Run("PushString 200 bytes", "String Push", () => NativeAPI.GetConvarAccessIndexByName(str));
     }
 
     [Fact]
-    public void Benchmark_PushString_OverflowString()
+    public void Benchmark_PushString_Long()
     {
-        var hugeStr = new string('x', 9000); // exceeds 8192 arena
+        var str = "sv_cheats" + new string('x', 1991); // 2000 bytes
+        Run("PushString 2000 bytes", "String Push", () => NativeAPI.GetConvarAccessIndexByName(str));
+    }
 
-        for (int i = 0; i < WarmupIterations; i++)
-            NativeAPI.GetConvarAccessIndexByName(hugeStr);
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            NativeAPI.GetConvarAccessIndexByName(hugeStr);
-        sw.Stop();
-
-        Record("PushString overflow (9000 bytes)", "String Push", sw);
+    [Fact]
+    public void Benchmark_PushString_Overflow()
+    {
+        var str = new string('x', 9000); // exceeds 8192 arena
+        Run("PushString 9000 bytes (overflow)", "String Push", () => NativeAPI.GetConvarAccessIndexByName(str));
     }
 
     // ── Mixed workload ──────────────────────────────────────────────────
 
     [Fact]
-    public void Benchmark_MixedSummary()
+    public void Benchmark_Mixed()
     {
-        var convarIndex = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
+        var convarIdx = NativeAPI.GetConvarAccessIndexByName("sv_cheats");
 
-        for (int i = 0; i < WarmupIterations; i++)
+        Run("Mixed (4 natives/iter)", "Mixed", () =>
         {
             NativeAPI.GetTickCount();
             NativeAPI.GetMapName();
             NativeAPI.FindConvar("sv_cheats");
-            NativeAPI.GetConvarFlags(convarIndex);
-        }
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-        {
-            NativeAPI.GetTickCount();
-            NativeAPI.GetMapName();
-            NativeAPI.FindConvar("sv_cheats");
-            NativeAPI.GetConvarFlags(convarIndex);
-        }
-
-        sw.Stop();
-
-        Record("Mixed workload (4 natives per iteration)", "Mixed", sw, Iterations * 4);
+            NativeAPI.GetConvarFlags(convarIdx);
+        }, callsPerIteration: 4);
     }
 
-    // ── Schema property access ─────────────────────────────────────────
+    // ── Schema ──────────────────────────────────────────────────────────
 
     [Fact]
-    public void Benchmark_SchemaOffset_CachedLookup()
+    public void Benchmark_SchemaOffset_Cached()
     {
-        // Prime the cache
-        Schema.GetSchemaOffset("CBaseEntity", "m_iHealth");
-
-        for (int i = 0; i < WarmupIterations; i++)
-            Schema.GetSchemaOffset("CBaseEntity", "m_iHealth");
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            Schema.GetSchemaOffset("CBaseEntity", "m_iHealth");
-        sw.Stop();
-
-        Record("Schema.GetSchemaOffset cached (record struct key)", "Schema", sw);
+        Schema.GetSchemaOffset("CBaseEntity", "m_iHealth"); // prime cache
+        Run("SchemaOffset cached", "Schema", () => Schema.GetSchemaOffset("CBaseEntity", "m_iHealth"));
     }
 
     [Fact]
-    public void Benchmark_SchemaOffset_MultipleDifferentKeys()
+    public void Benchmark_SchemaOffset_MultipleKeys()
     {
-        // Prime caches for several different fields
         Schema.GetSchemaOffset("CBaseEntity", "m_iHealth");
         Schema.GetSchemaOffset("CBaseEntity", "m_iTeamNum");
         Schema.GetSchemaOffset("CBaseEntity", "m_fFlags");
         Schema.GetSchemaOffset("CBasePlayerPawn", "m_vecAbsVelocity");
 
-        for (int i = 0; i < WarmupIterations; i++)
+        Run("SchemaOffset 4 keys", "Schema", () =>
         {
             Schema.GetSchemaOffset("CBaseEntity", "m_iHealth");
             Schema.GetSchemaOffset("CBaseEntity", "m_iTeamNum");
             Schema.GetSchemaOffset("CBaseEntity", "m_fFlags");
             Schema.GetSchemaOffset("CBasePlayerPawn", "m_vecAbsVelocity");
-        }
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-        {
-            Schema.GetSchemaOffset("CBaseEntity", "m_iHealth");
-            Schema.GetSchemaOffset("CBaseEntity", "m_iTeamNum");
-            Schema.GetSchemaOffset("CBaseEntity", "m_fFlags");
-            Schema.GetSchemaOffset("CBasePlayerPawn", "m_vecAbsVelocity");
-        }
-
-        sw.Stop();
-
-        Record("Schema.GetSchemaOffset 4 different keys", "Schema", sw, Iterations * 4);
+        }, callsPerIteration: 4);
     }
 
     [Fact]
     public void Benchmark_GetDeclaredClass()
     {
-        var world = Utilities.FindAllEntitiesByDesignerName<CWorld>("worldent").FirstOrDefault();
-        if (world == null)
-        {
-            Console.WriteLine("[BENCH] SKIP: GetDeclaredClass - no world entity");
-            return;
-        }
+        var world = GetWorld();
+        if (world == null) { Skip("no world entity"); return; }
 
-        for (int i = 0; i < WarmupIterations; i++)
-            _ = world.CBodyComponent;
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            _ = world.CBodyComponent;
-        sw.Stop();
-
-        Record("GetDeclaredClass via CBodyComponent (FastNew)", "Schema", sw);
+        Run("GetDeclaredClass (CBodyComponent)", "Schema", () => _ = world.CBodyComponent);
     }
 
     [Fact]
     public void Benchmark_GetSchemaValue_Int()
     {
-        var world = Utilities.FindAllEntitiesByDesignerName<CWorld>("worldent").FirstOrDefault();
-        if (world == null)
+        var world = GetWorld();
+        if (world == null) { Skip("no world entity"); return; }
+
+        Run("GetSchemaValue<int> (Health)", "Schema", () => _ = world.Health);
+    }
+
+    // ── Virtual function invocation ────────────────────────────────────
+
+    [Fact]
+    public void Benchmark_VFunc_PreCreatedDelegate()
+    {
+        var world = GetWorld();
+        if (world == null) { Skip("no world entity"); return; }
+
+        // Pre-create the delegate so we only measure the invoke path, not
+        // GameData.GetOffset or VirtualFunction.Create overhead.
+        var offset = GameData.GetOffset("CBaseEntity_IsPlayerPawn");
+        var isPlayerPawn = VirtualFunction.Create<IntPtr, bool>(world.Handle, offset);
+        var handle = world.Handle;
+
+        Run("VFunc IsPlayerPawn (pre-created delegate)", "Virtual Function", () => isPlayerPawn(handle));
+    }
+
+    [Fact]
+    public void Benchmark_VFunc_HighLevelApi()
+    {
+        var world = GetWorld();
+        if (world == null) { Skip("no world entity"); return; }
+
+        // Full path: Guard.IsValidEntity + GameData.GetOffset +
+        // VirtualFunction.Create + invoke on every call.
+        Run("VFunc IsPlayerPawn (high-level API)", "Virtual Function", () => world.IsPlayerPawn());
+    }
+
+    // ── Entity lifecycle ────────────────────────────────────────────────
+
+    [Fact]
+    public async Task Benchmark_EntityCreateAndDelete()
+    {
+        // Create info_target entities in batches of 4096, timing only the
+        // creation. After each batch, remove them and wait a frame so the
+        // engine frees the slots before the next round.
+        const int batchSize = 4096;
+        int batches = Iterations / batchSize;
+
+        // Warmup batch
+        var buf = new CBaseEntity[batchSize];
+        for (int i = 0; i < batchSize; i++)
         {
-            Console.WriteLine("[BENCH] SKIP: GetSchemaValue<int> - no world entity");
-            return;
+            buf[i] = Utilities.CreateEntityByName<CBaseEntity>("info_target")!;
+            buf[i].DispatchSpawn();
+        }
+        for (int i = 0; i < batchSize; i++)
+            buf[i].Remove();
+        await TestUtils.WaitOneFrame();
+
+        var sw = new Stopwatch();
+
+        for (int b = 0; b < batches; b++)
+        {
+            sw.Start();
+            for (int i = 0; i < batchSize; i++)
+            {
+                buf[i] = Utilities.CreateEntityByName<CBaseEntity>("info_target")!;
+                buf[i].DispatchSpawn();
+            }
+            sw.Stop();
+
+            for (int i = 0; i < batchSize; i++)
+                buf[i].Remove();
+            await TestUtils.WaitOneFrame();
         }
 
-        for (int i = 0; i < WarmupIterations; i++)
-            _ = world.Health;
-
-        var sw = Stopwatch.StartNew();
-        for (int i = 0; i < Iterations; i++)
-            _ = world.Health;
-        sw.Stop();
-
-        Record("GetSchemaValue<int> via Health property", "Schema", sw);
+        Record("Entity create+spawn info_target", "Entity Lifecycle", sw, (long)batches * batchSize);
     }
 
     // ── Export ───────────────────────────────────────────────────────────
@@ -387,13 +278,13 @@ public class ScriptContextBenchmarks
         List<BenchmarkResult> snapshot;
         lock (_lock)
         {
-            snapshot = new List<BenchmarkResult>(_results.OrderBy(r => r.Category).ThenBy(r => r.Name));
+            snapshot = _results.OrderBy(r => r.Category).ThenBy(r => r.Name).ToList();
             _results.Clear();
         }
 
         if (snapshot.Count == 0)
         {
-            Console.WriteLine("[BENCH] No benchmark results to export.");
+            Console.WriteLine("[BENCH] No results to export.");
             return;
         }
 
@@ -406,15 +297,14 @@ public class ScriptContextBenchmarks
             Results = snapshot
         };
 
-        var outputDir = TryGetPluginDirectory() ?? Path.GetTempPath();
-        Directory.CreateDirectory(outputDir);
+        var dir = TryGetPluginDirectory() ?? Path.GetTempPath();
+        Directory.CreateDirectory(dir);
 
-        var jsonPath = Path.Combine(outputDir, "benchmark-results.json");
-        var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
-        File.WriteAllText(jsonPath, JsonSerializer.Serialize(report, jsonOptions));
+        var jsonPath = Path.Combine(dir, "benchmark-results.json");
+        File.WriteAllText(jsonPath, JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));
 
-        var mdPath = Path.Combine(outputDir, "benchmark-results.md");
-        File.WriteAllText(mdPath, GenerateMarkdown(report));
+        var mdPath = Path.Combine(dir, "benchmark-results.md");
+        File.WriteAllText(mdPath, FormatMarkdown(report));
 
         Console.WriteLine("=== BENCHMARK EXPORT ===");
         Console.WriteLine($"  JSON: {jsonPath}");
@@ -423,60 +313,70 @@ public class ScriptContextBenchmarks
         Console.WriteLine("========================");
     }
 
-    // ── Internal helpers ────────────────────────────────────────────────
+    // ── Helpers ──────────────────────────────────────────────────────────
 
-    private static void Record(string name, string category, Stopwatch sw, long? totalCalls = null)
+    /// <summary>
+    /// Warmup + measure a synchronous action. If the action body contains
+    /// multiple logical calls, pass <paramref name="callsPerIteration"/> so
+    /// the per-call stats are correct.
+    /// </summary>
+    private static void Run(string name, string category, Action body, int callsPerIteration = 1)
     {
-        var calls = totalCalls ?? Iterations;
-        var elapsed = sw.Elapsed;
-        var nsPerCall = elapsed.TotalNanoseconds / calls;
-        var callsPerSecond = calls / elapsed.TotalSeconds;
+        for (int i = 0; i < WarmupIterations; i++)
+            body();
 
-        var result = new BenchmarkResult
-        {
-            Name = name,
-            Category = category,
-            TotalCalls = calls,
-            TotalMs = Math.Round(elapsed.TotalMilliseconds, 2),
-            NsPerCall = Math.Round(nsPerCall, 0),
-            CallsPerSecond = Math.Round(callsPerSecond, 0)
-        };
+        var sw = Stopwatch.StartNew();
+        for (int i = 0; i < Iterations; i++)
+            body();
+        sw.Stop();
+
+        Record(name, category, sw, (long)Iterations * callsPerIteration);
+    }
+
+    private static void Record(string name, string category, Stopwatch sw, long totalCalls)
+    {
+        var elapsed = sw.Elapsed;
+        var nsPerCall = elapsed.TotalNanoseconds / totalCalls;
+        var callsPerSec = totalCalls / elapsed.TotalSeconds;
 
         lock (_lock)
         {
-            _results.Add(result);
+            _results.Add(new BenchmarkResult
+            {
+                Name = name,
+                Category = category,
+                TotalCalls = totalCalls,
+                TotalMs = Math.Round(elapsed.TotalMilliseconds, 2),
+                NsPerCall = Math.Round(nsPerCall, 0),
+                CallsPerSecond = Math.Round(callsPerSec, 0)
+            });
         }
 
         Console.WriteLine($"[BENCH] {name}");
-        Console.WriteLine(
-            $"        {calls:N0} calls in {elapsed.TotalMilliseconds:F2} ms | {nsPerCall:F0} ns/call | {callsPerSecond:N0} calls/sec");
+        Console.WriteLine($"        {totalCalls:N0} calls in {elapsed.TotalMilliseconds:F2} ms" +
+                          $" | {nsPerCall:F0} ns/call | {callsPerSec:N0} calls/sec");
     }
+
+    private static void Skip(string reason) =>
+        Console.WriteLine($"[BENCH] SKIP: {reason}");
 
     private static string TryGetMapName()
     {
-        try
-        {
-            return NativeAPI.GetMapName();
-        }
-        catch
-        {
-            return "unknown";
-        }
+        try { return NativeAPI.GetMapName(); }
+        catch { return "unknown"; }
     }
 
     private static string? TryGetPluginDirectory()
     {
         try
         {
-            return NativeTestsPlugin.Instance?.ModulePath != null ? Path.GetDirectoryName(NativeTestsPlugin.Instance.ModulePath) : null;
+            var path = NativeTestsPlugin.Instance?.ModulePath;
+            return path != null ? Path.GetDirectoryName(path) : null;
         }
-        catch
-        {
-            return null;
-        }
+        catch { return null; }
     }
 
-    private static string GenerateMarkdown(BenchmarkReport report)
+    private static string FormatMarkdown(BenchmarkReport report)
     {
         var sb = new StringBuilder();
         sb.AppendLine("# Benchmark Results");
@@ -487,11 +387,7 @@ public class ScriptContextBenchmarks
         sb.AppendLine($"- **Warmup:** {report.WarmupIterations:N0}");
         sb.AppendLine();
 
-        var categories = report.Results
-            .GroupBy(r => r.Category)
-            .OrderBy(g => g.Key);
-
-        foreach (var group in categories)
+        foreach (var group in report.Results.GroupBy(r => r.Category).OrderBy(g => g.Key))
         {
             sb.AppendLine($"## {group.Key}");
             sb.AppendLine();
@@ -499,9 +395,7 @@ public class ScriptContextBenchmarks
             sb.AppendLine("|:----------|--------:|----------:|---------:|");
 
             foreach (var r in group)
-            {
                 sb.AppendLine($"| {r.Name} | {r.NsPerCall:N0} | {r.CallsPerSecond:N0} | {r.TotalMs:F2} |");
-            }
 
             sb.AppendLine();
         }
