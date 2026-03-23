@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.UserMessages;
 using Xunit;
 
 namespace NativeTestsPlugin;
@@ -54,6 +55,15 @@ public class ScriptContextBenchmarks
     public void Benchmark_GetTickInterval()
     {
         Run("GetTickInterval (float, no args)", "Primitive Return", () => NativeAPI.GetTickInterval());
+    }
+
+    [Fact]
+    public void Benchmark_GetServer_CurrentTime()
+    {
+        Run("GetServerCurrentTime (float, no args)", "Primitive Return", () =>
+        {
+            var z = Server.CurrentTime;
+        });
     }
 
     [Fact]
@@ -244,7 +254,41 @@ public class ScriptContextBenchmarks
         Run("VFunc IsPlayerPawn (high-level API)", "Virtual Function", () => world.IsPlayerPawn());
     }
 
+    [Fact]
+    public void Benchmark_NetMessage_Send()
+    {
+        Run("NetMessage Send", "NetMessage", () =>
+        {
+            var msg = UserMessage.FromId(120);
+            msg.SetFloat("frequency", 0.5f);
+            msg.Recipients.AddAllPlayers();
+            msg.Send();
+        });
+    }
+
+    [Fact]
+    public void Benchmark_GameEvent_Fire()
+    {
+        var player = Utilities.GetPlayerFromSlot(0)!;
+        Run("GameEvent Fire", "GameEvent", () =>
+        {
+            var @event = new EventShowSurvivalRespawnStatus(true)
+            {
+                LocToken = "#LOC_TOKEN",
+                Duration = 1
+            };
+
+            @event.FireEventToClient(player);
+        });
+    }
+
     // ── Entity lifecycle ────────────────────────────────────────────────
+
+    [Fact]
+    public void Benchmark_GetPlayerFromSlot()
+    {
+        Run("GetPlayerFromSlot", "Entity Lifecycle", () => { Utilities.GetPlayerFromSlot(0); });
+    }
 
     [Fact]
     public async Task Benchmark_EntityCreateAndDelete()

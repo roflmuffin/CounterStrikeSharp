@@ -140,6 +140,23 @@ const localMd = paths.results.join("benchmark-results.md").toString();
 
 await $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${`set xfer:clobber on; get ${remoteJson} -o ${localJson}; get ${remoteMd} -o ${localMd}; bye`}`.quiet();
 
+// Stamp git metadata into the results (only available on the build machine)
+const gitBranch = (await $`git -C ${ROOT} rev-parse --abbrev-ref HEAD`.text()).trim();
+const gitCommit = (await $`git -C ${ROOT} rev-parse --short HEAD`.text()).trim();
+
+const report = JSON.parse(await Deno.readTextFile(localJson));
+report.gitBranch = gitBranch;
+report.gitCommit = gitCommit;
+await Deno.writeTextFile(localJson, JSON.stringify(report) + "\n");
+
+// Prepend git info to the markdown too
+let md = await Deno.readTextFile(localMd);
+md = md.replace(
+  "# Benchmark Results\n",
+  `# Benchmark Results\n\n- **Branch:** ${gitBranch}\n- **Commit:** ${gitCommit}\n`,
+);
+await Deno.writeTextFile(localMd, md);
+
 $.logLight(`  JSON: ${localJson}`);
 $.logLight(`  MD:   ${localMd}`);
-console.log("\n" + await Deno.readTextFile(localMd));
+console.log("\n" + md);
