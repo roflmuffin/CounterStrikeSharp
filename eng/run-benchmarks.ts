@@ -34,30 +34,23 @@ const paths = {
   results: ROOT.join("TestResults/Benchmarks"),
 };
 
+const rcon = `${HERE}/rcon`;
 const remoteJson = `${config.GS_PLUGIN_DIR}/benchmark-results.json`;
 const remoteMd = `${config.GS_PLUGIN_DIR}/benchmark-results.md`;
 
-function lftp(commands: string) {
-  return $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${commands}`.quiet();
-}
-
-function rcon(command: string) {
-  return $`${HERE}/rcon -a ${config.GS_HOST}:${config.GS_PORT} -p ${config.GS_PASS} ${command}`;
-}
-
-async function poll(opts: { timeout: number; interval: number; label: string }, check: () => Promise<void>) {
+async function poll(timeoutSec: number, intervalMs: number, label: string, check: () => Promise<void>) {
   const start = Date.now();
-  while (Date.now() - start < opts.timeout * 1000) {
+  while (Date.now() - start < timeoutSec * 1000) {
     try {
       await check();
       return;
     } catch {
       const elapsed = Math.round((Date.now() - start) / 1000);
-      $.logLight(`  ${opts.label} (${elapsed}s elapsed)...`);
+      $.logLight(`  ${label} (${elapsed}s elapsed)...`);
     }
-    await $.sleep(opts.interval);
+    await $.sleep(intervalMs);
   }
-  throw new Error(`${opts.label}: timed out after ${opts.timeout}s`);
+  throw new Error(`${label}: timed out after ${timeoutSec}s`);
 }
 
 // ── Build ───────────────────────────────────────────────────────────────
@@ -71,15 +64,15 @@ await $`dotnet build ${paths.testProject} -c Debug`;
 // ── Upload ──────────────────────────────────────────────────────────────
 
 $.logStep("Uploading API...");
-await lftp(`set xfer:clobber on; mkdir -p ${config.GS_API_DIR}; mirror -R --delete ${paths.apiBuild} ${config.GS_API_DIR}; bye`);
+await $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${`set xfer:clobber on; mkdir -p ${config.GS_API_DIR}; mirror -R --delete ${paths.apiBuild} ${config.GS_API_DIR}; bye`}`.quiet();
 
 if (await Deno.stat(paths.nativeSo.toString()).then(() => true).catch(() => false)) {
   $.logStep("Uploading native .so...");
-  await lftp(`set xfer:clobber on; mkdir -p ${config.GS_NATIVE_DIR}; put ${paths.nativeSo} -o ${config.GS_NATIVE_DIR}/counterstrikesharp.so; bye`);
+  await $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${`set xfer:clobber on; mkdir -p ${config.GS_NATIVE_DIR}; put ${paths.nativeSo} -o ${config.GS_NATIVE_DIR}/counterstrikesharp.so; bye`}`.quiet();
 }
 
 $.logStep("Uploading NativeTestsPlugin...");
-await lftp(`set xfer:clobber on; mkdir -p ${config.GS_PLUGIN_DIR}; mirror -R --delete ${paths.testBuild} ${config.GS_PLUGIN_DIR}; bye`);
+await $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${`set xfer:clobber on; mkdir -p ${config.GS_PLUGIN_DIR}; mirror -R --delete ${paths.testBuild} ${config.GS_PLUGIN_DIR}; bye`}`.quiet();
 
 // ── Restart server ──────────────────────────────────────────────────────
 
@@ -100,11 +93,11 @@ if (!resp.ok) {
   Deno.exit(1);
 }
 
-await $.sleep(5_000);
+await $.sleep(10_000);
 
 const restartTimeout = parseInt(config.GS_RESTART_TIMEOUT, 10);
-await poll({ timeout: restartTimeout, interval: 5_000, label: "Server not ready yet" }, async () => {
-  const out = await rcon('"status"').text();
+await poll(restartTimeout, 5_000, "Server not ready yet", async () => {
+  const out = await $`${rcon} -a ${config.GS_HOST}:${config.GS_PORT} -p ${config.GS_PASS} "status"`.text();
   if (!out) throw new Error();
 });
 
@@ -115,23 +108,25 @@ await $.sleep(5_000);
 
 $.logStep("Loading plugin...");
 try {
-  await rcon('"css_plugins load NativeTestsPlugin"').text();
+  await $`${rcon} -a ${config.GS_HOST}:${config.GS_PORT} -p ${config.GS_PASS} "css_plugins load NativeTestsPlugin"`.text();
 } catch {
-  await rcon('"css_plugins reload NativeTestsPlugin"').text();
+  await $`${rcon} -a ${config.GS_HOST}:${config.GS_PORT} -p ${config.GS_PASS} "css_plugins reload NativeTestsPlugin"`.text();
 }
 
 // Delete stale results so we can detect when new ones land
 $.logStep("Clearing old results...");
-try { await lftp(`rm -f ${remoteJson}; rm -f ${remoteMd}; bye`); } catch { /* noop */ }
+try {
+  await $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${`rm -f ${remoteJson}; rm -f ${remoteMd}; bye`}`.quiet();
+} catch { /* may not exist */ }
 
 $.logStep("Running: css_itest benchmark");
-console.log(await rcon('-T 120s "css_itest benchmark"').text());
+console.log(await $`${rcon} -a ${config.GS_HOST}:${config.GS_PORT} -p ${config.GS_PASS} -T 120s "css_itest benchmark"`.text());
 
-// Benchmarks with async tests (entity creation) return before they're
-// done, so poll until ExportResults() writes the JSON file.
-await poll({ timeout: 300, interval: 5_000, label: "Waiting for results" }, () =>
-  lftp(`cat ${remoteJson}; bye`)
-);
+// Async benchmarks (entity creation) span multiple frames, so the RCON
+// command returns before results are written. Poll until the file appears.
+await poll(300, 5_000, "Waiting for results", async () => {
+  await $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${`cat ${remoteJson}; bye`}`.quiet();
+});
 
 await $.sleep(2_000); // let the .md flush too
 
@@ -143,7 +138,7 @@ await Deno.mkdir(paths.results.toString(), { recursive: true });
 const localJson = paths.results.join("benchmark-results.json").toString();
 const localMd = paths.results.join("benchmark-results.md").toString();
 
-await lftp(`set xfer:clobber on; get ${remoteJson} -o ${localJson}; get ${remoteMd} -o ${localMd}; bye`);
+await $`lftp -u ${config.SFTP_USER},${config.SFTP_PASS} ${config.SFTP_HOST} -e ${`set xfer:clobber on; get ${remoteJson} -o ${localJson}; get ${remoteMd} -o ${localMd}; bye`}`.quiet();
 
 $.logLight(`  JSON: ${localJson}`);
 $.logLight(`  MD:   ${localMd}`);

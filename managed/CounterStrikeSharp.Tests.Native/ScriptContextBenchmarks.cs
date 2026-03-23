@@ -26,7 +26,6 @@ public class BenchmarkResult
 public class BenchmarkReport
 {
     public string Timestamp { get; set; } = "";
-    public string MapName { get; set; } = "";
     public int Iterations { get; set; }
     public int WarmupIterations { get; set; }
     public List<BenchmarkResult> Results { get; set; } = new();
@@ -187,7 +186,11 @@ public class ScriptContextBenchmarks
     public void Benchmark_GetDeclaredClass()
     {
         var world = GetWorld();
-        if (world == null) { Skip("no world entity"); return; }
+        if (world == null)
+        {
+            Skip("no world entity");
+            return;
+        }
 
         Run("GetDeclaredClass (CBodyComponent)", "Schema", () => _ = world.CBodyComponent);
     }
@@ -196,7 +199,11 @@ public class ScriptContextBenchmarks
     public void Benchmark_GetSchemaValue_Int()
     {
         var world = GetWorld();
-        if (world == null) { Skip("no world entity"); return; }
+        if (world == null)
+        {
+            Skip("no world entity");
+            return;
+        }
 
         Run("GetSchemaValue<int> (Health)", "Schema", () => _ = world.Health);
     }
@@ -207,7 +214,11 @@ public class ScriptContextBenchmarks
     public void Benchmark_VFunc_PreCreatedDelegate()
     {
         var world = GetWorld();
-        if (world == null) { Skip("no world entity"); return; }
+        if (world == null)
+        {
+            Skip("no world entity");
+            return;
+        }
 
         // Pre-create the delegate so we only measure the invoke path, not
         // GameData.GetOffset or VirtualFunction.Create overhead.
@@ -222,7 +233,11 @@ public class ScriptContextBenchmarks
     public void Benchmark_VFunc_HighLevelApi()
     {
         var world = GetWorld();
-        if (world == null) { Skip("no world entity"); return; }
+        if (world == null)
+        {
+            Skip("no world entity");
+            return;
+        }
 
         // Full path: Guard.IsValidEntity + GameData.GetOffset +
         // VirtualFunction.Create + invoke on every call.
@@ -247,6 +262,7 @@ public class ScriptContextBenchmarks
             buf[i] = Utilities.CreateEntityByName<CBaseEntity>("info_target")!;
             buf[i].DispatchSpawn();
         }
+
         for (int i = 0; i < batchSize; i++)
             buf[i].Remove();
         await TestUtils.WaitOneFrame();
@@ -261,6 +277,7 @@ public class ScriptContextBenchmarks
                 buf[i] = Utilities.CreateEntityByName<CBaseEntity>("info_target")!;
                 buf[i].DispatchSpawn();
             }
+
             sw.Stop();
 
             for (int i = 0; i < batchSize; i++)
@@ -291,7 +308,6 @@ public class ScriptContextBenchmarks
         var report = new BenchmarkReport
         {
             Timestamp = DateTime.UtcNow.ToString("o"),
-            MapName = TryGetMapName(),
             Iterations = Iterations,
             WarmupIterations = WarmupIterations,
             Results = snapshot
@@ -360,12 +376,6 @@ public class ScriptContextBenchmarks
     private static void Skip(string reason) =>
         Console.WriteLine($"[BENCH] SKIP: {reason}");
 
-    private static string TryGetMapName()
-    {
-        try { return NativeAPI.GetMapName(); }
-        catch { return "unknown"; }
-    }
-
     private static string? TryGetPluginDirectory()
     {
         try
@@ -373,7 +383,10 @@ public class ScriptContextBenchmarks
             var path = NativeTestsPlugin.Instance?.ModulePath;
             return path != null ? Path.GetDirectoryName(path) : null;
         }
-        catch { return null; }
+        catch
+        {
+            return null;
+        }
     }
 
     private static string FormatMarkdown(BenchmarkReport report)
@@ -382,7 +395,6 @@ public class ScriptContextBenchmarks
         sb.AppendLine("# Benchmark Results");
         sb.AppendLine();
         sb.AppendLine($"- **Date:** {report.Timestamp}");
-        sb.AppendLine($"- **Map:** {report.MapName}");
         sb.AppendLine($"- **Iterations:** {report.Iterations:N0}");
         sb.AppendLine($"- **Warmup:** {report.WarmupIterations:N0}");
         sb.AppendLine();
