@@ -41,25 +41,26 @@ namespace CounterStrikeSharp.API.Core.Plugin
         void TerminateSelf(string reason);
     }
 
-    public class PluginContext : IPluginContext, ISelfPluginControl
+    public class PluginContext : IPluginContext, ISelfPluginControl, IDisposable
     {
         public PluginState State { get; set; } = PluginState.Unregistered;
         public IPlugin Plugin { get; private set; }
 
-        private PluginLoader Loader { get; set; }
+        private PluginLoader? Loader { get; set; }
 
-        private ServiceProvider ServiceProvider { get; set; }
+        private ServiceProvider? ServiceProvider { get; set; }
 
         public int PluginId { get; }
 
         private readonly ICommandManager _commandManager;
         private readonly IScriptHostConfiguration _hostConfiguration;
         private readonly string _path;
-        private readonly FileSystemWatcher _fileWatcher;
+        private FileSystemWatcher? _fileWatcher;
+        private bool _disposed;
         private readonly IServiceProvider _applicationServiceProvider;
 
         public string FilePath => _path;
-        private IServiceScope _serviceScope;
+        private IServiceScope? _serviceScope;
 
         public string TerminationReason { get; private set; }
 
@@ -74,6 +75,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _hostConfiguration = hostConfiguration;
             _path = path;
             PluginId = id;
+            _applicationServiceProvider = applicationServiceProvider;
 
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
@@ -108,7 +110,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
                 _fileWatcher.Filter = "*.dll";
                 _fileWatcher.EnableRaisingEvents = true;
-                Loader.Reloaded += async (s, e) => await OnReloadedAsync(s, e);
+                Loader.Reloaded += OnReloadedAsync;
             }
         }
 
@@ -261,29 +263,92 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
         public void Unload(bool hotReload = false)
         {
-            if (State == PluginState.Unloaded) return;
+            if (State == PluginState.Unloaded)
+                return;
 
             State = PluginState.Unloaded;
             var cachedName = Plugin.ModuleName;
 
-            _logger.LogInformation("Unloading plugin {Name}", Plugin.ModuleName);
+            _logger.LogInformation("Unloading plugin {Name}", cachedName);
 
             try
             {
                 Plugin.Unload(hotReload);
             }
-            catch
+            catch (Exception ex)
             {
-                _logger.LogError("Failed to unload {Name} during error recovery, forcing cleanup", Plugin.ModuleName);
-                return;
+                _logger.LogError(ex, "Failed to unload {Name} during error recovery, forcing cleanup", cachedName);
             }
             finally
             {
-                Plugin.Dispose();
-                _serviceScope.Dispose();
+                try
+                {
+                    Plugin.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to dispose plugin instance {Name}", cachedName);
+                }
+
+                _serviceScope?.Dispose();
+                _serviceScope = null;
+
+                try
+                {
+                    ServiceProvider?.Dispose();
+                    ServiceProvider = null;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to dispose service provider for plugin {Path}", _path);
+                    ServiceProvider = null;
+                }
+            }
+
+            if (!hotReload)
+            {
+                Dispose();
             }
 
             _logger.LogInformation("Finished unloading plugin {Name}", cachedName);
+        }
+
+        public void Dispose()
+        {
+            if (_disposed)
+                return;
+
+            _disposed = true;
+
+            try
+            {
+                if (_fileWatcher != null)
+                {
+                    _fileWatcher.EnableRaisingEvents = false;
+                    _fileWatcher.Dispose();
+                    _fileWatcher = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to dispose file watcher for plugin {Path}", _path);
+                _fileWatcher = null;
+            }
+
+            try
+            {
+                if (Loader != null)
+                {
+                    Loader.Reloaded -= OnReloadedAsync;
+                    Loader.Dispose();
+                    Loader = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to dispose loader for plugin {Path}", _path);
+                Loader = null;
+            }
         }
 
         public void TerminateWithReason(string reason)
@@ -320,7 +385,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
                 // **Failsafe mechanism** ensures execution termination
                 // Prevents control flow leakage back to plugin execution context
-                throw new NotImplementedException();
+                throw new PluginTerminationException(reason);
             }
         }
     }
