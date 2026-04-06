@@ -61,11 +61,18 @@ namespace CounterStrikeSharp.API.Core
 
 		public static ScriptContext GlobalScriptContext
 		{
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get
 			{
-				if (_globalScriptContext == null) _globalScriptContext = new ScriptContext();
-				return _globalScriptContext;
+				return _globalScriptContext ?? InitGlobalScriptContext();
 			}
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		private static ScriptContext InitGlobalScriptContext()
+		{
+			_globalScriptContext = new ScriptContext();
+			return _globalScriptContext;
 		}
 
 		public unsafe ScriptContext()
@@ -87,6 +94,7 @@ namespace CounterStrikeSharp.API.Core
 
 		internal bool isCleanupLocked = false;
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[SecuritySafeCritical]
 		public void Reset()
 		{
@@ -103,6 +111,7 @@ namespace CounterStrikeSharp.API.Core
 			//CleanUp();
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[SecuritySafeCritical]
 		public void Invoke()
 		{
@@ -118,6 +127,7 @@ namespace CounterStrikeSharp.API.Core
 			InvokeNativeInternal();
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[SecurityCritical]
 		private void InvokeNativeInternal()
 		{
