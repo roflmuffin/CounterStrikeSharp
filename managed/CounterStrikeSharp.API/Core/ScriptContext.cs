@@ -93,6 +93,7 @@ namespace CounterStrikeSharp.API.Core
 			InternalReset();
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[SecurityCritical]
 		private void InternalReset()
 		{
@@ -169,6 +170,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[SecurityCritical]
 		public unsafe void SetIdentifier(ulong arg)
 		{
@@ -178,17 +180,21 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public unsafe void CheckErrors()
 		{
-			fixed (fxScriptContext* context = &m_extContext)
+			if (m_extContext.hasError != 0)
 			{
-				if (Convert.ToBoolean(context->hasError))
-				{
-					string error = GetResult<string>();
-					Reset();
-					throw new NativeException(error);
-				}
+				ThrowNativeError();
 			}
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		private void ThrowNativeError()
+		{
+			string error = GetResult<string>();
+			Reset();
+			throw new NativeException(error);
 		}
 
 		[SecurityCritical]
@@ -543,7 +549,17 @@ namespace CounterStrikeSharp.API.Core
 			return "Native invocation failed.";
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal void GlobalCleanUp()
+		{
+			if (!ms_finalizers.IsEmpty)
+			{
+				GlobalCleanUpSlow();
+			}
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		private void GlobalCleanUpSlow()
 		{
 			lock (ms_lock)
 			{
