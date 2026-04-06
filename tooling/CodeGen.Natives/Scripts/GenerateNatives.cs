@@ -78,8 +78,16 @@ public partial class Generators
 
             if (native.ReturnType != "void")
             {
-                returnStr.Append(
-                    $"\t\t\treturn ({Mapping.GetCSharpType(native.ReturnType)})ScriptContext.GlobalScriptContext.GetResult(typeof({Mapping.GetCSharpType(native.ReturnType)}));\n");
+                if (Mapping.IsPrimitiveReturnType(native.ReturnType))
+                {
+                    returnStr.Append(
+                        $"\t\t\treturn ScriptContext.GlobalScriptContext.GetResultPrimitive<{Mapping.GetCSharpType(native.ReturnType)}>();\n");
+                }
+                else
+                {
+                    returnStr.Append(
+                        $"\t\t\treturn ({Mapping.GetCSharpType(native.ReturnType)})ScriptContext.GlobalScriptContext.GetResult(typeof({Mapping.GetCSharpType(native.ReturnType)}));\n");
+                }
             }
 
             returnStr.Append("\t\t\t}\n");

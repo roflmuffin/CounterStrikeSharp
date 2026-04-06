@@ -96,6 +96,36 @@ public class Mapping
         return "object";
     }
 
+    /// <summary>
+    /// Returns true if the native return type maps to an unmanaged primitive
+    /// that can use GetResultPrimitive&lt;T&gt;() instead of GetResult(typeof(T)).
+    /// </summary>
+    public static bool IsPrimitiveReturnType(string returnType)
+    {
+        switch (returnType)
+        {
+            case "int":
+            case "uint":
+            case "float":
+            case "bool":
+            case "double":
+            case "short":
+            case "int16":
+            case "uint16":
+            case "uint64":
+            case "long":
+            case "int64":
+            case "pointer":
+            case "HookMode":
+            case "ListenOverride":
+            case "DataType_t":
+            case "CommandCallingContext":
+                return true;
+            default:
+                return false;
+        }
+    }
+
     public static string GetCSharpTypeFromGameEventType(string type)
     {
         switch (type)

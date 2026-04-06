@@ -510,6 +510,19 @@ namespace CounterStrikeSharp.API.Core
 			return obj;
 		}
 
+		/// <summary>
+		/// Reads a primitive/unmanaged result directly from the context's result
+		/// buffer without Marshal.PtrToStructure or boxing overhead.
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public unsafe T GetResultPrimitive<T>() where T : unmanaged
+		{
+			fixed (fxScriptContext* cxt = &m_extContext)
+			{
+				return *(T*)(&cxt->result[0]);
+			}
+		}
+
 
 		[SecurityCritical]
 		internal unsafe string ErrorHandler(byte* error)

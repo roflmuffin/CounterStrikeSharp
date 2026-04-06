@@ -16,7 +16,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x8E7D0305);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -28,7 +28,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x47C507A2);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -88,7 +88,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xAD28109C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -133,7 +133,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x886D0EB6);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (CommandCallingContext)ScriptContext.GlobalScriptContext.GetResult(typeof(CommandCallingContext));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<CommandCallingContext>();
 			}
 		}
 
@@ -166,7 +166,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x52254718);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -235,7 +235,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x94829E2B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (ulong)ScriptContext.GlobalScriptContext.GetResult(typeof(ulong));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ulong>();
 			}
 		}
 
@@ -246,7 +246,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xB6E0E54C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (short)ScriptContext.GlobalScriptContext.GetResult(typeof(short));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<short>();
 			}
 		}
 
@@ -279,7 +279,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x6288420D);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (ushort)ScriptContext.GlobalScriptContext.GetResult(typeof(ushort));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ushort>();
 			}
 		}
 
@@ -312,7 +312,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xECC4CC16);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -353,7 +353,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xF22079B9);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (ushort)ScriptContext.GlobalScriptContext.GetResult(typeof(ushort));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ushort>();
 			}
 		}
 
@@ -385,7 +385,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x7AC3DA1C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<uint>();
 			}
 		}
 
@@ -396,7 +396,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x78156617);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -407,7 +407,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x7AC49FA2);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<uint>();
 			}
 		}
 
@@ -418,7 +418,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD20595B4);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -440,7 +440,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x7ABC76EA);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -576,7 +576,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD88A5CD5);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -586,7 +586,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x970CB1B9);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -596,7 +596,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xFDF24F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -606,7 +606,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xAB744EC5);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -616,7 +616,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x39A17C88);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (double)ScriptContext.GlobalScriptContext.GetResult(typeof(double));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<double>();
 			}
 		}
 
@@ -626,7 +626,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x5DF2E20D);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -636,7 +636,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x97E331CA);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -678,7 +678,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x758F3FD2);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -689,7 +689,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD4372AF3);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -700,7 +700,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x20BB05CE);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -713,7 +713,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x7A3E109A);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -727,7 +727,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x7A3E1099);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -751,7 +751,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xC3572E09);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -761,7 +761,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x881F122B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -793,7 +793,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x95B04711);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -803,7 +803,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x84108452);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (double)ScriptContext.GlobalScriptContext.GetResult(typeof(double));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<double>();
 			}
 		}
 
@@ -826,7 +826,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xDFAED2BE);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -883,7 +883,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD551EB1F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -894,7 +894,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x83542138);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -916,7 +916,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xEE3A8DEF);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -927,7 +927,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xAF13DA94);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<uint>();
 			}
 		}
 
@@ -938,7 +938,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xDBC17174);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -948,7 +948,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x5756DB36);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -959,7 +959,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x6E38A1FC);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -980,7 +980,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x3E50DC41);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -991,7 +991,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD1F30B3B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (ulong)ScriptContext.GlobalScriptContext.GetResult(typeof(ulong));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ulong>();
 			}
 		}
 
@@ -1074,7 +1074,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x43C4A2B3);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<uint>();
 			}
 		}
 
@@ -1095,7 +1095,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x445FE212);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1146,7 +1146,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD3E04DA0);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -1182,7 +1182,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x7B472432);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1237,7 +1237,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xDFFEE451);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -1249,7 +1249,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xB17427CC);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -1261,7 +1261,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xDF96CB6F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -1333,7 +1333,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xED480293);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -1345,7 +1345,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x88E33F2F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1393,7 +1393,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x80D3545B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1405,7 +1405,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xA5EADD5B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (ulong)ScriptContext.GlobalScriptContext.GetResult(typeof(ulong));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ulong>();
 			}
 		}
 
@@ -1435,7 +1435,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x2531DA2);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1454,7 +1454,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x8D25187D);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1473,7 +1473,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xF873189F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1491,7 +1491,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE9D17E63);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1543,7 +1543,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE9E1819B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1555,7 +1555,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xEA506CFF);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1566,7 +1566,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xA585F34E);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -1578,7 +1578,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x67A31E3F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1599,7 +1599,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x61521EF3);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1611,7 +1611,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x57B77D8F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (short)ScriptContext.GlobalScriptContext.GetResult(typeof(short));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<short>();
 			}
 		}
 
@@ -1623,7 +1623,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xFE413B0C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -1662,7 +1662,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x9CE4FC56);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -1698,7 +1698,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x981E9B5B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1708,7 +1708,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xB216AAAC);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -1721,7 +1721,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x7A5BAE39);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -1767,7 +1767,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xC971FB70);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -1780,7 +1780,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x5FA8BDC9);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -1793,7 +1793,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xECCF528B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (long)ScriptContext.GlobalScriptContext.GetResult(typeof(long));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<long>();
 			}
 		}
 
@@ -1806,7 +1806,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xED208CEA);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -1819,7 +1819,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x54C0D7F4);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -1847,7 +1847,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xECD23703);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -1860,7 +1860,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xF74C465F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -1872,7 +1872,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xDE4E1549);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -2058,7 +2058,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x70CDDEBE);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (ulong)ScriptContext.GlobalScriptContext.GetResult(typeof(ulong));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ulong>();
 			}
 		}
 
@@ -2080,7 +2080,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x22CD6C9F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -2091,7 +2091,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE8E83344);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2102,7 +2102,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xBC758632);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2133,7 +2133,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xC17BA71B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
 			}
 		}
 
@@ -2165,7 +2165,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xA67981DF);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2175,7 +2175,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x2CD71169);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2185,7 +2185,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x16585EAF);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2195,7 +2195,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xA2E1A42);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2205,7 +2205,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD27D7946);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2215,7 +2215,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x11907167);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
 			}
 		}
 
@@ -2226,7 +2226,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x2A85CBB2);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -2237,7 +2237,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x2A85CBB3);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -2248,7 +2248,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x2A85CBB0);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -2317,7 +2317,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x94B5BA5F);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -2328,7 +2328,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xBAC81CD6);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -2339,7 +2339,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x13CB3150);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -2350,7 +2350,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xEAF6FE79);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
 			}
 		}
 
@@ -2361,7 +2361,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xA4B37BC4);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
@@ -2385,7 +2385,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE95644E3);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (ListenOverride)ScriptContext.GlobalScriptContext.GetResult(typeof(ListenOverride));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ListenOverride>();
 			}
 		}
 
@@ -2407,7 +2407,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x9685205C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<uint>();
 			}
 		}
     }
