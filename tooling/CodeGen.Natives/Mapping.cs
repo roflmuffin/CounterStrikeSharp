@@ -12,11 +12,20 @@ public class Mapping
             case "int":
             case "uint":
             case "float":
-            case "pointer":
             case "bool":
             case "double":
             case "short":
-                return "Push(";
+            case "int16":
+            case "uint16":
+            case "uint64":
+            case "long":
+            case "int64":
+            case "HookMode":
+            case "ListenOverride":
+            case "DataType_t":
+            case "CommandCallingContext":
+            case "pointer":
+                return "PushPrimitive(";
             case "func":
             case "callback":
                 return "Push((InputArgument)";
@@ -59,6 +68,7 @@ public class Mapping
             case "uint64":
                 return "ulong";
             case "long":
+            case "int64":
                 return "long";
             case "func":
             case "callback":

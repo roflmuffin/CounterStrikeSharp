@@ -27,6 +27,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
@@ -282,6 +283,21 @@ namespace CounterStrikeSharp.API.Core
 		{
 			*(long*)(&cxt->functionData[8 * cxt->numArguments]) = 0;
 			Marshal.StructureToPtr(arg, new IntPtr(cxt->functionData + (8 * cxt->numArguments)), true);
+		}
+
+		/// <summary>
+		/// Pushes a primitive/unmanaged value directly into the context's function
+		/// data buffer without boxing or Marshal.StructureToPtr overhead.
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public unsafe void PushPrimitive<T>(T value) where T : unmanaged
+		{
+			fixed (fxScriptContext* cxt = &m_extContext)
+			{
+				*(long*)(&cxt->functionData[8 * cxt->numArguments]) = 0;
+				*(T*)(&cxt->functionData[8 * cxt->numArguments]) = value;
+				cxt->numArguments++;
+			}
 		}
 
 		[SecurityCritical]
