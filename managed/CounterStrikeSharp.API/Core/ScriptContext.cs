@@ -88,6 +88,12 @@ namespace CounterStrikeSharp.API.Core
 
 		private readonly object ms_lock = new object();
 
+		// Pinned arena for string arguments — avoids per-call AllocHGlobal + finalizer overhead.
+		// 8 KB covers most native calls (32 args × ~256 bytes each). Overflows fall back to AllocHGlobal.
+		private const int StringArenaCapacity = 8192;
+		private readonly byte[] _stringArena = GC.AllocateUninitializedArray<byte>(StringArenaCapacity, pinned: true);
+		private int _stringArenaOffset;
+
 		internal object Lock => ms_lock;
 
 		internal fxScriptContext m_extContext = new fxScriptContext();
@@ -108,7 +114,7 @@ namespace CounterStrikeSharp.API.Core
 			m_extContext.numArguments = 0;
 			m_extContext.numResults = 0;
 			m_extContext.hasError = 0;
-			//CleanUp();
+			_stringArenaOffset = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -339,21 +345,37 @@ namespace CounterStrikeSharp.API.Core
 
 			if (str != null)
 			{
-				var b = Encoding.UTF8.GetBytes(str);
+				// Encode directly into the pinned arena when possible.
+				int maxBytes = Encoding.UTF8.GetMaxByteCount(str.Length);
+				int arenaRemaining = StringArenaCapacity - _stringArenaOffset;
 
-				ptr = Marshal.AllocHGlobal(b.Length + 1);
-
-				Marshal.Copy(b, 0, ptr, b.Length);
-				Marshal.WriteByte(ptr, b.Length, 0);
-
-				ms_finalizers.Enqueue(() => Free(ptr));
+				if (maxBytes + 1 <= arenaRemaining)
+				{
+					// Fast path: write into pinned arena (no alloc, no finalizer)
+					fixed (byte* arenaBase = &_stringArena[_stringArenaOffset])
+					{
+						int written;
+						fixed (char* chars = str)
+						{
+							written = Encoding.UTF8.GetBytes(chars, str.Length, arenaBase, arenaRemaining);
+						}
+						arenaBase[written] = 0; // null-terminate
+						ptr = (IntPtr)arenaBase;
+						_stringArenaOffset += written + 1;
+					}
+				}
+				else
+				{
+					// Overflow: fall back to AllocHGlobal
+					var b = Encoding.UTF8.GetBytes(str);
+					ptr = Marshal.AllocHGlobal(b.Length + 1);
+					Marshal.Copy(b, 0, ptr, b.Length);
+					Marshal.WriteByte(ptr, b.Length, 0);
+					ms_finalizers.Enqueue(() => Free(ptr));
+				}
 			}
 
-			unsafe
-			{
-				*(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
-			}
-
+			*(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
 			cxt->numArguments++;
 		}
 
