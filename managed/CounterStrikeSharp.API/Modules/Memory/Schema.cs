@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Core;
+using FastGenericNew;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
@@ -102,7 +103,7 @@ public class Schema
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
-        return (T)Activator.CreateInstance(typeof(T), pointer + GetSchemaOffset(className, memberName));
+        return FastNew.CreateInstance<T, IntPtr>(pointer + GetSchemaOffset(className, memberName));
     }
 
     public static unsafe ref T GetRef<T>(IntPtr pointer, string className, string memberName)
@@ -120,7 +121,7 @@ public class Schema
             return default;
         }
 
-        return (T)Activator.CreateInstance(typeof(T), pointerTo);
+        return FastNew.CreateInstance<T, IntPtr>(pointerTo);
     }
 
     public static T GetPointer<T>(IntPtr pointer, string className, string memberName)
@@ -133,7 +134,7 @@ public class Schema
             return default;
         }
 
-        return (T)Activator.CreateInstance(typeof(T), pointerTo);
+        return FastNew.CreateInstance<T, IntPtr>(pointerTo);
     }
 
     public static unsafe Span<T> GetFixedArray<T>(IntPtr pointer, string className, string memberName, int count)

@@ -1,3 +1,4 @@
+using FastGenericNew;
 ﻿/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
@@ -54,7 +55,7 @@ public partial class CCSPlayer_ItemServices
         if (pointer == IntPtr.Zero)
             return null;
 
-        return (T)Activator.CreateInstance(typeof(T), pointer)!;
+        return FastNew.CreateInstance<T, IntPtr>(pointer);
     }
 
     public AcquireResult CanAcquire(CEconItemView itemView, AcquireMethod method, IntPtr unknown = 0)

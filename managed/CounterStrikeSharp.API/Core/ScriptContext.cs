@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using CounterStrikeSharp.API.Modules.Utils;
+using FastGenericNew;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -558,6 +559,20 @@ namespace CounterStrikeSharp.API.Core
 			fixed (fxScriptContext* cxt = &m_extContext)
 			{
 				return *(T*)(&cxt->result[0]);
+			}
+		}
+
+		/// <summary>
+		/// Reads a pointer result from the context and creates a NativeObject-derived
+		/// instance using FastGenericNew. Avoids Activator.CreateInstance overhead.
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public unsafe T GetResultNativeObject<T>()
+		{
+			fixed (fxScriptContext* cxt = &m_extContext)
+			{
+				var pointer = *(IntPtr*)(&cxt->result[0]);
+				return FastNew.CreateInstance<T, IntPtr>(pointer);
 			}
 		}
 

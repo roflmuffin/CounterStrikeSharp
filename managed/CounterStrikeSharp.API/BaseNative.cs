@@ -1,3 +1,4 @@
+using FastGenericNew;
 /*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
@@ -67,7 +68,7 @@ namespace CounterStrikeSharp.API
         /// <returns></returns>
         public T As<T>() where T : NativeObject
         {
-            return (T)Activator.CreateInstance(typeof(T), this.Handle);
+            return FastNew.CreateInstance<T, IntPtr>(this.Handle);
         }
     }
 }
