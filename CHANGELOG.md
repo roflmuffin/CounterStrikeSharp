@@ -1,3 +1,8 @@
+## What's Changed in v1.0.365
+* perf: improve ScriptContext performance in [#1264](https://github.com/roflmuffin/CounterStrikeSharp/pull/1264) ([9b6d971](https://github.com/roflmuffin/CounterStrikeSharp/commit/9b6d971a04419aafeb54ca767143769a5b71be36))
+* test: add benchmarking script in [#1252](https://github.com/roflmuffin/CounterStrikeSharp/pull/1252) ([1dbed74](https://github.com/roflmuffin/CounterStrikeSharp/commit/1dbed74afd5b73cf50a5105cad7a2a5c60dddc73))
+* chore: Update Schema Definitions to 1.41.4.1 in [#1245](https://github.com/roflmuffin/CounterStrikeSharp/pull/1245) ([4799da3](https://github.com/roflmuffin/CounterStrikeSharp/commit/4799da3eae839dcba206f8ad8f23385b9b7e9529))
+
 ## What's Changed in v1.0.364
 * fix: Update Linux signatures for PostThink and TerminateRound by [@ianlucas](https://github.com/ianlucas) in [#1247](https://github.com/roflmuffin/CounterStrikeSharp/pull/1247) ([03a452c](https://github.com/roflmuffin/CounterStrikeSharp/commit/03a452ca37f310d8a7d25c0370ef6787565f5116))
 
