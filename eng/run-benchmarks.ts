@@ -102,7 +102,7 @@ await poll(restartTimeout, 5_000, "Server not ready yet", async () => {
 });
 
 $.logStep("Server is back online.");
-await $.sleep(5_000);
+await $.sleep("10s");
 
 // ── Run benchmarks ──────────────────────────────────────────────────────
 

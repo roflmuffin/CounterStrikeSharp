@@ -1,3 +1,4 @@
+using FastGenericNew;
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -87,7 +88,7 @@ public partial class CBaseEntity
     {
         Guard.IsValidEntity(this);
 
-        return (T)Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
+        return FastNew.CreateInstance<T, IntPtr>(Marshal.ReadIntPtr(SubclassID.Handle + 4));
     }
 
     /// <summary>
