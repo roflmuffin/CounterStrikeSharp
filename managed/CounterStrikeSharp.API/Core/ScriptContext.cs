@@ -82,7 +82,7 @@ namespace CounterStrikeSharp.API.Core
             m_extContext = *context;
         }
 
-        private readonly ConcurrentQueue<Action> ms_finalizers = new ConcurrentQueue<Action>();
+        private readonly ConcurrentQueue<IntPtr> ms_finalizers = new ConcurrentQueue<IntPtr>();
 
         private readonly object ms_lock = new object();
 
@@ -326,55 +326,44 @@ namespace CounterStrikeSharp.API.Core
         [SecurityCritical]
         internal unsafe void PushString(fxScriptContext* cxt, string str)
         {
-            var ptr = IntPtr.Zero;
-
-            if (str != null)
+            if (str == null)
             {
-                var b = Encoding.UTF8.GetBytes(str);
-
-                ptr = Marshal.AllocHGlobal(b.Length + 1);
-
-                Marshal.Copy(b, 0, ptr, b.Length);
-                Marshal.WriteByte(ptr, b.Length, 0);
-
-                ms_finalizers.Enqueue(() => Free(ptr));
+                *(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = IntPtr.Zero;
+                cxt->numArguments++;
+                return;
             }
 
-            unsafe
-            {
-                *(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
-            }
+            int maxBytes = Encoding.UTF8.GetMaxByteCount(str.Length);
+            var ptr = Marshal.AllocHGlobal(maxBytes + 1);
 
+            var dest = new Span<byte>((void*)ptr, maxBytes + 1);
+            int written = Encoding.UTF8.GetBytes(str, dest);
+            dest[written] = 0;
+
+            ms_finalizers.Enqueue(ptr);
+
+            *(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
             cxt->numArguments++;
         }
 
         [SecurityCritical]
         internal unsafe void SetResultString(fxScriptContext* cxt, string str)
         {
-            var ptr = IntPtr.Zero;
-
-            if (str != null)
+            if (str == null)
             {
-                var b = Encoding.UTF8.GetBytes(str);
-
-                ptr = Marshal.AllocHGlobal(b.Length + 1);
-
-                Marshal.Copy(b, 0, ptr, b.Length);
-                Marshal.WriteByte(ptr, b.Length, 0);
-
-                ms_finalizers.Enqueue(() => Free(ptr));
+                *(IntPtr*)(&cxt->result[0]) = IntPtr.Zero;
+                return;
             }
 
-            unsafe
-            {
-                *(IntPtr*)(&cxt->result[8]) = ptr;
-            }
-        }
+            int maxBytes = Encoding.UTF8.GetMaxByteCount(str.Length);
+            var ptr = Marshal.AllocHGlobal(maxBytes + 1);
 
-        [SecuritySafeCritical]
-        private void Free(IntPtr ptr)
-        {
-            Marshal.FreeHGlobal(ptr);
+            var dest = new Span<byte>((void*)ptr, maxBytes + 1);
+            int written = Encoding.UTF8.GetBytes(str, dest);
+            dest[written] = 0;
+
+            ms_finalizers.Enqueue(ptr);
+            *(IntPtr*)(&cxt->result[8]) = ptr;
         }
 
         [SecuritySafeCritical]
@@ -448,22 +437,14 @@ namespace CounterStrikeSharp.API.Core
         {
             if (type == typeof(string))
             {
-                var nativeUtf8 = *(IntPtr*)&ptr[0];
+                var nativeUtf8 = *(byte**)ptr;
 
-                if (nativeUtf8 == IntPtr.Zero)
+                if (nativeUtf8 == null)
                 {
                     return null;
                 }
 
-                var len = 0;
-                while (Marshal.ReadByte(nativeUtf8, len) != 0)
-                {
-                    ++len;
-                }
-
-                var buffer = new byte[len];
-                Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
-                return Encoding.UTF8.GetString(buffer);
+                return Marshal.PtrToStringUTF8((IntPtr)nativeUtf8);
             }
 
             if (typeof(NativeObject).IsAssignableFrom(type))
@@ -487,14 +468,7 @@ namespace CounterStrikeSharp.API.Core
 
             if (type == typeof(object))
             {
-                // var dataPtr = *(IntPtr*)&ptr[0];
-                // var dataLength = *(long*)&ptr[8];
-                //
-                // byte[] data = new byte[dataLength];
-                // Marshal.Copy(dataPtr, data, 0, (int)dataLength);
-
                 return null;
-                //return MsgPackDeserializer.Deserialize(data);
             }
 
             if (type.IsEnum)
@@ -515,6 +489,22 @@ namespace CounterStrikeSharp.API.Core
         {
             var obj = Marshal.PtrToStructure(new IntPtr(ptr), type);
             return obj;
+        }
+
+        [SecurityCritical]
+        internal unsafe string GetResultString()
+        {
+            fixed (fxScriptContext* cxt = &m_extContext)
+            {
+                var nativeUtf8 = *(byte**)(&cxt->result[0]);
+
+                if (nativeUtf8 == null)
+                {
+                    return null;
+                }
+
+                return Marshal.PtrToStringUTF8((IntPtr)nativeUtf8);
+            }
         }
 
         /// <summary>
@@ -578,9 +568,9 @@ namespace CounterStrikeSharp.API.Core
         {
             lock (ms_lock)
             {
-                while (ms_finalizers.TryDequeue(out var cb))
+                while (ms_finalizers.TryDequeue(out var ptr))
                 {
-                    cb();
+                    Marshal.FreeHGlobal(ptr);
                 }
             }
         }

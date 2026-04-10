@@ -30,6 +30,7 @@ public class Mapping
             case "callback":
                 return "Push((InputArgument)";
             case "charPtr":
+            case "string":
                 return "PushString(";
         }
 

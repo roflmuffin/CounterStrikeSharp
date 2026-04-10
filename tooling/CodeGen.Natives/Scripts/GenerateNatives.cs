@@ -83,6 +83,11 @@ public partial class Generators
                     returnStr.Append(
                         $"\t\t\treturn ScriptContext.GlobalScriptContext.GetResultPrimitive<{Mapping.GetCSharpType(native.ReturnType)}>();\n");
                 }
+                else if (native.ReturnType == "string")
+                {
+                    returnStr.Append(
+                        $"\t\t\treturn ScriptContext.GlobalScriptContext.GetResultString();\n");
+                }
                 else
                 {
                     returnStr.Append(
