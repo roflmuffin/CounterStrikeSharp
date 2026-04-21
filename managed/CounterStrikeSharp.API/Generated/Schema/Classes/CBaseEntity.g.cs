@@ -98,6 +98,10 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_MoveType")]
 	public ref MoveType_t MoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType");
 
+	// m_nPreviouslySetMoveType
+	[SchemaMember("CBaseEntity", "m_nPreviouslySetMoveType")]
+	public ref MoveType_t PreviouslySetMoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_nPreviouslySetMoveType");
+
 	// m_nActualMoveType
 	[SchemaMember("CBaseEntity", "m_nActualMoveType")]
 	public ref MoveType_t ActualMoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_nActualMoveType");

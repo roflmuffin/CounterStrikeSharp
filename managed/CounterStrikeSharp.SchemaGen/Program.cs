@@ -46,7 +46,13 @@ internal static partial class Program
         "CUtlOrderedMap",
         "CAnimGraph2ParamOptionalRef",
         "CUtlHashtable",
-        "CSmartPtr"
+        "CSmartPtr",
+        "CUtlLeanVector",
+        "CUtlBinaryBlock",
+        "CEntityNameString",
+        "BASEPTR",
+        "ENTITYFUNCPTR",
+        "USEPTR"
     };
 
     public static string SanitiseTypeName(string typeName) =>
@@ -306,14 +312,47 @@ internal static partial class Program
             }
         }
 
-        // Do a search from NetworkClasses.Names
+        var bfsRoots = new HashSet<string>(NetworkClasses.Names)
+        {
+            "CTakeDamageInfo",
+            "CTakeDamageResult",
+            "CEntitySubclassVDataBase",
+            "CFiringModeFloat",
+            "CFiringModeInt",
+            "CSkillFloat",
+            "CSkillInt",
+            "CRangeFloat",
+            "CNavLinkAnimgraphVar",
+            "DecalGroupOption_t",
+            "DestructibleHitGroupToDestroy_t",
+            "PrecipitationFilter_t"
+        };
+
+        foreach (var className in allClasses.Keys)
+        {
+            if (className.Contains("VData"))
+                bfsRoots.Add(className);
+        }
+
         var visited = new HashSet<string>();
         var search = new BreadthFirstSearchAlgorithm<string, Edge<string>>(graph);
         search.FinishVertex += node => { visited.Add(node); };
 
-        foreach (var networkClassName in NetworkClasses.Names)
+        foreach (var root in bfsRoots)
         {
-            search.Compute(networkClassName);
+            if (!graph.ContainsVertex(root))
+            {
+                if (allClasses.ContainsKey(root))
+                {
+                    visited.Add(root);
+                    continue;
+                }
+
+                Console.WriteLine($"Warning: root class '{root}' not found in schema, skipping.");
+                continue;
+            }
+
+            search.Compute(root);
         }
 
         // Clear output directory
@@ -338,25 +377,12 @@ internal static partial class Program
                 newBuilder.ToString().ReplaceLineEndings("\r\n"));
         }
 
-        // Manually whitelist some classes
-        visited.Add("CTakeDamageInfo");
-        visited.Add("CTakeDamageResult");
-        visited.Add("CEntitySubclassVDataBase");
-        visited.Add("CFiringModeFloat");
-        visited.Add("CFiringModeInt");
-        visited.Add("CSkillFloat");
-        visited.Add("CSkillInt");
-        visited.Add("CRangeFloat");
-        visited.Add("CNavLinkAnimgraphVar");
-        visited.Add("DecalGroupOption_t");
-        visited.Add("DestructibleHitGroupToDestroy_t");
-
         var classBuilder = GetTemplate(true);
 
         var visitedClassNames = new HashSet<string>();
         foreach (var (className, schemaClass) in allClasses)
         {
-            if (visited.Contains(className) || className.Contains("VData"))
+            if (visited.Contains(className))
             {
                 var isPointeeType = pointeeTypes.Contains(className);
 
@@ -447,6 +473,17 @@ internal static partial class Program
             if (field.Type is { Category: SchemaTypeCategory.Atomic, Atomic: SchemaAtomicCategory.Collection })
             {
                 if (IgnoreClasses.Contains(field.Type.Inner!.Name)) continue;
+            }
+
+            // Skip pointer fields whose inner type has no C# representation
+            // (e.g. `void*`, pointer to builtin). Only string-pointers and
+            // pointers to declared classes are emitted below.
+            if (field.Type.Category == SchemaTypeCategory.Ptr
+                && field.Type.Inner is { } ptrInner
+                && ptrInner.Category != SchemaTypeCategory.DeclaredClass
+                && !(ptrInner.Category == SchemaTypeCategory.Builtin && ptrInner.Name == "char"))
+            {
+                continue;
             }
 
             var requiresNewKeyword = parentFields.Any(x =>

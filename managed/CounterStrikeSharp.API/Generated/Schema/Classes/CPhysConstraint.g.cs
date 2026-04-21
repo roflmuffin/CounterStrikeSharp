@@ -18,6 +18,10 @@ public partial class CPhysConstraint : CLogicalEntity
 {
     public CPhysConstraint (IntPtr pointer) : base(pointer) {}
 
+	// m_hJoint
+	[SchemaMember("CPhysConstraint", "m_hJoint")]
+	public IPhysicsJoint? Joint => Schema.GetPointer<IPhysicsJoint>(this.Handle, "CPhysConstraint", "m_hJoint");
+
 	// m_nameAttach1
 	[SchemaMember("CPhysConstraint", "m_nameAttach1")]
 	public string NameAttach1

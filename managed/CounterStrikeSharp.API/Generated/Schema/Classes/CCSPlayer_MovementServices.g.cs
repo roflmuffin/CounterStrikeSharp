@@ -18,6 +18,10 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 {
     public CCSPlayer_MovementServices (IntPtr pointer) : base(pointer) {}
 
+	// m_AnimationState
+	[SchemaMember("CCSPlayer_MovementServices", "m_AnimationState")]
+	public CCSPlayerAnimationState AnimationState => Schema.GetDeclaredClass<CCSPlayerAnimationState>(this.Handle, "CCSPlayer_MovementServices", "m_AnimationState");
+
 	// m_vecLadderNormal
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLadderNormal")]
 	public Vector LadderNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal");
@@ -50,25 +54,21 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_bDucking")]
 	public ref bool Ducking => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDucking");
 
-	// m_flDuckOffset
-	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckOffset")]
-	public ref float DuckOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckOffset");
+	// m_flDuckRootOffset
+	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckRootOffset")]
+	public ref float DuckRootOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckRootOffset");
 
-	// m_nDuckTimeMsecs
-	[SchemaMember("CCSPlayer_MovementServices", "m_nDuckTimeMsecs")]
-	public ref UInt32 DuckTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs");
-
-	// m_nDuckJumpTimeMsecs
-	[SchemaMember("CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs")]
-	public ref UInt32 DuckJumpTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs");
-
-	// m_nJumpTimeMsecs
-	[SchemaMember("CCSPlayer_MovementServices", "m_nJumpTimeMsecs")]
-	public ref UInt32 JumpTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs");
+	// m_flDuckViewOffset
+	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckViewOffset")]
+	public ref float DuckViewOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckViewOffset");
 
 	// m_flLastDuckTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flLastDuckTime")]
 	public ref float LastDuckTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastDuckTime");
+
+	// m_flBombPlantViewOffset
+	[SchemaMember("CCSPlayer_MovementServices", "m_flBombPlantViewOffset")]
+	public ref float BombPlantViewOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flBombPlantViewOffset");
 
 	// m_vecLastPositionAtFullCrouchSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed")]
@@ -138,13 +138,17 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_nButtonDownMaskPrev")]
 	public ref UInt64 ButtonDownMaskPrev => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev");
 
-	// m_flOffsetTickCompleteTime
-	[SchemaMember("CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime")]
-	public ref float OffsetTickCompleteTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime");
+	// m_bUseFrictionStashedSpeed
+	[SchemaMember("CCSPlayer_MovementServices", "m_bUseFrictionStashedSpeed")]
+	public ref bool UseFrictionStashedSpeed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bUseFrictionStashedSpeed");
 
-	// m_flOffsetTickStashedSpeed
-	[SchemaMember("CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed")]
-	public ref float OffsetTickStashedSpeed => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed");
+	// m_flUseFrictionStashedSpeedUntilFrac
+	[SchemaMember("CCSPlayer_MovementServices", "m_flUseFrictionStashedSpeedUntilFrac")]
+	public ref float UseFrictionStashedSpeedUntilFrac => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flUseFrictionStashedSpeedUntilFrac");
+
+	// m_flFrictionStashedSpeed
+	[SchemaMember("CCSPlayer_MovementServices", "m_flFrictionStashedSpeed")]
+	public ref float FrictionStashedSpeed => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flFrictionStashedSpeed");
 
 	// m_flStamina
 	[SchemaMember("CCSPlayer_MovementServices", "m_flStamina")]
@@ -206,8 +210,20 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_bWasSurfing")]
 	public ref bool WasSurfing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing");
 
-	// m_vecInputRotated
-	[SchemaMember("CCSPlayer_MovementServices", "m_vecInputRotated")]
-	public Vector InputRotated => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated");
+	// m_vecWalkWishVel
+	[SchemaMember("CCSPlayer_MovementServices", "m_vecWalkWishVel")]
+	public Vector2D WalkWishVel => Schema.GetDeclaredClass<Vector2D>(this.Handle, "CCSPlayer_MovementServices", "m_vecWalkWishVel");
+
+	// m_gtLastTimeOnStaticWorldGround
+	[SchemaMember("CCSPlayer_MovementServices", "m_gtLastTimeOnStaticWorldGround")]
+	public ref float GtLastTimeOnStaticWorldGround => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_gtLastTimeOnStaticWorldGround");
+
+	// m_gtLastTimeInAir
+	[SchemaMember("CCSPlayer_MovementServices", "m_gtLastTimeInAir")]
+	public ref float GtLastTimeInAir => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_gtLastTimeInAir");
+
+	// m_bHasEverProcessedCommand
+	[SchemaMember("CCSPlayer_MovementServices", "m_bHasEverProcessedCommand")]
+	public ref bool HasEverProcessedCommand => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bHasEverProcessedCommand");
 
 }

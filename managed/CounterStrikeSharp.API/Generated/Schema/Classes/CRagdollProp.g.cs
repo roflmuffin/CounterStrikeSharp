@@ -50,6 +50,22 @@ public partial class CRagdollProp : CBaseAnimGraph
 	[SchemaMember("CRagdollProp", "m_bFirstCollisionAfterLaunch")]
 	public ref bool FirstCollisionAfterLaunch => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bFirstCollisionAfterLaunch");
 
+	// m_nNavObstacleType
+	[SchemaMember("CRagdollProp", "m_nNavObstacleType")]
+	public ref INavObstacleNavObstacleType_t NavObstacleType => ref Schema.GetRef<INavObstacleNavObstacleType_t>(this.Handle, "CRagdollProp", "m_nNavObstacleType");
+
+	// m_bUpdateNavWhenMoving
+	[SchemaMember("CRagdollProp", "m_bUpdateNavWhenMoving")]
+	public ref bool UpdateNavWhenMoving => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bUpdateNavWhenMoving");
+
+	// m_bForceNavObstacleCut
+	[SchemaMember("CRagdollProp", "m_bForceNavObstacleCut")]
+	public ref bool ForceNavObstacleCut => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bForceNavObstacleCut");
+
+	// m_bAttachedToReferenceFrame
+	[SchemaMember("CRagdollProp", "m_bAttachedToReferenceFrame")]
+	public ref bool AttachedToReferenceFrame => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bAttachedToReferenceFrame");
+
 	// m_hDamageEntity
 	[SchemaMember("CRagdollProp", "m_hDamageEntity")]
 	public CHandle<CBaseEntity> DamageEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hDamageEntity");
@@ -129,5 +145,9 @@ public partial class CRagdollProp : CBaseAnimGraph
 	// m_bShouldDeleteActivationRecord
 	[SchemaMember("CRagdollProp", "m_bShouldDeleteActivationRecord")]
 	public ref bool ShouldDeleteActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord");
+
+	// m_vecNavObstacles
+	[SchemaMember("CRagdollProp", "m_vecNavObstacles")]
+	public NetworkedVector<INavObstacle?> NavObstacles => Schema.GetDeclaredClass<NetworkedVector<INavObstacle?>>(this.Handle, "CRagdollProp", "m_vecNavObstacles");
 
 }

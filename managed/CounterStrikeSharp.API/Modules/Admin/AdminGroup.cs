@@ -95,7 +95,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // This is here for cases where the server console is attempting to call commands.
             // The server console should have access to all commands, regardless of groups.
             if (player == null) return true;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return false; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) { return false; }
 
             var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             if (playerData == null) return false;
@@ -144,7 +144,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 		public static void AddPlayerToGroup(CCSPlayerController? player, params string[] groups)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) { return; }
             AddPlayerToGroup(player.AuthorizedSteamID, groups);
         }
 
@@ -187,7 +187,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void RemovePlayerFromGroup(CCSPlayerController? player, bool removeInheritedFlags = true, params string[] groups)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) { return; }
             RemovePlayerFromGroup(player.AuthorizedSteamID, true, groups);
         }
 

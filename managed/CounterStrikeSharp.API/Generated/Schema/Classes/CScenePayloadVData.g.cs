@@ -18,4 +18,12 @@ public partial class CScenePayloadVData : NativeObject
 {
     public CScenePayloadVData (IntPtr pointer) : base(pointer) {}
 
+	// m_eNPCBehavior
+	[SchemaMember("CScenePayloadVData", "m_eNPCBehavior")]
+	public ref ENPCBehaviorOverride_t NPCBehavior => ref Schema.GetRef<ENPCBehaviorOverride_t>(this.Handle, "CScenePayloadVData", "m_eNPCBehavior");
+
+	// m_ePriority
+	[SchemaMember("CScenePayloadVData", "m_ePriority")]
+	public ref InteractionPriority_t Priority => ref Schema.GetRef<InteractionPriority_t>(this.Handle, "CScenePayloadVData", "m_ePriority");
+
 }

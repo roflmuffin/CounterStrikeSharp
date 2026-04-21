@@ -13,6 +13,5 @@ public enum AnimationAlgorithm_t : byte
 	eSequence = 0x1,
 	eAnimGraph2 = 0x2,
 	eAnimGraph2Secondary = 0x3,
-	eAnimGraph1 = 0x4,
-	eCount = 0x5,
+	eCount = 0x4,
 }

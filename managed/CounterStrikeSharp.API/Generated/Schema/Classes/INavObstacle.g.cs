@@ -14,8 +14,12 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class IAnimationGraphInstance : NativeObject
+public partial class INavObstacle : NativeObject
 {
-    public IAnimationGraphInstance (IntPtr pointer) : base(pointer) {}
+    public INavObstacle (IntPtr pointer) : base(pointer) {}
+
+	// m_nId
+	[SchemaMember("INavObstacle", "m_nId")]
+	public ref UInt64 Id => ref Schema.GetRef<UInt64>(this.Handle, "INavObstacle", "m_nId");
 
 }

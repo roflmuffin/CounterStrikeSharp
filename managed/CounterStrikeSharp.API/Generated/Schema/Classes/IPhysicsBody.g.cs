@@ -14,8 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseFlexAlias_funCBaseFlex : CBaseFlex
+public partial class IPhysicsBody : NativeObject
 {
-    public CBaseFlexAlias_funCBaseFlex (IntPtr pointer) : base(pointer) {}
+    public IPhysicsBody (IntPtr pointer) : base(pointer) {}
 
 }

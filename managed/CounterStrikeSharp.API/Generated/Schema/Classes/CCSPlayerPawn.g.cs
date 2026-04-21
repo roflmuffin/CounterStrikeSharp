@@ -214,10 +214,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_qDeathEyeAngles")]
 	public QAngle DeathEyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_qDeathEyeAngles");
 
-	// m_bSkipOneHeadConstraintUpdate
-	[SchemaMember("CCSPlayerPawn", "m_bSkipOneHeadConstraintUpdate")]
-	public ref bool SkipOneHeadConstraintUpdate => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bSkipOneHeadConstraintUpdate");
-
 	// m_bLeftHanded
 	[SchemaMember("CCSPlayerPawn", "m_bLeftHanded")]
 	public ref bool LeftHanded => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bLeftHanded");
@@ -342,14 +338,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_flVelocityModifier")]
 	public ref float VelocityModifier => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flVelocityModifier");
 
-	// m_flHitHeading
-	[SchemaMember("CCSPlayerPawn", "m_flHitHeading")]
-	public ref float HitHeading => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flHitHeading");
-
-	// m_nHitBodyPart
-	[SchemaMember("CCSPlayerPawn", "m_nHitBodyPart")]
-	public ref Int32 HitBodyPart => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_nHitBodyPart");
-
 	// m_vecTotalBulletForce
 	[SchemaMember("CCSPlayerPawn", "m_vecTotalBulletForce")]
 	public Vector TotalBulletForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vecTotalBulletForce");
@@ -377,22 +365,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	// m_bBotAllowActive
 	[SchemaMember("CCSPlayerPawn", "m_bBotAllowActive")]
 	public ref bool BotAllowActive => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bBotAllowActive");
-
-	// m_thirdPersonHeading
-	[SchemaMember("CCSPlayerPawn", "m_thirdPersonHeading")]
-	public QAngle ThirdPersonHeading => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_thirdPersonHeading");
-
-	// m_flSlopeDropOffset
-	[SchemaMember("CCSPlayerPawn", "m_flSlopeDropOffset")]
-	public ref float SlopeDropOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flSlopeDropOffset");
-
-	// m_flSlopeDropHeight
-	[SchemaMember("CCSPlayerPawn", "m_flSlopeDropHeight")]
-	public ref float SlopeDropHeight => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flSlopeDropHeight");
-
-	// m_vHeadConstraintOffset
-	[SchemaMember("CCSPlayerPawn", "m_vHeadConstraintOffset")]
-	public Vector HeadConstraintOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vHeadConstraintOffset");
 
 	// m_nLastPickupPriority
 	[SchemaMember("CCSPlayerPawn", "m_nLastPickupPriority")]
@@ -485,14 +457,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	// m_vecVelocityHistory
 	[SchemaMember("CCSPlayerPawn", "m_vecVelocityHistory")]
 	public Span<Vector> VelocityHistory => Schema.GetFixedArray<Vector>(this.Handle, "CCSPlayerPawn", "m_vecVelocityHistory", 2);
-
-	// m_PredictedDamageTags
-	[SchemaMember("CCSPlayerPawn", "m_PredictedDamageTags")]
-	public NetworkedVector<PredictedDamageTag_t> PredictedDamageTags => Schema.GetDeclaredClass<NetworkedVector<PredictedDamageTag_t>>(this.Handle, "CCSPlayerPawn", "m_PredictedDamageTags");
-
-	// m_nHighestAppliedDamageTagTick
-	[SchemaMember("CCSPlayerPawn", "m_nHighestAppliedDamageTagTick")]
-	public ref Int32 HighestAppliedDamageTagTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_nHighestAppliedDamageTagTick");
 
 	// m_bCommittingSuicideOnTeamChange
 	[SchemaMember("CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange")]

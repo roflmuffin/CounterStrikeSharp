@@ -20,15 +20,15 @@ public partial class CPathTrack : CPointEntity
 
 	// m_pnext
 	[SchemaMember("CPathTrack", "m_pnext")]
-	public CPathTrack? Pnext => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pnext");
+	public CHandle<CPathTrack> Pnext => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CPathTrack", "m_pnext");
 
 	// m_pprevious
 	[SchemaMember("CPathTrack", "m_pprevious")]
-	public CPathTrack? Pprevious => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pprevious");
+	public CHandle<CPathTrack> Pprevious => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CPathTrack", "m_pprevious");
 
 	// m_paltpath
 	[SchemaMember("CPathTrack", "m_paltpath")]
-	public CPathTrack? Paltpath => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_paltpath");
+	public CHandle<CPathTrack> Paltpath => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CPathTrack", "m_paltpath");
 
 	// m_flRadius
 	[SchemaMember("CPathTrack", "m_flRadius")]

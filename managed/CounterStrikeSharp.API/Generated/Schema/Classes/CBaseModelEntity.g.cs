@@ -26,6 +26,10 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_CHitboxComponent")]
 	public CHitboxComponent CHitboxComponent => Schema.GetDeclaredClass<CHitboxComponent>(this.Handle, "CBaseModelEntity", "m_CHitboxComponent");
 
+	// m_pChoreoComponent
+	[SchemaMember("CBaseModelEntity", "m_pChoreoComponent")]
+	public CChoreoComponent? ChoreoComponent => Schema.GetPointer<CChoreoComponent>(this.Handle, "CBaseModelEntity", "m_pChoreoComponent");
+
 	// m_nDestructiblePartInitialStateDestructed0
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0")]
 	public ref HitGroup_t DestructiblePartInitialStateDestructed0 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0");
@@ -65,6 +69,26 @@ public partial class CBaseModelEntity : CBaseEntity
 	// m_nDestructiblePartInitialStateDestructed4_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex")]
 	public ref Int32 DestructiblePartInitialStateDestructed4_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex");
+
+	// m_bDestructiblePartInitialStateDestructed0_GenerateBreakpieces
+	[SchemaMember("CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed0_GenerateBreakpieces")]
+	public ref bool DestructiblePartInitialStateDestructed0_GenerateBreakpieces => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed0_GenerateBreakpieces");
+
+	// m_bDestructiblePartInitialStateDestructed1_GenerateBreakpieces
+	[SchemaMember("CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed1_GenerateBreakpieces")]
+	public ref bool DestructiblePartInitialStateDestructed1_GenerateBreakpieces => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed1_GenerateBreakpieces");
+
+	// m_bDestructiblePartInitialStateDestructed2_GenerateBreakpieces
+	[SchemaMember("CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed2_GenerateBreakpieces")]
+	public ref bool DestructiblePartInitialStateDestructed2_GenerateBreakpieces => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed2_GenerateBreakpieces");
+
+	// m_bDestructiblePartInitialStateDestructed3_GenerateBreakpieces
+	[SchemaMember("CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed3_GenerateBreakpieces")]
+	public ref bool DestructiblePartInitialStateDestructed3_GenerateBreakpieces => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed3_GenerateBreakpieces");
+
+	// m_bDestructiblePartInitialStateDestructed4_GenerateBreakpieces
+	[SchemaMember("CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed4_GenerateBreakpieces")]
+	public ref bool DestructiblePartInitialStateDestructed4_GenerateBreakpieces => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bDestructiblePartInitialStateDestructed4_GenerateBreakpieces");
 
 	// m_pDestructiblePartsSystemComponent
 	[SchemaMember("CBaseModelEntity", "m_pDestructiblePartsSystemComponent")]

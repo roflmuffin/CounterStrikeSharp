@@ -60,6 +60,6 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_pOuter
 	[SchemaMember("CAI_Expresser", "m_pOuter")]
-	public CBaseFlex? Outer => Schema.GetPointer<CBaseFlex>(this.Handle, "CAI_Expresser", "m_pOuter");
+	public CBaseModelEntity? Outer => Schema.GetPointer<CBaseModelEntity>(this.Handle, "CAI_Expresser", "m_pOuter");
 
 }

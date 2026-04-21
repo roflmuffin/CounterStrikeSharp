@@ -30,9 +30,33 @@ public partial class CModelState : NativeObject
 		set { Schema.SetString(this.Handle, "CModelState", "m_ModelName", value); }
 	}
 
+	// m_pVPhysicsAggregate
+	[SchemaMember("CModelState", "m_pVPhysicsAggregate")]
+	public IPhysAggregateInstance? VPhysicsAggregate => Schema.GetPointer<IPhysAggregateInstance>(this.Handle, "CModelState", "m_pVPhysicsAggregate");
+
+	// m_flRootBoneOffset_x
+	[SchemaMember("CModelState", "m_flRootBoneOffset_x")]
+	public ref float RootBoneOffset_x => ref Schema.GetRef<float>(this.Handle, "CModelState", "m_flRootBoneOffset_x");
+
+	// m_flRootBoneOffset_y
+	[SchemaMember("CModelState", "m_flRootBoneOffset_y")]
+	public ref float RootBoneOffset_y => ref Schema.GetRef<float>(this.Handle, "CModelState", "m_flRootBoneOffset_y");
+
+	// m_flRootBoneOffset_z
+	[SchemaMember("CModelState", "m_flRootBoneOffset_z")]
+	public ref float RootBoneOffset_z => ref Schema.GetRef<float>(this.Handle, "CModelState", "m_flRootBoneOffset_z");
+
+	// m_nRootBoneOffsetResetSerialNumber
+	[SchemaMember("CModelState", "m_nRootBoneOffsetResetSerialNumber")]
+	public ref byte RootBoneOffsetResetSerialNumber => ref Schema.GetRef<byte>(this.Handle, "CModelState", "m_nRootBoneOffsetResetSerialNumber");
+
 	// m_bClientClothCreationSuppressed
 	[SchemaMember("CModelState", "m_bClientClothCreationSuppressed")]
 	public ref bool ClientClothCreationSuppressed => ref Schema.GetRef<bool>(this.Handle, "CModelState", "m_bClientClothCreationSuppressed");
+
+	// m_nAnimStateNoInterpSerialNumber
+	[SchemaMember("CModelState", "m_nAnimStateNoInterpSerialNumber")]
+	public ref byte AnimStateNoInterpSerialNumber => ref Schema.GetRef<byte>(this.Handle, "CModelState", "m_nAnimStateNoInterpSerialNumber");
 
 	// m_MeshGroupMask
 	[SchemaMember("CModelState", "m_MeshGroupMask")]

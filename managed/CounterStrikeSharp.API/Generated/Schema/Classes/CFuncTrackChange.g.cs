@@ -20,15 +20,15 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_trackTop
 	[SchemaMember("CFuncTrackChange", "m_trackTop")]
-	public CPathTrack? TrackTop => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackTop");
+	public CHandle<CPathTrack> TrackTop => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CFuncTrackChange", "m_trackTop");
 
 	// m_trackBottom
 	[SchemaMember("CFuncTrackChange", "m_trackBottom")]
-	public CPathTrack? TrackBottom => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackBottom");
+	public CHandle<CPathTrack> TrackBottom => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CFuncTrackChange", "m_trackBottom");
 
 	// m_train
 	[SchemaMember("CFuncTrackChange", "m_train")]
-	public CFuncTrackTrain? Train => Schema.GetPointer<CFuncTrackTrain>(this.Handle, "CFuncTrackChange", "m_train");
+	public CHandle<CFuncTrackTrain> Train => Schema.GetDeclaredClass<CHandle<CFuncTrackTrain>>(this.Handle, "CFuncTrackChange", "m_train");
 
 	// m_trackTopName
 	[SchemaMember("CFuncTrackChange", "m_trackTopName")]

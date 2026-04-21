@@ -98,10 +98,6 @@ public partial class CGameSceneNode : NativeObject
 	[SchemaMember("CGameSceneNode", "m_hierarchyAttachName")]
 	public CUtlStringToken HierarchyAttachName => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CGameSceneNode", "m_hierarchyAttachName");
 
-	// m_flZOffset
-	[SchemaMember("CGameSceneNode", "m_flZOffset")]
-	public ref float ZOffset => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flZOffset");
-
 	// m_flClientLocalScale
 	[SchemaMember("CGameSceneNode", "m_flClientLocalScale")]
 	public ref float ClientLocalScale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flClientLocalScale");

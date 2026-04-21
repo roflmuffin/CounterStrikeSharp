@@ -18,9 +18,9 @@ public partial class CEntityIdentity : NativeObject
 {
     public CEntityIdentity (IntPtr pointer) : base(pointer) {}
 
-	// m_nameStringableIndex
-	[SchemaMember("CEntityIdentity", "m_nameStringableIndex")]
-	public ref Int32 NameStringableIndex => ref Schema.GetRef<Int32>(this.Handle, "CEntityIdentity", "m_nameStringableIndex");
+	// m_nameStringTableIndex
+	[SchemaMember("CEntityIdentity", "m_nameStringTableIndex")]
+	public ref Int32 NameStringTableIndex => ref Schema.GetRef<Int32>(this.Handle, "CEntityIdentity", "m_nameStringTableIndex");
 
 	// m_name
 	[SchemaMember("CEntityIdentity", "m_name")]

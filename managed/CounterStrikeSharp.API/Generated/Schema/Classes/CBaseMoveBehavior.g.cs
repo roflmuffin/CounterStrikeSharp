@@ -40,19 +40,19 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_pCurrentKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pCurrentKeyFrame")]
-	public CPathKeyFrame? CurrentKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pCurrentKeyFrame");
+	public CHandle<CPathKeyFrame> CurrentKeyFrame => Schema.GetDeclaredClass<CHandle<CPathKeyFrame>>(this.Handle, "CBaseMoveBehavior", "m_pCurrentKeyFrame");
 
 	// m_pTargetKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pTargetKeyFrame")]
-	public CPathKeyFrame? TargetKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pTargetKeyFrame");
+	public CHandle<CPathKeyFrame> TargetKeyFrame => Schema.GetDeclaredClass<CHandle<CPathKeyFrame>>(this.Handle, "CBaseMoveBehavior", "m_pTargetKeyFrame");
 
 	// m_pPreKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pPreKeyFrame")]
-	public CPathKeyFrame? PreKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPreKeyFrame");
+	public CHandle<CPathKeyFrame> PreKeyFrame => Schema.GetDeclaredClass<CHandle<CPathKeyFrame>>(this.Handle, "CBaseMoveBehavior", "m_pPreKeyFrame");
 
 	// m_pPostKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pPostKeyFrame")]
-	public CPathKeyFrame? PostKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPostKeyFrame");
+	public CHandle<CPathKeyFrame> PostKeyFrame => Schema.GetDeclaredClass<CHandle<CPathKeyFrame>>(this.Handle, "CBaseMoveBehavior", "m_pPostKeyFrame");
 
 	// m_flTimeIntoFrame
 	[SchemaMember("CBaseMoveBehavior", "m_flTimeIntoFrame")]

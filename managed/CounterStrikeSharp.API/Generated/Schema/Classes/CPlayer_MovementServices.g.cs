@@ -50,6 +50,18 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 	[SchemaMember("CPlayer_MovementServices", "m_nToggleButtonDownMask")]
 	public ref UInt64 ToggleButtonDownMask => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nToggleButtonDownMask");
 
+	// m_flCmdForwardMove
+	[SchemaMember("CPlayer_MovementServices", "m_flCmdForwardMove")]
+	public ref float CmdForwardMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flCmdForwardMove");
+
+	// m_flCmdLeftMove
+	[SchemaMember("CPlayer_MovementServices", "m_flCmdLeftMove")]
+	public ref float CmdLeftMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flCmdLeftMove");
+
+	// m_flCmdUpMove
+	[SchemaMember("CPlayer_MovementServices", "m_flCmdUpMove")]
+	public ref float CmdUpMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flCmdUpMove");
+
 	// m_flMaxspeed
 	[SchemaMember("CPlayer_MovementServices", "m_flMaxspeed")]
 	public ref float Maxspeed => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed");

@@ -114,6 +114,14 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	[SchemaMember("CCSWeaponBaseVData", "m_flCycleTime")]
 	public CFiringModeFloat CycleTime => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flCycleTime");
 
+	// m_flCycleTimeWhenInBurstMode
+	[SchemaMember("CCSWeaponBaseVData", "m_flCycleTimeWhenInBurstMode")]
+	public ref float CycleTimeWhenInBurstMode => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flCycleTimeWhenInBurstMode");
+
+	// m_flTimeBetweenBurstShots
+	[SchemaMember("CCSWeaponBaseVData", "m_flTimeBetweenBurstShots")]
+	public ref float TimeBetweenBurstShots => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flTimeBetweenBurstShots");
+
 	// m_flMaxSpeed
 	[SchemaMember("CCSWeaponBaseVData", "m_flMaxSpeed")]
 	public CFiringModeFloat MaxSpeed => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flMaxSpeed");
