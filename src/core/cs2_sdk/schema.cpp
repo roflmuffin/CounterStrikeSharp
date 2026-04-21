@@ -26,6 +26,9 @@
 
 #include "tier1/utlmap.h"
 #include <schemasystem.h>
+#include <entity2/entitysystem.h>
+#include <entity2/entityclass.h>
+#include <networksystem/inetworkserializer.h>
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -33,15 +36,31 @@
 using SchemaKeyValueMap_t = CUtlMap<uint32_t, SchemaKey>;
 using SchemaTableMap_t = CUtlMap<uint32_t, SchemaKeyValueMap_t*>;
 
-bool IsFieldNetworked(SchemaClassFieldData_t& field)
+static CNetworkSerializerCodeGenDatabase* GetNetworkSerializerDatabase()
 {
-    for (int i = 0; i < field.m_nStaticMetadataCount; i++)
-    {
-        static auto networkEnabled = hash_32_fnv1a_const("MNetworkEnable");
-        if (networkEnabled == hash_32_fnv1a_const(field.m_pStaticMetadata[i].m_pszName)) return true;
-    }
+    if (!GameEntitySystem()) return nullptr;
 
-    return false;
+    CEntityClass* pEntityClass = GameEntitySystem()->FindClassByName("CBaseEntity");
+    if (!pEntityClass || !pEntityClass->m_NetworkSerializerInfo) return nullptr;
+
+    return pEntityClass->m_NetworkSerializerInfo->m_pDatabase;
+}
+
+static CNetworkSerializerClassInfo* FindNetworkSerializerClassInfo(const char* className)
+{
+    CNetworkSerializerCodeGenDatabase* pDatabase = GetNetworkSerializerDatabase();
+    if (!pDatabase) return nullptr;
+
+    auto index = pDatabase->m_ClassInfos.Find(className);
+    if (index == pDatabase->m_ClassInfos.InvalidIndex()) return nullptr;
+
+    return pDatabase->m_ClassInfos[index];
+}
+
+static bool IsFieldNetworked(CNetworkSerializerClassInfo* pNetworkClassInfo, SchemaClassFieldData_t& field)
+{
+    if (!pNetworkClassInfo) return false;
+    return pNetworkClassInfo->FindField(field.m_pszName) != nullptr;
 }
 
 static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap, const char* className, uint32_t classKey)
@@ -64,6 +83,8 @@ static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap, const char* cla
     short fieldsSize = pClassInfo->m_nFieldCount;
     SchemaClassFieldData_t* pFields = pClassInfo->m_pFields;
 
+    CNetworkSerializerClassInfo* pNetworkClassInfo = FindNetworkSerializerClassInfo(className);
+
     SchemaKeyValueMap_t* keyValueMap = new SchemaKeyValueMap_t(0, 0, DefLessFunc(uint32_t));
     keyValueMap->EnsureCapacity(fieldsSize);
     tableMap->Insert(classKey, keyValueMap);
@@ -72,7 +93,8 @@ static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap, const char* cla
     {
         SchemaClassFieldData_t& field = pFields[i];
 
-        keyValueMap->Insert(hash_32_fnv1a_const(field.m_pszName), { field.m_nSingleInheritanceOffset, IsFieldNetworked(field) });
+        keyValueMap->Insert(hash_32_fnv1a_const(field.m_pszName),
+                            { field.m_nSingleInheritanceOffset, IsFieldNetworked(pNetworkClassInfo, field) });
     }
 
     return true;
