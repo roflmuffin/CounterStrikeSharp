@@ -102,9 +102,13 @@ public partial class CBreakableProp : CBaseProp
 	[SchemaMember("CBreakableProp", "m_explodeRadius")]
 	public ref float ExplodeRadius => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_explodeRadius");
 
-	// m_nExplosionType
-	[SchemaMember("CBreakableProp", "m_nExplosionType")]
-	public ref BaseExplosionTypes_t ExplosionType => ref Schema.GetRef<BaseExplosionTypes_t>(this.Handle, "CBreakableProp", "m_nExplosionType");
+	// m_sExplosionType
+	[SchemaMember("CBreakableProp", "m_sExplosionType")]
+	public string ExplosionType
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_sExplosionType"); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_sExplosionType", value); }
+	}
 
 	// m_explosionDelay
 	[SchemaMember("CBreakableProp", "m_explosionDelay")]

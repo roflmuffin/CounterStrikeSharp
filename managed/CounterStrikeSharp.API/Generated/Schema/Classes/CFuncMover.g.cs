@@ -50,6 +50,10 @@ public partial class CFuncMover : CBaseModelEntity
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszPathNodeEnd", value); }
 	}
 
+	// m_bIgnoreEndNode
+	[SchemaMember("CFuncMover", "m_bIgnoreEndNode")]
+	public ref bool IgnoreEndNode => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIgnoreEndNode");
+
 	// m_eMoveType
 	[SchemaMember("CFuncMover", "m_eMoveType")]
 	public new ref CFuncMoverMove_t MoveType => ref Schema.GetRef<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType");
@@ -230,10 +234,6 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_flDurationBlendToNewOrientationRan")]
 	public ref float DurationBlendToNewOrientationRan => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flDurationBlendToNewOrientationRan");
 
-	// m_nOriginalOrientationIndex
-	[SchemaMember("CFuncMover", "m_nOriginalOrientationIndex")]
-	public ref Int32 OriginalOrientationIndex => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nOriginalOrientationIndex");
-
 	// m_bCreateMovableNavMesh
 	[SchemaMember("CFuncMover", "m_bCreateMovableNavMesh")]
 	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh");
@@ -286,13 +286,17 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_eTransitionedToPathNodeAction")]
 	public ref CFuncMoverTransitionToPathNodeAction_t TransitionedToPathNodeAction => ref Schema.GetRef<CFuncMoverTransitionToPathNodeAction_t>(this.Handle, "CFuncMover", "m_eTransitionedToPathNodeAction");
 
+	// m_qTransitionSourceOrientation
+	[SchemaMember("CFuncMover", "m_qTransitionSourceOrientation")]
+	public Quaternion TransitionSourceOrientation => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncMover", "m_qTransitionSourceOrientation");
+
 	// m_nDelayedTeleportToNode
 	[SchemaMember("CFuncMover", "m_nDelayedTeleportToNode")]
 	public ref Int32 DelayedTeleportToNode => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nDelayedTeleportToNode");
 
-	// m_bIsVerboseLogging
-	[SchemaMember("CFuncMover", "m_bIsVerboseLogging")]
-	public ref bool IsVerboseLogging => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsVerboseLogging");
+	// m_bIsImGuiLogging
+	[SchemaMember("CFuncMover", "m_bIsImGuiLogging")]
+	public ref bool IsImGuiLogging => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsImGuiLogging");
 
 	// m_hFollowEntity
 	[SchemaMember("CFuncMover", "m_hFollowEntity")]
@@ -374,6 +378,10 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_flFollowMoverDistance")]
 	public ref float FollowMoverDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverDistance");
 
+	// m_flFollowMoverRatio
+	[SchemaMember("CFuncMover", "m_flFollowMoverRatio")]
+	public ref float FollowMoverRatio => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverRatio");
+
 	// m_flFollowMoverCalculatedDistance
 	[SchemaMember("CFuncMover", "m_flFollowMoverCalculatedDistance")]
 	public ref float FollowMoverCalculatedDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverCalculatedDistance");
@@ -381,6 +389,10 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_flFollowMoverSpringStrength
 	[SchemaMember("CFuncMover", "m_flFollowMoverSpringStrength")]
 	public ref float FollowMoverSpringStrength => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMoverSpringStrength");
+
+	// m_nFollowMoverConstraintPriority
+	[SchemaMember("CFuncMover", "m_nFollowMoverConstraintPriority")]
+	public ref Int32 FollowMoverConstraintPriority => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nFollowMoverConstraintPriority");
 
 	// m_bFollowConstraintsInitialized
 	[SchemaMember("CFuncMover", "m_bFollowConstraintsInitialized")]
@@ -401,5 +413,21 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_nTickMovementRan
 	[SchemaMember("CFuncMover", "m_nTickMovementRan")]
 	public ref Int32 TickMovementRan => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nTickMovementRan");
+
+	// m_movementSummary
+	[SchemaMember("CFuncMover", "m_movementSummary")]
+	public FuncMoverMovementSummary_t MovementSummary => Schema.GetDeclaredClass<FuncMoverMovementSummary_t>(this.Handle, "CFuncMover", "m_movementSummary");
+
+	// m_bStopFromBeginStopTarget
+	[SchemaMember("CFuncMover", "m_bStopFromBeginStopTarget")]
+	public ref bool StopFromBeginStopTarget => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStopFromBeginStopTarget");
+
+	// m_bQueueStop
+	[SchemaMember("CFuncMover", "m_bQueueStop")]
+	public ref bool QueueStop => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bQueueStop");
+
+	// m_bQueueStopMoving
+	[SchemaMember("CFuncMover", "m_bQueueStopMoving")]
+	public ref bool QueueStopMoving => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bQueueStopMoving");
 
 }

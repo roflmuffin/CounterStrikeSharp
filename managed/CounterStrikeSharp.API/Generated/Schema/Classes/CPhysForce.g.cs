@@ -18,6 +18,10 @@ public partial class CPhysForce : CPointEntity
 {
     public CPhysForce (IntPtr pointer) : base(pointer) {}
 
+	// m_pController
+	[SchemaMember("CPhysForce", "m_pController")]
+	public IPhysicsMotionController? Controller => Schema.GetPointer<IPhysicsMotionController>(this.Handle, "CPhysForce", "m_pController");
+
 	// m_nameAttach
 	[SchemaMember("CPhysForce", "m_nameAttach")]
 	public string NameAttach

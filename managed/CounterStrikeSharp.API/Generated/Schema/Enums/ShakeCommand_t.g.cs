@@ -14,4 +14,5 @@ public enum ShakeCommand_t : uint
 	SHAKE_FREQUENCY = 0x3,
 	SHAKE_START_RUMBLEONLY = 0x4,
 	SHAKE_START_NORUMBLE = 0x5,
+	SHAKE_DURATION = 0x6,
 }

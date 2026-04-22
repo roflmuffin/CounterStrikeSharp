@@ -8,11 +8,11 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum PlayerConnectedState : uint
 {
-	PlayerNeverConnected = 0xFFFFFFFF,
-	PlayerConnected = 0x0,
-	PlayerConnecting = 0x1,
-	PlayerReconnecting = 0x2,
-	PlayerDisconnecting = 0x3,
-	PlayerDisconnected = 0x4,
-	PlayerReserved = 0x5,
+	NeverConnected = 0xFFFFFFFF,
+	Connected = 0x0,
+	Connecting = 0x1,
+	Reconnecting = 0x2,
+	Disconnecting = 0x3,
+	Disconnected = 0x4,
+	Reserved = 0x5,
 }

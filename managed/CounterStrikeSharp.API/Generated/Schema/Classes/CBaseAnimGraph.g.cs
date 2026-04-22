@@ -38,18 +38,6 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	[SchemaMember("CBaseAnimGraph", "m_bAnimGraphUpdateEnabled")]
 	public ref bool AnimGraphUpdateEnabled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled");
 
-	// m_flMaxSlopeDistance
-	[SchemaMember("CBaseAnimGraph", "m_flMaxSlopeDistance")]
-	public ref float MaxSlopeDistance => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraph", "m_flMaxSlopeDistance");
-
-	// m_vLastSlopeCheckPos
-	[SchemaMember("CBaseAnimGraph", "m_vLastSlopeCheckPos")]
-	public Vector LastSlopeCheckPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos");
-
-	// m_nAnimGraphUpdateId
-	[SchemaMember("CBaseAnimGraph", "m_nAnimGraphUpdateId")]
-	public ref UInt32 AnimGraphUpdateId => ref Schema.GetRef<UInt32>(this.Handle, "CBaseAnimGraph", "m_nAnimGraphUpdateId");
-
 	// m_bAnimationUpdateScheduled
 	[SchemaMember("CBaseAnimGraph", "m_bAnimationUpdateScheduled")]
 	public ref bool AnimationUpdateScheduled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimationUpdateScheduled");
@@ -61,6 +49,10 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	// m_nForceBone
 	[SchemaMember("CBaseAnimGraph", "m_nForceBone")]
 	public ref Int32 ForceBone => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraph", "m_nForceBone");
+
+	// m_pRagdollControl
+	[SchemaMember("CBaseAnimGraph", "m_pRagdollControl")]
+	public IPhysicsRagdollControl? RagdollControl => Schema.GetPointer<IPhysicsRagdollControl>(this.Handle, "CBaseAnimGraph", "m_pRagdollControl");
 
 	// m_RagdollPose
 	[SchemaMember("CBaseAnimGraph", "m_RagdollPose")]

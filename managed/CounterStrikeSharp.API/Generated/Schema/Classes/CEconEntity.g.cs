@@ -14,7 +14,7 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEconEntity : CBaseFlex
+public partial class CEconEntity : CBaseAnimGraph
 {
     public CEconEntity (IntPtr pointer) : base(pointer) {}
 

@@ -22,10 +22,6 @@ public partial class CSkeletonInstance : CGameSceneNode
 	[SchemaMember("CSkeletonInstance", "m_modelState")]
 	public CModelState ModelState => Schema.GetDeclaredClass<CModelState>(this.Handle, "CSkeletonInstance", "m_modelState");
 
-	// m_bIsAnimationEnabled
-	[SchemaMember("CSkeletonInstance", "m_bIsAnimationEnabled")]
-	public ref bool IsAnimationEnabled => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bIsAnimationEnabled");
-
 	// m_bUseParentRenderBounds
 	[SchemaMember("CSkeletonInstance", "m_bUseParentRenderBounds")]
 	public ref bool UseParentRenderBounds => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bUseParentRenderBounds");

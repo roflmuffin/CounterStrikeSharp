@@ -26,6 +26,10 @@ public partial class CKeepUpright : CPointEntity
 	[SchemaMember("CKeepUpright", "m_localTestAxis")]
 	public Vector LocalTestAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CKeepUpright", "m_localTestAxis");
 
+	// m_pController
+	[SchemaMember("CKeepUpright", "m_pController")]
+	public IPhysicsMotionController? Controller => Schema.GetPointer<IPhysicsMotionController>(this.Handle, "CKeepUpright", "m_pController");
+
 	// m_nameAttach
 	[SchemaMember("CKeepUpright", "m_nameAttach")]
 	public string NameAttach

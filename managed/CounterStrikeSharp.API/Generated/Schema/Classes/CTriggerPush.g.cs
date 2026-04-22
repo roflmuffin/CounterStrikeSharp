@@ -44,7 +44,7 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_PathSimple
 	[SchemaMember("CTriggerPush", "m_PathSimple")]
-	public CPathSimple? PathSimple => Schema.GetPointer<CPathSimple>(this.Handle, "CTriggerPush", "m_PathSimple");
+	public CHandle<CPathSimple> PathSimple => Schema.GetDeclaredClass<CHandle<CPathSimple>>(this.Handle, "CTriggerPush", "m_PathSimple");
 
 	// m_splinePushType
 	[SchemaMember("CTriggerPush", "m_splinePushType")]

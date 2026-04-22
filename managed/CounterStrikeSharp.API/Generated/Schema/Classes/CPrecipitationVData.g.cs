@@ -46,4 +46,12 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 		set { Schema.SetString(this.Handle, "CPrecipitationVData", "m_szModifier", value); }
 	}
 
+	// m_nUseSnapshotFromSurfaceGraph
+	[SchemaMember("CPrecipitationVData", "m_nUseSnapshotFromSurfaceGraph")]
+	public ref Int32 UseSnapshotFromSurfaceGraph => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nUseSnapshotFromSurfaceGraph");
+
+	// m_snapshotFilter
+	[SchemaMember("CPrecipitationVData", "m_snapshotFilter")]
+	public PrecipitationFilter_t SnapshotFilter => Schema.GetDeclaredClass<PrecipitationFilter_t>(this.Handle, "CPrecipitationVData", "m_snapshotFilter");
+
 }

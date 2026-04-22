@@ -44,11 +44,11 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_pNextKey
 	[SchemaMember("CPathKeyFrame", "m_pNextKey")]
-	public CPathKeyFrame? PNextKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pNextKey");
+	public CHandle<CPathKeyFrame> PNextKey => Schema.GetDeclaredClass<CHandle<CPathKeyFrame>>(this.Handle, "CPathKeyFrame", "m_pNextKey");
 
 	// m_pPrevKey
 	[SchemaMember("CPathKeyFrame", "m_pPrevKey")]
-	public CPathKeyFrame? PrevKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pPrevKey");
+	public CHandle<CPathKeyFrame> PrevKey => Schema.GetDeclaredClass<CHandle<CPathKeyFrame>>(this.Handle, "CPathKeyFrame", "m_pPrevKey");
 
 	// m_flMoveSpeed
 	[SchemaMember("CPathKeyFrame", "m_flMoveSpeed")]

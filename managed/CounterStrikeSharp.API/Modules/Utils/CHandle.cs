@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Entities;
+using FastGenericNew;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
@@ -71,7 +72,7 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
         if (entity == null)
             return null;
 
-        return (T)Activator.CreateInstance(typeof(T), entity)!;
+        return FastNew.CreateInstance<T, IntPtr>(entity.Value);
     }
 
     public override string ToString() => IsValid ? $"Index = {Index}, Serial = {SerialNum}" : "<invalid>";
@@ -125,7 +126,7 @@ public class PointerTo<T> : NativeObject where T : NativeObject
         {
             unsafe
             {
-                return (T)Activator.CreateInstance(typeof(T), Unsafe.Read<IntPtr>((void*)Handle));
+                return FastNew.CreateInstance<T, IntPtr>(Unsafe.Read<IntPtr>((void*)Handle));
             }
         }
     }

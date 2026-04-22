@@ -54,4 +54,8 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 	[SchemaMember("CPointPrefab", "m_associatedRelayEntity")]
 	public CHandle<CPointPrefab> AssociatedRelayEntity => Schema.GetDeclaredClass<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity");
 
+	// m_ProceduralRelaySources
+	[SchemaMember("CPointPrefab", "m_ProceduralRelaySources")]
+	public NetworkedVector<CHandle<CBaseEntity>> ProceduralRelaySources => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CPointPrefab", "m_ProceduralRelaySources");
+
 }

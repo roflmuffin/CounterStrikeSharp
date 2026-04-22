@@ -98,10 +98,6 @@ public partial class CTakeDamageInfo : NativeObject
 	[SchemaMember("CTakeDamageInfo", "m_bStoppedBullet")]
 	public ref bool StoppedBullet => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageInfo", "m_bStoppedBullet");
 
-	// m_nDestructibleHitGroupsToForceDestroy
-	[SchemaMember("CTakeDamageInfo", "m_nDestructibleHitGroupsToForceDestroy")]
-	public NetworkedVector<DestructibleHitGroupToDestroy_t> DestructibleHitGroupsToForceDestroy => Schema.GetDeclaredClass<NetworkedVector<DestructibleHitGroupToDestroy_t>>(this.Handle, "CTakeDamageInfo", "m_nDestructibleHitGroupsToForceDestroy");
-
 	// m_bInTakeDamageFlow
 	[SchemaMember("CTakeDamageInfo", "m_bInTakeDamageFlow")]
 	public ref bool InTakeDamageFlow => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageInfo", "m_bInTakeDamageFlow");

@@ -18,6 +18,10 @@ public partial class CTriggerPhysics : CBaseTrigger
 {
     public CTriggerPhysics (IntPtr pointer) : base(pointer) {}
 
+	// m_pController
+	[SchemaMember("CTriggerPhysics", "m_pController")]
+	public IPhysicsMotionController? Controller => Schema.GetPointer<IPhysicsMotionController>(this.Handle, "CTriggerPhysics", "m_pController");
+
 	// m_gravityScale
 	[SchemaMember("CTriggerPhysics", "m_gravityScale")]
 	public new ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_gravityScale");

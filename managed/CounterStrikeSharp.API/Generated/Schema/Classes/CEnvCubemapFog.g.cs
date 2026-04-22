@@ -82,6 +82,38 @@ public partial class CEnvCubemapFog : CBaseEntity
 		set { Schema.SetString(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity", value); }
 	}
 
+	// m_nHeightFogType
+	[SchemaMember("CEnvCubemapFog", "m_nHeightFogType")]
+	public ref Int32 HeightFogType => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemapFog", "m_nHeightFogType");
+
+	// m_nFogHeightBlendMode
+	[SchemaMember("CEnvCubemapFog", "m_nFogHeightBlendMode")]
+	public ref Int32 FogHeightBlendMode => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemapFog", "m_nFogHeightBlendMode");
+
+	// m_nFogHeightCoordinateSpace
+	[SchemaMember("CEnvCubemapFog", "m_nFogHeightCoordinateSpace")]
+	public ref Int32 FogHeightCoordinateSpace => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemapFog", "m_nFogHeightCoordinateSpace");
+
+	// m_nDistanceFogType
+	[SchemaMember("CEnvCubemapFog", "m_nDistanceFogType")]
+	public ref Int32 DistanceFogType => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemapFog", "m_nDistanceFogType");
+
+	// m_DistanceFogCurveString
+	[SchemaMember("CEnvCubemapFog", "m_DistanceFogCurveString")]
+	public string DistanceFogCurveString
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvCubemapFog", "m_DistanceFogCurveString"); }
+		set { Schema.SetString(this.Handle, "CEnvCubemapFog", "m_DistanceFogCurveString", value); }
+	}
+
+	// m_HeightFogCurveString
+	[SchemaMember("CEnvCubemapFog", "m_HeightFogCurveString")]
+	public string HeightFogCurveString
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvCubemapFog", "m_HeightFogCurveString"); }
+		set { Schema.SetString(this.Handle, "CEnvCubemapFog", "m_HeightFogCurveString", value); }
+	}
+
 	// m_hFogCubemapTexture
 	[SchemaMember("CEnvCubemapFog", "m_hFogCubemapTexture")]
 	public CStrongHandle<InfoForResourceTypeCTextureBase> FogCubemapTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCubemapFog", "m_hFogCubemapTexture");

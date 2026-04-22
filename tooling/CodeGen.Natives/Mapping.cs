@@ -12,15 +12,25 @@ public class Mapping
             case "int":
             case "uint":
             case "float":
-            case "pointer":
             case "bool":
             case "double":
             case "short":
-                return "Push(";
+            case "int16":
+            case "uint16":
+            case "uint64":
+            case "long":
+            case "int64":
+            case "HookMode":
+            case "ListenOverride":
+            case "DataType_t":
+            case "CommandCallingContext":
+            case "pointer":
+                return "PushPrimitive(";
             case "func":
             case "callback":
                 return "Push((InputArgument)";
             case "charPtr":
+            case "string":
                 return "PushString(";
         }
 
@@ -59,6 +69,7 @@ public class Mapping
             case "uint64":
                 return "ulong";
             case "long":
+            case "int64":
                 return "long";
             case "func":
             case "callback":
@@ -84,6 +95,36 @@ public class Mapping
         }
 
         return "object";
+    }
+
+    /// <summary>
+    /// Returns true if the native return type maps to an unmanaged primitive
+    /// that can use GetResultPrimitive&lt;T&gt;() instead of GetResult(typeof(T)).
+    /// </summary>
+    public static bool IsPrimitiveReturnType(string returnType)
+    {
+        switch (returnType)
+        {
+            case "int":
+            case "uint":
+            case "float":
+            case "bool":
+            case "double":
+            case "short":
+            case "int16":
+            case "uint16":
+            case "uint64":
+            case "long":
+            case "int64":
+            case "pointer":
+            case "HookMode":
+            case "ListenOverride":
+            case "DataType_t":
+            case "CommandCallingContext":
+                return true;
+            default:
+                return false;
+        }
     }
 
     public static string GetCSharpTypeFromGameEventType(string type)

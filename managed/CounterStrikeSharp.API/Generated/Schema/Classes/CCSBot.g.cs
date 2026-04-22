@@ -262,6 +262,10 @@ public partial class CCSBot : CBot
 	[SchemaMember("CCSBot", "m_lookAheadAngle")]
 	public ref float LookAheadAngle => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAheadAngle");
 
+	// m_lookUpAngle
+	[SchemaMember("CCSBot", "m_lookUpAngle")]
+	public ref float LookUpAngle => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookUpAngle");
+
 	// m_forwardAngle
 	[SchemaMember("CCSBot", "m_forwardAngle")]
 	public ref float ForwardAngle => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_forwardAngle");

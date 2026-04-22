@@ -18,20 +18,84 @@ public partial class CInfoInteraction : CPointEntity
 {
     public CInfoInteraction (IntPtr pointer) : base(pointer) {}
 
-	// m_strSlotEntityName
-	[SchemaMember("CInfoInteraction", "m_strSlotEntityName")]
-	public Span<string> StrSlotEntityName => Schema.GetFixedArray<string>(this.Handle, "CInfoInteraction", "m_strSlotEntityName", 8);
+	// m_hSceneRequest
+	[SchemaMember("CInfoInteraction", "m_hSceneRequest")]
+	public SceneRequestHandle_t SceneRequest => Schema.GetDeclaredClass<SceneRequestHandle_t>(this.Handle, "CInfoInteraction", "m_hSceneRequest");
 
-	// m_strInteractVData
-	[SchemaMember("CInfoInteraction", "m_strInteractVData")]
-	public string StrInteractVData
+	// m_hSceneOpportunity
+	[SchemaMember("CInfoInteraction", "m_hSceneOpportunity")]
+	public SceneOpportunityHandle_t SceneOpportunity => Schema.GetDeclaredClass<SceneOpportunityHandle_t>(this.Handle, "CInfoInteraction", "m_hSceneOpportunity");
+
+	// m_bEnabled
+	[SchemaMember("CInfoInteraction", "m_bEnabled")]
+	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CInfoInteraction", "m_bEnabled");
+
+	// m_bStartDisabled
+	[SchemaMember("CInfoInteraction", "m_bStartDisabled")]
+	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CInfoInteraction", "m_bStartDisabled");
+
+	// m_strSceneVDataName
+	[SchemaMember("CInfoInteraction", "m_strSceneVDataName")]
+	public string StrSceneVDataName
 	{
-		get { return Schema.GetUtf8String(this.Handle, "CInfoInteraction", "m_strInteractVData"); }
-		set { Schema.SetString(this.Handle, "CInfoInteraction", "m_strInteractVData", value); }
+		get { return Schema.GetUtf8String(this.Handle, "CInfoInteraction", "m_strSceneVDataName"); }
+		set { Schema.SetString(this.Handle, "CInfoInteraction", "m_strSceneVDataName", value); }
 	}
 
-	// m_flInteractRadius
-	[SchemaMember("CInfoInteraction", "m_flInteractRadius")]
-	public ref float InteractRadius => ref Schema.GetRef<float>(this.Handle, "CInfoInteraction", "m_flInteractRadius");
+	// m_strPulseVDataName
+	[SchemaMember("CInfoInteraction", "m_strPulseVDataName")]
+	public string StrPulseVDataName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoInteraction", "m_strPulseVDataName"); }
+		set { Schema.SetString(this.Handle, "CInfoInteraction", "m_strPulseVDataName", value); }
+	}
+
+	// m_flRadius
+	[SchemaMember("CInfoInteraction", "m_flRadius")]
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CInfoInteraction", "m_flRadius");
+
+	// m_flOwnerFOV
+	[SchemaMember("CInfoInteraction", "m_flOwnerFOV")]
+	public ref float OwnerFOV => ref Schema.GetRef<float>(this.Handle, "CInfoInteraction", "m_flOwnerFOV");
+
+	// m_strLocalInterestReqTags
+	[SchemaMember("CInfoInteraction", "m_strLocalInterestReqTags")]
+	public string StrLocalInterestReqTags
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoInteraction", "m_strLocalInterestReqTags"); }
+		set { Schema.SetString(this.Handle, "CInfoInteraction", "m_strLocalInterestReqTags", value); }
+	}
+
+	// m_strLocalInterestOptTags
+	[SchemaMember("CInfoInteraction", "m_strLocalInterestOptTags")]
+	public string StrLocalInterestOptTags
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoInteraction", "m_strLocalInterestOptTags"); }
+		set { Schema.SetString(this.Handle, "CInfoInteraction", "m_strLocalInterestOptTags", value); }
+	}
+
+	// m_strLookTarget
+	[SchemaMember("CInfoInteraction", "m_strLookTarget")]
+	public string StrLookTarget
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoInteraction", "m_strLookTarget"); }
+		set { Schema.SetString(this.Handle, "CInfoInteraction", "m_strLookTarget", value); }
+	}
+
+	// m_flDuration
+	[SchemaMember("CInfoInteraction", "m_flDuration")]
+	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CInfoInteraction", "m_flDuration");
+
+	// m_flCooldown
+	[SchemaMember("CInfoInteraction", "m_flCooldown")]
+	public ref float Cooldown => ref Schema.GetRef<float>(this.Handle, "CInfoInteraction", "m_flCooldown");
+
+	// m_nRepeatCount
+	[SchemaMember("CInfoInteraction", "m_nRepeatCount")]
+	public ref Int32 RepeatCount => ref Schema.GetRef<Int32>(this.Handle, "CInfoInteraction", "m_nRepeatCount");
+
+	// m_bDisableOnExit
+	[SchemaMember("CInfoInteraction", "m_bDisableOnExit")]
+	public ref bool DisableOnExit => ref Schema.GetRef<bool>(this.Handle, "CInfoInteraction", "m_bDisableOnExit");
 
 }
