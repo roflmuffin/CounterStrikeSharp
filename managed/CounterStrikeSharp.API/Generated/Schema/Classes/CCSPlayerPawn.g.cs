@@ -34,6 +34,10 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_pActionTrackingServices")]
 	public CCSPlayer_ActionTrackingServices? ActionTrackingServices => Schema.GetPointer<CCSPlayer_ActionTrackingServices>(this.Handle, "CCSPlayerPawn", "m_pActionTrackingServices");
 
+	// m_pAimPunchServices
+	[SchemaMember("CCSPlayerPawn", "m_pAimPunchServices")]
+	public CCSPlayer_AimPunchServices? AimPunchServices => Schema.GetPointer<CCSPlayer_AimPunchServices>(this.Handle, "CCSPlayerPawn", "m_pAimPunchServices");
+
 	// m_pRadioServices
 	[SchemaMember("CCSPlayerPawn", "m_pRadioServices")]
 	public CCSPlayer_RadioServices? RadioServices => Schema.GetPointer<CCSPlayer_RadioServices>(this.Handle, "CCSPlayerPawn", "m_pRadioServices");
@@ -125,26 +129,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	// m_flLandingTimeSeconds
 	[SchemaMember("CCSPlayerPawn", "m_flLandingTimeSeconds")]
 	public ref float LandingTimeSeconds => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flLandingTimeSeconds");
-
-	// m_aimPunchAngle
-	[SchemaMember("CCSPlayerPawn", "m_aimPunchAngle")]
-	public QAngle AimPunchAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngle");
-
-	// m_aimPunchAngleVel
-	[SchemaMember("CCSPlayerPawn", "m_aimPunchAngleVel")]
-	public QAngle AimPunchAngleVel => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngleVel");
-
-	// m_aimPunchTickBase
-	[SchemaMember("CCSPlayerPawn", "m_aimPunchTickBase")]
-	public ref Int32 AimPunchTickBase => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_aimPunchTickBase");
-
-	// m_aimPunchTickFraction
-	[SchemaMember("CCSPlayerPawn", "m_aimPunchTickFraction")]
-	public ref float AimPunchTickFraction => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_aimPunchTickFraction");
-
-	// m_aimPunchCache
-	[SchemaMember("CCSPlayerPawn", "m_aimPunchCache")]
-	public NetworkedVector<QAngle> AimPunchCache => Schema.GetDeclaredClass<NetworkedVector<QAngle>>(this.Handle, "CCSPlayerPawn", "m_aimPunchCache");
 
 	// m_bIsBuyMenuOpen
 	[SchemaMember("CCSPlayerPawn", "m_bIsBuyMenuOpen")]
