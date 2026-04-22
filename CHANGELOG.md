@@ -1,3 +1,6 @@
+## What's Changed in v1.0.366
+* fix: apply changes for AG2 update in [#1279](https://github.com/roflmuffin/CounterStrikeSharp/pull/1279) ([8a9fbe8](https://github.com/roflmuffin/CounterStrikeSharp/commit/8a9fbe8fb5e1f50124911fec823d0cf07357a71f))
+
 ## What's Changed in v1.0.365
 * perf: improve ScriptContext performance in [#1264](https://github.com/roflmuffin/CounterStrikeSharp/pull/1264) ([9b6d971](https://github.com/roflmuffin/CounterStrikeSharp/commit/9b6d971a04419aafeb54ca767143769a5b71be36))
 * test: add benchmarking script in [#1252](https://github.com/roflmuffin/CounterStrikeSharp/pull/1252) ([1dbed74](https://github.com/roflmuffin/CounterStrikeSharp/commit/1dbed74afd5b73cf50a5105cad7a2a5c60dddc73))
