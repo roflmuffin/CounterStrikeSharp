@@ -42,6 +42,10 @@ public partial class CPathMoverEntitySpawner : CLogicalEntity
 	[SchemaMember("CPathMoverEntitySpawner", "m_nMaxActive")]
 	public ref Int32 MaxActive => ref Schema.GetRef<Int32>(this.Handle, "CPathMoverEntitySpawner", "m_nMaxActive");
 
+	// m_nSpawnNum
+	[SchemaMember("CPathMoverEntitySpawner", "m_nSpawnNum")]
+	public ref Int32 SpawnNum => ref Schema.GetRef<Int32>(this.Handle, "CPathMoverEntitySpawner", "m_nSpawnNum");
+
 	// m_flLastSpawnTime
 	[SchemaMember("CPathMoverEntitySpawner", "m_flLastSpawnTime")]
 	public ref float LastSpawnTime => ref Schema.GetRef<float>(this.Handle, "CPathMoverEntitySpawner", "m_flLastSpawnTime");
@@ -49,5 +53,21 @@ public partial class CPathMoverEntitySpawner : CLogicalEntity
 	// m_bEnabled
 	[SchemaMember("CPathMoverEntitySpawner", "m_bEnabled")]
 	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPathMoverEntitySpawner", "m_bEnabled");
+
+	// m_bDestroyMoverOnArrivedAtEnd
+	[SchemaMember("CPathMoverEntitySpawner", "m_bDestroyMoverOnArrivedAtEnd")]
+	public ref bool DestroyMoverOnArrivedAtEnd => ref Schema.GetRef<bool>(this.Handle, "CPathMoverEntitySpawner", "m_bDestroyMoverOnArrivedAtEnd");
+
+	// m_vecQueuedRemovals
+	[SchemaMember("CPathMoverEntitySpawner", "m_vecQueuedRemovals")]
+	public NetworkedVector<CHandle<CFuncMover>> QueuedRemovals => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFuncMover>>>(this.Handle, "CPathMoverEntitySpawner", "m_vecQueuedRemovals");
+
+	// m_OnTemplateSpawned
+	[SchemaMember("CPathMoverEntitySpawner", "m_OnTemplateSpawned")]
+	public CEntityIOOutput OnTemplateSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathMoverEntitySpawner", "m_OnTemplateSpawned");
+
+	// m_OnTemplateGroupSpawned
+	[SchemaMember("CPathMoverEntitySpawner", "m_OnTemplateGroupSpawned")]
+	public CEntityIOOutput OnTemplateGroupSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathMoverEntitySpawner", "m_OnTemplateGroupSpawned");
 
 }

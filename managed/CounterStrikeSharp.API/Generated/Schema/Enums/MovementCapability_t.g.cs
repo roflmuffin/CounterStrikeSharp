@@ -15,5 +15,7 @@ public enum MovementCapability_t : uint
 	eInstantStop = 0x4,
 	eShuffle = 0x5,
 	ePlantedTurn = 0x6,
-	eCount = 0x7,
+	eUseStartAsPlantedTurn = 0x7,
+	eLean = 0x8,
+	eCount = 0x9,
 }

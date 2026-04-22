@@ -74,6 +74,14 @@ public partial class CPhysMotor : CLogicalEntity
 	[SchemaMember("CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted")]
 	public ref float SpeedWhenSpinUpOrSpinDownStarted => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted");
 
+	// m_pFixedWorldBody
+	[SchemaMember("CPhysMotor", "m_pFixedWorldBody")]
+	public IPhysicsBody? FixedWorldBody => Schema.GetPointer<IPhysicsBody>(this.Handle, "CPhysMotor", "m_pFixedWorldBody");
+
+	// m_pMotorJoint
+	[SchemaMember("CPhysMotor", "m_pMotorJoint")]
+	public IPhysicsJoint? MotorJoint => Schema.GetPointer<IPhysicsJoint>(this.Handle, "CPhysMotor", "m_pMotorJoint");
+
 	// m_motor
 	[SchemaMember("CPhysMotor", "m_motor")]
 	public CMotorController Motor => Schema.GetDeclaredClass<CMotorController>(this.Handle, "CPhysMotor", "m_motor");

@@ -146,6 +146,10 @@ public partial class CBarnLight : CBaseModelEntity
 	[SchemaMember("CBarnLight", "m_vBakeSpecularToCubemapsSize")]
 	public Vector BakeSpecularToCubemapsSize => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vBakeSpecularToCubemapsSize");
 
+	// m_flBakeSpecularToCubemapsScale
+	[SchemaMember("CBarnLight", "m_flBakeSpecularToCubemapsScale")]
+	public ref float BakeSpecularToCubemapsScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBakeSpecularToCubemapsScale");
+
 	// m_nCastShadows
 	[SchemaMember("CBarnLight", "m_nCastShadows")]
 	public ref Int32 CastShadows => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nCastShadows");
@@ -174,10 +178,6 @@ public partial class CBarnLight : CBaseModelEntity
 	[SchemaMember("CBarnLight", "m_flBounceScale")]
 	public ref float BounceScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBounceScale");
 
-	// m_bDynamicBounce
-	[SchemaMember("CBarnLight", "m_bDynamicBounce")]
-	public ref bool DynamicBounce => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bDynamicBounce");
-
 	// m_flMinRoughness
 	[SchemaMember("CBarnLight", "m_flMinRoughness")]
 	public ref float MinRoughness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flMinRoughness");
@@ -205,10 +205,6 @@ public partial class CBarnLight : CBaseModelEntity
 	// m_flFogScale
 	[SchemaMember("CBarnLight", "m_flFogScale")]
 	public ref float FogScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFogScale");
-
-	// m_bFogMixedShadows
-	[SchemaMember("CBarnLight", "m_bFogMixedShadows")]
-	public ref bool FogMixedShadows => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bFogMixedShadows");
 
 	// m_flFadeSizeStart
 	[SchemaMember("CBarnLight", "m_flFadeSizeStart")]
@@ -329,6 +325,10 @@ public partial class CBarnLight : CBaseModelEntity
 	// m_bPvsModifyEntity
 	[SchemaMember("CBarnLight", "m_bPvsModifyEntity")]
 	public ref bool PvsModifyEntity => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity");
+
+	// m_bTransmitAlways
+	[SchemaMember("CBarnLight", "m_bTransmitAlways")]
+	public ref bool TransmitAlways => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bTransmitAlways");
 
 	// m_VisClusters
 	[SchemaMember("CBarnLight", "m_VisClusters")]

@@ -30,9 +30,9 @@ public partial class CTakeDamageResult : NativeObject
 	[SchemaMember("CTakeDamageResult", "m_nHealthBefore")]
 	public ref Int32 HealthBefore => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthBefore");
 
-	// m_nDamageDealt
-	[SchemaMember("CTakeDamageResult", "m_nDamageDealt")]
-	public ref Int32 DamageDealt => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nDamageDealt");
+	// m_flDamageDealt
+	[SchemaMember("CTakeDamageResult", "m_flDamageDealt")]
+	public ref float DamageDealt => ref Schema.GetRef<float>(this.Handle, "CTakeDamageResult", "m_flDamageDealt");
 
 	// m_flPreModifiedDamage
 	[SchemaMember("CTakeDamageResult", "m_flPreModifiedDamage")]
@@ -42,13 +42,21 @@ public partial class CTakeDamageResult : NativeObject
 	[SchemaMember("CTakeDamageResult", "m_nTotalledHealthLost")]
 	public ref Int32 TotalledHealthLost => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledHealthLost");
 
-	// m_nTotalledDamageDealt
-	[SchemaMember("CTakeDamageResult", "m_nTotalledDamageDealt")]
-	public ref Int32 TotalledDamageDealt => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledDamageDealt");
+	// m_flTotalledDamageDealt
+	[SchemaMember("CTakeDamageResult", "m_flTotalledDamageDealt")]
+	public ref float TotalledDamageDealt => ref Schema.GetRef<float>(this.Handle, "CTakeDamageResult", "m_flTotalledDamageDealt");
 
 	// m_flTotalledPreModifiedDamage
 	[SchemaMember("CTakeDamageResult", "m_flTotalledPreModifiedDamage")]
 	public ref float TotalledPreModifiedDamage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageResult", "m_flTotalledPreModifiedDamage");
+
+	// m_flNewDamageAccumulatorValue
+	[SchemaMember("CTakeDamageResult", "m_flNewDamageAccumulatorValue")]
+	public ref float NewDamageAccumulatorValue => ref Schema.GetRef<float>(this.Handle, "CTakeDamageResult", "m_flNewDamageAccumulatorValue");
+
+	// m_nDamageFlags
+	[SchemaMember("CTakeDamageResult", "m_nDamageFlags")]
+	public ref TakeDamageFlags_t DamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CTakeDamageResult", "m_nDamageFlags");
 
 	// m_bWasDamageSuppressed
 	[SchemaMember("CTakeDamageResult", "m_bWasDamageSuppressed")]

@@ -33,6 +33,6 @@ public static class CBasePlayerWeaponExtensions
         if (player == null)
             player = weapon.OwnerEntity.Get()?.As<CCSPlayerController>();
 
-        return player?.Connected == PlayerConnectedState.PlayerConnected ? player : null;
+        return player?.Connected == PlayerConnectedState.Connected ? player : null;
     }
 }

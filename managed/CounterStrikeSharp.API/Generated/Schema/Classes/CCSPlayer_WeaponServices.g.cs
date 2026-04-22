@@ -22,14 +22,6 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 	[SchemaMember("CCSPlayer_WeaponServices", "m_flNextAttack")]
 	public ref float NextAttack => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WeaponServices", "m_flNextAttack");
 
-	// m_bIsLookingAtWeapon
-	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon")]
-	public ref bool IsLookingAtWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon");
-
-	// m_bIsHoldingLookAtWeapon
-	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon")]
-	public ref bool IsHoldingLookAtWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon");
-
 	// m_hSavedWeapon
 	[SchemaMember("CCSPlayer_WeaponServices", "m_hSavedWeapon")]
 	public CHandle<CBasePlayerWeapon> SavedWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_WeaponServices", "m_hSavedWeapon");

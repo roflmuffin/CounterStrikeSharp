@@ -221,7 +221,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // This is here for cases where the server console is attempting to call commands.
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return false; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) { return false; }
             return PlayerHasPermissions(player.AuthorizedSteamID, flags);
         }
 
@@ -280,7 +280,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // This is here for cases where the server console is attempting to call commands.
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return false; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) { return false; }
             var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             return playerData?.CommandOverrides.ContainsKey(command) ?? false;
         }
@@ -310,7 +310,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // This is here for cases where the server console is attempting to call commands.
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return false; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) { return false; }
             var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
         }
@@ -339,7 +339,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // This is here for cases where the server console is attempting to call commands.
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) { return; }
             SetPlayerCommandOverride(player.AuthorizedSteamID, command, state);
         }
 
@@ -382,7 +382,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void AddPlayerPermissions(CCSPlayerController? player, params string[] flags)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) return;
             AddPlayerPermissions(player.AuthorizedSteamID, flags);
         }
         
@@ -420,7 +420,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void RemovePlayerPermissions(CCSPlayerController? player, params string[] flags)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) return;
 
             RemovePlayerPermissions(player.AuthorizedSteamID, flags);
         }
@@ -447,7 +447,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void ClearPlayerPermissions(CCSPlayerController? player)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) return;
 
             ClearPlayerPermissions(player.AuthorizedSteamID);
         }
@@ -477,7 +477,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void SetPlayerImmunity(CCSPlayerController? player, uint value)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) return;
 
             SetPlayerImmunity(player.AuthorizedSteamID, value);
         }
@@ -507,7 +507,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 		public static uint GetPlayerImmunity(CCSPlayerController? player)
         {
             if (player == null) return 0;
-			if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return 0;
+			if (!player.IsValid || player.Connected != PlayerConnectedState.Connected || player.IsBot || player.IsHLTV) return 0;
 
             return GetPlayerImmunity(player.AuthorizedSteamID);
 		}
@@ -540,7 +540,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (caller == null) return true;
 
             if (target == null) return false;
-            if (!target.IsValid || target.Connected != PlayerConnectedState.PlayerConnected) return false;
+            if (!target.IsValid || target.Connected != PlayerConnectedState.Connected) return false;
 
             var callerData = GetPlayerAdminData(caller.AuthorizedSteamID);
             if (callerData == null) return false;

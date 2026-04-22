@@ -18,6 +18,10 @@ public partial class CBuoyancyHelper : NativeObject
 {
     public CBuoyancyHelper (IntPtr pointer) : base(pointer) {}
 
+	// m_pController
+	[SchemaMember("CBuoyancyHelper", "m_pController")]
+	public IPhysicsMotionController? Controller => Schema.GetPointer<IPhysicsMotionController>(this.Handle, "CBuoyancyHelper", "m_pController");
+
 	// m_nFluidType
 	[SchemaMember("CBuoyancyHelper", "m_nFluidType")]
 	public CUtlStringToken FluidType => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBuoyancyHelper", "m_nFluidType");

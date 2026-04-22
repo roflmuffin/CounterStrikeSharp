@@ -58,6 +58,10 @@ public partial class CPhysExplosion : CPointEntity
 	[SchemaMember("CPhysExplosion", "m_bAffectInvulnerableEnts")]
 	public ref bool AffectInvulnerableEnts => ref Schema.GetRef<bool>(this.Handle, "CPhysExplosion", "m_bAffectInvulnerableEnts");
 
+	// m_bDisablePushClamp
+	[SchemaMember("CPhysExplosion", "m_bDisablePushClamp")]
+	public ref bool DisablePushClamp => ref Schema.GetRef<bool>(this.Handle, "CPhysExplosion", "m_bDisablePushClamp");
+
 	// m_OnPushedPlayer
 	[SchemaMember("CPhysExplosion", "m_OnPushedPlayer")]
 	public CEntityIOOutput OnPushedPlayer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysExplosion", "m_OnPushedPlayer");

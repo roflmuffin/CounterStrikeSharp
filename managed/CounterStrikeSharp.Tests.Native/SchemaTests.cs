@@ -15,7 +15,7 @@ public class SchemaTests
     {
         var offset = NativeAPI.GetSchemaOffset("CBaseEntity", "m_iHealth");
 
-        Assert.Equal(1464, offset); // Hardcode for now, this may change but I want to know if it changes
+        Assert.Equal(1456, offset); // Hardcode for now, this may change but I want to know if it changes
     }
 
     [Fact]

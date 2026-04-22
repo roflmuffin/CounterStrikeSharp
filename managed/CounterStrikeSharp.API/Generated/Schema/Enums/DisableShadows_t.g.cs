@@ -12,4 +12,5 @@ public enum DisableShadows_t : byte
 	kDisableShadows_All = 0x1,
 	kDisableShadows_Baked = 0x2,
 	kDisableShadows_Realtime = 0x3,
+	kDisableShadows_ReallyNone = 0x4,
 }

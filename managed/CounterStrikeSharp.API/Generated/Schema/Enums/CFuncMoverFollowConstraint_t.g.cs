@@ -10,4 +10,5 @@ public enum CFuncMoverFollowConstraint_t : uint
 {
 	FOLLOW_CONSTRAINT_DISTANCE = 0x0,
 	FOLLOW_CONSTRAINT_SPRING = 0x1,
+	FOLLOW_CONSTRAINT_RATIO = 0x2,
 }

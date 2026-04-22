@@ -26,4 +26,12 @@ public partial class CTestPulseIO : CLogicalEntity
 	[SchemaMember("CTestPulseIO", "m_bAllowEmptyInputs")]
 	public ref bool AllowEmptyInputs => ref Schema.GetRef<bool>(this.Handle, "CTestPulseIO", "m_bAllowEmptyInputs");
 
+	// m_TestComponent
+	[SchemaMember("CTestPulseIO", "m_TestComponent")]
+	public CTestPulseIOComponent_Derived TestComponent => Schema.GetDeclaredClass<CTestPulseIOComponent_Derived>(this.Handle, "CTestPulseIO", "m_TestComponent");
+
+	// m_OnInternalTestVoid
+	[SchemaMember("CTestPulseIO", "m_OnInternalTestVoid")]
+	public CEntityIOOutput OnInternalTestVoid => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTestPulseIO", "m_OnInternalTestVoid");
+
 }

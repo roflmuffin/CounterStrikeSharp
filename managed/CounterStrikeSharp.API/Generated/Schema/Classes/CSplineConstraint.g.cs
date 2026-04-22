@@ -26,6 +26,10 @@ public partial class CSplineConstraint : CPhysConstraint
 	[SchemaMember("CSplineConstraint", "m_hSplineEntity")]
 	public CHandle<CBaseEntity> SplineEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSplineConstraint", "m_hSplineEntity");
 
+	// m_pSplineBody
+	[SchemaMember("CSplineConstraint", "m_pSplineBody")]
+	public IPhysicsBody? SplineBody => Schema.GetPointer<IPhysicsBody>(this.Handle, "CSplineConstraint", "m_pSplineBody");
+
 	// m_bEnableLateralConstraint
 	[SchemaMember("CSplineConstraint", "m_bEnableLateralConstraint")]
 	public ref bool EnableLateralConstraint => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableLateralConstraint");

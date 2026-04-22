@@ -86,6 +86,7 @@ public record SchemaFieldType
         "uint64" => "UInt64",
         "bool" => "bool",
         "char" => "char",
+        "void" => "IntPtr",
         _ => throw new ArgumentOutOfRangeException(nameof(name), name, $"Unknown built-in: {name}")
     };
 

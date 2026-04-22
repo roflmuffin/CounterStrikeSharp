@@ -20,7 +20,7 @@ public partial class CGameChoreoServices : IChoreoServices
 
 	// m_hOwner
 	[SchemaMember("CGameChoreoServices", "m_hOwner")]
-	public CHandle<CBaseAnimGraph> Owner => Schema.GetDeclaredClass<CHandle<CBaseAnimGraph>>(this.Handle, "CGameChoreoServices", "m_hOwner");
+	public CHandle<CBaseModelEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CGameChoreoServices", "m_hOwner");
 
 	// m_hScriptedSequence
 	[SchemaMember("CGameChoreoServices", "m_hScriptedSequence")]

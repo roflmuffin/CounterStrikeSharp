@@ -121,4 +121,11 @@ public class GameTests
         var worldEnt = Utilities.GetEntityFromIndex<CWorld>(0);
         Assert.False(worldEnt.IsPlayerPawn());
     }
+
+    [Fact]
+    public async Task Signature_CBaseEntity_SetPawn()
+    {
+        await InitializeAsync();
+        pawn.Controller.Value.SetPawn(pawn.Controller.Value.As<CCSPlayerController>().PlayerPawn.Value);
+    }
 }

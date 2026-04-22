@@ -10,4 +10,6 @@ public enum ESceneRequestState_t : uint
 {
 	INACTIVE = 0x0,
 	ACTIVE = 0x1,
+	FINISHED = 0x2,
+	FAILED = 0x3,
 }

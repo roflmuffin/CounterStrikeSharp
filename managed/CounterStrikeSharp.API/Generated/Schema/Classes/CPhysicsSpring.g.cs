@@ -18,6 +18,10 @@ public partial class CPhysicsSpring : CBaseEntity
 {
     public CPhysicsSpring (IntPtr pointer) : base(pointer) {}
 
+	// m_pSpringJoint
+	[SchemaMember("CPhysicsSpring", "m_pSpringJoint")]
+	public IPhysicsJoint? SpringJoint => Schema.GetPointer<IPhysicsJoint>(this.Handle, "CPhysicsSpring", "m_pSpringJoint");
+
 	// m_flFrequency
 	[SchemaMember("CPhysicsSpring", "m_flFrequency")]
 	public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flFrequency");

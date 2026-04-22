@@ -155,7 +155,7 @@ namespace CounterStrikeSharp.API
             {
                 var controller = GetPlayerFromSlot(i);
 
-                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected)
+                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.Connected)
                     continue;
 
                 players.Add(controller);

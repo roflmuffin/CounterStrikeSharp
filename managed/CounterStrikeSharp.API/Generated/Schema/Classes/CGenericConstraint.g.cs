@@ -18,6 +18,10 @@ public partial class CGenericConstraint : CPhysConstraint
 {
     public CGenericConstraint (IntPtr pointer) : base(pointer) {}
 
+	// m_bPlaceAnchorsAtConstraintTransform
+	[SchemaMember("CGenericConstraint", "m_bPlaceAnchorsAtConstraintTransform")]
+	public ref bool PlaceAnchorsAtConstraintTransform => ref Schema.GetRef<bool>(this.Handle, "CGenericConstraint", "m_bPlaceAnchorsAtConstraintTransform");
+
 	// m_nLinearMotionX
 	[SchemaMember("CGenericConstraint", "m_nLinearMotionX")]
 	public ref JointMotion_t LinearMotionX => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionX");

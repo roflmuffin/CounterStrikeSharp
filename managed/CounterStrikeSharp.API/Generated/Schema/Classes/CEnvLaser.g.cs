@@ -28,7 +28,7 @@ public partial class CEnvLaser : CBeam
 
 	// m_pSprite
 	[SchemaMember("CEnvLaser", "m_pSprite")]
-	public CSprite? Sprite => Schema.GetPointer<CSprite>(this.Handle, "CEnvLaser", "m_pSprite");
+	public CHandle<CSprite> Sprite => Schema.GetDeclaredClass<CHandle<CSprite>>(this.Handle, "CEnvLaser", "m_pSprite");
 
 	// m_iszSpriteName
 	[SchemaMember("CEnvLaser", "m_iszSpriteName")]
