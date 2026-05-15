@@ -204,12 +204,28 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     return true;
 }
 
+static bool s_bLevelShutdownOccurred = false;
+
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
 {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+    // Remove before adding to prevent double-registration when workshop addon changes
+    // trigger a second StartupServer within the same map session (ss_dead cycle).
+    globals::entitySystem->RemoveListenerEntity(&globals::entityManager.entityListener);
     globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
 
-    globals::timerSystem.OnStartupServer();
+    // Only fire OnLevelEnd lifecycle after a genuine loop-mode deactivation (OnLevelShutdown).
+    // Workshop addon changes trigger a second StartupServer via an internal ss_dead cycle
+    // without deactivating the loop mode; calling OnStartupServer here fires OnLevelEnd →
+    // PlayerManager disconnects still-connected players in CSS state → stale .NET callbacks
+    // → SEGV on the next DispatchConCommand hook.
+    // OnLevelShutdown (via ILoopMode::LoopShutdown post-hook in metamod-source) fires only
+    // on genuine changelevel/shutdown, not during the ss_dead reload cycle.
+    if (s_bLevelShutdownOccurred)
+    {
+        s_bLevelShutdownOccurred = false;
+        globals::timerSystem.OnStartupServer();
+    }
 
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
@@ -299,7 +315,7 @@ int CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(const char* filename, bo
     RETURN_META_VALUE(MRES_IGNORED, 0);
 }
 
-void CounterStrikeSharpMMPlugin::OnLevelShutdown() {}
+void CounterStrikeSharpMMPlugin::OnLevelShutdown() { s_bLevelShutdownOccurred = true; }
 
 bool CounterStrikeSharpMMPlugin::Pause(char* error, size_t maxlen) { return true; }
 
