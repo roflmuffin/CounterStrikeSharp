@@ -54,6 +54,10 @@ public partial class CMapInfo : CPointEntity
 	[SchemaMember("CMapInfo", "m_bRainTraceToSkyEnabled")]
 	public ref bool RainTraceToSkyEnabled => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bRainTraceToSkyEnabled");
 
+	// m_bGPUCullSkybox
+	[SchemaMember("CMapInfo", "m_bGPUCullSkybox")]
+	public ref bool GPUCullSkybox => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bGPUCullSkybox");
+
 	// m_flEnvRainStrength
 	[SchemaMember("CMapInfo", "m_flEnvRainStrength")]
 	public ref float EnvRainStrength => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flEnvRainStrength");
