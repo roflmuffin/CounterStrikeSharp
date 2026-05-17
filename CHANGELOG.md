@@ -1,3 +1,6 @@
+## What's Changed in v1.0.368
+* chore: Update Schema Definitions to 1.41.6.1 in [#1316](https://github.com/roflmuffin/CounterStrikeSharp/pull/1316) ([d1038fb](https://github.com/roflmuffin/CounterStrikeSharp/commit/d1038fbc3323d0085d52c6f8291fae4a2fa4b742))
+
 ## What's Changed in v1.0.367
 * fix: update CBaseEntity_TakeDamageOld linux signature by [@tk1114632](https://github.com/tk1114632) in [#1287](https://github.com/roflmuffin/CounterStrikeSharp/pull/1287) ([d935b08](https://github.com/roflmuffin/CounterStrikeSharp/commit/d935b08cfa040c9b9c238615a544e1119bf10c29))
 
