@@ -54,6 +54,10 @@ public partial class CBasePlayerController : CBaseEntity
 	[SchemaMember("CBasePlayerController", "m_iConnected")]
 	public ref PlayerConnectedState Connected => ref Schema.GetRef<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected");
 
+	// m_iMostConnected
+	[SchemaMember("CBasePlayerController", "m_iMostConnected")]
+	public ref PlayerConnectedState MostConnected => ref Schema.GetRef<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iMostConnected");
+
 	// m_iszPlayerName
 	[SchemaMember("CBasePlayerController", "m_iszPlayerName")]
 	public string PlayerName

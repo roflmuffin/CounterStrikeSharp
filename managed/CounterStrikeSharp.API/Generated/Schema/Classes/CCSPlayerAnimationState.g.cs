@@ -50,17 +50,9 @@ public partial class CCSPlayerAnimationState : NativeObject
 	[SchemaMember("CCSPlayerAnimationState", "m_staticAimTimerStartTick")]
 	public ref Int32 StaticAimTimerStartTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerAnimationState", "m_staticAimTimerStartTick");
 
-	// m_stutterStepStartTick
-	[SchemaMember("CCSPlayerAnimationState", "m_stutterStepStartTick")]
-	public ref Int32 StutterStepStartTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerAnimationState", "m_stutterStepStartTick");
-
 	// m_plantAndTurnStartTick
 	[SchemaMember("CCSPlayerAnimationState", "m_plantAndTurnStartTick")]
 	public ref Int32 PlantAndTurnStartTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerAnimationState", "m_plantAndTurnStartTick");
-
-	// m_bIsStutterStep
-	[SchemaMember("CCSPlayerAnimationState", "m_bIsStutterStep")]
-	public ref bool IsStutterStep => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerAnimationState", "m_bIsStutterStep");
 
 	// m_flTurnOnSpotAngle
 	[SchemaMember("CCSPlayerAnimationState", "m_flTurnOnSpotAngle")]
