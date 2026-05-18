@@ -154,6 +154,30 @@ namespace CounterStrikeSharp.API
         }
 
         /// <summary>
+        /// <inheritdoc cref="NextFrame"/>
+        /// <returns>A <see cref="Task{TResult}"/> that will be completed when the function has finished executing.</returns>
+        /// </summary>
+        public static Task<TResult> NextFrameAsync<TResult>(Func<TResult> task)
+        {
+            var tcs = new TaskCompletionSource<TResult>();
+
+            _onTickTaskQueue.Enqueue(() =>
+            {
+                try
+                {
+                    TResult result = task();
+                    tcs.SetResult(result);
+                }
+                catch (Exception ex)
+                {
+                    tcs.SetException(ex);
+                }
+            });
+
+            return tcs.Task;
+        }
+
+        /// <summary>
         /// Queue a task to be executed on the next game frame.
         /// <remarks>Does not execute if the server is hibernating.</remarks>
         /// </summary>
@@ -176,6 +200,30 @@ namespace CounterStrikeSharp.API
                 {
                     task();
                     tcs.SetResult();
+                }
+                catch (Exception ex)
+                {
+                    tcs.SetException(ex);
+                }
+            });
+
+            return tcs.Task;
+        }
+
+        /// <summary>
+        /// <inheritdoc cref="NextWorldUpdate"/>
+        /// <returns>A <see cref="Task{TResult}"/> that will be completed when the function has finished executing.</returns>
+        /// </summary>
+        public static Task<TResult> NextWorldUpdateAsync<TResult>(Func<TResult> task)
+        {
+            var tcs = new TaskCompletionSource<TResult>();
+
+            _onWorldUpdateTaskQueue.Enqueue(() =>
+            {
+                try
+                {
+                    TResult result = task();
+                    tcs.SetResult(result);
                 }
                 catch (Exception ex)
                 {

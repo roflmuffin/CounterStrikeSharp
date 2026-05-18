@@ -107,11 +107,9 @@ namespace NativeTestsPlugin
                     {
                         var testClassName = testCase.TestMethod?.TestClass?.Class?.Name ?? "";
                         var testMethodName = testCase.TestMethod?.Method?.Name ?? "";
-                        var displayName = testCase.DisplayName ?? "";
 
                         if (testClassName.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
-                            testMethodName.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
-                            displayName.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                            testMethodName.Contains(filter, StringComparison.OrdinalIgnoreCase))
                         {
                             filteredTests.Add(testCase);
                         }
