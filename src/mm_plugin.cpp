@@ -214,18 +214,19 @@ void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfigurati
     globals::entitySystem->RemoveListenerEntity(&globals::entityManager.entityListener);
     globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
 
-    // Only fire OnLevelEnd lifecycle after a genuine loop-mode deactivation (OnLevelShutdown).
-    // Workshop addon changes trigger a second StartupServer via an internal ss_dead cycle
-    // without deactivating the loop mode; calling OnStartupServer here fires OnLevelEnd →
-    // PlayerManager disconnects still-connected players in CSS state → stale .NET callbacks
-    // → SEGV on the next DispatchConCommand hook.
-    // OnLevelShutdown (via ILoopMode::LoopShutdown post-hook in metamod-source) fires only
-    // on genuine changelevel/shutdown, not during the ss_dead reload cycle.
-    if (s_bLevelShutdownOccurred)
-    {
-        s_bLevelShutdownOccurred = false;
-        globals::timerSystem.OnStartupServer();
-    }
+    // Workshop ss_dead reload cycles fire Hook_StartupServer without a
+    // preceding OnLevelShutdown. We pass that distinction down so that:
+    //   levelShutdown=true  -> fires OnLevelEnd (PlayerManager etc.) and
+    //                          resets timer tick state. Genuine changelevel.
+    //   levelShutdown=false -> ONLY resets timer tick state. No OnLevelEnd,
+    //                          which is what avoids the PlayerManager
+    //                          disconnect -> stale .NET callbacks -> SEGV
+    //                          chain on ss_dead reloads.
+    // Tick-state reset must be unconditional so universal_time math in
+    // OnGameFrame doesn't desync across the cycle (otherwise pending one-off
+    // timers stall arbitrarily long).
+    globals::timerSystem.OnStartupServer(s_bLevelShutdownOccurred);
+    s_bLevelShutdownOccurred = false;
 
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
