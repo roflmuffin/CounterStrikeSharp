@@ -1,3 +1,10 @@
+## What's Changed in v1.0.369
+* chore: upgrade to .NET 10 (LTS) by [@Mesharsky](https://github.com/Mesharsky) in [#1322](https://github.com/roflmuffin/CounterStrikeSharp/pull/1322) ([492727e](https://github.com/roflmuffin/CounterStrikeSharp/commit/492727e8ce91058d0d9e7f034f4d1d686502b799))
+* feat: add `Task<TResult>` overload of `NextFrameAsync` ([74bc0b4](https://github.com/roflmuffin/CounterStrikeSharp/commit/74bc0b4794bf15114d8ae2e1b90a68886284d1d8))
+
+## New Contributors
+* [@Mesharsky](https://github.com/Mesharsky) made their first contribution in [#1322](https://github.com/roflmuffin/CounterStrikeSharp/pull/1322)
+
 ## What's Changed in v1.0.368
 * chore: Update Schema Definitions to 1.41.6.1 in [#1316](https://github.com/roflmuffin/CounterStrikeSharp/pull/1316) ([d1038fb](https://github.com/roflmuffin/CounterStrikeSharp/commit/d1038fbc3323d0085d52c6f8291fae4a2fa4b742))
 
