@@ -6,7 +6,7 @@
         {
             "label": "sync-linux",
             "type": "shell",
-            "command": "lftp -c \"open -u $LINUX_SERVER_SFTP_USERNAME,$LINUX_SERVER_SFTP_PASSWORD $LINUX_SERVER_SFTP_HOST; mirror -R ${workspaceFolder}/build/addons /game/csgo/addons; mirror -R ${workspaceFolder}/managed/CounterStrikeSharp.API/bin/Release/net8.0/ /game/csgo/addons/counterstrikesharp/api; mirror -R ${workspaceFolder}/managed/CounterStrikeSharp.Tests.Native/bin/Debug/net8.0/ /game/csgo/addons/counterstrikesharp/plugins/NativeTestsPlugin\"",
+            "command": "lftp -c \"open -u $LINUX_SERVER_SFTP_USERNAME,$LINUX_SERVER_SFTP_PASSWORD $LINUX_SERVER_SFTP_HOST; mirror -R ${workspaceFolder}/build/addons /game/csgo/addons; mirror -R ${workspaceFolder}/managed/CounterStrikeSharp.API/bin/Release/net10.0/ /game/csgo/addons/counterstrikesharp/api; mirror -R ${workspaceFolder}/managed/CounterStrikeSharp.Tests.Native/bin/Debug/net10.0/ /game/csgo/addons/counterstrikesharp/plugins/NativeTestsPlugin\"",
             "dependsOn": [
                 "build",
                 "build-api",

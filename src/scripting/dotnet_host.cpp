@@ -99,10 +99,10 @@ bool load_hostfxr()
     std::string base_dir = counterstrikesharp::utils::GetRootDirectory();
     namespace css = counterstrikesharp;
 #if _WIN32
-    std::wstring buffer = std::wstring(css::widen(base_dir) + L"\\dotnet\\host\\fxr\\8.0.3\\hostfxr.dll");
+    std::wstring buffer = std::wstring(css::widen(base_dir) + L"\\dotnet\\host\\fxr\\10.0.3\\hostfxr.dll");
     CSSHARP_CORE_INFO("Loading hostfxr from {0}", css::narrow(buffer).c_str());
 #else
-    std::string buffer = std::string(base_dir + "/dotnet/host/fxr/8.0.3/libhostfxr.so");
+    std::string buffer = std::string(base_dir + "/dotnet/host/fxr/10.0.3/libhostfxr.so");
     CSSHARP_CORE_INFO("Loading hostfxr from {0}", buffer.c_str());
 #endif
 
