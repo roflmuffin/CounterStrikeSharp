@@ -430,18 +430,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_vecStashedVelocity")]
 	public Vector StashedVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vecStashedVelocity");
 
-	// m_angShootAngleHistory
-	[SchemaMember("CCSPlayerPawn", "m_angShootAngleHistory")]
-	public Span<QAngle> ShootAngleHistory => Schema.GetFixedArray<QAngle>(this.Handle, "CCSPlayerPawn", "m_angShootAngleHistory", 2);
-
-	// m_vecThrowPositionHistory
-	[SchemaMember("CCSPlayerPawn", "m_vecThrowPositionHistory")]
-	public Span<Vector> ThrowPositionHistory => Schema.GetFixedArray<Vector>(this.Handle, "CCSPlayerPawn", "m_vecThrowPositionHistory", 2);
-
-	// m_vecVelocityHistory
-	[SchemaMember("CCSPlayerPawn", "m_vecVelocityHistory")]
-	public Span<Vector> VelocityHistory => Schema.GetFixedArray<Vector>(this.Handle, "CCSPlayerPawn", "m_vecVelocityHistory", 2);
-
 	// m_bCommittingSuicideOnTeamChange
 	[SchemaMember("CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange")]
 	public ref bool CommittingSuicideOnTeamChange => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange");
