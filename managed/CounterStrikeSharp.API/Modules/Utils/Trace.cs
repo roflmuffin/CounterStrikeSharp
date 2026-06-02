@@ -140,11 +140,10 @@ public static unsafe class Trace
         => NativeAPI.CheckAreaOverlappingEntity(area, entity.Handle, extrudeHullHeight);
 
     /// <summary>Returns the world-space axis-aligned bounding box of <paramref name="entity"/>.</summary>
-    public static (Vector Mins, Vector Maxs) GetEntityWorldSpaceAABB(CBaseEntity entity)
+    public static void GetEntityWorldSpaceAABB(CBaseEntity entity, out Vector mins, out Vector maxs)
     {
-        var mins = new Vector();
-        var maxs = new Vector();
+        mins = new Vector();
+        maxs = new Vector();
         NativeAPI.GetEntityWorldSpaceAabb(entity.Handle, mins.Handle, maxs.Handle);
-        return (mins, maxs);
     }
 }
