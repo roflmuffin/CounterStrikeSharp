@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,9 +28,14 @@ namespace CounterStrikeSharp.API
 {
     public static class Utilities
     {
-        // https://github.com/dotabuff/manta/blob/master/entity.go#L186-L190
-        public const int MaxEdictBits = 15;
+        // Only for networked entities, which are edicts. There can be more server-only entities that aren't edicts, so this is not the max number of entities in the game, but the max number of edicts.
+        public const int MaxEdictBits = 14;
         public const int MaxEdicts = 1 << MaxEdictBits;
+
+        // Counter-Strike 2 - max 16384 edicts and 16384 server-only entities, total 32768 entities, which is 15 bits for the entity index.
+        public const int MaxEntityBits = 15;
+        public const int MaxEntities = 1 << MaxEntityBits;
+
         public const int NumEHandleSerialNumberBits = 17;
         public const uint InvalidEHandleIndex = 0xFFFFFFFF;
 

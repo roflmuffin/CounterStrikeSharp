@@ -80,10 +80,10 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
     /// <summary>
     /// Checks that the handle is valid and points to an entity.
     /// </summary>
-    public bool IsValid => Index != (Utilities.MaxEdicts - 1);
+    public bool IsValid => Index != (Utilities.MaxEntities - 1);
 
-    public uint Index => (uint)(Raw & (Utilities.MaxEdicts - 1));
-    public uint SerialNum => Raw >> Utilities.MaxEdictBits;
+    public uint Index => (uint)(Raw & (Utilities.MaxEntities - 1));
+    public uint SerialNum => Raw >> Utilities.MaxEntityBits;
 
     public static implicit operator uint(CHandle<T> handle) => handle.Raw;
 
