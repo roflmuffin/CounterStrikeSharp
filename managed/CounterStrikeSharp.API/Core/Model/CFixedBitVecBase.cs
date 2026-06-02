@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -49,6 +49,7 @@ namespace CounterStrikeSharp.API.Core
 
         private void Clear(int bitNum)
         {
+            // CheckTransmit uses CBitVec<MAX_EDICTS>, so these bits address networked edicts only, not all server entities.
             if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
                 return;
 
@@ -58,6 +59,7 @@ namespace CounterStrikeSharp.API.Core
 
         private void Write(int bitNum)
         {
+            // CheckTransmit uses CBitVec<MAX_EDICTS>, so these bits address networked edicts only, not all server entities.
             if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
                 return;
 
@@ -67,6 +69,7 @@ namespace CounterStrikeSharp.API.Core
 
         public bool Contains(int bitNum)
         {
+            // CheckTransmit uses CBitVec<MAX_EDICTS>, so these bits address networked edicts only, not all server entities.
             if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
                 return false;
 
