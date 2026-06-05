@@ -27,9 +27,9 @@ const ROOT = HERE.parentOrThrow();
 
 const paths = {
   apiProject: ROOT.join("managed/CounterStrikeSharp.API"),
-  apiBuild: ROOT.join("managed/CounterStrikeSharp.API/bin/Release/net8.0"),
+  apiBuild: ROOT.join("managed/CounterStrikeSharp.API/bin/Release/net10.0"),
   testProject: ROOT.join("managed/CounterStrikeSharp.Tests.Native/NativeTestsPlugin.csproj"),
-  testBuild: ROOT.join("managed/CounterStrikeSharp.Tests.Native/bin/Debug/net8.0"),
+  testBuild: ROOT.join("managed/CounterStrikeSharp.Tests.Native/bin/Debug/net10.0"),
   nativeSo: ROOT.join("build/addons/counterstrikesharp/bin/linuxsteamrt64/counterstrikesharp.so"),
   results: ROOT.join("TestResults/Benchmarks"),
 };
