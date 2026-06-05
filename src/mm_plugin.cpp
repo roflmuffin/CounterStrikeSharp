@@ -135,6 +135,9 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         return false;
     }
 
+    Log::Close();
+    Log::Init(globals::coreConfig->LogFilePath);
+
     CSSHARP_CORE_INFO("CoreConfig loaded.");
 
     if (globals::coreConfig->AutoUpdateEnabled)
