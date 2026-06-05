@@ -250,7 +250,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * true  | game is ticking
      * false | game is not ticking
      */
-    // VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
+    VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
     globals::timerSystem.OnGameFrame(simulating);
 
     auto callbacks = globals::tickScheduler.getCallbacks(globals::getGlobalVars()->tickcount);
