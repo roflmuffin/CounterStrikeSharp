@@ -1,0 +1,6 @@
+TRACE_SHAPE: startPos:pointer, angles:pointer, ignoreEntity:pointer, interactsAs:uint64, interactsWith:uint64, interactsExclude:uint64, outResult:pointer -> void
+TRACE_END_SHAPE: startPos:pointer, endPos:pointer, ignoreEntity:pointer, interactsAs:uint64, interactsWith:uint64, interactsExclude:uint64, outResult:pointer -> void
+TRACE_HULL_SHAPE: startPos:pointer, endPos:pointer, mins:pointer, maxs:pointer, ignoreEntity:pointer, interactsAs:uint64, interactsWith:uint64, interactsExclude:uint64, outResult:pointer -> void
+POINT_CONTENTS: pos:pointer, contentsMask:uint64 -> uint64
+CHECK_AREA_OVERLAPPING_ENTITY: area:pointer, entity:pointer, extrudeHullHeight:bool -> bool
+GET_ENTITY_WORLD_SPACE_AABB: entity:pointer, minsOut:pointer, maxsOut:pointer -> void
