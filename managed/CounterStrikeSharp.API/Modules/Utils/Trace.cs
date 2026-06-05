@@ -23,13 +23,13 @@ namespace CounterStrikeSharp.API.Modules.Utils;
 public sealed class TraceOptions
 {
     /// <summary>Which interaction layers the trace represents (analogous to Source 1 contents).</summary>
-    public ulong InteractsAs { get; set; } = 0UL; // CONTENTS_EMPTY
+    public Contents InteractsAs { get; set; } = Contents.Empty; // CONTENTS_EMPTY
 
     /// <summary>Which interaction layers the trace collides with (analogous to Source 1 trace mask).</summary>
-    public ulong InteractsWith { get; set; } = ~0UL; // MASK_ALL
+    public Contents InteractsWith { get; set; } = Masks.All; // MASK_ALL
 
     /// <summary>Which interaction layers are explicitly excluded.</summary>
-    public ulong InteractsExclude { get; set; } = 0UL; // CONTENTS_EMPTY
+    public Contents InteractsExclude { get; set; } = Contents.Empty; // CONTENTS_EMPTY
 }
 
 /// <summary>
@@ -65,7 +65,7 @@ public unsafe struct TraceResult
 
     public float Fraction => m_flFraction;
     public float HitOffset => m_flHitOffset;
-    public ulong Contents => m_nContents;
+    public Contents Contents => (Contents)m_nContents;
     public int TriangleIndex => m_nTriangle;
     public short HitboxBoneIndex => m_nHitboxBoneIndex;
     public RayType_t RayType => (RayType_t)m_eRayType;
@@ -95,8 +95,8 @@ public unsafe struct TraceResult
 /// </summary>
 public static unsafe class Trace
 {
-    private static (ulong ia, ulong iw, ulong ie) Unpack(TraceOptions? opts)
-        => opts is null ? (0UL, ~0UL, 0UL) : (opts.InteractsAs, opts.InteractsWith, opts.InteractsExclude);
+    private static (Contents ia, Contents iw, Contents ie) Unpack(TraceOptions? opts)
+        => opts is null ? (0UL, (Contents)~0UL, 0UL) : (opts.InteractsAs, opts.InteractsWith, opts.InteractsExclude);
 
     /// <summary>
     /// Performs a line trace from <paramref name="startPos"/> in the direction of
@@ -106,7 +106,8 @@ public static unsafe class Trace
     {
         var (ia, iw, ie) = Unpack(options);
         TraceResult result = default;
-        NativeAPI.TraceShape(startPos.Handle, angles.Handle, ignoreEntity?.Handle ?? nint.Zero, ia, iw, ie, (nint)(&result));
+        NativeAPI.TraceShape(startPos.Handle, angles.Handle, ignoreEntity?.Handle ?? nint.Zero, (ulong)ia, (ulong)iw, (ulong)ie,
+            (nint)(&result));
         return result;
     }
 
@@ -115,22 +116,26 @@ public static unsafe class Trace
     {
         var (ia, iw, ie) = Unpack(options);
         TraceResult result = default;
-        NativeAPI.TraceEndShape(startPos.Handle, endPos.Handle, ignoreEntity?.Handle ?? nint.Zero, ia, iw, ie, (nint)(&result));
+        NativeAPI.TraceEndShape(startPos.Handle, endPos.Handle, ignoreEntity?.Handle ?? nint.Zero, (ulong)ia, (ulong)iw, (ulong)ie,
+            (nint)(&result));
         return result;
     }
 
     /// <summary>Performs a hull (box) trace between two world-space points.</summary>
-    public static TraceResult TraceHullShape(Vector startPos, Vector endPos, Vector mins, Vector maxs, CBaseEntity? ignoreEntity = null, TraceOptions? options = null)
+    public static TraceResult TraceHullShape(Vector startPos, Vector endPos, Vector mins, Vector maxs, CBaseEntity? ignoreEntity = null,
+        TraceOptions? options = null)
     {
         var (ia, iw, ie) = Unpack(options);
         TraceResult result = default;
-        NativeAPI.TraceHullShape(startPos.Handle, endPos.Handle, mins.Handle, maxs.Handle, ignoreEntity?.Handle ?? nint.Zero, ia, iw, ie, (nint)(&result));
+        NativeAPI.TraceHullShape(startPos.Handle, endPos.Handle, mins.Handle, maxs.Handle, ignoreEntity?.Handle ?? nint.Zero, (ulong)ia, (
+                ulong)iw, (ulong)ie,
+            (nint)(&result));
         return result;
     }
 
     /// <summary>Returns the contents bitmask at the given world position.</summary>
-    public static ulong PointContents(Vector pos, ulong contentsMask = ~0UL)
-        => NativeAPI.PointContents(pos.Handle, contentsMask);
+    public static Contents PointContents(Vector pos, Contents contentsMask = Contents.Empty)
+        => (Contents)NativeAPI.PointContents(pos.Handle, (ulong)contentsMask);
 
     /// <summary>
     /// Returns whether a nav area overlaps with an entity's bounding box.
