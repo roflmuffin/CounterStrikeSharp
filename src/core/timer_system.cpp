@@ -88,15 +88,19 @@ void TimerSystem::OnLevelEnd()
     m_has_map_ticked = false;
 }
 
-void TimerSystem::OnStartupServer()
+void TimerSystem::OnStartupServer(bool levelShutdown)
 {
-    if (m_has_map_ticked)
+    if (levelShutdown && m_has_map_ticked)
     {
         CALL_GLOBAL_LISTENER(OnLevelEnd());
 
         CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
     }
 
+    // Reset is UNCONDITIONAL -- universal_time math in OnGameFrame depends on
+    // m_has_map_ticked being false on the first frame of every new session,
+    // whether that session came in via a genuine LevelShutdown or a workshop
+    // ss_dead reload.
     m_has_map_ticked = false;
     m_has_map_simulated = false;
 }

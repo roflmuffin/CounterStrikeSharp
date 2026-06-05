@@ -72,7 +72,14 @@ class TimerSystem : public GlobalClass
     void OnShutdown() override;
     void OnLevelEnd() override;
     void OnGameFrame(bool simulating);
-    void OnStartupServer();
+    // levelShutdown=true on a genuine OnLevelShutdown -> OnStartupServer sequence
+    // (real changelevel/shutdown). levelShutdown=false on workshop ss_dead reload
+    // cycles that fire Hook_StartupServer without OnLevelShutdown -- in that case
+    // we must NOT fire OnLevelEnd (PlayerManager disconnects still-connected
+    // players -> stale .NET callbacks -> SEGV on the next DispatchConCommand
+    // hook), but we MUST still reset the per-map tick state for universal_time
+    // math to stay correct across the cycle.
+    void OnStartupServer(bool levelShutdown);
     double CalculateNextThink(double last_think_time, float interval);
     void RunFrame();
     void RemoveMapChangeTimers();
