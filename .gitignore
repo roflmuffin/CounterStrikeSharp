@@ -12,6 +12,7 @@ configs/addons/metamod/counterstrikesharp.vdf
 libraries/mono/
 
 CMakeSettings.json
+.vscode/compile_commands.json
 
 build-*/
 build/
