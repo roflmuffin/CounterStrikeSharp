@@ -16,4 +16,8 @@
     <PackageReference Include="xunit.extensibility.core" Version="2.9.3" />
     <PackageReference Include="xunit.assert" Version="2.9.3" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj" />
+  </ItemGroup>
 </Project>

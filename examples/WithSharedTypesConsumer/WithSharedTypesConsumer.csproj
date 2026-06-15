@@ -8,5 +8,6 @@
     </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\MySharedTypes.Contracts\MySharedTypes.Contracts\MySharedTypes.Contracts.csproj" />
+      <ProjectReference Include="..\..\managed\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj" />
     </ItemGroup>
 </Project>

@@ -6,4 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\managed\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj" />
+  </ItemGroup>
 </Project>

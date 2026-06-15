@@ -13,4 +13,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj" />
+  </ItemGroup>
 </Project>
