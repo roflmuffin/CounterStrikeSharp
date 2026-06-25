@@ -62,26 +62,12 @@ TimerSystem::TimerSystem()
     m_last_ticked_time = 0.0f;
 }
 
-void TimerSystem::OnAllInitialized()
-{
-    m_on_tick_callback_ = globals::callbackManager.CreateCallback("OnTick");
-    on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
-}
+void TimerSystem::OnAllInitialized() { m_on_tick_callback_ = globals::callbackManager.CreateCallback("OnTick"); }
 
-void TimerSystem::OnShutdown()
-{
-    globals::callbackManager.ReleaseCallback(m_on_tick_callback_);
-    globals::callbackManager.ReleaseCallback(on_map_end_callback);
-}
+void TimerSystem::OnShutdown() { globals::callbackManager.ReleaseCallback(m_on_tick_callback_); }
 
 void TimerSystem::OnLevelEnd()
 {
-    if (on_map_end_callback && on_map_end_callback->GetFunctionCount())
-    {
-        on_map_end_callback->ScriptContext().Reset();
-        on_map_end_callback->Execute();
-    }
-
     globals::timerSystem.RemoveMapChangeTimers();
 
     m_has_map_simulated = false;
