@@ -1,3 +1,12 @@
+## What's Changed in v1.0.370
+* fix: Correct the trigger timing of the C# `OnMapEnd` listener by [@ELDment](https://github.com/ELDment) in [#1338](https://github.com/roflmuffin/CounterStrikeSharp/pull/1338) ([99ae856](https://github.com/roflmuffin/CounterStrikeSharp/commit/99ae85656e7639374ab3e8769e18b0b9fe35b884))
+* feat: Implement basic definitions and essential methods for `CCSNavArea` by [@ELDment](https://github.com/ELDment) in [#1335](https://github.com/roflmuffin/CounterStrikeSharp/pull/1335) ([c6eff28](https://github.com/roflmuffin/CounterStrikeSharp/commit/c6eff28141eddb48773307e2aa6a1adf9452de6f))
+* fix: normalize line endings on lf ([30c048c](https://github.com/roflmuffin/CounterStrikeSharp/commit/30c048ce7715320bf4a32c0955b93102c6bd0958))
+* chore: Support CMake 4+ when configuring dyncall by [@ELDment](https://github.com/ELDment) in [#1333](https://github.com/roflmuffin/CounterStrikeSharp/pull/1333) ([222f73d](https://github.com/roflmuffin/CounterStrikeSharp/commit/222f73d658758aa46408d64d983b5774ddb93769))
+* chore: update some .net10 tooling ([1416e96](https://github.com/roflmuffin/CounterStrikeSharp/commit/1416e9644680c9fca7e97639808f93b923bad3db))
+* fix: Resolve `MaxEdictBits` confusion by separating edict and entity limits by [@ELDment](https://github.com/ELDment) in [#1330](https://github.com/roflmuffin/CounterStrikeSharp/pull/1330) ([4c3d2fc](https://github.com/roflmuffin/CounterStrikeSharp/commit/4c3d2fceb9d2bd2667eaa64c32aa0f9b8f0b57a1))
+* chore: Update Schema Definitions to 1.41.6.5 in [#1327](https://github.com/roflmuffin/CounterStrikeSharp/pull/1327) ([0fc6848](https://github.com/roflmuffin/CounterStrikeSharp/commit/0fc6848d01f4cce053b2cf3fdd95f6d6085d2734))
+
 ## What's Changed in v1.0.369
 * chore: upgrade to .NET 10 (LTS) by [@Mesharsky](https://github.com/Mesharsky) in [#1322](https://github.com/roflmuffin/CounterStrikeSharp/pull/1322) ([492727e](https://github.com/roflmuffin/CounterStrikeSharp/commit/492727e8ce91058d0d9e7f034f4d1d686502b799))
 * feat: add `Task<TResult>` overload of `NextFrameAsync` ([74bc0b4](https://github.com/roflmuffin/CounterStrikeSharp/commit/74bc0b4794bf15114d8ae2e1b90a68886284d1d8))
