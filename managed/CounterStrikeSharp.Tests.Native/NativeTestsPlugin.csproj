@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj">
+        <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="moq" Version="4.20.72" />
     <PackageReference Include="Spectre.Console" Version="0.50.0" />
     <PackageReference Include="xunit" Version="2.9.3" />

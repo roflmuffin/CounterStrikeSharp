@@ -11,7 +11,13 @@ public class EventPlayerDisconnect : GameEvent
 {
     public EventPlayerDisconnect(IntPtr pointer) : base(pointer){}
     public EventPlayerDisconnect(bool force) : base("player_disconnect", force){}
-    // player name
+    // Was the player ever fully connected?
+    public bool EverFullyConnected
+    {
+        get => Get<bool>("ever_fully_connected");
+        set => Set<bool>("ever_fully_connected", value);
+    }
+// player name
     public string Name
     {
         get => Get<string>("name");
