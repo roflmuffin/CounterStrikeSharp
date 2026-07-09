@@ -1,7 +1,7 @@
 [submodule "libraries/hl2sdk-cs2"]
 	path = libraries/hl2sdk-cs2
-	url = https://github.com/alliedmodders/hl2sdk
-	branch = cs2
+	url = https://github.com/tomastaker/hl2sdk
+	branch = codex/cs2-2000872-metamod-css-fix
 [submodule "libraries/metamod-source"]
 	path = libraries/metamod-source
 	url = https://github.com/alliedmodders/metamod-source
