@@ -142,10 +142,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen")]
 	public ref float StashGrenadeParameterWhen => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
 
-	// m_nButtonDownMaskPrev
-	[SchemaMember("CCSPlayer_MovementServices", "m_nButtonDownMaskPrev")]
-	public ref UInt64 ButtonDownMaskPrev => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev");
-
 	// m_bUseFrictionStashedSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_bUseFrictionStashedSpeed")]
 	public ref bool UseFrictionStashedSpeed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bUseFrictionStashedSpeed");
@@ -213,10 +209,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	// m_flTicksSinceLastSurfingDetected
 	[SchemaMember("CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected")]
 	public ref float TicksSinceLastSurfingDetected => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected");
-
-	// m_bWasSurfing
-	[SchemaMember("CCSPlayer_MovementServices", "m_bWasSurfing")]
-	public ref bool WasSurfing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing");
 
 	// m_vecWalkWishVel
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecWalkWishVel")]

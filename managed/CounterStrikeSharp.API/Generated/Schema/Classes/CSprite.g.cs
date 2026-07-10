@@ -106,4 +106,8 @@ public partial class CSprite : CBaseModelEntity
 	[SchemaMember("CSprite", "m_nSpriteHeight")]
 	public ref Int32 SpriteHeight => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nSpriteHeight");
 
+	// m_flSpeed
+	[SchemaMember("CSprite", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flSpeed");
+
 }

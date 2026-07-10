@@ -82,6 +82,10 @@ public partial class CDynamicProp : CBreakableProp
 	[SchemaMember("CDynamicProp", "m_bForceNpcExclude")]
 	public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bForceNpcExclude");
 
+	// m_bCreateMovableSurfaceGraph
+	[SchemaMember("CDynamicProp", "m_bCreateMovableSurfaceGraph")]
+	public ref bool CreateMovableSurfaceGraph => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateMovableSurfaceGraph");
+
 	// m_bCreateNonSolid
 	[SchemaMember("CDynamicProp", "m_bCreateNonSolid")]
 	public ref bool CreateNonSolid => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateNonSolid");

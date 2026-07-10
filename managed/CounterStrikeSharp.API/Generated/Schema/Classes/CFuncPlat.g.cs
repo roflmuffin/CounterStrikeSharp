@@ -18,6 +18,10 @@ public partial class CFuncPlat : CBasePlatTrain
 {
     public CFuncPlat (IntPtr pointer) : base(pointer) {}
 
+	// m_flSpeed
+	[SchemaMember("CFuncPlat", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncPlat", "m_flSpeed");
+
 	// m_sNoise
 	[SchemaMember("CFuncPlat", "m_sNoise")]
 	public string Noise

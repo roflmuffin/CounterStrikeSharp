@@ -70,6 +70,10 @@ public partial class CFuncMoveLinear : CBaseToggle
 	[SchemaMember("CFuncMoveLinear", "m_OnFullyClosed")]
 	public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyClosed");
 
+	// m_flSpeed
+	[SchemaMember("CFuncMoveLinear", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flSpeed");
+
 	// m_bCreateMovableNavMesh
 	[SchemaMember("CFuncMoveLinear", "m_bCreateMovableNavMesh")]
 	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh");

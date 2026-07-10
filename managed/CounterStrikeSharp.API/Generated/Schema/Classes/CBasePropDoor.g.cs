@@ -78,6 +78,10 @@ public partial class CBasePropDoor : CDynamicProp
 	[SchemaMember("CBasePropDoor", "m_hActivator")]
 	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hActivator");
 
+	// m_flSpeed
+	[SchemaMember("CBasePropDoor", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBasePropDoor", "m_flSpeed");
+
 	// m_SoundMoving
 	[SchemaMember("CBasePropDoor", "m_SoundMoving")]
 	public string SoundMoving

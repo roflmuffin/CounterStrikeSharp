@@ -34,6 +34,10 @@ public partial class CFuncRotating : CBaseModelEntity
 	[SchemaMember("CFuncRotating", "m_localRotationVector")]
 	public Vector LocalRotationVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotating", "m_localRotationVector");
 
+	// m_flSpeed
+	[SchemaMember("CFuncRotating", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flSpeed");
+
 	// m_flFanFriction
 	[SchemaMember("CFuncRotating", "m_flFanFriction")]
 	public ref float FanFriction => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flFanFriction");

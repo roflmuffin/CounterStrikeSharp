@@ -50,4 +50,8 @@ public partial class CLogicCollisionPair : CLogicalEntity
 	[SchemaMember("CLogicCollisionPair", "m_succeeded")]
 	public ref bool Succeeded => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_succeeded");
 
+	// m_allowMissing
+	[SchemaMember("CLogicCollisionPair", "m_allowMissing")]
+	public ref bool AllowMissing => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_allowMissing");
+
 }

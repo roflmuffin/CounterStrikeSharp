@@ -238,6 +238,10 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_bCreateMovableNavMesh")]
 	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh");
 
+	// m_bCreateMovableSurfaceGraph
+	[SchemaMember("CFuncMover", "m_bCreateMovableSurfaceGraph")]
+	public ref bool CreateMovableSurfaceGraph => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bCreateMovableSurfaceGraph");
+
 	// m_bAllowMovableNavMeshDockingOnEntireEntity
 	[SchemaMember("CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
 	public ref bool AllowMovableNavMeshDockingOnEntireEntity => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity");
@@ -297,6 +301,14 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_bIsImGuiLogging
 	[SchemaMember("CFuncMover", "m_bIsImGuiLogging")]
 	public ref bool IsImGuiLogging => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsImGuiLogging");
+
+	// m_bIsImGuiEntTextLogging
+	[SchemaMember("CFuncMover", "m_bIsImGuiEntTextLogging")]
+	public ref bool IsImGuiEntTextLogging => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsImGuiEntTextLogging");
+
+	// m_flSpeed
+	[SchemaMember("CFuncMover", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flSpeed");
 
 	// m_hFollowEntity
 	[SchemaMember("CFuncMover", "m_hFollowEntity")]
@@ -366,6 +378,14 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_hFollowMover")]
 	public CHandle<CFuncMover> FollowMover => Schema.GetDeclaredClass<CHandle<CFuncMover>>(this.Handle, "CFuncMover", "m_hFollowMover");
 
+	// m_iszFollowEntityName
+	[SchemaMember("CFuncMover", "m_iszFollowEntityName")]
+	public string FollowEntityName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszFollowEntityName"); }
+		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszFollowEntityName", value); }
+	}
+
 	// m_iszFollowMoverEntityName
 	[SchemaMember("CFuncMover", "m_iszFollowMoverEntityName")]
 	public string FollowMoverEntityName
@@ -393,6 +413,10 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_nFollowMoverConstraintPriority
 	[SchemaMember("CFuncMover", "m_nFollowMoverConstraintPriority")]
 	public ref Int32 FollowMoverConstraintPriority => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nFollowMoverConstraintPriority");
+
+	// m_vecFollowMoverCouplerRange
+	[SchemaMember("CFuncMover", "m_vecFollowMoverCouplerRange")]
+	public Vector2D FollowMoverCouplerRange => Schema.GetDeclaredClass<Vector2D>(this.Handle, "CFuncMover", "m_vecFollowMoverCouplerRange");
 
 	// m_bFollowConstraintsInitialized
 	[SchemaMember("CFuncMover", "m_bFollowConstraintsInitialized")]
@@ -429,5 +453,13 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_bQueueStopMoving
 	[SchemaMember("CFuncMover", "m_bQueueStopMoving")]
 	public ref bool QueueStopMoving => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bQueueStopMoving");
+
+	// m_bQueueSetupPathMover
+	[SchemaMember("CFuncMover", "m_bQueueSetupPathMover")]
+	public ref bool QueueSetupPathMover => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bQueueSetupPathMover");
+
+	// m_ePathRebuildStrategy
+	[SchemaMember("CFuncMover", "m_ePathRebuildStrategy")]
+	public ref CFuncMoverPathRebuildStrategy_t PathRebuildStrategy => ref Schema.GetRef<CFuncMoverPathRebuildStrategy_t>(this.Handle, "CFuncMover", "m_ePathRebuildStrategy");
 
 }

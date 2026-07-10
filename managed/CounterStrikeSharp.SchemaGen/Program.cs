@@ -43,6 +43,7 @@ internal static partial class Program
         "HSCRIPT",
         "KeyValues3",
         "Unknown",
+        "CUtlDict",
         "CUtlOrderedMap",
         "CAnimGraph2ParamOptionalRef",
         "CUtlHashtable",

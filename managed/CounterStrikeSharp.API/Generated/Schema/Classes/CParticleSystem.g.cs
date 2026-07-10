@@ -70,6 +70,18 @@ public partial class CParticleSystem : CBaseModelEntity
 	[SchemaMember("CParticleSystem", "m_hControlPointEnts")]
 	public Span<CHandle<CBaseEntity>> ControlPointEnts => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CParticleSystem", "m_hControlPointEnts", 64);
 
+	// m_bDataStringLocalized
+	[SchemaMember("CParticleSystem", "m_bDataStringLocalized")]
+	public ref bool DataStringLocalized => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bDataStringLocalized");
+
+	// m_strDataString
+	[SchemaMember("CParticleSystem", "m_strDataString")]
+	public string StrDataString
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CParticleSystem", "m_strDataString"); }
+		set { Schema.SetString(this.Handle, "CParticleSystem", "m_strDataString", value); }
+	}
+
 	// m_bNoSave
 	[SchemaMember("CParticleSystem", "m_bNoSave")]
 	public ref bool NoSave => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bNoSave");

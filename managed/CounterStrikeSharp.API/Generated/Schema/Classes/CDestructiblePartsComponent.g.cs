@@ -32,6 +32,6 @@ public partial class CDestructiblePartsComponent : NativeObject
 
 	// m_pAnimGraphDestructibleGraphController
 	[SchemaMember("CDestructiblePartsComponent", "m_pAnimGraphDestructibleGraphController")]
-	public CBaseAnimGraphDestructibleParts_GraphController? AnimGraphDestructibleGraphController => Schema.GetPointer<CBaseAnimGraphDestructibleParts_GraphController>(this.Handle, "CDestructiblePartsComponent", "m_pAnimGraphDestructibleGraphController");
+	public CAnimGraphControllerPtr AnimGraphDestructibleGraphController => Schema.GetDeclaredClass<CAnimGraphControllerPtr>(this.Handle, "CDestructiblePartsComponent", "m_pAnimGraphDestructibleGraphController");
 
 }

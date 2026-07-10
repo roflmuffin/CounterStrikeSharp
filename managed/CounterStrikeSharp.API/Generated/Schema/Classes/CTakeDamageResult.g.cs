@@ -38,6 +38,10 @@ public partial class CTakeDamageResult : NativeObject
 	[SchemaMember("CTakeDamageResult", "m_flPreModifiedDamage")]
 	public ref float PreModifiedDamage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageResult", "m_flPreModifiedDamage");
 
+	// m_vDamagePosition
+	[SchemaMember("CTakeDamageResult", "m_vDamagePosition")]
+	public Vector DamagePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CTakeDamageResult", "m_vDamagePosition");
+
 	// m_nTotalledHealthLost
 	[SchemaMember("CTakeDamageResult", "m_nTotalledHealthLost")]
 	public ref Int32 TotalledHealthLost => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledHealthLost");

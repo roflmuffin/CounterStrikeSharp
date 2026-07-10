@@ -74,6 +74,10 @@ public partial class CBaseButton : CBaseToggle
 	[SchemaMember("CBaseButton", "m_bDisabled")]
 	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bDisabled");
 
+	// m_flSpeed
+	[SchemaMember("CBaseButton", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBaseButton", "m_flSpeed");
+
 	// m_flUseLockedTime
 	[SchemaMember("CBaseButton", "m_flUseLockedTime")]
 	public ref float UseLockedTime => ref Schema.GetRef<float>(this.Handle, "CBaseButton", "m_flUseLockedTime");
