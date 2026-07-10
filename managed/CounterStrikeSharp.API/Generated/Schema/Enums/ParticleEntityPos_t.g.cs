@@ -11,4 +11,5 @@ public enum ParticleEntityPos_t : uint
 	PARTICLE_ABS_ORIGIN = 0x0,
 	PARTICLE_WORLDSPACE_CENTER = 0x1,
 	PARTICLE_EYES = 0x2,
+	PARTICLE_FLASHLIGHT = 0x3,
 }

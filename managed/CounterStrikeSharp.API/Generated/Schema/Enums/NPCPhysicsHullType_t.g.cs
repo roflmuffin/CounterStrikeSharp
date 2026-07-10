@@ -13,4 +13,6 @@ public enum NPCPhysicsHullType_t : uint
 	eCenteredCapsule = 0x2,
 	eGenericCapsule = 0x3,
 	eGroundBox = 0x4,
+	eGroundCylinder = 0x5,
+	eCenteredCylinder = 0x6,
 }

@@ -46,6 +46,10 @@ public partial class DestructiblePartDamageRequest_t : NativeObject
 	[SchemaMember("DestructiblePartDamageRequest_t", "m_flBreakDamageRadius")]
 	public ref float BreakDamageRadius => ref Schema.GetRef<float>(this.Handle, "DestructiblePartDamageRequest_t", "m_flBreakDamageRadius");
 
+	// m_hAttacker
+	[SchemaMember("DestructiblePartDamageRequest_t", "m_hAttacker")]
+	public CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "DestructiblePartDamageRequest_t", "m_hAttacker");
+
 	// m_vWsBreakDamageOrigin
 	[SchemaMember("DestructiblePartDamageRequest_t", "m_vWsBreakDamageOrigin")]
 	public Vector WsBreakDamageOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "DestructiblePartDamageRequest_t", "m_vWsBreakDamageOrigin");

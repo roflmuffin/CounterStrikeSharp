@@ -186,10 +186,6 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_iSentToClients")]
 	public ref Int32 SentToClients => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iSentToClients");
 
-	// m_flSpeed
-	[SchemaMember("CBaseEntity", "m_flSpeed")]
-	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flSpeed");
-
 	// m_sUniqueHammerID
 	[SchemaMember("CBaseEntity", "m_sUniqueHammerID")]
 	public string UniqueHammerID

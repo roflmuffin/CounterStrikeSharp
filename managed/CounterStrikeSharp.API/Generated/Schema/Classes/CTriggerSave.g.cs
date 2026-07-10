@@ -30,4 +30,8 @@ public partial class CTriggerSave : CBaseTrigger
 	[SchemaMember("CTriggerSave", "m_minHitPoints")]
 	public ref Int32 MinHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CTriggerSave", "m_minHitPoints");
 
+	// m_flRetriggerDelay
+	[SchemaMember("CTriggerSave", "m_flRetriggerDelay")]
+	public ref float RetriggerDelay => ref Schema.GetRef<float>(this.Handle, "CTriggerSave", "m_flRetriggerDelay");
+
 }

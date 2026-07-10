@@ -10,6 +10,7 @@ public enum CInfoChoreoLocatorShapeType_t : uint
 {
 	POINT = 0x0,
 	LINE = 0x1,
-	COUNT = 0x2,
-	NONE = 0x3,
+	RADIUS = 0x2,
+	COUNT = 0x3,
+	NONE = 0x4,
 }

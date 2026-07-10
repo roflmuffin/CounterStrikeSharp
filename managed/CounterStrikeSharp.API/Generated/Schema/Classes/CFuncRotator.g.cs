@@ -18,57 +18,41 @@ public partial class CFuncRotator : CBaseModelEntity
 {
     public CFuncRotator (IntPtr pointer) : base(pointer) {}
 
-	// m_hRotatorTarget
-	[SchemaMember("CFuncRotator", "m_hRotatorTarget")]
-	public CHandle<CBaseEntity> RotatorTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncRotator", "m_hRotatorTarget");
+	// m_eRotateType
+	[SchemaMember("CFuncRotator", "m_eRotateType")]
+	public ref CFuncRotatorRotate_t RotateType => ref Schema.GetRef<CFuncRotatorRotate_t>(this.Handle, "CFuncRotator", "m_eRotateType");
 
 	// m_bIsRotating
 	[SchemaMember("CFuncRotator", "m_bIsRotating")]
 	public ref bool IsRotating => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bIsRotating");
 
-	// m_bIsReversing
-	[SchemaMember("CFuncRotator", "m_bIsReversing")]
-	public ref bool IsReversing => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bIsReversing");
+	// m_eSolidType
+	[SchemaMember("CFuncRotator", "m_eSolidType")]
+	public ref SolidType_t SolidType => ref Schema.GetRef<SolidType_t>(this.Handle, "CFuncRotator", "m_eSolidType");
 
-	// m_flTimeToReachMaxSpeed
-	[SchemaMember("CFuncRotator", "m_flTimeToReachMaxSpeed")]
-	public ref float TimeToReachMaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeToReachMaxSpeed");
+	// m_flSpeed
+	[SchemaMember("CFuncRotator", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flSpeed");
 
-	// m_flTimeToReachZeroSpeed
-	[SchemaMember("CFuncRotator", "m_flTimeToReachZeroSpeed")]
-	public ref float TimeToReachZeroSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeToReachZeroSpeed");
+	// m_flTimeToCompleteRotation
+	[SchemaMember("CFuncRotator", "m_flTimeToCompleteRotation")]
+	public ref float TimeToCompleteRotation => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeToCompleteRotation");
 
-	// m_flDistanceAlongArcTraveled
-	[SchemaMember("CFuncRotator", "m_flDistanceAlongArcTraveled")]
-	public ref float DistanceAlongArcTraveled => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flDistanceAlongArcTraveled");
+	// m_hRotatorTarget
+	[SchemaMember("CFuncRotator", "m_hRotatorTarget")]
+	public CHandle<CBaseEntity> RotatorTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncRotator", "m_hRotatorTarget");
 
-	// m_flTimeToWaitOscillate
-	[SchemaMember("CFuncRotator", "m_flTimeToWaitOscillate")]
-	public ref float TimeToWaitOscillate => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeToWaitOscillate");
+	// m_strRotatorTarget
+	[SchemaMember("CFuncRotator", "m_strRotatorTarget")]
+	public string StrRotatorTarget
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_strRotatorTarget"); }
+		set { Schema.SetString(this.Handle, "CFuncRotator", "m_strRotatorTarget", value); }
+	}
 
-	// m_flTimeRotationStart
-	[SchemaMember("CFuncRotator", "m_flTimeRotationStart")]
-	public ref float TimeRotationStart => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeRotationStart");
-
-	// m_qLSPrevChange
-	[SchemaMember("CFuncRotator", "m_qLSPrevChange")]
-	public Quaternion LSPrevChange => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qLSPrevChange");
-
-	// m_qWSPrev
-	[SchemaMember("CFuncRotator", "m_qWSPrev")]
-	public Quaternion WSPrev => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qWSPrev");
-
-	// m_qWSInit
-	[SchemaMember("CFuncRotator", "m_qWSInit")]
-	public Quaternion WSInit => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qWSInit");
-
-	// m_qLSInit
-	[SchemaMember("CFuncRotator", "m_qLSInit")]
-	public Quaternion LSInit => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qLSInit");
-
-	// m_qLSOrientation
-	[SchemaMember("CFuncRotator", "m_qLSOrientation")]
-	public Quaternion LSOrientation => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qLSOrientation");
+	// m_vecLocalRotationHistory
+	[SchemaMember("CFuncRotator", "m_vecLocalRotationHistory")]
+	public NetworkedVector<Quaternion> LocalRotationHistory => Schema.GetDeclaredClass<NetworkedVector<Quaternion>>(this.Handle, "CFuncRotator", "m_vecLocalRotationHistory");
 
 	// m_OnRotationStarted
 	[SchemaMember("CFuncRotator", "m_OnRotationStarted")]
@@ -98,89 +82,53 @@ public partial class CFuncRotator : CBaseModelEntity
 	[SchemaMember("CFuncRotator", "m_OnOscillateEndDepart")]
 	public CEntityIOOutput OnOscillateEndDepart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotator", "m_OnOscillateEndDepart");
 
-	// m_bOscillateDepart
-	[SchemaMember("CFuncRotator", "m_bOscillateDepart")]
-	public ref bool OscillateDepart => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bOscillateDepart");
+	// m_nTickRotateRan
+	[SchemaMember("CFuncRotator", "m_nTickRotateRan")]
+	public ref Int32 TickRotateRan => ref Schema.GetRef<Int32>(this.Handle, "CFuncRotator", "m_nTickRotateRan");
 
-	// m_nOscillateCount
-	[SchemaMember("CFuncRotator", "m_nOscillateCount")]
-	public ref Int32 OscillateCount => ref Schema.GetRef<Int32>(this.Handle, "CFuncRotator", "m_nOscillateCount");
+	// m_bStartedRotating
+	[SchemaMember("CFuncRotator", "m_bStartedRotating")]
+	public ref bool StartedRotating => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bStartedRotating");
 
-	// m_eRotateType
-	[SchemaMember("CFuncRotator", "m_eRotateType")]
-	public ref CFuncRotatorRotate_t RotateType => ref Schema.GetRef<CFuncRotatorRotate_t>(this.Handle, "CFuncRotator", "m_eRotateType");
+	// m_rotationSummary
+	[SchemaMember("CFuncRotator", "m_rotationSummary")]
+	public FuncRotatorRotationSummary_t RotationSummary => Schema.GetDeclaredClass<FuncRotatorRotationSummary_t>(this.Handle, "CFuncRotator", "m_rotationSummary");
 
-	// m_ePrevRotateType
-	[SchemaMember("CFuncRotator", "m_ePrevRotateType")]
-	public ref CFuncRotatorRotate_t PrevRotateType => ref Schema.GetRef<CFuncRotatorRotate_t>(this.Handle, "CFuncRotator", "m_ePrevRotateType");
+	// m_flTimeToReachMaxSpeed
+	[SchemaMember("CFuncRotator", "m_flTimeToReachMaxSpeed")]
+	public ref float TimeToReachMaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeToReachMaxSpeed");
 
-	// m_bHasTargetOverride
-	[SchemaMember("CFuncRotator", "m_bHasTargetOverride")]
-	public ref bool HasTargetOverride => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bHasTargetOverride");
+	// m_flTimeToReachZeroSpeed
+	[SchemaMember("CFuncRotator", "m_flTimeToReachZeroSpeed")]
+	public ref float TimeToReachZeroSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeToReachZeroSpeed");
 
-	// m_qOrientationOverride
-	[SchemaMember("CFuncRotator", "m_qOrientationOverride")]
-	public Quaternion OrientationOverride => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qOrientationOverride");
+	// m_flTimeRotationStart
+	[SchemaMember("CFuncRotator", "m_flTimeRotationStart")]
+	public ref float TimeRotationStart => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeRotationStart");
 
-	// m_eSpaceOverride
-	[SchemaMember("CFuncRotator", "m_eSpaceOverride")]
-	public ref RotatorTargetSpace_t SpaceOverride => ref Schema.GetRef<RotatorTargetSpace_t>(this.Handle, "CFuncRotator", "m_eSpaceOverride");
+	// m_flTimeRotationStop
+	[SchemaMember("CFuncRotator", "m_flTimeRotationStop")]
+	public ref float TimeRotationStop => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeRotationStop");
 
-	// m_qAngularVelocity
-	[SchemaMember("CFuncRotator", "m_qAngularVelocity")]
-	public QAngle AngularVelocity => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotator", "m_qAngularVelocity");
+	// m_flStartSpeed
+	[SchemaMember("CFuncRotator", "m_flStartSpeed")]
+	public ref float StartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flStartSpeed");
 
-	// m_vLookAtForcedUp
-	[SchemaMember("CFuncRotator", "m_vLookAtForcedUp")]
-	public Vector LookAtForcedUp => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotator", "m_vLookAtForcedUp");
-
-	// m_strRotatorTarget
-	[SchemaMember("CFuncRotator", "m_strRotatorTarget")]
-	public string StrRotatorTarget
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_strRotatorTarget"); }
-		set { Schema.SetString(this.Handle, "CFuncRotator", "m_strRotatorTarget", value); }
-	}
+	// m_qSpawnOrientation
+	[SchemaMember("CFuncRotator", "m_qSpawnOrientation")]
+	public Quaternion SpawnOrientation => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qSpawnOrientation");
 
 	// m_bRecordHistory
 	[SchemaMember("CFuncRotator", "m_bRecordHistory")]
 	public ref bool RecordHistory => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bRecordHistory");
 
-	// m_vecRotatorHistory
-	[SchemaMember("CFuncRotator", "m_vecRotatorHistory")]
-	public NetworkedVector<RotatorHistoryEntry_t> RotatorHistory => Schema.GetDeclaredClass<NetworkedVector<RotatorHistoryEntry_t>>(this.Handle, "CFuncRotator", "m_vecRotatorHistory");
+	// m_bReturningToPreviousRotation
+	[SchemaMember("CFuncRotator", "m_bReturningToPreviousRotation")]
+	public ref bool ReturningToPreviousRotation => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bReturningToPreviousRotation");
 
-	// m_bReturningToPreviousOrientation
-	[SchemaMember("CFuncRotator", "m_bReturningToPreviousOrientation")]
-	public ref bool ReturningToPreviousOrientation => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bReturningToPreviousOrientation");
-
-	// m_vecRotatorQueue
-	[SchemaMember("CFuncRotator", "m_vecRotatorQueue")]
-	public NetworkedVector<RotatorQueueEntry_t> RotatorQueue => Schema.GetDeclaredClass<NetworkedVector<RotatorQueueEntry_t>>(this.Handle, "CFuncRotator", "m_vecRotatorQueue");
-
-	// m_vecRotatorQueueHistory
-	[SchemaMember("CFuncRotator", "m_vecRotatorQueueHistory")]
-	public NetworkedVector<RotatorHistoryEntry_t> RotatorQueueHistory => Schema.GetDeclaredClass<NetworkedVector<RotatorHistoryEntry_t>>(this.Handle, "CFuncRotator", "m_vecRotatorQueueHistory");
-
-	// m_eSolidType
-	[SchemaMember("CFuncRotator", "m_eSolidType")]
-	public ref SolidType_t SolidType => ref Schema.GetRef<SolidType_t>(this.Handle, "CFuncRotator", "m_eSolidType");
-
-	// m_hSpeedFromMover
-	[SchemaMember("CFuncRotator", "m_hSpeedFromMover")]
-	public CHandle<CFuncMover> HSpeedFromMover => Schema.GetDeclaredClass<CHandle<CFuncMover>>(this.Handle, "CFuncRotator", "m_hSpeedFromMover");
-
-	// m_iszSpeedFromMover
-	[SchemaMember("CFuncRotator", "m_iszSpeedFromMover")]
-	public string IszSpeedFromMover
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_iszSpeedFromMover"); }
-		set { Schema.SetString(this.Handle, "CFuncRotator", "m_iszSpeedFromMover", value); }
-	}
-
-	// m_flSpeedScale
-	[SchemaMember("CFuncRotator", "m_flSpeedScale")]
-	public ref float SpeedScale => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flSpeedScale");
+	// m_bReturningToInitialRotation
+	[SchemaMember("CFuncRotator", "m_bReturningToInitialRotation")]
+	public ref bool ReturningToInitialRotation => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bReturningToInitialRotation");
 
 	// m_flMinYawRotation
 	[SchemaMember("CFuncRotator", "m_flMinYawRotation")]
@@ -189,5 +137,53 @@ public partial class CFuncRotator : CBaseModelEntity
 	// m_flMaxYawRotation
 	[SchemaMember("CFuncRotator", "m_flMaxYawRotation")]
 	public ref float MaxYawRotation => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flMaxYawRotation");
+
+	// m_nOscillationCount
+	[SchemaMember("CFuncRotator", "m_nOscillationCount")]
+	public ref Int32 OscillationCount => ref Schema.GetRef<Int32>(this.Handle, "CFuncRotator", "m_nOscillationCount");
+
+	// m_bOscillationFromStart
+	[SchemaMember("CFuncRotator", "m_bOscillationFromStart")]
+	public ref bool OscillationFromStart => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bOscillationFromStart");
+
+	// m_iszStartSound
+	[SchemaMember("CFuncRotator", "m_iszStartSound")]
+	public string StartSound
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_iszStartSound"); }
+		set { Schema.SetString(this.Handle, "CFuncRotator", "m_iszStartSound", value); }
+	}
+
+	// m_iszLoopSound
+	[SchemaMember("CFuncRotator", "m_iszLoopSound")]
+	public string LoopSound
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_iszLoopSound"); }
+		set { Schema.SetString(this.Handle, "CFuncRotator", "m_iszLoopSound", value); }
+	}
+
+	// m_iszStopSound
+	[SchemaMember("CFuncRotator", "m_iszStopSound")]
+	public string StopSound
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_iszStopSound"); }
+		set { Schema.SetString(this.Handle, "CFuncRotator", "m_iszStopSound", value); }
+	}
+
+	// m_flTargetAngle
+	[SchemaMember("CFuncRotator", "m_flTargetAngle")]
+	public ref float TargetAngle => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTargetAngle");
+
+	// m_flCurrentAngle
+	[SchemaMember("CFuncRotator", "m_flCurrentAngle")]
+	public ref float CurrentAngle => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flCurrentAngle");
+
+	// m_eRotationAxis
+	[SchemaMember("CFuncRotator", "m_eRotationAxis")]
+	public ref CFuncRotatorRotationAxis_t RotationAxis => ref Schema.GetRef<CFuncRotatorRotationAxis_t>(this.Handle, "CFuncRotator", "m_eRotationAxis");
+
+	// m_flSpeedDriftFromOverRotate
+	[SchemaMember("CFuncRotator", "m_flSpeedDriftFromOverRotate")]
+	public ref float SpeedDriftFromOverRotate => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flSpeedDriftFromOverRotate");
 
 }

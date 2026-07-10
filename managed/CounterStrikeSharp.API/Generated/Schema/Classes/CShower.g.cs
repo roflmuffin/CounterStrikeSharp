@@ -18,4 +18,8 @@ public partial class CShower : CModelPointEntity
 {
     public CShower (IntPtr pointer) : base(pointer) {}
 
+	// m_flSpeed
+	[SchemaMember("CShower", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CShower", "m_flSpeed");
+
 }

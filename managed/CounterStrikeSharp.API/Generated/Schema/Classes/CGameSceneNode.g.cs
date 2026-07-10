@@ -102,8 +102,4 @@ public partial class CGameSceneNode : NativeObject
 	[SchemaMember("CGameSceneNode", "m_flClientLocalScale")]
 	public ref float ClientLocalScale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flClientLocalScale");
 
-	// m_vRenderOrigin
-	[SchemaMember("CGameSceneNode", "m_vRenderOrigin")]
-	public Vector RenderOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CGameSceneNode", "m_vRenderOrigin");
-
 }
