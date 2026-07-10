@@ -1,3 +1,6 @@
+## What's Changed in v1.0.371
+* fix: Update for latest CS2 Game Update [1.41.6.9] by [@ELDment](https://github.com/ELDment) in [#1348](https://github.com/roflmuffin/CounterStrikeSharp/pull/1348) ([0586daf](https://github.com/roflmuffin/CounterStrikeSharp/commit/0586daf349fd5e4b551fae068cb1fa9b572f1fc6))
+
 ## What's Changed in v1.0.370
 * fix: Correct the trigger timing of the C# `OnMapEnd` listener by [@ELDment](https://github.com/ELDment) in [#1338](https://github.com/roflmuffin/CounterStrikeSharp/pull/1338) ([99ae856](https://github.com/roflmuffin/CounterStrikeSharp/commit/99ae85656e7639374ab3e8769e18b0b9fe35b884))
 * feat: Implement basic definitions and essential methods for `CCSNavArea` by [@ELDment](https://github.com/ELDment) in [#1335](https://github.com/roflmuffin/CounterStrikeSharp/pull/1335) ([c6eff28](https://github.com/roflmuffin/CounterStrikeSharp/commit/c6eff28141eddb48773307e2aa6a1adf9452de6f))
