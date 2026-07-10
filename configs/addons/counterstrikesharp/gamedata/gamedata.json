@@ -28,7 +28,7 @@
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 273,
+      "windows": 270,
       "linux": 272
     }
   },
@@ -97,25 +97,25 @@
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
     "offsets": {
-      "windows": 20,
+      "windows": 23,
       "linux": 24
     }
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
     "offsets": {
-      "windows": 23,
+      "windows": 26,
       "linux": 27
     }
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
     "offsets": {
-      "windows": 24,
+      "windows": 27,
       "linux": 28
     }
   },
   "CGameSceneNode_GetSkeletonInstance": {
     "offsets": {
-      "windows": 9,
+      "windows": 12,
       "linux": 13
     }
   },
@@ -188,7 +188,7 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 390,
+      "windows": 384,
       "linux": 384
     }
   },
