@@ -62,6 +62,7 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         UnlockConVars = m_json.value("UnlockConVars", UnlockConVars);
         AutoUpdateEnabled = m_json.value("AutoUpdateEnabled", AutoUpdateEnabled);
         AutoUpdateURL = m_json.value("AutoUpdateURL", AutoUpdateURL);
+        LogFilePath = m_json.value("LogFilePath", LogFilePath);
     }
     catch (const std::exception& ex)
     {
