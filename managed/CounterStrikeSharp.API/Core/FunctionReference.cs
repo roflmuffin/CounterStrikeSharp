@@ -49,6 +49,7 @@ namespace CounterStrikeSharp.API.Core
 
         private readonly Delegate _targetMethod;
         private readonly CallbackDelegate _nativeCallback;
+        private readonly GCHandle _nativeCallbackHandle;
 
         private readonly TaskCompletionSource _taskCompletionSource = new();
 
@@ -57,6 +58,7 @@ namespace CounterStrikeSharp.API.Core
             Lifetime = lifetime;
             _targetMethod = method;
             _nativeCallback = CreateWrappedCallback();
+            _nativeCallbackHandle = GCHandle.Alloc(_nativeCallback);
         }
 
         /// <summary>
@@ -177,6 +179,11 @@ namespace CounterStrikeSharp.API.Core
                 }
 
                 IdToFunctionReferencesMap.Remove(reference, out _);
+
+                if (functionReference._nativeCallbackHandle.IsAllocated)
+                {
+                    functionReference._nativeCallbackHandle.Free();
+                }
 
                 Application.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
             }
