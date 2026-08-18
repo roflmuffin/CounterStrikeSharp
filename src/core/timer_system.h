@@ -85,7 +85,6 @@ class TimerSystem : public GlobalClass
     bool m_has_map_simulated = false;
     float m_last_ticked_time = 0.0f;
     ScriptCallback* m_on_tick_callback_ = nullptr;
-    ScriptCallback* on_map_end_callback = nullptr;
 
     std::vector<timers::Timer*> m_once_off_timers;
     std::vector<timers::Timer*> m_repeat_timers;

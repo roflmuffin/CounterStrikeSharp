@@ -9,9 +9,11 @@ namespace CounterStrikeSharp.API.Core;
 public enum ChoreoExternalAnimgraphControlState_t : uint
 {
 	eNone = 0x0,
-	eBegin = 0x1,
-	eLooping = 0x2,
-	eExit = 0x3,
-	eAbort = 0x4,
-	eCount = 0x5,
+	eExit = 0x1,
+	eState01 = 0x2,
+	eState02 = 0x3,
+	eState03 = 0x4,
+	eState04 = 0x5,
+	eState05 = 0x6,
+	eCount = 0x7,
 }

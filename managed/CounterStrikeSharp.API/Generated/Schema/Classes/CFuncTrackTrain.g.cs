@@ -34,6 +34,10 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 	[SchemaMember("CFuncTrackTrain", "m_angPrev")]
 	public QAngle Prev => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncTrackTrain", "m_angPrev");
 
+	// m_flSpeed
+	[SchemaMember("CFuncTrackTrain", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flSpeed");
+
 	// m_controlMins
 	[SchemaMember("CFuncTrackTrain", "m_controlMins")]
 	public Vector ControlMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncTrackTrain", "m_controlMins");

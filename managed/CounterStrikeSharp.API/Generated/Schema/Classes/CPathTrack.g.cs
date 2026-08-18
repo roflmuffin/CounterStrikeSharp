@@ -30,6 +30,10 @@ public partial class CPathTrack : CPointEntity
 	[SchemaMember("CPathTrack", "m_paltpath")]
 	public CHandle<CPathTrack> Paltpath => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CPathTrack", "m_paltpath");
 
+	// m_flSpeed
+	[SchemaMember("CPathTrack", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CPathTrack", "m_flSpeed");
+
 	// m_flRadius
 	[SchemaMember("CPathTrack", "m_flRadius")]
 	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathTrack", "m_flRadius");

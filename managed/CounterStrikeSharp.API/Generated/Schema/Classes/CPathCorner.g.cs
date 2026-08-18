@@ -18,6 +18,10 @@ public partial class CPathCorner : CPointEntity
 {
     public CPathCorner (IntPtr pointer) : base(pointer) {}
 
+	// m_flSpeed
+	[SchemaMember("CPathCorner", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flSpeed");
+
 	// m_flWait
 	[SchemaMember("CPathCorner", "m_flWait")]
 	public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flWait");

@@ -88,15 +88,11 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fSpeed
 	[SchemaMember("CBeam", "m_fSpeed")]
-	public new ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fSpeed");
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fSpeed");
 
 	// m_flFrame
 	[SchemaMember("CBeam", "m_flFrame")]
 	public ref float Frame => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFrame");
-
-	// m_nClipStyle
-	[SchemaMember("CBeam", "m_nClipStyle")]
-	public ref BeamClipStyle_t ClipStyle => ref Schema.GetRef<BeamClipStyle_t>(this.Handle, "CBeam", "m_nClipStyle");
 
 	// m_bTurnedOff
 	[SchemaMember("CBeam", "m_bTurnedOff")]

@@ -30,6 +30,10 @@ public partial class CFuncConveyor : CBaseModelEntity
 	[SchemaMember("CFuncConveyor", "m_flTransitionDurationSeconds")]
 	public ref float TransitionDurationSeconds => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds");
 
+	// m_flSpeed
+	[SchemaMember("CFuncConveyor", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flSpeed");
+
 	// m_angMoveEntitySpace
 	[SchemaMember("CFuncConveyor", "m_angMoveEntitySpace")]
 	public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace");

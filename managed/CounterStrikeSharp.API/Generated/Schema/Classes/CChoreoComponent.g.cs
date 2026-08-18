@@ -26,13 +26,21 @@ public partial class CChoreoComponent : NativeObject
 	[SchemaMember("CChoreoComponent", "m_hOwner")]
 	public CHandle<CBaseModelEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CChoreoComponent", "m_hOwner");
 
+	// m_nExernalChoreoGraphCount
+	[SchemaMember("CChoreoComponent", "m_nExernalChoreoGraphCount")]
+	public ref Int32 ExernalChoreoGraphCount => ref Schema.GetRef<Int32>(this.Handle, "CChoreoComponent", "m_nExernalChoreoGraphCount");
+
+	// m_sActiveExternalChoreoGraphSlotID
+	[SchemaMember("CChoreoComponent", "m_sActiveExternalChoreoGraphSlotID")]
+	public string ActiveExternalChoreoGraphSlotID
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CChoreoComponent", "m_sActiveExternalChoreoGraphSlotID"); }
+		set { Schema.SetString(this.Handle, "CChoreoComponent", "m_sActiveExternalChoreoGraphSlotID", value); }
+	}
+
 	// m_nNextSceneEventId
 	[SchemaMember("CChoreoComponent", "m_nNextSceneEventId")]
 	public SceneEventId_t NextSceneEventId => Schema.GetDeclaredClass<SceneEventId_t>(this.Handle, "CChoreoComponent", "m_nNextSceneEventId");
-
-	// m_bUpdateLayerPriorities
-	[SchemaMember("CChoreoComponent", "m_bUpdateLayerPriorities")]
-	public ref bool UpdateLayerPriorities => ref Schema.GetRef<bool>(this.Handle, "CChoreoComponent", "m_bUpdateLayerPriorities");
 
 	// m_flAllowResponsesEndTime
 	[SchemaMember("CChoreoComponent", "m_flAllowResponsesEndTime")]

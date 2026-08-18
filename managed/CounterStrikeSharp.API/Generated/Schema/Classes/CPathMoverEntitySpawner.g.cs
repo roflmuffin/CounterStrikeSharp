@@ -70,4 +70,16 @@ public partial class CPathMoverEntitySpawner : CLogicalEntity
 	[SchemaMember("CPathMoverEntitySpawner", "m_OnTemplateGroupSpawned")]
 	public CEntityIOOutput OnTemplateGroupSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathMoverEntitySpawner", "m_OnTemplateGroupSpawned");
 
+	// m_iszPathMoverName
+	[SchemaMember("CPathMoverEntitySpawner", "m_iszPathMoverName")]
+	public string PathMoverName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPathMoverEntitySpawner", "m_iszPathMoverName"); }
+		set { Schema.SetString(this.Handle, "CPathMoverEntitySpawner", "m_iszPathMoverName", value); }
+	}
+
+	// m_bPrepopulateOnSpawn
+	[SchemaMember("CPathMoverEntitySpawner", "m_bPrepopulateOnSpawn")]
+	public ref bool PrepopulateOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CPathMoverEntitySpawner", "m_bPrepopulateOnSpawn");
+
 }

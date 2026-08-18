@@ -46,4 +46,8 @@ public partial class CFuncTrain : CBasePlatTrain
 		set { Schema.SetString(this.Handle, "CFuncTrain", "m_iszLastTarget", value); }
 	}
 
+	// m_flSpeed
+	[SchemaMember("CFuncTrain", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncTrain", "m_flSpeed");
+
 }

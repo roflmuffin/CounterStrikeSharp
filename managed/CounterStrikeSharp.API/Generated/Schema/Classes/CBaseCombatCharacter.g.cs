@@ -38,6 +38,10 @@ public partial class CBaseCombatCharacter : CBaseAnimGraph
 	[SchemaMember("CBaseCombatCharacter", "m_bDeathEventsDispatched")]
 	public ref bool DeathEventsDispatched => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched");
 
+	// m_vecRelationships
+	[SchemaMember("CBaseCombatCharacter", "m_vecRelationships")]
+	public NetworkedVector<RelationshipOverride_t> Relationships => Schema.GetDeclaredClass<NetworkedVector<RelationshipOverride_t>>(this.Handle, "CBaseCombatCharacter", "m_vecRelationships");
+
 	// m_strRelationships
 	[SchemaMember("CBaseCombatCharacter", "m_strRelationships")]
 	public string StrRelationships

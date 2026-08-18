@@ -18,13 +18,13 @@ public partial class CInfoChoreoAnchorPosition : NativeObject
 {
     public CInfoChoreoAnchorPosition (IntPtr pointer) : base(pointer) {}
 
-	// m_vOrigin
-	[SchemaMember("CInfoChoreoAnchorPosition", "m_vOrigin")]
-	public Vector Origin => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoChoreoAnchorPosition", "m_vOrigin");
+	// m_vOriginLS
+	[SchemaMember("CInfoChoreoAnchorPosition", "m_vOriginLS")]
+	public Vector OriginLS => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoChoreoAnchorPosition", "m_vOriginLS");
 
-	// m_qAngles
-	[SchemaMember("CInfoChoreoAnchorPosition", "m_qAngles")]
-	public QAngle Angles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CInfoChoreoAnchorPosition", "m_qAngles");
+	// m_qAnglesLS
+	[SchemaMember("CInfoChoreoAnchorPosition", "m_qAnglesLS")]
+	public Quaternion AnglesLS => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CInfoChoreoAnchorPosition", "m_qAnglesLS");
 
 	// m_vExtentsMin
 	[SchemaMember("CInfoChoreoAnchorPosition", "m_vExtentsMin")]
@@ -37,6 +37,14 @@ public partial class CInfoChoreoAnchorPosition : NativeObject
 	// m_flRadius
 	[SchemaMember("CInfoChoreoAnchorPosition", "m_flRadius")]
 	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CInfoChoreoAnchorPosition", "m_flRadius");
+
+	// m_bOnlyWarpPosition
+	[SchemaMember("CInfoChoreoAnchorPosition", "m_bOnlyWarpPosition")]
+	public ref bool OnlyWarpPosition => ref Schema.GetRef<bool>(this.Handle, "CInfoChoreoAnchorPosition", "m_bOnlyWarpPosition");
+
+	// m_hParent
+	[SchemaMember("CInfoChoreoAnchorPosition", "m_hParent")]
+	public CHandle<CBaseEntity> Parent => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInfoChoreoAnchorPosition", "m_hParent");
 
 	// m_nShapeType
 	[SchemaMember("CInfoChoreoAnchorPosition", "m_nShapeType")]

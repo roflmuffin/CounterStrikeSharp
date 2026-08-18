@@ -18,6 +18,10 @@ public partial class CRagdollProp : CBaseAnimGraph
 {
     public CRagdollProp (IntPtr pointer) : base(pointer) {}
 
+	// m_CPropDataComponent
+	[SchemaMember("CRagdollProp", "m_CPropDataComponent")]
+	public CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CRagdollProp", "m_CPropDataComponent");
+
 	// m_ragdoll
 	[SchemaMember("CRagdollProp", "m_ragdoll")]
 	public ragdoll_t Ragdoll => Schema.GetDeclaredClass<ragdoll_t>(this.Handle, "CRagdollProp", "m_ragdoll");
@@ -25,6 +29,14 @@ public partial class CRagdollProp : CBaseAnimGraph
 	// m_bStartDisabled
 	[SchemaMember("CRagdollProp", "m_bStartDisabled")]
 	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bStartDisabled");
+
+	// m_massScale
+	[SchemaMember("CRagdollProp", "m_massScale")]
+	public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_massScale");
+
+	// m_buoyancyScale
+	[SchemaMember("CRagdollProp", "m_buoyancyScale")]
+	public ref float BuoyancyScale => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_buoyancyScale");
 
 	// m_ragEnabled
 	[SchemaMember("CRagdollProp", "m_ragEnabled")]

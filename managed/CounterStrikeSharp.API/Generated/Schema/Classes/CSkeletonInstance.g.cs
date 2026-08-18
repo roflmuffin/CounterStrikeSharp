@@ -30,6 +30,14 @@ public partial class CSkeletonInstance : CGameSceneNode
 	[SchemaMember("CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy")]
 	public ref bool DisableSolidCollisionsForHierarchy => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy");
 
+	// m_bDirtyMotionType
+	[SchemaMember("CSkeletonInstance", "m_bDirtyMotionType")]
+	public ref bool DirtyMotionType => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bDirtyMotionType");
+
+	// m_bIsGeneratingLatchedParentSpaceState
+	[SchemaMember("CSkeletonInstance", "m_bIsGeneratingLatchedParentSpaceState")]
+	public ref bool IsGeneratingLatchedParentSpaceState => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bIsGeneratingLatchedParentSpaceState");
+
 	// m_materialGroup
 	[SchemaMember("CSkeletonInstance", "m_materialGroup")]
 	public CUtlStringToken MaterialGroup => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CSkeletonInstance", "m_materialGroup");

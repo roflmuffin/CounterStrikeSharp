@@ -46,6 +46,10 @@ public partial class CBaseTrigger : CBaseToggle
 	[SchemaMember("CBaseTrigger", "m_OnNotTouching")]
 	public CEntityIOOutput OnNotTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnNotTouching");
 
+	// m_OnTouchingChanged
+	[SchemaMember("CBaseTrigger", "m_OnTouchingChanged")]
+	public CEntityIOOutput OnTouchingChanged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouchingChanged");
+
 	// m_hTouchingEntities
 	[SchemaMember("CBaseTrigger", "m_hTouchingEntities")]
 	public NetworkedVector<CHandle<CBaseEntity>> TouchingEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CBaseTrigger", "m_hTouchingEntities");

@@ -94,6 +94,8 @@ ConVar sample_cvar("sample_cvar", "42", 0);
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
+    ismm->AddListener(this, this);
+
     globals::ismm = ismm;
     globals::gameThreadId = std::this_thread::get_id();
 
@@ -167,6 +169,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
     on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
+    on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
     on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
@@ -223,6 +226,7 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
     SH_REMOVE_HOOK_ID(g_iLoadEventsFromFileId);
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
+    globals::callbackManager.ReleaseCallback(on_map_end_callback);
     globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
 
     return true;
@@ -271,6 +275,8 @@ void CounterStrikeSharpMMPlugin::OnLevelInit(
     char const* pMapName, char const* pMapEntities, char const* pOldLevel, char const* pLandmarkName, bool loadGame, bool background)
 {
     CSSHARP_CORE_TRACE("name={0},mapname={1}", "LevelInit", pMapName);
+
+    m_has_level_initialized = true;
 }
 
 void CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode(const char* pszLoopModeName,
@@ -299,7 +305,23 @@ int CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(const char* filename, bo
     RETURN_META_VALUE(MRES_IGNORED, 0);
 }
 
-void CounterStrikeSharpMMPlugin::OnLevelShutdown() {}
+void CounterStrikeSharpMMPlugin::OnLevelShutdown()
+{
+    CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
+
+    if (!m_has_level_initialized)
+    {
+        return;
+    }
+
+    m_has_level_initialized = false;
+
+    if (on_map_end_callback && on_map_end_callback->GetFunctionCount())
+    {
+        on_map_end_callback->ScriptContext().Reset();
+        on_map_end_callback->Execute();
+    }
+}
 
 bool CounterStrikeSharpMMPlugin::Pause(char* error, size_t maxlen) { return true; }
 

@@ -24,11 +24,15 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_pMainGraphController
 	[SchemaMember("CBaseAnimGraph", "m_pMainGraphController")]
-	public CAnimGraphControllerBase? MainGraphController => Schema.GetPointer<CAnimGraphControllerBase>(this.Handle, "CBaseAnimGraph", "m_pMainGraphController");
+	public CAnimGraphControllerPtr MainGraphController => Schema.GetDeclaredClass<CAnimGraphControllerPtr>(this.Handle, "CBaseAnimGraph", "m_pMainGraphController");
 
 	// m_bInitiallyPopulateInterpHistory
 	[SchemaMember("CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory")]
 	public ref bool InitiallyPopulateInterpHistory => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory");
+
+	// m_OnExternalChoreoGraphChanged
+	[SchemaMember("CBaseAnimGraph", "m_OnExternalChoreoGraphChanged")]
+	public CEntityIOOutput OnExternalChoreoGraphChanged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseAnimGraph", "m_OnExternalChoreoGraphChanged");
 
 	// m_pChoreoServices
 	[SchemaMember("CBaseAnimGraph", "m_pChoreoServices")]

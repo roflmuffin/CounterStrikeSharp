@@ -142,6 +142,10 @@ public partial class CBaseDoor : CBaseToggle
 	[SchemaMember("CBaseDoor", "m_bCreateNavObstacle")]
 	public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bCreateNavObstacle");
 
+	// m_flSpeed
+	[SchemaMember("CBaseDoor", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBaseDoor", "m_flSpeed");
+
 	// m_isChaining
 	[SchemaMember("CBaseDoor", "m_isChaining")]
 	public ref bool IsChaining => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_isChaining");

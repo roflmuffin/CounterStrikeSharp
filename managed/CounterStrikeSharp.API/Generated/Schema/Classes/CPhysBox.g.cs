@@ -54,6 +54,38 @@ public partial class CPhysBox : CBreakable
 	[SchemaMember("CPhysBox", "m_flTouchOutputPerEntityDelay")]
 	public ref float TouchOutputPerEntityDelay => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_flTouchOutputPerEntityDelay");
 
+	// m_iszCollisionGroup
+	[SchemaMember("CPhysBox", "m_iszCollisionGroup")]
+	public string CollisionGroup
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysBox", "m_iszCollisionGroup"); }
+		set { Schema.SetString(this.Handle, "CPhysBox", "m_iszCollisionGroup", value); }
+	}
+
+	// m_iszInteractsAs
+	[SchemaMember("CPhysBox", "m_iszInteractsAs")]
+	public string InteractsAs
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysBox", "m_iszInteractsAs"); }
+		set { Schema.SetString(this.Handle, "CPhysBox", "m_iszInteractsAs", value); }
+	}
+
+	// m_iszInteractsWith
+	[SchemaMember("CPhysBox", "m_iszInteractsWith")]
+	public string InteractsWith
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysBox", "m_iszInteractsWith"); }
+		set { Schema.SetString(this.Handle, "CPhysBox", "m_iszInteractsWith", value); }
+	}
+
+	// m_iszInteractsExclude
+	[SchemaMember("CPhysBox", "m_iszInteractsExclude")]
+	public string InteractsExclude
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysBox", "m_iszInteractsExclude"); }
+		set { Schema.SetString(this.Handle, "CPhysBox", "m_iszInteractsExclude", value); }
+	}
+
 	// m_OnDamaged
 	[SchemaMember("CPhysBox", "m_OnDamaged")]
 	public CEntityIOOutput OnDamaged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnDamaged");
@@ -73,9 +105,5 @@ public partial class CPhysBox : CBreakable
 	// m_OnStartTouch
 	[SchemaMember("CPhysBox", "m_OnStartTouch")]
 	public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnStartTouch");
-
-	// m_hCarryingPlayer
-	[SchemaMember("CPhysBox", "m_hCarryingPlayer")]
-	public CHandle<CBasePlayerPawn> CarryingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPhysBox", "m_hCarryingPlayer");
 
 }

@@ -140,10 +140,10 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 
 	// m_pGraphInstanceAG2
 	[SchemaMember("CBaseAnimGraphController", "m_pGraphInstanceAG2")]
-	public CNmGraphInstance? GraphInstanceAG2 => Schema.GetPointer<CNmGraphInstance>(this.Handle, "CBaseAnimGraphController", "m_pGraphInstanceAG2");
+	public CAnimGraph2InstancePtr GraphInstanceAG2 => Schema.GetDeclaredClass<CAnimGraph2InstancePtr>(this.Handle, "CBaseAnimGraphController", "m_pGraphInstanceAG2");
 
 	// m_vecExternalGraphs
 	[SchemaMember("CBaseAnimGraphController", "m_vecExternalGraphs")]
-	public NetworkedVector<ExternalAnimGraph_t> ExternalGraphs => Schema.GetDeclaredClass<NetworkedVector<ExternalAnimGraph_t>>(this.Handle, "CBaseAnimGraphController", "m_vecExternalGraphs");
+	public CExternalAnimGraphList ExternalGraphs => Schema.GetDeclaredClass<CExternalAnimGraphList>(this.Handle, "CBaseAnimGraphController", "m_vecExternalGraphs");
 
 }

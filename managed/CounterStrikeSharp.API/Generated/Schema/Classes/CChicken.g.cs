@@ -30,10 +30,6 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_stuckAnchor")]
 	public Vector StuckAnchor => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_stuckAnchor");
 
-	// m_stuckTimer
-	[SchemaMember("CChicken", "m_stuckTimer")]
-	public CountdownTimer StuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_stuckTimer");
-
 	// m_collisionStuckTimer
 	[SchemaMember("CChicken", "m_collisionStuckTimer")]
 	public CountdownTimer CollisionStuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_collisionStuckTimer");
@@ -48,11 +44,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_desiredActivity
 	[SchemaMember("CChicken", "m_desiredActivity")]
-	public ref ChickenActivity DesiredActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity");
+	public ref EChickenActivity DesiredActivity => ref Schema.GetRef<EChickenActivity>(this.Handle, "CChicken", "m_desiredActivity");
 
 	// m_currentActivity
 	[SchemaMember("CChicken", "m_currentActivity")]
-	public ref ChickenActivity CurrentActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity");
+	public ref EChickenActivity CurrentActivity => ref Schema.GetRef<EChickenActivity>(this.Handle, "CChicken", "m_currentActivity");
 
 	// m_activityTimer
 	[SchemaMember("CChicken", "m_activityTimer")]
@@ -78,14 +74,6 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_vocalizeTimer")]
 	public CountdownTimer VocalizeTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_vocalizeTimer");
 
-	// m_flWhenZombified
-	[SchemaMember("CChicken", "m_flWhenZombified")]
-	public ref float WhenZombified => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flWhenZombified");
-
-	// m_jumpedThisFrame
-	[SchemaMember("CChicken", "m_jumpedThisFrame")]
-	public ref bool JumpedThisFrame => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_jumpedThisFrame");
-
 	// m_leader
 	[SchemaMember("CChicken", "m_leader")]
 	public CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader");
@@ -94,10 +82,6 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_reuseTimer")]
 	public CountdownTimer ReuseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_reuseTimer");
 
-	// m_hasBeenUsed
-	[SchemaMember("CChicken", "m_hasBeenUsed")]
-	public ref bool HasBeenUsed => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_hasBeenUsed");
-
 	// m_jumpTimer
 	[SchemaMember("CChicken", "m_jumpTimer")]
 	public CountdownTimer JumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_jumpTimer");
@@ -105,10 +89,6 @@ public partial class CChicken : CDynamicProp
 	// m_flLastJumpTime
 	[SchemaMember("CChicken", "m_flLastJumpTime")]
 	public ref float LastJumpTime => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flLastJumpTime");
-
-	// m_bInJump
-	[SchemaMember("CChicken", "m_bInJump")]
-	public ref bool InJump => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_bInJump");
 
 	// m_repathTimer
 	[SchemaMember("CChicken", "m_repathTimer")]

@@ -22,4 +22,8 @@ public partial class CPlayerPawnComponent : NativeObject
 	[SchemaMember("CPlayerPawnComponent", "__m_pChainEntity")]
 	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CPlayerPawnComponent", "__m_pChainEntity");
 
+	// m_pComponentGraphController
+	[SchemaMember("CPlayerPawnComponent", "m_pComponentGraphController")]
+	public CAnimGraphControllerPtr ComponentGraphController => Schema.GetDeclaredClass<CAnimGraphControllerPtr>(this.Handle, "CPlayerPawnComponent", "m_pComponentGraphController");
+
 }

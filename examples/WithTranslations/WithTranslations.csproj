@@ -9,4 +9,7 @@
     <ItemGroup>
         <None Update="lang\**\*.*" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\managed\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj" />
+    </ItemGroup>
 </Project>

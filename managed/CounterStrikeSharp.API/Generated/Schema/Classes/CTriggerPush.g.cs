@@ -50,4 +50,8 @@ public partial class CTriggerPush : CBaseTrigger
 	[SchemaMember("CTriggerPush", "m_splinePushType")]
 	public ref UInt32 SplinePushType => ref Schema.GetRef<UInt32>(this.Handle, "CTriggerPush", "m_splinePushType");
 
+	// m_flSpeed
+	[SchemaMember("CTriggerPush", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CTriggerPush", "m_flSpeed");
+
 }

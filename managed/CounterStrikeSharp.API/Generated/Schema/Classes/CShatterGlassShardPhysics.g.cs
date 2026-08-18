@@ -14,13 +14,9 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CShatterGlassShardPhysics : CPhysicsProp
+public partial class CShatterGlassShardPhysics : CBaseModelEntity
 {
     public CShatterGlassShardPhysics (IntPtr pointer) : base(pointer) {}
-
-	// m_bDebris
-	[SchemaMember("CShatterGlassShardPhysics", "m_bDebris")]
-	public ref bool Debris => ref Schema.GetRef<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris");
 
 	// m_hParentShard
 	[SchemaMember("CShatterGlassShardPhysics", "m_hParentShard")]
@@ -29,5 +25,13 @@ public partial class CShatterGlassShardPhysics : CPhysicsProp
 	// m_ShardDesc
 	[SchemaMember("CShatterGlassShardPhysics", "m_ShardDesc")]
 	public shard_model_desc_t ShardDesc => Schema.GetDeclaredClass<shard_model_desc_t>(this.Handle, "CShatterGlassShardPhysics", "m_ShardDesc");
+
+	// m_nPoolState
+	[SchemaMember("CShatterGlassShardPhysics", "m_nPoolState")]
+	public ref ShatterGlassEntityPoolState_t PoolState => ref Schema.GetRef<ShatterGlassEntityPoolState_t>(this.Handle, "CShatterGlassShardPhysics", "m_nPoolState");
+
+	// m_bTouchedByPlayer
+	[SchemaMember("CShatterGlassShardPhysics", "m_bTouchedByPlayer")]
+	public ref bool TouchedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bTouchedByPlayer");
 
 }

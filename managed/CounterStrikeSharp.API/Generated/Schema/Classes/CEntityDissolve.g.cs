@@ -48,7 +48,7 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_nDissolveType
 	[SchemaMember("CEntityDissolve", "m_nDissolveType")]
-	public ref EntityDisolveType_t DissolveType => ref Schema.GetRef<EntityDisolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType");
+	public ref EntityDissolveType_t DissolveType => ref Schema.GetRef<EntityDissolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType");
 
 	// m_vDissolverOrigin
 	[SchemaMember("CEntityDissolve", "m_vDissolverOrigin")]

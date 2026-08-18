@@ -49,10 +49,12 @@ public class EntityIOTests
 
         var mock = new Mock<Action>();
         var callback = FunctionReference.Create(mock.Object);
+        var isHooked = false;
 
         try
         {
             NativeAPI.HookEntityOutput("prop_dynamic", "OnUser1", callback, HookMode.Pre);
+            isHooked = true;
             NativeAPI.AcceptInput(entity.Handle, "FireUser1", IntPtr.Zero, IntPtr.Zero, "", 0);
             await WaitOneFrame();
 
@@ -60,6 +62,7 @@ public class EntityIOTests
 
             // Test unhook
             NativeAPI.UnhookEntityOutput("prop_dynamic", "OnUser1", callback, HookMode.Pre);
+            isHooked = false;
             NativeAPI.AcceptInput(entity.Handle, "FireUser1", IntPtr.Zero, IntPtr.Zero, "", 0);
 
             await WaitOneFrame();
@@ -67,6 +70,44 @@ public class EntityIOTests
         }
         finally
         {
+            if (isHooked)
+            {
+                NativeAPI.UnhookEntityOutput("prop_dynamic", "OnUser1", callback, HookMode.Pre);
+            }
+
+            FunctionReference.Remove(callback.Identifier);
+            entity.Remove();
+        }
+    }
+
+    [Fact]
+    public async Task AddEntityIOEvent_WithLegacyOutputId_FiresOutput()
+    {
+        var entity = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
+
+        Assert.NotNull(entity);
+
+        var mock = new Mock<Action>();
+        var callback = FunctionReference.Create(mock.Object);
+        var isHooked = false;
+
+        try
+        {
+            NativeAPI.HookEntityOutput("prop_dynamic", "OnUser2", callback, HookMode.Pre);
+            isHooked = true;
+            entity.AddEntityIOEvent("FireUser2", outputId: 12345);
+            await WaitOneFrame();
+
+            Assert.Single(mock.Invocations);
+        }
+        finally
+        {
+            if (isHooked)
+            {
+                NativeAPI.UnhookEntityOutput("prop_dynamic", "OnUser2", callback, HookMode.Pre);
+            }
+
+            FunctionReference.Remove(callback.Identifier);
             entity.Remove();
         }
     }

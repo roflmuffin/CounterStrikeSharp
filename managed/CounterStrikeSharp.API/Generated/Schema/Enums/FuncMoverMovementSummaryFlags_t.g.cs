@@ -14,4 +14,7 @@ public enum FuncMoverMovementSummaryFlags_t : uint
 	eStopComplete = 0x4,
 	eReversing = 0x8,
 	eEventsDispatched = 0x10,
+	eLoopToStart = 0x20,
+	eLoopToEnd = 0x40,
+	eTransitionComplete = 0x80,
 }

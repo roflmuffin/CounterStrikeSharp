@@ -114,4 +114,8 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 	[SchemaMember("CPointClientUIWorldPanel", "m_nExplicitImageLayout")]
 	public ref Int32 ExplicitImageLayout => ref Schema.GetRef<Int32>(this.Handle, "CPointClientUIWorldPanel", "m_nExplicitImageLayout");
 
+	// m_bIgnoreParentOrientation
+	[SchemaMember("CPointClientUIWorldPanel", "m_bIgnoreParentOrientation")]
+	public ref bool IgnoreParentOrientation => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bIgnoreParentOrientation");
+
 }

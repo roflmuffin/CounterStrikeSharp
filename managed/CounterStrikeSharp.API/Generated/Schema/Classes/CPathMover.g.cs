@@ -22,9 +22,9 @@ public partial class CPathMover : CPathWithDynamicNodes
 	[SchemaMember("CPathMover", "m_vecMovers")]
 	public NetworkedVector<CHandle<CFuncMover>> Movers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFuncMover>>>(this.Handle, "CPathMover", "m_vecMovers");
 
-	// m_hMoverSpawner
-	[SchemaMember("CPathMover", "m_hMoverSpawner")]
-	public CHandle<CPathMoverEntitySpawner> MoverSpawner => Schema.GetDeclaredClass<CHandle<CPathMoverEntitySpawner>>(this.Handle, "CPathMover", "m_hMoverSpawner");
+	// m_vecSpawners
+	[SchemaMember("CPathMover", "m_vecSpawners")]
+	public NetworkedVector<CHandle<CPathMoverEntitySpawner>> Spawners => Schema.GetDeclaredClass<NetworkedVector<CHandle<CPathMoverEntitySpawner>>>(this.Handle, "CPathMover", "m_vecSpawners");
 
 	// m_iszMoverSpawnerName
 	[SchemaMember("CPathMover", "m_iszMoverSpawnerName")]
@@ -33,5 +33,21 @@ public partial class CPathMover : CPathWithDynamicNodes
 		get { return Schema.GetUtf8String(this.Handle, "CPathMover", "m_iszMoverSpawnerName"); }
 		set { Schema.SetString(this.Handle, "CPathMover", "m_iszMoverSpawnerName", value); }
 	}
+
+	// m_hMoverRouter
+	[SchemaMember("CPathMover", "m_hMoverRouter")]
+	public CHandle<CFuncMoverRouter> MoverRouter => Schema.GetDeclaredClass<CHandle<CFuncMoverRouter>>(this.Handle, "CPathMover", "m_hMoverRouter");
+
+	// m_iszMoverRouterName
+	[SchemaMember("CPathMover", "m_iszMoverRouterName")]
+	public string MoverRouterName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPathMover", "m_iszMoverRouterName"); }
+		set { Schema.SetString(this.Handle, "CPathMover", "m_iszMoverRouterName", value); }
+	}
+
+	// m_flSampleSpacing
+	[SchemaMember("CPathMover", "m_flSampleSpacing")]
+	public ref float SampleSpacing => ref Schema.GetRef<float>(this.Handle, "CPathMover", "m_flSampleSpacing");
 
 }

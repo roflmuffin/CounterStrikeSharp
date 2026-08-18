@@ -166,10 +166,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_vRagdollDamageForce")]
 	public Vector RagdollDamageForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vRagdollDamageForce");
 
-	// m_vRagdollDamagePosition
-	[SchemaMember("CCSPlayerPawn", "m_vRagdollDamagePosition")]
-	public Vector RagdollDamagePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vRagdollDamagePosition");
-
 	// m_szRagdollDamageWeaponName
 	[SchemaMember("CCSPlayerPawn", "m_szRagdollDamageWeaponName")]
 	public string RagdollDamageWeaponName
