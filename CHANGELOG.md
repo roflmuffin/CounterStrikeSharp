@@ -1,3 +1,7 @@
+## What's Changed in v1.0.372
+* feat: Add Ray/Hull Trace API (INavPhysicsInterface) by [@SlynxCZ](https://github.com/SlynxCZ) in [#1331](https://github.com/roflmuffin/CounterStrikeSharp/pull/1331) ([7ccf995](https://github.com/roflmuffin/CounterStrikeSharp/commit/7ccf9950cf207621817f70ca03b369efcf20f065))
+* chore: Update Schema Definitions to 1.41.6.9 in [#1356](https://github.com/roflmuffin/CounterStrikeSharp/pull/1356) ([db2cd0f](https://github.com/roflmuffin/CounterStrikeSharp/commit/db2cd0fe50f6b42bd255348bfe2ad6195b4aed7d))
+
 ## What's Changed in v1.0.371
 * fix: Update for latest CS2 Game Update [1.41.6.9] by [@ELDment](https://github.com/ELDment) in [#1348](https://github.com/roflmuffin/CounterStrikeSharp/pull/1348) ([0586daf](https://github.com/roflmuffin/CounterStrikeSharp/commit/0586daf349fd5e4b551fae068cb1fa9b572f1fc6))
 
@@ -125,7 +129,7 @@
 
 ## What's Changed in v1.0.346
 * chore: update server.json ([52550e3](https://github.com/roflmuffin/CounterStrikeSharp/commit/52550e31bc142ba672ac50b5b9e76b1681a6f510))
-* fix: changes for 2025-11-5 Update by [@himenekocn](https://github.com/himenekocn) in [#1107](https://github.com/roflmuffin/CounterStrikeSharp/pull/1107) ([e59e9cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/e59e9cf1485f6bdf26e12bce4f59f116ac68b03a))
+* fix: changes for 2025-11-5 Update by [@MatthewNeko](https://github.com/MatthewNeko) in [#1107](https://github.com/roflmuffin/CounterStrikeSharp/pull/1107) ([e59e9cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/e59e9cf1485f6bdf26e12bce4f59f116ac68b03a))
 * feat: add localization for no permission error messages & spanish language support. by [@wiruwiru](https://github.com/wiruwiru) in [#1099](https://github.com/roflmuffin/CounterStrikeSharp/pull/1099) ([1568d07](https://github.com/roflmuffin/CounterStrikeSharp/commit/1568d077e8def7688069a91ed374b70841546b26))
 * feat: allow plugins to be loaded from subdirectories by [@Ravid-A](https://github.com/Ravid-A) in [#1031](https://github.com/roflmuffin/CounterStrikeSharp/pull/1031) ([55542db](https://github.com/roflmuffin/CounterStrikeSharp/commit/55542dba7c5318dfbb37b0862256f4dcde7cf0f4))
 
@@ -133,7 +137,7 @@
 * fix: update linux signature for GetCSWeaponDataFromKey ([b4e83df](https://github.com/roflmuffin/CounterStrikeSharp/commit/b4e83dfb4a1a1723c08ac79ea68da4ab8a0255fd))
 * feat(schema): update schema generator to use @GAMMACASE schema dumper format ([4ff2732](https://github.com/roflmuffin/CounterStrikeSharp/commit/4ff2732d8a55297c18cea6181b9022f56cd8fae3))
 
-## What's Changed in v1.0.344
+## What's Changed in v2.0.0-beta.0
 * chore(schema): update schema to latest ([f505405](https://github.com/roflmuffin/CounterStrikeSharp/commit/f50540583d079a6cf546ca590147905ba5eb2c83))
 * fix(schema): allow for negative enum values in source schema file ([97957f6](https://github.com/roflmuffin/CounterStrikeSharp/commit/97957f62208fa782f89e9629ddde1944aaadd149))
 * chore: update devcontainer location ([0c2f1cd](https://github.com/roflmuffin/CounterStrikeSharp/commit/0c2f1cd078c0c54a6cf1fb402082b3f38c6303d2))
@@ -141,7 +145,7 @@
 ## What's Changed in v1.0.343
 * feat: add `BuyWithCtrl` to `AcquireMethod` enum by [@NockyCZ](https://github.com/NockyCZ) in [#697](https://github.com/roflmuffin/CounterStrikeSharp/pull/697) ([7be3294](https://github.com/roflmuffin/CounterStrikeSharp/commit/7be329466ad7d40a92608e7d6c4e2c6cd1a05a3c))
 * fix: update ConVar flag retrieval that adapts to different Source 2 SDK versions by [@Matlord93](https://github.com/Matlord93) in [#1059](https://github.com/roflmuffin/CounterStrikeSharp/pull/1059) ([a21f0b5](https://github.com/roflmuffin/CounterStrikeSharp/commit/a21f0b5277541434fa71f595d7c0c420305e9a50))
-* feat(experimental): add NuGet Dependency Resolver for Plugins by [@dxqwww](https://github.com/dxqwww) in [#1012](https://github.com/roflmuffin/CounterStrikeSharp/pull/1012) ([b4ba7d8](https://github.com/roflmuffin/CounterStrikeSharp/commit/b4ba7d8ca02bdf487ee9424f2bdb119510ab1d2c))
+* feat(experimental): add NuGet Dependency Resolver for Plugins by [@dxqshka](https://github.com/dxqshka) in [#1012](https://github.com/roflmuffin/CounterStrikeSharp/pull/1012) ([b4ba7d8](https://github.com/roflmuffin/CounterStrikeSharp/commit/b4ba7d8ca02bdf487ee9424f2bdb119510ab1d2c))
 * feat: add FindVirtualTable method by [@SlynxCZ](https://github.com/SlynxCZ) in [#1075](https://github.com/roflmuffin/CounterStrikeSharp/pull/1075) ([0eb73eb](https://github.com/roflmuffin/CounterStrikeSharp/commit/0eb73eb3487f7c0200b14c58b34aaa39b2408e29))
 * feat: use shared libgcc and libc++ by [@markus-wa](https://github.com/markus-wa) in [#1007](https://github.com/roflmuffin/CounterStrikeSharp/pull/1007) ([43c1c89](https://github.com/roflmuffin/CounterStrikeSharp/commit/43c1c8959605ccafa54f8fc155ef3e37016ed7f6))
 * feat: implement `TerminateSelf(string reason)` to allow plugins to safely terminate themselves by [@ELDment](https://github.com/ELDment) in [#1047](https://github.com/roflmuffin/CounterStrikeSharp/pull/1047) ([5399666](https://github.com/roflmuffin/CounterStrikeSharp/commit/53996666f8fbc99a989af5e79dae710912439115))
@@ -150,22 +154,22 @@
 ## New Contributors
 * [@NockyCZ](https://github.com/NockyCZ) made their first contribution in [#697](https://github.com/roflmuffin/CounterStrikeSharp/pull/697)
 * [@Matlord93](https://github.com/Matlord93) made their first contribution in [#1059](https://github.com/roflmuffin/CounterStrikeSharp/pull/1059)
-* [@dxqwww](https://github.com/dxqwww) made their first contribution in [#1012](https://github.com/roflmuffin/CounterStrikeSharp/pull/1012)
+* [@dxqshka](https://github.com/dxqshka) made their first contribution in [#1012](https://github.com/roflmuffin/CounterStrikeSharp/pull/1012)
 
 ## What's Changed in v1.0.342
-* fix: update Sigs & CTakeDamageResult & EmitSound_t by [@himenekocn](https://github.com/himenekocn) in [#1071](https://github.com/roflmuffin/CounterStrikeSharp/pull/1071) ([34598dd](https://github.com/roflmuffin/CounterStrikeSharp/commit/34598dd56ea2e9e18229185dc225db00a336bb5d))
+* fix: update Sigs & CTakeDamageResult & EmitSound_t by [@MatthewNeko](https://github.com/MatthewNeko) in [#1071](https://github.com/roflmuffin/CounterStrikeSharp/pull/1071) ([34598dd](https://github.com/roflmuffin/CounterStrikeSharp/commit/34598dd56ea2e9e18229185dc225db00a336bb5d))
 
 ## What's Changed in v1.0.341
 * fix: update schema for update ([56e0074](https://github.com/roflmuffin/CounterStrikeSharp/commit/56e007402b49bc2d638958e34f1c783c4156ba49))
 * chore(deps): bump libraries/hl2sdk-cs2 from `bc59586` to `9310e72` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#908](https://github.com/roflmuffin/CounterStrikeSharp/pull/908) ([bf75d43](https://github.com/roflmuffin/CounterStrikeSharp/commit/bf75d430392f3813c9e279267bda8d64400630fc))
 * chore(deps): bump libraries/metamod-source from `3f3136d` to `4399ff0` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1067](https://github.com/roflmuffin/CounterStrikeSharp/pull/1067) ([7572722](https://github.com/roflmuffin/CounterStrikeSharp/commit/7572722de4b33c9683a7da981a2cf12c3e5b6374))
-* fix: EmitSoundFilter Crash by [@himenekocn](https://github.com/himenekocn) in [#1066](https://github.com/roflmuffin/CounterStrikeSharp/pull/1066) ([638d744](https://github.com/roflmuffin/CounterStrikeSharp/commit/638d74470e27753da19d9e643fae833db4e89da1))
-* fix(update): update signatures and offsets for 1.41.1.3 Update by [@himenekocn](https://github.com/himenekocn) in [#1064](https://github.com/roflmuffin/CounterStrikeSharp/pull/1064) ([37951f2](https://github.com/roflmuffin/CounterStrikeSharp/commit/37951f287554832e334d258dd30cdf40dc285963))
+* fix: EmitSoundFilter Crash by [@MatthewNeko](https://github.com/MatthewNeko) in [#1066](https://github.com/roflmuffin/CounterStrikeSharp/pull/1066) ([638d744](https://github.com/roflmuffin/CounterStrikeSharp/commit/638d74470e27753da19d9e643fae833db4e89da1))
+* fix(update): update signatures and offsets for 1.41.1.3 Update by [@MatthewNeko](https://github.com/MatthewNeko) in [#1064](https://github.com/roflmuffin/CounterStrikeSharp/pull/1064) ([37951f2](https://github.com/roflmuffin/CounterStrikeSharp/commit/37951f287554832e334d258dd30cdf40dc285963))
 * feat: improve getplayers & RemoveItemByDesignerName by [@schwarper](https://github.com/schwarper) in [#1044](https://github.com/roflmuffin/CounterStrikeSharp/pull/1044) ([7b9df90](https://github.com/roflmuffin/CounterStrikeSharp/commit/7b9df9097cb50a1be928c0955ef764f9279adae9))
 * feat: Allow custom CS# directory for flexible server deployment (aka. `css_basepath`) by [@ELDment](https://github.com/ELDment) in [#1033](https://github.com/roflmuffin/CounterStrikeSharp/pull/1033) ([31cedca](https://github.com/roflmuffin/CounterStrikeSharp/commit/31cedca2b71052a977b70eb90750966d96751961))
 
 ## New Contributors
-* [@himenekocn](https://github.com/himenekocn) made their first contribution in [#1066](https://github.com/roflmuffin/CounterStrikeSharp/pull/1066)
+* [@MatthewNeko](https://github.com/MatthewNeko) made their first contribution in [#1066](https://github.com/roflmuffin/CounterStrikeSharp/pull/1066)
 
 ## What's Changed in v1.0.340
 * fix: update for CS2 09-17-25 (patch 20022951) by [@oylsister](https://github.com/oylsister) in [#1037](https://github.com/roflmuffin/CounterStrikeSharp/pull/1037) ([2c80971](https://github.com/roflmuffin/CounterStrikeSharp/commit/2c809713937675cef245b79d9ad39674b4d37fd8))
