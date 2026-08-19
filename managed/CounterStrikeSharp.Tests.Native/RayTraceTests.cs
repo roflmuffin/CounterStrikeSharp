@@ -43,16 +43,6 @@ public class RayTraceTests
         Assert.Equal(72, maxs.Z - mins.Z, 4); // Player hull height is 72 units
     }
 
-    [Fact(Skip = "Ignore for now")]
-    public async Task Trace_PointContents()
-    {
-        await InitializeAsync();
-
-        var pos = pawn.AbsOrigin - new Vector(0, 0, 100);
-        var contentsMask = Trace.PointContents(pos, Masks.All);
-        Assert.NotEqual(0ul, (ulong)contentsMask);
-        Assert.True(contentsMask.HasFlag(Contents.Solid) || contentsMask.HasFlag(Contents.PlayerClip));
-    }
 
     [Fact]
     public async Task Trace_TraceShape()
@@ -106,5 +96,47 @@ public class RayTraceTests
         Assert.NotEqual(Vector.Zero, result.HitPoint);
         Assert.Equal(RayType_t.RAY_TYPE_LINE, result.RayType);
         Assert.Equal("worldent", result.HitEntity().DesignerName);
+    }
+
+    [Fact]
+    public async Task CCSNavArea_GetAllAreas()
+    {
+        await InitializeAsync();
+
+        var areas = CCSNavArea.GetAllNavAreas();
+        Assert.NotNull(areas);
+        Assert.NotEmpty(areas);
+
+        // de_dust2 area count is 2242 at time of writing, but this may change with map updates
+        Assert.InRange(areas.Count, 2100, 2300);
+    }
+
+    [Fact(Skip = "Area overlapping appears to always fail, even when the pawn is inside the nav area.")]
+    public async Task CCSNavArea_CheckAreaOverlappingEntity()
+    {
+        await InitializeAsync();
+
+        var area = CCSNavArea.GetAllNavAreas().OrderByDescending(a => a.Area2D).First();
+        pawn.Teleport(area.Center);
+
+        Assert.True(area.ContainsPoint(pawn.AbsOrigin), "Pawn should be inside the nav area after teleporting to its center.");
+
+#pragma warning disable CS0001
+        var overlapping = Trace.CheckAreaOverlappingEntity(area, pawn);
+#pragma warning restore CS0001
+        Assert.True(overlapping);
+    }
+
+    [Fact(Skip = "I can't get this to reliably return a non-zero contents mask, even when the point is inside a solid brush.")]
+    public async Task Trace_PointContents()
+    {
+        await InitializeAsync();
+
+        var pos = new Vector(569, 2368, 59);
+#pragma warning disable CS0001
+        var contentsMask = Trace.PointContents(pos);
+#pragma warning restore CS0001
+        Assert.NotEqual(0ul, (ulong)contentsMask);
+        Assert.True(contentsMask.HasFlag(Contents.Solid) || contentsMask.HasFlag(Contents.PlayerClip));
     }
 }

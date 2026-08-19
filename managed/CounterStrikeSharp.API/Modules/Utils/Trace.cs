@@ -14,6 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
 
@@ -134,6 +135,8 @@ public static unsafe class Trace
     }
 
     /// <summary>Returns the contents bitmask at the given world position.</summary>
+    [Experimental(diagnosticId: "CS0001",
+        Message = "PointContents maps to a Valve function but its behaviour has not been fully understood. Use with caution.")]
     public static Contents PointContents(Vector pos, Contents contentsMask = Contents.Empty)
         => (Contents)NativeAPI.PointContents(pos.Handle, (ulong)contentsMask);
 
@@ -141,8 +144,11 @@ public static unsafe class Trace
     /// Returns whether a nav area overlaps with an entity's bounding box.
     /// <paramref name="area"/> is an opaque pointer to a <c>CNavArea</c> obtained from the nav system.
     /// </summary>
-    public static bool CheckAreaOverlappingEntity(nint area, CBaseEntity entity, bool extrudeHullHeight = false)
-        => NativeAPI.CheckAreaOverlappingEntity(area, entity.Handle, extrudeHullHeight);
+    [Experimental(diagnosticId: "CS0001",
+        Message =
+            "CheckAreaOverlappingEntity maps to a Valve function but its behaviour has not been fully understood. Use with caution.")]
+    public static bool CheckAreaOverlappingEntity(CCSNavArea area, CBaseEntity entity, bool extrudeHullHeight = false)
+        => NativeAPI.CheckAreaOverlappingEntity(area.Handle, entity.Handle, extrudeHullHeight);
 
     /// <summary>Returns the world-space axis-aligned bounding box of <paramref name="entity"/>.</summary>
     public static void GetEntityWorldSpaceAABB(CBaseEntity entity, out Vector mins, out Vector maxs)
