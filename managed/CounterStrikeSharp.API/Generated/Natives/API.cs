@@ -1603,6 +1603,113 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void TraceShape(IntPtr startpos, IntPtr angles, IntPtr ignoreentity, ulong interactsas, ulong interactswith, ulong interactsexclude, IntPtr outresult){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(startpos);
+			ScriptContext.GlobalScriptContext.PushPrimitive(angles);
+			ScriptContext.GlobalScriptContext.PushPrimitive(ignoreentity);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactsas);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactswith);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactsexclude);
+			ScriptContext.GlobalScriptContext.PushPrimitive(outresult);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDBED3874);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void TraceEndShape(IntPtr startpos, IntPtr endpos, IntPtr ignoreentity, ulong interactsas, ulong interactswith, ulong interactsexclude, IntPtr outresult){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(startpos);
+			ScriptContext.GlobalScriptContext.PushPrimitive(endpos);
+			ScriptContext.GlobalScriptContext.PushPrimitive(ignoreentity);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactsas);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactswith);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactsexclude);
+			ScriptContext.GlobalScriptContext.PushPrimitive(outresult);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x8A833D84);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void TraceHullShape(IntPtr startpos, IntPtr endpos, IntPtr mins, IntPtr maxs, IntPtr ignoreentity, ulong interactsas, ulong interactswith, ulong interactsexclude, IntPtr outresult){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(startpos);
+			ScriptContext.GlobalScriptContext.PushPrimitive(endpos);
+			ScriptContext.GlobalScriptContext.PushPrimitive(mins);
+			ScriptContext.GlobalScriptContext.PushPrimitive(maxs);
+			ScriptContext.GlobalScriptContext.PushPrimitive(ignoreentity);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactsas);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactswith);
+			ScriptContext.GlobalScriptContext.PushPrimitive(interactsexclude);
+			ScriptContext.GlobalScriptContext.PushPrimitive(outresult);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x6C62B676);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static ulong PointContents(IntPtr pos, ulong contentsmask){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(pos);
+			ScriptContext.GlobalScriptContext.PushPrimitive(contentsmask);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x8A68FFAC);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<ulong>();
+			}
+		}
+
+        public static bool CheckAreaOverlappingEntity(IntPtr area, IntPtr entity, bool extrudehullheight){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(area);
+			ScriptContext.GlobalScriptContext.PushPrimitive(entity);
+			ScriptContext.GlobalScriptContext.PushPrimitive(extrudehullheight);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2ACFC3F3);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
+			}
+		}
+
+        public static void GetEntityWorldSpaceAabb(IntPtr entity, IntPtr minsout, IntPtr maxsout){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(entity);
+			ScriptContext.GlobalScriptContext.PushPrimitive(minsout);
+			ScriptContext.GlobalScriptContext.PushPrimitive(maxsout);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x6C485DCE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static IntPtr GetEconItemSystem(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x981E9B5B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
+			}
+		}
+
+        public static bool IsServerPaused(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xB216AAAC);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
+			}
+		}
+
         public static short GetSchemaOffset(string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -1689,26 +1796,6 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xBBE9D700);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static IntPtr GetEconItemSystem(){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x981E9B5B);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
-			}
-		}
-
-        public static bool IsServerPaused(){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xB216AAAC);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
 			}
 		}
 
