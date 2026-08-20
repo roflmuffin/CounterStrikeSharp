@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 #include <spdlog/fmt/ostr.h>
 #include <spdlog/spdlog.h>
@@ -9,7 +10,7 @@ namespace counterstrikesharp {
 class Log
 {
   public:
-    static void Init();
+    static void Init(const std::string& logFilePath = "");
     static void Close();
 
     static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return m_core_logger; }
