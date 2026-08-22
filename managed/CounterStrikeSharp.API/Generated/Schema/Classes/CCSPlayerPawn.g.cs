@@ -422,6 +422,10 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_vecStashedGrenadeThrowPosition")]
 	public Vector StashedGrenadeThrowPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vecStashedGrenadeThrowPosition");
 
+	// m_vecStashedGrenadeThrowPawnCenter
+	[SchemaMember("CCSPlayerPawn", "m_vecStashedGrenadeThrowPawnCenter")]
+	public Vector StashedGrenadeThrowPawnCenter => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vecStashedGrenadeThrowPawnCenter");
+
 	// m_vecStashedVelocity
 	[SchemaMember("CCSPlayerPawn", "m_vecStashedVelocity")]
 	public Vector StashedVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vecStashedVelocity");
