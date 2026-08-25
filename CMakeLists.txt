@@ -111,6 +111,8 @@ set(SOURCE_FILES
     src/core/managers/usermessage_manager.cpp
     src/core/managers/usermessage_manager.h
     src/scripting/natives/natives_raytrace.cpp
+    src/scripting/natives/natives_sounds.cpp
+    src/core/sound_event.cpp
     src/scripting/natives/natives_dynamichooks.cpp
     src/core/game_system.h
     src/core/game_system.cpp
