@@ -1,3 +1,6 @@
+## What's Changed in v1.0.373
+* fix: Update for latest CS2 Game Update [1.41.7.7] ([faa9782](https://github.com/roflmuffin/CounterStrikeSharp/commit/faa9782072ec2b41ef22efe58f829447f12ab051))
+
 ## What's Changed in v1.0.372
 * feat: Add Ray/Hull Trace API (INavPhysicsInterface) by [@SlynxCZ](https://github.com/SlynxCZ) in [#1331](https://github.com/roflmuffin/CounterStrikeSharp/pull/1331) ([7ccf995](https://github.com/roflmuffin/CounterStrikeSharp/commit/7ccf9950cf207621817f70ca03b369efcf20f065))
 * chore: Update Schema Definitions to 1.41.6.9 in [#1356](https://github.com/roflmuffin/CounterStrikeSharp/pull/1356) ([db2cd0f](https://github.com/roflmuffin/CounterStrikeSharp/commit/db2cd0fe50f6b42bd255348bfe2ad6195b4aed7d))
