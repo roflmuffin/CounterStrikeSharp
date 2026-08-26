@@ -40,7 +40,10 @@ public class SoundEvent : NativeObject, IDisposable
     /// <summary>Playback rate, where 1 leaves it unchanged, 2 raises it an octave and 0.5 lowers it one.</summary>
     public const string Pitch = "public.pitch";
 
-    /// <summary>World position the sound plays from.</summary>
+    /// <summary>
+    /// World position the sound plays from. Takes effect with <see cref="SourceEntityIndex"/> set
+    /// to 0, and is ignored while the sound plays at the recipient or follows an entity.
+    /// </summary>
     public const string Position = "public.position";
 
     private bool _disposed;
@@ -55,7 +58,12 @@ public class SoundEvent : NativeObject, IDisposable
     }
 
     /// <summary>
-    /// Entity the sound is attached to. Leave it at -1 to emit a sound with no source entity.
+    /// Where the sound plays from.
+    /// <list type="bullet">
+    /// <item><description>-1, the default, plays it at each recipient, and <see cref="Position"/> is ignored.</description></item>
+    /// <item><description>0 plays it at <see cref="Position"/> in the world, which is how the game emits placed sounds.</description></item>
+    /// <item><description>Any other index attaches it to that entity and follows it.</description></item>
+    /// </list>
     /// </summary>
     public int SourceEntityIndex { get; set; } = -1;
 
@@ -64,8 +72,8 @@ public class SoundEvent : NativeObject, IDisposable
     /// </summary>
     /// <param name="name">
     /// Any <c>public.*</c> parameter name. <see cref="Volume"/>, <see cref="Pitch"/> and
-    /// <see cref="Position"/> are the ones this API was tested against; whether any other parameter
-    /// has an effect depends on the operator stack behind the sound.
+    /// <see cref="Position"/> are the ones verified to change what the player hears. Every parameter
+    /// reaches the client, but whether it has an effect depends on the operator stack behind the sound.
     /// </param>
     /// <param name="value">Value to send.</param>
     public void SetParam(string name, float value) => NativeAPI.SoundEventSetFloat(Handle, name, value);
