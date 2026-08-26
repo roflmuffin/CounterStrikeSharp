@@ -62,6 +62,10 @@ public class CenterHtmlMenu : BaseMenu
 public class CenterHtmlMenuInstance : BaseMenuInstance
 {
     private readonly BasePlugin _plugin;
+
+    // Display runs on every tick, so the builder is kept and cleared
+    // instead of allocating a new one each time.
+    private readonly StringBuilder _builder = new();
     public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
     protected override int MenuItemsPerPage => (Menu.ExitButton ? 0 : 1) + ((HasPrevButton && HasNextButton) ? NumPerPage - 1 : NumPerPage);
 
@@ -85,7 +89,8 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             return;
         }
 
-        var builder = new StringBuilder();
+        var builder = _builder;
+        builder.Clear();
         builder.Append($"<b><font color='{centerHtmlMenu.TitleColor}'>{centerHtmlMenu.Title}</font></b>");
         builder.AppendLine("<br>");
 
