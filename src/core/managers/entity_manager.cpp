@@ -243,7 +243,7 @@ void EntityManager::CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
                                   const uint16* pEntityIndicies,
                                   uint32_t nEntities)
 {
-    // VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
+    VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
 
     auto callback = globals::entityManager.check_transmit;
 
