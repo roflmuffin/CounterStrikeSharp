@@ -86,4 +86,5 @@ public enum ECstrike15UserMessages : uint
 	CS_UM_RecurringMissionSchema = 0x183,
 	CS_UM_SendPlayerLoadout = 0x184,
 	CS_UM_WeaponMagDrop = 0x185,
+	CS_UM_CustomHudClicked = 0x186,
 }
