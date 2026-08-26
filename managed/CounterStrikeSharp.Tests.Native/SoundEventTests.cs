@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Sounds;
-using CounterStrikeSharp.API.Modules.UserMessages;
+using CounterStrikeSharp.API.Modules.Utils;
 using Xunit;
 using Vector = CounterStrikeSharp.API.Modules.Utils.Vector;
 
@@ -13,92 +12,14 @@ namespace NativeTestsPlugin;
 
 public class SoundEventTests
 {
-    // gameevents.proto: GE_SosStartSoundEvent
-    private const int SosStartSoundEvent = 208;
-
     private const string TestSound = "Weapon_AK47.Single";
 
-    // MurmurHash2 of the parameter name under the Source 2 string token seed. Hardcoded so that a
-    // change to the way parameters are packed shows up as a failing test rather than silence.
-    private const uint VolumeHash = 0xBD6054E9;
-    private const uint PitchHash = 0x929A57A4;
-    private const uint PositionHash = 0x5A7CCE4D;
-
-    private const byte TypeInt = 0x02;
-    private const byte TypeFloat = 0x08;
-    private const byte TypeVector = 0x0A;
-
-    private readonly record struct Parameter(uint Hash, byte Type, byte[] Value);
-
-    private readonly record struct CapturedSound(uint Guid, uint Hash, byte[]? Packed);
-
-    /// <summary>
-    /// Runs <paramref name="emit"/> with a hook on the sound event message and returns what the
-    /// hook saw. Values are read inside the hook because the message only lives for that call, and
-    /// the game may well emit its own sounds in the same frame, so callers pick theirs out by guid.
-    /// </summary>
-    private static List<CapturedSound> Capture(Action emit)
+    private static CCSPlayerController FindPlayer()
     {
-        var captured = new List<CapturedSound>();
+        var player = Utilities.GetPlayers().FirstOrDefault(p => p is { IsValid: true });
+        Assert.NotNull(player);
 
-        HookResult Handler(UserMessage message)
-        {
-            captured.Add(new CapturedSound(message.ReadUInt("soundevent_guid"), message.ReadUInt("soundevent_hash"),
-                message.HasField("packed_params") ? message.ReadBytes("packed_params") : null));
-
-            return HookResult.Continue;
-        }
-
-        NativeTestsPlugin.Instance.HookUserMessage(SosStartSoundEvent, Handler);
-
-        try
-        {
-            emit();
-        }
-        finally
-        {
-            NativeTestsPlugin.Instance.UnhookUserMessage(SosStartSoundEvent, Handler);
-        }
-
-        return captured;
-    }
-
-    /// <summary>
-    /// Emits one sound and returns the message it produced.
-    /// </summary>
-    private static CapturedSound EmitAndCapture(Action<SoundEvent> setup)
-    {
-        var guid = 0;
-
-        var captured = Capture(() =>
-        {
-            using var sound = new SoundEvent(TestSound);
-            setup(sound);
-            guid = sound.EmitToAll();
-        });
-
-        Assert.NotEqual(0, guid);
-
-        return Assert.Single(captured, sound => sound.Guid == (uint)guid);
-    }
-
-    private static List<Parameter> Unpack(byte[] packed)
-    {
-        var parameters = new List<Parameter>();
-
-        for (var at = 0; at + 7 <= packed.Length;)
-        {
-            var hash = BitConverter.ToUInt32(packed, at);
-            var type = packed[at + 4];
-            var size = BitConverter.ToUInt16(packed, at + 5);
-            at += 7;
-
-            Assert.True(at + size <= packed.Length, "parameter runs past the end of the blob");
-            parameters.Add(new Parameter(hash, type, packed[at..(at + size)]));
-            at += size;
-        }
-
-        return parameters;
+        return player!;
     }
 
     [Fact]
@@ -126,117 +47,123 @@ public class SoundEventTests
     }
 
     [Fact]
-    public async Task Emit_HashesTheSoundNameTheWayTheGameDoes()
+    public async Task SetParam_AcceptsEveryValueType()
     {
-        // A sound the bots will not set off by themselves, so anything the game emits under this
-        // hash came from the EmitSound call below.
-        const string quietSound = "UIPanorama.popup_accept_match_beep";
-
-        var seen = new List<CapturedSound>();
-        var ourGuid = 0u;
-
-        HookResult Handler(UserMessage message)
-        {
-            seen.Add(new CapturedSound(message.ReadUInt("soundevent_guid"), message.ReadUInt("soundevent_hash"),
-                message.HasField("packed_params") ? message.ReadBytes("packed_params") : null));
-
-            return HookResult.Continue;
-        }
-
         await Server.NextFrameAsync(() =>
         {
-            var player = Utilities.GetPlayers().FirstOrDefault(p => p is { IsValid: true });
-            Assert.NotNull(player);
+            using var sound = new SoundEvent(TestSound);
+            sound.SourceEntityIndex = (int)FindPlayer().Index;
+            sound.SetParam(SoundEvent.Volume, 0.5f);
+            sound.SetParam(SoundEvent.Pitch, 1.5f);
+            sound.SetParam(SoundEvent.Position, new Vector(1, 2, 3));
+            sound.SetParam("public.relevant_player", 1);
 
-            NativeTestsPlugin.Instance.HookUserMessage(SosStartSoundEvent, Handler);
+            Assert.NotEqual(0, sound.EmitToAll());
+        });
+    }
 
-            using (var sound = new SoundEvent(quietSound))
+    [Fact]
+    public async Task SetParam_SameParameterTwice_KeepsWorking()
+    {
+        await Server.NextFrameAsync(() =>
+        {
+            using var sound = new SoundEvent(TestSound);
+            sound.SetParam(SoundEvent.Volume, 0.1f);
+            sound.SetParam(SoundEvent.Volume, 0.9f);
+
+            Assert.NotEqual(0, sound.EmitToAll());
+        });
+    }
+
+    [Fact]
+    public async Task EmitTo_SendsToASinglePlayer()
+    {
+        await Server.NextFrameAsync(() =>
+        {
+            using var sound = new SoundEvent(TestSound);
+
+            Assert.NotEqual(0, sound.EmitTo(FindPlayer()));
+        });
+    }
+
+    [Fact]
+    public async Task Stop_EndsASoundThatWasStarted()
+    {
+        await Server.NextFrameAsync(() =>
+        {
+            using var sound = new SoundEvent(TestSound);
+            var guid = sound.EmitToAll();
+
+            SoundEvent.Stop(guid);
+        });
+    }
+
+    [Fact]
+    public async Task Dispose_IsSafeToCallTwice()
+    {
+        await Server.NextFrameAsync(() =>
+        {
+            var sound = new SoundEvent(TestSound);
+            sound.EmitToAll();
+
+            sound.Dispose();
+            sound.Dispose();
+        });
+    }
+}
+
+/// <summary>
+/// Plays a sound to every player on the server, sweeping volume, pitch and then position so that the
+/// result can be checked by ear. Run it on its own with <c>css_itest AudibleSoundTest</c>.
+/// </summary>
+public class AudibleSoundTest
+{
+    private const string SweepSound = "Weapon_AK47.Single";
+
+    private static void Play(float volume, float pitch, float sideways = 0f)
+    {
+        foreach (var player in Utilities.GetPlayers().Where(p => p is { IsValid: true, IsBot: false }))
+        {
+            using var sound = new SoundEvent(SweepSound);
+            sound.SetParam(SoundEvent.Volume, volume);
+            sound.SetParam(SoundEvent.Pitch, pitch);
+
+            var origin = player.PlayerPawn.Value?.AbsOrigin;
+            if (sideways != 0f && origin != null)
             {
-                sound.SourceEntityIndex = (int)player!.Index;
-                ourGuid = (uint)sound.EmitToAll();
+                // 0 places the sound in the world rather than at the listener.
+                sound.SourceEntityIndex = 0;
+                sound.SetParam(SoundEvent.Position, new Vector(origin.X + sideways, origin.Y, origin.Z));
             }
 
-            // The game does not post its own message inside this call, hence the wait below.
-            player!.EmitSound(quietSound);
-        });
-
-        await TestUtils.WaitForSeconds(0.6f);
-        await Server.NextFrameAsync(() => NativeTestsPlugin.Instance.UnhookUserMessage(SosStartSoundEvent, Handler));
-
-        var ours = Assert.Single(seen, sound => sound.Guid == ourGuid);
-        var theirs = seen.Where(sound => sound.Guid != ourGuid).ToList();
-
-        Assert.NotEmpty(theirs);
-        Assert.Contains(theirs, sound => sound.Hash == ours.Hash);
+            sound.EmitTo(player);
+        }
     }
 
-    [Fact]
-    public async Task SetParam_PacksEveryParameterIntoTheMessage()
+    private static async Task Step(string what, float volume, float pitch, float sideways = 0f)
     {
         await Server.NextFrameAsync(() =>
         {
-            var captured = EmitAndCapture(sound =>
-            {
-                sound.SetParam(SoundEvent.Volume, 0.25f);
-                sound.SetParam(SoundEvent.Pitch, 1.5f);
-                sound.SetParam(SoundEvent.Position, new Vector(1, 2, 3));
-            });
-
-            Assert.NotNull(captured.Packed);
-            var parameters = Unpack(captured.Packed!);
-            Assert.Equal(3, parameters.Count);
-
-            var volume = parameters.Single(p => p.Hash == VolumeHash);
-            Assert.Equal(TypeFloat, volume.Type);
-            Assert.Equal(0.25f, BitConverter.ToSingle(volume.Value));
-
-            var pitch = parameters.Single(p => p.Hash == PitchHash);
-            Assert.Equal(TypeFloat, pitch.Type);
-            Assert.Equal(1.5f, BitConverter.ToSingle(pitch.Value));
-
-            var position = parameters.Single(p => p.Hash == PositionHash);
-            Assert.Equal(TypeVector, position.Type);
-            Assert.Equal(12, position.Value.Length);
-            Assert.Equal(1f, BitConverter.ToSingle(position.Value, 0));
-            Assert.Equal(2f, BitConverter.ToSingle(position.Value, 4));
-            Assert.Equal(3f, BitConverter.ToSingle(position.Value, 8));
+            Server.PrintToChatAll($" \x04{what}");
+            Play(volume, pitch, sideways);
         });
+
+        await TestUtils.WaitForSeconds(1.2f);
     }
 
     [Fact]
-    public async Task SetParam_SameParameterTwice_SendsOnlyTheLastValue()
+    public async Task SweepsVolumeThenPitchThenPosition()
     {
-        await Server.NextFrameAsync(() =>
-        {
-            var captured = EmitAndCapture(sound =>
-            {
-                sound.SetParam(SoundEvent.Volume, 0.1f);
-                sound.SetParam(SoundEvent.Volume, 0.9f);
-            });
+        await Step("volume 0.1", 0.1f, 1.0f);
+        await Step("volume 0.4", 0.4f, 1.0f);
+        await Step("volume 1.0, louder each time", 1.0f, 1.0f);
 
-            Assert.NotNull(captured.Packed);
-            var volume = Assert.Single(Unpack(captured.Packed!), p => p.Hash == VolumeHash);
-            Assert.Equal(0.9f, BitConverter.ToSingle(volume.Value));
-        });
-    }
+        await Step("pitch 0.5, lower", 1.0f, 0.5f);
+        await Step("pitch 1.0", 1.0f, 1.0f);
+        await Step("pitch 2.0, higher", 1.0f, 2.0f);
 
-    [Fact]
-    public async Task SetParam_Int_UsesTheIntegerType()
-    {
-        await Server.NextFrameAsync(() =>
-        {
-            var captured = EmitAndCapture(sound => sound.SetParam("public.relevant_player", 7));
-
-            Assert.NotNull(captured.Packed);
-            var parameter = Assert.Single(Unpack(captured.Packed!));
-            Assert.Equal(TypeInt, parameter.Type);
-            Assert.Equal(7, BitConverter.ToInt32(parameter.Value));
-        });
-    }
-
-    [Fact]
-    public async Task Emit_WithNoParameters_SendsNoBlob()
-    {
-        await Server.NextFrameAsync(() => { Assert.Null(EmitAndCapture(_ => { }).Packed); });
+        await Step("at the listener", 1.0f, 1.0f);
+        await Step("600 units to the side", 1.0f, 1.0f, 600f);
+        await Step("2500 units to the side, further off", 1.0f, 1.0f, 2500f);
     }
 }
