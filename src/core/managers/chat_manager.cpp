@@ -70,7 +70,11 @@ void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, 
         char* pszMessage = (char*)(args.ArgS() + prefix.length() + 1);
 
         // Trailing slashes are only removed if Host_Say has been called.
-        if (bSilent) pszMessage[V_strlen(pszMessage) - 1] = 0;
+        if (bSilent){
+            const auto len = V_strlen(pszMessage);
+            if (len > 0) { pszMessage[len - 1] = 0;}
+        }
+
 
         CCommand args;
         args.Tokenize(pszMessage);
