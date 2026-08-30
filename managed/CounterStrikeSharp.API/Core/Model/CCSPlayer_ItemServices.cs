@@ -29,12 +29,13 @@ public partial class CCSPlayer_ItemServices
     /// <exception cref="InvalidOperationException">ItemServices points to null</exception>
     public void DropActivePlayerWeapon(CBasePlayerWeapon activeWeapon)
     {
-        if(Handle == IntPtr.Zero)
+        if (Handle == IntPtr.Zero)
             throw new InvalidOperationException("ItemServices points to null.");
 
         Guard.IsValidEntity(activeWeapon);
 
-        VirtualFunction.CreateVoid<nint, nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_DropActivePlayerWeapon"))(Handle, activeWeapon.Handle);
+        var dropMomentum = new Vector();
+        VirtualFunction.CreateVoid<nint, nint, nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_DropActivePlayerWeapon"))(Handle, activeWeapon.Handle, dropMomentum.Handle);
     }
 
     /// <summary>
