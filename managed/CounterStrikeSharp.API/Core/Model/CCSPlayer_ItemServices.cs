@@ -34,8 +34,7 @@ public partial class CCSPlayer_ItemServices
 
         Guard.IsValidEntity(activeWeapon);
 
-        var dropMomentum = new Vector();
-        VirtualFunction.CreateVoid<nint, nint, nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_DropActivePlayerWeapon"))(Handle, activeWeapon.Handle, dropMomentum.Handle);
+        VirtualFunction.CreateVoid<nint, nint, nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_DropActivePlayerWeapon"))(Handle, activeWeapon.Handle, Vector.Zero.Handle);
     }
 
     /// <summary>
