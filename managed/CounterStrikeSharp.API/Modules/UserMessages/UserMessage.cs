@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
+using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.UserMessages;
@@ -145,6 +146,19 @@ public class UserMessage : NativeObject, IDisposable
     /// <example>CMsgTEFireBullets</example>
     /// </summary>
     public string Type => NativeAPI.UsermessageGettype(this);
+
+    /// <summary>
+    /// The player that sent this message to the server, for messages received via
+    /// <see cref="Core.BasePlugin.HookClientMessage"/>. <c>null</c> for server-sent messages.
+    /// </summary>
+    public CCSPlayerController? Sender
+    {
+        get
+        {
+            var slot = NativeAPI.UsermessageGetsender(this);
+            return slot < 0 ? null : Utilities.GetPlayerFromSlot(slot);
+        }
+    }
 
     /// <summary>
     /// Returns the debug string of this user message, as defined by protobuf.

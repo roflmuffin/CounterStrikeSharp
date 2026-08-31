@@ -54,6 +54,24 @@ static void UnhookUserMessage(ScriptContext& script_context)
     globals::userMessageManager.UnhookUserMessage(messageId, callback, mode);
 }
 
+static void HookClientMessage(ScriptContext& script_context)
+{
+    auto messageId = script_context.GetArgument<int>(0);
+    auto callback = script_context.GetArgument<CallbackT>(1);
+    auto mode = script_context.GetArgument<HookMode>(2);
+
+    globals::userMessageManager.HookClientMessage(messageId, callback, mode);
+}
+
+static void UnhookClientMessage(ScriptContext& script_context)
+{
+    auto messageId = script_context.GetArgument<int>(0);
+    auto callback = script_context.GetArgument<CallbackT>(1);
+    auto mode = script_context.GetArgument<HookMode>(2);
+
+    globals::userMessageManager.UnhookClientMessage(messageId, callback, mode);
+}
+
 static void GetInt32OrUnsignedOrEnum(ScriptContext& script_context)
 {
     auto message = script_context.GetArgument<UserMessage*>(0);
@@ -775,6 +793,19 @@ static void UserMessageGetMessageId(ScriptContext& scriptContext)
     scriptContext.SetResult(message->GetMessageID());
 }
 
+static void UserMessageGetSender(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+
+    if (message == nullptr)
+    {
+        scriptContext.ThrowNativeError("Invalid message");
+        return;
+    }
+
+    scriptContext.SetResult(message->GetSenderSlot());
+}
+
 static void UserMessageGetMessageName(ScriptContext& scriptContext)
 {
     auto message = scriptContext.GetArgument<UserMessage*>(0);
@@ -804,6 +835,8 @@ static void UserMessageGetMessageTypeName(ScriptContext& scriptContext)
 REGISTER_NATIVES(usermessages, {
     ScriptEngine::RegisterNativeHandler("HOOK_USERMESSAGE", HookUserMessage);
     ScriptEngine::RegisterNativeHandler("UNHOOK_USERMESSAGE", UnhookUserMessage);
+    ScriptEngine::RegisterNativeHandler("HOOK_CLIENT_USERMESSAGE", HookClientMessage);
+    ScriptEngine::RegisterNativeHandler("UNHOOK_CLIENT_USERMESSAGE", UnhookClientMessage);
     ScriptEngine::RegisterNativeHandler("PB_HASFIELD", PbHasField);
     ScriptEngine::RegisterNativeHandler("PB_READINT", PbReadInt);
     ScriptEngine::RegisterNativeHandler("PB_READINT64", PbReadInt64);

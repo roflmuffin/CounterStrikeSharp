@@ -597,6 +597,37 @@ namespace CounterStrikeSharp.API.Core
         }
 
         /// <summary>
+        /// Hooks a user message sent from a client to the server, e.g. <c>CS_UM_CustomHudClicked</c>.
+        /// The sending player is available via <see cref="UserMessage.Sender"/>.
+        /// Returning <see cref="HookResult.Handled"/> or higher from a <see cref="HookMode.Pre"/> hook
+        /// prevents the server from processing the message.
+        /// </summary>
+        /// <param name="messageId">Message ID to hook, e.g. from <see cref="UserMessage.FindIdByName"/></param>
+        /// <param name="handler">Handler to call</param>
+        /// <param name="mode">Hook mode</param>
+        public void HookClientMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            var subscriber = new CallbackSubscriber(handler, handler,
+                () => UnhookClientMessage(messageId, handler));
+
+            NativeAPI.HookClientUsermessage(messageId, subscriber.GetInputArgument(), mode);
+            Handlers[handler] = subscriber;
+        }
+
+        /// <summary>
+        /// Unhooks a client-to-server user message.
+        /// </summary>
+        /// <inheritdoc cref="HookClientMessage"/>
+        public void UnhookClientMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
+
+            NativeAPI.UnhookClientUsermessage(messageId, subscriber.GetInputArgument(), mode);
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Handlers.Remove(handler);
+        }
+
+        /// <summary>
         /// Unhooks an entity output.
         /// </summary>
         /// <inheritdoc cref="HookEntityOutput"/>

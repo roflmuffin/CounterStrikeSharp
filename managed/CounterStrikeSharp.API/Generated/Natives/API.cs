@@ -1846,6 +1846,41 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void HookClientUsermessage(int messageid, InputArgument callback, HookMode mode){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(messageid);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.PushPrimitive(mode);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x95371F45);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void UnhookClientUsermessage(int messageid, InputArgument callback, HookMode mode){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(messageid);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.PushPrimitive(mode);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xEE3D3D1E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static int UsermessageGetsender(UserMessage message){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(message);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA317303D);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
+			}
+		}
+
         public static bool PbHasfield(UserMessage message, string name){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

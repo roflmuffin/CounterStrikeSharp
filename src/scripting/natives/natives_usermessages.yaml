@@ -36,3 +36,6 @@ USERMESSAGE_DELETE: message:UserMessage -> void
 USERMESSAGE_GETID: message:UserMessage -> int
 USERMESSAGE_GETNAME: message:UserMessage -> string
 USERMESSAGE_GETTYPE: message:UserMessage -> string
+HOOK_CLIENT_USERMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+UNHOOK_CLIENT_USERMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+USERMESSAGE_GETSENDER: message:UserMessage -> int

@@ -134,12 +134,35 @@ class UserMessage
     uint64* GetRecipientMask() { return recipientMask; }
     bool IsManuallyAllocated() { return manuallyAllocated; }
 
+    // Deserializes a raw client-to-server message payload into the allocated message.
+    bool ParseFromBuffer(const void* data, int size)
+    {
+        if (!msg) return false;
+        return msg->ParseFromArray(data, size);
+    }
+
+    // Frees a message allocated by the id/name constructors. Only used for messages
+    // that were never handed to the engine (e.g. parsed client-to-server messages).
+    void FreeNetMessage()
+    {
+        if (manuallyAllocated && msg)
+        {
+            delete msg;
+            msg = nullptr;
+        }
+    }
+
+    // Slot of the client that sent this message to the server, -1 if not client-sent.
+    int GetSenderSlot() const { return m_senderSlot; }
+    void SetSenderSlot(int slot) { m_senderSlot = slot; }
+
   private:
     CNetMessagePB<google::protobuf::Message>* msg = nullptr;
     INetworkMessageInternal* msgSerializable = nullptr;
     int nRecipientCount = 0;
     uint64* recipientMask = nullptr;
     bool manuallyAllocated = false;
+    int m_senderSlot = -1;
 
   public:
     inline bool HasField(const char* pszFieldName)

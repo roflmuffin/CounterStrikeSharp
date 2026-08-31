@@ -52,13 +52,24 @@ class UserMessageManager : public GlobalClass
                         const CNetMessage* pData,
                         unsigned long nSize,
                         NetChannelBufType_t bufType);
+    void Hook_ClientSvcUserMessage(CPlayerSlot slot, int um_type, uint32 size, const void* buf);
+    void Hook_ClientSvcUserMessagePost(CPlayerSlot slot, int um_type, uint32 size, const void* buf);
 
     void UnhookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);
     void HookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);
 
+    // Hooks a user message sent from a client to the server (e.g. CS_UM_CustomHudClicked).
+    void UnhookClientMessage(int messageId, CallbackT fnCallback, HookMode mode);
+    void HookClientMessage(int messageId, CallbackT fnCallback, HookMode mode);
+
   private:
+    void HookMessageInternal(std::map<int, UserMessageHook*>& hooksMap, int messageId, CallbackT fnCallback, HookMode mode);
+    void UnhookMessageInternal(std::map<int, UserMessageHook*>& hooksMap, int messageId, CallbackT fnCallback, HookMode mode);
+    HookResult DispatchClientMessageCallbacks(CPlayerSlot slot, int um_type, uint32 size, const void* buf, HookMode mode);
+
     ScriptCallback* m_on_user_message_callback;
     std::map<int, UserMessageHook*> m_hooksMap;
+    std::map<int, UserMessageHook*> m_clientHooksMap;
 };
 
 } // namespace counterstrikesharp
