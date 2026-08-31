@@ -23,6 +23,7 @@
 #include "core/managers/server_manager.h"
 #include "core/managers/voice_manager.h"
 #include "core/managers/usermessage_manager.h"
+#include "core/customhudlayout.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -90,6 +91,7 @@ ServerManager serverManager;
 VoiceManager voiceManager;
 TickScheduler tickScheduler;
 UserMessageManager userMessageManager;
+CCSCustomHudLayout customHudLayout;
 
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;

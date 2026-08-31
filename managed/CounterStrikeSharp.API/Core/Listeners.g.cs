@@ -246,5 +246,14 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         [ListenerName("OnMetamodAllPluginsLoaded")]
         public delegate void OnMetamodAllPluginsLoaded();
+
+        /// <summary>
+        /// Called when the player clicks on the custom hud.
+        /// </summary>
+        /// <param name="player">The player clicked on the custom hud</param>
+        /// <param name="customLayout">Entity custom hud</param>
+        /// <param name="buttonId">ID of the button that was clicked</param>
+        [ListenerName("OnCustomHudClicked")]
+        public delegate void OnCustomHudClicked(CCSPlayerController player, CCSCustomHudLayout customLayout, string buttonId);
     }
 }
