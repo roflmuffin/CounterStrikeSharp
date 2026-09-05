@@ -93,8 +93,13 @@ static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap, const char* cla
     {
         SchemaClassFieldData_t& field = pFields[i];
 
-        keyValueMap->Insert(hash_32_fnv1a_const(field.m_pszName),
-                            { field.m_nSingleInheritanceOffset, IsFieldNetworked(pNetworkClassInfo, field) });
+        if (field.m_pType->m_eTypeCategory == SCHEMA_TYPE_ATOMIC && field.m_pType->m_eAtomicCategory == SCHEMA_ATOMIC_COLLECTION_OF_T)
+            keyValueMap->Insert(hash_32_fnv1a_const(field.m_pszName),
+                                { field.m_nSingleInheritanceOffset, IsFieldNetworked(pNetworkClassInfo, field),
+                                  static_cast<CSchemaType_Atomic_CollectionOfT*>(field.m_pType)->m_pfnManipulator });
+        else
+            keyValueMap->Insert(hash_32_fnv1a_const(field.m_pszName),
+                                { field.m_nSingleInheritanceOffset, IsFieldNetworked(pNetworkClassInfo, field) });
     }
 
     return true;
