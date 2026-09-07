@@ -3,10 +3,26 @@ const fs = require('node:fs');
 const checkName = 'Game server smoke test';
 const runUrl = (context) => `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
 
+function requestPullNumber(context) {
+  if (context.eventName === 'workflow_dispatch') {
+    const value = context.payload.inputs?.pr_number;
+    if (typeof value !== 'string' || !/^[1-9]\d*$/.test(value) || !Number.isSafeInteger(Number(value))) {
+      throw new Error('pr_number must be a positive integer');
+    }
+    return Number(value);
+  }
+  const { issue, comment } = context.payload;
+  if (context.eventName === 'issue_comment' && issue?.pull_request &&
+      comment?.body.trim() === '/smoke-test' && comment.user.type === 'User') return issue.number;
+  return undefined;
+}
+
 async function isMaintainerRequest({ github, context }) {
   // Check live repository permissions, not author_association (a contributor
   // or organization member is not necessarily a maintainer). Check reruns too.
-  for (const username of new Set([context.payload.comment.user.login, process.env.TRIGGERING_ACTOR || context.actor])) {
+  const requester = context.eventName === 'workflow_dispatch' ? context.actor : context.payload.comment?.user.login;
+  if (!requester) return false;
+  for (const username of new Set([requester, process.env.TRIGGERING_ACTOR || context.actor])) {
     const { data } = await github.rest.repos.getCollaboratorPermissionLevel({ ...context.repo, username });
     if (data.permission !== 'admin' && data.permission !== 'maintain' && data.role_name !== 'maintain') {
       return false;
@@ -16,13 +32,13 @@ async function isMaintainerRequest({ github, context }) {
 }
 
 async function authorize({ github, context, core }) {
-  const { issue, comment } = context.payload;
-  if (!issue?.pull_request || comment?.body.trim() !== '/smoke-test' || comment.user.type !== 'User') return;
+  const pullNumber = requestPullNumber(context);
+  if (!pullNumber) return;
   if (!await isMaintainerRequest({ github, context })) {
     core.info('Ignoring smoke-test request: maintain/admin permission required.');
     return;
   }
-  const { data: pr } = await github.rest.pulls.get({ ...context.repo, pull_number: issue.number });
+  const { data: pr } = await github.rest.pulls.get({ ...context.repo, pull_number: pullNumber });
   if (pr.state !== 'open') return;
   // Snapshot the latest head ONCE. All builds use this immutable SHA, not a
   // mutable branch or refs/pull/N/head. Works for fork PRs as well.
@@ -39,7 +55,7 @@ async function authorize({ github, context, core }) {
   });
   const { data: reply } = await github.rest.issues.createComment({
     ...context.repo,
-    issue_number: issue.number,
+    issue_number: pullNumber,
     body: `### Game server smoke test\n\nRequested for commit ${sha}. Building, then waiting for the dedicated server.\n\n[Follow the run](${details_url})`,
   });
   core.setOutput('sha', sha);
@@ -108,7 +124,7 @@ async function report({ github, context, core }) {
   }
   const conclusion = success ? 'success' : jobs.includes('cancelled') ? 'cancelled' : 'failure';
   const title = `${checkName}: ${conclusion === 'success' ? 'passed' : conclusion}`;
-  const { data: pr } = await github.rest.pulls.get({ ...context.repo, pull_number: context.payload.issue.number });
+  const { data: pr } = await github.rest.pulls.get({ ...context.repo, pull_number: requestPullNumber(context) });
   let summary = `**Tested commit:** ${env.TESTED_SHA}\n\n${text}\n\n` +
     `Native build: ${env.NATIVE_RESULT}. Managed build/unit tests: ${env.MANAGED_RESULT}. Server run: ${env.SMOKE_RESULT}.\n\n` +
     `[Logs and artifacts (JSON, Markdown, steam.inf, unit-test TRX)](${runUrl(context)})`;

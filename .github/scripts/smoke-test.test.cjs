@@ -3,15 +3,17 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { authorize, report, resultSummary, versionSummary } = require('./smoke-test.cjs');
+const { authorize, isMaintainerRequest, report, resultSummary, versionSummary } = require('./smoke-test.cjs');
 
 const sha = 'a'.repeat(40);
-function request({ permission = 'write', role = 'maintain', body = '/smoke-test', state = 'open', pullRequest = true } = {}) {
+function request({ permission = 'write', role = 'maintain', body = '/smoke-test', state = 'open', pullRequest = true,
+  eventName = 'issue_comment', prNumber = '42' } = {}) {
   const calls = [];
   const outputs = {};
   const context = {
     repo: { owner: 'owner', repo: 'repo' }, actor: 'maintainer', serverUrl: 'https://github.com', runId: 123,
-    payload: {
+    eventName,
+    payload: eventName === 'workflow_dispatch' ? { inputs: { pr_number: prNumber } } : {
       issue: { number: 42, pull_request: pullRequest ? {} : undefined },
       comment: { body, user: { login: 'maintainer', type: 'User' } },
     },
@@ -21,7 +23,7 @@ function request({ permission = 'write', role = 'maintain', body = '/smoke-test'
       calls.push(['permission', args]);
       return { data: { permission, role_name: role } };
     } },
-    pulls: { get: async () => ({ data: { state, head: { sha } } }) },
+    pulls: { get: async (args) => { calls.push(['pull', args]); return { data: { state, head: { sha } } }; } },
     checks: { create: async (args) => { calls.push(['check', args]); return { data: { id: 1 } }; } },
     issues: { createComment: async (args) => { calls.push(['comment', args]); return { data: { id: 2 } }; } },
   } };
@@ -72,6 +74,52 @@ test('an unauthorized rerun actor cannot reuse a maintainer request', async () =
   assert.equal(input.outputs.approved, undefined);
 });
 
+test('manual dispatch targets the input PR and snapshots its latest head', async () => {
+  const input = request({ eventName: 'workflow_dispatch', prNumber: '123' });
+  await authorize(input);
+  assert.equal(input.outputs.approved, 'true');
+  assert.equal(input.outputs.sha, sha);
+  assert.equal(input.calls.find(([name]) => name === 'pull')[1].pull_number, 123);
+  assert.equal(input.calls.find(([name]) => name === 'comment')[1].issue_number, 123);
+  assert.equal(input.calls.find(([name]) => name === 'check')[1].head_sha, sha);
+});
+
+test('manual dispatch does not bypass maintainer permissions', async () => {
+  const input = request({ eventName: 'workflow_dispatch', role: 'write' });
+  await authorize(input);
+  assert.equal(input.outputs.approved, undefined);
+  assert.ok(input.calls.every(([name]) => name === 'permission'));
+});
+
+test('manual dispatch ignores closed PRs', async () => {
+  const input = request({ eventName: 'workflow_dispatch', state: 'closed' });
+  await authorize(input);
+  assert.equal(input.outputs.approved, undefined);
+});
+
+for (const prNumber of ['', '0', '-1', '1.5', '1e2', '123; echo unsafe', '9007199254740992', null]) {
+  test(`manual dispatch rejects invalid PR number: ${JSON.stringify(prNumber)}`, async () => {
+    const input = request({ eventName: 'workflow_dispatch', prNumber });
+    await assert.rejects(authorize(input), /positive integer/);
+    assert.equal(input.calls.length, 0);
+  });
+}
+
+test('deployment permission recheck rejects an unauthorized manual rerun actor', async () => {
+  const input = request({ eventName: 'workflow_dispatch' });
+  const previous = process.env.TRIGGERING_ACTOR;
+  try {
+    process.env.TRIGGERING_ACTOR = 'other';
+    input.github.rest.repos.getCollaboratorPermissionLevel = async ({ username }) => ({
+      data: { permission: 'write', role_name: username === 'maintainer' ? 'maintain' : 'write' },
+    });
+    assert.equal(await isMaintainerRequest(input), false);
+  } finally {
+    if (previous === undefined) delete process.env.TRIGGERING_ACTOR;
+    else process.env.TRIGGERING_ACTOR = previous;
+  }
+});
+
 const passing = { total: 2, passed: 1, failed: 0, skipped: 1, errors: [], tests: [{ outcome: 'passed' }, { outcome: 'skipped' }] };
 test('summarizes passing results including skips', () => {
   assert.equal(resultSummary(passing).success, true);
@@ -102,7 +150,7 @@ test('never renders arbitrary server-controlled Markdown', () => {
   assert.throws(() => versionSummary({ ...version, VersionDate: '@everyone' }));
 });
 
-for (const scenario of ['success', 'new-head', 'build-failure', 'timeout', 'cancelled']) {
+for (const scenario of ['success', 'manual-dispatch', 'new-head', 'build-failure', 'timeout', 'cancelled']) {
   test(`publishes check and PR comment: ${scenario}`, async () => {
     const originalCwd = process.cwd();
     const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'smoke-report-'));
@@ -120,15 +168,18 @@ for (const scenario of ['success', 'new-head', 'build-failure', 'timeout', 'canc
         fs.writeFileSync('smoke-results/smoke-results.json', JSON.stringify(passing));
         fs.writeFileSync('smoke-results/server-version.json', JSON.stringify(version));
       }
-      const input = request();
+      const input = request(scenario === 'manual-dispatch' ? { eventName: 'workflow_dispatch', prNumber: '123' } : {});
       const published = {};
-      input.github.rest.pulls.get = async () => ({ data: { head: { sha: scenario === 'new-head' ? 'b'.repeat(40) : sha } } });
+      input.github.rest.pulls.get = async ({ pull_number }) => {
+        assert.equal(pull_number, scenario === 'manual-dispatch' ? 123 : 42);
+        return { data: { head: { sha: scenario === 'new-head' ? 'b'.repeat(40) : sha } } };
+      };
       input.github.rest.checks.update = async (args) => { published.check = args; };
       input.github.rest.issues.updateComment = async (args) => { published.comment = args; };
       input.core.summary = { addRaw(text) { published.summary = text; return this; }, async write() {} };
       await report(input);
       assert.equal(published.check.status, 'completed');
-      assert.equal(published.check.conclusion, ['success', 'new-head'].includes(scenario) ? 'success' : scenario === 'cancelled' ? 'cancelled' : 'failure');
+      assert.equal(published.check.conclusion, ['success', 'manual-dispatch', 'new-head'].includes(scenario) ? 'success' : scenario === 'cancelled' ? 'cancelled' : 'failure');
       assert.match(published.comment.body, new RegExp(sha));
       assert.match(published.comment.body, /actions\/runs\/123/);
       if (scenario === 'new-head') assert.match(published.comment.body, /does \*\*not\*\* cover the latest head/);

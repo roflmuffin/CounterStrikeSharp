@@ -22,6 +22,31 @@ This is optional: **do not add this check to required branch-protection checks**
 The `issue_comment` workflow and trusted scripts must first be merged to the
 repository's default branch before the command will work.
 
+## Manual runs and testing workflow changes
+
+Maintainers/admins can also use **Actions → PR smoke test → Run workflow**, choose
+an automation branch, and enter the PR number. Or use GitHub CLI:
+
+```sh
+gh workflow run pr-smoke-test.yml --ref my-smoke-test-branch -f pr_number=123
+```
+
+The selected branch supplies the **workflow and deployment/reporting scripts**;
+the PR-number input independently selects the **latest PR head to build/test**.
+Manual runs use the same permission checks, server lock, checks and PR replies.
+
+GitHub requires the dispatch workflow to be registered on the default branch.
+This does not bypass the initial merge requirement for a brand-new workflow:
+first merge the automation separately, or put it on a fork's default branch and
+test a PR against that fork. Once registered, select a development branch to test
+subsequent workflow changes before merging them.
+
+**Only select an automation branch you trust.** Its scripts run with deployment
+secrets and reporting permissions. If the `smoke-test` environment restricts
+branches to the default branch, explicitly allow the trusted development branch
+for this test (and remove that exception afterward). Prefer required reviewers;
+do not broadly allow arbitrary PR branches to use this environment.
+
 ## Repository setup
 
 1. Provision a **dedicated, disposable Linux CS2 test server** managed by
@@ -57,9 +82,10 @@ repository's default branch before the command will work.
    Paths are SFTP-visible absolute paths. If increasing timeouts substantially,
    also increase the smoke job's 25-minute timeout.
 4. Consider environment required reviewers as an additional approval barrier.
-   Restrict deployment branches to the default branch: this workflow runs in
-   default-branch context, not PR context. Allow Actions to create checks and
-   issue comments; permissions are scoped to the authorization/reporting jobs.
+   Restrict deployment branches to the default branch for normal comment runs;
+   manual runs use the selected automation branch (see above). Allow Actions to
+   create checks and issue comments; permissions are scoped to the
+   authorization/reporting jobs.
 
 ## What runs
 
@@ -91,9 +117,10 @@ checked again before deployment, including on reruns.
 
 PR code is built on isolated GitHub-hosted jobs with no server secrets and no
 write-enabled repository token. The deployment and reporting jobs use automation
-from the default-branch commit, never scripts from the PR. Downloaded artifacts
-are treated as data on these runners; reports are validated rather than rendered
-as arbitrary Markdown.
+from the default-branch commit for comment runs, or the explicitly selected
+workflow commit for manual runs. They do not follow the target PR head for
+scripts. Downloaded artifacts are treated as data on these runners; reports are
+validated rather than rendered as arbitrary Markdown.
 
 **A maintainer command authorizes arbitrary PR code to execute on the game
 server.** Review the PR before requesting a run. Keep that server/container and

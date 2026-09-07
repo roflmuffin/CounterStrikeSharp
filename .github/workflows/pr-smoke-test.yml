@@ -1,6 +1,12 @@
 name: PR smoke test
 
 on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to test (latest head commit)'
+        required: true
+        type: string
   issue_comment:
     types: [created]
 
@@ -8,7 +14,7 @@ permissions: {}
 
 jobs:
   authorize:
-    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/smoke-test')
+    if: github.event_name == 'workflow_dispatch' || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/smoke-test'))
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,7 +27,8 @@ jobs:
       check_id: ${{ steps.request.outputs.check_id }}
       comment_id: ${{ steps.request.outputs.comment_id }}
     steps:
-      # issue_comment runs the workflow from the default branch, never the PR.
+      # Comments use default-branch automation; manual dispatch uses the
+      # maintainer-selected workflow ref. Neither follows the PR head for scripts.
       - uses: actions/checkout@v7
         with:
           ref: ${{ github.sha }}
@@ -118,7 +125,7 @@ jobs:
       group: game-server-smoke-test
       cancel-in-progress: false
     steps:
-      - name: Check out trusted automation, NOT the PR
+      - name: Check out the workflow commit, NOT the target PR
         uses: actions/checkout@v7
         with:
           ref: ${{ github.sha }}
