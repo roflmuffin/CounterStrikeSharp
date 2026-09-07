@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       pr_number:
-        description: 'PR number to test (latest head commit)'
+        description: "PR number to test (latest head commit)"
         required: true
         type: string
   issue_comment:
     types: [created]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions: {}
 
@@ -86,7 +88,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: "10.0.x"
       - name: Build API and native test plugin (no server secrets)
         run: |
           dotnet build managed/CounterStrikeSharp.API -c Release
