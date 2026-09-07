@@ -1,0 +1,214 @@
+name: PR smoke test
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+jobs:
+  authorize:
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/smoke-test')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: write
+      checks: write
+    outputs:
+      approved: ${{ steps.request.outputs.approved }}
+      sha: ${{ steps.request.outputs.sha }}
+      check_id: ${{ steps.request.outputs.check_id }}
+      comment_id: ${{ steps.request.outputs.comment_id }}
+    steps:
+      # issue_comment runs the workflow from the default branch, never the PR.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/github-script@v7
+        id: request
+        env:
+          TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+        with:
+          script: |
+            await require('./.github/scripts/smoke-test.cjs').authorize({ github, context, core });
+
+  build_native:
+    needs: authorize
+    if: needs.authorize.outputs.approved == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    container:
+      image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.authorize.outputs.sha }}
+          submodules: recursive
+          persist-credentials: false
+      - name: Build the approved native commit (no server secrets)
+        env:
+          PR_SHA: ${{ needs.authorize.outputs.sha }}
+        run: |
+          export GITHUB_SHA_SHORT="${PR_SHA:0:7}"
+          export SEMVER=0.0.0-smoke
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release -- -j2
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smoke-native
+          overwrite: true
+          path: build/addons/
+          if-no-files-found: error
+
+  build_managed:
+    needs: authorize
+    if: needs.authorize.outputs.approved == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.authorize.outputs.sha }}
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build API and native test plugin (no server secrets)
+        run: |
+          dotnet build managed/CounterStrikeSharp.API -c Release
+          dotnet build managed/CounterStrikeSharp.Tests.Native/NativeTestsPlugin.csproj -c Release
+      - name: Run managed unit tests too
+        run: dotnet test managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj -c Release --logger trx --results-directory TestResults/Unit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-unit-results
+          overwrite: true
+          path: TestResults/Unit/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smoke-api
+          overwrite: true
+          path: managed/CounterStrikeSharp.API/bin/Release/net10.0/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smoke-plugin
+          overwrite: true
+          path: managed/CounterStrikeSharp.Tests.Native/bin/Release/net10.0/
+          if-no-files-found: error
+
+  smoke:
+    needs: [authorize, build_native, build_managed]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    environment: smoke-test
+    # One dedicated server: never deploy two PRs at once, or cancel an active run
+    # just because a new request arrives. GitHub may replace older pending jobs.
+    concurrency:
+      group: game-server-smoke-test
+      cancel-in-progress: false
+    steps:
+      - name: Check out trusted automation, NOT the PR
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      # A failed-job rerun may reuse authorize's outputs, so recheck permissions
+      # here before exposing secrets or touching the server.
+      - uses: actions/github-script@v7
+        env:
+          TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+        with:
+          script: |
+            const { isMaintainerRequest } = require('./.github/scripts/smoke-test.cjs');
+            if (!await isMaintainerRequest({ github, context })) {
+              throw new Error('Only maintainers/admins may deploy a smoke test, including reruns.');
+            }
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Install deployment client
+        run: sudo apt-get update && sudo apt-get install -y lftp
+      - uses: actions/download-artifact@v4
+        with:
+          name: smoke-native
+          path: payload/native/addons
+      - uses: actions/download-artifact@v4
+        with:
+          name: smoke-api
+          path: payload/api
+      - uses: actions/download-artifact@v4
+        with:
+          name: smoke-plugin
+          path: payload/plugin
+      - name: Deploy and run the non-benchmark suite
+        env:
+          SMOKE_COMMIT: ${{ needs.authorize.outputs.sha }}
+          GS_HOST: ${{ secrets.GS_HOST }}
+          GS_PORT: ${{ secrets.GS_PORT }}
+          GS_PASS: ${{ secrets.GS_PASS }}
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASS: ${{ secrets.SFTP_PASS }}
+          SFTP_KNOWN_HOSTS: ${{ secrets.SFTP_KNOWN_HOSTS }}
+          PTERO_URL: ${{ secrets.PTERO_URL }}
+          PTERO_API_KEY: ${{ secrets.PTERO_API_KEY }}
+          PTERO_SERVER_ID: ${{ secrets.PTERO_SERVER_ID }}
+          GS_ADDON_DIR: ${{ vars.GS_ADDON_DIR || '/game/csgo/addons/counterstrikesharp' }}
+          GS_STEAM_INF: ${{ vars.GS_STEAM_INF || '/game/csgo/steam.inf' }}
+          GS_RESTART_TIMEOUT: ${{ vars.GS_RESTART_TIMEOUT || '120' }}
+          GS_TEST_TIMEOUT: ${{ vars.GS_TEST_TIMEOUT || '600' }}
+        run: |
+          test -n "$SFTP_KNOWN_HOSTS" || { echo 'SFTP_KNOWN_HOSTS is required'; exit 1; }
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$SFTP_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          chmod +x eng/rcon
+          deno run --allow-run --allow-read --allow-env --allow-net --allow-write eng/run-smoke-tests.ts payload TestResults/Smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-results
+          overwrite: true
+          path: TestResults/Smoke/
+
+  report:
+    needs: [authorize, build_native, build_managed, smoke]
+    if: always() && needs.authorize.outputs.approved == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      issues: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: smoke-results
+          path: smoke-results
+      - uses: actions/github-script@v7
+        env:
+          TESTED_SHA: ${{ needs.authorize.outputs.sha }}
+          CHECK_ID: ${{ needs.authorize.outputs.check_id }}
+          COMMENT_ID: ${{ needs.authorize.outputs.comment_id }}
+          NATIVE_RESULT: ${{ needs.build_native.result }}
+          MANAGED_RESULT: ${{ needs.build_managed.result }}
+          SMOKE_RESULT: ${{ needs.smoke.result }}
+        with:
+          script: |
+            await require('./.github/scripts/smoke-test.cjs').report({ github, context, core });
