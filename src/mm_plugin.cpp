@@ -43,7 +43,9 @@ DLL_IMPORT ICommandLine* CommandLine();
 #define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
 
-int g_iLoadEventsFromFileId = -1;
+// Vtable of CGameEventManager, resolved at Load() and kept so the global KHook on
+// LoadEventsFromFile can be removed again on Unload().
+void* g_pCGameEventManagerVTable = nullptr;
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
@@ -77,14 +79,16 @@ PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, counterstrikesharp::gPlugin);
 
 namespace counterstrikesharp {
 
-SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
-SH_DECL_HOOK3_void(
-    INetworkServerService, StartupServer, SH_NOATTRIB, 0, const GameSessionConfiguration_t&, ISource2WorldSession*, const char*);
-SH_DECL_HOOK3_void(IEngineServiceMgr, RegisterLoopMode, SH_NOATTRIB, 0, const char*, ILoopModeFactory*, void**);
-SH_DECL_HOOK1(IEngineServiceMgr, FindService, SH_NOATTRIB, 0, IEngineService*, const char*);
-SH_DECL_HOOK2(IGameEventManager2, LoadEventsFromFile, SH_NOATTRIB, 0, int, const char*, bool);
-
 CounterStrikeSharpMMPlugin gPlugin;
+
+CounterStrikeSharpMMPlugin::CounterStrikeSharpMMPlugin()
+    : m_GameFrame(&IServerGameDLL::GameFrame, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_GameFrame),
+      m_StartupServer(&INetworkServerService::StartupServer, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_StartupServer),
+      m_RegisterLoopMode(&IEngineServiceMgr::RegisterLoopMode, this, &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, nullptr),
+      m_FindService(&IEngineServiceMgr::FindService, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_FindService),
+      m_LoadEventsFromFile(&IGameEventManager2::LoadEventsFromFile, this, &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr)
+{
+}
 
 #if 0
 // Currently unavailable, requires hl2sdk work!
@@ -172,18 +176,25 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
     on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
 
-    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
-    SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
-                        &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
-    SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, RegisterLoopMode, globals::engineServiceManager, this,
-                        &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, false);
-    SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, FindService, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_FindService,
-                        true);
+    m_GameFrame.Add(globals::server);
+    m_StartupServer.Add(globals::networkServerService);
+    m_RegisterLoopMode.Add(globals::engineServiceManager);
+    m_FindService.Add(globals::engineServiceManager);
 
-    auto pCGameEventManagerVTable = (IGameEventManager2*)modules::server->FindVirtualTable("CGameEventManager");
-
-    g_iLoadEventsFromFileId = SH_ADD_DVPHOOK(IGameEventManager2, LoadEventsFromFile, pCGameEventManagerVTable,
-                                             SH_MEMBER(this, &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile), false);
+    // CGameEventManager is instantiated by the engine after we load, so hook every
+    // instance sharing the class vtable rather than a specific object (the KHook
+    // equivalent of SourceHook's DVP hook). AddGlobal() dereferences its argument to
+    // get the vtable, hence the address-of on the vtable pointer.
+    g_pCGameEventManagerVTable = modules::server->FindVirtualTable("CGameEventManager");
+    if (g_pCGameEventManagerVTable != nullptr)
+    {
+        m_LoadEventsFromFile.AddGlobal((IGameEventManager2*)&g_pCGameEventManagerVTable);
+    }
+    else
+    {
+        ismm->Format(error, maxlen, "Failed to find the CGameEventManager vtable required for game events.");
+        return false;
+    }
 
     if (!InitGameSystems())
     {
@@ -207,7 +218,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     return true;
 }
 
-void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
+KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServerService*, const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
 {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
     globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
@@ -217,13 +228,19 @@ void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfigurati
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
     on_activate_callback->Execute();
+    return { KHook::Action::Ignore };
 }
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
-    SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
-                           &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
-    SH_REMOVE_HOOK_ID(g_iLoadEventsFromFileId);
+    m_GameFrame.Remove(globals::server);
+    m_StartupServer.Remove(globals::networkServerService);
+    m_RegisterLoopMode.Remove(globals::engineServiceManager);
+    m_FindService.Remove(globals::engineServiceManager);
+    if (g_pCGameEventManagerVTable != nullptr)
+    {
+        m_LoadEventsFromFile.RemoveGlobal(reinterpret_cast<IGameEventManager2*>(&g_pCGameEventManagerVTable));
+        g_pCGameEventManagerVTable = nullptr;
+    }
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
     globals::callbackManager.ReleaseCallback(on_map_end_callback);
@@ -246,7 +263,7 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
     }
 }
 
-void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
+KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_GameFrame(IServerGameDLL*, bool simulating, bool bFirstTick, bool bLastTick)
 {
     /**
      * simulating:
@@ -268,6 +285,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
             callback();
         }
     }
+    return { KHook::Action::Ignore };
 }
 
 // Potentially might not work
@@ -279,9 +297,10 @@ void CounterStrikeSharpMMPlugin::OnLevelInit(
     m_has_level_initialized = true;
 }
 
-void CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode(const char* pszLoopModeName,
-                                                       ILoopModeFactory* pLoopModeFactory,
-                                                       void** ppGlobalPointer)
+KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode(IEngineServiceMgr*,
+                                                                      const char* pszLoopModeName,
+                                                                      ILoopModeFactory* pLoopModeFactory,
+                                                                      void** ppGlobalPointer)
 {
     if (strcmp(pszLoopModeName, "game") == 0)
     {
@@ -289,20 +308,23 @@ void CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode(const char* pszLoopModeNa
 
         CALL_GLOBAL_LISTENER(OnGameLoopInitialized());
     }
+    return { KHook::Action::Ignore };
 }
 
-IEngineService* CounterStrikeSharpMMPlugin::Hook_FindService(const char* serviceName)
+KHook::Return<IEngineService*> CounterStrikeSharpMMPlugin::Hook_FindService(IEngineServiceMgr*, const char* serviceName)
 {
-    IEngineService* pService = META_RESULT_ORIG_RET(IEngineService*);
+    // A preceding plugin may have superseded the call, leaving no original return.
+    auto* original = static_cast<IEngineService**>(KHook::GetOriginalValuePtr());
+    IEngineService* pService = original ? *original : nullptr;
 
-    return pService;
+    return { KHook::Action::Ignore, pService };
 }
 
-int CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(const char* filename, bool bSearchAll)
+KHook::Return<int> CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(IGameEventManager2* pGameEventManager, const char* filename, bool bSearchAll)
 {
-    ExecuteOnce(globals::gameEventManager = META_IFACEPTR(IGameEventManager2));
+    ExecuteOnce(globals::gameEventManager = pGameEventManager);
 
-    RETURN_META_VALUE(MRES_IGNORED, 0);
+    return { KHook::Action::Ignore, 0 };
 }
 
 void CounterStrikeSharpMMPlugin::OnLevelShutdown()

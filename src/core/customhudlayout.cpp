@@ -7,26 +7,23 @@ namespace counterstrikesharp {
 
 static ScriptCallback* on_custom_hud_clicked;
 
-SH_DECL_HOOK4_void(IServerGameClients, ClientSvcUserMessage, SH_NOATTRIB, 0, CPlayerSlot, int, uint32, const void*);
-
-CCSCustomHudLayout::CCSCustomHudLayout() {}
+CCSCustomHudLayout::CCSCustomHudLayout()
+    : m_ClientSvcUserMessage(&IServerGameClients::ClientSvcUserMessage, this, nullptr, &CCSCustomHudLayout::Hook_ClientSvcUserMessage)
+{
+}
 
 CCSCustomHudLayout::~CCSCustomHudLayout() {}
 
 void CCSCustomHudLayout::OnAllInitialized()
 {
     on_custom_hud_clicked = globals::callbackManager.CreateCallback("OnCustomHudClicked");
-    SH_ADD_HOOK(IServerGameClients, ClientSvcUserMessage, globals::serverGameClients,
-                SH_MEMBER(this, &CCSCustomHudLayout::Hook_ClientSvcUserMessage), true);
+    m_ClientSvcUserMessage.Add(globals::serverGameClients);
 }
 
-void CCSCustomHudLayout::OnShutdown()
-{
-    SH_REMOVE_HOOK(IServerGameClients, ClientSvcUserMessage, globals::serverGameClients,
-                   SH_MEMBER(this, &CCSCustomHudLayout::Hook_ClientSvcUserMessage), true);
-}
+void CCSCustomHudLayout::OnShutdown() { m_ClientSvcUserMessage.Remove(globals::serverGameClients); }
 
-void CCSCustomHudLayout::Hook_ClientSvcUserMessage(CPlayerSlot slot, int um_type, uint32 size, const void* buf)
+KHook::Return<void>
+CCSCustomHudLayout::Hook_ClientSvcUserMessage(IServerGameClients*, CPlayerSlot slot, int um_type, uint32 size, const void* buf)
 {
     if (um_type == CS_UM_CustomHudClicked)
     {
@@ -44,7 +41,7 @@ void CCSCustomHudLayout::Hook_ClientSvcUserMessage(CPlayerSlot slot, int um_type
         }
     }
 
-    RETURN_META(MRES_IGNORED);
+    return { KHook::Action::Ignore };
 }
 
 CCSCustomHudLayoutState& CCSCustomHudLayout::GetLayoutState(CCSPlayerController* pController)

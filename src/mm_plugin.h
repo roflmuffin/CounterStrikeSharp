@@ -19,10 +19,11 @@
 
 #include <ISmmPlugin.h>
 #include <functional>
+#include <eiface.h>
+#include <engine/IEngineService.h>
 #include <iserver.h>
 #include <igameevents.h>
 #include <iplayerinfo.h>
-#include <sh_vector.h>
 #include <vector>
 #include "entitysystem.h"
 
@@ -32,6 +33,8 @@ class ScriptCallback;
 class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
 {
   public:
+    CounterStrikeSharpMMPlugin();
+
     bool Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late) override;
     bool Unload(char* error, size_t maxlen) override;
     bool Pause(char* error, size_t maxlen) override;
@@ -46,12 +49,14 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
                      bool loadGame,
                      bool background) override;
     void OnLevelShutdown() override;
-    void Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick);
-    void Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*);
+    KHook::Return<void> Hook_GameFrame(IServerGameDLL*, bool simulating, bool bFirstTick, bool bLastTick);
+    KHook::Return<void>
+    Hook_StartupServer(INetworkServerService*, const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*);
 
-    void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory* pLoopModeFactory, void** ppGlobalPointer);
-    int Hook_LoadEventsFromFile(const char* filename, bool bSearchAll);
-    IEngineService* Hook_FindService(const char* serviceName);
+    KHook::Return<void>
+    Hook_RegisterLoopMode(IEngineServiceMgr*, const char* pszLoopModeName, ILoopModeFactory* pLoopModeFactory, void** ppGlobalPointer);
+    KHook::Return<int> Hook_LoadEventsFromFile(IGameEventManager2*, const char* filename, bool bSearchAll);
+    KHook::Return<IEngineService*> Hook_FindService(IEngineServiceMgr*, const char* serviceName);
 
   public:
     const char* GetAuthor() override;
@@ -65,6 +70,12 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
 
   private:
     bool m_has_level_initialized = false;
+
+    KHook::Virtual<IServerGameDLL, void, bool, bool, bool> m_GameFrame;
+    KHook::Virtual<INetworkServerService, void, const GameSessionConfiguration_t&, ISource2WorldSession*, const char*> m_StartupServer;
+    KHook::Virtual<IEngineServiceMgr, void, const char*, ILoopModeFactory*, void**> m_RegisterLoopMode;
+    KHook::Virtual<IEngineServiceMgr, IEngineService*, const char*> m_FindService;
+    KHook::Virtual<IGameEventManager2, int, const char*, bool> m_LoadEventsFromFile;
 };
 
 static ScriptCallback* on_activate_callback;

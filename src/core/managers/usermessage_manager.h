@@ -44,14 +44,27 @@ class UserMessageManager : public GlobalClass
     ~UserMessageManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
-    void Hook_PostEvent(CSplitScreenSlot nSlot,
-                        bool bLocalOnly,
-                        int nClientCount,
-                        const uint64* clients,
-                        INetworkMessageInternal* pEvent,
-                        const CNetMessage* pData,
-                        unsigned long nSize,
-                        NetChannelBufType_t bufType);
+    KHook::Return<void> Hook_PostEvent(IGameEventSystem* pGameEventSystem,
+                                       CSplitScreenSlot nSlot,
+                                       bool bLocalOnly,
+                                       int nClientCount,
+                                       const uint64* clients,
+                                       INetworkMessageInternal* pEvent,
+                                       const CNetMessage* pData,
+                                       unsigned long nSize,
+                                       NetChannelBufType_t bufType);
+
+    KHook::Virtual<IGameEventSystem,
+                   void,
+                   CSplitScreenSlot,
+                   bool,
+                   int,
+                   const uint64*,
+                   INetworkMessageInternal*,
+                   const CNetMessage*,
+                   unsigned long,
+                   NetChannelBufType_t>
+        m_PostEventAbstract;
 
     void UnhookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);
     void HookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);

@@ -35,11 +35,6 @@ set(SOURCE_FILES
     libraries/hl2sdk-cs2/entity2/entitykeyvalues.cpp
     libraries/dotnet/hostfxr.h
     libraries/dotnet/coreclr_delegates.h
-    libraries/metamod-source/core/sourcehook/sourcehook.cpp
-    libraries/metamod-source/core/sourcehook/sourcehook_impl_chookidman.cpp
-    libraries/metamod-source/core/sourcehook/sourcehook_impl_chookmaninfo.cpp
-    libraries/metamod-source/core/sourcehook/sourcehook_impl_cvfnptr.cpp
-    libraries/metamod-source/core/sourcehook/sourcehook_impl_cproto.cpp
     src/scripting/dotnet_host.h
     src/scripting/dotnet_host.cpp
     src/core/utils.h

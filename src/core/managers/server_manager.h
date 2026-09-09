@@ -40,13 +40,21 @@ class ServerManager : public GlobalClass
     ScriptCallback* on_server_post_entity_think;
 
   private:
-    void ServerHibernationUpdate(bool bHibernating);
-    void GameServerSteamAPIActivated();
-    void GameServerSteamAPIDeactivated();
-    void OnHostNameChanged(const char* pHostname);
-    void PreFatalShutdown();
-    void UpdateWhenNotInGame(float flFrameTime);
-    void PreWorldUpdate(bool bSimulating);
+    KHook::Return<void> ServerHibernationUpdate(ISource2Server*, bool bHibernating);
+    KHook::Return<void> GameServerSteamAPIActivated(ISource2Server*);
+    KHook::Return<void> GameServerSteamAPIDeactivated(ISource2Server*);
+    KHook::Return<void> OnHostNameChanged(ISource2Server*, const char* pHostname);
+    KHook::Return<void> PreFatalShutdown(const ISource2Server*);
+    KHook::Return<void> UpdateWhenNotInGame(ISource2Server*, float flFrameTime);
+    KHook::Return<void> PreWorldUpdate(ISource2Server*, bool bSimulating);
+
+    KHook::Virtual<ISource2Server, void, bool> m_ServerHibernationUpdate;
+    KHook::Virtual<ISource2Server, void> m_GameServerSteamAPIActivated;
+    KHook::Virtual<ISource2Server, void> m_GameServerSteamAPIDeactivated;
+    KHook::Virtual<ISource2Server, void, const char*> m_OnHostNameChanged;
+    KHook::Virtual<ISource2Server, void> m_PreFatalShutdown;
+    KHook::Virtual<ISource2Server, void, float> m_UpdateWhenNotInGame;
+    KHook::Virtual<ISource2Server, void, bool> m_PreWorldUpdate;
 
     ScriptCallback* on_server_hibernation_update_callback;
     ScriptCallback* on_server_steam_api_activated_callback;

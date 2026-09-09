@@ -28,18 +28,6 @@
 #include <public/eiface.h>
 #include "scripting/callback_manager.h"
 
-SH_DECL_MANUALHOOK7_void(CheckTransmit,
-                         0,
-                         0,
-                         0,
-                         CCheckTransmitInfoHack**,
-                         uint32_t,
-                         CBitVec<16384>&,
-                         CBitVec<16384>&,
-                         const Entity2Networkable_t**,
-                         const uint16*,
-                         uint32_t);
-
 namespace counterstrikesharp {
 
 EntityManager::EntityManager() { m_profile_name = "EntityManager"; }
@@ -57,13 +45,11 @@ CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInf
 #define CALL_CONV CONV_CDECL
 #endif
 
-int g_iCheckTransmit = -1;
-
 void EntityManager::OnAllInitialized()
 {
-    SH_MANUALHOOK_RECONFIGURE(CheckTransmit, globals::gameConfig->GetOffset("ISource2GameEntities::CheckTransmit"), 0, 0);
-    g_iCheckTransmit =
-        SH_ADD_MANUALDVPHOOK(CheckTransmit, *(void**)globals::gameEntities, SH_MEMBER(this, &EntityManager::CheckTransmit), true);
+    m_CheckTransmit.Configure(globals::gameConfig->GetOffset("ISource2GameEntities::CheckTransmit"));
+    m_CheckTransmit.AddContext(this, nullptr, &EntityManager::CheckTransmit);
+    m_CheckTransmit.AddGlobal(globals::gameEntities);
     check_transmit = globals::callbackManager.CreateCallback("CheckTransmit");
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");
@@ -148,7 +134,11 @@ void EntityManager::OnShutdown()
 
     globals::callbackManager.ReleaseCallback(check_transmit);
     globals::entitySystem->RemoveListenerEntity(&entityListener);
-    SH_REMOVE_HOOK_ID(g_iCheckTransmit);
+    if (globals::gameEntities != nullptr)
+    {
+        m_CheckTransmit.RemoveGlobal(globals::gameEntities);
+        m_CheckTransmit.RemoveContext(this);
+    }
 }
 
 void CEntityListener::OnEntitySpawned(CEntityInstance* pEntity)
@@ -235,13 +225,14 @@ void EntityManager::UnhookEntityOutput(const char* szClassname, const char* szOu
     }
 }
 
-void EntityManager::CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
-                                  uint32_t nInfoCount,
-                                  CBitVec<16384>& unionTransmitEdicts1,
-                                  CBitVec<16384>& unionTransmitEdicts2,
-                                  const Entity2Networkable_t** pNetworkables,
-                                  const uint16* pEntityIndicies,
-                                  uint32_t nEntities)
+KHook::Return<void> EntityManager::CheckTransmit(ISource2GameEntities* pGameEntities,
+                                                 CCheckTransmitInfoHack** ppInfoList,
+                                                 uint32_t nInfoCount,
+                                                 CBitVec<16384>& unionTransmitEdicts1,
+                                                 CBitVec<16384>& unionTransmitEdicts2,
+                                                 const Entity2Networkable_t** pNetworkables,
+                                                 const uint16* pEntityIndicies,
+                                                 uint32_t nEntities)
 {
     // VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
 
@@ -257,6 +248,7 @@ void EntityManager::CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
 
         delete infoList;
     }
+    return { KHook::Action::Ignore };
 }
 
 int64 DetourCBaseEntity_TakeDamageOld(CBaseEntity* pThis, CTakeDamageInfo* pInfo, CTakeDamageResult* pResult)
