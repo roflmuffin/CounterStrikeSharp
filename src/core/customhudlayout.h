@@ -117,7 +117,9 @@ class CCSCustomHudLayout : public GlobalClass
     bool IsInputCaptureEnabled(CCSPlayerController* pController);
 
   private:
-    void Hook_ClientSvcUserMessage(CPlayerSlot slot, int um_type, uint32 size, const void* buf);
+    KHook::Return<void> Hook_ClientSvcUserMessage(IServerGameClients*, CPlayerSlot slot, int um_type, uint32 size, const void* buf);
+
+    KHook::Virtual<IServerGameClients, void, CPlayerSlot, int, uint32, const void*> m_ClientSvcUserMessage;
 };
 
 } // namespace counterstrikesharp

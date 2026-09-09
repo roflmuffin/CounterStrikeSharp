@@ -87,13 +87,16 @@ class EntityManager : public GlobalClass
     ValveFunction* Func_OnTakeDamage;
 
   private:
-    void CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
+    KHook::Return<void> CheckTransmit(ISource2GameEntities*, CCheckTransmitInfoHack** ppInfoList,
                        uint32_t infoCount,
                        CBitVec<16384>& unionTransmitEdicts1,
                        CBitVec<16384>& unionTransmitEdicts2,
                        const Entity2Networkable_t** pNetworkables,
                        const uint16* pEntityIndicies,
                        uint32_t nEntities);
+
+    KHook::Virtual<ISource2GameEntities, void, CCheckTransmitInfoHack**, uint32_t,
+                   CBitVec<16384>&, CBitVec<16384>&, const Entity2Networkable_t**, const uint16*, uint32_t> m_CheckTransmit;
 
     ScriptCallback* on_entity_spawned_callback;
     ScriptCallback* on_entity_created_callback;

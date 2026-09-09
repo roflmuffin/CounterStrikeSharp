@@ -746,8 +746,8 @@ static void UserMessageSend(ScriptContext& scriptContext)
     if (message->IsManuallyAllocated())
         globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
     else
-        SH_CALL(globals::gameEventSystem, PostEventAbstract)(0, false, &filter, message->GetSerializableMessage(),
-                                                             message->GetProtobufMessage(), 0);
+        KHook::CallOriginal(PostEventAbstract, globals::gameEventSystem, CSplitScreenSlot(0), false, &filter,
+                            message->GetSerializableMessage(), message->GetProtobufMessage(), 0UL);
 }
 
 static void UserMessageDelete(ScriptContext& scriptContext)

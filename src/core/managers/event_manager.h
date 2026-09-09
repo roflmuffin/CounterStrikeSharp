@@ -95,8 +95,9 @@ class EventManager : public IGameEventListener2, public GlobalClass
     bool HookEvent(const char* szName, CallbackT fnCallback, bool bPost);
 
   private:
-    bool OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast);
-    bool OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast);
+    KHook::Return<bool> OnFireEvent(IGameEventManager2*, IGameEvent* pEvent, bool bDontBroadcast);
+    KHook::Return<bool> OnFireEventPost(IGameEventManager2*, IGameEvent* pEvent, bool bDontBroadcast);
+    KHook::Virtual<IGameEventManager2, bool, IGameEvent*, bool> m_FireEvent;
 
     std::map<std::string, EventHook*> m_hooksMap;
 

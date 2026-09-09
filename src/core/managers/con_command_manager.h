@@ -99,8 +99,10 @@ class ConCommandManager : public GlobalClass
     bool IsValidValveCommand(const char* name);
     bool AddValveCommand(const char* name, const char* description, bool server_only, int flags);
     bool RemoveValveCommand(const char* name);
-    void Hook_DispatchConCommand(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
-    void Hook_DispatchConCommand_Post(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
+    KHook::Return<void> Hook_DispatchConCommand(ICvar* pCvar, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
+    KHook::Return<void> Hook_DispatchConCommand_Post(ICvar* pCvar, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
+
+    KHook::Virtual<ICvar, void, ConCommandRef, const CCommandContext&, const CCommand&> m_DispatchConCommand;
     HookResult ExecuteCommandCallbacks(
         const char* name, const CCommandContext& ctx, const CCommand& args, HookMode mode, CommandCallingContext callingContext);
 

@@ -9,8 +9,6 @@
 #include "timer_system.h"
 
 #include <ISmmPlugin.h>
-#include <sourcehook/sourcehook.h>
-#include <sourcehook/sourcehook_impl.h>
 
 #include "log.h"
 #include "utils/virtual.h"
@@ -71,8 +69,6 @@ ICvar* cvars = nullptr;
 ISource2Server* server = nullptr;
 CGlobalEntityList* globalEntityList = nullptr;
 CounterStrikeSharpMMPlugin* mmPlugin = nullptr;
-SourceHook::Impl::CSourceHookImpl source_hook_impl;
-SourceHook::ISourceHook* source_hook = &source_hook_impl;
 ISmmAPI* ismm = nullptr;
 CGameEntitySystem* entitySystem = nullptr;
 CCoreConfig* coreConfig = nullptr;
@@ -158,7 +154,6 @@ void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
     eventManager.OnAllInitialized_Post();
 }
 
-int source_hook_pluginid = 0;
 CGlobalVars* getGlobalVars()
 {
     INetworkGameServer* server = networkServerService->GetIGameServer();

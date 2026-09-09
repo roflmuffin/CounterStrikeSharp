@@ -30,10 +30,11 @@ class VoiceManager : public GlobalClass
     ~VoiceManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
-    bool SetClientListening(CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen);
+    KHook::Return<bool> SetClientListening(IVEngineServer2* pEngine, CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen);
     void OnClientCommand(CPlayerSlot slot, const CCommand& args);
 
   private:
+    KHook::Virtual<IVEngineServer2, bool, CPlayerSlot, CPlayerSlot, bool> m_SetClientListening;
 };
 
 } // namespace counterstrikesharp
