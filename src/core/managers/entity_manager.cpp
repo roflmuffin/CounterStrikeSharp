@@ -29,6 +29,7 @@
 #include "scripting/callback_manager.h"
 
 namespace counterstrikesharp {
+static funchook_t* s_fireOutputHook = nullptr;
 
 EntityManager::EntityManager() { m_profile_name = "EntityManager"; }
 
@@ -47,9 +48,17 @@ CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInf
 
 void EntityManager::OnAllInitialized()
 {
-    m_CheckTransmit.Configure(globals::gameConfig->GetOffset("ISource2GameEntities::CheckTransmit"));
-    m_CheckTransmit.AddContext(this, nullptr, &EntityManager::CheckTransmit);
-    m_CheckTransmit.AddGlobal(globals::gameEntities);
+    const int offset = globals::gameConfig->GetOffset("ISource2GameEntities::CheckTransmit");
+    if (offset >= 0)
+    {
+        m_CheckTransmit.Configure(offset);
+        m_CheckTransmit.AddContext(this, nullptr, &EntityManager::CheckTransmit);
+        m_CheckTransmit.AddGlobal(globals::gameEntities);
+    }
+    else
+    {
+        CSSHARP_CORE_WARN("Missing CheckTransmit offset; transmit hook is disabled");
+    }
     check_transmit = globals::callbackManager.CreateCallback("CheckTransmit");
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");
@@ -117,12 +126,19 @@ void EntityManager::OnAllInitialized()
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
     funchook_install(m_hook, 0);
+    s_fireOutputHook = m_hook;
 
     // Listener is added in ServerStartup as entity system is not initialised at this stage.
 }
 
 void EntityManager::OnShutdown()
 {
+    if (s_fireOutputHook)
+    {
+        funchook_uninstall(s_fireOutputHook, 0);
+        funchook_destroy(s_fireOutputHook);
+        s_fireOutputHook = nullptr;
+    }
     globals::callbackManager.ReleaseCallback(on_entity_spawned_callback);
     globals::callbackManager.ReleaseCallback(on_entity_created_callback);
     globals::callbackManager.ReleaseCallback(on_entity_deleted_callback);
@@ -133,7 +149,7 @@ void EntityManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(on_player_take_damage_post_callback);
 
     globals::callbackManager.ReleaseCallback(check_transmit);
-    globals::entitySystem->RemoveListenerEntity(&entityListener);
+    if (globals::entitySystem) globals::entitySystem->RemoveListenerEntity(&entityListener);
     if (globals::gameEntities != nullptr)
     {
         m_CheckTransmit.RemoveGlobal(globals::gameEntities);
