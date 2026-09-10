@@ -128,6 +128,11 @@ target_include_directories(
 
 if(LINUX)
     include("makefiles/linux.base.cmake")
+    target_link_options(${PROJECT_NAME} PRIVATE
+        "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/makefiles/exports.ver"
+        "-Wl,-z,noexecstack")
+    set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY LINK_DEPENDS
+        "${CMAKE_CURRENT_SOURCE_DIR}/makefiles/exports.ver")
     set_target_properties(${PROJECT_NAME} PROPERTIES
                           PREFIX ""
                           LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/linuxsteamrt64"

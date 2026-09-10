@@ -1,0 +1,8 @@
+/* Metamod and managed P/Invoke entry points. Keep bundled C++ libraries private. */
+{
+    global:
+        CreateInterface;
+        InvokeNative;
+    local:
+        *;
+};
