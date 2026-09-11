@@ -17,6 +17,7 @@
 #pragma once
 
 #include "core/globals.h"
+#include "core/hooks.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
 
@@ -25,12 +26,15 @@ class ScriptCallback;
 
 class VoiceManager : public GlobalClass
 {
+  private:
+    HookSet m_hooks;
+
   public:
     VoiceManager();
     ~VoiceManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
-    bool SetClientListening(CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen);
+    KHook::Return<bool> SetClientListening(IVEngineServer2* hookThis, CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen);
     void OnClientCommand(CPlayerSlot slot, const CCommand& args);
 
   private:
