@@ -18,6 +18,7 @@
 
 #include "core/global_listener.h"
 #include "core/globals.h"
+#include "core/hooks.h"
 #include "inetchannel.h"
 #include "networksystem/inetworkserializer.h"
 #include "scripting/script_engine.h"
@@ -39,12 +40,15 @@ struct UserMessageHook
 
 class UserMessageManager : public GlobalClass
 {
+  private:
+    HookSet m_hooks;
+
   public:
     UserMessageManager();
     ~UserMessageManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
-    KHook::Return<void> Hook_PostEvent(IGameEventSystem* pGameEventSystem,
+    KHook::Return<void> Hook_PostEvent(IGameEventSystem* hookThis,
                                        CSplitScreenSlot nSlot,
                                        bool bLocalOnly,
                                        int nClientCount,
@@ -53,18 +57,6 @@ class UserMessageManager : public GlobalClass
                                        const CNetMessage* pData,
                                        unsigned long nSize,
                                        NetChannelBufType_t bufType);
-
-    KHook::Virtual<IGameEventSystem,
-                   void,
-                   CSplitScreenSlot,
-                   bool,
-                   int,
-                   const uint64*,
-                   INetworkMessageInternal*,
-                   const CNetMessage*,
-                   unsigned long,
-                   NetChannelBufType_t>
-        m_PostEventAbstract;
 
     void UnhookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);
     void HookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);

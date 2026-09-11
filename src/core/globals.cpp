@@ -25,7 +25,7 @@
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
-#include <funchook.h>
+#include "core/hooks.h"
 
 namespace counterstrikesharp {
 
@@ -39,7 +39,6 @@ CModule* vscript = nullptr;
 } // namespace modules
 
 namespace globals {
-static funchook_t* s_gameEventInitHook = nullptr;
 IVEngineServer2* engineServer2 = nullptr;
 IVEngineServer* engine = nullptr;
 IGameEventManager2* gameEventManager = nullptr;
@@ -98,6 +97,22 @@ std::thread::id gameThreadId;
 // Based on 64 fixed tick rate
 const float engine_fixed_tick_interval = 0.015625f;
 
+static HookSet initializationHooks;
+
+static KHook::Return<void> OnGameEventManagerInit(IGameEventManager2* manager)
+{
+    gameEventManager = manager;
+    return { KHook::Action::Ignore };
+}
+
+static KHook::Return<void> OnGameEventManagerInitialized(IGameEventManager2*)
+{
+    eventManager.OnAllInitialized_Post();
+    return { KHook::Action::Ignore };
+}
+
+void ShutdownHooks() { initializationHooks.Clear(); }
+
 void Initialize()
 {
     modules::Initialize();
@@ -141,29 +156,7 @@ void Initialize()
         return;
     }
 
-    auto m_hook = funchook_create();
-    funchook_prepare(m_hook, (void**)&GameEventManagerInit, (void*)&DetourGameEventManagerInit);
-    funchook_install(m_hook, 0);
-    s_gameEventInitHook = m_hook;
-}
-
-void RemoveDetours()
-{
-    if (s_gameEventInitHook)
-    {
-        funchook_uninstall(s_gameEventInitHook, 0);
-        funchook_destroy(s_gameEventInitHook);
-        s_gameEventInitHook = nullptr;
-    }
-}
-
-void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
-{
-    gameEventManager = pGameEventManager;
-
-    GameEventManagerInit(pGameEventManager);
-
-    eventManager.OnAllInitialized_Post();
+    initializationHooks.AddFunction(reinterpret_cast<void*>(GameEventManagerInit), &OnGameEventManagerInit, &OnGameEventManagerInitialized);
 }
 
 CGlobalVars* getGlobalVars()

@@ -37,6 +37,7 @@
 
 #include "core/global_listener.h"
 #include "core/globals.h"
+#include "core/hooks.h"
 #include "playerslot.h"
 #include "scripting/script_engine.h"
 
@@ -86,6 +87,9 @@ class ConCommandInfo
 
 class ConCommandManager : public GlobalClass
 {
+  private:
+    HookSet m_hooks;
+
     friend class ConCommandInfo;
 
   public:
@@ -99,10 +103,8 @@ class ConCommandManager : public GlobalClass
     bool IsValidValveCommand(const char* name);
     bool AddValveCommand(const char* name, const char* description, bool server_only, int flags);
     bool RemoveValveCommand(const char* name);
-    KHook::Return<void> Hook_DispatchConCommand(ICvar* pCvar, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
-    KHook::Return<void> Hook_DispatchConCommand_Post(ICvar* pCvar, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
-
-    KHook::Virtual<ICvar, void, ConCommandRef, const CCommandContext&, const CCommand&> m_DispatchConCommand;
+    KHook::Return<void> Hook_DispatchConCommand(ICvar* hookThis, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
+    KHook::Return<void> Hook_DispatchConCommand_Post(ICvar* hookThis, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args);
     HookResult ExecuteCommandCallbacks(
         const char* name, const CCommandContext& ctx, const CCommand& args, HookMode mode, CommandCallingContext callingContext);
 

@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include "core/hooks.h"
 #include "utlstring.h"
 #include "globals.h"
 #include "global_listener.h"
@@ -91,6 +92,9 @@ class CCSCustomHudLayoutState
 
 class CCSCustomHudLayout : public GlobalClass
 {
+  private:
+    HookSet m_hooks;
+
   public:
     DECLARE_SCHEMA_CLASS(CCSCustomHudLayout)
 
@@ -117,9 +121,8 @@ class CCSCustomHudLayout : public GlobalClass
     bool IsInputCaptureEnabled(CCSPlayerController* pController);
 
   private:
-    KHook::Return<void> Hook_ClientSvcUserMessage(IServerGameClients*, CPlayerSlot slot, int um_type, uint32 size, const void* buf);
-
-    KHook::Virtual<IServerGameClients, void, CPlayerSlot, int, uint32, const void*> m_ClientSvcUserMessage;
+    KHook::Return<void>
+    Hook_ClientSvcUserMessage(IServerGameClients* hookThis, CPlayerSlot slot, int um_type, uint32 size, const void* buf);
 };
 
 } // namespace counterstrikesharp

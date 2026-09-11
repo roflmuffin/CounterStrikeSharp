@@ -28,26 +28,19 @@
 using namespace google;
 
 namespace counterstrikesharp {
-UserMessageManager::UserMessageManager()
-    : m_PostEventAbstract(static_cast<void (IGameEventSystem::*)(CSplitScreenSlot,
-                                                                 bool,
-                                                                 int,
-                                                                 const uint64*,
-                                                                 INetworkMessageInternal*,
-                                                                 const CNetMessage*,
-                                                                 unsigned long,
-                                                                 NetChannelBufType_t)>(&IGameEventSystem::PostEventAbstract),
-                          this,
-                          &UserMessageManager::Hook_PostEvent,
-                          nullptr)
-{
-}
+UserMessageManager::UserMessageManager() {}
 
 UserMessageManager::~UserMessageManager() {}
 
-void UserMessageManager::OnAllInitialized() { m_PostEventAbstract.Add(globals::gameEventSystem); }
+void UserMessageManager::OnAllInitialized()
+{
+    m_hooks.Add(
+        static_cast<void (IGameEventSystem::*)(CSplitScreenSlot, bool, int, const uint64*, INetworkMessageInternal*, const CNetMessage*,
+                                               unsigned long, NetChannelBufType_t)>(&IGameEventSystem::PostEventAbstract),
+        globals::gameEventSystem, this, &UserMessageManager::Hook_PostEvent, nullptr);
+}
 
-void UserMessageManager::OnShutdown() { m_PostEventAbstract.Remove(globals::gameEventSystem); }
+void UserMessageManager::OnShutdown() { m_hooks.Clear(); }
 
 void UserMessageManager::HookUserMessage(int messageId, CallbackT fnCallback, HookMode mode)
 {
@@ -146,7 +139,7 @@ void UserMessageManager::UnhookUserMessage(int messageId, CallbackT fnCallback, 
     return;
 }
 
-KHook::Return<void> UserMessageManager::Hook_PostEvent(IGameEventSystem* pGameEventSystem,
+KHook::Return<void> UserMessageManager::Hook_PostEvent(IGameEventSystem* hookThis,
                                                        CSplitScreenSlot nSlot,
                                                        bool bLocalOnly,
                                                        int nClientCount,

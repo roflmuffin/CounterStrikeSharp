@@ -193,17 +193,14 @@ ConCommandInfo::~ConCommandInfo()
 }
 ConCommandInfo::ConCommandInfo(bool bNoCallbacks) {}
 
-ConCommandManager::ConCommandManager()
-    : m_DispatchConCommand(
-          &ICvar::DispatchConCommand, this, &ConCommandManager::Hook_DispatchConCommand, &ConCommandManager::Hook_DispatchConCommand_Post)
-{
-}
+ConCommandManager::ConCommandManager() {}
 
 ConCommandManager::~ConCommandManager() {}
 
 void ConCommandManager::OnAllInitialized()
 {
-    m_DispatchConCommand.Add(globals::cvars);
+    m_hooks.Add(&ICvar::DispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand, nullptr);
+    m_hooks.Add(&ICvar::DispatchConCommand, globals::cvars, this, nullptr, &ConCommandManager::Hook_DispatchConCommand_Post);
 
     m_global_cmd.callback_pre = globals::callbackManager.CreateCallback("OnClientCommandGlobalPre");
     m_global_cmd.callback_post = globals::callbackManager.CreateCallback("OnClientCommandGlobalPost");
@@ -254,7 +251,7 @@ void UnlockConCommands()
 
 void ConCommandManager::OnShutdown()
 {
-    m_DispatchConCommand.Remove(globals::cvars);
+    m_hooks.Clear();
 
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_pre);
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_post);
@@ -262,7 +259,8 @@ void ConCommandManager::OnShutdown()
 
 void CommandCallback(const CCommandContext& context, const CCommand& command)
 {
-    // This is handled by the global ICvar::DispatchConCommand hook
+    // This is handled by the global hook
+    return;
 }
 
 void ConCommandManager::AddCommandListener(const char* name, CallbackT callback, HookMode mode)
@@ -460,7 +458,7 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(
 }
 
 KHook::Return<void>
-ConCommandManager::Hook_DispatchConCommand(ICvar* pCvar, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
+ConCommandManager::Hook_DispatchConCommand(ICvar* hookThis, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
 {
     const char* name = args.Arg(0);
 
@@ -471,12 +469,10 @@ ConCommandManager::Hook_DispatchConCommand(ICvar* pCvar, ConCommandRef cmd, cons
     {
         return { KHook::Action::Supersede };
     }
-
     return { KHook::Action::Ignore };
 }
-
 KHook::Return<void>
-ConCommandManager::Hook_DispatchConCommand_Post(ICvar* pCvar, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
+ConCommandManager::Hook_DispatchConCommand_Post(ICvar* hookThis, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
 {
     const char* name = args.Arg(0);
 
@@ -485,7 +481,6 @@ ConCommandManager::Hook_DispatchConCommand_Post(ICvar* pCvar, ConCommandRef cmd,
     {
         return { KHook::Action::Supersede };
     }
-
     return { KHook::Action::Ignore };
 }
 bool ConCommandManager::IsValidValveCommand(const char* name)

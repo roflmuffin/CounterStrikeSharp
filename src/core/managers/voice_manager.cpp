@@ -25,17 +25,18 @@
 
 namespace counterstrikesharp {
 
-VoiceManager::VoiceManager() : m_SetClientListening(&IVEngineServer2::SetClientListening, this, &VoiceManager::SetClientListening, nullptr)
-{
-}
+VoiceManager::VoiceManager() {}
 
 VoiceManager::~VoiceManager() {}
 
-void VoiceManager::OnAllInitialized() { m_SetClientListening.Add(globals::engine); }
+void VoiceManager::OnAllInitialized()
+{
+    m_hooks.Add(&IVEngineServer2::SetClientListening, globals::engine, this, &VoiceManager::SetClientListening, nullptr);
+}
 
-void VoiceManager::OnShutdown() { m_SetClientListening.Remove(globals::engine); }
+void VoiceManager::OnShutdown() { m_hooks.Clear(); }
 
-KHook::Return<bool> VoiceManager::SetClientListening(IVEngineServer2* pEngine, CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen)
+KHook::Return<bool> VoiceManager::SetClientListening(IVEngineServer2* hookThis, CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen)
 {
     auto pReceiver = globals::playerManager.GetPlayerBySlot(iReceiver.Get());
     auto pSender = globals::playerManager.GetPlayerBySlot(iSender.Get());
@@ -48,30 +49,30 @@ KHook::Return<bool> VoiceManager::SetClientListening(IVEngineServer2* pEngine, C
 
         if (pReceiver->m_selfMutes->Get(iSender.Get()))
         {
-            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, pEngine,
+            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, hookThis,
                                  iReceiver, iSender, false);
         }
 
         if (senderFlags & Speak_Muted)
         {
-            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, pEngine,
+            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, hookThis,
                                  iReceiver, iSender, false);
         }
 
         if (listenOverride == Listen_Mute)
         {
-            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, pEngine,
+            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, hookThis,
                                  iReceiver, iSender, false);
         }
         else if (listenOverride == Listen_Hear)
         {
-            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, pEngine,
+            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, hookThis,
                                  iReceiver, iSender, true);
         }
 
         if ((senderFlags & Speak_All) || (receiverFlags & Speak_ListenAll))
         {
-            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, pEngine,
+            return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, hookThis,
                                  iReceiver, iSender, true);
         }
 
@@ -90,7 +91,7 @@ KHook::Return<bool> VoiceManager::SetClientListening(IVEngineServer2* pEngine, C
 
                 auto senderTeam = *reinterpret_cast<std::add_pointer_t<unsigned int>>((uintptr_t)(senderController) + m_key.offset);
 
-                return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, pEngine,
+                return KHook::Recall(&IVEngineServer2::SetClientListening, KHook::Return<bool>{ KHook::Action::Ignore, bListen }, hookThis,
                                      iReceiver, iSender, receiverTeam == senderTeam);
             }
         }

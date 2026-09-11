@@ -37,9 +37,7 @@
 
 namespace counterstrikesharp {
 
-EventManager::EventManager() : m_FireEvent(&IGameEventManager2::FireEvent, this, &EventManager::OnFireEvent, &EventManager::OnFireEventPost)
-{
-}
+EventManager::EventManager() = default;
 
 EventManager::~EventManager() = default;
 
@@ -57,13 +55,17 @@ void EventManager::OnGameLoopInitialized()
 
 void EventManager::OnAllInitialized() {}
 
-void EventManager::OnAllInitialized_Post() { m_FireEvent.Add(globals::gameEventManager); }
+void EventManager::OnAllInitialized_Post()
+{
+    m_hooks.Clear();
+    m_hooks.Add(&IGameEventManager2::FireEvent, globals::gameEventManager, this, &EventManager::OnFireEvent, nullptr);
+}
 
 void EventManager::OnShutdown()
 {
-    m_FireEvent.Remove(globals::gameEventManager);
+    m_hooks.Clear();
 
-    globals::gameEventManager->RemoveListener(this);
+    if (globals::gameEventManager) globals::gameEventManager->RemoveListener(this);
 }
 
 void EventManager::FireGameEvent(IGameEvent* pEvent) {}
@@ -181,105 +183,62 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
     return true;
 }
 
-KHook::Return<bool> EventManager::OnFireEvent(IGameEventManager2* pGameEventManager, IGameEvent* pEvent, bool bDontBroadcast)
+KHook::Return<bool> EventManager::OnFireEvent(IGameEventManager2* hookThis, IGameEvent* pEvent, bool bDontBroadcast)
 {
-    if (!pEvent)
+    if (!pEvent) return { KHook::Action::Ignore };
+    auto it = m_hooksMap.find(pEvent->GetName());
+    if (it == m_hooksMap.end()) return { KHook::Action::Ignore };
+
+    auto* eventHook = it->second;
+    EventOverride override = { bDontBroadcast };
+    bool blocked = false;
+    if (auto* callback = eventHook->m_pPreHook)
     {
-        return { KHook::Action::Ignore, false };
-    }
-
-    const char* szName = pEvent->GetName();
-    bool bLocalDontBroadcast = bDontBroadcast;
-    auto I = m_hooksMap.find(szName);
-
-    if (I != m_hooksMap.end())
-    {
-        auto pEventHook = I->second;
-        m_EventStack.push(pEventHook);
-        auto* pCallback = pEventHook->m_pPreHook;
-
-        if (pCallback)
+        // Stack-local contexts survive a managed callback recursively firing the
+        // same event, or unregistering itself while it runs.
+        auto functions = callback->GetFunctions();
+        for (auto function : functions)
         {
-            CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}", szName, (void*)pEvent, bDontBroadcast,
-                               false);
-            EventOverride override = { bDontBroadcast };
-            pCallback->Reset();
-            pCallback->ScriptContext().Push(pEvent);
-            pCallback->ScriptContext().Push(&override);
-
-            // VPROF_BUDGET("CS#::OnFireEvent", "CS# Event Hooks");
-            for (auto fnMethodToCall : pCallback->GetFunctions())
+            if (!function) continue;
+            fxNativeContext raw{};
+            ScriptContextRaw context(raw);
+            context.Reset();
+            context.Push(pEvent);
+            context.Push(&override);
+            function(&raw);
+            if (context.GetResult<HookResult>() >= HookResult::Handled)
             {
-                if (!fnMethodToCall) continue;
-                fnMethodToCall(&pCallback->ScriptContextStruct());
-
-                auto result = pCallback->ScriptContext().GetResult<HookResult>();
-                bLocalDontBroadcast = override.m_bDontBroadcast;
-
-                if (result >= HookResult::Handled)
-                {
-                    m_EventCopies.push(globals::gameEventManager->DuplicateEvent(pEvent));
-                    globals::gameEventManager->FreeEvent(pEvent);
-                    return { KHook::Action::Supersede, false };
-                }
-            }
-        }
-        m_EventCopies.push(globals::gameEventManager->DuplicateEvent(pEvent));
-    }
-    else
-    {
-        m_EventStack.push(nullptr);
-    }
-
-    if (bLocalDontBroadcast != bDontBroadcast)
-    {
-        return KHook::Recall(&IGameEventManager2::FireEvent, KHook::Return<bool>{ KHook::Action::Ignore, true }, pGameEventManager, pEvent,
-                             bLocalDontBroadcast);
-    }
-
-    return { KHook::Action::Ignore, true };
-}
-
-KHook::Return<bool> EventManager::OnFireEventPost(IGameEventManager2* pGameEventManager, IGameEvent* pEvent, bool bDontBroadcast)
-{
-    if (!pEvent)
-    {
-        return { KHook::Action::Ignore, false };
-    }
-
-    auto pHook = m_EventStack.top();
-
-    if (pHook)
-    {
-        auto* pCallback = pHook->m_pPostHook;
-
-        if (pCallback)
-        {
-            // VPROF_BUDGET("CS#::OnFireEventPost", "CS# Event Hooks");
-
-            auto pEventCopy = m_EventCopies.top();
-            CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}", pEventCopy->GetName(), (void*)pEventCopy,
-                               bDontBroadcast, true);
-            EventOverride override = { bDontBroadcast };
-            pCallback->Reset();
-            pCallback->ScriptContext().Push(pEventCopy);
-            pCallback->ScriptContext().Push(&override);
-            pCallback->Execute();
-
-            if (pEventCopy)
-            {
-                globals::gameEventManager->FreeEvent(pEventCopy);
-                m_EventCopies.pop();
-            }
-            else
-            {
-                CSSHARP_CORE_WARN("OnFireEventPost: pEventCopy is nullptr, cannot free event");
+                blocked = true;
+                break;
             }
         }
     }
 
-    m_EventStack.pop();
+    auto freeEvent = [hookThis](IGameEvent* event) {
+        if (event) hookThis->FreeEvent(event);
+    };
+    std::unique_ptr<IGameEvent, decltype(freeEvent)> copy(hookThis->DuplicateEvent(pEvent), freeEvent);
+    // A suppressed event is still visible to downstream hooks. Release it only
+    // after the rest of the shared hook chain has finished using it.
+    std::unique_ptr<IGameEvent, decltype(freeEvent)> suppressed(blocked ? pEvent : nullptr, freeEvent);
+    auto action = blocked ? KHook::Action::Supersede : KHook::Action::Ignore;
+    auto result =
+        KHook::Recall(&IGameEventManager2::FireEvent, KHook::Return<bool>{ action, false }, hookThis, pEvent, override.m_bDontBroadcast);
 
-    return { KHook::Action::Ignore, true };
+    if (copy && eventHook->m_pPostHook)
+    {
+        auto functions = eventHook->m_pPostHook->GetFunctions();
+        for (auto function : functions)
+        {
+            if (!function) continue;
+            fxNativeContext raw{};
+            ScriptContextRaw context(raw);
+            context.Reset();
+            context.Push(copy.get());
+            context.Push(&override);
+            function(&raw);
+        }
+    }
+    return result;
 }
 } // namespace counterstrikesharp
