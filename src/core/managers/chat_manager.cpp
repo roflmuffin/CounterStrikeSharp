@@ -48,11 +48,23 @@ void ChatManager::OnAllInitialized()
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);
     funchook_install(m_hook, 0);
+    m_hostSayHook = m_hook;
 
     on_player_chat_callback = globals::callbackManager.CreateCallback("OnPlayerChat");
 }
 
 void ChatManager::OnShutdown() { globals::callbackManager.ReleaseCallback(on_player_chat_callback); }
+
+void ChatManager::RemoveDetours()
+{
+    if (m_hostSayHook)
+    {
+        auto* hook = reinterpret_cast<funchook_t*>(m_hostSayHook);
+        funchook_uninstall(hook, 0);
+        funchook_destroy(hook);
+        m_hostSayHook = nullptr;
+    }
+}
 
 void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2)
 {

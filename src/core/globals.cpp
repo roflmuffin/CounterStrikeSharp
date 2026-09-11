@@ -39,6 +39,7 @@ CModule* vscript = nullptr;
 } // namespace modules
 
 namespace globals {
+static funchook_t* s_gameEventInitHook = nullptr;
 IVEngineServer2* engineServer2 = nullptr;
 IVEngineServer* engine = nullptr;
 IGameEventManager2* gameEventManager = nullptr;
@@ -143,6 +144,17 @@ void Initialize()
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&GameEventManagerInit, (void*)&DetourGameEventManagerInit);
     funchook_install(m_hook, 0);
+    s_gameEventInitHook = m_hook;
+}
+
+void RemoveDetours()
+{
+    if (s_gameEventInitHook)
+    {
+        funchook_uninstall(s_gameEventInitHook, 0);
+        funchook_destroy(s_gameEventInitHook);
+        s_gameEventInitHook = nullptr;
+    }
 }
 
 void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)

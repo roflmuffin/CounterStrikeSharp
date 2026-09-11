@@ -51,6 +51,7 @@ class ChatManager : public GlobalClass
     ~ChatManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
+    void RemoveDetours();
 
     bool OnSayCommandPre(CEntityInstance* pController, CCommand& args);
     void OnSayCommandPost(CEntityInstance* pController, CCommand& args);
@@ -62,6 +63,7 @@ class ChatManager : public GlobalClass
 
     std::vector<ChatCommandInfo*> m_cmd_list;
     std::map<std::string, ChatCommandInfo*> m_cmd_lookup;
+    void* m_hostSayHook = nullptr;
 };
 
 static void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2);

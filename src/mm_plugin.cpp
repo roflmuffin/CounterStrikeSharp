@@ -23,6 +23,7 @@
 #include "core/gameconfig_updater.h"
 #include "core/global_listener.h"
 #include "core/log.h"
+#include "core/managers/chat_manager.h"
 #include "core/managers/entity_manager.h"
 #include "core/tick_scheduler.h"
 #include "core/timer_system.h"
@@ -232,6 +233,8 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServe
 }
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
+    CALL_GLOBAL_LISTENER(OnShutdown());
+
     m_GameFrame.Remove(globals::server);
     m_StartupServer.Remove(globals::networkServerService);
     m_RegisterLoopMode.Remove(globals::engineServiceManager);
@@ -245,6 +248,9 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
     globals::callbackManager.ReleaseCallback(on_activate_callback);
     globals::callbackManager.ReleaseCallback(on_map_end_callback);
     globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
+
+    globals::chatManager.RemoveDetours();
+    globals::RemoveDetours();
 
     return true;
 }

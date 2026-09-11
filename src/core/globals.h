@@ -129,6 +129,7 @@ inline NetworkStateChanged_t* NetworkStateChanged = nullptr;
 extern std::thread::id gameThreadId;
 
 void Initialize();
+void RemoveDetours();
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!
 CGlobalVars* getGlobalVars();
