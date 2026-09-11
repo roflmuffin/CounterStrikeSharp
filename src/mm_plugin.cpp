@@ -43,8 +43,6 @@ DLL_IMPORT ICommandLine* CommandLine();
 #define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
 
-int g_iLoadEventsFromFileId = -1;
-
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
 CGameEntitySystem* GameEntitySystem() { return counterstrikesharp::globals::entitySystem; }
@@ -77,13 +75,6 @@ PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, counterstrikesharp::gPlugin);
 
 namespace counterstrikesharp {
 
-SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
-SH_DECL_HOOK3_void(
-    INetworkServerService, StartupServer, SH_NOATTRIB, 0, const GameSessionConfiguration_t&, ISource2WorldSession*, const char*);
-SH_DECL_HOOK3_void(IEngineServiceMgr, RegisterLoopMode, SH_NOATTRIB, 0, const char*, ILoopModeFactory*, void**);
-SH_DECL_HOOK1(IEngineServiceMgr, FindService, SH_NOATTRIB, 0, IEngineService*, const char*);
-SH_DECL_HOOK2(IGameEventManager2, LoadEventsFromFile, SH_NOATTRIB, 0, int, const char*, bool);
-
 CounterStrikeSharpMMPlugin gPlugin;
 
 #if 0
@@ -94,120 +85,150 @@ ConVar sample_cvar("sample_cvar", "42", 0);
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
-    ismm->AddListener(this, this);
-
-    globals::ismm = ismm;
-    globals::gameThreadId = std::this_thread::get_id();
-
-    Log::Init();
-
-    CSSHARP_CORE_INFO("Initializing with command line: {}", CommandLine()->GetCmdLine());
-    const char* basePath = CommandLine()->ParmValue(MakeStringToken("+css_basepath"), "/addons/counterstrikesharp");
-
-    GET_V_IFACE_CURRENT(GetEngineFactory, globals::engineServer2, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION);
-    GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
-    GET_V_IFACE_CURRENT(GetEngineFactory, globals::cvars, ICvar, CVAR_INTERFACE_VERSION);
-    GET_V_IFACE_CURRENT(GetEngineFactory, g_pGameResourceServiceServer, IGameResourceService, GAMERESOURCESERVICESERVER_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetServerFactory, globals::server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
-    GET_V_IFACE_ANY(GetServerFactory, globals::serverGameClients, IServerGameClients, INTERFACEVERSION_SERVERGAMECLIENTS);
-    GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService, NETWORKSERVERSERVICE_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetEngineFactory, globals::schemaSystem, CSchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem, GAMEEVENTSYSTEM_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetEngineFactory, globals::engineServiceManager, IEngineServiceMgr, ENGINESERVICEMGR_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetEngineFactory, globals::networkMessages, INetworkMessages, NETWORKMESSAGES_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetServerFactory, globals::gameEntities, ISource2GameEntities, SOURCE2GAMEENTITIES_INTERFACE_VERSION);
-    g_pCVar = globals::cvars;
-    g_pSource2GameEntities = globals::gameEntities;
-    interfaces::pGameResourceServiceServer = (CGameResourceService*)g_pGameResourceServiceServer;
-
-    if (utils::RelativeDirectory(std::string(basePath)) == "NotFound")
+    if (!KHook::__exported__khook)
     {
-        CSSHARP_CORE_ERROR("Invalid base path: {}", basePath);
+        snprintf(error, maxlen, "CounterStrikeSharp requires Metamod with KHook (plugin API 18)");
         return false;
     }
-    CSSHARP_CORE_INFO("Current root directory: {}", utils::GetRootDirectory());
-
-    auto coreconfig_path = std::string(utils::ConfigsDirectory() + "/core");
-    globals::coreConfig = new CCoreConfig(coreconfig_path);
-    char coreconfig_error[255] = "";
-
-    if (!globals::coreConfig->Init(coreconfig_error, sizeof(coreconfig_error)))
+    struct LoadGuard
     {
-        CSSHARP_CORE_ERROR("Could not read \'{}\'. Error: {}", coreconfig_path, coreconfig_error);
-        return false;
-    }
-
-    CSSHARP_CORE_INFO("CoreConfig loaded.");
-
-    if (globals::coreConfig->AutoUpdateEnabled)
-    {
-#ifdef _WIN32
-        if (!update::TryUpdateGameConfig())
+        bool succeeded = false;
+        ~LoadGuard()
         {
-            CSSHARP_CORE_ERROR("Failed to update game config.");
+            if (!succeeded)
+            {
+                HookSet::ClearAll();
+                DynamicHook::ShutdownAll();
+            }
         }
+    } guard;
+    try
+    {
+        ismm->AddListener(this, this);
+
+        globals::ismm = ismm;
+        globals::gameThreadId = std::this_thread::get_id();
+
+        Log::Init();
+
+        CSSHARP_CORE_INFO("Initializing with command line: {}", CommandLine()->GetCmdLine());
+        const char* basePath = CommandLine()->ParmValue(MakeStringToken("+css_basepath"), "/addons/counterstrikesharp");
+
+        GET_V_IFACE_CURRENT(GetEngineFactory, globals::engineServer2, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION);
+        GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
+        GET_V_IFACE_CURRENT(GetEngineFactory, globals::cvars, ICvar, CVAR_INTERFACE_VERSION);
+        GET_V_IFACE_CURRENT(GetEngineFactory, g_pGameResourceServiceServer, IGameResourceService,
+                            GAMERESOURCESERVICESERVER_INTERFACE_VERSION);
+        GET_V_IFACE_ANY(GetServerFactory, globals::server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
+        GET_V_IFACE_ANY(GetServerFactory, globals::serverGameClients, IServerGameClients, INTERFACEVERSION_SERVERGAMECLIENTS);
+        GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService, NETWORKSERVERSERVICE_INTERFACE_VERSION);
+        GET_V_IFACE_ANY(GetEngineFactory, globals::schemaSystem, CSchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
+        GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem, GAMEEVENTSYSTEM_INTERFACE_VERSION);
+        GET_V_IFACE_ANY(GetEngineFactory, globals::engineServiceManager, IEngineServiceMgr, ENGINESERVICEMGR_INTERFACE_VERSION);
+        GET_V_IFACE_ANY(GetEngineFactory, globals::networkMessages, INetworkMessages, NETWORKMESSAGES_INTERFACE_VERSION);
+        GET_V_IFACE_ANY(GetServerFactory, globals::gameEntities, ISource2GameEntities, SOURCE2GAMEENTITIES_INTERFACE_VERSION);
+        g_pCVar = globals::cvars;
+        g_pSource2GameEntities = globals::gameEntities;
+        interfaces::pGameResourceServiceServer = (CGameResourceService*)g_pGameResourceServiceServer;
+
+        if (utils::RelativeDirectory(std::string(basePath)) == "NotFound")
+        {
+            CSSHARP_CORE_ERROR("Invalid base path: {}", basePath);
+            return false;
+        }
+        CSSHARP_CORE_INFO("Current root directory: {}", utils::GetRootDirectory());
+
+        auto coreconfig_path = std::string(utils::ConfigsDirectory() + "/core");
+        globals::coreConfig = new CCoreConfig(coreconfig_path);
+        char coreconfig_error[255] = "";
+
+        if (!globals::coreConfig->Init(coreconfig_error, sizeof(coreconfig_error)))
+        {
+            CSSHARP_CORE_ERROR("Could not read \'{}\'. Error: {}", coreconfig_path, coreconfig_error);
+            return false;
+        }
+
+        CSSHARP_CORE_INFO("CoreConfig loaded.");
+
+        if (globals::coreConfig->AutoUpdateEnabled)
+        {
+#ifdef _WIN32
+            if (!update::TryUpdateGameConfig())
+            {
+                CSSHARP_CORE_ERROR("Failed to update game config.");
+            }
 #else
-        CSSHARP_CORE_WARN("Auto-update is not currently supported on this platform.");
+            CSSHARP_CORE_WARN("Auto-update is not currently supported on this platform.");
 #endif
+        }
+
+        auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
+        globals::gameConfig = new CGameConfig(gamedata_path);
+        char conf_error[255] = "";
+
+        if (!globals::gameConfig->Init(conf_error, sizeof(conf_error)))
+        {
+            CSSHARP_CORE_ERROR("Could not read \'{}\'. Error: {}", gamedata_path, conf_error);
+            return false;
+        }
+
+        globals::Initialize();
+
+        CSSHARP_CORE_INFO("Globals loaded.");
+        globals::mmPlugin = &gPlugin;
+
+        CALL_GLOBAL_LISTENER(OnAllInitialized());
+
+        on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
+        on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
+        on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
+
+        m_hooks.Add(&IServerGameDLL::GameFrame, globals::server, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_GameFrame);
+        m_hooks.Add(&INetworkServerService::StartupServer, globals::networkServerService, this, nullptr,
+                    &CounterStrikeSharpMMPlugin::Hook_StartupServer);
+        m_hooks.Add(&IEngineServiceMgr::RegisterLoopMode, globals::engineServiceManager, this,
+                    &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, nullptr);
+        m_hooks.Add(&IEngineServiceMgr::FindService, globals::engineServiceManager, this, nullptr,
+                    &CounterStrikeSharpMMPlugin::Hook_FindService);
+
+        auto pCGameEventManagerVTable = (IGameEventManager2*)modules::server->FindVirtualTable("CGameEventManager");
+
+        m_hooks.AddGlobal(&IGameEventManager2::LoadEventsFromFile, reinterpret_cast<void**>(pCGameEventManagerVTable), this,
+                          &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr);
+
+        if (!InitGameSystems())
+        {
+            CSSHARP_CORE_ERROR("Failed to initialize GameSystem!");
+            return false;
+        }
+
+        CSSHARP_CORE_INFO("Initialized GameSystem.");
+
+        if (!globals::dotnetManager.Initialize())
+        {
+            CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
+        }
+
+        CSSHARP_CORE_INFO("Hooks added.");
+
+        // Used by Metamod Console Commands
+        g_pCVar = globals::cvars;
+        ConVar_Register(FCVAR_RELEASE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL);
+
+        guard.succeeded = true;
+        return true;
     }
-
-    auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
-    globals::gameConfig = new CGameConfig(gamedata_path);
-    char conf_error[255] = "";
-
-    if (!globals::gameConfig->Init(conf_error, sizeof(conf_error)))
+    catch (const std::exception& exception)
     {
-        CSSHARP_CORE_ERROR("Could not read \'{}\'. Error: {}", gamedata_path, conf_error);
+        snprintf(error, maxlen, "Failed to initialize CounterStrikeSharp hooks: %s", exception.what());
         return false;
     }
-
-    globals::Initialize();
-
-    CSSHARP_CORE_INFO("Globals loaded.");
-    globals::mmPlugin = &gPlugin;
-
-    CALL_GLOBAL_LISTENER(OnAllInitialized());
-
-    on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
-    on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
-    on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
-
-    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
-    SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
-                        &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
-    SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, RegisterLoopMode, globals::engineServiceManager, this,
-                        &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, false);
-    SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, FindService, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_FindService,
-                        true);
-
-    auto pCGameEventManagerVTable = (IGameEventManager2*)modules::server->FindVirtualTable("CGameEventManager");
-
-    g_iLoadEventsFromFileId = SH_ADD_DVPHOOK(IGameEventManager2, LoadEventsFromFile, pCGameEventManagerVTable,
-                                             SH_MEMBER(this, &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile), false);
-
-    if (!InitGameSystems())
-    {
-        CSSHARP_CORE_ERROR("Failed to initialize GameSystem!");
-        return false;
-    }
-
-    CSSHARP_CORE_INFO("Initialized GameSystem.");
-
-    if (!globals::dotnetManager.Initialize())
-    {
-        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
-    }
-
-    CSSHARP_CORE_INFO("Hooks added.");
-
-    // Used by Metamod Console Commands
-    g_pCVar = globals::cvars;
-    ConVar_Register(FCVAR_RELEASE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL);
-
-    return true;
 }
 
-void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
+KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServerService* hookThis,
+                                                                   const GameSessionConfiguration_t& config,
+                                                                   ISource2WorldSession*,
+                                                                   const char*)
 {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
     globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
@@ -217,13 +238,16 @@ void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfigurati
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
     on_activate_callback->Execute();
+    return { KHook::Action::Ignore };
 }
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
-    SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
-                           &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
-    SH_REMOVE_HOOK_ID(g_iLoadEventsFromFileId);
+    HookSet::ClearAll();
+    globals::ShutdownHooks();
+    DynamicHook::ShutdownAll();
+    {
+        CALL_GLOBAL_LISTENER(OnShutdown());
+    }
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
     globals::callbackManager.ReleaseCallback(on_map_end_callback);
@@ -246,7 +270,7 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
     }
 }
 
-void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
+KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_GameFrame(IServerGameDLL* hookThis, bool simulating, bool bFirstTick, bool bLastTick)
 {
     /**
      * simulating:
@@ -255,6 +279,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * false | game is not ticking
      */
     // VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
+    DynamicHook::CollectRetired();
     globals::timerSystem.OnGameFrame(simulating);
 
     auto callbacks = globals::tickScheduler.getCallbacks(globals::getGlobalVars()->tickcount);
@@ -268,6 +293,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
             callback();
         }
     }
+    return { KHook::Action::Ignore };
 }
 
 // Potentially might not work
@@ -279,9 +305,10 @@ void CounterStrikeSharpMMPlugin::OnLevelInit(
     m_has_level_initialized = true;
 }
 
-void CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode(const char* pszLoopModeName,
-                                                       ILoopModeFactory* pLoopModeFactory,
-                                                       void** ppGlobalPointer)
+KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode(IEngineServiceMgr* hookThis,
+                                                                      const char* pszLoopModeName,
+                                                                      ILoopModeFactory* pLoopModeFactory,
+                                                                      void** ppGlobalPointer)
 {
     if (strcmp(pszLoopModeName, "game") == 0)
     {
@@ -289,20 +316,19 @@ void CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode(const char* pszLoopModeNa
 
         CALL_GLOBAL_LISTENER(OnGameLoopInitialized());
     }
+    return { KHook::Action::Ignore };
 }
 
-IEngineService* CounterStrikeSharpMMPlugin::Hook_FindService(const char* serviceName)
+KHook::Return<IEngineService*> CounterStrikeSharpMMPlugin::Hook_FindService(IEngineServiceMgr* hookThis, const char* serviceName)
 {
-    IEngineService* pService = META_RESULT_ORIG_RET(IEngineService*);
-
-    return pService;
+    return { KHook::Action::Ignore };
 }
 
-int CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(const char* filename, bool bSearchAll)
+KHook::Return<int> CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(IGameEventManager2* hookThis, const char* filename, bool bSearchAll)
 {
-    ExecuteOnce(globals::gameEventManager = META_IFACEPTR(IGameEventManager2));
+    ExecuteOnce(globals::gameEventManager = hookThis);
 
-    RETURN_META_VALUE(MRES_IGNORED, 0);
+    return { KHook::Action::Ignore, 0 };
 }
 
 void CounterStrikeSharpMMPlugin::OnLevelShutdown()

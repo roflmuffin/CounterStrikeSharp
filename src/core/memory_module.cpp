@@ -1,3 +1,4 @@
+#include <khook.hpp>
 #include "core/memory_module.h"
 
 #include <algorithm>
@@ -550,6 +551,12 @@ void* CModule::FindSignature(const char* signature)
     if (signature == nullptr || strlen(signature) == 0)
     {
         return nullptr;
+    }
+
+    for (const auto& segment : m_vecSegments)
+    {
+        if (auto address = KHook::LookupSignature(reinterpret_cast<void*>(segment.address), segment.bytes.size(), signature))
+            return address;
     }
 
     auto pData = CGameConfig::HexToByte(signature);
