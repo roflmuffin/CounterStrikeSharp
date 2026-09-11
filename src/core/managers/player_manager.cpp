@@ -148,8 +148,9 @@ KHook::Return<bool> PlayerManager::OnClientConnect_Post(IServerGameClients* hook
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientConnect_Post] - {}, {}, {}", slot.Get(), pszName, pszNetworkID);
 
     int client = slot.Get();
-    auto* currentValue = static_cast<bool*>(KHook::GetCurrentValuePtr());
-    bool orig_value = currentValue && *currentValue;
+    auto* originalValue = static_cast<bool*>(KHook::GetOriginalValuePtr());
+    auto* overrideValue = static_cast<bool*>(KHook::GetOverrideValuePtr());
+    bool orig_value = originalValue ? *originalValue : (overrideValue && *overrideValue);
     CPlayer* pPlayer = &m_players[client];
 
     if (orig_value)
