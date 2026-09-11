@@ -21,6 +21,7 @@
 
 #include "core/global_listener.h"
 #include "core/globals.h"
+#include "core/hooks.h"
 #include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
@@ -46,6 +47,8 @@ class ChatCommandInfo
 
 class ChatManager : public GlobalClass
 {
+    HookSet m_hooks;
+
   public:
     ChatManager();
     ~ChatManager();
@@ -64,7 +67,7 @@ class ChatManager : public GlobalClass
     std::map<std::string, ChatCommandInfo*> m_cmd_lookup;
 };
 
-static void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2);
+static KHook::Return<void> DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2);
 static HostSay m_pHostSay = nullptr;
 
 } // namespace counterstrikesharp

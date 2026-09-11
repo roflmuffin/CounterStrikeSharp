@@ -21,6 +21,7 @@
 
 #include "core/function.h"
 #include "core/globals.h"
+#include "core/hooks.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
 #include "entitysystem.h"
@@ -71,6 +72,9 @@ class CCheckTransmitInfoList
 
 class EntityManager : public GlobalClass
 {
+  private:
+    HookSet m_hooks;
+
     friend CEntityListener;
 
   public:
@@ -87,13 +91,14 @@ class EntityManager : public GlobalClass
     ValveFunction* Func_OnTakeDamage;
 
   private:
-    void CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
-                       uint32_t infoCount,
-                       CBitVec<16384>& unionTransmitEdicts1,
-                       CBitVec<16384>& unionTransmitEdicts2,
-                       const Entity2Networkable_t** pNetworkables,
-                       const uint16* pEntityIndicies,
-                       uint32_t nEntities);
+    KHook::Return<void> CheckTransmit(ISource2GameEntities* hookThis,
+                                      CCheckTransmitInfoHack** ppInfoList,
+                                      uint32_t infoCount,
+                                      CBitVec<16384>& unionTransmitEdicts1,
+                                      CBitVec<16384>& unionTransmitEdicts2,
+                                      const Entity2Networkable_t** pNetworkables,
+                                      const uint16* pEntityIndicies,
+                                      uint32_t nEntities);
 
     ScriptCallback* on_entity_spawned_callback;
     ScriptCallback* on_entity_created_callback;
@@ -156,13 +161,13 @@ class CEntityIOOutput
 typedef void (*FireOutputInternal)(
     CEntityIOOutput* const, CEntityInstance*, CEntityInstance*, const CVariant* const, float flDelay, void* unk1, char* unk2);
 
-static void DetourFireOutputInternal(CEntityIOOutput* const pThis,
-                                     CEntityInstance* pActivator,
-                                     CEntityInstance* pCaller,
-                                     const CVariant* const value,
-                                     float flDelay,
-                                     void* unk1,
-                                     char* unk2);
+static KHook::Return<void> DetourFireOutputInternal(CEntityIOOutput* const pThis,
+                                                    CEntityInstance* pActivator,
+                                                    CEntityInstance* pCaller,
+                                                    const CVariant* const value,
+                                                    float flDelay,
+                                                    void* unk1,
+                                                    char* unk2);
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 

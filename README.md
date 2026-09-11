@@ -10,6 +10,10 @@
 </div>
 <br>
 
+**CounterStrikeSharp-KHS — maintained by [K0di](https://github.com/kodrian).**
+
+KHS maintains the portable Linux builds for this fork. The KHook implementation is based on [upstream PR #1418](https://github.com/roflmuffin/CounterStrikeSharp/pull/1418) by roflmuffin. Original project credits and licenses are retained.
+
 CounterStrikeSharp is a server side modding framework for Counter-Strike 2. This project implements a .NET 8 scripting layer on top of a Metamod Source Plugin, allowing developers to create plugins that interact with the game server in a modern language (C#) to facilitate the creation of maintainable and testable code.
 
 [Come and join our Discord](https://discord.gg/eAZU3guKWU)
@@ -136,4 +140,3 @@ License
 CounterStrikeSharp is licensed under the GNU General Public License version 3. A special exemption is outlined regarding published plugins, which you can find in the [LICENSE](LICENSE) file.
 
 <img src="https://repobeats.axiom.co/api/embed/a96f228b8fa98c032070fa8dd831c967334ee553.svg" width="100%" />
-
