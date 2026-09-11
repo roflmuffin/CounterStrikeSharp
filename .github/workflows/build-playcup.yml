@@ -1,0 +1,129 @@
+name: PlayCup Linux
+
+# PlayCup fork: `main` tracks upstream; `playcup` is the patched tree (KHook / Metamod API 18).
+# Native Linux build matches upstream: Steam Runtime sniper SDK + CMake/Ninja (GCC, not host clang).
+
+env:
+  BUILD_TYPE: Release
+  PLAYCUP_TAG: playcup
+  SEMVER: 1.0.374-playcup
+  DOTNET_RUNTIME_VERSION: 10.0.3
+
+on:
+  push:
+    branches: ["playcup"]
+    paths-ignore:
+      - "docfx/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    container:
+      image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: Build native plugin
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE" || true
+          ulimit -s unlimited || true
+          mkdir -p build
+          cd build
+          cmake -G Ninja -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" -DCMAKE_SKIP_RPATH=ON ..
+          cmake --build . --config "${BUILD_TYPE}" -- -j"$(nproc)"
+          test -f addons/counterstrikesharp/bin/linuxsteamrt64/counterstrikesharp.so
+
+      - name: Stage output
+        run: |
+          mkdir -p build/output
+          mv build/addons build/output/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: counterstrikesharp-linux-playcup
+          path: build/output/
+
+  build_managed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore, test, publish API
+        run: |
+          dotnet restore managed/CounterStrikeSharp.sln
+          dotnet test managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj --logger trx --results-directory "TestResults-playcup"
+          dotnet publish -c Release \
+            /p:Version="${SEMVER}" \
+            managed/CounterStrikeSharp.API
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: counterstrikesharp-api-playcup
+          path: managed/CounterStrikeSharp.API/bin/Release
+
+  publish:
+    needs: ["build_linux", "build_managed"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: counterstrikesharp-linux-playcup
+          path: build/linux
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: counterstrikesharp-api-playcup
+          path: build/api
+
+      - name: Bundle API + .NET runtime
+        run: |
+          mkdir -p build/linux/addons/counterstrikesharp/api
+          cp -r build/api/net10.0/publish/* build/linux/addons/counterstrikesharp/api
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-linux-playcup.zip *)
+          mkdir -p build/linux/addons/counterstrikesharp/dotnet
+          curl -sL "https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/${DOTNET_RUNTIME_VERSION}/aspnetcore-runtime-${DOTNET_RUNTIME_VERSION}-linux-x64.tar.gz" \
+            | tar xz -C build/linux/addons/counterstrikesharp/dotnet
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-linux-playcup.zip *)
+
+      - name: Publish rolling playcup release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="$(cat <<'EOF'
+          PlayCup CounterStrikeSharp (`playcup` branch).
+
+          Native plugin rebuilt for Metamod:Source 2.0-dev API 18 (KHook). Use with Metamod 1461+ (1460 and older segfault on current CS2; 1411 is the last API-17 loader).
+
+          Asset: `counterstrikesharp-with-runtime-linux-playcup.zip`
+          EOF
+          )"
+          if gh release view "${PLAYCUP_TAG}" >/dev/null 2>&1; then
+            gh release upload "${PLAYCUP_TAG}" \
+              counterstrikesharp-linux-playcup.zip \
+              counterstrikesharp-with-runtime-linux-playcup.zip \
+              --clobber
+            gh release edit "${PLAYCUP_TAG}" --notes "$notes"
+          else
+            gh release create "${PLAYCUP_TAG}" \
+              counterstrikesharp-linux-playcup.zip \
+              counterstrikesharp-with-runtime-linux-playcup.zip \
+              --prerelease \
+              --title "PlayCup (KHook / Metamod API 18)" \
+              --notes "$notes"
+          fi
