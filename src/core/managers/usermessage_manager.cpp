@@ -193,7 +193,6 @@ KHook::Return<void> UserMessageManager::Hook_PostEvent(IGameEventSystem* hookThi
     }
 
     return { KHook::Action::Ignore };
-    return { KHook::Action::Ignore };
 }
 
 } // namespace counterstrikesharp
