@@ -237,9 +237,9 @@ struct DynamicHook::State
     {
         auto& cb = *static_cast<Callback*>(userdata);
         auto& state = *cb.state;
-        *result = {};
         if (cb.phase == Return)
         {
+            *result = {};
             auto* value = KHook::GetCurrentValuePtr(true);
             if (state.returnType != DATA_TYPE_VOID && value) std::memcpy(result, value, TypeSize(state.returnType));
             KHook::DestroyReturnValue();
@@ -260,6 +260,7 @@ struct DynamicHook::State
                     break; // constructor validates types
             }
         }
+        *result = {};
         if (cb.phase == Original)
         {
             *result = Call(KHook::GetOriginalFunction(), frame);
