@@ -26,4 +26,12 @@ public partial class CPathWithDynamicNodes : CPathSimple
 	[SchemaMember("CPathWithDynamicNodes", "m_xInitialPathWorldToLocal")]
 	public CTransform XInitialPathWorldToLocal => Schema.GetDeclaredClass<CTransform>(this.Handle, "CPathWithDynamicNodes", "m_xInitialPathWorldToLocal");
 
+	// m_eDesiredDirection
+	[SchemaMember("CPathWithDynamicNodes", "m_eDesiredDirection")]
+	public ref DirectionAlongSimplePath_t DesiredDirection => ref Schema.GetRef<DirectionAlongSimplePath_t>(this.Handle, "CPathWithDynamicNodes", "m_eDesiredDirection");
+
+	// m_bIgnoreParentRotation
+	[SchemaMember("CPathWithDynamicNodes", "m_bIgnoreParentRotation")]
+	public ref bool IgnoreParentRotation => ref Schema.GetRef<bool>(this.Handle, "CPathWithDynamicNodes", "m_bIgnoreParentRotation");
+
 }

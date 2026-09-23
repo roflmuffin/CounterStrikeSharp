@@ -22,8 +22,4 @@ public partial class CCS2ChickenGraphController : CAnimGraphControllerBase
 	[SchemaMember("CCS2ChickenGraphController", "m_bHasActionCompletedEvent")]
 	public ref bool HasActionCompletedEvent => ref Schema.GetRef<bool>(this.Handle, "CCS2ChickenGraphController", "m_bHasActionCompletedEvent");
 
-	// m_bWaitingForCompletedEvent
-	[SchemaMember("CCS2ChickenGraphController", "m_bWaitingForCompletedEvent")]
-	public ref bool WaitingForCompletedEvent => ref Schema.GetRef<bool>(this.Handle, "CCS2ChickenGraphController", "m_bWaitingForCompletedEvent");
-
 }

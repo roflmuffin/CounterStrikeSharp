@@ -18,9 +18,21 @@ public partial class CPathMoverEntitySpawner : CLogicalEntity
 {
     public CPathMoverEntitySpawner (IntPtr pointer) : base(pointer) {}
 
+	// m_eTemplateChoiceStrategy
+	[SchemaMember("CPathMoverEntitySpawner", "m_eTemplateChoiceStrategy")]
+	public ref CPathMoverEntitySpawnerTemplateChoiceStrategy_t TemplateChoiceStrategy => ref Schema.GetRef<CPathMoverEntitySpawnerTemplateChoiceStrategy_t>(this.Handle, "CPathMoverEntitySpawner", "m_eTemplateChoiceStrategy");
+
 	// m_szSpawnTemplates
 	[SchemaMember("CPathMoverEntitySpawner", "m_szSpawnTemplates")]
 	public Span<string> SpawnTemplates => Schema.GetFixedArray<string>(this.Handle, "CPathMoverEntitySpawner", "m_szSpawnTemplates", 4);
+
+	// m_szSpawnTemplateParams
+	[SchemaMember("CPathMoverEntitySpawner", "m_szSpawnTemplateParams")]
+	public Span<Int32> SpawnTemplateParams => Schema.GetFixedArray<Int32>(this.Handle, "CPathMoverEntitySpawner", "m_szSpawnTemplateParams", 4);
+
+	// m_szSpawnTemplateCount
+	[SchemaMember("CPathMoverEntitySpawner", "m_szSpawnTemplateCount")]
+	public Span<Int32> SpawnTemplateCount => Schema.GetFixedArray<Int32>(this.Handle, "CPathMoverEntitySpawner", "m_szSpawnTemplateCount", 4);
 
 	// m_nSpawnIndex
 	[SchemaMember("CPathMoverEntitySpawner", "m_nSpawnIndex")]
@@ -81,5 +93,21 @@ public partial class CPathMoverEntitySpawner : CLogicalEntity
 	// m_bPrepopulateOnSpawn
 	[SchemaMember("CPathMoverEntitySpawner", "m_bPrepopulateOnSpawn")]
 	public ref bool PrepopulateOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CPathMoverEntitySpawner", "m_bPrepopulateOnSpawn");
+
+	// m_iszPathNodeStartName
+	[SchemaMember("CPathMoverEntitySpawner", "m_iszPathNodeStartName")]
+	public string PathNodeStartName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPathMoverEntitySpawner", "m_iszPathNodeStartName"); }
+		set { Schema.SetString(this.Handle, "CPathMoverEntitySpawner", "m_iszPathNodeStartName", value); }
+	}
+
+	// m_vMoverSpawnPos
+	[SchemaMember("CPathMoverEntitySpawner", "m_vMoverSpawnPos")]
+	public Vector MoverSpawnPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CPathMoverEntitySpawner", "m_vMoverSpawnPos");
+
+	// m_bRunningDebugThink
+	[SchemaMember("CPathMoverEntitySpawner", "m_bRunningDebugThink")]
+	public ref bool RunningDebugThink => ref Schema.GetRef<bool>(this.Handle, "CPathMoverEntitySpawner", "m_bRunningDebugThink");
 
 }

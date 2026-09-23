@@ -18,6 +18,10 @@ public partial class CDynamicProp : CBreakableProp
 {
     public CDynamicProp (IntPtr pointer) : base(pointer) {}
 
+	// m_bGraphControllerEnabled
+	[SchemaMember("CDynamicProp", "m_bGraphControllerEnabled")]
+	public ref bool GraphControllerEnabled => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bGraphControllerEnabled");
+
 	// m_bCreateNavObstacle
 	[SchemaMember("CDynamicProp", "m_bCreateNavObstacle")]
 	public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateNavObstacle");

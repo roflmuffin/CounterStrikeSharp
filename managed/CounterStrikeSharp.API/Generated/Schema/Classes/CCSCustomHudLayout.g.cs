@@ -26,6 +26,10 @@ public partial class CCSCustomHudLayout : CBaseEntity
 		set { Schema.SetString(this.Handle, "CCSCustomHudLayout", "m_strLayout", value); }
 	}
 
+	// m_bObservable
+	[SchemaMember("CCSCustomHudLayout", "m_bObservable")]
+	public ref bool Observable => ref Schema.GetRef<bool>(this.Handle, "CCSCustomHudLayout", "m_bObservable");
+
 	// m_vecPlayerLayoutStates
 	[SchemaMember("CCSCustomHudLayout", "m_vecPlayerLayoutStates")]
 	public NetworkedVector<CCSCustomHudLayoutState> PlayerLayoutStates => Schema.GetDeclaredClass<NetworkedVector<CCSCustomHudLayoutState>>(this.Handle, "CCSCustomHudLayout", "m_vecPlayerLayoutStates");

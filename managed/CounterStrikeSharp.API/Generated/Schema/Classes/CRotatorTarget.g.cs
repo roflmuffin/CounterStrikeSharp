@@ -18,12 +18,4 @@ public partial class CRotatorTarget : CPointEntity
 {
     public CRotatorTarget (IntPtr pointer) : base(pointer) {}
 
-	// m_OnArrivedAt
-	[SchemaMember("CRotatorTarget", "m_OnArrivedAt")]
-	public CEntityIOOutput OnArrivedAt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CRotatorTarget", "m_OnArrivedAt");
-
-	// m_eSpace
-	[SchemaMember("CRotatorTarget", "m_eSpace")]
-	public ref RotatorTargetSpace_t Space => ref Schema.GetRef<RotatorTargetSpace_t>(this.Handle, "CRotatorTarget", "m_eSpace");
-
 }

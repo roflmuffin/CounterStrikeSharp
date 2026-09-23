@@ -50,17 +50,9 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
 	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC")]
 	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_DC => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC");
 
-	// m_Entity_hLightProbeTexture_SH2_R
-	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_R => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R");
-
-	// m_Entity_hLightProbeTexture_SH2_G
-	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_G => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G");
-
-	// m_Entity_hLightProbeTexture_SH2_B
-	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_B => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B");
+	// m_Entity_hLightProbeTexture_SH2_L1
+	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_L1")]
+	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_L1 => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_L1");
 
 	// m_Entity_hLightProbeDirectLightIndicesTexture
 	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture")]

@@ -54,4 +54,8 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_weaponItem")]
 	public CEconItemView WeaponItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
 
+	// m_petItem
+	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_petItem")]
+	public CEconItemView PetItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_petItem");
+
 }

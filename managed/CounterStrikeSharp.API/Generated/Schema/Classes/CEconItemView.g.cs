@@ -78,4 +78,20 @@ public partial class CEconItemView : IEconItemInterface
 		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomNameOverride", value, 161); }
 	}
 
+	// m_szCustomNameOverride2
+	[SchemaMember("CEconItemView", "m_szCustomNameOverride2")]
+	public string CustomNameOverride2
+	{
+		get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomNameOverride2"); }
+		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomNameOverride2", value, 161); }
+	}
+
+	// m_szCustomNameOverride3
+	[SchemaMember("CEconItemView", "m_szCustomNameOverride3")]
+	public string CustomNameOverride3
+	{
+		get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomNameOverride3"); }
+		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomNameOverride3", value, 161); }
+	}
+
 }

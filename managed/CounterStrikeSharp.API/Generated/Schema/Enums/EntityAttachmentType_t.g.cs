@@ -12,4 +12,5 @@ public enum EntityAttachmentType_t : uint
 	eCenter = 0x1,
 	eEyes = 0x2,
 	eAttachment = 0x3,
+	eLocalOffset = 0x4,
 }

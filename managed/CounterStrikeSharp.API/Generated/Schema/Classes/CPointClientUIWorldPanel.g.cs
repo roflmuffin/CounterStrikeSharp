@@ -42,6 +42,10 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 	[SchemaMember("CPointClientUIWorldPanel", "m_flDPI")]
 	public ref float DPI => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDPI");
 
+	// m_flWindowUIScale
+	[SchemaMember("CPointClientUIWorldPanel", "m_flWindowUIScale")]
+	public ref float WindowUIScale => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flWindowUIScale");
+
 	// m_flInteractDistance
 	[SchemaMember("CPointClientUIWorldPanel", "m_flInteractDistance")]
 	public ref float InteractDistance => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flInteractDistance");

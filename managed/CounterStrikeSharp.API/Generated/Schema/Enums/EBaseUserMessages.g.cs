@@ -58,5 +58,7 @@ public enum EBaseUserMessages : uint
 	UM_PlayResponseConditional = 0xA6,
 	UM_UserSentBugBug = 0xA7,
 	UM_UsageReport = 0xA8,
+	UM_RemoteServerCommand = 0xA9,
+	UM_RemoteServerResponse = 0xAA,
 	UM_MAX_BASE = 0xC8,
 }

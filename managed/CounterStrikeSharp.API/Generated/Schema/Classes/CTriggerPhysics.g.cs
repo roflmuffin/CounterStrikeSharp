@@ -70,6 +70,10 @@ public partial class CTriggerPhysics : CBaseTrigger
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForceDirection")]
 	public Vector LinearForceDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection");
 
+	// m_bForceDirectionIsInLocalSpace
+	[SchemaMember("CTriggerPhysics", "m_bForceDirectionIsInLocalSpace")]
+	public ref bool ForceDirectionIsInLocalSpace => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bForceDirectionIsInLocalSpace");
+
 	// m_bConvertToDebrisWhenPossible
 	[SchemaMember("CTriggerPhysics", "m_bConvertToDebrisWhenPossible")]
 	public ref bool ConvertToDebrisWhenPossible => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");

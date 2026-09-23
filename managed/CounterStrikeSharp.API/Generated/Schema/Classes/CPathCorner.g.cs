@@ -18,9 +18,17 @@ public partial class CPathCorner : CPointEntity
 {
     public CPathCorner (IntPtr pointer) : base(pointer) {}
 
-	// m_flSpeed
-	[SchemaMember("CPathCorner", "m_flSpeed")]
-	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flSpeed");
+	// m_bTriggerLocomotionStop
+	[SchemaMember("CPathCorner", "m_bTriggerLocomotionStop")]
+	public ref bool TriggerLocomotionStop => ref Schema.GetRef<bool>(this.Handle, "CPathCorner", "m_bTriggerLocomotionStop");
+
+	// m_bSmoothArrival
+	[SchemaMember("CPathCorner", "m_bSmoothArrival")]
+	public ref bool SmoothArrival => ref Schema.GetRef<bool>(this.Handle, "CPathCorner", "m_bSmoothArrival");
+
+	// m_bExactPositioning
+	[SchemaMember("CPathCorner", "m_bExactPositioning")]
+	public ref bool ExactPositioning => ref Schema.GetRef<bool>(this.Handle, "CPathCorner", "m_bExactPositioning");
 
 	// m_flWait
 	[SchemaMember("CPathCorner", "m_flWait")]
@@ -29,6 +37,22 @@ public partial class CPathCorner : CPointEntity
 	// m_flRadius
 	[SchemaMember("CPathCorner", "m_flRadius")]
 	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flRadius");
+
+	// m_flWaypointSuccessRadiusWhenBlocked
+	[SchemaMember("CPathCorner", "m_flWaypointSuccessRadiusWhenBlocked")]
+	public ref float WaypointSuccessRadiusWhenBlocked => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flWaypointSuccessRadiusWhenBlocked");
+
+	// m_flWaypointSuccessRadius
+	[SchemaMember("CPathCorner", "m_flWaypointSuccessRadius")]
+	public ref float WaypointSuccessRadius => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flWaypointSuccessRadius");
+
+	// m_flPathEndDistanceFromGoal
+	[SchemaMember("CPathCorner", "m_flPathEndDistanceFromGoal")]
+	public ref float PathEndDistanceFromGoal => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flPathEndDistanceFromGoal");
+
+	// m_flSpeed
+	[SchemaMember("CPathCorner", "m_flSpeed")]
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flSpeed");
 
 	// m_OnPass
 	[SchemaMember("CPathCorner", "m_OnPass")]

@@ -6,8 +6,8 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum RotatorTargetSpace_t : uint
+public enum CNmClothEventType_t : uint
 {
-	ROTATOR_TARGET_WORLDSPACE = 0x0,
-	ROTATOR_TARGET_LOCALSPACE = 0x1,
+	Stiffen = 0x0,
+	Effect = 0x1,
 }

@@ -70,6 +70,10 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	[SchemaMember("CBaseAnimGraph", "m_bRagdollClientSide")]
 	public ref bool RagdollClientSide => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide");
 
+	// m_bShouldUpdateTransformations
+	[SchemaMember("CBaseAnimGraph", "m_bShouldUpdateTransformations")]
+	public ref bool ShouldUpdateTransformations => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bShouldUpdateTransformations");
+
 	// m_xParentedRagdollRootInEntitySpace
 	[SchemaMember("CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace")]
 	public CTransform XParentedRagdollRootInEntitySpace => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace");

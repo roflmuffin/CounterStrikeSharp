@@ -166,6 +166,10 @@ public partial class CSceneEntity : CPointEntity
 	[SchemaMember("CSceneEntity", "m_bCancelAtNextInterrupt")]
 	public ref bool CancelAtNextInterrupt => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bCancelAtNextInterrupt");
 
+	// m_bRemoveOnCompletion
+	[SchemaMember("CSceneEntity", "m_bRemoveOnCompletion")]
+	public ref bool RemoveOnCompletion => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bRemoveOnCompletion");
+
 	// m_fPitch
 	[SchemaMember("CSceneEntity", "m_fPitch")]
 	public ref float Pitch => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_fPitch");
@@ -265,6 +269,22 @@ public partial class CSceneEntity : CPointEntity
 	// m_nInterruptCount
 	[SchemaMember("CSceneEntity", "m_nInterruptCount")]
 	public ref Int32 InterruptCount => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_nInterruptCount");
+
+	// m_responseConcept
+	[SchemaMember("CSceneEntity", "m_responseConcept")]
+	public string ResponseConcept
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_responseConcept"); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_responseConcept", value); }
+	}
+
+	// m_responseCriteria
+	[SchemaMember("CSceneEntity", "m_responseCriteria")]
+	public string ResponseCriteria
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_responseCriteria"); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_responseCriteria", value); }
+	}
 
 	// m_bSceneMissing
 	[SchemaMember("CSceneEntity", "m_bSceneMissing")]

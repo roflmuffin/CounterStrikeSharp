@@ -39,4 +39,5 @@ public enum SVC_Messages : uint
 	svc_HltvFixupOperatorStatus = 0x4B,
 	svc_UserCmds = 0x4C,
 	svc_NextMsgPredicted = 0x4D,
+	svc_EncryptedData = 0x4E,
 }

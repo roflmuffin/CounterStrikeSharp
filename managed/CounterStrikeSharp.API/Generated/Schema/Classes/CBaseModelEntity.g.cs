@@ -130,6 +130,10 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_bRenderToCubemaps")]
 	public ref bool RenderToCubemaps => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps");
 
+	// m_bExpandRenderBoundsToIncludeCloth
+	[SchemaMember("CBaseModelEntity", "m_bExpandRenderBoundsToIncludeCloth")]
+	public ref bool ExpandRenderBoundsToIncludeCloth => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bExpandRenderBoundsToIncludeCloth");
+
 	// m_bNoInterpolate
 	[SchemaMember("CBaseModelEntity", "m_bNoInterpolate")]
 	public ref bool NoInterpolate => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bNoInterpolate");
@@ -165,6 +169,14 @@ public partial class CBaseModelEntity : CBaseEntity
 	// m_nObjectCulling
 	[SchemaMember("CBaseModelEntity", "m_nObjectCulling")]
 	public ref byte ObjectCulling => ref Schema.GetRef<byte>(this.Handle, "CBaseModelEntity", "m_nObjectCulling");
+
+	// m_bodyGroupTotalRequestCount
+	[SchemaMember("CBaseModelEntity", "m_bodyGroupTotalRequestCount")]
+	public ref UInt32 BodyGroupTotalRequestCount => ref Schema.GetRef<UInt32>(this.Handle, "CBaseModelEntity", "m_bodyGroupTotalRequestCount");
+
+	// m_bodyGroupRequests
+	[SchemaMember("CBaseModelEntity", "m_bodyGroupRequests")]
+	public NetworkedVector<CBaseModelEntityBodyGroupRequest_t> BodyGroupRequests => Schema.GetDeclaredClass<NetworkedVector<CBaseModelEntityBodyGroupRequest_t>>(this.Handle, "CBaseModelEntity", "m_bodyGroupRequests");
 
 	// m_vecViewOffset
 	[SchemaMember("CBaseModelEntity", "m_vecViewOffset")]

@@ -34,4 +34,8 @@ public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound")]
 	public WeaponPurchaseTracker_t WeaponPurchasesThisRound => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
 
+	// m_weaponCarryOverIntoThisRound
+	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponCarryOverIntoThisRound")]
+	public WeaponPurchaseTracker_t WeaponCarryOverIntoThisRound => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponCarryOverIntoThisRound");
+
 }
