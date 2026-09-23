@@ -78,10 +78,6 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_flForceToEnableMotion")]
 	public ref float ForceToEnableMotion => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_flForceToEnableMotion");
 
-	// m_bThrownByPlayer
-	[SchemaMember("CPhysicsProp", "m_bThrownByPlayer")]
-	public ref bool ThrownByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bThrownByPlayer");
-
 	// m_bDroppedByPlayer
 	[SchemaMember("CPhysicsProp", "m_bDroppedByPlayer")]
 	public ref bool DroppedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bDroppedByPlayer");
@@ -153,10 +149,6 @@ public partial class CPhysicsProp : CBreakableProp
 	// m_bForceNavObstacleCut
 	[SchemaMember("CPhysicsProp", "m_bForceNavObstacleCut")]
 	public ref bool ForceNavObstacleCut => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNavObstacleCut");
-
-	// m_bAllowObstacleConvexHullMerging
-	[SchemaMember("CPhysicsProp", "m_bAllowObstacleConvexHullMerging")]
-	public ref bool AllowObstacleConvexHullMerging => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAllowObstacleConvexHullMerging");
 
 	// m_bAcceptDamageFromHeldObjects
 	[SchemaMember("CPhysicsProp", "m_bAcceptDamageFromHeldObjects")]

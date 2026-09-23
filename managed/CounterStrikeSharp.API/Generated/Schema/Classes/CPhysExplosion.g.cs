@@ -42,6 +42,14 @@ public partial class CPhysExplosion : CPointEntity
 		set { Schema.SetString(this.Handle, "CPhysExplosion", "m_targetEntityName", value); }
 	}
 
+	// m_ignoreEntityName
+	[SchemaMember("CPhysExplosion", "m_ignoreEntityName")]
+	public string IgnoreEntityName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysExplosion", "m_ignoreEntityName"); }
+		set { Schema.SetString(this.Handle, "CPhysExplosion", "m_ignoreEntityName", value); }
+	}
+
 	// m_flInnerRadius
 	[SchemaMember("CPhysExplosion", "m_flInnerRadius")]
 	public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flInnerRadius");

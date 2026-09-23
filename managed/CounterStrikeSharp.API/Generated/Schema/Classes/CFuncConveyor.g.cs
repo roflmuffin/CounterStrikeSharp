@@ -58,6 +58,10 @@ public partial class CFuncConveyor : CBaseModelEntity
 	[SchemaMember("CFuncConveyor", "m_flTransitionStartSpeed")]
 	public ref float TransitionStartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed");
 
+	// m_flFrictionScale
+	[SchemaMember("CFuncConveyor", "m_flFrictionScale")]
+	public ref float FrictionScale => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flFrictionScale");
+
 	// m_hConveyorModels
 	[SchemaMember("CFuncConveyor", "m_hConveyorModels")]
 	public NetworkedVector<CHandle<CBaseEntity>> HConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");

@@ -190,6 +190,14 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_nEconGlovesChanged")]
 	public ref byte EconGlovesChanged => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerPawn", "m_nEconGlovesChanged");
 
+	// m_vecCurrentMinimapVolumes
+	[SchemaMember("CCSPlayerPawn", "m_vecCurrentMinimapVolumes")]
+	public NetworkedVector<CHandle<CCSMinimapVolume>> CurrentMinimapVolumes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CCSMinimapVolume>>>(this.Handle, "CCSPlayerPawn", "m_vecCurrentMinimapVolumes");
+
+	// m_hActiveMinimapVolume
+	[SchemaMember("CCSPlayerPawn", "m_hActiveMinimapVolume")]
+	public CHandle<CCSMinimapVolume> ActiveMinimapVolume => Schema.GetDeclaredClass<CHandle<CCSMinimapVolume>>(this.Handle, "CCSPlayerPawn", "m_hActiveMinimapVolume");
+
 	// m_qDeathEyeAngles
 	[SchemaMember("CCSPlayerPawn", "m_qDeathEyeAngles")]
 	public QAngle DeathEyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_qDeathEyeAngles");

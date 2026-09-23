@@ -78,6 +78,10 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_leader")]
 	public CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader");
 
+	// m_owner
+	[SchemaMember("CChicken", "m_owner")]
+	public CHandle<CCSPlayerController> Owner => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CChicken", "m_owner");
+
 	// m_reuseTimer
 	[SchemaMember("CChicken", "m_reuseTimer")]
 	public CountdownTimer ReuseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_reuseTimer");
@@ -109,5 +113,9 @@ public partial class CChicken : CDynamicProp
 	// m_BlockDirectionTimer
 	[SchemaMember("CChicken", "m_BlockDirectionTimer")]
 	public CountdownTimer BlockDirectionTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_BlockDirectionTimer");
+
+	// m_bSpawnDyingParticles
+	[SchemaMember("CChicken", "m_bSpawnDyingParticles")]
+	public ref bool SpawnDyingParticles => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_bSpawnDyingParticles");
 
 }

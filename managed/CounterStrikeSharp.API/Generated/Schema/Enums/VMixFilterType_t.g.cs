@@ -6,9 +6,9 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum VMixFilterType_t : ushort
+public enum VMixFilterType_t : byte
 {
-	FILTER_UNKNOWN = 0xFFFF,
+	FILTER_UNKNOWN = 0xFF,
 	FILTER_LOWPASS = 0x0,
 	FILTER_HIGHPASS = 0x1,
 	FILTER_BANDPASS = 0x2,

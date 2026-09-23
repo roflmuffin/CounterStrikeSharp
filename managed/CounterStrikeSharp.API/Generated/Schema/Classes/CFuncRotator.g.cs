@@ -34,6 +34,10 @@ public partial class CFuncRotator : CBaseModelEntity
 	[SchemaMember("CFuncRotator", "m_flSpeed")]
 	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flSpeed");
 
+	// m_flRotationDistanceDegrees
+	[SchemaMember("CFuncRotator", "m_flRotationDistanceDegrees")]
+	public ref float RotationDistanceDegrees => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flRotationDistanceDegrees");
+
 	// m_flTimeToCompleteRotation
 	[SchemaMember("CFuncRotator", "m_flTimeToCompleteRotation")]
 	public ref float TimeToCompleteRotation => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flTimeToCompleteRotation");
@@ -49,10 +53,6 @@ public partial class CFuncRotator : CBaseModelEntity
 		get { return Schema.GetUtf8String(this.Handle, "CFuncRotator", "m_strRotatorTarget"); }
 		set { Schema.SetString(this.Handle, "CFuncRotator", "m_strRotatorTarget", value); }
 	}
-
-	// m_vecLocalRotationHistory
-	[SchemaMember("CFuncRotator", "m_vecLocalRotationHistory")]
-	public NetworkedVector<Quaternion> LocalRotationHistory => Schema.GetDeclaredClass<NetworkedVector<Quaternion>>(this.Handle, "CFuncRotator", "m_vecLocalRotationHistory");
 
 	// m_OnRotationStarted
 	[SchemaMember("CFuncRotator", "m_OnRotationStarted")]
@@ -118,14 +118,6 @@ public partial class CFuncRotator : CBaseModelEntity
 	[SchemaMember("CFuncRotator", "m_qSpawnOrientation")]
 	public Quaternion SpawnOrientation => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncRotator", "m_qSpawnOrientation");
 
-	// m_bRecordHistory
-	[SchemaMember("CFuncRotator", "m_bRecordHistory")]
-	public ref bool RecordHistory => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bRecordHistory");
-
-	// m_bReturningToPreviousRotation
-	[SchemaMember("CFuncRotator", "m_bReturningToPreviousRotation")]
-	public ref bool ReturningToPreviousRotation => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bReturningToPreviousRotation");
-
 	// m_bReturningToInitialRotation
 	[SchemaMember("CFuncRotator", "m_bReturningToInitialRotation")]
 	public ref bool ReturningToInitialRotation => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bReturningToInitialRotation");
@@ -137,10 +129,6 @@ public partial class CFuncRotator : CBaseModelEntity
 	// m_flMaxYawRotation
 	[SchemaMember("CFuncRotator", "m_flMaxYawRotation")]
 	public ref float MaxYawRotation => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flMaxYawRotation");
-
-	// m_nOscillationCount
-	[SchemaMember("CFuncRotator", "m_nOscillationCount")]
-	public ref Int32 OscillationCount => ref Schema.GetRef<Int32>(this.Handle, "CFuncRotator", "m_nOscillationCount");
 
 	// m_bOscillationFromStart
 	[SchemaMember("CFuncRotator", "m_bOscillationFromStart")]
@@ -185,5 +173,9 @@ public partial class CFuncRotator : CBaseModelEntity
 	// m_flSpeedDriftFromOverRotate
 	[SchemaMember("CFuncRotator", "m_flSpeedDriftFromOverRotate")]
 	public ref float SpeedDriftFromOverRotate => ref Schema.GetRef<float>(this.Handle, "CFuncRotator", "m_flSpeedDriftFromOverRotate");
+
+	// m_bQueueStop
+	[SchemaMember("CFuncRotator", "m_bQueueStop")]
+	public ref bool QueueStop => ref Schema.GetRef<bool>(this.Handle, "CFuncRotator", "m_bQueueStop");
 
 }

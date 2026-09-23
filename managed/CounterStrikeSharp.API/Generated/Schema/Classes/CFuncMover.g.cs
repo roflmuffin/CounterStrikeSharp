@@ -218,6 +218,14 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_bStartFollowingClosestMover")]
 	public ref bool StartFollowingClosestMover => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartFollowingClosestMover");
 
+	// m_flStartFollowingClosestMoverWhenWithinDistance
+	[SchemaMember("CFuncMover", "m_flStartFollowingClosestMoverWhenWithinDistance")]
+	public ref float StartFollowingClosestMoverWhenWithinDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flStartFollowingClosestMoverWhenWithinDistance");
+
+	// m_flStartFollowingClosestMoverWhenOutsideDistance
+	[SchemaMember("CFuncMover", "m_flStartFollowingClosestMoverWhenOutsideDistance")]
+	public ref float StartFollowingClosestMoverWhenOutsideDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flStartFollowingClosestMoverWhenOutsideDistance");
+
 	// m_eOrientationUpdate
 	[SchemaMember("CFuncMover", "m_eOrientationUpdate")]
 	public ref CFuncMoverOrientationUpdate_t OrientationUpdate => ref Schema.GetRef<CFuncMoverOrientationUpdate_t>(this.Handle, "CFuncMover", "m_eOrientationUpdate");
@@ -258,17 +266,13 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_hOrientationMatchEntity")]
 	public CHandle<CBaseEntity> OrientationMatchEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationMatchEntity");
 
-	// m_flTimeToTraverseToNextNode
-	[SchemaMember("CFuncMover", "m_flTimeToTraverseToNextNode")]
-	public ref float TimeToTraverseToNextNode => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeToTraverseToNextNode");
+	// m_vLerpToNewPosStartWS
+	[SchemaMember("CFuncMover", "m_vLerpToNewPosStartWS")]
+	public Vector LerpToNewPosStartWS => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartWS");
 
-	// m_vLerpToNewPosStartInPathEntitySpace
-	[SchemaMember("CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace")]
-	public Vector LerpToNewPosStartInPathEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace");
-
-	// m_vLerpToNewPosEndInPathEntitySpace
-	[SchemaMember("CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace")]
-	public Vector LerpToNewPosEndInPathEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace");
+	// m_flLerpToPositionTargetT
+	[SchemaMember("CFuncMover", "m_flLerpToPositionTargetT")]
+	public ref float LerpToPositionTargetT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flLerpToPositionTargetT");
 
 	// m_flLerpToPositionT
 	[SchemaMember("CFuncMover", "m_flLerpToPositionT")]
@@ -277,6 +281,30 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_flLerpToPositionDeltaT
 	[SchemaMember("CFuncMover", "m_flLerpToPositionDeltaT")]
 	public ref float LerpToPositionDeltaT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flLerpToPositionDeltaT");
+
+	// m_hTransitionSourcePath
+	[SchemaMember("CFuncMover", "m_hTransitionSourcePath")]
+	public CHandle<CPathMover> TransitionSourcePath => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hTransitionSourcePath");
+
+	// m_flTransitionSourceT
+	[SchemaMember("CFuncMover", "m_flTransitionSourceT")]
+	public ref float TransitionSourceT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTransitionSourceT");
+
+	// m_flTransitionSourcePathLocation
+	[SchemaMember("CFuncMover", "m_flTransitionSourcePathLocation")]
+	public ref float TransitionSourcePathLocation => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTransitionSourcePathLocation");
+
+	// m_iszTransitionSourcePathNodeStart
+	[SchemaMember("CFuncMover", "m_iszTransitionSourcePathNodeStart")]
+	public string TransitionSourcePathNodeStart
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszTransitionSourcePathNodeStart"); }
+		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszTransitionSourcePathNodeStart", value); }
+	}
+
+	// m_bStoppedDuringTransition
+	[SchemaMember("CFuncMover", "m_bStoppedDuringTransition")]
+	public ref bool StoppedDuringTransition => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStoppedDuringTransition");
 
 	// m_OnLerpToPositionComplete
 	[SchemaMember("CFuncMover", "m_OnLerpToPositionComplete")]
@@ -461,5 +489,17 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_ePathRebuildStrategy
 	[SchemaMember("CFuncMover", "m_ePathRebuildStrategy")]
 	public ref CFuncMoverPathRebuildStrategy_t PathRebuildStrategy => ref Schema.GetRef<CFuncMoverPathRebuildStrategy_t>(this.Handle, "CFuncMover", "m_ePathRebuildStrategy");
+
+	// m_eFindFollowMoverStrategy
+	[SchemaMember("CFuncMover", "m_eFindFollowMoverStrategy")]
+	public ref CFuncMoverFindFollowMoverStrategy_t FindFollowMoverStrategy => ref Schema.GetRef<CFuncMoverFindFollowMoverStrategy_t>(this.Handle, "CFuncMover", "m_eFindFollowMoverStrategy");
+
+	// m_bDisableDecelerationToStop
+	[SchemaMember("CFuncMover", "m_bDisableDecelerationToStop")]
+	public ref bool DisableDecelerationToStop => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bDisableDecelerationToStop");
+
+	// m_vOffsetFromPath
+	[SchemaMember("CFuncMover", "m_vOffsetFromPath")]
+	public Vector OffsetFromPath => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vOffsetFromPath");
 
 }

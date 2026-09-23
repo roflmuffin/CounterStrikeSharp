@@ -90,13 +90,9 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	[SchemaMember("CCSWeaponBaseVData", "m_eSilencerType")]
 	public ref CSWeaponSilencerType SilencerType => ref Schema.GetRef<CSWeaponSilencerType>(this.Handle, "CCSWeaponBaseVData", "m_eSilencerType");
 
-	// m_nCrosshairMinDistance
-	[SchemaMember("CCSWeaponBaseVData", "m_nCrosshairMinDistance")]
-	public ref Int32 CrosshairMinDistance => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nCrosshairMinDistance");
-
-	// m_nCrosshairDeltaDistance
-	[SchemaMember("CCSWeaponBaseVData", "m_nCrosshairDeltaDistance")]
-	public ref Int32 CrosshairDeltaDistance => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nCrosshairDeltaDistance");
+	// m_bShowCrosshair
+	[SchemaMember("CCSWeaponBaseVData", "m_bShowCrosshair")]
+	public ref bool ShowCrosshair => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bShowCrosshair");
 
 	// m_bIsFullAuto
 	[SchemaMember("CCSWeaponBaseVData", "m_bIsFullAuto")]

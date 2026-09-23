@@ -114,6 +114,10 @@ public partial class CCSPlayerController : CBasePlayerController
 		set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClan", value); }
 	}
 
+	// m_unClanId32bit
+	[SchemaMember("CCSPlayerController", "m_unClanId32bit")]
+	public ref UInt32 ClanId32bit => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_unClanId32bit");
+
 	// m_iCoachingTeam
 	[SchemaMember("CCSPlayerController", "m_iCoachingTeam")]
 	public ref Int32 CoachingTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam");

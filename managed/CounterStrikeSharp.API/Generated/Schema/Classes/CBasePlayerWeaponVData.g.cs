@@ -50,6 +50,10 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_bGenerateMuzzleLight")]
 	public ref bool GenerateMuzzleLight => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bGenerateMuzzleLight");
 
+	// m_bShouldAnimateInWorld
+	[SchemaMember("CBasePlayerWeaponVData", "m_bShouldAnimateInWorld")]
+	public ref bool ShouldAnimateInWorld => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bShouldAnimateInWorld");
+
 	// m_bLinkedCooldowns
 	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
 	public ref bool LinkedCooldowns => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns");

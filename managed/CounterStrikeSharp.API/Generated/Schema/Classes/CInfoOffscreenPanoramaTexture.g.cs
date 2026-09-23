@@ -22,6 +22,10 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_bDisabled")]
 	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_bDisabled");
 
+	// m_bEnableMipGen
+	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_bEnableMipGen")]
+	public ref bool EnableMipGen => ref Schema.GetRef<bool>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_bEnableMipGen");
+
 	// m_nResolutionX
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_nResolutionX")]
 	public ref Int32 ResolutionX => ref Schema.GetRef<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionX");

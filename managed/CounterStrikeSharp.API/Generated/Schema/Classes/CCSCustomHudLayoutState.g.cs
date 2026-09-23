@@ -18,6 +18,10 @@ public partial class CCSCustomHudLayoutState : NativeObject
 {
     public CCSCustomHudLayoutState (IntPtr pointer) : base(pointer) {}
 
+	// m_playerSlot
+	[SchemaMember("CCSCustomHudLayoutState", "m_playerSlot")]
+	public ref Int32 PlayerSlot => ref Schema.GetRef<Int32>(this.Handle, "CCSCustomHudLayoutState", "m_playerSlot");
+
 	// m_bInputCaptureEnabled
 	[SchemaMember("CCSCustomHudLayoutState", "m_bInputCaptureEnabled")]
 	public ref bool InputCaptureEnabled => ref Schema.GetRef<bool>(this.Handle, "CCSCustomHudLayoutState", "m_bInputCaptureEnabled");
@@ -29,9 +33,5 @@ public partial class CCSCustomHudLayoutState : NativeObject
 	// m_vecDialogVariableStrings
 	[SchemaMember("CCSCustomHudLayoutState", "m_vecDialogVariableStrings")]
 	public NetworkedVector<HUDPanelDialogVariableString_t> DialogVariableStrings => Schema.GetDeclaredClass<NetworkedVector<HUDPanelDialogVariableString_t>>(this.Handle, "CCSCustomHudLayoutState", "m_vecDialogVariableStrings");
-
-	// m_playerSlot
-	[SchemaMember("CCSCustomHudLayoutState", "m_playerSlot")]
-	public ref Int32 PlayerSlot => ref Schema.GetRef<Int32>(this.Handle, "CCSCustomHudLayoutState", "m_playerSlot");
 
 }
