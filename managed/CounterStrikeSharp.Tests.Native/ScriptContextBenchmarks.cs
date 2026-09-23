@@ -32,6 +32,7 @@ public class BenchmarkReport
     public List<BenchmarkResult> Results { get; set; } = new();
 }
 
+[Trait("Category", "Benchmark")]
 public class ScriptContextBenchmarks
 {
     private const int Iterations = 1_000_000;

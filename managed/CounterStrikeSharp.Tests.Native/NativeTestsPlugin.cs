@@ -16,7 +16,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
@@ -39,6 +41,7 @@ namespace NativeTestsPlugin
         public override string ModuleDescription => "A an automated test plugin.";
 
         public static int gameThreadId;
+        private bool _running;
 
         public static NativeTestsPlugin Instance { get; private set; } = null!;
 
@@ -67,8 +70,25 @@ namespace NativeTestsPlugin
             RunTests(filter);
         }
 
-        public async Task RunTests(string? filter = null)
+        [ConsoleCommand("css_smoke_test", "Run all non-benchmark tests and export a JSON report.")]
+        public void OnCommandSmokeTest(CCSPlayerController? player, CommandInfo command)
         {
+            // Only the server console/RCON may start an automated run.
+            var runId = command.GetArg(1);
+            if (player != null || !Regex.IsMatch(runId, @"\A[a-zA-Z0-9-]{1,80}\z")) return;
+            _ = RunTests(smokeRunId: runId);
+        }
+
+        public async Task RunTests(string? filter = null, string? smokeRunId = null)
+        {
+            if (_running)
+            {
+                Console.WriteLine($"[{ModuleName}] A test run is already in progress.");
+                return;
+            }
+            _running = true;
+            using var reporter = new ConsoleTestReporterSink();
+            Exception? runError = null;
             Console.WriteLine("*****************************************************************");
             if (!string.IsNullOrWhiteSpace(filter))
             {
@@ -83,7 +103,6 @@ namespace NativeTestsPlugin
 
             try
             {
-                using var reporter = new ConsoleTestReporterSink();
                 using var controller = new XunitFrontController(AppDomainSupport.IfAvailable, this.ModulePath);
 
                 var executionOptions = TestFrameworkOptions.ForExecution();
@@ -94,7 +113,7 @@ namespace NativeTestsPlugin
 
                 var discoveryOptions = TestFrameworkOptions.ForDiscovery();
 
-                if (!string.IsNullOrWhiteSpace(filter))
+                if (smokeRunId != null || !string.IsNullOrWhiteSpace(filter))
                 {
                     // Discover all tests first
                     var discoverySink = new TestDiscoverySink();
@@ -108,8 +127,15 @@ namespace NativeTestsPlugin
                         var testClassName = testCase.TestMethod?.TestClass?.Class?.Name ?? "";
                         var testMethodName = testCase.TestMethod?.Method?.Name ?? "";
 
-                        if (testClassName.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
-                            testMethodName.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                        var isBenchmark = testCase.Traits.Any(trait =>
+                            trait.Key.Equals("Category", StringComparison.OrdinalIgnoreCase) &&
+                            trait.Value.Any(value => value.Equals("Benchmark", StringComparison.OrdinalIgnoreCase))) ||
+                            testClassName.Contains("Benchmark", StringComparison.OrdinalIgnoreCase) ||
+                            testMethodName.Contains("Benchmark", StringComparison.OrdinalIgnoreCase);
+
+                        if (smokeRunId != null ? !isBenchmark :
+                            testClassName.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
+                            testMethodName.Contains(filter!, StringComparison.OrdinalIgnoreCase))
                         {
                             filteredTests.Add(testCase);
                         }
@@ -117,11 +143,11 @@ namespace NativeTestsPlugin
 
                     if (filteredTests.Count == 0)
                     {
-                        Console.WriteLine($"[{ModuleName}] No tests matched filter: {filter}");
+                        Console.WriteLine($"[{ModuleName}] No tests selected (filter: {filter ?? "non-benchmark suite"}).");
                         return;
                     }
 
-                    Console.WriteLine($"[{ModuleName}] Found {filteredTests.Count} test(s) matching filter.");
+                    Console.WriteLine($"[{ModuleName}] Selected {filteredTests.Count} test(s).");
 
                     // Run only the filtered tests
                     controller.RunTests(filteredTests, reporter, executionOptions);
@@ -138,14 +164,27 @@ namespace NativeTestsPlugin
                 Console.WriteLine("*****************************************************************");
 
                 // Export benchmark results if any were collected
-                ScriptContextBenchmarks.ExportResults();
+                if (smokeRunId == null) ScriptContextBenchmarks.ExportResults();
             }
             catch (Exception ex)
             {
+                runError = ex;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"[{ModuleName}] A critical error occurred during the test run setup: {ex.Message}");
                 Console.WriteLine(ex.StackTrace);
                 Console.ResetColor();
+            }
+            finally
+            {
+                try
+                {
+                    if (smokeRunId != null)
+                        reporter.WriteReport(Path.Combine(ModuleDirectory, "smoke-results.json"), smokeRunId, runError);
+                }
+                finally
+                {
+                    _running = false;
+                }
             }
         }
     }
