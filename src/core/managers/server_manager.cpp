@@ -21,14 +21,6 @@
 
 #include "core/game_system.h"
 
-SH_DECL_HOOK1_void(ISource2Server, ServerHibernationUpdate, SH_NOATTRIB, 0, bool);
-SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIActivated, SH_NOATTRIB, 0);
-SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIDeactivated, SH_NOATTRIB, 0);
-SH_DECL_HOOK1_void(ISource2Server, OnHostNameChanged, SH_NOATTRIB, 0, const char*);
-SH_DECL_HOOK0_void(ISource2Server, PreFatalShutdown, const, 0);
-SH_DECL_HOOK1_void(ISource2Server, UpdateWhenNotInGame, SH_NOATTRIB, 0, float);
-SH_DECL_HOOK1_void(ISource2Server, PreWorldUpdate, SH_NOATTRIB, 0, bool);
-
 namespace counterstrikesharp {
 
 ServerManager::ServerManager() = default;
@@ -37,15 +29,14 @@ ServerManager::~ServerManager() = default;
 
 void ServerManager::OnAllInitialized()
 {
-    SH_ADD_HOOK(ISource2Server, ServerHibernationUpdate, globals::server, SH_MEMBER(this, &ServerManager::ServerHibernationUpdate), true);
-    SH_ADD_HOOK(ISource2Server, GameServerSteamAPIActivated, globals::server, SH_MEMBER(this, &ServerManager::GameServerSteamAPIActivated),
-                true);
-    SH_ADD_HOOK(ISource2Server, GameServerSteamAPIDeactivated, globals::server,
-                SH_MEMBER(this, &ServerManager::GameServerSteamAPIDeactivated), true);
-    SH_ADD_HOOK(ISource2Server, OnHostNameChanged, globals::server, SH_MEMBER(this, &ServerManager::OnHostNameChanged), true);
-    SH_ADD_HOOK(ISource2Server, PreFatalShutdown, globals::server, SH_MEMBER(this, &ServerManager::PreFatalShutdown), true);
-    SH_ADD_HOOK(ISource2Server, UpdateWhenNotInGame, globals::server, SH_MEMBER(this, &ServerManager::UpdateWhenNotInGame), true);
-    SH_ADD_HOOK(ISource2Server, PreWorldUpdate, globals::server, SH_MEMBER(this, &ServerManager::PreWorldUpdate), true);
+    m_hooks.Add(&ISource2Server::ServerHibernationUpdate, globals::server, this, nullptr, &ServerManager::ServerHibernationUpdate);
+    m_hooks.Add(&ISource2Server::GameServerSteamAPIActivated, globals::server, this, nullptr, &ServerManager::GameServerSteamAPIActivated);
+    m_hooks.Add(&ISource2Server::GameServerSteamAPIDeactivated, globals::server, this, nullptr,
+                &ServerManager::GameServerSteamAPIDeactivated);
+    m_hooks.Add(&ISource2Server::OnHostNameChanged, globals::server, this, nullptr, &ServerManager::OnHostNameChanged);
+    m_hooks.Add(&ISource2Server::PreFatalShutdown, globals::server, this, nullptr, &ServerManager::PreFatalShutdown);
+    m_hooks.Add(&ISource2Server::UpdateWhenNotInGame, globals::server, this, nullptr, &ServerManager::UpdateWhenNotInGame);
+    m_hooks.Add(&ISource2Server::PreWorldUpdate, globals::server, this, nullptr, &ServerManager::PreWorldUpdate);
 
     on_server_hibernation_update_callback = globals::callbackManager.CreateCallback("OnServerHibernationUpdate");
     on_server_steam_api_activated_callback = globals::callbackManager.CreateCallback("OnGameServerSteamAPIActivated");
@@ -62,16 +53,7 @@ void ServerManager::OnAllInitialized()
 
 void ServerManager::OnShutdown()
 {
-    SH_REMOVE_HOOK(ISource2Server, ServerHibernationUpdate, globals::server, SH_MEMBER(this, &ServerManager::ServerHibernationUpdate),
-                   true);
-    SH_REMOVE_HOOK(ISource2Server, GameServerSteamAPIActivated, globals::server,
-                   SH_MEMBER(this, &ServerManager::GameServerSteamAPIActivated), true);
-    SH_REMOVE_HOOK(ISource2Server, GameServerSteamAPIDeactivated, globals::server,
-                   SH_MEMBER(this, &ServerManager::GameServerSteamAPIDeactivated), true);
-    SH_REMOVE_HOOK(ISource2Server, OnHostNameChanged, globals::server, SH_MEMBER(this, &ServerManager::OnHostNameChanged), true);
-    SH_REMOVE_HOOK(ISource2Server, PreFatalShutdown, globals::server, SH_MEMBER(this, &ServerManager::PreFatalShutdown), true);
-    SH_REMOVE_HOOK(ISource2Server, UpdateWhenNotInGame, globals::server, SH_MEMBER(this, &ServerManager::UpdateWhenNotInGame), true);
-    SH_REMOVE_HOOK(ISource2Server, PreWorldUpdate, globals::server, SH_MEMBER(this, &ServerManager::PreWorldUpdate), true);
+    m_hooks.Clear();
 
     globals::callbackManager.ReleaseCallback(on_server_hibernation_update_callback);
     globals::callbackManager.ReleaseCallback(on_server_steam_api_activated_callback);
@@ -90,7 +72,7 @@ void* ServerManager::GetEconItemSystem() { return globals::server->GetEconItemSy
 
 bool ServerManager::IsPaused() { return globals::server->IsPaused(); }
 
-void ServerManager::ServerHibernationUpdate(bool bHibernating)
+KHook::Return<void> ServerManager::ServerHibernationUpdate(ISource2Server* hookThis, bool bHibernating)
 {
     CSSHARP_CORE_TRACE("Server hibernation update {0}", bHibernating);
 
@@ -102,9 +84,10 @@ void ServerManager::ServerHibernationUpdate(bool bHibernating)
         callback->ScriptContext().Push(bHibernating);
         callback->Execute();
     }
+    return { KHook::Action::Ignore };
 }
 
-void ServerManager::GameServerSteamAPIActivated()
+KHook::Return<void> ServerManager::GameServerSteamAPIActivated(ISource2Server* hookThis)
 {
     CSSHARP_CORE_TRACE("GameServerSteamAPIActivated");
 
@@ -115,9 +98,10 @@ void ServerManager::GameServerSteamAPIActivated()
         callback->ScriptContext().Reset();
         callback->Execute();
     }
+    return { KHook::Action::Ignore };
 }
 
-void ServerManager::GameServerSteamAPIDeactivated()
+KHook::Return<void> ServerManager::GameServerSteamAPIDeactivated(ISource2Server* hookThis)
 {
     CSSHARP_CORE_TRACE("GameServerSteamAPIDeactivated");
 
@@ -128,9 +112,10 @@ void ServerManager::GameServerSteamAPIDeactivated()
         callback->ScriptContext().Reset();
         callback->Execute();
     }
+    return { KHook::Action::Ignore };
 }
 
-void ServerManager::OnHostNameChanged(const char* pHostname)
+KHook::Return<void> ServerManager::OnHostNameChanged(ISource2Server* hookThis, const char* pHostname)
 {
     CSSHARP_CORE_TRACE("Server hostname changed {0}", pHostname);
 
@@ -142,9 +127,10 @@ void ServerManager::OnHostNameChanged(const char* pHostname)
         callback->ScriptContext().Push(pHostname);
         callback->Execute();
     }
+    return { KHook::Action::Ignore };
 }
 
-void ServerManager::PreFatalShutdown()
+KHook::Return<void> ServerManager::PreFatalShutdown(const ISource2Server* hookThis)
 {
     CSSHARP_CORE_TRACE("Pre fatal shutdown");
 
@@ -155,9 +141,10 @@ void ServerManager::PreFatalShutdown()
         callback->ScriptContext().Reset();
         callback->Execute();
     }
+    return { KHook::Action::Ignore };
 }
 
-void ServerManager::UpdateWhenNotInGame(float flFrameTime)
+KHook::Return<void> ServerManager::UpdateWhenNotInGame(ISource2Server* hookThis, float flFrameTime)
 {
     CSSHARP_CORE_TRACE("Update when not in game {}", flFrameTime);
 
@@ -169,9 +156,10 @@ void ServerManager::UpdateWhenNotInGame(float flFrameTime)
         callback->ScriptContext().Push(flFrameTime);
         callback->Execute();
     }
+    return { KHook::Action::Ignore };
 }
 
-void ServerManager::PreWorldUpdate(bool bSimulating)
+KHook::Return<void> ServerManager::PreWorldUpdate(ISource2Server* hookThis, bool bSimulating)
 {
     auto callback = globals::serverManager.on_server_pre_world_update;
 
@@ -181,6 +169,7 @@ void ServerManager::PreWorldUpdate(bool bSimulating)
         callback->ScriptContext().Push(bSimulating);
         callback->Execute();
     }
+    return { KHook::Action::Ignore };
 }
 
 void ServerManager::OnPrecacheResources(IEntityResourceManifest* pResourceManifest)

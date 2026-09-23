@@ -738,16 +738,21 @@ static void UserMessageSend(ScriptContext& scriptContext)
 
     filter.AddRecipientsFromMask(message->GetRecipientMask() ? *message->GetRecipientMask() : 0);
 
-    // This is for calling send in a UM hook, if calling normal send using the UM instance from the UM hook, it will cause an inifinite
-    // loop, then crashing the server
-    static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, IRecipientFilter*, INetworkMessageInternal*,
-                                                       const CNetMessage*, unsigned long) = &IGameEventSystem::PostEventAbstract;
-
     if (message->IsManuallyAllocated())
+    {
         globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
+    }
     else
-        SH_CALL(globals::gameEventSystem, PostEventAbstract)(0, false, &filter, message->GetSerializableMessage(),
-                                                             message->GetProtobufMessage(), 0);
+    {
+        // Bypass the exact virtual slot that UserMessageManager hooks. Calling
+        // the recipient-filter overload can dispatch back through that slot.
+        static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, int, const uint64*, INetworkMessageInternal*,
+                                                           const CNetMessage*, unsigned long, NetChannelBufType_t) =
+            &IGameEventSystem::PostEventAbstract;
+        KHook::CallOriginal(PostEventAbstract, globals::gameEventSystem, CSplitScreenSlot(0), false, ABSOLUTE_PLAYER_LIMIT,
+                            reinterpret_cast<const uint64*>(filter.GetRecipients().Base()), message->GetSerializableMessage(),
+                            message->GetProtobufMessage(), 0UL, filter.GetNetworkBufType());
+    }
 }
 
 static void UserMessageDelete(ScriptContext& scriptContext)

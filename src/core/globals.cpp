@@ -9,8 +9,6 @@
 #include "timer_system.h"
 
 #include <ISmmPlugin.h>
-#include <sourcehook/sourcehook.h>
-#include <sourcehook/sourcehook_impl.h>
 
 #include "log.h"
 #include "utils/virtual.h"
@@ -27,7 +25,7 @@
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
-#include <funchook.h>
+#include "core/hooks.h"
 
 namespace counterstrikesharp {
 
@@ -71,8 +69,6 @@ ICvar* cvars = nullptr;
 ISource2Server* server = nullptr;
 CGlobalEntityList* globalEntityList = nullptr;
 CounterStrikeSharpMMPlugin* mmPlugin = nullptr;
-SourceHook::Impl::CSourceHookImpl source_hook_impl;
-SourceHook::ISourceHook* source_hook = &source_hook_impl;
 ISmmAPI* ismm = nullptr;
 CGameEntitySystem* entitySystem = nullptr;
 CCoreConfig* coreConfig = nullptr;
@@ -100,6 +96,22 @@ std::thread::id gameThreadId;
 
 // Based on 64 fixed tick rate
 const float engine_fixed_tick_interval = 0.015625f;
+
+static HookSet initializationHooks;
+
+static KHook::Return<void> OnGameEventManagerInit(IGameEventManager2* manager)
+{
+    gameEventManager = manager;
+    return { KHook::Action::Ignore };
+}
+
+static KHook::Return<void> OnGameEventManagerInitialized(IGameEventManager2*)
+{
+    eventManager.OnAllInitialized_Post();
+    return { KHook::Action::Ignore };
+}
+
+void ShutdownHooks() { initializationHooks.Clear(); }
 
 void Initialize()
 {
@@ -144,21 +156,9 @@ void Initialize()
         return;
     }
 
-    auto m_hook = funchook_create();
-    funchook_prepare(m_hook, (void**)&GameEventManagerInit, (void*)&DetourGameEventManagerInit);
-    funchook_install(m_hook, 0);
+    initializationHooks.AddFunction(reinterpret_cast<void*>(GameEventManagerInit), &OnGameEventManagerInit, &OnGameEventManagerInitialized);
 }
 
-void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
-{
-    gameEventManager = pGameEventManager;
-
-    GameEventManagerInit(pGameEventManager);
-
-    eventManager.OnAllInitialized_Post();
-}
-
-int source_hook_pluginid = 0;
 CGlobalVars* getGlobalVars()
 {
     INetworkGameServer* server = networkServerService->GetIGameServer();

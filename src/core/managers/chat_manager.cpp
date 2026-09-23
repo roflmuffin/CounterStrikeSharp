@@ -16,7 +16,6 @@
 
 #include "core/managers/chat_manager.h"
 
-#include <funchook.h>
 #include <igameevents.h>
 #include <public/eiface.h>
 
@@ -45,16 +44,18 @@ void ChatManager::OnAllInitialized()
         return;
     }
 
-    auto m_hook = funchook_create();
-    funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);
-    funchook_install(m_hook, 0);
+    m_hooks.AddFunction(reinterpret_cast<void*>(m_pHostSay), &DetourHostSay);
 
     on_player_chat_callback = globals::callbackManager.CreateCallback("OnPlayerChat");
 }
 
-void ChatManager::OnShutdown() { globals::callbackManager.ReleaseCallback(on_player_chat_callback); }
+void ChatManager::OnShutdown()
+{
+    m_hooks.Clear();
+    globals::callbackManager.ReleaseCallback(on_player_chat_callback);
+}
 
-void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2)
+KHook::Return<void> DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2)
 {
     std::string prefix;
     bool bSilent = globals::coreConfig->IsSilentChatTrigger(args[1], prefix);
@@ -62,7 +63,7 @@ void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, 
 
     if (!bSilent)
     {
-        m_pHostSay(pController, args, teamonly, unk1, unk2);
+        KHook::Recall(m_pHostSay, KHook::Return<void>{ KHook::Action::Ignore }, pController, args, teamonly, unk1, unk2);
     }
 
     if (bCommand)
@@ -110,6 +111,7 @@ void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, 
             globals::gameEventManager->FireEvent(pEvent, false);
         }
     }
+    return { bSilent ? KHook::Action::Supersede : KHook::Action::Ignore };
 }
 
 bool ChatManager::OnSayCommandPre(CEntityInstance* pController, CCommand& command) { return false; }

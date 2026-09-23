@@ -38,7 +38,6 @@
 #include <public/eiface.h>
 #include <schemasystem.h>
 #include <schematypes.h>
-#include <sourcehook/sourcehook.h>
 
 #include <algorithm>
 
@@ -182,8 +181,6 @@ CON_COMMAND(css_dump_schema, "dump schema symbols")
     output << std::setw(2) << j << std::endl;
 }
 
-SH_DECL_HOOK3_void(ICvar, DispatchConCommand, SH_NOATTRIB, 0, ConCommandRef, const CCommandContext&, const CCommand&);
-
 ConCommandInfo::ConCommandInfo()
 {
     callback_pre = globals::callbackManager.CreateCallback("");
@@ -202,8 +199,8 @@ ConCommandManager::~ConCommandManager() {}
 
 void ConCommandManager::OnAllInitialized()
 {
-    SH_ADD_HOOK_MEMFUNC(ICvar, DispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand, false);
-    SH_ADD_HOOK_MEMFUNC(ICvar, DispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand_Post, true);
+    m_hooks.Add(&ICvar::DispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand, nullptr);
+    m_hooks.Add(&ICvar::DispatchConCommand, globals::cvars, this, nullptr, &ConCommandManager::Hook_DispatchConCommand_Post);
 
     m_global_cmd.callback_pre = globals::callbackManager.CreateCallback("OnClientCommandGlobalPre");
     m_global_cmd.callback_post = globals::callbackManager.CreateCallback("OnClientCommandGlobalPost");
@@ -254,8 +251,7 @@ void UnlockConCommands()
 
 void ConCommandManager::OnShutdown()
 {
-    SH_REMOVE_HOOK_MEMFUNC(ICvar, DispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand, false);
-    SH_REMOVE_HOOK_MEMFUNC(ICvar, DispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand_Post, true);
+    m_hooks.Clear();
 
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_pre);
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_post);
@@ -264,7 +260,7 @@ void ConCommandManager::OnShutdown()
 void CommandCallback(const CCommandContext& context, const CCommand& command)
 {
     // This is handled by the global hook
-    RETURN_META(MRES_SUPERCEDE);
+    return;
 }
 
 void ConCommandManager::AddCommandListener(const char* name, CallbackT callback, HookMode mode)
@@ -461,7 +457,8 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(
     return result;
 }
 
-void ConCommandManager::Hook_DispatchConCommand(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
+KHook::Return<void>
+ConCommandManager::Hook_DispatchConCommand(ICvar* hookThis, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
 {
     const char* name = args.Arg(0);
 
@@ -470,18 +467,21 @@ void ConCommandManager::Hook_DispatchConCommand(ConCommandRef cmd, const CComman
     auto result = ExecuteCommandCallbacks(name, ctx, args, HookMode::Pre, CommandCallingContext::Console);
     if (result >= HookResult::Handled)
     {
-        RETURN_META(MRES_SUPERCEDE);
+        return { KHook::Action::Supersede };
     }
+    return { KHook::Action::Ignore };
 }
-void ConCommandManager::Hook_DispatchConCommand_Post(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
+KHook::Return<void>
+ConCommandManager::Hook_DispatchConCommand_Post(ICvar* hookThis, ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
 {
     const char* name = args.Arg(0);
 
     auto result = ExecuteCommandCallbacks(name, ctx, args, HookMode::Post, CommandCallingContext::Console);
     if (result >= HookResult::Handled)
     {
-        RETURN_META(MRES_SUPERCEDE);
+        return { KHook::Action::Supersede };
     }
+    return { KHook::Action::Ignore };
 }
 bool ConCommandManager::IsValidValveCommand(const char* name)
 {
