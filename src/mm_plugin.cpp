@@ -112,7 +112,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         Log::Init();
 
         CSSHARP_CORE_INFO("Initializing with command line: {}", CommandLine()->GetCmdLine());
-        const char* basePath = CommandLine()->ParmValue(MakeStringToken("+css_basepath"), "/addons/counterstrikesharp");
+        const char* basePath = CommandLine()->ParmValue(CUtlStringToken("+css_basepath"), "/addons/counterstrikesharp");
 
         GET_V_IFACE_CURRENT(GetEngineFactory, globals::engineServer2, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION);
         GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);

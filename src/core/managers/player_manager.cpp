@@ -40,7 +40,6 @@
 #include "core/log.h"
 #include "core/timer_system.h"
 #include "scripting/callback_manager.h"
-#include <iplayerinfo.h>
 #include "player_manager.h"
 #include <entity2/entitysystem.h>
 #include "entity/dump.h"
@@ -196,11 +195,6 @@ PlayerManager::OnClientPutInServer(IServerGameClients* hookThis, CPlayerSlot slo
         m_on_client_connected_callback->ScriptContext().Push(pPlayer->m_slot.Get());
         m_on_client_connected_callback->Execute();
     }
-
-    //    if (globals::playerinfoManager != nullptr)
-    //    {
-    //        pPlayer->m_info = globals::playerinfoManager->GetPlayerInfo(m_slot);
-    //    }
 
     pPlayer->Connect();
     m_player_count++;
@@ -434,8 +428,6 @@ void CPlayer::Initialize(const char* name, const char* ip, CPlayerSlot slot)
     m_ip_address = std::string(ip);
 }
 
-IPlayerInfo* CPlayer::GetPlayerInfo() const { return m_info; }
-
 const char* CPlayer::GetName() const { return strdup(m_name.c_str()); }
 
 bool CPlayer::IsConnected() const { return m_is_connected; }
@@ -557,29 +549,9 @@ void CPlayer::Kick(const char* kickReason)
     globals::engine->ServerCommand(buffer);
 }
 
-const char* CPlayer::GetWeaponName() const { return m_info->GetWeaponName(); }
-
-void CPlayer::ChangeTeam(int team) const { m_info->ChangeTeam(team); }
-
-int CPlayer::GetTeam() const { return m_info->GetTeamIndex(); }
-
-int CPlayer::GetArmor() const { return m_info->GetArmorValue(); }
-
-int CPlayer::GetFrags() const { return m_info->GetFragCount(); }
-
-int CPlayer::GetDeaths() const { return m_info->GetDeathCount(); }
-
 const char* CPlayer::GetKeyValue(const char* key) const { return globals::engine->GetClientConVarValue(m_slot, key); }
 
-Vector CPlayer::GetMaxSize() const { return m_info->GetPlayerMaxs(); }
-
-Vector CPlayer::GetMinSize() const { return m_info->GetPlayerMins(); }
-
-int CPlayer::GetMaxHealth() const { return m_info->GetMaxHealth(); }
-
 const char* CPlayer::GetIpAddress() const { return m_ip_address.c_str(); }
-
-const char* CPlayer::GetModelName() const { return m_info->GetModelName(); }
 
 int CPlayer::GetUserId() const { return m_user_id; }
 
@@ -616,7 +588,6 @@ void CPlayer::Disconnect()
     m_is_connected = false;
     m_is_in_game = false;
     m_name.clear();
-    m_info = nullptr;
     m_is_fake_client = false;
     m_user_id = -1;
     m_is_authorized = false;
@@ -626,19 +597,6 @@ void CPlayer::Disconnect()
     m_voiceFlag = 0;
 }
 
-QAngle CPlayer::GetAbsAngles() const { return m_info->GetAbsAngles(); }
-
-Vector CPlayer::GetAbsOrigin() const { return m_info->GetAbsOrigin(); }
-
-bool CPlayer::IsAlive() const
-{
-    if (!IsInGame())
-    {
-        return false;
-    }
-
-    return !m_info->IsDead();
-}
 const CSteamID* CPlayer::GetSteamId() { return m_steamId; }
 void CPlayer::SetSteamId(const CSteamID* steam_id) { m_steamId = steam_id; }
 

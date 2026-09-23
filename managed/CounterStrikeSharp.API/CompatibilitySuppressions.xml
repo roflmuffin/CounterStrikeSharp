@@ -4029,6 +4029,24 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.NativeAPI.GetSoundDuration(System.String)</Target>
+    <Left>./ApiCompat/v202.dll</Left>
+    <Right>obj/Debug/net10.0/CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.NativeAPI.IsSoundPrecached(System.String)</Target>
+    <Left>./ApiCompat/v202.dll</Left>
+    <Right>obj/Debug/net10.0/CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.NativeAPI.PrecacheSound(System.String,System.Boolean)</Target>
+    <Left>./ApiCompat/v202.dll</Left>
+    <Right>obj/Debug/net10.0/CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Core.NativeAPI.QueueTaskForNextFrame(CounterStrikeSharp.API.Core.InputArgument)</Target>
     <Left>./ApiCompat/v202.dll</Left>
     <Right>obj/Debug/net10.0/CounterStrikeSharp.API.dll</Right>

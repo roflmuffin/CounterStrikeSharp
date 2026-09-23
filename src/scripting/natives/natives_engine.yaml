@@ -10,9 +10,6 @@ GET_GAME_FRAME_TIME: -> float
 ISSUE_SERVER_COMMAND: command:string -> void
 PRECACHE_MODEL: name:string -> void
 ADD_RESOURCE: name:string -> void
-PRECACHE_SOUND: name:string, preload:bool -> bool
-IS_SOUND_PRECACHED: name:string -> bool
-GET_SOUND_DURATION: name:string -> float
 CREATE_RAY_1: ray_type:int, vec1:pointer, vec2:pointer -> pointer
 CREATE_RAY_2: vec1:pointer, vec2:pointer, vec3:pointer, vec4:pointer -> pointer
 TRACE_RAY: ray:pointer, pTrace:pointer, trace_filter:pointer, flags:uint -> void
