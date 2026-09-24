@@ -111,7 +111,8 @@ static CTraceFilter BuildFilter(CEntityInstance* pIgnore, uint64_t interactsAs, 
             static const auto attrField = schema::GetOffset("CCollisionProperty", collClassKey, "m_collisionAttribute", attrKey);
             static auto attrClassKey = hash_32_fnv1a_const("VPhysicsCollisionAttribute_t");
             static auto hierarchyKey = hash_32_fnv1a_const("m_nHierarchyId");
-            static const auto hierarchyField = schema::GetOffset("VPhysicsCollisionAttribute_t", attrClassKey, "m_nHierarchyId", hierarchyKey);
+            static const auto hierarchyField =
+                schema::GetOffset("VPhysicsCollisionAttribute_t", attrClassKey, "m_nHierarchyId", hierarchyKey);
 
             nHierarchy = *reinterpret_cast<uint16*>(pColl + attrField.offset + hierarchyField.offset);
         }
