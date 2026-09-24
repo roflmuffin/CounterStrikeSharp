@@ -52,6 +52,11 @@ public class ConsoleTestReporterSink : LongLivedMarshalByRefObject, IMessageSink
         {
             switch (message)
             {
+                case ITestStarting starting:
+                    Console.WriteLine($"[RUN] {starting.Test.DisplayName}");
+                    Console.Out.Flush();
+                    break;
+
                 // A test has passed
                 case ITestPassed passed:
                     Interlocked.Increment(ref _passed);

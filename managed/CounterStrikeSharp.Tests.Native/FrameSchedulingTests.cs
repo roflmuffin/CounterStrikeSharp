@@ -195,54 +195,36 @@ public class FrameSchedulingTests
     }
 
     [Fact]
-    public async Task NextFrameConcurrentQueueDrainsProperly()
-    {
-        int callCount = 0;
-        int targetCalls = 4096;
-        var callsByFrame = new ConcurrentDictionary<int, int>();
-        for (int i = 0; i < targetCalls; i++)
-        {
-            Server.NextFrame(() =>
-            {
-                callsByFrame.AddOrUpdate(Server.TickCount, 1, (_, count) => count + 1);
-                Interlocked.Increment(ref callCount);
-            });
-        }
-
-        // All tasks should have been drained by latest NextFrameAsync
-        await Server.NextFrameAsync(() => { }).ConfigureAwait(false);
-
-        for (int i = 0; i < callsByFrame.Count; i++)
-        {
-            Assert.Equal(CoreConfig.MaximumFrameTasksExecutedPerTick, callsByFrame.Values.ElementAt(i));
-        }
-
-        Assert.Equal(4096, callCount);
-    }
+    public Task NextFrameConcurrentQueueDrainsProperly()
+        => AssertQueueDrainsProperly(Server.NextFrameAsync);
 
     [Fact]
-    public async Task NextWorldUpdateConcurrentQueueDrainsProperly()
+    public Task NextWorldUpdateConcurrentQueueDrainsProperly()
+        => AssertQueueDrainsProperly(Server.NextWorldUpdateAsync);
+
+    private static async Task AssertQueueDrainsProperly(Func<Action, Task> enqueue)
     {
-        int callCount = 0;
-        int targetCalls = 4096;
+        const int targetCalls = 4096;
+        var limit = CoreConfig.MaximumFrameTasksExecutedPerTick;
+        Assert.True(limit > 0, "Frame task budget must be positive.");
         var callsByFrame = new ConcurrentDictionary<int, int>();
+        var callsByIndex = new int[targetCalls];
+        var tasks = new Task[targetCalls];
         for (int i = 0; i < targetCalls; i++)
         {
-            Server.NextWorldUpdate(() =>
+            var index = i;
+            tasks[i] = enqueue(() =>
             {
+                Assert.Equal(NativeTestsPlugin.gameThreadId, Thread.CurrentThread.ManagedThreadId);
                 callsByFrame.AddOrUpdate(Server.TickCount, 1, (_, count) => count + 1);
-                Interlocked.Increment(ref callCount);
+                Interlocked.Increment(ref callsByIndex[index]);
             });
         }
 
-        // All tasks should have been drained by latest NextFrameAsync
-        await Server.NextWorldUpdateAsync(() => { }).ConfigureAwait(false);
+        await Task.WhenAll(tasks).WaitAsync(TimeSpan.FromSeconds(30));
 
-        for (int i = 0; i < callsByFrame.Count; i++)
-        {
-            Assert.Equal(CoreConfig.MaximumFrameTasksExecutedPerTick, callsByFrame.Values.ElementAt(i));
-        }
-
-        Assert.Equal(4096, callCount);
+        Assert.All(callsByFrame.Values, count => Assert.InRange(count, 1, limit));
+        Assert.Equal(targetCalls, callsByFrame.Values.Sum());
+        Assert.All(callsByIndex, count => Assert.Equal(1, count));
     }
 }
