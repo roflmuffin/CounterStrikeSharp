@@ -21,7 +21,6 @@
 #include "core/globals.h"
 
 #include "gametrace.h"
-#include "cmodel.h"
 #include "mathlib/mathlib.h"
 #include "entity2/entityinstance.h"
 #include "entity2/entitysystem.h"
@@ -62,7 +61,7 @@ static void FillResult(CSSTraceResult* out, const CGameTrace& trace)
     out->m_pEnt = trace.m_pEnt;
     out->m_pHitbox = const_cast<CHitBox*>(trace.m_pHitbox);
     out->m_pBody = trace.m_hBody;
-    out->m_pBody = trace.m_hShape;
+    out->m_pShape = trace.m_hShape;
 
     out->m_nContents = trace.m_nContents;
 
@@ -107,12 +106,15 @@ static CTraceFilter BuildFilter(CEntityInstance* pIgnore, uint64_t interactsAs, 
         auto* pColl = *reinterpret_cast<uint8_t**>((uintptr_t)pIgnore + collField.offset);
         if (pColl)
         {
-            static auto collClassKey = hash_32_fnv1a_const("CCollisionComponent");
+            static auto collClassKey = hash_32_fnv1a_const("CCollisionProperty");
             static auto attrKey = hash_32_fnv1a_const("m_collisionAttribute");
-            static const auto attrField = schema::GetOffset("CCollisionComponent", collClassKey, "m_collisionAttribute", attrKey);
+            static const auto attrField = schema::GetOffset("CCollisionProperty", collClassKey, "m_collisionAttribute", attrKey);
+            static auto attrClassKey = hash_32_fnv1a_const("VPhysicsCollisionAttribute_t");
+            static auto hierarchyKey = hash_32_fnv1a_const("m_nHierarchyId");
+            static const auto hierarchyField =
+                schema::GetOffset("VPhysicsCollisionAttribute_t", attrClassKey, "m_nHierarchyId", hierarchyKey);
 
-            // m_nHierarchyId is at byte 32 inside RnCollisionAttr_t (after 3×uint64 + 2×uint32)
-            nHierarchy = *reinterpret_cast<uint16*>(pColl + attrField.offset + 32);
+            nHierarchy = *reinterpret_cast<uint16*>(pColl + attrField.offset + hierarchyField.offset);
         }
     }
 

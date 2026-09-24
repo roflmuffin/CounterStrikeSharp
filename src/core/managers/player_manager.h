@@ -39,7 +39,6 @@
 
 class CBaseEntity;
 class INetChannelInfo;
-class IPlayerInfo;
 struct edict_t;
 
 namespace counterstrikesharp {
@@ -76,7 +75,6 @@ class CPlayer
     void Initialize(const char* name, const char* ip, CPlayerSlot slot);
     void Connect();
     void Disconnect();
-    IPlayerInfo* GetPlayerInfo() const;
     bool WasCountedAsInGame() const;
     int GetUserId();
     bool IsAuthStringValidated() const;
@@ -93,23 +91,10 @@ class CPlayer
     //    void PrintToChat(const char *message);
     //    void PrintToHint(const char *message);
     //    void PrintToCenter(const char *message);
-    QAngle GetAbsAngles() const;
-    Vector GetAbsOrigin() const;
-    bool IsAlive() const;
     bool IsInGame() const;
     void Kick(const char* kickReason);
-    const char* GetWeaponName() const;
-    void ChangeTeam(int team) const;
-    int GetTeam() const;
-    int GetArmor() const;
-    int GetFrags() const;
-    int GetDeaths() const;
     const char* GetKeyValue(const char* key) const;
-    Vector GetMaxSize() const;
-    Vector GetMinSize() const;
-    int GetMaxHealth() const;
     const char* GetIpAddress() const;
-    const char* GetModelName() const;
     int GetUserId() const;
     float GetTimeConnected() const;
     void SetListen(CPlayerSlot slot, ListenOverride listen);
@@ -119,7 +104,6 @@ class CPlayer
 
   public:
     std::string m_name;
-    IPlayerInfo* m_info = nullptr;
     std::string m_auth_id;
     bool m_is_connected = false;
     bool m_is_fake_client = false;
