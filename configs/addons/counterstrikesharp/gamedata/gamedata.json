@@ -22,13 +22,13 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 103,
+      "windows": 105,
       "linux": 104
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 270,
+      "windows": 274,
       "linux": 276
     }
   },
@@ -42,7 +42,7 @@
   "CCSPlayerPawnBase_PostThink": {
     "signatures": {
       "library": "server",
-      "windows": "40 55 56 41 54 48 8B EC",
+      "windows": "40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ? 48 8B F1 E8 ? ? ? ? 80 BE ? ? ? ? ?",
       "linux": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB"
     }
   },
@@ -84,8 +84,8 @@
   "CCSPlayer_ItemServices_CanAcquire": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 4C 24 ? 55 48 81 EC ? ? ? ? 48 8B E9",
-      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 41 54 49 89 CC 53 48 89 FB 48 83 EC ? 4C 8B 6F"
+      "windows": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC",
+      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 41 54 49 89 CC 53 48 89 FB 48 83 EC 78"
     }
   },
   "GetCSWeaponDataFromKey": {
@@ -128,7 +128,7 @@
   },
   "CCSGameRules_FindPickerEntity": {
     "offsets": {
-      "windows": 26,
+      "windows": 25,
       "linux": 26
     }
   },
