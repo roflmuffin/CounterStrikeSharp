@@ -1,3 +1,12 @@
+## What's Changed in v1.0.375
+* fix: for update 1.41.8.2 in [#1433](https://github.com/roflmuffin/CounterStrikeSharp/pull/1433) ([2f98498](https://github.com/roflmuffin/CounterStrikeSharp/commit/2f984988bbf89aff817b4d736534faa41306c086))
+* fix: update Windows PostThink signature by [@unicbm](https://github.com/unicbm) in [#1438](https://github.com/roflmuffin/CounterStrikeSharp/pull/1438) ([bd1d936](https://github.com/roflmuffin/CounterStrikeSharp/commit/bd1d9365cb41d50d6c5d6048fbe123e1ac663110))
+* chore: Update Schema Definitions to 1.41.8.2 in [#1404](https://github.com/roflmuffin/CounterStrikeSharp/pull/1404) ([505e466](https://github.com/roflmuffin/CounterStrikeSharp/commit/505e466a08dbf0d252c493afde594cf2c15acf2d))
+* feat: implement KHook in [#1418](https://github.com/roflmuffin/CounterStrikeSharp/pull/1418) ([a55cb8b](https://github.com/roflmuffin/CounterStrikeSharp/commit/a55cb8bca4e27dbbda9cab6909c61e3251d8d11f))
+
+## New Contributors
+* [@unicbm](https://github.com/unicbm) made their first contribution in [#1438](https://github.com/roflmuffin/CounterStrikeSharp/pull/1438)
+
 ## What's Changed in v1.0.374
 * feat: Add `CustomHudLayout` api by [@qstage](https://github.com/qstage) in [#1410](https://github.com/roflmuffin/CounterStrikeSharp/pull/1410) ([338b22c](https://github.com/roflmuffin/CounterStrikeSharp/commit/338b22c1f3fd4f59d2872f7aa422a8a6ae939f37))
 * Fix DropActivePlayerWeapon passing uninitialized vecDropMomentum by [@Umbre11as](https://github.com/Umbre11as) in [#1407](https://github.com/roflmuffin/CounterStrikeSharp/pull/1407) ([2836093](https://github.com/roflmuffin/CounterStrikeSharp/commit/28360939d676101ae544eb7fc954fa46131e27da))
@@ -1035,14 +1044,14 @@
 * Merge branch 'FixSteamIdOnWindowsServer' into main ([98b2b01](https://github.com/roflmuffin/CounterStrikeSharp/commit/98b2b01992ce99054a5aac6dc5f2bafe818f2792))
 * tests: update tests, throw out of range exception <= 0 ([a537be8](https://github.com/roflmuffin/CounterStrikeSharp/commit/a537be89e41e05a6e76b0aefc31d5212b248eb0c))
 * Merge remote-tracking branch 'origin/main' into FixSteamIdOnWindowsServer in [#185](https://github.com/roflmuffin/CounterStrikeSharp/pull/185) ([c07d5d2](https://github.com/roflmuffin/CounterStrikeSharp/commit/c07d5d2aa95ffddbb12e3f6869daab1a6bd66262))
-
-## What's Changed in v1.0.114
-* feat: add basic tests project with SteamID tests in [#186](https://github.com/roflmuffin/CounterStrikeSharp/pull/186) ([1cc9555](https://github.com/roflmuffin/CounterStrikeSharp/commit/1cc95555feda6c6e4a1e7285a7288a2ff775defb))
-* chore: bump hl2sdk version ([378c28d](https://github.com/roflmuffin/CounterStrikeSharp/commit/378c28dfd0b235cdf14acecdd9ced0b8763a0500))
 * Fix SteamId on Windows Server #182 by [@TheR00st3r](https://github.com/TheR00st3r) ([c7343c3](https://github.com/roflmuffin/CounterStrikeSharp/commit/c7343c3b7a511ecaefac181ab0c9d6f273ac630e))
 
 ## New Contributors
 * [@TheR00st3r](https://github.com/TheR00st3r) made their first contribution
+
+## What's Changed in v1.0.114
+* feat: add basic tests project with SteamID tests in [#186](https://github.com/roflmuffin/CounterStrikeSharp/pull/186) ([1cc9555](https://github.com/roflmuffin/CounterStrikeSharp/commit/1cc95555feda6c6e4a1e7285a7288a2ff775defb))
+* chore: bump hl2sdk version ([378c28d](https://github.com/roflmuffin/CounterStrikeSharp/commit/378c28dfd0b235cdf14acecdd9ced0b8763a0500))
 
 ## What's Changed in v1.0.112
 * Add VData Access in [#181](https://github.com/roflmuffin/CounterStrikeSharp/pull/181) ([62f6b09](https://github.com/roflmuffin/CounterStrikeSharp/commit/62f6b09f50aff80007f5496c0383aa59faf687c4))
@@ -1146,9 +1155,6 @@
 ## What's Changed in v1.0.82
 * feat: Add Schema Size Native ([911084e](https://github.com/roflmuffin/CounterStrikeSharp/commit/911084e71ecb51fcb51687ef4815827939f96d58))
 * Merge remote-tracking branch 'origin/main' into feature/add-schema-class-size ([5b99206](https://github.com/roflmuffin/CounterStrikeSharp/commit/5b9920656827bd5b0e7d1c1ab5ecd42088beaf3f))
-
-## What's Changed in v1.0.81
-* Entity Handle Overhaul in [#142](https://github.com/roflmuffin/CounterStrikeSharp/pull/142) ([9bcd0f7](https://github.com/roflmuffin/CounterStrikeSharp/commit/9bcd0f7e9214dc71fe93d86fc847c559906875d3))
 * Merge branch 'feature/entity-handle-overhaul' into feature/add-schema-class-size ([4bfdf28](https://github.com/roflmuffin/CounterStrikeSharp/commit/4bfdf28beb2f91f079469eb4f377846ba864cb2d))
 * chore: update test plugin version ([11c6486](https://github.com/roflmuffin/CounterStrikeSharp/commit/11c6486ec59fdabc8e17e07e0341292bae51b2c9))
 * fix: bad style ([ee69560](https://github.com/roflmuffin/CounterStrikeSharp/commit/ee69560a66a94deae63e3d40e9968a79eff388c0))
@@ -1156,6 +1162,16 @@
 * feat: add schema class size native, cast native objects to input argument ([c4740d1](https://github.com/roflmuffin/CounterStrikeSharp/commit/c4740d1cc9d64fe50932300cfbe66cff24406153))
 * feat: add `Slot` to player controller ([7e92f17](https://github.com/roflmuffin/CounterStrikeSharp/commit/7e92f178fd4cc051f8037e1cf5afd17f11cbe4dd))
 * Merge branch 'main' into feature/entity-handle-overhaul ([107ca08](https://github.com/roflmuffin/CounterStrikeSharp/commit/107ca081324d4d90752656ae809c7fac06820c9b))
+* feat: remove native call from native entity instantiation ([3d59a05](https://github.com/roflmuffin/CounterStrikeSharp/commit/3d59a05de831b07c1ef753f1d3ffd7442371313a))
+* feat: add `GetAllEntities` method, update implementation ([77b7040](https://github.com/roflmuffin/CounterStrikeSharp/commit/77b7040d6c35b97c5c9b678a88f366bf4259c140))
+* feat: move entity system into managed code for perf ([75de973](https://github.com/roflmuffin/CounterStrikeSharp/commit/75de9732ef9b8852ef418fbe2a2597e448f0b8cb))
+* feat: update test plugin ([7c7f52a](https://github.com/roflmuffin/CounterStrikeSharp/commit/7c7f52a2196f5856362602c345b58c711c679a1e))
+* feat: add `EntityIndex` back to api compat, mark as obsolete ([cd593fb](https://github.com/roflmuffin/CounterStrikeSharp/commit/cd593fb238030178dad895e550a685052b290876))
+* fix: remove expensive calls in bullet impact event ([c5cc65b](https://github.com/roflmuffin/CounterStrikeSharp/commit/c5cc65be481a69d22f953d5ee0d0f5262366a45e))
+* feat: add `NativeEntity` class ([59928bb](https://github.com/roflmuffin/CounterStrikeSharp/commit/59928bbcc55f4a71ec080636613e14ab58539f45))
+
+## What's Changed in v1.0.81
+* Entity Handle Overhaul in [#142](https://github.com/roflmuffin/CounterStrikeSharp/pull/142) ([9bcd0f7](https://github.com/roflmuffin/CounterStrikeSharp/commit/9bcd0f7e9214dc71fe93d86fc847c559906875d3))
 
 ## What's Changed in v1.0.80
 * feat: wrap `ExecuteClientCommand` and add sound example ([8cda8d9](https://github.com/roflmuffin/CounterStrikeSharp/commit/8cda8d9a500692a9656846aef58449c3e0ceb1a5))
@@ -1165,13 +1181,6 @@
 
 ## What's Changed in v1.0.78
 * fix: wildcard bytes for signatures (resolves #123 and related issues) by [@KillStr3aK](https://github.com/KillStr3aK) in [#148](https://github.com/roflmuffin/CounterStrikeSharp/pull/148) ([e12a7cb](https://github.com/roflmuffin/CounterStrikeSharp/commit/e12a7cb17ad610e7611c3ab10f52c451eabbdbef))
-* feat: remove native call from native entity instantiation ([3d59a05](https://github.com/roflmuffin/CounterStrikeSharp/commit/3d59a05de831b07c1ef753f1d3ffd7442371313a))
-* feat: add `GetAllEntities` method, update implementation ([77b7040](https://github.com/roflmuffin/CounterStrikeSharp/commit/77b7040d6c35b97c5c9b678a88f366bf4259c140))
-* feat: move entity system into managed code for perf ([75de973](https://github.com/roflmuffin/CounterStrikeSharp/commit/75de9732ef9b8852ef418fbe2a2597e448f0b8cb))
-* feat: update test plugin ([7c7f52a](https://github.com/roflmuffin/CounterStrikeSharp/commit/7c7f52a2196f5856362602c345b58c711c679a1e))
-* feat: add `EntityIndex` back to api compat, mark as obsolete ([cd593fb](https://github.com/roflmuffin/CounterStrikeSharp/commit/cd593fb238030178dad895e550a685052b290876))
-* fix: remove expensive calls in bullet impact event ([c5cc65b](https://github.com/roflmuffin/CounterStrikeSharp/commit/c5cc65be481a69d22f953d5ee0d0f5262366a45e))
-* feat: add `NativeEntity` class ([59928bb](https://github.com/roflmuffin/CounterStrikeSharp/commit/59928bbcc55f4a71ec080636613e14ab58539f45))
 
 ## What's Changed in v1.0.77
 * fix: bugs in config manager & plugin load, fixes #138 ([319b116](https://github.com/roflmuffin/CounterStrikeSharp/commit/319b116c5fcc364305c1db60c9a3d73fcf02985d))
@@ -1341,10 +1350,10 @@
 ## What's Changed in v1.0.23
 * ci: add package write permission ([4b432e9](https://github.com/roflmuffin/CounterStrikeSharp/commit/4b432e9efc058c3f9ed8b38b3e0f7c8561190732))
 * Merge remote-tracking branch 'origin/main' into main ([22bbf83](https://github.com/roflmuffin/CounterStrikeSharp/commit/22bbf835c7ae019cfa5a5d8fd66796dd08c2e42e))
+* ci: try publishing nuget package ([092a607](https://github.com/roflmuffin/CounterStrikeSharp/commit/092a6077c3e6d8424cdefd0467a9d273e0df0a97))
 
 ## What's Changed in v1.0.22
 * Update README.md by [@pedrotski](https://github.com/pedrotski) in [#37](https://github.com/roflmuffin/CounterStrikeSharp/pull/37) ([4430060](https://github.com/roflmuffin/CounterStrikeSharp/commit/4430060efdf4c59aee36e2ece0b4e0ce247a7c04))
-* ci: try publishing nuget package ([092a607](https://github.com/roflmuffin/CounterStrikeSharp/commit/092a6077c3e6d8424cdefd0467a9d273e0df0a97))
 * fix: prevent server crash on duplicate command registration, fixes #51 ([77ea6fd](https://github.com/roflmuffin/CounterStrikeSharp/commit/77ea6fd80d11033343d981cfad7f27dffd50e8ad))
 
 ## New Contributors
@@ -1366,10 +1375,10 @@
 
 ## What's Changed in v1.0.16
 * Merge branch 'main' of github.com:roflmuffin/CounterStrikeSharp into main ([d4a2ae6](https://github.com/roflmuffin/CounterStrikeSharp/commit/d4a2ae68e10b27286d926a9a9edfa9f8780dcf1c))
+* chore: simplify auto-copy `configs` folder ([82c92f5](https://github.com/roflmuffin/CounterStrikeSharp/commit/82c92f555b0f5afaf65d05ea7bbd438d633c1e58))
 
 ## What's Changed in v1.0.15
 * feat: Add Current API Version to css console command by [@switz](https://github.com/switz) in [#47](https://github.com/roflmuffin/CounterStrikeSharp/pull/47) ([19a0923](https://github.com/roflmuffin/CounterStrikeSharp/commit/19a0923559189ff5114f49c90e96355001b4e43c))
-* chore: simplify auto-copy `configs` folder ([82c92f5](https://github.com/roflmuffin/CounterStrikeSharp/commit/82c92f555b0f5afaf65d05ea7bbd438d633c1e58))
 
 ## New Contributors
 * [@switz](https://github.com/switz) made their first contribution in [#47](https://github.com/roflmuffin/CounterStrikeSharp/pull/47)
