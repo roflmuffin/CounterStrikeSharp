@@ -165,10 +165,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                             }), rollingInterval: RollingInterval.Day,
                             outputTemplate:
                             "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] plugin:{PluginName} {Message:lj}{NewLine}{Exception}")
-                        .WriteTo.File(Path.Join(new[] { _hostConfiguration.RootPath, "logs", $"log-all.txt" }),
-                            rollingInterval: RollingInterval.Day, shared: true,
-                            outputTemplate:
-                            "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] plugin:{PluginName} {Message:lj}{NewLine}{Exception}")
+                        .WriteTo.Logger(CoreLogging.CombinedLogger)
                         .CreateLogger());
                 });
 
