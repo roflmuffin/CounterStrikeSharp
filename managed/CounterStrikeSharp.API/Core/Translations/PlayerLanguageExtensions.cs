@@ -10,7 +10,11 @@ public static class PlayerLanguageExtensions
     /// </summary>
     public static CultureInfo GetLanguage(this CCSPlayerController? player)
     {
-        if (player == null || !player.IsValid) return PlayerLanguageManager.Instance.GetDefaultLanguage();
+        // Bots and HLTV have no Steam ID, and constructing a SteamID from zero throws.
+        if (player == null || !player.IsValid || player.IsBot || player.IsHLTV)
+        {
+            return PlayerLanguageManager.Instance.GetDefaultLanguage();
+        }
         
         return PlayerLanguageManager.Instance.GetLanguage((SteamID)player.SteamID);
     }
