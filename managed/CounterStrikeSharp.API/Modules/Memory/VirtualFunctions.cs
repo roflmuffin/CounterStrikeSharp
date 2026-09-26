@@ -68,7 +68,11 @@ public static class VirtualFunctions
 
     public static Action<IntPtr, IntPtr> CBaseEntity_DispatchSpawn = CBaseEntity_DispatchSpawnFunc.Invoke;
 
+    [Obsolete("Passes only two of SetPawn's four flags. Use CBasePlayerController_SetPawnFullFunc instead")]
     public static MemoryFunctionVoid<CBasePlayerController, CBasePlayerPawn, bool, bool> CBasePlayerController_SetPawnFunc =
+        new(GameData.GetSignature("CBasePlayerController_SetPawn"));
+
+    public static MemoryFunctionVoid<CBasePlayerController, CBasePlayerPawn, bool, bool, bool, bool> CBasePlayerController_SetPawnFullFunc =
         new(GameData.GetSignature("CBasePlayerController_SetPawn"));
 
     [Obsolete("Use Listeners.OnEntityTakeDamagePre instead")]
