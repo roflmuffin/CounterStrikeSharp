@@ -11,20 +11,13 @@ namespace NativeTestsPlugin;
 
 public class GameTests
 {
-    private CCSPlayerController player;
-    private CCSPlayerPawn? pawn;
+    private CCSPlayerController player = null!;
+    private CCSPlayerPawn pawn = null!;
 
     public async Task InitializeAsync()
     {
-        Server.ExecuteCommand("bot_kick; bot_quota 5; bot_quota_mode normal");
-        await WaitOneFrame();
-        this.player = Utilities.GetPlayers().Last(p => p.LifeState == (byte)LifeState_t.LIFE_ALIVE);
-        if (player.PlayerPawn.Value == null)
-        {
-            throw new Exception("No valid player pawn found for test player.");
-        }
-
-        this.pawn = player.PlayerPawn.Value;
+        (player, pawn) = await CreateTestPlayerAsync();
+        AssertTestPlayer(player, pawn);
     }
 
     [Fact]
@@ -42,12 +35,14 @@ public class GameTests
     public async Task Offset_CCSPlayer_ItemServices_RemoveWeapons()
     {
         await InitializeAsync();
-        Assert.True(pawn.WeaponServices.MyWeapons.Any());
+        await Server.NextWorldUpdateAsync(() =>
+        {
+            AssertTestPlayer(player, pawn);
+            Assert.NotEmpty(pawn.WeaponServices!.MyWeapons);
 
-        player.RemoveWeapons();
-        await WaitOneFrame();
-
-        Assert.False(pawn.WeaponServices.MyWeapons.Any());
+            player.RemoveWeapons();
+            Assert.Empty(pawn.WeaponServices.MyWeapons);
+        });
     }
 
     [Fact]
@@ -69,13 +64,17 @@ public class GameTests
     public async Task Offset_CCSPlayerController_ChangeTeam()
     {
         await InitializeAsync();
-        var originalTeam = player.Team;
-        var newTeam = originalTeam == CsTeam.Terrorist ? CsTeam.CounterTerrorist : CsTeam.Terrorist;
+        await Server.NextWorldUpdateAsync(() =>
+        {
+            AssertTestPlayer(player, pawn);
+            var originalTeam = player.Team;
+            Assert.Contains(originalTeam, new[] { CsTeam.Terrorist, CsTeam.CounterTerrorist });
+            var newTeam = originalTeam == CsTeam.Terrorist ? CsTeam.CounterTerrorist : CsTeam.Terrorist;
 
-        player.ChangeTeam(newTeam);
-        await WaitOneFrame();
-
-        Assert.Equal(newTeam, player.Team);
+            player.ChangeTeam(newTeam);
+            Assert.True(player.IsValid, "ChangeTeam invalidated the test controller during the call.");
+            Assert.Equal(newTeam, player.Team);
+        });
     }
 
     [Fact]
@@ -83,17 +82,18 @@ public class GameTests
     {
         await InitializeAsync();
 
-        player.RemoveWeapons();
-        await WaitOneFrame();
+        await Server.NextWorldUpdateAsync(() =>
+        {
+            AssertTestPlayer(player, pawn);
+            player.RemoveWeapons();
+            Assert.Empty(pawn.WeaponServices!.MyWeapons);
 
-        Assert.False(pawn.WeaponServices.MyWeapons.Any());
-
-        var weapon = player.GiveNamedItem<CMolotovGrenade>("weapon_ak47");
-        await WaitOneFrame();
-
-        Assert.NotNull(weapon);
-        Assert.Equal("weapon_ak47", weapon.DesignerName);
-        Assert.Single(pawn.WeaponServices.MyWeapons);
+            var weapon = player.GiveNamedItem<CBasePlayerWeapon>("weapon_ak47");
+            Assert.NotNull(weapon);
+            Assert.True(weapon.IsValid);
+            Assert.Equal("weapon_ak47", weapon.DesignerName);
+            Assert.Equal(weapon.EntityHandle.Raw, Assert.Single(pawn.WeaponServices.MyWeapons).Raw);
+        });
     }
 
     [Fact]

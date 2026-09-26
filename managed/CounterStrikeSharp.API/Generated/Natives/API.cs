@@ -748,40 +748,6 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static bool PrecacheSound(string name, bool preload){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.PushString(name);
-			ScriptContext.GlobalScriptContext.PushPrimitive(preload);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x758F3FD2);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
-			}
-		}
-
-        public static bool IsSoundPrecached(string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.PushString(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xD4372AF3);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
-			}
-		}
-
-        public static float GetSoundDuration(string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.PushString(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x20BB05CE);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return ScriptContext.GlobalScriptContext.GetResultPrimitive<float>();
-			}
-		}
-
         public static IntPtr CreateRay1(int rayType, IntPtr vec1, IntPtr vec2){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

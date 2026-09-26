@@ -15,6 +15,7 @@
  */
 
 #include <public/entity2/entitysystem.h>
+#include <public/entity2/entityinstance.h>
 
 #include <ios>
 #include <sstream>

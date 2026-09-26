@@ -29,6 +29,7 @@ public class VirtualFunctionTests
 
             // Verify hook
             await WaitOneFrame();
+            await WaitOneFrame();
             mock.Verify(s => s(), Times.AtLeastOnce);
         }
         finally
@@ -37,6 +38,7 @@ public class VirtualFunctionTests
             mock.Reset();
 
             // Verify unhook
+            await WaitOneFrame();
             await WaitOneFrame();
             mock.Verify(s => s(), Times.Never);
         }

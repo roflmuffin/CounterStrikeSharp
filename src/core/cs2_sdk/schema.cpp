@@ -33,8 +33,8 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-using SchemaKeyValueMap_t = CUtlMap<uint32_t, SchemaKey>;
-using SchemaTableMap_t = CUtlMap<uint32_t, SchemaKeyValueMap_t*>;
+using SchemaKeyValueMap_t = CUtlOrderedMap<uint32_t, SchemaKey>;
+using SchemaTableMap_t = CUtlOrderedMap<uint32_t, SchemaKeyValueMap_t*>;
 
 static CNetworkSerializerCodeGenDatabase* GetNetworkSerializerDatabase()
 {
@@ -73,7 +73,7 @@ static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap, const char* cla
 
     if (!pClassInfo)
     {
-        SchemaKeyValueMap_t* map = new SchemaKeyValueMap_t(0, 0, DefLessFunc(uint32_t));
+        SchemaKeyValueMap_t* map = new SchemaKeyValueMap_t();
         tableMap->Insert(classKey, map);
 
         Warning("InitSchemaFieldsForClass(): '%s' was not found!\n", className);
@@ -85,7 +85,7 @@ static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap, const char* cla
 
     CNetworkSerializerClassInfo* pNetworkClassInfo = FindNetworkSerializerClassInfo(className);
 
-    SchemaKeyValueMap_t* keyValueMap = new SchemaKeyValueMap_t(0, 0, DefLessFunc(uint32_t));
+    SchemaKeyValueMap_t* keyValueMap = new SchemaKeyValueMap_t();
     keyValueMap->EnsureCapacity(fieldsSize);
     tableMap->Insert(classKey, keyValueMap);
 
@@ -133,8 +133,8 @@ int16_t schema::FindChainOffset(const char* className)
 
 SchemaKey schema::GetOffset(const char* className, uint32_t classKey, const char* memberName, uint32_t memberKey)
 {
-    static SchemaTableMap_t schemaTableMap(0, 0, DefLessFunc(uint32_t));
-    int16_t tableMapIndex = schemaTableMap.Find(classKey);
+    static SchemaTableMap_t schemaTableMap;
+    auto tableMapIndex = schemaTableMap.Find(classKey);
     if (!schemaTableMap.IsValidIndex(tableMapIndex))
     {
         if (InitSchemaFieldsForClass(&schemaTableMap, className, classKey)) return GetOffset(className, classKey, memberName, memberKey);
@@ -143,7 +143,7 @@ SchemaKey schema::GetOffset(const char* className, uint32_t classKey, const char
     }
 
     SchemaKeyValueMap_t* tableMap = schemaTableMap[tableMapIndex];
-    int16_t memberIndex = tableMap->Find(memberKey);
+    auto memberIndex = tableMap->Find(memberKey);
     if (!tableMap->IsValidIndex(memberIndex))
     {
         return { 0, 0 };

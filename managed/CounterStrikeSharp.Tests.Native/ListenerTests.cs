@@ -31,6 +31,7 @@ public class ListenerTests
         NativeAPI.IssueServerCommand("bot_kick");
         NativeAPI.IssueServerCommand("bot_add");
         await WaitOneFrame();
+        await WaitOneFrame();
 
         Assert.Equal(1, callCount);
         NativeAPI.RemoveListener("OnClientConnect", callback);
@@ -38,6 +39,7 @@ public class ListenerTests
         // Test unhooking
         NativeAPI.IssueServerCommand("bot_kick");
         NativeAPI.IssueServerCommand("bot_add");
+        await WaitOneFrame();
         await WaitOneFrame();
         Assert.Equal(1, callCount);
 

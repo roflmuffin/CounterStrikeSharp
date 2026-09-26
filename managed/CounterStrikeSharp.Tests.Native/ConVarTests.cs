@@ -18,7 +18,7 @@ public class ConVarTests
         Assert.NotNull(boolConVar);
         Assert.Equal("sv_cheats", boolConVar.Name);
         Assert.Equal(ConVarType.Bool, boolConVar.Type);
-        Assert.Equal(ConVarFlags.FCVAR_NOTIFY | ConVarFlags.FCVAR_REPLICATED | ConVarFlags.FCVAR_RELEASE, boolConVar.Flags);
+        Assert.Equal(ConVarFlags.FCVAR_NOTIFY | ConVarFlags.FCVAR_REPLICATED | ConVarFlags.FCVAR_RELEASE | ConVarFlags.FCVAR_GAMEINFO_CANNOT_OVERRIDE, boolConVar.Flags);
         Assert.True(boolConVar.GetPrimitiveValue<bool>());
 
         boolConVar.GetPrimitiveValue<bool>() = false;

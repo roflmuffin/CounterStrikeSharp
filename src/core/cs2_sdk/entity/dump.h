@@ -4,6 +4,8 @@
 #include "public/variant.h"
 #include "entity2/entitysystem.h"
 #include "game/shared/ehandle.h"
+#include "gametrace.h"
+#include "mathlib/transform.h"
 
 class CGameSceneNode;
 class CCSPlayerPawn;

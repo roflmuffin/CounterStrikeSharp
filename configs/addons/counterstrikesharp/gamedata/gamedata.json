@@ -22,14 +22,14 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 103,
-      "linux": 102
+      "windows": 105,
+      "linux": 104
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 270,
-      "linux": 272
+      "windows": 274,
+      "linux": 276
     }
   },
   "CBasePlayerController_SetPawn": {
@@ -42,7 +42,7 @@
   "CCSPlayerPawnBase_PostThink": {
     "signatures": {
       "library": "server",
-      "windows": "40 55 56 41 54 48 8B EC",
+      "windows": "40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ? 48 8B F1 E8 ? ? ? ? 80 BE ? ? ? ? ?",
       "linux": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB"
     }
   },
@@ -70,7 +70,7 @@
   "CBaseModelEntity_SetModel": {
     "signatures": {
       "library": "server",
-      "windows": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 8B 01",
+      "windows": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24",
       "linux": "55 48 89 E5 53 48 89 FB 48 83 EC ? 48 8D 05 ? ? ? ? 48 8B 38 48 8B 07 FF 50 ? 48 89 DF 48 8B 5D ? C9 48 89 C6 E9 ? ? ? ? CC CC CC CC 55"
     }
   },
@@ -78,14 +78,14 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA",
-      "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC ? 48 8B 07 48 8B 80"
+      "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF"
     }
   },
   "CCSPlayer_ItemServices_CanAcquire": {
     "signatures": {
       "library": "server",
-      "windows": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 55 41 56 41 57 48 8B EC",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 CD 41 54 49 89 FC 53 48 89 F3 48 83 EC"
+      "windows": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC",
+      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 41 54 49 89 CC 53 48 89 FB 48 83 EC 78"
     }
   },
   "GetCSWeaponDataFromKey": {
@@ -123,13 +123,13 @@
     "signatures": {
       "library": "server",
       "windows": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 41 54",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 41 89 F4 53 48 8D 35 ? ? ?"
+      "linux": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85 ? ? ? ? 89 B5"
     }
   },
   "CCSGameRules_FindPickerEntity": {
     "offsets": {
-      "windows": 26,
-      "linux": 27
+      "windows": 25,
+      "linux": 26
     }
   },
   "CTakeDamageInfo_HitGroup": {
@@ -162,20 +162,20 @@
   "CEntityInstance_AcceptInput": {
     "signatures": {
       "library": "server",
-      "windows": "89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 48 8B D9 48 8B 0D",
-      "linux": "55 48 89 E5 41 56 49 89 FE 41 55 48 8D 7D"
+      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 81 EC ? ? ? ? 4D 8B F0 48 8B F1",
+      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD"
     }
   },
   "CBaseEntity_IsPlayerPawn": {
     "offsets": {
       "windows": 169,
-      "linux": 168
+      "linux": 170
     }
   },
   "CEntitySystem_AddEntityIOEvent": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 4C 89 4C 24 ? 48 89 4C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 83 EC ? 49 8B F9",
+      "windows": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F1 48 8B F9",
       "linux": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 FC 53 BB"
     }
   },
@@ -188,8 +188,8 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 384,
-      "linux": 384
+      "windows": 387,
+      "linux": 387
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
@@ -201,8 +201,8 @@
   },
   "CBaseEntity_Teleport": {
     "offsets": {
-      "windows": 163,
-      "linux": 162
+      "windows": 165,
+      "linux": 164
     }
   },
   "CBaseEntity_TakeDamageOld": {
@@ -216,7 +216,7 @@
     "signatures": {
       "library": "server",
       "windows": "40 57 41 56 48 83 EC ? 48 8B 01",
-      "linux": "55 48 89 E5 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC ? 48 8B 07 FF 90 ? ? ? ? 84 C0"
+      "linux": "55 48 89 E5 41 56 41 55 49 89 F5 41 54 49 89 FC 53 BB"
     }
   },
   "CBaseTrigger_EndTouch": {
@@ -241,28 +241,21 @@
   "CEntityIOOutput_FireOutputInternal": {
     "signatures": {
       "library": "server",
-      "windows": "4C 89 4C 24 ? 48 89 4C 24 ? 53 56",
-      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 49 89 D4 53 48 89 F3 48 83 EC ? 48 8D 05"
+      "windows": "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 48 ? 55",
+      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 49 89 D4 53 48 89 F3 48 81 EC ? ? ? ? 48 8D 05"
     }
   },
   "IGameSystem_InitAllSystems_pFirst": {
     "signatures": {
       "library": "server",
       "windows": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD",
-      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75"
+      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75 ? E9"
     }
   },
   "CEntityResourceManifest_AddResource": {
     "offsets": {
       "windows": 2,
       "linux": 0
-    }
-  },
-  "CheckTransmit": {
-    "signatures": {
-      "library": "server",
-      "windows": "48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 58 ? 48 89 70",
-      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D 3D ? ? ? ? 41 55 4C 63 EA"
     }
   },
   "CheckTransmitPlayerSlot": {

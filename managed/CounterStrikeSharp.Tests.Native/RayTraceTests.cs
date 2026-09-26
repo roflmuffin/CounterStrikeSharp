@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
@@ -11,20 +12,13 @@ namespace NativeTestsPlugin;
 
 public class RayTraceTests
 {
-    private CCSPlayerController player;
-    private CCSPlayerPawn pawn;
+    private CCSPlayerController player = null!;
+    private CCSPlayerPawn pawn = null!;
 
     public async Task InitializeAsync()
     {
-        Server.ExecuteCommand("bot_kick; bot_quota 5; bot_quota_mode normal");
-        await WaitOneFrame();
-        this.player = Utilities.GetPlayers().Last(p => p.LifeState == (byte)LifeState_t.LIFE_ALIVE);
-        if (player.PlayerPawn.Value == null)
-        {
-            throw new Exception("No valid player pawn found for test player.");
-        }
-
-        this.pawn = player.PlayerPawn.Value!;
+        (player, pawn) = await CreateTestPlayerAsync();
+        AssertTestPlayer(player, pawn);
     }
 
     [Fact]
@@ -99,10 +93,8 @@ public class RayTraceTests
     }
 
     [Fact]
-    public async Task CCSNavArea_GetAllAreas()
+    public void CCSNavArea_GetAllAreas()
     {
-        await InitializeAsync();
-
         var areas = CCSNavArea.GetAllNavAreas();
         Assert.NotNull(areas);
         Assert.NotEmpty(areas);
