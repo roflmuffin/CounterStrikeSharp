@@ -33,6 +33,9 @@
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
         <_Parameter1>NativeTestsPlugin</_Parameter1>
         </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>CounterStrikeSharp.API.Tests</_Parameter1>
+        </AssemblyAttribute>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="FastGenericNew" Version="3.3.1" />
