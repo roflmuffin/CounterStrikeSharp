@@ -168,7 +168,7 @@
   },
   "CBaseEntity_IsPlayerPawn": {
     "offsets": {
-      "windows": 169,
+      "windows": 171,
       "linux": 170
     }
   },
