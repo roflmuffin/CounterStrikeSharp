@@ -83,7 +83,11 @@ void CCSCustomHudLayout::SetDialogVariableString(std::string sPanelId,
     auto dialogVariableIndex = layoutState.m_vecDialogVariableStrings()->Find(dialogVariable);
     if (dialogVariableIndex == -1) layoutState.m_vecDialogVariableStrings()->AddToTail(dialogVariable);
     else
-        layoutState.m_vecDialogVariableStrings()->Element(dialogVariableIndex).m_sValue = sValue.c_str();
+    {
+        auto& existing = layoutState.m_vecDialogVariableStrings()->Element(dialogVariableIndex);
+        existing.m_sValue = sValue.c_str();
+        existing.m_bIsSet = true;
+    }
 }
 void CCSCustomHudLayout::SetInputCaptureEnabled(bool bEnable, CCSPlayerController* pController)
 {
