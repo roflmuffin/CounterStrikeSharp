@@ -1,3 +1,14 @@
+## What's Changed in v1.0.376
+* fix: set m_bIsSet when updating a custom hud dialog variable by [@dvernoff](https://github.com/dvernoff) in [#1434](https://github.com/roflmuffin/CounterStrikeSharp/pull/1434) ([ffe84cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/ffe84cfc1db478cb53fb83c17252c51a30bb6ed1))
+* fix: correct Windows IsPlayerPawn offset by [@unicbm](https://github.com/unicbm) in [#1445](https://github.com/roflmuffin/CounterStrikeSharp/pull/1445) ([6d22cb5](https://github.com/roflmuffin/CounterStrikeSharp/commit/6d22cb54dc27f7cad1c5137474e5e9cdde73efbe))
+* fix: share one writer for the combined logger by [@Mesharsky](https://github.com/Mesharsky) in [#1444](https://github.com/roflmuffin/CounterStrikeSharp/pull/1444) ([3aad8fc](https://github.com/roflmuffin/CounterStrikeSharp/commit/3aad8fc17503932da7bf9b43063b6303b8718db8))
+* fix: pass all four flags to CBasePlayerController::SetPawn by [@adammyllykoski](https://github.com/adammyllykoski) in [#1443](https://github.com/roflmuffin/CounterStrikeSharp/pull/1443) ([bc1efad](https://github.com/roflmuffin/CounterStrikeSharp/commit/bc1efad5e3212aad9999f9ce97baa469550e94d3))
+* chore: Update Schema Definitions to 1.41.8.4 in [#1437](https://github.com/roflmuffin/CounterStrikeSharp/pull/1437) ([d90b041](https://github.com/roflmuffin/CounterStrikeSharp/commit/d90b04173334989393037c2bc4cd3a788cfae9b3))
+
+## New Contributors
+* [@dvernoff](https://github.com/dvernoff) made their first contribution in [#1434](https://github.com/roflmuffin/CounterStrikeSharp/pull/1434)
+* [@adammyllykoski](https://github.com/adammyllykoski) made their first contribution in [#1443](https://github.com/roflmuffin/CounterStrikeSharp/pull/1443)
+
 ## What's Changed in v1.0.375
 * fix: for update 1.41.8.2 in [#1433](https://github.com/roflmuffin/CounterStrikeSharp/pull/1433) ([2f98498](https://github.com/roflmuffin/CounterStrikeSharp/commit/2f984988bbf89aff817b4d736534faa41306c086))
 * fix: update Windows PostThink signature by [@unicbm](https://github.com/unicbm) in [#1438](https://github.com/roflmuffin/CounterStrikeSharp/pull/1438) ([bd1d936](https://github.com/roflmuffin/CounterStrikeSharp/commit/bd1d9365cb41d50d6c5d6048fbe123e1ac663110))
