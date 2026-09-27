@@ -63,6 +63,8 @@ Before you submit your pull request consider the following guidelines:
     ```
 
 * Create your patch and run appropriate tests.
+  Maintainers can optionally run the full non-benchmark suite on a dedicated CS2
+  server by commenting `/smoke-test` on the PR. See [PR smoke tests](eng/SMOKE-TESTS.md).
 * Commit your changes using a descriptive commit message that uses the imperative, present tense: "change" not "changed" nor "changes".
 
     ```shell
