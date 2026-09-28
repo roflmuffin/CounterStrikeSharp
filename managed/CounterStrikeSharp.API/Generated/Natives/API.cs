@@ -283,6 +283,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static bool IsConvarValid(ushort convar){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(convar);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x89F882AE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
+			}
+		}
+
         public static T GetConvarValue<T>(ushort convar){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

@@ -165,6 +165,13 @@ static void GetConvarHelpText(ScriptContext& script_context)
     script_context.SetResult(ref.GetConVarData()->GetHelpText());
 }
 
+static void IsConvarValid(ScriptContext& script_context)
+{
+    auto convarAccessIndex = script_context.GetArgument<uint16>(0);
+    ConVarRefAbstract ref(convarAccessIndex);
+    script_context.SetResult(ref.IsValidRef() && ref.IsConVarDataValid() && ref.IsConVarDataAvailable());
+}
+
 static void GetConvarAccessIndexByName(ScriptContext& script_context)
 {
     auto convarName = script_context.GetArgument<const char*>(0);
@@ -728,6 +735,7 @@ REGISTER_NATIVES(convars, {
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_NAME", GetConvarName);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_HELP_TEXT", GetConvarHelpText);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_ACCESS_INDEX_BY_NAME", GetConvarAccessIndexByName);
+    ScriptEngine::RegisterNativeHandler("IS_CONVAR_VALID", IsConvarValid);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_VALUE", GetConvarValue);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_VALUE_ADDRESS", GetConvarValueAddress);
     ScriptEngine::RegisterNativeHandler("HAS_CONVAR_BOUND", HasConvarBound);

@@ -7,12 +7,15 @@ public class ConVarBase : IEquatable<ConVarBase>
 {
     internal const ushort InvalidAccessIndex = ushort.MaxValue;
 
+    private readonly ushort _identityAccessIndex;
+
     public ushort AccessIndex { get; protected set; }
     internal bool Owned { get; set; }
 
     public ConVarBase(ushort accessIndex)
     {
         AccessIndex = accessIndex;
+        _identityAccessIndex = accessIndex;
     }
 
     public string Name => NativeAPI.GetConvarName(AccessIndex);
@@ -66,7 +69,7 @@ public class ConVarBase : IEquatable<ConVarBase>
         AccessIndex = InvalidAccessIndex;
     }
 
-    public bool IsValid => AccessIndex != InvalidAccessIndex;
+    public bool IsValid => NativeAPI.IsConvarValid(AccessIndex);
 
     public ConVar<T> As<T>()
     {
@@ -77,7 +80,7 @@ public class ConVarBase : IEquatable<ConVarBase>
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
-        return AccessIndex == other.AccessIndex;
+        return _identityAccessIndex == other._identityAccessIndex;
     }
 
     public override bool Equals(object? obj)
@@ -87,7 +90,7 @@ public class ConVarBase : IEquatable<ConVarBase>
 
     public override int GetHashCode()
     {
-        return AccessIndex.GetHashCode();
+        return _identityAccessIndex.GetHashCode();
     }
 }
 
@@ -131,20 +134,25 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
         };
     }
 
-    public ConVar(ConVarCreationOptions<T> options) : base(0)
+    public ConVar(ConVarCreationOptions<T> options) : base(Create(options))
     {
-        AccessIndex = NativeAPI.CreateConvar(options.Name, (short)GetValueType(), options.Description, (UInt64)options.Flags,
+        Owned = true;
+    }
+
+    private static ushort Create(ConVarCreationOptions<T> options)
+    {
+        var accessIndex = NativeAPI.CreateConvar(options.Name, (short)GetValueType(), options.Description, (UInt64)options.Flags,
             options.HasMinValue, options.HasMaxValue,
             options.DefaultValue,
             options.HasMinValue ? options.MinValue : options.DefaultValue,
             options.HasMaxValue ? options.MaxValue : options.DefaultValue);
 
-        if (AccessIndex == InvalidAccessIndex)
+        if (accessIndex == InvalidAccessIndex)
         {
             throw new InvalidOperationException($"Failed to create ConVar '{options.Name}' with type '{typeof(T)}'.");
         }
 
-        Owned = true;
+        return accessIndex;
     }
 
     /// <summary>
@@ -300,19 +308,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
 
     public bool Equals(ConVar<T>? other)
     {
-        if (other is null) return false;
-        if (ReferenceEquals(this, other)) return true;
-        return AccessIndex == other.AccessIndex;
-    }
-
-    public override bool Equals(object? obj)
-    {
-        return obj is ConVarBase other && Equals(other);
-    }
-
-    public override int GetHashCode()
-    {
-        return AccessIndex.GetHashCode();
+        return base.Equals(other);
     }
 
     public override string ToString()

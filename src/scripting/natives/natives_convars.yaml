@@ -4,6 +4,7 @@ GET_CONVAR_TYPE: convar:uint16 -> int16
 GET_CONVAR_NAME: convar:uint16 -> string
 GET_CONVAR_HELP_TEXT: convar:uint16 -> string
 GET_CONVAR_ACCESS_INDEX_BY_NAME: name:string -> uint16
+IS_CONVAR_VALID: convar:uint16 -> bool
 GET_CONVAR_VALUE: convar:uint16 -> any
 GET_CONVAR_VALUE_AS_STRING: convar:uint16 -> string
 GET_CONVAR_VALUE_ADDRESS: convar:uint16 -> pointer

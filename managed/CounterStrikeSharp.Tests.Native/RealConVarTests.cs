@@ -354,6 +354,54 @@ public class RealConVarTests : IDisposable
     }
 
     [Fact]
+    public void DeletedConVarsRetainEqualityAndHashIdentity()
+    {
+        var first = Create(42, 0, 100);
+        var second = Create(7, 0, 100);
+        var alias = ConVar<int>.Find(first.Name);
+        Assert.NotNull(alias);
+
+        var originalHash = first.GetHashCode();
+        var set = new HashSet<ConVarBase> { first, second };
+        var dictionary = new Dictionary<ConVarBase, string> { [first] = "first", [second] = "second" };
+        Assert.Equal(first, alias);
+
+        first.Delete();
+        second.Delete();
+
+        Assert.Equal(originalHash, first.GetHashCode());
+        Assert.True(set.Contains(first));
+        Assert.True(set.Contains(second));
+        Assert.True(dictionary.TryGetValue(first, out var value));
+        Assert.Equal("first", value);
+        Assert.NotEqual(first, second);
+        Assert.Equal(first, alias);
+        Assert.True(set.Contains(alias));
+        Assert.True(first.Equals((object)alias));
+        Assert.True(alias.Equals((ConVarBase)first));
+    }
+
+    [Fact]
+    public void DeletedConVarIsNotValidAfterDeletion()
+    {
+        var first = Create(42, 0, 100);
+        var second = Create(7, 0, 100);
+
+        List<ConVar<int>> conVars = [ConVar<int>.Find(first.Name), ConVar<int>.Find(second.Name)];
+        Assert.True(first.IsValid);
+        Assert.True(second.IsValid);
+        Assert.All(conVars, conVar => Assert.True(conVar.IsValid));
+
+        first.Delete();
+        Assert.False(first.IsValid);
+
+        second.Delete();
+        Assert.False(second.IsValid);
+
+        Assert.All(conVars, conVar => Assert.False(conVar.IsValid));
+    }
+
+    [Fact]
     public async Task CreatedConVarIsAccessibleFromServerConsole()
     {
         var conVar = Create(42, 0, 100);
