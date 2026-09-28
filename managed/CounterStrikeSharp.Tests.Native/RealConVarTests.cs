@@ -383,6 +383,95 @@ public class RealConVarTests : IDisposable
         Assert.NotEqual(conVar1, conVar2);
     }
 
+    [Fact]
+    public async Task OnConVarChangedSupportsNestedConVarChanges()
+    {
+        var outer = Create(0, -100, 100);
+        var nested = Create(0, -100, 100);
+
+        var nestedChangeTriggered = false;
+        var observed = new List<ushort>();
+
+        var firstCallback = FunctionReference.Create((ushort changedIndex) =>
+        {
+            var changed = new ConVarBase(changedIndex);
+            if (changed.AccessIndex != outer.AccessIndex || nestedChangeTriggered)
+                return;
+
+            nestedChangeTriggered = true;
+            nested.Value = 123;
+        });
+
+        var secondCallback = FunctionReference.Create((ushort changedIndex) =>
+        {
+            var changed = new ConVarBase(changedIndex);
+            observed.Add(changed.AccessIndex);
+        });
+
+        try
+        {
+            NativeAPI.AddListener("OnConVarChanged", firstCallback);
+            NativeAPI.AddListener("OnConVarChanged", secondCallback);
+
+            outer.Value = 42;
+            await WaitOneFrame();
+
+            // The second subscriber must receive both notifications:
+            // the nested change and the original outer change.
+            Assert.Contains(nested.AccessIndex, observed);
+            Assert.Contains(outer.AccessIndex, observed);
+            Assert.Equal(2, observed.Count);
+        }
+        finally
+        {
+            NativeAPI.RemoveListener("OnConVarChanged", firstCallback);
+            NativeAPI.RemoveListener("OnConVarChanged", secondCallback);
+        }
+    }
+
+    [Fact]
+    public async Task OnConVarChangedSkipsNestedConVarDeletedBeforeDispatch()
+    {
+        var outer = Create(0, -100, 100);
+        var nested = Create(0, -100, 100);
+        var nestedIndex = nested.AccessIndex;
+        var nestedName = nested.Name;
+        var nestedChangeTriggered = false;
+        var observed = new List<ushort>();
+
+        var firstCallback = FunctionReference.Create((ushort changedIndex) =>
+        {
+            if (changedIndex != outer.AccessIndex || nestedChangeTriggered)
+                return;
+
+            nestedChangeTriggered = true;
+            nested.Value = 7;
+            nested.Delete();
+        });
+
+        var secondCallback = FunctionReference.Create((ushort changedIndex) => observed.Add(changedIndex));
+
+        try
+        {
+            NativeAPI.AddListener("OnConVarChanged", firstCallback);
+            NativeAPI.AddListener("OnConVarChanged", secondCallback);
+
+            outer.Value = 42;
+            await WaitOneFrame();
+
+            Assert.True(nestedChangeTriggered);
+            Assert.Null(ConVar<int>.Find(nestedName));
+            Assert.Contains(outer.AccessIndex, observed);
+            Assert.DoesNotContain(nestedIndex, observed);
+            Assert.Single(observed);
+        }
+        finally
+        {
+            NativeAPI.RemoveListener("OnConVarChanged", firstCallback);
+            NativeAPI.RemoveListener("OnConVarChanged", secondCallback);
+        }
+    }
+
     [Theory]
     [InlineData(false)]
     [InlineData(true)]

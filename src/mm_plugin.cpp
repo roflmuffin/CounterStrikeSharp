@@ -78,13 +78,6 @@ namespace counterstrikesharp {
 
 CounterStrikeSharpMMPlugin gPlugin;
 
-static void ConVarGlobalChanged(ConVarRefAbstract* ref, CSplitScreenSlot nSlot, const char* pNewValue, const char* pOldValue, void* __unk01)
-{
-    on_convar_changed_callback->ScriptContext().Reset();
-    on_convar_changed_callback->ScriptContext().Push(ref->GetAccessIndex());
-    on_convar_changed_callback->Execute();
-}
-
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
@@ -182,12 +175,9 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
         CALL_GLOBAL_LISTENER(OnAllInitialized());
 
-        globals::cvars->InstallGlobalChangeCallback(ConVarGlobalChanged);
-
         on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
         on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
         on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
-        on_convar_changed_callback = globals::callbackManager.CreateCallback("OnConVarChanged");
 
         m_hooks.Add(&IServerGameDLL::GameFrame, globals::server, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_GameFrame);
         m_hooks.Add(&INetworkServerService::StartupServer, globals::networkServerService, this, nullptr,
@@ -248,7 +238,6 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServe
 }
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
-    globals::cvars->RemoveGlobalChangeCallback(ConVarGlobalChanged);
     HookSet::ClearAll();
     globals::ShutdownHooks();
     DynamicHook::ShutdownAll();
@@ -259,7 +248,6 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
     globals::callbackManager.ReleaseCallback(on_activate_callback);
     globals::callbackManager.ReleaseCallback(on_map_end_callback);
     globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
-    globals::callbackManager.ReleaseCallback(on_convar_changed_callback);
 
     return true;
 }

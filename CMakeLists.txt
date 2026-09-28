@@ -63,6 +63,8 @@ set(SOURCE_FILES
     src/core/memory.h
     src/core/managers/con_command_manager.cpp
     src/core/managers/con_command_manager.h
+    src/core/managers/convar_manager.cpp
+    src/core/managers/convar_manager.h
     src/scripting/natives/natives_commands.cpp
     src/scripting/natives/natives_convars.cpp
     src/core/memory_module.h

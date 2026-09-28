@@ -76,7 +76,6 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
 static ScriptCallback* on_activate_callback;
 static ScriptCallback* on_map_end_callback;
 static ScriptCallback* on_metamod_all_plugins_loaded_callback;
-static ScriptCallback* on_convar_changed_callback;
 
 extern CounterStrikeSharpMMPlugin gPlugin;
 
