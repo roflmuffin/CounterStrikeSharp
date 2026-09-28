@@ -6,6 +6,7 @@ namespace CounterStrikeSharp.API.Modules.Cvars;
 public class ConVarBase : IEquatable<ConVarBase>
 {
     public ushort AccessIndex { get; protected set; }
+    internal bool Owned { get; internal set; }
 
     public ConVarBase(ushort accessIndex)
     {
@@ -138,6 +139,8 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
         {
             throw new InvalidOperationException($"Failed to create ConVar '{options.Name}' with type '{typeof(T)}'.");
         }
+
+        Owned = true;
     }
 
     /// <summary>

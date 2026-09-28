@@ -565,7 +565,7 @@ namespace CounterStrikeSharp.API.Core
             
             foreach (var prop in convars)
             {
-                if (prop.GetValue(instance) is ConVarBase conVar)
+                if (prop.GetValue(instance) is ConVarBase { Owned: true } conVar)
                     ConVars.Add(conVar);
             }
         }
