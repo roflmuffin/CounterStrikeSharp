@@ -13,10 +13,11 @@ public class NativeObjectsTests
     {
         await Server.NextFrameAsync(() =>
         {
+            var entryCount = NativeHandleTracker._entries.Count;
             var vector = new Vector(0, 0, 500);
             Assert.Equal(IntPtr.Zero, vector.RawHandle);
             Assert.Equal(500, NativeAPI.VectorGetZ(vector.Handle));
-            Assert.Single(NativeHandleTracker._entries);
+            Assert.Equal(entryCount + 1, NativeHandleTracker._entries.Count);
         });
 
         GC.Collect();

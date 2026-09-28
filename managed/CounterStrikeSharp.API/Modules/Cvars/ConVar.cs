@@ -2,6 +2,7 @@
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
+[Obsolete("Use ConVar<T> instead for type-safe access to ConVars.")]
 public class ConVar
 {
     public ushort AccessIndex { get; protected set; }
