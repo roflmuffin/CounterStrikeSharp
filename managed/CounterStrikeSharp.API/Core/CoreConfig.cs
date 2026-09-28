@@ -53,20 +53,23 @@ namespace CounterStrikeSharp.API.Core
         [JsonPropertyName("PluginAutoLoadEnabled")]
         public bool PluginAutoLoadEnabled { get; set; } = true;
 
-        [JsonPropertyName("ServerLanguage")]
-        public string ServerLanguage { get; set; } = "en";
+        [JsonPropertyName("PluginResolveNugetPackages")]
+        public bool PluginResolveNugetPackages { get; set; }
+
+        [JsonPropertyName("ServerLanguage")] public string ServerLanguage { get; set; } = "en";
 
         [JsonPropertyName("UnlockConCommands")]
         public bool UnlockConCommands { get; set; } = true;
 
-        [JsonPropertyName("UnlockConVars")]
-        public bool UnlockConVars { get; set; } = true;
+        [JsonPropertyName("UnlockConVars")] public bool UnlockConVars { get; set; } = true;
 
         [JsonPropertyName("AutoUpdateEnabled")]
         public bool AutoUpdateEnabled { get; set; } = true;
 
-        [JsonPropertyName("AutoUpdateURL")]
-        public string AutoUpdateURL { get; set; } = "http://gamedata.cssharp.dev";
+        [JsonPropertyName("AutoUpdateURL")] public string AutoUpdateURL { get; set; } = "http://gamedata.cssharp.dev";
+
+        [JsonPropertyName("MaximumFrameTasksExecutedPerTick")]
+        public int MaximumFrameTasksExecutedPerTick { get; set; } = 1024;
     }
 
     /// <summary>
@@ -115,12 +118,15 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
 
+        public static bool PluginResolveNugetPackages => _coreConfig.PluginResolveNugetPackages;
+
         public static string ServerLanguage => _coreConfig.ServerLanguage;
 
         public static bool UnlockConCommands => _coreConfig.UnlockConCommands;
 
         public static bool UnlockConVars => _coreConfig.UnlockConVars;
 
+        public static int MaximumFrameTasksExecutedPerTick => _coreConfig.MaximumFrameTasksExecutedPerTick;
     }
 
     public partial class CoreConfig : IStartupService

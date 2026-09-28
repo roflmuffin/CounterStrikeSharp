@@ -63,17 +63,17 @@ public class ChatMenuInstance : BaseMenuInstance
 
         if (HasPrevButton)
         {
-            Player.PrintToChat($" {chatMenu.PrevPageColor}!7 {ChatColors.Default}-> Prev");
+            Player.PrintToChat($" {chatMenu.PrevPageColor}!7 {ChatColors.Default}-> {Application.Localizer["menu.button.previous"]}");
         }
             
         if (HasNextButton)
         {
-            Player.PrintToChat($" {chatMenu.NextPageColor}!8 {ChatColors.Default}-> Next");
+            Player.PrintToChat($" {chatMenu.NextPageColor}!8 {ChatColors.Default}-> {Application.Localizer["menu.button.next"]}");
         }
 
         if (Menu.ExitButton)
         {
-            Player.PrintToChat($" {chatMenu.CloseColor}!9 {ChatColors.Default}-> Close");
+            Player.PrintToChat($" {chatMenu.CloseColor}!9 {ChatColors.Default}-> {Application.Localizer["menu.button.close"]}");
         }
     }
 }

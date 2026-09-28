@@ -15,6 +15,18 @@ public record SchemaFieldType
         this.Atomic = Atomic;
         this.Inner = Inner;
 
+        // According to dev notes these currently have the same memory layout
+        if (this.Name == "VectorWS")
+        {
+            this.Name = "Vector";
+        }
+
+        // Kick this can
+        if (this.Name == "CTransformWS")
+        {
+            this.Name = "CTransform";
+        }
+
         if (this.Name == "GameTime_t" || this.Name == "CNetworkedQuantizedFloat")
         {
             this.Category = SchemaTypeCategory.Builtin;
@@ -74,6 +86,7 @@ public record SchemaFieldType
         "uint64" => "UInt64",
         "bool" => "bool",
         "char" => "char",
+        "void" => "IntPtr",
         _ => throw new ArgumentOutOfRangeException(nameof(name), name, $"Unknown built-in: {name}")
     };
 
@@ -82,7 +95,7 @@ public record SchemaFieldType
         {
             SchemaAtomicCategory.Basic => name switch
             {
-                "CUtlString" or "CUtlSymbolLarge" or "CGlobalSymbol" => "string",
+                "CUtlString" or "CUtlSymbolLarge" or "CGlobalSymbol" or "CGameSoundEventName" => "string",
                 "CEntityHandle" => "CHandle<CEntityInstance>",
                 "CNetworkedQuantizedFloat" => "float",
                 "RotationVector" => "Vector",

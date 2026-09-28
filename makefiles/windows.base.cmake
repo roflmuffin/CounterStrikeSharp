@@ -10,13 +10,10 @@ set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "${CMAKE_SHARED_LINKER_FLAGS_DEBUG} /NODEFAU
 
 set(COUNTER_STRIKE_SHARP_LINK_LIBRARIES
     ${SOURCESDK_LIB}/public/win64/tier0.lib
-    ${SOURCESDK_LIB}/public/win64/tier1.lib
     ${SOURCESDK_LIB}/public/win64/interfaces.lib
     ${SOURCESDK_LIB}/public/win64/mathlib.lib
     spdlog
     dynload_s
     dyncall_s
-    distorm
-    funchook-static
-    dynohook
+    dyncallback_s
 )

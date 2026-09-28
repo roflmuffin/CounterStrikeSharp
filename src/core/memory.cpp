@@ -32,3 +32,14 @@ void* FindSignature(const char* moduleName, const char* bytesStr)
 
     return module->FindSignature(bytesStr);
 }
+
+void* FindVirtualTable(const char* moduleName, const char* vtableName)
+{
+    auto module = counterstrikesharp::modules::GetModuleByName(moduleName);
+    if (module == nullptr)
+    {
+        return nullptr;
+    }
+
+    return module->FindVirtualTable(vtableName);
+}

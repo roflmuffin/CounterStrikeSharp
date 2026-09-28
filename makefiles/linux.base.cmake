@@ -12,21 +12,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-invalid-offsetof -Wno-reorder")
 
 # Others
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpmath=sse -msse -fno-strict-aliasing")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-threadsafe-statics -v -fvisibility=default")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -fvisibility=hidden -fvisibility-inlines-hidden")
 
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -static-libgcc -static-libstdc++")
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--exclude-libs=libprotobuf.a")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--exclude-libs=libprotobuf.a:dyncall_s.a:dyncallback_s.a:dynload_s.a:spdlog.a")
 
 set(
     COUNTER_STRIKE_SHARP_LINK_LIBRARIES
     ${SOURCESDK_LIB}/linux64/libtier0.so
-    ${SOURCESDK_LIB}/linux64/tier1.a
     ${SOURCESDK_LIB}/linux64/interfaces.a
     ${SOURCESDK_LIB}/linux64/mathlib.a
     spdlog
     dynload_s
     dyncall_s
-    distorm
-    funchook-static
-    dynohook
+    dyncallback_s
 )

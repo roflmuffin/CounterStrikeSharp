@@ -17,21 +17,22 @@
 #ifndef _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 #define _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 
+#include "core/hooks.h"
 #include <ISmmPlugin.h>
 #include <functional>
 #include <iserver.h>
 #include <igameevents.h>
-#include <iplayerinfo.h>
-#include <sh_vector.h>
 #include <vector>
 #include "entitysystem.h"
-#include "concurrentqueue.h"
 
 namespace counterstrikesharp {
 class ScriptCallback;
 
 class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
 {
+  private:
+    HookSet m_hooks;
+
   public:
     bool Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late) override;
     bool Unload(char* error, size_t maxlen) override;
@@ -47,12 +48,16 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
                      bool loadGame,
                      bool background) override;
     void OnLevelShutdown() override;
-    void Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick);
-    void Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*);
-    void AddTaskForNextFrame(std::function<void()>&& task);
+    KHook::Return<void> Hook_GameFrame(IServerGameDLL* hookThis, bool simulating, bool bFirstTick, bool bLastTick);
+    KHook::Return<void>
+    Hook_StartupServer(INetworkServerService* hookThis, const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*);
 
-    void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory* pLoopModeFactory, void** ppGlobalPointer);
-    IEngineService* Hook_FindService(const char* serviceName);
+    KHook::Return<void> Hook_RegisterLoopMode(IEngineServiceMgr* hookThis,
+                                              const char* pszLoopModeName,
+                                              ILoopModeFactory* pLoopModeFactory,
+                                              void** ppGlobalPointer);
+    KHook::Return<int> Hook_LoadEventsFromFile(IGameEventManager2* hookThis, const char* filename, bool bSearchAll);
+    KHook::Return<IEngineService*> Hook_FindService(IEngineServiceMgr* hookThis, const char* serviceName);
 
   public:
     const char* GetAuthor() override;
@@ -65,10 +70,11 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
     const char* GetLogTag() override;
 
   private:
-    moodycamel::ConcurrentQueue<std::function<void()>> m_nextTasks;
+    bool m_has_level_initialized = false;
 };
 
 static ScriptCallback* on_activate_callback;
+static ScriptCallback* on_map_end_callback;
 static ScriptCallback* on_metamod_all_plugins_loaded_callback;
 extern CounterStrikeSharpMMPlugin gPlugin;
 

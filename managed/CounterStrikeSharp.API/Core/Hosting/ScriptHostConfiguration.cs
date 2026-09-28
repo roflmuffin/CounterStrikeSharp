@@ -10,6 +10,7 @@ internal sealed class ScriptHostConfiguration : IScriptHostConfiguration
     public string SharedPath { get; }
     public string ConfigsPath { get; }
     public string GameDataPath { get; }
+    public string LanguagePath { get; }
 
     public ScriptHostConfiguration(IHostEnvironment hostEnvironment)
     {
@@ -18,5 +19,6 @@ internal sealed class ScriptHostConfiguration : IScriptHostConfiguration
         PluginPath = Path.Join(new[] { hostEnvironment.ContentRootPath, "plugins" });
         ConfigsPath = Path.Join(new[] { hostEnvironment.ContentRootPath, "configs" });
         GameDataPath = Path.Join(new[] { hostEnvironment.ContentRootPath, "gamedata" });
+        LanguagePath = Path.Join(new[] { hostEnvironment.ContentRootPath, "lang" });
     }
 }

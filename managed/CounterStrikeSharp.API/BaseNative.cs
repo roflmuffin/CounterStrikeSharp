@@ -1,4 +1,5 @@
-﻿/*
+using FastGenericNew;
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,22 +16,47 @@
  */
 
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace CounterStrikeSharp.API
 {
     public abstract class NativeObject
     {
-        public IntPtr Handle { get; internal set; }
+        private IntPtr _handle;
+
+        public IntPtr Handle
+        {
+            get
+            {
+                if (_handle == IntPtr.Zero)
+                {
+                    EnsureNativeHandle();
+                }
+
+                return _handle;
+            }
+            internal set => _handle = value;
+        }
+
+        internal IntPtr RawHandle => _handle;
 
         protected NativeObject(IntPtr pointer)
         {
-            Handle = pointer;
+            _handle = pointer;
         }
-        
+
+        protected void SetHandle(IntPtr pointer)
+        {
+            _handle = pointer;
+        }
+
+        protected virtual void EnsureNativeHandle()
+        {
+        }
+
         /// <summary>
         /// Returns a new instance of the specified type using the pointer from the passed in object.
         /// </summary>
@@ -42,7 +68,7 @@ namespace CounterStrikeSharp.API
         /// <returns></returns>
         public T As<T>() where T : NativeObject
         {
-            return (T)Activator.CreateInstance(typeof(T), this.Handle);
+            return FastNew.CreateInstance<T, IntPtr>(this.Handle);
         }
     }
 }

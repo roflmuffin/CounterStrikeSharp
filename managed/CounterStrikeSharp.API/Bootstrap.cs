@@ -12,7 +12,9 @@ using CounterStrikeSharp.API.Core.Plugin.Host;
 using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
@@ -45,6 +47,10 @@ public static class Bootstrap
                     services.AddSingleton<IPlayerLanguageManager, PlayerLanguageManager>();
                     services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
                     services.AddSingleton<ICommandManager, CommandManager>();
+
+                    services.TryAddSingleton<IStringLocalizerFactory, CoreJsonStringLocalizerFactory>();
+                    services.TryAddTransient(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
+                    services.TryAddTransient(typeof(IStringLocalizer), typeof(StringLocalizer));
 
                     services.Scan(i => i.FromCallingAssembly()
                         .AddClasses(c => c.AssignableTo<IStartupService>())

@@ -1,3 +1,4 @@
+using FastGenericNew;
 ﻿/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
@@ -28,12 +29,12 @@ public partial class CCSPlayer_ItemServices
     /// <exception cref="InvalidOperationException">ItemServices points to null</exception>
     public void DropActivePlayerWeapon(CBasePlayerWeapon activeWeapon)
     {
-        if(Handle == IntPtr.Zero)
+        if (Handle == IntPtr.Zero)
             throw new InvalidOperationException("ItemServices points to null.");
 
         Guard.IsValidEntity(activeWeapon);
 
-        VirtualFunction.CreateVoid<nint, nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_DropActivePlayerWeapon"))(Handle, activeWeapon.Handle);
+        VirtualFunction.CreateVoid<nint, nint, nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_DropActivePlayerWeapon"))(Handle, activeWeapon.Handle, Vector.Zero.Handle);
     }
 
     /// <summary>
@@ -54,7 +55,7 @@ public partial class CCSPlayer_ItemServices
         if (pointer == IntPtr.Zero)
             return null;
 
-        return (T)Activator.CreateInstance(typeof(T), pointer)!;
+        return FastNew.CreateInstance<T, IntPtr>(pointer);
     }
 
     public AcquireResult CanAcquire(CEconItemView itemView, AcquireMethod method, IntPtr unknown = 0)

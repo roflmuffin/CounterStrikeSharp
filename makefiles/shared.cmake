@@ -60,13 +60,11 @@ include_directories(
     ${SOURCESDK}/public/game/server
     ${SOURCESDK}/public/schemasystem
     ${METAMOD_DIR}/core
-    ${METAMOD_DIR}/core/sourcehook
+    ${METAMOD_DIR}/third_party/khook/include
     libraries/dyncall/dynload
     libraries/dyncall/dyncall
     libraries/spdlog/include
     libraries/tl
-    libraries/funchook/include
-    libraries/DynoHook/src
     libraries/moodycamel
     libraries
 )

@@ -78,8 +78,21 @@ public partial class Generators
 
             if (native.ReturnType != "void")
             {
-                returnStr.Append(
-                    $"\t\t\treturn ({Mapping.GetCSharpType(native.ReturnType)})ScriptContext.GlobalScriptContext.GetResult(typeof({Mapping.GetCSharpType(native.ReturnType)}));\n");
+                if (Mapping.IsPrimitiveReturnType(native.ReturnType))
+                {
+                    returnStr.Append(
+                        $"\t\t\treturn ScriptContext.GlobalScriptContext.GetResultPrimitive<{Mapping.GetCSharpType(native.ReturnType)}>();\n");
+                }
+                else if (native.ReturnType == "string")
+                {
+                    returnStr.Append(
+                        $"\t\t\treturn ScriptContext.GlobalScriptContext.GetResultString();\n");
+                }
+                else
+                {
+                    returnStr.Append(
+                        $"\t\t\treturn ({Mapping.GetCSharpType(native.ReturnType)})ScriptContext.GlobalScriptContext.GetResult(typeof({Mapping.GetCSharpType(native.ReturnType)}));\n");
+                }
             }
 
             returnStr.Append("\t\t\t}\n");
@@ -88,8 +101,7 @@ public partial class Generators
             return returnStr.ToString();
         }));
 
-        var result = $@"
-using System;
+        var result = $@"using System;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.UserMessages;
 using CounterStrikeSharp.API.Modules.Commands;
@@ -105,7 +117,7 @@ namespace CounterStrikeSharp.API.Core
 
         Console.WriteLine($"Generated C# bindings for {natives.Count} methods successfully.");
 
-        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/API.cs"),
+        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Generated/Natives/API.cs"),
             result);
     }
 }

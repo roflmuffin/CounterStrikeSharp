@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,23 +16,26 @@
 
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
 using CounterStrikeSharp.API.Modules.Entities;
+using FastGenericNew;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API
 {
     public static class Utilities
     {
-        // https://github.com/dotabuff/manta/blob/master/entity.go#L186-L190
-        public const int MaxEdictBits = 15;
+        // Only for networked entities, which are edicts. There can be more server-only entities that aren't edicts, so this is not the max number of entities in the game, but the max number of edicts.
+        public const int MaxEdictBits = 14;
         public const int MaxEdicts = 1 << MaxEdictBits;
+
+        // Counter-Strike 2 - max 16384 edicts and 16384 server-only entities, total 32768 entities, which is 15 bits for the entity index.
+        public const int MaxEntityBits = 15;
+        public const int MaxEntities = 1 << MaxEntityBits;
+
         public const int NumEHandleSerialNumberBits = 17;
         public const uint InvalidEHandleIndex = 0xFFFFFFFF;
 
@@ -50,23 +53,23 @@ namespace CounterStrikeSharp.API
                 return null;
             }
 
-            return (T)Activator.CreateInstance(typeof(T), entityPtr)!;
+            return FastNew.CreateInstance<T, IntPtr>(entityPtr.Value);
         }
 
         public static T? CreateEntityByName<T>(string name) where T : CBaseEntity
         {
-            return (T?)Activator.CreateInstance(typeof(T), VirtualFunctions.UTIL_CreateEntityByName(name, -1));
+            return FastNew.CreateInstance<T, IntPtr>(VirtualFunctions.UTIL_CreateEntityByName(name, -1))!;
         }
 
         public static CCSPlayerController? GetPlayerFromIndex(int index)
         {
-            var player = GetEntityFromIndex<CCSPlayerController>(index);
-            if (player == null || player.DesignerName != "cs_player_controller")
+            var entityPtr = EntitySystem.GetEntityByIndex((uint)index);
+            if (entityPtr is null || entityPtr == IntPtr.Zero)
             {
                 return null;
             }
 
-            return player;
+            return new CCSPlayerController(entityPtr.Value);
         }
 
         public static CCSPlayerController? GetPlayerFromSlot(int slot)
@@ -81,7 +84,12 @@ namespace CounterStrikeSharp.API
 
         public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
         {
-            return Utilities.GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
+            return GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
+        }
+
+        public static CCSPlayerController? GetPlayerFromSteamId64(ulong steamId)
+        {
+            return GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
         }
 
         public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
@@ -91,37 +99,35 @@ namespace CounterStrikeSharp.API
 
         public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
         {
-            return RemoveItemByDesignerName(player, designerName, false);
+            var weapon = player.PlayerPawn.Value?.WeaponServices?.MyWeapons
+                .Select(w => w.Value)
+                .Where(w => w?.IsValid is true && w.DesignerName == designerName)
+                .FirstOrDefault();
+
+            if (weapon == null)
+                return false;
+
+            weapon.AddEntityIOEvent("Kill", weapon, delay: 0.1f);
+            return true;
         }
 
-        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity)
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool _)
         {
-            CHandle<CBasePlayerWeapon>? item = null;
-            if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
+            return RemoveItemByDesignerName(player, designerName);
+        }
 
-            foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
-            {
-                if (weapon is not { IsValid: true, Value.IsValid: true })
-                    continue;
-                if (weapon.Value.DesignerName != designerName)
-                    continue;
+        public static bool RemoveItemBySlot(this CCSPlayerController player, gear_slot_t slot)
+        {
+            var weapon = player.PlayerPawn.Value?.WeaponServices?.MyWeapons
+                .Select(w => w.Value)
+                .Where(w => w?.As<CCSWeaponBase>().VData?.GearSlot == slot)
+                .FirstOrDefault();
 
-                item = weapon;
-            }
+            if (weapon == null)
+                return false;
 
-            if (item != null && item.Value != null)
-            {
-                player.PlayerPawn.Value.RemovePlayerItem(item.Value);
-
-                if (shouldRemoveEntity)
-                {
-                    item.Value.Remove();
-                }
-
-                return true;
-            }
-
-            return false;
+            weapon.AddEntityIOEvent("Kill", weapon, delay: 0.1f);
+            return true;
         }
 
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
@@ -154,7 +160,7 @@ namespace CounterStrikeSharp.API
             {
                 var controller = GetPlayerFromSlot(i);
 
-                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected)
+                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.Connected)
                     continue;
 
                 players.Add(controller);
@@ -208,7 +214,7 @@ namespace CounterStrikeSharp.API
                 return null;
             }
 
-            return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
+            return FastNew.CreateInstance<T, IntPtr>(pointerTo);
         }
 
         private static int FindSchemaChain(string className) => Schema.GetSchemaOffset(className, "__m_pChainEntity");
@@ -238,11 +244,11 @@ namespace CounterStrikeSharp.API
 
             if (chainOffset != 0)
             {
-                VirtualFunctions.NetworkStateChanged(entity.Handle + chainOffset, offset + extraOffset, 0xFFFFFFFF);
+                NativeAPI.SchemaNetworkStateChanged(entity.Handle + chainOffset, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
                 return;
             }
 
-            VirtualFunctions.StateChanged(entity.NetworkTransmitComponent.Handle, entity.Handle, offset + extraOffset, -1, -1);
+            NativeAPI.SchemaSetStateChanged(entity.Handle, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
 
             entity.LastNetworkChange = Server.CurrentTime;
             entity.IsSteadyState.Clear();
@@ -260,6 +266,7 @@ namespace CounterStrikeSharp.API
             {
                 return null;
             }
+
             return ptr;
         }
     }

@@ -16,7 +16,6 @@
 
 #include "core/managers/chat_manager.h"
 
-#include <funchook.h>
 #include <igameevents.h>
 #include <public/eiface.h>
 
@@ -45,35 +44,26 @@ void ChatManager::OnAllInitialized()
         return;
     }
 
-    auto m_hook = funchook_create();
-    funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);
-    funchook_install(m_hook, 0);
+    m_hooks.AddFunction(reinterpret_cast<void*>(m_pHostSay), &DetourHostSay);
+
+    on_player_chat_callback = globals::callbackManager.CreateCallback("OnPlayerChat");
 }
 
-void ChatManager::OnShutdown() {}
-
-void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2)
+void ChatManager::OnShutdown()
 {
-    if (pController)
-    {
-        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
-        if (pEvent)
-        {
-            pEvent->SetBool("teamonly", teamonly);
-            pEvent->SetInt("userid", pController->GetEntityIndex().Get() - 1);
-            pEvent->SetString("text", args[1]);
+    m_hooks.Clear();
+    globals::callbackManager.ReleaseCallback(on_player_chat_callback);
+}
 
-            globals::gameEventManager->FireEvent(pEvent, true);
-        }
-    }
-
+KHook::Return<void> DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2)
+{
     std::string prefix;
     bool bSilent = globals::coreConfig->IsSilentChatTrigger(args[1], prefix);
     bool bCommand = globals::coreConfig->IsPublicChatTrigger(args[1], prefix) || bSilent;
 
     if (!bSilent)
     {
-        m_pHostSay(pController, args, teamonly, unk1, unk2);
+        KHook::Recall(m_pHostSay, KHook::Return<void>{ KHook::Action::Ignore }, pController, args, teamonly, unk1, unk2);
     }
 
     if (bCommand)
@@ -97,6 +87,31 @@ void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, 
 
         globals::chatManager.OnSayCommandPost(pController, args);
     }
+
+    if (pController)
+    {
+        auto callback = globals::chatManager.on_player_chat_callback;
+
+        if (callback && callback->GetFunctionCount())
+        {
+            callback->ScriptContext().Reset();
+            callback->ScriptContext().Push(pController);
+            callback->ScriptContext().Push(args.Arg(1));
+            callback->ScriptContext().Push(teamonly);
+            callback->Execute();
+        }
+
+        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
+        if (pEvent)
+        {
+            pEvent->SetBool("teamonly", teamonly);
+            pEvent->SetInt("userid", pController->GetEntityIndex().Get() - 1);
+            pEvent->SetString("text", args[1]);
+
+            globals::gameEventManager->FireEvent(pEvent, false);
+        }
+    }
+    return { bSilent ? KHook::Action::Supersede : KHook::Action::Ignore };
 }
 
 bool ChatManager::OnSayCommandPre(CEntityInstance* pController, CCommand& command) { return false; }

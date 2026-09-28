@@ -1,0 +1,6 @@
+SET_HAS_CLASS: customHud:pointer, panelId:string, className:string, hasClass:bool -> void
+SET_HAS_CLASS_FOR_PLAYER: customHud:pointer, controller:pointer, panelId:string, className:string, hasClass:bool -> void
+SET_DIALOG_VARIABLE_STRING: customHud:pointer, panelId:string, variableName:string, value:string -> void
+SET_DIALOG_VARIABLE_STRING_FOR_PLAYER: customHud:pointer, controller:pointer, panelId:string, variableName:string, value:string -> void
+SET_INPUT_CAPTURE_ENABLED: customHud:pointer, controller:pointer, enable:bool -> void
+IS_INPUT_CAPTURE_ENABLED: customHud:pointer, controller:pointer -> bool

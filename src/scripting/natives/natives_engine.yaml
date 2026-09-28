@@ -9,9 +9,7 @@ GET_MAX_CLIENTS: -> int
 GET_GAME_FRAME_TIME: -> float
 ISSUE_SERVER_COMMAND: command:string -> void
 PRECACHE_MODEL: name:string -> void
-PRECACHE_SOUND: name:string, preload:bool -> bool
-IS_SOUND_PRECACHED: name:string -> bool
-GET_SOUND_DURATION: name:string -> float
+ADD_RESOURCE: name:string -> void
 CREATE_RAY_1: ray_type:int, vec1:pointer, vec2:pointer -> pointer
 CREATE_RAY_2: vec1:pointer, vec2:pointer, vec3:pointer, vec4:pointer -> pointer
 TRACE_RAY: ray:pointer, pTrace:pointer, trace_filter:pointer, flags:uint -> void
@@ -21,10 +19,9 @@ TRACE_FILTER_PROXY_SET_TRACE_TYPE_CALLBACK: trace_filter:pointer, callback:point
 TRACE_FILTER_PROXY_SET_SHOULD_HIT_ENTITY_CALLBACK: trace_filter:pointer, callback:pointer -> void
 NEW_TRACE_RESULT: -> pointer
 GET_TICKED_TIME: -> double
-QUEUE_TASK_FOR_NEXT_FRAME: callback:func -> void
 QUEUE_TASK_FOR_FRAME: tick:int, callback:func -> void
-QUEUE_TASK_FOR_NEXT_WORLD_UPDATE: callback:func -> void
 GET_VALVE_INTERFACE: interfaceType:int, interfaceName:string -> pointer
 GET_COMMAND_PARAM_VALUE: param:string, dataType:DataType_t, defaultValue:any -> any
 PRINT_TO_SERVER_CONSOLE: msg:string -> void
 DISCONNECT_CLIENT: slot:int, reason:int -> void
+CLIENT_PRINT: slot:int, hudDestination:int, msg:string -> void

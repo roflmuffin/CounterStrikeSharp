@@ -17,11 +17,13 @@ public class ConVarTests
         Assert.NotNull(boolConVar);
         Assert.Equal("sv_cheats", boolConVar.Name);
         Assert.Equal(ConVarType.Bool, boolConVar.Type);
-        Assert.Equal(ConVarFlags.FCVAR_NOTIFY | ConVarFlags.FCVAR_REPLICATED | ConVarFlags.FCVAR_RELEASE, boolConVar.Flags);
+        Assert.Equal(ConVarFlags.FCVAR_NOTIFY | ConVarFlags.FCVAR_REPLICATED | ConVarFlags.FCVAR_RELEASE | ConVarFlags.FCVAR_GAMEINFO_CANNOT_OVERRIDE, boolConVar.Flags);
         Assert.True(boolConVar.Value);
 
         boolConVar.Value = false;
         Assert.False(boolConVar.Value);
+        Server.ExecuteCommand("sv_cheats 1");
+        await WaitOneFrame();
     }
 
     [Fact]

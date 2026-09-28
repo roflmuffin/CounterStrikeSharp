@@ -31,7 +31,7 @@ jobs:
       with:
         versionSpec: 6.0.x
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         fetch-depth: 0
 
@@ -64,7 +64,7 @@ jobs:
             echo>>"%GITHUB_ENV%" %%a=%%b
           )
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: "recursive"
 
@@ -100,7 +100,7 @@ jobs:
           echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
           echo "SEMVER=${{ needs.setup.outputs.gitversion_semver }}" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: "recursive"
 
@@ -132,12 +132,12 @@ jobs:
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       # We don't need expensive submodules for the managed side.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build runtime v${{ needs.setup.outputs.gitversion_semver }}
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: "10.0.x"
 
       - name: Install dependencies
         run: dotnet restore managed/CounterStrikeSharp.sln
@@ -183,7 +183,7 @@ jobs:
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -207,8 +207,8 @@ jobs:
         run: |
           mkdir -p build/linux/addons/counterstrikesharp/api
           mkdir -p build/windows/addons/counterstrikesharp/api
-          cp -r build/api/net8.0/publish/* build/linux/addons/counterstrikesharp/api
-          cp -r build/api/net8.0/publish/* build/windows/addons/counterstrikesharp/api
+          cp -r build/api/net10.0/publish/* build/linux/addons/counterstrikesharp/api
+          cp -r build/api/net10.0/publish/* build/windows/addons/counterstrikesharp/api
 
       - name: Zip Builds
         run: |
@@ -218,11 +218,11 @@ jobs:
       - name: Add dotnet runtime
         run: |
           mkdir -p build/linux/addons/counterstrikesharp/dotnet
-          curl -s -L https://download.visualstudio.microsoft.com/download/pr/c1371dc2-eed2-47be-9af3-ae060dbe3c7d/bd509e0a87629764ed47608466d183e6/aspnetcore-runtime-8.0.3-linux-x64.tar.gz \
+          curl -s -L https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/10.0.3/aspnetcore-runtime-10.0.3-linux-x64.tar.gz \
           | tar xvz -C build/linux/addons/counterstrikesharp/dotnet
 
           mkdir -p build/windows/addons/counterstrikesharp/dotnet
-          curl -s -L https://download.visualstudio.microsoft.com/download/pr/086d1dd6-57a5-437a-a1ef-549cf702fb48/dd4a8fe6c53a1016a414d6f2925c1323/aspnetcore-runtime-8.0.3-win-x64.zip -o dotnet.zip
+          curl -s -L https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/10.0.3/aspnetcore-runtime-10.0.3-win-x64.zip -o dotnet.zip
           unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
 
       - name: Zip Builds
@@ -258,6 +258,7 @@ jobs:
           dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: Send Notification to Discord
+        if: ${{ !contains(github.ref_name, '-alpha') && !contains(github.ref_name, '-beta') && !contains(github.ref_name, '-rc') }}
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.2

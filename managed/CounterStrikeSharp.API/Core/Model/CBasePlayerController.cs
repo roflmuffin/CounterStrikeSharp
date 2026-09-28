@@ -16,6 +16,6 @@ public partial class CBasePlayerController
 
         if (pawn is null) return;
         if (!pawn.IsValid) return;
-        VirtualFunctions.CBasePlayerController_SetPawnFunc.Invoke(this, pawn, true, false);
+        VirtualFunctions.CBasePlayerController_SetPawnFullFunc.Invoke(this, pawn, true, false, false, false);
     }
 }

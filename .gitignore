@@ -1,8 +1,9 @@
+.env
+
 .ccls-cache/
 .cmake/
 cmake-build-*/
 .kdev4/
-generated/
 !**/protobuf/generated/
 
 # configure_file auto generated.
@@ -11,6 +12,7 @@ configs/addons/metamod/counterstrikesharp.vdf
 libraries/mono/
 
 CMakeSettings.json
+.vscode/compile_commands.json
 
 build-*/
 build/

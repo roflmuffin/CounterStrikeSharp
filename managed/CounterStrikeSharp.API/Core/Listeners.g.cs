@@ -38,6 +38,45 @@ namespace CounterStrikeSharp.API.Core
         public delegate void OnEntityParentChanged(CEntityInstance entity, CEntityInstance newParent);
 
         /// <summary>
+        /// Called when an entity is about to take damage.
+        /// Returning HookResult.Handled or greater will prevent the entire damage application process.
+        /// </summary>
+        /// <param name="entity">The entity that is about to take damage.</param>
+        /// <param name="info">The damage info.</param>
+        [ListenerName("OnEntityTakeDamagePre")]
+        public delegate HookResult OnEntityTakeDamagePre(CBaseEntity entity, CTakeDamageInfo info);
+
+        /// <summary>
+        /// Called when an entity has taken damage.
+        /// Cannot be prevented; the damage has already been applied.
+        /// Modifications to <paramref name="info"/> at this stage have no effect.
+        /// </summary>
+        /// <param name="entity">The entity that took damage.</param>
+        /// <param name="info">The damage info.</param>
+        /// <param name="result">The result of the damage application.</param>
+        [ListenerName("OnEntityTakeDamagePost")]
+        public delegate void OnEntityTakeDamagePost(CBaseEntity entity, CTakeDamageInfo info, CTakeDamageResult result);
+
+        /// <summary>
+        /// Called when a player (pawn) is about to take damage.
+        /// Returning HookResult.Handled or greater will prevent the entire damage application process.
+        /// </summary>
+        /// <param name="player">The player (pawn) that is about to take damage.</param>
+        /// <param name="info">The damage info.</param>
+        [ListenerName("OnPlayerTakeDamagePre")]
+        public delegate HookResult OnPlayerTakeDamagePre(CCSPlayerPawn player, CTakeDamageInfo info);
+
+        /// <summary>
+        /// Called when a player (pawn) has taken damage.
+        /// Cannot be prevented; the damage has already been applied.
+        /// Modifications to <paramref name="info"/> at this stage have no effect.
+        /// </summary>
+        /// <param name="player">The player (pawn) that took damage.</param>
+        /// <param name="info">The damage info.</param>
+        [ListenerName("OnPlayerTakeDamagePost")]
+        public delegate void OnPlayerTakeDamagePost(CCSPlayerPawn player, CTakeDamageInfo info, CTakeDamageResult result);
+
+        /// <summary>
         /// Called on every server tick (64 per second).
         /// This handler should avoid containing expensive operations.
         /// </summary>
@@ -184,9 +223,37 @@ namespace CounterStrikeSharp.API.Core
         public delegate void CheckTransmit([CastFrom(typeof(nint))] CCheckTransmitInfoList infoList);
 
         /// <summary>
+        /// Called in the entity pre-think when the player's buttons have changed.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="pressed"></param>
+        /// <param name="released"></param>
+        [ListenerName("OnPlayerButtonsChanged")]
+        public delegate void OnPlayerButtonsChanged(CCSPlayerController player, PlayerButtons pressed, PlayerButtons released);
+
+
+        /// <summary>
+        /// Called when a player sends a chat message.
+        /// </summary>
+        /// <param name="player">The player who sent the chat message.</param>
+        /// <param name="message">The content of the chat message.</param>
+        /// <param name="teamChat">If the chat message was sent to team only.</param>
+        [ListenerName("OnPlayerChat")]
+        public delegate void OnPlayerChat(CCSPlayerController player, string message, bool teamChat);
+
+        /// <summary>
         /// Called when all metamod plugins are loaded.
         /// </summary>
         [ListenerName("OnMetamodAllPluginsLoaded")]
         public delegate void OnMetamodAllPluginsLoaded();
+
+        /// <summary>
+        /// Called when the player clicks on the custom hud.
+        /// </summary>
+        /// <param name="player">The player clicked on the custom hud</param>
+        /// <param name="customLayout">Entity custom hud</param>
+        /// <param name="buttonId">ID of the button that was clicked</param>
+        [ListenerName("OnCustomHudClicked")]
+        public delegate void OnCustomHudClicked(CCSPlayerController player, CCSCustomHudLayout customLayout, string buttonId);
     }
 }

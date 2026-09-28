@@ -14,279 +14,369 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
+
 namespace CounterStrikeSharp.API.Modules.Memory;
 
-public partial class VirtualFunctionWithReturn<TResult>
+public partial class VirtualFunctionWithReturn<TArg1, TResult> : MemoryFunctionWithReturn<TArg1, TResult>
 {
-    private Func<TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TResult>(signature);
-    }
-    
-    public VirtualFunctionWithReturn(string signature, string binarypath)
-    {
-        this.Function = VirtualFunction.Create<TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke()
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        return this.Function();
+    }
+
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TResult>
+public partial class VirtualFunctionWithReturn<TArg1, TArg2, TResult> : MemoryFunctionWithReturn<TArg1, TArg2, TResult>
 {
-    private Func<TArg1, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TResult>
+public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TResult> : MemoryFunctionWithReturn<TArg1, TArg2, TArg3, TResult>
 {
-    private Func<TArg1, TArg2, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TResult>
+public partial class
+    VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TResult> : MemoryFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TResult>
 {
-    private Func<TArg1, TArg2, TArg3, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2, arg3);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TResult>
+public partial class
+    VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> : MemoryFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5,
+    TResult>
 {
-    private Func<TArg1, TArg2, TArg3, TArg4, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2, arg3, arg4);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>
+public partial class
+    VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> : MemoryFunctionWithReturn<TArg1, TArg2, TArg3, TArg4,
+    TArg5, TArg6, TResult>
 {
-    private Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2, arg3, arg4, arg5);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>
+public partial class
+    VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> : MemoryFunctionWithReturn<TArg1, TArg2, TArg3,
+    TArg4, TArg5, TArg6, TArg7, TResult>
 {
-    private Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2, arg3, arg4, arg5, arg6);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>
+public partial class
+    VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> : MemoryFunctionWithReturn<TArg1, TArg2,
+    TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>
 {
-    private Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>
+public partial class
+    VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> : MemoryFunctionWithReturn<TArg1,
+    TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>
 {
-    private Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7, TArg8 arg8)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>
+public partial class
+    VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> : MemoryFunctionWithReturn<
+    TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>
 {
-    private Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
+    public VirtualFunctionWithReturn(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7, TArg8 arg8, TArg9 arg9)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        return this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
-    }
-}
-
-public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>
-{
-    private Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> Function;
-
-    public VirtualFunctionWithReturn(string signature)
-    {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(signature);
     }
 
-    public VirtualFunctionWithReturn(string signature, string binarypath)
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(signature, binarypath);
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
     {
-        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(objectPtr, offset);
     }
 
-    public TResult Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7, TArg8 arg8, TArg9 arg9, TArg10 arg10)
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
     {
-        return this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }

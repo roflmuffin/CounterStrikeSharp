@@ -41,19 +41,29 @@ CREATE_SETTER_FUNCTION(Vector, float, Z, Vector*, obj->z = value);
 std::vector<Vector*> managed_vectors;
 std::vector<QAngle*> managed_angles;
 extern std::vector<IGameEvent*> managed_game_events;
-extern std::vector<ValveFunction*> m_managed_ptrs;
+
+extern size_t GetVirtualFunctionCacheSize();
 
 CON_COMMAND(css_dump_leaks, "dump css leaks")
 {
+    auto virtualFunctionCount = GetVirtualFunctionCacheSize();
     Msg("===== Dumping leaks =====\n");
     Msg("\tVector: %i (%zu B)\n", managed_vectors.size(), managed_vectors.size() * sizeof(Vector));
     Msg("\tAngles: %i (%zu B)\n", managed_angles.size(), managed_angles.size() * sizeof(QAngle));
     Msg("\tGameEvents: %i (~B)\n", managed_game_events.size());
-    Msg("\tVirtual Functions: %i (%zu B)\n", m_managed_ptrs.size(), m_managed_ptrs.size() * sizeof(ValveFunction));
+    Msg("\tVirtual Functions: %i (%zu B)\n", virtualFunctionCount, virtualFunctionCount * sizeof(ValveFunction));
     Msg("\tTotal size: %zu B\n", (managed_vectors.size() * sizeof(Vector)) + (managed_angles.size() * sizeof(QAngle)) +
-                                     (m_managed_ptrs.size() * sizeof(ValveFunction)));
+                                     (virtualFunctionCount * sizeof(ValveFunction)));
     Msg("===== Dumping leaks =====\n");
 }
+
+Vector2D* Vector2DNew(ScriptContext& script_context) { return new Vector2D(); }
+
+Vector4D* Vector4DNew(ScriptContext& script_context) { return new Vector4D(); }
+
+matrix3x4_t* Matrix3x4New(ScriptContext& script_context) { return new matrix3x4_t(); }
+
+Quaternion* QuaternionNew(ScriptContext& script_context) { return new Quaternion(); }
 
 Vector* VectorNew(ScriptContext& script_context)
 {
@@ -97,6 +107,10 @@ void NativeAngleVectors(ScriptContext& script_context)
 
 REGISTER_NATIVES(vector, {
     ScriptEngine::RegisterNativeHandler("VECTOR_NEW", VectorNew);
+    ScriptEngine::RegisterNativeHandler("VECTOR2D_NEW", Vector2DNew);
+    ScriptEngine::RegisterNativeHandler("VECTOR4D_NEW", Vector4DNew);
+    ScriptEngine::RegisterNativeHandler("MATRIX3X4_NEW", Matrix3x4New);
+    ScriptEngine::RegisterNativeHandler("QUATERNION_NEW", QuaternionNew);
     ScriptEngine::RegisterNativeHandler("ANGLE_NEW", AngleNew);
 
     ScriptEngine::RegisterNativeHandler("VECTOR_SET_X", VectorSetX);

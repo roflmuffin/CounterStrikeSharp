@@ -17,6 +17,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Plugin;
@@ -28,6 +29,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -35,6 +37,8 @@ namespace CounterStrikeSharp.API.Core
     public sealed class Application
     {
         private static Application _instance = null!;
+        public static IStringLocalizer Localizer => Instance._localizer;
+
         public ILogger Logger { get; }
 
         public static Application Instance => _instance!;
@@ -48,11 +52,12 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
         private readonly IPlayerLanguageManager _playerLanguageManager;
         private readonly ICommandManager _commandManager;
+        private readonly IStringLocalizer _localizer;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
             IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager,
-            ICommandManager commandManager)
+            ICommandManager commandManager, IStringLocalizer localizer)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -62,11 +67,28 @@ namespace CounterStrikeSharp.API.Core
             _pluginContextQueryHandler = pluginContextQueryHandler;
             _playerLanguageManager = playerLanguageManager;
             _commandManager = commandManager;
+            _localizer = localizer;
             _instance = this;
         }
 
         public void Start()
         {
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            {
+                if ((e.ExceptionObject as Exception) is PluginTerminationException pluginEx)
+                {
+                    return;
+                }
+            };
+
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+            {
+                if (e.Exception.InnerExceptions.Any(ex => ex is PluginTerminationException))
+                {
+                    e.SetObserved();
+                }
+            };
+
             Logger.LogInformation("CounterStrikeSharp is starting up...");
 
             _coreConfig.Load();
@@ -101,6 +123,8 @@ namespace CounterStrikeSharp.API.Core
                         MenuManager.OnKeyPress(player, key);
                     }));
             }
+
+            Server.Initialize();
         }
 
         [RequiresPermissions("@css/generic")]
@@ -141,6 +165,12 @@ namespace CounterStrikeSharp.API.Core
                             sb.Append(plugin.Plugin.ModuleDescription);
                         }
 
+                        if (plugin.State == PluginState.Unloaded && !string.IsNullOrEmpty(plugin.TerminationReason))
+                        {
+                            sb.Append("\n");
+                            sb.AppendFormat("    Termination Reason: {0}", plugin.TerminationReason);
+                        }
+
                         info.ReplyToCommand(sb.ToString());
                     }
 
@@ -159,7 +189,13 @@ namespace CounterStrikeSharp.API.Core
                     // If our argument doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                     // We'll assume we have a full path if we have ".dll".
                     var path = info.GetArg(2);
-                    path = Path.Combine(_scriptHostConfiguration.RootPath, !path.EndsWith(".dll") ? $"plugins/{path}/{path}.dll" : path);
+
+                    path = Path.Combine(
+                        _scriptHostConfiguration.RootPath,
+                        !path.EndsWith(".dll")
+                            ? $"plugins/{path}/{Path.GetFileName(path)}.dll"
+                            : path
+                    );
 
                     var plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
 

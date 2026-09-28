@@ -14,274 +14,365 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
+
 namespace CounterStrikeSharp.API.Modules.Memory;
 
-public partial class VirtualFunctionVoid
+public partial class VirtualFunctionVoid<TArg1> : MemoryFunctionVoid<TArg1>
 {
-    private Action Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid(signature, binarypath);
     }
 
-    public void Invoke()
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function();
+    }
+
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1>
+public partial class VirtualFunctionVoid<TArg1, TArg2> : MemoryFunctionVoid<TArg1, TArg2>
 {
-    private Action<TArg1> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2>
+public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3> : MemoryFunctionVoid<TArg1, TArg2, TArg3>
 {
-    private Action<TArg1, TArg2> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3>
+public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4> : MemoryFunctionVoid<TArg1, TArg2, TArg3, TArg4>
 {
-    private Action<TArg1, TArg2, TArg3> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2, arg3);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4>
+public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5> : MemoryFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5>
 {
-    private Action<TArg1, TArg2, TArg3, TArg4> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2, arg3, arg4);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5>
+public partial class
+    VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> : MemoryFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
 {
-    private Action<TArg1, TArg2, TArg3, TArg4, TArg5> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2, arg3, arg4, arg5);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
+public partial class
+    VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> : MemoryFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6,
+    TArg7>
 {
-    private Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2, arg3, arg4, arg5, arg6);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>
+public partial class
+    VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> : MemoryFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5,
+    TArg6, TArg7, TArg8>
 {
-    private Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
+public partial class
+    VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> : MemoryFunctionVoid<TArg1, TArg2, TArg3, TArg4,
+    TArg5, TArg6, TArg7, TArg8, TArg9>
 {
-    private Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7, TArg8 arg8)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }
 
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>
+public partial class
+    VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> : MemoryFunctionVoid<TArg1, TArg2, TArg3,
+    TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>
 {
-    private Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> Function;
-
-    public VirtualFunctionVoid(string signature)
+    public VirtualFunctionVoid(string signature) : base(signature)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7, TArg8 arg8, TArg9 arg9)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
     {
-        this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
-    }
-}
-
-public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>
-{
-    private Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> Function;
-
-    public VirtualFunctionVoid(string signature)
-    {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(signature);
     }
 
-    public VirtualFunctionVoid(string signature, string binarypath)
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(signature, binarypath);
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset)
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
     {
-        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(objectPtr, offset);
     }
 
-    public void Invoke(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6, TArg7 arg7, TArg8 arg8, TArg9 arg9, TArg10 arg10)
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
     {
-        this.Function(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
+    {
     }
 }

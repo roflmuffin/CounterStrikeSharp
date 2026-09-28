@@ -13,6 +13,15 @@ public class CStrongHandle<T> : NativeObject
     public unsafe ulong Value => Unsafe.Read<ulong>((void*)Handle);
 }
 
+public class CStrongHandleCopyable<T> : NativeObject
+{
+    public CStrongHandleCopyable(IntPtr pointer) : base(pointer)
+    {
+    }
+
+    public unsafe ulong Value => Unsafe.Read<ulong>((void*)Handle);
+}
+
 public class CWeakHandle<T> : NativeObject
 {
     public CWeakHandle(IntPtr pointer) : base(pointer)

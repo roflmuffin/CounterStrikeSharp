@@ -65,7 +65,7 @@ public class CommandManager : ICommandManager
         var info = new CommandInfo(commandInfo, caller);
 
         var name = info.GetArg(0).ToLower();
-        
+
         using var temporaryCulture = new WithTemporaryCulture(caller.GetLanguage());
 
         if (_commandDefinitions.TryGetValue(name, out var handler))
@@ -81,7 +81,7 @@ public class CommandManager : ICommandManager
 
                 // We do not need to do permission checks on commands executed from the server console.
                 // The server will always be allowed to execute commands (unless marked as client only like above)
-                if (caller != null) 
+                if (caller != null)
                 {
                     // Do not execute command if we do not have the correct permissions.
                     var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
@@ -120,11 +120,12 @@ public class CommandManager : ICommandManager
                         if (!attr.CanExecuteCommand(caller))
                         {
                             var responseStr = (attr.GetType() == typeof(RequiresPermissions)) ?
-                            "You are missing the correct permissions" : "You do not have one of the correct permissions";
+                                Application.Localizer["Missing permissions"] :
+                                Application.Localizer["Missing one permission"];
 
                             var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
                             flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
-                            info.ReplyToCommand($"[CSS] {responseStr} ({string.Join(", ", flags)}) to execute this command.");
+                            info.ReplyToCommand(Application.Localizer["Command permission denied", responseStr, string.Join(", ", flags)]);
 
                             return;
                         }

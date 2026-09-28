@@ -50,7 +50,7 @@ public partial class CCSPlayerController
     {
         Guard.IsValidEntity(this);
 
-        VirtualFunctions.ClientPrint(Handle, HudDestination.Chat, message, 0, 0, 0, 0);
+        NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Chat, message);
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
@@ -58,7 +58,7 @@ public partial class CCSPlayerController
     {
         Guard.IsValidEntity(this);
 
-        VirtualFunctions.ClientPrint(Handle, HudDestination.Center, message, 0, 0, 0, 0);
+        NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Center, message);
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
@@ -66,7 +66,7 @@ public partial class CCSPlayerController
     {
         Guard.IsValidEntity(this);
 
-        VirtualFunctions.ClientPrint(Handle, HudDestination.Alert, message, 0, 0, 0, 0);
+        NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Alert, message);
     }
 
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);

@@ -19,15 +19,33 @@
 #include <map>
 #include <vector>
 
+#include "core/function.h"
 #include "core/globals.h"
+#include "core/hooks.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
 #include "entitysystem.h"
 #include "scripting/callback_manager.h"
+#include "core/recipientfilters.h"
 
 #include <variant.h>
 
 #include "vprof.h"
+
+class CTakeDamageResult;
+class CTakeDamageInfo;
+class CCheckTransmitInfoHack
+{
+  public:
+    CBitVec<16384>* m_pTransmitEntity;
+
+  private:
+    [[maybe_unused]] int8_t m_pad8[568];
+
+  public:
+    int32_t m_nPlayerSlot;
+    bool m_bFullUpdate;
+};
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -45,15 +63,18 @@ class CEntityListener : public IEntityListener
 class CCheckTransmitInfoList
 {
   public:
-    CCheckTransmitInfoList(CCheckTransmitInfo** pInfoInfoList, int nInfoCount);
+    CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInfoList, int nInfoCount);
 
   private:
-    CCheckTransmitInfo** infoList;
+    CCheckTransmitInfoHack** infoList;
     int infoCount;
 };
 
 class EntityManager : public GlobalClass
 {
+  private:
+    HookSet m_hooks;
+
     friend CEntityListener;
 
   public:
@@ -65,20 +86,28 @@ class EntityManager : public GlobalClass
     void UnhookEntityOutput(const char* szClassname, const char* szOutput, CallbackT fnCallback, HookMode mode);
     CEntityListener entityListener;
     std::map<OutputKey_t, CallbackPair*> m_pHookMap;
+    bool Hook_OnTakeDamage_Alive_Pre(CBaseEntity* entity, CTakeDamageInfo* info, CTakeDamageResult* pResult);
+    void Hook_OnTakeDamage_Alive_Post(CBaseEntity* entity, CTakeDamageInfo* info, CTakeDamageResult* pResult);
+    ValveFunction* Func_OnTakeDamage;
 
   private:
-    void CheckTransmit(CCheckTransmitInfo** pInfoInfoList,
-                       int nInfoCount,
-                       CBitVec<16384>& unionTransmitEdicts,
-                       const Entity2Networkable_t** pNetworkables,
-                       const uint16* pEntityIndicies,
-                       int nEntityIndices,
-                       bool bEnablePVSBits);
+    KHook::Return<void> CheckTransmit(ISource2GameEntities* hookThis,
+                                      CCheckTransmitInfoHack** ppInfoList,
+                                      uint32_t infoCount,
+                                      CBitVec<16384>& unionTransmitEdicts1,
+                                      CBitVec<16384>& unionTransmitEdicts2,
+                                      const Entity2Networkable_t** pNetworkables,
+                                      const uint16* pEntityIndicies,
+                                      uint32_t nEntities);
 
     ScriptCallback* on_entity_spawned_callback;
     ScriptCallback* on_entity_created_callback;
     ScriptCallback* on_entity_deleted_callback;
     ScriptCallback* on_entity_parent_changed_callback;
+    ScriptCallback* on_entity_take_damage_pre_callback;
+    ScriptCallback* on_entity_take_damage_post_callback;
+    ScriptCallback* on_player_take_damage_pre_callback;
+    ScriptCallback* on_player_take_damage_post_callback;
     ScriptCallback* check_transmit;
 
     std::string m_profile_name;
@@ -129,16 +158,32 @@ class CEntityIOOutput
     EntityIOOutputDesc_t* m_pDesc;
 };
 
-typedef void (*FireOutputInternal)(CEntityIOOutput* const, CEntityInstance*, CEntityInstance*, const CVariant* const, float);
+typedef void (*FireOutputInternal)(
+    CEntityIOOutput* const, CEntityInstance*, CEntityInstance*, const CVariant* const, float flDelay, void* unk1, char* unk2);
 
-static void DetourFireOutputInternal(
-    CEntityIOOutput* const pThis, CEntityInstance* pActivator, CEntityInstance* pCaller, const CVariant* const value, float flDelay);
+static KHook::Return<void> DetourFireOutputInternal(CEntityIOOutput* const pThis,
+                                                    CEntityInstance* pActivator,
+                                                    CEntityInstance* pCaller,
+                                                    const CVariant* const value,
+                                                    float flDelay,
+                                                    void* unk1,
+                                                    char* unk2);
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
+inline void (*CBaseEntity_DispatchSpawn)(void* pEntity, CEntityKeyValues* pKeyValues);
+
+inline int64 (*CBaseEntity_TakeDamageOld)(CBaseEntity* pThis, CTakeDamageInfo* pInfo, CTakeDamageResult* pResult);
+static int64 DetourCBaseEntity_TakeDamageOld(CBaseEntity* pThis, CTakeDamageInfo* pInfo, CTakeDamageResult* pResult);
+
 // Do it in here because i didn't found a good place to do this
-inline void (*CEntityInstance_AcceptInput)(
-    CEntityInstance* pThis, const char* pInputName, CEntityInstance* pActivator, CEntityInstance* pCaller, variant_t* value, int nOutputID);
+inline void (*CEntityInstance_AcceptInput)(CEntityInstance* pThis,
+                                           const char* pInputName,
+                                           CEntityInstance* pActivator,
+                                           CEntityInstance* pCaller,
+                                           variant_t* value,
+                                           int nOutputID,
+                                           void*);
 
 inline void (*CEntitySystem_AddEntityIOEvent)(CEntitySystem* pEntitySystem,
                                               CEntityInstance* pTarget,
@@ -147,7 +192,8 @@ inline void (*CEntitySystem_AddEntityIOEvent)(CEntitySystem* pEntitySystem,
                                               CEntityInstance* pCaller,
                                               variant_t* value,
                                               float delay,
-                                              int nOutputID);
+                                              void*,
+                                              void*);
 
 typedef uint32 SoundEventGuid_t;
 
@@ -178,38 +224,42 @@ enum gender_t : uint8
 
 struct EmitSound_t
 {
-    EmitSound_t()
-        : m_nChannel(0), m_pSoundName(0), m_flVolume(VOL_NORM), m_SoundLevel(SNDLVL_NONE), m_nFlags(0), m_nPitch(PITCH_NORM), m_pOrigin(0),
-          m_flSoundTime(0.0f), m_pflSoundDuration(0), m_bEmitCloseCaption(true), m_bWarnOnMissingCloseCaption(false),
-          m_bWarnOnDirectWaveReference(false), m_nSpeakerEntity(-1), m_UtlVecSoundOrigin(), m_nForceGuid(0), m_SpeakerGender(GENDER_NONE)
-    {
-    }
-    int m_nChannel;
+    // clang-format off
+	EmitSound_t() :
+		m_pSoundName( 0 ),
+		m_flVolume( VOL_NORM ),
+		m_flSoundTime( 0.0f ),
+		m_nSpeakerEntity( -1 ),
+		m_nForceGuid( 0 ),
+		m_nSourceSoundscape( 0 ),
+		m_nPitch( PITCH_NORM )
+	{
+	}
+
+    // clang-format on
     const char* m_pSoundName;
-    float m_flVolume;
-    soundlevel_t m_SoundLevel;
-    int m_nFlags;
-    int m_nPitch;
-    const Vector* m_pOrigin;
-    float m_flSoundTime;
-    float* m_pflSoundDuration;
-    bool m_bEmitCloseCaption;
-    bool m_bWarnOnMissingCloseCaption;
-    bool m_bWarnOnDirectWaveReference;
+    Vector m_vecOrigin;
+    float m_flVolume; // soundevent's volume_atten
+    float m_flSoundTime; // sound delay
     CEntityIndex m_nSpeakerEntity;
-    CUtlVector<Vector, CUtlMemory<Vector, int>> m_UtlVecSoundOrigin;
     SoundEventGuid_t m_nForceGuid;
-    gender_t m_SpeakerGender;
+    CEntityIndex m_nSourceSoundscape;
+    uint16 m_nPitch; // Pretty sure this is unused.
+    // (1<<3) overrides the source soundscape with the speaker entity.
+    // (1<<4) emits sound at specified position, otherwise attached to entity index.
+    // Possibly share the same flags as SndOpEventGuid_t.
+    uint8 m_nFlags;
 };
 
 struct SndOpEventGuid_t
 {
     SoundEventGuid_t m_nGuid;
     uint64 m_hStackHash;
+    uint64 pad; // size might be incorrect
 };
 
-inline SndOpEventGuid_t(FASTCALL* CBaseEntity_EmitSoundFilter)(IRecipientFilter& filter, CEntityIndex ent, const EmitSound_t& params);
+inline SndOpEventGuid_t(FASTCALL* CBaseEntity_EmitSoundFilter)(CRecipientFilter& filter, CEntityIndex ent, const EmitSound_t& params);
 
 SndOpEventGuid_t
-EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume = 1.0f, float flPitch = 1.0f);
+EntityEmitSoundFilter(CRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume = 1.0f, float flPitch = 1.0f);
 } // namespace counterstrikesharp

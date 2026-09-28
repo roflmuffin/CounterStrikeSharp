@@ -3,3 +3,5 @@ IS_SCHEMA_FIELD_NETWORKED: className:string, propName:string -> bool
 GET_SCHEMA_VALUE_BY_NAME: instance:pointer, returnType:int, className:string, propName:string -> any
 SET_SCHEMA_VALUE_BY_NAME: instance:pointer, returnType:int, className:string, propName:string, value:any -> void
 GET_SCHEMA_CLASS_SIZE: className:string -> int
+SCHEMA_SET_STATE_CHANGED: instance:pointer, offset:uint, arrayIndex:uint, pathIndex:uint -> void
+SCHEMA_NETWORK_STATE_CHANGED: instance:pointer, offset:uint, arrayIndex:uint, pathIndex:uint -> void

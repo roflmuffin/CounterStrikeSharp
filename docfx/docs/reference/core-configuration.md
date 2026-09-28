@@ -54,3 +54,6 @@ When enabled, CS# will check for any updates to the gamedata.json file and autom
 
 ## AutoUpdateURL
 The URL to use for the auto-update feature. This URL should point to a JSON file that contains the latest version of the gamedata.json file.
+
+## MaximumFrameTasksExecutedPerTick
+The maximum amount of `NextFrame` and `NextWorldUpdate` tasks that can be executed on a single game frame. The queue totals are tracked separately. Defaults to 1024. This value can be reduced to prevent long frame burstiness.

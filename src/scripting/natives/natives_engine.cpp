@@ -14,7 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-#include <IEngineSound.h>
+#include "igameeventsystem.h"
+
 #include <edict.h>
 #include <eiface.h>
 #include <filesystem.h>
@@ -28,9 +29,13 @@
 #include "core/memory.h"
 #include "core/log.h"
 #include "core/function.h"
+#include "core/recipientfilters.h"
 #include "core/managers/player_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/tick_scheduler.h"
+#include "core/game_system.h"
+#include "networksystem/inetworkmessages.h"
+#include "usermessages.pb.h"
 
 #if _WIN32
 #undef GetCurrentTime
@@ -90,69 +95,13 @@ void PrecacheModel(ScriptContext& script_context)
     globals::engine->PrecacheGeneric(name);
 }
 
-bool PrecacheSound(ScriptContext& script_context)
-{
-    auto [name, preload] = script_context.GetArguments<const char*, bool>();
-
-    return globals::engineSound->PrecacheSound(name, preload);
-}
-
-bool IsSoundPrecached(ScriptContext& script_context)
+void AddResource(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
-
-    return globals::engineSound->IsSoundPrecached(name);
+    m_exportResourceManifest->AddResource(name);
 }
-
-float GetSoundDuration(ScriptContext& script_context)
-{
-    auto name = script_context.GetArgument<const char*>(0);
-
-    return globals::engineSound->GetSoundDuration(name);
-}
-
-// void EmitSound(ScriptContext& script_context)
-//{
-//    auto client = script_context.GetArgument<int>(0);
-//    auto entitySource = script_context.GetArgument<int>(1);
-//    auto channel = script_context.GetArgument<int>(2);
-//    auto sound = script_context.GetArgument<const char*>(3);
-//    auto volume = script_context.GetArgument<float>(4);
-//    auto attenuation = script_context.GetArgument <float>(5);
-//    auto flags = script_context.GetArgument<int>(6);
-//    auto pitch = script_context.GetArgument<int>(7);
-//    auto origin = script_context.GetArgument<Vector*>(8);
-//    auto direction = script_context.GetArgument<Vector*>(9);
-//
-//    auto recipients = new CustomRecipientFilter();
-//    recipients->AddPlayer(client);
-//
-//    globals::engineSound->EmitSound(static_cast<IRecipientFilter&>(*recipients),
-//                                     entitySource,channel, sound, -1, sound, volume,
-//                                     attenuation, 0, flags, pitch, origin, direction);
-// }
 
 double GetTickedTime(ScriptContext& script_context) { return globals::timerSystem.GetTickedTime(); }
-
-void QueueTaskForNextFrame(ScriptContext& script_context)
-{
-    auto func = script_context.GetArgument<void*>(0);
-
-    typedef void(voidfunc)(void);
-    globals::mmPlugin->AddTaskForNextFrame([func]() {
-        reinterpret_cast<voidfunc*>(func)();
-    });
-}
-
-void QueueTaskForNextWorldUpdate(ScriptContext& script_context)
-{
-    auto func = script_context.GetArgument<void*>(0);
-
-    typedef void(voidfunc)(void);
-    globals::serverManager.AddTaskForNextWorldUpdate([func]() {
-        reinterpret_cast<voidfunc*>(func)();
-    });
-}
 
 void QueueTaskForFrame(ScriptContext& script_context)
 {
@@ -236,6 +185,28 @@ void DisconnectClient(ScriptContext& scriptContext)
     globals::engineServer2->DisconnectClient(slot, disconnectReason);
 }
 
+void ClientPrint(ScriptContext& scriptContext)
+{
+    auto slot = scriptContext.GetArgument<int>(0);
+    auto hudDestination = scriptContext.GetArgument<int>(1);
+    auto message = scriptContext.GetArgument<const char*>(2);
+
+    INetworkMessageInternal* pNetMsg = globals::networkMessages->FindNetworkMessagePartial("TextMsg");
+    auto data = pNetMsg->AllocateMessage()->ToPB<CUserMessageTextMsg>();
+
+    data->set_dest(hudDestination);
+    data->add_param(message);
+
+    CPlayerBitVec recipients;
+    recipients.Set(slot);
+
+    globals::gameEventSystem->PostEventAbstract(CSplitScreenSlot(-1), false, ABSOLUTE_PLAYER_LIMIT,
+                                                reinterpret_cast<const uint64*>(recipients.Base()), pNetMsg, data, 0,
+                                                NetChannelBufType_t::BUF_RELIABLE);
+
+    delete data;
+}
+
 REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_GAME_DIRECTORY", GetGameDirectory);
     ScriptEngine::RegisterNativeHandler("GET_MAP_NAME", GetMapName);
@@ -248,18 +219,14 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_MAX_CLIENTS", GetMaxClients);
     ScriptEngine::RegisterNativeHandler("ISSUE_SERVER_COMMAND", ServerCommand);
     ScriptEngine::RegisterNativeHandler("PRECACHE_MODEL", PrecacheModel);
-    ScriptEngine::RegisterNativeHandler("PRECACHE_SOUND", PrecacheSound);
-    ScriptEngine::RegisterNativeHandler("IS_SOUND_PRECACHED", IsSoundPrecached);
-    ScriptEngine::RegisterNativeHandler("GET_SOUND_DURATION", GetSoundDuration);
-    // ScriptEngine::RegisterNativeHandler("EMIT_SOUND", EmitSound);
+    ScriptEngine::RegisterNativeHandler("ADD_RESOURCE", AddResource);
 
     ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
-    ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
-    ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_WORLD_UPDATE", QueueTaskForNextWorldUpdate);
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_FRAME", QueueTaskForFrame);
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);
     ScriptEngine::RegisterNativeHandler("DISCONNECT_CLIENT", DisconnectClient);
+    ScriptEngine::RegisterNativeHandler("CLIENT_PRINT", ClientPrint);
 })
 } // namespace counterstrikesharp

@@ -1,3 +1,4 @@
+using FastGenericNew;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ public partial class NetworkedVector<T> : NativeObject, IReadOnlyCollection<T>
                 throw new NotSupportedException("Networked vectors currently only support CHandle<T>");
             }
 
-            return (T)Activator.CreateInstance(typeof(T), NativeAPI.GetNetworkVectorElementAt(Handle, index));
+            return FastNew.CreateInstance<T, IntPtr>(NativeAPI.GetNetworkVectorElementAt(Handle, index));
         }
     }
 

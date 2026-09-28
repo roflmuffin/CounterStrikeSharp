@@ -53,20 +53,27 @@ namespace CounterStrikeSharp.API.Core
 
         public abstract string ModuleName { get; }
         public abstract string ModuleVersion { get; }
-        
+
         public virtual string ModuleAuthor { get; }
-        
+
         public virtual string ModuleDescription { get; }
 
         public string ModulePath { get; set; }
 
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
         public ILogger Logger { get; set; }
-        
+
         public ICommandManager CommandManager { get; set; }
 
         public IStringLocalizer Localizer { get; set; }
-        
+
+        internal Plugin.ISelfPluginControl SelfControl { get; set; }
+
+        public void TerminateSelf(string reason)
+        {
+            SelfControl?.TerminateSelf(reason);
+        }
+
         public virtual void Load(bool hotReload)
         {
         }
@@ -74,7 +81,7 @@ namespace CounterStrikeSharp.API.Core
         public virtual void Unload(bool hotReload)
         {
         }
-        
+
         public virtual void OnAllPluginsLoaded(bool hotReload)
         {
         }
@@ -116,7 +123,7 @@ namespace CounterStrikeSharp.API.Core
 
         public readonly Dictionary<Delegate, CallbackSubscriber> Handlers =
             new Dictionary<Delegate, CallbackSubscriber>();
-        
+
         public readonly Dictionary<Delegate, CallbackSubscriber> CommandListeners =
             new Dictionary<Delegate, CallbackSubscriber>();
 
@@ -134,7 +141,7 @@ namespace CounterStrikeSharp.API.Core
         public readonly List<CommandDefinition> CommandDefinitions = new List<CommandDefinition>();
 
         public readonly List<Timer> Timers = new List<Timer>();
-        
+
         public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
 
         private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post)
@@ -158,7 +165,7 @@ namespace CounterStrikeSharp.API.Core
             var name = typeof(T).GetCustomAttribute<EventNameAttribute>()?.Name;
             RegisterEventHandlerInternal(name, handler, hookMode == HookMode.Post);
         }
-        
+
         /// <summary>
         /// De-registers a game event handler.
         /// </summary>
@@ -166,7 +173,7 @@ namespace CounterStrikeSharp.API.Core
         public void DeregisterEventHandler<T>(GameEventHandler<T> handler, HookMode hookMode = HookMode.Post) where T : GameEvent
         {
             var name = typeof(T).GetCustomAttribute<EventNameAttribute>()!.Name;
-            
+
             if (!Handlers.TryGetValue(handler, out var subscriber)) return;
 
             NativeAPI.UnhookEvent(name, subscriber.GetInputArgument(), hookMode == HookMode.Post);
@@ -197,7 +204,7 @@ namespace CounterStrikeSharp.API.Core
             CommandDefinitions.Add(definition);
             CommandManager.RegisterCommand(definition);
         }
-        
+
         private void AddCommand(CommandDefinition definition)
         {
             CommandDefinitions.Add(definition);
@@ -287,7 +294,7 @@ namespace CounterStrikeSharp.API.Core
             Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
 
-            var wrappedHandler = new Action<ScriptContext>(context =>
+            var wrappedHandler = new Func<ScriptContext, HookResult>(context =>
             {
                 var args = new object[parameterTypes.Length];
                 for (int i = 0; i < parameterTypes.Length; i++)
@@ -297,7 +304,13 @@ namespace CounterStrikeSharp.API.Core
                         args[i] = Activator.CreateInstance(parameterTypes[i], new[] { args[i] });
                 }
 
-                handler.DynamicInvoke(args);
+                var result = handler.DynamicInvoke(args);
+                if (result is HookResult hookResult)
+                {
+                    return hookResult;
+                }
+
+                return HookResult.Continue;
             });
 
             var subscriber =
@@ -321,9 +334,9 @@ namespace CounterStrikeSharp.API.Core
                 throw new ArgumentException("Listener of type T is invalid and does not have a name attribute",
                     nameof(T));
             }
-            
+
             if (!Listeners.TryGetValue(handler, out var subscriber)) return;
-            
+
             NativeAPI.RemoveListener(listenerName, subscriber.GetInputArgument());
             FunctionReference.Remove(subscriber.GetReferenceIdentifier());
             Listeners.Remove(handler);
@@ -355,6 +368,21 @@ namespace CounterStrikeSharp.API.Core
         public Timer AddTimer(float interval, Action callback, TimerFlags? flags = null)
         {
             var timer = new Timer(interval, callback, flags ?? 0);
+            Timers.Add(timer);
+            return timer;
+        }
+
+        /// <summary>
+        /// Adds a timer that will call the given callback after the specified amount of ticks.
+        /// By default will only run once unless the <see cref="TimerFlags.REPEAT"/> flag is set.
+        /// </summary>
+        /// <param name="interval">Interval/Delay in ticks</param>
+        /// <param name="callback">Code to run when timer elapses</param>
+        /// <param name="flags">Controls if the timer is a one-off, repeat or stops on map change etc.</param>
+        /// <returns>An instance of the <see cref="Timer"/></returns>
+        public Timer AddTickTimer(int tickInterval, Action callback, TimerFlags? flags = null)
+        {
+            var timer = new Timer(tickInterval * Server.TickInterval, callback, flags ?? 0);
             Timers.Add(timer);
             return timer;
         }
@@ -411,7 +439,7 @@ namespace CounterStrikeSharp.API.Core
                 .Where(method =>
                     method.GetParameters().FirstOrDefault()?.ParameterType.IsSubclassOf(typeof(GameEvent)) == true)
                 .ToArray();
-            
+
             var listenerHandlers = methods
                 .Where(method => method.GetCustomAttribute(typeof(ListenerHandlerAttribute<>)) != null)
                 .ToArray();
@@ -443,7 +471,7 @@ namespace CounterStrikeSharp.API.Core
                     throw new ArgumentException("Listener of type T is invalid and does not have a name attribute",
                         listenerType.Name);
 
-                var listenerDelegate = Delegate.CreateDelegate(listenerType, instance, listnerHandler); 
+                var listenerDelegate = Delegate.CreateDelegate(listenerType, instance, listnerHandler);
 
                 registerListener.MakeGenericMethod(listenerType).Invoke(this, [listenerDelegate]);
             }
@@ -505,25 +533,25 @@ namespace CounterStrikeSharp.API.Core
         {
             var convars = type
                 .GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
-                .Where(prop => prop.FieldType.IsGenericType && 
+                .Where(prop => prop.FieldType.IsGenericType &&
                                prop.FieldType.GetGenericTypeDefinition() == typeof(FakeConVar<>));
-            
+
             foreach (var prop in convars)
             {
                 object propValue = prop.GetValue(instance); // FakeConvar<?> instance
                 var propValueType = prop.FieldType.GenericTypeArguments[0];
                 var name = prop.FieldType.GetProperty("Name", BindingFlags.Public | BindingFlags.Instance)
                     .GetValue(propValue);
-                
+
                 var description = prop.FieldType.GetProperty("Description", BindingFlags.Public | BindingFlags.Instance)
                     .GetValue(propValue);
 
                 MethodInfo executeCommandMethod = prop.FieldType
                     .GetMethod("ExecuteCommand", BindingFlags.Instance | BindingFlags.NonPublic);
-              
-                this.AddCommand((string)name, (string) description, (caller, command) =>
+
+                this.AddCommand((string)name, (string)description, (caller, command) =>
                 {
-                    executeCommandMethod.Invoke(propValue, new object[] {caller, command});
+                    executeCommandMethod.Invoke(propValue, new object[] { caller, command });
                 });
             }
         }
@@ -569,7 +597,7 @@ namespace CounterStrikeSharp.API.Core
             NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             EntityOutputHooks[handler] = subscriber;
         }
-        
+
         public void HookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
         {
             var subscriber = new CallbackSubscriber(handler, handler,
@@ -578,7 +606,7 @@ namespace CounterStrikeSharp.API.Core
             NativeAPI.HookUsermessage(messageId, subscriber.GetInputArgument(), mode);
             Handlers[handler] = subscriber;
         }
-        
+
         public void UnhookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
         {
             if (!Handlers.TryGetValue(handler, out var subscriber)) return;
@@ -661,7 +689,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 subscriber.Dispose();
             }
-            
+
             foreach (var subscriber in CommandListeners.Values)
             {
                 subscriber.Dispose();

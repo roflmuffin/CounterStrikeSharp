@@ -65,7 +65,7 @@ void ScriptCallback::Execute(bool bResetContext)
         return;
     }
 
-    VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
+    // VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
     for (size_t nI = 0; nI < m_functions.size(); ++nI)
     {

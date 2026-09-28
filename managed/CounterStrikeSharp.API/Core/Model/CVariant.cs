@@ -8,8 +8,6 @@ public class CVariant : NativeObject
     {
     }
 
-    public bool IsValid => Handle != IntPtr.Zero;
-
     public fieldtype_t FieldType => (fieldtype_t)NativeAPI.GetVariantType(Handle);
 
     public T Get<T>()

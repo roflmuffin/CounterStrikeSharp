@@ -34,6 +34,7 @@ public partial record SchemaClass(
             case ("CPlayerSprayDecal", "m_nEntity"): return "DecalEntity";
             case ("CHandleTest", "m_Handle"): return "TestHandle";
             case ("FilterTeam", "m_iFilterTeam"): return "Value";
+            case ("CHostage", "m_bRemove"): return "ShouldRemove";
         }
 
         string CleanFieldName(string fieldName) =>

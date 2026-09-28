@@ -21,7 +21,7 @@ using System.Text;
 namespace CounterStrikeSharp.API
 {
     [Flags]
-    public enum ConVarFlags : Int64
+    public enum ConVarFlags : UInt64
     {
         FCVAR_NONE = 0,
         FCVAR_LINKED_CONCOMMAND = (1 << 0),
@@ -69,6 +69,9 @@ namespace CounterStrikeSharp.API
         FCVAR_VCONSOLE_SET_FOCUS = (1 << 27),
         FCVAR_CLIENTCMD_CAN_EXECUTE = (1 << 28), // IVEngineClient::ClientCmd is allowed to execute this command. 
         FCVAR_EXECUTE_PER_TICK = (1 << 29),
+        FCVAR_SNAPSHOT_IGNORED = (1 << 30),
+        FCVAR_DEFENSIVE = ((ulong)1 << 32),
+        FCVAR_GAMEINFO_CANNOT_OVERRIDE = ((ulong)1 << 34)
     }
 
     public enum ConVarType
