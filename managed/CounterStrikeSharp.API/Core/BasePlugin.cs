@@ -565,7 +565,8 @@ namespace CounterStrikeSharp.API.Core
             
             foreach (var prop in convars)
             {
-                ConVars.Add(prop.GetValue(instance) as ConVarBase); // ConVar<?> instance
+                if (prop.GetValue(instance) is ConVarBase conVar)
+                    ConVars.Add(conVar);
             }
         }
         

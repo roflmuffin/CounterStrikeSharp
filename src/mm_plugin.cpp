@@ -248,6 +248,7 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServe
 }
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
+    globals::cvars->RemoveGlobalChangeCallback(ConVarGlobalChanged);
     HookSet::ClearAll();
     globals::ShutdownHooks();
     DynamicHook::ShutdownAll();
@@ -258,6 +259,7 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
     globals::callbackManager.ReleaseCallback(on_activate_callback);
     globals::callbackManager.ReleaseCallback(on_map_end_callback);
     globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
+    globals::callbackManager.ReleaseCallback(on_convar_changed_callback);
 
     return true;
 }

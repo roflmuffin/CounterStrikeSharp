@@ -77,8 +77,7 @@ public class ConVarBase : IEquatable<ConVarBase>
 
     public override bool Equals(object? obj)
     {
-        if (obj?.GetType() != this.GetType()) return false;
-        return Equals((ConVarBase)obj);
+        return obj is ConVarBase other && Equals(other);
     }
 
     public override int GetHashCode()
@@ -293,8 +292,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
 
     public override bool Equals(object? obj)
     {
-        if (obj is not ConVarBase convar) return false;
-        return Equals(convar);
+        return obj is ConVarBase other && Equals(other);
     }
 
     public override int GetHashCode()

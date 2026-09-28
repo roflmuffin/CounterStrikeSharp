@@ -422,6 +422,9 @@ template <bool Write> static void AccessConvarBound(ScriptContext& script_contex
     // Only modify existing engine-owned storage, avoiding allocations with a different lifetime to the ConVar.
     switch (data->GetType())
     {
+        case EConVarType_Bool:
+            AccessTypedConvarBound<bool, Write>(script_context, data, bound, minimum);
+            break;
         case EConVarType_Int16:
             AccessTypedConvarBound<int16, Write>(script_context, data, bound, minimum);
             break;
