@@ -3,7 +3,7 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
-public class ConVarBase
+public class ConVarBase : IEquatable<ConVarBase>
 {
     public ushort AccessIndex { get; protected set; }
 
@@ -67,9 +67,27 @@ public class ConVarBase
     {
         return new ConVar<T>(AccessIndex);
     }
+
+    public bool Equals(ConVarBase? other)
+    {
+        if (other is null) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return AccessIndex == other.AccessIndex;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj?.GetType() != this.GetType()) return false;
+        return Equals((ConVarBase)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return AccessIndex.GetHashCode();
+    }
 }
 
-public class ConVar<T> : ConVarBase
+public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
 {
     public ConVar(ushort accessIndex) : base(accessIndex)
     {
@@ -264,6 +282,24 @@ public class ConVar<T> : ConVarBase
         if (accessIndex == 0) return null;
 
         return new ConVar<T>(accessIndex);
+    }
+
+    public bool Equals(ConVar<T>? other)
+    {
+        if (other is null) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return AccessIndex == other.AccessIndex;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is not ConVarBase convar) return false;
+        return Equals(convar);
+    }
+
+    public override int GetHashCode()
+    {
+        return AccessIndex.GetHashCode();
     }
 
     public override string ToString()

@@ -362,6 +362,26 @@ public class RealConVarTests : IDisposable
         Assert.Equal("73", conVar.ValueAsString);
     }
 
+    [Fact]
+    public void ConVarAreEquatable()
+    {
+        var conVar1 = ConVar<bool>.Find("sv_cheats");
+        var conVar2 = ConVar<bool>.Find("sv_cheats");
+        Assert.NotNull(conVar1);
+        Assert.NotNull(conVar2);
+        Assert.Equal(conVar1, conVar2);
+    }
+
+    [Fact]
+    public void ConVarsAreNotEquatable()
+    {
+        var conVar1 = ConVar<bool>.Find("sv_cheats");
+        var conVar2 = ConVar<bool>.Find("sv_showimpacts");
+        Assert.NotNull(conVar1);
+        Assert.NotNull(conVar2);
+        Assert.NotEqual(conVar1, conVar2);
+    }
+
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
