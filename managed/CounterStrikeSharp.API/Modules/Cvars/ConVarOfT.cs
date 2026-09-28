@@ -92,7 +92,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
     {
     }
 
-    public ConVar(string name, string description, T defaultValue = default(T), ConVarFlags flags = ConVarFlags.FCVAR_NONE)
+    public ConVar(string name, string description, T defaultValue, ConVarFlags flags = ConVarFlags.FCVAR_NONE)
         : this(new ConVarCreationOptions<T>
         {
             Name = name,
@@ -272,7 +272,15 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
 
             return NativeAPI.GetConvarValue<T>(AccessIndex);
         }
-        set => NativeAPI.SetConvarValue(AccessIndex, value);
+        set
+        {
+            var expectedType = GetValueType();
+            if (Type != expectedType)
+                throw new InvalidOperationException(
+                    $"ConVar is a {Type} but you are trying to set a {typeof(T)} value.");
+
+            NativeAPI.SetConvarValue(AccessIndex, value);
+        }
     }
 
     public static ConVar<T>? Find(string name)
