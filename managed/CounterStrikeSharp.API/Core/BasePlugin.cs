@@ -708,6 +708,8 @@ namespace CounterStrikeSharp.API.Core
 
             foreach (var convar in ConVars)
             {
+                if (!convar.IsValid) continue;
+
                 convar.Delete();
             }
 

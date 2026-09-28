@@ -66,6 +66,8 @@ public class ConVarBase : IEquatable<ConVarBase>
         AccessIndex = InvalidAccessIndex;
     }
 
+    public bool IsValid => AccessIndex != InvalidAccessIndex;
+
     public ConVar<T> As<T>()
     {
         return new ConVar<T>(AccessIndex);
