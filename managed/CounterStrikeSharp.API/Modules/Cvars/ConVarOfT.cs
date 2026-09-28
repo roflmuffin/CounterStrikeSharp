@@ -141,6 +141,9 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
 
     private static ushort Create(ConVarCreationOptions<T> options)
     {
+        if (options.DefaultValue is null)
+            throw new ArgumentNullException(nameof(options.DefaultValue));
+
         var accessIndex = NativeAPI.CreateConvar(options.Name, (short)GetValueType(), options.Description, (UInt64)options.Flags,
             options.HasMinValue, options.HasMaxValue,
             options.DefaultValue,
@@ -293,6 +296,9 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
             if (Type != expectedType)
                 throw new InvalidOperationException(
                     $"ConVar is a {Type} but you are trying to set a {typeof(T)} value.");
+
+            if (value is null)
+                throw new ArgumentNullException(nameof(value));
 
             NativeAPI.SetConvarValue(AccessIndex, value);
         }
