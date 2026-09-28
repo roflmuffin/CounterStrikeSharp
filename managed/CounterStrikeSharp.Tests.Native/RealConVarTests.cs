@@ -33,7 +33,7 @@ public class RealConVarTests : IDisposable
         // xUnit invokes this even when an assertion fails. Deleted/plugin-owned ConVars have index zero.
         foreach (var conVar in _created)
         {
-            if (conVar.AccessIndex != 0)
+            if (conVar.AccessIndex != ushort.MaxValue)
                 conVar.Delete();
         }
     }
@@ -88,7 +88,7 @@ public class RealConVarTests : IDisposable
     private void RoundTrip<T>(ConVarType type, T initial, T updated, T min, T max)
     {
         var conVar = Create(initial, min, max);
-        Assert.NotEqual((ushort)0, conVar.AccessIndex);
+        Assert.NotEqual(ushort.MaxValue, conVar.AccessIndex);
         Assert.Equal(type, conVar.Type);
         Assert.Equal("Native typed ConVar test", conVar.Description);
         Assert.Equal(initial, conVar.Value);
@@ -347,8 +347,9 @@ public class RealConVarTests : IDisposable
         var conVar = Create(42, 0, 100);
         var name = conVar.Name;
         conVar.Delete();
-        Assert.Equal((ushort)0, conVar.AccessIndex);
+        Assert.Equal(ushort.MaxValue, conVar.AccessIndex);
         Assert.Null(ConVar<int>.Find(name));
+        Assert.Throws<NativeException>(() => conVar.Name);
         Assert.Throws<InvalidOperationException>(() => conVar.Delete());
     }
 
@@ -399,7 +400,7 @@ public class RealConVarTests : IDisposable
 
         Assert.Equal(1, owned.Value);
         plugin.Dispose();
-        Assert.Equal((ushort)0, owned.AccessIndex);
+        Assert.Equal(ushort.MaxValue, owned.AccessIndex);
         Assert.Null(ConVar<int>.Find(name));
         Assert.Equal(2, unrelated.Value);
         // Disposal must be idempotent; the using statement also exercises this.
@@ -417,7 +418,7 @@ public class RealConVarTests : IDisposable
         {
             plugin.RegisterConVars(typeof(StaticConVars));
             plugin.Dispose();
-            Assert.Equal((ushort)0, owned.AccessIndex);
+            Assert.Equal(ushort.MaxValue, owned.AccessIndex);
             Assert.Null(ConVar<int>.Find(name));
         }
         finally

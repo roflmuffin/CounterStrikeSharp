@@ -5,8 +5,10 @@ namespace CounterStrikeSharp.API.Modules.Cvars;
 
 public class ConVarBase : IEquatable<ConVarBase>
 {
+    internal const ushort InvalidAccessIndex = ushort.MaxValue;
+
     public ushort AccessIndex { get; protected set; }
-    internal bool Owned { get; internal set; }
+    internal bool Owned { get; set; }
 
     public ConVarBase(ushort accessIndex)
     {
@@ -57,11 +59,11 @@ public class ConVarBase : IEquatable<ConVarBase>
 
     public void Delete()
     {
-        if (AccessIndex == 0)
+        if (AccessIndex == InvalidAccessIndex)
             throw new InvalidOperationException("Cannot delete a ConVar that has not been created or found.");
 
         NativeAPI.DeleteConvar(AccessIndex);
-        AccessIndex = 0;
+        AccessIndex = InvalidAccessIndex;
     }
 
     public ConVar<T> As<T>()
@@ -135,7 +137,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
             options.HasMinValue ? options.MinValue : options.DefaultValue,
             options.HasMaxValue ? options.MaxValue : options.DefaultValue);
 
-        if (AccessIndex == 0)
+        if (AccessIndex == InvalidAccessIndex)
         {
             throw new InvalidOperationException($"Failed to create ConVar '{options.Name}' with type '{typeof(T)}'.");
         }

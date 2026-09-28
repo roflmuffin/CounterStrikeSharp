@@ -613,7 +613,7 @@ static void CreateConVar(ScriptContext& script_context)
         return;
     }
 
-    uint16 createdConVarAccessIndex = 0;
+    uint16 createdConVarAccessIndex = 0xFFFF;
     void* createdConVarPtr = nullptr;
 
     switch (type)

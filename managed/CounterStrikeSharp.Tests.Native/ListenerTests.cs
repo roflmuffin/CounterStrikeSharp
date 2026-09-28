@@ -126,7 +126,7 @@ public class ListenerTests
     [Fact]
     public async Task Listener_ConVarChanged()
     {
-        var convar = new ConVar<float>($"css_itest_cvar_{Guid.NewGuid():N}", "Test ConVar");
+        var convar = new ConVar<float>($"css_itest_cvar_{Guid.NewGuid():N}", "Test ConVar", 0);
 
         var mock = new Mock<Action>();
         var methodCallback = FunctionReference.Create(() => { mock.Object.Invoke(); });
