@@ -1,10 +1,9 @@
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Memory;
-using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 using Moq;
 using Xunit;
 
@@ -121,6 +120,29 @@ public class ListenerTests
         {
             NativeAPI.RemoveListener("OnEntityTakeDamagePre", preCallback);
             NativeAPI.RemoveListener("OnEntityTakeDamagePost", postCallback);
+        }
+    }
+
+    [Fact]
+    public async Task Listener_ConVarChanged()
+    {
+        var convar = new ConVar<float>($"css_itest_cvar_{Guid.NewGuid():N}", "Test ConVar");
+
+        var mock = new Mock<Action>();
+        var methodCallback = FunctionReference.Create(() => { mock.Object.Invoke(); });
+
+        try
+        {
+            NativeAPI.AddListener("OnConVarChanged", methodCallback);
+            await WaitOneFrame();
+            NativeAPI.IssueServerCommand($"{convar.Name} 1");
+            await WaitOneFrame();
+            Assert.Single(mock.Invocations);
+        }
+        finally
+        {
+            NativeAPI.RemoveListener("OnConVarChanged", methodCallback);
+            convar.Delete();
         }
     }
 

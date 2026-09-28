@@ -65,14 +65,14 @@ namespace TestPlugin
 
         private TestInjectedClass _testInjectedClass;
 
-        public ConVar<float> MyExampleConvar = new ConVar<float>(
-            "example_convar",
-            "An example ConVar for testing purposes",
-            42.0f,
-            ConVarFlags.FCVAR_NONE,
-            0.0f,
-            100.0f
-        );
+        public ConVar<float> MyExampleConvar = new ConVar<float>(new ConVarCreationOptions<float>
+        {
+            Name = "example_convar",
+            Description = "An example ConVar for testing purposes",
+            DefaultValue = 42.0f,
+            MinValue = 0.0f,
+            MaxValue = 100.0f
+        });
 
         public SamplePlugin(TestInjectedClass testInjectedClass)
         {

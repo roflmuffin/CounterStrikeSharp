@@ -16,6 +16,7 @@
 
 #include <cstdio>
 
+#include "convar.h"
 #include "core/detours.h"
 #include "core/coreconfig.h"
 #include "core/game_system.h"
@@ -77,10 +78,12 @@ namespace counterstrikesharp {
 
 CounterStrikeSharpMMPlugin gPlugin;
 
-#if 0
-// Currently unavailable, requires hl2sdk work!
-ConVar sample_cvar("sample_cvar", "42", 0);
-#endif
+static void ConVarGlobalChanged(ConVarRefAbstract* ref, CSplitScreenSlot nSlot, const char* pNewValue, const char* pOldValue, void* __unk01)
+{
+    on_convar_changed_callback->ScriptContext().Reset();
+    on_convar_changed_callback->ScriptContext().Push(ref->GetAccessIndex());
+    on_convar_changed_callback->Execute();
+}
 
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late)
 {
@@ -179,9 +182,12 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
         CALL_GLOBAL_LISTENER(OnAllInitialized());
 
+        globals::cvars->InstallGlobalChangeCallback(ConVarGlobalChanged);
+
         on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
         on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
         on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
+        on_convar_changed_callback = globals::callbackManager.CreateCallback("OnConVarChanged");
 
         m_hooks.Add(&IServerGameDLL::GameFrame, globals::server, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_GameFrame);
         m_hooks.Add(&INetworkServerService::StartupServer, globals::networkServerService, this, nullptr,

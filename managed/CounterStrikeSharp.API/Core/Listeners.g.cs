@@ -1,6 +1,7 @@
 
 using System;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -255,5 +256,12 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="buttonId">ID of the button that was clicked</param>
         [ListenerName("OnCustomHudClicked")]
         public delegate void OnCustomHudClicked(CCSPlayerController player, CCSCustomHudLayout customLayout, string buttonId);
+
+        /// <summary>
+        /// Called when a ConVar changes.
+        /// </summary>
+        /// <param name="conVar">The ConVar that changed.</param>   
+        [ListenerName("OnConVarChanged")]
+        public delegate void OnConVarChanged([CastFrom(typeof(ushort))] ConVarBase conVar);
     }
 }

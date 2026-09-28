@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
@@ -5,6 +6,11 @@ namespace CounterStrikeSharp.API.Modules.Cvars;
 public class ConVarBase
 {
     public ushort AccessIndex { get; protected set; }
+
+    public ConVarBase(ushort accessIndex)
+    {
+        AccessIndex = accessIndex;
+    }
 
     public string Name => NativeAPI.GetConvarName(AccessIndex);
     public string Description => NativeAPI.GetConvarHelpText(AccessIndex);
@@ -56,32 +62,34 @@ public class ConVarBase
         NativeAPI.DeleteConvar(AccessIndex);
         AccessIndex = 0;
     }
+
+    public ConVar<T> As<T>()
+    {
+        return new ConVar<T>(AccessIndex);
+    }
 }
 
 public class ConVar<T> : ConVarBase
 {
-    public ConVar(ushort accessIndex)
-    {
-        AccessIndex = accessIndex;
-    }
-
-    public ConVar(string name, string description, T defaultValue = default(T), ConVarFlags flags = ConVarFlags.FCVAR_NONE,
-        T? minValue = default, T? maxValue = default) : this(new ConVarCreationOptions<T>
-    {
-        Name = name,
-        DefaultValue = defaultValue,
-        Description = description,
-        Flags = flags,
-        MinValue = minValue,
-        MaxValue = maxValue
-    })
+    public ConVar(ushort accessIndex) : base(accessIndex)
     {
     }
 
-    public ConVar(ConVarCreationOptions<T> options)
+    public ConVar(string name, string description, T defaultValue = default(T), ConVarFlags flags = ConVarFlags.FCVAR_NONE)
+        : this(new ConVarCreationOptions<T>
+        {
+            Name = name,
+            DefaultValue = defaultValue,
+            Description = description,
+            Flags = flags
+        })
+    {
+    }
+
+    private static ConVarType GetValueType()
     {
         var type = typeof(T);
-        var conVarType = type switch
+        return type switch
         {
             _ when type == typeof(bool) => ConVarType.Bool,
             _ when type == typeof(float) => ConVarType.Float32,
@@ -99,17 +107,69 @@ public class ConVar<T> : ConVarBase
             _ when type == typeof(Vector4D) => ConVarType.Vector4,
             _ => throw new InvalidOperationException($"Unsupported type: {type}")
         };
+    }
 
-        AccessIndex = NativeAPI.CreateConvar(options.Name, (short)conVarType, options.Description, (UInt64)options.Flags,
-            options.MinValue != null, options.MaxValue != null,
+    public ConVar(ConVarCreationOptions<T> options) : base(0)
+    {
+        AccessIndex = NativeAPI.CreateConvar(options.Name, (short)GetValueType(), options.Description, (UInt64)options.Flags,
+            options.HasMinValue, options.HasMaxValue,
             options.DefaultValue,
-            options.MinValue,
-            options.MaxValue);
+            options.HasMinValue ? options.MinValue : options.DefaultValue,
+            options.HasMaxValue ? options.MaxValue : options.DefaultValue);
 
         if (AccessIndex == 0)
         {
-            throw new InvalidOperationException($"Failed to create ConVar '{options.Name}' with type '{type}'.");
+            throw new InvalidOperationException($"Failed to create ConVar '{options.Name}' with type '{typeof(T)}'.");
         }
+    }
+
+    /// <summary>
+    /// Gets or updates the existing lower bound for a numeric, vector, or angle ConVar.
+    /// </summary>
+    /// <remarks>
+    /// Throws if no lower bound exists or the new minimum exceeds the maximum.
+    /// Changes apply to subsequent value assignments; the current value is not reclamped.
+    /// For native objects, assign a new value rather than modifying the returned object's components.
+    /// </remarks>
+    public T MinValue
+    {
+        get => NativeAPI.GetConvarBound<T>(AccessIndex, true, (short)GetValueType());
+        set => NativeAPI.SetConvarBound(AccessIndex, true, (short)GetValueType(), value);
+    }
+
+    /// <summary>
+    /// Gets or updates the existing upper bound for a numeric, vector, or angle ConVar.
+    /// </summary>
+    /// <remarks>
+    /// Throws if no upper bound exists or the new maximum is below the minimum.
+    /// Changes apply to subsequent value assignments; the current value is not reclamped.
+    /// For native objects, assign a new value rather than modifying the returned object's components.
+    /// </remarks>
+    public T MaxValue
+    {
+        get => NativeAPI.GetConvarBound<T>(AccessIndex, false, (short)GetValueType());
+        set => NativeAPI.SetConvarBound(AccessIndex, false, (short)GetValueType(), value);
+    }
+
+    /// <summary>Tries to read the lower bound, returning false and default(T) when it is not set.</summary>
+    /// <remarks>Invalid ConVars and mismatched value types still throw.</remarks>
+    public bool TryGetMinValue([MaybeNullWhen(false)] out T value) => TryGetBound(true, out value);
+
+    /// <summary>Tries to read the upper bound, returning false and default(T) when it is not set.</summary>
+    /// <remarks>Invalid ConVars and mismatched value types still throw.</remarks>
+    public bool TryGetMaxValue([MaybeNullWhen(false)] out T value) => TryGetBound(false, out value);
+
+    private bool TryGetBound(bool minimum, [MaybeNullWhen(false)] out T value)
+    {
+        var type = (short)GetValueType();
+        if (!NativeAPI.HasConvarBound(AccessIndex, minimum, type))
+        {
+            value = default;
+            return false;
+        }
+
+        value = NativeAPI.GetConvarBound<T>(AccessIndex, minimum, type);
+        return true;
     }
 
     public T Value
@@ -218,6 +278,31 @@ public sealed record ConVarCreationOptions<T>
     public required T DefaultValue { get; init; }
     public string Description { get; init; } = string.Empty;
     public ConVarFlags Flags { get; init; } = ConVarFlags.FCVAR_NONE;
-    public T? MinValue { get; init; }
-    public T? MaxValue { get; init; }
+    private T? _minValue;
+    private T? _maxValue;
+
+    internal bool HasMinValue { get; private set; }
+    internal bool HasMaxValue { get; private set; }
+
+    /// <summary>Optional lower bound. Omit this property for no minimum; zero and false are valid bounds.</summary>
+    public T? MinValue
+    {
+        get => _minValue;
+        init
+        {
+            _minValue = value;
+            HasMinValue = value is not null;
+        }
+    }
+
+    /// <summary>Optional upper bound. Omit this property for no maximum; zero and false are valid bounds.</summary>
+    public T? MaxValue
+    {
+        get => _maxValue;
+        init
+        {
+            _maxValue = value;
+            HasMaxValue = value is not null;
+        }
+    }
 }
