@@ -26,7 +26,7 @@ namespace CounterStrikeSharp.API.Modules.Sounds;
 /// <example>
 /// <code>
 /// using var sound = new SoundEvent("Weapon_AK47.Single");
-/// sound.SourceEntityIndex = (int)player.Index;
+/// sound.SourceEntityIndex = (int)player.PlayerPawn.Value!.Index;
 /// sound.SetParam(SoundEvent.Volume, 0.5f);
 /// sound.SetParam(SoundEvent.Pitch, 1.5f);
 /// sound.EmitToAll();
@@ -62,7 +62,7 @@ public class SoundEvent : NativeObject, IDisposable
     /// <list type="bullet">
     /// <item><description>-1, the default, plays it at each recipient, and <see cref="Position"/> is ignored.</description></item>
     /// <item><description>0 plays it at <see cref="Position"/> in the world, which is how the game emits placed sounds.</description></item>
-    /// <item><description>Any other index attaches it to that entity and follows it.</description></item>
+    /// <item><description>Any other index attaches it to that entity and follows it. For a player that is the pawn, which is what the game itself names as the source.</description></item>
     /// </list>
     /// </summary>
     public int SourceEntityIndex { get; set; } = -1;
