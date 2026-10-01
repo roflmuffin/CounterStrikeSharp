@@ -28,11 +28,14 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
             public EntityOutputHandler Handler;
 
-            public EntityOutputCallback(string classname, string output, EntityOutputHandler handler)
+            public HookMode Mode;
+
+            public EntityOutputCallback(string classname, string output, EntityOutputHandler handler, HookMode mode)
             {
                 Classname = classname;
                 Output = output;
                 Handler = handler;
+                Mode = mode;
             }
         }
     }

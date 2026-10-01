@@ -569,10 +569,11 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="classname">Classname to hook, or `*` for wildcard</param>
         /// <param name="outputName">Output name to hook, or `*` for wildcard</param>
         /// <param name="handler">Handler to call</param>
+        /// <param name="mode">Whether to run before or after the original method</param>
         public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
             var subscriber = new CallbackSubscriber(handler, handler,
-                () => UnhookEntityOutput(classname, outputName, handler));
+                () => UnhookEntityOutput(classname, outputName, handler, mode));
 
             NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             EntityOutputHooks[handler] = subscriber;
@@ -617,6 +618,18 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="handler">Handler to call</param>
         public void HookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
         {
+            HookSingleEntityOutput(entityInstance, outputName, handler, HookMode.Pre);
+        }
+
+        /// <summary>
+        /// Hooks an entity output for a single entity instance, before or after the original method.
+        /// </summary>
+        /// <param name="entityInstance">Entity instance to hook</param>
+        /// <param name="outputName">Output name to hook, or `*` for wildcard</param>
+        /// <param name="handler">Handler to call</param>
+        /// <param name="mode">Whether to run before or after the original method</param>
+        public void HookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode)
+        {
             // since we wrap around the plugin handler we need to do this to ensure that the plugin callback is only called
             // if the entity instance is the same.
             EntityIO.EntityOutputHandler internalHandler = (output, name, activator, caller, value, delay) =>
@@ -629,19 +642,19 @@ namespace CounterStrikeSharp.API.Core
                 return HookResult.Continue;
             };
 
-            HookEntityOutput(entityInstance.DesignerName, outputName, internalHandler);
+            HookEntityOutput(entityInstance.DesignerName, outputName, internalHandler, mode);
 
             // because of ^ we would not be able to unhook since we passed the 'internalHandler' and that's what is being stored, not the original handler
             // but the plugin could only pass the original handler for unhooking.
             // (this dictionary does not needed to be cleared on dispose as it has no unmanaged reference and those are already being disposed, but on map end)
             // (the internal class is needed to be able to remove them on map start)
-            EntitySingleOutputHooks[handler] = new EntityIO.EntityOutputCallback(entityInstance.DesignerName, outputName, internalHandler);
+            EntitySingleOutputHooks[handler] = new EntityIO.EntityOutputCallback(entityInstance.DesignerName, outputName, internalHandler, mode);
         }
 
         /// <summary>
         /// Unhooks an entity output for a single entity instance.
         /// </summary>
-        /// <inheritdoc cref="HookSingleEntityOutput"/>
+        /// <inheritdoc cref="HookSingleEntityOutput(CEntityInstance, string, EntityIO.EntityOutputHandler)"/>
         public void UnhookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
         {
             UnhookSingleEntityOutputInternal(entityInstance.DesignerName, outputName, handler);
@@ -651,7 +664,7 @@ namespace CounterStrikeSharp.API.Core
         {
             if (!EntitySingleOutputHooks.TryGetValue(handler, out var internalHandler)) return;
 
-            UnhookEntityOutput(classname, outputName, internalHandler.Handler);
+            UnhookEntityOutput(classname, outputName, internalHandler.Handler, internalHandler.Mode);
             EntitySingleOutputHooks.Remove(handler);
         }
 
