@@ -11,6 +11,8 @@ items:
     href: WithDependencyInjection.md
   - name: Entity Output Hooks
     href: WithEntityOutputHooks.md
+  - name: Radar Elements
+    href: WithRadarElements.md
   - name: Game Event Handlers
     href: WithGameEventHandlers.md
   - name: Database (Dapper)

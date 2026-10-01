@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeTestsPlugin", "Counte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithVirtualFunctions", "..\examples\WithVirtualFunctions\WithVirtualFunctions.csproj", "{A12A301B-A2FD-404B-95C0-C7E654D3A03C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithRadarElements", "..\examples\WithRadarElements\WithRadarElements.csproj", "{2DFE098E-11C9-446C-BCE3-E7720E020298}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,10 @@ Global
 		{A12A301B-A2FD-404B-95C0-C7E654D3A03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A12A301B-A2FD-404B-95C0-C7E654D3A03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A12A301B-A2FD-404B-95C0-C7E654D3A03C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DFE098E-11C9-446C-BCE3-E7720E020298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DFE098E-11C9-446C-BCE3-E7720E020298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DFE098E-11C9-446C-BCE3-E7720E020298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DFE098E-11C9-446C-BCE3-E7720E020298}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,6 +178,7 @@ Global
 		{A14029BA-CADE-4F25-ADC5-48CF14332F61} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{854B06B5-0E7B-438A-BA51-3F299557F884} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{A12A301B-A2FD-404B-95C0-C7E654D3A03C} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
+		{2DFE098E-11C9-446C-BCE3-E7720E020298} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {069C4CD4-BACA-446A-A6B8-0194E4F75355}
