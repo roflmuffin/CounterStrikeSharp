@@ -14,12 +14,13 @@ public class SoundEventTests
 {
     private const string TestSound = "Weapon_AK47.Single";
 
-    private static CCSPlayerController FindPlayer()
-    {
-        var player = Utilities.GetPlayers().FirstOrDefault(p => p is { IsValid: true });
-        Assert.NotNull(player);
+    private CCSPlayerController player = null!;
+    private CCSPlayerPawn pawn = null!;
 
-        return player!;
+    private async Task InitializeAsync()
+    {
+        (player, pawn) = await CreateTestPlayerAsync();
+        AssertTestPlayer(player, pawn);
     }
 
     [Fact]
@@ -49,10 +50,13 @@ public class SoundEventTests
     [Fact]
     public async Task SetParam_AcceptsEveryValueType()
     {
-        await Server.NextFrameAsync(() =>
+        await InitializeAsync();
+        await Server.NextWorldUpdateAsync(() =>
         {
+            AssertTestPlayer(player, pawn);
+
             using var sound = new SoundEvent(TestSound);
-            sound.SourceEntityIndex = (int)FindPlayer().Index;
+            sound.SourceEntityIndex = (int)pawn.Index;
             sound.SetParam(SoundEvent.Volume, 0.5f);
             sound.SetParam(SoundEvent.Pitch, 1.5f);
             sound.SetParam(SoundEvent.Position, new Vector(1, 2, 3));
@@ -78,11 +82,14 @@ public class SoundEventTests
     [Fact]
     public async Task EmitTo_SendsToASinglePlayer()
     {
-        await Server.NextFrameAsync(() =>
+        await InitializeAsync();
+        await Server.NextWorldUpdateAsync(() =>
         {
+            AssertTestPlayer(player, pawn);
+
             using var sound = new SoundEvent(TestSound);
 
-            Assert.NotEqual(0, sound.EmitTo(FindPlayer()));
+            Assert.NotEqual(0, sound.EmitTo(player));
         });
     }
 
@@ -154,6 +161,10 @@ public class AudibleSoundTest
     [Fact]
     public async Task SweepsVolumeThenPitchThenPosition()
     {
+        // The sweep plays to human players only, so an automated run has nobody to play it to.
+        var listening = await Server.NextWorldUpdateAsync(() => Utilities.GetPlayers().Any(p => p is { IsValid: true, IsBot: false }));
+        if (!listening) return;
+
         await Step("volume 0.1", 0.1f, 1.0f);
         await Step("volume 0.4", 0.4f, 1.0f);
         await Step("volume 1.0, louder each time", 1.0f, 1.0f);
