@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Entities;
 using Moq;
 using Xunit;
 
@@ -11,94 +9,6 @@ namespace NativeTestsPlugin;
 
 public class EntityIOTests
 {
-    [Fact]
-    public async Task SingleEntityPostOutput_FiltersOrdersAndUnhooks()
-    {
-        var entity = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
-        var other = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
-        Assert.NotNull(entity);
-        Assert.NotNull(other);
-
-        var plugin = NativeTestsPlugin.Instance;
-        var calls = new List<string>();
-        EntityIO.EntityOutputHandler pre = (_, _, _, _, _, _) =>
-        {
-            calls.Add("pre");
-            return HookResult.Continue;
-        };
-        EntityIO.EntityOutputHandler post = (_, _, _, _, _, _) =>
-        {
-            calls.Add("post");
-            return HookResult.Continue;
-        };
-
-        try
-        {
-            // Register post first so registration order cannot masquerade as hook mode.
-            plugin.HookSingleEntityOutput(entity, "OnUser3", post, HookMode.Post);
-            plugin.HookSingleEntityOutput(entity, "OnUser3", pre);
-
-            other.AcceptInput("FireUser3");
-            await WaitOneFrame();
-            Assert.Empty(calls);
-
-            entity.AcceptInput("FireUser3");
-            await WaitOneFrame();
-            Assert.Equal(new[] { "pre", "post" }, calls);
-
-            plugin.UnhookSingleEntityOutput(entity, "OnUser3", post);
-            calls.Clear();
-            entity.AcceptInput("FireUser3");
-            await WaitOneFrame();
-            Assert.Equal(new[] { "pre" }, calls);
-        }
-        finally
-        {
-            plugin.UnhookSingleEntityOutput(entity, "OnUser3", post);
-            plugin.UnhookSingleEntityOutput(entity, "OnUser3", pre);
-            entity.Remove();
-            other.Remove();
-        }
-    }
-
-    [Fact]
-    public async Task SingleEntityPostOutput_DisposeRemovesHook()
-    {
-        var entity = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
-        Assert.NotNull(entity);
-        var plugin = new OutputTestPlugin();
-        var calls = 0;
-        EntityIO.EntityOutputHandler handler = (_, _, _, _, _, _) =>
-        {
-            calls++;
-            return HookResult.Continue;
-        };
-
-        try
-        {
-            plugin.HookSingleEntityOutput(entity, "OnUser4", handler, HookMode.Post);
-            entity.AcceptInput("FireUser4");
-            await WaitOneFrame();
-            Assert.Equal(1, calls);
-
-            plugin.Dispose();
-            entity.AcceptInput("FireUser4");
-            await WaitOneFrame();
-            Assert.Equal(1, calls);
-        }
-        finally
-        {
-            plugin.Dispose();
-            entity.Remove();
-        }
-    }
-
-    private sealed class OutputTestPlugin : BasePlugin
-    {
-        public override string ModuleName => "Entity output test";
-        public override string ModuleVersion => "1.0.0";
-    }
-
     [Fact]
     public void GetDesignerName_ReturnsCorrectName()
     {
