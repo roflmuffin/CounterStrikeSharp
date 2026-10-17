@@ -50,6 +50,10 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nVoxelUpdate")]
 	public ref Int32 VoxelUpdate => ref Schema.GetRef<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelUpdate");
 
+	// m_nSmokeLightProbeRegen
+	[SchemaMember("CSmokeGrenadeProjectile", "m_nSmokeLightProbeRegen")]
+	public ref byte SmokeLightProbeRegen => ref Schema.GetRef<byte>(this.Handle, "CSmokeGrenadeProjectile", "m_nSmokeLightProbeRegen");
+
 	// m_flLastBounce
 	[SchemaMember("CSmokeGrenadeProjectile", "m_flLastBounce")]
 	public ref float LastBounce => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce");

@@ -146,6 +146,10 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_bSilentReloadStatCounted")]
 	public ref bool SilentReloadStatCounted => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bSilentReloadStatCounted");
 
+	// m_bSilentReloadStatPending
+	[SchemaMember("CCSWeaponBase", "m_bSilentReloadStatPending")]
+	public ref bool SilentReloadStatPending => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bSilentReloadStatPending");
+
 	// m_flStealthHoldStartTime
 	[SchemaMember("CCSWeaponBase", "m_flStealthHoldStartTime")]
 	public ref float StealthHoldStartTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flStealthHoldStartTime");
