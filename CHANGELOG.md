@@ -1,3 +1,6 @@
+## What's Changed in v1.0.377
+* fix: Update Linux signature for CBaseTrigger_StartTouch ([c67396f](https://github.com/roflmuffin/CounterStrikeSharp/commit/c67396fa5d99a5c877e738e0ac8c062e3d0593d7))
+
 ## What's Changed in v1.0.376
 * fix: set m_bIsSet when updating a custom hud dialog variable by [@dvernoff](https://github.com/dvernoff) in [#1434](https://github.com/roflmuffin/CounterStrikeSharp/pull/1434) ([ffe84cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/ffe84cfc1db478cb53fb83c17252c51a30bb6ed1))
 * fix: correct Windows IsPlayerPawn offset by [@unicbm](https://github.com/unicbm) in [#1445](https://github.com/roflmuffin/CounterStrikeSharp/pull/1445) ([6d22cb5](https://github.com/roflmuffin/CounterStrikeSharp/commit/6d22cb54dc27f7cad1c5137474e5e9cdde73efbe))
