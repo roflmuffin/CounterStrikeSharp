@@ -97,8 +97,7 @@ static const char* GetVariantString(ScriptContext& script_context)
         return "";
     }
 
-    if (pVariant->GetType() == _fieldtypes::FIELD_STRING)
-        return static_cast<string_t>(*pVariant).ToCStr();
+    if (pVariant->GetType() == _fieldtypes::FIELD_STRING) return static_cast<string_t>(*pVariant).ToCStr();
     return static_cast<const char*>(*pVariant);
 }
 
