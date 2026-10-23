@@ -190,14 +190,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_nEconGlovesChanged")]
 	public ref byte EconGlovesChanged => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerPawn", "m_nEconGlovesChanged");
 
-	// m_vecCurrentMinimapVolumes
-	[SchemaMember("CCSPlayerPawn", "m_vecCurrentMinimapVolumes")]
-	public NetworkedVector<CHandle<CCSMinimapVolume>> CurrentMinimapVolumes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CCSMinimapVolume>>>(this.Handle, "CCSPlayerPawn", "m_vecCurrentMinimapVolumes");
-
-	// m_hActiveMinimapVolume
-	[SchemaMember("CCSPlayerPawn", "m_hActiveMinimapVolume")]
-	public CHandle<CCSMinimapVolume> ActiveMinimapVolume => Schema.GetDeclaredClass<CHandle<CCSMinimapVolume>>(this.Handle, "CCSPlayerPawn", "m_hActiveMinimapVolume");
-
 	// m_qDeathEyeAngles
 	[SchemaMember("CCSPlayerPawn", "m_qDeathEyeAngles")]
 	public QAngle DeathEyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_qDeathEyeAngles");
@@ -453,6 +445,10 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	// m_bGunGameImmunity
 	[SchemaMember("CCSPlayerPawn", "m_bGunGameImmunity")]
 	public ref bool GunGameImmunity => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bGunGameImmunity");
+
+	// m_flModifier0
+	[SchemaMember("CCSPlayerPawn", "m_flModifier0")]
+	public ref float Modifier0 => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flModifier0");
 
 	// m_fMolotovDamageTime
 	[SchemaMember("CCSPlayerPawn", "m_fMolotovDamageTime")]
