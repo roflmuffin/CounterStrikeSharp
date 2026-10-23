@@ -1,13 +1,19 @@
 #pragma once
 
-#include <tier1/convar.h>
+#include <tier0/convar.h>
+#include <tier0/icvar.h>
+#include <gameentitysystem.h>
 
 #include <memory>
 #include <thread>
 
+#include <engine2/isource2server.h>
+#include <engine2/iengineservicemgr.h>
+#include <engine2/inetworkserverservice.h>
+#include <entity2/globalvars_base.h>
 #include "ISmmAPI.h"
-#include "eiface.h"
-#include "iserver.h"
+#include "engine2/ivengineserver2.h"
+#include "engine2/networkgameserverbase.h"
 
 class IGameEventManager2;
 class IBotManager;

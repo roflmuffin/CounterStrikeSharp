@@ -17,7 +17,7 @@
 #include "core/globals.h"
 #include "core/log.h"
 #include "core/managers/usermessage_manager.h"
-#include "igameeventsystem.h"
+#include "engine2/igameeventsystem.h"
 #include "scripting/autonative.h"
 
 #include "core/recipientfilters.h"

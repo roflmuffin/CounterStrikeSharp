@@ -29,7 +29,7 @@
 CBaseGameSystemFactory** CBaseGameSystemFactory::sm_pFirst = nullptr;
 
 CGameSystem g_GameSystem;
-IGameSystemFactory* CGameSystem::sm_Factory = nullptr;
+CGameSystemStaticFactory<CGameSystem>* CGameSystem::sm_Factory = nullptr;
 
 IEntityResourceManifest* m_exportResourceManifest = nullptr;
 

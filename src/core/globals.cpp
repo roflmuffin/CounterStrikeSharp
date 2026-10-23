@@ -2,7 +2,7 @@
 #include "core/globals.h"
 #include "core/managers/player_manager.h"
 #include "core/tick_scheduler.h"
-#include "iserver.h"
+#include "engine2/inetworkgameserver.h"
 #include "managers/event_manager.h"
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"

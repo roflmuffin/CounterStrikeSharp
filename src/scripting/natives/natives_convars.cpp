@@ -78,7 +78,7 @@ template <typename T> void SetAllFlagsCompat(T* data, uint64_t desired)
 #undef protected
 #endif
 #define private public
-#include <eiface.h>
+#include <engine2/ivengineserver2.h>
 #include <convar.h>
 #undef private
 #ifdef protected

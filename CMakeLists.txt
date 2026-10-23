@@ -17,10 +17,10 @@ include("makefiles/protobuf.cmake")
 
 set(SOURCE_FILES
     libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
+    libraries/hl2sdk-cs2/tier0_perproject/convar.cpp
+    libraries/hl2sdk-cs2/tier0_perproject/keyvalues3.cpp
     src/mm_plugin.cpp
     src/mm_plugin.h
-    libraries/hl2sdk-cs2/tier1/convar.cpp
-    libraries/hl2sdk-cs2/tier1/keyvalues3.cpp
     libraries/hl2sdk-cs2/entity2/entityidentity.cpp
     libraries/hl2sdk-cs2/entity2/entitysystem.cpp
     libraries/hl2sdk-cs2/entity2/entitykeyvalues.cpp

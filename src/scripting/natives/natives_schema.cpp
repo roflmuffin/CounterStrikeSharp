@@ -25,7 +25,7 @@
 #include "core/function.h"
 #include "core/coreconfig.h"
 #include "interfaces/cs2_interfaces.h"
-#include <schemasystem.h>
+#include <schemasystem/schemasystem.h>
 
 namespace counterstrikesharp {
 
@@ -62,7 +62,7 @@ int GetSchemaClassSize(ScriptContext& script_context)
     SchemaClassInfoData_t* pClassInfo = pType->FindDeclaredClass(className).Get();
     if (!pClassInfo) return -1;
 
-    return pClassInfo->m_nSize;
+    return pClassInfo->m_nSizeOf;
 }
 
 void GetSchemaValueByName(ScriptContext& script_context)
