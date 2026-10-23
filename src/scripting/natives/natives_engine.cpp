@@ -182,7 +182,7 @@ void DisconnectClient(ScriptContext& scriptContext)
         return;
     }
 
-    globals::engineServer2->DisconnectClient(slot, disconnectReason);
+    globals::DisconnectClient(slot, disconnectReason);
 }
 
 void ClientPrint(ScriptContext& scriptContext)

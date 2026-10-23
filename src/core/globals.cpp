@@ -24,6 +24,7 @@
 #include "core/customhudlayout.h"
 #include <public/entity2/entitysystem.h>
 
+#include "core/gameconfig.h"
 #include "core/hooks.h"
 
 namespace counterstrikesharp {
@@ -154,6 +155,44 @@ void Initialize()
     }
 
     initializationHooks.AddFunction(reinterpret_cast<void*>(GameEventManagerInit), &OnGameEventManagerInit, &OnGameEventManagerInitialized);
+}
+
+namespace {
+int Offset(const char* name) { return gameConfig->GetOffset(name); }
+} // namespace
+
+// The slot above GetAppID answering 730 means the engine inserted a virtual ahead of it.
+int EngineVTableShift()
+{
+    static int shift = CALL_VIRTUAL(int, Offset("IVEngineServer2::GetAppID") + 1, engineServer2,
+                                    CPlayerSlot(0)) == 730
+                           ? 1
+                           : 0;
+    return shift;
+}
+
+const CSteamID* GetClientSteamID(CPlayerSlot slot)
+{
+    return CALL_VIRTUAL(const CSteamID*, Offset("IVEngineServer2::GetClientSteamID") + EngineVTableShift(),
+                        engineServer2, slot);
+}
+
+bool IsClientFullyAuthenticated(CPlayerSlot slot)
+{
+    return CALL_VIRTUAL(bool, Offset("IVEngineServer2::IsClientFullyAuthenticated") + EngineVTableShift(),
+                        engineServer2, slot);
+}
+
+void SetFakeClientConVarValue(CPlayerSlot slot, const char* cvar, const char* value)
+{
+    CALL_VIRTUAL(void, Offset("IVEngineServer2::SetFakeClientConVarValue") + EngineVTableShift(),
+                 engineServer2, slot, cvar, value);
+}
+
+void DisconnectClient(CPlayerSlot slot, ENetworkDisconnectionReason reason)
+{
+    CALL_VIRTUAL(void, Offset("IVEngineServer2::DisconnectClient") + EngineVTableShift(), engineServer2,
+                 slot, reason);
 }
 
 CGlobalVars* getGlobalVars()

@@ -125,6 +125,12 @@ void ShutdownHooks();
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!
 CGlobalVars* getGlobalVars();
+
+int EngineVTableShift();
+const CSteamID* GetClientSteamID(CPlayerSlot slot);
+bool IsClientFullyAuthenticated(CPlayerSlot slot);
+void SetFakeClientConVarValue(CPlayerSlot slot, const char* cvar, const char* value);
+void DisconnectClient(CPlayerSlot slot, ENetworkDisconnectionReason reason);
 } // namespace globals
 
 namespace modules {

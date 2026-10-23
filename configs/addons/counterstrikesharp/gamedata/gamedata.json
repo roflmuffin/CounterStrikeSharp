@@ -296,5 +296,35 @@
       "windows": "48 83 3D ? ? ? ? ? 0F 95 C0 C3 CC CC CC CC C2",
       "linux": "48 8D 05 ? ? ? ? 48 83 38 ? 0F 95 C0 C3"
     }
+  },
+  "IVEngineServer2::GetAppID": {
+    "offsets": {
+      "windows": 68,
+      "linux": 68
+    }
+  },
+  "IVEngineServer2::GetClientSteamID": {
+    "offsets": {
+      "windows": 69,
+      "linux": 69
+    }
+  },
+  "IVEngineServer2::IsClientFullyAuthenticated": {
+    "offsets": {
+      "windows": 74,
+      "linux": 74
+    }
+  },
+  "IVEngineServer2::SetFakeClientConVarValue": {
+    "offsets": {
+      "windows": 76,
+      "linux": 76
+    }
+  },
+  "IVEngineServer2::DisconnectClient": {
+    "offsets": {
+      "windows": 87,
+      "linux": 87
+    }
   }
 }
