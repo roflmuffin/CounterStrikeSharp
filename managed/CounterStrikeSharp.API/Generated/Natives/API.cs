@@ -283,6 +283,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static bool IsConvarValid(ushort convar){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(convar);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x89F882AE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
+			}
+		}
+
         public static T GetConvarValue<T>(ushort convar){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -333,6 +344,45 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.PushPrimitive(convar);
 			ScriptContext.GlobalScriptContext.Push(value);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xB3DDAA0B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static bool HasConvarBound(ushort convar, bool minimum, short type){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(convar);
+			ScriptContext.GlobalScriptContext.PushPrimitive(minimum);
+			ScriptContext.GlobalScriptContext.PushPrimitive(type);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x4B74206A);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
+			}
+		}
+
+        public static T GetConvarBound<T>(ushort convar, bool minimum, short type){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(convar);
+			ScriptContext.GlobalScriptContext.PushPrimitive(minimum);
+			ScriptContext.GlobalScriptContext.PushPrimitive(type);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x94C3B4E6);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
+			}
+		}
+
+        public static void SetConvarBound<T>(ushort convar, bool minimum, short type, T value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(convar);
+			ScriptContext.GlobalScriptContext.PushPrimitive(minimum);
+			ScriptContext.GlobalScriptContext.PushPrimitive(type);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xB2774B72);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
