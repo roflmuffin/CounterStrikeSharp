@@ -24,7 +24,7 @@
 
 #include <vector>
 
-#include <public/eiface.h>
+#include <engine2/ivengineserver2.h>
 #include "scripting/callback_manager.h"
 
 namespace counterstrikesharp {

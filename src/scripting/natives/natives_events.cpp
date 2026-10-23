@@ -19,6 +19,7 @@
 #include "core/managers/event_manager.h"
 #include "scripting/autonative.h"
 #include "igameevents.h"
+#include <entity2/entitysystem.h>
 
 namespace counterstrikesharp {
 
@@ -267,7 +268,7 @@ static void SetEntityIndex(ScriptContext& scriptContext)
 
     if (gameEvent != nullptr)
     {
-        gameEvent->SetEntity(keyName, CEntityIndex{ index });
+        gameEvent->SetEntity(keyName, globals::entitySystem->GetEntityInstance(CEntityIndex{ index }));
     }
 }
 

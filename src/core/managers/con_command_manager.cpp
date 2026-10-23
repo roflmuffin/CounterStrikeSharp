@@ -35,9 +35,8 @@
 #include "entitysystem.h"
 
 #include <nlohmann/json.hpp>
-#include <public/eiface.h>
-#include <schemasystem.h>
-#include <schematypes.h>
+#include <engine2/ivengineserver2.h>
+#include <schemasystem/schemasystem.h>
 
 #include <algorithm>
 
@@ -138,23 +137,23 @@ CON_COMMAND(css_dump_schema, "dump schema symbols")
 
     for (const auto& pClassInfo : classes)
     {
-        short fieldsSize = pClassInfo->m_nFieldCount;
+        const auto fieldsSize = pClassInfo->m_nNumFields;
         SchemaClassFieldData_t* pFields = pClassInfo->m_pFields;
 
-        j["classes"][pClassInfo->m_pszName] = json::object();
+        j["classes"][pClassInfo->m_pName] = json::object();
         if (pClassInfo->m_pBaseClasses)
         {
-            j["classes"][pClassInfo->m_pszName]["parent"] = pClassInfo->m_pBaseClasses->m_pClass->m_pszName;
+            j["classes"][pClassInfo->m_pName]["parent"] = pClassInfo->m_pBaseClasses->m_pClass->m_pName;
         }
 
-        j["classes"][pClassInfo->m_pszName]["fields"] = json::array();
+        j["classes"][pClassInfo->m_pName]["fields"] = json::array();
 
         for (int i = 0; i < fieldsSize; ++i)
         {
             SchemaClassFieldData_t& field = pFields[i];
 
-            j["classes"][pClassInfo->m_pszName]["fields"].push_back({
-                { "name", field.m_pszName },
+            j["classes"][pClassInfo->m_pName]["fields"].push_back({
+                { "name", field.m_pName },
                 { "type", WriteTypeJson(json::object(), field.m_pType) },
             });
         }
@@ -162,16 +161,16 @@ CON_COMMAND(css_dump_schema, "dump schema symbols")
 
     for (const auto& pEnumInfo : enums)
     {
-        j["enums"][pEnumInfo->m_pszName] = json::object();
-        j["enums"][pEnumInfo->m_pszName]["align"] = pEnumInfo->m_nSize;
-        j["enums"][pEnumInfo->m_pszName]["items"] = json::array();
+        j["enums"][pEnumInfo->m_pName] = json::object();
+        j["enums"][pEnumInfo->m_pName]["align"] = pEnumInfo->m_nSizeOf;
+        j["enums"][pEnumInfo->m_pName]["items"] = json::array();
 
-        for (int i = 0; i < pEnumInfo->m_nEnumeratorCount; ++i)
+        for (int i = 0; i < pEnumInfo->m_nNumEnumerators; ++i)
         {
             auto& field = pEnumInfo->m_pEnumerators[i];
 
-            j["enums"][pEnumInfo->m_pszName]["items"].push_back({
-                { "name", field.m_pszName },
+            j["enums"][pEnumInfo->m_pName]["items"].push_back({
+                { "name", field.m_pName },
                 { "value", field.m_nValue },
             });
         }

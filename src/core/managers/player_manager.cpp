@@ -33,9 +33,9 @@
 #include "core/managers/con_command_manager.h"
 #include "core/managers/voice_manager.h"
 
-#include <public/eiface.h>
+#include <engine2/ivengineserver2.h>
 #include <public/inetchannelinfo.h>
-#include <public/iserver.h>
+#include <engine2/inetworkgameserver.h>
 
 #include "core/log.h"
 #include "core/timer_system.h"

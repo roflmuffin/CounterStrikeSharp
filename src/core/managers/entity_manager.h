@@ -24,7 +24,8 @@
 #include "core/hooks.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
-#include "entitysystem.h"
+#include <gameentitysystem.h>
+#include <soundflags.h>
 #include "scripting/callback_manager.h"
 #include "core/recipientfilters.h"
 

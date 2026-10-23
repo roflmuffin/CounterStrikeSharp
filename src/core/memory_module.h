@@ -31,7 +31,7 @@
 #endif
 
 #include "interface.h"
-#include "strtools.h"
+#include "tier0/tier0_strtools.h"
 #undef snprintf
 
 namespace counterstrikesharp::modules {

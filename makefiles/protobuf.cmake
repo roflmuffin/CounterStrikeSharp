@@ -39,7 +39,10 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/protobufcompiler)
 
 add_custom_command(
     OUTPUT ${PROTO_OUTPUT}
-    COMMAND "${PROTOC_EXECUTABLE}" -I ${PROJECT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${PROJECT_SOURCE_DIR}/libraries/Protobufs/csgo ${PROTO_PATHS} --cpp_out=${CMAKE_CURRENT_BINARY_DIR}/protobufcompiler ${PROTO_INPUT}
+    COMMAND "${PROTOC_EXECUTABLE}" ${PROTO_PATHS} -I ${PROJECT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --cpp_out=${CMAKE_CURRENT_BINARY_DIR}/protobufcompiler ${PROTO_INPUT}
+    DEPENDS ${PROTO_TARGETS}
+            ${PROJECT_SOURCE_DIR}/libraries/Protobufs/csgo/google/protobuf/descriptor.proto
+            "${PROTOC_EXECUTABLE}"
     COMMENT "Generating protobuf file"
 )
 
