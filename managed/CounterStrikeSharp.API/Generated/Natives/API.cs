@@ -1843,6 +1843,87 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr SoundEventCreate(string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushString(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xB724884E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<IntPtr>();
+			}
+		}
+
+        public static void SoundEventRelease(IntPtr soundevent){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(soundevent);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xFF002123);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SoundEventSetFloat(IntPtr soundevent, string name, float value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(soundevent);
+			ScriptContext.GlobalScriptContext.PushString(name);
+			ScriptContext.GlobalScriptContext.PushPrimitive(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x311228E7);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SoundEventSetInt(IntPtr soundevent, string name, int value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(soundevent);
+			ScriptContext.GlobalScriptContext.PushString(name);
+			ScriptContext.GlobalScriptContext.PushPrimitive(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x470A0744);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SoundEventSetVector(IntPtr soundevent, string name, IntPtr value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(soundevent);
+			ScriptContext.GlobalScriptContext.PushString(name);
+			ScriptContext.GlobalScriptContext.PushPrimitive(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2D238D2E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static int SoundEventEmit(IntPtr soundevent, int sourceentityindex, ulong recipients){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(soundevent);
+			ScriptContext.GlobalScriptContext.PushPrimitive(sourceentityindex);
+			ScriptContext.GlobalScriptContext.PushPrimitive(recipients);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x30D4F65F);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
+			}
+		}
+
+        public static void SoundEventStop(int guid, ulong recipients){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushPrimitive(guid);
+			ScriptContext.GlobalScriptContext.PushPrimitive(recipients);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x30DCA4D2);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr CreateTimer(float interval, InputArgument callback, int flags){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
