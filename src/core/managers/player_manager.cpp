@@ -440,7 +440,7 @@ bool CPlayer::IsAuthStringValidated() const
 {
     if (!IsFakeClient())
     {
-        return globals::engine->IsClientFullyAuthenticated(m_slot);
+        return globals::IsClientFullyAuthenticated(m_slot);
     }
     return false;
 }
@@ -505,10 +505,10 @@ void PlayerManager::RunAuthChecks()
         {
             if (m_players[i].IsAuthorized() || m_players[i].IsFakeClient()) continue;
 
-            if (globals::engine->IsClientFullyAuthenticated(i))
+            if (globals::IsClientFullyAuthenticated(i))
             {
                 m_players[i].Authorize();
-                m_players[i].SetSteamId(globals::engine->GetClientSteamID(i));
+                m_players[i].SetSteamId(globals::GetClientSteamID(i));
                 OnAuthorized(&m_players[i]);
             }
         }
