@@ -30,7 +30,7 @@ public enum EGCSystemMsg : uint
 	k_EGCMsgLookupAccountFromInput = 0x42,
 	k_EGCMsgSendHTTPRequest = 0x43,
 	k_EGCMsgSendHTTPRequestResponse = 0x44,
-	k_EGCMsgPreTestSetup = 0x45,
+	k_EGCMsgPreTestSetup_DEPRECATED = 0x45,
 	k_EGCMsgRecordSupportAction = 0x46,
 	k_EGCMsgGetAccountDetails_DEPRECATED = 0x47,
 	k_EGCMsgReceiveInterAppMessage = 0x49,
