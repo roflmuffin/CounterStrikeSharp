@@ -272,7 +272,6 @@ std::shared_ptr<HostContext> InitializeHost(uint32_t hostHandle)
 
 void ValidateRequest(ScriptContext& call, int minimum, int maximum)
 {
-    if (std::this_thread::get_id() != globals::gameThreadId) throw std::runtime_error("cs_script requires the game thread");
     if (call.GetArgumentCount() < minimum || call.GetArgumentCount() > maximum)
         throw std::runtime_error("Invalid cs_script argument count");
 }

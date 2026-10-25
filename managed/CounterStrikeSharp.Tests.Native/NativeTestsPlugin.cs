@@ -55,13 +55,6 @@ namespace NativeTestsPlugin
             AddCommand("css_run_tests", "Runs the xUnit tests for the native plugin.", (player, info) => { RunTests(); });
         }
 
-        [ConsoleCommand("css_test_cs_script", "Test empty cs_script contexts and V8 calls on a live server.")]
-        public void OnCommandCsScriptTest(CCSPlayerController? player, CommandInfo command)
-        {
-            if (player != null) return;
-            _ = RunTests(nameof(CsScriptTests));
-        }
-
         [ConsoleCommand("css_itest")]
         public void OnCommandTest(CCSPlayerController? player, CommandInfo command)
         {
@@ -93,6 +86,7 @@ namespace NativeTestsPlugin
                 Console.WriteLine($"[{ModuleName}] A test run is already in progress.");
                 return;
             }
+
             _running = true;
             using var reporter = new ConsoleTestReporterSink();
             Exception? runError = null;
@@ -135,14 +129,15 @@ namespace NativeTestsPlugin
                         var testMethodName = testCase.TestMethod?.Method?.Name ?? "";
 
                         var isBenchmark = testCase.Traits.Any(trait =>
-                            trait.Key.Equals("Category", StringComparison.OrdinalIgnoreCase) &&
-                            trait.Value.Any(value => value.Equals("Benchmark", StringComparison.OrdinalIgnoreCase))) ||
-                            testClassName.Contains("Benchmark", StringComparison.OrdinalIgnoreCase) ||
-                            testMethodName.Contains("Benchmark", StringComparison.OrdinalIgnoreCase);
+                                              trait.Key.Equals("Category", StringComparison.OrdinalIgnoreCase) &&
+                                              trait.Value.Any(value => value.Equals("Benchmark", StringComparison.OrdinalIgnoreCase))) ||
+                                          testClassName.Contains("Benchmark", StringComparison.OrdinalIgnoreCase) ||
+                                          testMethodName.Contains("Benchmark", StringComparison.OrdinalIgnoreCase);
 
-                        if (smokeRunId != null ? !isBenchmark :
-                            testClassName.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
-                            testMethodName.Contains(filter!, StringComparison.OrdinalIgnoreCase))
+                        if (smokeRunId != null
+                                ? !isBenchmark
+                                : testClassName.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
+                                  testMethodName.Contains(filter!, StringComparison.OrdinalIgnoreCase))
                         {
                             filteredTests.Add(testCase);
                         }
