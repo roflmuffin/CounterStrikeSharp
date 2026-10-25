@@ -1,9 +1,8 @@
 #pragma once
 
-#include <tier1/convar.h>
-
 #include <vector>
 
+#include "convar.h"
 #include "core/global_listener.h"
 
 namespace counterstrikesharp {
@@ -16,8 +15,8 @@ class ConVarManager : public GlobalClass
     void OnShutdown() override;
 
   private:
-    static void
-    ConVarGlobalChanged(ConVarRefAbstract* ref, CSplitScreenSlot nSlot, const char* pNewValue, const char* pOldValue, void* __unk01);
+    static void ConVarGlobalChanged(
+        ConVarRefAbstract* ref, CSplitScreenSlot nSlot, const char* pNewValue, const char* pOldValue, ConVarUserInfoSet_t* __unk01);
     void DispatchConVarChanged(ConVarRefAbstract* ref);
     void FlushConvarChangedQueue();
 

@@ -48,7 +48,7 @@ void ConVarManager::OnShutdown()
     }
 }
 
-void ConVarManager::ConVarGlobalChanged(ConVarRefAbstract* ref, CSplitScreenSlot, const char*, const char*, void*)
+void ConVarManager::ConVarGlobalChanged(ConVarRefAbstract* ref, CSplitScreenSlot, const char*, const char*, ConVarUserInfoSet_t*)
 {
     globals::convarManager.DispatchConVarChanged(ref);
 }
