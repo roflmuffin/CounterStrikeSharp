@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -14,6 +15,7 @@ internal static class Program
         {
             Console.WriteLine("dotnet run --project tooling/CodeGen.CsScript -- [--check]");
             Console.WriteLine("Always downloads the current point_script.d.ts. --check compares outputs without writing them.");
+            Console.WriteLine("Requires clang-format 20. Set CLANG_FORMAT to override the executable path.");
             return 0;
         }
         if (args.Length > 1 || args.Length == 1 && args[0] != "--check")
@@ -39,7 +41,7 @@ internal static class Program
                 ["tooling/CodeGen.CsScript/generated/manifest.json"] = JsonSerializer.Serialize(manifest, Json.Indented) + '\n',
                 ["managed/CounterStrikeSharp.API/Modules/CsScript/Generated/Api.g.cs"] = output.CSharp,
                 ["managed/CounterStrikeSharp.API/Modules/CsScript/Generated/Entities.g.cs"] = output.Entities,
-                ["src/core/cs_script_descriptors.h"] = output.Native
+                ["src/core/cs_script_descriptors.h"] = await FormatNative(root, output.Native)
             };
 
             if (args.Contains("--check"))
@@ -66,6 +68,27 @@ internal static class Program
             Console.Error.WriteLine($"cs_script generation failed: {error.Message}");
             return 1;
         }
+    }
+
+    private static async Task<string> FormatNative(string root, string source)
+    {
+        var start = new ProcessStartInfo(Environment.GetEnvironmentVariable("CLANG_FORMAT") ?? "clang-format")
+        {
+            RedirectStandardInput = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false
+        };
+        start.ArgumentList.Add("--style=file");
+        start.ArgumentList.Add($"--assume-filename={Path.Combine(root, "src/core/cs_script_descriptors.h")}");
+        using var process = Process.Start(start) ?? throw new InvalidOperationException("Could not start clang-format");
+        var output = process.StandardOutput.ReadToEndAsync();
+        var error = process.StandardError.ReadToEndAsync();
+        await process.StandardInput.WriteAsync(source);
+        process.StandardInput.Close();
+        await process.WaitForExitAsync();
+        if (process.ExitCode != 0) throw new InvalidDataException($"clang-format failed: {await error}");
+        return (await output).Replace("\r\n", "\n");
     }
 
     private static string FindRepositoryRoot()

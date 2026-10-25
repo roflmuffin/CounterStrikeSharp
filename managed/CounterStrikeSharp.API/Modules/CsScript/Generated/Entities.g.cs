@@ -18,6 +18,139 @@ public partial class CBaseEntity
     }
     /// <summary>
     /// This is Valve generated cs_script method
+    /// The position of the origin of this entity relative to the world.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetAbsOrigin()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x167958a1u, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The position of the origin of this entity relative to its parent. Will be relative to the world if no parent.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetLocalOrigin()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0xdbee14bcu, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The angles (pitch, yaw, and roll) of this entity relative to the world.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetAbsAngles()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x235c72ceu, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The angles (pitch, yaw, and roll) of this entity relative to its parent. Will be relative to the world if no parent.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetLocalAngles()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x43b8da93u, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The velocity of this entity relative to the world.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetAbsVelocity()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x78046f62u, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The velocity of this entity relative to its parent. Will be relative to the world if no parent.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetLocalVelocity()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0xfc1c787fu, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The angular velocity of this entity relative to the world.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetAbsAngularVelocity()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x13c0f520u, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The angular velocity of this entity relative to its parent. Will be relative to the world if no parent.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetLocalAngularVelocity()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x2d8e3c9du, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The angles of the eyes of this entity relative to the world.
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetEyeAngles()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x7a83c867u, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// The position of the eyes of this entity relative to the world
+    /// </summary>
+    public global::System.Numerics.Vector3 @GetEyePosition()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x410923a5u, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// Update the physics state of this entity.
+    /// </summary>
+    public void @TeleportScript(CsScriptTransform @newValues)
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x3248a713u, EntityHandle.Raw);
+        call.Push(@newValues);
+        call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// Update the physics state of this entity.
+    /// </summary>
+    [Obsolete]
+    public void @TeleportScript(global::System.Numerics.Vector3? @newPosition, global::System.Numerics.Vector3? @newAngles, global::System.Numerics.Vector3? @newVelocity)
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x59a01d88u, EntityHandle.Raw);
+        call.PushOptional(@newPosition);
+        call.PushOptional(@newAngles);
+        call.PushOptional(@newVelocity);
+        call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// Move this entity without resetting the client's interpolation history.
+    /// </summary>
+    public void @Move(CsScriptTransform @newValues)
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0xb952d4a3u, EntityHandle.Raw);
+        call.Push(@newValues);
+        call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
     /// </summary>
     public global::CounterStrikeSharp.API.Modules.CsScript.CSMoveType @GetMoveType()
     {
@@ -186,6 +319,16 @@ public partial class CBaseEntity
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x1cb3fc38u, EntityHandle.Raw);
         call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public global::System.Numerics.Vector3 @GetLocalVelcoity()
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0xdc72e9ffu, EntityHandle.Raw);
+        call.Invoke();
+        return call.VectorResult();
     }
 }
 
@@ -747,6 +890,15 @@ public partial class CCSObserverPawn
         call.Invoke();
         return call.Result<bool>();
     }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    public void @SetEyeAngles(global::System.Numerics.Vector3 @angle)
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0xd635768cu, EntityHandle.Raw);
+        call.Push(@angle);
+        call.Invoke();
+    }
 }
 
 public partial class CCSPlayerPawn
@@ -800,6 +952,15 @@ public partial class CCSPlayerPawn
         call.Push((double)@inputs);
         call.Invoke();
         return call.Result<bool>();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    public void @SetEyeAngles(global::System.Numerics.Vector3 @angle)
+    {
+        using var call = CsScriptRuntime.Shared.BeginInvoke(0x6e4e2797u, EntityHandle.Raw);
+        call.Push(@angle);
+        call.Invoke();
     }
     /// <summary>
     /// This is Valve generated cs_script method

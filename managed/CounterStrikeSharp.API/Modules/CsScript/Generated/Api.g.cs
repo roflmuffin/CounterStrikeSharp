@@ -439,6 +439,28 @@ public sealed class CsScriptConsole
     internal CsScriptConsole(CsScriptRuntime runtime) { this.runtime = runtime; }
     /// <summary>
     /// This is Valve generated cs_script method
+    /// Get the value of a Vector convar.
+    /// </summary>
+    public global::System.Numerics.Vector3? @GetConvarVector(string @name)
+    {
+        using var call = runtime.BeginInvoke(0x11e7dd3bu, uint.MaxValue);
+        call.Push(@name);
+        call.Invoke();
+        return call.OptionalVectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// Get the value of a QAngle convar.
+    /// </summary>
+    public global::System.Numerics.Vector3? @GetConvarQAngle(string @name)
+    {
+        using var call = runtime.BeginInvoke(0xf396f99bu, uint.MaxValue);
+        call.Push(@name);
+        call.Invoke();
+        return call.OptionalVectorResult();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
     /// Issue the specified command to the specified client.
     /// </summary>
     public void @ClientCommand(double @playerSlot, string @command)

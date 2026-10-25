@@ -21,7 +21,13 @@ public sealed record Shape(string Kind, string? EnumName = null, string? Reason 
     string? Name = null, List<Property>? Properties = null, object? Value = null, string? Absence = null)
 {
     [JsonIgnore] public bool Scalar => Kind is "number" or "string" or "boolean" or "enum";
-    [JsonIgnore] public bool Transportable => Scalar || Kind == "entity";
+    [JsonIgnore] public int Slots => Kind switch
+    {
+        "vector" or "qangle" => Absence is null ? 3 : 4,
+        "transform" => 13,
+        _ => 1
+    };
+    [JsonIgnore] public bool Transportable => Scalar || Kind is "entity" or "vector" or "qangle" or "transform";
 }
 public sealed record Property(string Name, bool Optional, Shape Shape);
 public sealed record Parameter(string Name, bool Optional, bool Rest, Shape Shape);

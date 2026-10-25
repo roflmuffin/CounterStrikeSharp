@@ -16,7 +16,7 @@ public static class Emitter
 
     private static readonly HashSet<string> RenamedMembers = new(StringComparer.Ordinal)
     {
-        "Entity.IsValid", "Entity.Remove", "BaseModelEntity.SetModel", "CSHostage.IsRescued",
+        "Entity.IsValid", "Entity.Remove", "Entity.Teleport", "BaseModelEntity.SetModel", "CSHostage.IsRescued",
         "CSPlayerController.IsBot", "CSPlayerPawn.IsScoped", "CSPlayerPawn.IsBuyMenuOpen"
     };
     private static string Hex(uint value) => $"0x{value:x8}";
@@ -25,17 +25,26 @@ public static class Emitter
     {
         "enum" => $"enum:{shape.EnumName}",
         "entity" => $"entity:{shape.EntityType}" + (shape.Absence is null ? "" : $"|{shape.Absence}"),
+        "vector" or "qangle" => shape.Kind + (shape.Absence is null ? "" : $"|{shape.Absence}"),
         _ => shape.Kind
     };
     private static string NativeKind(Shape shape) => shape.Kind switch
     {
         "number" or "enum" => "Number", "string" => "String", "boolean" => "Boolean", "void" => "Void",
+        "transform" => "Transform",
+        "vector" or "qangle" => (shape.Kind == "vector" ? "Vector" : "QAngle") + AbsenceSuffix(shape),
         "entity" => shape.Absence switch
         {
             null => "Entity", "undefined" => "EntityOrUndefined", "null" => "EntityOrNull", "null|undefined" => "EntityOrNullOrUndefined",
             _ => throw new InvalidDataException($"Unsupported entity absence: {shape.Absence}")
         },
         _ => throw new InvalidDataException($"Unsupported native shape: {shape.Kind}")
+    };
+
+    private static string AbsenceSuffix(Shape shape) => shape.Absence switch
+    {
+        null => "", "undefined" => "OrUndefined", "null" => "OrNull", "null|undefined" => "OrNullOrUndefined",
+        _ => throw new InvalidDataException($"Unsupported absence: {shape.Absence}")
     };
 
     public static uint NativeHash(string identity)
@@ -64,6 +73,8 @@ public static class Emitter
             "number" => "double", "string" => "string", "boolean" => "bool", "void" => "void",
             "enum" => schemaEnums?.GetValueOrDefault(shape.EnumName!) ?? $"global::CounterStrikeSharp.API.Modules.CsScript.{shape.EnumName}",
             "entity" => EntityClass(shape.EntityType!) + (shape.Absence is null ? "" : "?"),
+            "vector" or "qangle" => "global::System.Numerics.Vector3" + (shape.Absence is null ? "" : "?"),
+            "transform" => "CsScriptTransform",
             _ => throw new InvalidDataException($"Unsupported emitted shape: {shape.Kind}")
         };
 
@@ -93,7 +104,7 @@ public static class Emitter
                 var identity = MethodIdentity(manifest.Module, receiver, method);
                 var id = NativeHash(identity);
                 if (!identities.TryAdd(id, identity)) throw new InvalidDataException($"Method hash collision {Hex(id)}: {identities[id]} / {identity}");
-                if (method.MaximumArgumentCount > 24) throw new InvalidDataException($"ScriptContext argument capacity exceeded: {identity}");
+                if (method.MaximumArgumentCount > 24 || method.Parameters.Sum(p => p.Shape.Slots) + 2 > 32) throw new InvalidDataException($"ScriptContext argument capacity exceeded: {identity}");
                 descriptors.Add(new(id, identity, receiver, method));
 
                 if (entity && method.DeclaringReceiver != receiver.ExportName) continue;
@@ -115,9 +126,12 @@ public static class Emitter
                     target.Add($"    public {(hidesBase ? "new " : "")}{Type(method.Returns)} @{member}({string.Join(", ", parameters.Select(p => $"{Type(p.Shape)} @{p.Name}"))})");
                     target.Add("    {");
                     target.Add($"        using var call = {(entity ? "CsScriptRuntime.Shared" : "runtime")}.BeginInvoke({Hex(id)}u, {(entity ? "EntityHandle.Raw" : "uint.MaxValue")});");
-                    target.AddRange(parameters.Select(p => p.Shape.Kind == "entity"
-                        ? $"        call.PushEntity(@{p.Name}, {(p.Shape.Absence is null ? "false" : "true")});"
-                        : $"        call.Push({(p.Shape.Kind == "enum" ? "(double)" : "")}@{p.Name});"));
+                    target.AddRange(parameters.Select(p => p.Shape.Kind switch
+                    {
+                        "entity" => $"        call.PushEntity(@{p.Name}, {(p.Shape.Absence is null ? "false" : "true")});",
+                        "vector" or "qangle" => $"        call.Push{(p.Shape.Absence is null ? "" : "Optional")}(@{p.Name});",
+                        _ => $"        call.Push({(p.Shape.Kind == "enum" ? "(double)" : "")}@{p.Name});"
+                    }));
                     target.Add("        call.Invoke();");
                     if (method.Returns.Kind != "void")
                     {
@@ -125,6 +139,7 @@ public static class Emitter
                         {
                             "entity" => $"call.{(method.Returns.Absence is null ? "EntityResult" : "OptionalEntityResult")}<{EntityClass(method.Returns.EntityType!)}>()",
                             "string" => "call.StringResult()",
+                            "vector" or "qangle" => $"call.{(method.Returns.Absence is null ? "" : "Optional")}VectorResult()",
                             _ => $"call.Result<{(method.Returns.Kind == "enum" ? "double" : Type(method.Returns))}>()"
                         };
                         target.Add($"        return {(method.Returns.Kind == "enum" ? $"({Type(method.Returns)})" : "")}{result};");
@@ -139,7 +154,7 @@ public static class Emitter
             "// <auto-generated />", "#pragma once", "#include <array>", "#include <cstdint>",
             "namespace counterstrikesharp::cs_script {"
         };
-        native.AddRange(["enum class ValueKind { Void, Number, Boolean, String, Entity, EntityOrUndefined, EntityOrNull, EntityOrNullOrUndefined };",
+        native.AddRange(["enum class ValueKind { Void, Number, Boolean, String, Entity, EntityOrUndefined, EntityOrNull, EntityOrNullOrUndefined, Vector, VectorOrUndefined, VectorOrNull, VectorOrNullOrUndefined, QAngle, QAngleOrUndefined, QAngleOrNull, QAngleOrNullOrUndefined, Transform };",
             "struct MethodDescriptor { uint32_t id; const char* receiver; const char* member; bool entity; int minimumArguments; int maximumArguments; std::array<ValueKind, 24> parameters; ValueKind result; };",
             $"inline constexpr std::array<MethodDescriptor, {descriptors.Count}> Descriptors = {{{{"]);
         native.AddRange(descriptors.Select(d => $"    {{{Hex(d.Id)}u, {Literal(d.Receiver.ExportName)}, {Literal(d.Method.Member)}, {(d.Receiver.Kind == "entity" ? "true" : "false")}, {d.Method.MinimumArgumentCount}, {d.Method.MaximumArgumentCount}, {{{string.Join(", ", d.Method.Parameters.Select(p => $"ValueKind::{NativeKind(p.Shape)}"))}}}, ValueKind::{NativeKind(d.Method.Returns)}}},"));

@@ -132,8 +132,31 @@ bool IsEntityKind(ValueKind kind)
     return kind == ValueKind::Entity || kind == ValueKind::EntityOrUndefined || kind == ValueKind::EntityOrNull ||
            kind == ValueKind::EntityOrNullOrUndefined;
 }
-bool AllowsUndefined(ValueKind kind) { return kind == ValueKind::EntityOrUndefined || kind == ValueKind::EntityOrNullOrUndefined; }
-bool AllowsNull(ValueKind kind) { return kind == ValueKind::EntityOrNull || kind == ValueKind::EntityOrNullOrUndefined; }
+bool AllowsUndefined(ValueKind kind)
+{
+    return kind == ValueKind::EntityOrUndefined || kind == ValueKind::EntityOrNullOrUndefined || kind == ValueKind::VectorOrUndefined ||
+           kind == ValueKind::VectorOrNullOrUndefined || kind == ValueKind::QAngleOrUndefined || kind == ValueKind::QAngleOrNullOrUndefined;
+}
+bool AllowsNull(ValueKind kind)
+{
+    return kind == ValueKind::EntityOrNull || kind == ValueKind::EntityOrNullOrUndefined || kind == ValueKind::VectorOrNull ||
+           kind == ValueKind::VectorOrNullOrUndefined || kind == ValueKind::QAngleOrNull || kind == ValueKind::QAngleOrNullOrUndefined;
+}
+bool IsQAngleKind(ValueKind kind)
+{
+    return kind == ValueKind::QAngle || kind == ValueKind::QAngleOrUndefined || kind == ValueKind::QAngleOrNull ||
+           kind == ValueKind::QAngleOrNullOrUndefined;
+}
+bool IsVectorKind(ValueKind kind)
+{
+    return kind == ValueKind::Vector || kind == ValueKind::VectorOrUndefined || kind == ValueKind::VectorOrNull ||
+           kind == ValueKind::VectorOrNullOrUndefined || IsQAngleKind(kind);
+}
+int ArgumentSlots(ValueKind kind)
+{
+    if (IsVectorKind(kind)) return AllowsNull(kind) || AllowsUndefined(kind) ? 4 : 3;
+    return kind == ValueKind::Transform ? 13 : 1;
+}
 void Validate(const HostContext& hostContext)
 {
     auto* host = Entity(hostContext.host);
@@ -188,6 +211,62 @@ Local Get(V8Execution& scope, v8::Local<v8::Object> object, const std::string& k
     if (!object->Get(scope.context, String(scope.isolate, key)).ToLocal(&value))
         throw std::runtime_error("Script property access failed: " + key);
     return value;
+}
+void Set(V8Execution& scope, v8::Local<v8::Object> object, const char* key, Local value)
+{
+    if (!object->CreateDataProperty(scope.context, String(scope.isolate, key), value).FromMaybe(false))
+        throw std::runtime_error(std::string("Could not set script property: ") + key);
+}
+std::array<const char*, 3> ComponentNames(bool angles)
+{
+    return angles ? std::array<const char*, 3>{ "pitch", "yaw", "roll" } : std::array<const char*, 3>{ "x", "y", "z" };
+}
+Local ReadVector(V8Execution& scope, ScriptContext& call, int slot, ValueKind kind)
+{
+    if (AllowsNull(kind) || AllowsUndefined(kind))
+    {
+        auto present = call.GetArgument<uint64_t>(slot++);
+        if (present > 1) throw std::runtime_error("Invalid cs_script vector presence flag");
+        if (!present)
+        {
+            if (AllowsUndefined(kind)) return v8::Undefined(scope.isolate);
+            return v8::Null(scope.isolate);
+        }
+    }
+    auto object = v8::Object::New(scope.isolate);
+    for (const auto* name : ComponentNames(IsQAngleKind(kind)))
+        Set(scope, object, name, v8::Number::New(scope.isolate, call.GetArgument<double>(slot++)));
+    return object;
+}
+Local ReadTransform(V8Execution& scope, ScriptContext& call, int slot)
+{
+    auto fields = call.GetArgument<uint64_t>(slot++);
+    if (fields > 15) throw std::runtime_error("Invalid cs_script transform fields");
+    auto object = v8::Object::New(scope.isolate);
+    const char* names[] = { "position", "angles", "velocity", "angularVelocity" };
+    for (int i = 0; i < 4; ++i)
+    {
+        if (fields & (1u << i))
+            Set(scope, object, names[i], ReadVector(scope, call, slot + i * 3, i == 1 ? ValueKind::QAngle : ValueKind::Vector));
+    }
+    return object;
+}
+void WriteVector(V8Execution& scope, ScriptContext& call, Local value, ValueKind kind)
+{
+    if ((value->IsUndefined() && AllowsUndefined(kind)) || (value->IsNull() && AllowsNull(kind)))
+    {
+        call.SetResult(false);
+        return;
+    }
+    if (!value->IsObject()) throw std::runtime_error("Script return value does not match its vector descriptor");
+    int slot = 0;
+    for (const auto* name : ComponentNames(IsQAngleKind(kind)))
+    {
+        auto component = Get(scope, value.As<v8::Object>(), name);
+        if (!component->IsNumber()) throw std::runtime_error(std::string("Invalid script vector component: ") + name);
+        call.SetArgument(slot++, component.As<v8::Number>()->Value());
+    }
+    call.SetResult(true);
 }
 std::string Exception(V8Execution& scope, v8::TryCatch& caught, const std::string& fallback)
 {
@@ -328,15 +407,21 @@ void Invoke(ScriptContext& call)
         const auto* receiverName = descriptor.receiver;
         const auto* member = descriptor.member;
         memberName = std::string(receiverName) + "." + member;
-        const int argc = count - HeaderSlots;
-        if (argc < descriptor.minimumArguments || argc > descriptor.maximumArguments) throw std::runtime_error("Incorrect argument count");
+        int argc = 0, slots = HeaderSlots;
+        while (slots < count && argc < descriptor.maximumArguments)
+            slots += ArgumentSlots(descriptor.parameters[argc++]);
+        if (slots != count || argc < descriptor.minimumArguments) throw std::runtime_error("Incorrect argument count");
         std::vector<Local> argv;
         argv.reserve(argc);
+        int slot = HeaderSlots;
         for (int i = 0; i < argc; ++i)
         {
             const auto kind = descriptor.parameters[i];
-            const int slot = HeaderSlots + i;
             if (kind == ValueKind::Number) argv.push_back(v8::Number::New(scope.isolate, call.GetArgument<double>(slot)));
+            else if (IsVectorKind(kind))
+                argv.push_back(ReadVector(scope, call, slot, kind));
+            else if (kind == ValueKind::Transform)
+                argv.push_back(ReadTransform(scope, call, slot));
             else if (kind == ValueKind::String)
             {
                 const auto* text = call.GetArgument<const char*>(slot);
@@ -366,6 +451,7 @@ void Invoke(ScriptContext& call)
             }
             else
                 throw std::runtime_error("Unsupported generated argument kind");
+            slot += ArgumentSlots(kind);
         }
         v8::Local<v8::Object> receiver;
         if (descriptor.entity)
@@ -381,6 +467,11 @@ void Invoke(ScriptContext& call)
             throw std::runtime_error("V8 function invocation failed");
         if (result->IsPromise()) throw std::runtime_error("Promise results require an asynchronous lifetime contract");
         const auto kind = descriptor.result;
+        if (IsVectorKind(kind))
+        {
+            WriteVector(scope, call, result, kind);
+            return;
+        }
         if (IsEntityKind(kind))
         {
             if ((result->IsUndefined() && AllowsUndefined(kind)) || (result->IsNull() && AllowsNull(kind)))

@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Numerics;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.CsScript;
@@ -69,8 +70,8 @@ public sealed class CsScriptTests
                 Eligible = player.InGameMoneyServices!.ReceivesMoneyNextRound
             }).ToArray();
         var recipient = before.FirstOrDefault(player => player.Connected && player.Eligible &&
-            (player.Team == CsTeam.CounterTerrorist || player.Team == CsTeam.Terrorist) &&
-            player.Account >= 0 && (long)player.Account + amount <= maxMoney);
+                                                        (player.Team == CsTeam.CounterTerrorist || player.Team == CsTeam.Terrorist) &&
+                                                        player.Account >= 0 && (long)player.Account + amount <= maxMoney);
         Assert.True(recipient != null,
             "Need a connected T or CT eligible for round money with at least $100 below mp_maxmoney. " +
             "Join a team or add a bot, then start a normal round.");
@@ -78,7 +79,6 @@ public sealed class CsScriptTests
 
         try
         {
-
             rules.Script(runtime).AddTeamMoney((double)team, CSTeamMoneyReason.NONE, amount);
             Assert.Equal(recipient.Account + amount, recipient.Money.Account);
             foreach (var player in before)
@@ -88,8 +88,9 @@ public sealed class CsScriptTests
                 else if (player.Connected && player.Eligible)
                     Assert.Equal((int)Math.Min((long)player.Account + amount, maxMoney), player.Money.Account);
             }
+
             Console.WriteLine($"[cs_script] AddTeamMoney({team}, {amount}): " +
-                $"player {recipient.Player.EntityHandle.Raw} balance {recipient.Account} -> {recipient.Money.Account}.");
+                              $"player {recipient.Player.EntityHandle.Raw} balance {recipient.Account} -> {recipient.Money.Account}.");
             Assert.Equal(rules.WarmupPeriod, runtime.GameRules.IsWarmupPeriod());
         }
         finally
@@ -125,6 +126,75 @@ public sealed class CsScriptTests
         {
             if (entity.IsValid) entity.Remove();
         }
+    });
+
+    private static void AssertComponents(float x, float y, float z, Vector3 value)
+    {
+        Assert.InRange(value.X, x - 0.01f, x + 0.01f);
+        Assert.InRange(value.Y, y - 0.01f, y + 0.01f);
+        Assert.InRange(value.Z, z - 0.01f, z + 0.01f);
+    }
+
+    [Fact]
+    public Task MoveAndTeleport_RoundTripVectorsAndPreserveOmittedFields() => Server.NextWorldUpdateAsync(() =>
+    {
+        GetSharedRuntime();
+        var entity = Utilities.CreateEntityByName<CBaseEntity>("info_target");
+        Assert.NotNull(entity);
+        try
+        {
+            entity.DispatchSpawn();
+            entity.TeleportScript(new CsScriptTransform
+            {
+                Position = new Vector3(111.25f, -222.5f, 333.75f),
+                Angles = new Vector3(10, 20, 30),
+                Velocity = new Vector3(12, -6, 4),
+                AngularVelocity = new Vector3(1, 2, 3)
+            });
+            AssertComponents(111.25f, -222.5f, 333.75f, entity.GetAbsOrigin());
+            AssertComponents(111.25f, -222.5f, 333.75f, (Vector3)entity.AbsOrigin!);
+            AssertComponents(10, 20, 30, entity.GetAbsAngles());
+            AssertComponents(10, 20, 30, (Vector3)entity.AbsRotation!);
+            AssertComponents(12, -6, 4, entity.GetAbsVelocity());
+            AssertComponents(12, -6, 4, (Vector3)entity.AbsVelocity);
+
+            var previousPosition = entity.GetAbsOrigin();
+            entity.Move(new CsScriptTransform { Position = new Vector3(-10, 20, 40) });
+            AssertComponents(-10, 20, 40, entity.GetAbsOrigin());
+            AssertComponents(-10, 20, 40, entity.GetLocalOrigin());
+            AssertComponents(111.25f, -222.5f, 333.75f, previousPosition);
+            AssertComponents(10, 20, 30, entity.GetAbsAngles());
+            AssertComponents(12, -6, 4, entity.GetAbsVelocity());
+
+            entity.Move(new CsScriptTransform { Velocity = new Vector3(), AngularVelocity = new Vector3() });
+            AssertComponents(0, 0, 0, entity.GetAbsVelocity());
+            AssertComponents(0, 0, 0, entity.GetLocalAngularVelocity());
+            AssertComponents(-10, 20, 40, entity.GetAbsOrigin());
+            AssertComponents(10, 20, 30, entity.GetLocalAngles());
+
+#pragma warning disable CS0612
+            entity.TeleportScript(null, new Vector3(5, 15, 25), null);
+#pragma warning restore CS0612
+            AssertComponents(-10, 20, 40, entity.GetAbsOrigin());
+            AssertComponents(5, 15, 25, entity.GetAbsAngles());
+            AssertComponents(0, 0, 0, entity.GetAbsVelocity());
+            Assert.Throws<ArgumentNullException>(() => entity.Move(null!));
+        }
+        finally
+        {
+            if (entity.IsValid) entity.Remove();
+        }
+    });
+
+    [Fact]
+    public Task TruncatedTransform_IsRejectedBeforeReadingComponents() => Server.NextWorldUpdateAsync(() =>
+    {
+        var runtime = GetSharedRuntime();
+        using var call = runtime.BeginInvoke(0xb952d4a3u, runtime.Host.EntityHandle.Raw);
+        call.Push(1d);
+        var error = Assert.Throws<NativeException>(call.Invoke);
+        Assert.Contains("Incorrect argument count", error.Message);
+        Assert.Equal(CurrentGameRules().WarmupPeriod, runtime.GameRules.IsWarmupPeriod());
     });
 
     [Fact]
@@ -239,8 +309,14 @@ public sealed class CsScriptTests
         await Server.NextWorldUpdateAsync(() => oldHost.Remove());
         await WaitUntilAsync(() =>
         {
-            try { return runtime.Host.EntityHandle.Raw != handle; }
-            catch (NativeException) { return false; }
+            try
+            {
+                return runtime.Host.EntityHandle.Raw != handle;
+            }
+            catch (NativeException)
+            {
+                return false;
+            }
         }, "automatic replacement of the shared script host");
         await Server.NextWorldUpdateAsync(() =>
         {

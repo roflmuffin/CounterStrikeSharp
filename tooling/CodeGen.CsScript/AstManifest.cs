@@ -156,12 +156,12 @@ public sealed class AstManifest
                         var present = shape.Alternatives!.Where(s => s.Kind != "undefined").ToList();
                         if (present.Count == 1) shape = present[0];
                     }
-                    if (optional && shape.Kind == "entity")
+                    if (optional && shape.Kind is "entity" or "vector" or "qangle")
                         shape = shape with { Absence = shape.Absence is "null" or "null|undefined" ? "null|undefined" : "undefined" };
                     return new Parameter(rest ? Text(Children(pattern).Single()) : Text(pattern), optional, rest, shape);
                 }).ToList();
                 var returns = Resolve(Field(member, "return_type"));
-                var supported = !generic && parameters.All(p => !p.Rest && p.Shape.Transportable) && (returns.Transportable || returns.Kind == "void");
+                var supported = !generic && parameters.All(p => !p.Rest && p.Shape.Transportable) && (returns.Transportable && returns.Kind != "transform" || returns.Kind == "void");
                 var minimum = parameters.FindLastIndex(p => !p.Optional && !p.Rest) + 1;
                 methods.Add(new(group.Key, overload, documentation, deprecated, parameters, entity ? owner : null,
                     returns, minimum, parameters.Count, supported));
@@ -189,7 +189,16 @@ public sealed class AstManifest
                 if (IsEntity(name)) return new("entity", EntityType: name);
                 if (!declarations.TryGetValue(name, out var declaration)) return new("unsupported", Reason: $"unresolved type: {name}");
                 if (!seen.Add(name)) return new("unsupported", Reason: "recursive shape");
-                if (declaration.type() == "type_alias_declaration") return Resolve(Field(declaration, "value"), seen);
+                if (declaration.type() == "type_alias_declaration")
+                {
+                    var alias = Resolve(Field(declaration, "value"), seen);
+                    var components = name == "QAngle" ? new[] { "pitch", "yaw", "roll" } : ["x", "y", "z"];
+                    if (name is "Vector" or "RotationVector" or "QAngle" && alias.Kind == "object" &&
+                        alias.Properties!.Count == 3 && components.All(component => alias.Properties.Any(p =>
+                            p.Name == component && !p.Optional && p.Shape.Kind == "number")))
+                        return new(name == "QAngle" ? "qangle" : "vector");
+                    return alias;
+                }
                 return new("object", Name: name, Properties: Members(name).Where(m => m.Node.type() == "property_signature")
                     .Select(m => ReadProperty(m.Node, seen)).ToList());
             case "generic_type":
@@ -200,13 +209,13 @@ public sealed class AstManifest
                 var alternatives = Children(node).Select(n => Resolve(n, seen))
                     .SelectMany(s => s.Kind == "union" ? s.Alternatives! : [s]).ToList();
                 if (alternatives.All(s => s.Kind == "literal" && s.Value is bool) && alternatives.Select(s => s.Value).Distinct().Count() == 2) return new("boolean");
-                var entityTypes = alternatives.Where(s => s.Kind == "entity").ToList();
-                if (entityTypes.Count == 1 && alternatives.All(s => s.Kind is "entity" or "undefined" or "null"))
+                var nullableTypes = alternatives.Where(s => s.Kind is "entity" or "vector" or "qangle").ToList();
+                if (nullableTypes.Count == 1 && alternatives.All(s => s == nullableTypes[0] || s.Kind is "undefined" or "null"))
                 {
-                    var absent = alternatives.Where(s => s.Kind != "entity").Select(s => s.Kind)
-                        .Concat((entityTypes[0].Absence ?? "").Split('|', StringSplitOptions.RemoveEmptyEntries))
+                    var absent = alternatives.Where(s => s.Kind is "undefined" or "null").Select(s => s.Kind)
+                        .Concat((nullableTypes[0].Absence ?? "").Split('|', StringSplitOptions.RemoveEmptyEntries))
                         .Distinct().Order(StringComparer.Ordinal);
-                    return entityTypes[0] with { Absence = string.Join('|', absent) };
+                    return nullableTypes[0] with { Absence = string.Join('|', absent) };
                 }
                 return new("union", Alternatives: alternatives);
             case "intersection_type":
@@ -215,7 +224,15 @@ public sealed class AstManifest
                     : new("unsupported", Reason: Text(node));
             case "object_type":
                 if (Children(node).Any(n => n.type() != "property_signature")) return new("unsupported", Reason: Text(node));
-                return new("object", Properties: Children(node).Select(n => ReadProperty(n, seen)).ToList());
+                var properties = Children(node).Select(n => ReadProperty(n, seen)).ToList();
+                var transform = new Dictionary<string, string>
+                {
+                    ["position"] = "vector", ["angles"] = "qangle", ["velocity"] = "vector", ["angularVelocity"] = "vector"
+                };
+                if (properties.Count == transform.Count && properties.All(p => p.Optional && p.Shape.Absence is null &&
+                    transform.TryGetValue(p.Name, out var kind) && p.Shape.Kind == kind))
+                    return new("transform");
+                return new("object", Properties: properties);
             case "literal_type":
                 var literal = Text(node);
                 if (literal is "null" or "undefined") return new(literal);

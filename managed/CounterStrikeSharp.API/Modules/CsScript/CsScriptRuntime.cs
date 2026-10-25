@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Text;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -81,6 +82,37 @@ internal sealed class CsScriptCall : IDisposable
 
     internal void Push(double value) => context.PushPrimitive(value);
     internal void Push(bool value) => context.PushPrimitive(value);
+
+    private void PushComponents(double x, double y, double z)
+    {
+        Push(x);
+        Push(y);
+        Push(z);
+    }
+
+    internal void Push(Vector3 value)
+    {
+        PushComponents(value.X, value.Y, value.Z);
+    }
+
+    internal void PushOptional(Vector3? value)
+    {
+        Push(value is not null);
+        PushComponents(value?.X ?? 0, value?.Y ?? 0, value?.Z ?? 0);
+    }
+
+    internal void Push(CsScriptTransform value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+        uint fields = (value.Position is null ? 0u : 1u) | (value.Angles is null ? 0u : 2u) |
+            (value.Velocity is null ? 0u : 4u) | (value.AngularVelocity is null ? 0u : 8u);
+        context.PushPrimitive(fields);
+        PushComponents(value.Position?.X ?? 0, value.Position?.Y ?? 0, value.Position?.Z ?? 0);
+        PushComponents(value.Angles?.X ?? 0, value.Angles?.Y ?? 0, value.Angles?.Z ?? 0);
+        PushComponents(value.Velocity?.X ?? 0, value.Velocity?.Y ?? 0, value.Velocity?.Z ?? 0);
+        PushComponents(value.AngularVelocity?.X ?? 0, value.AngularVelocity?.Y ?? 0, value.AngularVelocity?.Z ?? 0);
+    }
+
     internal void PushEntity(CEntityInstance? value, bool allowAbsent)
     {
         if (value is null)
@@ -120,5 +152,24 @@ internal sealed class CsScriptCall : IDisposable
     }
 
     internal string StringResult() => context.GetResultString();
+
+    private unsafe Vector3 ComponentsResult()
+    {
+        fixed (byte* data = context.m_extContext.functionData)
+        {
+            var components = (double*)data;
+            return new Vector3((float)components[0], (float)components[1], (float)components[2]);
+        }
+    }
+
+    internal Vector3 VectorResult() => OptionalVectorResult()
+        ?? throw new InvalidOperationException("cs_script returned an absent required vector");
+
+    internal Vector3? OptionalVectorResult()
+    {
+        if (!Result<bool>()) return null;
+        return ComponentsResult();
+    }
+
     public void Dispose() => context.GlobalCleanUp();
 }
