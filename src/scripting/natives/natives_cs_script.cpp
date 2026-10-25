@@ -19,4 +19,4 @@ REGISTER_NATIVES(cs_script, {
     ScriptEngine::RegisterNativeHandler("CS_SCRIPT_IS_READY", CheckedCsScriptNative<cs_script::IsReady>);
     ScriptEngine::RegisterNativeHandler("CS_SCRIPT_INVOKE", CheckedCsScriptNative<cs_script::Invoke>);
 })
-}
+} // namespace counterstrikesharp

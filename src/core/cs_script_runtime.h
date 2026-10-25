@@ -2,7 +2,9 @@
 
 #include <cstdint>
 
-namespace counterstrikesharp { class ScriptContext; }
+namespace counterstrikesharp {
+class ScriptContext;
+}
 
 namespace counterstrikesharp::cs_script {
 
@@ -14,4 +16,4 @@ void OnGameFrame(bool simulating);
 void OnEntityDeleted(uint32_t handle);
 void OnMapEnd();
 void OnShutdown();
-}
+} // namespace counterstrikesharp::cs_script
