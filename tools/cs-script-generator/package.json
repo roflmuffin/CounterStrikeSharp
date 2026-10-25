@@ -1,0 +1,11 @@
+{
+  "name": "counterstrikesharp-cs-script-generator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.mjs",
+    "check": "node generate.mjs --check",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": { "typescript": "5.9.3" }
+}

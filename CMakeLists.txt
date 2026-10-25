@@ -109,9 +109,28 @@ set(SOURCE_FILES
     src/core/customhudlayout.cpp
     src/core/customhudlayout.h
     src/scripting/natives/natives_customhud.cpp
+    src/core/cs_script_runtime.cpp
+    src/scripting/natives/natives_cs_script.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
+
+option(CSS_ENABLE_CS_SCRIPT "Build the experimental Linux 14192 cs_script bridge" OFF)
+if(CSS_ENABLE_CS_SCRIPT)
+    if(NOT LINUX)
+        message(FATAL_ERROR "cs_script currently supports Linux x86_64 only")
+    endif()
+    set(CSS_V8_INCLUDE_DIR "" CACHE PATH "Official V8 11.9.169.6 include directory")
+    set(CSS_V8_LIBRARY "" CACHE FILEPATH "The server's libv8.so (do not use a stock build)")
+    if(NOT EXISTS "${CSS_V8_INCLUDE_DIR}/v8.h" OR NOT EXISTS "${CSS_V8_LIBRARY}")
+        message(FATAL_ERROR "Set CSS_V8_INCLUDE_DIR and CSS_V8_LIBRARY for the target server")
+    endif()
+    target_compile_definitions(${PROJECT_NAME} PRIVATE CSS_ENABLE_CS_SCRIPT=1)
+    target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE "${CSS_V8_INCLUDE_DIR}")
+    target_link_libraries(${PROJECT_NAME} "${CSS_V8_LIBRARY}")
+    # The game already loads this library. Never package a second V8 runtime.
+    set_target_properties(${PROJECT_NAME} PROPERTIES SKIP_BUILD_RPATH TRUE)
+endif()
 
 target_include_directories(
     ${PROJECT_NAME}

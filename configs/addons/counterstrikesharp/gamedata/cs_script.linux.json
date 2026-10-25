@@ -1,0 +1,87 @@
+{
+  "CsScript_ServerBuildId": {
+    "patches": {
+      "linux": "2603388aa1b1fb9afd7ac31b1c878b98f253c668"
+    }
+  },
+  "CsScript_GetContext": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 48 89 E5 53 48 89 FB 48 83 EC 08 E8 8F BB F2 FF 48 89 C7 48 8B 43 28 48 85 C0 74 08 48 8B 30"
+    }
+  },
+  "CsScript_Push": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 48 89 E5 41 56 41 55 49 89 FD 8B 3D 8F 8F D6 01 41 54 53 48 63 1D 75 8F D6 01 39 FB 74 21 48"
+    }
+  },
+  "CsScript_Pop": {
+    "signatures": {
+      "library": "server",
+      "linux": "83 2D 49 8E D6 01 01 C3"
+    }
+  },
+  "CsScript_Top": {
+    "signatures": {
+      "library": "server",
+      "linux": "8B 05 3A 8E D6 01 31 D2 85 C0 7E 10 48 8B 15 35 8E D6 01 83 E8 01 48 98 48 8B 14 C2 48 89 D0 C3"
+    }
+  },
+  "CsScript_WrapEntity": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 48 89 E5 41 54 53 48 83 EC 10 48 85 FF 0F 84 AC 00 00 00 48 8B 07 48 89 FB FF 90 B0 01 00 00"
+    }
+  },
+  "CsScript_Unwrap": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 48 89 E5 53 48 89 FB 48 83 EC 08 E8 7F 19 E9 FF 83 F8 03 75 6A 48 8B 13 48 8B 42 FF 0F B7 40"
+    }
+  },
+  "CsScript_AddTeamMoneyCallback": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 BE 01 00 00 00 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC 58 4C 8D 25 98 BC CB 01"
+    }
+  },
+  "CsScript_HostLayout": {
+    "signatures": {
+      "library": "server",
+      "linux": "48 8D BB A0 07 00 00 48 C7 83 98 07 00 00 00 00 00 00 E8 B8 69 FC FF"
+    }
+  },
+  "CsScript_RegisterApi": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 48 89 E5 41 54 53 4C 8D 65 D0 48 89 FB 48 83 EC 20 E8 69 BE ED FF 4C 89 E7 48 89 C6 E8 CE BD"
+    }
+  },
+  "CsScript_ResolveModule": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 81 EC A8 01 00 00 E8 61 15 F2 FF 48"
+    }
+  },
+  "CsScript_HostScript": {
+    "offsets": {
+      "linux": 1952
+    }
+  },
+  "CsScript_Context": {
+    "offsets": {
+      "linux": 40
+    }
+  },
+  "CsScript_Incarnation": {
+    "offsets": {
+      "linux": 32
+    }
+  },
+  "CsScript_ExportCount": {
+    "offsets": {
+      "linux": 56
+    }
+  }
+}

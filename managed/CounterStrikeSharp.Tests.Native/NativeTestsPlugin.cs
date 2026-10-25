@@ -55,6 +55,13 @@ namespace NativeTestsPlugin
             AddCommand("css_run_tests", "Runs the xUnit tests for the native plugin.", (player, info) => { RunTests(); });
         }
 
+        [ConsoleCommand("css_test_cs_script", "Test empty cs_script contexts and V8 calls on a live server.")]
+        public void OnCommandCsScriptTest(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player != null) return;
+            _ = RunTests(nameof(CsScriptTests));
+        }
+
         [ConsoleCommand("css_itest")]
         public void OnCommandTest(CCSPlayerController? player, CommandInfo command)
         {

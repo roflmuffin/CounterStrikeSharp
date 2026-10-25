@@ -13,6 +13,7 @@
  */
 
 #include "mm_plugin.h"
+#include "core/cs_script_runtime.h"
 
 #include <cstdio>
 
@@ -198,6 +199,16 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
         CSSHARP_CORE_INFO("Initialized GameSystem.");
 
+        if (late)
+        {
+            globals::entitySystem = GameEntitySystem();
+            if (globals::entitySystem)
+            {
+                globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
+                cs_script::OnMapStart();
+            }
+        }
+
         if (!globals::dotnetManager.Initialize())
         {
             CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
@@ -229,6 +240,8 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServe
 
     globals::timerSystem.OnStartupServer();
 
+    cs_script::OnMapStart();
+
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
     on_activate_callback->Execute();
@@ -236,6 +249,7 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServe
 }
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
+    counterstrikesharp::cs_script::OnShutdown();
     HookSet::ClearAll();
     globals::ShutdownHooks();
     DynamicHook::ShutdownAll();
@@ -274,6 +288,7 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_GameFrame(IServerGameDLL* h
      */
     // VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
     DynamicHook::CollectRetired();
+    cs_script::OnGameFrame(simulating);
     globals::timerSystem.OnGameFrame(simulating);
 
     auto callbacks = globals::tickScheduler.getCallbacks(globals::getGlobalVars()->tickcount);
@@ -327,6 +342,7 @@ KHook::Return<int> CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(IGameEven
 
 void CounterStrikeSharpMMPlugin::OnLevelShutdown()
 {
+    counterstrikesharp::cs_script::OnMapEnd();
     CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
 
     if (!m_has_level_initialized)

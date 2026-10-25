@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "status": "hand-authored expected generator output",
+  "module": "cs_script/point_script",
+  "exportName": "GameRules",
+  "receiverType": "IGameRules",
+  "member": "AddTeamMoney",
+  "minimumArgumentCount": 2,
+  "maximumArgumentCount": 3,
+  "parameters": [
+    { "name": "team", "kind": "number", "optional": false },
+    { "name": "reason", "kind": "enum", "enumName": "CSTeamMoneyReason", "optional": false },
+    { "name": "amount", "kind": "number", "optional": true }
+  ],
+  "returns": { "kind": "void" },
+  "deprecated": false,
+  "source": {
+    "ref": "master",
+    "gitBlobSha": "36c59a00b4d35262337cfaa74fdadb92ac035ed8",
+    "declaration": "../../references/cs_script/master/point_script.d.ts"
+  }
+}

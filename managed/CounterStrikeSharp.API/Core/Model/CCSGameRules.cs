@@ -22,6 +22,23 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CCSGameRules
 {
+    /// <summary>Returns the current map's shared GameRules script API.</summary>
+    public CounterStrikeSharp.API.Modules.CsScript.CsScriptGameRules Script()
+        => Script(CounterStrikeSharp.API.Modules.CsScript.CsScriptRuntime.Shared);
+
+    /// <summary>Returns the session's GameRules API after checking the current native singleton.</summary>
+    public CounterStrikeSharp.API.Modules.CsScript.CsScriptGameRules Script(
+        CounterStrikeSharp.API.Modules.CsScript.CsScriptRuntime runtime)
+    {
+        ArgumentNullException.ThrowIfNull(runtime);
+        runtime.CheckThread();
+        var current = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules")
+            .FirstOrDefault()?.GameRules;
+        if (Handle == IntPtr.Zero || current == null || current.Handle != Handle)
+            throw new InvalidOperationException("CCSGameRules is not the current singleton");
+        return runtime.GameRules;
+    }
+
     private static readonly Lazy<bool> IsWindows = new(() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows));
 
     /// <summary>
