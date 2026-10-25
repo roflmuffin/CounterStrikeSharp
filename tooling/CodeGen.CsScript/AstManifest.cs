@@ -132,7 +132,6 @@ public sealed class AstManifest
         {
             var docs = group.Select(m => Documentation(m.Node)).ToArray();
             var documentation = string.Join('\n', docs.Select(d => d.Documentation).Where(d => d.Length > 0));
-            var deprecated = docs.Any(d => d.Deprecated);
             var overload = 0;
             foreach (var (owner, member) in group)
             {
@@ -141,6 +140,7 @@ public sealed class AstManifest
                     diagnostics.Add(new(name, "property access", group.Key));
                     continue;
                 }
+                var deprecated = Documentation(member).Deprecated;
                 var generic = !Field(member, "type_parameters").is_null();
                 var parameters = Children(Field(member, "parameters")).Select(p =>
                 {
@@ -161,11 +161,11 @@ public sealed class AstManifest
                     return new Parameter(rest ? Text(Children(pattern).Single()) : Text(pattern), optional, rest, shape);
                 }).ToList();
                 var returns = Resolve(Field(member, "return_type"));
-                var supported = !generic && !deprecated && parameters.All(p => !p.Rest && p.Shape.Transportable) && (returns.Transportable || returns.Kind == "void");
+                var supported = !generic && parameters.All(p => !p.Rest && p.Shape.Transportable) && (returns.Transportable || returns.Kind == "void");
                 var minimum = parameters.FindLastIndex(p => !p.Optional && !p.Rest) + 1;
                 methods.Add(new(group.Key, overload, documentation, deprecated, parameters, entity ? owner : null,
                     returns, minimum, parameters.Count, supported));
-                if (!supported) diagnostics.Add(new(name, generic ? "generic" : deprecated ? "deprecated alias excluded" :
+                if (!supported) diagnostics.Add(new(name, generic ? "generic" :
                     "shape requires additional marshalling/ownership support", group.Key, overload));
                 overload++;
             }

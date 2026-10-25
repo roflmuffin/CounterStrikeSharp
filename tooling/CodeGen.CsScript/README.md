@@ -87,7 +87,10 @@ or the numeric transport ABI.
 
 The AST visitor resolves named types and inheritance, groups overloads, and
 extracts scalar and entity signatures. It does not run the TypeScript semantic
-checker.
+checker. Supported methods tagged `@deprecated` are emitted with `[Obsolete]`,
+including each generated optional-argument overload. Deprecation is tracked per
+TypeScript overload, not across all overloads of the same name. Every emitted
+method's XML summary begins with `This is Valve generated cs_script method`.
 Complex and unrecognized type shapes remain unsupported and are recorded as
 diagnostics, rather than guessed into callable signatures. Enum initializers are
 evaluated from AST nodes with JavaScript bitwise semantics and must produce safe

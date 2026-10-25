@@ -735,7 +735,7 @@
           "member": "DebugScreenText",
           "overload": 0,
           "documentation": "Print some text to the game window. Only works in dev environments.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "config",
@@ -910,7 +910,7 @@
           "member": "DebugLine",
           "overload": 0,
           "documentation": "Draw a line in the world. Only works in dev environments.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "config",
@@ -1160,7 +1160,7 @@
           "member": "DebugSphere",
           "overload": 0,
           "documentation": "Draw a wire sphere in the world. Only works in dev environments.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "config",
@@ -1364,7 +1364,7 @@
           "member": "DebugBox",
           "overload": 0,
           "documentation": "Draw an axis aligned box in the world. Only works in dev environments.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "config",
@@ -2685,7 +2685,7 @@
           "member": "EntFireAtName",
           "overload": 0,
           "documentation": "Fire the input on all targets matching the specified names.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "config",
@@ -3046,7 +3046,7 @@
           "member": "EntFireAtTarget",
           "overload": 0,
           "documentation": "Fire the input on the specified target.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "config",
@@ -5240,7 +5240,7 @@
           },
           "minimumArgumentCount": 2,
           "maximumArgumentCount": 2,
-          "supported": false
+          "supported": true
         },
         {
           "member": "ServerCommand",
@@ -5262,7 +5262,7 @@
           },
           "minimumArgumentCount": 1,
           "maximumArgumentCount": 1,
-          "supported": false
+          "supported": true
         },
         {
           "member": "RegisterCheatCommand",
@@ -5306,7 +5306,7 @@
           },
           "minimumArgumentCount": 0,
           "maximumArgumentCount": 0,
-          "supported": false
+          "supported": true
         },
         {
           "member": "IsFreezePeriod",
@@ -5319,7 +5319,7 @@
           },
           "minimumArgumentCount": 0,
           "maximumArgumentCount": 0,
-          "supported": false
+          "supported": true
         },
         {
           "member": "IsTeamIntroPeriod",
@@ -5332,7 +5332,7 @@
           },
           "minimumArgumentCount": 0,
           "maximumArgumentCount": 0,
-          "supported": false
+          "supported": true
         },
         {
           "member": "GetRoundsPlayed",
@@ -5345,7 +5345,7 @@
           },
           "minimumArgumentCount": 0,
           "maximumArgumentCount": 0,
-          "supported": false
+          "supported": true
         },
         {
           "member": "GetRoundRemainingTime",
@@ -5358,7 +5358,7 @@
           },
           "minimumArgumentCount": 0,
           "maximumArgumentCount": 0,
-          "supported": false
+          "supported": true
         },
         {
           "member": "SetRoundRemainingTime",
@@ -5380,7 +5380,7 @@
           },
           "minimumArgumentCount": 1,
           "maximumArgumentCount": 1,
-          "supported": false
+          "supported": true
         },
         {
           "member": "AddTeamMoney",
@@ -5419,7 +5419,7 @@
           },
           "minimumArgumentCount": 2,
           "maximumArgumentCount": 3,
-          "supported": false
+          "supported": true
         }
       ],
       "bases": []
@@ -6556,7 +6556,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -8064,7 +8064,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -9710,7 +9710,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -11398,7 +11398,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -12936,7 +12936,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -14628,7 +14628,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -16240,7 +16240,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -17600,7 +17600,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -18945,7 +18945,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -20481,7 +20481,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -22148,7 +22148,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -23620,7 +23620,7 @@
           },
           "minimumArgumentCount": 0,
           "maximumArgumentCount": 0,
-          "supported": false
+          "supported": true
         },
         {
           "member": "IsCrouched",
@@ -23634,7 +23634,7 @@
           },
           "minimumArgumentCount": 0,
           "maximumArgumentCount": 0,
-          "supported": false
+          "supported": true
         },
         {
           "member": "SetModel",
@@ -24276,7 +24276,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -25823,7 +25823,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -27170,7 +27170,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -28597,7 +28597,7 @@
           "member": "Teleport",
           "overload": 0,
           "documentation": "Update the physics state of this entity.",
-          "deprecated": true,
+          "deprecated": false,
           "parameters": [
             {
               "name": "newValues",
@@ -29466,49 +29466,49 @@
   "diagnostics": [
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugScreenText",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugScreenText",
       "overload": 1
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugLine",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugLine",
       "overload": 1
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugSphere",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugSphere",
       "overload": 1
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugBox",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "DebugBox",
       "overload": 1
     },
@@ -29772,25 +29772,25 @@
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "EntFireAtName",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "EntFireAtName",
       "overload": 1
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "EntFireAtTarget",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "EntFireAtTarget",
       "overload": 1
     },
@@ -29862,86 +29862,32 @@
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "OnBeforePlayerDamage",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "OnBeforeReload",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "OnReload",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Msg",
       "overload": 0
     },
     {
       "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "ClientCommand",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "ServerCommand",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "RegisterCheatCommand",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "IsWarmupPeriod",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "IsFreezePeriod",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "IsTeamIntroPeriod",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "GetRoundsPlayed",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "GetRoundRemainingTime",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "SetRoundRemainingTime",
-      "overload": 0
-    },
-    {
-      "receiver": "Instance",
-      "reason": "deprecated alias excluded",
-      "member": "AddTeamMoney",
       "overload": 0
     },
     {
@@ -30064,13 +30010,13 @@
     },
     {
       "receiver": "Entity",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "Entity",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30088,7 +30034,7 @@
     },
     {
       "receiver": "Entity",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30172,13 +30118,13 @@
     },
     {
       "receiver": "BaseModelEntity",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "BaseModelEntity",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30196,7 +30142,7 @@
     },
     {
       "receiver": "BaseModelEntity",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30286,13 +30232,13 @@
     },
     {
       "receiver": "CSWeaponBase",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSWeaponBase",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30310,7 +30256,7 @@
     },
     {
       "receiver": "CSWeaponBase",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30412,13 +30358,13 @@
     },
     {
       "receiver": "C4",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "C4",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30436,7 +30382,7 @@
     },
     {
       "receiver": "C4",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30524,13 +30470,13 @@
     },
     {
       "receiver": "CSGrenadeProjectileBase",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSGrenadeProjectileBase",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30548,7 +30494,7 @@
     },
     {
       "receiver": "CSGrenadeProjectileBase",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30650,13 +30596,13 @@
     },
     {
       "receiver": "CSPlantedC4",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSPlantedC4",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30674,7 +30620,7 @@
     },
     {
       "receiver": "CSPlantedC4",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30770,13 +30716,13 @@
     },
     {
       "receiver": "CSHostage",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSHostage",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30794,7 +30740,7 @@
     },
     {
       "receiver": "CSHostage",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30860,13 +30806,13 @@
     },
     {
       "receiver": "CSRadarPoint",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSRadarPoint",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30884,7 +30830,7 @@
     },
     {
       "receiver": "CSRadarPoint",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -30950,13 +30896,13 @@
     },
     {
       "receiver": "CSObservablePoint",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSObservablePoint",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -30974,7 +30920,7 @@
     },
     {
       "receiver": "CSObservablePoint",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -31046,13 +30992,13 @@
     },
     {
       "receiver": "CSPlayerController",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSPlayerController",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -31070,7 +31016,7 @@
     },
     {
       "receiver": "CSPlayerController",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -31160,13 +31106,13 @@
     },
     {
       "receiver": "CSObserverPawn",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSObserverPawn",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -31184,7 +31130,7 @@
     },
     {
       "receiver": "CSObserverPawn",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -31202,18 +31148,6 @@
     },
     {
       "receiver": "CSPlayerPawn",
-      "reason": "deprecated alias excluded",
-      "member": "IsCrouching",
-      "overload": 0
-    },
-    {
-      "receiver": "CSPlayerPawn",
-      "reason": "deprecated alias excluded",
-      "member": "IsCrouched",
-      "overload": 0
-    },
-    {
-      "receiver": "CSPlayerPawn",
       "reason": "shape requires additional marshalling/ownership support",
       "member": "SetColor",
       "overload": 0
@@ -31292,13 +31226,13 @@
     },
     {
       "receiver": "CSPlayerPawn",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CSPlayerPawn",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -31316,7 +31250,7 @@
     },
     {
       "receiver": "CSPlayerPawn",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -31394,13 +31328,13 @@
     },
     {
       "receiver": "CustomHudLayout",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CustomHudLayout",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -31418,7 +31352,7 @@
     },
     {
       "receiver": "CustomHudLayout",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -31490,13 +31424,13 @@
     },
     {
       "receiver": "PointTemplate",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "PointTemplate",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -31514,7 +31448,7 @@
     },
     {
       "receiver": "PointTemplate",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     },
@@ -31586,13 +31520,13 @@
     },
     {
       "receiver": "CustomPlayerCamera",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 0
     },
     {
       "receiver": "CustomPlayerCamera",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "Teleport",
       "overload": 1
     },
@@ -31610,7 +31544,7 @@
     },
     {
       "receiver": "CustomPlayerCamera",
-      "reason": "deprecated alias excluded",
+      "reason": "shape requires additional marshalling/ownership support",
       "member": "GetLocalVelcoity",
       "overload": 0
     }

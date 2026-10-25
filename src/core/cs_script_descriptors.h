@@ -25,7 +25,7 @@ struct MethodDescriptor
     std::array<ValueKind, 24> parameters;
     ValueKind result;
 };
-inline constexpr std::array<MethodDescriptor, 465> Descriptors = { {
+inline constexpr std::array<MethodDescriptor, 476> Descriptors = { {
     { 0x77789335u, "Instance", "SetSaveData", false, 1, 1, { ValueKind::String }, ValueKind::Void },
     { 0x2042f435u, "Instance", "GetSaveData", false, 0, 0, {}, ValueKind::String },
     { 0xd3396f45u, "Instance", "SetNextThink", false, 1, 1, { ValueKind::Number }, ValueKind::Void },
@@ -38,6 +38,15 @@ inline constexpr std::array<MethodDescriptor, 465> Descriptors = { {
     { 0x2fea8864u, "Instance", "GetGameType", false, 0, 0, {}, ValueKind::Number },
     { 0x6b62ad5fu, "Instance", "GetGameMode", false, 0, 0, {}, ValueKind::Number },
     { 0xd346849fu, "Instance", "GetMapName", false, 0, 0, {}, ValueKind::String },
+    { 0xfebe2477u, "Instance", "ClientCommand", false, 2, 2, { ValueKind::Number, ValueKind::String }, ValueKind::Void },
+    { 0xe25cbae4u, "Instance", "ServerCommand", false, 1, 1, { ValueKind::String }, ValueKind::Void },
+    { 0xe7a5b970u, "Instance", "IsWarmupPeriod", false, 0, 0, {}, ValueKind::Boolean },
+    { 0x86142f77u, "Instance", "IsFreezePeriod", false, 0, 0, {}, ValueKind::Boolean },
+    { 0xd65187afu, "Instance", "IsTeamIntroPeriod", false, 0, 0, {}, ValueKind::Boolean },
+    { 0x6d5dd946u, "Instance", "GetRoundsPlayed", false, 0, 0, {}, ValueKind::Number },
+    { 0x008eec19u, "Instance", "GetRoundRemainingTime", false, 0, 0, {}, ValueKind::Number },
+    { 0x39c10699u, "Instance", "SetRoundRemainingTime", false, 1, 1, { ValueKind::Number }, ValueKind::Void },
+    { 0x711deff0u, "Instance", "AddTeamMoney", false, 2, 3, { ValueKind::Number, ValueKind::Number, ValueKind::Number }, ValueKind::Void },
     { 0x8df97c09u, "Console", "ClientCommand", false, 2, 2, { ValueKind::Number, ValueKind::String }, ValueKind::Void },
     { 0x677a061au, "Console", "ServerCommand", false, 1, 1, { ValueKind::String }, ValueKind::Void },
     { 0xba752f2au, "GameRules", "IsWarmupPeriod", false, 0, 0, {}, ValueKind::Boolean },
@@ -403,6 +412,8 @@ inline constexpr std::array<MethodDescriptor, 465> Descriptors = { {
     { 0xf4fb05a3u, "CSPlayerPawn", "IsNoclipping", true, 0, 0, {}, ValueKind::Boolean },
     { 0x2ae759cdu, "CSPlayerPawn", "IsBuyMenuOpen", true, 0, 0, {}, ValueKind::Boolean },
     { 0x524e343eu, "CSPlayerPawn", "GetCustomCamera", true, 0, 0, {}, ValueKind::Entity },
+    { 0xc23e8084u, "CSPlayerPawn", "IsCrouching", true, 0, 0, {}, ValueKind::Boolean },
+    { 0x479340e5u, "CSPlayerPawn", "IsCrouched", true, 0, 0, {}, ValueKind::Boolean },
     { 0x80f94056u, "CSPlayerPawn", "SetModel", true, 1, 1, { ValueKind::String }, ValueKind::Void },
     { 0x0fe940d1u, "CSPlayerPawn", "GetModelName", true, 0, 0, {}, ValueKind::String },
     { 0x1acccdb8u, "CSPlayerPawn", "SetModelScale", true, 1, 1, { ValueKind::Number }, ValueKind::Void },

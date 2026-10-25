@@ -203,6 +203,7 @@ public sealed class CsScriptInstance
     private readonly CsScriptRuntime runtime;
     internal CsScriptInstance(CsScriptRuntime runtime) { this.runtime = runtime; }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Writes save data associated with this workshop addon.
     /// Will synchronously write to disk every time this is called.
     /// </summary>
@@ -213,6 +214,7 @@ public sealed class CsScriptInstance
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Retrieves the save data associated with this workshop addon.
     /// Will synchronously read from disk the first time this is called.
     /// </summary>
@@ -223,6 +225,7 @@ public sealed class CsScriptInstance
         return call.StringResult();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Set when the OnThink callback should next be run. The exact time will be on the tick nearest to the specified time, which may be earlier or later.
     /// </summary>
     public void @SetNextThink(double @time)
@@ -232,6 +235,7 @@ public sealed class CsScriptInstance
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Find entities by name.
     /// </summary>
     public void @DisconnectOutput(double @connectionId)
@@ -241,6 +245,7 @@ public sealed class CsScriptInstance
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Find the first entity matching the specified name.
     /// </summary>
     public CBaseEntity? @FindEntityByName(string @name)
@@ -251,6 +256,7 @@ public sealed class CsScriptInstance
         return call.OptionalEntityResult<CBaseEntity>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Find the first entity of the specified class name.
     /// </summary>
     public CBaseEntity? @FindEntityByClass(string @className)
@@ -261,6 +267,7 @@ public sealed class CsScriptInstance
         return call.OptionalEntityResult<CBaseEntity>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the player controller in the given slot.
     /// </summary>
     public CCSPlayerController? @GetPlayerController(double @playerSlot)
@@ -271,6 +278,7 @@ public sealed class CsScriptInstance
         return call.OptionalEntityResult<CCSPlayerController>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get if the server is a dedicated server.
     /// </summary>
     public bool @IsDedicatedServer()
@@ -280,6 +288,7 @@ public sealed class CsScriptInstance
         return call.Result<bool>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the game time in seconds.
     /// </summary>
     public double @GetGameTime()
@@ -289,6 +298,7 @@ public sealed class CsScriptInstance
         return call.Result<double>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the current Game Type.
     /// </summary>
     public double @GetGameType()
@@ -298,6 +308,7 @@ public sealed class CsScriptInstance
         return call.Result<double>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the current Game Mode.
     /// </summary>
     public double @GetGameMode()
@@ -307,6 +318,7 @@ public sealed class CsScriptInstance
         return call.Result<double>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the name of the current map.
     /// </summary>
     public string @GetMapName()
@@ -315,6 +327,110 @@ public sealed class CsScriptInstance
         call.Invoke();
         return call.StringResult();
     }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public void @ClientCommand(double @playerSlot, string @command)
+    {
+        using var call = runtime.BeginInvoke(0xfebe2477u, uint.MaxValue);
+        call.Push(@playerSlot);
+        call.Push(@command);
+        call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public void @ServerCommand(string @command)
+    {
+        using var call = runtime.BeginInvoke(0xe25cbae4u, uint.MaxValue);
+        call.Push(@command);
+        call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public bool @IsWarmupPeriod()
+    {
+        using var call = runtime.BeginInvoke(0xe7a5b970u, uint.MaxValue);
+        call.Invoke();
+        return call.Result<bool>();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public bool @IsFreezePeriod()
+    {
+        using var call = runtime.BeginInvoke(0x86142f77u, uint.MaxValue);
+        call.Invoke();
+        return call.Result<bool>();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public bool @IsTeamIntroPeriod()
+    {
+        using var call = runtime.BeginInvoke(0xd65187afu, uint.MaxValue);
+        call.Invoke();
+        return call.Result<bool>();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public double @GetRoundsPlayed()
+    {
+        using var call = runtime.BeginInvoke(0x6d5dd946u, uint.MaxValue);
+        call.Invoke();
+        return call.Result<double>();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public double @GetRoundRemainingTime()
+    {
+        using var call = runtime.BeginInvoke(0x008eec19u, uint.MaxValue);
+        call.Invoke();
+        return call.Result<double>();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public void @SetRoundRemainingTime(double @time)
+    {
+        using var call = runtime.BeginInvoke(0x39c10699u, uint.MaxValue);
+        call.Push(@time);
+        call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public void @AddTeamMoney(double @team, global::CounterStrikeSharp.API.Modules.CsScript.CSTeamMoneyReason @reason)
+    {
+        using var call = runtime.BeginInvoke(0x711deff0u, uint.MaxValue);
+        call.Push(@team);
+        call.Push((double)@reason);
+        call.Invoke();
+    }
+    /// <summary>
+    /// This is Valve generated cs_script method
+    /// </summary>
+    [Obsolete]
+    public void @AddTeamMoney(double @team, global::CounterStrikeSharp.API.Modules.CsScript.CSTeamMoneyReason @reason, double @amount)
+    {
+        using var call = runtime.BeginInvoke(0x711deff0u, uint.MaxValue);
+        call.Push(@team);
+        call.Push((double)@reason);
+        call.Push(@amount);
+        call.Invoke();
+    }
 }
 
 public sealed class CsScriptConsole
@@ -322,6 +438,7 @@ public sealed class CsScriptConsole
     private readonly CsScriptRuntime runtime;
     internal CsScriptConsole(CsScriptRuntime runtime) { this.runtime = runtime; }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Issue the specified command to the specified client.
     /// </summary>
     public void @ClientCommand(double @playerSlot, string @command)
@@ -332,6 +449,7 @@ public sealed class CsScriptConsole
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Issue a command.
     /// </summary>
     public void @ServerCommand(string @command)
@@ -347,6 +465,7 @@ public sealed class CsScriptGameRules
     private readonly CsScriptRuntime runtime;
     internal CsScriptGameRules(CsScriptRuntime runtime) { this.runtime = runtime; }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get if the game is currently in a Warmup period.
     /// </summary>
     public bool @IsWarmupPeriod()
@@ -356,6 +475,7 @@ public sealed class CsScriptGameRules
         return call.Result<bool>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Start the warmup period, restarting the round.
     /// </summary>
     public void @StartWarmup()
@@ -364,6 +484,7 @@ public sealed class CsScriptGameRules
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// End the warmup period as if its timer had run out. The game mode then ends it the usual way, starting on the next tick.
     /// </summary>
     public void @EndWarmup()
@@ -372,6 +493,7 @@ public sealed class CsScriptGameRules
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get if the game is currently in a Freeze period.
     /// </summary>
     public bool @IsFreezePeriod()
@@ -381,6 +503,7 @@ public sealed class CsScriptGameRules
         return call.Result<bool>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get if the game is currently in a Team Intro period.
     /// </summary>
     public bool @IsTeamIntroPeriod()
@@ -390,6 +513,7 @@ public sealed class CsScriptGameRules
         return call.Result<bool>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the number of rounds played in the current game.
     /// </summary>
     public double @GetRoundsPlayed()
@@ -399,6 +523,7 @@ public sealed class CsScriptGameRules
         return call.Result<double>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the time remaining in the current round in seconds.
     /// </summary>
     public double @GetRoundRemainingTime()
@@ -408,6 +533,7 @@ public sealed class CsScriptGameRules
         return call.Result<double>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Set the time remaining in the current round in seconds.
     /// </summary>
     public void @SetRoundRemainingTime(double @time)
@@ -417,6 +543,7 @@ public sealed class CsScriptGameRules
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Get the team's score.
     /// </summary>
     public double @GetTeamScore(double @team)
@@ -427,6 +554,7 @@ public sealed class CsScriptGameRules
         return call.Result<double>();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Add to the team's score. Call before TerminateRound so the round end sees the new score.
     /// </summary>
     public void @AddTeamScore(double @team, double @score)
@@ -437,6 +565,7 @@ public sealed class CsScriptGameRules
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Terminate the current round. Counts as a round played unless it is a draw. Will not add to team scores. Does nothing if the round has already ended.
     /// </summary>
     public void @TerminateRound(global::CounterStrikeSharp.API.Modules.CsScript.CSRoundEndReason @reason)
@@ -446,6 +575,7 @@ public sealed class CsScriptGameRules
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Terminate the current round. Counts as a round played unless it is a draw. Will not add to team scores. Does nothing if the round has already ended.
     /// </summary>
     public void @TerminateRound(global::CounterStrikeSharp.API.Modules.CsScript.CSRoundEndReason @reason, double @delay)
@@ -456,6 +586,7 @@ public sealed class CsScriptGameRules
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Adds the money to all player controllers on the team, following all classic rules.
     /// If players are not eligible to receive end-of-round money, then that restriction is honored.
     /// Disconnected players will get their account balance incremented, and will have correct
@@ -471,6 +602,7 @@ public sealed class CsScriptGameRules
         call.Invoke();
     }
     /// <summary>
+    /// This is Valve generated cs_script method
     /// Adds the money to all player controllers on the team, following all classic rules.
     /// If players are not eligible to receive end-of-round money, then that restriction is honored.
     /// Disconnected players will get their account balance incremented, and will have correct
