@@ -8,7 +8,7 @@ using Xunit;
 
 namespace NativeTestsPlugin;
 
-/// <summary>Live engine tests; no compiled script or map addon is required.</summary>
+/// <summary>Requires a running CS2 server.</summary>
 [Trait("Category", "CsScript")]
 public sealed class CsScriptTests
 {
@@ -56,7 +56,6 @@ public sealed class CsScriptTests
         Assert.NotNull(maxMoneyConVar);
         var maxMoney = maxMoneyConVar.GetPrimitiveValue<int>();
 
-        // Include retained disconnected controllers: Valve can award them money too.
         var before = Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller")
             .Where(player => player.IsValid && player.InGameMoneyServices != null)
             .Select(player => new
@@ -79,8 +78,7 @@ public sealed class CsScriptTests
 
         try
         {
-            // Award and read back in the same game-thread callback so purchases
-            // and normal round processing cannot occur between the snapshots.
+
             rules.Script(runtime).AddTeamMoney((double)team, CSTeamMoneyReason.NONE, amount);
             Assert.Equal(recipient.Account + amount, recipient.Money.Account);
             foreach (var player in before)
@@ -130,7 +128,47 @@ public sealed class CsScriptTests
     });
 
     [Fact]
-    public Task UnknownMethodHash_IsRejected_AndSessionRemainsUsable() => Server.NextWorldUpdateAsync(() =>
+    public Task EntityOwner_RoundTripsEntityArgumentsAndResults() => Server.NextWorldUpdateAsync(() =>
+    {
+        var runtime = GetSharedRuntime();
+        CBaseEntity? entity = null;
+        CBaseEntity? owner = null;
+        try
+        {
+            entity = Utilities.CreateEntityByName<CBaseEntity>("info_target");
+            owner = Utilities.CreateEntityByName<CBaseEntity>("info_target");
+            Assert.NotNull(entity);
+            Assert.NotNull(owner);
+            entity.DispatchSpawn();
+            owner.DispatchSpawn();
+            var name = "css_v8_owner_" + Guid.NewGuid().ToString("N");
+            owner.SetEntityName(name);
+
+            Assert.Null(entity.GetOwner());
+            entity.SetOwner(owner);
+            var returned = entity.GetOwner();
+            Assert.NotNull(returned);
+            Assert.Equal(owner.EntityHandle.Raw, returned.EntityHandle.Raw);
+            Assert.Equal(entity.OwnerEntity.Raw, returned.EntityHandle.Raw);
+            Assert.Equal(name, returned.GetEntityName());
+
+            Assert.Equal(owner.EntityHandle.Raw, runtime.Instance.FindEntityByName(name)?.EntityHandle.Raw);
+            Assert.Null(runtime.Instance.FindEntityByName(name + "_missing"));
+
+            entity.SetOwner(null);
+            Assert.False(entity.OwnerEntity.IsValid);
+            Assert.Null(entity.GetOwner());
+            Console.WriteLine($"[cs_script] Entity owner {owner.EntityHandle.Raw} round-tripped and cleared.");
+        }
+        finally
+        {
+            if (entity is { IsValid: true }) entity.Remove();
+            if (owner is { IsValid: true }) owner.Remove();
+        }
+    });
+
+    [Fact]
+    public Task UnknownMethodHash_IsRejected_AndSharedRuntimeRemainsUsable() => Server.NextWorldUpdateAsync(() =>
     {
         var runtime = GetSharedRuntime();
         using var call = runtime.BeginInvoke(0u, uint.MaxValue);
@@ -140,27 +178,17 @@ public sealed class CsScriptTests
     });
 
     [Fact]
-    public Task InvalidTransport_IsRejectedBeforeReadingPayload() => Server.NextWorldUpdateAsync(() =>
+    public Task IncompleteCallHeader_IsRejectedBeforeReadingPayload() => Server.NextWorldUpdateAsync(() =>
     {
         var context = new ScriptContext();
         context.Reset();
-        context.SetIdentifier(CsScriptSchema.Native);
-        context.Invoke();
-        var shortRequest = Assert.Throws<NativeException>(context.CheckErrors);
-        Assert.Contains("argument count / transport version", shortRequest.Message);
+        var shortRequest = Assert.Throws<NativeException>(() => NativeAPI.CsScriptInvoke(context));
+        Assert.Contains("Invalid cs_script argument count", shortRequest.Message);
 
         context.Reset();
-        context.PushPrimitive(CsScriptSchema.Word0 ^ 1UL);
-        context.PushPrimitive(CsScriptSchema.Word1);
-        context.PushPrimitive(CsScriptSchema.Word2);
-        context.PushPrimitive(CsScriptSchema.Word3);
-        context.PushPrimitive((uint)CsScriptOperation.Current);
-        context.PushPrimitive(0UL);
         context.PushPrimitive(0u);
-        context.PushPrimitive(uint.MaxValue);
-        context.Invoke();
-        var mismatch = Assert.Throws<NativeException>(context.CheckErrors);
-        Assert.Contains("schema mismatch", mismatch.Message);
+        var missingReceiver = Assert.Throws<NativeException>(() => NativeAPI.CsScriptInvoke(context));
+        Assert.Contains("Invalid cs_script argument count", missingReceiver.Message);
     });
 
     [Fact]
@@ -169,7 +197,9 @@ public sealed class CsScriptTests
         var before = Utilities.FindAllEntitiesByDesignerName<CCSPointScriptEntity>("point_script")
             .Select(entity => entity.EntityHandle.Raw).ToArray();
         var first = GetSharedRuntime();
-        Assert.Contains(first.Host.EntityHandle.Raw, before); // Already created by the core.
+        Assert.Equal(first.Host.EntityHandle.Raw, NativeAPI.CsScriptGetHost());
+        Assert.True(NativeAPI.CsScriptIsReady());
+        Assert.Contains(first.Host.EntityHandle.Raw, before);
         for (var i = 0; i < 10; i++) Assert.Same(first, CsScriptRuntime.Shared);
         Assert.Equal(before, Utilities.FindAllEntitiesByDesignerName<CCSPointScriptEntity>("point_script")
             .Select(entity => entity.EntityHandle.Raw).ToArray());
@@ -198,29 +228,36 @@ public sealed class CsScriptTests
     });
 
     [Fact]
-    public async Task DeletedHost_IsRecreated_AndOldSessionIsRejected()
+    public async Task DeletedHost_IsRecreated_AndCachedFacadesUseReplacement()
     {
-        var old = await Server.NextWorldUpdateAsync(GetSharedRuntime);
-        var handle = await Server.NextWorldUpdateAsync(() => old.Host.EntityHandle.Raw);
-        await Server.NextWorldUpdateAsync(() => old.Host.Remove());
+        var runtime = await Server.NextWorldUpdateAsync(GetSharedRuntime);
+        var gameRules = runtime.GameRules;
+        var instance = runtime.Instance;
+        var console = runtime.Console;
+        var oldHost = await Server.NextWorldUpdateAsync(() => runtime.Host);
+        var handle = await Server.NextWorldUpdateAsync(() => oldHost.EntityHandle.Raw);
+        await Server.NextWorldUpdateAsync(() => oldHost.Remove());
         await WaitUntilAsync(() =>
         {
-            try { return CsScriptRuntime.Shared.Host.EntityHandle.Raw != handle; }
-            catch (NativeException) { return false; } // Waiting for the core's deferred frame initialization.
+            try { return runtime.Host.EntityHandle.Raw != handle; }
+            catch (NativeException) { return false; }
         }, "automatic replacement of the shared script host");
         await Server.NextWorldUpdateAsync(() =>
         {
-            var replacement = CsScriptRuntime.Shared;
-            Assert.NotSame(old, replacement);
-            Assert.False(old.Host.IsValid);
-            var error = Assert.Throws<NativeException>(() => old.GameRules.IsWarmupPeriod());
-            Assert.Contains("reacquire CsScriptRuntime.Shared", error.Message);
-            Assert.Equal(CurrentGameRules().WarmupPeriod, replacement.GameRules.IsWarmupPeriod());
+            Assert.Same(runtime, CsScriptRuntime.Shared);
+            Assert.Same(gameRules, CsScriptRuntime.Shared.GameRules);
+            Assert.Same(instance, CsScriptRuntime.Shared.Instance);
+            Assert.Same(console, CsScriptRuntime.Shared.Console);
+            Assert.False(oldHost.IsValid);
+            Assert.True(runtime.Host.IsValid);
+            Assert.True(runtime.TryInitialize());
+            Assert.Equal(CurrentGameRules().WarmupPeriod, gameRules.IsWarmupPeriod());
+            Assert.Equal(Server.MapName, instance.GetMapName());
         });
     }
 
     [Fact]
-    public async Task DeletedEntity_RejectsStaleHandle_AndSessionRemainsUsable()
+    public async Task DeletedEntity_RejectsStaleHandle_AndSharedRuntimeRemainsUsable()
     {
         var runtime = await Server.NextWorldUpdateAsync(GetSharedRuntime);
         CBaseEntity? entity = null;
@@ -239,6 +276,8 @@ public sealed class CsScriptTests
             {
                 var error = Assert.Throws<NativeException>(() => wrapper.GetEntityName());
                 Assert.Contains("stale entity serial", error.Message);
+                var argumentError = Assert.Throws<NativeException>(() => runtime.Host.SetOwner(wrapper));
+                Assert.Contains("stale entity serial", argumentError.Message);
                 Assert.Equal(CurrentGameRules().WarmupPeriod, runtime.GameRules.IsWarmupPeriod());
             });
         }
@@ -252,7 +291,7 @@ public sealed class CsScriptTests
     }
 
     [Fact]
-    public async Task WorkerThread_IsRejected_AndSessionRemainsUsable()
+    public async Task WorkerThread_IsRejected_AndSharedRuntimeRemainsUsable()
     {
         var runtime = await Server.NextWorldUpdateAsync(GetSharedRuntime);
         var host = await Server.NextWorldUpdateAsync(() => runtime.Host);
@@ -261,11 +300,10 @@ public sealed class CsScriptTests
             Assert.NotEqual(NativeTestsPlugin.gameThreadId, Environment.CurrentManagedThreadId);
             var error = Assert.Throws<InvalidOperationException>(() => runtime.GameRules.IsWarmupPeriod());
             Assert.Contains("game thread", error.Message);
-            // Shared reaches the native dispatcher, whose thread guard runs
-            // before the cs_script handler and uses its own error message.
+
             var sharedError = Assert.Throws<NativeException>(() => { _ = CsScriptRuntime.Shared; });
             Assert.Equal("Invoked on a non-main thread", sharedError.Message);
-            // Entity methods must reject the worker before resolving its handle.
+
             var entityError = Assert.Throws<NativeException>(() => host.GetEntityName());
             Assert.Equal("Invoked on a non-main thread", entityError.Message);
         });

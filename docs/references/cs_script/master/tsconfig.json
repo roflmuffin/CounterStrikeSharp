@@ -1,8 +1,0 @@
-{
-    "compilerOptions": {
-        "strict": true,
-        "target": "es2022",
-        "checkJs": true,
-        "noEmit": true
-    }
-}

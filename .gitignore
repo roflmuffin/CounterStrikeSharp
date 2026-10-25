@@ -33,6 +33,7 @@ build_test/
 
 # Compiled Dynamic libraries
 *.so
+!/libraries/v8/lib/linuxsteamrt64/*.so
 *.dylib
 *.dll
 
@@ -45,6 +46,7 @@ build_test/
 *.la
 *.a
 *.lib
+!/libraries/v8/lib/win64/*.lib
 
 !mono*.lib
 !**/external_includes/**/*.lib

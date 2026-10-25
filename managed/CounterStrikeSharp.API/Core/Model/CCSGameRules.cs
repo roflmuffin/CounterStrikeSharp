@@ -26,7 +26,7 @@ public partial class CCSGameRules
     public CounterStrikeSharp.API.Modules.CsScript.CsScriptGameRules Script()
         => Script(CounterStrikeSharp.API.Modules.CsScript.CsScriptRuntime.Shared);
 
-    /// <summary>Returns the session's GameRules API after checking the current native singleton.</summary>
+    /// <summary>Returns the shared GameRules API after checking the current native singleton.</summary>
     public CounterStrikeSharp.API.Modules.CsScript.CsScriptGameRules Script(
         CounterStrikeSharp.API.Modules.CsScript.CsScriptRuntime runtime)
     {
