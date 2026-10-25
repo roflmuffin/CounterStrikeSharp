@@ -355,9 +355,9 @@ void Invoke(ScriptContext& call)
             else if (IsEntityKind(kind))
             {
                 const auto slotValue = call.GetArgument<uint64_t>(slot);
-                if (slotValue > std::numeric_limits<uint32_t>::max()) throw std::runtime_error("Invalid cs_script entity handle slot");
+                if (slotValue > (std::numeric_limits<uint32_t>::max)()) throw std::runtime_error("Invalid cs_script entity handle slot");
                 const auto raw = static_cast<uint32_t>(slotValue);
-                if (raw != std::numeric_limits<uint32_t>::max()) argv.push_back(WrapEntity(raw));
+                if (raw != (std::numeric_limits<uint32_t>::max)()) argv.push_back(WrapEntity(raw));
                 else if (AllowsUndefined(kind))
                     argv.push_back(v8::Undefined(scope.isolate));
                 else if (AllowsNull(kind))
@@ -386,7 +386,7 @@ void Invoke(ScriptContext& call)
         {
             if ((result->IsUndefined() && AllowsUndefined(kind)) || (result->IsNull() && AllowsNull(kind)))
             {
-                call.SetResult(std::numeric_limits<uint32_t>::max());
+                call.SetResult((std::numeric_limits<uint32_t>::max)());
                 return;
             }
             if (!result->IsObject()) throw std::runtime_error("Script return value does not match its entity descriptor");
