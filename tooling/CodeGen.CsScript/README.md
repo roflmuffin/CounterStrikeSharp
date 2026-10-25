@@ -70,6 +70,21 @@ schema classes, unsupported enum initializers, and hash collisions fail before
 any output is written. `docs/references/cs_script/master` remains a historical
 reference, not the generator input.
 
+Before emitting enums, the generator checks `managed/CounterStrikeSharp.API/Generated/Schema/Enums`.
+It reuses a schema enum when its type name matches (ignoring a leading `CS`,
+a trailing `_t`, underscores and case) and its complete member set has identical
+numeric values. Member names may differ by case and a uniform schema prefix
+such as `WEAPONTYPE_`. Extra members, different values, ambiguous matches and
+unrecognized schema syntax retain a separate script enum; unsigned sentinels
+are not treated as negative values. Empty enums are not reused.
+
+Reused enums are omitted from `Api.g.cs`, and method parameters, return types
+and result casts reference the schema type directly. For example, `CSWeaponType`
+uses `CounterStrikeSharp.API.Core.CSWeaponType` (with `WEAPONTYPE_*` members),
+and `CustomCameraMode` uses `CustomCameraMode_t`. TypeScript names remain in
+the manifest and native method identities, so reuse does not change method IDs
+or the numeric transport ABI.
+
 The AST visitor resolves named types and inheritance, groups overloads, and
 extracts scalar and entity signatures. It does not run the TypeScript semantic
 checker.

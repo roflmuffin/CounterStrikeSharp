@@ -80,23 +80,6 @@ public enum CSTeamMoneyReason : long
     @BONUS_SHORTHANDED = 14L,
 }
 
-public enum CSWeaponType : long
-{
-    @KNIFE = 0L,
-    @PISTOL = 1L,
-    @SUBMACHINEGUN = 2L,
-    @RIFLE = 3L,
-    @SHOTGUN = 4L,
-    @SNIPER_RIFLE = 5L,
-    @MACHINEGUN = 6L,
-    @C4 = 7L,
-    @TASER = 8L,
-    @GRENADE = 9L,
-    @EQUIPMENT = 10L,
-    @STACKABLEITEM = 11L,
-    @UNKNOWN = 12L,
-}
-
 public enum CSGrenadeType : long
 {
     @HE = 0L,
@@ -208,14 +191,6 @@ public enum CSInputs : long
     @RELOAD = 1024L,
     @SHOW_SCORES = 2048L,
     @LOOK_AT_WEAPON = 4096L,
-}
-
-public enum CustomCameraMode : long
-{
-    @DISABLED = 0L,
-    @CONTROLLED = 1L,
-    @CONTROLLED_POSITION = 2L,
-    @FOLLOW_POSITION = 3L,
 }
 
 [Obsolete]
@@ -464,7 +439,7 @@ public sealed class CsScriptGameRules
     /// <summary>
     /// Terminate the current round. Counts as a round played unless it is a draw. Will not add to team scores. Does nothing if the round has already ended.
     /// </summary>
-    public void @TerminateRound(CSRoundEndReason @reason)
+    public void @TerminateRound(global::CounterStrikeSharp.API.Modules.CsScript.CSRoundEndReason @reason)
     {
         using var call = runtime.BeginInvoke(0x7a31da92u, uint.MaxValue);
         call.Push((double)@reason);
@@ -473,7 +448,7 @@ public sealed class CsScriptGameRules
     /// <summary>
     /// Terminate the current round. Counts as a round played unless it is a draw. Will not add to team scores. Does nothing if the round has already ended.
     /// </summary>
-    public void @TerminateRound(CSRoundEndReason @reason, double @delay)
+    public void @TerminateRound(global::CounterStrikeSharp.API.Modules.CsScript.CSRoundEndReason @reason, double @delay)
     {
         using var call = runtime.BeginInvoke(0x7a31da92u, uint.MaxValue);
         call.Push((double)@reason);
@@ -488,7 +463,7 @@ public sealed class CsScriptGameRules
     /// If the `amount` parameter is 0 or undefined, then the amount will be determined using server convar
     /// setting corresponding to the reason parameter.
     /// </summary>
-    public void @AddTeamMoney(double @team, CSTeamMoneyReason @reason)
+    public void @AddTeamMoney(double @team, global::CounterStrikeSharp.API.Modules.CsScript.CSTeamMoneyReason @reason)
     {
         using var call = runtime.BeginInvoke(0x092f53aau, uint.MaxValue);
         call.Push(@team);
@@ -503,7 +478,7 @@ public sealed class CsScriptGameRules
     /// If the `amount` parameter is 0 or undefined, then the amount will be determined using server convar
     /// setting corresponding to the reason parameter.
     /// </summary>
-    public void @AddTeamMoney(double @team, CSTeamMoneyReason @reason, double @amount)
+    public void @AddTeamMoney(double @team, global::CounterStrikeSharp.API.Modules.CsScript.CSTeamMoneyReason @reason, double @amount)
     {
         using var call = runtime.BeginInvoke(0x092f53aau, uint.MaxValue);
         call.Push(@team);

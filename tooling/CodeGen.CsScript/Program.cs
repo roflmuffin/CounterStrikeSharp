@@ -30,7 +30,8 @@ internal static class Program
 
             var source = (await client.GetStringAsync(SourceUrl)).Replace("\r\n", "\n");
             var manifest = AstManifest.Parse(source, SourceUrl);
-            var output = Emitter.Emit(manifest);
+            var schemaEnums = SchemaEnums.Resolve(manifest, Path.Combine(root, "managed/CounterStrikeSharp.API/Generated/Schema/Enums"));
+            var output = Emitter.Emit(manifest, schemaEnums);
             ValidateSchemaClasses(root, manifest);
             var files = new Dictionary<string, string>
             {

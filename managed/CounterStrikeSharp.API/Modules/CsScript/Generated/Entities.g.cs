@@ -14,13 +14,13 @@ public partial class CBaseEntity
         call.Invoke();
         return call.Result<bool>();
     }
-    public CSMoveType @GetMoveType()
+    public global::CounterStrikeSharp.API.Modules.CsScript.CSMoveType @GetMoveType()
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0xdf54a065u, EntityHandle.Raw);
         call.Invoke();
-        return (CSMoveType)call.Result<double>();
+        return (global::CounterStrikeSharp.API.Modules.CsScript.CSMoveType)call.Result<double>();
     }
-    public void @SetMoveType(CSMoveType @moveType)
+    public void @SetMoveType(global::CounterStrikeSharp.API.Modules.CsScript.CSMoveType @moveType)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0xaf2c8845u, EntityHandle.Raw);
         call.Push((double)@moveType);
@@ -236,11 +236,11 @@ public partial class CBaseCSGrenadeProjectile
         call.Invoke();
         return call.EntityResult<CCSPlayerPawn>();
     }
-    public CSGrenadeType @GetGrenadeType()
+    public global::CounterStrikeSharp.API.Modules.CsScript.CSGrenadeType @GetGrenadeType()
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x2c88a5f0u, EntityHandle.Raw);
         call.Invoke();
-        return (CSGrenadeType)call.Result<double>();
+        return (global::CounterStrikeSharp.API.Modules.CsScript.CSGrenadeType)call.Result<double>();
     }
     public void @Detonate()
     {
@@ -334,13 +334,13 @@ public partial class CHostage
 
 public partial class CCSRadarElement
 {
-    public void @SetIcon(CSRadarIcon @icon)
+    public void @SetIcon(global::CounterStrikeSharp.API.Modules.CsScript.CSRadarIcon @icon)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x8c4cebc2u, EntityHandle.Raw);
         call.Push((double)@icon);
         call.Invoke();
     }
-    public void @SetColor(CSRadarColor @color)
+    public void @SetColor(global::CounterStrikeSharp.API.Modules.CsScript.CSRadarColor @color)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0xc1ddff02u, EntityHandle.Raw);
         call.Push((double)@color);
@@ -504,13 +504,13 @@ public partial class CCSObserverPawn
         call.Invoke();
         return call.EntityResult<CCSPlayerController>();
     }
-    public CSObserverMode @GetObserverMode()
+    public global::CounterStrikeSharp.API.Modules.CsScript.CSObserverMode @GetObserverMode()
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x06f2dcaeu, EntityHandle.Raw);
         call.Invoke();
-        return (CSObserverMode)call.Result<double>();
+        return (global::CounterStrikeSharp.API.Modules.CsScript.CSObserverMode)call.Result<double>();
     }
-    public void @SetObserverMode(CSObserverMode @mode)
+    public void @SetObserverMode(global::CounterStrikeSharp.API.Modules.CsScript.CSObserverMode @mode)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x5757cfceu, EntityHandle.Raw);
         call.Push((double)@mode);
@@ -551,21 +551,21 @@ public partial class CCSPlayerPawn
         call.Invoke();
         return call.EntityResult<CCSPlayerController>();
     }
-    public bool @IsInputPressed(CSInputs @inputs)
+    public bool @IsInputPressed(global::CounterStrikeSharp.API.Modules.CsScript.CSInputs @inputs)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x8edbc628u, EntityHandle.Raw);
         call.Push((double)@inputs);
         call.Invoke();
         return call.Result<bool>();
     }
-    public bool @WasInputJustPressed(CSInputs @inputs)
+    public bool @WasInputJustPressed(global::CounterStrikeSharp.API.Modules.CsScript.CSInputs @inputs)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x415833cfu, EntityHandle.Raw);
         call.Push((double)@inputs);
         call.Invoke();
         return call.Result<bool>();
     }
-    public bool @WasInputJustReleased(CSInputs @inputs)
+    public bool @WasInputJustReleased(global::CounterStrikeSharp.API.Modules.CsScript.CSInputs @inputs)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x5a44bc44u, EntityHandle.Raw);
         call.Push((double)@inputs);
@@ -579,7 +579,7 @@ public partial class CCSPlayerPawn
         call.Invoke();
         return call.OptionalEntityResult<CCSWeaponBase>();
     }
-    public CCSWeaponBase? @FindWeaponBySlot(CSGearSlot @slot)
+    public CCSWeaponBase? @FindWeaponBySlot(global::CounterStrikeSharp.API.Modules.CsScript.CSGearSlot @slot)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0xa74062eeu, EntityHandle.Raw);
         call.Push((double)@slot);
@@ -802,13 +802,13 @@ public partial class CCSCustomPlayerCamera
         call.Invoke();
         return call.EntityResult<CCSPlayerPawn>();
     }
-    public CustomCameraMode @GetMode()
+    public global::CounterStrikeSharp.API.Core.CustomCameraMode_t @GetMode()
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0xf3cd99bdu, EntityHandle.Raw);
         call.Invoke();
-        return (CustomCameraMode)call.Result<double>();
+        return (global::CounterStrikeSharp.API.Core.CustomCameraMode_t)call.Result<double>();
     }
-    public void @SetMode(CustomCameraMode @mode)
+    public void @SetMode(global::CounterStrikeSharp.API.Core.CustomCameraMode_t @mode)
     {
         using var call = CsScriptRuntime.Shared.BeginInvoke(0x63b1b41du, EntityHandle.Raw);
         call.Push((double)@mode);
