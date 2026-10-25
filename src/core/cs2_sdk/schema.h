@@ -22,10 +22,10 @@
 #include <type_traits>
 #include <const.h>
 #include <stdint.h>
-#include "schematypes.h"
+#include "schemasystem/schemasystem.h"
 #include "tier0/dbg.h"
 #include "utils/virtual.h"
-#include "tier1/utlvector.h"
+#include "tier0/utlvector.h"
 
 #include <string>
 #include <vector>

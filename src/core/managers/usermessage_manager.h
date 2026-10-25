@@ -19,7 +19,7 @@
 #include "core/global_listener.h"
 #include "core/globals.h"
 #include "core/hooks.h"
-#include "inetchannel.h"
+#include "networksystem/inetchannel.h"
 #include "networksystem/inetworkserializer.h"
 #include "scripting/script_engine.h"
 

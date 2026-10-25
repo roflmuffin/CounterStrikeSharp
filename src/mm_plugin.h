@@ -20,7 +20,10 @@
 #include "core/hooks.h"
 #include <ISmmPlugin.h>
 #include <functional>
-#include <iserver.h>
+#include <engine2/inetworkgameserver.h>
+#include <engine2/isource2server.h>
+#include <engine2/inetworkserverservice.h>
+#include <engine2/iengineservicemgr.h>
 #include <igameevents.h>
 #include <vector>
 #include "entitysystem.h"

@@ -33,7 +33,7 @@
 
 class CUtlString;
 
-#include <igameeventsystem.h>
+#include <engine2/igameeventsystem.h>
 #include <public/igameevents.h>
 
 #include <map>

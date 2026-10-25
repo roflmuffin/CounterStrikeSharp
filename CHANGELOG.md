@@ -1,3 +1,10 @@
+## What's Changed in v1.0.378
+* chore: Update Schema Definitions to 1.41.9.2 in [#1447](https://github.com/roflmuffin/CounterStrikeSharp/pull/1447) ([86d3f07](https://github.com/roflmuffin/CounterStrikeSharp/commit/86d3f07a22c312b6462facf22f252769041e8812))
+* fix: Game Update 1.41.9.2 in [#1470](https://github.com/roflmuffin/CounterStrikeSharp/pull/1470) ([5465e2a](https://github.com/roflmuffin/CounterStrikeSharp/commit/5465e2aad8bb288e4214167b8fb664a35a841bd2))
+
+## What's Changed in v1.0.377
+* fix: Update Linux signature for CBaseTrigger_StartTouch ([c67396f](https://github.com/roflmuffin/CounterStrikeSharp/commit/c67396fa5d99a5c877e738e0ac8c062e3d0593d7))
+
 ## What's Changed in v1.0.376
 * fix: set m_bIsSet when updating a custom hud dialog variable by [@dvernoff](https://github.com/dvernoff) in [#1434](https://github.com/roflmuffin/CounterStrikeSharp/pull/1434) ([ffe84cf](https://github.com/roflmuffin/CounterStrikeSharp/commit/ffe84cfc1db478cb53fb83c17252c51a30bb6ed1))
 * fix: correct Windows IsPlayerPawn offset by [@unicbm](https://github.com/unicbm) in [#1445](https://github.com/roflmuffin/CounterStrikeSharp/pull/1445) ([6d22cb5](https://github.com/roflmuffin/CounterStrikeSharp/commit/6d22cb54dc27f7cad1c5137474e5e9cdde73efbe))
@@ -169,7 +176,7 @@
 * fix: update linux signature for GetCSWeaponDataFromKey ([b4e83df](https://github.com/roflmuffin/CounterStrikeSharp/commit/b4e83dfb4a1a1723c08ac79ea68da4ab8a0255fd))
 * feat(schema): update schema generator to use @GAMMACASE schema dumper format ([4ff2732](https://github.com/roflmuffin/CounterStrikeSharp/commit/4ff2732d8a55297c18cea6181b9022f56cd8fae3))
 
-## What's Changed in v2.0.0-beta.0
+## What's Changed in v1.0.344
 * chore(schema): update schema to latest ([f505405](https://github.com/roflmuffin/CounterStrikeSharp/commit/f50540583d079a6cf546ca590147905ba5eb2c83))
 * fix(schema): allow for negative enum values in source schema file ([97957f6](https://github.com/roflmuffin/CounterStrikeSharp/commit/97957f62208fa782f89e9629ddde1944aaadd149))
 * chore: update devcontainer location ([0c2f1cd](https://github.com/roflmuffin/CounterStrikeSharp/commit/0c2f1cd078c0c54a6cf1fb402082b3f38c6303d2))
