@@ -52,10 +52,11 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          if [[ -n $(git status --porcelain managed/CounterStrikeSharp.API/Generated/) ]]; then
+          CHANGES=$(git status --porcelain -- . ':(exclude)managed/CounterStrikeSharp.SchemaGen/Schema/server.json')
+          if [[ -n "$CHANGES" ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in Generated folder:"
-            git status --porcelain managed/CounterStrikeSharp.API/Generated/
+            echo "Changes detected outside server.json:"
+            echo "$CHANGES"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
