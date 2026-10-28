@@ -140,6 +140,40 @@ namespace CounterStrikeSharp.API
             }
         }
 
+        private static uint? _gameRulesProxyHandle;
+
+        /// <summary>
+        /// Returns the game rules of the current map, or <c>null</c> before the map has loaded.
+        /// </summary>
+        public static CCSGameRules? GetGameRules()
+        {
+            var pointer = _gameRulesProxyHandle is { } handle ? EntitySystem.GetEntityByHandle(handle) : null;
+            if (pointer == null || pointer == IntPtr.Zero)
+            {
+                try
+                {
+                    _ = EntitySystem.FirstActiveEntity;
+                }
+                catch (NativeException)
+                {
+                    _gameRulesProxyHandle = null;
+                    return null;
+                }
+
+                var proxy = FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault();
+                if (proxy == null)
+                {
+                    _gameRulesProxyHandle = null;
+                    return null;
+                }
+
+                _gameRulesProxyHandle = proxy.EntityHandle.Raw;
+                return proxy.GameRules;
+            }
+
+            return new CCSGameRulesProxy(pointer.Value).GameRules;
+        }
+
         public static IEnumerable<CEntityInstance> GetAllEntities()
         {
             var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
