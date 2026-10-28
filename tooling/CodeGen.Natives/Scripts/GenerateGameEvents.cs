@@ -187,7 +187,7 @@ namespace CounterStrikeSharp.API.Core;
         foreach (var (gameEvent, definition) in events)
         {
             File.WriteAllText(Path.Join(outputPath, $"Event{gameEvent.NamePascalCase}.g.cs"),
-                template.Replace("<content>", definition).ReplaceLineEndings("\r\n"));
+                template.Replace("<content>", definition).ReplaceLineEndings("\n"));
         }
 
         Console.WriteLine($"Generated C# bindings for {allGameEvents.Count} game events successfully.");

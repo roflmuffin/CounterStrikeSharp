@@ -11,7 +11,13 @@ public class EventBombDefused : GameEvent
 {
     public EventBombDefused(IntPtr pointer) : base(pointer){}
     public EventBombDefused(bool force) : base("bomb_defused", force){}
-    // bombsite index
+    
+    public int C4
+    {
+        get => Get<int>("c4");
+        set => Set<int>("c4", value);
+    }
+// bombsite index
     public int Site
     {
         get => Get<int>("site");
