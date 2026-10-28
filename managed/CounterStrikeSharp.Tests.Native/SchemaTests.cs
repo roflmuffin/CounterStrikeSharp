@@ -10,6 +10,35 @@ namespace NativeTestsPlugin;
 
 public class SchemaTests
 {
+    private static int _observerServicesOffsetOnLoad;
+
+    internal static void CacheOffsetsOnLoad()
+    {
+        // On a cold server start, Load runs before the network serializer database exists.
+        _observerServicesOffsetOnLoad = Schema.GetSchemaOffset("CBasePlayerPawn", "m_pObserverServices");
+        // Repeated lookups before map load must leave network flags eligible for resolution.
+        _ = Schema.IsSchemaFieldNetworked("CBasePlayerPawn", "m_pObserverServices");
+        _ = Schema.IsSchemaFieldNetworked("CBasePlayerPawn", "m_pObserverServices");
+    }
+
+    // Regression test for https://github.com/roflmuffin/CounterStrikeSharp/issues/1463
+    [Fact]
+    public void GetSchemaOffset_ResolvedDuringLoad_RemainsValid()
+    {
+        Assert.True(_observerServicesOffsetOnLoad > 0);
+        Assert.Equal(_observerServicesOffsetOnLoad, NativeAPI.GetSchemaOffset("CBasePlayerPawn", "m_pObserverServices"));
+    }
+
+    [Theory]
+    [InlineData("m_pObserverServices", true)]
+    [InlineData("m_hController", true)]
+    [InlineData("v_anglePrevious", false)]
+    public void IsSchemaFieldNetworked_ClassResolvedDuringLoad_ReturnsExpectedValue(string fieldName, bool expected)
+    {
+        Assert.Equal(expected, Schema.IsSchemaFieldNetworked("CBasePlayerPawn", fieldName));
+        Assert.Equal(expected, Schema.IsSchemaFieldNetworked("CBasePlayerPawn", fieldName));
+    }
+
     [Fact]
     public void GetSchemaOffset_ReturnsValidOffset()
     {
