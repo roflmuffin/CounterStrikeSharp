@@ -14,9 +14,6 @@ public class EntitySystemTests
 
     internal static void LookUpEntitiesOnLoad()
     {
-        // On a cold server start, Load runs before the entity system exists and this lookup fails. The failure must not
-        // be remembered, or every entity lookup afterwards fails the same way. On a hot reload the map is already up and
-        // the lookup succeeds, so the run log says which of the two happened.
         try
         {
             _ = Utilities.GetAllEntities().Count();

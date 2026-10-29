@@ -8,7 +8,6 @@ namespace CounterStrikeSharp.API.Modules.Entities;
 
 public static class EntitySystem
 {
-    // PublicationOnly: a lookup before the entity system exists throws, and the failure must not be kept as the value.
     private static Lazy<IntPtr> ConcreteEntityListPointer = new(NativeAPI.GetConcreteEntityListPointer, LazyThreadSafetyMode.PublicationOnly);
 
     private const int MaxEntities = 32768;
