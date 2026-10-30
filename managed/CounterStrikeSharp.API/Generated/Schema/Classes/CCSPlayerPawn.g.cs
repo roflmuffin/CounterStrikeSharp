@@ -446,9 +446,9 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_bGunGameImmunity")]
 	public ref bool GunGameImmunity => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bGunGameImmunity");
 
-	// m_flModifier0
-	[SchemaMember("CCSPlayerPawn", "m_flModifier0")]
-	public ref float Modifier0 => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flModifier0");
+	// m_flBigHeadScale
+	[SchemaMember("CCSPlayerPawn", "m_flBigHeadScale")]
+	public ref float BigHeadScale => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flBigHeadScale");
 
 	// m_fMolotovDamageTime
 	[SchemaMember("CCSPlayerPawn", "m_fMolotovDamageTime")]
