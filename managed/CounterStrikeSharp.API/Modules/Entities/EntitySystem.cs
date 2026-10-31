@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Threading;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -7,7 +8,7 @@ namespace CounterStrikeSharp.API.Modules.Entities;
 
 public static class EntitySystem
 {
-    private static Lazy<IntPtr> ConcreteEntityListPointer = new(NativeAPI.GetConcreteEntityListPointer);
+    private static Lazy<IntPtr> ConcreteEntityListPointer = new(NativeAPI.GetConcreteEntityListPointer, LazyThreadSafetyMode.PublicationOnly);
 
     private const int MaxEntities = 32768;
     private const int MaxEntitiesPerChunk = 512;
