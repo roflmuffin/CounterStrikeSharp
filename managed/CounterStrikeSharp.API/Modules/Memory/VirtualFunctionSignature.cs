@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
@@ -31,13 +32,14 @@ public partial class VirtualFunction
         DataType returnType,
         object[] arguments)
     {
-        if (!_createdFunctions.TryGetValue(signature, out var function))
+        var cacheKey = BaseMemoryFunction.FunctionCacheKey($"{Addresses.ServerPath}:{signature}", returnType, argumentTypes);
+        if (!_createdFunctions.TryGetValue(cacheKey, out var function))
         {
             try
             {
                 function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, Addresses.ServerPath, signature,
                     argumentTypes.Count(), (int)returnType, arguments);
-                _createdFunctions[signature] = function;
+                _createdFunctions[cacheKey] = function;
             }
             catch (Exception)
             {
@@ -51,13 +53,14 @@ public partial class VirtualFunction
         DataType returnType,
         object[] arguments)
     {
-        if (!_createdFunctions.TryGetValue(signature, out var function))
+        var cacheKey = BaseMemoryFunction.FunctionCacheKey($"{binarypath}:{signature}", returnType, argumentTypes);
+        if (!_createdFunctions.TryGetValue(cacheKey, out var function))
         {
             try
             {
                 function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, binarypath, signature,
                     argumentTypes.Count(), (int)returnType, arguments);
-                _createdFunctions[signature] = function;
+                _createdFunctions[cacheKey] = function;
             }
             catch (Exception)
             {
