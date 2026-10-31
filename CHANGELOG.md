@@ -1,3 +1,15 @@
+## What's Changed in v1.0.379
+* chore: Update Schema Definitions to 1.41.9.3 in [#1471](https://github.com/roflmuffin/CounterStrikeSharp/pull/1471) ([5cbbd91](https://github.com/roflmuffin/CounterStrikeSharp/commit/5cbbd91347cee9f1aa009809a5b6fafbd92c4d22))
+* fix: do not persist failed entity list lookup by [@makadore](https://github.com/makadore) in [#1475](https://github.com/roflmuffin/CounterStrikeSharp/pull/1475) ([57a2b06](https://github.com/roflmuffin/CounterStrikeSharp/commit/57a2b06afafccffceb4a4828190b8bc7d7b89c85))
+* chore: update game events after 1.41.9.2 ([34c633f](https://github.com/roflmuffin/CounterStrikeSharp/commit/34c633f15887795d00de10ce1f6539e7367d5e56))
+* chore: fix line endings in schema generator ([d2b99dc](https://github.com/roflmuffin/CounterStrikeSharp/commit/d2b99dc16803494c641996bb11439b4fabe649d0))
+* fix: stale schema networked flags when accessed early by [@makadore](https://github.com/makadore) in [#1473](https://github.com/roflmuffin/CounterStrikeSharp/pull/1473) ([d8f6a3e](https://github.com/roflmuffin/CounterStrikeSharp/commit/d8f6a3ecd172b88fae592a5021eea52091090755))
+* docs: add real ConVar example doc ([cf237b3](https://github.com/roflmuffin/CounterStrikeSharp/commit/cf237b32a061fdb47b5e792fda6d39dd872abd0f))
+* feat: add Convar<T> for real convar creation/deletion/access in [#935](https://github.com/roflmuffin/CounterStrikeSharp/pull/935) ([4f90d52](https://github.com/roflmuffin/CounterStrikeSharp/commit/4f90d520a21a2d7d8ca41e504492384f52f8e70c))
+
+## New Contributors
+* [@makadore](https://github.com/makadore) made their first contribution in [#1475](https://github.com/roflmuffin/CounterStrikeSharp/pull/1475)
+
 ## What's Changed in v1.0.378
 * chore: Update Schema Definitions to 1.41.9.2 in [#1447](https://github.com/roflmuffin/CounterStrikeSharp/pull/1447) ([86d3f07](https://github.com/roflmuffin/CounterStrikeSharp/commit/86d3f07a22c312b6462facf22f252769041e8812))
 * fix: Game Update 1.41.9.2 in [#1470](https://github.com/roflmuffin/CounterStrikeSharp/pull/1470) ([5465e2a](https://github.com/roflmuffin/CounterStrikeSharp/commit/5465e2aad8bb288e4214167b8fb664a35a841bd2))
