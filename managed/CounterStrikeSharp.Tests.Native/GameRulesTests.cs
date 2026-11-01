@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Entities;
 using Xunit;
 
 namespace NativeTestsPlugin;
@@ -42,5 +43,27 @@ public class GameRulesTests
     public void GetGameRules_ReturnsTheSameEntityTwice()
     {
         Assert.Equal(Utilities.GetGameRules()!.Handle, Utilities.GetGameRules()!.Handle);
+    }
+}
+
+[Collection("MapChange")]
+public class GameRulesMapChangeTests
+{
+    [Fact]
+    public async Task GetGameRules_AfterAMapChange_ReturnsTheNewMapsRules()
+    {
+        var oldProxy = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").First();
+        var oldHandle = oldProxy.EntityHandle.Raw;
+        Assert.Equal(oldProxy.GameRules!.Handle, Utilities.GetGameRules()!.Handle);
+
+        Server.ExecuteCommand($"changelevel {Server.MapName}");
+        await WaitUntilAsync(
+            () => EntitySystem.GetEntityByHandle(oldHandle) == null
+                  && Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault()?.GameRules != null,
+            "the next map to create its game rules", timeoutSeconds: 90);
+
+        var proxy = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").First();
+        Assert.NotEqual(oldHandle, proxy.EntityHandle.Raw);
+        Assert.Equal(proxy.GameRules!.Handle, Utilities.GetGameRules()!.Handle);
     }
 }

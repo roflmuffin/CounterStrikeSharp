@@ -147,19 +147,15 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static CCSGameRules? GetGameRules()
         {
+            if (!EntitySystem.IsInitialized)
+            {
+                _gameRulesProxyHandle = null;
+                return null;
+            }
+
             var pointer = _gameRulesProxyHandle is { } handle ? EntitySystem.GetEntityByHandle(handle) : null;
             if (pointer == null || pointer == IntPtr.Zero)
             {
-                try
-                {
-                    _ = EntitySystem.FirstActiveEntity;
-                }
-                catch (NativeException)
-                {
-                    _gameRulesProxyHandle = null;
-                    return null;
-                }
-
                 var proxy = FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault();
                 if (proxy == null)
                 {
