@@ -71,4 +71,20 @@ public class VirtualFunctionTests
             VirtualFunctions.CCSPlayerPawnBase_PostThinkFunc.Unhook(postHookHandler, HookMode.Post);
         }
     }
+
+    [Fact]
+    public void MemoryFunction_SameSignatureDifferentArguments_CreatesSeparateFunctions()
+    {
+#pragma warning disable CS0618
+        var twoFlags = VirtualFunctions.CBasePlayerController_SetPawnFunc;
+#pragma warning restore CS0618
+        var fourFlags = VirtualFunctions.CBasePlayerController_SetPawnFullFunc;
+        var fourFlagsAgain =
+            new MemoryFunctionVoid<CBasePlayerController, CBasePlayerPawn, bool, bool, bool, bool>(
+                GameData.GetSignature("CBasePlayerController_SetPawn"));
+
+        Assert.NotEqual(IntPtr.Zero, twoFlags.Handle);
+        Assert.NotEqual(twoFlags.Handle, fourFlags.Handle);
+        Assert.Equal(fourFlags.Handle, fourFlagsAgain.Handle);
+    }
 }
