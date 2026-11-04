@@ -6,16 +6,22 @@ public abstract class BaseMemoryFunction : NativeObject
 
     internal static Dictionary<string, IntPtr> _createdOffsetFunctions = new();
 
+    internal static string FunctionCacheKey(string function, DataType returnType, IEnumerable<DataType> argumentTypes)
+    {
+        return $"{function}:{returnType}:{string.Join(",", argumentTypes)}";
+    }
+
     private static IntPtr CreateValveFunctionBySignature(string signature, DataType returnType,
         DataType[] argumentTypes)
     {
-        if (!_createdFunctions.TryGetValue(signature, out var function))
+        var cacheKey = FunctionCacheKey($"{Addresses.ServerPath}:{signature}", returnType, argumentTypes);
+        if (!_createdFunctions.TryGetValue(cacheKey, out var function))
         {
             try
             {
                 function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, Addresses.ServerPath, signature,
                     argumentTypes.Length, (int)returnType, argumentTypes.Cast<object>().ToArray());
-                _createdFunctions[signature] = function;
+                _createdFunctions[cacheKey] = function;
             }
             catch (Exception)
             {
@@ -28,13 +34,14 @@ public abstract class BaseMemoryFunction : NativeObject
     private static IntPtr CreateValveFunctionBySignature(string signature, string binarypath, DataType returnType,
         DataType[] argumentTypes)
     {
-        if (!_createdFunctions.TryGetValue(signature, out var function))
+        var cacheKey = FunctionCacheKey($"{binarypath}:{signature}", returnType, argumentTypes);
+        if (!_createdFunctions.TryGetValue(cacheKey, out var function))
         {
             try
             {
                 function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, binarypath, signature,
                     argumentTypes.Length, (int)returnType, argumentTypes.Cast<object>().ToArray());
-                _createdFunctions[signature] = function;
+                _createdFunctions[cacheKey] = function;
             }
             catch (Exception)
             {
@@ -47,7 +54,7 @@ public abstract class BaseMemoryFunction : NativeObject
     private static IntPtr CreateValveFunctionByOffset(string symbolName, int offset, DataType returnType,
         DataType[] argumentTypes, Func<nint> nativeCaller)
     {
-        string constructKey = $"{symbolName}_{offset}";
+        string constructKey = FunctionCacheKey($"{symbolName}_{offset}", returnType, argumentTypes);
 
         if (!_createdOffsetFunctions.TryGetValue(constructKey, out var function))
         {
