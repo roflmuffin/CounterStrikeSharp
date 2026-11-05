@@ -10,6 +10,11 @@ public static class EntitySystem
 {
     private static Lazy<IntPtr> ConcreteEntityListPointer = new(NativeAPI.GetConcreteEntityListPointer, LazyThreadSafetyMode.PublicationOnly);
 
+    /// <summary>
+    /// Gets whether the entity system has been initialized.
+    /// </summary>
+    public static bool IsInitialized => NativeAPI.IsEntitySystemInitialized();
+
     private const int MaxEntities = 32768;
     private const int MaxEntitiesPerChunk = 512;
     private const int MaxChunks = MaxEntities / MaxEntitiesPerChunk;

@@ -486,6 +486,8 @@ void* GetConcreteEntityListPointer(ScriptContext& script_context)
     return &globals::entitySystem->m_EntityList;
 }
 
+bool IsEntitySystemInitialized(ScriptContext& script_context) { return globals::entitySystem != nullptr; }
+
 unsigned long GetPlayerAuthorizedSteamID(ScriptContext& script_context)
 {
     auto iSlot = script_context.GetArgument<int>(0);
@@ -600,6 +602,7 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("IS_REF_VALID_ENTITY", IsRefValidEntity);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_CONSOLE", PrintToConsole);
     ScriptEngine::RegisterNativeHandler("GET_FIRST_ACTIVE_ENTITY", GetFirstActiveEntity);
+    ScriptEngine::RegisterNativeHandler("IS_ENTITY_SYSTEM_INITIALIZED", IsEntitySystemInitialized);
     ScriptEngine::RegisterNativeHandler("GET_PLAYER_AUTHORIZED_STEAMID", GetPlayerAuthorizedSteamID);
     ScriptEngine::RegisterNativeHandler("GET_PLAYER_IP_ADDRESS", GetPlayerIpAddress);
     ScriptEngine::RegisterNativeHandler("HOOK_ENTITY_OUTPUT", HookEntityOutput);
