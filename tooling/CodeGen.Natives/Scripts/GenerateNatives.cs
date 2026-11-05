@@ -45,6 +45,21 @@ public partial class Generators
 
         var nativesString = string.Join("\n", natives.Select(native =>
         {
+            // Preserve the supplied context's argument slots.
+            if (native.Arguments.Any(pair => pair.Value == "scriptContext"))
+            {
+                if (native.Arguments.Count != 1 || native.ReturnType != "void")
+                    throw new InvalidDataException($"{native.Name}: scriptContext requires one parameter and a void return");
+                var context = native.Arguments.Single().Key;
+                return $@"
+        public static void {native.NameCamelCase}(ScriptContext {context}){{
+            ArgumentNullException.ThrowIfNull({context});
+            {context}.SetIdentifier(0x{native.Hash:X});
+            {context}.Invoke();
+            {context}.CheckErrors();
+        }}";
+            }
+
             var arguments = string.Join(", ",
                 native.Arguments.Select(pair => $"{Mapping.GetCSharpType(pair.Value)} {pair.Key}"));
 
