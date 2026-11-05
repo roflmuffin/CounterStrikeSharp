@@ -40,12 +40,10 @@ std::stack<std::string> errors;
 void ScriptContext::ThrowNativeError(const char* msg, ...)
 {
     va_list arglist;
-    char dest[256];
-    va_start(arglist, msg);
-    vsprintf(dest, msg, arglist);
-    va_end(arglist);
     char buff[256];
-    snprintf(buff, sizeof(buff), dest, arglist);
+    va_start(arglist, msg);
+    vsnprintf(buff, sizeof(buff), msg, arglist);
+    va_end(arglist);
 
     auto error_string = std::string(buff);
     errors.push(error_string);
