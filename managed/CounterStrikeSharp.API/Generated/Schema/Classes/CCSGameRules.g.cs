@@ -442,6 +442,10 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMaxLnk")]
 	public ref UInt32 NumSpectatorsCountMaxLnk => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk");
 
+	// m_bQueuedMatchmakingReportedRoundStatsPendingSend
+	[SchemaMember("CCSGameRules", "m_bQueuedMatchmakingReportedRoundStatsPendingSend")]
+	public ref bool QueuedMatchmakingReportedRoundStatsPendingSend => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bQueuedMatchmakingReportedRoundStatsPendingSend");
+
 	// m_nCTsAliveAtFreezetimeEnd
 	[SchemaMember("CCSGameRules", "m_nCTsAliveAtFreezetimeEnd")]
 	public ref Int32 CTsAliveAtFreezetimeEnd => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nCTsAliveAtFreezetimeEnd");
