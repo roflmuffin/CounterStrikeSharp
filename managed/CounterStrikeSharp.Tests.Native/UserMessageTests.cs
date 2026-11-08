@@ -192,4 +192,14 @@ public class UserMessageTests
         // Debug string should contain something about the message
         Assert.True(debugString.Length > 0, "Debug string should not be empty");
     }
+
+    [Fact]
+    public void ThrowNativeError_WithAPercentSignInThePassedString_ReportsItLiterally()
+    {
+        var message = UserMessage.FromPartialName("TextMsg");
+        var field = "nonexistent_%s_%n_%x_field";
+
+        var ex = Assert.Throws<NativeException>(() => message.ReadInt(field));
+        Assert.Contains(field, ex.Message);
+    }
 }
