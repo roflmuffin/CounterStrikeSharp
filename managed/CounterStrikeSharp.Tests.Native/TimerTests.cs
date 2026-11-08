@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
@@ -134,6 +135,111 @@ public class TimerTests
         finally
         {
             timer.Kill();
+        }
+    }
+
+    [Fact]
+    public async Task KillTimer_OfAnEarlierOnceOffTimerFromACallback_KeepsTheOtherTimers()
+    {
+        await WaitOneFrame();
+
+        var earlierFired = false;
+        var killerFired = false;
+        var laterFired = false;
+        var earlier = new Timer(0.05f, () => { earlierFired = true; });
+        var killer = new Timer(0.05f, () =>
+        {
+            killerFired = true;
+            earlier.Kill();
+        });
+        var later = new Timer(0.3f, () => { laterFired = true; });
+
+        await WaitForSeconds(0.5f);
+        await WaitOneFrame();
+
+        Assert.True(killerFired);
+        Assert.False(earlierFired);
+        Assert.True(laterFired, "The timer after the killer in the list must still fire");
+    }
+
+    [Fact]
+    public async Task KillTimer_OfAnEarlierRepeatingTimerAndItselfFromACallback_KeepsTheOtherTimers()
+    {
+        await WaitOneFrame();
+
+        var earlierCalls = 0;
+        var killerCalls = 0;
+        var laterCalls = 0;
+        Timer? killer = null;
+        var earlier = new Timer(0.05f, () => { earlierCalls++; }, TimerFlags.REPEAT);
+        killer = new Timer(0.05f, () =>
+        {
+            killerCalls++;
+            earlier.Kill();
+            killer!.Kill();
+        }, TimerFlags.REPEAT);
+        var later = new Timer(0.2f, () => { laterCalls++; }, TimerFlags.REPEAT);
+
+        try
+        {
+            await WaitForSeconds(0.5f);
+            await WaitOneFrame();
+
+            Assert.Equal(1, killerCalls);
+            Assert.Equal(0, earlierCalls);
+            Assert.True(laterCalls >= 1, $"The timer after the killer in the list must keep firing, fired {laterCalls} times");
+        }
+        finally
+        {
+            later.Kill();
+        }
+    }
+
+    [Fact]
+    public async Task KillTimer_OfTwoEarlierTimersFromACallback_DoesNotRunPastTheList()
+    {
+        await WaitOneFrame();
+
+        var fired = 0;
+        var first = new Timer(0.05f, () => { fired++; });
+        var second = new Timer(0.05f, () => { fired++; });
+        var killer = new Timer(0.05f, () =>
+        {
+            fired++;
+            first.Kill();
+            second.Kill();
+        });
+
+        await WaitForSeconds(0.2f);
+        await WaitOneFrame();
+
+        Assert.Equal(1, fired);
+    }
+
+    [Fact]
+    public async Task KillTimer_OfAnEarlierTimerFromASurvivingRepeatingCallback_RunsItOncePerFrame()
+    {
+        await WaitOneFrame();
+
+        var ticks = new List<int>();
+        var earlier = new Timer(0.001f, () => { }, TimerFlags.REPEAT);
+        var killer = new Timer(0.001f, () =>
+        {
+            ticks.Add(Server.TickCount);
+            if (ticks.Count == 1) earlier.Kill();
+        }, TimerFlags.REPEAT);
+
+        try
+        {
+            await WaitForSeconds(0.2f);
+            await WaitOneFrame();
+
+            Assert.NotEmpty(ticks);
+            Assert.Equal(ticks.Count, ticks.Distinct().Count());
+        }
+        finally
+        {
+            killer.Kill();
         }
     }
 }
