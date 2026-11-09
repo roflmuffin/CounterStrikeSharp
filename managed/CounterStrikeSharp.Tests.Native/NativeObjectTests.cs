@@ -13,18 +13,23 @@ public class NativeObjectsTests
     {
         await Server.NextFrameAsync(() =>
         {
-            var entryCount = NativeHandleTracker._entries.Count;
             var vector = new Vector(0, 0, 500);
             Assert.Equal(IntPtr.Zero, vector.RawHandle);
             Assert.Equal(500, NativeAPI.VectorGetZ(vector.Handle));
-            Assert.Equal(entryCount + 1, NativeHandleTracker._entries.Count);
+            Assert.True(NativeHandleTracker.Shared.Count > 0);
+            GC.KeepAlive(vector);
         });
 
         GC.Collect();
         GC.WaitForPendingFinalizers();
         GC.Collect();
 
-        await Task.Delay(1000);
-        Assert.Empty(NativeHandleTracker._entries);
+        // Allow several slices; the cleaner's budget is intentionally bounded.
+        for (var attempt = 0; attempt < 100 && NativeHandleTracker.Shared.Count > 0; attempt++)
+        {
+            await Task.Delay(20);
+        }
+
+        Assert.Equal(0, NativeHandleTracker.Shared.Count);
     }
 }

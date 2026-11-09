@@ -109,6 +109,8 @@ public static unsafe class Trace
         TraceResult result = default;
         NativeAPI.TraceShape(startPos.Handle, angles.Handle, ignoreEntity?.Handle ?? nint.Zero, (ulong)ia, (ulong)iw, (ulong)ie,
             (nint)(&result));
+        GC.KeepAlive(startPos);
+        GC.KeepAlive(angles);
         return result;
     }
 
@@ -119,6 +121,8 @@ public static unsafe class Trace
         TraceResult result = default;
         NativeAPI.TraceEndShape(startPos.Handle, endPos.Handle, ignoreEntity?.Handle ?? nint.Zero, (ulong)ia, (ulong)iw, (ulong)ie,
             (nint)(&result));
+        GC.KeepAlive(startPos);
+        GC.KeepAlive(endPos);
         return result;
     }
 
@@ -131,6 +135,10 @@ public static unsafe class Trace
         NativeAPI.TraceHullShape(startPos.Handle, endPos.Handle, mins.Handle, maxs.Handle, ignoreEntity?.Handle ?? nint.Zero, (ulong)ia, (
                 ulong)iw, (ulong)ie,
             (nint)(&result));
+        GC.KeepAlive(startPos);
+        GC.KeepAlive(endPos);
+        GC.KeepAlive(mins);
+        GC.KeepAlive(maxs);
         return result;
     }
 
@@ -138,7 +146,11 @@ public static unsafe class Trace
     [Experimental(diagnosticId: "CS0001",
         Message = "PointContents maps to a Valve function but its behaviour has not been fully understood. Use with caution.")]
     public static Contents PointContents(Vector pos, Contents contentsMask = Contents.Empty)
-        => (Contents)NativeAPI.PointContents(pos.Handle, (ulong)contentsMask);
+    {
+        var result = (Contents)NativeAPI.PointContents(pos.Handle, (ulong)contentsMask);
+        GC.KeepAlive(pos);
+        return result;
+    }
 
     /// <summary>
     /// Returns whether a nav area overlaps with an entity's bounding box.
@@ -156,5 +168,7 @@ public static unsafe class Trace
         mins = new Vector();
         maxs = new Vector();
         NativeAPI.GetEntityWorldSpaceAabb(entity.Handle, mins.Handle, maxs.Handle);
+        GC.KeepAlive(mins);
+        GC.KeepAlive(maxs);
     }
 }
