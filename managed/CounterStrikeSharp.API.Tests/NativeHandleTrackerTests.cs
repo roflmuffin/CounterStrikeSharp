@@ -117,6 +117,91 @@ public class NativeHandleTrackerTests
         Drain(tracker);
     }
 
+    [Theory]
+    [InlineData(1)]
+    [InlineData(255)]
+    [InlineData(256)]
+    [InlineData(257)]
+    [InlineData(513)]
+    public void SingleEntrySlicesPreserveMixedRecordsAcrossBatchBoundaries(int count)
+    {
+        var tracker = new NativeHandleTracker();
+        for (var cycle = 0; cycle < 2; cycle++)
+        {
+            var retained = CreateRetained(tracker, count);
+            var dead = 0;
+            for (var index = 0; index < count; index++)
+            {
+                if (index % 3 == cycle)
+                {
+                    retained[index] = null!;
+                    dead++;
+                }
+            }
+            Collect();
+
+            var released = 0;
+            for (var index = 0; index < count; index++)
+            {
+                released += tracker.Cleanup(1, SweepTime);
+            }
+            Assert.Equal(dead, released);
+            Assert.Equal(count - dead, tracker.Count);
+            VerifySparse(retained);
+            retained.Clear();
+            Drain(tracker);
+        }
+    }
+
+    [Fact]
+    public void SparseSurvivorsMergeWithoutAllocatingAndRemainValidAcrossSweeps()
+    {
+        var tracker = new NativeHandleTracker();
+        var retained = CreateRetained(tracker, 8192);
+        for (var index = 0; index < retained.Count; index++)
+        {
+            if (index % 256 != 0)
+            {
+                retained[index] = null!;
+            }
+        }
+        Collect();
+        Assert.Equal(8160, tracker.Cleanup(int.MaxValue, SweepTime));
+        Assert.Equal(32, tracker.Count);
+        VerifySparse(retained);
+
+        // Inspect storage only to guard against one long-lived owner pinning every original batch.
+        var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+        var batches = (System.Collections.ICollection)typeof(NativeHandleTracker).GetField("_batches", flags)!.GetValue(tracker)!;
+        Assert.Equal(1, batches.Count);
+
+        for (var sweep = 0; sweep < 3; sweep++)
+        {
+            Collect();
+            var before = GC.GetAllocatedBytesForCurrentThread();
+            var released = tracker.Cleanup(int.MaxValue, SweepTime);
+            var allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+            Assert.Equal(0, released);
+            Assert.Equal(0, allocated);
+            VerifySparse(retained);
+        }
+        retained.Clear();
+        Drain(tracker);
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    private static void VerifySparse(List<TestObject> retained)
+    {
+        for (var index = 0; index < retained.Count; index++)
+        {
+            if (retained[index] is { } owner)
+            {
+                Assert.Equal(index, Marshal.ReadInt32(owner.Handle));
+            }
+        }
+        GC.KeepAlive(retained);
+    }
+
     [Fact]
     public void FinalizationAndResurrectionKeepTheNativeAllocationAlive()
     {
