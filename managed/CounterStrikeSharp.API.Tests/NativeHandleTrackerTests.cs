@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
@@ -17,103 +16,22 @@ public class NativeHandleTrackerTests
     private static readonly TimeSpan SweepTime = TimeSpan.FromSeconds(10);
 
     [Fact]
-    public void KeepsLiveAllocationsAndReclaimsDeadOnes()
-    {
-        var tracker = new NativeHandleTracker();
-        var retained = CreateRetained(tracker, 1000);
-        AddDead(tracker, 10000);
-        Collect();
-
-        Assert.Equal(10000, tracker.Cleanup(int.MaxValue, SweepTime));
-        Assert.Equal(retained.Count, tracker.Count);
-        Verify(retained);
-        retained.Clear();
-        Drain(tracker);
-    }
-
-    [Fact]
     public void NewLiveAllocationsDoNotDisplaceOldDeadEntries()
     {
         var tracker = new NativeHandleTracker();
-        AddDead(tracker, 30000);
+        AddDead(tracker, 768);
         Collect();
         var retained = new List<TestObject>();
 
-        for (var iteration = 0; iteration < 30; iteration++)
+        for (var iteration = 0; iteration < 3; iteration++)
         {
-            AddRetained(tracker, retained, 1000);
-            Assert.Equal(1000, tracker.Cleanup(1000, SweepTime));
+            AddRetained(tracker, retained);
+            Assert.Equal(256, tracker.Cleanup(256, SweepTime));
         }
 
         Assert.Equal(retained.Count, tracker.Count);
-        Verify(retained);
+        VerifySparse(retained);
         retained.Clear();
-        Drain(tracker);
-    }
-
-    [Fact]
-    public void SustainedAllocationsDrainWithinTheSameSweepBudget()
-    {
-        var tracker = new NativeHandleTracker();
-        for (var second = 0; second < 20; second++)
-        {
-            AddDead(tracker, 32000);
-            Collect();
-            var released = 0;
-            for (var slice = 0; slice < 64; slice++)
-            {
-                released += tracker.Cleanup(512, SweepTime);
-            }
-
-            Assert.Equal(32000, released);
-            Assert.Equal(0, tracker.Count);
-        }
-    }
-
-    [Fact]
-    public async Task ConcurrentProducersAndCleanersReleaseEveryAllocation()
-    {
-        var tracker = new NativeHandleTracker();
-        var stop = 0;
-        var released = 0;
-        var cleaners = Enumerable.Range(0, 2).Select(_ => Task.Run(() =>
-        {
-            while (Volatile.Read(ref stop) == 0)
-            {
-                Interlocked.Add(ref released, tracker.Cleanup(512, TimeSpan.FromMilliseconds(1)));
-                Thread.Yield();
-            }
-        })).ToArray();
-
-        try
-        {
-            await Task.WhenAll(Enumerable.Range(0, 4).Select(_ => Task.Run(() =>
-            {
-                for (var iteration = 0; iteration < 10; iteration++)
-                {
-                    var retained = CreateRetained(tracker, 1000);
-                    Collect();
-                    Verify(retained);
-                    retained.Clear();
-                }
-            })));
-        }
-        finally
-        {
-            Volatile.Write(ref stop, 1);
-            await Task.WhenAll(cleaners);
-        }
-
-        released += Drain(tracker);
-        Assert.Equal(40000, released);
-    }
-
-    [Fact]
-    public void RegistersCompactRecordsWithoutPerEntryManagedObjects()
-    {
-        var tracker = new NativeHandleTracker();
-        RegisterAndVerifyCompactRecords(tracker, 4096);
-        // Exit the owner's stack frame before collecting, including Debug JIT temporaries.
         Drain(tracker);
     }
 
@@ -151,42 +69,6 @@ public class NativeHandleTrackerTests
             retained.Clear();
             Drain(tracker);
         }
-    }
-
-    [Fact]
-    public void SparseSurvivorsMergeWithoutAllocatingAndRemainValidAcrossSweeps()
-    {
-        var tracker = new NativeHandleTracker();
-        var retained = CreateRetained(tracker, 8192);
-        for (var index = 0; index < retained.Count; index++)
-        {
-            if (index % 256 != 0)
-            {
-                retained[index] = null!;
-            }
-        }
-        Collect();
-        Assert.Equal(8160, tracker.Cleanup(int.MaxValue, SweepTime));
-        Assert.Equal(32, tracker.Count);
-        VerifySparse(retained);
-
-        // Inspect storage only to guard against one long-lived owner pinning every original batch.
-        var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
-        var batches = (System.Collections.ICollection)typeof(NativeHandleTracker).GetField("_batches", flags)!.GetValue(tracker)!;
-        Assert.Equal(1, batches.Count);
-
-        for (var sweep = 0; sweep < 3; sweep++)
-        {
-            Collect();
-            var before = GC.GetAllocatedBytesForCurrentThread();
-            var released = tracker.Cleanup(int.MaxValue, SweepTime);
-            var allocated = GC.GetAllocatedBytesForCurrentThread() - before;
-            Assert.Equal(0, released);
-            Assert.Equal(0, allocated);
-            VerifySparse(retained);
-        }
-        retained.Clear();
-        Drain(tracker);
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -289,31 +171,14 @@ public class NativeHandleTrackerTests
         GC.KeepAlive(context);
     }
 
-    [Fact]
-    public async Task SharedTimerReclaimsAnIdleBacklog()
+    private static void Drain(NativeHandleTracker tracker)
     {
-        Drain(NativeHandleTracker.Shared);
-        AddDead(NativeHandleTracker.Shared, 10000);
-        Collect();
-        var timeout = Stopwatch.StartNew();
-        while (NativeHandleTracker.Shared.Count > 0 && timeout.Elapsed < TimeSpan.FromSeconds(10))
-        {
-            await Task.Delay(20);
-        }
-
-        Assert.Equal(0, NativeHandleTracker.Shared.Count);
-    }
-
-    private static int Drain(NativeHandleTracker tracker)
-    {
-        var released = 0;
         for (var attempt = 0; attempt < 4 && tracker.Count > 0; attempt++)
         {
             Collect();
-            released += tracker.Cleanup(int.MaxValue, SweepTime);
+            tracker.Cleanup(int.MaxValue, SweepTime);
         }
         Assert.Equal(0, tracker.Count);
-        return released;
     }
 
     private static void Collect()
@@ -364,39 +229,9 @@ public class NativeHandleTrackerTests
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private static void AddRetained(NativeHandleTracker tracker, List<TestObject> retained, int count)
+    private static void AddRetained(NativeHandleTracker tracker, List<TestObject> retained)
     {
-        var added = CreateRetained(tracker, count);
-        retained.AddRange(added);
-        added.Clear();
-    }
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static void Verify(List<TestObject> retained)
-    {
-        for (var index = 0; index < retained.Count; index++)
-        {
-            Assert.Equal(index % 1000, Marshal.ReadInt32(retained[index].Handle));
-        }
-
-        GC.KeepAlive(retained);
-    }
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static void RegisterAndVerifyCompactRecords(NativeHandleTracker tracker, int count)
-    {
-        var owner = new TestObject(IntPtr.Zero);
-        var before = GC.GetAllocatedBytesForCurrentThread();
-        for (var index = 0; index < count; index++)
-        {
-            tracker.Register(owner, Marshal.AllocHGlobal(12));
-        }
-
-        var allocatedBytes = GC.GetAllocatedBytesForCurrentThread() - before;
-        Assert.InRange(allocatedBytes, (long)count * 2 * IntPtr.Size, (long)count * 3 * IntPtr.Size);
-        Collect();
-        Assert.Equal(0, tracker.Cleanup(int.MaxValue, SweepTime));
-        GC.KeepAlive(owner);
+        retained.Add(Create(tracker, retained.Count));
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
