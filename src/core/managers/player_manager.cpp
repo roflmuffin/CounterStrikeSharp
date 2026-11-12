@@ -171,8 +171,8 @@ KHook::Return<bool> PlayerManager::OnClientConnect_Post(IServerGameClients* hook
     return { KHook::Action::Ignore, true };
 }
 
-KHook::Return<void>
-PlayerManager::OnClientPutInServer(IServerGameClients* hookThis, CPlayerSlot slot, char const* pszName, int type, uint64 xuid)
+KHook::Return<void> PlayerManager::OnClientPutInServer(
+    IServerGameClients* hookThis, CPlayerSlot slot, char const* pszName, ClientPutInServerType_t type, uint64 xuid)
 {
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientPutInServer] - {}, {}, {}", slot.Get(), pszName, type);
 

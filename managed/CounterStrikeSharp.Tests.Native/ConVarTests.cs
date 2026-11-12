@@ -17,7 +17,9 @@ public class ConVarTests
         Assert.NotNull(boolConVar);
         Assert.Equal("sv_cheats", boolConVar.Name);
         Assert.Equal(ConVarType.Bool, boolConVar.Type);
-        Assert.Equal(ConVarFlags.FCVAR_NOTIFY | ConVarFlags.FCVAR_REPLICATED | ConVarFlags.FCVAR_RELEASE | ConVarFlags.FCVAR_GAMEINFO_CANNOT_OVERRIDE, boolConVar.Flags);
+        Assert.Equal(
+            ConVarFlags.FCVAR_NOTIFY | ConVarFlags.FCVAR_REPLICATED | ConVarFlags.FCVAR_RELEASE |
+            ConVarFlags.FCVAR_GAMEINFO_CANNOT_OVERRIDE, boolConVar.Flags);
         Assert.True(boolConVar.Value);
 
         boolConVar.Value = false;
@@ -195,7 +197,7 @@ public class ConVarTests
         // Test min/max constraints
         conVar.Value = 50.0f;
         Assert.Equal(25.0f, conVar.Value);
-        Assert.Equal("25.000000", conVar.ValueAsString);
+        Assert.Equal("25", conVar.ValueAsString);
 
         conVar.ValueAsString = "10.5";
         Assert.Equal(10.5f, conVar.Value);

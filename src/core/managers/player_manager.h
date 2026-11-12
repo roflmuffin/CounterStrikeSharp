@@ -146,7 +146,8 @@ class PlayerManager : public GlobalClass
                                              const char* pszNetworkID,
                                              bool unk1,
                                              CBufferString* pRejectReason);
-    KHook::Return<void> OnClientPutInServer(IServerGameClients* hookThis, CPlayerSlot slot, char const* pszName, int type, uint64 xuid);
+    KHook::Return<void>
+    OnClientPutInServer(IServerGameClients* hookThis, CPlayerSlot slot, char const* pszName, ClientPutInServerType_t type, uint64 xuid);
     KHook::Return<void> OnClientDisconnect(IServerGameClients* hookThis,
                                            CPlayerSlot slot,
                                            ENetworkDisconnectionReason reason,

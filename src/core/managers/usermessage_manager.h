@@ -53,7 +53,7 @@ class UserMessageManager : public GlobalClass
                                        bool bLocalOnly,
                                        int nClientCount,
                                        const uint64* clients,
-                                       INetworkMessageInternal* pEvent,
+                                       NetMessageInfo_t* pEvent,
                                        const CNetMessage* pData,
                                        unsigned long nSize,
                                        NetChannelBufType_t bufType);
