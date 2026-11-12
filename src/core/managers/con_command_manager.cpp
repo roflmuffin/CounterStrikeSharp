@@ -252,6 +252,17 @@ void ConCommandManager::OnShutdown()
 {
     m_hooks.Clear();
 
+    // Unregister our static CON_COMMANDs while the cvar system is still alive. This library stays
+    // loaded after Metamod's dlclose (it has STB_GNU_UNIQUE symbols), so otherwise their
+    // destructors run from exit(), after the engine has shut the cvar system down, and
+    // UnregisterConCommandCallbacks crashes in tier0.
+    for (ConCommand* command : {&css_dump_schema_command, &DumpLeaksCommand()})
+    {
+        if (!command->IsValidRef()) continue;
+        globals::cvars->UnregisterConCommandCallbacks(*command);
+        command->InvalidateRef();
+    }
+
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_pre);
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_post);
 }
