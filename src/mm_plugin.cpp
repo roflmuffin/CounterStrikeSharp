@@ -66,10 +66,6 @@ DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
     counterstrikesharp::ScriptEngine::InvokeNative(context);
 }
 
-class GameSessionConfiguration_t
-{
-};
-
 PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, counterstrikesharp::gPlugin);
 
 namespace counterstrikesharp {
