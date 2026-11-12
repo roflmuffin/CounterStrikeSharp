@@ -790,7 +790,7 @@ static void UserMessageGetMessageName(ScriptContext& scriptContext)
         return;
     }
 
-    scriptContext.SetResult(message->GetSerializableMessage()->GetUnscopedName());
+    scriptContext.SetResult(message->GetMessageName().c_str());
 }
 
 static void UserMessageGetMessageTypeName(ScriptContext& scriptContext)

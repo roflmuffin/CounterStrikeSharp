@@ -92,6 +92,9 @@ static inline size_t SafeStrcpy(char* dest, size_t maxlength, const char* src)
     return iter - dest;
 }
 
+// A net message's type name without the " [<id>]" suffix the engine appends since 14197
+std::string NetMessageDisplayName(const INetworkMessageInternal* pNetMessage);
+
 class UserMessage
 {
   public:
