@@ -3,9 +3,11 @@ using System.Numerics;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.CsScript;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Utils;
 using Xunit;
+using Vector = CounterStrikeSharp.API.Modules.Utils.Vector;
 
 namespace NativeTestsPlugin;
 
@@ -53,6 +55,21 @@ public class GameTests
         var newPosition = (Vector3)originalPosition + new Vector3(0, 0, 100);
 
         pawn.Teleport(newPosition, null, null);
+        await WaitOneFrame();
+
+        Assert.Equal(newPosition.X, pawn.AbsOrigin.X, 1f);
+        Assert.Equal(newPosition.Y, pawn.AbsOrigin.Y, 1f);
+        Assert.Equal(newPosition.Z, pawn.AbsOrigin.Z, 1f);
+    }
+
+    [Fact]
+    public async Task Script_CBaseEntity_Teleport()
+    {
+        await InitializeAsync();
+        var originalPosition = pawn.AbsOrigin;
+        var newPosition = (Vector3)originalPosition + new Vector3(0, 0, 100);
+
+        pawn.TeleportScript(new CsScriptTransform() { Position = newPosition });
         await WaitOneFrame();
 
         Assert.Equal(newPosition.X, pawn.AbsOrigin.X, 1f);

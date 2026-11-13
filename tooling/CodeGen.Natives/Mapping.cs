@@ -76,6 +76,8 @@ public class Mapping
                 return "InputArgument";
             case "object[]":
                 return "object[]";
+            case "scriptContext":
+                return "ScriptContext";
             case "SteamID":
                 return "[CastFrom(typeof(ulong))]SteamID";
             case "HookMode":
