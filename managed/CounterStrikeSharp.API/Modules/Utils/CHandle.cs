@@ -58,7 +58,11 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
 
 
     /// <inheritdoc cref="Get"/>
-    public T? Value => Get();
+    public T? Value
+    {
+        get => Get();
+        set => Raw = value?.EntityHandle ?? (uint)(Utilities.MaxEntities - 1);
+    }
 
     /// <summary>
     /// Retrieves the instance of the entity this handle refers to.
@@ -86,6 +90,7 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
     public uint SerialNum => Raw >> Utilities.MaxEntityBits;
 
     public static implicit operator uint(CHandle<T> handle) => handle.Raw;
+    public static implicit operator T?(CHandle<T> handle) => handle.Value;
 
     public bool Equals(CHandle<T>? other)
     {
