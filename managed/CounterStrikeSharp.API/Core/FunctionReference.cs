@@ -16,6 +16,8 @@
 
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -47,7 +49,12 @@ namespace CounterStrikeSharp.API.Core
         private static readonly object ReferenceCounterLock = new();
         private static int _referenceCounter;
 
+        private static readonly ConditionalWeakTable<Type, MethodInvoker> Invokers = new();
+
         private readonly Delegate _targetMethod;
+        private readonly MethodInvoker _invoker;
+        private readonly Type[] _parameterTypes;
+        private readonly bool _takesScriptContext;
         private readonly CallbackDelegate _nativeCallback;
 
         private readonly TaskCompletionSource _taskCompletionSource = new();
@@ -56,6 +63,9 @@ namespace CounterStrikeSharp.API.Core
         {
             Lifetime = lifetime;
             _targetMethod = method;
+            _invoker = Invokers.GetValue(method.GetType(), static type => MethodInvoker.Create(type.GetMethod("Invoke")!));
+            _parameterTypes = Array.ConvertAll(method.Method.GetParameters(), parameter => parameter.ParameterType);
+            _takesScriptContext = _parameterTypes.FirstOrDefault() == typeof(ScriptContext);
             _nativeCallback = CreateWrappedCallback();
         }
 
@@ -81,9 +91,9 @@ namespace CounterStrikeSharp.API.Core
                     var scriptContext = new ScriptContext(context);
 
                     // Allow for manual handling of the script context
-                    if (_targetMethod.Method.GetParameters().FirstOrDefault()?.ParameterType == typeof(ScriptContext))
+                    if (_takesScriptContext)
                     {
-                        var returnValue = _targetMethod.DynamicInvoke(scriptContext);
+                        var returnValue = _invoker.Invoke(_targetMethod, scriptContext);
                         if (returnValue != null)
                         {
                             scriptContext.SetResult(returnValue, context);
@@ -92,13 +102,13 @@ namespace CounterStrikeSharp.API.Core
                         return;
                     }
 
-                    var parameterList = _targetMethod.Method.GetParameters().Select((_, i) =>
+                    var arguments = new object?[_parameterTypes.Length];
+                    for (var i = 0; i < arguments.Length; i++)
                     {
-                        var parameter = _targetMethod.Method.GetParameters()[i];
-                        return scriptContext.GetArgument(parameter.ParameterType, i);
-                    }).ToArray();
+                        arguments[i] = scriptContext.GetArgument(_parameterTypes[i], i);
+                    }
 
-                    var returnObj = _targetMethod.DynamicInvoke(parameterList);
+                    var returnObj = _invoker.Invoke(_targetMethod, arguments.AsSpan());
 
                     if (returnObj != null)
                     {
@@ -107,7 +117,7 @@ namespace CounterStrikeSharp.API.Core
                 }
                 catch (Exception e)
                 {
-                    if ((e.InnerException ?? e) is Plugin.PluginTerminationException pluginEx)
+                    if (e is Plugin.PluginTerminationException)
                     {
                         return;
                     }
