@@ -39,7 +39,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
         public VTable(string symbolName) : base(symbolName)
             { }
 
-        public VTable(string symbolName, string binaryPath) : base(binaryPath, symbolName)
+        public VTable(string symbolName, string binaryPath) : base(symbolName, binaryPath)
             { }
 
         public VirtualFunctionVoid<TArg1> GetFunctionVoid<TArg1>(int index)
