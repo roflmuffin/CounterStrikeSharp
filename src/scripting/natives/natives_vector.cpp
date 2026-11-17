@@ -57,6 +57,8 @@ CON_COMMAND(css_dump_leaks, "dump css leaks")
     Msg("===== Dumping leaks =====\n");
 }
 
+ConCommand& DumpLeaksCommand() { return css_dump_leaks_command; }
+
 Vector2D* Vector2DNew(ScriptContext& script_context) { return new Vector2D(); }
 
 Vector4D* Vector4DNew(ScriptContext& script_context) { return new Vector4D(); }

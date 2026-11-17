@@ -51,10 +51,13 @@ struct CaseInsensitiveComparator
     }
 };
 
+class ConCommand;
+
 namespace counterstrikesharp {
 
 void UnlockConVars();
 void UnlockConCommands();
+ConCommand& DumpLeaksCommand();
 
 class ScriptCallback;
 
