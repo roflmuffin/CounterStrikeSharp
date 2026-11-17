@@ -99,6 +99,40 @@ public class SchemaPropertyTests : IDisposable
         Assert.Equal(color, this.entity.Render);
     }
 
+    [Fact]
+    public void SchemaProperty_String_DoesNotOverwriteNextField()
+    {
+        var worldText = Utilities.CreateEntityByName<CPointWorldText>("point_worldtext")!;
+
+        try
+        {
+            worldText.FontName = "Arial";
+            worldText.MessageText = new string('a', 511);
+
+            Assert.Equal(511, worldText.MessageText.Length);
+            Assert.Equal("Arial", worldText.FontName);
+        }
+        finally
+        {
+            worldText.Remove();
+        }
+    }
+
+    [Fact]
+    public void SchemaProperty_String_ThrowsWhenTooLong()
+    {
+        var worldText = Utilities.CreateEntityByName<CPointWorldText>("point_worldtext")!;
+
+        try
+        {
+            Assert.Throws<ArgumentException>(() => worldText.MessageText = new string('a', 512));
+        }
+        finally
+        {
+            worldText.Remove();
+        }
+    }
+
     public void Dispose()
     {
         this.entity.Remove();

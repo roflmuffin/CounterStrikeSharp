@@ -180,9 +180,9 @@ public class Schema
         var handle = GetSchemaValue<IntPtr>(pointer, className, memberName);
 
         var bytes = Encoding.UTF8.GetBytes(value);
-        if (bytes.Length > maxLength)
+        if (bytes.Length >= maxLength)
         {
-            throw new ArgumentException($"String length exceeds maximum length of {maxLength}");
+            throw new ArgumentException($"String length exceeds maximum length of {maxLength - 1}");
         }
 
         for (int i = 0; i < bytes.Length; i++)
@@ -190,7 +190,7 @@ public class Schema
             Unsafe.Write((void*)(handle.ToInt64() + i), bytes[i]);
         }
 
-        Unsafe.Write((void*)(handle.ToInt64() + bytes.Length), 0);
+        Unsafe.Write((void*)(handle.ToInt64() + bytes.Length), (byte)0);
     }
 
     public static T GetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName)
