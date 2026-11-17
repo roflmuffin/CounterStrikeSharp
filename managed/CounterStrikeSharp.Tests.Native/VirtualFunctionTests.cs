@@ -87,4 +87,14 @@ public class VirtualFunctionTests
         Assert.NotEqual(twoFlags.Handle, fourFlags.Handle);
         Assert.Equal(fourFlags.Handle, fourFlagsAgain.Handle);
     }
+
+    [Fact]
+    public void VTable_WithBinaryPath_FindsTable()
+    {
+        var vtable = new VTable("CCSGameRules");
+        var vtableWithBinaryPath = new VTable("CCSGameRules", Addresses.ServerPath);
+
+        Assert.NotEqual(IntPtr.Zero, vtable.Handle);
+        Assert.Equal(vtable.Handle, vtableWithBinaryPath.Handle);
+    }
 }
