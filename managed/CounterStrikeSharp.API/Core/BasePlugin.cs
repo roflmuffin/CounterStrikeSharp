@@ -136,6 +136,34 @@ namespace CounterStrikeSharp.API.Core
         internal readonly Dictionary<Delegate, EntityIO.EntityOutputCallback> EntitySingleOutputHooks =
             new Dictionary<Delegate, EntityIO.EntityOutputCallback>();
 
+        private readonly record struct SubscriptionKey(string? Name, Delegate Handler, HookMode Mode);
+
+        private readonly List<(SubscriptionKey Key, CallbackSubscriber Subscriber)> _subscriptions = new();
+
+        private void Track(Dictionary<Delegate, CallbackSubscriber> dictionary, SubscriptionKey key, CallbackSubscriber subscriber)
+        {
+            dictionary[key.Handler] = subscriber;
+            _subscriptions.Add((key, subscriber));
+        }
+
+        private void Untrack(Dictionary<Delegate, CallbackSubscriber> dictionary, SubscriptionKey key, CallbackSubscriber subscriber)
+        {
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            if (dictionary.TryGetValue(key.Handler, out var current) && current == subscriber) dictionary.Remove(key.Handler);
+            _subscriptions.RemoveAll(s => s.Subscriber == subscriber);
+        }
+
+        private void Unsubscribe(SubscriptionKey key)
+        {
+            for (var i = _subscriptions.Count - 1; i >= 0; i--)
+            {
+                if (_subscriptions[i].Key != key) continue;
+
+                _subscriptions[i].Subscriber.Dispose();
+                return;
+            }
+        }
+
         internal readonly List<ConVarBase> ConVars = [];
 
         public readonly List<CommandDefinition> CommandDefinitions = new List<CommandDefinition>();
@@ -147,11 +175,16 @@ namespace CounterStrikeSharp.API.Core
         private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post)
             where T : GameEvent
         {
-            var subscriber = new CallbackSubscriber(handler, handler,
-                () => DeregisterEventHandler(name, handler, post));
+            var key = new SubscriptionKey(name, handler, post ? HookMode.Post : HookMode.Pre);
+            CallbackSubscriber subscriber = null!;
+            subscriber = new CallbackSubscriber(handler, handler, () =>
+            {
+                NativeAPI.UnhookEvent(name, subscriber.GetInputArgument(), post);
+                Untrack(Handlers, key, subscriber);
+            });
 
             NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
-            Handlers[handler] = subscriber;
+            Track(Handlers, key, subscriber);
         }
 
         /// <summary>
@@ -174,21 +207,13 @@ namespace CounterStrikeSharp.API.Core
         {
             var name = typeof(T).GetCustomAttribute<EventNameAttribute>()!.Name;
 
-            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
-
-            NativeAPI.UnhookEvent(name, subscriber.GetInputArgument(), hookMode == HookMode.Post);
-            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-            Handlers.Remove(handler);
+            Unsubscribe(new SubscriptionKey(name, handler, hookMode));
         }
 
         [Obsolete("Use the generic version of this method")]
         public void DeregisterEventHandler(string name, Delegate handler, bool post)
         {
-            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
-
-            NativeAPI.UnhookEvent(name, subscriber.GetInputArgument(), post);
-            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-            Handlers.Remove(handler);
+            Unsubscribe(new SubscriptionKey(name, handler, post ? HookMode.Post : HookMode.Pre));
         }
 
 
@@ -227,9 +252,15 @@ namespace CounterStrikeSharp.API.Core
                 return handler.Invoke(caller, command);
             });
 
-            var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommandListener(name, handler, mode); });
+            var key = new SubscriptionKey(name, handler, mode);
+            CallbackSubscriber subscriber = null!;
+            subscriber = new CallbackSubscriber(handler, wrappedHandler, () =>
+            {
+                NativeAPI.RemoveCommandListener(name, subscriber.GetInputArgument(), mode == HookMode.Post);
+                Untrack(CommandListeners, key, subscriber);
+            });
             NativeAPI.AddCommandListener(name, subscriber.GetInputArgument(), mode == HookMode.Post);
-            CommandListeners[handler] = subscriber;
+            Track(CommandListeners, key, subscriber);
         }
 
         /// <summary>
@@ -255,15 +286,7 @@ namespace CounterStrikeSharp.API.Core
         /// <inheritdoc cref="AddCommandListener"/>
         public void RemoveCommandListener(string name, CommandInfo.CommandListenerCallback handler, HookMode mode)
         {
-            if (CommandListeners.ContainsKey(handler))
-            {
-                var subscriber = CommandListeners[handler];
-
-                NativeAPI.RemoveCommandListener(name, subscriber.GetInputArgument(), mode == HookMode.Post);
-
-                FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-                CommandListeners.Remove(handler);
-            }
+            Unsubscribe(new SubscriptionKey(name, handler, mode));
         }
 
         /// <summary>
@@ -313,11 +336,16 @@ namespace CounterStrikeSharp.API.Core
                 return HookResult.Continue;
             });
 
-            var subscriber =
-                new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(listenerName, handler); });
+            var key = new SubscriptionKey(listenerName, handler, HookMode.Pre);
+            CallbackSubscriber subscriber = null!;
+            subscriber = new CallbackSubscriber(handler, wrappedHandler, () =>
+            {
+                NativeAPI.RemoveListener(listenerName, subscriber.GetInputArgument());
+                Untrack(Listeners, key, subscriber);
+            });
 
             NativeAPI.AddListener(listenerName, subscriber.GetInputArgument());
-            Listeners[handler] = subscriber;
+            Track(Listeners, key, subscriber);
         }
 
         /// <summary>
@@ -335,11 +363,7 @@ namespace CounterStrikeSharp.API.Core
                     nameof(T));
             }
 
-            if (!Listeners.TryGetValue(handler, out var subscriber)) return;
-
-            NativeAPI.RemoveListener(listenerName, subscriber.GetInputArgument());
-            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-            Listeners.Remove(handler);
+            Unsubscribe(new SubscriptionKey(listenerName, handler, HookMode.Pre));
         }
 
         /// <summary>
@@ -350,11 +374,7 @@ namespace CounterStrikeSharp.API.Core
         [Obsolete("Use the generic version of this method")]
         public void RemoveListener(string name, Delegate handler)
         {
-            if (!Listeners.TryGetValue(handler, out var subscriber)) return;
-
-            NativeAPI.RemoveListener(name, subscriber.GetInputArgument());
-            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-            Listeners.Remove(handler);
+            Unsubscribe(new SubscriptionKey(name, handler, HookMode.Pre));
         }
 
         /// <summary>
@@ -592,29 +612,35 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="handler">Handler to call</param>
         public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
-            var subscriber = new CallbackSubscriber(handler, handler,
-                () => UnhookEntityOutput(classname, outputName, handler));
+            var key = new SubscriptionKey(classname + ":" + outputName, handler, mode);
+            CallbackSubscriber subscriber = null!;
+            subscriber = new CallbackSubscriber(handler, handler, () =>
+            {
+                NativeAPI.UnhookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
+                Untrack(EntityOutputHooks, key, subscriber);
+            });
 
             NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
-            EntityOutputHooks[handler] = subscriber;
+            Track(EntityOutputHooks, key, subscriber);
         }
 
         public void HookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
         {
-            var subscriber = new CallbackSubscriber(handler, handler,
-                () => UnhookUserMessage(messageId, handler));
+            var key = new SubscriptionKey(messageId.ToString(), handler, mode);
+            CallbackSubscriber subscriber = null!;
+            subscriber = new CallbackSubscriber(handler, handler, () =>
+            {
+                NativeAPI.UnhookUsermessage(messageId, subscriber.GetInputArgument(), mode);
+                Untrack(Handlers, key, subscriber);
+            });
 
             NativeAPI.HookUsermessage(messageId, subscriber.GetInputArgument(), mode);
-            Handlers[handler] = subscriber;
+            Track(Handlers, key, subscriber);
         }
 
         public void UnhookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
         {
-            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
-
-            NativeAPI.UnhookUsermessage(messageId, subscriber.GetInputArgument(), mode);
-            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-            Handlers.Remove(handler);
+            Unsubscribe(new SubscriptionKey(messageId.ToString(), handler, mode));
         }
 
         /// <summary>
@@ -623,11 +649,7 @@ namespace CounterStrikeSharp.API.Core
         /// <inheritdoc cref="HookEntityOutput"/>
         public void UnhookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
-            if (!EntityOutputHooks.TryGetValue(handler, out var subscriber)) return;
-
-            NativeAPI.UnhookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
-            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-            EntityOutputHooks.Remove(handler);
+            Unsubscribe(new SubscriptionKey(classname + ":" + outputName, handler, mode));
         }
 
         /// <summary>
@@ -686,22 +708,7 @@ namespace CounterStrikeSharp.API.Core
             if (_disposed) return;
             if (!disposing) return;
 
-            foreach (var subscriber in Handlers.Values)
-            {
-                subscriber.Dispose();
-            }
-
-            foreach (var subscriber in CommandListeners.Values)
-            {
-                subscriber.Dispose();
-            }
-
-            foreach (var subscriber in Listeners.Values)
-            {
-                subscriber.Dispose();
-            }
-
-            foreach (var subscriber in EntityOutputHooks.Values)
+            foreach (var (_, subscriber) in _subscriptions.ToArray())
             {
                 subscriber.Dispose();
             }
