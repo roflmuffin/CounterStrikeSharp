@@ -1,0 +1,3 @@
+CS_SCRIPT_GET_HOST: -> uint
+CS_SCRIPT_IS_READY: -> bool
+CS_SCRIPT_INVOKE: context:scriptContext -> void
