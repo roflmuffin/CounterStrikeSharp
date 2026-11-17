@@ -27,6 +27,7 @@ namespace CounterStrikeSharp.API
     {
         private IntPtr _handle;
 
+        /// <summary>Gets the native address. Keep this object alive for the entire time the address is in use.</summary>
         public IntPtr Handle
         {
             get
@@ -68,7 +69,9 @@ namespace CounterStrikeSharp.API
         /// <returns></returns>
         public T As<T>() where T : NativeObject
         {
-            return FastNew.CreateInstance<T, IntPtr>(this.Handle);
+            var result = FastNew.CreateInstance<T, IntPtr>(this.Handle);
+            GC.KeepAlive(this);
+            return result;
         }
     }
 }

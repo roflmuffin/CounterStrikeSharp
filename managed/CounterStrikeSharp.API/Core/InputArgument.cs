@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,7 +25,9 @@ namespace CounterStrikeSharp.API.Core
     {
         protected object m_value;
 
-        internal object Value => m_value;
+        internal object Value => m_value is NativeObject nativeObject ? nativeObject.Handle : m_value;
+
+        internal NativeObject? Owner => m_value as NativeObject;
 
         private InputArgument(object value)
         {
@@ -34,7 +36,7 @@ namespace CounterStrikeSharp.API.Core
 
         public override string ToString()
         {
-            return m_value.ToString();
+            return Value.ToString();
         }
 
         public static implicit operator InputArgument(bool value)
@@ -125,13 +127,14 @@ namespace CounterStrikeSharp.API.Core
         {
             return new InputArgument(value);
         }
-        
+
         [SecurityCritical]
         public static implicit operator InputArgument(NativeObject value)
         {
-            return new InputArgument(value.Handle);
+            _ = value.Handle;
+            return new InputArgument(value);
         }
-        
+
         [SecurityCritical]
         public static implicit operator InputArgument(NativeEntity value)
         {
