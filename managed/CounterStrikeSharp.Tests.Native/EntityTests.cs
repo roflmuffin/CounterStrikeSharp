@@ -25,4 +25,17 @@ public class EntityTests
         });
     }
 
+    [Fact]
+    public async Task GetHashCode_IsUnchangedAfterEntityRemoval()
+    {
+        var entity = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
+
+        Assert.NotNull(entity);
+
+        var hashCode = entity.GetHashCode();
+        entity.Remove();
+        await WaitUntilAsync(() => !entity.IsValid, "the entity to be removed");
+
+        Assert.Equal(hashCode, entity.GetHashCode());
+    }
 }
