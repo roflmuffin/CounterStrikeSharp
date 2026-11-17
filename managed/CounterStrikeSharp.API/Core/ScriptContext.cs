@@ -31,6 +31,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
+using System.Threading;
 using CounterStrikeSharp.API.Modules.Utils;
 using FastGenericNew;
 
@@ -82,7 +83,7 @@ namespace CounterStrikeSharp.API.Core
             m_extContext = *context;
         }
 
-        private readonly ConcurrentQueue<IntPtr> ms_finalizers = new ConcurrentQueue<IntPtr>();
+        private ConcurrentQueue<IntPtr>? ms_finalizers;
 
         private readonly object ms_lock = new object();
 
@@ -340,7 +341,7 @@ namespace CounterStrikeSharp.API.Core
             int written = Encoding.UTF8.GetBytes(str, dest);
             dest[written] = 0;
 
-            ms_finalizers.Enqueue(ptr);
+            LazyInitializer.EnsureInitialized(ref ms_finalizers, static () => new ConcurrentQueue<IntPtr>()).Enqueue(ptr);
 
             *(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
             cxt->numArguments++;
@@ -362,7 +363,7 @@ namespace CounterStrikeSharp.API.Core
             int written = Encoding.UTF8.GetBytes(str, dest);
             dest[written] = 0;
 
-            ms_finalizers.Enqueue(ptr);
+            LazyInitializer.EnsureInitialized(ref ms_finalizers, static () => new ConcurrentQueue<IntPtr>()).Enqueue(ptr);
             *(IntPtr*)(&cxt->result[8]) = ptr;
         }
 
@@ -557,7 +558,7 @@ namespace CounterStrikeSharp.API.Core
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void GlobalCleanUp()
         {
-            if (!ms_finalizers.IsEmpty)
+            if (ms_finalizers is { IsEmpty: false })
             {
                 GlobalCleanUpSlow();
             }
@@ -568,7 +569,7 @@ namespace CounterStrikeSharp.API.Core
         {
             lock (ms_lock)
             {
-                while (ms_finalizers.TryDequeue(out var ptr))
+                while (ms_finalizers!.TryDequeue(out var ptr))
                 {
                     Marshal.FreeHGlobal(ptr);
                 }

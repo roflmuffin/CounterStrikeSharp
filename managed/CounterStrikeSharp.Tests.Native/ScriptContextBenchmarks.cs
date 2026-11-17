@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -331,6 +332,163 @@ public class ScriptContextBenchmarks
         }
 
         Record("Entity create+spawn info_target", "Entity Lifecycle", sw, (long)batches * batchSize);
+    }
+
+    // ── Callbacks ───────────────────────────────────────────────────────
+
+    [Fact]
+    public void Benchmark_Callback_Action()
+    {
+        RunCallback("Callback Action", new Action(() => { }));
+    }
+
+    [Fact]
+    public unsafe void Benchmark_Callback_SingleUse()
+    {
+        // A new single-use reference on every iteration, called once.
+        Action handler = () => { };
+        var context = (IntPtr)NativeMemory.AllocZeroed((nuint)sizeof(fxScriptContext));
+        try
+        {
+            RunAllocating("Callback single use Action", "Callback", () =>
+            {
+                var reference = FunctionReference.Create(handler, FunctionLifetime.SingleUse);
+                ((delegate* unmanaged<fxScriptContext*, void>)reference.GetFunctionPointer())((fxScriptContext*)context);
+            });
+        }
+        finally
+        {
+            NativeMemory.Free((void*)context);
+        }
+    }
+
+    [Fact]
+    public void Benchmark_Callback_Primitives()
+    {
+        RunCallback("Callback Func<int, IntPtr, HookResult>", new Func<int, IntPtr, HookResult>((_, _) => HookResult.Continue), 1, 2);
+    }
+
+    [Fact]
+    public void Benchmark_Callback_GameEventHandler()
+    {
+        var pointer = Marshal.AllocHGlobal(64);
+        Marshal.Copy(new byte[64], 0, pointer, 64);
+        try
+        {
+            RunCallback("Callback GameEventHandler<EventPlayerDeath>",
+                new BasePlugin.GameEventHandler<EventPlayerDeath>((_, _) => HookResult.Continue), (ulong)pointer, (ulong)pointer);
+        }
+        finally
+        {
+            Marshal.FreeHGlobal(pointer);
+        }
+    }
+
+    [Fact]
+    public void Benchmark_Callback_Listener()
+    {
+        var plugin = NativeTestsPlugin.Instance!;
+        Listeners.OnEntitySpawned handler = _ => { };
+        plugin.RegisterListener(handler);
+        var pointer = Marshal.AllocHGlobal(64);
+        Marshal.Copy(new byte[64], 0, pointer, 64);
+        try
+        {
+            RunCallback("Callback RegisterListener<OnEntitySpawned>", plugin.Listeners[handler].GetInputArgument(), (ulong)pointer);
+        }
+        finally
+        {
+            plugin.RemoveListener(handler);
+            Marshal.FreeHGlobal(pointer);
+        }
+    }
+
+    [Fact]
+    public void Benchmark_GameEvent_FireWithHandler()
+    {
+        var plugin = NativeTestsPlugin.Instance!;
+        var calls = 0;
+        BasePlugin.GameEventHandler<EventShowSurvivalRespawnStatus> handler = (_, _) =>
+        {
+            calls++;
+            return HookResult.Continue;
+        };
+        plugin.RegisterEventHandler(handler);
+        try
+        {
+            RunAllocating("GameEvent Fire with handler", "GameEvent", () =>
+            {
+                var @event = new EventShowSurvivalRespawnStatus(true)
+                {
+                    LocToken = "#LOC_TOKEN",
+                    Duration = 1
+                };
+
+                @event.FireEvent(true);
+            });
+
+            Assert.True(calls >= Iterations, $"handler ran {calls} times");
+        }
+        finally
+        {
+            plugin.DeregisterEventHandler(handler);
+        }
+    }
+
+    private static void RunAllocating(string name, string category, Action body)
+    {
+        var allocated = GC.GetAllocatedBytesForCurrentThread();
+        Run(name, category, body);
+        allocated = GC.GetAllocatedBytesForCurrentThread() - allocated;
+        Console.WriteLine($"        {allocated / (Iterations + WarmupIterations)} B/call");
+    }
+
+    private static void RunCallback(string name, Delegate handler, params ulong[] arguments)
+    {
+        var reference = FunctionReference.Create(handler);
+        try
+        {
+            RunCallback(name, reference.GetFunctionPointer(), arguments);
+        }
+        finally
+        {
+            FunctionReference.Remove(reference.Identifier);
+        }
+    }
+
+    private static void RunCallback(string name, InputArgument callback, params ulong[] arguments)
+    {
+        RunCallback(name, (IntPtr)(long)callback.Value, arguments);
+    }
+
+    private static unsafe void RunCallback(string name, IntPtr pointer, ulong[] arguments)
+    {
+        // Calls the callback the way the native side does: through its function pointer, with a native context.
+        var callback = (delegate* unmanaged<fxScriptContext*, void>)pointer;
+        var context = (fxScriptContext*)NativeMemory.AllocZeroed((nuint)sizeof(fxScriptContext));
+        try
+        {
+            context->numArguments = arguments.Length;
+            for (int i = 0; i < arguments.Length; i++)
+                *(ulong*)&context->functionData[i * 8] = arguments[i];
+
+            for (int i = 0; i < WarmupIterations; i++)
+                callback(context);
+
+            var allocated = GC.GetAllocatedBytesForCurrentThread();
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < Iterations; i++)
+                callback(context);
+            sw.Stop();
+            allocated = GC.GetAllocatedBytesForCurrentThread() - allocated;
+
+            Record(name, "Callback", sw, Iterations);
+            Console.WriteLine($"        {allocated / Iterations} B/call");
+        }
+        finally
+        {
+            NativeMemory.Free(context);
+        }
     }
 
     // ── Export ───────────────────────────────────────────────────────────
