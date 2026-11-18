@@ -1,0 +1,7 @@
+SOUND_EVENT_CREATE: name:string -> pointer
+SOUND_EVENT_RELEASE: soundEvent:pointer -> void
+SOUND_EVENT_SET_FLOAT: soundEvent:pointer, name:string, value:float -> void
+SOUND_EVENT_SET_INT: soundEvent:pointer, name:string, value:int -> void
+SOUND_EVENT_SET_VECTOR: soundEvent:pointer, name:string, value:pointer -> void
+SOUND_EVENT_EMIT: soundEvent:pointer, sourceEntityIndex:int, recipients:uint64 -> int
+SOUND_EVENT_STOP: guid:int, recipients:uint64 -> void
