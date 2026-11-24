@@ -82,6 +82,12 @@ static void FireEventToClient(ScriptContext& script_context)
         return;
     }
 
+    if (!globals::GetLegacyGameEventListener)
+    {
+        script_context.ThrowNativeError("FireEventToClient is unavailable: signature 'LegacyGameEventListener' was not found");
+        return;
+    }
+
     IGameEventListener2* pListener = globals::GetLegacyGameEventListener(CPlayerSlot(entityIndex - 1));
     if (!pListener)
     {
