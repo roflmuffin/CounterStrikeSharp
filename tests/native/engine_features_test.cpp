@@ -104,7 +104,7 @@ TEST_CASE("The catalog is consistent: unique feature names, namespaced, and core
     }
 
     std::set<std::string> keys;
-    for (const auto& binding : CoreBindingDeclarations())
+    for (const auto& binding : CoreBindingDeclarations({}))
     {
         CHECK_MESSAGE(keys.insert(binding.key).second, "duplicate Binding " << binding.key);
     }
@@ -112,4 +112,93 @@ TEST_CASE("The catalog is consistent: unique feature names, namespaced, and core
     for (const auto& feature : NativeEngineFeatures())
         for (const auto& binding : feature.bindings)
             CHECK_MESSAGE(keys.count(binding.key) == 1, "Binding " << binding.key << " of " << feature.name << " not declared");
+}
+
+TEST_CASE("Core Bindings are the catalog's Bindings plus every core Gamedata key, by its section kind")
+{
+    const nlohmann::json root = {
+        { "ClientPrint", { { "signatures", { { "library", "server" }, { "linux", "55 48" }, { "windows", "55" } } } } },
+        { "CBaseEntity_Teleport", { { "offsets", { { "linux", 157 }, { "windows", 156 } } } } },
+        { "PatchOnly", { { "patches", nlohmann::json::object() } } },
+    };
+    const auto declarations = CoreBindingDeclarations(ParseGamedata(root, "linux"));
+
+    auto find = [&](std::string_view key) -> const BindingDeclaration* {
+        for (const auto& declaration : declarations)
+            if (declaration.key == key) return &declaration;
+        return nullptr;
+    };
+
+    // Catalog Bindings are declared even when Gamedata lacks them, so the report says why they failed.
+    REQUIRE(find("Host_Say") != nullptr);
+    CHECK(find("Host_Say")->kind == BindingKind::Signature);
+
+    // Keys only managed code consumes are resolved too, so the report covers them.
+    REQUIRE(find("ClientPrint") != nullptr);
+    CHECK(find("ClientPrint")->kind == BindingKind::Signature);
+    REQUIRE(find("CBaseEntity_Teleport") != nullptr);
+    CHECK(find("CBaseEntity_Teleport")->kind == BindingKind::Offset);
+
+    CHECK(find("PatchOnly") == nullptr);
+
+    std::set<std::string> keys;
+    for (const auto& declaration : declarations)
+        CHECK_MESSAGE(keys.insert(declaration.key).second, "duplicate Binding " << declaration.key);
+}
+
+TEST_CASE("The Resolution Report crosses to managed as data: build id, every Binding, and the native catalog")
+{
+    BindingResult hostSay = Failed("Host_Say", FailureReason::Ambiguous, 2);
+    hostSay.library = "server";
+    BindingResult teleport;
+    teleport.key = "CBaseEntity_Teleport";
+    teleport.kind = BindingKind::Offset;
+    teleport.status = BindingStatus::Resolved;
+    teleport.offset = 157;
+    BindingResult clientPrint = Resolved("ClientPrint");
+    clientPrint.address = 0x7f0000001234;
+    clientPrint.library = "server";
+
+    const ResolutionReport report("1.42.0.1/2000950", { hostSay, teleport, clientPrint });
+    const std::vector<EngineFeatureDeclaration> catalog{ { "cssharp.chat/say-hooks", { { "Host_Say", BindingKind::Signature } } } };
+
+    const auto json = nlohmann::json::parse(ResolutionReportToJson(report, catalog));
+
+    CHECK(json["buildId"] == "1.42.0.1/2000950");
+    REQUIRE(json["bindings"].size() == 3);
+    CHECK(json["bindings"][0] == nlohmann::json{ { "key", "Host_Say" },
+                                                 { "kind", "Signature" },
+                                                 { "resolved", false },
+                                                 { "reason", "Ambiguous" },
+                                                 { "matchCount", 2 },
+                                                 { "address", 0 },
+                                                 { "offset", 0 },
+                                                 { "library", "server" } });
+    CHECK(json["bindings"][1]["kind"] == "Offset");
+    CHECK(json["bindings"][1]["resolved"] == true);
+    CHECK(json["bindings"][1]["reason"] == "None");
+    CHECK(json["bindings"][1]["offset"] == 157);
+    CHECK(json["bindings"][2]["address"].get<std::uint64_t>() == 0x7f0000001234);
+
+    REQUIRE(json["features"].size() == 1);
+    CHECK(json["features"][0] == nlohmann::json{ { "name", "cssharp.chat/say-hooks" }, { "bindings", { "Host_Say" } } });
+}
+
+TEST_CASE("Every failure reason and Binding kind has its own name on the wire")
+{
+    std::set<std::string> names;
+    for (auto reason : { FailureReason::None, FailureReason::MissingFromGamedata, FailureReason::MissingForThisOs,
+                         FailureReason::InvalidPattern, FailureReason::NotFound, FailureReason::Ambiguous,
+                         FailureReason::RttiVtableNotFound, FailureReason::SchemaClassMissing, FailureReason::SchemaFieldMissing })
+    {
+        const ResolutionReport report("b", { Failed("k", reason) });
+        const auto json = nlohmann::json::parse(ResolutionReportToJson(report, {}));
+        CHECK(names.insert(json["bindings"][0]["reason"].get<std::string>()).second);
+    }
+    CHECK(names.count("MissingForThisOs") == 1);
+
+    BindingResult vtable = Resolved("CGameEventManager");
+    vtable.kind = BindingKind::RttiVtable;
+    const auto json = nlohmann::json::parse(ResolutionReportToJson(ResolutionReport("b", { vtable }), {}));
+    CHECK(json["bindings"][0]["kind"] == "RttiVtable");
 }

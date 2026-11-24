@@ -233,6 +233,77 @@ std::string FormatBindingSummary(const ResolutionReport& report)
     return line + std::to_string(failedCount) + " of " + std::to_string(bindings.size()) + " failed: " + failed;
 }
 
+namespace {
+const char* KindName(BindingKind kind)
+{
+    switch (kind)
+    {
+        case BindingKind::Signature:
+            return "Signature";
+        case BindingKind::Offset:
+            return "Offset";
+        case BindingKind::RttiVtable:
+            return "RttiVtable";
+    }
+    return "Unknown";
+}
+
+const char* ReasonName(FailureReason reason)
+{
+    switch (reason)
+    {
+        case FailureReason::None:
+            return "None";
+        case FailureReason::MissingFromGamedata:
+            return "MissingFromGamedata";
+        case FailureReason::MissingForThisOs:
+            return "MissingForThisOs";
+        case FailureReason::InvalidPattern:
+            return "InvalidPattern";
+        case FailureReason::NotFound:
+            return "NotFound";
+        case FailureReason::Ambiguous:
+            return "Ambiguous";
+        case FailureReason::RttiVtableNotFound:
+            return "RttiVtableNotFound";
+        case FailureReason::SchemaClassMissing:
+            return "SchemaClassMissing";
+        case FailureReason::SchemaFieldMissing:
+            return "SchemaFieldMissing";
+    }
+    return "Unknown";
+}
+} // namespace
+
+std::string ResolutionReportToJson(const ResolutionReport& report, std::span<const EngineFeatureDeclaration> nativeFeatures)
+{
+    auto bindings = nlohmann::json::array();
+    for (const auto& binding : report.Bindings())
+    {
+        bindings.push_back({ { "key", binding.key },
+                             { "kind", KindName(binding.kind) },
+                             { "resolved", binding.Resolved() },
+                             { "reason", ReasonName(binding.reason) },
+                             { "matchCount", static_cast<std::uint64_t>(binding.matchCount) },
+                             { "address", static_cast<std::uint64_t>(binding.address) },
+                             { "offset", binding.offset },
+                             { "library", binding.library } });
+    }
+
+    auto features = nlohmann::json::array();
+    for (const auto& feature : nativeFeatures)
+    {
+        auto keys = nlohmann::json::array();
+        for (const auto& binding : feature.bindings)
+            keys.push_back(binding.key);
+        features.push_back({ { "name", feature.name }, { "bindings", std::move(keys) } });
+    }
+
+    return nlohmann::json{
+        { "buildId", report.BuildId() }, { "bindings", std::move(bindings) }, { "features", std::move(features) }
+    }.dump();
+}
+
 std::string ParseBuildId(std::string_view steamInf)
 {
     auto value = [&](std::string_view name) -> std::string {

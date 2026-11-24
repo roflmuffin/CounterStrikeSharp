@@ -7,7 +7,7 @@ namespace counterstrikesharp::bindings {
 namespace {
 
 BindingDeclaration Signature(std::string key) { return { std::move(key), BindingKind::Signature }; }
-[[maybe_unused]] BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKind::Offset }; }
+BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKind::Offset }; }
 [[maybe_unused]] BindingDeclaration RttiVtable(std::string className, std::string library)
 {
     return { std::move(className), BindingKind::RttiVtable, std::move(library) };
@@ -19,25 +19,31 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
 };
 
-std::vector<BindingDeclaration> CollectBindings()
+bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)
 {
-    std::vector<BindingDeclaration> bindings;
-    for (const auto& feature : kEngineFeatures)
-        for (const auto& binding : feature.bindings)
-            if (std::none_of(bindings.begin(), bindings.end(), [&](const BindingDeclaration& b) {
-                return b.key == binding.key;
-            }))
-                bindings.push_back(binding);
-    return bindings;
+    return std::any_of(bindings.begin(), bindings.end(), [&](const BindingDeclaration& b) {
+        return b.key == key;
+    });
 }
 
 } // namespace
 
 std::span<const EngineFeatureDeclaration> NativeEngineFeatures() { return kEngineFeatures; }
 
-const std::vector<BindingDeclaration>& CoreBindingDeclarations()
+std::vector<BindingDeclaration> CoreBindingDeclarations(const Gamedata& gamedata)
 {
-    static const std::vector<BindingDeclaration> bindings = CollectBindings();
+    std::vector<BindingDeclaration> bindings;
+    for (const auto& feature : kEngineFeatures)
+        for (const auto& binding : feature.bindings)
+            if (!Declared(bindings, binding.key)) bindings.push_back(binding);
+
+    for (const auto& [key, entry] : gamedata)
+    {
+        if (Declared(bindings, key)) continue;
+        if (entry.hasSignatures) bindings.push_back(Signature(key));
+        else if (entry.hasOffsets)
+            bindings.push_back(Offset(key));
+    }
     return bindings;
 }
 
