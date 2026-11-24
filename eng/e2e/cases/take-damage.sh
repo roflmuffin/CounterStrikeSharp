@@ -9,8 +9,6 @@
 #         both Engine Features are disabled independently, the take-damage detour is not installed, listeners register
 #         but warn once, reading the hit group throws the typed exception, and a plugin raw-signature memory function
 #         still binds (no read of the missing take-damage key). RequiresTakeDamageHooksTestPlugin is refused at load.
-#         Known: VirtualFunctions-backed smoke tests fail here (its static initializer reads the missing key; the
-#         lazy VirtualFunctions pattern is ticket 06/12).
 # Exits non-zero if any case fails; each case's output dir is printed by run.sh.
 set -uo pipefail
 
