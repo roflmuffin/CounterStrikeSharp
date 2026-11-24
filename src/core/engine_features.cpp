@@ -22,6 +22,11 @@ BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKin
 // Additive only. A Binding may appear in several rows; it is resolved once.
 const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
+    // ticket 10: our game system (precache, pre/post entity think) and player think (button changes) via RunThink.
+    { std::string(features::ServerGameSystemEvents),
+      { Signature("IGameSystem_InitAllSystems_pFirst"), SchemaField("CCSPlayerController", "m_hPlayerPawn"),
+        SchemaField("CBasePlayerController", "m_iConnected"), SchemaField("CBasePlayerPawn", "m_pMovementServices"),
+        SchemaField("CPlayer_MovementServices", "m_nButtons"), SchemaField("CInButtonState", "m_pButtonStates") } },
 };
 
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)

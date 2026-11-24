@@ -2,6 +2,7 @@
 
 #include <set>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "core/binding_resolver.h"
@@ -90,6 +91,25 @@ TEST_CASE("The native Engine Feature catalog declares say-hooks on Host_Say")
     CHECK(sayHooks->bindings[0].key == "Host_Say");
     CHECK(sayHooks->bindings[0].kind == BindingKind::Signature);
     CHECK(FindNativeEngineFeature("cssharp.nope/nope") == nullptr);
+}
+
+TEST_CASE("The native Engine Feature catalog declares game-system-events on the game-system signature and RunThink's schema fields")
+{
+    const auto* gameSystem = FindNativeEngineFeature(features::ServerGameSystemEvents);
+    REQUIRE(gameSystem != nullptr);
+    CHECK(gameSystem->name == "cssharp.server/game-system-events");
+
+    std::vector<std::pair<std::string, BindingKind>> bindings;
+    for (const auto& binding : gameSystem->bindings)
+        bindings.emplace_back(binding.key, binding.kind);
+    CHECK(bindings == std::vector<std::pair<std::string, BindingKind>>{
+                          { "IGameSystem_InitAllSystems_pFirst", BindingKind::Signature },
+                          { "CCSPlayerController::m_hPlayerPawn", BindingKind::SchemaField },
+                          { "CBasePlayerController::m_iConnected", BindingKind::SchemaField },
+                          { "CBasePlayerPawn::m_pMovementServices", BindingKind::SchemaField },
+                          { "CPlayer_MovementServices::m_nButtons", BindingKind::SchemaField },
+                          { "CInButtonState::m_pButtonStates", BindingKind::SchemaField },
+                      });
 }
 
 TEST_CASE("The catalog is consistent: unique feature names, namespaced, and core Bindings declared once each")
