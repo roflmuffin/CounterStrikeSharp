@@ -93,6 +93,7 @@ namespace CounterStrikeSharp.API.Core
 
             _coreConfig.Load();
             _gameDataProvider.Load();
+            EngineFeatures.LogStartupReport(Logger);
 
             var adminPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admins.json");
             Logger.LogInformation("Loading Admins from {Path}", adminPath);

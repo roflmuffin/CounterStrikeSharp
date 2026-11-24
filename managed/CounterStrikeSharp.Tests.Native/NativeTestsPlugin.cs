@@ -82,6 +82,20 @@ namespace NativeTestsPlugin
             _ = RunTests(smokeRunId: runId);
         }
 
+        // Prints what a plugin sees through the public Engine Feature API; the E2E harness greps it.
+        [ConsoleCommand("css_engine_features", "Print every Engine Feature and its status as plugins see it.")]
+        public void OnCommandEngineFeatures(CCSPlayerController? player, CommandInfo command)
+        {
+            Console.WriteLine($"[EngineFeatures] build {EngineFeatures.BuildId}");
+            foreach (var status in EngineFeatures.GetAll())
+            {
+                Console.WriteLine($"[EngineFeatures] {status}");
+            }
+
+            Console.WriteLine($"[EngineFeatures] say-hooks via enum: available={EngineFeatures.IsAvailable(EngineFeature.ChatSayHooks)}, " +
+                              $"reason={EngineFeatures.GetStatus(EngineFeature.ChatSayHooks).Reason}");
+        }
+
         public async Task RunTests(string? filter = null, string? smokeRunId = null)
         {
             if (_running)

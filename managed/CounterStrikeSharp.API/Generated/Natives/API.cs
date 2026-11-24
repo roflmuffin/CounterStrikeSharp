@@ -8,6 +8,16 @@ namespace CounterStrikeSharp.API.Core
 {
     public class NativeAPI {
         
+        public static string GetResolutionReport(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x96EFB373);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultString();
+			}
+		}
+
         public static bool AddListener(string name, InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
