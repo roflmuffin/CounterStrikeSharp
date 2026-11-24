@@ -6,7 +6,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Testing Decisions, seam 1 produc
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 1 base · must
 
@@ -14,3 +14,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Testing Decisions, seam 1 produc
 - [ ] CI runs the native tests on Linux and fails the build on a failing test
 - [ ] One sanity test exercising existing pure code (e.g. hex parsing) passes
 - [ ] Windows build still succeeds (running tests on Windows is optional)
+
+## Comments
+
+- Resolved on `hardening/spec-a` (merge of `spec-a/03-cpp-test-target`). doctest 2.5.3 in `libraries/doctest`, target `tests/native` (standalone or `-DCOUNTERSTRIKESHARP_BUILD_TESTS=ON`), CI step in `build_linux`. Windows/MSVC build not verified locally (option OFF by default).
