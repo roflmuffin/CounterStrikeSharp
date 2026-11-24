@@ -32,6 +32,9 @@ public enum EngineFeature
 
     /// <summary><c>cssharp.entity/output-hooks</c></summary>
     EntityOutputHooks = -1424924309,
+
+    /// <summary><c>cssharp.server/game-system-events</c></summary>
+    ServerGameSystemEvents = -1560303083,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -58,6 +61,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.entity/output-hooks</c></summary>
     public const string EntityOutputHooks = "cssharp.entity/output-hooks";
 
+    /// <summary><c>cssharp.server/game-system-events</c></summary>
+    public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
+
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
     {
@@ -68,6 +74,7 @@ public static class EngineFeatureNames
         EngineFeature.EntityDispatchSpawn => EntityDispatchSpawn,
         EngineFeature.EntityEmitSound => EntityEmitSound,
         EngineFeature.EntityOutputHooks => EntityOutputHooks,
+        EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
         _ => null,
     };
 }
