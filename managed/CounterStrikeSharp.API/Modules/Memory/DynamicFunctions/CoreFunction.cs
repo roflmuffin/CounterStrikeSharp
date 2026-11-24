@@ -44,7 +44,8 @@ internal sealed class CoreFunction
     /// <summary>The Signature Binding <paramref name="key"/> of <paramref name="feature"/>, from the Resolution Report.</summary>
     public static CoreFunction FromEngineFeature(EngineFeatureDeclaration feature, string key) => new(feature, key);
 
-    /// <summary>Creates the native function. Throws <see cref="EngineFeatureUnavailableException"/> if the Engine Feature is disabled.</summary>
+    /// <summary>Creates the native function. Throws <see cref="EngineFeatureUnavailableException"/> if the Engine Feature is
+    /// disabled.</summary>
     internal IntPtr Bind(DataType returnType, DataType[] parameters) =>
         CreateFunction(EngineFeatures.Current.GetAddress(Feature, Key), returnType, parameters);
 

@@ -86,7 +86,8 @@ public abstract class BaseMemoryFunction : NativeObject
     /// </summary>
     /// <param name="signature">Signature bytes, space-separated hex ("55 48 ? E5") or code style ("\x55\x48\x2A\xE5").</param>
     /// <param name="binarypath">Path of the binary to scan, e.g. <see cref="Addresses.ServerPath"/>.</param>
-    /// <param name="strict">If true, a signature that matches more than once fails as ambiguous instead of binding to the first match.</param>
+    /// <param name="strict">If true, a signature that matches more than once fails as ambiguous instead of binding to the first
+    /// match.</param>
     /// <param name="returnType">Return type.</param>
     /// <param name="parameters">Parameter types.</param>
     public BaseMemoryFunction(string signature, string binarypath, bool strict, DataType returnType, DataType[] parameters) : base(

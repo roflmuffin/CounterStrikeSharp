@@ -12,7 +12,8 @@ public partial class CTakeDamageInfo
     /// Returns a <see cref="HitGroup_t"/> enumeration representing the player's current hit group,
     /// or <see cref="HitGroup_t.HITGROUP_INVALID"/> if the hit group cannot be determined.
     /// </returns>
-    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/take-damage-hit-group</c> is disabled.</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/take-damage-hit-group</c> is
+    /// disabled.</exception>
     public HitGroup_t GetHitGroup()
     {
         var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.EntityTakeDamageHitGroup, "CTakeDamageInfo_HitGroup");

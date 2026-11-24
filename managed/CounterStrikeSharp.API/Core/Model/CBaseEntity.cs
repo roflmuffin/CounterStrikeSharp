@@ -125,7 +125,8 @@ public partial class CBaseEntity
     /// <summary>
     /// Returns true if the entity is a player pawn.
     /// </summary>
-    /// <exception cref="EngineFeatureUnavailableException">The <c>cssharp.entity/take-damage-hooks</c> Engine Feature is disabled.</exception>
+    /// <exception cref="EngineFeatureUnavailableException">The <c>cssharp.entity/take-damage-hooks</c> Engine Feature is
+    /// disabled.</exception>
     public bool IsPlayerPawn()
     {
         var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.EntityTakeDamageHooks, "CBaseEntity_IsPlayerPawn");

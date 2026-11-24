@@ -17,9 +17,10 @@ internal static class SignatureFunctions
     // Seams for unit tests (NativeAPI is not callable outside the server).
     internal static Func<string, string, int> CountMatches = NativeAPI.CountSignatureMatches;
 
-    internal static Func<string, string, DataType, DataType[], IntPtr> CreateFunction = (binaryPath, signature, returnType, argumentTypes) =>
-        NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, binaryPath, signature, argumentTypes.Length, (int)returnType,
-            argumentTypes.Cast<object>().ToArray());
+    internal static Func<string, string, DataType, DataType[], IntPtr> CreateFunction =
+        (binaryPath, signature, returnType, argumentTypes) =>
+            NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, binaryPath, signature, argumentTypes.Length, (int)returnType,
+                argumentTypes.Cast<object>().ToArray());
 
     private static ILogger? _logger;
 
@@ -116,7 +117,8 @@ internal static class SignatureFunctions
     {
         if (!Failures.TryAdd(signatureKey, reason)) return;
 
-        Logger.LogError("Signature \"{Signature}\" in {Binary} could not be used: {Reason}. Calling or hooking this memory function will throw",
+        Logger.LogError(
+            "Signature \"{Signature}\" in {Binary} could not be used: {Reason}. Calling or hooking this memory function will throw",
             signature, Path.GetFileName(binaryPath), reason);
     }
 }

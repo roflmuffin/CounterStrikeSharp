@@ -104,6 +104,9 @@ public class EngineFeatureCatalogTests : IDisposable
             ],
             [
                 new EngineFeatureDeclaration("cssharp.network/check-transmit",
-                    [BindingDeclaration.Offset("ISource2GameEntities::CheckTransmit"), BindingDeclaration.Offset("CheckTransmitPlayerSlot")]),
+                    [
+                        BindingDeclaration.Offset("ISource2GameEntities::CheckTransmit"),
+                        BindingDeclaration.Offset("CheckTransmitPlayerSlot")
+                    ]),
             ]);
 }

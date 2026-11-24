@@ -48,17 +48,20 @@ public partial class CCSGameRules
         var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.GameRulesFindPickerEntity, "CCSGameRules_FindPickerEntity");
         if (IsWindows.Value)
         {
-            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, offset);
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, CBaseEntity?> CCSGameRules_FindPickerEntity =
+                new(Handle, offset);
             return CCSGameRules_FindPickerEntity.Invoke(this, player, null);
         }
         else
         {
-            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, double, double, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, offset);
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, double, double, CBaseEntity?> CCSGameRules_FindPickerEntity =
+                new(Handle, offset);
             return CCSGameRules_FindPickerEntity.Invoke(this, player, null, 0, 0); // on linux we have a fourth and fifth parameter aswell, but they are unused because the condition for them is always unmet.
         }
     }
 
-    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.game-rules/find-picker-entity</c> is disabled</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.game-rules/find-picker-entity</c> is
+    /// disabled</exception>
     public T? FindPickerEntity<T>(CBasePlayerController player) where T : CBaseEntity
     {
         CBaseEntity? entity = FindPickerEntityInternal(player);
@@ -66,7 +69,8 @@ public partial class CCSGameRules
         return (entity?.IsValid ?? false) ? entity.As<T>() : null;
     }
 
-    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.game-rules/find-picker-entity</c> is disabled</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.game-rules/find-picker-entity</c> is
+    /// disabled</exception>
     public CCSPlayerController? GetClientAimTarget(CCSPlayerController player)
     {
         CCSPlayerPawn? pawn = FindPickerEntity<CCSPlayerPawn>(player);

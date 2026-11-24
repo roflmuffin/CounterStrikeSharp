@@ -73,11 +73,13 @@ public partial class CCSPlayerController
         NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Alert, message);
     }
 
-    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.events/fire-event-to-client</c> or <c>cssharp.events/game-events</c> is disabled</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.events/fire-event-to-client</c> or
+    /// <c>cssharp.events/game-events</c> is disabled</exception>
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.events/fire-event-to-client</c> or <c>cssharp.events/game-events</c> is disabled</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.events/fire-event-to-client</c> or
+    /// <c>cssharp.events/game-events</c> is disabled</exception>
     public void PrintToCenterHtml(string message, int duration)
     {
         Guard.IsValidEntity(this);
@@ -139,7 +141,8 @@ public partial class CCSPlayerController
     /// Respawn player
     /// </summary>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.player/respawn</c> or <c>cssharp.player/set-pawn</c> is disabled</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.player/respawn</c> or <c>cssharp.player/set-pawn</c>
+    /// is disabled</exception>
     public void Respawn()
     {
         var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.PlayerRespawn, "CCSPlayerController_Respawn");

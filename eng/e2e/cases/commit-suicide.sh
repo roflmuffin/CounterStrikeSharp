@@ -35,14 +35,17 @@ echo "== commit-suicide: valid gamedata"
     status=1
 
 echo "== commit-suicide: CBasePlayerPawn_CommitSuicide offset missing for this OS"
+typed_exception='\[PlayerHelperFailSoftTests\] CommitSuicide threw EngineFeatureUnavailableException: '
+typed_exception+='Engine Feature cssharp\.player/commit-suicide is disabled \(CBasePlayerPawn_CommitSuicide: missing for this OS\)'
 "$run" "$@" --no-build \
     --gamedata-jq 'del(.CBasePlayerPawn_CommitSuicide.offsets.linux)' \
     --expect-log '^ +cssharp\.player/commit-suicide disabled \(CBasePlayerPawn_CommitSuicide: missing for this OS\)' \
     --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
     --expect-no-log 'not registering|Failed to initialize GameSystem' \
-    --expect-log '\[PlayerHelperFailSoftTests\] CommitSuicide threw EngineFeatureUnavailableException: Engine Feature cssharp\.player/commit-suicide is disabled \(CBasePlayerPawn_CommitSuicide: missing for this OS\)' \
+    --expect-log "$typed_exception" \
     --check "$(outcome failed GameTests.Offset_CBasePlayerPawn_CommitSuicide)" \
-    --check "$(outcome passed GameTests.Offset_CBaseEntity_Teleport PlayerHelperFailSoftTests.CommitSuicide_ThrowsTypedExceptionWhenDisabled \
+    --check "$(outcome passed GameTests.Offset_CBaseEntity_Teleport \
+        PlayerHelperFailSoftTests.CommitSuicide_ThrowsTypedExceptionWhenDisabled \
         PlayerHelperFailSoftTests.RespawnAndTeleport_WorkWithoutCommitSuicide)" ||
     status=1
 

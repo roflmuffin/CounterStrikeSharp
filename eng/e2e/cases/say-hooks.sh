@@ -28,7 +28,8 @@ echo "== say-hooks: valid gamedata"
     --expect-log 'Engine Features for build [^:]+: all 36 available' \
     --expect-no-log 'cssharp\.chat/say-hooks disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
-    --check "$(outcome passed CommandTests.CanTriggerCommandsWithSilentChatTrigger CommandTests.CanTriggerCommandsWithPublicChatTrigger CommandTests.AddCommandHandler)" ||
+    --check "$(outcome passed CommandTests.CanTriggerCommandsWithSilentChatTrigger \
+        CommandTests.CanTriggerCommandsWithPublicChatTrigger CommandTests.AddCommandHandler)" ||
     status=1
 
 echo "== say-hooks: Host_Say ambiguous"

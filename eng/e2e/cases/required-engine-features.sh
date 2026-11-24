@@ -23,9 +23,11 @@ echo "== required-engine-features: valid gamedata"
     status=1
 
 echo "== required-engine-features: Host_Say not found"
+refusal='Plugin "RequiresSayHooksTestPlugin\.dll" requires Engine Features that are not available on build [^:]+: '
+refusal+='cssharp\.chat/say-hooks disabled \(Host_Say: not found\)\.'
 "$run" "$@" --no-build --plugin-project "$plugin" \
     --gamedata-jq '.Host_Say.signatures.linux = "DE AD BE EF 13 37 C0 DE 42 42"' \
-    --expect-log 'Plugin "RequiresSayHooksTestPlugin\.dll" requires Engine Features that are not available on build [^:]+: cssharp\.chat/say-hooks disabled \(Host_Say: not found\)\.' \
+    --expect-log "$refusal" \
     --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
     --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log 'Finished loading plugin Native Tests' \
