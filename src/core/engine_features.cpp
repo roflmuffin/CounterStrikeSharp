@@ -27,6 +27,12 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
     { std::string(features::StateChanged), { Signature("NetworkStateChanged"), Offset("SetStateChanged") } },
     { std::string(features::CheckTransmit), { Offset("ISource2GameEntities::CheckTransmit"), Offset("CheckTransmitPlayerSlot") } },
+    // ticket 08
+    { std::string(features::EntityOutputHooks), { Signature("CEntityIOOutput_FireOutputInternal") } },
+    { std::string(features::EntityAcceptInput), { Signature("CEntityInstance_AcceptInput") } },
+    { std::string(features::EntityAddIoEvent), { Signature("CEntitySystem_AddEntityIOEvent") } },
+    { std::string(features::EntityEmitSound), { Signature("CBaseEntity_EmitSoundFilter") } },
+    { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
 };
 
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)

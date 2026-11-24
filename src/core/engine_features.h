@@ -21,6 +21,12 @@ inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
 inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";
 inline constexpr std::string_view StateChanged = "cssharp.network/state-changed";
 inline constexpr std::string_view CheckTransmit = "cssharp.network/check-transmit";
+// ticket 08
+inline constexpr std::string_view EntityOutputHooks = "cssharp.entity/output-hooks";
+inline constexpr std::string_view EntityAcceptInput = "cssharp.entity/accept-input";
+inline constexpr std::string_view EntityAddIoEvent = "cssharp.entity/add-io-event";
+inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
+inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.
