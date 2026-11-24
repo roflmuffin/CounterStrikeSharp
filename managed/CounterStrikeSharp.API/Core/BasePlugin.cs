@@ -294,6 +294,10 @@ namespace CounterStrikeSharp.API.Core
             Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
 
+            // Registers either way; on a disabled Engine Feature the listener never fires, so say so once.
+            Bindings.ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, listenerName,
+                Logger ?? Application.Instance.Logger);
+
             var wrappedHandler = new Func<ScriptContext, HookResult>(context =>
             {
                 var args = new object[parameterTypes.Length];

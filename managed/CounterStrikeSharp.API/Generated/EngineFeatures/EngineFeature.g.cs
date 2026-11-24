@@ -14,6 +14,12 @@ public enum EngineFeature
 {
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     ChatSayHooks = 2095797270,
+
+    /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
+    EntityTakeDamageHitGroup = 494872892,
+
+    /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
+    EntityTakeDamageHooks = 1288636203,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -22,10 +28,18 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     public const string ChatSayHooks = "cssharp.chat/say-hooks";
 
+    /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
+    public const string EntityTakeDamageHitGroup = "cssharp.entity/take-damage-hit-group";
+
+    /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
+    public const string EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
+
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
     {
         EngineFeature.ChatSayHooks => ChatSayHooks,
+        EngineFeature.EntityTakeDamageHitGroup => EntityTakeDamageHitGroup,
+        EngineFeature.EntityTakeDamageHooks => EntityTakeDamageHooks,
         _ => null,
     };
 }
