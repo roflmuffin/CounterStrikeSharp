@@ -9,7 +9,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Prefactor).
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 0 standalone · must
 
@@ -18,3 +18,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Prefactor).
 - [ ] Requesting an offset whose per-OS entry is absent raises a clear "missing for this OS" error, never 0
 - [ ] Existing Gamedata still resolves exactly as before (no behaviour change for valid entries)
 - [ ] Managed unit tests cover the missing per-OS offset case
+
+## Comments
+
+- Resolved on `hardening/spec-a` (merge of `spec-a/01-gamedata-parsing-fixes`). Managed tests 32/32. Native fixes verified by build + uncommitted ASan check; port to doctest once hex parsing/scan helpers sit in a pure TU (ticket 04). KHook scanner (submodule) still tried first and mis-parses code-style `\x..` patterns: core resolver should not rely on it.
