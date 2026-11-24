@@ -13,6 +13,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
+#include "core/core_bindings.h"
 #include "core/globals.h"
 #include "core/log.h"
 
@@ -47,7 +48,10 @@ static void UnhookEvent(ScriptContext& script_context)
 static bool GameEventManagerAvailable(ScriptContext& script_context)
 {
     if (globals::gameEventManager) return true;
-    script_context.ThrowNativeError("Game event manager is not available (Engine Feature cssharp.events/game-events)");
+    if (!bindings::IsEngineFeatureAvailable(bindings::features::GameEvents))
+        script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::GameEvents).c_str());
+    else
+        script_context.ThrowNativeError("Game event manager is not available yet");
     return false;
 }
 
@@ -94,7 +98,7 @@ static void FireEventToClient(ScriptContext& script_context)
 
     if (!globals::GetLegacyGameEventListener)
     {
-        script_context.ThrowNativeError("FireEventToClient is unavailable: signature 'LegacyGameEventListener' was not found");
+        script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::FireEventToClient).c_str());
         return;
     }
 

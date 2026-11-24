@@ -32,8 +32,13 @@ std::optional<std::int64_t> GetBindingOffset(std::string_view key);
 // segments the same way core Bindings are counted. matchCount is 0 if the module is not loaded.
 SignatureScan ScanModuleSignature(const char* moduleName, std::string_view signature);
 
-// Gate for hook registration: true if the Engine Feature is available, otherwise logs why (naming what is skipped)
-// and returns false. The caller then skips registration instead of failing.
+// Gate for hook registration: true if the Engine Feature is available, otherwise false and the caller skips registration
+// instead of failing. Does not report the failure (debug level only, naming what is skipped): the boot summary line and
+// the managed startup report are the only reports of Binding failures.
 bool ShouldRegisterHooks(std::string_view feature, std::string_view what);
+
+// Message for a native called while its native Engine Feature is disabled, in the wording of the managed typed
+// exception: "Engine Feature cssharp.x/y is disabled (Key: reason)". Pass to ThrowNativeError.
+std::string DescribeUnavailable(std::string_view feature);
 
 } // namespace counterstrikesharp::bindings

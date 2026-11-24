@@ -259,6 +259,18 @@ std::string DescribeFailure(const BindingResult& binding)
     return "unknown";
 }
 
+std::string DescribeUnavailable(const ResolutionReport& report, const EngineFeatureDeclaration& feature)
+{
+    const std::string prefix = "Engine Feature " + feature.name;
+    for (const auto& declaration : feature.bindings)
+    {
+        const auto* binding = report.Find(declaration.key);
+        if (binding == nullptr) return prefix + " is disabled (" + declaration.key + ": missing from gamedata)";
+        if (!binding->Resolved()) return prefix + " is disabled (" + binding->key + ": " + DescribeFailure(*binding) + ")";
+    }
+    return prefix + " is available";
+}
+
 std::string FormatBindingSummary(const ResolutionReport& report)
 {
     const auto& bindings = report.Bindings();
