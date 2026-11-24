@@ -11,18 +11,20 @@ internal static class ListenerEngineFeatures
 {
     private static readonly Dictionary<string, string> Features = new()
     {
-        // ticket 09
-        ["CheckTransmit"] = "cssharp.network/check-transmit",
-        // ticket 10: fired from our game system (precache, entity think) and player think (button changes)
-        ["OnServerPrecacheResources"] = "cssharp.server/game-system-events",
-        ["OnServerPreEntityThink"] = "cssharp.server/game-system-events",
-        ["OnServerPostEntityThink"] = "cssharp.server/game-system-events",
-        ["OnPlayerButtonsChanged"] = "cssharp.server/game-system-events",
-        // ticket 11
-        ["OnEntityTakeDamagePre"] = "cssharp.entity/take-damage-hooks",
-        ["OnEntityTakeDamagePost"] = "cssharp.entity/take-damage-hooks",
-        ["OnPlayerTakeDamagePre"] = "cssharp.entity/take-damage-hooks",
-        ["OnPlayerTakeDamagePost"] = "cssharp.entity/take-damage-hooks",
+        // Chat (Host_Say)
+        ["OnPlayerChat"] = EngineFeatureNames.ChatSayHooks,
+        // Networking
+        ["CheckTransmit"] = EngineFeatureNames.NetworkCheckTransmit,
+        // Fired from our game system (precache, entity think) and player think (button changes)
+        ["OnServerPrecacheResources"] = EngineFeatureNames.ServerGameSystemEvents,
+        ["OnServerPreEntityThink"] = EngineFeatureNames.ServerGameSystemEvents,
+        ["OnServerPostEntityThink"] = EngineFeatureNames.ServerGameSystemEvents,
+        ["OnPlayerButtonsChanged"] = EngineFeatureNames.ServerGameSystemEvents,
+        // Take damage
+        ["OnEntityTakeDamagePre"] = EngineFeatureNames.EntityTakeDamageHooks,
+        ["OnEntityTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
+        ["OnPlayerTakeDamagePre"] = EngineFeatureNames.EntityTakeDamageHooks,
+        ["OnPlayerTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
     };
 
     /// <summary>

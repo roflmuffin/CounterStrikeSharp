@@ -65,6 +65,24 @@ public class ListenerEngineFeatureTests
     }
 
     [Fact]
+    public void ChatListenerOnDisabledSayHooksWarnsOnce()
+    {
+        var sayHooks = new EngineFeatureDeclaration("cssharp.chat/say-hooks", [BindingDeclaration.Signature("Host_Say")]);
+        var report = new ResolutionReport("1.42.0.1/2000950",
+            [new BindingResult("Host_Say", BindingKind.Signature, false, BindingFailureReason.NotFound, 0, 0, 0, "server")],
+            [sayHooks]);
+        var set = new EngineFeatureSet(report, []);
+        var logger = new CapturingLogger();
+
+        Assert.False(ListenerEngineFeatures.CheckRegistration(set, "OnPlayerChat", logger));
+
+        var entry = Assert.Single(logger.Entries);
+        Assert.Equal(
+            "OnPlayerChat listener registered on cssharp.chat/say-hooks disabled (Host_Say: not found); it will never fire",
+            entry.Message);
+    }
+
+    [Fact]
     public void ListenersOfDifferentPluginsAreEachWarnedOnce()
     {
         var set = SetWithGameSystemEvents(resolved: false);
