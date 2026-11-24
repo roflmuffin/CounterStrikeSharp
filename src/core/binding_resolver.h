@@ -126,6 +126,19 @@ ResolutionReport ResolveBindings(std::string buildId,
                                  const ModuleImages& modules,
                                  std::span<const BindingDeclaration> declarations);
 
+// --- Raw (plugin-supplied) signatures ---
+
+struct SignatureScan
+{
+    bool validPattern = false;
+    std::size_t matchCount = 0; // matches across all segments
+    std::uintptr_t firstMatch = 0; // 0 if none
+};
+
+// Counts every match of a raw signature (space-separated hex or code style) across all segments of a module, the same
+// way core signatures are counted. Unlike core Bindings, raw signatures need not be unique: the caller decides.
+SignatureScan ScanSignature(const ModuleImage& image, std::string_view signature);
+
 // --- Engine Features ---
 
 struct EngineFeatureDeclaration

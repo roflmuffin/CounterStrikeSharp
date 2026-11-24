@@ -26,48 +26,19 @@ namespace CounterStrikeSharp.API.Modules.Memory;
 
 public partial class VirtualFunction
 {
-    private static Dictionary<string, IntPtr> _createdFunctions = new();
-
+    // Shares first-match binding, the ambiguity warning and not-found logging with BaseMemoryFunction.
     private static IntPtr CreateVirtualFunctionBySignature(string signature, IEnumerable<DataType> argumentTypes,
         DataType returnType,
         object[] arguments)
     {
-        var cacheKey = BaseMemoryFunction.FunctionCacheKey($"{Addresses.ServerPath}:{signature}", returnType, argumentTypes);
-        if (!_createdFunctions.TryGetValue(cacheKey, out var function))
-        {
-            try
-            {
-                function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, Addresses.ServerPath, signature,
-                    argumentTypes.Count(), (int)returnType, arguments);
-                _createdFunctions[cacheKey] = function;
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        return function;
+        return CreateVirtualFunctionBySignature(signature, Addresses.ServerPath, argumentTypes, returnType, arguments);
     }
 
     private static IntPtr CreateVirtualFunctionBySignature(string signature, string binarypath, IEnumerable<DataType> argumentTypes,
         DataType returnType,
         object[] arguments)
     {
-        var cacheKey = BaseMemoryFunction.FunctionCacheKey($"{binarypath}:{signature}", returnType, argumentTypes);
-        if (!_createdFunctions.TryGetValue(cacheKey, out var function))
-        {
-            try
-            {
-                function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, binarypath, signature,
-                    argumentTypes.Count(), (int)returnType, arguments);
-                _createdFunctions[cacheKey] = function;
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        return function;
+        return SignatureFunctions.Create(signature, binarypath, returnType, argumentTypes.ToArray(), strict: false);
     }
 
     #region Funcs
