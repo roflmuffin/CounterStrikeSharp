@@ -109,9 +109,27 @@ set(SOURCE_FILES
     src/core/customhudlayout.cpp
     src/core/customhudlayout.h
     src/scripting/natives/natives_customhud.cpp
+    src/core/cs_script_runtime.cpp
+    src/scripting/natives/natives_cs_script.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
+
+set(CSS_V8_INCLUDE_DIR "${LIBRARIES_DIR}/v8/headers/include" CACHE PATH "V8 include directory")
+if(LINUX)
+    set(CSS_V8_LIBRARY "${LIBRARIES_DIR}/v8/lib/linuxsteamrt64/libv8.so" CACHE FILEPATH "V8 link library")
+elseif(WIN32)
+    set(CSS_V8_LIBRARY "${LIBRARIES_DIR}/v8/lib/win64/v8.lib" CACHE FILEPATH "V8 link library")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE USING_V8_SHARED=1)
+endif()
+if(NOT EXISTS "${CSS_V8_INCLUDE_DIR}/v8.h" OR NOT EXISTS "${CSS_V8_LIBRARY}")
+    message(FATAL_ERROR "V8 headers or link library missing; check libraries/v8 or set CSS_V8_INCLUDE_DIR and CSS_V8_LIBRARY")
+endif()
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE "${CSS_V8_INCLUDE_DIR}")
+target_link_libraries(${PROJECT_NAME} "${CSS_V8_LIBRARY}")
+if(LINUX)
+    set_target_properties(${PROJECT_NAME} PROPERTIES SKIP_BUILD_RPATH TRUE)
+endif()
 
 target_include_directories(
     ${PROJECT_NAME}

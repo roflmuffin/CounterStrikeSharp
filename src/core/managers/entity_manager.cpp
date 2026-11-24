@@ -15,6 +15,7 @@
  */
 
 #include "core/managers/entity_manager.h"
+#include "core/cs_script_runtime.h"
 #include "core/function.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
@@ -159,6 +160,7 @@ void CEntityListener::OnEntityCreated(CEntityInstance* pEntity)
 }
 void CEntityListener::OnEntityDeleted(CEntityInstance* pEntity)
 {
+    cs_script::OnEntityDeleted(pEntity->GetRefEHandle().ToInt());
     auto callback = globals::entityManager.on_entity_deleted_callback;
 
     if (callback && callback->GetFunctionCount())

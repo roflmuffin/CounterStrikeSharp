@@ -22,8 +22,10 @@ namespace CodeGen.Natives
     {
         static void Main(string[] args)
         {
+            if (args.Length > 0 && !(args.Length == 1 && args[0] == "--natives"))
+                throw new ArgumentException("Usage: CodeGen.Natives [--natives]");
             Generators.GenerateNatives();
-            Generators.GenerateGameEvents().GetAwaiter().GetResult();
+            if (args.Length == 0) Generators.GenerateGameEvents().GetAwaiter().GetResult();
         }
     }
 }

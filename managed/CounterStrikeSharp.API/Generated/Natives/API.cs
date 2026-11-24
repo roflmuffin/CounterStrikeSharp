@@ -417,6 +417,33 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static uint CsScriptGetHost(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA106BD13);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<uint>();
+			}
+		}
+
+        public static bool CsScriptIsReady(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x37F75B74);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<bool>();
+			}
+		}
+
+        public static void CsScriptInvoke(ScriptContext context){
+            ArgumentNullException.ThrowIfNull(context);
+            context.SetIdentifier(0xCB6B7D0A);
+            context.Invoke();
+            context.CheckErrors();
+        }
+
         public static void SetHasClass(IntPtr customhud, string panelid, string classname, bool hasclass){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
