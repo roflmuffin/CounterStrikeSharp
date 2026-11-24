@@ -78,9 +78,22 @@ TEST_CASE("real server binary: core catalog and Gamedata signatures (optional fi
     const auto all = ResolveBindings("local", gamedata, modules, everySignature);
     std::cout << "all Gamedata signatures: " << FormatBindingSummary(all) << "\n";
 
-    const auto core = ResolveBindings("local", gamedata, modules, CoreBindingDeclarations(gamedata));
-    std::cout << "core catalog: " << FormatBindingSummary(core) << "\n";
-    for (const auto& feature : NativeEngineFeatures())
+    // Schema fields come from the running game's schema system, which a binary on disk cannot answer: leave them out
+    // (the live server resolves them at boot).
+    const auto notSchema = [](const BindingDeclaration& binding) {
+        return binding.kind != BindingKind::SchemaField;
+    };
+    std::vector<BindingDeclaration> coreDeclarations;
+    std::ranges::copy_if(CoreBindingDeclarations(gamedata), std::back_inserter(coreDeclarations), notSchema);
+
+    const auto core = ResolveBindings("local", gamedata, modules, coreDeclarations);
+    std::cout << "core catalog (without schema fields): " << FormatBindingSummary(core) << "\n";
+    for (auto feature : NativeEngineFeatures())
+    {
+        std::erase_if(feature.bindings, [&](const BindingDeclaration& binding) {
+            return !notSchema(binding);
+        });
         CHECK_MESSAGE(EvaluateEngineFeature(core, feature).available, feature.name);
+    }
 }
 #endif
