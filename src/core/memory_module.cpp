@@ -553,17 +553,18 @@ void* CModule::FindSignature(const char* signature)
         return nullptr;
     }
 
+    // Reject invalid patterns before any scanner sees them, so they cannot match as garbage bytes.
+    auto pData = CGameConfig::HexToByte(signature);
+    if (pData.empty()) [[unlikely]]
+    {
+        CSSHARP_CORE_ERROR("Cannot convert signature \"{}\" to bytes", signature);
+        return nullptr;
+    }
+
     for (const auto& segment : m_vecSegments)
     {
         if (auto address = KHook::LookupSignature(reinterpret_cast<void*>(segment.address), segment.bytes.size(), signature))
             return address;
-    }
-
-    auto pData = CGameConfig::HexToByte(signature);
-    if (pData.empty()) [[unlikely]]
-    {
-        CSSHARP_CORE_ERROR("Cannot convert signture \"{}\" to bytes", signature);
-        return nullptr;
     }
 
     auto pOld = this->FindSignature(pData);
