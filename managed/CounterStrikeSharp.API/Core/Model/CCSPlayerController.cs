@@ -1,4 +1,5 @@
 using System;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
@@ -130,14 +131,16 @@ public partial class CCSPlayerController
     /// Respawn player
     /// </summary>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.player/respawn</c> or <c>cssharp.player/set-pawn</c> is disabled</exception>
     public void Respawn()
     {
+        var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.PlayerRespawn, "CCSPlayerController_Respawn");
         Guard.IsValidEntity(this);
         if (PlayerPawn.Value == null) return;
 
         // The Call To Arms update appears to have invalidated the need for CCSPlayerPawn_Respawn.
         SetPawn(PlayerPawn.Value);
-        VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("CCSPlayerController_Respawn"))(Handle);
+        VirtualFunction.CreateVoid<IntPtr>(Handle, offset)(Handle);
     }
 
     public bool IsBot => ((PlayerFlags)Flags).HasFlag(PlayerFlags.FL_FAKECLIENT);
@@ -162,12 +165,13 @@ public partial class CCSPlayerController
     /// </summary>
     /// <param name="team">The team to change to</param>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.player/change-team</c> is disabled</exception>
     public void ChangeTeam(CsTeam team)
     {
+        var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.PlayerChangeTeam, "CCSPlayerController_ChangeTeam");
         Guard.IsValidEntity(this);
 
-        VirtualFunction.CreateVoid<IntPtr, CsTeam>(Handle, GameData.GetOffset("CCSPlayerController_ChangeTeam"))(Handle,
-            team);
+        VirtualFunction.CreateVoid<IntPtr, CsTeam>(Handle, offset)(Handle, team);
     }
 
     /// <summary>
