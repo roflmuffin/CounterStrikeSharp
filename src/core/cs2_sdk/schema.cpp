@@ -26,6 +26,9 @@
 #include "core/memory.h"
 #include "core/log.h"
 
+#include <set>
+#include <utility>
+
 #include "tier0/utlmap.h"
 #include <schemasystem/schemasystem.h>
 #include <entity2/entitysystem.h>
@@ -192,6 +195,22 @@ schema::FieldLookup schema::LookupField(const char* className, uint32_t classKey
     }
 
     return { SchemaFieldStatus::Found, tableMap->Element(memberIndex) };
+}
+
+std::optional<SchemaKey> schema::FindField(const char* className, const char* memberName)
+{
+    const auto classKey = hash_32_fnv1a_const(className);
+    const auto memberKey = hash_32_fnv1a_const(memberName);
+    const auto lookup = LookupField(className, classKey, memberName, memberKey);
+    if (lookup.status == SchemaFieldStatus::Found) return lookup.key;
+
+    static std::set<std::pair<uint32_t, uint32_t>> loggedMisses;
+    if (loggedMisses.insert({ classKey, memberKey }).second)
+    {
+        CSSHARP_CORE_WARN("Schema field {}::{} not found ({})", className, memberName,
+                          lookup.status == SchemaFieldStatus::ClassMissing ? "class missing" : "field missing");
+    }
+    return std::nullopt;
 }
 
 SchemaKey schema::GetOffset(const char* className, uint32_t classKey, const char* memberName, uint32_t memberKey)

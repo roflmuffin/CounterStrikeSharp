@@ -6,15 +6,30 @@
 
 namespace counterstrikesharp {
 
-void SetHasClass(ScriptContext& scriptContext)
+// The layout argument, or nullptr after raising a native error (null layout, or a schema field it needs is missing).
+static CCSCustomHudLayout* GetCustomHudLayout(ScriptContext& scriptContext)
 {
     auto pCustomHudLayout = scriptContext.GetArgument<CCSCustomHudLayout*>(0);
 
     if (!pCustomHudLayout)
     {
         scriptContext.ThrowNativeError("CCSCustomHudLayout is null");
-        return;
+        return nullptr;
     }
+
+    if (auto missing = CCSCustomHudLayout::FindMissingSchemaField())
+    {
+        scriptContext.ThrowNativeError("Schema field %s not found", missing);
+        return nullptr;
+    }
+
+    return pCustomHudLayout;
+}
+
+void SetHasClass(ScriptContext& scriptContext)
+{
+    auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
+    if (!pCustomHudLayout) return;
 
     auto szPanelId = scriptContext.GetArgument<const char*>(1);
     auto szClassName = scriptContext.GetArgument<const char*>(2);
@@ -25,13 +40,8 @@ void SetHasClass(ScriptContext& scriptContext)
 
 void SetHasClassForPlayer(ScriptContext& scriptContext)
 {
-    auto pCustomHudLayout = scriptContext.GetArgument<CCSCustomHudLayout*>(0);
-
-    if (!pCustomHudLayout)
-    {
-        scriptContext.ThrowNativeError("CCSCustomHudLayout is null");
-        return;
-    }
+    auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
+    if (!pCustomHudLayout) return;
 
     auto pController = scriptContext.GetArgument<CCSPlayerController*>(1);
     auto szPanelId = scriptContext.GetArgument<const char*>(2);
@@ -43,13 +53,8 @@ void SetHasClassForPlayer(ScriptContext& scriptContext)
 
 void SetDialogVariableString(ScriptContext& scriptContext)
 {
-    auto pCustomHudLayout = scriptContext.GetArgument<CCSCustomHudLayout*>(0);
-
-    if (!pCustomHudLayout)
-    {
-        scriptContext.ThrowNativeError("CCSCustomHudLayout is null");
-        return;
-    }
+    auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
+    if (!pCustomHudLayout) return;
 
     auto szPanelId = scriptContext.GetArgument<const char*>(1);
     auto szVariableName = scriptContext.GetArgument<const char*>(2);
@@ -60,13 +65,8 @@ void SetDialogVariableString(ScriptContext& scriptContext)
 
 void SetDialogVariableStringForPlayer(ScriptContext& scriptContext)
 {
-    auto pCustomHudLayout = scriptContext.GetArgument<CCSCustomHudLayout*>(0);
-
-    if (!pCustomHudLayout)
-    {
-        scriptContext.ThrowNativeError("CCSCustomHudLayout is null");
-        return;
-    }
+    auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
+    if (!pCustomHudLayout) return;
 
     auto pController = scriptContext.GetArgument<CCSPlayerController*>(1);
     auto szPanelId = scriptContext.GetArgument<const char*>(2);
@@ -78,13 +78,8 @@ void SetDialogVariableStringForPlayer(ScriptContext& scriptContext)
 
 void SetInputCaptureEnabled(ScriptContext& scriptContext)
 {
-    auto pCustomHudLayout = scriptContext.GetArgument<CCSCustomHudLayout*>(0);
-
-    if (!pCustomHudLayout)
-    {
-        scriptContext.ThrowNativeError("CCSCustomHudLayout is null");
-        return;
-    }
+    auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
+    if (!pCustomHudLayout) return;
 
     auto pController = scriptContext.GetArgument<CCSPlayerController*>(1);
     auto bEnable = scriptContext.GetArgument<bool>(2);
@@ -94,13 +89,8 @@ void SetInputCaptureEnabled(ScriptContext& scriptContext)
 
 bool IsInputCaptureEnabled(ScriptContext& scriptContext)
 {
-    auto pCustomHudLayout = scriptContext.GetArgument<CCSCustomHudLayout*>(0);
-
-    if (!pCustomHudLayout)
-    {
-        scriptContext.ThrowNativeError("CCSCustomHudLayout is null");
-        return false;
-    }
+    auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
+    if (!pCustomHudLayout) return false;
 
     auto pController = scriptContext.GetArgument<CCSPlayerController*>(1);
 
