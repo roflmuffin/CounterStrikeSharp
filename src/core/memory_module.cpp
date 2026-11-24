@@ -21,38 +21,16 @@
 
 #include "core/gameconfig.h"
 #include "core/memory.h"
+#include "core/signature.h"
 #include "dbg.h"
 #include "log.h"
 #include "metamod_oslink.h"
 
 namespace counterstrikesharp::modules {
 namespace {
-// Returns the first position in [data, data + size) where the pattern matches (-1 is a wildcard), or nullptr.
-// Every candidate start is tested, including the last one (data + size - pattern size).
 std::uint8_t* FindPatternInRange(std::uint8_t* data, std::size_t size, const std::vector<int16_t>& sigBytes)
 {
-    if (sigBytes.empty() || size < sigBytes.size()) return nullptr;
-
-    const auto first_byte = sigBytes[0];
-    std::uint8_t* end = data + size - sigBytes.size() + 1; // one past the last candidate start
-
-    for (std::uint8_t* current = data; current < end; ++current)
-    {
-        if (first_byte != -1)
-        {
-            current = std::find(current, end, first_byte);
-            if (current == end) break;
-        }
-
-        if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1, [](auto opt, auto byte) {
-            return opt == -1 || opt == byte;
-        }))
-        {
-            return current;
-        }
-    }
-
-    return nullptr;
+    return const_cast<std::uint8_t*>(FindPattern(data, size, sigBytes));
 }
 } // namespace
 

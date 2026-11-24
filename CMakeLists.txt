@@ -69,6 +69,8 @@ set(SOURCE_FILES
     src/scripting/natives/natives_convars.cpp
     src/core/memory_module.h
     src/core/memory_module.cpp
+    src/core/signature.h
+    src/core/signature.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.cpp

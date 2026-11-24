@@ -24,11 +24,13 @@ set(CSSHARP_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../..)
 # Production sources under test. Only add files that compile without the SDK.
 set(CSSHARP_TESTED_SOURCES
     ${CSSHARP_ROOT}/src/core/tick_scheduler.cpp
+    ${CSSHARP_ROOT}/src/core/signature.cpp
 )
 
 set(CSSHARP_TEST_SOURCES
     main.cpp
     tick_scheduler_test.cpp
+    signature_test.cpp
 )
 
 add_executable(native_tests ${CSSHARP_TEST_SOURCES} ${CSSHARP_TESTED_SOURCES})
