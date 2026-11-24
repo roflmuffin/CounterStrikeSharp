@@ -186,13 +186,15 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         m_hooks.AddGlobal(&IGameEventManager2::LoadEventsFromFile, reinterpret_cast<void**>(pCGameEventManagerVTable), this,
                           &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr);
 
-        if (!InitGameSystems())
+        if (InitGameSystems())
         {
-            CSSHARP_CORE_ERROR("Failed to initialize GameSystem!");
-            return false;
+            CSSHARP_CORE_INFO("Initialized GameSystem.");
         }
-
-        CSSHARP_CORE_INFO("Initialized GameSystem.");
+        else
+        {
+            CSSHARP_CORE_ERROR("Failed to initialize GameSystem, continuing without it: resource precaching, "
+                               "AddResource, server pre/post entity think and player think will not run.");
+        }
 
         if (!globals::dotnetManager.Initialize())
         {
