@@ -21,6 +21,7 @@
 
 #include "interfaces/cs2_interfaces.h"
 #include "core/globals.h"
+#include "core/core_bindings.h"
 #include "core/gameconfig.h"
 #include "core/memory.h"
 #include "core/log.h"
@@ -208,8 +209,12 @@ void NetworkStateChanged(uintptr_t chainEntity, uint32_t offset, uint32_t nArray
 
 void SetStateChanged(uintptr_t pEntity, uint32_t offset, uint32_t nArrayIndex, uint32_t nPathIndex)
 {
-    CNetworkStateChangedInfo info(offset, nArrayIndex, nPathIndex);
+    using namespace counterstrikesharp::bindings;
+    // No-op while cssharp.network/state-changed is disabled (never calls through an unresolved vtable index).
+    static const auto fnOffset =
+        IsEngineFeatureAvailable(features::StateChanged) ? GetBindingOffset("SetStateChanged") : std::optional<std::int64_t>{};
+    if (!fnOffset) return;
 
-    static auto fnOffset = counterstrikesharp::globals::gameConfig->GetOffset("SetStateChanged");
-    CALL_VIRTUAL(void, fnOffset, (void*)pEntity, &info);
+    CNetworkStateChangedInfo info(offset, nArrayIndex, nPathIndex);
+    CALL_VIRTUAL(void, static_cast<int>(*fnOffset), (void*)pEntity, &info);
 }

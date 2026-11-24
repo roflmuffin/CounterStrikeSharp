@@ -127,6 +127,8 @@ inline NetworkStateChanged_t* NetworkStateChanged = nullptr;
 extern std::thread::id gameThreadId;
 
 void Initialize();
+// Takes the core functions from the Resolution Report and installs the init hooks; call after ResolveCoreBindings.
+void InitializeHooks();
 void ShutdownHooks();
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!

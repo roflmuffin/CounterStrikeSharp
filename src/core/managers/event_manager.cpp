@@ -83,6 +83,9 @@ bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPos
         return true;
     }
 
+    // Game events disabled (cssharp.events/game-events): nothing to hook into.
+    if (!globals::gameEventManager) return false;
+
     CSSHARP_CORE_TRACE("[EventManager] Hooking event: {0} with callback pointer: {1}", szName, (void*)fnCallback);
 
     if (!globals::gameEventManager->FindListener(this, szName))

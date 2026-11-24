@@ -98,7 +98,7 @@ KHook::Return<void> DetourHostSay(CEntityInstance* pController, CCommand& args, 
             callback->Execute();
         }
 
-        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
+        auto pEvent = globals::gameEventManager ? globals::gameEventManager->CreateEvent("player_chat", true) : nullptr;
         if (pEvent)
         {
             pEvent->SetBool("teamonly", teamonly);

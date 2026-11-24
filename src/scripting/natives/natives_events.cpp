@@ -43,8 +43,17 @@ static void UnhookEvent(ScriptContext& script_context)
     globals::eventManager.UnhookEvent(name, callback, post);
 }
 
+// Null while cssharp.events/game-events is disabled (its hooks set it at startup).
+static bool GameEventManagerAvailable(ScriptContext& script_context)
+{
+    if (globals::gameEventManager) return true;
+    script_context.ThrowNativeError("Game event manager is not available (Engine Feature cssharp.events/game-events)");
+    return false;
+}
+
 static IGameEvent* CreateEvent(ScriptContext& script_context)
 {
+    if (!GameEventManagerAvailable(script_context)) return nullptr;
     auto name = script_context.GetArgument<const char*>(0);
     bool force = script_context.GetArgument<bool>(1);
 
@@ -67,6 +76,7 @@ static void FireEvent(ScriptContext& script_context)
         script_context.ThrowNativeError("Invalid game event");
         return;
     }
+    if (!GameEventManagerAvailable(script_context)) return;
 
     globals::gameEventManager->FireEvent(game_event, dont_broadcast);
     managed_game_events.erase(std::remove(managed_game_events.begin(), managed_game_events.end(), game_event), managed_game_events.end());
@@ -106,6 +116,7 @@ static void FreeEvent(ScriptContext& script_context)
         script_context.ThrowNativeError("Invalid game event");
         return;
     }
+    if (!GameEventManagerAvailable(script_context)) return;
 
     globals::gameEventManager->FreeEvent(game_event);
     managed_game_events.erase(std::remove(managed_game_events.begin(), managed_game_events.end(), game_event), managed_game_events.end());
@@ -321,6 +332,7 @@ static void SetUint64(ScriptContext& scriptContext)
 static int LoadEventsFromFile(ScriptContext& script_context)
 {
     auto [path, searchAll] = script_context.GetArguments<const char*, bool>();
+    if (!GameEventManagerAvailable(script_context)) return 0;
 
     return globals::gameEventManager->LoadEventsFromFile(path, searchAll);
 }

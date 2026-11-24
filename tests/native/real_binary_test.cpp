@@ -6,11 +6,13 @@
 #ifdef __linux__
 #include <elf.h>
 
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <string>
 #include <vector>
 
 #include "core/binding_resolver.h"
@@ -40,6 +42,16 @@ ModuleImage ExecutableSegments(const std::vector<std::uint8_t>& file)
     }
     return image;
 }
+
+// Stand-in for CModule::FindVirtualTable: the Itanium typeinfo name ("17CGameEventManager") is in the file. The vtable
+// itself is only reachable through dynamic relocations, so the live server resolves it; this checks the class exists.
+std::uintptr_t FindTypeinfoName(const std::vector<std::uint8_t>& file, std::string_view className)
+{
+    const std::string decorated = std::to_string(className.size()) + std::string(className);
+    const auto* end = file.data() + file.size();
+    const auto* found = std::search(file.data(), end, decorated.c_str(), decorated.c_str() + decorated.size() + 1);
+    return found == end ? 0 : static_cast<std::uintptr_t>(found - file.data());
+}
 } // namespace
 
 TEST_CASE("real server binary: core catalog and Gamedata signatures (optional fixture)" *
@@ -52,7 +64,11 @@ TEST_CASE("real server binary: core catalog and Gamedata signatures (optional fi
     REQUIRE(gamedataStream.good());
     const auto gamedata = ParseGamedata(nlohmann::json::parse(gamedataStream), "linux");
 
-    const ModuleImages modules{ { "server", ExecutableSegments(file) } };
+    auto server = ExecutableSegments(file);
+    server.findVirtualTable = [&file](std::string_view name) {
+        return FindTypeinfoName(file, name);
+    };
+    const ModuleImages modules{ { "server", server } };
     REQUIRE_FALSE(modules.at("server").segments.empty());
 
     std::vector<BindingDeclaration> everySignature;
