@@ -1,4 +1,5 @@
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core.Bindings;
 
@@ -13,6 +14,7 @@ internal sealed class EngineFeatureSet
     private readonly Dictionary<string, EngineFeatureDeclaration> _declarations = new();
     private readonly Dictionary<string, EngineFeatureStatus> _statuses = new();
     private readonly List<EngineFeatureStatus> _all;
+    private readonly HashSet<(string Name, string What)> _warnedRegistrations = new();
 
     public EngineFeatureSet(ResolutionReport report, IEnumerable<EngineFeatureDeclaration> managedFeatures)
     {
@@ -53,6 +55,27 @@ internal sealed class EngineFeatureSet
     {
         var status = GetStatus(name);
         if (!status.IsAvailable) throw new EngineFeatureUnavailableException(status);
+    }
+
+    /// <summary>
+    /// Gate for registering a hook or listener backed by an Engine Feature (ADR-0002): registration must still succeed
+    /// (never throw out of plugin load), but a handler on a disabled Engine Feature never fires. Returns true when the
+    /// Engine Feature is available. Otherwise logs one warning per Engine Feature and kind of registration
+    /// (<paramref name="what"/>, e.g. "OnTakeDamage listener") and returns false; callers then keep the handler
+    /// registered but skip installing anything native.
+    /// </summary>
+    public bool CheckRegistration(string name, string what, ILogger logger)
+    {
+        var status = GetStatus(name);
+        if (status.IsAvailable) return true;
+
+        lock (_warnedRegistrations)
+        {
+            if (!_warnedRegistrations.Add((name, what))) return false;
+        }
+
+        logger.LogWarning("{What} registered on disabled {Status}; it will never fire", what, status);
+        return false;
     }
 
     /// <summary>
