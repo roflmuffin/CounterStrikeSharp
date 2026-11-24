@@ -12,6 +12,18 @@ _Avoid_: config, sigs file
 One Gamedata entry resolved against the game binary: a signature, an offset, a vtable slot, or a schema field. It either resolves or fails.
 _Avoid_: sig (for the concept), gamedata entry, address
 
+**Slot Binding**:
+A Binding whose value is a vtable slot index of a method we hook or call, on an engine interface or a game class.
+_Avoid_: vfunc offset, hook index (not every Gamedata "offset" is a Slot Binding; some are struct field offsets)
+
+**Vtable Check**:
+The boot-time verification of a class's live vtable against the expected fingerprints of the slots we use.
+_Avoid_: layout check, size check
+
+**Heal**:
+A Slot Binding resolved at a different index than Gamedata states, because its expected fingerprint window matched exactly once nearby. Reported with its evidence; never written back to Gamedata at runtime.
+_Avoid_: auto-fix, fallback
+
 **Engine Feature**:
 A named piece of CounterStrikeSharp functionality that depends on one or more Bindings, and is either available or disabled as a whole. Examples: ClientPrint, entity output hooks, take-damage hooks.
 _Avoid_: capability (that means plugin-to-plugin services), feature (bare)

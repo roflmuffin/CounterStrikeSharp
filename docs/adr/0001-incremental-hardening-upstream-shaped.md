@@ -4,6 +4,8 @@ To make CounterStrikeSharp survive Game updates better, we do the incremental pa
 
 Work happens in the markus-wa fork, but every change is shaped as an upstreamable PR to roflmuffin/CounterStrikeSharp: one item per PR, no dependency on fork-only code, and plugin-facing API changes are additive only (existing plugins keep working).
 
+Amended in spec B grilling: regenerating Slot Bindings (vtable slot indices, including existing entity vfunc offsets) by alignment moved from T2 into T1, because it is the same mechanism as the boot-time Vtable Check (ADR-0003). Detecting wrong-but-unique signatures moved the other way, into T2, because it needs a second independent anchor.
+
 For now no upstream PRs are opened; PRs target the fork. The upstream-shaped constraint stays so that upstreaming remains an option.
 
 ## Considered Options

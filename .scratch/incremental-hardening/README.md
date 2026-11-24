@@ -39,11 +39,35 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
 - Plugins may declare Required Engine Features; missing → that plugin refuses to load. ADR-0002.
 - Spec C: Gamedata stored per build id (accumulate, never overwrite in place); design there.
 
+## Decisions (spec B grilling round 1)
+
+- Scope: I4 Vtable Checks for every class we hook or call; I5 Slot Bindings for the 22 hooks plus direct calls on IVEngineServer2 (~20) and ICvar (~14), the interfaces that actually moved (7 and 3 incidents). Never-moved interfaces stay compiled, guarded by the Vtable Check. Out: IGameSystem impl, struct layouts, Windows.
+- Vtable Check policy: per-slot fingerprint with ±1 neighbour window (immediates/RIP masked); size change is a warning only. Evidence: 0.86% false flags over all slots, 2.6% on our 34 slots, 6/6 real moves caught.
+- Generator carries Slot Bindings forward by vtable alignment from today's known-good values, including existing entity vfunc offsets (Respawn etc. moved 15×). Signatures stay manual (T2). Slot regeneration thus moves from T2 into T1.
+- Vocabulary: Slot Binding, Vtable Check.
+- Research for spec B: `research/specB/` scripts; numbers in the grilling transcript (vtable-shift history per interface, fingerprint false/true rates).
+
+## Decisions (spec B grilling round 2)
+
+- Build B's Vtable Check, Heal and generator in CounterStrikeSharp now, not on the PoC resolver; resolution sits behind a swappable seam (runtime resolver interface → Resolution Report; offline generator → Gamedata shape) so the PoC resolver can drop in later. ADR-0004.
+- GameFrame: no detour. All Slot Bindings Heal at boot on an exactly-unique fingerprint window match (heals all 10 ISource2Server hooks at 1.42.0.1). ADR-0003. Replaces round-1 Q25.
+- One C++ fingerprint/alignment core shared by the boot check and a generator CLI; Python research scripts become a test oracle. ADR-0004.
+- Wrong-but-unique signatures → T2 (needs a second anchor). ADR-0001 amended.
+- Build archiver: one, owned by the PoC repo, Linux + Windows, shared folder `~/dev/cs2-builds/<build-id>/`; our ticket closed as duplicate.
+- Windows Slot Bindings from hl2sdk headers, marked unverified; no Vtable Check or Heal on Windows yet.
+- Gamedata shape changes are additive: existing offset entries gain optional class / fingerprint window / module fields; interface Slot Bindings are new keys of the same shape.
+
 ## Spec A tiers
 
-- Must: 01, 02, build archiver (standalone) → 03, 04, 05 (base) → 06, 12, 07, 09 (add-ons).
+- Must: 01, 02 (standalone; build archiver now lives in the PoC repo) → 03, 04, 05 (base) → 06, 12, 07, 09 (add-ons).
 - Later: 08, 11, 13, 10, 14 (add-ons) → 15 (cleanup).
 - Spec B can start once the base (03–05) is done.
+
+## Spec B tiers
+
+- Must: 01 (standalone) → 02, 03, 04 (base) → 05, 07, 08, 09 (add-ons).
+- Later: 06, 10 (add-ons) → 11 (cleanup).
+- Needs spec A base (03–05); 09 also needs spec A 12.
 
 ## Backlog (not ticketed)
 
@@ -54,6 +78,6 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
 1. `/grill-with-docs`: decisions that span all items (T1 vs T1+T2, capability API, I1 migration, CI host, order). Writes `GLOSSARY.md` + `docs/adr/`.
 2. Three specs, each `/to-spec` → `/to-tickets`:
    - `.scratch/hardening-a-fail-soft/`: I1 sig uniqueness, I3 schema miss → error, I2 per-feature failure + capability flags.
-   - `.scratch/hardening-b-boot-verify/`: I4 RTTI vtable checks, I5 interface slots as gamedata.
+   - `.scratch/hardening-b-boot-verify/`: I4 Vtable Checks with Heal, I5 Slot Bindings (hooks + IVEngineServer2/ICvar calls + entity offsets), generator.
    - `.scratch/hardening-c-fast-fix/`: I6 signed build-keyed updater, I7 CI per build.
 3. `/implement-spec` or `/implement` per ticket.
