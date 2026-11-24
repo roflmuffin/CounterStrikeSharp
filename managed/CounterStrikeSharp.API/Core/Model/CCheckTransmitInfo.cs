@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Runtime.InteropServices;
+using CounterStrikeSharp.API.Core.Bindings;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -37,7 +38,12 @@ namespace CounterStrikeSharp.API.Core
 
     public sealed class CCheckTransmitInfoList : NativeObject, IReadOnlyList<(CCheckTransmitInfo info, CCSPlayerController? player)>
     {
-        private int CheckTransmitPlayerSlotOffset = GameData.GetOffset("CheckTransmitPlayerSlot");
+        private int CheckTransmitPlayerSlotOffset = PlayerSlotOffset(EngineFeatures.Current);
+
+        // From the Resolution Report. The list only reaches plugins through the CheckTransmit hook, which is installed
+        // only while cssharp.network/check-transmit is available.
+        internal static int PlayerSlotOffset(EngineFeatureSet features) =>
+            features.GetOffset(ManagedEngineFeatures.NetworkCheckTransmit, "CheckTransmitPlayerSlot");
 
         private unsafe nint* Inner => (nint*)base.Handle;
 

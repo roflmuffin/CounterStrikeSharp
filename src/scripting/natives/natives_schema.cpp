@@ -252,7 +252,7 @@ void SetSchemaValueByName(ScriptContext& script_context)
 static bool StateChangedAvailable(ScriptContext& script_context)
 {
     if (bindings::IsEngineFeatureAvailable(bindings::features::StateChanged)) return true;
-    script_context.ThrowNativeError("Engine Feature cssharp.network/state-changed is disabled");
+    script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::StateChanged).c_str());
     return false;
 }
 

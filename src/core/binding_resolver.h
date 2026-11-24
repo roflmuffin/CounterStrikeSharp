@@ -176,6 +176,11 @@ EngineFeatureStatus EvaluateEngineFeature(const ResolutionReport& report, const 
 // "not found", "ambiguous (3 matches)", "missing for this OS", ...
 std::string DescribeFailure(const BindingResult& binding);
 
+// For natives called while their Engine Feature is disabled; same wording as the managed typed exception, e.g.
+// "Engine Feature cssharp.chat/say-hooks is disabled (Host_Say: not found)". A Binding absent from the report counts
+// as missing from Gamedata.
+std::string DescribeUnavailable(const ResolutionReport& report, const EngineFeatureDeclaration& feature);
+
 // One compact line for the early native log, e.g.
 // "Bindings for build 1.42.0.1/2000950: 1 of 12 failed: Host_Say (not found)"
 // "Bindings for build 1.42.0.1/2000950: all 12 resolved"

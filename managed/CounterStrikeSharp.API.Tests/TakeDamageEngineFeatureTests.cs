@@ -68,7 +68,7 @@ public class TakeDamageEngineFeatureTests : IDisposable
 
         var entry = Assert.Single(logger.Entries);
         Assert.Equal(LogLevel.Warning, entry.Level);
-        Assert.Equal($"{listener} listener registered on disabled {TakeDamageHooks} disabled (CBaseEntity_TakeDamageOld: not found); " +
+        Assert.Equal($"{listener} listener registered on {TakeDamageHooks} disabled (CBaseEntity_TakeDamageOld: not found); " +
                      "it will never fire", entry.Message);
     }
 

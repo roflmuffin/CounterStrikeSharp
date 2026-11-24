@@ -117,7 +117,7 @@ public class CoreFunctionTests : IDisposable
 
         var warning = Assert.Single(_logger.Entries);
         Assert.Equal(LogLevel.Warning, warning.Level);
-        Assert.Equal("Memory function hook on ClientPrint registered on disabled cssharp.chat/client-print disabled " +
+        Assert.Equal("Memory function hook on ClientPrint registered on cssharp.chat/client-print disabled " +
                      "(ClientPrint: not found); it will never fire", warning.Message);
         Assert.Empty(_createdAt);
     }

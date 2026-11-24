@@ -345,3 +345,15 @@ TEST_CASE("Every failure reason and Binding kind has its own name on the wire")
     CHECK(json["bindings"][0]["kind"] == "RttiVtable");
     CHECK(json["bindings"][1]["kind"] == "SchemaField");
 }
+
+TEST_CASE("Calling into a disabled Engine Feature is described in the wording of the managed typed exception")
+{
+    const ResolutionReport oneFailed("b", { Resolved("A"), Failed("B", FailureReason::Ambiguous, 2) });
+    CHECK(DescribeUnavailable(oneFailed, kTwoBindings) == "Engine Feature test/two is disabled (B: ambiguous (2 matches))");
+
+    const ResolutionReport bindingNotInReport("b", { Resolved("A") });
+    CHECK(DescribeUnavailable(bindingNotInReport, kTwoBindings) == "Engine Feature test/two is disabled (B: missing from gamedata)");
+
+    const ResolutionReport allResolved("b", { Resolved("A"), Resolved("B") });
+    CHECK(DescribeUnavailable(allResolved, kTwoBindings) == "Engine Feature test/two is available");
+}

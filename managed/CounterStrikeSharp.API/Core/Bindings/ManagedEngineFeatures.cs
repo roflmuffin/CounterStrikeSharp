@@ -98,6 +98,10 @@ internal static class ManagedEngineFeatures
     public static readonly EngineFeatureDeclaration EntityTakeDamageHooks = new("cssharp.entity/take-damage-hooks",
         [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld")]);
 
+    // ticket 15: native-owned; CCheckTransmitInfoList reads the player slot of each transmit info.
+    public static readonly EngineFeatureDeclaration NetworkCheckTransmit = new("cssharp.network/check-transmit",
+        [BindingDeclaration.Offset("CheckTransmitPlayerSlot")]);
+
     /// <summary>Every managed Engine Feature. Keep after the fields above (static initialisation order).</summary>
     public static readonly IReadOnlyList<EngineFeatureDeclaration> All =
     [
@@ -130,5 +134,7 @@ internal static class ManagedEngineFeatures
         NavMesh,
         EntityDispatchSpawn,
         EntityTakeDamageHooks,
+        // ticket 15
+        NetworkCheckTransmit,
     ];
 }

@@ -30,6 +30,8 @@
 #   --plugin DIR            Install a built plugin directory as plugins/<basename DIR>. Repeatable.
 #   --plugin-project PROJ   Build PROJ (.csproj, path relative to the repo root or absolute)
 #                           and install its output as plugins/<project name>. Repeatable.
+#   --remove-installed PATH Delete PATH (relative to addons/counterstrikesharp) after installing, e.g.
+#                           'api/CounterStrikeSharp.API.dll' to make .NET fail to start. Repeatable.
 #
 # Run:
 #   --map NAME              Map to boot (default: de_dust2; competitive, warmup held).
@@ -38,6 +40,8 @@
 #                           smoke test. Repeatable.
 #   --ready-regex REGEX     Also wait for a console line matching REGEX before the smoke test.
 #                           Repeatable. Built in: Native Tests plugin loaded, map activated.
+#   --no-css-ready          Do not wait for the Native Tests plugin (for runs where CounterStrikeSharp
+#                           must not load); implies --no-smoke.
 #   --no-smoke              Do not run the smoke test.
 #   --boot-timeout SEC      Wait this long for CounterStrikeSharp and the test plugin to load (180).
 #   --smoke-timeout SEC     Wait this long for smoke-results.json (900).
@@ -98,7 +102,7 @@ STEAMCLIENT=${CSS_E2E_STEAMCLIENT:-$HOME/.cache/cs2-poc-steamcmd/linux64/steamcl
 do_build=1 build_only=0 do_smoke=1 require_pass=0
 map=de_dust2 boot_timeout=180 smoke_timeout=900 settle=10 out=""
 gamedata_file=""
-gamedata_jq=() core_jq=() server_patches=() plugins=() plugin_projects=() execs=() server_args=()
+gamedata_jq=() core_jq=() server_patches=() plugins=() plugin_projects=() execs=() server_args=() removals=()
 # Boot is done when every one of these extended regexes matches a console line.
 ready=('Finished loading plugin Native Tests' 'Host activate: Loading \(')
 expect=() expect_not=() checks=()
@@ -116,6 +120,8 @@ while [ $# -gt 0 ]; do
         --server-patch) server_patches+=("$2"); shift ;;
         --plugin) plugins+=("$(realpath "$2")"); shift ;;
         --plugin-project) plugin_projects+=("$2"); shift ;;
+        --remove-installed) removals+=("$2"); shift ;;
+        --no-css-ready) ready=("${ready[@]:1}"); do_smoke=0 ;;
         --map) map=$2; shift ;;
         --server-arg) server_args+=("$2"); shift ;;
         --exec) execs+=("$2"); shift ;;
@@ -357,6 +363,12 @@ for p in "${plugins[@]}"; do
     [ "$name" = release ] && name=$(basename "$(dirname "$p")")
     rm -rf "$addons/counterstrikesharp/plugins/$name"
     cp -a "$p" "$addons/counterstrikesharp/plugins/$name"
+done
+for r in "${removals[@]}"; do
+    case $r in /* | *..*) die "--remove-installed: path must be relative to addons/counterstrikesharp: $r" ;; esac
+    [ -e "$addons/counterstrikesharp/$r" ] || die "--remove-installed: not installed: $r"
+    rm -rf "${addons:?}/counterstrikesharp/$r"
+    log "removed installed $r"
 done
 
 css_cfg=$addons/counterstrikesharp/configs

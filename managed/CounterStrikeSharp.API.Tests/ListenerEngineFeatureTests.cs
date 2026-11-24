@@ -50,7 +50,7 @@ public class ListenerEngineFeatureTests
         var entry = Assert.Single(logger.Entries);
         Assert.Equal(LogLevel.Warning, entry.Level);
         Assert.Equal(
-            $"{listenerName} listener registered on disabled cssharp.server/game-system-events disabled " +
+            $"{listenerName} listener registered on cssharp.server/game-system-events disabled " +
             "(IGameSystem_InitAllSystems_pFirst: not found); it will never fire",
             entry.Message);
     }

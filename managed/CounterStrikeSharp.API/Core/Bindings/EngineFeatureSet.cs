@@ -74,7 +74,7 @@ internal sealed class EngineFeatureSet
             if (!_warnedRegistrations.Add((name, what))) return false;
         }
 
-        logger.LogWarning("{What} registered on disabled {Status}; it will never fire", what, status);
+        logger.LogWarning("{What} registered on {Status}; it will never fire", what, status);
         return false;
     }
 

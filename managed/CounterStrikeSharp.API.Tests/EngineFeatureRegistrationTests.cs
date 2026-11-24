@@ -53,7 +53,7 @@ public class EngineFeatureRegistrationTests
         var entry = Assert.Single(logger.Entries);
         Assert.Equal(LogLevel.Warning, entry.Level);
         Assert.Equal(
-            "chat listener registered on disabled cssharp.chat/say-hooks disabled (Host_Say: not found); it will never fire",
+            "chat listener registered on cssharp.chat/say-hooks disabled (Host_Say: not found); it will never fire",
             entry.Message);
     }
 

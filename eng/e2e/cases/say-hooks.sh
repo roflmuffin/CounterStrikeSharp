@@ -25,7 +25,8 @@ status=0
 echo "== say-hooks: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-no-log 'Engine Feature cssharp\.chat/say-hooks disabled' \
+    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-no-log 'cssharp\.chat/say-hooks disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed CommandTests.CanTriggerCommandsWithSilentChatTrigger CommandTests.CanTriggerCommandsWithPublicChatTrigger CommandTests.AddCommandHandler)" ||
     status=1
@@ -34,7 +35,9 @@ echo "== say-hooks: Host_Say ambiguous"
 "$run" "$@" --no-build \
     --gamedata-jq '.Host_Say.signatures.linux = "55 48 89 E5"' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*Host_Say \(ambiguous \([0-9]+ matches\)\)' \
-    --expect-log 'Engine Feature cssharp\.chat/say-hooks disabled \(Host_Say: ambiguous \([0-9]+ matches\)\), not registering chat hooks' \
+    --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
+    --expect-log '^ +cssharp\.chat/say-hooks disabled \(Host_Say: ambiguous \([0-9]+ matches\)\)' \
+    --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --check "$(outcome failed CommandTests.CanTriggerCommandsWithSilentChatTrigger)" ||
     status=1
 
