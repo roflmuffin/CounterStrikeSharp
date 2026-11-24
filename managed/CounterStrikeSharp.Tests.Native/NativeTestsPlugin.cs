@@ -96,6 +96,45 @@ namespace NativeTestsPlugin
                               $"reason={EngineFeatures.GetStatus(EngineFeature.ChatSayHooks).Reason}");
         }
 
+        // Take-damage Engine Features as a plugin sees them (ticket 11); the E2E harness greps the output. Registers the
+        // take-damage listeners (registering never throws; on a disabled Engine Feature it warns once), reads a hit group
+        // and creates a memory function from a raw plugin signature, which must work even without the take-damage key.
+        [ConsoleCommand("css_take_damage_probe", "Register take-damage listeners and use the take-damage helpers.")]
+        public void OnCommandTakeDamageProbe(CCSPlayerController? player, CommandInfo command)
+        {
+            RegisterListener<Listeners.OnEntityTakeDamagePre>((_, _) =>
+            {
+                Console.WriteLine("[TakeDamageProbe] OnEntityTakeDamagePre fired");
+                return HookResult.Continue;
+            });
+            RegisterListener<Listeners.OnPlayerTakeDamagePre>((_, _) =>
+            {
+                Console.WriteLine("[TakeDamageProbe] OnPlayerTakeDamagePre fired");
+                return HookResult.Continue;
+            });
+            Console.WriteLine("[TakeDamageProbe] registered take-damage listeners");
+
+            // Zeroed fake CTakeDamageInfo: an available hit group reads as HITGROUP_INVALID.
+            var buffer = System.Runtime.InteropServices.Marshal.AllocHGlobal(1024);
+            try
+            {
+                for (var i = 0; i < 1024; i++) System.Runtime.InteropServices.Marshal.WriteByte(buffer, i, 0);
+                Console.WriteLine($"[TakeDamageProbe] hit group: {new CTakeDamageInfo(buffer).GetHitGroup()}");
+            }
+            catch (EngineFeatureUnavailableException e)
+            {
+                Console.WriteLine($"[TakeDamageProbe] hit group: {e.GetType().Name}: {e.Message}");
+            }
+            finally
+            {
+                System.Runtime.InteropServices.Marshal.FreeHGlobal(buffer);
+            }
+
+            var postThink = new CounterStrikeSharp.API.Modules.Memory.DynamicFunctions.MemoryFunctionVoid<CCSPlayerPawn>(
+                GameData.GetSignature("CCSPlayerPawnBase_PostThink"));
+            Console.WriteLine($"[TakeDamageProbe] raw signature memory function bound: {postThink.RawHandle != IntPtr.Zero}");
+        }
+
         public async Task RunTests(string? filter = null, string? smokeRunId = null)
         {
             if (_running)
