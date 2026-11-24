@@ -26,6 +26,36 @@
 #include "metamod_oslink.h"
 
 namespace counterstrikesharp::modules {
+namespace {
+// Returns the first position in [data, data + size) where the pattern matches (-1 is a wildcard), or nullptr.
+// Every candidate start is tested, including the last one (data + size - pattern size).
+std::uint8_t* FindPatternInRange(std::uint8_t* data, std::size_t size, const std::vector<int16_t>& sigBytes)
+{
+    if (sigBytes.empty() || size < sigBytes.size()) return nullptr;
+
+    const auto first_byte = sigBytes[0];
+    std::uint8_t* end = data + size - sigBytes.size() + 1; // one past the last candidate start
+
+    for (std::uint8_t* current = data; current < end; ++current)
+    {
+        if (first_byte != -1)
+        {
+            current = std::find(current, end, first_byte);
+            if (current == end) break;
+        }
+
+        if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1, [](auto opt, auto byte) {
+            return opt == -1 || opt == byte;
+        }))
+        {
+            return current;
+        }
+    }
+
+    return nullptr;
+}
+} // namespace
+
 void Initialize()
 {
     if (!moduleList.empty()) return;
@@ -553,17 +583,18 @@ void* CModule::FindSignature(const char* signature)
         return nullptr;
     }
 
+    // Reject invalid patterns before any scanner sees them, so they cannot match as garbage bytes.
+    auto pData = CGameConfig::HexToByte(signature);
+    if (pData.empty()) [[unlikely]]
+    {
+        CSSHARP_CORE_ERROR("Cannot convert signature \"{}\" to bytes", signature);
+        return nullptr;
+    }
+
     for (const auto& segment : m_vecSegments)
     {
         if (auto address = KHook::LookupSignature(reinterpret_cast<void*>(segment.address), segment.bytes.size(), signature))
             return address;
-    }
-
-    auto pData = CGameConfig::HexToByte(signature);
-    if (pData.empty()) [[unlikely]]
-    {
-        CSSHARP_CORE_ERROR("Cannot convert signture \"{}\" to bytes", signature);
-        return nullptr;
     }
 
     auto pOld = this->FindSignature(pData);
@@ -588,27 +619,10 @@ void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
 {
     for (auto&& segment : m_vecSegments)
     {
-        const auto size = segment.bytes.size();
         auto* data = segment.bytes.data();
-
-        auto first_byte = sigBytes[0];
-        std::uint8_t* end = data + size - sigBytes.size();
-
-        for (std::uint8_t* current = data; current <= end; ++current)
+        if (auto* match = FindPatternInRange(data, segment.bytes.size(), sigBytes))
         {
-            if (first_byte != -1) current = std::find(current, end, first_byte);
-
-            if (current == end)
-            {
-                break;
-            }
-
-            if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1, [](auto opt, auto byte) {
-                return opt == -1 || opt == byte;
-            }))
-            {
-                return reinterpret_cast<void*>(current - data + segment.address);
-            }
+            return reinterpret_cast<void*>(match - data + segment.address);
         }
     }
 
@@ -623,26 +637,9 @@ void* CModule::FindSignatureAlternative(const std::vector<int16_t>& sigBytes)
     }
 
     auto* data = reinterpret_cast<std::uint8_t*>(m_base);
-    const auto size = m_size;
-
-    auto first_byte = sigBytes[0];
-    std::uint8_t* end = data + size - sigBytes.size();
-
-    for (std::uint8_t* current = data; current <= end; ++current)
+    if (auto* match = FindPatternInRange(data, m_size, sigBytes))
     {
-        if (first_byte != -1) current = std::find(current, end, first_byte);
-
-        if (current == end)
-        {
-            break;
-        }
-
-        if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1, [](auto opt, auto byte) {
-            return opt == -1 || opt == byte;
-        }))
-        {
-            return reinterpret_cast<void*>(current - data + (std::uintptr_t)m_base);
-        }
+        return reinterpret_cast<void*>(match - data + (std::uintptr_t)m_base);
     }
 
     return nullptr;

@@ -40,6 +40,11 @@ bool CGameConfig::Init(char* conf_error, int conf_error_size)
                 if (auto signature = v["signatures"][platform]; signature.is_string())
                 {
                     m_umSignatures[k] = signature.get<std::string>();
+                    const auto& pattern = m_umSignatures[k];
+                    if (pattern.empty() || (pattern[0] != '@' && HexToByte(pattern).empty()))
+                    {
+                        CSSHARP_CORE_ERROR("Gamedata signature {} has an invalid pattern: \"{}\"", k, pattern);
+                    }
                 }
             }
             if (v.contains("offsets"))
@@ -218,7 +223,6 @@ std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
         if (c >= 'A' && c <= 'F') return c - 'A' + 10;
         if (c >= 'a' && c <= 'f') return c - 'a' + 10;
 
-        // a valid hex char can never go up to 0xFF
         return -1;
     };
 
@@ -251,7 +255,7 @@ std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
             continue;
         }
 
-        if (byte.size() < 2)
+        if (byte.size() != 2)
         {
             return {};
         }
@@ -259,7 +263,7 @@ std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
         const auto high = hex_char_to_byte(byte[0]);
         const auto low = hex_char_to_byte(byte[1]);
 
-        if (high == 0xFF || low == 0xFF)
+        if (high < 0 || low < 0)
         {
             return {};
         }
