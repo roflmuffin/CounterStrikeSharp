@@ -18,6 +18,12 @@ namespace features {
 inline constexpr std::string_view ChatSayHooks = "cssharp.chat/say-hooks";
 // ticket 10
 inline constexpr std::string_view ServerGameSystemEvents = "cssharp.server/game-system-events";
+// ticket 08
+inline constexpr std::string_view EntityOutputHooks = "cssharp.entity/output-hooks";
+inline constexpr std::string_view EntityAcceptInput = "cssharp.entity/accept-input";
+inline constexpr std::string_view EntityAddIoEvent = "cssharp.entity/add-io-event";
+inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
+inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.

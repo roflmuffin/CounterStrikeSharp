@@ -27,6 +27,12 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
       { Signature("IGameSystem_InitAllSystems_pFirst"), SchemaField("CCSPlayerController", "m_hPlayerPawn"),
         SchemaField("CBasePlayerController", "m_iConnected"), SchemaField("CBasePlayerPawn", "m_pMovementServices"),
         SchemaField("CPlayer_MovementServices", "m_nButtons"), SchemaField("CInButtonState", "m_pButtonStates") } },
+    // ticket 08
+    { std::string(features::EntityOutputHooks), { Signature("CEntityIOOutput_FireOutputInternal") } },
+    { std::string(features::EntityAcceptInput), { Signature("CEntityInstance_AcceptInput") } },
+    { std::string(features::EntityAddIoEvent), { Signature("CEntitySystem_AddEntityIOEvent") } },
+    { std::string(features::EntityEmitSound), { Signature("CBaseEntity_EmitSoundFilter") } },
+    { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
 };
 
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)

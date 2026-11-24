@@ -2,6 +2,7 @@
 
 #include <set>
 #include <string>
+#include <string_view>
 #include <utility>
 #include <vector>
 
@@ -110,6 +111,26 @@ TEST_CASE("The native Engine Feature catalog declares game-system-events on the 
                           { "CPlayer_MovementServices::m_nButtons", BindingKind::SchemaField },
                           { "CInButtonState::m_pButtonStates", BindingKind::SchemaField },
                       });
+}
+
+TEST_CASE("Entity IO, sound and spawn are separate Engine Features, each on its own Binding")
+{
+    const std::vector<std::pair<std::string_view, std::string>> expected{
+        { "cssharp.entity/output-hooks", "CEntityIOOutput_FireOutputInternal" },
+        { "cssharp.entity/accept-input", "CEntityInstance_AcceptInput" },
+        { "cssharp.entity/add-io-event", "CEntitySystem_AddEntityIOEvent" },
+        { "cssharp.entity/emit-sound", "CBaseEntity_EmitSoundFilter" },
+        { "cssharp.entity/dispatch-spawn", "CBaseEntity_DispatchSpawn" },
+    };
+    for (const auto& [name, key] : expected)
+    {
+        const auto* feature = FindNativeEngineFeature(name);
+        REQUIRE_MESSAGE(feature != nullptr, name);
+        REQUIRE(feature->bindings.size() == 1);
+        CHECK(feature->bindings[0].key == key);
+        CHECK(feature->bindings[0].kind == BindingKind::Signature);
+    }
+    CHECK(FindNativeEngineFeature(features::EntityOutputHooks) != nullptr);
 }
 
 TEST_CASE("The catalog is consistent: unique feature names, namespaced, and core Bindings declared once each")
