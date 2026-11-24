@@ -94,4 +94,14 @@ const std::uint8_t* FindPattern(const std::uint8_t* data, std::size_t size, cons
     return nullptr;
 }
 
+bool SegmentCopyMatchesImage(const std::uint8_t* copy, const std::uint8_t* image, std::size_t size)
+{
+    std::size_t differing = 0;
+    for (std::size_t i = 0; i < size; ++i)
+    {
+        if (copy[i] != image[i]) ++differing;
+    }
+    return differing <= size / 64;
+}
+
 } // namespace counterstrikesharp

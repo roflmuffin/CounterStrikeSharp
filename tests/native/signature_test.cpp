@@ -50,3 +50,39 @@ TEST_CASE("FindPattern returns nullptr when absent or when the range is shorter 
     CHECK(FindPattern(bytes.data(), bytes.size(), ParseSignature("00 11 22")) == nullptr);
     CHECK(FindPattern(bytes.data(), 0, ParseSignature("00")) == nullptr);
 }
+
+namespace {
+std::vector<std::uint8_t> PseudoCode(std::size_t size)
+{
+    std::vector<std::uint8_t> bytes(size);
+    std::uint32_t state = 12345;
+    for (auto& byte : bytes)
+    {
+        state = state * 1103515245u + 12345u;
+        byte = static_cast<std::uint8_t>(state >> 16);
+    }
+    return bytes;
+}
+} // namespace
+
+TEST_CASE("SegmentCopyMatchesImage accepts an identical copy and one with a few hooked bytes")
+{
+    const auto live = PseudoCode(64 * 1024);
+    auto disk = live;
+    CHECK(SegmentCopyMatchesImage(disk.data(), live.data(), live.size()));
+
+    for (std::size_t hook = 0; hook < 100; ++hook) // 100 five-byte detours
+        for (std::size_t i = 0; i < 5; ++i)
+            disk[hook * 600 + i] ^= 0xFF;
+    CHECK(SegmentCopyMatchesImage(disk.data(), live.data(), live.size()));
+}
+
+TEST_CASE("SegmentCopyMatchesImage rejects a copy read from the wrong file offset")
+{
+    // libserver.so: the executable PT_LOAD has p_offset 0x9e40fc but p_vaddr 0x9e50fc. Reading the file at the
+    // virtual address yields the image shifted by 0x1000 bytes, so signatures resolve 0x1000 away from the function.
+    const auto file = PseudoCode(64 * 1024 + 0x1000);
+    const std::uint8_t* live = file.data();
+    const std::uint8_t* shifted = file.data() + 0x1000;
+    CHECK_FALSE(SegmentCopyMatchesImage(shifted, live, 64 * 1024));
+}
