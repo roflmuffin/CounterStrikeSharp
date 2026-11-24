@@ -14,3 +14,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Schema fields). I3.
 - [ ] An unknown class does not crash native lookups
 - [ ] Existing fields behave exactly as before
 - [ ] End-to-end harness gains a case accessing a non-existent field from a test plugin: exception, server up
+
+## Comments
+
+- Merged to `hardening/spec-a` (`spec-a/13-missing-schema-field-throws`): native `schema::LookupField` + `LOOKUP_SCHEMA_FIELD`, resolver `BindingKind::SchemaField`, managed `SchemaFieldNotFoundException` (logged once per field), in-server tests in `NativeTestsPlugin/SchemaTests.cs`. Unit/builds pass. E2E pending harness; ticket stays open. Schema Bindings for native core fields to be declared by tickets 10 (RunThink fields) etc.
