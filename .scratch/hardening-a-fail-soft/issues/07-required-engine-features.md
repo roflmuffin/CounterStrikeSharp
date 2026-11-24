@@ -6,10 +6,14 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API). ADR-0002.
 
 **Blocked by:** 05
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · must
 
 - [ ] Managed unit tests: a plugin requiring an available Engine Feature loads; one requiring a disabled Engine Feature is refused with a message naming feature, Binding and reason; an unknown name is reported clearly
 - [ ] The check sits beside the existing minimum-API-version check and produces the same style of refusal
 - [ ] End-to-end: with `Host_Say` broken, a test plugin requiring `cssharp.chat/say-hooks` is refused at load while other plugins load
+
+## Comments
+
+- Resolved on `hardening/spec-a` (merge of `spec-a/07-required-engine-features`). `[RequiredEngineFeatures(...)]` (string or enum), pure `RequiredEngineFeatureCheck.GetRefusal`, wired after the min-API check in `PluginContext.Load`. Managed 82/82. E2E `eng/e2e/cases/required-engine-features.sh` (fixture plugin `managed/CounterStrikeSharp.Tests.RequiredEngineFeatures`): valid loads; Host_Say not found refuses it while NativeTestsPlugin loads.
