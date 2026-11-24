@@ -105,6 +105,17 @@ BindingResult ResolveRttiVtable(BindingResult result, const ModuleImages& module
 
 } // namespace
 
+SignatureScan ScanSignature(const ModuleImage& image, std::string_view signature)
+{
+    SignatureScan scan;
+    const auto pattern = ParseSignature(signature);
+    if (pattern.empty()) return scan;
+
+    scan.validPattern = true;
+    scan.matchCount = CountMatches(image, pattern, scan.firstMatch);
+    return scan;
+}
+
 Gamedata ParseGamedata(const nlohmann::json& root, std::string_view platform)
 {
     Gamedata gamedata;
