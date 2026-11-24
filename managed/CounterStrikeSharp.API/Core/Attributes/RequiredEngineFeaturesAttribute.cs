@@ -10,7 +10,8 @@ namespace CounterStrikeSharp.API.Core.Attributes;
 /// the Engine Feature, the failed Binding and the reason. Plugins that declare nothing load as before.
 /// May be repeated.
 /// </summary>
-/// <example><c>[RequiredEngineFeatures("cssharp.chat/say-hooks")]</c> or <c>[RequiredEngineFeatures(EngineFeature.ChatSayHooks)]</c></example>
+/// <example><c>[RequiredEngineFeatures("cssharp.chat/say-hooks")]</c> or
+/// <c>[RequiredEngineFeatures(EngineFeature.ChatSayHooks)]</c></example>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class RequiredEngineFeatures : System.Attribute
 {

@@ -11,11 +11,13 @@ set -uo pipefail
 run=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/run.sh
 
 echo "== check-transmit: ISource2GameEntities::CheckTransmit missing"
+never_fires='CheckTransmit listener registered on cssharp\.network/check-transmit disabled '
+never_fires+='\(ISource2GameEntities::CheckTransmit: missing from gamedata\); it will never fire'
 "$run" "$@" \
     --gamedata-jq 'del(."ISource2GameEntities::CheckTransmit")' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*ISource2GameEntities::CheckTransmit \(missing from gamedata\)' \
     --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
     --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.network/check-transmit disabled \(ISource2GameEntities::CheckTransmit: missing from gamedata\)' \
-    --expect-log 'CheckTransmit listener registered on cssharp\.network/check-transmit disabled \(ISource2GameEntities::CheckTransmit: missing from gamedata\); it will never fire' \
+    --expect-log "$never_fires" \
     --expect-no-log 'Invalid virtual hook index'

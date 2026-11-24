@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # End-to-end cases for cssharp.events/game-events (Bindings: CGameEventManager_Init signature, CGameEventManager RTTI
-# vtable in libserver). The valid case also covers the other event and network Engine Features of ticket 09.
+# vtable in libserver). The valid case also covers the other event and network Engine Features.
 #
 #   eng/e2e/cases/game-events.sh [run.sh options...]     e.g. --no-build
 #
@@ -26,6 +26,7 @@ outcome() {
 }
 
 status=0
+handler_never_fires='Game event handler registered on cssharp\.events/game-events disabled'
 
 echo "== game-events: valid gamedata"
 "$run" "$@" \
@@ -43,7 +44,7 @@ echo "== game-events: CGameEventManager_Init not found"
     --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
     --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.events/game-events disabled \(CGameEventManager_Init: not found\)' \
-    --expect-log 'Game event handler registered on cssharp\.events/game-events disabled \(CGameEventManager_Init: not found\); it will never fire' \
+    --expect-log "$handler_never_fires"' \(CGameEventManager_Init: not found\); it will never fire' \
     --check "$(outcome failed GameEventTests.CanRegisterAndDeregisterEventHandlers GameEventTests.GameEvent_HighLevelApi_Works)" ||
     status=1
 
@@ -54,7 +55,7 @@ echo "== game-events: CGameEventManager RTTI vtable not found"
     --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
     --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.events/game-events disabled \(CGameEventManager: RTTI vtable not found\)' \
-    --expect-log 'Game event handler registered on cssharp\.events/game-events disabled \(CGameEventManager: RTTI vtable not found\); it will never fire' \
+    --expect-log "$handler_never_fires"' \(CGameEventManager: RTTI vtable not found\); it will never fire' \
     --check "$(outcome failed GameEventTests.CanRegisterAndDeregisterEventHandlers GameEventTests.GameEvent_HighLevelApi_Works)" ||
     status=1
 

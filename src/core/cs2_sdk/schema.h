@@ -26,7 +26,9 @@
 #include "tier0/dbg.h"
 #include "utils/virtual.h"
 #include "tier0/utlvector.h"
+#include "core/schema_field_status.h"
 
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -126,23 +128,19 @@ static std::vector<std::string> CS2BadList = {
     "m_nMusicID",
 };
 
-enum class LookupStatus : uint8_t
-{
-    Found,
-    ClassMissing,
-    FieldMissing,
-};
-
 struct FieldLookup
 {
-    LookupStatus status;
+    counterstrikesharp::bindings::SchemaFieldStatus status;
     SchemaKey key; // valid only when status is Found
 };
 
 int16_t FindChainOffset(const char* className);
 // Explicit lookup: reports a missing class or field instead of an offset.
 FieldLookup LookupField(const char* className, uint32_t classKey, const char* memberName, uint32_t memberKey);
-// Offset 0 for a missing class or field; prefer LookupField where a miss must not be read as offset 0.
+// The field, or nullopt for a missing class or field (logged once per field). For native code that must skip its work, or
+// raise a native error naming the field, instead of reading at offset 0.
+std::optional<SchemaKey> FindField(const char* className, const char* memberName);
+// Offset 0 for a missing class or field; prefer LookupField or FindField where a miss must not be read as offset 0.
 SchemaKey GetOffset(const char* className, uint32_t classKey, const char* memberName, uint32_t memberKey);
 } // namespace schema
 

@@ -10,6 +10,7 @@ namespace CounterStrikeSharp.API.Core;
 public partial class CBasePlayerController
 {
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.player/set-pawn</c> is disabled</exception>
     public void SetPawn(CBasePlayerPawn? pawn)
     {
         Guard.IsValidEntity(this);

@@ -12,7 +12,8 @@ public class EngineFeatureTests
         new("cssharp.chat/say-hooks", [BindingDeclaration.Signature("Host_Say")]);
 
     private static readonly EngineFeatureDeclaration ClientPrint =
-        new("cssharp.chat/client-print", [BindingDeclaration.Signature("ClientPrint"), BindingDeclaration.Signature("UTIL_ClientPrintAll")]);
+        new("cssharp.chat/client-print",
+            [BindingDeclaration.Signature("ClientPrint"), BindingDeclaration.Signature("UTIL_ClientPrintAll")]);
 
     private static readonly EngineFeatureDeclaration Teleport =
         new("cssharp.entity/teleport", [BindingDeclaration.Offset("CBaseEntity_Teleport")]);
@@ -200,10 +201,14 @@ public class EngineFeatureTests
         const string json = """
             {"buildId":"1.42.0.1/2000950",
              "bindings":[
-               {"key":"Host_Say","kind":"Signature","resolved":false,"reason":"Ambiguous","matchCount":2,"address":0,"offset":0,"library":"server"},
-               {"key":"CBaseEntity_Teleport","kind":"Offset","resolved":true,"reason":"None","matchCount":0,"address":0,"offset":157,"library":""},
-               {"key":"ClientPrint","kind":"Signature","resolved":true,"reason":"None","matchCount":1,"address":139637976732212,"offset":0,"library":"server"},
-               {"key":"CBaseEntity::m_iTeamNum","kind":"SchemaField","resolved":false,"reason":"SchemaFieldMissing","matchCount":0,"address":0,"offset":0,"library":"server"}],
+               {"key":"Host_Say","kind":"Signature","resolved":false,"reason":"Ambiguous","matchCount":2,
+                "address":0,"offset":0,"library":"server"},
+               {"key":"CBaseEntity_Teleport","kind":"Offset","resolved":true,"reason":"None","matchCount":0,
+                "address":0,"offset":157,"library":""},
+               {"key":"ClientPrint","kind":"Signature","resolved":true,"reason":"None","matchCount":1,
+                "address":139637976732212,"offset":0,"library":"server"},
+               {"key":"CBaseEntity::m_iTeamNum","kind":"SchemaField","resolved":false,"reason":"SchemaFieldMissing",
+                "matchCount":0,"address":0,"offset":0,"library":"server"}],
              "features":[{"name":"cssharp.chat/say-hooks","bindings":["Host_Say"]}]}
             """;
 

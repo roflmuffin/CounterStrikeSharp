@@ -111,6 +111,10 @@ class CCSCustomHudLayout : public GlobalClass
     void OnAllInitialized() override;
     void OnShutdown() override;
 
+    // The first schema field ("Class::field") the methods below need that is missing from the schema, or nullptr. Natives
+    // check it first and raise a native error instead of reading at offset 0.
+    static const char* FindMissingSchemaField();
+
     CCSCustomHudLayoutState& GetLayoutState(CCSPlayerController* pController = nullptr);
     void SetHasClass(std::string sPanelId, std::string sClassName, bool bHasClass, CCSPlayerController* pController = nullptr);
     void SetDialogVariableString(std::string sPanelId,

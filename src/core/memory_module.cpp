@@ -521,13 +521,13 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
 std::optional<std::vector<std::uint8_t>>
 CModule::GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintptr_t rva, std::size_t size)
 {
-    auto get_file_ptr_from_rva = [](std::uint8_t* data, std::uintptr_t address) -> std::optional<std::uintptr_t> {
+    auto get_file_offset_from_rva = [](const std::uint8_t* data, std::uintptr_t address) -> std::optional<std::uintptr_t> {
 #ifdef _WIN32
         // thank you praydog
         // https://github.com/cursey/kananlib/blob/b0323a0b005fc9e3944e0ea36dcc98eda4b84eea/src/Module.cpp#L176
 
-        const auto dos_header = reinterpret_cast<PIMAGE_DOS_HEADER>(data);
-        const auto nt_header = reinterpret_cast<PIMAGE_NT_HEADERS>(&data[dos_header->e_lfanew]);
+        const auto dos_header = reinterpret_cast<const IMAGE_DOS_HEADER*>(data);
+        const auto nt_header = reinterpret_cast<const IMAGE_NT_HEADERS*>(&data[dos_header->e_lfanew]);
         auto section = IMAGE_FIRST_SECTION(nt_header);
         for (auto i = 0; i < nt_header->FileHeader.NumberOfSections; i++, section++)
         {
@@ -539,27 +539,24 @@ CModule::GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintp
 
             if (address >= section->VirtualAddress && address < static_cast<uintptr_t>(section->VirtualAddress) + section_size)
             {
-                const auto delta = section->VirtualAddress - section->PointerToRawData;
-
-                return reinterpret_cast<std::uintptr_t>(data + (address - delta));
+                return address - section->VirtualAddress + section->PointerToRawData;
             }
         }
         return std::nullopt;
 #else
         // On Linux the caller passes the segment's file offset (p_offset). It is not the RVA: in libserver.so the
         // executable segment has p_offset 0x9e40fc but p_vaddr 0x9e50fc.
-        return reinterpret_cast<std::uintptr_t>(data + address);
+        (void)data;
+        return address;
 #endif
     };
 
-    const auto disk_ptr = get_file_ptr_from_rva(const_cast<std::uint8_t*>(disk_data.data()), rva);
-    if (!disk_ptr) return std::nullopt;
+    const auto file_offset = get_file_offset_from_rva(disk_data.data(), rva);
+    // Compare offsets, never form a pointer outside the file.
+    if (!file_offset || *file_offset > disk_data.size() || size > disk_data.size() - *file_offset) return std::nullopt;
 
-    const auto disk_bytes = reinterpret_cast<std::uint8_t*>(*disk_ptr);
-    if (disk_bytes < disk_data.data() || disk_bytes + size > disk_data.data() + disk_data.size()) return std::nullopt;
-    std::vector<std::uint8_t> result{ &disk_bytes[0], &disk_bytes[size] };
-
-    return result;
+    const auto begin = disk_data.begin() + static_cast<std::ptrdiff_t>(*file_offset);
+    return std::vector<std::uint8_t>(begin, begin + static_cast<std::ptrdiff_t>(size));
 }
 
 void* CModule::FindSignature(const char* signature)

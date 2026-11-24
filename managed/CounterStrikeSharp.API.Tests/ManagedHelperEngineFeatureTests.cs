@@ -215,7 +215,8 @@ public class ManagedHelperEngineFeatureTests : IDisposable
     {
         InstallReport(("CBaseEntity_Teleport", BindingFailureReason.MissingFromGamedata));
 
-        var exception = Assert.Throws<EngineFeatureUnavailableException>(() => InvalidEntity.Teleport(new System.Numerics.Vector3(0, 0, 0)));
+        var exception =
+            Assert.Throws<EngineFeatureUnavailableException>(() => InvalidEntity.Teleport(new System.Numerics.Vector3(0, 0, 0)));
         Assert.Equal("cssharp.entity/teleport", exception.EngineFeature);
     }
 
@@ -287,7 +288,8 @@ public class ManagedHelperEngineFeatureTests : IDisposable
         InstallReport(("CBasePlayerPawn_RemovePlayerItem", BindingFailureReason.NotFound));
 
         Assert.Throws<EngineFeatureUnavailableException>(() => VirtualFunctions.RemovePlayerItemVirtual(IntPtr.Zero, IntPtr.Zero));
-        Assert.Equal("ItemServices points to null.", Assert.Throws<InvalidOperationException>(() => NullItemServices.RemoveWeapons()).Message);
+        Assert.Equal("ItemServices points to null.",
+            Assert.Throws<InvalidOperationException>(() => NullItemServices.RemoveWeapons()).Message);
     }
 
     // nav
@@ -310,7 +312,10 @@ public class ManagedHelperEngineFeatureTests : IDisposable
         var nativeDispatchSpawn = new EngineFeatureDeclaration("cssharp.entity/dispatch-spawn",
             [BindingDeclaration.Any("CBaseEntity_DispatchSpawn")]);
         EngineFeatures.Current = new EngineFeatureSet(new ResolutionReport(BuildId,
-            [new BindingResult("CBaseEntity_DispatchSpawn", BindingKind.Signature, false, BindingFailureReason.NotFound, 0, 0, 0, "server")],
+            [
+                new BindingResult("CBaseEntity_DispatchSpawn", BindingKind.Signature, false, BindingFailureReason.NotFound, 0, 0, 0,
+                    "server")
+            ],
             [nativeDispatchSpawn]), ManagedEngineFeatures.All);
 
         var exception = Assert.Throws<EngineFeatureUnavailableException>(() =>

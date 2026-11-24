@@ -15,15 +15,15 @@ namespace CounterStrikeSharp.API.Core.Bindings;
 /// </summary>
 internal static class ManagedEngineFeatures
 {
-    // ticket 06
+    // Chat
     public static readonly EngineFeatureDeclaration ChatClientPrint = new("cssharp.chat/client-print",
         [BindingDeclaration.Signature("ClientPrint"), BindingDeclaration.Signature("UTIL_ClientPrintAll")]);
 
-    // ticket 11
+    // Take damage
     public static readonly EngineFeatureDeclaration EntityTakeDamageHitGroup = new("cssharp.entity/take-damage-hit-group",
         [BindingDeclaration.Offset("CTakeDamageInfo_HitGroup")]);
 
-    // ticket 12
+    // Player, game rules, entity, item and nav mesh helpers
     public static readonly EngineFeatureDeclaration PlayerSetPawn = new("cssharp.player/set-pawn",
         [BindingDeclaration.Signature("CBasePlayerController_SetPawn")]);
 
@@ -90,26 +90,23 @@ internal static class ManagedEngineFeatures
     public static readonly EngineFeatureDeclaration NavMesh = new("cssharp.nav/nav-mesh",
         [BindingDeclaration.Signature("CCSNavArea_IsValidNavMesh")]);
 
-    // ticket 12: native-owned Engine Features (src/core/engine_features.cpp) whose Binding a core memory function in
+    // Native-owned Engine Features (src/core/engine_features.cpp) whose Binding a core memory function in
     // VirtualFunctions also binds to. Same name as the native row, so the Bindings union by name.
     public static readonly EngineFeatureDeclaration EntityDispatchSpawn = new("cssharp.entity/dispatch-spawn",
         [BindingDeclaration.Signature("CBaseEntity_DispatchSpawn")]);
 
     public static readonly EngineFeatureDeclaration EntityTakeDamageHooks = new("cssharp.entity/take-damage-hooks",
-        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld")]);
+        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld"), BindingDeclaration.Offset("CBaseEntity_IsPlayerPawn")]);
 
-    // ticket 15: native-owned; CCheckTransmitInfoList reads the player slot of each transmit info.
+    // Native-owned; CCheckTransmitInfoList reads the player slot of each transmit info.
     public static readonly EngineFeatureDeclaration NetworkCheckTransmit = new("cssharp.network/check-transmit",
         [BindingDeclaration.Offset("CheckTransmitPlayerSlot")]);
 
     /// <summary>Every managed Engine Feature. Keep after the fields above (static initialisation order).</summary>
     public static readonly IReadOnlyList<EngineFeatureDeclaration> All =
     [
-        // ticket 06
         ChatClientPrint,
-        // ticket 11
         EntityTakeDamageHitGroup,
-        // ticket 12
         PlayerSetPawn,
         PlayerSwitchTeam,
         PlayerChangeTeam,
@@ -134,7 +131,6 @@ internal static class ManagedEngineFeatures
         NavMesh,
         EntityDispatchSpawn,
         EntityTakeDamageHooks,
-        // ticket 15
         NetworkCheckTransmit,
     ];
 }

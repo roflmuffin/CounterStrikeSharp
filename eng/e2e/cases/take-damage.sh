@@ -34,6 +34,10 @@ echo "== take-damage: valid gamedata"
     status=1
 
 echo "== take-damage: CBaseEntity_TakeDamageOld missing, hit-group offset missing for linux"
+hit_group_exception='\[TakeDamageProbe\] hit group: EngineFeatureUnavailableException: Engine Feature '
+hit_group_exception+='cssharp\.entity/take-damage-hit-group is disabled \(CTakeDamageInfo_HitGroup: missing for this OS\)'
+refusal='Plugin "RequiresTakeDamageHooksTestPlugin\.dll" requires Engine Features that are not available on build [^:]+: '
+refusal+='cssharp\.entity/take-damage-hooks disabled \(CBaseEntity_TakeDamageOld: missing from gamedata\)\.'
 "$run" "$@" --no-build --plugin-project "$plugin" \
     --gamedata-jq 'del(.CBaseEntity_TakeDamageOld)' \
     --gamedata-jq 'del(.CTakeDamageInfo_HitGroup.offsets.linux)' \
@@ -44,9 +48,9 @@ echo "== take-damage: CBaseEntity_TakeDamageOld missing, hit-group offset missin
     --expect-log '^ +cssharp\.entity/take-damage-hooks disabled \(CBaseEntity_TakeDamageOld: missing from gamedata\)' \
     --expect-log '^ +cssharp\.entity/take-damage-hit-group disabled \(CTakeDamageInfo_HitGroup: missing for this OS\)' \
     --expect-log 'OnPlayerTakeDamagePre listener registered on cssharp\.entity/take-damage-hooks disabled' \
-    --expect-log '\[TakeDamageProbe\] hit group: EngineFeatureUnavailableException: Engine Feature cssharp\.entity/take-damage-hit-group is disabled \(CTakeDamageInfo_HitGroup: missing for this OS\)' \
+    --expect-log "$hit_group_exception" \
     --expect-log '\[TakeDamageProbe\] raw signature memory function bound: True' \
-    --expect-log 'Plugin "RequiresTakeDamageHooksTestPlugin\.dll" requires Engine Features that are not available on build [^:]+: cssharp\.entity/take-damage-hooks disabled \(CBaseEntity_TakeDamageOld: missing from gamedata\)\.' \
+    --expect-log "$refusal" \
     --expect-log 'Finished loading plugin Native Tests' \
     --expect-no-log 'Finished loading plugin Requires Take Damage Hooks Test' \
     --expect-no-log '\[TakeDamageProbe\] .* fired' ||

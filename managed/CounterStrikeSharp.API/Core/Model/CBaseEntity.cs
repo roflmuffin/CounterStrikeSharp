@@ -13,6 +13,7 @@ public partial class CBaseEntity
 {
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     /// <exception cref="ArgumentNullException">At least one parameter must be specified</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/teleport</c> is disabled</exception>
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
         Teleport(position == null ? null : (Vector3)position, angles == null ? null : (Vector3)angles,
@@ -124,22 +125,13 @@ public partial class CBaseEntity
     /// <summary>
     /// Returns true if the entity is a player pawn.
     /// </summary>
-    /// <exception cref="EngineFeatureUnavailableException">The <c>CBaseEntity_IsPlayerPawn</c> offset did not resolve.</exception>
+    /// <exception cref="EngineFeatureUnavailableException">The <c>cssharp.entity/take-damage-hooks</c> Engine Feature is
+    /// disabled.</exception>
     public bool IsPlayerPawn()
     {
+        var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.EntityTakeDamageHooks, "CBaseEntity_IsPlayerPawn");
         Guard.IsValidEntity(this);
 
-        return VirtualFunction.Create<IntPtr, bool>(Handle, IsPlayerPawnOffset(EngineFeatures.Current))(Handle);
-    }
-
-    // A Binding of take-damage-hooks, but this helper needs only its own offset: a broken take-damage signature must
-    // not break it (it worked independently before).
-    internal static int IsPlayerPawnOffset(EngineFeatureSet features)
-    {
-        var binding = features.Report.Find("CBaseEntity_IsPlayerPawn");
-        if (binding is { Resolved: true, Kind: BindingKind.Offset }) return checked((int)binding.Offset);
-
-        throw new EngineFeatureUnavailableException(EngineFeatureNames.EntityTakeDamageHooks, "CBaseEntity_IsPlayerPawn",
-            binding is { Resolved: false } ? binding.Reason : BindingFailureReason.MissingFromGamedata, binding?.MatchCount ?? 0);
+        return VirtualFunction.Create<IntPtr, bool>(Handle, offset)(Handle);
     }
 }

@@ -87,34 +87,40 @@ static void FillResult(CSSTraceResult* out, const CGameTrace& trace)
     out->m_bExactHitPoint = trace.m_bExactHitPoint ? 1 : 0;
 }
 
-static CTraceFilter BuildFilter(CEntityInstance* pIgnore, uint64_t interactsAs, uint64_t interactsWith, uint64_t interactsExclude)
+// Raises a native error naming the schema field if one it needs is missing (never reads at offset 0).
+static std::optional<CTraceFilter> BuildFilter(
+    ScriptContext& script_context, CEntityInstance* pIgnore, uint64_t interactsAs, uint64_t interactsWith, uint64_t interactsExclude)
 {
     CEntityInstance* pOwner = nullptr;
     uint16 nHierarchy = static_cast<uint16>(0xFFFF);
 
     if (pIgnore)
     {
-        static auto classKey = hash_32_fnv1a_const("CBaseEntity");
-        static auto ownerKey = hash_32_fnv1a_const("m_hOwnerEntity");
-        static auto collKey = hash_32_fnv1a_const("m_pCollision");
-        static const auto ownerField = schema::GetOffset("CBaseEntity", classKey, "m_hOwnerEntity", ownerKey);
-        static const auto collField = schema::GetOffset("CBaseEntity", classKey, "m_pCollision", collKey);
+        static const auto ownerField = schema::FindField("CBaseEntity", "m_hOwnerEntity");
+        static const auto collField = schema::FindField("CBaseEntity", "m_pCollision");
+        static const auto attrField = schema::FindField("CCollisionProperty", "m_collisionAttribute");
+        static const auto hierarchyField = schema::FindField("VPhysicsCollisionAttribute_t", "m_nHierarchyId");
 
-        auto ownerHandle = *reinterpret_cast<CEntityHandle*>((uintptr_t)pIgnore + ownerField.offset);
+        const std::pair<const std::optional<SchemaKey>&, const char*> fields[] = {
+            { ownerField, "CBaseEntity::m_hOwnerEntity" },
+            { collField, "CBaseEntity::m_pCollision" },
+            { attrField, "CCollisionProperty::m_collisionAttribute" },
+            { hierarchyField, "VPhysicsCollisionAttribute_t::m_nHierarchyId" },
+        };
+        for (const auto& [field, name] : fields)
+        {
+            if (field) continue;
+            script_context.ThrowNativeError("Schema field %s not found", name);
+            return std::nullopt;
+        }
+
+        auto ownerHandle = *reinterpret_cast<CEntityHandle*>((uintptr_t)pIgnore + ownerField->offset);
         pOwner = globals::entitySystem->GetEntityInstance(ownerHandle);
 
-        auto* pColl = *reinterpret_cast<uint8_t**>((uintptr_t)pIgnore + collField.offset);
+        auto* pColl = *reinterpret_cast<uint8_t**>((uintptr_t)pIgnore + collField->offset);
         if (pColl)
         {
-            static auto collClassKey = hash_32_fnv1a_const("CCollisionProperty");
-            static auto attrKey = hash_32_fnv1a_const("m_collisionAttribute");
-            static const auto attrField = schema::GetOffset("CCollisionProperty", collClassKey, "m_collisionAttribute", attrKey);
-            static auto attrClassKey = hash_32_fnv1a_const("VPhysicsCollisionAttribute_t");
-            static auto hierarchyKey = hash_32_fnv1a_const("m_nHierarchyId");
-            static const auto hierarchyField =
-                schema::GetOffset("VPhysicsCollisionAttribute_t", attrClassKey, "m_nHierarchyId", hierarchyKey);
-
-            nHierarchy = *reinterpret_cast<uint16*>(pColl + attrField.offset + hierarchyField.offset);
+            nHierarchy = *reinterpret_cast<uint16*>(pColl + attrField->offset + hierarchyField->offset);
         }
     }
 
@@ -138,10 +144,11 @@ static void NativeTraceShape(ScriptContext& script_context)
     AngleVectors(*angAngles, &forward);
     Vector vecEnd{ vecStart->x + forward.x * 8192.f, vecStart->y + forward.y * 8192.f, vecStart->z + forward.z * 8192.f };
 
-    CTraceFilter filter = BuildFilter(pIgnore, interactsAs, interactsWith, interactsExclude);
+    auto filter = BuildFilter(script_context, pIgnore, interactsAs, interactsWith, interactsExclude);
+    if (!filter) return;
     Ray_t ray;
     CGameTrace trace;
-    INavPhysicsInterface::TraceShape(ray, *vecStart, vecEnd, &filter, &trace);
+    INavPhysicsInterface::TraceShape(ray, *vecStart, vecEnd, &*filter, &trace);
     FillResult(out, trace);
 }
 
@@ -155,10 +162,11 @@ static void NativeTraceEndShape(ScriptContext& script_context)
     uint64_t interactsExclude = script_context.GetArgument<uint64_t>(5);
     auto* out = script_context.GetArgument<CSSTraceResult*>(6);
 
-    CTraceFilter filter = BuildFilter(pIgnore, interactsAs, interactsWith, interactsExclude);
+    auto filter = BuildFilter(script_context, pIgnore, interactsAs, interactsWith, interactsExclude);
+    if (!filter) return;
     Ray_t ray;
     CGameTrace trace;
-    INavPhysicsInterface::TraceShape(ray, *vecStart, *vecEnd, &filter, &trace);
+    INavPhysicsInterface::TraceShape(ray, *vecStart, *vecEnd, &*filter, &trace);
     FillResult(out, trace);
 }
 
@@ -174,10 +182,11 @@ static void NativeTraceHullShape(ScriptContext& script_context)
     uint64_t interactsExclude = script_context.GetArgument<uint64_t>(7);
     auto* out = script_context.GetArgument<CSSTraceResult*>(8);
 
-    CTraceFilter filter = BuildFilter(pIgnore, interactsAs, interactsWith, interactsExclude);
+    auto filter = BuildFilter(script_context, pIgnore, interactsAs, interactsWith, interactsExclude);
+    if (!filter) return;
     Ray_t ray(*vecMins, *vecMaxs);
     CGameTrace trace;
-    INavPhysicsInterface::TraceShape(ray, *vecStart, *vecEnd, &filter, &trace);
+    INavPhysicsInterface::TraceShape(ray, *vecStart, *vecEnd, &*filter, &trace);
     FillResult(out, trace);
 }
 

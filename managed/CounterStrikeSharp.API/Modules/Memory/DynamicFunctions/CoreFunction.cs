@@ -44,15 +44,17 @@ internal sealed class CoreFunction
     /// <summary>The Signature Binding <paramref name="key"/> of <paramref name="feature"/>, from the Resolution Report.</summary>
     public static CoreFunction FromEngineFeature(EngineFeatureDeclaration feature, string key) => new(feature, key);
 
-    /// <summary>Creates the native function. Throws <see cref="EngineFeatureUnavailableException"/> if the Engine Feature is disabled.</summary>
+    /// <summary>Creates the native function. Throws <see cref="EngineFeatureUnavailableException"/> if the Engine Feature is
+    /// disabled.</summary>
     internal IntPtr Bind(DataType returnType, DataType[] parameters) =>
         CreateFunction(EngineFeatures.Current.GetAddress(Feature, Key), returnType, parameters);
 
     /// <summary>
-    /// Whether a hook may be installed. On a disabled Engine Feature the hook stays a no-op: warned once, never fires.
+    /// Whether a hook may be installed. On a disabled Engine Feature the hook stays a no-op: warned once per registrant
+    /// (the assembly of the hooking plugin), never fires.
     /// </summary>
-    internal bool CanHook() =>
-        EngineFeatures.Current.CheckRegistration(Feature.Name, $"Memory function hook on {Key}", Logger);
+    internal bool CanHook(object registrant) =>
+        EngineFeatures.Current.CheckRegistration(Feature.Name, $"Memory function hook on {Key}", Logger, registrant);
 
     /// <summary>Whether anything can have been hooked (false on a disabled Engine Feature, where hooks are no-ops).</summary>
     internal bool CanUnhook() => EngineFeatures.Current.IsAvailable(Feature.Name);

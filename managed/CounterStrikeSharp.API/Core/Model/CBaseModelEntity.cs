@@ -21,6 +21,7 @@ namespace CounterStrikeSharp.API.Core;
 public partial class CBaseModelEntity
 {
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/set-model</c> is disabled</exception>
     public void SetModel(string model)
     {
         Guard.IsValidEntity(this);

@@ -98,7 +98,8 @@ public class CoreFunctionTests : IDisposable
     public void AKeyMissingFromGamedataOnlyBreaksItsOwnHelper()
     {
         // UTIL_Remove is absent from the report.
-        InstallReport(Resolved("ClientPrint", 0x1000), Resolved("UTIL_ClientPrintAll", 0x2000), Resolved("UTIL_CreateEntityByName", 0x6000));
+        InstallReport(Resolved("ClientPrint", 0x1000), Resolved("UTIL_ClientPrintAll", 0x2000),
+            Resolved("UTIL_CreateEntityByName", 0x6000));
 
         var missing = Assert.Throws<EngineFeatureUnavailableException>(() => VirtualFunctions.UTIL_Remove(IntPtr.Zero));
         Assert.Equal("Engine Feature cssharp.entity/remove is disabled (UTIL_Remove: missing from gamedata)", missing.Message);

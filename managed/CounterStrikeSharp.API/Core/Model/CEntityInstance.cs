@@ -32,6 +32,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     
     public string DesignerName => IsValid ? Entity?.DesignerName : null;
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/remove</c> is disabled</exception>
     public void Remove()
     {
         Guard.IsValidEntity(this);

@@ -51,7 +51,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeTestsPlugin", "Counte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithVirtualFunctions", "..\examples\WithVirtualFunctions\WithVirtualFunctions.csproj", "{A12A301B-A2FD-404B-95C0-C7E654D3A03C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequiresSayHooksTestPlugin", "CounterStrikeSharp.Tests.RequiredEngineFeatures\RequiresSayHooksTestPlugin.csproj", "{7009A13D-68E7-4937-BAA5-CF527541513E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequiresSayHooksTestPlugin", "CounterStrikeSharp.Tests.RequiresSayHooks\RequiresSayHooksTestPlugin.csproj", "{7009A13D-68E7-4937-BAA5-CF527541513E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequiresTakeDamageHooksTestPlugin", "CounterStrikeSharp.Tests.RequiresTakeDamageHooks\RequiresTakeDamageHooksTestPlugin.csproj", "{1592FFA2-502D-4A7C-B7A2-09543606172E}"
 EndProject

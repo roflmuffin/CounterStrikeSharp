@@ -200,7 +200,10 @@ build_native() {
         -DCMAKE_BUILD_TYPE=Release >"$E2E_HOME/build/native-configure.log" 2>&1 \
         || { tail -30 "$E2E_HOME/build/native-configure.log"; die "native configure failed"; }
     "${run[@]}" cmake --build "$NATIVE_BUILD" >"$E2E_HOME/build/native-build.log" 2>&1 \
-        || { grep -E 'error:|FAILED:' "$E2E_HOME/build/native-build.log" | head -30; die "native build failed (see $E2E_HOME/build/native-build.log)"; }
+        || {
+            grep -E 'error:|FAILED:' "$E2E_HOME/build/native-build.log" | head -30
+            die "native build failed (see $E2E_HOME/build/native-build.log)"
+        }
 }
 
 # The API's compat check rewrites CompatibilitySuppressions.xml in the checkout; the harness skips it.
@@ -559,7 +562,8 @@ for re in "${expect[@]}"; do
     else log "CHECK FAILED: no log line matches /$re/"; check_failures=$((check_failures + 1)); fi
 done
 for re in "${expect_not[@]}"; do
-    if grep -hqE -- "$re" "${logs[@]}" 2>/dev/null; then log "CHECK FAILED: a log line matches /$re/"; check_failures=$((check_failures + 1))
+    if grep -hqE -- "$re" "${logs[@]}" 2>/dev/null; then
+        log "CHECK FAILED: a log line matches /$re/"; check_failures=$((check_failures + 1))
     else log "check ok: no log line matches /$re/"; fi
 done
 for c in "${checks[@]}"; do

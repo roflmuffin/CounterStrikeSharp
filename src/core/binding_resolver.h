@@ -18,6 +18,8 @@
 #undef snprintf
 #include <nlohmann/json.hpp>
 
+#include "core/schema_field_status.h"
+
 namespace counterstrikesharp::bindings {
 
 // --- Inputs ---
@@ -60,13 +62,6 @@ struct ModuleSegment
     std::size_t size = 0;
 };
 
-enum class SchemaFieldStatus : std::uint8_t
-{
-    Found,
-    ClassMissing,
-    FieldMissing,
-};
-
 struct SchemaFieldLookup
 {
     SchemaFieldStatus status = SchemaFieldStatus::ClassMissing;
@@ -92,7 +87,7 @@ enum class BindingStatus : std::uint8_t
     Failed,
 };
 
-// Closed set (spec A). Append only: values cross the native/managed boundary.
+// Closed set. Append only: values cross the native/managed boundary.
 enum class FailureReason : std::uint8_t
 {
     None,
@@ -190,7 +185,7 @@ std::string FormatBindingSummary(const ResolutionReport& report);
 
 // The report as one JSON document for managed (the GET_RESOLUTION_REPORT native):
 // { "buildId": "...",
-//   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable", "resolved", "reason": <FailureReason name>,
+//   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable"|"SchemaField", "resolved", "reason": <FailureReason name>,
 //                   "matchCount", "address", "offset", "library" } ],
 //   "features": [ { "name", "bindings": [ "<key>", ... ] } ] }   <- the native-owned Engine Features
 // Enum values travel by name (the C++ enumerator names), so managed never depends on their numeric values.

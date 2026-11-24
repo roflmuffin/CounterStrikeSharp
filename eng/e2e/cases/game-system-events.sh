@@ -38,6 +38,8 @@ echo "== game-system-events: valid gamedata"
     status=1
 
 echo "== game-system-events: IGameSystem_InitAllSystems_pFirst not found"
+precache_never_fires='OnServerPrecacheResources listener registered on cssharp\.server/game-system-events disabled '
+precache_never_fires+='(IGameSystem_InitAllSystems_pFirst: not found); it will never fire'
 "$run" "$@" --no-build --exec css_engine_features \
     --gamedata-jq '.IGameSystem_InitAllSystems_pFirst.signatures.linux = "DE AD BE EF 13 37 C0 DE 42 42"' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*IGameSystem_InitAllSystems_pFirst \(not found\)' \
@@ -46,7 +48,7 @@ echo "== game-system-events: IGameSystem_InitAllSystems_pFirst not found"
     --expect-log '^ +cssharp\.server/game-system-events disabled \(IGameSystem_InitAllSystems_pFirst: not found\)' \
     --expect-log '\[EngineFeatures\] cssharp\.server/game-system-events disabled' \
     --expect-no-log 'Initialized GameSystem' \
-    --check '[ "$(grep -c "OnServerPrecacheResources listener registered on cssharp\.server/game-system-events disabled (IGameSystem_InitAllSystems_pFirst: not found); it will never fire" server-console.log)" = 1 ]' \
+    --check "[ \"\$(grep -c \"$precache_never_fires\" server-console.log)\" = 1 ]" \
     --check '[ "$(grep -c "OnServerPreEntityThink listener registered on cssharp\.server/game-system-events" server-console.log)" = 1 ]' \
     --check "$(outcome failed "${tests[@]}")" ||
     status=1

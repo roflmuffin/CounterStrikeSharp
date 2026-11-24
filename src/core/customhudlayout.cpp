@@ -42,6 +42,26 @@ CCSCustomHudLayout::Hook_ClientSvcUserMessage(IServerGameClients* hookThis, CPla
     return { KHook::Action::Ignore };
 }
 
+const char* CCSCustomHudLayout::FindMissingSchemaField()
+{
+    static const std::string missing = [] {
+        static constexpr std::pair<const char*, const char*> fields[] = {
+            { "CCSCustomHudLayout", "m_vecPlayerLayoutStates" },
+            { "CCSCustomHudLayout", "m_globalLayoutState" },
+            { "CCSCustomHudLayout", "m_vecPanelIds" },
+            { "CCSCustomHudLayout", "m_vecClassNames" },
+            { "CCSCustomHudLayout", "m_vecDialogVariableNames" },
+            { "CCSCustomHudLayoutState", "m_bInputCaptureEnabled" },
+            { "CCSCustomHudLayoutState", "m_vecHasClasses" },
+            { "CCSCustomHudLayoutState", "m_vecDialogVariableStrings" },
+        };
+        for (const auto& [className, fieldName] : fields)
+            if (!schema::FindField(className, fieldName)) return std::string(className) + "::" + fieldName;
+        return std::string();
+    }();
+    return missing.empty() ? nullptr : missing.c_str();
+}
+
 CCSCustomHudLayoutState& CCSCustomHudLayout::GetLayoutState(CCSPlayerController* pController)
 {
     if (!pController) return *m_globalLayoutState;

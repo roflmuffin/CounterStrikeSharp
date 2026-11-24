@@ -66,6 +66,7 @@ public partial class CCSPlayer_ItemServices
         return FastNew.CreateInstance<T, IntPtr>(pointer);
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.items/can-acquire-hooks</c> is disabled</exception>
     public AcquireResult CanAcquire(CEconItemView itemView, AcquireMethod method, IntPtr unknown = 0)
     {
         return VirtualFunctions.CCSPlayer_ItemServices_CanAcquireFunc.Invoke(this, itemView, method, unknown);

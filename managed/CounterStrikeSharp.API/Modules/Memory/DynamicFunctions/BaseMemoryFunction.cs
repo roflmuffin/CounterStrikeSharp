@@ -86,7 +86,8 @@ public abstract class BaseMemoryFunction : NativeObject
     /// </summary>
     /// <param name="signature">Signature bytes, space-separated hex ("55 48 ? E5") or code style ("\x55\x48\x2A\xE5").</param>
     /// <param name="binarypath">Path of the binary to scan, e.g. <see cref="Addresses.ServerPath"/>.</param>
-    /// <param name="strict">If true, a signature that matches more than once fails as ambiguous instead of binding to the first match.</param>
+    /// <param name="strict">If true, a signature that matches more than once fails as ambiguous instead of binding to the first
+    /// match.</param>
     /// <param name="returnType">Return type.</param>
     /// <param name="parameters">Parameter types.</param>
     public BaseMemoryFunction(string signature, string binarypath, bool strict, DataType returnType, DataType[] parameters) : base(
@@ -164,7 +165,7 @@ public abstract class BaseMemoryFunction : NativeObject
     public void Hook(Func<DynamicHook, HookResult> handler, HookMode mode)
     {
         // On a disabled Engine Feature the hook registers but never fires (logged once), instead of throwing.
-        if (_core != null && !_core.CanHook()) return;
+        if (_core != null && !_core.CanHook(handler.Method.Module.Assembly)) return;
 
         EnsureBound();
         NativeAPI.HookFunction(Handle, handler, mode == HookMode.Post);
