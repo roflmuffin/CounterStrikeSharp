@@ -8,7 +8,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Prefactor).
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 0 standalone · must
 
@@ -16,3 +16,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Prefactor).
 - [ ] With dispatch-spawn unresolved, calling it from a plugin gives a clear error, no crash
 - [ ] With the legacy game-event listener unresolved, firing an event to a client gives a clear error, no crash
 - [ ] Behaviour with valid Gamedata is unchanged
+
+## Comments
+
+- Resolved on `hardening/spec-a` (merge of `spec-a/02-crash-guards`). Native build passes. Boot/E2E criteria pending the harness. Also guarded `AddResource` (null `m_exportResourceManifest`); a game-system miss now continues loading.
