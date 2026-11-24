@@ -16,6 +16,14 @@ _Avoid_: sig (for the concept), gamedata entry, address
 A named piece of CounterStrikeSharp functionality that depends on one or more Bindings, and is either available or disabled as a whole. Examples: ClientPrint, entity output hooks, take-damage hooks.
 _Avoid_: capability (that means plugin-to-plugin services), feature (bare)
 
+**Resolution Report**:
+The immutable record of how every Binding resolved against one CS2 build: which resolved, where, and why the others failed. Engine Feature availability is read from it.
+_Avoid_: gamedata status, binding state
+
+**Required Engine Feature**:
+An Engine Feature a plugin declares it cannot run without; if it is disabled, that plugin does not load.
+_Avoid_: dependency (ambiguous with plugin dependencies)
+
 **Game update**:
 A new CS2 build shipped by Valve. It may move or remove things Bindings point at.
 _Avoid_: patch (ambiguous with binary patches)

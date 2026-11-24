@@ -32,6 +32,13 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
 - Tests: (1) new C++ doctest target (own PR first): uniqueness + registry on synthetic buffers, optional local archived libserver.so fixture; (2) managed API.Tests: IsAvailable, typed exception, startup report via fake resolver; (3) laptop live smoke with deliberately broken Gamedata keys.
 - Managed owns the public EngineFeature enum, IsAvailable and the merged startup report; native exposes Binding/feature state via one native call and logs one early line in case .NET never starts; names matched by string.
 
+## Decisions (grilling round 4: values over places)
+
+- Resolution Report: one immutable value per build; availability = pure function of it; reload swaps the whole value. ADR-0002.
+- Engine Feature identity = stable namespaced string (`cssharp.entity/take-damage-hooks`); enum generated as convenience. ADR-0002.
+- Plugins may declare Required Engine Features; missing → that plugin refuses to load. ADR-0002.
+- Spec C: Gamedata stored per build id (accumulate, never overwrite in place); design there.
+
 ## Plan of record
 
 1. `/grill-with-docs`: decisions that span all items (T1 vs T1+T2, capability API, I1 migration, CI host, order). Writes `GLOSSARY.md` + `docs/adr/`.
