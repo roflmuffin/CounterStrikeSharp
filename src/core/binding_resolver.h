@@ -14,6 +14,8 @@
 #include <string_view>
 #include <vector>
 
+// metamod_oslink.h maps snprintf to _snprintf on Windows, which breaks nlohmann/json (same as gameconfig.h).
+#undef snprintf
 #include <nlohmann/json.hpp>
 
 namespace counterstrikesharp::bindings {
