@@ -71,6 +71,10 @@ set(SOURCE_FILES
     src/core/memory_module.cpp
     src/core/signature.h
     src/core/signature.cpp
+    src/core/binding_resolver.h
+    src/core/binding_resolver.cpp
+    src/core/engine_features.h
+    src/core/engine_features.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
