@@ -1,4 +1,5 @@
 #include "core/cs2_sdk/schema.h"
+#include "core/core_bindings.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
 #include "entity2/variant.h"
@@ -187,7 +188,8 @@ class CBaseEntity : public CEntityInstance
   public:
     bool IsPawn()
     {
-        static int offset = counterstrikesharp::globals::gameConfig->GetOffset("CBaseEntity_IsPlayerPawn");
+        // Only called from the take-damage hooks, which are registered only when this Binding resolved.
+        static int offset = static_cast<int>(counterstrikesharp::bindings::GetBindingOffset("CBaseEntity_IsPlayerPawn").value_or(-1));
         return CALL_VIRTUAL(bool, offset, this);
     }
 };

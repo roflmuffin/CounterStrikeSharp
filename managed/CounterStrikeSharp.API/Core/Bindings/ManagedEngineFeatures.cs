@@ -19,6 +19,10 @@ internal static class ManagedEngineFeatures
     public static readonly EngineFeatureDeclaration ChatClientPrint = new("cssharp.chat/client-print",
         [BindingDeclaration.Signature("ClientPrint"), BindingDeclaration.Signature("UTIL_ClientPrintAll")]);
 
+    // ticket 11
+    public static readonly EngineFeatureDeclaration EntityTakeDamageHitGroup = new("cssharp.entity/take-damage-hit-group",
+        [BindingDeclaration.Offset("CTakeDamageInfo_HitGroup")]);
+
     // ticket 12
     public static readonly EngineFeatureDeclaration PlayerSetPawn = new("cssharp.player/set-pawn",
         [BindingDeclaration.Signature("CBasePlayerController_SetPawn")]);
@@ -99,6 +103,8 @@ internal static class ManagedEngineFeatures
     [
         // ticket 06
         ChatClientPrint,
+        // ticket 11
+        EntityTakeDamageHitGroup,
         // ticket 12
         PlayerSetPawn,
         PlayerSwitchTeam,

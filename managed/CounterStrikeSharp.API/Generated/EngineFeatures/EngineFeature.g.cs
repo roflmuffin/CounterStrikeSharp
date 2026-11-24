@@ -45,6 +45,9 @@ public enum EngineFeature
     /// <summary><c>cssharp.entity/skeleton-instance</c></summary>
     EntitySkeletonInstance = -644173420,
 
+    /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
+    EntityTakeDamageHitGroup = 494872892,
+
     /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
     EntityTakeDamageHooks = 1288636203,
 
@@ -142,6 +145,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.entity/skeleton-instance</c></summary>
     public const string EntitySkeletonInstance = "cssharp.entity/skeleton-instance";
 
+    /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
+    public const string EntityTakeDamageHitGroup = "cssharp.entity/take-damage-hit-group";
+
     /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
     public const string EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
 
@@ -216,6 +222,7 @@ public static class EngineFeatureNames
         EngineFeature.EntityRemove => EntityRemove,
         EngineFeature.EntitySetModel => EntitySetModel,
         EngineFeature.EntitySkeletonInstance => EntitySkeletonInstance,
+        EngineFeature.EntityTakeDamageHitGroup => EntityTakeDamageHitGroup,
         EngineFeature.EntityTakeDamageHooks => EntityTakeDamageHooks,
         EngineFeature.EntityTeleport => EntityTeleport,
         EngineFeature.EntityTriggerTouchHooks => EntityTriggerTouchHooks,
