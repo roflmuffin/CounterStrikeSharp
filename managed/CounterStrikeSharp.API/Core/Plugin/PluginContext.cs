@@ -202,6 +202,11 @@ namespace CounterStrikeSharp.API.Core.Plugin
                     throw new Exception(
                         $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
 
+                if (RequiredEngineFeatureCheck.DeclaresAny(pluginType) &&
+                    RequiredEngineFeatureCheck.GetRefusal(pluginType, Path.GetFileName(_path), EngineFeatures.Current) is
+                        { } refusal)
+                    throw new Exception(refusal);
+
                 _logger.LogInformation("Loading plugin {Name}", pluginType.Assembly.GetName().Name);
 
                 _serviceScope = ServiceProvider.CreateScope();
