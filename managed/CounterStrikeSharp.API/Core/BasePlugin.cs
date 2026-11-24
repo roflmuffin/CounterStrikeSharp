@@ -606,7 +606,8 @@ namespace CounterStrikeSharp.API.Core
                 () => UnhookEntityOutput(classname, outputName, handler));
 
             // On a disabled Engine Feature the hook stays registered but never fires (logged once).
-            if (EngineFeatures.Current.CheckRegistration(EngineFeatureNames.EntityOutputHooks, "Entity output hook", Logger))
+            if (EngineFeatures.Current.CheckRegistration(EngineFeatureNames.EntityOutputHooks, "Entity output hook",
+                    Logger ?? Application.Instance.Logger))
             {
                 NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             }
