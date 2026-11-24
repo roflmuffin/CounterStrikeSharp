@@ -6,7 +6,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API). ADR-0001 (no
 
 **Blocked by:** 04
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · later
 
@@ -14,3 +14,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API). ADR-0001 (no
 - [ ] With strict mode on, the same signature fails with an "ambiguous" reason
 - [ ] A plugin signature that is not found logs a clear message at creation, and calling it throws a clear error
 - [ ] Existing plugins with unique signatures see no change
+
+## Comments
+
+- Resolved on `hardening/spec-a` (merge of `spec-a/14-plugin-signatures-warn-when-ambiguous`). Native `COUNT_SIGNATURE_MATCHES` reuses the resolver counter; managed `SignatureFunctions` warns once on ambiguity; strict opt-in via new `bool strict` ctors on memory functions; unbound functions throw `NativeException` naming the reason. Managed 38/38, doctest pass. Not exercised on a live server. Not covered: raw `NativeAPI.FindSignature`.

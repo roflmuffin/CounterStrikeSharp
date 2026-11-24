@@ -285,3 +285,36 @@ TEST_CASE("ParseGamedata ignores entries it cannot read instead of throwing")
     CHECK_FALSE(parsed.at("C").offset.has_value());
     CHECK(ParseGamedata(json::array(), "linux").empty());
 }
+
+TEST_CASE("ScanSignature counts every match of a raw signature across segments and reports the first")
+{
+    FakeModule server{ { { 0x55, 0x48, 0x90 }, { 0x90, 0x55, 0x48 } } };
+
+    SUBCASE("ambiguous")
+    {
+        auto scan = ScanSignature(server.Image(), "55 48");
+        CHECK(scan.validPattern);
+        CHECK(scan.matchCount == 2);
+        CHECK(scan.firstMatch == kServerBase);
+    }
+    SUBCASE("code style")
+    {
+        auto scan = ScanSignature(server.Image(), R"(\x55\x48\x90)");
+        CHECK(scan.validPattern);
+        CHECK(scan.matchCount == 1);
+        CHECK(scan.firstMatch == kServerBase);
+    }
+    SUBCASE("not found")
+    {
+        auto scan = ScanSignature(server.Image(), "AA BB");
+        CHECK(scan.validPattern);
+        CHECK(scan.matchCount == 0);
+        CHECK(scan.firstMatch == 0);
+    }
+    SUBCASE("invalid hex")
+    {
+        auto scan = ScanSignature(server.Image(), "55 ZZ");
+        CHECK_FALSE(scan.validPattern);
+        CHECK(scan.matchCount == 0);
+    }
+}

@@ -9,6 +9,7 @@
 #include "core/globals.h"
 #include "core/log.h"
 #include "core/memory_module.h"
+#include "core/signature.h"
 #include "core/utils.h"
 #include "schema.h"
 
@@ -17,10 +18,8 @@ namespace {
 
 ResolutionReport coreReport;
 
-void AddModule(ModuleImages& images, const char* library, modules::CModule* module)
+ModuleImage ImageOf(modules::CModule* module)
 {
-    if (module == nullptr) return;
-
     ModuleImage image;
     for (const auto& segment : module->GetSegments())
     {
@@ -32,7 +31,13 @@ void AddModule(ModuleImages& images, const char* library, modules::CModule* modu
     image.findVirtualTable = [module](std::string_view name) {
         return reinterpret_cast<std::uintptr_t>(module->FindVirtualTable(std::string(name)));
     };
-    images.emplace(library, std::move(image));
+    return image;
+}
+
+void AddModule(ModuleImages& images, const char* library, modules::CModule* module)
+{
+    if (module == nullptr) return;
+    images.emplace(library, ImageOf(module));
 }
 
 // Schema fields live in the server module's schema type scope.
@@ -107,6 +112,18 @@ std::optional<std::int64_t> GetBindingOffset(std::string_view key)
     if (binding == nullptr || !binding->Resolved() || (binding->kind != BindingKind::Offset && binding->kind != BindingKind::SchemaField))
         return std::nullopt;
     return binding->offset;
+}
+
+SignatureScan ScanModuleSignature(const char* moduleName, std::string_view signature)
+{
+    auto* module = modules::GetModuleByName(moduleName);
+    if (module == nullptr)
+    {
+        SignatureScan scan;
+        scan.validPattern = !ParseSignature(signature).empty();
+        return scan;
+    }
+    return ScanSignature(ImageOf(module), signature);
 }
 
 bool ShouldRegisterHooks(std::string_view feature, std::string_view what)

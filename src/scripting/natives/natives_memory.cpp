@@ -18,6 +18,7 @@
 #include <sstream>
 #include <unordered_map>
 
+#include "core/core_bindings.h"
 #include "core/function.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
@@ -87,6 +88,19 @@ void* FindSignatureNative(ScriptContext& scriptContext)
     auto bytesStr = scriptContext.GetArgument<const char*>(1);
 
     return FindSignature(moduleName, bytesStr);
+}
+
+// Match count of a raw signature across the module's segments (on-disk bytes where available), or -1 for an invalid
+// pattern. Lets the managed side warn about (or, in strict mode, reject) ambiguous plugin signatures.
+int CountSignatureMatchesNative(ScriptContext& scriptContext)
+{
+    auto moduleName = scriptContext.GetArgument<const char*>(0);
+    auto bytesStr = scriptContext.GetArgument<const char*>(1);
+    if (moduleName == nullptr || bytesStr == nullptr) return -1;
+
+    const auto scan = bindings::ScanModuleSignature(moduleName, bytesStr);
+    if (!scan.validPattern) return -1;
+    return static_cast<int>(scan.matchCount);
 }
 
 void* FindVirtualTableNative(ScriptContext& scriptContext)
@@ -394,6 +408,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignatureNative);
     ScriptEngine::RegisterNativeHandler("FIND_VIRTUAL_TABLE", FindVirtualTableNative);
+    ScriptEngine::RegisterNativeHandler("COUNT_SIGNATURE_MATCHES", CountSignatureMatchesNative);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("REMOVE_ALL_NETWORK_VECTOR_ELEMENTS", RemoveAllNetworkVectorElements);

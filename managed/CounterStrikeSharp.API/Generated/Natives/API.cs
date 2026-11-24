@@ -1663,6 +1663,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static int CountSignatureMatches(string modulepath, string signature){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushString(modulepath);
+			ScriptContext.GlobalScriptContext.PushString(signature);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x9D945147);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
+			}
+		}
+
         public static int GetNetworkVectorSize(IntPtr vec){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
