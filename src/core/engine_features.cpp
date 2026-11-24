@@ -22,6 +22,12 @@ BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKin
 // Additive only. A Binding may appear in several rows; it is resolved once.
 const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
+    // ticket 08
+    { std::string(features::EntityOutputHooks), { Signature("CEntityIOOutput_FireOutputInternal") } },
+    { std::string(features::EntityAcceptInput), { Signature("CEntityInstance_AcceptInput") } },
+    { std::string(features::EntityAddIoEvent), { Signature("CEntitySystem_AddEntityIOEvent") } },
+    { std::string(features::EntityEmitSound), { Signature("CBaseEntity_EmitSoundFilter") } },
+    { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
 };
 
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)

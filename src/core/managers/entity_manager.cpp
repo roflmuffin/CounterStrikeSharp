@@ -15,6 +15,7 @@
  */
 
 #include "core/managers/entity_manager.h"
+#include "core/core_bindings.h"
 #include "core/function.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
@@ -60,46 +61,21 @@ void EntityManager::OnAllInitialized()
     on_player_take_damage_pre_callback = globals::callbackManager.CreateCallback("OnPlayerTakeDamagePre");
     on_player_take_damage_post_callback = globals::callbackManager.CreateCallback("OnPlayerTakeDamagePost");
 
-    m_pFireOutputInternal = reinterpret_cast<FireOutputInternal>(
-        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntityIOOutput_FireOutputInternal")));
+    // Each of these Engine Features is resolved on its own: a failed Binding leaves only its function null (the natives
+    // calling it then fail with an error) and is named in the boot Resolution Report.
+    CEntityInstance_AcceptInput =
+        reinterpret_cast<decltype(CEntityInstance_AcceptInput)>(bindings::GetBindingAddress("CEntityInstance_AcceptInput"));
+    CEntitySystem_AddEntityIOEvent =
+        reinterpret_cast<decltype(CEntitySystem_AddEntityIOEvent)>(bindings::GetBindingAddress("CEntitySystem_AddEntityIOEvent"));
+    CBaseEntity_EmitSoundFilter =
+        reinterpret_cast<decltype(CBaseEntity_EmitSoundFilter)>(bindings::GetBindingAddress("CBaseEntity_EmitSoundFilter"));
+    CBaseEntity_DispatchSpawn =
+        reinterpret_cast<decltype(CBaseEntity_DispatchSpawn)>(bindings::GetBindingAddress("CBaseEntity_DispatchSpawn"));
 
-    if (m_pFireOutputInternal == nullptr)
+    if (bindings::ShouldRegisterHooks(bindings::features::EntityOutputHooks, "entity output hooks"))
     {
-        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntityIOOutput_FireOutputInternal\'");
-        return;
-    }
-
-    CEntityInstance_AcceptInput = decltype(CEntityInstance_AcceptInput)(
-        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntityInstance_AcceptInput")));
-
-    if (!CEntityInstance_AcceptInput)
-    {
-        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntityInstance_AcceptInput\'");
-    }
-
-    CEntitySystem_AddEntityIOEvent = decltype(CEntitySystem_AddEntityIOEvent)(
-        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntitySystem_AddEntityIOEvent")));
-
-    if (!CEntitySystem_AddEntityIOEvent)
-    {
-        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntitySystem_AddEntityIOEvent\'");
-    }
-
-    CBaseEntity_EmitSoundFilter = decltype(CBaseEntity_EmitSoundFilter)(
-        modules::server->FindSignature(globals::gameConfig->GetSignature("CBaseEntity_EmitSoundFilter")));
-
-    if (!CBaseEntity_EmitSoundFilter)
-    {
-        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_EmitSoundFilter\'");
-    }
-
-    CBaseEntity_DispatchSpawn = (decltype(CBaseEntity_DispatchSpawn))((
-        modules::server->FindSignature(globals::gameConfig->GetSignature("CBaseEntity_DispatchSpawn"))));
-
-    if (!CBaseEntity_DispatchSpawn)
-    {
-        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_DispatchSpawn\'");
-        return;
+        m_pFireOutputInternal = reinterpret_cast<FireOutputInternal>(bindings::GetBindingAddress("CEntityIOOutput_FireOutputInternal"));
+        m_hooks.AddFunction(reinterpret_cast<void*>(m_pFireOutputInternal), &DetourFireOutputInternal);
     }
 
     CBaseEntity_TakeDamageOld = (decltype(CBaseEntity_TakeDamageOld))((
@@ -113,8 +89,6 @@ void EntityManager::OnAllInitialized()
     Func_OnTakeDamage =
         new ValveFunction((void*)CBaseEntity_TakeDamageOld, CALL_CONV,
                           std::vector<DataType_t>{ DATA_TYPE_POINTER, DATA_TYPE_POINTER, DATA_TYPE_POINTER }, DATA_TYPE_LONG_LONG);
-
-    m_hooks.AddFunction(reinterpret_cast<void*>(m_pFireOutputInternal), &DetourFireOutputInternal);
 
     // Listener is added in ServerStartup as entity system is not initialised at this stage.
 }

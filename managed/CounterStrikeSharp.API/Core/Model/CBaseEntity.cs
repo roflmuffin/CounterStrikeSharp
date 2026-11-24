@@ -60,15 +60,19 @@ public partial class CBaseEntity
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/dispatch-spawn</c> is disabled</exception>
     public void DispatchSpawn(CEntityKeyValues? keyValues)
     {
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.EntityDispatchSpawn);
         Guard.IsValidEntity(this);
 
         NativeAPI.DispatchSpawn(Handle, keyValues?.Handle ?? IntPtr.Zero);
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/dispatch-spawn</c> is disabled</exception>
     public void DispatchSpawn()
     {
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.EntityDispatchSpawn);
         Guard.IsValidEntity(this);
         NativeAPI.DispatchSpawn(Handle, IntPtr.Zero);
     }
@@ -99,8 +103,10 @@ public partial class CBaseEntity
     /// <param name="volume">The volume of the soundevent.</param>
     /// <param name="pitch">The pitch of the soundevent.</param>
     /// <returns>The sound event guid.</returns>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/emit-sound</c> is disabled</exception>
     public uint EmitSound(string soundEventName, RecipientFilter? recipients = null, float volume = 1f, float pitch = 0)
     {
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.EntityEmitSound);
         Guard.IsValidEntity(this);
 
         if (recipients == null)
