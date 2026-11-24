@@ -283,6 +283,53 @@ ValveFunction* CreateVirtualFunctionFromVTable(ScriptContext& script_context)
     return function;
 }
 
+// Function at an absolute address, e.g. a core Binding the managed side took from the Resolution Report. Shares the
+// cache (and so any hooks) with functions created from a signature that resolves to the same address.
+ValveFunction* CreateVirtualFunctionFromAddress(ScriptContext& script_context)
+{
+    auto* function_addr = script_context.GetArgument<void*>(0);
+    auto num_arguments = script_context.GetArgument<int>(1);
+    auto return_type = script_context.GetArgument<DataType_t>(2);
+
+    if (function_addr == nullptr)
+    {
+        script_context.ThrowNativeError("Function address is null");
+        return nullptr;
+    }
+
+    // TakeDamageOld is detoured by core; hand out that function so calls and hooks go through the detour.
+    if (globals::entityManager.Func_OnTakeDamage != nullptr && globals::entityManager.Func_OnTakeDamage->m_ulAddr == function_addr)
+    {
+        return globals::entityManager.Func_OnTakeDamage;
+    }
+
+    auto args = std::vector<DataType_t>();
+    for (int i = 0; i < num_arguments; i++)
+    {
+        args.push_back(script_context.GetArgument<DataType_t>(3 + i));
+    }
+
+    VirtualFunctionCacheKey cacheKey;
+    cacheKey.functionAddr = function_addr;
+    cacheKey.callingConvention = CONV_CDECL;
+    cacheKey.args = args;
+    cacheKey.returnType = return_type;
+    cacheKey.vtableOffset = -1;
+
+    auto it = m_virtualFunctionCache.find(cacheKey);
+    if (it != m_virtualFunctionCache.end())
+    {
+        return it->second;
+    }
+
+    auto* function = new ValveFunction(function_addr, CONV_CDECL, args, return_type);
+    m_virtualFunctionCache[cacheKey] = function;
+
+    CSSHARP_CORE_TRACE("Created new function at {}", function_addr);
+
+    return function;
+}
+
 ValveFunction* CreateVirtualFunction(ScriptContext& script_context)
 {
     auto ptr = script_context.GetArgument<void*>(0);
@@ -407,6 +454,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE", CreateVirtualFunctionBySignature);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SYMBOL", CreateVirtualFunctionBySymbol);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_FROM_V_TABLE", CreateVirtualFunctionFromVTable);
+    ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_FROM_ADDRESS", CreateVirtualFunctionFromAddress);
     ScriptEngine::RegisterNativeHandler("EXECUTE_VIRTUAL_FUNCTION", ExecuteVirtualFunction);
     ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);

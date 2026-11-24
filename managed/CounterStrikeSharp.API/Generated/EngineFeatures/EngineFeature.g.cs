@@ -12,6 +12,9 @@ namespace CounterStrikeSharp.API.Core;
 /// </summary>
 public enum EngineFeature
 {
+    /// <summary><c>cssharp.chat/client-print</c></summary>
+    ChatClientPrint = -1275197811,
+
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     ChatSayHooks = 2095797270,
 
@@ -40,6 +43,9 @@ public enum EngineFeature
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
 public static class EngineFeatureNames
 {
+    /// <summary><c>cssharp.chat/client-print</c></summary>
+    public const string ChatClientPrint = "cssharp.chat/client-print";
+
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     public const string ChatSayHooks = "cssharp.chat/say-hooks";
 
@@ -67,6 +73,7 @@ public static class EngineFeatureNames
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
     {
+        EngineFeature.ChatClientPrint => ChatClientPrint,
         EngineFeature.ChatSayHooks => ChatSayHooks,
         EngineFeature.EntityAcceptInput => EntityAcceptInput,
         EngineFeature.EntityAddIoEvent => EntityAddIoEvent,
