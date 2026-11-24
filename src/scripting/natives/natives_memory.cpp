@@ -122,19 +122,17 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
 
     auto* function_addr = FindSignature(binary_name, signature_hex_string);
 
-    // Special case for TakeDamageOld as we have detoured it. Only while the detour exists (take-damage-hooks available);
-    // the Gamedata entry may be missing, in which case plugin signatures are simply scanned.
-    const char* take_damage_signature = globals::gameConfig->GetSignature("CBaseEntity_TakeDamageOld");
-    if (globals::entityManager.Func_OnTakeDamage != nullptr && signature_hex_string != nullptr && take_damage_signature != nullptr &&
-        strcmp(signature_hex_string, take_damage_signature) == 0)
-    {
-        return globals::entityManager.Func_OnTakeDamage;
-    }
-
     if (function_addr == nullptr)
     {
         script_context.ThrowNativeError("Could not find signature %s", signature_hex_string);
         return nullptr;
+    }
+
+    // TakeDamageOld is detoured by core (while take-damage-hooks is available); a plugin signature that finds it gets
+    // that function, so calls and hooks go through the detour (same as CREATE_VIRTUAL_FUNCTION_FROM_ADDRESS).
+    if (globals::entityManager.Func_OnTakeDamage != nullptr && globals::entityManager.Func_OnTakeDamage->m_ulAddr == function_addr)
+    {
+        return globals::entityManager.Func_OnTakeDamage;
     }
 
     auto args = std::vector<DataType_t>();
