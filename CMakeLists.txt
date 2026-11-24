@@ -142,3 +142,9 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/configs ${CMAKE_BINARY_DIR}
 )
+
+option(COUNTERSTRIKESHARP_BUILD_TESTS "Build the native unit tests in tests/native" OFF)
+if(COUNTERSTRIKESHARP_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests/native)
+endif()
