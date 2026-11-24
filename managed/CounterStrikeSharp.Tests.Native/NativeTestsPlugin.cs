@@ -101,7 +101,7 @@ namespace NativeTestsPlugin
                               $"reason={EngineFeatures.GetStatus(EngineFeature.ChatSayHooks).Reason}");
         }
 
-        // Take-damage Engine Features as a plugin sees them (ticket 11); the E2E harness greps the output. Registers the
+        // Take-damage Engine Features as a plugin sees them; the E2E harness greps the output. Registers the
         // take-damage listeners (registering never throws; on a disabled Engine Feature it warns once), reads a hit group
         // and creates a memory function from a raw plugin signature, which must work even without the take-damage key.
         [ConsoleCommand("css_take_damage_probe", "Register take-damage listeners and use the take-damage helpers.")]

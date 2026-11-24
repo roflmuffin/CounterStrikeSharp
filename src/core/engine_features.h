@@ -16,20 +16,20 @@ namespace counterstrikesharp::bindings {
 
 namespace features {
 inline constexpr std::string_view ChatSayHooks = "cssharp.chat/say-hooks";
-// ticket 09
+// Events and networking
 inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
 inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";
 inline constexpr std::string_view StateChanged = "cssharp.network/state-changed";
 inline constexpr std::string_view CheckTransmit = "cssharp.network/check-transmit";
-// ticket 10
+// Game system
 inline constexpr std::string_view ServerGameSystemEvents = "cssharp.server/game-system-events";
-// ticket 08
+// Entity IO and entity helpers
 inline constexpr std::string_view EntityOutputHooks = "cssharp.entity/output-hooks";
 inline constexpr std::string_view EntityAcceptInput = "cssharp.entity/accept-input";
 inline constexpr std::string_view EntityAddIoEvent = "cssharp.entity/add-io-event";
 inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
 inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
-// ticket 11
+// Take damage
 inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
 } // namespace features
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # End-to-end cases for cssharp.events/game-events (Bindings: CGameEventManager_Init signature, CGameEventManager RTTI
-# vtable in libserver). The valid case also covers the other event and network Engine Features of ticket 09.
+# vtable in libserver). The valid case also covers the other event and network Engine Features.
 #
 #   eng/e2e/cases/game-events.sh [run.sh options...]     e.g. --no-build
 #

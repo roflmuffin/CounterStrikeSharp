@@ -3,12 +3,12 @@ using CounterStrikeSharp.API.Core.Bindings;
 
 namespace CounterStrikeSharp.API.Tests;
 
-// Contract (ticket 15): every Engine Feature of the spec's catalog is declared, and managed helpers take every core
+// Contract: every Engine Feature of the spec's catalog is declared, and managed helpers take every core
 // Binding from the Resolution Report, never from Gamedata.
 [Collection(nameof(EngineFeaturesApiTests))]
 public class EngineFeatureCatalogTests : IDisposable
 {
-    // The initial catalog of spec A (.scratch/hardening-a-fail-soft/spec.md, "Engine Features"): name -> Gamedata keys.
+    // The initial Engine Feature catalog: name -> Gamedata keys.
     // "CGameEventManager" is the RTTI vtable Binding.
     private static readonly Dictionary<string, string[]> SpecCatalog = new()
     {

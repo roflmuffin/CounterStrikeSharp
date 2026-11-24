@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# End-to-end cases for the managed player/entity helpers (ticket 12), using cssharp.player/commit-suicide
+# End-to-end cases for the managed player/entity helpers, using cssharp.player/commit-suicide
 # (Binding: the CBasePlayerPawn_CommitSuicide offset) as the broken one.
 #
 #   eng/e2e/cases/commit-suicide.sh [run.sh options...]     e.g. --no-build

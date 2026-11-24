@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Tests;
 
-// Take-damage Engine Features (ticket 11): take-damage-hooks is native-owned (CBaseEntity_TakeDamageOld,
+// Take-damage Engine Features: take-damage-hooks is native-owned (CBaseEntity_TakeDamageOld,
 // CBaseEntity_IsPlayerPawn), take-damage-hit-group is managed (CTakeDamageInfo_HitGroup).
 [Collection(nameof(EngineFeaturesApiTests))]
 public class TakeDamageEngineFeatureTests : IDisposable

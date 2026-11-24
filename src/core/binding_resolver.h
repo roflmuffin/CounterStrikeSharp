@@ -87,7 +87,7 @@ enum class BindingStatus : std::uint8_t
     Failed,
 };
 
-// Closed set (spec A). Append only: values cross the native/managed boundary.
+// Closed set. Append only: values cross the native/managed boundary.
 enum class FailureReason : std::uint8_t
 {
     None,
