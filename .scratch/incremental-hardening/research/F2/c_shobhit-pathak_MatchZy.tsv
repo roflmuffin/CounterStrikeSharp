@@ -1,0 +1,21 @@
+2026-11-13T17:11:28Z	2026-11-13T17:11:28Z	a13ba573	0.9.3
+2026-11-13T04:01:29Z	2026-11-13T04:01:29Z	59275116	Merge pull request #435 from dathost/fix/rethrow-running-throw
+2026-11-13T04:00:51Z	2026-11-13T04:00:51Z	e21158ea	Merge pull request #436 from borzaka/fix/end-practice-on-match-load
+2026-11-07T20:47:55Z	2026-11-07T20:47:55Z	1d0e8e51	End practice mode when a match is loaded
+2026-11-05T11:08:17Z	2026-11-05T11:08:17Z	8846b9fb	Rethrow grenades from their release point
+2026-10-18T06:37:51Z	2026-10-18T06:37:51Z	21c27807	0.9.2
+2026-10-18T06:33:05Z	2026-10-18T06:33:05Z	78b0dd96	Merge pull request #420 from borzaka/feature/config-override
+2026-10-18T06:32:15Z	2026-10-18T06:32:15Z	c9d6dfc0	Merge pull request #422 from dathost/fix/relative-round-backup-path
+2026-10-16T10:21:59Z	2026-10-16T10:21:59Z	b8b58783	Pass round backup files to CS2 as bare names
+2026-10-09T11:41:14Z	2026-10-09T11:41:14Z	99a62f35	Add override CFGs for every MatchZy CFG
+2026-10-03T08:39:50Z	2026-10-03T08:39:50Z	f2fb11ba	Merge pull request #414 from shobhit-pathak/feature/tech-pause
+2026-10-03T08:38:03Z	2026-10-01T15:14:37Z	d6b01839	Docs workflow: update actions, allow manual runs
+2026-10-03T08:35:47Z	2026-10-03T08:35:47Z	14f21f4c	Get5 live events, bomb stats and same-map match loading
+2026-10-03T07:44:53Z	2026-10-03T07:44:53Z	f6ec8fdf	MatchZy 0.9.1: ready-up time limit, join ready mode and technical pauses
+2026-10-01T15:09:44Z	2026-10-01T15:09:44Z	d3572c64	Merge pull request #412 from shobhit-pathak/fixes/p0-p1-bugfixes
+2026-10-01T14:56:36Z	2026-10-01T14:56:31Z	42b71b09	MatchZy 0.9.0: security hardening, bug fixes and unit tests
+2026-10-01T14:39:48Z	2026-10-01T14:39:48Z	fce804bd	Merge pull request #408 from GabrielBarcelos1/fix/demo-path-empty-string
+2026-10-01T14:39:30Z	2026-10-01T14:39:30Z	f20be3ef	Merge branch 'dev' into fix/demo-path-empty-string
+2026-09-30T19:01:51Z	2026-09-30T19:01:51Z	c30f0486	Merge pull request #411 from ehwhattaugonnado/public-path-fixes
+2026-09-28T12:43:15Z	2026-09-28T12:43:15Z	d994500b	Use absolute csgo paths for demos and round backups
+2026-09-23T18:12:29Z	2026-09-23T18:12:10Z	4deba4cf	Accept empty string in matchzy_demo_path to record in the csgo root

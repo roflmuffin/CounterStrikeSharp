@@ -1,0 +1,294 @@
+2026-11-24T03:39:21Z	2026-11-24T03:39:21Z	67ef29b7	fix(gamedata): offsets
+2026-11-17T12:32:48Z	2026-11-17T12:32:48Z	1c48e3ce	Release v1.5.3 (#418)
+2026-11-15T20:15:05Z	2026-11-15T20:15:05Z	f249c715	feat(memory): S2BinLib
+2026-11-15T19:13:00Z	2026-11-15T19:13:00Z	63af2f0e	chore(managed): Remove GlobalExceptionHandler
+2026-11-14T22:35:58Z	2026-11-14T22:35:58Z	3553dca0	update(ServerSideClient): outdated fields
+2026-11-14T21:48:11Z	2026-11-14T21:48:11Z	a167deaa	chore(gamedata): Prepare for S2GDU
+2026-11-14T16:34:17Z	2026-11-14T16:34:17Z	7e054ed6	chore(codebase): Less closures
+2026-11-14T16:13:44Z	2026-11-14T16:13:44Z	98991013	chore(Player): cache IPAddress and UserID
+2026-11-14T15:02:20Z	2026-11-14T15:02:20Z	b6b7359f	chore(player): Authorize in managed
+2026-11-14T14:16:39Z	2026-11-14T14:16:39Z	315f836f	feat(events): OnClientConnectionEstablished
+2026-11-14T11:36:16Z	2026-11-14T11:36:16Z	884c2e47	feat(core/events): OnFindTargettedPlayers
+2026-11-14T11:05:45Z	2026-11-14T11:05:45Z	efff078e	chore(player): Move ConnectedTime to managed
+2026-11-14T11:04:42Z	2026-11-14T11:04:42Z	ad89e307	chore(player): Use managed to access SteamID
+2026-11-14T08:41:01Z	2026-11-14T08:41:01Z	e67475d2	update(Player): Make self-mutes atomic
+2026-11-14T01:15:49Z	2026-11-14T01:15:49Z	7ba0bafd	chore(natives): Use Global State
+2026-11-13T07:10:39Z	2026-11-13T07:10:39Z	3b9d78a4	update(entrypoint): Avoid ENV for config
+2026-11-12T18:47:44Z	2026-11-12T18:47:44Z	4702e816	cleanup(memory): Natives
+2026-11-12T18:35:08Z	2026-11-12T18:35:08Z	4978c07d	chore(player): IsFirstSpawn in service
+2026-11-12T15:55:57Z	2026-11-12T15:55:57Z	b91b5427	chore(events): Map Events in service
+2026-11-12T08:47:03Z	2026-11-12T08:47:03Z	67f378e0	Game Update - 12/11/26 (#416)
+2026-11-12T00:48:54Z	2026-11-12T00:48:54Z	485bccc7	[CS2][Manual] Game Sync Update (2026-11-12) (#415)
+2026-11-12T00:46:10Z	2026-11-12T00:46:10Z	f12b41cd	chore(game-sync): update generated CS2 code (2026-11-12 00:46:10 UTC)
+2026-11-12T00:31:53Z	2026-11-12T00:31:53Z	7297fec7	update(core): Game Update
+2026-11-11T23:56:16Z	2026-11-11T23:56:16Z	b9fada11	update(events): Subscribers Router
+2026-11-11T17:50:59Z	2026-11-11T17:50:59Z	0bb1d508	fix(CUtlLeanVector): Count/Allocated values
+2026-11-11T17:16:34Z	2026-11-11T17:16:34Z	23fab364	tryfix(CUtlRBTree): RemoveAll
+2026-11-10T22:49:47Z	2026-11-10T22:49:47Z	2e0131bd	perf(GameHooks): Subscriber Router
+2026-11-10T20:57:16Z	2026-11-10T20:57:16Z	9a6d9686	chore(plugins): Load & Unload times (#409)
+2026-11-09T08:33:36Z	2026-11-09T08:33:36Z	6e1abb9e	chore(engine/network): Deep Cleanup
+2026-11-09T08:03:39Z	2026-11-09T08:03:39Z	f745796b	chore(memory): Deep Cleanup
+2026-11-08T18:45:51Z	2026-11-08T18:45:51Z	c8dcdf91	fix(plugin/startup): Issue #408
+2026-11-08T17:01:11Z	2026-11-08T17:01:11Z	533cc21e	chore(entrypoint): Modernize
+2026-11-08T16:39:21Z	2026-11-08T16:39:21Z	d6ff0e41	update(plugins): Issue #407
+2026-11-08T16:28:16Z	2026-11-08T16:28:16Z	26ccc8d7	chore(GameEntitySystem): Remove offset
+2026-11-07T18:02:56Z	2026-11-07T18:02:56Z	c5a7ee83	chore(sw/cmds): Show which one is raw
+2026-11-07T17:43:41Z	2026-11-07T17:43:41Z	4fee6f99	update(services): Make it more compact
+2026-11-07T17:17:21Z	2026-11-07T17:17:21Z	2743a054	chore(precacher): Move to managed
+2026-11-07T16:42:17Z	2026-11-07T16:42:17Z	8dd85c4e	feat(scheduler): QueueOrNow
+2026-11-07T16:38:58Z	2026-11-07T16:38:58Z	f8643385	feat(sw/cmds): Aliases
+2026-11-07T16:33:23Z	2026-11-07T16:33:23Z	fa64679c	perf(entities): Faster ops
+2026-11-07T15:28:45Z	2026-11-07T15:28:45Z	a2a36a2c	update(MessageType): Document ChatEOT
+2026-11-07T13:14:55Z	2026-11-07T13:14:55Z	821ccf1a	Release v1.5.1 (#406)
+2026-11-07T12:31:19Z	2026-11-07T12:31:19Z	e4c193e4	chore(player): Make voice flags atomic
+2026-11-07T10:57:01Z	2026-11-07T10:57:01Z	38339981	[CS2] Game Sync Update (2026-11-05) (#405)
+2026-11-07T09:40:57Z	2026-11-07T09:40:57Z	9cf0e8b7	chore(player): SessionID to managed
+2026-11-06T21:02:56Z	2026-11-06T21:02:56Z	efe69db4	fix(player): null checks
+2026-11-03T05:58:12Z	2026-11-03T05:58:12Z	c20eaa5d	[CS2] Game Sync Update (2026-11-03) (#404)
+2026-11-01T15:52:31Z	2026-11-01T15:52:31Z	b075b08c	fix(cvar): Fix linked concommand
+2026-11-01T09:26:45Z	2026-11-01T09:26:45Z	1018c149	fix(managed/console): Colors not working
+2026-11-01T09:03:36Z	2026-11-01T09:03:36Z	4ab2f4c5	feat(events): OnClientSettingsChanged
+2026-10-31T13:51:31Z	2026-10-31T13:51:31Z	23d92571	fix(cmds): Crashes on trying to register already existing commands
+2026-10-31T06:42:53Z	2026-10-31T06:42:53Z	b4f5d208	bump(vendor): s2sdk
+2026-10-31T03:10:13Z	2026-10-31T03:10:13Z	ab824580	tryfix(workflow): Managed deadlock
+2026-10-31T03:01:09Z	2026-10-31T03:01:09Z	fffa3ac1	chore(voicemanager): Move to managed
+2026-10-31T02:10:41Z	2026-10-31T02:10:41Z	8ab9d776	chore(translation): Move logic to managed
+2026-10-30T20:11:56Z	2026-10-30T20:11:56Z	47733732	fix(HLTV): Issue #402
+2026-10-30T19:38:16Z	2026-10-30T19:38:16Z	05456e9a	fix(workflows): protoc perms
+2026-10-30T19:27:50Z	2026-10-30T19:27:50Z	dfd11823	update(vendor): s2sdk
+2026-10-30T06:56:57Z	2026-10-30T06:56:57Z	ddcacd3f	[CS2] Game Sync Update (2026-10-28) (#403)
+2026-10-24T16:56:46Z	2026-10-24T16:56:46Z	ffe9a7c7	chore(codebase): Core Cleanup
+2026-10-24T15:11:51Z	2026-10-24T15:11:51Z	5d31791a	remove(deps): fmt
+2026-10-24T14:46:30Z	2026-10-24T14:46:30Z	866f462b	feat(core): Profiler
+2026-10-24T10:38:05Z	2026-10-24T10:38:05Z	8d7fda23	chore(player): Remove dupe code
+2026-10-24T09:59:42Z	2026-10-24T09:59:42Z	0e6a7c94	update(commands): A bit modern
+2026-10-24T09:10:38Z	2026-10-24T09:10:38Z	c6dde887	update(netmessages): Some self-explained code
+2026-10-24T09:10:12Z	2026-10-24T09:10:12Z	202dc2c2	update(SDK): A bit more modern
+2026-10-24T01:25:04Z	2026-10-24T01:25:04Z	696fdb8c	chore(entities): Remove unused code
+2026-10-24T00:52:35Z	2026-10-24T00:52:35Z	c0b99a56	update(managed): package versions
+2026-10-24T00:52:29Z	2026-10-24T00:52:29Z	52145f61	update(fixes): Some small rework
+2026-10-23T23:34:53Z	2026-10-23T23:34:53Z	20f63e48	fix(gamedata): parseJsonc gets destroyed too early
+2026-10-23T23:15:53Z	2026-10-23T23:15:53Z	e1d72b33	update(logger): Remove unused
+2026-10-23T22:49:35Z	2026-10-23T22:49:35Z	13691157	update(gamedata): Modernize
+2026-10-23T22:24:22Z	2026-10-23T22:24:22Z	bdf5c8f2	update(voicemanager): Modernize a bit
+2026-10-23T18:37:14Z	2026-10-23T18:37:14Z	ef72e2f5	update(config): Modernize & remove bloat
+2026-10-23T18:23:52Z	2026-10-23T18:23:52Z	9bbf7042	update(bridge): Type events & remove dupe
+2026-10-23T17:56:18Z	2026-10-23T17:56:18Z	5b1c14a7	Release v1.5.0 (#401)
+2026-10-23T16:25:55Z	2026-10-23T16:25:55Z	0730972f	fix(player): Create center HTML event forcefully
+2026-10-23T15:55:33Z	2026-10-23T15:55:33Z	c0185052	Remove QueueMutex in favour of std::mutex (#400)
+2026-10-23T02:23:14Z	2026-10-23T02:23:14Z	4ec980af	fix(schema): dispatch embedded network state changes correctly
+2026-10-23T00:25:38Z	2026-10-23T00:25:38Z	77878286	fix(offsets): SetClientListening
+2026-10-23T00:13:22Z	2026-10-23T00:13:22Z	dd4c7e9c	update(vendor): s2sdk
+2026-10-23T00:08:16Z	2026-10-23T00:08:16Z	7fda4853	update(vendor): s2sdk
+2026-10-22T23:49:40Z	2026-10-22T23:49:40Z	59977484	[CS2] Game Sync Update (2026-10-22) (#399)
+2026-10-22T23:38:37Z	2026-10-22T23:38:37Z	05b80c90	chore(core): sigs & s2sdk & perf
+2026-10-22T19:57:07Z	2026-10-22T19:57:07Z	cbc356ed	fix(consolelogger): server hangs in exit() when the writer thread outlives the logger (#398)
+2026-10-20T12:21:28Z	2026-10-20T12:21:28Z	75f95890	feat(menus): List selection components
+2026-10-19T17:45:28Z	2026-10-19T17:45:28Z	383c89a0	feat(menus): PlayerListComponent
+2026-10-19T16:57:34Z	2026-10-19T16:57:34Z	b14b66df	feat(menus): PagedCollectionComponent
+2026-10-19T05:34:38Z	2026-10-19T05:34:38Z	19f4198f	feat(gamehooks): Add GetItemInLoadout hook and IPlayer.GetLoadoutItem (#397)
+2026-10-17T04:31:15Z	2026-10-17T04:31:15Z	e58d4967	fix(gamehooks): resolve GetItemInLoadout through the CCSPlayerInventory vtable
+2026-10-16T17:04:46Z	2026-10-16T17:04:46Z	723a982a	tryfix(CUtlRBTree): Invalid index accessing
+2026-10-16T16:20:49Z	2026-10-16T16:20:49Z	cb12aaa0	fix(console/output): Ctor
+2026-10-16T16:01:51Z	2026-10-16T16:01:51Z	9e1e50bc	fix(console/filtering): Data-race condition
+2026-10-16T15:23:44Z	2026-10-16T15:23:44Z	44b24713	fix(player): Null variable possibility
+2026-10-15T14:53:34Z	2026-10-15T14:53:34Z	beaf33b6	fix(gamehooks): compute the inventory offset from m_nPersonaDataXpTrailLevel, note how to find GetItemInLoadout
+2026-10-15T11:31:27Z	2026-10-15T11:31:27Z	79a9e9cf	feat(gamehooks): GetItemInLoadout hook and IPlayer.GetLoadoutItem
+2026-10-15T07:59:39Z	2026-10-15T07:59:39Z	86cedf58	[CS2][Manual] Game Sync Update (2026-10-15) (#394)
+2026-10-14T18:58:24Z	2026-10-14T18:58:24Z	599c9a8a	chore(managed): Some micro-optimizations again
+2026-10-14T17:27:58Z	2026-10-14T17:27:58Z	cbfcc547	fix(player): FireEventToClient
+2026-10-14T14:11:00Z	2026-10-14T14:11:00Z	d82fe5f0	perf(gameevents): Use own maps
+2026-10-14T04:47:19Z	2026-10-14T04:47:19Z	c8794400	chore(managed): Some micro-optimization
+2026-10-13T12:27:24Z	2026-10-13T12:27:24Z	6d4f7331	New Menu System (#390)
+2026-10-13T03:53:56Z	2026-10-13T03:53:56Z	d7495b99	Replace padding with Scale property in CTransform
+2026-10-12T21:31:27Z	2026-10-12T21:31:27Z	743b15d9	fix(configs): sync example configs with code (#391)
+2026-10-12T17:12:15Z	2026-10-12T17:12:15Z	b3f43b62	chore(core): Hooking Rework
+2026-10-11T17:21:52Z	2026-10-11T17:21:52Z	57c454d2	Add extension (#389)
+2026-10-11T17:04:50Z	2026-10-11T17:04:50Z	ec11ae92	feat(configuration):  Add missing keys to existing configs (#387)
+2026-10-11T09:05:03Z	2026-10-11T09:05:03Z	f98d5107	ci: build sw2tracer alongside SwiftlyS2 (#388)
+2026-10-11T07:52:57Z	2026-10-11T07:52:57Z	3c2e9bff	remove(engine): ExecuteCommandWithBuffer
+2026-10-11T07:38:06Z	2026-10-11T07:38:06Z	c64cd9bd	chore(trace): Remove deprecated +semver: minor
+2026-10-10T19:28:35Z	2026-10-10T19:28:35Z	bfffbdb1	Release v1.4.14 (#386)
+2026-10-10T19:17:59Z	2026-10-10T19:17:59Z	6c62912b	fix(gamehooks/usercmds): not returning rented object
+2026-10-09T19:34:27Z	2026-10-09T19:34:27Z	2b495b75	feat(configuration): Write [Description] as comments in generated .jsonc and .toml configs (#384)
+2026-10-09T14:39:50Z	2026-10-09T14:39:50Z	586b13bb	feat(plugins): Plugin Load Time
+2026-10-09T13:41:08Z	2026-10-09T13:41:08Z	a0475555	fix(TakeDamage): Invalid pawn
+2026-10-09T03:27:19Z	2026-10-09T03:27:19Z	3f8255dc	[CS2] Game Sync Update (2026-10-08) (#383)
+2026-10-08T17:56:35Z	2026-10-08T17:56:35Z	427b9e88	fix(CUtlMemory): Don't return a ref to a local (#382)
+2026-10-06T19:33:10Z	2026-10-06T19:33:10Z	f006a8cb	fix(registrator): Throw if null
+2026-10-06T17:09:21Z	2026-10-06T17:09:21Z	48bfce20	fix(permissions): Giving a.b* when doing a.b.*
+2026-10-06T16:40:14Z	2026-10-06T16:40:14Z	bbb66b99	fix(CUserCmd): Object pointer being wrong
+2026-10-06T16:26:08Z	2026-10-06T16:26:08Z	6f1624ea	fix(scheduler): Cancelled timer still executes
+2026-10-06T13:43:41Z	2026-10-06T13:43:41Z	5d53f20e	fix(managed): Player lifecycle if no disconnect event is registered
+2026-10-05T15:33:13Z	2026-10-05T15:33:13Z	a321dd40	chore(natives): Downsize
+2026-10-05T13:33:19Z	2026-10-05T13:33:19Z	855b3ba5	update(protobuf/accessor): Compress natives
+2026-10-05T13:07:52Z	2026-10-05T13:07:52Z	457fd066	update(db): Support custom options
+2026-10-05T12:57:04Z	2026-10-05T12:57:04Z	b2a2c45b	update(convar): Some refactoring
+2026-10-05T11:02:14Z	2026-10-05T11:02:14Z	f35c1b4b	update(commands): Dispatcher rework
+2026-10-05T10:22:31Z	2026-10-05T10:22:31Z	49ed004f	perf(netmessages): Process only the registered
+2026-10-05T09:59:14Z	2026-10-05T09:59:14Z	278aabc9	update(gameevents): Only send when necessary
+2026-10-05T09:26:53Z	2026-10-05T09:26:53Z	2ff543ed	update(natives): Remove serialized structs
+2026-10-05T08:14:49Z	2026-10-05T08:14:49Z	27c96ef5	fix(managed/bootstrap): SteamAPI Bindings
+2026-10-05T08:04:33Z	2026-10-05T08:04:33Z	52122395	fix(managed/bootstrap): Steam API DLL Resolver
+2026-10-05T07:20:59Z	2026-10-05T07:20:59Z	94b6131a	update(SteamWorks): Modernize
+2026-10-04T17:14:12Z	2026-10-04T17:14:12Z	cd56e27f	update(.NET): Runtime Version
+2026-10-04T13:31:39Z	2026-10-04T13:31:39Z	9e19e113	update(TraceShape): Use offset
+2026-10-04T10:05:15Z	2026-10-04T10:05:15Z	b5a9e848	update(gamehooks/usercmd): GC Pressure again
+2026-10-03T18:13:53Z	2026-10-03T18:13:53Z	78b4c89a	Release v1.4.13 (#381)
+2026-10-03T17:23:10Z	2026-10-03T17:23:10Z	6e03d11b	[CS2] Game Sync Update (2026-10-02) (#380)
+2026-10-03T17:05:27Z	2026-10-03T17:05:27Z	03a818cb	update(convars/query): Stack multiple requests into one
+2026-09-30T18:06:42Z	2026-09-30T18:06:42Z	2531e0fe	perf(scheduler): Improve allocations
+2026-09-30T17:52:15Z	2026-09-30T17:52:15Z	baf6c797	remove(sw/memory): Per-plugin Heap Viewer (linux/pterodactyl egg issues)
+2026-09-29T17:44:32Z	2026-09-29T17:44:32Z	f8698fcd	chore(profiler): Remove Heavy and add nosummary
+2026-09-29T17:18:50Z	2026-09-29T17:18:50Z	fa74976b	fix(sw/memory): Temp path
+2026-09-29T14:04:06Z	2026-09-29T14:04:06Z	f7df1135	feat(cmds/sw): memory
+2026-09-29T13:16:38Z	2026-09-29T13:16:38Z	cb5b444e	fix(obsolete/scanner): Look for arguments
+2026-09-28T18:17:33Z	2026-09-28T18:17:33Z	7845002e	tryfix(managed): GC Pressure
+2026-09-28T15:57:01Z	2026-09-28T15:57:01Z	bf5c1b94	update(steamworks): Unused stuff
+2026-09-28T12:35:49Z	2026-09-28T12:35:49Z	7afa287b	feat(managed): Obsolete API Scanner
+2026-09-27T12:15:53Z	2026-09-27T12:15:53Z	067adbe1	[skip ci] fix(workflows): push issue
+2026-09-27T12:00:30Z	2026-09-27T12:00:30Z	d679c4e0	chore(database): Move handling to managed
+2026-09-26T19:42:26Z	2026-09-26T19:42:26Z	8502d4ef	Release v1.4.12 (#377)
+2026-09-24T02:06:17Z	2026-09-24T02:06:17Z	b2f31821	Game update (#373)
+2026-09-23T12:42:41Z	2026-09-23T12:42:41Z	aa22d80d	fix(gamedata): Support empty string
+2026-09-23T12:25:46Z	2026-09-23T12:25:46Z	04dd4e99	fix(FireOutput): Args
+2026-09-23T10:34:54Z	2026-09-23T10:34:54Z	b6ce074e	fix(signatures): CanAcquire
+2026-09-23T09:25:55Z	2026-09-23T09:25:55Z	63b7754c	fix: fix offset
+2026-09-23T06:25:28Z	2026-09-23T06:25:28Z	bc0ab118	fix: fix offsets
+2026-09-23T06:06:37Z	2026-09-23T06:06:37Z	46710b49	fix: fix signature
+2026-09-23T05:04:46Z	2026-09-23T05:04:46Z	e6fdd841	[CS2] Game Sync Update (2026-09-23) (#370)
+2026-09-23T04:11:10Z	2026-09-23T04:11:10Z	ceb80ba0	chore(game-sync): update generated CS2 code (2026-09-23 04:11:09 UTC)
+2026-09-23T04:08:13Z	2026-09-23T04:08:13Z	454bef87	fix: fix teleport offset
+2026-09-23T03:50:34Z	2026-09-23T03:50:34Z	37f3e571	fix: fix DispatchParticleEffect signature
+2026-09-23T03:47:57Z	2026-09-23T03:47:26Z	2668e90e	fix: update m_Clients offset
+2026-09-23T02:41:34Z	2026-09-23T02:41:34Z	a822e36a	fix: fix some offset
+2026-09-23T02:14:59Z	2026-09-23T02:14:59Z	d9642801	fix: fix entitysystem
+2026-09-23T02:03:46Z	2026-09-23T02:03:46Z	d119402c	fix: fix entitysystem
+2026-09-23T01:30:41Z	2026-09-23T01:30:41Z	9e2fead8	fix: fix some sig
+2026-09-23T01:28:11Z	2026-09-23T01:28:11Z	74590a60	fix: fix some sig
+2026-09-23T00:57:46Z	2026-09-23T00:57:46Z	b3fb560a	fix: bump s2sdk
+2026-09-15T10:46:52Z	2026-09-15T10:46:52Z	d60becee	feat(services/convar): QueryClient
+2026-09-10T00:03:11Z	2026-09-10T00:03:11Z	2a22a8cf	Release v1.4.10 (#364)
+2026-09-09T23:42:28Z	2026-09-09T23:42:28Z	f263f230	[CS2] Game Sync Update (2026-09-09) (#363)
+2026-09-06T14:01:24Z	2026-09-06T14:01:24Z	adba9b60	chore(entities): Designer name safety check
+2026-09-04T06:45:52Z	2026-09-04T06:45:52Z	b13edcfe	fix: fix build
+2026-09-04T06:32:50Z	2026-09-04T06:32:50Z	9afc08ce	feat(core): Expose DangerouslySetAddress
+2026-09-04T06:30:00Z	2026-09-04T06:30:00Z	0f26f75a	Revert "chore(helpers): Add caching"
+2026-09-03T19:10:22Z	2026-09-03T19:10:22Z	51171da4	chore(helpers): Add caching
+2026-09-02T17:23:25Z	2026-09-02T17:23:25Z	5a3a04e6	fix(profiler): Lightweight & Heavy modes
+2026-09-01T11:29:23Z	2026-09-01T11:29:23Z	ce37bdc8	Fix windows sig and profiler (#362)
+2026-09-01T11:26:58Z	2026-09-01T11:26:58Z	45220d02	fix(gamadata): Windows signature for OnSimulateUserCommands function (#361)
+2026-09-01T11:16:13Z	2026-09-01T11:16:13Z	2567e78e	fix(gamadata): Windows signature for OnSimulateUserCommands function
+2026-08-30T17:05:58Z	2026-08-30T17:05:58Z	2600163b	update(profiler/lightweight): Unhook on disable
+2026-08-30T12:59:12Z	2026-08-30T12:59:12Z	574ba9c9	feat(profiler): Lightweight mode
+2026-08-30T09:05:10Z	2026-08-30T09:05:10Z	b470240f	fix(managed): Fix bool
+2026-08-30T09:03:03Z	2026-08-30T09:02:35Z	31ca2e0d	fix(managed): Fix EntityIOConnectionDesc_t types
+2026-08-29T22:14:56Z	2026-08-29T22:14:56Z	199810f3	update(XMake): Filter protobufs
+2026-08-29T11:24:28Z	2026-08-29T11:24:28Z	44548648	Update schema and game event  (#360)
+2026-08-29T11:16:31Z	2026-08-29T11:16:31Z	ceeb121e	[CS2][Manual] Game Sync Update (2026-08-29) (#359)
+2026-08-29T11:12:53Z	2026-08-29T11:12:53Z	348f8a40	chore(game-sync): update generated CS2 code (2026-08-29 11:12:53 UTC)
+2026-08-29T10:13:04Z	2026-08-29T10:13:04Z	27685e03	[no ci] Add game sync ci (#357)
+2026-08-29T09:55:57Z	2026-08-29T09:55:57Z	cd137f11	fix: ci and versioning
+2026-08-29T09:46:33Z	2026-08-29T09:46:33Z	b19ff28d	[no ci] ci: fix protobuf
+2026-08-29T09:37:32Z	2026-08-29T09:37:32Z	15bb9b0e	[no ci] ci: update game-sync
+2026-08-29T09:30:02Z	2026-08-29T09:30:02Z	8842a302	doc: fix doc
+2026-08-29T09:27:06Z	2026-08-29T09:25:48Z	f34d0d03	[no ci] ci: update game-sync
+2026-08-28T15:01:56Z	2026-08-28T15:01:56Z	8adb9df6	Release v1.4.7 - Fix linking issue and OnConsoleOutput (#356)
+2026-08-28T14:46:00Z	2026-08-28T14:46:00Z	30245644	fix(consoleoutput): Invoke on hibernation
+2026-08-28T14:01:01Z	2026-08-28T14:01:01Z	b60f076f	fix(consoleoutput): Fix UnmanagedCallersOnly issue
+2026-08-28T12:30:23Z	2026-08-28T12:30:23Z	72e0a6ae	fix(core): Fix compiling config
+2026-08-28T11:43:57Z	2026-08-28T11:43:57Z	8f06498a	fix: Add missing def
+2026-08-28T10:48:28Z	2026-08-28T10:48:28Z	bfbc93be	ass
+2026-08-28T05:52:52Z	2026-08-28T05:52:52Z	8cfa9768	Release v1.4.6 (#355)
+2026-08-28T05:25:18Z	2026-08-28T05:25:18Z	11d40c1f	refactor(version): Bye bye gitversion
+2026-08-27T20:53:01Z	2026-08-27T20:53:01Z	16975a83	fix: Schema.GetString/GetCUtlString throw on unset string fields instead of returning empty (#353)
+2026-08-27T16:56:22Z	2026-08-27T16:56:22Z	1dd82c28	fix(hud): Fix custom hud click event
+2026-08-27T15:07:01Z	2026-08-27T15:07:01Z	97b18473	fix(event): Fix OnCustomHudClicked event missing player id
+2026-08-27T14:26:47Z	2026-08-27T14:26:47Z	e4048fdb	feat(event): Add OnCustomHudClicked event
+2026-08-27T14:11:45Z	2026-08-27T14:11:45Z	c44c43d4	fix(netmsg): Fix parsing
+2026-08-27T12:14:52Z	2026-08-27T12:14:30Z	ac1018a8	fix(netmsg): Support user message
+2026-08-27T11:26:31Z	2026-08-27T11:26:31Z	7ca7eafd	update(schema): Some null-checks
+2026-08-27T09:40:11Z	2026-08-27T09:40:11Z	7cac9d56	update(natives): Use ScopedCString
+2026-08-27T09:26:40Z	2026-08-27T09:26:40Z	ac3ef82f	[skip ci] docs(examples/sound): SourceEntityIndex modes and where position applies (#350)
+2026-08-27T09:22:19Z	2026-08-27T09:22:06Z	8afdd42e	fix(hud): Fix doc
+2026-08-27T08:19:14Z	2026-08-27T08:19:14Z	06b2d01f	Add custom hud layout support (#352)
+2026-08-25T14:15:31Z	2026-08-25T14:15:31Z	239ad236	fix(cbaseentity): VData accessing caused crash
+2026-08-25T13:26:33Z	2026-08-25T13:26:33Z	78760958	fix(CBaseEntity): Remove IsValidEntity check
+2026-08-25T11:01:20Z	2026-08-25T11:01:20Z	5ecd702a	update(game): Schema & Protobufs
+2026-08-25T11:00:57Z	2026-08-25T11:00:57Z	959ff3ae	chore(codebase): Cleanup
+2026-08-25T10:38:41Z	2026-08-25T10:38:41Z	109a0cf8	fix(sigs): TerminateRound
+2026-08-25T10:17:37Z	2026-08-25T10:17:37Z	b3d90e64	fix(gamadata): Linux signature for ProcessMovement function (#349)
+2026-08-23T13:18:29Z	2026-08-23T13:18:29Z	372bf8bf	update(core): S2BinLib ptr and game folder agnostic
+2026-08-23T00:09:51Z	2026-08-23T00:09:51Z	b2b9618a	chore(codebase): Some cleanup
+2026-08-22T20:30:01Z	2026-08-22T20:30:01Z	6478511c	Release v1.4.5 (#348)
+2026-08-02T08:45:38Z	2026-08-02T08:45:38Z	1369fff1	Release v1.4.4 (#347)
+2026-07-12T22:41:06Z	2026-07-12T22:41:06Z	2093caed	Release 1.4.3 (#341)
+2026-07-10T10:38:10Z	2026-07-10T10:38:10Z	79f5882a	update(game): July Game Update (#339)
+2026-06-29T06:30:24Z	2026-06-29T06:30:24Z	3a310da5	Release v1.4.1 (#333)
+2026-06-15T17:52:34Z	2026-06-15T17:52:34Z	20a20d5c	Release v1.4.0 (#329) +semver: minor
+2026-06-13T16:24:01Z	2026-06-13T16:24:01Z	51976a75	feat(profiler/analyzer): Exceptions
+2026-06-13T12:08:46Z	2026-06-13T12:08:46Z	f1317049	perf(CHandle): IsValid mem allocs
+2026-06-13T11:05:40Z	2026-06-13T11:05:40Z	cca7d652	perf(gamehooks/move): CMoveData
+2026-06-13T10:28:59Z	2026-06-13T10:28:59Z	12d849f6	perf(AcceptInput): Identity Pool
+2026-06-13T09:52:04Z	2026-06-13T09:52:04Z	38a945b5	feat(profiler/summary): Async Info
+2026-06-12T22:29:01Z	2026-06-12T22:29:01Z	7f8b2bb3	fix(scheduler): Map Change disposal
+2026-06-12T22:25:56Z	2026-06-12T22:25:56Z	f90c95f6	feat(managed): Profiler V2
+2026-06-11T17:49:28Z	2026-06-11T17:49:28Z	a065cb23	feat(core/command): buildinfo
+2026-06-11T17:16:54Z	2026-06-11T17:16:54Z	5c3d4914	update(gameevents): Global Handler
+2026-06-11T16:42:45Z	2026-06-11T16:42:45Z	b7811dc6	update(netmessages): Global Handler
+2026-06-11T15:32:58Z	2026-06-11T15:32:58Z	fd9d3e10	fix(players): @aim targeting (#328)
+2026-06-11T15:31:12Z	2026-06-11T15:31:12Z	4db8c3bc	chore(commands): Remove leftover
+2026-06-11T12:35:21Z	2026-06-11T12:35:21Z	4e59d9d6	update(client/chat): Use global handler
+2026-06-11T11:46:10Z	2026-06-11T11:46:10Z	4131e1cc	update(commands/client): Use global handler
+2026-06-11T11:08:08Z	2026-06-11T11:08:08Z	12b234fb	update(player/manager): STL List
+2026-06-10T19:06:50Z	2026-06-10T19:06:50Z	219f1a9b	fix(breakpad): Newer MSVC compiler
+2026-06-10T18:32:35Z	2026-06-10T18:32:35Z	79f41579	chore(netmessage): Reusable
+2026-06-08T20:32:14Z	2026-06-08T20:32:14Z	faa4c379	chore(commands): Global Handler
+2026-06-08T11:39:31Z	2026-06-08T11:39:31Z	90374929	fix(player): Demo Messages
+2026-06-08T11:22:13Z	2026-06-08T11:22:13Z	60f6bcd5	fix(dumps): Exit after handling
+2026-06-07T13:43:55Z	2026-06-07T13:43:55Z	5e5ec024	update(dumps): Use custom signal handler
+2026-06-05T10:26:53Z	2026-06-05T10:26:53Z	4cb144ac	fix(FilterMessage): ClientSlot
+2026-06-05T09:25:09Z	2026-06-05T09:25:09Z	72925435	fix(schema/update): On World Update
+2026-06-03T17:15:52Z	2026-06-03T17:15:52Z	42faf123	feat(crashreporter): Info recovery
+2026-06-01T11:22:45Z	2026-06-01T11:22:45Z	f1a3ecb6	update(players): Reauthorize
+2026-06-01T11:19:42Z	2026-06-01T11:19:42Z	0b16cbea	update(schema): StateChanged null check
+2026-05-31T18:57:36Z	2026-05-31T18:57:36Z	7c757eb2	Respect ConfigurationKeyName when clearing collection defaults (#326)
+2026-05-31T18:35:08Z	2026-05-31T18:35:08Z	4de2bdb0	update(events): Dynamic sub to gamehook
+2026-05-31T17:41:38Z	2026-05-31T17:41:38Z	e5696795	chore(native): Cleanup
+2026-05-31T10:51:25Z	2026-05-31T10:51:25Z	1cddd4c3	update(crashreporter/linux): Save console last
+2026-05-31T09:03:20Z	2026-05-31T09:03:20Z	585a617d	tryfix(gamehook): early checks
+2026-05-30T17:07:10Z	2026-05-30T17:07:10Z	16f81e52	update(events): Call if needed
+2026-05-30T16:42:25Z	2026-05-30T16:42:25Z	0ac4047a	update(command/tracker): Manager rework
+2026-05-30T15:01:54Z	2026-05-30T15:01:54Z	678bd64e	feat(gamehooks): Entity Touch & AcceptInput & FireOutput
+2026-05-29T15:27:38Z	2026-05-29T15:27:38Z	5f061af0	tryfix(player/disconnect): null playermanager
+2026-05-29T15:20:47Z	2026-05-29T15:20:47Z	2d92ab2c	fix(netmessage): FilterMessage pid
+2026-05-28T22:43:16Z	2026-05-28T22:43:16Z	0ede8857	cleanup(gameevents): Unused feature
+2026-05-28T22:41:31Z	2026-05-28T22:41:31Z	b57e1f85	fix(cmds/service): GetAllCommandsInfo
+2026-05-27T20:20:12Z	2026-05-27T20:20:12Z	ddbc37a5	feat(console/logger): ManagedEnable
+2026-05-27T18:32:27Z	2026-05-27T18:32:27Z	15d16b81	fix(gamehook): Remove unsafe struct
+2026-05-27T18:17:20Z	2026-05-27T18:17:20Z	771a2a7d	feat(gamehook): Move take damage hook
+2026-05-27T14:18:59Z	2026-05-27T14:18:59Z	3fe08e3e	chore(crashreporter): Remove empty dirs
+2026-05-27T14:14:23Z	2026-05-27T14:14:23Z	c92a8d35	feat(console/logger): WriteIntervalMs
+2026-05-27T13:48:18Z	2026-05-27T13:48:18Z	ce25e86d	fix(chat): Issue #323
+2026-05-27T13:27:16Z	2026-05-27T13:27:16Z	8cc606e7	fix(commands): GetAllCommands & sw cmds
+2026-05-26T20:07:22Z	2026-05-26T20:07:22Z	1c064116	fix(gamehooks): Use pools thank you
+2026-05-26T18:17:20Z	2026-05-26T18:17:20Z	29c5bf31	tryfix(console/logger): Performance
+2026-05-25T18:43:46Z	2026-05-25T18:43:46Z	2bd7f65b	Revert "chore(player): Think to managed" (#324)
+2026-05-25T12:30:43Z	2026-05-25T12:30:43Z	86a84e42	tryfix(entity): Fix gamerules
+2026-05-25T12:25:36Z	2026-05-25T12:25:36Z	d0aa2425	update(events/publisher): Small checks
+2026-05-25T04:10:05Z	2026-05-25T04:10:05Z	7e958ee5	chore(crashreporter): Native Version
+2026-05-24T19:16:58Z	2026-05-24T19:16:58Z	4af8c19c	Revert "update(profiler): Micro optimization"
+2026-05-24T15:34:01Z	2026-05-24T15:34:01Z	b86a1ce1	chore(player): Think to managed
+2026-05-24T12:51:34Z	2026-05-24T12:51:34Z	6299e4b6	update(profiler): Micro optimization
+2026-05-24T11:58:12Z	2026-05-24T11:58:12Z	eaabaff5	chore(gamehooks): Don't fire unnecessary
+2026-05-24T09:47:45Z	2026-05-24T09:47:45Z	addb9fab	feat(core): CrashReporter V2
+2026-05-23T08:41:20Z	2026-05-23T08:41:20Z	b9ede913	fix(core/hooks): ProcessUsercmd cast
+2026-05-22T17:10:40Z	2026-05-22T17:10:40Z	f788bd73	feat(core): GameHooks (#322) +semver: minor
+2026-05-19T20:11:00Z	2026-05-19T20:11:00Z	443f1a72	Release v1.3.5 (#321)
+2026-05-09T05:57:21Z	2026-05-09T05:57:21Z	22925460	Fix gamerules accessing (#314)
+2026-05-08T23:26:16Z	2026-05-08T23:26:16Z	c7cae48e	Release v1.3.3 (#313)
+2026-04-23T12:08:42Z	2026-04-23T12:08:42Z	4e7bc3d5	Merge pull request #302 from swiftly-solution/beta
+2026-04-23T10:54:43Z	2026-04-23T10:54:43Z	75e51ce1	fix(commands): Fix tokenize
+2026-04-22T20:36:43Z	2026-04-22T20:36:43Z	109a94a2	fix(entitysystem): fuck you includes
+2026-04-22T19:37:48Z	2026-04-22T19:37:48Z	671246b5	Release v1.3.0 - AG2 +semver: minor (#301)
+2026-04-18T21:42:39Z	2026-04-18T21:42:39Z	5ee27857	Release v1.2.3 (#296)

@@ -1,0 +1,156 @@
+2026-11-22T18:30:25Z	2026-11-22T18:30:25Z	03e5006a	Update Entwatch Hud to use custom_hud_layout (#481)
+2026-11-22T17:42:16Z	2026-11-21T20:56:40Z	1c3249d1	Migrate to new SDK entity helpers
+2026-11-22T17:42:16Z	2026-11-13T00:39:19Z	50e59fc0	Update SDK
+2026-11-22T17:42:16Z	2026-11-05T03:47:27Z	33564dc4	Update gamedata for 2026-11-04 CS2 update
+2026-11-22T17:42:16Z	2026-11-02T05:27:26Z	0251884d	Filter movers out of push traces to fix lag on moving entities
+2026-11-22T17:42:16Z	2026-11-01T01:07:13Z	e4ce8657	Migrate remaining KV1 ZR configs to JSONC
+2026-11-22T17:42:16Z	2026-11-01T00:05:52Z	34c20e2a	Remove KV1 discord bot config converter
+2026-11-22T17:42:16Z	2026-10-31T16:26:23Z	4dacee94	Update VS solution for new build scripts/SDK
+2026-11-22T17:42:16Z	2026-10-31T00:45:16Z	9fdb2149	Replace SayTextFilter signatures
+2026-11-22T17:42:16Z	2026-10-30T04:49:01Z	639c6919	Fix round restarts randomly duplicating default ents into world layers
+2026-10-25T04:01:56Z	2026-10-24T15:41:19Z	687f51ac	Relax AI guidelines a bit
+2026-10-25T04:01:56Z	2026-10-24T15:14:06Z	803606e8	Replace GetSpawnGroups signature
+2026-10-25T04:01:56Z	2026-10-24T13:58:36Z	fb2f34af	Update SDK
+2026-10-25T04:01:56Z	2026-10-24T13:30:24Z	cd4158ee	Fix game_player_equip crashing with item_* entries after CS2 update
+2026-10-25T04:01:56Z	2026-10-24T01:50:34Z	d09e6368	Update custom cfg handling for 2026-10-14 CS2 update
+2026-10-25T04:01:56Z	2026-10-23T13:46:57Z	a776140d	Update SDK
+2026-10-25T04:01:56Z	2026-10-23T03:59:38Z	e42724ea	Update gamedata for 2026-10-22 CS2 update
+2026-10-25T04:01:56Z	2026-10-16T01:04:25Z	044c01c9	Rework cvar whitelist for 2026-10-14 CS2 update compatibility
+2026-10-25T04:01:56Z	2026-10-15T07:15:46Z	6501f826	Fix some loop errors in panorama votes
+2026-10-25T04:01:56Z	2026-10-15T07:06:57Z	e1d97d32	Fix score changes not being networked
+2026-10-25T04:01:56Z	2026-10-15T07:01:01Z	2b5ac36c	Update SDK & sync build scripts (#469)
+2026-10-25T04:01:56Z	2026-10-14T23:30:17Z	fd15d9d2	Update Windows sm_mapGcBanInformation signature
+2026-10-25T04:01:56Z	2026-10-10T23:59:29Z	a14520d5	Remove default hud disconnect callback
+2026-10-25T04:01:56Z	2026-10-10T05:53:25Z	5a2a8a84	Fix/replace game_player_equip TriggerFor input hooks
+2026-09-30T02:48:20Z	2026-09-30T02:33:54Z	bb3be344	Change steam ID to a string
+2026-09-29T20:44:22Z	2026-09-29T20:29:53Z	9c768578	Restore new player configured clan tags
+2026-09-29T20:44:22Z	2026-09-29T19:26:47Z	e5d0d814	Remove clan tag name swap trick
+2026-09-29T20:44:22Z	2026-09-29T17:02:00Z	b5961cc9	Add distance customization to thirdperson
+2026-09-29T20:44:22Z	2026-09-29T16:39:13Z	cd5c31ba	Fix thirdperson weapon attacks originating from camera position
+2026-09-29T20:44:22Z	2026-09-29T05:29:07Z	2bfd87ac	Replace player_connect filtering with a custom event invocation on auth
+2026-09-29T20:44:22Z	2026-09-27T22:44:47Z	a7270880	Rework TestActivator null activator crash fix
+2026-09-29T20:44:22Z	2026-09-24T13:27:37Z	8a494fe9	Add map migration for logic_case InValue float values
+2026-09-29T20:44:22Z	2026-09-24T12:12:54Z	14fac219	Adjust clan tags for new format
+2026-09-29T20:44:22Z	2026-09-24T11:48:43Z	f8b2d630	Fix EntWatch counter tracking
+2026-09-29T20:44:22Z	2026-09-23T19:18:07Z	b84d1b14	Revert "EntWatch clantag colours (#462)"
+2026-09-29T20:44:22Z	2026-09-23T18:35:51Z	3bac42eb	New necessary null check?
+2026-09-29T20:44:22Z	2026-09-23T16:51:15Z	7b87e1ee	Update SDK
+2026-09-29T20:44:22Z	2026-09-23T16:45:01Z	d25ae314	Update offsets for 2026-09-22 CS2 update
+2026-09-29T20:44:22Z	2026-09-23T10:57:34Z	11f74cf2	Update signatures for 2026-09-22 CS2 update
+2026-09-29T20:44:22Z	2026-09-23T03:39:25Z	974e3d2c	Fix memory issue edge case with cvars in new cfg parser
+2026-09-29T20:44:22Z	2026-09-22T02:46:28Z	3dc62fa5	Fix thirdperson issues & tweak msgs
+2026-09-29T20:44:22Z	2026-09-21T15:52:02Z	b957f066	Update sdk
+2026-09-29T20:44:22Z	2026-09-21T15:43:34Z	c349dfe4	Implement basic thirdperson
+2026-09-29T20:44:22Z	2026-09-18T19:19:08Z	fd110168	Harden map download queue logic & try to avoid rate limit
+2026-09-29T20:44:22Z	2026-09-18T04:30:28Z	05225dea	Fix missing FireOutputInternal hook definition
+2026-09-29T20:44:22Z	2026-09-17T21:58:34Z	354276fb	Fix possible race condition with Steam callback
+2026-09-29T20:44:22Z	2026-09-17T21:34:35Z	4f060445	Run rendermode migrations independent of update time
+2026-09-29T20:44:22Z	2026-09-17T08:20:25Z	9ae95a2d	Overhaul map migrations & custom cfg parser
+2026-09-29T20:44:22Z	2026-09-17T01:22:48Z	3b398b10	Fix compile warnings
+2026-09-29T20:44:22Z	2026-09-16T21:37:26Z	f0c45c71	Fix several hud cleanup issues
+2026-09-29T20:44:22Z	2026-09-16T17:01:08Z	99a48448	Add custom hud cleanup and disconnect callback
+2026-09-29T20:44:22Z	2026-09-16T01:00:59Z	82c07ac8	Add helper for virtual KHooks
+2026-09-29T20:44:22Z	2026-09-14T07:00:58Z	879edc0b	Fix FindUseEntity function prototype that crashed on Windows
+2026-09-29T20:44:22Z	2026-09-14T04:42:20Z	e986126f	Fix possible crash in FireEvent hook
+2026-09-29T20:44:22Z	2026-09-13T04:49:27Z	d0383875	Fix compile errors
+2026-09-29T20:44:22Z	2026-09-12T22:57:59Z	ed802ce4	Remove redundant passing of g_GameConfig
+2026-09-29T20:44:22Z	2026-09-12T22:55:17Z	2ee08a81	Add convenience macros for creating hooks
+2026-09-29T20:44:22Z	2026-09-10T22:36:48Z	8809ca70	Move virtual hooks into their own file & template their setup
+2026-09-29T20:44:22Z	2026-09-09T23:58:03Z	27f317fd	Update signatures for 2026-09-09 CS2 update
+2026-09-29T20:44:22Z	2026-09-09T22:47:26Z	e7caca41	Migrate to KHook (#464)
+2026-09-29T20:44:22Z	2026-09-08T18:04:35Z	2f9358f6	Make player_connect obey cs2f_map_steamids_enable
+2026-09-29T20:44:22Z	2026-09-08T03:21:30Z	364fe922	Fix competitive cooldowns always being applied
+2026-09-29T20:44:22Z	2026-09-01T18:42:06Z	fc784c2a	Use schema manipulator to construct CTakeDamageInfo
+2026-09-29T20:44:22Z	2026-08-31T10:38:35Z	33da14b5	Refine click callback logic
+2026-09-29T20:44:22Z	2026-08-31T10:25:08Z	63c0a342	Use schema manipulator for m_vecPlayerLayoutStates
+2026-09-29T20:44:22Z	2026-08-30T05:45:24Z	b6854148	More click callback cleanup + predefine layout path
+2026-09-29T20:44:22Z	2026-08-28T21:36:47Z	30b1be36	Expand custom hud API
+2026-09-29T20:44:22Z	2026-08-28T11:10:59Z	21929ad8	Update SDK
+2026-09-29T20:44:22Z	2026-08-28T02:47:19Z	ab43a5be	Add basic custom hud functionality
+2026-08-26T22:56:14Z	2026-08-25T19:48:40Z	d22428d2	Tidying
+2026-08-26T22:56:14Z	2026-08-25T19:35:40Z	8e7e16ca	Add low population features to Map Vote System (#461)
+2026-08-26T22:56:14Z	2026-08-25T09:44:23Z	eaf0e4f4	Idle manager updates
+2026-08-26T22:56:14Z	2026-08-25T09:39:36Z	ee5ef18a	Fix entwatch score reset bug
+2026-08-26T22:56:14Z	2026-08-25T07:31:58Z	1b5d9ec9	Add AI usage guidelines
+2026-08-26T22:56:14Z	2026-08-25T01:53:09Z	e61eb578	Update signatures for 2026-08-24 CS2 update
+2026-08-26T22:56:14Z	2026-08-20T23:44:06Z	02bd0b18	EntWatch clantag colours (#462)
+2026-08-26T22:56:14Z	2026-08-19T23:52:57Z	14c85adf	Fix several exploits in chat command processing
+2026-08-26T22:56:14Z	2026-08-19T04:39:03Z	a1ac5edc	Update to VS 2026
+2026-08-26T22:56:14Z	2026-08-16T06:04:46Z	a4d4e944	Migrate to build containers & start SteamRT4 builds
+2026-08-26T22:56:14Z	2026-08-16T04:23:35Z	52afdfd5	Replace some gamedata lookups with VScript function bindings (#459)
+2026-08-26T22:56:14Z	2026-08-13T23:34:43Z	2b77f4a5	Fix user prefs not loading when a player authenticates early
+2026-08-26T22:56:14Z	2026-08-11T03:42:31Z	9742a00d	Remove explicit weapon hiding
+2026-08-26T22:56:14Z	2026-08-09T19:16:06Z	2a7db489	Fix hide crash (missing client entity)
+2026-08-26T22:56:14Z	2026-08-03T23:24:15Z	d272872c	Add CCheckTransmitInfoExtended
+2026-08-26T22:56:14Z	2026-08-03T22:47:22Z	a41c7843	Add optional timeout config to HTTP API
+2026-08-26T22:56:14Z	2026-08-03T22:46:46Z	bfd9b4e0	Propagate all HTTP API error states
+2026-08-26T22:56:14Z	2026-07-28T21:53:22Z	fea7b240	Fix nom player limits only being checked once & add player count cache
+2026-08-26T22:56:14Z	2026-07-28T20:02:01Z	4e0b323b	Add custom ConVar whitelist & cfg parser systems (#456)
+2026-08-26T22:56:14Z	2026-07-26T20:41:39Z	9b009ec0	Fix unparented beams/lasers hitting infinite loops on spawn
+2026-08-26T22:56:14Z	2026-07-23T01:09:20Z	a14c6bbc	Update SDK
+2026-08-26T22:56:14Z	2026-07-18T03:34:32Z	7eb1a6ac	Use lower severity for a common warning log
+2026-08-26T22:56:14Z	2026-07-17T04:16:50Z	b04aa00f	Update actions
+2026-08-26T22:56:14Z	2026-07-15T22:43:58Z	8b9aa753	Ignore targetname player events in ButtonWatch
+2026-08-26T22:56:14Z	2026-07-15T22:11:10Z	fb5185b0	Remove redundant IsHearingClient gamedata
+2026-07-10T22:20:02Z	2026-07-10T21:09:20Z	b57591c8	Add prop damage multiplier configuration
+2026-07-10T22:20:02Z	2026-07-10T17:40:04Z	aa720c48	Update README (#452)
+2026-07-10T22:20:02Z	2026-07-09T20:05:25Z	fb0be5b6	Update SDK
+2026-07-10T22:20:02Z	2026-07-09T19:36:39Z	2422ef8c	Fix CGlowProperty's NetworkStateChanged
+2026-07-10T22:20:02Z	2026-07-09T16:45:35Z	83a0ca14	remove todo comment
+2026-07-10T22:20:02Z	2026-07-09T16:38:31Z	04ace623	Update AddEntityIOEvent args too
+2026-07-10T22:20:02Z	2026-07-09T15:54:26Z	2b9cdc09	Move m_flSpeed schema field
+2026-07-10T22:20:02Z	2026-07-09T14:45:58Z	253c3f47	Update CTakeDamageResult
+2026-07-10T22:20:02Z	2026-07-09T14:18:45Z	df94e038	Fix compile errors
+2026-07-10T22:20:02Z	2026-07-09T14:18:31Z	e924e941	Update offsets for 2026-07-08 CS2 update
+2026-07-10T22:20:02Z	2026-07-09T13:41:30Z	aae2c6a1	Update SDK
+2026-07-10T22:20:02Z	2026-07-09T03:56:46Z	73335247	Update signatures for 2026-07-08 CS2 update
+2026-07-10T22:20:02Z	2026-07-03T05:44:57Z	714289be	Include recent VC users in !voicechat as well
+2026-07-10T22:20:02Z	2026-06-29T07:21:52Z	f86483d7	Prevent beacon spam
+2026-07-10T22:20:02Z	2026-06-29T06:50:24Z	de6e87de	Add !mz alias
+2026-07-10T22:20:02Z	2026-06-29T06:35:35Z	a6f94965	Fix health regen interval being accessed as an int
+2026-07-10T22:20:02Z	2026-06-26T00:49:32Z	a56dd6cd	Add !voicechat command (#451)
+2026-07-10T22:20:02Z	2026-06-25T22:09:21Z	4c8ace56	Split CMapMigrations::OnEntitySpawned into pre/post
+2026-07-10T22:20:02Z	2026-06-25T21:16:20Z	519b1d13	Re-add support for full view angles in Teleport
+2026-07-10T22:20:02Z	2026-06-25T03:32:45Z	0df6bbcb	Fix Spawn hook crash after SDK update
+2026-07-10T22:20:02Z	2026-06-25T03:21:29Z	2eb33715	Replace UTIL_Remove gamedata with runtime lookup
+2026-07-10T22:20:02Z	2026-06-24T22:33:22Z	6155a25b	Push fix may no longer need subtick movement disabled
+2026-07-10T22:20:02Z	2026-06-04T18:53:56Z	24f25ae0	Convert remaining unnecessary CUtlVector usages
+2026-07-10T22:20:02Z	2026-06-02T07:06:56Z	773ab312	feat: duck spam (#448)
+2026-07-10T22:20:02Z	2026-06-01T15:58:08Z	d90cad4d	Add !motherzombies command (#447)
+2026-07-10T22:20:02Z	2026-05-23T03:36:45Z	078236c4	Add a mode to zsounds to only hear infect scream (#446)
+2026-07-10T22:20:02Z	2026-05-22T05:33:54Z	1a78fd0d	Remove KV1 admin config converter
+2026-07-10T22:20:02Z	2026-05-22T05:28:41Z	23e3b90f	Migrate discord bot config to JSONC
+2026-07-10T22:20:02Z	2026-05-22T00:59:25Z	b8e7ba13	Fix weapon parented entities migration being reset on some entities
+2026-07-10T22:20:02Z	2026-05-21T03:41:08Z	ba871441	Simplify forced next map & FinishVote flows
+2026-05-19T18:24:36Z	2026-05-19T17:54:33Z	01db762d	Add a map migration for parented weapon entity heights
+2026-05-19T18:24:36Z	2026-05-19T16:54:15Z	3f549cb1	Rename hook callback for clarity
+2026-05-19T18:24:36Z	2026-05-19T01:25:17Z	a87a7a5f	Remove CPhysBox_Use patch
+2026-05-19T18:24:36Z	2026-05-19T00:56:10Z	8a59cd7c	Partial gamedata updates for 2026-05-18 CS2 update
+2026-05-19T18:24:36Z	2026-05-15T02:46:51Z	9f67a0c7	Update BotNavIgnore patch for 2026-05-14 CS2 update
+2026-05-19T18:24:36Z	2026-05-01T03:33:50Z	c7b4e1f6	Make SetModel blocker a map migration as well
+2026-05-19T18:24:36Z	2026-05-01T03:08:34Z	d3ed0a90	Change GoToIntermission virtual hook to a detour
+2026-05-19T18:24:36Z	2026-04-27T07:06:33Z	106f993a	Update flashlight particle
+2026-05-19T18:24:36Z	2026-04-26T04:34:27Z	e3acc362	Fix broken cases of teleport angles on player pawns
+2026-05-19T18:24:36Z	2026-04-24T23:48:13Z	61ea0daf	Add cvar for disabling map SetModel usage
+2026-05-19T18:24:36Z	2026-04-24T02:30:54Z	c460b337	Attempt to fix lag/client crashes with a ParticleManager msg blocker
+2026-05-19T18:24:36Z	2026-04-23T22:14:24Z	69c8c118	Add particle flashlight & fix light_barn flashlight attachment (#439)
+2026-05-19T18:24:36Z	2026-04-23T20:23:08Z	59fd9325	Remove cheat flag from mp_flinch_punch_scale
+2026-05-19T18:24:36Z	2026-04-22T01:50:32Z	f57d068f	Update signatures for 2026-04-21 CS2 update
+2026-05-19T18:24:36Z	2026-04-21T18:05:45Z	1189abe4	Update SDK
+2026-05-19T18:24:36Z	2026-04-21T02:17:37Z	93bf750f	Switch GetPlayerName to std::string to fix invalid buffer reuse
+2026-05-19T18:24:36Z	2026-04-15T01:58:56Z	935876cb	Update movement unlocker for 2026-04-14 beta update
+2026-05-19T18:24:36Z	2026-04-14T23:17:22Z	7034156c	Fix map vote schema fields not being networked
+2026-05-19T18:24:36Z	2026-04-14T22:33:42Z	5523a6f4	Fix HammerID patch
+2026-05-19T18:24:36Z	2026-04-14T19:00:40Z	7ec9bedb	Fix EntWatch config dump crashing server when used from console
+2026-05-19T18:24:36Z	2026-04-14T05:21:39Z	e55b806e	Fix detection of networked schema fields
+2026-05-19T18:24:36Z	2026-04-03T21:08:22Z	f8476513	Remove AG1 playermodel animation fix
+2026-05-19T18:24:36Z	2026-04-03T20:56:41Z	2ac67960	Update example player class config with AG2 models
+2026-05-19T18:24:36Z	2026-04-03T20:40:14Z	5113c0e8	Fix SetPawn signature
+2026-05-19T18:24:36Z	2026-04-03T18:27:42Z	717177fa	Update offsets for AG2 beta
+2026-05-19T18:24:36Z	2026-04-03T12:10:42Z	ba2f1c6e	Update CTakeDamageInfo & CTakeDamageResult
+2026-05-19T18:24:36Z	2026-04-03T12:02:02Z	03b372b7	Update signatures for AnimGraph2 beta
+2026-05-19T18:24:36Z	2026-04-20T23:05:38Z	5504313a	Update MZ selection vector usage to std::vector
+2026-05-19T18:24:36Z	2026-04-20T22:54:02Z	94c33925	zr_infect_min_count_req (#435)
+2026-05-19T18:24:36Z	2026-04-20T22:34:17Z	b038ca87	Strip trailing space from player names (#436)
+2026-05-19T18:24:36Z	2026-03-27T05:05:33Z	21308464	Add AGENTS.md
+2026-05-19T18:24:36Z	2026-03-26T08:10:56Z	94bd7ff9	Migrate gamedata to JSONC & IDA signature formats

@@ -1,0 +1,44 @@
+ad6e1ca2 removed/renamed=  5 type-changed=  0 classfiles-deleted=  0 | 2024-04-11 chore: bump hl2sdk (#408)
+
+7cae4be9 removed/renamed=112 type-changed=  2 classfiles-deleted=  0 | 2024-04-26 Fix: new game update broke signatures  (#425)
+
+cafc4e23 removed/renamed=128 type-changed=  3 classfiles-deleted=  3 | 2024-05-25 Initial update after 2024-05-23 CS2 update (#461)
+
+b79fd19c removed/renamed=  4 type-changed=  0 classfiles-deleted=  1 | 2024-07-26 chore: update schema (#531)
+
+2b31f519 removed/renamed= 24 type-changed=  6 classfiles-deleted=  0 | 2024-10-05 Update Schema for Armory Update (#592)
+
+6b430694 removed/renamed=  7 type-changed=  0 classfiles-deleted=  0 | 2024-12-24 Update Schema to Latest (#721)
+
+414a59a3 removed/renamed=  1 type-changed=  0 classfiles-deleted=  0 | 2025-03-24 fix(schema): inherited schema classes with clashing properties (#818)
+7025b626 removed/renamed=  2 type-changed=  0 classfiles-deleted= 14 | 2025-05-10 chore(schema): update (mainly removal of danger zone classes)
+
+22809e3e removed/renamed=  2 type-changed=  0 classfiles-deleted=  1 | 2025-07-07 feat: update schema for game update 1.40.8.5 (03.07.2025) (#921)
+
+af3bb528 removed/renamed=102 type-changed=  2 classfiles-deleted= 17 | 2025-08-03 chore: schema update for patch 19388062 (#962)
+
+ef4b8f94 removed/renamed=  4 type-changed=  0 classfiles-deleted=  1 | 2025-08-21 feat(schema): update schema classes for build 19644975
+
+56e00740 removed/renamed= 20 type-changed=  7 classfiles-deleted=  5 | 2025-10-16 fix: update schema for update
+
+f5054058 removed/renamed=  0 type-changed=  1 classfiles-deleted=  0 | 2025-10-27 chore(schema): update schema to latest
+
+f9617b9a removed/renamed= 60 type-changed=  1 classfiles-deleted=  3 | 2026-01-22 fix(schema): update schema for 1.41.3.0
+
+60db1df2 removed/renamed=  1 type-changed=  4 classfiles-deleted=  0 | 2026-01-27 chore(schema): Update Schema Definitions to 1.41.3.3 (#1206)
+
+8a9fbe8f removed/renamed= 43 type-changed= 20 classfiles-deleted=  4 | 2026-04-22 fix: apply changes for AG2 update (#1279)
+
+d1038fbc removed/renamed=  4 type-changed=  0 classfiles-deleted=  0 | 2026-05-17 chore: Update Schema Definitions to 1.41.6.1 (#1316)
+
+0fc6848d removed/renamed=  3 type-changed=  0 classfiles-deleted=  0 | 2026-06-01 chore: Update Schema Definitions to 1.41.6.5 (#1327)
+
+0586daf3 removed/renamed= 52 type-changed=  7 classfiles-deleted=  5 | 2026-07-10 fix: Update for latest CS2 Game Update [1.41.6.9] (#1348)
+
+505e466a removed/renamed= 27 type-changed=  0 classfiles-deleted=  4 | 2026-09-23 chore: Update Schema Definitions to 1.41.8.2 (#1404)
+
+86d3f07a removed/renamed=  2 type-changed=  0 classfiles-deleted=  0 | 2026-10-24 chore: Update Schema Definitions to 1.41.9.2 (#1447)
+
+5cbbd913 removed/renamed=  4 type-changed=  0 classfiles-deleted=  0 | 2026-10-30 chore: Update Schema Definitions to 1.41.9.3 (#1471)
+
+TOTAL removed/renamed props: 607 type changes: 53 class files deleted: 58

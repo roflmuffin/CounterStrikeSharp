@@ -1,0 +1,1551 @@
+2026-11-24T00:37:57Z	2026-11-24T00:37:57Z	3df5b3fb	cs2-update: read the build from Steam PICS; never call a run with no old build clean (#400)
+2026-11-24T00:32:16Z	2026-11-24T00:32:16Z	e87ab221	gamedata: CS2 build 26879581 moves ISource2Server::GameFrame to slot 20 (#436)
+2026-11-21T22:19:55Z	2026-11-21T22:19:55Z	095de62e	chore: version packages (#434)
+2026-11-21T22:17:21Z	2026-11-21T22:17:21Z	65f41094	cs2: GameHud rail covers the stock team counter with a solid top bar (#433)
+2026-11-21T21:51:52Z	2026-11-21T21:51:52Z	65d3e7f0	chore: version packages (#429)
+2026-11-21T21:51:38Z	2026-11-21T21:51:38Z	24bab608	cs2: GameHud sheet, prompt, drawer and vote stack above the intro and spectate hub (#432)
+2026-11-21T21:47:04Z	2026-11-21T21:47:04Z	20706fee	Windows port W2: PE module images, MSVC RTTI and the first win64 gamedata (#430)
+2026-11-21T21:10:44Z	2026-11-21T21:10:44Z	89c11e79	cs2: the movement hook's view costs one object, and view.player starts at the last matching slot (#431)
+2026-11-21T20:47:19Z	2026-11-21T20:47:19Z	a786ecab	cs2: GameHud.target, a crosshair target label (#424)
+2026-11-21T20:09:15Z	2026-11-21T20:09:15Z	376bff8a	Build core and shim for Windows x64 (W1: build + boot) (#414)
+2026-11-21T20:08:46Z	2026-11-21T20:08:46Z	0dd282f4	core: keep optional attachments callable in the consumer's unload hooks (#428)
+2026-11-21T20:07:16Z	2026-11-21T20:07:16Z	a95a6fe2	cs2: GameHud sheet repaint clears the previous body (#427)
+2026-11-21T20:00:52Z	2026-11-21T20:00:52Z	b7fcd610	gamedata: baseline CS2 builds 26772654 and 26798866 (clean) (#421)
+2026-11-21T20:00:38Z	2026-11-21T20:00:38Z	0e7e5205	core: say where a full collection ran and which functions allocate (#425)
+2026-11-21T19:51:50Z	2026-11-21T19:51:50Z	4e33bf68	ci: refresh apt index before ccache install (#426)
+2026-11-18T23:30:07Z	2026-11-18T23:30:07Z	fe334826	chore: version packages (#419)
+2026-11-18T23:21:28Z	2026-11-18T23:21:28Z	506c00c7	core: build each native's template once per isolate (#418)
+2026-11-18T23:21:28Z	2026-11-18T23:21:28Z	dc47feaf	core: fast natives for client and slot scans (#417)
+2026-11-18T23:21:28Z	2026-11-18T23:21:28Z	d01f0cdf	core: usercmd, entity events, SDKHooks and SetTransmit cross into JS once per dispatch (#415)
+2026-11-18T23:21:27Z	2026-11-18T23:21:27Z	5c82d913	perf: HudInput drops its usercmd hook when idle, plus four small per-frame cleanups (#413)
+2026-11-18T23:21:27Z	2026-11-18T23:21:27Z	fc73c124	cs2: weapon card reads each player every 4 frames and keeps its slot list (#412)
+2026-11-18T23:21:27Z	2026-11-18T23:21:27Z	7b27c1bc	core: collect garbage after map start and run one V8 task per frame (#411)
+2026-11-18T23:21:26Z	2026-11-18T23:21:26Z	cb7c7404	core: always-on slow-frame watchdog with GC timing and sm frames (#410)
+2026-11-18T06:42:03Z	2026-11-18T06:42:03Z	5bc8ee71	cs2: HUD paints and claims from OnPluginStart land when a plugin loads into a live world (#409)
+2026-11-18T06:41:28Z	2026-11-18T06:41:28Z	b2ffc956	gamedata: CS2 build 26748068 (baseline bump, no gamedata change) (#408)
+2026-11-18T05:50:21Z	2026-11-18T05:50:21Z	54636b58	gamedata: CS2 build 26747005 (baseline bump, no gamedata change) (#403)
+2026-11-18T05:50:03Z	2026-11-18T05:50:03Z	962be18b	chore: version packages (#407)
+2026-11-18T05:40:36Z	2026-11-18T05:40:36Z	86441711	cs2: weapon card marks the item in hand within a shared slot row and shows weapon icons (#405)
+2026-11-18T02:49:49Z	2026-11-18T02:49:49Z	1bde61e0	chore: version packages (#404)
+2026-11-18T02:48:51Z	2026-11-18T02:48:51Z	81f654d5	cs2: GameHud.weapon card replaces the stock weapons HUD; HideHud.Weapons names bit 6 (#402)
+2026-11-17T23:57:05Z	2026-11-17T23:57:05Z	559c90af	chore: version packages (#401)
+2026-11-17T23:55:11Z	2026-11-17T23:55:11Z	bebc1d28	gamedata: CS2 build 26738309 (schema regen, baseline bump) (#399)
+2026-11-17T23:13:34Z	2026-11-17T23:13:34Z	7926ebe9	shim: log the player's current name and SteamID for commands (#388)
+2026-11-17T23:09:07Z	2026-11-17T23:09:07Z	a906030b	gamedata-offline: regenerate gamedata with gdgen and trigger from the Steam watcher (#396)
+2026-11-17T23:05:13Z	2026-11-17T23:05:13Z	6e6c3fb0	ci: watch Steam for CS2 updates and run update-day checks automatically (#395)
+2026-11-17T23:03:56Z	2026-11-17T23:03:56Z	19f5a1f7	Bump s2sdk to the upstream cs2 merge and port the shim to NetMessageInfo_t (#397)
+2026-11-16T02:07:12Z	2026-11-16T02:07:12Z	b3e64fc3	chore: version packages (#391)
+2026-11-16T02:06:52Z	2026-11-16T02:06:52Z	9235fc6b	ci: mount git alternates into the KHook sniper build container (#392)
+2026-11-16T02:02:20Z	2026-11-16T02:02:20Z	d6626ee3	examples: GameHud cookbook demo and live-check guide (#390)
+2026-11-16T01:56:21Z	2026-11-16T01:56:21Z	dbc894b7	cs2: GameHud.intro, GameHud.spectate (player picker, camera shots) and GameHud.summary (#389)
+2026-11-16T01:52:26Z	2026-11-16T01:52:26Z	567b2408	cs2: GameHud.sheet (paged sections, stable rule numbers) and GameHud.prompt (#387)
+2026-11-16T01:47:14Z	2026-11-16T01:47:14Z	ee5f230a	cs2: GameHud.vote (chat numbers, Tab to click) and GameHud.drawer (#386)
+2026-11-15T23:35:15Z	2026-11-15T23:35:15Z	49cbda1b	chore: version packages (#384)
+2026-11-15T23:34:43Z	2026-11-15T23:34:43Z	e310f24a	cs2: GameHud drives the in-round game HUD (rail, kill feed, status, toast) (#385)
+2026-11-15T23:19:50Z	2026-11-15T23:19:50Z	c7823173	workshop: generated game-kit layouts for the in-round HUD and panels (#383)
+2026-11-15T23:05:15Z	2026-11-15T23:05:15Z	cf5d1113	core: @s2script/sdk/hud multiplexes the native HUD-hide mask (#382)
+2026-11-15T03:00:09Z	2026-11-15T03:00:09Z	bba65a06	chore: version packages (#381)
+2026-11-15T02:56:37Z	2026-11-15T02:56:37Z	13b035a6	feat(sdk): add changed-only development snapshots (#333)
+2026-11-15T02:56:25Z	2026-11-15T02:56:25Z	7fac5e4e	fix(cs2): strip chat colour tags from HUD text (#380)
+2026-11-14T19:15:43Z	2026-11-14T19:15:43Z	3b246b23	chore: version packages (#379)
+2026-11-14T19:14:00Z	2026-11-14T19:14:00Z	101f1805	rockthevote: change the map right away after a won vote, with rtv_changetime (#377)
+2026-11-14T19:13:50Z	2026-11-14T19:13:50Z	0715a6a6	fix(cs2): keep center-menu Back/Next in fixed footer slots (#376)
+2026-11-14T19:13:24Z	2026-11-14T19:13:24Z	a2ee6242	sm: real framework version in the core, and a player's sm answers (#378)
+2026-11-14T17:51:27Z	2026-11-14T17:51:27Z	c3bbe54d	chore: version packages (#371)
+2026-11-14T17:45:32Z	2026-11-14T17:45:32Z	69d1362c	sm plugins: finish update/load/reload in the command on a hibernating server (#374)
+2026-11-14T02:50:33Z	2026-11-14T02:50:33Z	42466f63	interop: contract drift warns at load and fails only the members that changed (#373)
+2026-11-14T02:40:30Z	2026-11-14T02:40:30Z	6e226c96	sm plugins: info command and versions in the list (#372)
+2026-11-13T01:39:38Z	2026-11-13T01:39:38Z	c7831cae	cs2: joinTeam takes HandleCommandJoinTeam's third argument as int flags, not a bool (#370)
+2026-11-12T23:02:23Z	2026-11-12T23:02:23Z	d075d69f	chore: version packages (#369)
+2026-11-12T22:53:09Z	2026-11-12T22:53:09Z	913bad25	usercmd: post phase, once per executed command after its movement (OnPlayerRunCmdPost) (#366)
+2026-11-12T22:48:53Z	2026-11-12T22:48:53Z	694511c2	ci: let the release sniper build restore ci-native's Bullseye target cache (#368)
+2026-11-12T22:20:08Z	2026-11-12T22:20:08Z	6870f5b1	ci: run the native gate suite as four parallel shards (#367)
+2026-11-12T02:58:55Z	2026-11-12T02:58:55Z	c7219665	ci: run changesets workflow on GitHub-hosted runners again (#365)
+2026-11-12T02:49:24Z	2026-11-12T02:49:24Z	067c0670	chore: version packages (#364)
+2026-11-12T02:39:06Z	2026-11-12T02:39:06Z	bd057739	addons: mount workshop addons and push them to clients natively (replaces MultiAddonManager) (#363)
+2026-11-12T01:36:47Z	2026-11-12T01:36:47Z	418e3dbe	.github/workflows: Migrate workflows to Blacksmith runners (#362)
+2026-11-12T00:17:15Z	2026-11-12T00:17:15Z	9ab196ca	shim: survive CS2 build 26598758's INetworkMessages rework (#361)
+2026-11-11T01:07:08Z	2026-11-11T01:07:08Z	179dc203	chore: version packages (#358)
+2026-11-11T00:53:36Z	2026-11-11T00:53:36Z	be15583e	cs2: Player.target resolves SourceMod's multi-target filters (@ct, @t, @alive, @dead, …) (#357)
+2026-11-10T01:58:47Z	2026-11-10T01:58:47Z	b53bcdb7	basecomm: sm_mute blocks voice only, never CS2's report-abuse mute (#356)
+2026-11-09T16:39:40Z	2026-11-09T16:39:40Z	ca0d2b59	shim: setCvar writes only the cvar type's own bytes (#355)
+2026-11-09T03:28:55Z	2026-11-09T03:28:55Z	c877db71	chore: version packages (#351)
+2026-11-09T03:23:14Z	2026-11-09T03:23:14Z	f6aeb064	mapchooser: no Extend-only ballots; apply a late winner after match end (#354)
+2026-11-09T03:21:38Z	2026-11-09T03:21:38Z	16e4973e	plugins: workshopmaps keeps the maplist's workshop maps downloaded (#348)
+2026-11-09T03:21:37Z	2026-11-09T03:21:37Z	bd0ef207	core: @s2script/sdk/steam reaches the server's Steam session and Workshop (#347)
+2026-11-09T02:50:44Z	2026-11-09T02:50:44Z	307de91c	sm_rcon: send the command's console output back to the caller (#344)
+2026-11-09T00:07:14Z	2026-11-09T00:07:14Z	e22e4799	rockthevote: runoff votes on a tie (#346)
+2026-11-09T00:07:14Z	2026-11-09T00:07:14Z	ca5c4402	plugins: add mapchooser end-of-map vote (timed, nominations + Extend) (#345)
+2026-11-08T23:56:44Z	2026-11-08T23:56:44Z	60561129	feat: SourceMod-style admin feedback (ShowActivity2, LogAction, sm_show_activity) (#343)
+2026-11-08T23:56:35Z	2026-11-08T23:56:35Z	d4e44729	basechat: let non-admins message admins with @ in team chat (#342)
+2026-11-08T00:41:31Z	2026-11-08T00:41:31Z	4ae5a2b7	chore: version packages (#339)
+2026-11-08T00:41:21Z	2026-11-08T00:41:21Z	4afcaac0	feat(plugins): configure startup maps and round-safe rotation (#340)
+2026-11-08T00:15:10Z	2026-11-08T00:15:10Z	7ee40af6	cs2: fix player.respawn() (wrong Respawn sig, short SetPawn arity) (#341)
+2026-11-05T03:19:42Z	2026-11-05T03:19:42Z	b9e7ca53	cs2: add Player.isControllingBot and controlledBotPawn (#337)
+2026-11-05T03:19:41Z	2026-11-05T03:19:41Z	51c0af06	core: add PrecacheContext.addEntity for entity-class precache (#336)
+2026-11-05T03:19:41Z	2026-11-05T03:19:41Z	4e9a3594	cs2: regenerate the schema catalog offline for build 26445667 (#335)
+2026-11-05T03:19:40Z	2026-11-05T03:19:40Z	43148bd5	gamedata: re-verify for the Nov 5 2026 CS2 update (build 26445667) (#334)
+2026-10-31T18:46:26Z	2026-10-31T18:46:26Z	08d325e7	chore: version packages (#331)
+2026-10-31T18:39:29Z	2026-10-31T18:39:29Z	b0dcb9db	feat: read repeated usermessage strings and edit integer fields (#330)
+2026-10-30T04:52:21Z	2026-10-30T04:52:21Z	8fe8604b	chore: version packages (#326)
+2026-10-30T04:41:40Z	2026-10-30T04:41:40Z	5d2a178e	sdk: several bundles in one workspace (s2script.workspace.bundles) (#328)
+2026-10-27T04:45:44Z	2026-10-27T04:45:44Z	6d95d6cf	feat(cs2): expose the controller's action-tracking services (#325)
+2026-10-26T14:47:31Z	2026-10-26T14:47:31Z	ec97355e	chore: version packages (#322)
+2026-10-26T14:34:26Z	2026-10-26T14:34:26Z	c2acf2b3	core: @s2script/sdk/stringtables reads and writes network string tables (#321)
+2026-10-26T14:34:26Z	2026-10-26T14:34:26Z	0cd19911	sound: Sound.duration and Sound.isValid look up a sound event by name (#320)
+2026-10-26T14:34:25Z	2026-10-26T14:34:25Z	ae6c9ed3	sound: Sound.start returns a SoundEvent with setParam and stop (#317)
+2026-10-26T14:34:25Z	2026-10-26T14:34:25Z	d4f4ddaf	entity: lookupBone, getBoneTransform, lookupAttachment, getAttachment (#316)
+2026-10-26T14:34:24Z	2026-10-26T14:34:24Z	c88db3ef	cs2: MapGroups.maps lists a map group's maps (#319)
+2026-10-26T14:34:24Z	2026-10-26T14:34:24Z	dd1d3766	core: declared calls can target engine interfaces and return string lists (#318)
+2026-10-26T14:34:24Z	2026-10-26T14:34:24Z	493597bc	cs2: weapon.setAttribute() sets econ attributes by name (#315)
+2026-10-26T14:34:23Z	2026-10-26T14:34:23Z	d937e03f	core: receiver.via can hop through embedded structs (#314)
+2026-10-26T14:34:23Z	2026-10-26T14:34:23Z	f4408de7	core: Client.netStats() reads the client's net channel counters (#313)
+2026-10-26T14:34:22Z	2026-10-26T14:34:22Z	8c038ee9	client: query and replicate client cvars (#308)
+2026-10-26T14:34:22Z	2026-10-26T14:34:22Z	d92165d8	entity: takeDamage and SDKHooks_TakeDamage deal damage; cs2 pawn.heal (#307)
+2026-10-26T14:25:01Z	2026-10-26T14:25:01Z	49e2c12a	entity: onInput, a pre-hook on every input an entity receives (#305)
+2026-10-26T14:25:00Z	2026-10-26T14:25:00Z	64ca50f3	cs2: Particles.create with a viewer filter (#304)
+2026-10-26T14:25:00Z	2026-10-26T14:25:00Z	911f35b6	cs2: pawn.eyePosition from the networked view offset (#303)
+2026-10-26T14:24:59Z	2026-10-26T14:24:59Z	83dca0c2	entity: Entity.findByName and Entity.findInSphere (#302)
+2026-10-26T14:24:59Z	2026-10-26T14:24:59Z	6e2cc944	cs2: Teams.onJoinTeam decides a player's team request (#312)
+2026-10-26T14:24:59Z	2026-10-26T14:24:59Z	2bea944b	cs2: Grenades.emit spawns live grenades (#311)
+2026-10-26T14:24:58Z	2026-10-26T14:24:58Z	a4e9bfdc	cs2: GameRules.onRoundRestart hooks and goToIntermission (#310)
+2026-10-26T14:24:58Z	2026-10-26T14:24:58Z	fd05adb5	cs2: movement.onProcessMove/onProcessMovePost hook each player's movement tick (#309)
+2026-10-26T14:24:57Z	2026-10-26T14:24:57Z	3a5fe82c	cs2: weapons.onCanUse/onCanSwitchTo/onDrop gate weapon pickup, switch and drop (#306)
+2026-10-26T14:24:57Z	2026-10-26T14:24:57Z	9495c611	cs2: chat.onCanHear decides who reads whose chat (#301)
+2026-10-26T14:24:57Z	2026-10-26T14:24:57Z	61592956	cs2: weapon.data reads a weapon's VData (#300)
+2026-10-26T14:24:56Z	2026-10-26T14:24:56Z	653bd150	cs2: center, alert and HTML center text (#299)
+2026-10-26T14:24:55Z	2026-10-26T14:24:55Z	834f0c80	cs2: drop weapons as world pickups (#298)
+2026-10-26T13:50:31Z	2026-10-26T13:50:31Z	9e982abc	sdkhooks: self-resolve Use, Spawn, PreThink and GetMaxHealth on CS2 (#297)
+2026-10-23T18:20:45Z	2026-10-23T18:20:45Z	b65353c0	gamedata: re-derive the custom HUD click receiver for the Oct 22 CS2 build (#295)
+2026-10-23T17:50:00Z	2026-10-23T17:50:00Z	f6b555b2	shim: derive the tick interval; CS2 has no GetTickInterval (#294)
+2026-10-23T17:36:55Z	2026-10-23T17:36:55Z	cd8a85f1	chore: version packages (#293)
+2026-10-23T17:36:05Z	2026-10-23T17:36:05Z	7adfe9ae	Timer-grade engine surface: tick clock, field gather, off-thread files (#290)
+2026-10-23T17:33:43Z	2026-10-23T17:33:43Z	8b19b34f	sdk: move to s2sdk (s2script/s2sdk fork) and port the shim (#291)
+2026-10-23T17:33:43Z	2026-10-23T17:33:43Z	f042d2e7	shim: fix the Oct 22 join crash; hook slots to gamedata with layout pins (#289)
+2026-10-22T22:35:38Z	2026-10-22T22:35:38Z	c02a38a6	chore: version packages (#288)
+2026-10-22T22:31:10Z	2026-10-22T22:31:10Z	08c95e01	perf: native extensions through a versioned C ABI (Stage 6) (#286)
+2026-10-22T22:31:10Z	2026-10-22T22:31:10Z	06041675	perf: Stage 4b, protocol 2 interface calls through per-consumer facades (#285)
+2026-10-22T22:31:10Z	2026-10-22T22:31:10Z	ccf33b24	perf: pointer arguments on engine functions, and inline declarations lifted at build (#284)
+2026-10-22T22:31:09Z	2026-10-22T22:31:09Z	b9ac7060	perf: share generated accessors from one framework realm and compile scripts once (#283)
+2026-10-22T22:31:09Z	2026-10-22T22:31:09Z	26e2c413	perf: Ptr raw tier and struct views over it (Stage 3a) (#282)
+2026-10-22T22:31:08Z	2026-10-22T22:31:08Z	a37cc5da	perf: generate native bindings with native! and read event fields on the fast path (#281)
+2026-10-22T22:31:08Z	2026-10-22T22:31:08Z	6c0dcf04	perf: OnGameFrame on the JS multiplexer (Stage 1c) (#280)
+2026-10-22T22:31:07Z	2026-10-22T22:31:07Z	47d29589	perf: chat and client-command listeners on the JS multiplexer (Stage 1b) (#279)
+2026-10-22T22:31:07Z	2026-10-22T22:31:07Z	9aef52eb	perf: dispatch game events through a JS multiplexer (Stage 1) (#278)
+2026-10-22T22:31:07Z	2026-10-22T22:31:07Z	6516bfbe	perf: bind schema offsets once and take V8 fast calls for entity fields (#277)
+2026-10-21T22:49:55Z	2026-10-21T22:49:55Z	2ea96d10	chore: version packages (#276)
+2026-10-21T22:32:59Z	2026-10-21T22:32:59Z	9782b87f	fix: load plugins at the first map start, as SourceMod does (#275)
+2026-10-21T20:35:35Z	2026-10-21T20:35:35Z	800b52b3	chore: version packages (#273)
+2026-10-21T20:30:03Z	2026-10-21T20:30:03Z	2dee96f6	fix(shim): Retry event and user-message subscriptions refused during startup (#272)
+2026-10-20T19:25:40Z	2026-10-20T19:25:40Z	d66a7898	chore: version packages (#271)
+2026-10-20T19:18:44Z	2026-10-20T19:18:44Z	3b9d7e3c	fix(shim): Recall a suppressed FireEvent instead of firing it first (#270)
+2026-10-20T15:35:52Z	2026-10-20T15:35:52Z	101d6a59	chore: version packages (#269)
+2026-10-20T15:11:43Z	2026-10-20T15:11:43Z	70430753	feat: sm prof — the runtime profiler, as in SourceMod (#265)
+2026-10-20T14:53:38Z	2026-10-20T14:53:38Z	19d92b0d	fix: say why no plugin loads instead of a bare "Plugins (0)" (#267)
+2026-10-20T14:32:32Z	2026-10-20T14:32:32Z	30143516	fix: load plugins at startup, not when the first player joins (#268)
+2026-10-20T14:10:45Z	2026-10-20T14:10:45Z	c2064bb7	fix: the server no longer aborts on exit with a game package selected (#266)
+2026-10-18T03:18:52Z	2026-10-18T03:18:52Z	a298c34d	chore: version packages (#263)
+2026-10-18T03:16:41Z	2026-10-18T03:16:41Z	4f343cb4	fix: a player's sm answers as SourceMod's does (#262)
+2026-10-18T03:16:07Z	2026-10-18T03:16:07Z	3d796b80	chore: version packages (#261)
+2026-10-18T02:53:11Z	2026-10-18T02:53:11Z	76a44c05	feat: sm is the runtime's own console command, as in SourceMod (#260)
+2026-10-17T05:21:28Z	2026-10-17T05:21:28Z	c2710d8b	chore: version packages (#259)
+2026-10-17T02:35:07Z	2026-10-17T02:35:07Z	773bfb66	refactor: remove the operator permission allow-list (#257)
+2026-10-17T02:35:07Z	2026-10-17T02:35:07Z	adcf3c84	feat: load or unload a plugin from any folder under plugins/ for this run (#256)
+2026-10-17T02:35:07Z	2026-10-17T02:35:07Z	a33fc987	feat: install a plugin disabled, and enable/disable managed plugins (#255)
+2026-10-17T02:35:06Z	2026-10-17T02:35:06Z	2d079889	chore: [S2S] instead of [SM] in every runtime and base-plugin message (#254)
+2026-10-17T02:35:06Z	2026-10-17T02:35:06Z	c42accaf	feat: sm plugins install|update|remove|outdated from the server console (#253)
+2026-10-17T02:35:05Z	2026-10-17T02:35:05Z	1f5e99a5	feat: server plugins.json + plugins-lock.json, auto-updated at startup (#252)
+2026-10-17T02:35:05Z	2026-10-17T02:35:05Z	3eb68cb3	feat(sdk): npm's --access for s2s deploy (restricted packages) (#251)
+2026-10-17T02:35:05Z	2026-10-17T02:35:05Z	f452e364	feat(sdk): upload the package source with s2s deploy, and add s2s pack (#250)
+2026-10-08T16:09:31Z	2026-10-08T16:09:31Z	86d1de3b	fix(ci): trust the bind-mounted checkout in the sniper build (#249)
+2026-10-08T04:49:50Z	2026-10-08T04:49:50Z	fc471ea5	chore: version packages (#247)
+2026-10-08T04:02:10Z	2026-10-08T04:02:10Z	f2b8e2b2	feat(sdk): send the README and source link with s2s deploy (#248)
+2026-10-07T23:44:41Z	2026-10-07T23:44:41Z	445fbe42	feat(sdk): bundle packages (#246)
+2026-10-07T02:58:11Z	2026-10-07T02:58:11Z	78da68ee	perf(ui): skip guards for modal writes the HUD diff cache already holds (#244)
+2026-10-06T23:37:32Z	2026-10-06T23:37:32Z	2aec4a64	chore: version packages (#241)
+2026-10-06T21:05:31Z	2026-10-06T21:05:31Z	25a84227	fix: retire context-owned V8 handles before isolate shutdown (#235)
+2026-10-06T20:45:17Z	2026-10-06T20:45:17Z	41f5fe57	fix: remove owned weapons through pawn weapon services (#240)
+2026-10-06T20:45:14Z	2026-10-06T20:45:14Z	fa4bc854	perf: avoid repeated client and player scans during HUD actions (#239)
+2026-10-06T20:45:11Z	2026-10-06T20:45:11Z	bf8838a3	perf: skip consumed all-plugins-loaded callbacks on steady frames (#238)
+2026-10-06T20:45:08Z	2026-10-06T20:45:08Z	927cdd00	perf: filter damage callbacks by receiver before entering JavaScript (#237)
+2026-10-06T20:45:04Z	2026-10-06T20:45:04Z	8012da4d	perf: retire entity leases by exact lifecycle identity (#236)
+2026-10-06T20:45:01Z	2026-10-06T20:45:01Z	a4228924	perf: reuse typed contracts and copy reference-free method values (#234)
+2026-10-06T20:44:56Z	2026-10-06T20:44:56Z	81a751e6	fix: decode named output values using the CVariant ABI (#233)
+2026-09-29T16:24:24Z	2026-09-29T16:24:24Z	be0a3e33	chore: version packages (#232)
+2026-09-29T09:42:27Z	2026-09-29T09:42:27Z	eab1e546	docs(sdk,cs2): bring TSDoc in line with shipped behavior; drop ctx remnants (#231)
+2026-09-29T06:05:12Z	2026-09-29T06:05:12Z	1e3e46bd	chore: version packages (#218)
+2026-09-29T06:05:01Z	2026-09-29T06:05:01Z	32d5d67d	examples(hud-lab): build the kit, MOTD and live demo from hudkit (#228)
+2026-09-29T06:04:43Z	2026-09-29T06:04:43Z	e6f7ed4f	chore(deps): Bump js-yaml (#219)
+2026-09-29T00:54:06Z	2026-09-29T00:54:06Z	eb528fc0	chore(changesets): damage adapter is a minor bump; record engine-function ownership authoring change (#230)
+2026-09-28T23:38:54Z	2026-09-28T23:38:54Z	f5261e29	gamedata: repair CS2 build 25515854 (16 signatures, Teleport index, EndTouch) (#227)
+2026-09-28T23:38:54Z	2026-09-28T23:38:54Z	ec243c6c	feat: package and verify game package artifacts (#226)
+2026-09-28T23:38:53Z	2026-09-28T23:38:53Z	9337d290	feat: add trusted engine-function POST return effects (#225)
+2026-09-24T07:31:49Z	2026-09-24T07:31:49Z	62678e78	docs: plan game-package ownership and verified bootstrap (#224)
+2026-09-24T07:30:42Z	2026-09-24T07:30:42Z	08a369c9	feat: add tested engine function foundations and stock Metamod 1469 (#223)
+2026-09-24T07:29:47Z	2026-09-24T07:29:47Z	9b876f75	refactor: unify engine resolution and stock KHook interception (#222)
+2026-09-24T07:27:53Z	2026-09-24T07:27:53Z	3525ce9e	shim: migrate SourceHook bindings to stock KHook (#221)
+2026-09-24T07:26:24Z	2026-09-24T07:26:24Z	a0343cb9	docs: define stock KHook migration and implementation plan (#220)
+2026-09-12T13:28:12Z	2026-09-12T13:28:12Z	2ec44a8a	feat(cs2): support updated custom camera and observable HUD APIs (#217)
+2026-09-07T03:30:52Z	2026-09-07T03:30:52Z	ab48c878	chore: version packages (#216)
+2026-09-07T03:27:26Z	2026-09-07T03:27:26Z	94a8bbca	fix(build): align bundled plugin and framework versions (#215)
+2026-09-07T03:27:26Z	2026-09-07T03:27:26Z	c3f35122	fix(ui): avoid repeated world scans during modal paint (#213)
+2026-09-07T03:27:26Z	2026-09-07T03:27:26Z	f04145eb	test(interop): verify typed services and provider lifetimes end to end (#212)
+2026-09-07T03:27:25Z	2026-09-07T03:27:25Z	b9196533	feat(interop): bind explicit named forward handlers (#211)
+2026-09-07T03:27:25Z	2026-09-07T03:27:25Z	0c026e4f	Expose typed ban operations and advisory forwards (#210)
+2026-09-07T03:27:25Z	2026-09-07T03:27:25Z	7d5d877e	feat(basecomm): publish typed communication service (#209)
+2026-09-07T03:27:24Z	2026-09-07T03:27:24Z	ff3ff5b2	feat(zones): adopt verified typed provider contract (#208)
+2026-09-07T03:27:24Z	2026-09-07T03:27:24Z	ed2454f4	feat(interop): own subscriptions and optional provider lifetimes (#207)
+2026-09-07T03:27:23Z	2026-09-07T03:27:23Z	f6b1c383	Add typed hook and transform forwards (#206)
+2026-09-07T03:27:23Z	2026-09-07T03:27:23Z	5fab9221	[interop 1/8] feat: add verified typed plugin notifications (#205)
+2026-09-07T03:27:23Z	2026-09-07T03:27:23Z	9c28f70a	docs: plan typed plugin interoperability stack (#204)
+2026-09-07T03:27:22Z	2026-09-07T03:27:22Z	f7b264eb	[17/17] test(cs2): add integrated UI acceptance fixtures and churn (#202)
+2026-09-07T03:27:22Z	2026-09-07T03:27:22Z	a850f6ab	[16/17] feat(cs2): add owned UI surfaces and disposable click subscriptions (#201)
+2026-09-07T03:27:22Z	2026-09-07T03:27:22Z	32c9ec41	[15/17] perf(cs2): coalesce explicit component invalidations (#200)
+2026-09-07T03:27:21Z	2026-09-07T03:27:21Z	acf49adc	[14/17] feat(cs2): arbitrate component focus across plugins (#199)
+2026-09-07T03:27:21Z	2026-09-07T03:27:21Z	4c99e52f	[13/17] feat(cs2): add structured UI results and readiness (#198)
+2026-09-07T03:27:20Z	2026-09-07T03:27:20Z	5c51fbb5	[12/17] fix(cs2): bind component handles to client lifetimes (#197)
+2026-09-07T03:27:20Z	2026-09-07T03:27:20Z	dfc6178f	[11/17] fix(cs2): bind UI clicks to submitted rows (#196)
+2026-09-07T03:27:20Z	2026-09-07T03:27:20Z	4cbcae88	[10/17] refactor(runtime): extract host modules and preserve acceptance evidence (#195)
+2026-09-07T03:27:19Z	2026-09-07T03:27:19Z	202d7c38	[9/17] perf(loader): prepare plugin and config changes off the frame thread (#194)
+2026-09-07T03:27:19Z	2026-09-07T03:27:19Z	81d7c529	[8/17] perf(core): index timer scheduling and cancellation (#193)
+2026-09-07T03:27:18Z	2026-09-07T03:27:18Z	2fa81037	[7/17] perf(core): index entity hook dispatch (#192)
+2026-09-07T03:27:18Z	2026-09-07T03:27:18Z	e6580da4	[6/17] feat(core): bound async admission and frame delivery (#191)
+2026-09-07T03:27:18Z	2026-09-07T03:27:18Z	b6d7d6a7	[5/17] fix(cookies): retain writes until persistence acknowledgement (#190)
+2026-09-07T03:27:17Z	2026-09-07T03:27:17Z	9b40fe40	[4/17] fix(core): unify socket termination and cancellation (#189)
+2026-09-07T03:27:17Z	2026-09-07T03:27:17Z	af04ab1d	[3/17] fix(runtime): bind clients to connection lifetimes (#188)
+2026-09-07T03:27:17Z	2026-09-07T03:27:17Z	dd7f3f8b	[2/17] fix(core): prune channel subscription indexes (#187)
+2026-09-07T03:27:16Z	2026-09-07T03:27:16Z	8c0476c8	[1/17] fix(core): track only active plugin resources (#186)
+2026-09-05T04:31:36Z	2026-09-05T04:31:36Z	9a36af48	chore: version packages (#185)
+2026-09-05T04:26:05Z	2026-09-05T04:26:05Z	92522978	fix(core): restrict nodelete linker flag to Linux targets (#179)
+2026-09-05T04:26:05Z	2026-09-05T04:26:05Z	8fe37add	test(cs2): prepare spectator HUD privacy experiment (#181)
+2026-09-05T04:26:04Z	2026-09-05T04:26:04Z	2e6df76c	fix(cs2): report modal open failures and fall back to chat (#183)
+2026-09-05T04:26:04Z	2026-09-05T04:26:04Z	f5387ee4	fix(hud): share cursor capture ownership across plugin contexts (#182)
+2026-09-05T04:26:04Z	2026-09-05T04:26:04Z	03449fb3	fix(hud): align initialization and renderer API contracts (#180)
+2026-09-05T04:26:03Z	2026-09-05T04:26:03Z	14dee147	docs(hud): correct the stale 416-byte state stride and name the per-slot-storage spectator property (#178)
+2026-09-05T04:26:03Z	2026-09-05T04:26:03Z	feb84fd0	fix(cs2): isolate modal footer actions per player and gate markup sync (#177)
+2026-09-05T04:26:03Z	2026-09-05T04:26:03Z	54200e14	fix(cs2): bind ui.js's paint caches to the entity they describe, not to the plugin (#176)
+2026-09-05T04:26:02Z	2026-09-05T04:26:02Z	d6bb68a6	fix(cs2): arbitrate hudkit pool claims host-side — the globalThis pool was never shared (#175)
+2026-09-05T04:26:02Z	2026-09-05T04:26:02Z	0d162279	fix(cs2): bind hudkit to the plugin's ctx-bound ui base, never a stand-in one (#174)
+2026-09-05T04:26:02Z	2026-09-05T04:26:02Z	6d194874	fix(core): stamp prelude-time subscriptions with the real generation, not 0 (#173)
+2026-09-04T21:25:15Z	2026-09-04T21:25:15Z	ebb3b316	chore: version packages (#170)
+2026-09-04T21:08:26Z	2026-09-04T21:08:26Z	f4c7e372	feat(cs2): six pooled center sheets instead of two (#169)
+2026-09-04T21:08:11Z	2026-09-04T21:08:11Z	5bdf00d1	fix(cs2): stop menus freezing the player; release on teardown unconditionally (#168)
+2026-09-04T18:34:42Z	2026-09-04T18:34:42Z	367f7bae	chore: version packages (#164)
+2026-09-04T18:32:47Z	2026-09-04T18:32:47Z	47fce117	fix(release): let GitHub write the notes; CI only uploads the zip (#167)
+2026-09-04T18:15:16Z	2026-09-04T18:15:16Z	8ae767a5	feat(cs2): add Row.tone so a list row can carry colour (#166)
+2026-09-04T18:14:04Z	2026-09-04T18:14:04Z	8b8f46c5	feat(topmenu): tabbed dashboard hub; plugins declare their own tab (#165)
+2026-09-04T17:22:18Z	2026-09-04T17:22:18Z	c5ad5615	fix(cs2): clear a menu session when its player leaves or re-activates (#163)
+2026-09-04T17:21:25Z	2026-09-04T17:21:25Z	84161f4f	fix(gamedata): re-derive CCSGameRules_TerminateRound for build 14178 (#162)
+2026-09-03T16:11:08Z	2026-09-03T16:11:08Z	8823fba2	chore: point breakpad submodule at github.com/google/breakpad (#161)
+2026-09-02T18:43:53Z	2026-09-02T18:43:53Z	15071847	chore: version packages (#160)
+2026-09-02T17:52:05Z	2026-09-02T17:52:05Z	e4348a18	fix(cs2): do not read hudkit.layout during prelude eval (#159)
+2026-09-02T16:27:09Z	2026-09-02T16:27:09Z	0bb14fed	chore: version packages (#157)
+2026-09-02T06:02:43Z	2026-09-02T06:02:43Z	7bcca3bb	feat(cs2): add callout, banner, and MOTD to s2script_lib.xml (#153)
+2026-09-02T06:02:42Z	2026-09-02T06:02:42Z	f99b4bbf	feat(cs2): check in s2script_lib.xml with the vote rail (#156)
+2026-09-02T06:02:42Z	2026-09-02T06:02:42Z	d296d965	docs: menus and votes are HUD sheets, not WASD or chat numbers (#155)
+2026-09-02T06:02:41Z	2026-09-02T06:02:41Z	44ab3929	feat(adminmenu): add sm_menu player hub over opted-in TopMenu items (#151)
+2026-09-02T06:02:41Z	2026-09-02T06:02:41Z	0014b563	feat(cs2): paint votes as a right-side rail (#152)
+2026-09-02T06:02:41Z	2026-09-02T06:02:41Z	06ae1228	feat(cs2): paint Menu as a hudkit center sheet (#154)
+2026-09-02T06:02:40Z	2026-09-02T06:02:40Z	67426c3f	docs: HUD menus replace WASD/chat; Tab activates push UI (#149)
+2026-09-02T06:02:40Z	2026-09-02T06:02:40Z	778061ff	feat(cs2): reshape HUD API around custom_hud_layout (#148)
+2026-08-31T06:39:37Z	2026-08-31T06:39:37Z	601893e9	chore: version packages (#121)
+2026-08-31T06:38:26Z	2026-08-31T06:38:26Z	63878fe4	changeset: describe HUD spawn-on-active, drop leftover #118 notes (#122)
+2026-08-31T06:38:06Z	2026-08-31T06:38:06Z	cd06cab6	feat(sdkhooks): Weapon*/Reload types and OnTakeDamagePost (#147)
+2026-08-31T06:37:54Z	2026-08-31T06:37:54Z	01659008	docs(cs2): name the public HUD API ui, not ctx.ui (#146)
+2026-08-30T23:22:02Z	2026-08-30T23:22:02Z	3ec04300	fix(zones): ledgered on(); drop off from the published contract (#145)
+2026-08-30T23:22:02Z	2026-08-30T23:22:02Z	88b508c4	Remaining plugins and examples use the public command API (#144)
+2026-08-30T23:22:02Z	2026-08-30T23:22:02Z	f13e6ab2	fix(basecommands): drop live-gate junk; command handlers return Handled (#143)
+2026-08-30T23:22:01Z	2026-08-30T23:22:01Z	0f9a914b	feat(gamedata): SDKHooks VP signatures from source2rosetta (#142)
+2026-08-30T23:22:01Z	2026-08-30T23:22:01Z	2a160593	feat(sdkhooks): SetTransmit on CheckTransmit (AND-merge with Transmit.setVisibleTo) (#139)
+2026-08-30T23:22:01Z	2026-08-30T23:22:01Z	0079d740	feat(sdkhooks): lifecycle virtuals (Spawn/Think/Use/…) (#140)
+2026-08-30T23:22:00Z	2026-08-30T23:22:00Z	b4200fb1	feat(sdkhooks): extension owner, VP primitive, and Touch family (#137)
+2026-08-30T23:22:00Z	2026-08-30T23:22:00Z	0c9aa7ba	docs: SDKHooks virtuals + natives design spec (#136)
+2026-08-30T23:22:00Z	2026-08-30T23:22:00Z	4df7325d	feat: first-party SDKHook / SDKUnhook (OnTakeDamage) (#134)
+2026-08-30T23:21:59Z	2026-08-30T23:21:59Z	e53d2693	sdk: hook is game events only; lifecycle is named publics (#133)
+2026-08-30T23:21:59Z	2026-08-30T23:21:59Z	41ef7d62	sdk: hook.events.on / onPre; drop hook.topmenu (#132)
+2026-08-30T23:21:58Z	2026-08-30T23:21:58Z	c3dde5be	sdk: nest hook by subject (client / entity / server) (#131)
+2026-08-30T23:21:58Z	2026-08-30T23:21:58Z	ac3fc9b5	sdk: drop plugin() from the public authoring surface (#130)
+2026-08-30T23:21:58Z	2026-08-30T23:21:58Z	250b5931	plugins: rewrite remaining suite to OnPluginStart publics (#129)
+2026-08-30T23:21:57Z	2026-08-30T23:21:57Z	fb2434c2	sdk: add the root @s2script/sdk authoring barrel (#128)
+2026-08-30T23:21:57Z	2026-08-30T23:21:57Z	920c8236	sdk: SM lifecycle publics, hook.event, and createScope (#127)
+2026-08-30T23:21:57Z	2026-08-30T23:21:57Z	312db5d4	basecommands: author OnPluginStart with command.admin and hook.damage (#126)
+2026-08-30T23:21:56Z	2026-08-30T23:21:56Z	2e513520	sdk: raise plugin typecheck and esbuild target to ES2024 (#125)
+2026-08-30T23:21:56Z	2026-08-30T23:21:56Z	877cc234	sdk: accept export function OnPluginStart as a plugin artifact (#124)
+2026-08-30T23:21:56Z	2026-08-30T23:21:56Z	4745b5c5	sdk: ctx-free load-window command, hook, and publish APIs (#123)
+2026-08-29T03:39:20Z	2026-08-29T03:39:20Z	50d19d5f	cs2: spawn HUD layouts when a client is active (#120)
+2026-08-29T01:40:46Z	2026-08-29T01:40:46Z	143d214f	chore: version packages (#109)
+2026-08-28T18:47:52Z	2026-08-28T18:47:52Z	e74edfd7	cs2: ctx.ui custom HUD API + a shared component library (#118)
+2026-08-28T18:47:51Z	2026-08-28T18:47:51Z	5a1bc0cd	ci: make the gate suite runnable on a macOS host (#117)
+2026-08-28T18:47:51Z	2026-08-28T18:47:51Z	639239b7	core: recover the nest FunctionCallbackInfo by layout, not by guess (#116)
+2026-08-19T00:30:30Z	2026-08-19T00:30:30Z	a835e6c7	core: deepen async work into a Jobs spine (#114)
+2026-08-19T00:30:17Z	2026-08-19T00:30:17Z	7e8d042f	core: deepen fan-out into dispatch module (#113)
+2026-08-16T21:52:17Z	2026-08-16T21:52:17Z	dfd28ea1	chore(cloud): dev environment setup — npm loop + live CS2 gate (install/start) (#112)
+2026-08-16T07:40:03Z	2026-08-16T07:40:03Z	747f3125	core: nest plugin engine calls so other plugins see them (#108)
+2026-08-16T07:20:32Z	2026-08-16T07:20:32Z	dd8f3333	sdk: plugins can declare inbound engine hooks (#106)
+2026-08-16T07:20:14Z	2026-08-16T07:20:14Z	32308ce5	core: one FoldTable behind transmit and voice (#105)
+2026-08-16T07:20:14Z	2026-08-16T07:20:14Z	da9dde95	core: generate S2EngineOps from one list (#104)
+2026-08-16T07:20:14Z	2026-08-16T07:20:14Z	d9d63b8e	core: lift fetch onto http.rs and thin the drain (#103)
+2026-08-16T07:20:13Z	2026-08-16T07:20:13Z	d6a8993f	core: lift the net V8 adapter onto net.rs (#102)
+2026-08-16T07:20:13Z	2026-08-16T07:20:13Z	399acc07	core: lift the WebSocket V8 adapter onto ws.rs (#100)
+2026-08-16T07:20:13Z	2026-08-16T07:20:13Z	9e2def27	core: extract commands — inbound path, say, and Chat.onMessage collapse (#99)
+2026-08-11T04:39:03Z	2026-08-11T04:39:03Z	cc2cb9dd	chore: version packages (#98)
+2026-08-10T21:49:27Z	2026-08-10T21:49:27Z	1c00b898	i18n: one phrase file per plugin, keys checked at build, colour as an operator edit (#97)
+2026-08-10T19:52:31Z	2026-08-10T19:52:31Z	9cf800cd	entity: five property setters + Pawn.maxSpeed, re-resolved on our own build (#96)
+2026-08-07T07:45:10Z	2026-08-07T07:45:10Z	ece9ec6a	core: extract game events — the last large cluster (#94)
+2026-08-04T09:18:15Z	2026-08-04T09:18:15Z	a30ddde1	core: extract the entity surface — and deny the lint that was the only witness to a silent bug (#93)
+2026-08-04T08:50:47Z	2026-08-04T08:50:47Z	0195cef7	core: extract the client surface — and close a CI gate hole that made this class of change unguarded (#92)
+2026-08-04T08:31:13Z	2026-08-04T08:31:13Z	45bb265f	core: extract admin, bans and cookies — and close an admin teardown gap the move exposed (#91)
+2026-08-04T08:17:07Z	2026-08-04T08:17:07Z	d0a47164	core: extract usermsg into its own module — the first feature out of v8host.rs (#90)
+2026-08-04T07:33:59Z	2026-08-04T07:33:59Z	3a4f587d	fix(shim): operand direction, pure kills, and an explicit bound — from the arg-count review (#89)
+2026-08-04T07:31:22Z	2026-08-04T07:31:22Z	f1831b8f	fix: the two gates this commit added had holes of the same shape they were built to catch (#88)
+2026-08-04T04:29:27Z	2026-08-04T04:29:27Z	0447f785	feat(shim): check argument COUNT too — a shape that declares too few crashes the same way (#87)
+2026-08-04T04:29:16Z	2026-08-04T04:29:16Z	ea61893f	chore: close four standing residuals — lint coverage, ops arity, a stale doc, and test-static resets (#86)
+2026-08-04T00:29:50Z	2026-08-04T00:29:50Z	bd593016	Only filter transmit for fully signed-on clients, and add a lifecycle trace (#85)
+2026-08-03T22:51:51Z	2026-08-03T22:51:51Z	838a9fdd	feat(shim): the arg-width validator — check a declared shape against the callee's machine code (#84)
+2026-08-03T22:51:41Z	2026-08-03T22:51:41Z	1b442d86	spec+plan: the arg-width validator — check a declared shape against the callee's machine code (#83)
+2026-08-03T20:01:40Z	2026-08-03T20:01:40Z	abe9c832	chore: version packages (#81)
+2026-08-03T19:45:27Z	2026-08-03T19:45:27Z	9d444275	chore(deps): bump brace-expansion from 5.0.8 to 5.0.9 (#82)
+2026-08-03T19:45:05Z	2026-08-03T19:45:05Z	952c41c9	shim: two-tier detour + the shape fix its live gate found (#79)
+2026-08-03T19:43:29Z	2026-08-03T19:43:29Z	5a87b224	spec: detour relocation — a near-allocated short jump, and relocating what we steal (#78)
+2026-08-03T18:05:40Z	2026-08-03T18:05:40Z	f0cb022f	core: declarative inbound hooks — a gamedata-declared engine detour (#77)
+2026-08-03T18:01:11Z	2026-08-03T18:01:11Z	79dede5f	fix(ws,net): a conn deregistered before its .then ran — the intermittent CI hang (#80)
+2026-08-02T18:23:58Z	2026-08-02T18:23:58Z	d244f31a	chore: version packages (#75)
+2026-08-02T18:21:04Z	2026-08-02T18:21:04Z	2e7eb80c	feat(ws): let WebSocket.connect send handshake headers (#76)
+2026-08-02T16:20:51Z	2026-08-02T16:20:51Z	0ff4b7e5	spec: declarative inbound hooks — a gamedata-declared engine detour (#74)
+2026-08-02T16:20:36Z	2026-08-02T16:20:36Z	36739919	gamedata: retire the eight CS2 engine calls into descriptors — zero core diff (A5b) (#72) (#73)
+2026-08-02T16:15:59Z	2026-08-02T16:15:59Z	8b6bc75d	core: deferred-dispatch queue — a re-entrant notify dispatch is delivered, not silently dropped (#71)
+2026-08-02T10:49:58Z	2026-08-02T10:49:58Z	bdcb2d66	chore: version packages (#70)
+2026-08-02T10:48:20Z	2026-08-02T10:48:20Z	f8df0d8b	feat(entity): expose CGameSceneNode::m_vecAbsOrigin as EntityRef.origin (#69)
+2026-08-02T07:09:54Z	2026-08-02T07:09:54Z	8d74dbdd	chore: version packages (#68)
+2026-08-02T07:08:39Z	2026-08-02T07:08:39Z	1e3e691c	feat(entity): expose CBaseEntity::m_target as EntityRef.target (#67)
+2026-08-02T07:08:34Z	2026-08-02T07:08:34Z	d91add2f	gamedata: SourceMod's owner/applicability tiering — loader, tree, and operator overrides (A5a) (#66)
+2026-08-01T23:28:47Z	2026-08-01T23:28:47Z	979761da	chore: version packages (#65)
+2026-08-01T23:28:14Z	2026-08-01T23:28:14Z	3986f43c	feat(admin): support SourceMod custom flags o-t (CUSTOM1-6) (#64)
+2026-08-01T17:23:41Z	2026-08-01T17:23:41Z	6c2042bc	chore: version packages (#51)
+2026-08-01T06:14:15Z	2026-08-01T06:14:15Z	34068f0c	test: pin that re-entrant dispatch is dropped; record why CallbackScope cannot fix it (#63)
+2026-08-01T06:14:12Z	2026-08-01T06:14:12Z	946cd6c3	gate: run the A4 live gate on CS2 — all four checks pass (#62)
+2026-08-01T06:08:26Z	2026-08-01T06:08:26Z	bf6c396c	core: convert the last 7 subscribe natives; A4 complete (#60)
+2026-08-01T06:08:08Z	2026-08-01T06:08:08Z	743d8aef	core: subscribe_into — own the subscribe-native core once (9 natives converted) (#59)
+2026-08-01T06:07:57Z	2026-08-01T06:07:57Z	2bea145e	core: Channels<H> — one keyed subscription store over Descriptor; retire event_mux.rs (#58)
+2026-08-01T06:07:39Z	2026-08-01T06:07:39Z	fa1e5ec7	core: convert the 4 remaining run_chain dispatchers to fan_out_collapsing (#57)
+2026-08-01T06:07:24Z	2026-08-01T06:07:24Z	ff99f758	core: fan_out_collapsing + the B2 fix — Handled no longer truncates a damage chain (#56)
+2026-08-01T06:07:09Z	2026-08-01T06:07:09Z	9c6e18f1	core: fan_out — one dispatch preamble; convert the 6 notify-only dispatchers (#55)
+2026-08-01T05:59:10Z	2026-08-01T05:59:10Z	ec97eb09	core: phase-tagged process-singletons registry; shutdown is 108 lines -> 24 (#61)
+2026-08-01T05:55:51Z	2026-08-01T05:55:51Z	7ab89e43	core: give owner_stores its whole-process reset verb; shutdown sweeps the registry (#53)
+2026-08-01T05:55:40Z	2026-08-01T05:55:40Z	72349196	core: externalize the JS prelude to core/js/prelude.js + a derived-globals lint gate (#52)
+2026-08-01T05:50:49Z	2026-08-01T05:50:49Z	c032e32d	security: engine-call natives derive the plugin id from the calling context (#50)
+2026-08-01T05:50:46Z	2026-08-01T05:50:46Z	461b5835	docs: core stabilization audit — why core grows per-feature, and the A1-A7 program (#49)
+2026-07-30T17:40:34Z	2026-07-30T17:40:34Z	9db4a369	Merge pull request #48 from s2script/registry/library-packages-sdk
+2026-07-30T17:39:39Z	2026-07-30T17:39:39Z	36b87cb4	Merge pull request #47 from s2script/changeset-release/main
+2026-07-30T10:31:15Z	2026-07-30T10:31:15Z	75785f89	fix(sdk): final whole-branch review — library-packages fix wave
+2026-07-30T09:45:53Z	2026-07-30T09:45:53Z	e2818184	fix(sdk): task 11 review round 1 — real workspace-library example, reworded refusal
+2026-07-30T09:28:38Z	2026-07-30T09:28:38Z	6beea383	feat(sdk): s2s create --library, worked examples, docs
+2026-07-30T09:06:40Z	2026-07-30T09:06:40Z	0d902482	fix(sdk): task 10 review round 1 — name the ws.libs-only library skip, don't drop it
+2026-07-30T08:54:25Z	2026-07-30T08:54:25Z	29ca194b	feat(sdk): s2s deploy publishes library packages
+2026-07-30T08:39:33Z	2026-07-30T08:39:33Z	dd83b59f	fix(sdk): task 9 review round 1 — dispatch test, typesDir:null, unreviewed wording
+2026-07-30T08:28:21Z	2026-07-30T08:28:21Z	0275c5ca	feat(sdk): s2s add vendors library packages
+2026-07-30T08:15:26Z	2026-07-30T08:15:26Z	55790e32	fix(sdk): task 8 review round 1 — sibling-of-sibling alias, filter/library interaction
+2026-07-30T07:52:30Z	2026-07-30T07:52:30Z	15eb4bcf	feat(sdk): build library packages to .s2lib
+2026-07-30T07:35:24Z	2026-07-30T07:35:24Z	72eb0410	fix(sdk): detect workspace-linked deps by realpath, not a fixed node_modules depth
+2026-07-30T07:25:06Z	2026-07-30T07:25:06Z	dc23dfe1	feat(sdk): refuse npm runtime dependencies at build time
+2026-07-30T07:10:20Z	2026-07-30T07:10:20Z	bb6b03e5	fix(sdk): scan not load the workspace for library siblings, add build integration tests
+2026-07-30T06:51:58Z	2026-07-30T06:51:58Z	a1594fc1	feat(sdk): resolve s2script.libraries from the vendored tree
+2026-07-30T06:12:04Z	2026-07-30T06:12:04Z	e4b14df5	chore: version packages
+2026-07-30T06:11:46Z	2026-07-30T06:11:46Z	517b71bf	Merge pull request #46 from s2script/feat/scoped-event-recipients
+2026-07-30T04:39:44Z	2026-07-30T04:39:44Z	89042b0c	Add a changeset for the scoped-recipients slice
+2026-07-30T04:38:49Z	2026-07-30T04:38:05Z	7a22d565	Add scoped event recipients, client command listeners and frame phases
+2026-07-30T04:38:49Z	2026-07-30T04:38:05Z	fe1f8764	Point the dev server at the custom gamemode
+2026-07-30T04:38:49Z	2026-07-30T04:37:32Z	cb30b059	Log a throwing game-event pre-hook instead of dropping it silently
+2026-07-29T23:30:51Z	2026-07-29T23:30:51Z	fb54ec3e	Merge pull request #45 from s2script/changeset-release/main
+2026-07-29T23:29:30Z	2026-07-29T23:29:30Z	5d103da4	chore: version packages
+2026-07-29T23:29:13Z	2026-07-29T23:29:13Z	bc91d61b	Merge pull request #44 from s2script/feat/client-command-listeners
+2026-07-29T19:17:39Z	2026-07-29T19:17:39Z	51d2c19c	feat(basecommands): SourceMod-parity sm_who
+2026-07-29T19:17:39Z	2026-07-29T19:17:39Z	bbf944b6	fix(rockthevote): nominated workshop maps never actually changed the map
+2026-07-29T19:17:24Z	2026-07-29T19:17:24Z	8b7bcc7c	feat(core): client-command listeners (AddCommandListener parity)
+2026-07-29T08:05:50Z	2026-07-29T08:05:50Z	6fac3f46	Merge pull request #42 from s2script/changeset-release/main
+2026-07-28T08:19:24Z	2026-07-28T08:19:24Z	5fdbb31b	chore: version packages
+2026-07-28T08:19:05Z	2026-07-28T08:19:05Z	12d5626b	Merge pull request #43 from s2script/sdk/workspaces
+2026-07-27T20:35:49Z	2026-07-27T19:13:27Z	4b183d47	sdk: make sibling resolution package-manager independent
+2026-07-27T20:35:48Z	2026-07-27T17:47:13Z	f54fbd01	examples: commit the monorepo workspace symlinks (CI would have failed)
+2026-07-27T20:35:48Z	2026-07-27T17:41:00Z	45faa83a	sdk: fix the 15 review findings + the regression the fix round introduced
+2026-07-27T20:35:48Z	2026-07-27T16:56:14Z	9199631f	sdk: workspaces implementation + spec amendment on sibling matching
+2026-07-27T20:35:26Z	2026-07-27T15:24:15Z	9905ef9a	docs: spec review fixes — cycle posture, contract precedence, command scope
+2026-07-27T20:35:26Z	2026-07-27T12:17:29Z	27f80be8	docs: SDK workspaces design spec — a monorepo of many plugins
+2026-07-27T15:36:33Z	2026-07-27T15:36:33Z	12e37ccb	Merge pull request #41 from s2script/docs/precache-and-call-limits
+2026-07-27T15:36:15Z	2026-07-27T15:36:15Z	fea7d80b	Merge pull request #40 from s2script/fix/publish-scan-flake
+2026-07-27T08:51:54Z	2026-07-27T08:51:54Z	bdd653bd	docs: what PrecacheContext.add actually guarantees
+2026-07-27T08:47:32Z	2026-07-27T08:47:32Z	ab1aef76	Stop compiled-against mutating a fixture another test reads
+2026-07-27T08:34:28Z	2026-07-27T08:34:28Z	c4cc5536	Merge pull request #39 from s2script/changeset-release/main
+2026-07-27T08:33:32Z	2026-07-27T08:33:32Z	df291967	chore: version packages
+2026-07-27T08:33:08Z	2026-07-27T08:33:08Z	1e5f45de	Merge pull request #38 from s2script/feat/receiverless-engine-calls-and-model-precache
+2026-07-27T05:21:20Z	2026-07-27T05:21:20Z	6c3ddfdc	Add EntityRef.clearIdentityFlags for the staging bit
+2026-07-26T23:45:58Z	2026-07-26T23:45:52Z	4b6f6109	Declared engine calls: static targets and stack-passed args
+2026-07-26T23:45:52Z	2026-07-26T23:45:29Z	922b6774	Precache resources through the game session manifest
+2026-07-26T17:45:49Z	2026-07-26T17:45:49Z	98b60b3b	Merge pull request #37 from s2script/changeset-release/main
+2026-07-26T17:36:29Z	2026-07-26T17:36:29Z	00c5c6d0	chore: version packages
+2026-07-26T17:36:06Z	2026-07-26T17:36:06Z	4ef1b383	Merge pull request #36 from s2script/feat/navgen-notify-changed
+2026-07-26T17:20:26Z	2026-07-26T17:20:26Z	dfcbf716	feat(navgen): notifyChanged() so a chain write can be replicated
+2026-07-26T16:15:16Z	2026-07-26T16:15:16Z	ef54472f	Merge pull request #34 from s2script/changeset-release/main
+2026-07-26T15:41:41Z	2026-07-26T15:41:41Z	8ea5c36e	chore: version packages
+2026-07-26T15:41:20Z	2026-07-26T15:41:20Z	1b5d8a98	Merge pull request #35 from s2script/feat/schema-enum-constants
+2026-07-26T14:47:51Z	2026-07-26T14:47:51Z	b6f18848	feat(schema): named enum constants — MoveType_t.VPHYSICS, not 5
+2026-07-26T14:25:58Z	2026-07-26T14:25:58Z	f59cf31b	Merge pull request #33 from s2script/fix/cs2-ship-weapon-dts
+2026-07-26T14:22:37Z	2026-07-26T14:22:37Z	3d6702ad	fix(cs2): ship weapon.d.ts — Weapon was resolving to `any`
+2026-07-26T14:19:42Z	2026-07-26T14:19:42Z	2ed0602e	Merge pull request #32 from s2script/changeset-release/main
+2026-07-26T09:10:24Z	2026-07-26T09:10:24Z	c9f307a2	chore: version packages
+2026-07-26T09:10:03Z	2026-07-26T09:10:03Z	d12ae962	Merge pull request #30 from s2script/feat/navgen-embedded-base
+2026-07-26T09:09:41Z	2026-07-26T09:09:41Z	524b6140	Merge pull request #31 from s2script/chore/changeset-catchup-schema
+2026-07-26T09:08:01Z	2026-07-26T09:08:01Z	8d25254c	chore: changeset for the schema codegen work merged in #26/#28/#29
+2026-07-26T09:01:38Z	2026-07-26T09:01:38Z	e2b1e99b	feat(navgen): base hops for structs embedded in a pointer target
+2026-07-26T08:35:37Z	2026-07-26T08:35:37Z	52875d92	Merge pull request #29 from s2script/feat/schemagen-all-entity-classes
+2026-07-26T08:33:56Z	2026-07-26T08:33:56Z	d310f31c	Merge pull request #28 from s2script/feat/schemagen-more-classes
+2026-07-26T08:30:14Z	2026-07-26T08:30:14Z	8b78600d	Merge pull request #27 from s2script/fix/transmit-validation
+2026-07-26T08:30:01Z	2026-07-26T08:30:01Z	8609b85e	Merge pull request #26 from s2script/feat/cs2-glow-property
+2026-07-26T08:21:27Z	2026-07-26T08:21:27Z	6535d5ee	feat(schemagen): generate every entity class (367), not a curated 15
+2026-07-26T08:08:30Z	2026-07-26T08:08:30Z	541dbb7d	chore(gamedata): re-dump the schema catalog from the live build
+2026-07-26T08:08:19Z	2026-07-26T08:08:19Z	74104444	feat(schema): carry enum byte width, so enum fields stop being skipped
+2026-07-26T07:52:29Z	2026-07-26T07:52:29Z	7cc53c13	feat(schemagen): 12 more entity classes, per-chain collisions, chained accessors
+2026-07-26T05:12:03Z	2026-07-26T05:12:03Z	ccabbda9	fix(navgen): regenerate for flattened wrappers, and honour addOffset
+2026-07-26T04:56:58Z	2026-07-26T04:56:58Z	a3a77967	feat(cs2): first-party wrapEntity, so schema fields need no global
+2026-07-26T04:01:25Z	2026-07-26T04:01:25Z	d82204ad	feat(schemagen): complete embedded-struct coverage
+2026-07-26T03:01:21Z	2026-07-26T03:01:21Z	887b9f39	fix(transmit): stop a CORRECT offset from disabling entity visibility
+2026-07-26T02:04:11Z	2026-07-26T02:04:11Z	38327947	feat(schemagen): expose embedded structs, starting with CGlowProperty
+2026-07-25T20:39:42Z	2026-07-25T20:39:42Z	1ce8c394	Merge pull request #25 from s2script/release/keep-changelog
+2026-07-25T20:31:38Z	2026-07-25T20:31:38Z	6a6c863f	Keep the package changelogs in the GitHub Release body
+2026-07-25T20:25:51Z	2026-07-25T20:25:51Z	2a4dc4ad	Merge pull request #22 from s2script/changeset-release/main
+2026-07-25T20:24:45Z	2026-07-25T20:24:45Z	9201c7f4	chore: version packages
+2026-07-25T20:24:22Z	2026-07-25T20:24:22Z	99fe234f	Merge pull request #24 from s2script/chore/backfill-changesets
+2026-07-25T20:17:56Z	2026-07-25T20:15:50Z	a64da950	Backfill the five missing changesets, and gate the omission
+2026-07-25T20:11:40Z	2026-07-25T20:11:40Z	1376e5fd	Merge pull request #23 from s2script/gamedata/setmodel-regen
+2026-07-25T20:09:15Z	2026-07-25T20:09:15Z	e8b69f59	Regenerate the SetModel signature, and gate the class of bug that broke it
+2026-07-25T19:55:57Z	2026-07-25T19:55:57Z	49693959	Merge pull request #21 from s2script/api/econ-workshop-contracts
+2026-07-25T19:53:32Z	2026-07-25T19:53:32Z	94167bc2	Merge pull request #20 from s2script/cvar/change-hook
+2026-07-25T19:48:47Z	2026-07-25T18:04:59Z	625878b2	Add Server.onCvarChange (HookConVarChange parity)
+2026-07-25T19:47:13Z	2026-07-25T19:47:13Z	c44b1324	Merge pull request #19 from s2script/timers/cancellable
+2026-07-25T19:41:04Z	2026-07-25T19:41:04Z	758f2bba	Merge pull request #18 from s2script/movement/writable-fields
+2026-07-25T19:40:22Z	2026-07-25T19:40:22Z	617a86f9	Merge pull request #17 from s2script/clients/command
+2026-07-25T19:36:51Z	2026-07-25T18:34:21Z	5bde4859	Correct the fakeCommand plugin-command limitation — it is re-entrancy, not permissions
+2026-07-25T19:36:51Z	2026-07-25T17:27:13Z	3d5568d3	Dispatch FakeClientCommand through ICvar::DispatchConCommand — it works
+2026-07-25T19:36:51Z	2026-07-25T17:15:50Z	f6791314	Construct CCommand ourselves; FakeClientCommand dispatch still unproven
+2026-07-25T19:36:51Z	2026-07-25T16:17:10Z	fd5e5b85	Record the client-command live gate result
+2026-07-25T19:36:51Z	2026-07-25T16:09:08Z	5b59ae1b	Gate the shim against engine symbols nothing exports
+2026-07-25T19:36:51Z	2026-07-25T15:52:47Z	e5c259be	Add Client.command
+2026-07-25T19:34:56Z	2026-07-25T15:47:07Z	f107dc85	Add the client command execution design spec
+2026-07-25T19:26:31Z	2026-07-25T19:26:31Z	0472315c	Drop Tier B (ProcessMovement hook) as not planned
+2026-07-25T19:08:43Z	2026-07-25T19:08:43Z	6fe8647e	Land the validated ProcessMovement signature (resolve-only, degrade-gated)
+2026-07-25T18:46:28Z	2026-07-25T18:46:28Z	f2dccd56	Merge pull request #16 from s2script/voice/hearability
+2026-07-25T18:41:24Z	2026-07-25T18:41:24Z	d2629967	Publish standard econ + workshop contracts (no implementation)
+2026-07-25T17:50:57Z	2026-07-25T17:50:57Z	5be7c9b2	Correct the Tier B vtable RE — the published numbers were wrong
+2026-07-25T17:42:06Z	2026-07-25T17:42:06Z	e4af8420	Add cancellable, repeating timers
+2026-07-25T16:50:10Z	2026-07-25T16:50:10Z	2248bd20	Record the movement live gate, and correct the spec's bot-provable claim
+2026-07-25T16:35:27Z	2026-07-25T16:35:27Z	c93b1db8	Run the packages/sdk unit suite in CI
+2026-07-25T16:35:27Z	2026-07-25T16:35:27Z	5ff62b49	Make curated movement-services fields writable
+2026-07-25T16:28:13Z	2026-07-25T16:28:13Z	073fafcd	Add the movement control design spec
+2026-07-25T09:01:41Z	2026-07-25T09:01:41Z	72e010a4	Correct the unsound live gate, and log the slice
+2026-07-25T08:48:07Z	2026-07-25T08:48:07Z	5bbf99ec	Fix the defects adversarial review found in the voice slice
+2026-07-25T08:00:59Z	2026-07-25T08:00:59Z	291e0170	Add in-isolate voice tests and the changeset
+2026-07-25T07:57:11Z	2026-07-25T07:57:11Z	2c603ae4	Add the core voice rule store, natives, and owner teardown
+2026-07-25T07:51:14Z	2026-07-25T07:51:14Z	da189e8b	Add shim hearability state, ops, and the hot-path test
+2026-07-25T07:49:29Z	2026-07-25T07:49:29Z	5f62944e	Add the @s2script/sdk/voice contract and cookbook recipe
+2026-07-25T07:41:10Z	2026-07-25T07:41:10Z	c20c4728	Add the voice hearability implementation plan
+2026-07-25T07:34:03Z	2026-07-25T07:34:03Z	c5ece35d	Add the voice hearability design spec
+2026-07-25T03:50:15Z	2026-07-25T03:50:15Z	90a488c2	Merge pull request #13 from s2script/changeset-release/main
+2026-07-25T03:50:06Z	2026-07-25T03:50:06Z	71016e07	Merge pull request #15 from s2script/dependabot/npm_and_yarn/brace-expansion-5.0.8
+2026-07-24T22:49:32Z	2026-07-24T22:49:32Z	23dcb2be	build(deps): bump brace-expansion from 5.0.7 to 5.0.8
+2026-07-24T22:48:25Z	2026-07-24T22:48:25Z	3b51f56b	chore: version packages
+2026-07-24T22:47:58Z	2026-07-24T22:47:58Z	c3d792e7	Merge pull request #14 from s2script/gamedata/plugin-declared-calls
+2026-07-24T21:26:30Z	2026-07-24T21:26:30Z	0dd04ebe	Name a plugin's gamedata after the plugin, and enforce it
+2026-07-24T20:59:27Z	2026-07-24T20:59:27Z	a4456394	Add examples/engine-call-demo, a worked plugin-declared engine call
+2026-07-24T20:40:47Z	2026-07-24T20:40:47Z	6c67061a	Add the live-gate negative fixture and log the slice
+2026-07-24T20:26:41Z	2026-07-24T20:26:41Z	456e2259	Name generated call parameters via an optional argNames array
+2026-07-24T20:00:52Z	2026-07-24T20:00:52Z	adcb83bc	Harden the declared-call path: safety fixes and closed vocabularies
+2026-07-24T19:46:41Z	2026-07-24T19:46:41Z	6a423a19	Fix the four defects adversarial review found in the gamedata slice
+2026-07-24T19:19:28Z	2026-07-24T19:19:28Z	058eee85	Add the core call registry, engine ops, and Engine.call natives
+2026-07-24T18:59:59Z	2026-07-24T18:59:59Z	14c35e4c	Add shim descriptor resolution and the SysV invoke thunk
+2026-07-24T18:59:16Z	2026-07-24T18:59:16Z	6703ca85	Record the RE spike for the demo engine call
+2026-07-24T18:51:34Z	2026-07-24T18:51:34Z	2589df66	Validate, generate types for, and pack plugin gamedata in s2s build
+2026-07-24T18:51:16Z	2026-07-24T18:51:16Z	ab3229a9	Add manifest permissions, gamedata member, and the default-deny allow-list
+2026-07-24T18:42:53Z	2026-07-24T18:42:53Z	328973d7	Add the @s2script/sdk/unsafe author contract
+2026-07-24T18:41:11Z	2026-07-24T18:41:11Z	104537b9	Generate EngineCalls types from plugin gamedata
+2026-07-24T18:39:49Z	2026-07-24T18:39:49Z	14dd93e4	Add plugin gamedata types and validator
+2026-07-24T18:34:53Z	2026-07-24T18:34:53Z	a82bfbd2	Add the plugin gamedata implementation plan
+2026-07-24T18:28:18Z	2026-07-24T18:28:18Z	b8bd5491	Fix arg budget, entity returns, and validator scope in the gamedata spec
+2026-07-24T18:23:36Z	2026-07-24T18:23:36Z	ce1503d5	Add the plugin-shippable gamedata design spec
+2026-07-24T16:43:42Z	2026-07-24T16:43:42Z	21dd9a8c	Merge pull request #12 from s2script/sdk/plugin-install
+2026-07-24T08:35:49Z	2026-07-24T08:35:49Z	a9fb4391	Move manifest load into try block and add install to usage banner
+2026-07-24T08:24:46Z	2026-07-24T08:24:46Z	6de46066	Document s2s install and add a changeset
+2026-07-24T08:20:10Z	2026-07-24T08:20:10Z	dd34f9f5	Add the s2s install command
+2026-07-24T08:18:03Z	2026-07-24T08:18:03Z	7f45a70c	Fail closed on missing sha256 and unsafe filenames in installPlan
+2026-07-24T08:06:41Z	2026-07-24T08:06:41Z	dbe21d26	Add the plugin install resolver/downloader core
+2026-07-24T08:04:27Z	2026-07-24T08:04:27Z	aaca3c55	Route plan() and downloadS2sp() through the shared request/error helpers
+2026-07-24T07:59:00Z	2026-07-24T07:59:00Z	412193d7	Add plan() and downloadS2sp() to RegistryClient
+2026-07-24T03:39:06Z	2026-07-24T03:39:06Z	aba76220	Merge pull request #10 from s2script/changeset-release/main
+2026-07-24T03:20:53Z	2026-07-24T03:20:53Z	c2a02619	chore: version packages
+2026-07-24T03:20:32Z	2026-07-24T03:20:32Z	50d2bd1e	Merge pull request #11 from s2script/sdk/deploy-wire-and-device-login
+2026-07-24T03:05:42Z	2026-07-24T03:05:42Z	d946f21e	Fix a leftover AdmZip reference in the build tests
+2026-07-24T03:04:11Z	2026-07-24T03:04:11Z	b893ae64	Merge main; let changesets own the version bump
+2026-07-24T00:23:44Z	2026-07-24T00:23:44Z	1bb62c78	Bump SDK to 0.8.0 for the new deploy wire format
+2026-07-24T00:22:18Z	2026-07-24T00:22:18Z	ebbd30b1	Replace paste-a-token login with browser device authorization
+2026-07-24T00:20:52Z	2026-07-24T00:20:52Z	bcb8488a	Default the registry URL to www and normalize saved apex URLs
+2026-07-24T00:20:27Z	2026-07-24T00:20:27Z	5f576f5f	Post deploys as octet-stream zip; make registry errors actionable
+2026-07-23T23:42:19Z	2026-07-23T23:42:19Z	492088ea	Merge pull request #9 from s2script/chat/auto-color-space
+2026-07-23T23:40:33Z	2026-07-23T23:40:33Z	139bbbb0	chat: modernize the cookbook colored-chat recipe
+2026-07-23T23:36:49Z	2026-07-23T23:36:49Z	afce5a2c	chat: auto-prepend a zero-width space so the first color byte renders
+2026-07-23T22:01:24Z	2026-07-23T22:01:24Z	e8145b79	Merge pull request #8 from s2script/changeset-release/main
+2026-07-23T20:59:25Z	2026-07-23T20:59:25Z	0e751b6e	chore: version packages
+2026-07-23T20:58:53Z	2026-07-23T20:58:53Z	981eb71d	Merge pull request #7 from s2script/sdk/interactive-cli
+2026-07-23T20:58:32Z	2026-07-23T20:58:32Z	de955a97	Merge pull request #6 from s2script/sdk/fflate-and-tests
+2026-07-23T20:58:18Z	2026-07-23T20:58:18Z	0c9c5f21	Merge pull request #5 from s2script/examples/cleanup
+2026-07-23T20:30:44Z	2026-07-23T20:30:44Z	74d45bd3	sdk(cli): changeset for the interactive CLI (minor)
+2026-07-23T20:29:58Z	2026-07-23T20:29:58Z	a7e6dc72	sdk(cli): extract command handlers + no-arg interactive menu
+2026-07-23T20:25:37Z	2026-07-23T20:25:37Z	f5970db6	sdk(cli): login uses a masked clack password prompt
+2026-07-23T20:24:47Z	2026-07-23T20:24:47Z	8e0a886e	sdk(cli): create wizard uses arrow-key clack prompts
+2026-07-23T20:21:22Z	2026-07-23T20:21:22Z	4fc4ad87	sdk(cli): extract flag parsing to cli/args.ts
+2026-07-23T20:20:23Z	2026-07-23T20:20:23Z	1fbdac3b	sdk(cli): add the clack-backed ui module + interactivity gate
+2026-07-23T20:09:41Z	2026-07-23T20:09:41Z	d6949a10	sdk: drop adm-zip for fflate; fix the offline-VM schema tests
+2026-07-23T18:40:59Z	2026-07-23T18:40:59Z	cc5a920c	examples,tools: rename every command to the sm_ prefix
+2026-07-22T19:42:13Z	2026-07-22T19:42:13Z	8fecc93d	examples(cookbook): add config/chat/admin recipes, gate three noisy loggers
+2026-07-22T19:33:07Z	2026-07-22T19:33:07Z	b5fa0079	fix: final whole-branch review findings on examples/cleanup
+2026-07-22T19:13:44Z	2026-07-22T19:13:44Z	14c1d731	ci: register check-examples-coverage.sh in the ci-js gate script
+2026-07-22T19:13:08Z	2026-07-22T19:04:51Z	49bc76e6	docs: fix npx s2s hazard — resolve by package name, not bin name
+2026-07-22T19:13:08Z	2026-07-22T18:59:33Z	5a53df75	docs: link the curated examples from the README front door
+2026-07-22T19:13:08Z	2026-07-22T18:53:39Z	cd8f21c7	test(gate): fail when a shipped SDK module has no consumer
+2026-07-22T19:12:46Z	2026-07-22T18:40:18Z	cbedf652	feat(examples): monorepo-plugin — one plugin across workspace packages
+2026-07-22T19:12:46Z	2026-07-22T18:33:44Z	f72843bc	refactor(examples): fold entref-* into the greeter pair
+2026-07-22T19:12:46Z	2026-07-22T18:29:52Z	bc4843a5	fix(examples): restore dropped cookbook recipe content lost in the merge
+2026-07-22T19:12:46Z	2026-07-22T18:18:36Z	34db8072	feat(examples): convert remaining demos to cookbook recipes
+2026-07-22T19:12:46Z	2026-07-22T18:08:01Z	ae1960df	feat(examples): convert 12 one-to-one demos to cookbook recipes
+2026-07-22T19:12:46Z	2026-07-22T17:55:12Z	0c781c24	fix(examples): restore the non-blocking proof in the http recipe
+2026-07-22T19:12:46Z	2026-07-22T17:31:47Z	83f18fd1	feat(examples): cookbook scaffold + http/sound/ws recipes
+2026-07-22T19:12:46Z	2026-07-22T17:27:45Z	9fe136f4	docs(examples): restore re-entrancy caveat lost in entity-playground merge
+2026-07-22T19:12:46Z	2026-07-22T17:21:24Z	0d8a0582	feat(examples): entity-playground merges five entity demos
+2026-07-22T19:12:46Z	2026-07-22T17:15:23Z	86e9ab5f	feat(examples): hello-plugin replaces demo-plugin
+2026-07-22T19:12:37Z	2026-07-22T17:08:54Z	c00d5324	refactor(examples): relocate dev tooling to tools/
+2026-07-22T19:12:37Z	2026-07-22T17:02:43Z	e21d548d	fix(sdk): resolve workspace-sibling packages that declare `main`
+2026-07-22T19:12:37Z	2026-07-22T16:43:39Z	11c4ddd7	docs(plan): examples/ cleanup implementation plan
+2026-07-22T19:12:37Z	2026-07-22T16:17:53Z	92768b27	docs(spec): examples/ cleanup — curated showcase + monorepo example
+2026-07-22T18:35:21Z	2026-07-22T18:35:21Z	844bad5e	Merge pull request #4 from s2script/changeset-release/main
+2026-07-22T18:32:24Z	2026-07-22T18:32:24Z	2fb3b580	chore: version packages
+2026-07-22T18:27:31Z	2026-07-22T18:27:31Z	1b71bfeb	Merge pull request #3 from s2script/commands/reply-source
+2026-07-22T18:17:27Z	2026-07-22T17:25:40Z	24864c02	commands: reply in the channel the caller used (SM ReplyToCommand parity)
+2026-07-22T18:17:05Z	2026-07-22T18:17:05Z	3601f20f	Merge pull request #2 from s2script/ci/consolidation
+2026-07-22T18:01:54Z	2026-07-22T18:01:54Z	d63bb131	ci: carry tools/** into the js filter across the ci.yml deletion
+2026-07-22T17:59:43Z	2026-07-22T17:42:23Z	9bcdba3c	ci: close the gaps the final branch review found
+2026-07-22T17:59:43Z	2026-07-22T17:27:35Z	72402ab3	docs: retire the Graphite stacked-PR doctrine; one PR per slice
+2026-07-22T17:59:43Z	2026-07-22T17:27:12Z	99a5dffe	docs(plan): Task 5 gains the README badge; fix two self-tripping checks
+2026-07-22T17:59:43Z	2026-07-22T17:19:01Z	bf98d79c	docs(ci): release.yml pointed at the ci.yml this slice deleted
+2026-07-22T17:59:43Z	2026-07-22T17:11:00Z	17d6ff3a	ci: two path-filtered workflows replace the seven-job ci.yml
+2026-07-22T17:59:43Z	2026-07-22T17:04:15Z	682ba69f	ci: scripts/ci-native.sh is the one native gate suite
+2026-07-22T17:59:43Z	2026-07-22T16:56:02Z	b85533bb	ci: scripts/ci-js.sh is the one JS gate suite
+2026-07-22T17:59:43Z	2026-07-22T16:53:12Z	07e8e484	docs(plan): correct Task 1's delegation snippet to a repo-root path
+2026-07-22T17:59:43Z	2026-07-22T16:49:34Z	46fe0edc	fix(gates): resolve check-core-names.sh from the repo root, not $0
+2026-07-22T17:59:43Z	2026-07-22T16:43:01Z	8a69abc4	refactor(gates): split the name-leak greps out of check-core-boundary.sh
+2026-07-22T17:59:43Z	2026-07-22T16:41:30Z	3815c85f	docs(plan): move the `ci` aggregate target from Task 2 to Task 3
+2026-07-22T17:59:43Z	2026-07-22T16:20:53Z	ec9cfd19	docs: implementation plan for the CI consolidation slice
+2026-07-22T17:59:43Z	2026-07-22T08:41:48Z	a6b16b4e	docs(spec): correct native-job timing; reject sccache, adopt save-if
+2026-07-22T17:59:43Z	2026-07-22T08:36:29Z	e698b5b8	docs: spec for CI consolidation + one-PR-per-slice
+2026-07-22T08:22:14Z	2026-07-22T08:22:14Z	e83e1011	Merge pull request #1 from s2script/docs/readme-front-door
+2026-07-22T08:20:18Z	2026-07-22T08:18:39Z	8be40902	fix: repo moved to s2script/s2script — update every reference
+2026-07-22T08:16:59Z	2026-07-22T08:16:53Z	77c99b40	docs: cut the README to a front door, point at s2script.com
+2026-07-22T07:19:02Z	2026-07-22T06:53:37Z	ecd3a3be	licensing: dual MIT OR Apache-2.0 + generated third-party notices
+2026-07-22T07:17:39Z	2026-07-22T06:42:43Z	e8918c6c	ci: decouple from the website after the carve-out
+2026-07-22T07:16:16Z	2026-07-22T07:16:16Z	24cc043f	Merge pull request #133 from GabeHirakawa/changeset-release/main
+2026-07-22T03:33:17Z	2026-07-22T03:33:17Z	60936d29	chore: version packages
+2026-07-22T03:32:56Z	2026-07-22T03:32:56Z	9ad42939	Merge pull request #134 from GabeHirakawa/website-docs/tsdoc-refresh
+2026-07-22T01:17:32Z	2026-07-22T01:17:32Z	eeab9be9	website: generate the module catalog from the SDK .d.ts TSDoc
+2026-07-22T00:54:29Z	2026-07-22T00:54:29Z	1f4c6001	chore: changesets — @s2script/sdk + @s2script/cs2 patch (TSDoc intellisense pass) (#132)
+2026-07-22T00:53:28Z	2026-07-22T00:04:23Z	08c0685a	chore: changesets — @s2script/sdk + @s2script/cs2 patch (TSDoc intellisense pass)
+2026-07-22T00:52:29Z	2026-07-22T00:52:29Z	868b1a25	docs(sdk): document cs2 game-type stubs + translations (#131)
+2026-07-22T00:49:29Z	2026-07-22T00:01:37Z	93722fc5	docs(sdk): document cs2 game-type stubs + translations
+2026-07-22T00:48:30Z	2026-07-22T00:48:30Z	82de981e	docs(sdk): document engine-core stubs (13 files) (#130)
+2026-07-22T00:45:29Z	2026-07-22T00:01:37Z	6070034d	docs(sdk): document engine-core stubs (13 files)
+2026-07-22T00:44:29Z	2026-07-22T00:44:29Z	772b699d	docs(sdk): document menus/votes stubs (menu, votes, topmenu, sound) (#129)
+2026-07-22T00:41:29Z	2026-07-22T00:01:36Z	9d9db4f7	docs(sdk): document menus/votes stubs (menu, votes, topmenu, sound)
+2026-07-22T00:40:29Z	2026-07-22T00:40:29Z	6bdba121	docs(sdk): document players/admin stubs (clients, commands, chat, admin, bans) (#128)
+2026-07-22T00:37:29Z	2026-07-22T00:01:35Z	0209e674	docs(sdk): document players/admin stubs (clients, commands, chat, admin, bans)
+2026-07-22T00:36:31Z	2026-07-22T00:36:31Z	34ceae6d	docs(sdk): document entity/trace/math stubs (#127)
+2026-07-22T00:33:30Z	2026-07-22T00:01:35Z	104875d6	docs(sdk): document entity/trace/math stubs
+2026-07-22T00:32:39Z	2026-07-22T00:32:39Z	a7edf2d5	docs(sdk): document async-net stubs (ws, net, db, cookies) (#126)
+2026-07-22T00:28:29Z	2026-07-22T00:01:34Z	9788e13e	docs(sdk): document async-net stubs (ws, net, db, cookies)
+2026-07-22T00:27:29Z	2026-07-22T00:27:29Z	99f6bde4	docs(sdk): doc-coverage analyzer, CLI, conventions + http.d.ts exemplar (#125)
+2026-07-22T00:24:29Z	2026-07-21T23:47:27Z	6f3c02dd	docs(sdk): doc-coverage analyzer, CLI, conventions + http.d.ts exemplar
+2026-07-22T00:23:29Z	2026-07-22T00:23:29Z	cba83a23	docs(spec): rich TSDoc for author-facing SDK stubs (#124)
+2026-07-22T00:22:19Z	2026-07-21T23:37:37Z	10c240a0	docs(plan): SDK TSDoc intellisense implementation plan
+2026-07-22T00:22:19Z	2026-07-21T23:27:34Z	19cb5d33	docs(spec): rich TSDoc for author-facing SDK stubs
+2026-07-21T21:15:58Z	2026-07-21T21:15:58Z	b2afb06b	Merge pull request #118 from GabeHirakawa/cursor/cloudflare-hosting-e076
+2026-07-21T17:12:45Z	2026-07-21T17:12:45Z	e81f8198	docs: record Cloudflare hosting operations slice
+2026-07-21T17:00:34Z	2026-07-21T17:00:34Z	e319b8c1	ops: gate and document Cloudflare website hosting
+2026-07-21T06:16:05Z	2026-07-21T06:16:05Z	6209d7a3	Website + registry: orgs, deploy/add, types-only npm-compat (#13)
+2026-07-21T04:11:29Z	2026-07-21T04:03:05Z	eae07a55	chore: version packages
+2026-07-21T04:02:40Z	2026-07-21T03:51:26Z	f5acc51a	docs(rearch): B1+B2 toolchain complete - changeset + PROGRESS entry
+2026-07-21T04:02:40Z	2026-07-21T03:48:23Z	7e7b7688	sdk: scaffold eslint.config.mjs + clear the editor/build parity debts (B2)
+2026-07-21T04:02:40Z	2026-07-21T03:42:15Z	925b63c0	sdk: run the pinned s2script lint rules in-process after the tsc gate (B2)
+2026-07-21T04:02:40Z	2026-07-21T03:38:40Z	08a308ea	eslint-plugin: no-bigint-in-interface-payloads (B2) - the silent-drop footgun
+2026-07-21T04:02:40Z	2026-07-21T03:37:16Z	1d264c9f	eslint-plugin: typed rules no-floating-promise-in-factory + no-await-in-raw-view (B2)
+2026-07-21T04:02:40Z	2026-07-21T03:33:00Z	a678c2a3	eslint-plugin: new @s2script/eslint-plugin tooling package + no-ctx-escape (B2)
+2026-07-21T04:02:40Z	2026-07-21T03:28:58Z	b8f8e67a	sdk: derive publishes name-set from ctx.publish calls; dep-use advisories (B1)
+2026-07-21T04:02:40Z	2026-07-21T03:20:55Z	9b18f4fa	sdk: .s2script/types verified-copy convention -> typed deps + manifest compiledAgainst (B1)
+2026-07-21T04:02:40Z	2026-07-21T03:17:34Z	9332a66a	core: verify typesSha256 at load + per-call (B1) - contract drift fails fast
+2026-07-21T04:02:40Z	2026-07-21T03:11:01Z	d35b2c35	loader: remember refused .s2sp by path+mtime - WARN once, failed state visible (B1)
+2026-07-21T04:02:40Z	2026-07-21T03:08:50Z	6da05b18	sdk: derive manifest apiVersion at build from the SDK host-major constant (B1)
+2026-07-21T04:02:40Z	2026-07-21T03:06:01Z	51aabebb	docs(rearch): B1+B2 toolchain plan (Fable) + resolved decisions (scoped @s2script/eslint-plugin)
+2026-07-21T04:02:40Z	2026-07-21T02:07:12Z	40f9de18	docs(rearch): L1 live-gate PASSED — 14-plugin suite loads under plugin(ctx), apiVersion-2 gate enforced
+2026-07-21T04:02:40Z	2026-07-21T01:58:57Z	8e869300	docs(rearch): PROGRESS entry — L1 lifecycle-v2 COMPLETE (plugin(ctx), registration unrepresentable outside ctx)
+2026-07-21T04:02:40Z	2026-07-21T01:55:48Z	10477554	sdk: delete legacy registration surface - registration is now unrepresentable outside ctx/Scope
+2026-07-21T04:02:40Z	2026-07-21T01:41:36Z	7f4b8866	test(examples): port example suite to plugin(ctx) lifecycle-v2 (37 examples)
+2026-07-21T04:02:40Z	2026-07-21T01:41:36Z	1cd23e1d	feat(plugins)!: port base + opt-in plugin suite to plugin(ctx) lifecycle-v2
+2026-07-21T04:02:40Z	2026-07-21T01:32:32Z	9f079c98	sdk: one tsconfig source of truth (tsconfig-shared) + plugin(ctx) create template, apiVersion 2.x
+2026-07-21T04:02:40Z	2026-07-21T01:29:45Z	6187e9fe	sdk: @s2script/sdk/plugin surface (PluginContext/plugin()/Scope); CommandInvocation + UserCmdView renames; deprecate ambient registration verbs
+2026-07-21T04:02:40Z	2026-07-21T01:23:30Z	da03418e	loader: topological activation + WAITING + reload-while-Loading queue; apiVersion major 2; plugin states in sm plugins list
+2026-07-21T04:02:40Z	2026-07-21T01:11:59Z	1eedc809	core: Scope disposal via per-sub ids (__s2_scope_dispose); subscribe natives return ids; onDamage return >= Handled blocks
+2026-07-21T04:02:40Z	2026-07-21T01:01:08Z	e77f6f9a	core: lifecycle v2 - plugin() artifact, awaited factory, Loading/Active/Failed phase machine, arm-at-Active, state()/ctx.previous handoff
+2026-07-21T04:02:40Z	2026-07-21T00:33:48Z	554dcacc	core: OWNER_SCOPED_STORES self-registration replaces the hand-maintained unload cascade; EventMux rows get sub ids
+2026-07-21T04:02:40Z	2026-07-21T00:15:23Z	96b5c031	docs(rearch): PROGRESS entry — E1 entity liveness COMPLETE + live-gate PROVEN (changelevel SEGV -> null)
+2026-07-21T04:02:40Z	2026-07-21T00:14:12Z	ce31bf5c	test(examples): liveness-gate — onLoad log + per-frame poll fallback (live-gate hardening)
+2026-07-21T04:02:40Z	2026-07-20T23:56:37Z	f4ed5752	test(examples): liveness-gate plugin — held-ref changelevel repro (E1 live gate)
+2026-07-21T04:02:40Z	2026-07-20T23:05:37Z	4446e64b	docs(rearch): L1 resolved decisions (human-reviewed) — Client-first onSay, drop Events.off, lazy hard-dep, apiVersion 1->2
+2026-07-21T04:02:40Z	2026-07-20T23:02:37Z	096e6fbf	docs: entity liveness core-authority — books doctrine, EntityRef {index,id} (E1)
+2026-07-21T04:02:40Z	2026-07-20T23:00:39Z	96a698f0	feat(core+cs2): pawn.isValid via slot-side identity flags — retire the [16]->48 instance chain
+2026-07-21T04:02:40Z	2026-07-20T22:55:27Z	784ec16e	feat(cs2+sdk)!: migrate game package, typings, plugins to EntityRef {index, id}
+2026-07-21T04:02:40Z	2026-07-20T22:50:13Z	a16486d7	feat(core)!: EntityRef = {index, host-id} — books-first resolution, slot-validated stage 2
+2026-07-21T04:02:40Z	2026-07-20T22:25:22Z	28808223	feat(core): __s2_ent_id_for_index + __s2_handle_adopt minting natives
+2026-07-21T04:02:40Z	2026-07-20T22:23:31Z	f9a101cf	feat(core): map-start repair sweep — books reconcile from identity-chunk snapshot
+2026-07-21T04:02:40Z	2026-07-20T22:21:25Z	3320249e	feat(shim+core): slot-side ent_resolve/ent_identity_flags/ent_snapshot ops + always-on entity listener
+2026-07-21T04:02:40Z	2026-07-20T22:15:37Z	30525d85	feat(core): unconditional entity-event books feed + map-start epoch clear in ffi
+2026-07-21T04:02:40Z	2026-07-20T22:14:22Z	4c02a38f	feat(core): entity_live books — index → (host-id, engine-serial), listener-fed
+2026-07-21T04:02:40Z	2026-07-20T22:12:49Z	4aafc42f	refactor(core): plugin::Registry onto liveness::LiveTable (behavior-preserving)
+2026-07-21T04:02:40Z	2026-07-20T22:11:50Z	5190980d	feat(core): liveness.rs — shared monotonic-id LiveTable primitive (E1)
+2026-07-21T04:02:40Z	2026-07-20T22:09:32Z	2dc2461d	docs(rearch): E1 + L1 implementation plans (Fable) + L1 lifecycle spec
+2026-07-21T04:02:40Z	2026-07-20T21:18:33Z	1a1b5a7a	docs(rearch): subject-first ctx surface + Hud effects + single-package convention
+2026-07-21T04:02:40Z	2026-07-20T20:37:07Z	26467454	docs(rearch): safety-by-construction north-star design
+2026-07-20T17:23:14Z	2026-07-20T16:57:53Z	a4740c91	chore: version packages
+2026-07-20T16:57:28Z	2026-07-20T16:26:41Z	29ae0e06	feat(cs2): pawn.isValid intrinsic (liveness + EF_IN_STAGING_LIST clear)
+2026-07-19T18:20:49Z	2026-07-19T18:20:49Z	0c12ecfb	Merge pull request #112 from GabeHirakawa/ci-fix/paths-filter-permissions
+2026-07-19T18:18:55Z	2026-07-19T18:18:55Z	ea899395	ci: grant contents+pull-requests read so paths-filter can list PR files
+2026-07-19T18:12:28Z	2026-07-19T18:12:28Z	84b55eb3	release: generate + ship all default configs (plugins + admin + db) at package time (#111)
+2026-07-19T18:11:27Z	2026-07-19T15:38:46Z	f8aa1e3d	release: generate + ship all default configs (plugins + admin + db) at package time
+2026-07-19T18:10:28Z	2026-07-19T18:10:28Z	d77771f6	sdk(config): s2s config gen — ConfigPath-matching default files (#110)
+2026-07-19T18:09:29Z	2026-07-19T15:36:40Z	61068729	sdk(config): s2s config gen — ConfigPath-matching default files
+2026-07-19T18:08:29Z	2026-07-19T18:08:29Z	a24fdad7	core(config): canonical framework templates via include_str! (drops inline literals) (#109)
+2026-07-19T18:07:28Z	2026-07-19T15:32:31Z	9ed1db0a	core(config): canonical framework templates via include_str! (drops inline literals)
+2026-07-19T18:06:28Z	2026-07-19T18:06:28Z	1625f1ba	sdk(config): enriched validation (sections/min/max/enum/sensitive) + recursive Config type (#108)
+2026-07-19T18:05:29Z	2026-07-19T15:29:18Z	4db196dd	sdk(config): enriched validation (sections/min/max/enum/sensitive) + recursive Config type
+2026-07-19T18:04:28Z	2026-07-19T18:04:28Z	397d2952	core(config): recursive ConfigEntry (sections) + range/enum + dotted getters (#107)
+2026-07-19T18:03:28Z	2026-07-19T15:23:38Z	8459bf32	core(config): recursive ConfigEntry (sections) + range/enum + dotted getters
+2026-07-19T18:02:28Z	2026-07-19T18:02:28Z	9fca000a	feat(nextmap): SM parity — standalone maplist (#106)
+2026-07-19T18:01:28Z	2026-07-19T15:28:19Z	a8abd785	feat(nextmap): SM parity — standalone maplist
+2026-07-19T18:00:29Z	2026-07-19T18:00:29Z	931a1743	feat(funvotes): SM parity — funvote_ratio pass semantics (#105)
+2026-07-19T17:59:28Z	2026-07-19T15:26:31Z	f6d08c30	feat(funvotes): SM parity — funvote_ratio pass semantics
+2026-07-19T17:58:28Z	2026-07-19T17:58:28Z	7e74290e	feat(nominations): SM parity — explicit current-map exclusion (#104)
+2026-07-19T17:57:28Z	2026-07-19T15:24:47Z	a3688a5f	feat(nominations): SM parity — explicit current-map exclusion
+2026-07-19T17:56:28Z	2026-07-19T17:56:28Z	9a307a7b	feat(rockthevote): SM parity — standalone tables + rtv_initialdelay (#103)
+2026-07-19T17:55:30Z	2026-07-19T15:23:20Z	2108c99a	feat(rockthevote): SM parity — standalone tables + rtv_initialdelay
+2026-07-19T17:54:28Z	2026-07-19T17:54:28Z	21b21fab	release: ship opt-in plugins under plugins/disabled/ (loader-skipped) (#102)
+2026-07-19T17:53:28Z	2026-07-19T15:20:42Z	ba57d2b3	release: ship opt-in plugins under plugins/disabled/ (loader-skipped)
+2026-07-19T17:52:28Z	2026-07-19T17:52:28Z	ebb2e9a8	chore(plugins): move disabled/ under plugins/disabled/; fix build+typecheck walks (#101)
+2026-07-19T17:51:43Z	2026-07-19T15:18:49Z	c03509e2	chore(plugins): move disabled/ under plugins/disabled/; fix build+typecheck walks
+2026-07-19T17:41:28Z	2026-07-19T17:41:28Z	36c61b98	ci: extract reusable _build.yml (workflow_call) shared by ci + release (#100)
+2026-07-19T17:40:27Z	2026-07-19T15:19:06Z	95cdcb5a	ci: extract reusable _build.yml (workflow_call) shared by ci + release
+2026-07-19T17:39:52Z	2026-07-19T17:39:52Z	d2723b70	ci: path-filtered jobs + fail-closed ci-ok aggregator (#99)
+2026-07-19T17:38:28Z	2026-07-19T15:18:03Z	2cb15106	ci: path-filtered jobs + fail-closed ci-ok aggregator
+2026-07-19T17:37:28Z	2026-07-19T17:37:28Z	79cfc657	ci: run the full gate suite in CI (typecheck + freshness + boundary + nameleak) (#98)
+2026-07-19T17:36:29Z	2026-07-19T15:17:34Z	1b4ee756	ci: run the full gate suite in CI (typecheck + freshness + boundary + nameleak)
+2026-07-19T17:35:28Z	2026-07-19T17:35:28Z	402e63bb	ci: dedup push/pull_request; PR-only cancel-in-progress (#97)
+2026-07-19T17:34:28Z	2026-07-19T15:15:47Z	991f2a79	ci: dedup push/pull_request; PR-only cancel-in-progress
+2026-07-19T17:33:28Z	2026-07-19T17:33:28Z	5f32567d	ci: cache + debug PR build; parameterize shim core-lib dir (#96)
+2026-07-19T17:32:02Z	2026-07-19T15:15:36Z	ee13aea7	ci: cache + debug PR build; parameterize shim core-lib dir
+2026-07-19T17:29:55Z	2026-07-19T17:29:55Z	0d083cbf	docs(release-hygiene): CI + config + disabled-plugins cleanup design spec (#95)
+2026-07-19T15:11:58Z	2026-07-19T15:11:58Z	d192719c	docs(release-hygiene): implementation plan (Fable-review-hardened)
+2026-07-19T07:06:38Z	2026-07-19T07:06:38Z	5eae4818	docs(release-hygiene): CI + config + disabled-plugins cleanup design spec
+2026-07-18T03:42:28Z	2026-07-18T03:42:28Z	56a45ffa	crash-reporter: deliberate-crash harness + live-gate (#94)
+2026-07-18T03:41:27Z	2026-07-18T02:31:10Z	f8e0b909	crash-reporter: PROGRESS entry + CLAUDE.md inventory (live-gate proven)
+2026-07-18T03:41:27Z	2026-07-18T01:58:17Z	4ea2403a	crash-reporter: deliberate-crash harness example plugin
+2026-07-18T03:41:27Z	2026-07-18T01:56:25Z	22f5a30f	crash-reporter: dev-gated deliberate-crash natives (segv/abort/panic)
+2026-07-18T03:40:28Z	2026-07-18T03:40:28Z	753b4479	crash-reporter: fatal JS error path (TryCatch + promise-reject) (#93)
+2026-07-18T03:39:29Z	2026-07-18T01:08:20Z	b6ebbb33	crash-reporter: fatal JS error path (TryCatch sites + promise-reject callback, dedup)
+2026-07-18T03:39:29Z	2026-07-18T01:04:12Z	3c7d95aa	crash-reporter: stack-signature dedup + rate limiter
+2026-07-18T03:38:28Z	2026-07-18T03:38:28Z	fb45cd96	crash-reporter: Breakpad native fault path (minidump + sidecar) (#92)
+2026-07-18T03:37:28Z	2026-07-18T00:53:16Z	e98f131a	crash-reporter: Breakpad native fault path (sigaltstack, chaining, .s2meta sidecar) + selftest
+2026-07-18T03:37:28Z	2026-07-18T00:42:08Z	84de1e97	crash-reporter: vendor breakpad + lss (pinned submodules)
+2026-07-18T03:36:28Z	2026-07-18T03:36:28Z	bc940ee6	crash-reporter: spool + upload-on-next-boot + config (#91)
+2026-07-18T03:35:28Z	2026-07-18T00:34:03Z	3755688f	crash-reporter: boot+periodic sweep, multipart uploader with retry, persisted server_id
+2026-07-18T03:35:28Z	2026-07-18T00:32:25Z	c631dfb2	crash-reporter: crashreporter.json config (opt-in default-false, fail-off parse)
+2026-07-18T03:34:28Z	2026-07-18T03:34:28Z	31631e72	crash-reporter: Rust panic path -> envelope -> spool (#90)
+2026-07-18T03:33:29Z	2026-07-18T00:24:41Z	c9242bd2	crash-reporter: panic hook -> envelope(kind=panic) -> spool (chains previous hook)
+2026-07-18T03:33:29Z	2026-07-18T00:23:43Z	eac0ee86	crash-reporter: bounded crash spool (write/scan/mark-sent)
+2026-07-18T03:33:29Z	2026-07-18T00:23:13Z	50f6b4d5	crash-reporter: schema_version 1 incident envelope (frozen wire contract)
+2026-07-18T03:32:28Z	2026-07-18T03:32:28Z	c32799dd	crash-reporter: breadcrumb POD + tracker + cs2 build setter (#89)
+2026-07-18T03:31:28Z	2026-07-18T00:16:29Z	2a7730f4	crash-reporter: shim identity push + server_build_number op + cs2 game-identity setter
+2026-07-18T03:31:28Z	2026-07-18T00:10:57Z	77681d41	crash-reporter: FFI exports, dispatch stamping, server_build_number op (core side)
+2026-07-18T03:31:28Z	2026-07-18T00:06:05Z	540884f6	crash-reporter: breadcrumb POD + tracker (ring, plugin table, dispatch guard)
+2026-07-18T03:30:43Z	2026-07-18T03:30:43Z	55b0090e	docs(crash-reporter): capture-client design spec + implementation plan (#88)
+2026-07-18T02:51:42Z	2026-07-17T23:47:06Z	3c691a01	docs(crash-reporter): fix B5 plugin_loaded placement + stale summary tables
+2026-07-18T02:51:42Z	2026-07-17T23:43:27Z	e4ff6bc8	docs(crash-reporter): apply adversarial-review fixes to plan (B1-B5, S1-S5)
+2026-07-18T02:51:42Z	2026-07-17T22:55:43Z	fcf4c6bb	docs(crash-reporter): capture-client implementation plan (6-PR stack)
+2026-07-18T02:51:42Z	2026-07-17T22:14:52Z	91b59f2c	docs(crash-reporter): capture-client design spec
+2026-07-18T00:43:53Z	2026-07-18T00:43:53Z	17adcce2	Merge pull request #87 from GabeHirakawa/build/allow-ts-ext-imports
+2026-07-18T00:43:48Z	2026-07-18T00:18:37Z	28129a7b	fix(sdk-cli): allow .ts import extensions in the typecheck gate
+2026-07-17T23:21:47Z	2026-07-17T23:21:47Z	6950d48b	Merge pull request #74 from GabeHirakawa/changeset-release/main
+2026-07-17T23:19:49Z	2026-07-17T23:19:49Z	aec31636	Merge branch 'main' into changeset-release/main
+2026-07-17T23:13:28Z	2026-07-17T23:13:28Z	b7ec7bc7	respawn/demo: sm_respawn / sm_respawnall + spawn/death loggers (#82)
+2026-07-17T23:12:27Z	2026-07-17T08:29:16Z	ee71a847	feat(respawn): demo plugin — sm_respawn / sm_respawnall + spawn/death loggers
+2026-07-17T23:12:22Z	2026-07-17T23:12:22Z	e1ff90a2	chore: version packages
+2026-07-17T23:12:03Z	2026-07-17T23:12:03Z	a29f0f6d	respawn/cs2-surface: Player.respawn() in @s2script/cs2 (#81)
+2026-07-17T23:05:43Z	2026-07-17T23:05:43Z	27407ca7	merge(main): keep Player.switchTeam + Player.respawn on cs2 surface
+2026-07-17T23:00:16Z	2026-07-17T23:00:16Z	eb33b89c	respawn/engine-fact: self-resolved Respawn + SetPawn + deferred drain (#80)
+2026-07-17T22:59:27Z	2026-07-17T22:59:27Z	7324e7cc	merge(main): sync usermsg consumers demo
+2026-07-17T22:59:16Z	2026-07-17T22:59:16Z	9e67c82d	merge(main): resolve ABI conflict — append player_respawn after usermsg
+2026-07-17T22:49:28Z	2026-07-17T22:49:28Z	303fe7d0	usermsg/consumers: demo plugin — TTT consumer shapes + D-09 shooter-handle probe (#78)
+2026-07-17T22:48:27Z	2026-07-17T03:47:33Z	ec65eeea	feat(usermsg): demo plugin — TTT consumer shapes + D-09 shooter-handle probe
+2026-07-17T22:47:28Z	2026-07-17T22:47:28Z	d56270e3	usermsg/sdk-surface: @s2script/sdk usermessages hook API (UserMessages.onPre + UserMessageView) (#77)
+2026-07-17T22:46:28Z	2026-07-17T03:47:32Z	0e990860	feat(usermsg): @s2script/sdk usermessages hook API (UserMessages.onPre + UserMessageView)
+2026-07-17T22:45:24Z	2026-07-17T22:45:24Z	13d55475	usermsg/engine: PostEventAbstract intercept — mux, reflection reads, observe-only validation (#76)
+2026-07-17T22:41:41Z	2026-07-17T22:41:41Z	3854b013	Merge branch 'main' into usermsg/engine
+2026-07-17T22:40:59Z	2026-07-17T22:40:59Z	6ddaecc9	merge(main): resolve ABI conflict — append player_respawn after switchteam
+2026-07-17T22:38:56Z	2026-07-17T22:38:56Z	220881ee	merge(main): resolve ABI conflict — append player_respawn after voice
+2026-07-17T22:30:29Z	2026-07-17T22:30:29Z	984d8b75	switchteam/demo: sm_switchtest / sm_deadtest / sm_revealtest (#86)
+2026-07-17T22:29:28Z	2026-07-17T16:40:08Z	10029e3a	feat(switchteam): demo plugin — sm_switchtest / sm_deadtest / sm_revealtest
+2026-07-17T22:29:07Z	2026-07-17T22:29:07Z	6657b8dd	merge(main): resolve ABI conflict — append usermsg ops after switchteam
+2026-07-17T22:28:28Z	2026-07-17T22:28:28Z	c1447e79	switchteam/cs2-surface: Player.switchTeam() in @s2script/cs2 (#85)
+2026-07-17T22:27:28Z	2026-07-17T16:40:07Z	e3d68056	feat(switchteam): Player.switchTeam() in @s2script/cs2
+2026-07-17T22:27:14Z	2026-07-17T22:27:14Z	2a7f3ceb	switchteam/engine-fact: self-resolved SwitchTeam @0x1525f40 + generic op (#84)
+2026-07-17T22:26:36Z	2026-07-17T22:26:36Z	1452da4e	merge(main): resolve ABI conflict — append switchteam after terminate+voice
+2026-07-17T22:23:41Z	2026-07-17T22:23:41Z	bc7302ec	merge(main): resolve ABI conflict — append usermsg ops after voice
+2026-07-17T22:22:28Z	2026-07-17T22:22:28Z	9827dd94	respawn/design-docs: player respawn — spec + plan (#79)
+2026-07-17T22:21:26Z	2026-07-17T08:28:50Z	e1b973c3	docs(respawn): player-respawn design spec + implementation plan
+2026-07-17T22:20:28Z	2026-07-17T22:20:28Z	97174184	switchteam/design-docs: non-lethal team switch — spec + plan (#83)
+2026-07-17T22:19:43Z	2026-07-17T16:39:48Z	14d08d75	docs(switchteam): non-lethal team-switch design spec + plan
+2026-07-17T22:18:29Z	2026-07-17T22:18:29Z	d6b291da	usermsg/design-docs: UserMessage interception — spec + plan (#75)
+2026-07-17T22:17:44Z	2026-07-17T03:47:00Z	f7cda652	docs(usermsg): UserMessage-interception design spec + implementation plan
+2026-07-17T22:05:18Z	2026-07-17T22:05:18Z	196ebff0	voice/consumers: voice-demo + basecomm real-mute migration (#73)
+2026-07-17T22:04:06Z	2026-07-17T22:04:06Z	fc16cdfb	Merge origin/main into voice/consumers
+2026-07-17T22:00:58Z	2026-07-17T22:00:58Z	161524b6	voice/shim: SetClientListening mute hook + ClientVoice notify + Get/Set-transpose validation (#72)
+2026-07-17T21:59:00Z	2026-07-17T21:59:00Z	ba998667	merge(main): resolve shim ops conflict — append voice after transmit+TerminateRound
+2026-07-17T18:14:54Z	2026-07-17T18:14:54Z	18df0550	voice/core: @s2script/sdk/clients voiceMuted + onVoice — ABI + natives (#71)
+2026-07-17T18:09:39Z	2026-07-17T18:09:39Z	3f0cad83	Merge remote-tracking branch 'origin/main' into voice/core
+2026-07-17T18:08:29Z	2026-07-17T18:08:29Z	82d9afb5	round-control/demo: round-control-demo + live-gate PROGRESS (#69)
+2026-07-17T18:08:19Z	2026-07-17T18:08:19Z	5332a81f	merge(main): resolve ABI conflict — append voice ops after TerminateRound
+2026-07-17T18:07:29Z	2026-07-16T21:26:25Z	9212ad22	demo(round): round-control live-gate demo + progress entry
+2026-07-17T18:06:30Z	2026-07-17T18:06:30Z	d945f601	round-control/cs2-surface: GameRules writers + Teams scores + RoundEndReason (#68)
+2026-07-17T18:05:29Z	2026-07-16T21:21:17Z	47141236	feat(cs2): round-control surface — terminateRound, round-clock writers, Teams scores, RoundEndReason
+2026-07-17T18:05:05Z	2026-07-17T18:05:05Z	55becc95	round-control/engine-fact: self-resolved TerminateRound op + semantic gate + deferred drain (#67)
+2026-07-17T17:58:05Z	2026-07-17T17:58:05Z	41b0c2be	merge(main): resolve ABI conflict — append TerminateRound after checktransmit
+2026-07-17T16:40:07Z	2026-07-17T16:40:07Z	4884bf67	feat(switchteam): self-resolved CCSPlayerController::SwitchTeam + generic op
+2026-07-17T16:39:48Z	2026-07-17T16:39:48Z	9e0c50c0	docs(switchteam): non-lethal team-switch design spec + plan
+2026-07-17T08:29:15Z	2026-07-17T08:29:15Z	21c67e79	feat(respawn): Player.respawn() in @s2script/cs2
+2026-07-17T08:29:05Z	2026-07-17T08:29:05Z	f4daab9e	feat(respawn): self-resolved Respawn + SetPawn engine facts, deferred drain
+2026-07-17T08:28:50Z	2026-07-17T08:28:50Z	5a079979	docs(respawn): player-respawn design spec + implementation plan
+2026-07-17T03:47:21Z	2026-07-17T03:47:21Z	c4cd75b6	feat(usermsg): PostEventAbstract intercept — mux, reflection reads, observe-only validation
+2026-07-17T03:47:00Z	2026-07-17T03:47:00Z	e59b49fa	docs(usermsg): UserMessage-interception design spec + implementation plan
+2026-07-17T01:55:28Z	2026-07-17T01:55:28Z	e376456e	voice/design-docs: voice control — spec + plan (#70)
+2026-07-17T01:54:45Z	2026-07-16T23:09:03Z	7dec5ad8	docs(voice-control): design spec + implementation plan
+2026-07-17T01:54:28Z	2026-07-17T01:54:28Z	d5985c5b	round-control/design-docs: round control — spec + plan (#66)
+2026-07-17T01:53:43Z	2026-07-16T21:35:20Z	8fce5797	docs(round-control): design spec + implementation plan
+2026-07-17T01:51:52Z	2026-07-17T01:51:52Z	63acbfd5	checktransmit/sdk-surface: @s2script/sdk/transmit .d.ts + exports + demo (#65)
+2026-07-17T01:51:16Z	2026-07-16T19:54:46Z	2500a52c	feat(sdk): @s2script/sdk/transmit — plugin-facing surface for CheckTransmit
+2026-07-17T01:50:37Z	2026-07-17T01:50:37Z	26a3375c	checktransmit/engine-hook: transmit core natives + Source2 CheckTransmit hook (#64)
+2026-07-17T01:49:20Z	2026-07-15T23:24:46Z	d14f7f42	fix(shim): CheckTransmit review fixes — MAX_EDICTS OOB guard, exclusive-witness validation, no budget burn without tracked clients
+2026-07-17T01:48:46Z	2026-07-15T23:11:47Z	f33ee083	feat(shim): CheckTransmit POST hook — per-client entity visibility w/ first-fire layout validation
+2026-07-17T01:48:45Z	2026-07-15T22:55:35Z	d48b3122	feat(core): @s2script/transmit — per-plugin entity-visibility rules, AND-merge, transmit_* ops ABI
+2026-07-17T01:48:41Z	2026-07-17T01:48:41Z	faa84b33	checktransmit/design-docs: CheckTransmit slice — spec + implementation plan (#63)
+2026-07-16T23:09:03Z	2026-07-16T23:09:03Z	cde5794a	feat(voice): TTT-shaped demo + basecomm real-mute migration + PROGRESS
+2026-07-16T23:09:03Z	2026-07-16T23:09:03Z	7ac33c14	feat(voice): shim SetClientListening rewrite + ClientVoice notify + validation
+2026-07-16T23:09:03Z	2026-07-16T23:09:03Z	7a30565e	feat(voice): core ABI + Client.voiceMuted + Clients.onVoice + tests
+2026-07-16T23:09:03Z	2026-07-16T23:09:03Z	6df9ca27	docs(voice-control): design spec + implementation plan
+2026-07-16T21:35:20Z	2026-07-16T21:16:46Z	ab0be966	feat(round): TerminateRound engine fact — self-derived sig + scope-string semantic gate + deferred terminate op
+2026-07-16T21:35:20Z	2026-07-16T21:35:20Z	eb35dda9	docs(round-control): design spec + implementation plan
+2026-07-16T19:47:33Z	2026-07-15T22:48:28Z	448c88c4	docs(plan): checktransmit implementation plan (TDD, subagent-driven)
+2026-07-16T19:47:33Z	2026-07-15T22:36:43Z	8de08e0f	docs(spec): checktransmit slice design — declarative per-client entity visibility rules
+2026-07-16T19:18:15Z	2026-07-16T19:18:15Z	c964fa5f	Merge pull request #43 from GabeHirakawa/changeset-release/main
+2026-07-16T19:12:51Z	2026-07-16T19:12:51Z	f2385289	chore: version packages
+2026-07-16T19:12:29Z	2026-07-16T19:12:29Z	4ad41d3a	fix(cli): s2s create resolves non-sdk deps live from the registry (#62)
+2026-07-16T19:11:28Z	2026-07-16T19:05:08Z	1d64dcae	chore: changeset — s2s create live version resolution (@s2script/sdk patch)
+2026-07-16T19:11:28Z	2026-07-16T19:04:26Z	d6b1a8a4	fix(cli): resolve non-sdk create deps from the registry, not the sdk version
+2026-07-16T19:11:28Z	2026-07-16T19:03:34Z	19dc050a	feat(cli): add versionSpecFrom + resolvePublishedVersion registry seam
+2026-07-16T19:11:28Z	2026-07-16T18:54:58Z	3216cc79	docs: reflect 3-PR stack after the lockfile-reconcile finding
+2026-07-16T19:11:28Z	2026-07-16T18:19:27Z	ffd7be6e	docs: implementation plan for s2s create live version resolution
+2026-07-16T19:11:28Z	2026-07-16T18:03:03Z	196942e8	docs: spec for s2s create live per-package version resolution
+2026-07-16T19:10:29Z	2026-07-16T19:10:29Z	6283fe6c	chore: reconcile package-lock with the post-consolidation workspace (#61)
+2026-07-16T19:09:29Z	2026-07-16T18:52:40Z	60b23b7e	chore: reconcile package-lock with the post-consolidation workspace
+2026-07-16T19:08:54Z	2026-07-16T19:08:54Z	d6b019f1	test: migrate stranded publisher-mapform-typeerror fixture into @s2script/sdk (#60)
+2026-07-16T18:42:42Z	2026-07-16T18:42:42Z	4eb9a720	test: migrate stranded publisher-mapform-typeerror fixture into @s2script/sdk
+2026-07-16T16:34:29Z	2026-07-16T16:34:29Z	577dc7cc	docs: sweep README to @s2script/sdk + the s2s CLI (#59)
+2026-07-16T16:33:28Z	2026-07-16T16:06:35Z	fb6fea5b	docs: sweep README to @s2script/sdk + the s2s CLI
+2026-07-16T16:32:29Z	2026-07-16T16:32:29Z	32273fa3	consolidation: absorb the CLI into @s2script/sdk (types + CLI, bin s2s) (#58)
+2026-07-16T16:31:30Z	2026-07-16T15:16:54Z	51e0660a	consolidation: absorb the CLI into @s2script/sdk (types + CLI, bin s2s)
+2026-07-16T16:30:50Z	2026-07-16T16:30:50Z	e3b7628a	consolidation: delete legacy builtin stubs + BUILTIN_MODULES; honest filter (#57)
+2026-07-16T16:29:30Z	2026-07-16T14:41:36Z	4b48cf78	consolidation: delete legacy builtin stubs + BUILTIN_MODULES; honest filter
+2026-07-16T16:28:29Z	2026-07-16T16:28:29Z	ef07607c	consolidation: re-point @s2script/cs2 at @s2script/sdk (#56)
+2026-07-16T16:27:29Z	2026-07-16T14:23:18Z	45992417	consolidation: re-point @s2script/cs2 at @s2script/sdk
+2026-07-16T16:26:29Z	2026-07-16T16:26:29Z	a10d9e42	consolidation: rename games/cs2 __s2require literals to @s2script/sdk/* (#55)
+2026-07-16T16:25:30Z	2026-07-16T14:16:45Z	e79413a1	consolidation: rename games/cs2 __s2require literals to @s2script/sdk/*
+2026-07-16T16:24:30Z	2026-07-16T16:24:30Z	0cf88571	consolidation: migrate examples + disabled to @s2script/sdk/* (#54)
+2026-07-16T16:23:30Z	2026-07-16T14:05:42Z	70c023b5	consolidation: migrate examples + disabled to @s2script/sdk/*
+2026-07-16T16:22:31Z	2026-07-16T16:22:31Z	2534eb6c	consolidation: migrate base plugins to @s2script/sdk/* (#53)
+2026-07-16T16:21:30Z	2026-07-16T14:03:39Z	065135ed	consolidation: migrate base plugins to @s2script/sdk/*
+2026-07-16T16:20:31Z	2026-07-16T16:20:31Z	078763b1	consolidation: create @s2script/sdk + dual-resolve builtins (#52)
+2026-07-16T16:08:11Z	2026-07-16T13:52:00Z	dc925b93	consolidation: create @s2script/sdk + dual-resolve builtins
+2026-07-16T14:06:28Z	2026-07-16T14:06:28Z	98cf483c	fix(core): clear the publishes registries on shutdown (B6) (#49)
+2026-07-16T14:05:28Z	2026-07-16T09:14:10Z	8a06b4a1	fix(core): clear the publishes registries on shutdown (B6)
+2026-07-16T14:04:29Z	2026-07-16T14:04:29Z	5e070e8b	test(core): assert on the fallible publish Result in interfaces tests (B5) (#48)
+2026-07-16T14:03:29Z	2026-07-16T09:10:29Z	1f86938f	test(core): assert on the fallible publish Result in interfaces tests (B5)
+2026-07-16T14:02:29Z	2026-07-16T14:02:29Z	9895fc6b	fix(cli): reject a multi-interface publishes map (B2) (#47)
+2026-07-16T14:01:29Z	2026-07-16T09:05:23Z	2614e901	fix(cli): reject a multi-interface publishes map (B2)
+2026-07-16T14:00:29Z	2026-07-16T14:00:29Z	1deb21a5	fix(cli): reject a publishes range before tsc + esbuild (B3) (#46)
+2026-07-16T13:59:29Z	2026-07-16T09:00:09Z	87bfebc9	fix(cli): reject a publishes range before tsc + esbuild (B3)
+2026-07-16T13:58:29Z	2026-07-16T13:58:29Z	21e0963c	refactor(cli): read plugin package.json once in buildPlugin (B4) (#45)
+2026-07-16T13:57:30Z	2026-07-16T08:54:15Z	579c87be	refactor(cli): read plugin package.json once in buildPlugin (B4)
+2026-07-16T13:56:29Z	2026-07-16T13:56:29Z	af281365	fix(cli): trim the stamped publishes version (B1) (#44)
+2026-07-16T13:55:34Z	2026-07-16T08:50:24Z	320ec9e6	fix(cli): trim the stamped publishes version (B1)
+2026-07-16T13:53:08Z	2026-07-16T13:53:08Z	74822b27	docs: naming pivot — consolidate into @s2script/sdk (npm blocks unscoped s2script) (#51)
+2026-07-16T13:35:49Z	2026-07-16T13:35:49Z	252c5f94	docs: Part C C1 expands the @s2script/sdk bootstrap (not create-from-scratch)
+2026-07-16T13:34:24Z	2026-07-16T13:34:24Z	4a5dd342	feat(sdk): bootstrap @s2script/sdk@0.0.1 placeholder to claim the name + enable OIDC
+2026-07-16T13:24:18Z	2026-07-16T13:24:18Z	136cefbc	docs: rewrite Part C plan to @s2script/sdk (bin s2s)
+2026-07-16T13:13:32Z	2026-07-16T13:13:32Z	6750d658	docs: naming pivot — consolidate into @s2script/sdk (npm blocks unscoped s2script)
+2026-07-16T08:36:58Z	2026-07-16T08:36:58Z	ff931f0f	docs: implementation plans for the three packaging stacks (A/B/C)
+2026-07-16T08:10:53Z	2026-07-16T08:10:53Z	d65f3ed8	docs: fold fable's review into the packaging consolidation spec
+2026-07-16T08:00:46Z	2026-07-16T08:00:46Z	ec2a45b1	docs: packaging consolidation + review-debt + npm-name design spec
+2026-07-16T07:40:28Z	2026-07-16T07:40:28Z	5bc38648	contract-grammar: changeset, semver characterization, live-gate record (#41)
+2026-07-16T07:39:28Z	2026-07-16T05:46:20Z	e94744d8	docs: PROGRESS entry for the contract grammar slice
+2026-07-16T07:39:28Z	2026-07-16T05:28:56Z	b840c141	docs: rewrite Task 10 against the per-worktree gate
+2026-07-16T07:38:28Z	2026-07-16T07:38:28Z	e092912e	contract-grammar: an inconsistent manifest fails the load (#40)
+2026-07-16T07:37:29Z	2026-07-16T05:28:21Z	795040f4	feat(core): fail the load when a plugin publishes an interface it never declared
+2026-07-16T07:37:29Z	2026-07-16T05:18:58Z	89113fc4	fix: gate suite fallout
+2026-07-16T07:37:29Z	2026-07-16T05:14:45Z	0e576d30	test(core): characterize the major-only version_satisfies hole
+2026-07-16T07:37:29Z	2026-07-16T05:12:44Z	553c43b6	chore: changeset for the contract grammar
+2026-07-16T07:37:29Z	2026-07-16T05:10:44Z	00e1452d	feat(core): reconcile manifest publishes after load — an inconsistent manifest fails the load
+2026-07-16T07:36:28Z	2026-07-16T07:36:28Z	9f6316cd	contract-grammar!: host-injects the interface version (#39)
+2026-07-16T07:35:29Z	2026-07-16T05:07:53Z	144da7ba	fix(cli): resolve a plugin-published interface's types after the stub deletion
+2026-07-16T07:35:29Z	2026-07-16T04:53:41Z	0a8110af	fix(examples,cli): commit the three api.d.ts contracts e30e4d8 left untracked
+2026-07-16T07:35:29Z	2026-07-16T04:41:11Z	99e897de	refactor(zones)!: one version, contract as api.d.ts, host-injected publish
+2026-07-16T07:35:29Z	2026-07-16T04:32:28Z	44bb587f	docs: amend the contract-grammar plan with the execution findings
+2026-07-16T07:35:29Z	2026-07-16T04:31:47Z	8fb77262	refactor(examples,cli): migrate the three remaining 3-arg producers
+2026-07-16T07:35:29Z	2026-07-16T04:31:47Z	b692c92d	fix(cli,interfaces): generic publishInterface impl; concrete map values resolve locally
+2026-07-16T07:35:29Z	2026-07-16T04:17:47Z	85114372	feat(cli): derive the publishes manifest block + embed the verified contract copy
+2026-07-16T07:35:29Z	2026-07-16T04:06:59Z	4d75784a	feat(core)!: host-injects the interface version; publishInterface drops its version arg
+2026-07-16T07:34:28Z	2026-07-16T07:34:28Z	5133c399	contract-grammar: parse the publishes map + reject a second live producer (#38)
+2026-07-16T07:33:29Z	2026-07-16T03:57:27Z	b521c957	feat(core): reject a second live producer of an interface name
+2026-07-16T07:33:29Z	2026-07-16T03:52:11Z	234efc27	feat(core): parse the derived publishes map (interface name decoupled from plugin id)
+2026-07-16T07:32:36Z	2026-07-16T07:32:36Z	8b6f7d02	contract-grammar: the publishes grammar + publishes ⇒ types gate (#37)
+2026-07-16T07:29:28Z	2026-07-16T03:47:31Z	1bee52ef	feat(cli): publishes ⇒ types gate (adapted from the registry branch)
+2026-07-16T07:29:28Z	2026-07-16T03:43:33Z	a1851407	feat(cli): the publishes grammar — self sugar, map form, contract hashing
+2026-07-16T07:28:27Z	2026-07-16T07:28:27Z	5a881a9d	contract-grammar: design spec + implementation plan (#36)
+2026-07-16T07:22:54Z	2026-07-16T03:02:33Z	f26534ac	docs: implementation plan for the plugin contract grammar
+2026-07-16T07:22:54Z	2026-07-16T01:51:11Z	dcf32481	docs: plugin contract distribution design spec
+2026-07-16T07:21:50Z	2026-07-16T07:21:50Z	ef02ea79	graphite-adoption: ship work as a stack + the gt MCP server (#42)
+2026-07-16T07:16:27Z	2026-07-16T07:12:28Z	4d1832fb	chore: add the gt MCP server at project scope
+2026-07-16T07:16:26Z	2026-07-16T07:08:36Z	94e7b746	docs(claude.md): ship work as a Graphite stack, not one branch
+2026-07-15T23:02:26Z	2026-07-15T23:02:26Z	9863d143	Merge pull request #29 from GabeHirakawa/changeset-release/main
+2026-07-15T22:52:28Z	2026-07-15T22:52:28Z	617a5ecb	chore: version packages
+2026-07-15T22:52:04Z	2026-07-15T22:52:04Z	2b9294a4	Merge pull request #33 from GabeHirakawa/feat/usercmd
+2026-07-15T21:55:41Z	2026-07-15T21:55:41Z	6bcffd95	Merge branch 'main' into feat/usercmd
+2026-07-15T21:55:28Z	2026-07-15T21:55:28Z	d3c0998f	Merge pull request #35 from GabeHirakawa/feat/multi-instance-live-gate
+2026-07-15T21:39:25Z	2026-07-15T21:39:25Z	77195a5f	Merge branch 'main' into feat/multi-instance-live-gate
+2026-07-15T21:39:03Z	2026-07-15T21:39:03Z	4a89811d	Merge pull request #34 from GabeHirakawa/docs/claude-md-slim
+2026-07-15T21:28:02Z	2026-07-15T21:28:02Z	4c5effc8	docs(gate): final-review polish — exec bit, README notes for automated gameinfo patch + gate knobs + disk risk
+2026-07-15T21:16:55Z	2026-07-15T21:16:55Z	0016d32a	test(gate): live gate — two CS2 instances on one 74G install
+2026-07-15T21:08:44Z	2026-07-15T21:08:44Z	184e4f26	fix(gate.sh): three small correctness fixes
+2026-07-15T21:00:20Z	2026-07-15T21:00:20Z	6877542a	fix(gate): close port-lock race, let destroy clean up half-made state, fix CDPATH bug
+2026-07-15T20:52:22Z	2026-07-15T20:52:22Z	491457d9	docs(claude-md): slim CLAUDE.md 186KB→13KB, relocate slice log to docs/PROGRESS.md
+2026-07-15T20:48:42Z	2026-07-15T20:48:42Z	0baf471c	feat(gate): scripts/gate.sh — per-worktree CS2 instance via reflink clone
+2026-07-15T20:42:37Z	2026-07-15T20:42:37Z	4e6c0c1d	feat(gate): env-driven per-worktree compose file
+2026-07-15T20:37:49Z	2026-07-15T20:37:49Z	f232d389	feat(gate): auto-patch gameinfo.gi every boot via the image's pre.sh hook
+2026-07-15T20:33:23Z	2026-07-15T20:33:23Z	1710de2d	feat(gate): rcon.py --port so a gate instance can be addressed
+2026-07-15T20:20:29Z	2026-07-15T20:20:29Z	4c8aff04	docs(gate): implementation plan for the multi-instance live gate
+2026-07-15T20:11:48Z	2026-07-15T20:11:48Z	bc32f951	docs(gate): design for the multi-instance live gate (one server per worktree)
+2026-07-15T16:54:26Z	2026-07-15T16:54:26Z	d941b0d9	Merge branch 'main' into feat/usercmd
+2026-07-15T00:53:42Z	2026-07-15T00:53:42Z	d50a496f	Merge pull request #31 from GabeHirakawa/feat/perf-metrics
+2026-07-15T00:48:59Z	2026-07-15T00:48:59Z	c84e5523	Merge branch 'main' into feat/perf-metrics
+2026-07-15T00:02:44Z	2026-07-15T00:02:44Z	07acb8ba	docs(usercmd): replace stale slot-derivation comment (review nit)
+2026-07-14T23:58:06Z	2026-07-14T23:58:06Z	3ce726e1	chore(usercmd): add changeset + register @s2script/usercmd workspace package
+2026-07-14T23:58:06Z	2026-07-14T23:58:06Z	96ad6d40	fix(usercmd): derive player slot via pawn -> m_hController (live-gate fix)
+2026-07-14T23:30:40Z	2026-07-14T23:30:40Z	f5cd68c2	test(usercmd): usercmd-demo live-gate plugin + extend boundary gate (SHOULD-FIX 6)
+2026-07-14T23:26:44Z	2026-07-14T23:26:44Z	c3d87352	fix(usercmd): reword last CS2 protobuf names out of a core comment (final review)
+2026-07-14T23:13:28Z	2026-07-14T23:13:28Z	9cf2794a	feat(usercmd): @s2script/usercmd module (UserCmd.onRun + singleton Cmd) + types
+2026-07-14T23:04:45Z	2026-07-14T23:04:45Z	9a04792c	fix(usercmd): reword CS2 protobuf names out of engine-generic core comments (review)
+2026-07-14T22:47:39Z	2026-07-14T22:47:39Z	1aefe1b0	feat(usercmd): ProcessUsercmds detour + protobuf-reflection read/write/block ops
+2026-07-14T22:26:49Z	2026-07-14T22:26:49Z	2c1ed533	fix(usercmd): reword CS2 method name out of engine-generic core comments (review)
+2026-07-14T22:17:58Z	2026-07-14T22:17:58Z	83db4c0a	feat(usercmd): core USERCMD_MUX + dispatch_usercmd + FFI + subscribe native (Task 2)
+2026-07-14T22:04:40Z	2026-07-14T22:04:40Z	448102f9	spike(usercmd): LIVE verdict — coarse writes suffice (subtick=Option B), forwardMove normalized ±1
+2026-07-14T21:24:28Z	2026-07-14T21:24:28Z	37bee460	spike(usercmd): stride=0x90 + return int resolved offline; only live subtick verdict remains
+2026-07-14T20:38:35Z	2026-07-14T20:38:35Z	4adeb2bb	spike(usercmd): Steps 1+1b — sig unique @0x1622030, batch ABI confirmed by disasm
+2026-07-14T20:35:55Z	2026-07-14T20:35:55Z	80ae627b	docs(usercmd): fold Fable review must-fixes into plan + spec
+2026-07-14T20:25:24Z	2026-07-14T14:36:54Z	a991701b	docs(usercmd): implementation plan — spike-first, 5 tasks
+2026-07-14T20:25:24Z	2026-07-14T13:25:20Z	bbb990d3	docs(usercmd): design spec — per-tick input read/modify/block primitive
+2026-07-14T19:58:49Z	2026-07-14T19:58:49Z	8a0cde63	Merge pull request #30 from GabeHirakawa/feat/offthread-sqlite
+2026-07-14T19:51:57Z	2026-07-14T19:51:57Z	6e5edc15	Merge branch 'main' into feat/offthread-sqlite
+2026-07-14T19:51:38Z	2026-07-14T19:51:38Z	4a3ac1f7	Merge pull request #28 from GabeHirakawa/feat/changeteam-fov
+2026-07-14T14:45:16Z	2026-07-14T14:45:16Z	0ec64bcb	feat(perf): perf-instrumentation natives + GameRules proxy cache + cross-framework benchmark
+2026-07-14T13:25:19Z	2026-07-14T08:33:48Z	a998e999	docs(db): note per-connection ordering + shutdown-hygiene follow-up
+2026-07-14T13:25:19Z	2026-07-14T08:14:45Z	4496a975	feat(db): run SQLite off the game thread via a per-connection actor
+2026-07-14T13:25:19Z	2026-07-14T07:58:13Z	411e49f1	refactor(db): move shared DB completion channel into db.rs (no behavior change)
+2026-07-14T13:25:19Z	2026-07-14T07:49:11Z	59d3fbdd	docs(db): implementation plan for off-thread SQLite (connection-actor)
+2026-07-14T13:25:19Z	2026-07-14T07:39:09Z	3dda9427	docs(db): design spec for off-thread SQLite (rusqlite connection-actor)
+2026-07-14T09:14:14Z	2026-07-14T08:39:07Z	eb378cec	feat(cs2): Player.changeTeam / spectate via sig-resolved ChangeTeam
+2026-07-14T09:11:50Z	2026-07-14T08:25:37Z	9320e184	feat(schemagen): narrow-int schema fields are writable (unblocks !fov, teamNum, …)
+2026-07-14T09:08:45Z	2026-07-14T09:08:45Z	b76f0e3e	Merge pull request #27 from GabeHirakawa/feat/sound
+2026-07-14T09:03:25Z	2026-07-14T09:03:25Z	4d1ea3b9	Merge origin/main into feat/sound — resolve ABI-tail conflicts
+2026-07-14T03:16:44Z	2026-07-14T03:16:44Z	6ded421f	ci(changesets): drop NPM_CONFIG_PROVENANCE — private repo can't attest provenance
+2026-07-14T03:08:45Z	2026-07-14T03:08:45Z	e4d8bc48	Merge pull request #25 from GabeHirakawa/changeset-release/main
+2026-07-14T03:03:31Z	2026-07-14T03:03:31Z	d27f6c61	fix(sound): precache add — validate AddResource mechanism against our binary (review C1)
+2026-07-14T03:01:57Z	2026-07-14T03:01:57Z	b04fdffa	chore: version packages
+2026-07-14T03:00:41Z	2026-07-14T03:00:41Z	57ce78bc	Merge pull request #26 from GabeHirakawa/feat/entity-name
+2026-07-14T02:53:59Z	2026-07-14T02:53:59Z	a737c9c1	test(entity): entity-name-demo live gate + changeset + plan
+2026-07-14T02:34:29Z	2026-07-14T02:34:29Z	21c49342	feat(entity): entity_name primitive — EntityRef.name reads CEntityIdentity::m_name
+2026-07-14T02:25:38Z	2026-07-14T02:25:38Z	fe3435dd	feat(demo): sound-demo (sm_playsound + onPrecache log) + changeset
+2026-07-14T02:21:18Z	2026-07-14T02:21:18Z	d0bb4311	Merge pull request #24 from GabeHirakawa/feat/zones-polish
+2026-07-14T02:20:28Z	2026-07-14T02:20:28Z	e542ab2a	feat(cs2): pawn.emitSound + the curated Sounds constants
+2026-07-14T02:10:29Z	2026-07-14T02:10:29Z	710fc160	fix(sound): precache via class-vtable slot swap (reviewer Critical #1/#2)
+2026-07-14T02:10:02Z	2026-07-14T02:10:02Z	5c3f37c8	Merge branch 'main' into feat/zones-polish
+2026-07-14T02:09:52Z	2026-07-14T02:09:52Z	9a50cee1	Merge pull request #23 from GabeHirakawa/feat/entity-lifecycle-listeners
+2026-07-14T01:38:07Z	2026-07-14T01:38:07Z	e811a659	feat(sound): precache hook — factory-list resolve + manual OnPrecacheResource hook
+2026-07-14T01:16:30Z	2026-07-14T01:16:30Z	853e37cf	feat(sound): @s2script/sound module (Sound.emit + Sound.onPrecache) + types
+2026-07-14T01:11:48Z	2026-07-14T01:11:48Z	c0a3c2cc	feat(sound): PRECACHE_MUX + dispatch_precache + the FFI export
+2026-07-14T01:00:04Z	2026-07-14T01:00:04Z	e1a2b93f	feat(sound): shim EmitSound — sig-resolved, serial-gated, bot-skip filtered
+2026-07-14T00:47:07Z	2026-07-14T00:47:07Z	95870020	feat(sound): sound_emit + sound_precache_add ABI plumbing + natives
+2026-07-14T00:30:02Z	2026-07-14T00:30:02Z	4e025f3a	docs(sound): implementation plan — EmitSound + Precache slice
+2026-07-14T00:28:26Z	2026-07-13T23:37:16Z	104e0953	docs(sound): design spec — EmitSound + Precache slice
+2026-07-14T00:11:08Z	2026-07-14T00:11:08Z	d3a73916	Merge branch 'main' into feat/entity-lifecycle-listeners
+2026-07-14T00:10:57Z	2026-07-14T00:10:57Z	d68dc4ef	Merge pull request #21 from GabeHirakawa/feat/cs2-weapon-object
+2026-07-13T23:21:27Z	2026-07-13T23:21:27Z	e5f41cb1	Merge branch 'main' into feat/cs2-weapon-object
+2026-07-13T22:43:48Z	2026-07-13T22:43:48Z	1665dcf4	feat(entity-listeners): fast-follows — Unload dangling-listener WARN + live-EntityRef test
+2026-07-13T22:34:38Z	2026-07-13T22:34:38Z	ff3bfde0	Merge pull request #22 from GabeHirakawa/fix/changesets-oidc-provenance
+2026-07-13T21:42:54Z	2026-07-13T21:38:40Z	b43cc8eb	feat(zones): sm_zone_add bare in-game form starts the E-mark session (shared startMarking helper); Creating/Editing verb
+2026-07-13T21:00:36Z	2026-07-13T21:00:36Z	571ed505	feat(zones): created/deleted zone-lifecycle events on the interface + consumer-demo logs; slice-wide offline verification
+2026-07-13T20:53:04Z	2026-07-13T20:53:04Z	02f5c994	feat(zones): in-game E-to-mark editor - sm_zone_edit sessions, seeded rising-edge poll, live rubber-band preview, 60s TTL + cancel
+2026-07-13T20:47:06Z	2026-07-13T20:47:06Z	e3684fd4	feat(zones): beam wireframe viz - box12 helper, sm_zone_show/sm_zone_hide, frame expiry, loadMap/dropZone/onUnload cleanup
+2026-07-13T20:41:11Z	2026-07-13T20:41:11Z	af49e62b	feat(zones): tags - guarded ALTER migration, tag-preserving upsert, sm_zone_tag + sm_zone_list filter, export/import round-trip, getZonesByTag/setZoneTags
+2026-07-13T20:37:21Z	2026-07-13T20:37:21Z	db3d45da	docs(entity-listeners): final-review triage — demo onDelete comment + cross-plugin note
+2026-07-13T20:36:32Z	2026-07-13T20:36:32Z	d73a7a3a	feat(zones): interface types - Zone.tags, getZonesByTag, setZoneTags, created/deleted events (+minor changeset)
+2026-07-13T20:32:44Z	2026-07-13T20:32:44Z	82c2d426	fix(zones): drop the 1.0.x anti-pattern - publishes/publishInterface -> 0.1.0, real 0.x dep carets (+ declare entity/math)
+2026-07-13T20:30:04Z	2026-07-13T20:30:04Z	63f112a4	docs(zones): operator-polish implementation plan (Fable-authored; 6 tasks + per-task model routing)
+2026-07-13T20:28:21Z	2026-07-13T20:28:21Z	4450c5d7	test(entity-listeners): demo "*" create/spawn/delete loggers + re-entrancy finding
+2026-07-13T20:12:37Z	2026-07-13T20:12:37Z	4cc2a5da	test(entity-listeners): demo plugin + changeset (live gate pending — controller)
+2026-07-13T20:06:43Z	2026-07-13T20:06:43Z	4efeb754	docs(zones): operator-polish slice design (viz + E-mark editor + tags + created/deleted hooks + version fix)
+2026-07-13T20:02:01Z	2026-07-13T20:02:01Z	41afc2c3	feat(entity-listeners): shim IEntityListener via sig-scanned AddListenerEntity
+2026-07-13T19:50:32Z	2026-07-13T19:50:32Z	7626bb6b	feat(entity-listeners): core ENTITY_MUX + Entity.onCreate/onSpawn/onDelete + ABI op
+2026-07-13T19:29:05Z	2026-07-13T19:29:05Z	f6fe06ba	docs(entity-listeners): implementation plan — 3 tasks (core mux / shim sig / demo+gate)
+2026-07-13T19:15:04Z	2026-07-13T19:15:04Z	e053469f	docs(entity-listeners): design spec — Entity.onCreate/onSpawn/onDelete
+2026-07-13T19:09:34Z	2026-07-13T19:09:34Z	b59c7078	fix(ci): pin npm@11 — npm 12 breaks changeset publish under concurrency
+2026-07-13T19:00:43Z	2026-07-13T19:00:43Z	8efb75dc	fix(ci): drop setup-node registry-url + enable npm provenance
+2026-07-13T18:43:12Z	2026-07-13T18:43:12Z	09430d3b	chore(changeset): @s2script/cs2 + @s2script/entity minor — Weapon object + fire control
+2026-07-13T18:40:56Z	2026-07-13T18:40:56Z	bac361bc	fix(cs2): final-review minors — single Weapon re-export, honest setAmmo, doc
+2026-07-13T18:21:35Z	2026-07-13T18:16:39Z	a879493a	test(cs2): weapon-demo plugin (activeWeapon/refill/disarm/blockFiring/nofire)
+2026-07-13T18:21:35Z	2026-07-13T18:00:03Z	9e0ac990	docs(weapon): fix Task 4 demo — itemDefinitionIndex is not a generated accessor
+2026-07-13T18:21:35Z	2026-07-13T17:58:48Z	137a702e	feat(cs2): Pawn<->Weapon (activeWeapon/weapons/disarm) + pawn.blockFiring fire control
+2026-07-13T18:21:35Z	2026-07-13T17:50:52Z	746cc6bc	feat(cs2): Weapon entity object (CCSWeaponBase) + concat before pawn.js
+2026-07-13T18:21:35Z	2026-07-13T17:43:07Z	7a531593	feat(entity): __s2_ent_ref_write_chain + EntityRef.write*Via (nav-wrapper write primitive)
+2026-07-13T18:17:57Z	2026-07-13T17:26:20Z	4645adbc	docs(weapon): implementation plan for the CS2 Weapon object + fire control
+2026-07-13T18:17:57Z	2026-07-13T17:07:00Z	6d826642	docs(weapon): design for the CS2 Weapon entity object + pawn fire control
+2026-07-13T18:03:13Z	2026-07-13T18:03:13Z	f12db996	Merge pull request #20 from GabeHirakawa/changeset-release/main
+2026-07-13T17:24:39Z	2026-07-13T17:24:39Z	e0d30d74	chore: version packages
+2026-07-13T17:24:19Z	2026-07-13T17:24:19Z	478c6a25	Merge pull request #19 from GabeHirakawa/feat/zones-real-triggers
+2026-07-13T17:18:20Z	2026-07-13T17:18:20Z	b1a8a206	Merge branch 'main' into feat/zones-real-triggers
+2026-07-13T17:10:22Z	2026-07-13T17:10:22Z	1e5af951	feat(zones): runtime engine trigger zones (arbitrary box collision)
+2026-07-13T16:39:58Z	2026-07-13T16:39:58Z	b13a4632	Merge pull request #17 from GabeHirakawa/changeset-release/main
+2026-07-12T19:47:03Z	2026-07-12T19:47:03Z	bd790269	chore: version packages
+2026-07-12T19:46:09Z	2026-07-12T19:46:09Z	dc06d7cd	Merge pull request #18 from GabeHirakawa/fix/lockfile-translations
+2026-07-12T19:45:11Z	2026-07-12T19:45:11Z	02f889a1	fix(ci): add @s2script/translations to lockfile + regenerate lockfile in version step
+2026-07-12T19:38:05Z	2026-07-12T19:38:05Z	ad59e682	Merge pull request #16 from GabeHirakawa/worktree-translations
+2026-07-12T18:13:57Z	2026-07-12T18:13:57Z	24e5065f	Merge pull request #15 from GabeHirakawa/fix/lockfile-sync-ci
+2026-07-12T18:11:11Z	2026-07-12T18:11:11Z	591b72eb	fix(translations): null-proto the code map + registry, type-guard langCode
+2026-07-12T18:08:37Z	2026-07-12T18:08:37Z	0c950a1a	fix(ci): sync package-lock.json + guard lockfile drift on PRs
+2026-07-12T18:01:05Z	2026-07-12T18:01:05Z	4b97a683	feat(translations): translations-demo (seed/format/de-file/fallback + replyT)
+2026-07-12T17:55:56Z	2026-07-12T17:55:56Z	e7048aad	feat(translations): ctx.replyT + packages/translations types + changeset
+2026-07-12T17:55:48Z	2026-07-12T17:55:48Z	21a26825	Merge pull request #14 from GabeHirakawa/feat/net-sockets
+2026-07-12T17:52:03Z	2026-07-12T17:52:03Z	dae5b010	fix(translations): copy seed (no caller-ref mutation) + skip __proto__ in merge
+2026-07-12T17:45:41Z	2026-07-12T17:45:41Z	d38130c7	feat(translations): @s2script/translations module (registry, format, fallback)
+2026-07-12T17:37:57Z	2026-07-12T17:37:57Z	6aaa956e	feat(translations): translations_read + client_language engine ops + natives
+2026-07-12T08:39:03Z	2026-07-12T08:39:03Z	41de744d	docs(plan): @s2script/translations — ops, module, replyT, live gate
+2026-07-12T08:07:42Z	2026-07-12T08:07:42Z	e863a685	docs(spec): @s2script/translations — SM-style i18n (root + language-folder phrases)
+2026-07-12T06:46:54Z	2026-07-12T06:46:54Z	fd318631	docs(claude): correct net-slice PR number (#14)
+2026-07-12T06:46:15Z	2026-07-12T06:46:15Z	10ac0a34	docs(claude): @s2script/net slice — raw TCP+UDP sockets (async-network complete)
+2026-07-12T06:42:49Z	2026-07-12T06:42:49Z	c1f1c17d	fix(net): guard empty-bytes Uint8Array + test empty datagram; test/doc nits
+2026-07-12T06:33:12Z	2026-07-12T06:33:12Z	d4044242	feat(net): net-demo (TCP round-trip + UDP A2S self-query)
+2026-07-12T06:30:04Z	2026-07-12T06:30:04Z	9083859a	feat(net): @s2script/net prelude + packages/net types + changeset
+2026-07-12T06:21:25Z	2026-07-12T06:21:25Z	99b1e088	feat(net): V8 natives + Uint8Array marshalling + resolve/dispatch + NetConn ledger
+2026-07-12T06:04:26Z	2026-07-12T06:04:26Z	f35065f0	feat(net): core tcp+udp socket engine (mirrors ws.rs, binary payloads)
+2026-07-12T05:30:35Z	2026-07-12T05:30:35Z	69fdf276	docs(plan): @s2script/net — tcp+udp engine, Uint8Array marshalling, prelude, live gate
+2026-07-12T05:21:11Z	2026-07-12T05:21:11Z	55285eda	docs(spec): @s2script/net — raw TCP + UDP sockets (mirrors ws.rs, binary)
+2026-07-12T00:55:52Z	2026-07-12T00:55:52Z	ffb021eb	Merge pull request #11 from GabeHirakawa/feat/remote-sql-driver
+2026-07-12T00:30:34Z	2026-07-11T22:59:56Z	be2ed221	docs(claude): remote SQL driver slice — MySQL+Postgres via sqlx; spec type-map truth-up
+2026-07-12T00:30:34Z	2026-07-11T22:51:03Z	1d12b6ad	fix(db): live-gate fixes — mysql 8.4 compose flag + PG BIGINT-literal insert
+2026-07-12T00:30:34Z	2026-07-11T22:43:39Z	8e69ab5c	feat(db): mysql/postgres live-gate sidecars + db-remote-demo
+2026-07-12T00:30:34Z	2026-07-11T22:40:42Z	5919b214	fix(db): keep databases.json config + resolver IIFE-private (no credential leak to plugins)
+2026-07-12T00:30:34Z	2026-07-11T22:31:08Z	1e275da0	feat(db): databases.json resolver + mysql/postgres built-in drivers
+2026-07-12T00:30:34Z	2026-07-11T22:19:58Z	ade9e649	feat(db): remote-db V8 natives + async resolve + RemoteDbConn ledger
+2026-07-12T00:30:34Z	2026-07-11T22:05:07Z	5c884749	feat(db): core sqlx engine (mysql+postgres pools, async, off-thread)
+2026-07-12T00:30:34Z	2026-07-11T21:42:28Z	954af1a9	docs(plan): remote SQL driver — sqlx engine, V8 natives, db resolver, live gate
+2026-07-12T00:30:34Z	2026-07-11T21:26:57Z	588ea0e2	docs(spec): remote SQL driver — MySQL + Postgres via sqlx (core-Rust, async)
+2026-07-12T00:25:01Z	2026-07-12T00:25:01Z	ead5e5b6	Merge pull request #12 from GabeHirakawa/fix/changesets-path-filter
+2026-07-12T00:19:50Z	2026-07-12T00:19:50Z	2acb9135	ci(changesets): only run the publish pipeline on packages/ or .changeset/ changes
+2026-07-11T21:53:12Z	2026-07-11T21:53:12Z	c2b9b27d	Merge pull request #6 from GabeHirakawa/changeset-release/main
+2026-07-11T19:41:08Z	2026-07-11T19:41:08Z	26a73aa7	chore: version packages
+2026-07-11T19:40:50Z	2026-07-11T19:40:50Z	4ede44de	Merge pull request #8 from GabeHirakawa/cursor/independent-versions-8181
+2026-07-11T19:27:28Z	2026-07-11T19:27:28Z	43118847	Use independent package versions; stamp plugins to release tags
+2026-07-11T19:16:40Z	2026-07-11T19:16:40Z	4035c5fe	Merge pull request #7 from GabeHirakawa/feat/admin-groups-immunity
+2026-07-11T18:49:56Z	2026-07-11T18:49:56Z	f291c11e	docs(claude): admin-groups slice — groups + immunity + overrides (PR workflow)
+2026-07-11T18:31:39Z	2026-07-11T18:31:39Z	9dba6bba	fix(admin): immunity-filter sm_voteslay; doc + reload/getGroup review nits
+2026-07-11T18:21:28Z	2026-07-11T18:21:28Z	840a1262	chore(changeset): admin groups, immunity & overrides (@s2script/admin + cs2 minor)
+2026-07-11T18:16:42Z	2026-07-11T18:16:42Z	b5543586	feat(admin): admin-groups live-gate demo
+2026-07-11T18:10:10Z	2026-07-11T18:10:10Z	e9df066c	feat(admin): immunity-filter targets in the destructive base commands
+2026-07-11T18:05:16Z	2026-07-11T18:05:16Z	aef8bd32	feat(admin): thread command name into the gate + Player.target immunity filter
+2026-07-11T18:02:21Z	2026-07-11T18:02:21Z	c30cc734	fix(admin): skip override with unknown flag token; retire stale comment
+2026-07-11T17:53:01Z	2026-07-11T17:53:01Z	cb367f31	feat(admin): group/immunity/override resolution + Admin.canTarget/getGroup
+2026-07-11T17:43:58Z	2026-07-11T17:43:58Z	af5bebea	feat(admin): core cache immunity + command overrides (natives)
+2026-07-11T17:27:29Z	2026-07-11T17:27:29Z	8e33237f	docs(plan): admin groups, immunity & overrides implementation plan
+2026-07-11T17:13:47Z	2026-07-11T17:01:29Z	d01d0aa6	docs(spec): admin groups, immunity & overrides (SM admin_groups parity, JSON)
+2026-07-11T17:10:15Z	2026-07-11T17:10:15Z	5e3ef7dc	Add Changesets + npm OIDC trusted publishing (#5)
+2026-07-11T03:13:33Z	2026-07-11T03:13:33Z	59f4c923	feat(interfaces): let first-party plugins publish @s2script/* interfaces; @s2script/zones
+2026-07-10T21:54:29Z	2026-07-10T21:54:29Z	3e277a35	fix(zones): rename plugin @s2script/zones-lib + defer consumer subscription
+2026-07-10T21:00:57Z	2026-07-10T21:00:57Z	edff4c41	docs(claude): zone sub-slice 3 done — the zone system is a complete platform
+2026-07-10T21:00:11Z	2026-07-10T21:00:11Z	3918a838	feat(zones): sub-slice 3 — the plugin-developer interface (zones platform complete)
+2026-07-10T20:49:32Z	2026-07-10T20:49:32Z	870d6c83	docs(spec): zones sub-slice 3 — the plugin-developer interface
+2026-07-10T20:41:44Z	2026-07-10T20:41:44Z	2ed87854	docs(claude): record the zone system (sub-slices 1 + 2)
+2026-07-10T20:40:37Z	2026-07-10T20:40:37Z	0c074ad2	feat(zones): sub-slice 2 — DB-backed per-map zones + JSON I/O + operator CRUD
+2026-07-10T20:27:04Z	2026-07-10T20:27:04Z	80f3386a	docs(spec): zones sub-slice 2 — persistence + per-map lifecycle + operator CRUD
+2026-07-10T20:05:24Z	2026-07-10T20:05:24Z	2dec55f7	feat(zones): sub-slice 1 spine — origin-polling zone detection (trigger backend parked)
+2026-07-10T19:28:44Z	2026-07-10T19:28:44Z	89ce4d43	docs(plan): zones sub-slice 1 — trigger-zone spike (controller-executed)
+2026-07-10T19:25:34Z	2026-07-10T19:25:34Z	630d9036	docs(spec): zones sub-slice 1 — trigger-zone spine + feasibility spike
+2026-07-10T19:03:20Z	2026-07-10T19:03:20Z	266ee03e	docs(claude): record the client-list refactor + FakeConVar + OnMapStart slice
+2026-07-10T19:02:22Z	2026-07-10T18:56:17Z	f8c295de	feat(demo): clientlist-convar-mapstart-demo (sm_clients + registerCvar + onMapStart)
+2026-07-10T17:08:21Z	2026-07-10T17:08:21Z	e41a2a3e	Merge pull request #4 from GabeHirakawa/cursor/release-include-base-plugins-a526
+2026-07-10T17:04:17Z	2026-07-10T17:04:17Z	b99418b6	feat(release): ship first-party base plugins in the runtime zip
+2026-07-10T08:07:33Z	2026-07-10T08:07:33Z	dd35e17c	Merge pull request #3 from GabeHirakawa/cursor/fix-release-dist-perms-a526
+2026-07-10T08:03:32Z	2026-07-10T08:03:32Z	7ebc9d6f	fix(release): chown dist to repo owner after sniper Docker build
+2026-07-10T07:58:44Z	2026-07-10T07:58:44Z	946fb936	Merge pull request #2 from GabeHirakawa/cursor/runtime-release-zip-a526
+2026-07-10T07:50:37Z	2026-07-10T07:50:37Z	f4eae52b	feat(release): SourceMod-style runtime zip + GitHub Releases
+2026-07-10T07:41:43Z	2026-07-10T07:41:43Z	6e6c4997	feat(cli): s2script create + npm-ready @s2script/* author distribution (#1)
+2026-07-10T06:19:11Z	2026-07-10T06:06:28Z	de30cf23	feat(server): Server.onMapStart — the framework map-start event
+2026-07-10T05:52:19Z	2026-07-10T05:52:19Z	8d43fe12	feat(server): Server.registerCvar — plugin-owned ConVars (FakeConVar parity)
+2026-07-10T05:40:22Z	2026-07-10T05:40:22Z	1b434ce7	fix(clients): client-list via typed SDK virtuals — retire the 5D.2 hand offsets
+2026-07-10T05:31:05Z	2026-07-10T05:31:05Z	01ac755f	docs(spec+plan): client-list refactor + FakeConVar + OnMapStart (Fable-architected)
+2026-07-10T05:03:28Z	2026-07-10T05:03:28Z	1de6b268	docs(claude): record the game rules + general UserMessages slice
+2026-07-10T04:58:25Z	2026-07-10T04:58:25Z	259f2beb	fix(usermsg): opus review — repeated-field guard + demo/style fixes
+2026-07-10T04:46:51Z	2026-07-10T04:46:51Z	ab28bfc8	feat(demo): gamerules-usermsg-demo (findByClass + GameRules + Fade)
+2026-07-10T04:38:13Z	2026-07-10T04:38:13Z	651678de	feat(cs2): Fade/Shake/HintText usermessage sugar + sm_blind
+2026-07-10T04:30:00Z	2026-07-10T04:30:00Z	16e2df32	feat(cs2): GameRules accessor (CCSGameRules via the cs_gamerules proxy)
+2026-07-10T04:22:24Z	2026-07-10T04:21:40Z	8117e57a	feat(usermsg): general UserMessage sender (@s2script/usermessages)
+2026-07-10T04:09:53Z	2026-07-10T04:09:53Z	fad159e7	feat(entity): entity_find_by_class op + Entity.findByClass
+2026-07-10T03:59:17Z	2026-07-10T03:59:17Z	7ef6e920	docs(plan): game rules + general UserMessages implementation plan
+2026-07-10T03:46:15Z	2026-07-10T03:46:15Z	c3b1c7cd	docs(spec): game rules + general UserMessages design (combined slice)
+2026-07-10T03:10:06Z	2026-07-10T03:10:06Z	9974fbf8	docs(claude): record the dota->cs2 SDK revert + Metamod 2.0.0-dev+1403 update
+2026-07-10T03:08:47Z	2026-07-10T03:08:47Z	400da9aa	chore(treadmill): revert hl2sdk dota->cs2 + update Metamod v2 to 2.0.0-dev+1403
+2026-07-10T02:26:57Z	2026-07-10T02:26:57Z	cfe6a02b	fix(ekv): opus review — byte-length string guard (not UTF-16 .length) to stop a server abort
+2026-07-10T02:16:50Z	2026-07-10T02:16:50Z	8ce1fef0	docs(claude): record EKV — CEntityKeyValues-configured spawn + the compile-SDK-source technique
+2026-07-10T02:12:58Z	2026-07-10T02:12:58Z	2c72a274	fix(ekv): address review — cap keyvalue string length to prevent a whole-process abort
+2026-07-10T01:52:59Z	2026-07-10T01:52:59Z	a14b0092	feat(demo): ekv-demo — sm_ekv keyvalue-spawn proof (read-back + behavioral, bot-provable)
+2026-07-10T01:41:27Z	2026-07-10T01:41:27Z	2f3c6246	feat(ekv): shim — Shim_EntitySpawnKv (build -> AddRef -> DispatchSpawn -> guarded Release)
+2026-07-10T01:34:36Z	2026-07-10T01:34:36Z	7f9e8863	feat(ekv): entity_spawn_kv op + spawn(kv)/createEntity(cls, kv) + marshal tests
+2026-07-10T01:18:45Z	2026-07-10T01:18:45Z	509915ba	feat(ekv): compile-spike — SDK CEntityKeyValues sources into the shim + self-test
+2026-07-10T01:13:04Z	2026-07-10T01:13:04Z	dbb83dac	docs(plan): EKV — revise the spike to live-resolve tier0 symbols + compile memoverride
+2026-07-10T00:36:22Z	2026-07-10T00:36:22Z	802de141	Revert "feat(ekv): compile-spike — SDK CEntityKeyValues sources into the shim — STOP RULE TRIGGERED"
+2026-07-10T00:22:50Z	2026-07-10T00:22:50Z	fdfadd14	feat(ekv): compile-spike — SDK CEntityKeyValues sources into the shim — STOP RULE TRIGGERED
+2026-07-10T00:03:04Z	2026-07-10T00:03:04Z	f6a6d5eb	docs(spec+plan): EKV — CEntityKeyValues-configured spawn (Fable-architected)
+2026-07-09T23:35:19Z	2026-07-09T23:35:19Z	d88133fe	docs(claude): record entity I/O both directions (AddEntityIOEvent + FireOutput detour)
+2026-07-09T23:31:47Z	2026-07-09T23:31:47Z	173b5ebe	fix(entityio): address review — real activator/caller marshalling proof + exact-sentinel handle check
+2026-07-09T23:15:16Z	2026-07-09T23:15:16Z	2fd73560	feat(demo): entityio-demo — sm_iotest/sm_iokill (both-directions bot-provable)
+2026-07-09T22:54:35Z	2026-07-09T22:54:35Z	75c19023	feat(entity): shim — AddEntityIOEvent (fire inputs) + FireOutputInternal detour (hook outputs)
+2026-07-09T22:40:45Z	2026-07-09T22:40:45Z	46963edf	feat(entity): entity-I/O core — fire-input op + output_mux + Entity.onOutput
+2026-07-09T22:29:50Z	2026-07-09T22:29:50Z	a10d8ed0	docs(plan): entity I/O implementation plan (fire inputs + hook outputs)
+2026-07-09T22:27:26Z	2026-07-09T22:27:26Z	959cc5f3	docs(spec): entity-io output hook is a SYNCHRONOUS pre-hook (can block), not post-drain
+2026-07-09T22:26:16Z	2026-07-09T22:26:16Z	43a27f21	docs(spec): entity I/O — use AddEntityIOEvent (validated) for inputs, drop AcceptInput re-derive
+2026-07-09T22:22:11Z	2026-07-09T22:22:11Z	4d49c31b	docs(spec): entity I/O — AcceptInput (fire inputs) + FireOutput hook (both directions)
+2026-07-09T22:03:25Z	2026-07-09T22:03:25Z	ac86214c	fix(items): opus review minors — stripWeapons JSDoc + subobj_vcall index bound
+2026-07-09T21:59:50Z	2026-07-09T21:59:50Z	4eb7f512	docs(claude): record entity-creation/beam + event-catalog parity + items slices
+2026-07-09T21:56:18Z	2026-07-09T21:56:18Z	6918312b	feat(cs2): implement stripWeapons by composing working primitives (not the wrong vtable)
+2026-07-09T21:50:19Z	2026-07-09T21:50:19Z	afc72e8f	fix(demo): items-demo — route around the broken client-list target resolution
+2026-07-09T21:33:31Z	2026-07-09T21:33:31Z	c015d4f4	feat(demo): items-demo — sm_give/sm_weapons/sm_strip/sm_drop (bot-provable)
+2026-07-09T21:09:53Z	2026-07-09T21:09:53Z	337b0733	feat(cs2): pawn item methods — giveNamedItem/weapons/stripWeapons/dropActiveWeapon/removeWeapon
+2026-07-09T21:05:49Z	2026-07-09T21:05:49Z	bf00d823	fix(cs2): merge (not overwrite) __s2pkg_cs2 in pawn.js's final IIFE
+2026-07-09T21:00:37Z	2026-07-09T21:00:37Z	53337c60	feat(cs2): CsItem weapon-name constants (extracted from CSSharp)
+2026-07-09T20:47:44Z	2026-07-09T20:47:44Z	f1dc80e0	feat(entity): shim — GiveNamedItem/RemovePlayerItem + item-services vcalls + CUtlVector walk
+2026-07-09T20:29:06Z	2026-07-09T20:29:06Z	8a12b715	feat(entity): item ops (give/vcall/remove-item) + CUtlVector<CHandle> read
+2026-07-09T20:25:24Z	2026-07-09T20:25:24Z	216ac92d	docs(plan): item/weapon manipulation implementation plan
+2026-07-09T20:20:49Z	2026-07-09T20:20:49Z	f3caccdd	docs(spec): item/weapon manipulation (give/strip/drop/remove/enumerate)
+2026-07-09T20:04:58Z	2026-07-09T20:04:58Z	f9faaf98	feat(events): expand the typed event catalog to full CSSharp parity (12 → 272)
+2026-07-09T20:01:50Z	2026-07-09T20:01:50Z	11d4dc66	docs(spec): game-event catalog parity with CounterStrikeSharp (design)
+2026-07-09T19:29:29Z	2026-07-09T19:29:29Z	8031ed5d	refactor(demo): remove the any-casts from beam-demo (proper types)
+2026-07-09T19:20:55Z	2026-07-09T19:20:55Z	e40b49d3	perf(entity): cache libserver .text range in IsAddressInServerText
+2026-07-09T19:02:51Z	2026-07-09T19:02:51Z	8336a19d	feat(demo): hold-E laser sight + sm_beam bot-provable check (beam-demo)
+2026-07-09T18:58:25Z	2026-07-09T18:58:25Z	67353ce8	fix(cs2): correct CBeam width field name m_flWidth -> m_fWidth
+2026-07-09T18:50:24Z	2026-07-09T18:50:24Z	71157fd3	feat(cs2): Beam helper (env_beam) + pawn.buttons
+2026-07-09T18:39:13Z	2026-07-09T18:39:13Z	b6eab14a	feat(entity): shim — CreateEntityByName/DispatchSpawn/Teleport/UTIL_Remove
+2026-07-09T18:31:03Z	2026-07-09T18:31:03Z	08a3c384	feat(entity): createEntity/spawn/teleport/remove ops + @s2script/entity surface
+2026-07-09T18:18:39Z	2026-07-09T18:18:39Z	d520739d	docs(plan): entity-creation lifecycle primitive + beam drawing (implementation plan)
+2026-07-09T17:56:53Z	2026-07-09T17:56:53Z	8bfda09c	docs(spec): entity-creation lifecycle primitive + beam drawing (design)
+2026-07-09T02:54:27Z	2026-07-09T02:54:27Z	7510a3b6	fix(trace): opus review minors — startSolid rename + aimTrace mask type + mask count
+2026-07-09T02:42:08Z	2026-07-09T02:42:08Z	bcc4c30d	docs(claude): record the ray-tracing slice completion + the client-list-offset treadmill finding
+2026-07-09T02:40:14Z	2026-07-09T02:40:14Z	c9f0e1af	feat(trace): @s2script/trace core module + pawn.aimTrace — ray tracing (Tasks 2+3, live on 2000870)
+2026-07-09T01:35:53Z	2026-07-09T01:35:53Z	bf6bb1bb	docs(claude): record the 2000870 treadmill recovery (first Metamod-breaking update, fixed locally)
+2026-07-09T01:33:32Z	2026-07-09T01:33:32Z	fc1e9ccf	fix(treadmill): recover s2script on CS2 2000870 — patched hl2sdk + regenerated gamedata
+2026-07-08T22:54:01Z	2026-07-08T22:54:01Z	1b6b25f5	feat(trace): shim RTTI vtable resolution + CNavPhysicsInterface::TraceShape op
+2026-07-08T22:39:35Z	2026-07-08T22:39:35Z	68fed173	docs(trace): implementation plan — 3 tasks (shim RTTI+op, core module+native, pawn.aimTrace)
+2026-07-08T22:36:47Z	2026-07-08T22:36:47Z	9aaa291c	docs(trace): correct RE mechanism to RTTI scan (recon: vtable not in dynsym, typeinfo string present)
+2026-07-08T22:35:25Z	2026-07-08T22:35:25Z	204c05c4	docs(trace): design — @s2script/trace ray tracing (CNavPhysicsInterface vtable-by-name)
+2026-07-08T22:03:52Z	2026-07-08T22:03:52Z	cf471ae5	docs(claude): record the funvotes + nextmap slices (the last two SM-default plugins)
+2026-07-08T22:02:45Z	2026-07-08T22:02:45Z	d9b65288	feat(nextmap): operational log when changeToNext fires (live-gate observability)
+2026-07-08T21:44:16Z	2026-07-08T21:44:16Z	b404c2a1	fix(nextmap): guard the nextlevel seed + parseFloat timelimit (opus review minors)
+2026-07-08T21:36:33Z	2026-07-08T21:36:33Z	ec563893	fix(nextmap): debounce the misconfig log, drop player-chat spam (workflow review minor)
+2026-07-08T21:32:42Z	2026-07-08T21:32:42Z	dac34cf7	fix(nextmap): reset `changing` guard on changeToNext failure + skip stale changelevel
+2026-07-08T21:20:29Z	2026-07-08T21:20:29Z	cd4d0bd4	feat(nextmap): auto-change at mp_maxrounds/mp_timelimit + delayed changelevel
+2026-07-08T21:18:03Z	2026-07-08T21:18:03Z	5b329ee6	feat(nextmap): scaffold + maplist rotation + sm_setnextmap + nextlevel cvar (disabled/)
+2026-07-08T21:13:29Z	2026-07-08T21:13:29Z	d27b06cf	feat(funvotes): sm_votealltalk/voteff/votegravity/voteslay — admin Yes/No votes (disabled/)
+2026-07-08T21:11:45Z	2026-07-08T21:11:45Z	66cc1ceb	docs(funvotes,nextmap): implementation plans
+2026-07-08T21:10:10Z	2026-07-08T21:10:10Z	a34d4662	docs(funvotes,nextmap): designs for the two remaining SM-default plugins
+2026-07-08T20:01:18Z	2026-07-08T20:01:18Z	f12802b2	docs(claude): record the rockthevote slice (RTV map vote on @s2script/votes, disabled/, JS-only)
+2026-07-08T19:55:25Z	2026-07-08T19:55:25Z	d5986d9d	fix(rockthevote): re-eval threshold on disconnect + lock-only-on-map-win (opus review)
+2026-07-08T19:46:30Z	2026-07-08T19:46:30Z	0623b6c2	fix(rockthevote): sync vote lock + DONT_CHANGE constant (workflow review minors)
+2026-07-08T19:38:20Z	2026-07-08T19:38:20Z	147784b5	feat(rockthevote): ballot + @s2script/votes vote + round_end map change (workshop/stock)
+2026-07-08T19:30:28Z	2026-07-08T19:30:28Z	1392afdb	feat(rockthevote): scaffold + chat rtv / sm_forcertv trigger + turnout threshold (disabled/)
+2026-07-08T19:25:48Z	2026-07-08T19:25:48Z	54dd3bb0	docs(rockthevote): design + implementation plan (sub-slice 2 of nominations+rockthevote)
+2026-07-08T19:06:14Z	2026-07-08T19:06:14Z	888c66d4	docs(claude): record the nominations slice (config.readFile capability + plugin + live-gate map-poll fix)
+2026-07-08T19:03:51Z	2026-07-08T19:03:51Z	c8c0c223	docs(nominations): record the live-gate map-change-detection correction
+2026-07-08T19:03:21Z	2026-07-08T19:03:21Z	4e585321	fix(nominations): detect map changes via Server.mapName frame poll (live-gate finding)
+2026-07-08T18:49:31Z	2026-07-08T18:49:31Z	8566fc39	fix(nominations): per-call DB error logging + parse/cooldown guards (opus review minors)
+2026-07-08T18:41:35Z	2026-07-08T18:41:35Z	8850ad4f	fix(nominations): writeFile aborts on interior NUL + announce guards null playerName (review minors)
+2026-07-08T18:34:22Z	2026-07-08T18:34:22Z	eb481335	feat(nominations): sm_nominate (fuzzy + menu) + mapvote SQLite foundation (disabled/)
+2026-07-08T18:28:45Z	2026-07-08T18:28:45Z	d85c4dd6	feat(config): config.readFile/writeFile — raw configs-dir file access (for maplist.txt)
+2026-07-08T18:22:53Z	2026-07-08T18:22:53Z	a70987d8	docs: nominations implementation plan (3 tasks — config.readFile, the plugin, gate)
+2026-07-08T18:18:50Z	2026-07-08T18:18:50Z	9f586793	docs(nominations): best-guess map matching (exact-else-substring) + disambiguation menu
+2026-07-08T18:16:21Z	2026-07-08T18:16:21Z	0024d3d0	docs: nominations design — mapvote SQLite foundation + maplist.txt + cooldown
+2026-07-08T17:14:57Z	2026-07-08T17:14:57Z	148f9649	docs(CLAUDE.md): record basevotes (code-complete, live gate deferred)
+2026-07-08T17:07:24Z	2026-07-08T17:07:24Z	36b186ee	fix(votes): no-renderer warn + duration clamp + disconnect test + menu feedback (opus review minors)
+2026-07-08T16:52:00Z	2026-07-08T16:52:00Z	3cd27e9d	feat(basevotes): sm_vote + sm_votekick + Voting Commands TopMenu item
+2026-07-08T16:42:16Z	2026-07-08T16:42:16Z	d4d65c31	fix(votes/cs2): clear a mid-vote disconnecting slot's live tally
+2026-07-08T16:31:42Z	2026-07-08T16:31:42Z	09a15bb7	feat(votes/cs2): center-tally renderer (live vote HTML, non-freezing)
+2026-07-08T16:23:11Z	2026-07-08T16:23:11Z	c1537c25	fix(votes): reconcile "end early once everyone voted" with the revote test
+2026-07-08T16:11:43Z	2026-07-08T16:11:43Z	c2f10589	feat(votes): @s2script/votes — chat-ballot voting + revote + tally seam (engine-generic)
+2026-07-08T16:05:33Z	2026-07-08T16:05:33Z	72e28541	docs: basevotes implementation plan (4 tasks — votes primitive, CS2 tally renderer, basevotes, gate)
+2026-07-08T16:01:05Z	2026-07-08T16:01:05Z	0ebbd65a	docs(basevotes): native F1/F2 vote panel is a permanent non-goal (user-confirmed)
+2026-07-08T15:55:30Z	2026-07-08T15:55:30Z	c22affe6	docs: basevotes design — @s2script/votes primitive (chat ballot + opt-in center tally)
+2026-07-08T15:01:42Z	2026-07-08T15:01:42Z	86102721	docs(CLAUDE.md): record the adminmenu / TopMenu framework slice
+2026-07-08T15:00:00Z	2026-07-08T15:00:00Z	c70f9579	fix(adminmenu): freeze all menu levels + slap reuses sm_slap logic + picker stays open (live gate)
+2026-07-08T15:00:00Z	2026-07-08T15:00:00Z	4377f279	fix(menu/cs2): seed prevMask with current buttons on center-menu open (chained-menu E bleed-through)
+2026-07-08T05:44:44Z	2026-07-08T05:44:44Z	363cdc9d	fix(topmenu): stable registration-order snapshot + Ban re-resolve at kick (opus review)
+2026-07-08T05:41:07Z	2026-07-08T05:41:07Z	14e07ab1	fix(adminmenu): register in onLoad (base-plugin convention), not top-level
+2026-07-08T05:34:31Z	2026-07-08T05:34:31Z	652cfdd3	fix(adminmenu): symbolic ADMFLAG.ROOT + Ban item bot/unauth guard (review minors)
+2026-07-08T05:28:06Z	2026-07-08T05:28:06Z	cc3f5fe8	feat(adminmenu): register Kick/Ban/Slap/Slay/Gag + Change Map items
+2026-07-08T05:20:14Z	2026-07-08T05:20:14Z	2f07e73e	feat(adminmenu): sm_admin — flag-filtered TopMenu render via @s2script/menu
+2026-07-08T05:14:20Z	2026-07-08T05:14:20Z	baaacfd3	feat(cs2): pickPlayer target-picker menu helper
+2026-07-08T05:09:22Z	2026-07-08T05:09:22Z	9b40254a	feat(topmenu): core TopMenu registry + @s2script/topmenu (owner-dispatch, post-drain select)
+2026-07-08T05:02:07Z	2026-07-08T05:02:07Z	fd4b20cb	docs: adminmenu implementation plan (5 tasks — TopMenu registry, pickPlayer, sm_admin, items, gate)
+2026-07-08T04:54:18Z	2026-07-08T04:54:18Z	cd4a8fea	docs: adminmenu (TopMenu framework) design — core registry + sm_admin
+2026-07-08T04:41:34Z	2026-07-08T04:41:34Z	025d947d	docs(CLAUDE.md): record the menu primitive slice (chat + WASD center, per-client event fire)
+2026-07-08T04:39:34Z	2026-07-08T04:39:34Z	ac29b582	feat(menu): center-menu UX polish + freezePlayer (live-gate iteration)
+2026-07-08T04:39:34Z	2026-07-08T04:39:34Z	c92ccdcf	fix(shim): remove leftover s_offSscEventListener refs (sig-scan compile fix)
+2026-07-08T03:56:31Z	2026-07-08T03:56:31Z	38e37e2b	fix(menu): center-menu control navigation + re-entrant display guard (opus review)
+2026-07-08T03:56:30Z	2026-07-08T03:56:30Z	65a41b81	fix(events): fireToClient via a proper LegacyGameEventListener sig-scan (not the offset guess)
+2026-07-08T03:31:30Z	2026-07-08T03:31:30Z	6ae3048f	docs(menu): close Task 5's deferred sniper build + deploy + live gate
+2026-07-08T03:17:13Z	2026-07-08T03:17:13Z	083af546	feat(menu): menu-demo plugin source (sm_menu/sm_chatmenu + bot input-primitive log)
+2026-07-08T03:07:33Z	2026-07-08T03:07:33Z	3183f5de	fix(menu/cs2): include userid in every fireToClient center-menu payload
+2026-07-08T02:56:52Z	2026-07-08T02:56:52Z	a37ac313	feat(menu/cs2): center renderer — WASD button poll + show_survival_respawn_status HTML
+2026-07-08T02:45:28Z	2026-07-08T02:45:28Z	fd198e58	fix(events): fix event_fire_to_client leak on miss + explicit bot-skip guard
+2026-07-08T02:35:40Z	2026-07-08T02:35:40Z	f6d2eb72	feat(events): event_fire_to_client op + Events.fireToClient (per-client event fire, SM parity)
+2026-07-08T02:25:06Z	2026-07-08T02:25:06Z	6bfcfc11	feat(menu): chat renderer + timeout + disconnect-close (engine-generic)
+2026-07-08T02:17:55Z	2026-07-08T02:17:55Z	82d7287c	fix(menu): resolve rendered cursor flag off menu.style, not session.style
+2026-07-08T02:12:42Z	2026-07-08T02:12:42Z	bbed37fb	feat(menu): Menu model + pagination + registerRenderer seam (@s2script/menu, engine-generic)
+2026-07-08T01:55:52Z	2026-07-08T01:55:52Z	b35c3084	docs(menu): implementation plan (5 tasks — model, chat renderer, fireToClient op, center renderer, demo+gate)
+2026-07-08T01:36:31Z	2026-07-08T01:36:31Z	aae7ee12	docs(menu): fold in center-HTML research — a generic per-client event fire
+2026-07-08T01:26:30Z	2026-07-08T01:26:30Z	9733d5bb	docs: menu primitive design (SM-parity Menu — chat + WASD center backends)
+2026-07-07T22:44:57Z	2026-07-07T22:44:57Z	34c48cfb	docs(CLAUDE.md): record the WebSocket slice (@s2script/ws — composes fetch resolver + onCached mux)
+2026-07-07T22:43:07Z	2026-07-07T22:43:07Z	4e3bdd89	fix(ws): prune per-conn mux keys on terminal close (reconnect-loop leak)
+2026-07-07T22:26:33Z	2026-07-07T22:26:33Z	06f3af67	fix(ws): self-initiated close() now signals Closed (fires onClose, drops registry entry)
+2026-07-07T22:07:47Z	2026-07-07T22:07:47Z	53c79483	feat(ws): ws-demo (echo live gate)
+2026-07-07T22:03:26Z	2026-07-07T22:03:26Z	ec7a65d8	feat(ws): @s2script/ws module (WebSocket handle)
+2026-07-07T22:01:11Z	2026-07-07T22:01:11Z	6f96627e	fix(ws): __s2_ws_on owner-scoping (subscribe leaked cross-plugin ws traffic)
+2026-07-07T21:47:38Z	2026-07-07T21:47:38Z	b6a49c4b	feat(ws): __s2_ws_* natives + signal routing (connect resolver + event mux)
+2026-07-07T21:36:54Z	2026-07-07T21:36:54Z	ad9c7814	feat(ws): tokio-tungstenite connection engine (core/src/ws.rs)
+2026-07-07T21:33:56Z	2026-07-07T21:33:56Z	95901baf	docs: WebSocket implementation plan (4 tasks)
+2026-07-07T21:25:04Z	2026-07-07T21:25:04Z	ed22778f	docs: WebSocket primitive design (compose fetch resolver + onCached mux)
+2026-07-07T20:44:17Z	2026-07-07T20:44:17Z	f71f58f7	docs(CLAUDE.md): record the fetch/HTTP async engine slice
+2026-07-07T20:37:14Z	2026-07-07T20:37:14Z	4af258e8	fix(http): stream the response body with a running cap (final-review Minor 1)
+2026-07-07T20:26:08Z	2026-07-07T20:26:08Z	ce66fcc4	feat(http): http-demo (concurrency + non-blocking live gate)
+2026-07-07T20:22:00Z	2026-07-07T20:22:00Z	48bcbaf7	feat(http): @s2script/http module (fetch + Response)
+2026-07-07T20:14:27Z	2026-07-07T20:14:27Z	74b7de4e	feat(http): __s2_fetch native + async-result drain step
+2026-07-07T20:04:54Z	2026-07-07T20:04:54Z	6ee5d046	feat(http): tokio+reqwest async HTTP engine (core/src/http.rs)
+2026-07-07T20:01:47Z	2026-07-07T20:01:47Z	73853bfa	docs: fetch/HTTP implementation plan (4 tasks) + spec lifecycle fix
+2026-07-07T19:53:19Z	2026-07-07T19:53:19Z	6b08dca9	docs: fetch/HTTP primitive design (tokio+reqwest async engine)
+2026-07-07T18:21:29Z	2026-07-07T18:21:29Z	0ca53f78	docs(CLAUDE.md): record the clientprefs-completion slice
+2026-07-07T18:18:26Z	2026-07-07T18:18:26Z	cd0c35d6	fix(cookies): guard onCached against a null Client + doc fixes (final-review)
+2026-07-07T18:15:23Z	2026-07-07T18:15:23Z	b28e42ef	test(cookies): extend the demo to live-exercise the completion features
+2026-07-07T18:06:56Z	2026-07-07T18:06:56Z	6b52852d	feat(cookies): onCached via a post-drain pending-dispatch
+2026-07-07T17:59:51Z	2026-07-07T17:59:51Z	49b91ec1	feat(cookies): setAuthId with an offline-write queue drained by the plugin
+2026-07-07T17:51:59Z	2026-07-07T17:51:59Z	5959bbc0	feat(cookies): empty-string-vs-miss + getTime
+2026-07-07T17:46:26Z	2026-07-07T17:46:26Z	4213e7cb	refactor(cookies): rename module @s2script/clientprefs -> @s2script/cookies
+2026-07-07T17:44:11Z	2026-07-07T17:44:11Z	2c6158de	docs: clientprefs completion design + plan (rename, empty-string, getTime, setAuthId offline, onCached)
+2026-07-07T16:59:58Z	2026-07-07T16:59:58Z	94c51cc6	docs(CLAUDE.md): record the clientprefs slice
+2026-07-07T16:56:39Z	2026-07-07T16:56:39Z	7e621192	fix(clientprefs): reset the cookie cache on shutdown (final-review Minor 1)
+2026-07-07T16:44:26Z	2026-07-07T16:44:26Z	e2b15039	feat(clientprefs): clientprefs-demo (synthetic-SteamID persist-across-restart)
+2026-07-07T16:39:51Z	2026-07-07T16:39:51Z	d81a6958	feat(clientprefs): the base plugin — DB load/save lifecycle
+2026-07-07T16:35:15Z	2026-07-07T16:35:15Z	5506e1ef	feat(clientprefs): @s2script/clientprefs — Cookies register/get/set/areCached
+2026-07-07T16:32:07Z	2026-07-07T16:32:07Z	dc165acf	feat(clientprefs): __s2_cookie_* natives over the host-global cache
+2026-07-07T16:22:54Z	2026-07-07T16:22:54Z	8386428b	feat(clientprefs): host-global cookie cache (core/src/cookies.rs)
+2026-07-07T16:21:25Z	2026-07-07T16:21:25Z	e9027794	docs: clientprefs implementation plan (5 tasks) + defer onCached
+2026-07-07T16:12:40Z	2026-07-07T16:12:40Z	2302dc7f	docs: clientprefs cookie storage/API design (DB primitive's first consumer)
+2026-07-07T09:01:00Z	2026-07-07T09:01:00Z	2ef667c2	docs(CLAUDE.md): record the SQLite DB primitive slice
+2026-07-07T08:56:03Z	2026-07-07T08:56:03Z	787d3c7a	fix(db): owner-scope connection handles + marshalling polish (final-review)
+2026-07-07T08:47:29Z	2026-07-07T08:47:29Z	0ea54083	fix(db): nested RW mount for addons/s2script/data (live-gate finding)
+2026-07-07T08:37:53Z	2026-07-07T08:37:53Z	e0db00af	feat(db): db-demo plugin (persist-across-restart live gate)
+2026-07-07T08:34:43Z	2026-07-07T08:34:43Z	1137dde4	feat(db): @s2script/db — Database API + Driver seam + SQLite reference driver
+2026-07-07T08:24:39Z	2026-07-07T08:24:39Z	dc8655df	feat(db): __s2_sqlite_* natives (sync-behind-Promise) + ledgered teardown
+2026-07-07T08:13:57Z	2026-07-07T08:13:57Z	2dd2a83d	feat(db): db_data_dir engine op (shim provides <addon>/data)
+2026-07-07T08:08:24Z	2026-07-07T08:08:24Z	16e2fb2b	feat(db): engine-generic SQLite subsystem (rusqlite bundled)
+2026-07-07T08:03:29Z	2026-07-07T08:03:29Z	0acfd494	docs: SQLite DB primitive implementation plan (5 tasks)
+2026-07-07T07:52:26Z	2026-07-07T07:52:26Z	6285f83a	docs: SQLite DB primitive design (@s2script/db + Driver seam)
+2026-07-06T21:38:26Z	2026-07-06T21:38:26Z	055cd921	docs(CLAUDE.md): record funcommands slice + the CS2-update treadmill trial
+2026-07-06T21:35:07Z	2026-07-06T21:35:07Z	a7b32b1d	test: run cargo test single-threaded (frame_tests share process-global buffers)
+2026-07-06T21:08:43Z	2026-07-06T21:08:43Z	3ed02fd1	fix(funcommands): default to self on no-arg (SM parity); defer blind to a Fade op
+2026-07-06T18:33:26Z	2026-07-06T18:33:26Z	e4edc051	feat(funcommands): pawn.moveType + @s2script/funcommands (gravity/blind/noclip/freeze)
+2026-07-06T18:25:28Z	2026-07-06T18:25:28Z	4fc01a91	funcommands Task 1: narrow-int entity write kinds (I8/I16/U8/U16/U32)
+2026-07-06T18:21:28Z	2026-07-06T18:21:28Z	8dae80b9	docs: funcommands v1 design+plan (gravity/blind/noclip/freeze)
+2026-07-06T18:08:55Z	2026-07-06T18:08:55Z	a9f48f5d	docs(CLAUDE.md): record reservedslots + basetriggers + chat-ordering fixes
+2026-07-06T18:07:21Z	2026-07-06T18:07:21Z	eaef3e4b	Merge slice: reservedslots + basetriggers + chat-ordering fixes
+2026-07-06T17:19:52Z	2026-07-06T17:19:52Z	73806a38	fix(commands): defer a player's ctx.reply one frame so it lands after the !command text
+2026-07-06T16:58:07Z	2026-07-06T16:58:07Z	fa53a8d9	fix(basetriggers): defer the answer one frame so it appears AFTER the trigger word
+2026-07-06T16:49:46Z	2026-07-06T16:49:46Z	1fbdd6f9	fix(reservedslots): guard reserved_slots >= maxPlayers (review minor)
+2026-07-06T16:46:32Z	2026-07-06T16:46:32Z	60dde631	feat: @s2script/reservedslots + @s2script/basetriggers plugins
+2026-07-06T16:40:28Z	2026-07-06T16:40:28Z	b55f14f8	server-info op batch: Server.maxPlayers/mapName/gameTime
+2026-07-06T16:31:39Z	2026-07-06T16:31:39Z	fc0db0a3	docs: reservedslots + basetriggers design+plan (server-info op batch + 2 plugins)
+2026-07-06T16:14:42Z	2026-07-06T16:14:42Z	92bcc377	docs(CLAUDE.md): ban-reason feature live-verified + sm_ban-shows-reason fix
+2026-07-06T16:13:26Z	2026-07-06T16:13:26Z	bda5c234	Merge: sm_ban shows the ban reason (chat+console, repeated) before kicking
+2026-07-06T15:42:13Z	2026-07-06T15:42:13Z	786b8337	fix(bans): sm_ban shows the reason (chat+console, repeated) before kicking
+2026-07-06T15:10:10Z	2026-07-06T15:10:10Z	b79b1be0	docs(CLAUDE.md): record sub-project 3 (the ban-reason flip) — thread complete
+2026-07-06T15:08:48Z	2026-07-06T15:08:48Z	2826c619	Merge sub-project 3: the ban-reason flip — banned players see their reason
+2026-07-06T15:05:38Z	2026-07-06T15:05:38Z	76478fdb	docs(bans): clean up post-flip dead decl + stale comments (review minors)
+2026-07-06T14:57:57Z	2026-07-06T14:57:57Z	67c7fbc3	feat(bans): the ban-reason flip — retire the ClientConnect instant-reject, enforce in JS
+2026-07-06T14:53:07Z	2026-07-06T14:53:07Z	8e5d07ca	docs(bans): sub-project 3 design — the ban-reason flip
+2026-07-06T14:46:37Z	2026-07-06T14:46:37Z	7d49a6ac	docs(CLAUDE.md): record sub-project 2 (Client.print/ip/kickWithReason)
+2026-07-06T14:45:10Z	2026-07-06T14:45:10Z	808783f3	Merge sub-project 2: console-print + Client.kickWithReason + Client.ip
+2026-07-06T14:36:54Z	2026-07-06T14:36:54Z	cd6b897d	fix(clients): drop pending kick on disconnect (Task 2 review)
+2026-07-06T14:31:47Z	2026-07-06T14:31:47Z	a7ebbffc	feat(clients): Client.print / Client.ip / Client.kickWithReason + demo
+2026-07-06T14:24:08Z	2026-07-06T14:24:08Z	2327d647	feat(clients): client_console_print + client_address engine ops
+2026-07-06T14:18:11Z	2026-07-06T14:18:11Z	bad3649b	docs(clients): sub-project 2 implementation plan (2 tasks)
+2026-07-06T14:16:17Z	2026-07-06T14:16:17Z	affe4133	docs(clients): sub-project 2 design — console-print + Client.kickWithReason + ip
+2026-07-06T14:06:38Z	2026-07-06T14:06:38Z	bd0f3385	docs(CLAUDE.md): record the ban-reason thread + sub-project 1 (@s2script/clients)
+2026-07-06T14:05:24Z	2026-07-06T14:05:24Z	ff5e8b55	Merge sub-project 1: @s2script/clients — Client handle + lifecycle events
+2026-07-06T08:44:37Z	2026-07-06T08:44:37Z	6528efc3	test(clients): clients-demo example — subscribe + log all six lifecycle events
+2026-07-06T08:36:25Z	2026-07-06T08:36:25Z	22c0e251	feat(clients): six shim lifecycle hooks (connect/putinserver/active/fullyconnect/disconnect/settingschanged)
+2026-07-06T08:28:01Z	2026-07-06T08:28:01Z	ad27437e	feat(clients): core Client mux + natives + @s2script/clients prelude + types
+2026-07-06T08:17:22Z	2026-07-06T08:17:22Z	f1b46a14	docs(clients): implementation plan + expand to full 6-event notify set
+2026-07-06T08:02:09Z	2026-07-06T08:02:09Z	5ea49c4f	docs(clients): sub-project 1 design — Client object + lifecycle events
+2026-07-06T06:39:49Z	2026-07-06T06:39:49Z	949dd747	docs(CLAUDE.md): record Slice 6.18 (basebans) in Current state
+2026-07-06T06:36:56Z	2026-07-06T06:36:56Z	4c1c0208	Merge slice 6.18: basebans — SteamID banning + connect-time enforcement
+2026-07-06T06:15:01Z	2026-07-06T06:15:01Z	2d5dc411	fix(basebans): reject non-numeric minutes in sm_ban/sm_addban (Task 2 review)
+2026-07-06T06:11:39Z	2026-07-06T06:11:39Z	6f22c768	feat(basebans): @s2script/basebans plugin — sm_ban/sm_unban/sm_addban
+2026-07-06T06:03:51Z	2026-07-06T06:03:51Z	3d27a37a	feat(basebans): core ban cache + @s2script/bans + ClientConnect enforcement hook
+2026-07-06T05:49:27Z	2026-07-06T05:49:27Z	d9c4c4f6	docs(basebans): Slice 6.18 implementation plan (2 tasks)
+2026-07-06T05:47:47Z	2026-07-06T05:47:47Z	60f9349c	docs(basebans): Slice 6.18 design — SteamID banning + ClientConnect enforcement
+2026-07-06T05:30:01Z	2026-07-06T05:30:01Z	a5d5649e	docs(CLAUDE.md): bring Current state up to date through Slice 6.17
+2026-07-06T04:48:28Z	2026-07-06T04:48:28Z	df60c731	feat(basecomm): @s2script/basecomm — gag/mute/silence (chat verified, voice best-effort)
+2026-07-06T04:43:32Z	2026-07-06T04:41:30Z	0b5edff3	feat(adminhelp): @s2script/adminhelp — sm_help (paginated, flag-aware command list)
+2026-07-06T04:38:34Z	2026-07-06T04:38:34Z	7ccef5b5	Slice 6.16 (core): expose registered commands + admin flags to JS for sm_help
+2026-07-06T04:19:25Z	2026-07-06T04:19:25Z	0faef3fb	fix(antiflood): leaky-bucket recovery + red slow-down notice + throttle everyone
+2026-07-06T03:37:34Z	2026-07-06T03:37:34Z	818ea89b	feat(antiflood): @s2script/antiflood — chat flood protection over Chat.onMessage
+2026-07-06T03:31:35Z	2026-07-06T03:31:35Z	483c8d67	docs(antiflood): Slice 6.15 spec — chat flood protection
+2026-07-06T02:30:34Z	2026-07-06T02:30:34Z	ab9ea740	fix(playercommands): gate sm_rename success on setName's return (Task 4 review)
+2026-07-06T02:24:53Z	2026-07-06T02:24:53Z	68ea2048	feat(playercommands): sm_slay + sm_rename over pawn.slay()/player.setName()
+2026-07-06T02:11:53Z	2026-07-06T02:11:53Z	665efcd6	feat(core): pawn_commit_suicide + ent_write_string ops + CommitSuicide sig
+2026-07-06T01:54:26Z	2026-07-06T01:54:26Z	2721d57a	feat(playercommands): plugin skeleton + move sm_slap out of basecommands
+2026-07-06T01:39:33Z	2026-07-06T01:39:33Z	d8061858	docs(playercommands): Slice 6.14 implementation plan (4 tasks, 1 rebuild)
+2026-07-06T01:36:00Z	2026-07-06T01:36:00Z	d21e6281	docs(playercommands): Slice 6.14 spec — sm_slap/sm_slay/sm_rename
+2026-07-06T01:09:14Z	2026-07-06T01:09:14Z	8d1cf684	fix(basechat): psay recipient line names the target — "(private to <name>)"
+2026-07-06T00:54:33Z	2026-07-06T00:54:33Z	8d641a76	fix: address final whole-branch review Minors (6.13-B)
+2026-07-06T00:52:44Z	2026-07-06T00:52:44Z	d74e2694	chore(dx): authoring tsconfigs for editor IntelliSense on plugins/examples
+2026-07-06T00:35:35Z	2026-07-06T00:35:35Z	1ac9cc4d	fix(basecommands): correct stale onLoad log after sm_say moved (Task 4 review)
+2026-07-06T00:32:53Z	2026-07-06T00:32:53Z	56b06660	feat(basechat): @s2script/basechat plugin (sm_say/sm_chat/sm_psay + @ triggers)
+2026-07-06T00:22:06Z	2026-07-06T00:22:06Z	1ee15537	feat(core): raw-chat subscriber (Chat.onMessage) + threaded teamonly
+2026-07-06T00:13:04Z	2026-07-06T00:13:04Z	95160c7f	fix(cs2): Activity actorReal "ADMIN" fallback + lazy admin resolve (Task 2 review)
+2026-07-06T00:05:13Z	2026-07-06T00:05:13Z	5ac1b057	feat(cs2): promote show-activity to @s2script/cs2 Activity.formatSource
+2026-07-06T00:01:29Z	2026-07-06T00:01:29Z	b9b3ff32	fix(plugins): commit the gate double-loop generalization (Task 1 review)
+2026-07-05T23:54:01Z	2026-07-05T23:54:01Z	aab48cc5	refactor(plugins): move basecommands to plugins/ + generalize typecheck gate
+2026-07-05T23:49:38Z	2026-07-05T23:49:38Z	c609dde7	docs(basechat): Slice 6.13-B implementation plan (4 tasks)
+2026-07-05T23:40:18Z	2026-07-05T23:40:18Z	ce74852c	docs(basechat): Slice 6.13-B spec — basechat plugin + @ triggers + plugins/ layout
+2026-07-05T23:10:02Z	2026-07-05T23:10:02Z	f807f5c2	feat(chat): per-recipient TRUE color via chat=false + colored sender-aware sm_say
+2026-07-05T22:18:03Z	2026-07-05T22:18:03Z	14d6d9c1	feat(basechat): sender-aware sm_say (FormatActivitySource port)
+2026-07-05T21:59:01Z	2026-07-05T21:59:01Z	bfaee855	docs(slice6.13a): basechat foundation design — per-recipient colored chat + show-activity + sender-aware sm_say
+2026-07-05T20:05:11Z	2026-07-05T20:05:11Z	cce409ef	feat(chat): broadcast colored chat via UTIL_ClientPrintAll + inline colors
+2026-07-05T19:22:49Z	2026-07-05T19:22:49Z	01c6ed89	refactor(chat): color is caller content, not a native-layer default
+2026-07-05T17:49:56Z	2026-07-05T17:49:56Z	01db9dd2	feat(commands): player CONSOLE commands via ISource2GameClients::ClientCommand hook
+2026-07-05T08:32:26Z	2026-07-05T08:32:26Z	59da8deb	feat(chat): player chat triggers via Host_Say detour + working SayText2
+2026-07-05T06:31:09Z	2026-07-05T06:31:09Z	e0fad8c2	fix(commands): register ConCommands client-executable + make sm public
+2026-07-05T06:07:00Z	2026-07-05T06:07:00Z	86e39565	feat(slice6.12): sm command + runtime plugin management (list/load/unload/reload)
+2026-07-05T05:44:37Z	2026-07-05T05:44:37Z	88b8dd9a	feat(slice6.11): chat triggers (! public / silent) via the player_chat event
+2026-07-05T05:02:18Z	2026-07-05T05:02:18Z	f004e036	feat(slice6.10): SM-parity command arg API (arg/argInt/argFloat/argsFrom/argCount)
+2026-07-05T04:48:39Z	2026-07-05T04:48:39Z	205e57a7	test(slice6.9): CountPattern unit tests (unique/ambiguous/not-found/wildcard)
+2026-07-05T04:46:46Z	2026-07-05T04:46:46Z	3bbcccff	feat(slice6.9): gamedata validation gate + RE strategy doc
+2026-07-05T02:54:19Z	2026-07-05T02:54:19Z	defa58c1	fix(security): sm_cvar value command-injection / CONVARS->RCON escalation
+2026-07-05T02:51:23Z	2026-07-05T02:51:23Z	4293812a	fix(slice6.7): sm_cvar SET echoes the input value (ServerCommand set is deferred)
+2026-07-05T02:47:56Z	2026-07-05T02:47:56Z	760ce395	feat(slice6.7): sm_cvar (cvar get/set) via a tier1-free cvar-read primitive
+2026-07-05T02:41:43Z	2026-07-05T02:41:43Z	97a5f595	docs(slice6.7): sm_cvar (cvar get/set) design + spike
+2026-07-05T02:28:34Z	2026-07-05T02:28:34Z	886ab589	fix(slice6.6): gate the damage self-test behind S2_DAMAGE_SELFTEST (default off)
+2026-07-05T01:59:16Z	2026-07-05T01:59:16Z	9f9469e0	docs(slice6.6): mark victim + in-isolate tests done in CLAUDE.md
+2026-07-05T01:57:51Z	2026-07-05T01:57:51Z	4177ebca	feat(slice6.6-followup): DamageInfo.victim EntityRef + core in-isolate tests
+2026-07-05T01:48:44Z	2026-07-05T01:48:44Z	9fb4f361	docs(slice6.6): record damage pre-hooks (Stages 1+2) in CLAUDE.md
+2026-07-04T23:58:18Z	2026-07-04T23:58:18Z	0f931b9b	feat(slice6.6-s2): damage mux + Damage.onPre + block-scoped DamageInfo (read+modify, proven)
+2026-07-04T23:34:26Z	2026-07-04T23:34:26Z	025efe13	feat(slice6.6-s1): prove the detour DIVERTS on the live binary via a self-test
+2026-07-04T23:22:40Z	2026-07-04T23:22:40Z	2e396755	feat(slice6.6-s1): self-contained inline detour + DispatchTraceAttack hook (installs live)
+2026-07-04T22:50:04Z	2026-07-04T22:50:04Z	a4922c91	docs(slice6.6-s1): MinHook detour + read-only damage log plan (risk-first stage)
+2026-07-04T22:44:40Z	2026-07-04T22:44:40Z	4ad225d3	docs(slice6.6): OnTakeDamage pre-hooks — feasibility spike (GREEN)
+2026-07-04T22:23:07Z	2026-07-04T22:23:07Z	7cee5920	feat(slice6.5): sm_who + sm_rcon + sm_exec admin-utility commands (live-gated)
+2026-07-04T21:48:00Z	2026-07-04T21:48:00Z	d2d551ca	feat(slice6.4): sm_map admin command (live-gated)
+2026-07-04T21:40:50Z	2026-07-04T21:40:50Z	ea683e53	feat(slice6.4): server_command + server_map_valid ops + @s2script/server
+2026-07-04T21:36:53Z	2026-07-04T21:36:53Z	fae7fb31	docs(slice6.4): implementation plan (server-command primitive + sm_map)
+2026-07-04T21:35:00Z	2026-07-04T21:35:00Z	4ca7af66	docs(slice6.4): server-command primitive + sm_map design spec
+2026-07-04T20:51:27Z	2026-07-04T20:51:27Z	88b3c6f6	fix(slice6.3): final-review — sm_kick refuses ambiguous multi-name; @me pawnless parity
+2026-07-04T20:41:07Z	2026-07-04T20:41:07Z	321abeaa	feat(slice6.3): sm_kick + sm_slap base commands (live-gated)
+2026-07-04T20:33:16Z	2026-07-04T20:33:16Z	6ba4b1ba	test(slice6.3): cover Player.target name matching (T2 review Minor 1)
+2026-07-04T20:28:27Z	2026-07-04T20:28:27Z	649951d9	feat(slice6.3): Player.target/kick + pawn.setVelocity (CS2 layer)
+2026-07-04T20:24:28Z	2026-07-04T20:24:28Z	3ac5222e	feat(slice6.3): client_kick engine op + __s2_client_kick native
+2026-07-04T20:19:02Z	2026-07-04T20:19:02Z	15431b51	docs(slice6.3): implementation plan (target resolution + sm_kick + sm_slap)
+2026-07-04T20:12:06Z	2026-07-04T20:12:06Z	7a079470	docs(slice6.3): target resolution + sm_kick + sm_slap design spec
+2026-07-04T19:40:39Z	2026-07-04T19:40:39Z	67b7b726	fix(slice6.2): final-review hardening — never resolve SteamID "0" to an admin
+2026-07-04T19:30:46Z	2026-07-04T19:30:46Z	3c28ff05	feat(slice6.2): live gate PASSED — admin-gated sm_say (registerAdmin ADMFLAG.CHAT)
+2026-07-04T19:23:41Z	2026-07-04T19:23:41Z	9b289916	test(slice6.2): cover registerAdmin fail-safe (no hook -> deny) — T3 review Minor
+2026-07-04T19:19:02Z	2026-07-04T19:19:02Z	dc217565	feat(commands): add registerServer + registerAdmin to the command trio
+2026-07-04T19:16:39Z	2026-07-04T19:16:39Z	35c0d8b2	fix(slice6.2): admins.json template is valid JSON (T2 review Minor)
+2026-07-04T19:09:25Z	2026-07-04T19:09:25Z	5662ee73	feat(6.2-T2): @s2script/admin module + player.steamId
+2026-07-04T18:59:49Z	2026-07-04T18:59:49Z	dc59a8f3	feat(slice6.2): core admin cache (two-tier) + client_steamid op
+2026-07-04T18:54:54Z	2026-07-04T18:54:54Z	b4fc0386	docs(slice6.2): admin cache implementation plan (4 tasks, subagent-driven)
+2026-07-04T18:50:45Z	2026-07-04T18:50:45Z	b98247f0	docs(slice6.2): admin cache + flags design spec
+2026-07-04T18:14:49Z	2026-07-04T18:14:49Z	056fad92	feat(slice6.1c): true chat-box send — CUserMessageSayText2 via protobuf reflection
+2026-07-04T16:26:24Z	2026-07-04T16:26:24Z	b4f7caaf	feat(slice6.1b): client_print delivers via ClientPrintf (client console; bots skipped)
+2026-07-04T15:33:58Z	2026-07-04T15:33:58Z	08035e46	fix(slice6.1): final-review fixes — ConCommand Unload teardown + doc/rcon cleanup
+2026-07-04T15:21:42Z	2026-07-04T15:21:42Z	b6acfaec	feat(slice6.1): live gate PASSED — command spine (basecommands sm_say + scripts/rcon)
+2026-07-04T15:20:08Z	2026-07-04T15:20:08Z	dc5740a8	feat(slice6.1): shim RE — ConCommand registration works (chat send deferred to 6.1b)
+2026-07-04T09:07:44Z	2026-07-04T09:07:44Z	89efb982	feat(slice6.1): @s2script/commands — owner-tracked dispatch + ctx/reply
+2026-07-04T08:58:36Z	2026-07-04T08:58:36Z	186f47f2	feat(slice6.1): @s2script/chat — client_print op + native + Chat module
+2026-07-04T08:51:31Z	2026-07-04T08:51:31Z	04cdd118	docs(slice6.1): command spine + chat implementation plan (4 tasks, subagent-driven)
+2026-07-04T08:10:21Z	2026-07-04T08:10:21Z	8a3ae73d	docs(slice6.1): command spine + chat messaging design spec
+2026-07-04T06:41:32Z	2026-07-04T06:41:32Z	23cfb4d7	docs(slice5e3): correct the bigint-in-State claim (final-review fix)
+2026-07-04T06:32:35Z	2026-07-04T06:32:35Z	2c720a12	feat(slice5e3): live gate PASSED — reload state-handoff
+2026-07-04T06:24:01Z	2026-07-04T06:24:01Z	5b96066a	feat(slice5e3): revive handoff blob into onLoad(prev) on reload
+2026-07-04T06:17:01Z	2026-07-04T06:17:01Z	1d363ea2	feat(slice5e3): capture onUnload return into PENDING_HANDOFF + clear
+2026-07-04T06:13:23Z	2026-07-04T06:13:23Z	b4133b21	docs(slice5e3): reload state-handoff implementation plan (3 tasks, subagent-driven)
+2026-07-04T06:07:21Z	2026-07-04T06:07:21Z	e5203309	docs(slice5e3): reload state-handoff design spec
+2026-07-04T05:56:05Z	2026-07-04T05:56:05Z	7a4a2a6f	chore(slice5e2): final-review polish (comments + drop unused demo dep)
+2026-07-04T05:45:33Z	2026-07-04T05:45:33Z	95321a6b	feat(slice5e2): live gate PASSED — config materialize + auto-generate + onChange
+2026-07-04T05:27:15Z	2026-07-04T05:27:15Z	7230bc23	feat(slice5e2): @s2script/config runtime + onChange live-reload
+2026-07-04T05:06:02Z	2026-07-04T05:06:02Z	aad640cf	feat(slice5e2): config_read/config_write ops + materialize-at-load + inject
+2026-07-04T04:50:17Z	2026-07-04T04:50:17Z	462cdadb	feat(slice5e2): materialize_config (pure) + Manifest.config
+2026-07-04T04:46:49Z	2026-07-04T04:46:49Z	a58deb10	feat(slice5e2): CLI validates s2script.config + bakes it into the manifest
+2026-07-04T04:43:56Z	2026-07-04T04:43:56Z	43a2c18c	docs(slice5e2): config materialization implementation plan (5 tasks, subagent-driven)
+2026-07-04T04:35:44Z	2026-07-04T04:35:44Z	be6711bb	docs(slice5e2): config materialization design spec
+2026-07-04T03:21:28Z	2026-07-04T03:21:28Z	36ee545f	Merge slice-5e1-tsc-typecheck-gate: the tsc typecheck gate
+2026-07-04T03:20:03Z	2026-07-04T03:20:03Z	909b71f7	refactor(slice5e1): consumer test fixture to ESM named import (drop require + @ts-ignore)
+2026-07-04T03:09:39Z	2026-07-04T03:09:39Z	c016b88c	docs(slice5e1): document the typecheck gate + ESM authoring; fix stale require comments
+2026-07-04T03:04:38Z	2026-07-04T03:04:38Z	a5d5bf78	feat(slice5e1): all examples pass full strict + check-examples-typecheck.sh gate
+2026-07-04T02:43:06Z	2026-07-04T02:41:22Z	0ae7228e	feat(slice5e1): buildPlugin typechecks first — no .s2sp on a type error
+2026-07-04T02:34:56Z	2026-07-04T02:34:56Z	7ff55c73	feat(slice5e1): typecheckPlugin (compiler API, full strict) + shipped globals.d.ts
+2026-07-04T02:29:58Z	2026-07-04T02:29:58Z	79d2ab29	docs(slice5e1): tsc typecheck gate implementation plan (4 tasks, subagent-driven)
+2026-07-04T02:10:28Z	2026-07-04T02:10:28Z	63306641	docs(slice5e1): tsc typecheck gate design spec
+2026-07-04T01:21:39Z	2026-07-04T01:21:39Z	6b230b1f	Merge slice-5d3-event-actionability: event actionability (block + modify + fire)
+2026-07-04T00:43:02Z	2026-07-04T00:43:02Z	275706fc	feat(slice5d3): live gate PASSED — event block + modify + fire
+2026-07-04T00:18:28Z	2026-07-04T00:18:28Z	e43e6d7c	feat(slice5d3): typed Events.onPre<K> / fire<K> overlay + GameEvent setters + HookResult
+2026-07-04T00:08:16Z	2026-07-04T00:08:16Z	c3689b5e	feat(slice5d3): shim FireEvent SourceHook + write/fire op impls
+2026-07-04T00:00:29Z	2026-07-04T00:00:29Z	1b99718d	feat(slice5d3): event write/fire ops + Events.onPre/fire + GameEvent setters
+2026-07-03T23:51:19Z	2026-07-03T23:51:19Z	9229368d	feat(slice5d3): core pre-multiplexer + dispatch_game_event_pre
+2026-07-03T23:45:20Z	2026-07-03T23:45:20Z	970f5856	docs(slice5d3): implementation plan (5 tasks, subagent-driven)
+2026-07-03T23:34:01Z	2026-07-03T23:34:01Z	2ab10363	docs(slice5d3): event actionability design spec (pre-hooks: block + modify, + firing)
+2026-07-03T22:48:14Z	2026-07-03T22:48:14Z	04456aee	Merge slice-5d2-engine-access: live game events + engine identity
+2026-07-03T22:46:17Z	2026-07-03T22:46:17Z	aabceb25	fix(slice5d2): final-review polish — drop the per-event diagnostic + refresh a stale comment
+2026-07-03T22:33:28Z	2026-07-03T22:33:28Z	6bc77f1f	feat(slice5d2): live gate PASSED — event delivery + engine identity
+2026-07-03T21:56:34Z	2026-07-03T21:56:34Z	33039733	feat(slice5d2): Player.userId / fromUserId / allConnected (engine identity)
+2026-07-03T21:48:48Z	2026-07-03T21:48:48Z	e4faae6b	feat(slice5d2): engine-identity client-list ops + natives
+2026-07-03T21:38:20Z	2026-07-03T21:38:20Z	a66cdb8d	feat(slice5d2): LoadSignatures + sig-scan the IGameEventManager2 global
+2026-07-03T21:29:54Z	2026-07-03T21:29:54Z	286b39a1	feat(slice5d2): pure byte-pattern scanner + host-g++ unit test
+2026-07-03T21:05:51Z	2026-07-03T21:05:51Z	2fae1021	docs(slice5d2): implementation plan (5 tasks, subagent-driven)
+2026-07-03T20:21:10Z	2026-07-03T20:21:10Z	52d13464	docs(slice5d2): engine-access design spec + two RE spike findings
+2026-07-03T18:10:11Z	2026-07-03T18:10:11Z	2612a48e	Merge slice-5c5-ptr-nav-codegen: curated pointer-chain field navigation (codegen)
+2026-07-03T18:08:20Z	2026-07-03T18:08:20Z	09965e92	fix(navgen): filter unsupported kinds (f64/str) at model layer before emitters
+2026-07-03T17:57:28Z	2026-07-03T17:57:28Z	3050e62a	feat(slice5c5): live gate PASSED — pawn.sceneNode/weaponServices/movementServices wrappers; spike + README + CLAUDE
+2026-07-03T17:52:36Z	2026-07-03T17:52:36Z	dac97647	fix(navgen): resolve nav hop offsets per-access, not at IIFE load
+2026-07-03T17:42:56Z	2026-07-03T17:42:56Z	4adf5d8e	feat(slice5c5): nav-targets.json (4 curated targets) + generate + wire (applyNav, compat aliases, freshness gate)
+2026-07-03T17:30:13Z	2026-07-03T17:30:13Z	9ba6cd84	feat(slice5c5): VectorWS->VEC + the navgen codegen (pointer-backed wrappers + nav accessors)
+2026-07-03T17:22:52Z	2026-07-03T17:22:36Z	5a02d7f9	fix(slice5c5): readHandleVia guards isValid() like readHandle (empty/stale handle -> null, not a dead ref)
+2026-07-03T17:16:45Z	2026-07-03T17:16:45Z	fa4058df	feat(slice5c5): __s2_ent_ref_read_chain native + EntityRef.*Via (scalar/handle read through a pointer chain)
+2026-07-03T16:57:10Z	2026-07-03T16:57:10Z	1512192c	docs(slice5c5): curated pointer-chain field navigation implementation plan
+2026-07-03T16:30:16Z	2026-07-03T16:30:16Z	e32a3484	docs(slice5c5): curated pointer-chain field navigation (codegen) design spec
+2026-07-03T15:38:37Z	2026-07-03T15:38:37Z	2cc2350f	Merge slice-5d1-game-events: game-event system (mechanism + typed catalog; delivery deferred to 5D.1b)
+2026-07-03T06:23:44Z	2026-07-03T06:23:44Z	6c71e054	fix(slice5d1): final-review fixes — correct the tier1_shims verify claim; drop the unused 3-arg overload
+2026-07-03T06:14:57Z	2026-07-03T06:14:57Z	2e5eb845	docs(slice5d1): mechanism + typed catalog complete; live delivery deferred to 5D.1b (event-manager signature)
+2026-07-03T06:12:50Z	2026-07-03T06:12:50Z	d46108ba	fix(slice5d1): shim loads — self-contained MurmurHash2LowerCase; try server factory for the manager
+2026-07-03T05:41:49Z	2026-07-03T05:41:49Z	d869fd3f	feat(slice5d1): reference-sourced event-catalog.json + event codegen -> typed GameEvents overlay in @s2script/cs2
+2026-07-03T05:35:36Z	2026-07-03T05:35:36Z	d2d7ca3d	fix(slice5d1): don't erase s_subscribedNames in s2_event_unsubscribe
+2026-07-03T05:27:22Z	2026-07-03T05:27:22Z	f47ecbb5	feat(slice5d1): shim — acquire IGameEventManager2 + IGameEventListener2 + event engine-ops + dispatch
+2026-07-03T05:16:11Z	2026-07-03T05:16:11Z	cd9478fc	feat(slice5d1): @s2script/events module — Events.on/off + live GameEvent accessor in the prelude
+2026-07-03T05:11:42Z	2026-07-03T05:11:42Z	220c840e	test(5D.1): cover explicit-unsubscribe path for event_mux + v8host
+2026-07-03T05:02:49Z	2026-07-03T05:02:49Z	80af99f1	feat(slice5d1): core event mechanism — engine-ops + event_mux + dispatch_game_event + accessor natives
+2026-07-03T04:49:25Z	2026-07-03T04:49:25Z	87de3000	docs(slice5d1): game-event system implementation plan
+2026-07-03T04:41:04Z	2026-07-03T04:41:04Z	3409bdf2	docs(slice5d1): add the typed event-catalog overlay (IntelliSense for event names + fields)
+2026-07-03T04:31:13Z	2026-07-03T04:31:13Z	db04dd64	docs(slice5d1): game-event system (Events.on) design spec
+2026-07-03T04:17:23Z	2026-07-03T04:17:23Z	96becc31	Merge slice-5c4-origin-ptr-nav: pointer-chain field navigation -> pawn.origin/angles
+2026-07-03T04:12:21Z	2026-07-03T04:12:21Z	954c58cf	feat(slice5c4): live gate PASSED — pawn.origin + pawn.angles (pointer-chain nav); spike + README + CLAUDE
+2026-07-03T04:06:50Z	2026-07-03T04:06:50Z	2b4a6c9c	feat(slice5c4): hand-written pawn.origin + pawn.angles (pointer-chain nav) + types + vm test
+2026-07-03T04:02:23Z	2026-07-03T04:02:23Z	6a789340	feat(slice5c4): __s2_ent_ref_read_floats_chain native + EntityRef.readFloatsChain (in-core pointer-chain read)
+2026-07-03T03:56:04Z	2026-07-03T03:56:04Z	bae5c740	docs(slice5c4): pointer-chain field navigation implementation plan
+2026-07-03T03:45:22Z	2026-07-03T03:45:22Z	c98a0cc3	docs(slice5c4): pointer-chain field navigation -> pawn.origin/angles design spec
+2026-07-03T03:35:06Z	2026-07-03T03:35:06Z	a183ae4e	Merge slice-5c3-vector-value-type: Vector/QAngle value type + direct-field codegen
+2026-07-03T03:33:32Z	2026-07-03T03:33:32Z	d850184b	fix(slice5c3): read_floats guards off<0 (schema miss) -> null, not a partial-junk Vector (final-review M1)
+2026-07-03T03:26:33Z	2026-07-03T03:26:33Z	4cc30114	feat(slice5c3): live gate PASSED — pawn.eyeAngles + pawn.absVelocity (generated Vector/QAngle); README + CLAUDE
+2026-07-03T03:17:21Z	2026-07-03T03:17:21Z	6aa11966	feat(slice5c3): codegen for direct Vector/QAngle fields; regenerate schema (pawn.eyeAngles/absVelocity)
+2026-07-03T03:08:24Z	2026-07-03T03:08:24Z	b86c6719	feat(slice5c3): __s2_ent_ref_read_floats native + EntityRef.readFloats (serial-gated float triple)
+2026-07-03T03:04:01Z	2026-07-03T03:04:01Z	562407f4	feat(slice5c3): @s2script/math — Vector/QAngle value types in the core prelude
+2026-07-03T02:57:02Z	2026-07-03T02:57:02Z	5578154b	docs(slice5c3): Vector/QAngle value type + direct-field codegen implementation plan
+2026-07-03T02:21:33Z	2026-07-03T02:21:33Z	2067cea6	docs(slice5c3): Vector/QAngle value type + direct-field codegen design spec
+2026-07-03T01:36:32Z	2026-07-03T01:36:32Z	cc4dac98	Merge slice-5b4-string-64bit-fields: char[N] strings + 64-bit fields
+2026-07-03T00:48:32Z	2026-07-03T00:48:32Z	5d7aabca	docs(slice5b4): clarify the live-gate log is from the instrumented spike demo (final-review nit)
+2026-07-03T00:41:28Z	2026-07-03T00:41:28Z	589311a9	feat(slice5b4): live gate PASSED — player.playerName + player.steamID (generated strings); spike + README + CLAUDE
+2026-07-03T00:27:41Z	2026-07-03T00:27:41Z	764a40ae	feat(slice5b4): codegen for char[N]/64-bit kinds + known-tags idiomaticName fix; regenerate schema
+2026-07-03T00:19:50Z	2026-07-03T00:19:50Z	3ab8f880	feat(slice5b4): 64-bit (BigInt) + string read natives + EntityRef.readUInt64/readInt64/readFloat64/readString
+2026-07-03T00:12:49Z	2026-07-03T00:12:49Z	14df4984	feat(slice5b4): entity.rs read_u64/i64/f64/string pure helpers
+2026-07-03T00:10:43Z	2026-07-03T00:10:43Z	49b7b8db	docs(slice5b4): generated 64-bit accessors return decimal strings (SM-parity, wire-safe)
+2026-07-02T23:55:25Z	2026-07-02T23:55:25Z	418ba7d6	docs(slice5b4): string + 64-bit field support implementation plan
+2026-07-02T23:20:14Z	2026-07-02T23:20:14Z	aee96357	docs(slice5b4): string + 64-bit field support design spec
+2026-07-02T22:44:13Z	2026-07-02T22:44:13Z	4a2a6837	Merge Slice 5C.2: the player model
+2026-07-02T22:42:30Z	2026-07-02T22:42:30Z	b3d6356b	test(slice5c2): vm test for the occupancy filter (valid controller + null pawn -> excluded)
+2026-07-02T22:37:27Z	2026-07-02T22:37:27Z	b0aba2c1	feat(slice5c2): live gate PASSED — demo iterates Player.all() + nav; README + CLAUDE
+2026-07-02T22:36:23Z	2026-07-02T22:36:23Z	6f9adeb8	fix(slice5c2): Player.fromSlot occupancy filter — controller must have a live pawn (live finding)
+2026-07-02T22:16:51Z	2026-07-02T22:16:51Z	8544ed1e	feat(slice5c2): Player (controller) model — fromSlot/all + .pawn nav; Pawn.controller reverse hop
+2026-07-02T22:13:10Z	2026-07-02T22:13:10Z	269b4dc3	docs(slice5c2): player model implementation plan
+2026-07-02T22:05:30Z	2026-07-02T22:05:30Z	ecbabd00	docs(slice5c2): player model design spec
+2026-07-02T21:39:27Z	2026-07-02T21:39:27Z	602385f1	Merge Slice 5C.1: the module split
+2026-07-02T21:38:00Z	2026-07-02T21:38:00Z	a7d083b4	docs(slice5c1): fix Slice-5A entity-safety paragraph — pawn.js resolves @s2script/entity (post-5C.1)
+2026-07-02T21:32:06Z	2026-07-02T21:32:06Z	493db943	feat(slice5c1): live gate PASSED — modules resolve live; README + CLAUDE
+2026-07-02T21:24:20Z	2026-07-02T21:24:20Z	605daf0c	feat(slice5c1): migrate all consumers off @s2script/std to the module packages; retire packages/std
+2026-07-02T21:15:29Z	2026-07-02T21:15:29Z	a5c58281	feat(slice5c1): 5 @s2script/<module> type packages + CLI @s2script/* wildcard external
+2026-07-02T21:09:33Z	2026-07-02T21:09:33Z	43405078	feat(slice5c1): generalize s2require (@s2script/<name>->__s2pkg_<name>); prelude sets 5 module globals
+2026-07-02T20:55:11Z	2026-07-02T20:55:11Z	327089b3	docs(slice5c1): module split implementation plan
+2026-07-02T20:35:05Z	2026-07-02T20:35:05Z	aaf3ac7f	docs(slice5c1): module split design spec
+2026-07-02T17:25:10Z	2026-07-02T17:25:10Z	84ef84a9	Merge Slice 5B.3: schema codegen (Slice 5B complete)
+2026-07-02T17:11:55Z	2026-07-02T17:11:55Z	1d2f955d	feat(slice5b3): live gate PASSED — demo reads GENERATED pawn.health/friction; README treadmill + CLAUDE
+2026-07-02T17:03:18Z	2026-07-02T17:03:18Z	88722c71	feat(slice5b3): apply generated accessors in pawn.js; cs2 type surface; concat packaging
+2026-07-02T16:55:11Z	2026-07-02T16:55:11Z	5f94c712	feat(slice5b3): gen-schema CLI + committed generated accessors + freshness gate
+2026-07-02T16:49:31Z	2026-07-02T16:49:31Z	3fab33f5	feat(slice5b3): runtime .js emitter (live off() resolve, flattened accessors, notify on write)
+2026-07-02T16:45:02Z	2026-07-02T16:45:02Z	9d238804	feat(slice5b3): .d.ts emitter (extends chain, readonly for non-writable, skipped absent)
+2026-07-02T16:38:56Z	2026-07-02T16:38:56Z	cfacafcd	docs(slice5b3): plan fix — scope test runner to test/*.test.mjs (exclude fixture plugin.ts)
+2026-07-02T16:35:32Z	2026-07-02T16:35:32Z	53742d81	feat(slice5b3): pure schema-codegen model (name transform, type map, flatten, collision)
+2026-07-02T16:31:49Z	2026-07-02T16:31:49Z	a710868f	docs(slice5b3): schema codegen implementation plan
+2026-07-02T08:52:19Z	2026-07-02T08:52:19Z	38cc505f	docs(slice5b3): schema codegen design spec
+2026-07-02T06:58:27Z	2026-07-02T06:58:27Z	04f9aa8b	Merge Slice 5B.2: typed entity field access
+2026-07-02T06:50:46Z	2026-07-02T06:50:46Z	1a1470ca	feat(slice5b2): live gate PASSED — demo reads a live handle (m_hController) + chain; README live log
+2026-07-02T06:43:21Z	2026-07-02T06:43:21Z	74055ffb	feat(slice5b2): demo typed reads (float32/bool/handle via EntityRef) + docs; v8host comment fix
+2026-07-02T06:28:00Z	2026-07-02T06:28:00Z	42f60a83	feat(slice5b2): kind-dispatched read/write natives + typed EntityRef methods; retire per-type i32 natives
+2026-07-02T06:20:01Z	2026-07-02T06:20:01Z	4f44e789	feat(slice5b2): entity.rs typed pure helpers (f32/bool/i8/i16/u8/u16)
+2026-07-02T05:56:46Z	2026-07-02T05:56:46Z	2654f83f	docs(slice5b2): typed field access implementation plan
+2026-07-02T05:30:23Z	2026-07-02T05:30:23Z	0bf52d68	docs(slice5b2): typed field access design spec
+2026-07-02T05:19:57Z	2026-07-02T05:19:57Z	3976d50b	Merge Slice 5B.1: schema catalog dump (codegen source of truth)
+2026-07-02T05:02:33Z	2026-07-02T05:02:33Z	fd9667e3	feat(slice5b1): dev dump plugin + committed schema-catalog.json (live dump); README/CLAUDE
+2026-07-02T04:53:30Z	2026-07-02T04:53:30Z	565f107b	fix(slice5b1): shim schema_enumerate — null-guard m_pFields + mark noexcept
+2026-07-02T04:45:42Z	2026-07-02T04:45:42Z	a5a97587	feat(slice5b1): schema_enumerate op (shim SDK walk) + __s2_schema_dump native
+2026-07-02T04:33:10Z	2026-07-02T04:33:10Z	ed2dd4cc	feat(slice5b1): pure schema catalog builder (classes/fields/types -> stable JSON)
+2026-07-02T04:28:30Z	2026-07-02T04:28:30Z	51e44110	docs(slice5b1): spike findings — SDK schema enumeration recipe + category->kind map
+2026-07-02T04:06:09Z	2026-07-02T04:06:09Z	1cda9329	docs(slice5b1): implementation plan (4 tasks, spike-first)
+2026-07-02T04:00:33Z	2026-07-02T04:00:33Z	ada5190b	docs(slice5b1): refine architecture — shim enumerates via SDK, not core raw-offset walk
+2026-07-02T03:19:14Z	2026-07-02T03:19:14Z	c2a63156	docs(slice5b1): schema catalog dump design spec
+2026-07-02T02:36:56Z	2026-07-02T02:36:56Z	93631c90	Merge EntityRef-wire fast-follow: EntityRef on the inter-plugin wire
+2026-07-02T01:38:24Z	2026-07-02T01:38:24Z	bec57af8	feat(entref-wire): cross-plugin host-invalidation live gate — producer-passed ref goes null on death
+2026-07-02T01:25:33Z	2026-07-02T01:25:33Z	53385e23	feat(entref-wire): round-trip EntityRef across the inter-plugin wire (replacer/reviver)
+2026-07-02T01:18:23Z	2026-07-02T01:18:23Z	8bb329e6	docs(entref-wire): implementation plan (2 tasks, no spike)
+2026-07-02T00:25:31Z	2026-07-02T00:25:31Z	b821dfcf	docs(entref-wire): EntityRef on the inter-plugin wire design spec
+2026-07-02T00:08:33Z	2026-07-02T00:08:33Z	4029d50e	Merge Slice 5A: handle/EntityRef entity-safety spine
+2026-07-01T23:57:50Z	2026-07-01T23:57:50Z	1a98b03c	test(slice5a): pin the negative case — require is undefined in the raw prelude scope
+2026-07-01T23:51:55Z	2026-07-01T23:51:55Z	0791daaa	test(slice5a): guard package-prelude __s2require scope; fix stale README 4.5 deferral
+2026-07-01T23:42:01Z	2026-07-01T23:42:01Z	d7bc3016	feat(slice5a): host-invalidation live gate — stashed Pawn goes null on entity death; README/CLAUDE
+2026-07-01T23:21:11Z	2026-07-01T23:21:11Z	ee676ddd	feat(slice5a): EntityRef in @s2script/std; Pawn EntityRef-backed; retire raw-pointer natives
+2026-07-01T23:15:45Z	2026-07-01T23:15:45Z	727d9ad0	fix(slice5a): entity_resolve_ptr single-lookup (no TOCTOU); pre-set failure returns
+2026-07-01T23:08:11Z	2026-07-01T23:08:11Z	13998ef9	feat(slice5a): (index,serial) entity natives — serial-gated read/write/valid/decode
+2026-07-01T23:01:35Z	2026-07-01T23:01:35Z	fa69a936	feat(slice5a): entity.rs — CEntityHandle decode + serial resolve + read_u32/read_ptr
+2026-07-01T23:00:21Z	2026-07-01T23:00:21Z	efe31fa5	docs(slice5a): live gate must force real pawn destruction (not mp_restartgame)
+2026-07-01T22:58:09Z	2026-07-01T22:58:09Z	63be60fc	docs(slice5a): spike findings — CEntityIdentity serial offsets + CEntityHandle bit-split
+2026-07-01T22:28:13Z	2026-07-01T22:28:13Z	25b7ec28	docs(slice5a): implementation plan (5 tasks, spike-first)
+2026-07-01T22:15:10Z	2026-07-01T22:15:10Z	15326721	docs(slice5a): handle/EntityRef entity-safety design spec
+2026-07-01T19:49:56Z	2026-07-01T19:49:56Z	63c4d01e	Merge Slice 4.5: inter-plugin typed interfaces — two plugins talk
+2026-07-01T19:48:09Z	2026-07-01T19:48:09Z	db3a7edf	docs(slice4.5): TODO(slice5) — key IFACE_METHODS teardown prune by (producer_id, name)
+2026-07-01T19:39:02Z	2026-07-01T19:39:02Z	1130f879	feat(slice4.5): greeter producer+consumer demos, std types, README/CLAUDE; live gate passed
+2026-07-01T19:20:58Z	2026-07-01T19:20:58Z	8c4e4f95	feat(slice4.5): CLI emits optionalPluginDependencies + externalizes all inter-plugin deps
+2026-07-01T19:15:46Z	2026-07-01T19:15:46Z	427a9824	feat(slice4.5): loader parses both dep maps; sets plugin imports before module eval
+2026-07-01T19:09:26Z	2026-07-01T19:09:26Z	14609ee6	feat(slice4.5): unload_plugin tears down interfaces/subs/imports; unload_all reverse-dep order
+2026-07-01T18:59:06Z	2026-07-01T18:59:06Z	a59770c2	feat(slice4.5): events — iface_on/off/emit forward to live consumers (structured-copy payload)
+2026-07-01T18:52:05Z	2026-07-01T18:52:05Z	61c059e2	fix(slice4.5): iface_call distinguishes producer-throw (InterfaceCallError) + void return
+2026-07-01T18:36:57Z	2026-07-01T18:36:57Z	297ffc00	feat(slice4.5): require→ES-Proxy dispatch + iface_call (cross-context structured-copy)
+2026-07-01T18:27:09Z	2026-07-01T18:27:09Z	e40492d8	fix(slice4.5): TryCatch around iface_from_json JSON.parse; reset NEXT_SUB_ID on shutdown
+2026-07-01T18:20:31Z	2026-07-01T18:20:31Z	ce98c754	feat(slice4.5): iface_publish + JSON marshalling + dep_kind/is_published natives
+2026-07-01T18:07:52Z	2026-07-01T18:07:52Z	c7043234	fix(slice4.5): interfaces.rs — preserve subscribers on republish; doc unload_order precondition; +tests
+2026-07-01T18:01:50Z	2026-07-01T18:01:50Z	c9356386	feat(slice4.5): pure InterfaceRegistry (publish/deps/subscribers/semver/unload-order)
+2026-07-01T17:55:26Z	2026-07-01T17:55:26Z	01414c1e	feat(slice4.5): ledger records Interface/EventSub/Import resources
+2026-07-01T17:52:54Z	2026-07-01T17:52:54Z	f48bbba4	docs(slice4.5): spike findings — JSON carrier + Proxy-trap cross-context call proven
+2026-07-01T17:06:43Z	2026-07-01T17:06:43Z	30a658ee	docs(slice4.5): implementation plan (10 tasks, spike-first) + spec marshalling refinement
+2026-07-01T16:38:29Z	2026-07-01T16:38:29Z	c6cb2d0b	docs(slice4.5): inter-plugin typed-interface design spec
+2026-07-01T15:09:19Z	2026-07-01T15:09:19Z	fb5b9aa4	chore: untrack SDD scratch, gitignore .superpowers/
+2026-07-01T15:08:37Z	2026-07-01T15:08:37Z	01599805	Merge Slice 4: plugin lifecycle — one .s2sp that hot-reloads
+2026-07-01T10:26:05Z	2026-07-01T10:26:05Z	9dd250dd	Slice 4 cleanup: wire apiVersion check, fix stale comments, add prepare script
+2026-07-01T10:10:07Z	2026-07-01T10:09:43Z	c3bbefcf	feat(slice4): live gate — .s2sp load/hot-reload/teardown proven; demo plugin; README + CLAUDE.md
+2026-07-01T09:51:17Z	2026-07-01T09:51:17Z	8fd0a97a	feat(cli): @s2script/cli (s2script build → .s2sp via esbuild) + @s2script/std+cs2 type stubs
+2026-07-01T09:32:27Z	2026-07-01T09:32:27Z	8696b0e8	feat(core): .s2sp loader + /plugins watch (load/reload/unload); remove baked shim demo
+2026-07-01T09:08:58Z	2026-07-01T09:08:58Z	c1b99831	feat(core): per-context dispatch/drain + async-liveness guard + ledger teardown (unload_plugin)
+2026-07-01T08:52:48Z	2026-07-01T08:52:48Z	290c74e6	fix(core): externalize @s2script/cs2 JS via runtime package registry (core stays engine-generic); gate include_str! of games/
+2026-07-01T08:40:22Z	2026-07-01T08:40:22Z	8344727c	feat(core): per-context injected API (@s2script/std+cs2) via CJS require-shim; rename to OnGameFrame.subscribe/delay
+2026-07-01T08:05:15Z	2026-07-01T08:05:15Z	87d25ddd	feat(core): per-plugin v8::Context registry + set_slot plugin identity
+2026-07-01T07:54:48Z	2026-07-01T07:54:48Z	400c3aa7	feat(core): tag OnGameFrame subscriptions with an owner plugin id + remove_by_owner
+2026-07-01T07:48:27Z	2026-07-01T07:48:27Z	3133e107	feat(core): plugin registry + ledger + generation + reverse teardown (V8-free)
+2026-07-01T07:45:02Z	2026-07-01T07:45:02Z	56eb9e37	docs(slice4): spike — CJS eval wrapper + rusty_v8 context embedder slot
+2026-07-01T07:19:07Z	2026-07-01T07:19:07Z	b1ac2ab4	docs: Slice 4 plugin-lifecycle implementation plan (9 tasks)
+2026-07-01T07:13:48Z	2026-07-01T07:13:48Z	f66d99a5	docs(slice4): s2script build is @s2script/cli — TS-authored, esbuild-built bin, npx-invokable
+2026-07-01T07:12:02Z	2026-07-01T07:12:02Z	71313af8	docs(slice4): s2script build CLI authored in plain JS (edit-and-run)
+2026-07-01T06:32:43Z	2026-07-01T06:32:43Z	ecbffba7	docs: Slice 4 plugin-lifecycle design spec (one .s2sp that hot-reloads)
+2026-07-01T05:33:52Z	2026-07-01T05:33:52Z	3ca10a0c	harden(slice3): default schema native return to -1; depth-cap the base-class walk
+2026-07-01T05:22:07Z	2026-07-01T05:22:07Z	7dffbaba	feat(slice3): live gate — schema base-class walk + confirmed entity offset; README + acceptance
+2026-07-01T05:01:02Z	2026-07-01T05:01:02Z	14f2e03b	fix(slice3): resolve schema offsets + entity system lazily (Load runs before the map/schema exist)
+2026-07-01T04:48:03Z	2026-07-01T04:48:03Z	8519fa70	fix(shim): signature-free handle deref + neutralize unlinkable ConCommand registration (CS2 dlopen blockers)
+2026-07-01T04:32:39Z	2026-07-01T04:32:39Z	f3b22aa9	feat(cs2): @s2script/cs2 pawn.health accessor (JS) + core cs2-file load path
+2026-07-01T04:24:10Z	2026-07-01T04:24:10Z	8006bf9c	feat(core): __s2_concommand native — raw ConCommand with calling-slot + args to JS
+2026-07-01T04:09:34Z	2026-07-01T04:09:34Z	6652f630	feat(core): entity-by-index/handle-deref + guarded i32 field read/write + NetworkStateChanged natives
+2026-07-01T03:46:14Z	2026-07-01T03:46:14Z	0d185d8f	feat(core): SchemaSystem acquisition + __s2_schema_offset native (live offset resolve, cached)
+2026-07-01T03:36:19Z	2026-07-01T03:36:19Z	e5f25779	test(boundary): fail the build if a CS2 identifier leaks into core/
+2026-07-01T03:34:15Z	2026-07-01T03:34:15Z	1c51fd14	docs(slice3): correct entitydatainstantiator.h gap note (exists at game/shared, unusable from public)
+2026-07-01T03:28:29Z	2026-07-01T03:28:29Z	140a4095	docs(slice3): plan amendment — engine C++ calls via shim C-ABI helpers (post-recon)
+2026-07-01T03:23:23Z	2026-07-01T03:23:23Z	be493215	docs(slice3): engine-RE reconnaissance — SchemaSystem/entity/NetworkStateChanged/ConCommand call sequences
+2026-07-01T03:08:04Z	2026-07-01T03:08:04Z	84a53d87	docs: Slice 3 schema-backed typed accessor implementation plan
+2026-07-01T02:48:38Z	2026-07-01T02:48:38Z	18be5d76	docs: Slice 3 schema-backed typed accessor design spec
+2026-07-01T02:13:21Z	2026-07-01T02:13:21Z	e6a47492	test(core): cover async-driven detour remove (pending→0 ⇒ enable=0) + accurate README evidence
+2026-07-01T02:05:25Z	2026-07-01T02:05:25Z	36cd7303	docs+demo: Slice 2 tick-async live demo (await Delay doesn't block the tick) + acceptance
+2026-07-01T01:46:17Z	2026-07-01T01:46:17Z	ba32030c	fix(core): only decrement PENDING_JOBS for jobs owned by the live isolate (+regression test)
+2026-07-01T01:37:55Z	2026-07-01T01:37:55Z	d71b0ad1	feat(core): threadSleep demo op — off-thread work resolves a Promise on the frame drain
+2026-07-01T01:23:51Z	2026-07-01T01:23:51Z	3319f57c	feat(core): Delay/NextTick/NextFrame timers + combined lazy-detour (async keeps GameFrame installed)
+2026-07-01T01:04:25Z	2026-07-01T01:04:25Z	d647b33a	feat(core): explicit microtask policy + per-frame drain on Post; out-of-range HookResult warning
+2026-07-01T00:57:40Z	2026-07-01T00:57:40Z	03643b18	feat(core): V8-free timer queue (deadline + frame timers) (TDD)
+2026-07-01T00:53:13Z	2026-07-01T00:53:13Z	6861eb9d	feat(core): V8-free threadpool (submit + completion channel) (TDD)
+2026-07-01T00:50:45Z	2026-07-01T00:50:45Z	b33be6c5	docs: Slice 2 tick-integrated async implementation plan
+2026-07-01T00:44:44Z	2026-07-01T00:44:44Z	ac70d8b3	docs: Slice 2 tick-integrated async design spec
+2026-06-30T23:08:05Z	2026-06-30T23:08:05Z	47555b87	docs: sync README version strings to 0.0.0-slice1 (matches GetVersion)
+2026-06-30T22:59:48Z	2026-06-30T22:59:48Z	cf2d8dd3	feat(shim): OnGameFrame live demo + Slice 1 runbook/acceptance
+2026-06-30T22:54:26Z	2026-06-30T22:54:26Z	14d4cd44	fix(shim): null-guard m_server before SH_ADD_HOOK; pin stub enum underlying type
+2026-06-30T22:45:41Z	2026-06-30T22:45:41Z	0f98012b	feat(shim): SourceHook GameFrame detour + lazy install via request_hook; gamedata dladdr fix
+2026-06-30T22:16:48Z	2026-06-30T22:16:48Z	f3ca8a72	fix(core): set request_hook before the logger guard in init (no stale callback on re-init)
+2026-06-30T22:13:37Z	2026-06-30T22:13:37Z	5434f7bd	feat(core): C ABI for OnGameFrame — init(+request_hook) + dispatch_game_frame
+2026-06-30T22:04:34Z	2026-06-30T22:04:34Z	05159863	feat(core): V8 onGameFrame binding — registry, native subscribe, provisional prelude, invoker (TDD)
+2026-06-30T21:49:32Z	2026-06-30T21:49:32Z	1a0bde3f	feat(core): multiplexer re-entrancy snapshot, error isolation/auto-disable, lazy remove (TDD)
+2026-06-30T21:44:06Z	2026-06-30T21:44:06Z	03e0059b	feat(core): multiplexer types + priority-ordered dispatch + collapse (TDD)
+2026-06-30T21:41:34Z	2026-06-30T21:41:34Z	1e9b67ca	docs: fix Slice 1 plan re-entrancy — snapshot/run_chain/apply_errors split
+2026-06-30T21:30:53Z	2026-06-30T21:30:53Z	b102545a	docs: Slice 1 multiplexer + OnGameFrame implementation plan
+2026-06-30T21:19:50Z	2026-06-30T21:19:50Z	cac3af0e	docs: Slice 1 multiplexer + OnGameFrame design spec
+2026-06-30T20:34:38Z	2026-06-30T20:34:38Z	3a832667	feat: sniper (glibc-2.31) build + live-gate verification on CS2
+2026-06-30T19:32:52Z	2026-06-30T19:32:52Z	87d0e7fb	fix(core): wrap console_log callback in catch_unwind (no panic into V8 C++)
+2026-06-30T19:22:43Z	2026-06-30T19:22:43Z	550991c6	docs: fix clone URL, WARN log prefix, and meta-list author in runbook
+2026-06-30T19:16:18Z	2026-06-30T19:16:18Z	14f2b3c6	docs: complete Slice 0 reproduce-from-scratch runbook and acceptance checklist
+2026-06-30T19:08:18Z	2026-06-30T19:08:18Z	de4be01f	feat(shim): data-driven Source 2 interface acquisition with per-interface logging
+2026-06-30T18:59:45Z	2026-06-30T18:59:45Z	82d60b56	feat: wire shim to V8 core; hello-from-V8 end-to-end with clean unload/reload
+2026-06-30T18:54:52Z	2026-06-30T18:54:52Z	368a35c6	fix(verify): correct MM:S plugin-load doc; gitignore docker/metamod; simplify vdf mount
+2026-06-30T18:43:27Z	2026-06-30T18:43:27Z	e1f5335c	feat(verify): dockerized CS2 harness; empty shim loads/unloads on a live server
+2026-06-30T18:32:28Z	2026-06-30T18:32:28Z	086926ec	fix(core): pin v8 to 149.4.0 so the cdylib links into a -shared plugin .so
+2026-06-30T18:03:06Z	2026-06-30T18:03:06Z	850a38eb	feat(core): V8 host + 3-fn C ABI with console.log, catch_unwind, platform-once (TDD)
+2026-06-30T17:45:58Z	2026-06-30T17:45:58Z	3c39f20b	ci: drop redundant/fragile cmake install (ubuntu-latest ships cmake >=3.20)
+2026-06-30T17:40:06Z	2026-06-30T17:40:06Z	c52779e0	feat(shim): minimal ISmmPlugin that loads and logs (pre-V8)
+2026-06-30T17:34:52Z	2026-06-30T17:34:52Z	fa7b1cce	docs: fix hl2sdk patch-export command (diff HEAD) and README trailing newline
+2026-06-30T17:30:29Z	2026-06-30T17:30:29Z	96145225	chore: vendor hl2sdk (cs2) and metamod-source (dev) as pinned submodules
+2026-06-30T17:23:28Z	2026-06-30T17:23:28Z	46346bad	chore: scaffold workspace, governing docs, and core/game boundary check
+2026-06-30T17:20:16Z	2026-06-30T17:20:16Z	d4323fc1	docs: add ARCHITECTURE.md (§1-3) and CLAUDE.md guardrails (§5)
+2026-06-30T17:06:50Z	2026-06-30T17:06:50Z	e3104e43	docs: Slice 0 boot-handshake implementation plan
+2026-06-30T16:56:02Z	2026-06-30T16:56:02Z	3872284d	docs: Slice 0 boot-handshake design spec
+2026-06-30T14:18:36Z	2026-06-30T14:18:36Z	4dcf13e5	Initial commit

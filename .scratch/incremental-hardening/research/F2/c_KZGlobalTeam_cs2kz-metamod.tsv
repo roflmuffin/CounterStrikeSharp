@@ -1,0 +1,412 @@
+2026-11-24T02:13:02Z	2026-11-24T02:13:02Z	4a16b254	Fix more crashes
+2026-11-23T07:31:32Z	2026-11-23T07:31:32Z	5a5e6400	Fix some crashes
+2026-11-17T15:17:48Z	2026-11-17T15:17:48Z	323d4a8a	Use original player names
+2026-11-17T06:58:40Z	2026-11-17T06:58:40Z	2e2531f7	Fix crash
+2026-11-13T04:05:52Z	2026-11-13T04:05:52Z	ce31ccf2	Fix build
+2026-11-12T12:40:28Z	2026-11-12T12:40:28Z	c9e5e4b1	Use upstream url
+2026-11-12T12:38:13Z	2026-11-12T12:38:13Z	be1c136a	Update sdk
+2026-11-12T04:45:21Z	2026-11-12T04:45:21Z	e2ba8732	Vibe coded hotfix
+2026-11-12T03:28:39Z	2026-11-12T03:28:39Z	9b0496bc	Fix sigs
+2026-11-11T20:01:17Z	2026-11-11T20:01:17Z	f94a4d43	Limit turn binds instead of banning them
+2026-11-09T12:58:05Z	2026-11-09T12:58:05Z	9bc90a82	Fix c++20 breakages on windows
+2026-11-09T03:34:14Z	2026-11-09T03:34:14Z	6a48910f	clang-format
+2026-11-08T19:49:44Z	2026-11-08T19:49:44Z	a5fd333c	Restart server if there is no away player for the past hour, realtime considered dangerous
+2026-11-08T13:31:20Z	2026-11-08T13:31:20Z	18bdd51d	Refactor modifier trigger counter
+2026-11-07T01:20:25Z	2026-11-07T01:20:25Z	317449df	Keep the timer running while the player is disconnected or is spectating (#674)
+2026-10-28T18:00:02Z	2026-10-28T18:00:02Z	6f7ad5eb	Update SDK, move to clang 22 + C++20, use std and SDK types in plugin code (#671)
+2026-10-28T13:48:33Z	2026-10-28T13:48:33Z	c7e04da2	Ukrainian translation upd. (#670)
+2026-10-24T11:35:53Z	2026-10-24T11:35:53Z	e1365726	Use the right PB
+2026-10-24T10:48:32Z	2026-10-24T10:48:32Z	0d7977e7	Add back race UI
+2026-10-24T10:33:16Z	2026-10-24T10:33:16Z	0bf38021	Temporarily pull the HUD out until workshop is updated
+2026-10-24T09:58:27Z	2026-10-24T09:58:27Z	217b660b	clang-format
+2026-10-24T09:55:50Z	2026-10-24T09:55:50Z	7693a85d	Add race UI
+2026-10-23T15:59:54Z	2026-10-23T15:59:54Z	a593fd0b	Update SDK
+2026-10-23T00:09:46Z	2026-10-23T00:09:46Z	da535d95	Update SDK
+2026-10-23T00:09:37Z	2026-10-23T00:09:37Z	d55b386e	Fix crashes
+2026-10-22T23:13:01Z	2026-10-22T23:13:01Z	aad7d649	Fix signatures
+2026-10-22T19:26:06Z	2026-10-22T19:26:06Z	55ce22d8	Refactor player storage and loops
+2026-10-22T14:52:39Z	2026-10-22T14:52:39Z	d7ae9ff2	Fix multiple crash points on plugin unload/server shutdown
+2026-10-22T14:31:10Z	2026-10-22T14:31:10Z	cee7b7b2	Fix migration issues with multiple servers using the same MySQL database
+2026-10-22T14:14:26Z	2026-10-22T14:14:26Z	3c84f502	Adjust drill detection
+2026-10-22T12:36:55Z	2026-10-22T12:36:55Z	3ed70523	Avoid slashes in phrases
+2026-10-22T12:06:46Z	2026-10-22T12:06:46Z	e8eec505	Remove obsolete define
+2026-10-22T10:46:22Z	2026-10-22T10:46:14Z	1a0ab7f7	Fix subtick spam detector being too sensitive
+2026-10-22T10:46:22Z	2026-10-22T10:12:55Z	9843efee	Fix !hidehud hiding crosshair, make command customizable
+2026-10-22T07:57:44Z	2026-10-22T07:57:44Z	75b7d649	WebSocket refactor (#608)
+2026-10-22T07:02:38Z	2026-10-22T07:02:38Z	dd23ad5e	Switch translations check to use improved kv-lint action instead of local script (#668)
+2026-10-22T06:56:03Z	2026-10-22T06:56:03Z	d4034e0f	Document route progress
+2026-10-22T06:56:03Z	2026-10-22T06:56:03Z	73060c1a	Show route progress in the course HUD
+2026-10-22T06:56:02Z	2026-10-22T06:56:02Z	9eefc897	Add progress service
+2026-10-22T06:56:02Z	2026-10-22T06:56:02Z	1bf9db0a	Follow players along progress routes
+2026-10-22T06:56:01Z	2026-10-22T06:56:01Z	d1a75fe0	Build progress routes from v6 run replays
+2026-10-22T06:56:01Z	2026-10-22T06:56:01Z	da6566bd	Add a replay reader for movement and events only
+2026-10-22T06:56:00Z	2026-10-22T06:56:00Z	2283f85f	Notify listeners when replay files are written or renamed
+2026-10-22T06:56:00Z	2026-10-22T06:56:00Z	e9f45157	Share replay file lookup between replay commands
+2026-10-22T06:55:59Z	2026-10-22T06:55:59Z	b3d6c842	Store replay UUIDs in the record cache
+2026-10-21T22:24:18Z	2026-10-21T22:24:18Z	ea97f121	Fix schema field names after SDK update
+2026-10-21T21:56:01Z	2026-10-21T21:56:01Z	47a286d1	Add !hidehud and deadstrafe indicator, update sdk, clang-format
+2026-10-21T21:07:41Z	2026-10-21T21:07:41Z	4fb36b7c	Centralize docs
+2026-10-21T21:07:11Z	2026-10-21T21:07:11Z	380526d4	Add more InvalidInput detectors
+2026-10-21T21:05:43Z	2026-10-21T21:05:43Z	789afa47	Adjust nulls detection to be more lenient on high FPS
+2026-10-21T19:17:06Z	2026-10-21T19:16:51Z	a54dec3e	Fix jumpstats sometimes not being invalidated by push triggers
+2026-10-21T14:14:49Z	2026-10-21T14:14:49Z	8fdbf602	Keep loaded replay ticks delta-encoded
+2026-10-21T14:13:58Z	2026-10-21T14:13:58Z	2699afce	Initialize landed velocity when decoding v1 replays
+2026-10-21T14:13:35Z	2026-10-21T14:13:35Z	9d81b561	Write long replays one chunk at a time
+2026-10-21T14:12:33Z	2026-10-21T14:12:33Z	20ccc339	Binary search pause ticks when seeking replays
+2026-10-21T14:11:57Z	2026-10-21T14:11:57Z	728a8dfa	Size replay delta buffers exactly
+2026-10-21T14:11:27Z	2026-10-21T14:11:27Z	30bc3769	Store replay subticks packed
+2026-10-21T14:09:51Z	2026-10-21T14:09:51Z	5bacfc23	Read replay files larger than 2 GiB
+2026-10-21T14:09:25Z	2026-10-21T14:09:25Z	c49c4274	Use 64-bit section sizes in v7 replays
+2026-10-21T14:08:33Z	2026-10-21T14:08:33Z	4248219a	Fail replay writes that would produce unreadable sections
+2026-10-21T14:07:42Z	2026-10-21T14:07:42Z	a27680a7	Validate replay section sizes before allocating
+2026-10-20T19:50:06Z	2026-10-20T19:50:06Z	a74c3fca	Fix volume options not working as intended
+2026-10-20T18:43:34Z	2026-10-20T18:43:34Z	7c7d1165	Add all addon assets to repo
+2026-10-20T15:16:23Z	2026-10-20T15:16:23Z	5fe5811f	Fix WriteBufferToFile not respecting return values
+2026-10-20T11:12:45Z	2026-10-20T11:12:45Z	650d76ed	Fix unordered_map use cases
+2026-10-20T07:11:19Z	2026-10-20T07:11:19Z	9e84def0	Fix teleports resulting in incorrect CKZ angle interpolation
+2026-10-20T07:03:36Z	2026-10-20T06:58:34Z	a225d07a	Add external turn bind detection
+2026-10-20T06:58:18Z	2026-10-20T06:58:18Z	10a3f0d6	Speculative fix to !replay not putting players in spectator mode
+2026-10-20T06:56:51Z	2026-10-20T06:56:51Z	5389ce69	Add debug logs to automatic map restart
+2026-10-19T21:44:18Z	2026-10-19T21:44:18Z	25a62b8f	Detect subtick split spam in the air and angle-only subtick move spam
+2026-10-19T21:43:39Z	2026-10-19T21:43:39Z	73f49b24	Record subtick angle deltas for every move in replays
+2026-10-19T21:36:22Z	2026-10-19T21:33:46Z	3f6afa04	Match CUserCmd class names to the game and document its fields and flags
+2026-10-18T20:38:28Z	2026-10-18T20:38:28Z	553f6733	Move plugin code to use std containers (#667)
+2026-10-18T14:29:02Z	2026-10-16T17:05:07Z	8826baf8	Fix timer sound not working in various cases
+2026-10-18T02:38:11Z	2026-10-18T02:38:11Z	48220289	Migrate to s2sdk (#665)
+2026-10-17T04:13:10Z	2026-10-17T04:13:10Z	8b66859a	Swap menus submodule for mm-utils (#666)
+2026-10-16T14:15:04Z	2026-10-16T14:15:04Z	4c278a2d	clang-format
+2026-10-16T14:12:05Z	2026-10-16T14:11:54Z	ef46287c	Fix replay seeking interaction with pause
+2026-10-16T13:28:06Z	2026-10-16T13:28:06Z	13b4584f	Ukrainian translations (#663)
+2026-10-16T13:17:43Z	2026-10-16T13:17:43Z	074771d6	Update Simplified and Traditional Chinese command translations (#662)
+2026-10-16T13:17:03Z	2026-10-16T13:17:03Z	54468d92	Add Simplified and Traditional Chinese help translations (#661)
+2026-10-16T13:16:36Z	2026-10-16T13:16:36Z	32ab6f01	Fixed several typos in the Traditional Chinese (zho) translations. (#660)
+2026-10-16T13:14:24Z	2026-10-16T13:14:24Z	ad2b1d70	Add replay control UI, limit mapping API zone count to 64
+2026-10-15T15:26:07Z	2026-10-15T15:26:07Z	22ba0f25	Use #pragma once in every header
+2026-10-15T12:50:25Z	2026-10-15T12:50:25Z	bbada23e	Fix replay bot view punch never decaying for spectators
+2026-10-15T09:20:00Z	2026-10-15T09:20:00Z	ab012a1e	Improve jump prediction
+2026-10-15T09:00:10Z	2026-10-15T09:00:10Z	538da92b	Improve CKZ 128t prediction on slightly higher ping
+2026-10-15T08:34:52Z	2026-10-15T08:34:52Z	f3e4c438	Update menus
+2026-10-14T02:29:24Z	2026-10-14T02:28:36Z	c796a0dd	Update SQL_MM version requirement
+2026-10-14T02:15:43Z	2026-10-14T02:15:43Z	25f0cfa7	Rewrite event storage mechanism (#659)
+2026-10-11T09:58:33Z	2026-10-11T09:58:33Z	df0abea7	Add categorized !help UI, add missing command descriptions (#652)
+2026-10-11T08:38:28Z	2026-10-11T08:38:28Z	07e97e83	Refactor replay playback to support !rptimescale
+2026-10-09T21:54:37Z	2026-10-09T21:51:06Z	e31eb00f	Update sql_mm
+2026-10-09T21:54:37Z	2026-10-09T21:51:01Z	3df8f1f4	Handle failed mode and style ID queries
+2026-10-09T21:48:20Z	2026-10-07T09:54:11Z	12f59550	Fix several commands putting player names in lowercase
+2026-10-09T21:48:20Z	2026-10-07T09:51:27Z	1fadee76	Fix !spec <player> not working as intended
+2026-10-09T12:28:21Z	2026-10-09T12:28:21Z	19a2ef58	Add Traditional Chinese (zho) translations (#657)
+2026-10-09T12:25:37Z	2026-10-09T12:25:37Z	edef4b12	Ukrainian translations (#656)
+2026-10-08T11:29:12Z	2026-10-08T11:29:12Z	3848adea	Add missing Simplified Chinese translations (#655)
+2026-10-05T20:48:59Z	2026-10-05T20:48:59Z	17fe3e1b	Fix racing conditions with preferences, fix showPanel not being saved
+2026-10-05T10:59:09Z	2026-10-05T10:59:09Z	1c78d05b	Move HUD and menu intousing a dedicated UI service
+2026-10-05T08:30:53Z	2026-10-05T08:30:53Z	442e727b	Migrate replay uploads to http instead of websocket, remove binary websocket messages (#641)
+2026-10-05T08:30:28Z	2026-10-05T08:30:28Z	f4f35286	Add X/Y distances to measurement results (#653)
+2026-10-04T06:10:36Z	2026-10-04T06:10:36Z	75d39c0c	Russian translations (#654)
+2026-10-04T05:56:05Z	2026-10-04T05:56:05Z	19aaaec9	Add CLA
+2026-10-04T05:07:19Z	2026-10-04T05:07:19Z	d133dd72	clang-format
+2026-10-04T05:00:47Z	2026-10-04T05:00:47Z	8515e1e5	Rewrite rampbug fix
+2026-10-04T04:59:08Z	2026-10-04T04:59:08Z	1ef96250	Fix GetBBoxBounds not respecting offsets if ducked
+2026-10-04T04:39:57Z	2026-10-04T04:39:57Z	37160788	Fix triggerfix edge case
+2026-10-03T18:36:30Z	2026-10-03T18:36:30Z	2a2b88e1	Speculative crash fixes
+2026-10-03T07:44:18Z	2026-10-03T07:44:18Z	82d8c887	Make blur scale with opacity
+2026-10-03T07:33:00Z	2026-10-03T07:33:00Z	bf5ec7b4	Remove useless hidehud option, fix hidehud not working in some spectator modes, update hidehud descriptions
+2026-10-02T18:40:11Z	2026-10-02T18:40:11Z	9bc2abc5	Add left/right deviation info, add compact mode for jumpstat HUD
+2026-10-01T03:01:13Z	2026-10-01T03:01:13Z	ed63ee85	Ukrainian translations (#649)
+2026-09-30T05:05:30Z	2026-09-30T05:05:30Z	d66e9b28	Fix course overlay pills and order popup overlapping
+2026-09-30T03:28:02Z	2026-09-30T03:28:02Z	d11be629	Add an option to count jump presses on the keys element
+2026-09-30T03:27:21Z	2026-09-30T03:27:21Z	d7da280c	Refill the global record caches when the map info arrives
+2026-09-30T03:26:17Z	2026-09-30T03:26:17Z	21f7176d	Add an option for how long the jumpstats panel stays up
+2026-09-30T03:25:39Z	2026-09-30T03:25:39Z	ceb65a22	Add an option to stack the jumpstats history below the panel
+2026-09-29T14:48:17Z	2026-09-29T14:44:46Z	4218174e	Give the jumpstats HUD panel its own minimum tier
+2026-09-29T14:48:17Z	2026-09-29T14:43:38Z	f2afb480	Keep options menu rows one line tall whatever the value length
+2026-09-29T14:48:17Z	2026-09-29T14:43:11Z	eee2423b	Reorder jumpstats fields with move buttons in a new order popup
+2026-09-29T14:48:17Z	2026-09-29T14:42:02Z	a613b185	Split the jumpstats and course panel opacity into text and background
+2026-09-29T14:48:17Z	2026-09-29T14:41:13Z	87814873	Anchor the course panel at its top edge
+2026-09-29T07:00:50Z	2026-09-29T07:00:50Z	58e52764	UA translations (#647)
+2026-09-29T06:59:45Z	2026-09-29T06:59:45Z	dd8c609f	Fix replay archive index not working properly
+2026-09-29T06:11:01Z	2026-09-29T06:11:01Z	32c1189f	Add a W release HUD element
+2026-09-29T06:10:19Z	2026-09-29T06:10:19Z	fe37d189	Show zone progress on the course panel
+2026-09-29T06:09:14Z	2026-09-29T06:09:14Z	fba4ba90	Show a pill on the course panel for every zone reached
+2026-09-29T06:07:56Z	2026-09-29T06:07:56Z	d4504222	Add a course panel with the map, course and its records
+2026-09-29T06:06:44Z	2026-09-29T06:06:44Z	1aaef08f	Share the jumpstats history pills with other panels
+2026-09-29T06:06:05Z	2026-09-29T06:06:05Z	fb8935c7	Keep the record holders' names in the record caches
+2026-09-29T06:05:00Z	2026-09-29T06:05:00Z	402e3977	Let players reorder the jumpstats fields
+2026-09-29T06:03:53Z	2026-09-29T06:03:53Z	36ffa097	Let a menu choice list react to opening and closing
+2026-09-29T06:03:15Z	2026-09-29T06:03:15Z	4f41390c	Share the jumpstats fields between the chat report and the HUD panel
+2026-09-29T05:22:38Z	2026-09-29T05:22:38Z	c59c5719	Print the !fonts console help one line at a time
+2026-09-29T02:13:25Z	2026-09-28T22:44:45Z	1e4df109	Make the jumpstats panel an MHUD element
+2026-09-29T02:13:25Z	2026-09-28T22:44:44Z	679591ee	Match the jumpstats HUD's colors to the chat
+2026-09-29T02:13:25Z	2026-09-28T22:43:29Z	c7e0585e	Resize MHUD elements by dragging their corners
+2026-09-29T02:13:24Z	2026-09-28T22:42:16Z	5d6edba6	Add MHUD edit mode to move elements with the mouse
+2026-09-28T22:42:15Z	2026-09-28T22:42:15Z	487193bb	Let a menu position item hand its value to another editor
+2026-09-28T22:42:15Z	2026-09-28T22:42:15Z	20f3b7c4	Keep MHUD positions within the screen
+2026-09-28T22:42:00Z	2026-09-28T22:42:00Z	e16bb7ff	Store MHUD positions in tenths of a percent
+2026-09-28T22:37:45Z	2026-09-28T22:37:45Z	9b9ec876	Add SDK fields for view angle changes, weapon attack times and locked cameras
+2026-09-28T22:37:44Z	2026-09-28T22:37:44Z	304e5fb7	Hide the MHUD while the scoreboard or the end of match screen is up
+2026-09-28T22:37:44Z	2026-09-28T22:37:44Z	c0f41906	Let the options menu's category column scroll
+2026-09-28T22:36:08Z	2026-09-28T22:36:08Z	90cfaaac	Stop the client from localizing custom HUD dialog variables
+2026-09-28T21:58:33Z	2026-09-28T21:58:33Z	758bb7b3	Added Jumpstats sidepanel from MH… (#646)
+2026-09-28T01:50:41Z	2026-09-28T01:50:41Z	54fefe92	Ukrainian translations (#643)
+2026-09-25T13:46:01Z	2026-09-25T13:46:01Z	c9c82a43	Improve timer zone detection, timer zones can now be rotated
+2026-09-25T12:43:25Z	2026-09-25T12:43:25Z	0c057c82	Fix crash on exit
+2026-09-25T11:12:13Z	2026-09-25T11:12:13Z	db2d6a4d	Fix `!end <course>` ignoring the course
+2026-09-25T11:05:11Z	2026-09-25T11:05:11Z	778b0610	Fix exported fov preference bypassing server limit
+2026-09-25T11:00:24Z	2026-09-25T11:00:24Z	0de469be	Fix `!language` incorrectly forcing client reconnects, add command usage phrase to `!language`
+2026-09-25T10:56:37Z	2026-09-25T10:56:37Z	dda25dff	Fix styles disabling anticheat cvar checks
+2026-09-25T10:53:19Z	2026-09-25T10:53:19Z	1e10ff55	Fix reverse bug distance estimation being off
+2026-09-25T10:48:20Z	2026-09-25T10:48:20Z	67fce546	Remove virtual crosshair, improve !hideweapon
+2026-09-25T08:07:55Z	2026-09-25T08:07:55Z	2bb09a27	Add hidehud support
+2026-09-25T03:56:03Z	2026-09-25T03:56:03Z	229e34c9	Increase nulls and desubtick ban duration; add new option for kz_ac_autokick
+2026-09-25T03:42:49Z	2026-09-25T03:42:49Z	c3b187b8	Update CNetworkVarChainer
+2026-09-24T17:33:03Z	2026-09-24T17:33:03Z	cab9b5e2	Fix clantags not showing or having double brackets
+2026-09-24T15:11:50Z	2026-09-24T03:43:52Z	dee0b0a1	Update sql_mm deps
+2026-09-24T10:35:15Z	2026-09-24T10:35:15Z	1c2b1758	fix(gamedata): SnapViewAngles (#640)
+2026-09-24T03:43:24Z	2026-09-24T03:43:24Z	5efbee88	Fix fgd breakage
+2026-09-24T03:39:34Z	2026-09-24T03:39:34Z	cb827285	More crosshair refactors
+2026-09-23T19:24:37Z	2026-09-23T19:24:37Z	250c9e40	Refactor virtual crosshair
+2026-09-23T16:08:34Z	2026-09-23T16:08:34Z	212e6492	clang-format
+2026-09-23T16:07:05Z	2026-09-23T16:07:05Z	f0556c50	Add MySQL database health check
+2026-09-23T15:59:50Z	2026-09-23T15:59:50Z	2a81023b	Make sure to stop loading if signatures fail
+2026-09-23T15:33:31Z	2026-09-23T15:33:31Z	a31501db	Fix offsets
+2026-09-23T14:08:59Z	2026-09-23T14:08:59Z	f5e8413c	update sdk
+2026-09-23T05:17:23Z	2026-09-23T05:17:23Z	20e376c2	Update sigs
+2026-09-23T01:47:50Z	2026-09-23T01:47:50Z	588ddd1e	Fix menu items not being correctly greyed out
+2026-09-19T03:59:03Z	2026-09-19T03:59:03Z	ee5ba00b	clang-format, fix ranked course warnings
+2026-09-19T03:55:13Z	2026-09-19T03:55:13Z	075444ca	Fix more inconsistencies with broadcast sounds and console output
+2026-09-19T03:52:10Z	2026-09-19T03:52:10Z	0fe8ba7e	Fix split and stage zones not being saved/initialized correctly
+2026-09-19T03:50:01Z	2026-09-19T03:50:01Z	8b401483	Fix edge cases with large split counts
+2026-09-19T03:41:12Z	2026-09-19T03:41:12Z	ae196edb	Fix mode/style plugin unloading not bypassing safeguard
+2026-09-19T03:39:19Z	2026-09-19T03:39:19Z	dcbb571e	Fix default styles overriding player preferences
+2026-09-19T03:36:02Z	2026-09-19T03:36:02Z	9d9c6b0a	Fix paint preferences not saving properly, make max paint size bounded
+2026-09-19T03:25:53Z	2026-09-19T03:25:53Z	045cff37	Implement run submission handling, add event broadcasting to public interface
+2026-09-19T03:11:19Z	2026-09-19T03:11:19Z	6db474b3	Fix spammy console with autokick off, set autokick to true by default, fix cheater jumpstats still being broadcasted, increase punishment on invalid input players
+2026-09-19T02:53:30Z	2026-09-19T02:53:30Z	16a6501e	Update chinese translations (#634)
+2026-09-18T08:51:22Z	2026-09-18T08:51:22Z	aae40a7f	Fix stale PB cache, update SDK
+2026-09-17T09:13:23Z	2026-09-17T09:13:23Z	c588489c	Fix speed HUD using the wrong player's style while spectating, fix  both legacy and layout HUDs being rendered while spectating, update SDK
+2026-09-14T20:52:34Z	2026-09-14T20:52:34Z	e5437ff6	Ukrainian translations (#629)
+2026-09-14T20:26:49Z	2026-09-14T20:26:49Z	de762584	Only reset clantags cs2kz set (#628)
+2026-09-13T20:39:03Z	2026-09-13T20:39:03Z	7d0ef46b	Fix crash on map change
+2026-09-13T19:21:13Z	2026-09-13T19:21:13Z	7aeaa72e	Add generic border to speed and prespeed, add crosshair subtext, add text indicators, add checkpoint teleport colors
+2026-09-11T22:00:41Z	2026-09-11T22:00:41Z	ebb50d2e	Add more subtexts to the menu, add 'always' prespeed display mode
+2026-09-11T21:59:55Z	2026-09-11T21:59:55Z	e77912d4	Fix wrapping issue with font selection
+2026-09-11T18:50:19Z	2026-09-11T18:50:19Z	d42d7881	Fix !fonts response, revamp gamedata to use KHook properly
+2026-09-11T13:32:58Z	2026-09-11T13:32:58Z	80c6a0f9	Remove box outline, that never worked
+2026-09-11T11:24:02Z	2026-09-11T11:24:02Z	de6ca74b	More HUD preferences and menu fixes
+2026-09-11T04:54:27Z	2026-09-11T04:54:27Z	5acb143d	Fix chat breakage
+2026-09-10T13:42:50Z	2026-09-10T13:42:50Z	c53844b4	KHook migration (#617)
+2026-09-10T03:11:11Z	2026-09-10T03:09:53Z	fe99c6ed	Add more color preferences to speed/prespeed
+2026-09-09T18:18:22Z	2026-09-09T18:18:22Z	bcc99f88	Fix outline option not affecting keys
+2026-09-08T02:16:58Z	2026-09-08T02:16:58Z	8b13a300	Fix linux build
+2026-09-07T21:46:36Z	2026-09-07T21:46:36Z	2db1f2da	Various HUD related changes
+2026-09-07T17:49:48Z	2026-09-07T17:49:48Z	274f5c62	Make nulls detection more aggressive on fake controller users, use mean-based threshold lerping instead of median
+2026-09-06T18:56:25Z	2026-09-06T18:56:25Z	1094be15	Don't gate AC debug cvar behind a sv_cheats
+2026-09-06T02:07:40Z	2026-09-06T01:59:38Z	4c11294f	Automatically detect local layout-based installation, fix key container not respecting text size
+2026-09-06T01:58:54Z	2026-09-05T20:27:52Z	19bedbef	Fix CKZ fake perfs nuking prekeep
+2026-09-05T20:15:07Z	2026-09-05T18:57:24Z	1221c3e7	css fix for 4:3 aspect ratio
+2026-09-05T19:15:23Z	2026-09-05T19:15:23Z	fb09f741	Ukrainian translations (#615)
+2026-09-05T16:35:50Z	2026-09-05T16:35:50Z	5d3ef87e	Rephrase decimal line
+2026-09-05T16:31:43Z	2026-09-05T16:31:43Z	228ef255	Add opacity control for HUD elements, add background toggle for keypresses, update crosshair settings
+2026-09-05T16:07:23Z	2026-09-05T16:00:27Z	6fffcd8d	Fix menu popups for 4:3 aspect ratio
+2026-09-05T16:07:23Z	2026-09-05T04:19:01Z	6837a30a	Add option to disable prespeed when walking off, add decimal places for speed and parentheses for prespeed
+2026-09-05T16:04:51Z	2026-09-05T16:04:51Z	f1deee90	Ukrainian translation upd. (#614)
+2026-09-05T03:35:30Z	2026-09-05T03:35:30Z	765b5afb	Remove unnecessary comment
+2026-09-05T03:32:30Z	2026-09-05T03:32:30Z	30c3650d	Add key display options, decouple failstat channels
+2026-09-04T20:33:36Z	2026-09-04T20:23:53Z	725477b3	Fix typing inconsistency
+2026-09-04T20:27:47Z	2026-09-04T20:27:47Z	000b4b17	Update Chinese translations (#613)
+2026-09-04T03:51:56Z	2026-09-04T03:51:56Z	bde8b06b	Take advantage of layout-based HUD, remove ClientCvarValue dependency (#611)
+2026-09-03T17:39:31Z	2026-09-03T17:39:31Z	ca7503a0	Fix null detection causing false positives
+2026-09-03T17:14:07Z	2026-09-03T17:14:07Z	1813d3d9	Fix null netchannel crashing the server, don't run anticheat on bots
+2026-09-02T20:30:25Z	2026-09-02T20:30:25Z	446f982b	Fix !rpsave causing crashes with invalid durations
+2026-09-02T03:02:46Z	2026-09-02T03:02:46Z	6783af87	clang-format
+2026-09-01T15:46:02Z	2026-09-01T15:46:02Z	53de3f79	Remove cooldown restrictions on preference commands
+2026-09-01T15:34:21Z	2026-09-01T15:06:40Z	c671c1f7	Fix local-DB !replay not checking for database status
+2026-09-01T13:45:08Z	2026-09-01T13:45:08Z	b05f4936	Revamp nulls and desubtick detection
+2026-08-30T21:38:39Z	2026-08-30T21:38:39Z	6ce1273d	And max speed to pause, restore stamina and duck stuff upon unpausing (#610)
+2026-08-29T18:11:31Z	2026-08-29T18:10:45Z	fda30691	Fix mode cvars not applying in time
+2026-08-29T14:01:58Z	2026-08-29T14:01:08Z	d7b6fec9	Fix analog binds triggering false bans
+2026-08-24T19:45:09Z	2026-08-24T19:45:09Z	0274635b	Delete orphaned replay chunks
+2026-08-22T14:32:23Z	2026-08-22T14:32:23Z	34eb3870	clang-format
+2026-08-22T14:03:39Z	2026-08-22T14:03:39Z	dc934214	Various cleanup and fixes
+2026-08-22T13:25:39Z	2026-08-22T13:25:39Z	be3c6a56	Remove memory tracker
+2026-08-22T01:21:08Z	2026-08-22T01:21:08Z	1fdb2beb	Make a few commands more spammable, reduce command cooldown
+2026-08-22T00:09:36Z	2026-08-22T00:09:36Z	2fe6bfd6	clang-format
+2026-08-22T00:08:07Z	2026-08-22T00:08:07Z	3796f647	Reduce memory allocation calls
+2026-08-21T21:51:43Z	2026-08-21T21:51:43Z	81f5fddd	Correct leak report and call sites
+2026-08-21T02:42:30Z	2026-08-21T02:42:30Z	02816a2f	clang-format
+2026-08-21T02:36:37Z	2026-08-21T02:36:37Z	4601887a	Make null detection more trigger friendly
+2026-08-20T21:21:14Z	2026-08-20T21:21:14Z	14efe663	Fix player commands getting blocked indefinitely
+2026-08-20T02:09:34Z	2026-08-20T02:09:34Z	858020f9	Add spam prevention to commands and chat
+2026-08-18T19:21:50Z	2026-08-18T19:21:50Z	a37bba29	Add styles to cs2kz interface
+2026-08-18T19:09:54Z	2026-08-18T19:09:54Z	106a1882	Fix kz_showplayerclips 1 on linux listen server
+2026-08-18T16:01:24Z	2026-08-18T16:01:24Z	7661ba8f	bump sdk (#607)
+2026-08-18T01:50:07Z	2026-08-18T01:50:07Z	c6adea2a	Update public interface KZMovementState + replay bots interaction
+2026-08-17T20:17:32Z	2026-08-17T20:14:12Z	1ba26b23	Add experimental vibe coded kz_meminfo
+2026-08-16T17:54:53Z	2026-08-16T17:54:53Z	5f3f3a56	Remove duplicate public header file
+2026-08-16T15:44:26Z	2026-08-16T15:44:26Z	f063b6d7	Stop slower global records overwriting cached PBs/WRs
+2026-08-16T14:46:37Z	2026-08-16T14:46:37Z	cf2ca29e	Fix KZTimerStatus default values
+2026-08-16T10:31:51Z	2026-08-16T10:31:51Z	6eb4a93b	Add server kz_globalcheck
+2026-08-16T10:19:16Z	2026-08-16T10:19:16Z	d10a1893	Fix runs being submitted under stale map info after API reconnect
+2026-08-16T02:11:18Z	2026-08-16T02:11:18Z	54920eda	Add public metamod interface for CS2KZ for external plugins, refactor anticheat ban event, add clan tag/chat tag override support
+2026-08-15T20:31:11Z	2026-08-15T20:29:57Z	cde9c85f	Fix unranked course warning not being shown correctly
+2026-08-15T15:55:28Z	2026-08-15T15:55:28Z	51d63b2a	clang-format
+2026-08-14T06:40:30Z	2026-08-14T06:40:30Z	547dd920	Revamp anticheat logging, fix kicks sometimes not being handled if the database is not available at the wrong time
+2026-08-12T23:55:05Z	2026-08-12T23:55:05Z	296935d6	Remove debug print
+2026-08-12T21:21:29Z	2026-08-12T21:21:24Z	5d8c1d43	Add kz_reload_config for server operators
+2026-08-12T21:07:08Z	2026-08-12T21:07:08Z	20696995	Improve mapping API teleports
+2026-08-12T08:03:58Z	2026-08-12T08:03:58Z	d252a073	Print map name to chat on course finish, fix 00:00:00 time being printed in chat if no pb is found
+2026-08-12T00:35:14Z	2026-08-12T00:35:14Z	48322a8d	Fix !spec @me not working as intended
+2026-08-12T00:18:56Z	2026-08-12T00:18:56Z	b88d5140	Fix subtick spam detection being too lenient
+2026-08-11T23:36:20Z	2026-08-11T23:36:20Z	e2e2c68c	Fix bots being given c4s despite not being able to hold it
+2026-08-06T01:32:33Z	2026-08-06T01:32:33Z	be7e3122	Improve performance of trigger and HUD services
+2026-08-05T20:13:40Z	2026-08-05T20:13:40Z	cd92acf5	Add back noexecstack for linux builds
+2026-08-02T16:03:00Z	2026-08-02T16:03:00Z	7bf63fd1	Reduce replay watcher CPU usage (#601)
+2026-08-02T16:01:49Z	2026-08-02T16:01:49Z	f75002b2	Add logs of kicks for audit purposes
+2026-08-02T15:57:37Z	2026-08-02T15:57:37Z	d429c9f6	Massively reduce all ban durations
+2026-08-02T15:57:05Z	2026-08-02T15:57:05Z	9eeb3915	Fix fps_max 1e+20 falsely banning players
+2026-07-30T22:10:41Z	2026-07-30T22:10:41Z	531b3d13	Global bans not a thing yet
+2026-07-26T20:31:04Z	2026-07-26T20:31:04Z	3e42a017	Remove obsolete mbedtls
+2026-07-26T20:23:38Z	2026-07-26T20:23:38Z	ecb5eecd	Update SDK
+2026-07-26T16:48:33Z	2026-07-26T16:48:33Z	71343e5f	Update SDK, fix kz_showclipbrushes crashes
+2026-07-25T23:11:54Z	2026-07-25T23:11:54Z	8a6138eb	Fix stupid crash
+2026-07-25T15:51:01Z	2026-07-25T15:51:01Z	6e9bb40e	Update libs
+2026-07-25T15:29:23Z	2026-07-25T15:29:23Z	39e5d57d	Fix windows build (again)
+2026-07-25T09:37:59Z	2026-07-25T09:36:48Z	616004cc	Fix windows build
+2026-07-24T19:39:41Z	2026-07-24T19:39:41Z	816e841c	openssl > mbedtls
+2026-07-24T18:05:12Z	2026-07-24T18:05:12Z	591eee2a	Update SDK
+2026-07-21T20:11:49Z	2026-07-21T20:11:49Z	76ec9f27	Rebuild libs, fix double websocket init
+2026-07-21T00:53:38Z	2026-07-21T00:53:38Z	4cd7b19e	Fix skilled color (for real)
+2026-07-20T23:54:24Z	2026-07-20T23:54:24Z	f3bb6437	Fix KeyValues leak
+2026-07-20T19:50:39Z	2026-07-20T19:50:39Z	ad8fcf86	Guard SteamGameServer behind -dedicated check
+2026-07-20T16:30:00Z	2026-07-20T16:30:00Z	6c108610	Update MM:S
+2026-07-20T15:39:52Z	2026-07-20T15:34:08Z	51246fc8	Fix KZSpecService::SpectatePlayer return type
+2026-07-20T15:39:51Z	2026-07-20T10:09:59Z	4d398c51	Fix linux crash on exit
+2026-07-20T15:39:10Z	2026-07-19T12:08:13Z	be9a569b	Update SDK
+2026-07-19T00:07:54Z	2026-07-19T00:07:54Z	e0d0140d	Fix -flto not playing nicely with static libs
+2026-07-19T00:04:37Z	2026-07-19T00:04:37Z	e03efbdc	Add kz_profile_clantag_enable (#597)
+2026-07-17T23:24:04Z	2026-07-17T23:22:04Z	8a385053	symlinks no longer necessary
+2026-07-17T23:23:44Z	2026-07-17T23:21:00Z	5f1f81fd	Fix Skilled ranks using player team's colors in chat
+2026-07-16T20:02:38Z	2026-07-16T20:02:38Z	a8e99af7	Fix CKZ prekeep persisting after speed reset through teleports and max pre persisting for longer than intended
+2026-07-16T18:21:34Z	2026-07-16T18:21:34Z	ec3e788d	Fix DB SetupMap issue (#596)
+2026-07-15T19:55:08Z	2026-07-15T19:55:08Z	394b451d	Do not request rating from API if server is not global
+2026-07-15T18:51:51Z	2026-07-15T18:51:51Z	8905951c	Late update prime status to API (#594)
+2026-07-15T17:35:56Z	2026-07-15T17:35:56Z	abe87bc2	Only generate UUID when necessary (#595)
+2026-07-15T16:04:44Z	2026-07-15T16:04:44Z	ee29b665	Add missing Korean (ko) translations (#585)
+2026-07-12T18:26:07Z	2026-07-12T18:26:07Z	449fd83b	Fix prime detection
+2026-07-12T15:58:13Z	2026-07-12T15:58:13Z	3313c62e	Fix TLS issues on windows (#593)
+2026-07-10T09:21:11Z	2026-07-10T09:21:11Z	f434b2a3	Fix contributing file name
+2026-07-10T09:03:07Z	2026-07-10T09:03:07Z	a4fe40b6	Fix plugin submitting runs of non prime players
+2026-07-10T04:51:07Z	2026-07-10T04:51:07Z	c759678b	Various fixes, updates, improvements (#587)
+2026-07-10T04:49:42Z	2026-07-10T04:49:42Z	b7e429c4	Update cs2kz-core.games.txt (#591)
+2026-07-09T20:37:47Z	2026-07-09T20:37:47Z	15288cc0	Fix !cleardecals breaking MHUD
+2026-07-09T20:20:50Z	2026-07-09T20:20:50Z	e9d5d403	Fix scoreboard showing everyone the same rating
+2026-07-09T20:15:27Z	2026-07-09T20:15:27Z	dc416cfd	Fix drawing player clips
+2026-07-09T20:12:59Z	2026-07-09T20:12:59Z	674d9fec	Fix !pistol issues
+2026-07-09T20:11:45Z	2026-07-09T20:11:45Z	3360ccb4	Fix PassesTriggerFilters offset
+2026-07-09T16:26:44Z	2026-07-09T16:26:44Z	47c7cef7	Fix early disconnects not uploading global replays
+2026-07-09T15:25:20Z	2026-07-09T15:25:20Z	9bdf6435	Fix linux sigs
+2026-07-09T14:15:14Z	2026-07-09T14:15:14Z	6677e39b	Update SDK, fix breakage from latest CS2 update
+2026-06-28T07:50:05Z	2026-06-28T07:50:05Z	2c4e0296	Update cs2menus for abi changes (ver 3) (#586)
+2026-06-28T07:48:44Z	2026-06-28T07:48:44Z	ac4260a9	Apply unduck until duck button is released
+2026-06-23T17:15:51Z	2026-06-23T17:15:51Z	e1fc6e8c	Init menu support (#584)
+2026-06-19T02:43:05Z	2026-06-19T02:42:56Z	cec6ff0b	Add spanish addon
+2026-06-17T12:33:56Z	2026-06-17T12:33:56Z	5e719b10	Add timer_stop, timer_end to map overlay events
+2026-06-17T05:46:16Z	2026-06-17T05:46:16Z	34e6dfbf	Ukrainian translations (#583)
+2026-06-16T23:02:42Z	2026-06-16T23:02:42Z	fefc2b9c	Add auto unduck style
+2026-06-16T16:40:55Z	2026-06-16T16:40:55Z	3db94387	Russian translations (#581)
+2026-06-16T16:40:35Z	2026-06-16T16:40:35Z	5b2ceeff	Spanish translation updates (#491)
+2026-06-16T14:58:39Z	2026-06-16T14:58:39Z	40cb1170	Update chinese translations (#582)
+2026-06-16T01:12:09Z	2026-06-16T01:11:54Z	2041cc51	Add map overlay helper, fix phrases, update SDK
+2026-06-11T11:09:39Z	2026-06-11T11:09:34Z	00fdceca	Add font and outline preference to MHUD
+2026-06-11T02:53:08Z	2026-06-11T02:53:08Z	2eda1ca7	Fix CJ color preference not working
+2026-06-10T21:03:36Z	2026-06-10T21:03:36Z	37282265	Speculative fix to style inconsistency in replays
+2026-06-10T21:02:30Z	2026-06-10T21:02:30Z	4fce0b6f	Change mode to VNL on mode change
+2026-06-10T20:56:42Z	2026-06-10T20:56:03Z	e74167fa	Fix LAJ on diagonal ladders registering
+2026-06-08T20:10:21Z	2026-06-08T20:10:21Z	8fecb560	Chinese translations (#576)
+2026-06-07T22:31:04Z	2026-06-07T22:31:04Z	d6a53e74	Fix padding inconsistencies, fix compile issues
+2026-06-07T19:27:08Z	2026-06-07T19:27:08Z	e3299fc0	Add mouse and strafe key graph, add landing edge stat, update AACall struct
+2026-06-07T00:53:27Z	2026-06-07T00:53:27Z	7919f994	Fix cflags, ignore more warnings
+2026-06-07T00:52:52Z	2026-06-07T00:52:52Z	8a4ee82b	Fix recordNonGlobalRuns not saving runs correctly
+2026-06-07T00:52:41Z	2026-06-07T00:52:41Z	4349918c	Ignore even more warnings
+2026-06-06T02:56:27Z	2026-06-06T02:56:27Z	5d39a24f	Add styles to replays, sort run replays by time, prefer exact map match
+2026-06-05T13:50:00Z	2026-06-05T13:50:00Z	ebe9f6f2	Russian translation upd. (#571)
+2026-06-01T23:23:26Z	2026-06-01T23:23:26Z	2303b6fc	Fix compile errors
+2026-06-01T21:13:26Z	2026-06-01T21:13:26Z	c70b8902	fix duplicate coursetop entries (#569)
+2026-06-01T21:11:12Z	2026-06-01T21:11:12Z	4421c7c7	Speculative for MHUD panel bouncing on player preference loads
+2026-06-01T21:01:19Z	2026-06-01T21:01:19Z	dbbf02f4	Force weapon update on player respawn
+2026-06-01T20:59:46Z	2026-06-01T20:59:46Z	62c8ab47	Fix HTTP body not being properly null terminated
+2026-06-01T15:58:56Z	2026-06-01T15:58:56Z	e5a4e7da	Refactor custom start position
+2026-06-01T15:43:19Z	2026-06-01T15:43:19Z	a4905dc6	Fix CKZ sending players flying while paused
+2026-05-29T19:30:00Z	2026-05-29T19:30:00Z	7401210f	Ukrainian translations (#567)
+2026-05-29T19:29:11Z	2026-05-29T19:29:11Z	7c952e46	Fix global run submission logic
+2026-05-29T19:27:25Z	2026-05-29T19:27:25Z	cf92d011	Fix MHUD still persisting when spectating
+2026-05-29T16:51:01Z	2026-05-29T16:51:01Z	3f2949da	Fix compile errors
+2026-05-29T16:40:25Z	2026-05-29T16:40:25Z	3c2bc6f0	Add particle-based HUD support, cleanup compact code logic
+2026-05-25T22:54:56Z	2026-05-25T22:54:56Z	2d5cc4b6	Ukrainian translations (#565)
+2026-05-25T20:09:41Z	2026-05-25T20:09:41Z	216f60f0	Fix !mapinfo returning bogus for unranked courses
+2026-05-25T20:00:15Z	2026-05-25T20:00:15Z	48cd6bbc	Add debug logs to HTTP requests
+2026-05-25T19:49:49Z	2026-05-25T19:49:49Z	f2355c33	Fix preferences being reloaded on API reconnection
+2026-05-24T14:29:28Z	2026-05-24T14:29:28Z	4eb87f0c	Fix compile issues
+2026-05-23T16:19:46Z	2026-05-23T16:19:46Z	6549260d	Add zone stopwatch service
+2026-05-23T14:17:40Z	2026-05-23T14:17:40Z	96484280	Second attempt to fix !hideweapon not working correctly
+2026-05-23T14:04:53Z	2026-05-23T14:04:53Z	f7b33292	Revert "Attempt to fix player switching to pistol when !hideweapon is active"
+2026-05-23T12:13:36Z	2026-05-23T12:13:36Z	a0eedcbb	Add configuration to disable recording for non-global runs, update maximum replay limits to allow zero as a valid option
+2026-05-23T11:16:07Z	2026-05-23T11:16:07Z	646a92f7	Add incremental disk flushing for replay recordings
+2026-05-22T23:22:06Z	2026-05-22T23:22:06Z	23fd0676	Refactor subtick data handling to use dynamic storage and support for maximum moves
+2026-05-22T16:02:23Z	2026-05-22T16:02:23Z	944a591e	Refactor GetCvarValueFromModeStyles to use direct cvar access
+2026-05-22T15:54:52Z	2026-05-22T15:54:52Z	0047b271	Use persistent buffer for null checker
+2026-05-22T15:54:16Z	2026-05-22T15:54:16Z	5e5e36df	Add cache to localization
+2026-05-22T12:11:30Z	2026-05-22T12:11:30Z	adb22973	Add more logs, revisit helloack handling
+2026-05-22T12:04:52Z	2026-05-22T12:04:52Z	6e235105	Attempt to fix player switching to pistol when !hideweapon is active
+2026-05-22T11:55:27Z	2026-05-22T11:55:27Z	e098a45f	Fix more global checksum issues
+2026-05-22T01:24:07Z	2026-05-22T00:37:18Z	29c5c24c	Fix players being able to jumpbug on slide triggers
+2026-05-21T07:29:13Z	2026-05-21T07:29:13Z	a372dd88	Fix push trigger cleanup logic, improve GetGameEntitySystem performance
+2026-05-20T01:25:30Z	2026-05-20T01:25:30Z	5556192f	Add CONTRIBUTING.md with example setup for Windows (#563)
+2026-05-19T08:48:30Z	2026-05-19T08:48:30Z	c3ca4075	update chinese translations (#562)
+2026-05-19T06:18:48Z	2026-05-19T06:18:48Z	aca82fc5	Update cs2kz-core.games.txt
+2026-05-17T23:45:04Z	2026-05-17T23:45:04Z	0c00f747	Fix PBData not being correctly initialized
+2026-05-17T23:44:41Z	2026-05-17T23:44:41Z	e05bfa8e	Fix InsertPBToCache not working correctly for pro runs
+2026-05-17T23:31:10Z	2026-05-17T23:31:10Z	b912a36e	Fix push trigger not respecting filters
+2026-05-17T23:29:37Z	2026-05-17T23:29:37Z	4489b0d7	Allow checkpoints while noclipped or while in anti cp area if timer is off
+2026-05-17T23:20:07Z	2026-05-17T23:20:07Z	2bd73234	Fix !hideweapon sending players off
+2026-05-17T20:39:56Z	2026-05-17T20:39:56Z	5faa0e5b	Fix global checksum validation
+2026-05-15T09:38:56Z	2026-05-15T09:38:56Z	e4b714b8	Overhaul CS2KZ logging, update sdk (#544)
+2026-05-15T08:03:03Z	2026-05-15T08:03:03Z	3d7deaf0	Update cs2kz-core.games.txt (#561)
+2026-05-13T17:33:42Z	2026-05-13T17:33:42Z	76db7e68	Add website tip on join (#560)
+2026-05-13T17:33:06Z	2026-05-13T17:33:06Z	a8ff4c54	Russian translation upd. (#559)
+2026-05-12T17:08:13Z	2026-05-12T17:08:13Z	4630d94b	Force LF endings, update steamentworkingsockets.h formatting
+2026-05-11T21:20:28Z	2026-05-11T21:20:28Z	cffd607c	Ukrainian translation upd. — global replays (#558)
+2026-05-11T20:32:46Z	2026-05-11T20:32:46Z	e1f1a079	Add global replays support, refactor run submissions (#556)
+2026-05-11T11:23:36Z	2026-05-11T11:23:36Z	7fbd5b09	Ukrainian translation upd. (#557)
+2026-05-11T08:26:06Z	2026-05-11T08:26:06Z	793c2fc4	Speculative fix on server submitting times for incorrect map
+2026-05-11T08:25:29Z	2026-05-11T08:25:29Z	5dd3f8de	Add !safe to prevent runs from getting poofed, update sdk
+2026-05-09T14:14:32Z	2026-05-09T14:14:32Z	1e9578e0	Fix tpsound pref not persisting, respect tp/cpsound in error sounds (#553)
+2026-05-09T03:02:46Z	2026-05-09T03:02:46Z	16a1f8b2	Fix model issues with older replays
+2026-05-09T01:08:05Z	2026-05-09T01:08:05Z	1d864f9b	Replace harmful strncpy
+2026-05-02T22:45:01Z	2026-05-02T22:45:01Z	4467b7a3	Adjust punishment for invalid inputs
+2026-05-02T22:41:57Z	2026-05-02T22:41:57Z	4cdb6742	Harden subtick abuse checks
+2026-05-02T15:14:52Z	2026-05-02T15:14:52Z	6de72966	Fix VerifyCommand invalidating incorrect commands
+2026-04-30T23:54:19Z	2026-04-30T23:54:19Z	a7f93805	Russian translation upd. (#545)
+2026-04-30T22:03:14Z	2026-04-30T22:03:14Z	e08353c8	Fix replay bots having invalid upmove, add more logging to subtick validators
+2026-04-30T21:59:29Z	2026-04-30T21:59:29Z	95aa471a	Add compact panel (#543)
+2026-04-30T01:16:59Z	2026-04-30T01:16:59Z	42e05ef2	Fix linux crashes
+2026-04-30T00:07:17Z	2026-04-30T00:07:17Z	cee08ea5	Fix jumpstats not getting invalidated by trigger_push
+2026-04-29T23:59:19Z	2026-04-29T23:45:24Z	5adcdfa4	Refactor trace mechanism, fix triggerfix being overagressive
+2026-04-29T23:28:10Z	2026-04-29T23:27:37Z	0f391c6d	Fix compile issue
+2026-04-26T18:03:43Z	2026-04-26T18:03:43Z	73934a6f	Add warning about beta on join (#541)
+2026-04-26T13:57:47Z	2026-04-26T13:57:47Z	83eb151b	add team_select_camera, player model entities and point_prefab (#542)
+2026-04-26T13:57:30Z	2026-04-26T13:57:30Z	1a291094	Update build-release.yaml (#540)
+2026-04-22T18:50:08Z	2026-04-22T18:50:08Z	c87056ab	Fix compile error
+2026-04-22T18:33:21Z	2026-04-22T18:33:21Z	f7d1ba2e	Fix !goto teleporting player model angle to other players' view angles
+2026-04-22T18:07:31Z	2026-04-22T18:07:31Z	91a637be	Update SDK
+2026-04-22T18:07:10Z	2026-04-22T18:07:10Z	2c060b18	Add debug option for subtick abuse detector
+2026-04-22T04:16:45Z	2026-04-22T04:16:45Z	7bc1b67a	Fix linux signature
+2026-04-22T02:45:52Z	2026-04-22T02:45:52Z	3e375bc4	Fix signatures
+2026-04-21T21:02:18Z	2026-04-21T21:02:18Z	24c721ae	Fix sdk submodules
+2026-04-21T20:54:50Z	2026-04-21T20:54:50Z	42121c90	Remove debug symlink
+2026-04-21T20:51:13Z	2026-04-21T20:51:13Z	c43df3b5	Remove debug gamedata entry
+2026-04-21T20:45:00Z	2026-04-21T20:45:00Z	133d859d	Remove PostPlayerMove, remove various removed schema fields, remove non functional slope drop cvars
+2026-04-21T20:27:00Z	2026-04-21T20:27:00Z	ef630978	Fix compile and gamedata, update hl2sdk and some structures (#539)
+2026-04-16T22:10:45Z	2026-04-16T22:10:45Z	2f76302c	Fix vendor libs
+2026-04-16T20:27:04Z	2026-04-16T20:26:20Z	ba8d8401	Fix subtick abuse check ignoring +jump
+2026-04-16T17:40:10Z	2026-04-16T17:40:10Z	b8857640	Use a new (better) vector normalizer
+2026-04-15T20:04:53Z	2026-04-15T20:04:53Z	11c66b65	Refactor auth queue

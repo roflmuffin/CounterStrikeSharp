@@ -1,0 +1,100 @@
+2026-11-15T05:40:12Z	2026-11-15T05:39:57Z	c5cad5a2	Revert Outbreak build support
+2026-11-09T01:33:40Z	2026-11-09T01:33:40Z	ea513d89	Fix Unloader skipping hooks while iterating m_hooks (#295)
+2026-11-08T15:58:51Z	2026-11-08T15:58:51Z	ef61fe4b	Remove unused is2sc_allowdedi_index global (#294)
+2026-11-07T17:08:33Z	2026-11-07T17:08:33Z	abaf4b73	Fix Windows build
+2026-11-07T10:44:57Z	2026-11-07T10:44:57Z	da5bbfca	Add missing proto's for source2 titles
+2026-11-01T16:34:52Z	2026-11-01T16:34:52Z	f50dfae6	Add outbreak build
+2026-11-01T16:29:58Z	2026-11-01T16:29:58Z	6eca3cf0	Merge branch 'master' of https://github.com/alliedmodders/metamod-source
+2026-10-18T20:21:35Z	2026-10-18T20:21:35Z	170058a2	Bump khook with the latest changes
+2026-10-18T19:30:18Z	2026-10-18T19:30:18Z	10e6014a	Avoid closing null plugin library handles (#292)
+2026-10-18T18:20:14Z	2026-10-18T18:20:14Z	a9bd24e8	Update dll2lib script for VS 2026 tools
+2026-10-15T02:35:03Z	2026-10-15T02:35:03Z	021f06b6	Bump khook submodule
+2026-10-14T21:38:14Z	2026-10-14T21:38:14Z	d453439d	Don't erase Unloader class too early
+2026-10-13T19:37:55Z	2026-10-13T19:37:55Z	05fd589a	Update hl2sdk-manifests dependency
+2026-10-13T19:37:13Z	2026-10-13T19:37:13Z	c03114aa	Correct configuring order & filter unused compiler args
+2026-10-13T19:34:24Z	2026-10-13T19:34:24Z	d18517e9	Add s2sdk support & update s2 includes (#289)
+2026-10-12T00:53:43Z	2026-10-12T00:53:43Z	c47debe1	Initialise khook ptr in CPlugin
+2026-10-12T00:51:39Z	2026-10-12T00:51:39Z	8e994173	Fix use-after free during plugin unload
+2026-10-09T13:14:22Z	2026-10-09T13:14:22Z	eed24a61	Fixed a bug where only virtual hooks were tracked for plugin unload
+2026-10-01T10:47:54Z	2026-10-01T10:47:54Z	9c49d4c9	Bump hl2sdk-manifests
+2026-09-25T23:10:35Z	2026-09-25T23:10:35Z	05c5c63a	bump hl2sdk-manifests
+2026-09-25T22:54:13Z	2026-09-25T22:54:13Z	6cb29495	bump hl2sdk-manifests
+2026-09-25T19:19:03Z	2026-09-25T19:19:03Z	16d692c7	Bump khook submodule
+2026-09-16T15:13:27Z	2026-09-16T15:13:27Z	fa6f80e4	Bump khook submodule
+2026-09-15T15:53:55Z	2026-09-15T15:53:55Z	399ccf39	Tentative fix for shutdown crash
+2026-09-10T23:15:46Z	2026-09-10T23:14:52Z	7e24ce9e	Improve khook plugin unload
+2026-09-09T19:14:04Z	2026-09-09T19:14:04Z	a8c72eaf	Hide statically-linked symbols on Linux (#282)
+2026-09-09T19:02:52Z	2026-09-09T19:02:52Z	bbdabaca	Bump khook
+2026-09-09T14:17:49Z	2026-09-09T14:17:49Z	c6e06eb8	Merge branch 'master' into libstdc-symbols
+2026-09-08T18:58:09Z	2026-09-08T18:58:09Z	0066c02b	Fix load error message being displayed twice for old mms plugin
+2026-09-08T18:53:13Z	2026-09-08T18:53:13Z	0cc4e200	Bump MMS Api version, and min load version
+2026-09-08T17:52:05Z	2026-09-08T17:52:05Z	d45915a7	Fix compilation for Dota 2
+2026-09-08T16:48:42Z	2026-09-08T16:48:42Z	a12f3cd5	Provide an alternative to SourceHook #223
+2026-09-04T16:44:45Z	2026-09-04T16:44:45Z	1c6191a3	Bump khook
+2026-09-04T02:15:52Z	2026-09-04T02:15:52Z	c95bd854	Clean-up hooks on plugin unload
+2026-09-03T19:21:59Z	2026-09-03T19:20:38Z	65a859b6	Bump khook
+2026-09-03T19:21:59Z	2026-06-20T11:09:58Z	8b3b3ecd	Added KHook::LookupSignature
+2026-09-03T19:21:58Z	2026-06-04T19:55:20Z	6152c629	Fix stack size calculation on windows x86_64
+2026-09-03T19:21:58Z	2026-06-04T19:22:44Z	80f8e34c	Bump khook
+2026-09-03T19:21:57Z	2026-06-01T20:13:34Z	2392e3b1	Bump KHook
+2026-09-03T19:21:57Z	2026-06-01T20:10:42Z	5bdd257f	Only allow LevelInit to fire once
+2026-09-03T19:21:56Z	2026-06-01T19:32:13Z	d57338af	Disable SH testing
+2026-09-03T19:21:56Z	2026-06-01T19:28:26Z	88d1b7ca	Adapt new changes to khook
+2026-09-03T19:21:56Z	2026-04-12T09:33:35Z	328171e1	Bump KHook
+2026-09-03T19:21:55Z	2026-03-12T22:11:22Z	d22a735a	Simplify CallOriginal, Recall & GetVtableIndex
+2026-09-03T19:21:55Z	2026-03-11T20:24:01Z	f6c4d913	Make KHook::CallOriginal & KHook::Recall super strict
+2026-09-03T19:21:54Z	2026-03-11T18:11:04Z	cf88424f	Bump khook submodule
+2026-09-03T19:21:54Z	2026-03-07T14:23:25Z	5e619adf	Update khook submodule
+2026-09-03T19:21:54Z	2026-02-24T22:51:13Z	435d2575	Update khook submodule
+2026-09-03T19:21:53Z	2026-02-24T21:50:52Z	ce5bed10	Fix incorrect __exported__khook declaration
+2026-09-03T19:21:53Z	2026-01-28T21:50:47Z	5ce9d969	Use real global virtual hook
+2026-09-03T19:21:52Z	2026-01-28T21:07:33Z	9b530396	Supersede
+2026-09-03T19:21:52Z	2026-01-28T21:02:18Z	909ff5c7	Bump khook submodule
+2026-09-03T19:21:52Z	2025-08-27T22:00:19Z	bc79e9ff	Remove GetHookAction
+2026-09-03T19:21:51Z	2025-08-27T21:35:51Z	ff1ba4fc	Add thread safety to return value
+2026-09-03T19:21:51Z	2025-08-17T00:29:28Z	b91844a1	Add Recall feature to x86
+2026-09-03T19:21:50Z	2025-08-16T17:26:14Z	1658b94b	Add Hook recall feature
+2026-09-03T19:21:50Z	2025-08-15T19:54:56Z	90a17f69	Fix hook callback mistake + fix s2 sample compilation
+2026-09-03T19:21:50Z	2025-08-15T16:40:07Z	a1c2bf64	Make gamedll bridge more legible
+2026-09-03T19:21:49Z	2025-08-15T15:25:46Z	67cfd253	Supercede -> Supersede + Call original helper
+2026-09-03T19:21:49Z	2025-08-15T01:05:19Z	0c78c984	Update s2 sample extension to khook
+2026-09-03T19:21:48Z	2025-08-15T00:27:06Z	4aa9b8ca	Fix another deadlock
+2026-09-03T19:21:48Z	2025-08-15T00:25:19Z	3613f3c6	Update sample extension to use khook
+2026-09-03T19:21:48Z	2025-08-14T18:49:57Z	a14854f0	Re-allow metamod to load fast
+2026-09-03T19:21:47Z	2025-08-14T18:47:38Z	2ba87cca	Fix deadlock + Fix crash on x86
+2026-09-03T19:21:47Z	2025-08-14T11:42:27Z	e53af8ac	Slow down metamod load + fix memory flags
+2026-09-03T19:21:46Z	2025-04-29T20:17:46Z	3438389a	Fix erroneous definition for khook global var
+2026-09-03T19:21:46Z	2025-04-29T14:17:17Z	2afff542	update submodule
+2026-09-03T19:21:46Z	2025-04-29T14:08:01Z	cbae937c	Fix const-ness issue, and stabilise virtual function api
+2026-09-03T19:21:45Z	2025-04-29T09:53:54Z	b0fd420c	Fix submodule name + fix invalid function call
+2026-09-03T19:21:45Z	2025-04-29T09:34:20Z	7b83a092	update submodule to latest commit
+2026-09-03T19:21:44Z	2025-04-29T09:33:15Z	e8c0aa89	move submodule to third_party directory
+2026-09-03T19:21:44Z	2025-04-23T08:26:52Z	d8b01839	update submodule
+2026-09-03T19:21:44Z	2025-04-23T08:21:19Z	17d5d127	Fix errors from rebase
+2026-09-03T19:21:43Z	2025-04-23T07:52:56Z	1bcf3363	expose khook to plugins
+2026-09-03T19:21:43Z	2025-04-19T18:32:13Z	bcad87cb	Fix provider_source_console & dota2 compilation
+2026-09-03T19:21:42Z	2025-04-19T18:10:17Z	0073d460	update khook
+2026-09-03T19:21:42Z	2025-04-19T18:01:49Z	a3a76570	Add khooks to source 2 provider
+2026-09-03T19:21:41Z	2025-04-17T13:49:14Z	cda16487	Fix incorrect submodule
+2026-09-03T19:21:40Z	2025-04-17T11:45:46Z	fc7de97d	Introduce KHook
+2026-09-01T05:06:30Z	2026-09-01T05:06:30Z	7ec0f169	Fix "xor" name causing issues on newer MSVC toolchains.
+2026-08-03T11:48:38Z	2026-08-03T11:48:38Z	465f1a02	Hide statically-linked libstdc++ symbols
+2026-07-22T22:29:32Z	2026-07-22T22:29:32Z	2667e8e5	Update hl2sdk-manifests again
+2026-07-22T22:12:10Z	2026-07-22T22:12:10Z	bdb82aa0	Update hl2sdk-manifests
+2026-07-21T13:24:57Z	2026-07-21T13:24:57Z	0f563c1e	Update s2_sample_mm build script
+2026-07-17T20:29:33Z	2026-07-17T20:29:33Z	0084b86a	Bump hl2sdk-manifests for CS2 & Dota changes
+2026-07-11T18:54:36Z	2026-07-11T18:54:36Z	a168fc2a	Bump hl2sdk-manifests for PVKII -fPIC fix; drop redundant AMBuildScript -fPIC change
+2026-07-11T18:42:24Z	2026-07-11T18:42:24Z	262b86eb	Apply -fPIC before detecting SDKs so tier1/mathlib static libs inherit it
+2026-07-11T18:18:59Z	2026-07-11T18:18:59Z	195fc312	Bump hl2sdk-manifests for PVKII x86_64 support (#281)
+2026-07-09T09:29:24Z	2026-07-09T09:29:24Z	26c03fa1	Trigger build for hl2sdk-cs2 & dota update
+2026-06-01T19:56:29Z	2026-06-01T19:56:29Z	a5f4cca5	Bump hl2sdk-manifests
+2026-05-04T08:06:45Z	2026-05-04T08:06:45Z	efeabcf6	Fix force_unload to perform a forced unload
+2026-04-30T00:14:44Z	2026-04-30T00:14:44Z	1096bc63	Fix MSVC (#274)
+2026-04-27T03:03:14Z	2026-04-27T03:03:14Z	c3f1c4f2	Upgrade Clang to v22 (#271)
+2026-04-27T02:20:53Z	2026-04-27T02:20:53Z	51e2532b	CI Cleanup (#270)
+2026-04-21T09:08:45Z	2026-04-21T09:08:45Z	ec7ff827	Trigger build for hl2sdk-cs2 update
+2026-04-18T02:58:25Z	2026-04-18T02:58:25Z	d8e2d4fe	Fix force_unload to use forced plugin unload
+2026-04-16T15:22:03Z	2026-04-16T15:22:03Z	0072a465	Fixed a shutdown crash where `GenBuffer` would make use of an already freed variable
+2026-04-16T08:52:12Z	2026-04-16T08:52:12Z	86b7a374	Ensure list deletion prior allocator destruction
+2026-04-15T09:52:45Z	2026-04-15T09:52:45Z	a83df5a7	Add alloc ctor to x64JitWriter
+2026-04-15T09:44:37Z	2026-04-15T09:44:37Z	48085550	Make GenBuffer allocator a pointer

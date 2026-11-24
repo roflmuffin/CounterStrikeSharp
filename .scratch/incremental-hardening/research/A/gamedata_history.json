@@ -1,0 +1,4367 @@
+{
+ "rows": [
+  {
+   "h": "65488944",
+   "date": "2023-10-21",
+   "subj": "feat: add gamedata support, print to all example",
+   "added": [
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "linux"
+    ],
+    [
+     "ClientPrint",
+     "signatures",
+     "windows"
+    ],
+    [
+     "ClientPrint",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 3
+  },
+  {
+   "h": "80ebbe74",
+   "date": "2023-10-22",
+   "subj": "feat: add GiveNamedItem function",
+   "added": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 4
+  },
+  {
+   "h": "69c7db83",
+   "date": "2023-10-28",
+   "subj": "feat: add `UTIL_Remove` and `Remove()` on `CEntityInstance`",
+   "added": [
+    [
+     "UTIL_Remove",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 5
+  },
+  {
+   "h": "ac69cc57",
+   "date": "2023-10-28",
+   "subj": "feat: load offsets from gamedata.json",
+   "added": [
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 6
+  },
+  {
+   "h": "67982446",
+   "date": "2023-10-28",
+   "subj": "feat; add teleport function",
+   "added": [
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 7
+  },
+  {
+   "h": "c01357e8",
+   "date": "2023-11-04",
+   "subj": "2/11 Gamedata Update (#18)",
+   "added": [],
+   "removed": [
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "windows"
+    ],
+    [
+     "ClientPrint",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ]
+   ],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "UTIL_Remove",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 7
+  },
+  {
+   "h": "7efbbc64",
+   "date": "2023-11-05",
+   "subj": "fix: add gamedata for changeteam",
+   "added": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 8
+  },
+  {
+   "h": "82c92f55",
+   "date": "2023-11-09",
+   "subj": "chore: simplify auto-copy `configs` folder",
+   "added": [],
+   "removed": [],
+   "changed": [],
+   "n": 8
+  },
+  {
+   "h": "933fdf9d",
+   "date": "2023-11-12",
+   "subj": "[Windows] feat: Windows support (#52)",
+   "added": [
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "windows"
+    ],
+    [
+     "ClientPrint",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_Remove",
+     "signatures",
+     "windows"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "windows"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "GameEntitySystem",
+     "offsets",
+     "windows"
+    ],
+    [
+     "GameEntitySystem",
+     "offsets",
+     "linux"
+    ],
+    [
+     "GameEventManager",
+     "offsets",
+     "windows"
+    ],
+    [
+     "GameEventManager",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 11
+  },
+  {
+   "h": "43292bb1",
+   "date": "2023-11-13",
+   "subj": "feat: `CBaseModelEntity_SetModel` (#72)",
+   "added": [
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 12
+  },
+  {
+   "h": "0ddf6bcd",
+   "date": "2023-11-15",
+   "subj": "fix: new signature for `CBaseModelEntity_SetModel` (#84)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 12
+  },
+  {
+   "h": "0f72631e",
+   "date": "2023-11-18",
+   "subj": "Update CommitSuicide offset for 17-11-2023 update (#98)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 12
+  },
+  {
+   "h": "bc71aa77",
+   "date": "2023-11-19",
+   "subj": "feat: add `FireEventToClient` native",
+   "added": [
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "windows"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 13
+  },
+  {
+   "h": "50ce09a7",
+   "date": "2023-11-19",
+   "subj": "feat: new virtual functions with wrapper methods (#87)",
+   "added": [
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CGameSceneNode_GetSkeletonInstance",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CGameSceneNode_GetSkeletonInstance",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 19
+  },
+  {
+   "h": "6147739c",
+   "date": "2023-11-21",
+   "subj": "hotfix: new signatures (#107)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 19
+  },
+  {
+   "h": "ea359641",
+   "date": "2023-11-24",
+   "subj": "Add methods to respawn players (#114)",
+   "added": [
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawn_Respawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawn_Respawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 21
+  },
+  {
+   "h": "8b725d43",
+   "date": "2023-11-24",
+   "subj": "Dynamic Hooks (#78)",
+   "added": [
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 22
+  },
+  {
+   "h": "9a018f29",
+   "date": "2023-11-24",
+   "subj": "feat: add player pawn post think signature",
+   "added": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 23
+  },
+  {
+   "h": "6bc43444",
+   "date": "2023-11-26",
+   "subj": "feat: add trigger touch start and end hooks",
+   "added": [
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 25
+  },
+  {
+   "h": "e12a7cb1",
+   "date": "2023-11-28",
+   "subj": "fix: wildcard bytes for signatures (resolves #123 and related issues) (#148)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "windows"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 25
+  },
+  {
+   "h": "2a15a8de",
+   "date": "2023-12-07",
+   "subj": "Add Entity Output Hooks (#174)",
+   "added": [
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 26
+  },
+  {
+   "h": "74fd0e08",
+   "date": "2023-12-14",
+   "subj": "fix: offsets for `CBaseEntity` derived classes",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 26
+  },
+  {
+   "h": "563a5d7b",
+   "date": "2023-12-15",
+   "subj": "feat: Added RemovePlayerItem() to CBasePlayerPawn. (#200)",
+   "added": [
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 27
+  },
+  {
+   "h": "db63fdc0",
+   "date": "2023-12-27",
+   "subj": "feat: add `AcceptInput` method to `CEntityInstance` (#228)",
+   "added": [
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 28
+  },
+  {
+   "h": "6ea6d0a2",
+   "date": "2023-12-27",
+   "subj": "feat: add state changed and network state changed handler (#229)",
+   "added": [
+    [
+     "StateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "StateChanged",
+     "signatures",
+     "linux"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 30
+  },
+  {
+   "h": "e5c22369",
+   "date": "2024-01-20",
+   "subj": "fix(Offsets/Win): CCSPlayer_ItemServices.RemoveWeapons() (#271)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "windows"
+    ]
+   ],
+   "n": 30
+  },
+  {
+   "h": "4f805b18",
+   "date": "2024-01-22",
+   "subj": "Added canUse virtual method (#282)",
+   "added": [
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 31
+  },
+  {
+   "h": "f2b8044b",
+   "date": "2024-02-08",
+   "subj": "Update gamedata for Call To Arms Update (#311)",
+   "added": [
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [
+    [
+     "CCSPlayerPawn_Respawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawn_Respawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "changed": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "windows"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "GameEventManager",
+     "offsets",
+     "windows"
+    ],
+    [
+     "GameEventManager",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 31
+  },
+  {
+   "h": "12c6f4d0",
+   "date": "2024-02-08",
+   "subj": "fix linux::CCSPlayerPawnBase_PostThink and windows::CEntityIOOutput_FireOutputInternal (#314)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 31
+  },
+  {
+   "h": "8967c40b",
+   "date": "2024-02-10",
+   "subj": "fix: update gamedata (thanks to xLeviNx)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "windows"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 31
+  },
+  {
+   "h": "983d9149",
+   "date": "2024-02-29",
+   "subj": "fix: update gamedata",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 31
+  },
+  {
+   "h": "12485be2",
+   "date": "2024-03-02",
+   "subj": "Adding the proper way to do resource precache (#358)",
+   "added": [
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "windows"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityResourceManifest_AddResource",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CEntityResourceManifest_AddResource",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 33
+  },
+  {
+   "h": "7cae4be9",
+   "date": "2024-04-26",
+   "subj": "Fix: new game update broke signatures  (#425)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 33
+  },
+  {
+   "h": "25ca5dbe",
+   "date": "2024-04-27",
+   "subj": "chore: use offsets for give named item (#427)",
+   "added": [
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 34
+  },
+  {
+   "h": "14224274",
+   "date": "2024-04-28",
+   "subj": "chore: update give named item sig for linux",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 34
+  },
+  {
+   "h": "e3d2370e",
+   "date": "2024-04-28",
+   "subj": "chore: use IDA style sigs for gamedata",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "linux"
+    ],
+    [
+     "ClientPrint",
+     "signatures",
+     "windows"
+    ],
+    [
+     "ClientPrint",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "UTIL_Remove",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_Remove",
+     "signatures",
+     "linux"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "windows"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "linux"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "windows"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "StateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "StateChanged",
+     "signatures",
+     "linux"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "linux"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "windows"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 34
+  },
+  {
+   "h": "e270bdfd",
+   "date": "2024-04-30",
+   "subj": "AcceptInput changes (#433)",
+   "added": [
+    [
+     "CEntitySystem_AddEntityIOEvent",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntitySystem_AddEntityIOEvent",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 35
+  },
+  {
+   "h": "cafc4e23",
+   "date": "2024-05-25",
+   "subj": "Initial update after 2024-05-23 CS2 update (#461)",
+   "added": [
+    [
+     "CGameEventManager_Init",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CGameEventManager_Init",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "3240a5e5",
+   "date": "2024-05-25",
+   "subj": "Update `GiveNamedItem` signature on Linux (#463)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "13ec19e4",
+   "date": "2024-05-30",
+   "subj": "Update `GiveNamedItem` signature on Linux (#467)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "eea64519",
+   "date": "2024-05-31",
+   "subj": "Update ``GiveNamedItem`` signature for linux (#470)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "54cc93e0",
+   "date": "2024-06-13",
+   "subj": "fix: CBasePlayerController_SetPawn signature (#493)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "2eaf7c2d",
+   "date": "2024-06-13",
+   "subj": "Fix AddResource offset for Linux (#479)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CEntityResourceManifest_AddResource",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "f8451c28",
+   "date": "2024-07-03",
+   "subj": "Update gamedata.json (#521)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "aa40d81a",
+   "date": "2024-08-10",
+   "subj": "fix: update gamedata json for update",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "ClientPrint",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ],
+    [
+     "StateChanged",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "a82faeb5",
+   "date": "2024-08-18",
+   "subj": "Fix CBasePlayerController_SetPawn signature (#547)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "2c7f8961",
+   "date": "2024-10-04",
+   "subj": "fix: armory update broken signatures and offsets (#584)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "StateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "windows"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "8a795de9",
+   "date": "2024-10-06",
+   "subj": "fix: CCSPlayerPawnBase_PostThink signature (#601)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 36
+  },
+  {
+   "h": "c2f212df",
+   "date": "2024-10-17",
+   "subj": "Add GetCSWeaponDataFromKey and CCSPlayer_ItemServices_CanAcquire (#628)",
+   "added": [
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 38
+  },
+  {
+   "h": "761380df",
+   "date": "2024-10-19",
+   "subj": "CCSPlayer_ItemServices_CanAcquire and GetCSWeaponDataFromKey signatures update (#636)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 38
+  },
+  {
+   "h": "b54f5c3d",
+   "date": "2024-10-21",
+   "subj": "fix: gamedata update (#631)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 38
+  },
+  {
+   "h": "32c99b2e",
+   "date": "2024-11-06",
+   "subj": "Implemented entity transmit feature (#608)",
+   "added": [
+    [
+     "CheckTransmitPlayerSlot",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CheckTransmitPlayerSlot",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 39
+  },
+  {
+   "h": "1f904a52",
+   "date": "2024-11-06",
+   "subj": "Added TargetType.PlayerAim (#639)",
+   "added": [
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 40
+  },
+  {
+   "h": "461fc0ea",
+   "date": "2024-12-20",
+   "subj": "Fix `GiveNamedItem` and `CanAcquire` signatures (#713)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 40
+  },
+  {
+   "h": "bbc621ac",
+   "date": "2025-03-23",
+   "subj": "feat: Implement `EmitSoundFilter` (#808)",
+   "added": [
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 41
+  },
+  {
+   "h": "ded133f1",
+   "date": "2025-03-23",
+   "subj": "Fix `EmitSoundFilter` signature for linux (#815)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 41
+  },
+  {
+   "h": "0ce4a290",
+   "date": "2025-04-01",
+   "subj": "Update CCSPlayer_ItemServices_CanAcquire signature (#832)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 41
+  },
+  {
+   "h": "68e6ffae",
+   "date": "2025-04-04",
+   "subj": "fix(gamedata): update `CCSPlayer_WeaponServices_CanUse` signature",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 41
+  },
+  {
+   "h": "6f663164",
+   "date": "2025-06-20",
+   "subj": "Improve FunctionReference trace logging with real user stack origin (#895)",
+   "added": [
+    [
+     "CheckTransmit",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CheckTransmit",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 42
+  },
+  {
+   "h": "bebeedf2",
+   "date": "2025-07-03",
+   "subj": "Fixes for game update 1.40.8.5 (03.07.2025) (#911)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 42
+  },
+  {
+   "h": "018bcba6",
+   "date": "2025-07-04",
+   "subj": "Continued: Fixes for game update 1.40.8.5 (03.07.2025) (#917)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 42
+  },
+  {
+   "h": "b7abd1d5",
+   "date": "2025-07-29",
+   "subj": "chore: update Gamedata for Patch 19388062",
+   "added": [],
+   "removed": [
+    [
+     "StateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "StateChanged",
+     "signatures",
+     "linux"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "changed": [
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "linux"
+    ],
+    [
+     "ClientPrint",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_SwitchTeam",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CGameEventManager_Init",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntitySystem_AddEntityIOEvent",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntitySystem_AddEntityIOEvent",
+     "signatures",
+     "linux"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "windows"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "windows"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CheckTransmit",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CheckTransmit",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 40
+  },
+  {
+   "h": "1f30e561",
+   "date": "2025-08-04",
+   "subj": "fix: Update CS# for Patch 19388062 (#958)",
+   "added": [
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "windows"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "linux"
+    ],
+    [
+     "SetStateChanged",
+     "offsets",
+     "windows"
+    ],
+    [
+     "SetStateChanged",
+     "offsets",
+     "linux"
+    ],
+    [
+     "ISource2GameEntities::CheckTransmit",
+     "offsets",
+     "windows"
+    ],
+    [
+     "ISource2GameEntities::CheckTransmit",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [
+    [
+     "Host_Say",
+     "signatures",
+     "windows"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "changed": [
+    [
+     "ClientPrint",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "linux"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "windows"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CheckTransmitPlayerSlot",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CheckTransmitPlayerSlot",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 42
+  },
+  {
+   "h": "356152a5",
+   "date": "2025-08-04",
+   "subj": "fix: revert chat command hooking back to detour of Host_Say",
+   "added": [
+    [
+     "Host_Say",
+     "signatures",
+     "windows"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 43
+  },
+  {
+   "h": "bf1ce2e8",
+   "date": "2025-08-16",
+   "subj": "chore(gamedata): update offsets & signatures",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 43
+  },
+  {
+   "h": "624ca0f0",
+   "date": "2025-08-18",
+   "subj": "fix: re-add GetHitGroup with GameData backed offset",
+   "added": [
+    [
+     "CTakeDamageInfo_HitGroup",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CTakeDamageInfo_HitGroup",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 44
+  },
+  {
+   "h": "936b88d5",
+   "date": "2025-08-21",
+   "subj": "fix(gamedata): update `CBasePlayerController_SetPawn` signature",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "72d66cb5",
+   "date": "2025-08-28",
+   "subj": "Update gamedata.json (#1020)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "54f8d5ef",
+   "date": "2025-09-04",
+   "subj": "Fixed offset values of Respawn and Slay for Windows (#1026)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "2c809713",
+   "date": "2025-09-18",
+   "subj": "fix: update for CS2 09-17-25 (patch 20022951) (#1037)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CheckTransmit",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "37951f28",
+   "date": "2025-10-15",
+   "subj": "fix(update): update signatures and offsets for 1.41.1.3 Update (#1064)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "34598dd5",
+   "date": "2025-10-16",
+   "subj": "fix: update Sigs & CTakeDamageResult & EmitSound_t (#1071)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "b4e83dfb",
+   "date": "2025-10-30",
+   "subj": "fix: update linux signature for GetCSWeaponDataFromKey",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "6461235c",
+   "date": "2025-11-13",
+   "subj": "chore: update signatures for GiveNamedItem (#1120)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "GiveNamedItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 44
+  },
+  {
+   "h": "395b237d",
+   "date": "2025-12-15",
+   "subj": "feat(listeners): add entity & player damage listeners (#1147)",
+   "added": [
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 45
+  },
+  {
+   "h": "fe3e32f3",
+   "date": "2026-01-23",
+   "subj": "fix: bump sdk & update gamedata for patch 1.41.3.x (#1187)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CGameSceneNode_GetSkeletonInstance",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "32628275",
+   "date": "2026-01-23",
+   "subj": "fix: update set state changed offset for linux",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "SetStateChanged",
+     "offsets",
+     "windows"
+    ],
+    [
+     "SetStateChanged",
+     "offsets",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "9841c92e",
+   "date": "2026-01-25",
+   "subj": "fix: update windows signatures for CCSPlayerPawnBase and CCSGameRules (#1199)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "4006494c",
+   "date": "2026-02-25",
+   "subj": "fix(gamedata): Update linux sig for CEntitySystem_AddEntityIOEvent (#1232)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CEntitySystem_AddEntityIOEvent",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "03a452ca",
+   "date": "2026-03-19",
+   "subj": "fix: Update Linux signatures for PostThink and TerminateRound (#1247)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "8a9fbe8f",
+   "date": "2026-04-22",
+   "subj": "fix: apply changes for AG2 update (#1279)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_ClientPrintAll",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerController_SetPawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CGameEventManager_Init",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CGameEventManager_Init",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GiveNamedItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "UTIL_Remove",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CGameSceneNode_GetSkeletonInstance",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CGameSceneNode_GetSkeletonInstance",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "linux"
+    ],
+    [
+     "UTIL_CreateEntityByName",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseEntity_DispatchSpawn",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_RemovePlayerItem",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseTrigger_EndTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CheckTransmit",
+     "signatures",
+     "windows"
+    ],
+    [
+     "NetworkStateChanged",
+     "signatures",
+     "linux"
+    ],
+    [
+     "SetStateChanged",
+     "offsets",
+     "windows"
+    ],
+    [
+     "SetStateChanged",
+     "offsets",
+     "linux"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "d935b08c",
+   "date": "2026-04-22",
+   "subj": "fix: update CBaseEntity_TakeDamageOld linux signature (#1287)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "c6eff281",
+   "date": "2026-06-16",
+   "subj": "feat: Implement basic definitions and essential methods for `CCSNavArea` (#1335)",
+   "added": [
+    [
+     "CCSNavArea_IsValidNavMesh",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSNavArea_IsValidNavMesh",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "removed": [],
+   "changed": [],
+   "n": 46
+  },
+  {
+   "h": "0586daf3",
+   "date": "2026-07-10",
+   "subj": "fix: Update for latest CS2 Game Update [1.41.6.9] (#1348)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "ClientPrint",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_GiveNamedItem",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_RemoveWeapons",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CGameSceneNode_GetSkeletonInstance",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CGameSceneNode_GetSkeletonInstance",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_EmitSoundFilter",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "linux"
+    ],
+    [
+     "LegacyGameEventListener",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_TakeDamageOld",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CheckTransmit",
+     "signatures",
+     "linux"
+    ],
+    [
+     "Host_Say",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 46
+  },
+  {
+   "h": "faa97820",
+   "date": "2026-08-25",
+   "subj": "fix: Update for latest CS2 Game Update [1.41.7.7]",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 46
+  },
+  {
+   "h": "bd1d9365",
+   "date": "2026-09-24",
+   "subj": "fix: update Windows PostThink signature (#1438)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 46
+  },
+  {
+   "h": "2f984988",
+   "date": "2026-09-24",
+   "subj": "fix: for update 1.41.8.2 (#1433)",
+   "added": [],
+   "removed": [
+    [
+     "CheckTransmit",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CheckTransmit",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "changed": [
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_ChangeTeam",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSPlayerController_Respawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseModelEntity_SetModel",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_WeaponServices_CanUse",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayer_ItemServices_CanAcquire",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_TerminateRound",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CCSGameRules_FindPickerEntity",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntityInstance_AcceptInput",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CEntitySystem_AddEntityIOEvent",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBasePlayerPawn_CommitSuicide",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "windows"
+    ],
+    [
+     "CBaseEntity_Teleport",
+     "offsets",
+     "linux"
+    ],
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CEntityIOOutput_FireOutputInternal",
+     "signatures",
+     "linux"
+    ],
+    [
+     "IGameSystem_InitAllSystems_pFirst",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "6d22cb54",
+   "date": "2026-09-26",
+   "subj": "fix: correct Windows IsPlayerPawn offset (#1445)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseEntity_IsPlayerPawn",
+     "offsets",
+     "windows"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "c67396fa",
+   "date": "2026-10-19",
+   "subj": "fix: Update Linux signature for CBaseTrigger_StartTouch",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CBaseTrigger_StartTouch",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "5465e2aa",
+   "date": "2026-10-24",
+   "subj": "fix: Game Update 1.41.9.2 (#1470)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "windows"
+    ],
+    [
+     "CCSPlayerPawnBase_PostThink",
+     "signatures",
+     "linux"
+    ],
+    [
+     "GetCSWeaponDataFromKey",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "2eb9a57d",
+   "date": "2026-11-12",
+   "subj": "fix: Game Update 1.41.9.7",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "ClientPrint",
+     "signatures",
+     "linux"
+    ]
+   ],
+   "n": 45
+  },
+  {
+   "h": "c1b3d1f3",
+   "date": "2026-11-13",
+   "subj": "fix: restore nav mesh lookup on Windows (#1493)",
+   "added": [],
+   "removed": [],
+   "changed": [
+    [
+     "CCSNavArea_IsValidNavMesh",
+     "signatures",
+     "windows"
+    ]
+   ],
+   "n": 45
+  }
+ ],
+ "churn": [
+  [
+   [
+    "CBasePlayerPawn_CommitSuicide",
+    "offsets",
+    "linux"
+   ],
+   15
+  ],
+  [
+   [
+    "CCSPlayerController_Respawn",
+    "offsets",
+    "windows"
+   ],
+   15
+  ],
+  [
+   [
+    "CCSPlayerController_Respawn",
+    "offsets",
+    "linux"
+   ],
+   15
+  ],
+  [
+   [
+    "CBasePlayerPawn_CommitSuicide",
+    "offsets",
+    "windows"
+   ],
+   14
+  ],
+  [
+   [
+    "GiveNamedItem",
+    "signatures",
+    "linux"
+   ],
+   12
+  ],
+  [
+   [
+    "CCSPlayerPawnBase_PostThink",
+    "signatures",
+    "linux"
+   ],
+   12
+  ],
+  [
+   [
+    "CBaseModelEntity_SetModel",
+    "signatures",
+    "linux"
+   ],
+   10
+  ],
+  [
+   [
+    "CBasePlayerController_SetPawn",
+    "signatures",
+    "linux"
+   ],
+   10
+  ],
+  [
+   [
+    "CBaseEntity_TakeDamageOld",
+    "signatures",
+    "linux"
+   ],
+   10
+  ],
+  [
+   [
+    "GetCSWeaponDataFromKey",
+    "signatures",
+    "linux"
+   ],
+   10
+  ],
+  [
+   [
+    "CCSGameRules_TerminateRound",
+    "signatures",
+    "linux"
+   ],
+   9
+  ],
+  [
+   [
+    "CBaseEntity_Teleport",
+    "offsets",
+    "windows"
+   ],
+   9
+  ],
+  [
+   [
+    "CBaseEntity_Teleport",
+    "offsets",
+    "linux"
+   ],
+   9
+  ],
+  [
+   [
+    "CCSPlayerController_ChangeTeam",
+    "offsets",
+    "windows"
+   ],
+   9
+  ],
+  [
+   [
+    "CCSPlayerController_ChangeTeam",
+    "offsets",
+    "linux"
+   ],
+   9
+  ],
+  [
+   [
+    "CCSPlayer_WeaponServices_CanUse",
+    "signatures",
+    "windows"
+   ],
+   9
+  ],
+  [
+   [
+    "CBaseModelEntity_SetModel",
+    "signatures",
+    "windows"
+   ],
+   8
+  ],
+  [
+   [
+    "CCSGameRules_TerminateRound",
+    "signatures",
+    "windows"
+   ],
+   8
+  ],
+  [
+   [
+    "CBasePlayerController_SetPawn",
+    "signatures",
+    "windows"
+   ],
+   7
+  ],
+  [
+   [
+    "CCSPlayerPawnBase_PostThink",
+    "signatures",
+    "windows"
+   ],
+   7
+  ],
+  [
+   [
+    "CCSPlayer_WeaponServices_CanUse",
+    "signatures",
+    "linux"
+   ],
+   7
+  ],
+  [
+   [
+    "CBaseEntity_TakeDamageOld",
+    "signatures",
+    "windows"
+   ],
+   7
+  ],
+  [
+   [
+    "CBaseTrigger_StartTouch",
+    "signatures",
+    "linux"
+   ],
+   7
+  ],
+  [
+   [
+    "CBaseEntity_DispatchSpawn",
+    "signatures",
+    "linux"
+   ],
+   6
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+    "offsets",
+    "windows"
+   ],
+   6
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_RemoveWeapons",
+    "offsets",
+    "windows"
+   ],
+   6
+  ],
+  [
+   [
+    "LegacyGameEventListener",
+    "signatures",
+    "windows"
+   ],
+   6
+  ],
+  [
+   [
+    "GiveNamedItem",
+    "signatures",
+    "windows"
+   ],
+   6
+  ],
+  [
+   [
+    "Host_Say",
+    "signatures",
+    "linux"
+   ],
+   6
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_CanAcquire",
+    "signatures",
+    "linux"
+   ],
+   6
+  ],
+  [
+   [
+    "LegacyGameEventListener",
+    "signatures",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "CEntityIOOutput_FireOutputInternal",
+    "signatures",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "ClientPrint",
+    "signatures",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "CEntityInstance_AcceptInput",
+    "signatures",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_GiveNamedItem",
+    "offsets",
+    "windows"
+   ],
+   5
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_GiveNamedItem",
+    "offsets",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+    "offsets",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_RemoveWeapons",
+    "offsets",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "CBaseEntity_EmitSoundFilter",
+    "signatures",
+    "linux"
+   ],
+   5
+  ],
+  [
+   [
+    "CEntityIOOutput_FireOutputInternal",
+    "signatures",
+    "windows"
+   ],
+   4
+  ],
+  [
+   [
+    "UTIL_ClientPrintAll",
+    "signatures",
+    "windows"
+   ],
+   4
+  ],
+  [
+   [
+    "CEntityInstance_AcceptInput",
+    "signatures",
+    "windows"
+   ],
+   4
+  ],
+  [
+   [
+    "IGameSystem_InitAllSystems_pFirst",
+    "signatures",
+    "windows"
+   ],
+   4
+  ],
+  [
+   [
+    "IGameSystem_InitAllSystems_pFirst",
+    "signatures",
+    "linux"
+   ],
+   4
+  ],
+  [
+   [
+    "CCSPlayer_ItemServices_CanAcquire",
+    "signatures",
+    "windows"
+   ],
+   4
+  ],
+  [
+   [
+    "GetCSWeaponDataFromKey",
+    "signatures",
+    "windows"
+   ],
+   4
+  ],
+  [
+   [
+    "UTIL_CreateEntityByName",
+    "signatures",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "UTIL_CreateEntityByName",
+    "signatures",
+    "windows"
+   ],
+   3
+  ],
+  [
+   [
+    "CBaseTrigger_EndTouch",
+    "signatures",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "CBasePlayerPawn_RemovePlayerItem",
+    "signatures",
+    "windows"
+   ],
+   3
+  ],
+  [
+   [
+    "UTIL_ClientPrintAll",
+    "signatures",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "CBasePlayerPawn_RemovePlayerItem",
+    "signatures",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "CBaseTrigger_StartTouch",
+    "signatures",
+    "windows"
+   ],
+   3
+  ],
+  [
+   [
+    "CBaseTrigger_EndTouch",
+    "signatures",
+    "windows"
+   ],
+   3
+  ],
+  [
+   [
+    "StateChanged",
+    "signatures",
+    "windows"
+   ],
+   3
+  ],
+  [
+   [
+    "CheckTransmit",
+    "signatures",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "CCSGameRules_FindPickerEntity",
+    "offsets",
+    "windows"
+   ],
+   3
+  ],
+  [
+   [
+    "CCSGameRules_FindPickerEntity",
+    "offsets",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "CGameSceneNode_GetSkeletonInstance",
+    "offsets",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "CBaseEntity_IsPlayerPawn",
+    "offsets",
+    "windows"
+   ],
+   3
+  ],
+  [
+   [
+    "CBaseEntity_IsPlayerPawn",
+    "offsets",
+    "linux"
+   ],
+   3
+  ],
+  [
+   [
+    "UTIL_Remove",
+    "signatures",
+    "linux"
+   ],
+   2
+  ],
+  [
+   [
+    "ClientPrint",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "CCSPlayerController_SwitchTeam",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "CCSPlayerController_SwitchTeam",
+    "signatures",
+    "linux"
+   ],
+   2
+  ],
+  [
+   [
+    "UTIL_Remove",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "Host_Say",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "CBaseEntity_DispatchSpawn",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "NetworkStateChanged",
+    "signatures",
+    "linux"
+   ],
+   2
+  ],
+  [
+   [
+    "CGameEventManager_Init",
+    "signatures",
+    "linux"
+   ],
+   2
+  ],
+  [
+   [
+    "CBaseEntity_EmitSoundFilter",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "CEntitySystem_AddEntityIOEvent",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "CEntitySystem_AddEntityIOEvent",
+    "signatures",
+    "linux"
+   ],
+   2
+  ],
+  [
+   [
+    "CheckTransmit",
+    "signatures",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "SetStateChanged",
+    "offsets",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "SetStateChanged",
+    "offsets",
+    "linux"
+   ],
+   2
+  ],
+  [
+   [
+    "CGameSceneNode_GetSkeletonInstance",
+    "offsets",
+    "windows"
+   ],
+   2
+  ],
+  [
+   [
+    "GameEventManager",
+    "offsets",
+    "windows"
+   ],
+   1
+  ],
+  [
+   [
+    "GameEventManager",
+    "offsets",
+    "linux"
+   ],
+   1
+  ],
+  [
+   [
+    "StateChanged",
+    "signatures",
+    "linux"
+   ],
+   1
+  ],
+  [
+   [
+    "NetworkStateChanged",
+    "signatures",
+    "windows"
+   ],
+   1
+  ],
+  [
+   [
+    "CEntityResourceManifest_AddResource",
+    "offsets",
+    "linux"
+   ],
+   1
+  ],
+  [
+   [
+    "CheckTransmitPlayerSlot",
+    "offsets",
+    "windows"
+   ],
+   1
+  ],
+  [
+   [
+    "CheckTransmitPlayerSlot",
+    "offsets",
+    "linux"
+   ],
+   1
+  ],
+  [
+   [
+    "CGameEventManager_Init",
+    "signatures",
+    "windows"
+   ],
+   1
+  ],
+  [
+   [
+    "CCSNavArea_IsValidNavMesh",
+    "signatures",
+    "windows"
+   ],
+   1
+  ]
+ ]
+}

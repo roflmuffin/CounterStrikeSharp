@@ -1,0 +1,352 @@
+ CS2 Update Breakage Study 
+ Live research log · CounterStrikeSharp / Metamod:Source / hl2sdk-cs2 
+ CS2 Update Breakage Study 
+ Why does the CS2 plugin stack break on game updates, how much of that is unavoidable, and could a new toolkit hold up better? Reference build: CS2 1.42.0.0 (Nov 19 2026). Last updated 2026-11-24, all tracks and review complete . 
+ Progress 
+ done Plan investigation 7 breakage hypotheses, 5 research tracks, synthesis, adversarial review 
+ done A · CounterStrikeSharp breakage history Every game-update commit classified: signatures, vtable offsets, struct offsets, SDK refactors, protobufs 
+ done B · hl2sdk-cs2 and Metamod:Source history Header-level churn per update, loader issues, why plugins need recompiling 
+ done C · Binary and disassembly analysis Scan current gamedata against 1.42.0.0, diff against older builds, auto-heal experiment 
+ done D · Ecosystem and official surfaces SwiftlyS2, ModSharp, Plugify, CS2Fixes, offset dumpers, cs_script, RCON/logs/GOTV 
+ done E · Source 1 baseline and update cadence SourceMod gamedata churn, symbol stripping, CS2 build frequency and schema churn 
+ done Synthesis Taxonomy, intrinsic vs avoidable, resilient toolkit design 
+ done F · Stack comparison Code audit of ModSharp, SwiftlyS2, s2script, Plugify, Deadworks; census and track record of every CS2 stack; where the best can still improve 
+ running G · Backtest of incremental CounterStrikeSharp changes Replay every past fix under three scenarios (incremental, incremental plus auto-regeneration, ideal); empirical resolver test across breaking updates with independent ground truth 
+ done Adversarial review A fresh agent tries to refute the key claims 
+ Short answer 
+ Partly intrinsic, mostly self-inflicted. A much more resilient toolkit is plausible, though not one that never breaks. 
+ Intrinsic: no Valve plugin ABI; stripped binaries rebuilt on nearly every update; engine interfaces change layout about monthly while their version strings stay the same; gameplay refactors. 
+ Self-inflicted: engine vtable slots compiled in from a reverse-engineered header chain; first-match prologue signatures; hand-kept indices and offsets; all-or-nothing startup. 
+ Proof point: build 26879581 (1.42.0.1) added one virtual to ISource2Server . CounterStrikeSharp crashes until an upstream SDK fix lands; a user's 8-byte binary patch already works around it. cs2kz was back in 3.5 h through a forked SDK. ModSharp's GameFrame detour is unaffected, but two of its JSON slot hooks shifted too, and fixing them is a data change, not a rebuild. 
+ Feasibility (plausible, not proven): the individual techniques work, and other stacks use them. Single anchors re-found 82% of 104 functions across 11 quiet days, but only 24% had two agreeing anchors, and none of it was tested on an update that broke signatures. Fuzzy byte matching failed outright. 
+ ~11% of CS2 builds needed a CounterStrikeSharp fix 
+ 42 forced SDK ABI episodes in ~3 years 
+ 0 fixes needed for name-based bindings in 3 years 
+ 24–82% functions re-found automatically (two anchors ↔ one), on a quiet update only 
+ What breaks, and why 
+ Class How often Avoidable? 
+ Byte-pattern signatures 154 changes; each rewritten 1.5–2× a year mostly avoidable 
+ Vfunc indices in gamedata 75 changes; 6–11 of 17 move at once mostly avoidable 
+ Engine vtables compiled from headers 42 SDK episodes; causing today's outage mostly avoidable 
+ tier0 link errors 4–5 incidents avoidable 
+ Loader ( gameinfo.gi ) every update partly 
+ Non-schema struct offsets ~12 incidents reducible 
+ SDK API refactors ~11 partly 
+ Schema renames / removals 7 structural builds in 16 months intrinsic 
+ Behaviour changes ~9 intrinsic 
+ Protobuf 0 not a problem 
+ Root causes and mitigations per class The full table: what causes each class and how a toolkit would handle it 
+ Counts are from CounterStrikeSharp's history (track A) unless noted. "Verdict" says whether a well-designed in-process toolkit could avoid the class. 
+ Class How often Root cause Verdict Mitigation 
+ Byte-pattern signatures 154 entry changes; each signature rewritten 1.5–2× a year Stripped binaries; whole-function codegen drift (saved-register sets, register allocation, inlining, unity builds) Needing addresses is intrinsic; finding them by prologue bytes is avoidable Unique-string, caller-plus-ordinal and RTTI anchors, uniqueness checks, two anchors that agree (82% healed on a real update) 
+ Vfunc indices in gamedata 75 changes; big updates move 6–11 of 17 at once A virtual added to a base class shifts every derived class Layout change intrinsic; hand maintenance avoidable RTTI vtables plus per-slot fingerprint alignment (s2script shows Class[19]→20 automatically) 
+ Engine-interface vtables compiled in from headers 42 forced SDK episodes in ~3 years; #1502 open now C++ fixes slots at compile time; Valve never bumps interface versions; community headers lag Mostly avoidable. Rare in aggregate (2 CSSharp incidents) but the slowest to recover, because the fix waits on upstream headers Cheap: slot indices in gamedata plus an RTTI vtable-size check at boot. Full runtime fingerprinting is harder: 25–30% of interface slots have identical bodies 
+ Non-schema struct offsets ~12 CSSharp incidents; ~45 SDK layout commits after Jul 2025 Engine internals have no reflection Largely intrinsic; reducible Touch as few as possible; extract displacements from anchored accessor functions; assert them in a boot self-test 
+ SDK API refactors ~11 (ConVar ×3, filters, entity listeners) Valve refactors subsystems; the SDK's reverse-engineering catches up Partly intrinsic Wrap a minimal own interface around each subsystem instead of exposing SDK types 
+ Schema renames and removals 607 properties, 58 classes; 7 structural builds in 16 months Gameplay refactors (AnimGraph 2, damage pipeline) Intrinsic Versioned API, rename aliases, warnings to plugin authors; offsets themselves never break 
+ tier0 link errors 4–5 incidents; ~1,360 exports changed over 11 SDK refreshes Hard imports of mangled C++ symbols via the SDK stub and inline header code Avoidable Look up a few C symbols with dlsym and fall back; no static SDK libraries 
+ Loader Every update overwrites gameinfo.gi ; library paths changed in 2025 Metamod's search-path trick Partly avoidable Own launch wrapper or server proxy (SwiftlyS2, ModSharp, Deadworks), or repair gameinfo.gi automatically 
+ Behaviour changes ~9 (ConVar whitelist, damage hook rename, subtick) Valve changes the game Intrinsic None. Needs a human and good tests 
+ Protobuf 0 Wire format is stable Not a problem None needed 
+ Intrinsic or self-inflicted? What any in-process addon must live with, and the seven choices that make today's stack fragile 
+ Intrinsic to any in-process CS2 addon 
+ No Valve plugin API or ABI. Every hook targets internal, non-exported code. 
+ Stripped Linux binaries. On Source 1, symbol names made Linux signatures nearly immortal: TF2 had 0 Linux signature changes in 2025, and CS:GO went from 2–5 a year to 45 when its symbols were stripped in 2016. 
+ The server module is rebuilt on nearly every update, so code shifts even when its source did not change. 
+ Engine-interface layouts change about once a month, with unchanged version strings, so nothing reports the mismatch. 
+ Engine-internal structs without reflection, and gameplay refactors that remove or rename fields and change behaviour. 
+ Self-inflicted by today's stack 
+ Binding engine interfaces through compiled C++ headers. One inserted virtual leaves the fix waiting on the upstream headers before CounterStrikeSharp can ship a release. It is rare (2 incidents) but has the slowest recovery, and it causes the current outage. Holding slot indices as data would turn it into a gamedata update. 
+ Prologue-only signatures with first-match scanning. The ClientPrint signature currently binds to an unrelated constructor (#1494). 
+ Hand-maintained vtable indices that move together and could be re-derived mechanically. 
+ Hard-coded struct offsets in native and managed code, where schema lookup or an extracted displacement would do. 
+ All-or-nothing startup: one missing signature disables every managed signature-based call, and a missing schema field silently becomes offset 0. 
+ No pipeline that tests new builds. Fixes start from user reports, ship partly untested, and need follow-up corrections in about 11 of 15 major breaks. 
+ Gamedata updates that are unsigned, not keyed to the game build, and Windows-only. 
+ Cadence is part of it, but not the whole story. CS2 ships about 1.7–3× as many patch versions per year as CS:GO did in 2017–22. CounterStrikeSharp needed a fix after about 11% of builds (20% with looser attribution), the same order of magnitude per year as SourceMod's CS:GO incidents. A per-build comparison was not computed, and SourceMod's counts include feature additions. The perception of constant breakage also comes from the slow header-chain fixes and from many plugins each carrying their own signatures. 
+ A more resilient toolkit 
+ Loading: its own launch wrapper or server proxy, with no dependency on gameinfo.gi ; cache everything per build ID. 
+ Resolver: several anchors per target (RTTI slot, unique string, caller plus ordinal, ConVar callback); accept an address only when two agree, and never take a first match. 
+ Engine interfaces: slot indices as data, verified at boot (RTTI vtable size, alignment against neighbouring slots); detour only functions with a unique body. 
+ Data: schema fields by name from the static tables; the few other offsets extracted from code and checked at boot. 
+ Linking: no mangled tier0 imports; dlsym with fallbacks; minimal own types. 
+ Failure: one feature switches off; the server keeps running. 
+ Pipeline: a Steam watcher archives each build, re-derives everything, smoke-tests a headless server and publishes signed gamedata. 
+ Plugin API: no raw offsets or SDK types; rename aliases; official surfaces where they fit. 
+ Design details, residual breakage, and an incremental path for CounterStrikeSharp How each piece works, what still needs a human, and changes CounterStrikeSharp could make without a rewrite 
+ Every piece below already exists somewhere. SwiftlyS2 and ModSharp already combine several of them, but every stack still compiles in or hand-keeps engine slots, and only s2script checks them at boot (by vtable size). This is a design sketch, not a measured result, and all the binary analysis behind it is Linux-only; Windows/MSVC (identical-code folding, no frame pointers) is untested. 
+ 1. Loading 
+ Load through a launch wrapper or a server-module proxy that finds engine init by a string reference, as SwiftlyS2 does, instead of depending on gameinfo.gi . Identify the build by steam.inf and the libserver.so build ID, and cache every resolved address per build ID. 
+ 2. A resolver instead of signatures 
+ Each target is a declarative spec with several anchors: RTTI class and slot with a code fingerprint, unique strings, a caller with a unique string plus call ordinal, a ConCommand or ConVar callback, the VScript binding table, or the static schema tables. Accept an address only when two anchors agree, or one anchor plus a byte signature that matches exactly once (ModSharp's corroboration rule). Otherwise report the target as ambiguous; never take the first match. 
+ 3. Engine interfaces without compiled headers 
+ Get interfaces through CreateInterface , whose names have been stable for three years. Keep slot indices as data, not compiled headers, and verify them at boot: compare RTTI vtable sizes and align each slot against its neighbours, using fingerprints that ignore line-number strings. Runtime fingerprinting alone is not enough: in CSource2Server 33 of 104 slots share a body with another slot (ApplyGameSettings is xor eax,eax; ret , the same as 8 others), and one shared ret body backs 16 vtable entries, so detouring it would hook all of them. Detour only unique bodies; otherwise patch the slot. Use small hand-written mirror classes only for slots proven stable, as Metamod's loader does with IAppSystem 0, 1 and 3. 
+ 4. Data access 
+ Schema fields by name only, read from the static .data tables so they are available before the game initialises. For the few non-schema offsets, extract the displacement from an instruction inside an anchored accessor function, then assert it at boot with sanity checks such as slot ranges or a pointer back to the owning entity. A missing field raises an error; it never resolves to offset 0. 
+ 5. No fragile linking 
+ Import no mangled C++ symbols from tier0. Look up the few needed C exports with dlsym and degrade if one is missing. Ship minimal own types (ModSharp's approach) instead of SDK templates whose inline code references engine globals. 
+ 6. Fail per feature, not per framework 
+ Each resolved target backs a capability flag. Plugins can query it, the affected feature turns off with a clear log line, and the rest of the server keeps running. A boot self-test checks every binding before the first map loads. 
+ 7. Offline pipeline per build 
+ Watch Steam every few minutes and archive each build as it ships: anonymous access only returns the current manifest, so old builds cannot be fetched later. Run headless analysis to re-derive every target and diff the vtables, then boot a dedicated server with bots and run the native test suite. Publish signed gamedata keyed by build ID, and send ambiguous targets to a human. S2GDU and s2script already do most of this, and s2script filed an issue 20 minutes after a build went public. 
+ 8. A stable plugin API 
+ Plugins never see raw offsets, slots or SDK types. Generated schema bindings carry versioned rename aliases, and behaviour changes are absorbed by shims where possible. Categories that fit official surfaces (match management via logs and RCON, map logic via cs_script) can use those and never break. 
+ Expected residual breakage (inferred) 
+ Signatures, vfunc indices and interface slots account for most of CounterStrikeSharp's 383 gamedata changes and all of the header-chain rebuilds, and are mechanically re-derivable. Struct offsets, SDK refactors, schema rewrites and behaviour changes are roughly 40 incidents in three years, and some of them still need a human. The one auto-heal run covered a quiet span where every signature still worked, so it does not show what happens on a breaking update. The hoped-for outcome is CI handling most updates within an hour, a human stepping in every two to three months, and unresolved features disabled instead of crashing. That is unverified: proving it would mean replaying the pipeline across a structural build such as April 2026. S2GDU needs a headless IDA licence and is about 10 days old, and s2script's clean record covers only 4 builds. 
+ Without starting over 
+ CounterStrikeSharp could adopt much of this incrementally: 
+ a uniqueness check in FindSignature 
+ per-signature lazy resolution instead of one static initializer 
+ an error, not offset 0, for missing schema fields 
+ an RTTI cross-check of vtable offsets 
+ resolving ISource2Server methods by fingerprint and detouring them, instead of KHook slot hooks from s2sdk 
+ signed gamedata keyed by build ID on both operating systems 
+ a CI job that boots each new build and runs the 180 native tests 
+ Every stack compared 
+ Every in-process stack breaks on builds that change binaries. They differ in how fast they recover, and that comes down mostly to whether vtable slots live in data files or compiled headers, plus automation and maintainer hours. 
+ Stack Loader Vtable slots from Median fix 1.42.0.1 Ecosystem 
+ s2script Metamod headers, checked at boot ~2 h (n=4) hooks switched off safely; fix PR in ~1.7 h pre-1.0, Linux only, 17 bundled plugins 
+ SwiftlyS2 own data (hooks), headers (calls) ~5 h JSON fix in git after 4.6 h, no release yet; silent mis-hooks until then ~165 repos 
+ cs2kz Metamod headers ~10 h 3.2 h (SDK fork) single-purpose 
+ Metamod:Source own headers ~10 h unaffected foundation 
+ Plugify s2sdk own / Metamod headers ~12 h broken; header fixed upstream, needs a binary release ~20 for CS2 
+ ModSharp own mixed (detours + JSON) ~12.5 h no crash, but Steam API hooks silently misplaced ~50 
+ CS2Fixes Metamod headers ~17 h (dev branch) unknown single-purpose 
+ CounterStrikeSharp Metamod headers ~25 h not fixed ~350–525 repos, hosting default 
+ Median hours from build to first restoring commit, over the breaking builds since April 2026. 
+ Can the better stacks still be improved? 
+ Yes, substantially. A code audit of ModSharp, SwiftlyS2, s2script and Plugify found that every one still compiles in or hand-keeps engine vtable slots, and build 26879581 hit all of them. s2script is the only one that noticed: its boot check disabled the affected hooks cleanly. The others hook the wrong functions silently. ModSharp's "Deactivated" hook now runs on the real Activated and tears down the Steam API context right after logon. 
+ Slot fingerprinting at runtime. No stack matches vtable slots against a stored baseline. s2script compares only the slot count, which an insert plus a removal would slip past. 
+ Two anchors everywhere. SwiftlyS2 and its loader take the first match. ModSharp votes on only about 4 of its ~30 vfunc resolvers, and outside debug builds its refs silently override a disagreeing signature. 
+ Sane failure. ModSharp kills the process on any missing entry. SwiftlyS2 calls a null pointer, or hooks slot 0 (the destructor) when an offset is missing. No stack gives plugins capability flags. 
+ Reliable watchers. s2script's 5-minute cron missed this build, SwiftlyS2's validator has been dormant since August, and ModSharp has none. A push trigger from Steam's product info service (Deadworks' model) beats cron. 
+ A smoke test on a live server. No stack boots a headless server on the new build in CI. s2script's PRs say "not live-tested", and Deadworks only checks that the code compiles. 
+ Missing everywhere: a resolve cache keyed by build ID, an archive of past binaries with slot history, signed gamedata, and Windows parity for the offline tooling. 
+ Several anchors per target. Valve rewording one string broke a ModSharp binding on Nov 12. 
+ Inferred: combining these is mostly engineering, not research. The hard residue is the same as before: behaviour changes, schema rewrites, and the 25–30% of interface slots that are indistinguishable by body. The bigger obstacle is adoption: CounterStrikeSharp's ecosystem is 3–10× any other, so a new toolkit likely needs a CounterStrikeSharp-compatible API, or the fixes should go into CounterStrikeSharp itself. 
+ Code audit per stack How ModSharp, SwiftlyS2, s2script, Plugify and Deadworks bind, fail and update 
+ Stack Loader Engine calls Uniqueness On failure Per-build automation Windows 
+ ModSharp server module stand-in compiled refs intersected; partial voting process exit none (manual commits) yes 
+ SwiftlyS2 server module stand-in compiled (s2sdk fork) none, first match null call or slot 0 validator dormant; S2GDU not wired in yes 
+ s2script Metamod + KHook compiled, gated by a vtable-size check enforced (count must be 1) per feature watcher, offline regeneration, AI PR partial 
+ Plugify Metamod or launcher compiled enforced init aborts none yes 
+ Deadworks (Deadlock) own compiled none n/a schema codegen plus compile check only 
+ ModSharp 
+ It stands in for the server module and hooks only IAppSystem slots 0 and 3, which never move. It finds functions in order: VScript binding table, then refs (string, ConVar and vtable cross-references intersected, filtered by vtable membership), with a signature only to break ties. Of 178 address entries, 116 are signature-only, 47 have refs and 9 use VScript. Zydis-based resolvers re-derive vfunc indices and struct offsets from the instructions that use them, but most overwrite gamedata from a single derivation. GameFrame is a detour located by a ConVar, a game-system class and CSource2Server membership, so it survived. The Steam API hooks use hand indices 41 and 42, which moved to 42 and 43. Any failed entry ends the process with a forced minidump. Updates are manual commits, usually the same or next day. 
+ SwiftlyS2 
+ Its loader finds engine init by the first match of a startup string. Gamedata is fully hand-written (66 signatures, 131 offsets and indices). Signature scans take the first match. Hooks are vtable slots from offsets.jsonc , and schema fields resolve by hashed name in generated C#. A missing offset returns 0, so a hook lands on the destructor. For 1.42.0.1 the JSON fix landed in git at 03:39 UTC ( 67ef29b7 ), but the latest release predates it. S2GDU, the headless-IDA consensus tool, regenerates signatures and tracks slots by the nearest slot of compatible size. It needs a licensed IDA, publishes to a non-public repo and is not wired in yet. 
+ s2script 
+ Each interface has a pinned vtable size, checked against the live count at boot. On a mismatch, every hook on that interface is disabled and compiled engine calls return a miss value, with a banner at boot. Function finding runs signature, then resolve steps, then validators (prologue, string reference, vtable membership), and fails any entry that does not match exactly once. Its pipeline polls Steam every 5 minutes, aligns slots by fingerprint, regenerates schema and headers offline, and opens a PR from a Claude cloud session. For 26879581 the watcher missed the build; a human-triggered PR merged about 1 h 40 min after release, but shipping still needs a tag. It is Linux-only so far, and plugins get no runtime capability flags. 
+ Plugify 
+ Five ISource2Server hooks are compiled at the old slots. Its SDK fixed the header about 1.5 hours after the build, but the plugin has not been rebuilt, so the fix needs a binary release. Signature scans reject ambiguous matches, and init aborts on the first failed hook. 
+ Deadworks (Deadlock) 
+ Its mod database ingests each build within minutes. A workflow triggered by dispatch or a 30-minute cron regenerates schema, entity, ConVar and data bindings, compiles host, plugins and examples against them, and opens a PR listing what broke. Native signatures and vtable indices are still manual, and it is Windows-only. 
+ Census of every stack Languages, loaders, licences, status, including dead and out-of-process ones 
+ Stack Plugin language Loader Stars Public plugins Licence OS Status 
+ Metamod:Source 2.0-dev C++ own ( gameinfo.gi ) 576 ~100 zlib-style W+L active, foundation 
+ CounterStrikeSharp C# .NET 8 Metamod 1403 ~350–525 GPLv3 + exception W+L active, dominant 
+ SwiftlyS2 C# .NET 10 own server module loader, Metamod optional 122 ~165 GPLv3 + exception W+L active 
+ Swiftly v1 Lua, C# Metamod 95 – GPLv3 W+L dead (end of life Apr 2026) 
+ ModSharp C# .NET 9 own ( gameinfo.gi ) 116 ~50 AGPLv3 + exception W+L active; public repo is a mirror 
+ Plugify + s2sdk C++, C#, Python, Go, JS, Lua own launcher or Metamod 89 / 24 ~20 MIT / GPLv3 W+L active, niche 
+ s2script TypeScript (V8, Rust core) Metamod 4 17 bundled MIT / Apache-2.0 L (Windows in progress) pre-1.0, since Jun 2026 
+ VoltMod C++23 own, Metamod optional 5 a handful MIT ? new (Feb 2026) 
+ CS2Fixes C++ monolith, no plugin API Metamod 364 n/a GPLv3 W+L active 
+ cs2kz-metamod C++ monolith Metamod 212 n/a AGPLv3 W+L active 
+ Valve cs_script TypeScript in maps engine – ~13 repos Valve W+L official; map logic only 
+ SourceMod No CS2 support and no port announced 
+ Dead or minor: LuaUnlocker (archived 2024), a Lua system archived in 2023, TypeStrike (QuickJS, abandoned Mar 2026), lua2csmod (Lua on top of CounterStrikeSharp). Out of process: TMT2 (RCON plus HTTP logs, the only class immune to updates, but it cannot change gameplay), eBot (dead since 2023), and G5API/G5V web panels, which need the MatchZy or PugSharp plugins. 
+ Track record per update Hours to fix for 9 recent builds across 8 stacks 
+ Build (UTC) MM CSSharp SwiftlyS2 ModSharp Plugify CS2Fixes cs2kz s2script 
+ 1.41.5.1 AnimGraph 2, Apr 20 10 35 45 36 20 27 21–29 – 
+ 1.41.6.8, Jul 8–9 11 35 36 25 (merged 216) 10.5 (full 50) 21 21 3 (full 31) 
+ 1.41.7.7, Aug 24 ok 14 11 12.5 31 2 ok ? 
+ 1.41.8.2, Sep 23 ok 36 (Windows 83) 5 (last 12.6) 20 14 17 15.5 ? 
+ 1.41.9.2, Oct 22 ok 15 1.5 3–7 8 5 1.2 19 
+ 1.41.9.6, Nov 5 ok ok ? 9 ok 3 (Windows) ok ok 
+ 1.41.9.7, Nov 11 ok 13 (Windows crash open) 1.4 6 1.5 (Windows 21) 26 4.4 1.2 
+ 1.42.0.0, Nov 20 ok ok ok ok ok ok ok ok 
+ 1.42.0.1, Nov 23 ok open 4.6 ? ? ? 3.2 1.5 
+ Hours from build (GameTracking commit time, ±1 h) to the first commit that restored function. "ok" means not broken. CS2Fixes times are on its dev branch; merges to main lag 1–4 weeks. Some breaks were partial (a single signature), not crashes. 
+ Observations 
+ 1.42.0.0 changed 456 schema entries but only 2 binaries and broke no one, which shows runtime schema resolution works. 
+ 1.42.0.1 was a clean test of design: stacks with vtable slots in data files fixed it with a JSON edit (SwiftlyS2 GameFrame 19→20 in offsets.jsonc ), while header-based stacks needed an SDK change and a rebuild. 
+ Inferred: CounterStrikeSharp's fixes land 09:00–14:00 UTC the next day while Valve ships around 23:00 UTC, which fits a single maintainer's time zone. 
+ Surface size confounds the ranking: s2script and cs2kz expose fewer signatures. But SwiftlyS2 has a large surface and still recovers about 5× faster than CounterStrikeSharp, so data-driven offsets and process explain part of the gap. 
+ SwiftlyS2's "Game Sync" bot opens schema and protobuf regeneration PRs within about an hour of a build; s2script's bot reads new builds from Steam directly. 
+ Standalone loaders (SwiftlyS2, ModSharp, Plugify, VoltMod) avoid Metamod but mostly reuse its gameinfo.gi trick. Metamod-based C++ stacks all wait on the upstream SDK when engine interfaces change. 
+ Lock-in favours CounterStrikeSharp: its plugin ecosystem is 3–10× any other, hosting panels ship Metamod plus CounterStrikeSharp by default, and major plugins such as MatchZy exist only for it. 
+ Backtest: how far would incremental changes go? 
+ Running. Replays each past CounterStrikeSharp fix under three scenarios: the incremental package, the package plus automatic regeneration, and the ideal stack. Also tests the resolver on updates that actually broke gamedata. 
+ Adversarial review 
+ A fresh agent re-checked the main claims with its own scripts. The corrections are already applied above. 
+ Claim Verdict Correction 
+ 82% auto-heal on a real update refuted as worded Tested only on signatures that still worked, with the signature's address as ground truth. 24% have two agreeing anchors. Untested on a breaking update. 
+ ModSharp needed nothing because it detours refuted Its GameFrame detour survives, but 2 JSON slot hooks shifted. The fix is a data change. Its public mirror is stale since Nov 12. 
+ Compiled-in interface vtables are the costliest choice weakened 2 incidents in total, but the slowest recovery. An 8-byte binary patch fixes 1.42.0.1, so no full chain rebuild is needed in practice. 
+ Runtime slot fingerprinting is enough weakened 25–30% of interface slots have identical bodies, shared bodies back many slots, and line-number strings break fingerprints. 
+ 26879581 inserted a virtual at slot 14 holds Confirmed independently: 104 → 105 slots; 14→15, 19→20, 41→42. 
+ 1.42.0.0 broke no CSSharp Linux gamedata weakened Matching once is not the same as correct (ClientPrint was already wrong), and #1500 was reported on 1.42.0.0 and is unexplained. 
+ ~11% of builds, close to SourceMod weakened Same order of magnitude per year; no per-build comparison; cadence 1.7–3×, not 1.3–1.9×. 
+ Source 1 bumped interface versions; stripping caused the Linux churn jump weakened CS:GO did not bump them either. The churn jump is confounded by 64-bit signatures and rising Windows churn. 
+ CI within an hour; nobody combines the techniques unverified No breaking-update test; Windows untested; SwiftlyS2 and ModSharp already combine several techniques. 
+ The central conclusion survives. Most breakage comes from binding by position (byte patterns, slot numbers, offsets) rather than by name, and those bindings can be re-derived or verified mechanically. What weakens is the confidence in how much can be automated, which still needs a test on a structural update. 
+ Evidence 
+ Research tracks A–E. Expand any of them for the numbers and sources. 
+ CounterStrikeSharp history 383 gamedata changes over 31 update rounds; name-based bindings never broke; fixes take ~1 day plus follow-ups 
+ 180 of 903 commits (20%) exist only to keep up with the game: gamedata, schema dump or SDK/Metamod/protobuf submodule bumps. gamedata.json alone has 92 commits from 28 authors, with 383 value changes (230 signatures, 153 offsets) across 31 update clusters. Items marked inferred are judgment calls; the rest is counted from git and issues. 
+ Breakage by class 
+ Class Count Notes 
+ Byte-pattern signatures 154 entry changes Linux median 22 bytes, 16% wildcards; Windows median 17 bytes, 18% wildcards 
+ Vfunc indices in gamedata 75 entry changes CBaseEntity indices move together on both OSes: one update shifted ChangeTeam +7, Teleport +9, Respawn +19, CommitSuicide +24 
+ Vtable shifts compiled in from SDK headers 2 recent IVEngineServer2 +1 slot in 1.41.9.2 caused crashes until s2sdk was bumped. ISource2Server +1 slot in build 26879581 is open now (#1502): the GameFrame hook lands on ApplyGameSettings. 
+ Hardcoded struct offsets ~12 EntityIdentity size 0x78→0x70, SubclassID +8→+4, CPlayerPawnComponent +0x30→+0x38, entity-listener vector, transmit-info padding 
+ SDK API refactors ~11 ConVar system rewritten three times, recipient filters, entity listeners, CGlobalVars, the hl2sdk→s2sdk move (34 files) 
+ Loader / link errors 4–5 tier0 dropped exported symbols, Windows "procedure not found", dev Metamod builds required 
+ Changed prototypes or semantics ~9 Bound functions whose arguments or behaviour changed 
+ Schema renames / removals 607 properties, 58 classes Resolved at runtime, but breaks the C# API and plugins 
+ Protobuf 0 None traceable to an update break 
+ Recovery time 
+ The main fix usually merges 12–34 hours after the first report (median about 23 h over 13 major breaks). One patch took about 6 days. In about 11 of 15 majors, corrections followed 1–8 days later; GiveNamedItem on Linux was re-fixed three times in six days. Fixes ship partly untested to cut downtime. 
+ Repeat offenders 
+ Offsets for Respawn (30 changes), CommitSuicide (29), Teleport and ChangeTeam (18 each). Signatures for PostThink (17), GiveNamedItem (16), SetModel, TerminateRound, SetPawn and TakeDamageOld (about 15 each). SwitchTeam, NetworkStateChanged and UTIL_Remove almost never break. 
+ What resolves by name never breaks 
+ Schema fields, net messages, game events, ConVars and RTTI lookups had zero value fixes in three years . They fail only when Valve renames or removes something. Every recurring break comes from bindings by position: byte patterns, slot numbers and struct offsets. 
+ Fragility CSSharp adds itself 
+ FindSignature takes the first match with no uniqueness check. In #1494 the Linux ClientPrint signature bound to an unrelated CNavBFSLattice constructor. 
+ Failure is all-or-nothing. Native init stops at the first missing signature ( globals.cpp:129-157 ), and managed VirtualFunctions resolves all 19 signatures in one static initializer, so one miss throws TypeInitializationException for every one of them. 
+ A missing schema field returns offset 0 and is cached unchecked ( schema.cpp:174,185 ). Inferred: reads and writes then hit the object's vtable pointer. 
+ The auto-updater downloads a hand-maintained file over plain HTTP with no signature check, is not keyed to the game build, and has been Windows-only since 1f30e561 . Inferred: only 3–4 of about 20 updates since 2024 could be fixed by gamedata alone. 
+ The daily schema sync needs CSSharp to already load on the new build, so it trails the code fix by days. 
+ The 180 native tests run only by hand inside a live server. 
+ CSSharp depends on upstream s2sdk in lockstep: it forked twice, and #1502 is waiting on s2sdk PR #128. 
+ Current binding surface 
+ 28 signatures, 14 vtable indices and 3 struct offsets in gamedata. 22 vtable hooks, 46 direct interface virtual calls and 12 interface version strings compiled in from s2sdk headers. Hand-written layouts in native code ( CCheckTransmitInfoHack , EmitSound_t ) and managed code ( CEntityIOOutput.cs alone has 13 raw offsets). 
+ hl2sdk-cs2 and Metamod:Source 42 forced ABI episodes in ~3 years; interface versions never bumped; Metamod itself rarely changes 
+ The hl2sdk cs2 branch has been frozen since Oct 7 2026; work continues in alliedmodders/s2sdk with the same history. This track analysed 1,347 SDK commits since March 2023 against 200 CS2 update posts from Steam News. 
+ How often the SDK is forced to change 
+ SDK changes cluster on update days: 87% of commits touching virtuals and every .proto commit land between one day before and three days after a CS2 update, against a 59% baseline. By heuristic, about 226 commits were forced by updates and 132 were reverse-engineering catch-up. The forced ones group into 42 episodes over about three years, roughly one a month. Inferred: about one CS2 update in four or five shifts an ABI the SDK declares. 
+ Period Commits Touch virtuals Touch struct members .proto tier0 / libs 
+ Limited Test → launch 100 40 27 0 8 
+ Oct 2023 – Dec 2024 212 81 58 17 19 
+ 2025 156 45 53 7 4 
+ Jan – Sep 2026 135 36 49 7 8 
+ Oct – Nov 2026 744 204 252 3 6 
+ The Oct–Nov 2026 spike is a tool-assisted cleanup campaign (474 commits by one author, headers renamed to Valve's file names, an AGENTS.md for coding agents), not game updates. The renames broke downstream builds on their own (Metamod PR #289). 
+ Where the churn is 
+ Commits touching virtuals since launch: IVEngineServer2 21, ICvar 20 (plus ConVar struct layout), INetworkGameServer 17, IGameSystem 16, IFileSystem 15, ISource2GameClients 12, CEntityInstance 12. IGameSystem has one virtual per game event, so every new event shifts the slots after it. Among methods Metamod and CounterStrikeSharp call, IVEngineServer2::GetServerGlobals moved 9 times, ClientPrintf, GetGameDir and SetClientListening 8 times each, ServerCommand 7 times, ICvar::RegisterConCommand 6 times. 
+ The slots Metamod itself hooks (loop mode, engine service manager, client callbacks, FireEvent, PostEventAbstract, GameFrame, AddSearchPath) were unchanged in the SDK from October 2023 until now. The ISource2Server insertion behind #1502 is the first one, and the SDK has not caught up yet (s2sdk PR #128). 
+ Interface versions never change 
+ Source2Server001 , Source2EngineToServer001 , Source2GameClients001 , SchemaSystem_001 and others date from 2015; VEngineCvar007 and VFileSystem017 from 2010. Source 1 was not much better: CS:GO also kept its version strings through about 22 interface edits, and only TF2 bumped one, in 2022. In CS2 none has changed, so CreateInterface keeps succeeding and hands back an object whose vtable no longer matches the header. Version checks cannot catch the mismatch. 
+ tier0 link breaks 
+ Across 11 refreshes of the SDK's tier0 stub, about 1,360 exports were removed or re-mangled. Each one a built module imports is a hard "undefined symbol" failure at load time. Documented cases: KeyValues::GetString re-mangled by a const change (Feb 2024), _AssertValidWritePtr pulled in by static tier1 code (Armory, Oct 2024), UtilMemory_CalcNewAllocationCount (Jan 2026), and g_bUpdateStringTokenDatabase referenced from an inline CUtlStringToken constructor in a header (Jul 2026). 
+ Why a header change forces a rebuild 
+ A virtual call compiles to [vtable + 8×N] , with N fixed by declaration order. KHook and SourceHook read the slot from the member-function pointer at compile time. Struct offsets (CEntityInstance, ConVarData, Utl containers, CGlobalVarsBase, KeyValues3) are baked in too, and inline header code plus static SDK libraries import tier0 symbols directly. Every plugin built against the old headers is wrong until it is rebuilt. 
+ Metamod:Source 
+ A Game csgo/addons/metamod line in gameinfo.gi makes the engine load Metamod's loader as if it were libserver.so . The loader then finds and loads the real server binary and patches its Connect/Init through hand-written mirror classes that touch only IAppSystem slots 0, 1 and 3, which have never moved. Metamod's own source almost never changes for an update: 12 CS2 "Trigger build" commits touch only pushbuild.txt , alongside about 21 SDK manifest bumps. Only two provider changes were forced by SDK API changes (CBufferString Jan 2025, ConVar Feb 2025). Twelve real "broken after update" issues were fixed the same day to two days later, except one that took about 15 days. 
+ Outside the SDK, every update overwrites gameinfo.gi and users must re-add the line (MM#257), and in Sep–Oct 2025 CS2 changed its library paths. SourceHook was removed from master in September 2026 ( a12f3cd ) in favour of KHook, with detours and signature lookup, which moved the plugin API from 17 to 18, so SourceHook-era plugins no longer load. 
+ Stable versus churning 
+ Stable for three years Churns 
+ Interface version strings, CreateInterface and the IAppSystem base, the gameinfo.gi load trick, lifecycle and event hook slots, most tier0 C exports, the runtime schema system (its vtable changed in 3 commits), protobuf wire format 
+ IVEngineServer2, ICvar and ConVar layout, IGameSystem, INetworkGameServer and server-side client classes, INetChannel and INetworkMessages, CEntityInstance, IFileSystem, KeyValues and KV3, Utl containers, tier0 exports used by inline code, and the SDK's own reorganisations 
+ Neither project resolves vtable slots at runtime, reads slot indices from gamedata, or detects the game version. The SDK's AGENTS.md explicitly forbids shims that would keep downstream code compiling. Existing mitigations: Metamod's loader avoids SDK headers, its provider layer isolates the core, it builds against unpinned SDK HEAD and rebuilds the same day, and the SDK uses unkNNN placeholder virtuals, 60–107 static_assert s, and since October 2026 a CI job that builds the templates plugins use. 
+ The binaries 26879581 shifted ISource2Server; prologue signatures are fragile by construction; anchors re-found 24–82% of functions on a quiet update 
+ Three Linux server builds were diffed: 1.41.9.7 (Nov 12), 1.42.0.0 (Nov 19, the local install) and build 26879581 (Nov 23, which tracker sources label 1.42.0.1). Anonymous Steam access only returns the current manifest, so older builds could not be fetched; for big past updates this track disassembled old and new signature bytes from gamedata git history and used 179 third-party schema dumps. Items marked inferred are judgment calls; the rest is measured. 
+ What the binary looks like 
+ libserver.so is stripped and built with GCC 14.2 (Steam Runtime 3) and the mold linker, not clang, as unity builds with frame pointers on. It exports about 8 game symbols ( CreateInterface , InstallSchemaBindings , a few metadata functions). It keeps full Itanium RTTI: 7,127 typeinfos and 3,877 classes with vtables. .eh_frame covers only 5% of .text , so a function map has to come from a linear sweep plus call and relocation targets (79.5k functions). 
+ Live test against CounterStrikeSharp's gamedata 
+ All 28 CounterStrikeSharp Linux signatures match exactly once on all three builds, and all 11 vtable-index offsets point at the same function (fingerprint-checked). The 49 CS2Fixes and 66 SwiftlyS2 signatures also all survive. From 1.41.9.7 to 1.42.0.0, no vtable changed size (0 of 3,821), no schema offset moved (0 of 6,774) and only 106 of 58,967 functions changed after masking addresses. 1.42.0.0 broke none of CounterStrikeSharp's Linux gamedata. 
+ The actual break: build 26879581 
+ The CSource2Server vtable grows from 104 to 105 slots. A new virtual sits at slot 14, a four-instruction forwarder, so WriteSignonMessages moves 14→15 and GameFrame 19→20. Inferred: the s2sdk ISource2Server header (last changed Oct 6) predates this, so every hook resolved from a compile-time index lands on its neighbour. That covers Metamod's GameFrame and CounterStrikeSharp's ServerHibernationUpdate, GameServerSteamAPIActivated, OnHostNameChanged, UpdateWhenNotInGame, PreWorldUpdate and others. No signature check can catch this, because nothing compiled-in is a signature. 
+ Code drift on a quiet update 
+ Only 21–24% of matched libserver functions (34% in libengine2) are byte-identical between consecutive builds, yet 99.5–99.8% are identical once RIP-relative and rel32 values are masked. Whole regions slide by 0x700–0x2100 bytes, with 78–299 distinct shift values per pair. Raw offsets into code are therefore never safe, even when Valve changed almost nothing. 
+ Why past signatures broke 
+ Classified by disassembling the old and new bytes of 178 Linux signature edits: 
+ Cause Edits 
+ Instructions added or removed in the prologue (mostly a different set of saved registers) 66 
+ Wildcard placement changed only 29 
+ Register allocation only 23 
+ Tail broke, signature shortened 15 
+ Register allocation and immediates 14 
+ Old signature became ambiguous, lengthened 12 
+ Prologue rewritten or inlined 11 
+ Immediates only 6 
+ About 60% come from whole-function code generation (register pressure, inlining, unity-build ripple), so prologue signatures are fragile by construction. 19 historical signatures now match several places; with first-match scanning a stale signature silently binds to the wrong function. 
+ Vtables and schema 
+ Big updates move 6–11 of the 17 offsets at once (Jan 23 2026: 10 of 17; Apr 22 2026: 11 of 17), because one virtual added to a base class shifts every derived class. Schema field tables are static .data records (class name, size, count, then {name, type, offset} entries) and can be extracted offline: 948 classes and 6,774 fields, agreeing 5,160 of 5,160 with a runtime dump. Across the tracker dumps, 26% of consecutive builds moved some offset, sometimes thousands (2,269 fields and 301 class sizes in April 2026). That is harmless to name-based lookup and fatal to hard-coded offsets such as CTakeDamageInfo_HitGroup=104 or CheckTransmitPlayerSlot=576 . 
+ Stable anchors 
+ 20.7% of functions reference a string and 6.9% reference a string no other function uses. 38.9% sit in a vtable. A unique string or vtable slot covers 44.5% of functions; one extra call hop covers 58.7%. ConCommands and ConVars are registered in static initializers, entity factories are static records and game event names are static pointer arrays. Example chain: string 13CCSPlayerPawn → typeinfo → vtable (416 slots) → slot 356, exactly where CounterStrikeSharp's PostThink signature lands. 
+ Auto-heal experiment 
+ Anchors were derived on 1.41.9.7 and resolved on 26879581 for 139 signature targets across three frameworks. 115 had an anchor and 114 (82% of all targets) healed correctly : 
+ Technique Healed / had it 
+ Caller with a unique string, plus call ordinal 89 / 89 
+ Unique string inside the function 41 / 41 
+ Vtable slot 13 / 14 
+ The one vtable miss is IsValidNavMesh, which moved 32→33 with the inserted virtual; it returned the wrong function with no warning, so without a second anchor misses are not always detectable. A unique whole-function hash heals 109 of 120. Targets with no anchor are data signatures in the middle of a function and leaf functions without strings (for CounterStrikeSharp: RemovePlayerItem, StartTouch, InitAllSystems). This was a quiet update, so 82% is an upper bound. 
+ Review correction. The test set kept only signatures that matched once in both builds, so plain signatures scored 100% on it. "Correct" meant "same address the signature finds", which counts the known-wrong ClientPrint binding (#1494) as healed. The 139 rows are 104 unique functions, only 25 of which have two or more anchors (about 24% under a two-anchor rule). 48 rely only on caller plus call ordinal, with ordinals up to 95. The 0% fuzzy result came from a harder set (months-old broken signatures) that the anchor method was never run on, so the two numbers are not directly comparable. 
+ Fuzzy matching fails. On 100 broken historical signatures with known current targets, abstracting operands found 1 correctly, abstracting registers found 0, mnemonics alone gave 0 (27 ambiguous, 62 wrong), and best-similarity gave 0 because the top scores all tied. GCC prologues are too uniform for loosened byte patterns to stay unique. 
+ How other projects cope Newer stacks skip Metamod and headers; automatic regeneration exists; cs_script is map-bound 
+ Valve shipped 8 CS2 server builds in 25 days (1.41.9.4 on Oct 30 to 1.42.0.1 on Nov 23). On the latest build CounterStrikeSharp is broken (#1502): Valve inserted one virtual into ISource2Server , so the GameFrame hook at slot 19 now lands on ApplyGameSettings and the server segfaults. The fix is waiting on s2sdk PR #128. cs2kz was running again in about 3.5 hours by pointing its submodule at a contributor's fork of the SDK. 
+ Newer stacks bypass Metamod and the SDK headers 
+ SwiftlyS2 loads through its own small server proxy (~500 lines) that finds engine init by a string reference. It uses s2binlib , a Rust library that reads the binary on disk: RTTI vtable lookup, string references, pattern scans. 
+ ModSharp has its own loader and its own minimal headers, with no hl2sdk. Its gamedata has 49 "ref" entries that locate functions by string, ConVar or vtable membership. Its ResolveVote lets a runtime-resolved address override hand-written gamedata only when several anchors agree. A source comment says every past auto-resolve bug came from an uncorroborated guess. 
+ ModSharp hooks GameFrame with an inline detour on the resolved function, not a vtable slot, so the 1.42.0.1 slot insertion does not affect it. Review correction: its gamedata hard-codes CSource2Server slot hooks for GameServerSteamAPIActivated (41) and Deactivated (42), and 41 moved to 42, so it is mis-hooked too, though the fix is a JSON edit. Its public mirror has no commits after Nov 12, so "no fix needed" cannot be confirmed. 
+ ModSharp and CS2Fixes use Valve's leftover VScript binding table as a stable map from names to native functions. 
+ Automatic regeneration now exists 
+ S2GDU (Swiftly, started Nov 14): headless IDA. It re-finds each tracked function by voting over anchors (strings, ConVars, vtables, call chains, data pointers), regenerates the signature, re-derives vtable slots, and reports AMBIGUOUS instead of guessing. A chain of watchers detects each new Steam build and publishes gamedata for it automatically. 
+ s2script polls Steam every 5 minutes. It aligns old and new vtables by instruction fingerprints per slot, so an inserted virtual shows up as Class[19]→20 . It regenerates schema offsets offline and opens an issue plus an AI-written fix PR; one issue was filed 20 minutes after a build went public. It says plainly that a few non-schema struct offsets still need a live server test. 
+ Deadworks (Deadlock): a build database that has every build within minutes, and a 30-minute cron that regenerates the API and checks that it compiles. 
+ The cheat-side comparison 
+ Offset dumpers such as cs2-dumper walk the interface registry and the schema system by name, which yields thousands of offsets without any byte pattern. They need only about 30 RIP-relative patterns for globals. Since 2025 they needed about 8 pattern fixes and one structural fix. They never handle function hooks, interface vtable slots, calling conventions or server behaviour, which are the main server-side break classes. Auto-healing is therefore easy for data offsets, moderate for globals, and hard for hooks, vtables and non-schema structs. 
+ Stack Binds through Resilience technique Observed recovery 
+ CounterStrikeSharp Metamod, s2sdk headers, gamedata JSON Gamedata download (signatures and offsets only) 1.41.9.7 ~17.5 h; Jul 2025 ~6 days; 1.42.0.1 still broken 
+ SwiftlyS2 Own loader, s2binlib, s2sdk fork, JSON incl. vtable indices String-ref loader, RTTI vtables, validator CI, S2GDU 1.41.9.7 core fix ~4 h; inferred: likely also hit by 1.42.0.1 
+ ModSharp Own loader, own headers VScript table, refs, voted runtime resolution, detours not vtables 1.41.9.6 ~9.5 h; 1.41.9.7 ~11 h; 1.42.0.1: GameFrame fine, 2 slot hooks shifted (unconfirmed) 
+ Plugify s2sdk Own launcher or Metamod Refs, lightly used 1.41.9.7 ~6 h 
+ CS2Fixes Metamod plugin, signatures VScript bindings, runtime lookups 1.41.9.6 ~4 h; 1.41.9.7 ~30 h 
+ cs2kz Metamod plugin, signatures Forks the SDK when upstream lags 1.41.9.7 ~9 h; 1.42.0.1 ~3.5 h 
+ s2script Metamod, s2sdk fork, TypeScript on V8 5-min watcher, vtable fingerprints, offline regeneration, AI PRs Report within 20 min; last 4 builds clean 
+ cs2-dumper External memory reads (client) Schema and interface walk plus ~30 patterns Hours to a day 
+ Deadworks (Deadlock) Own executable Build database plus 30-min regeneration cron Minutes to 30 min, by design 
+ Valve's official surface: cs_script 
+ Since about September 2025, maps can carry JavaScript run on V8 through a point_script entity. The API covers about 40 events (including OnModifyPlayerDamage and OnPlayerChat ), entity spawning and inputs, GiveNamedItem, teleport, ConVars, ServerCommand, traces, a custom HUD and save data. It has no SteamID, networking, files or database, net messages, transmit control, usercmd access, econ items or generic hooks. It is bound to the map: there is no official way to load it server-wide, though Plugify and ModSharp inject one from native code. Valve keeps compatibility through deprecation shims rather than a frozen ABI. 
+ Other official surfaces are RCON, HTTP log streaming ( logaddress_add_http ), GOTV broadcast and workshop collections. Game State Integration works only on the client. TMT2 runs MatchZy-style match management with no server plugin, using only logs and RCON. Inferred: roughly 40–60% of plugin categories could work this way at lower fidelity. Match management mostly fits, admin tools partly, DM, retakes and timers only through custom maps, and skins and anti-cheat not at all. Skin and knife plugins also break Valve's server-token rules. 
+ No maintainer write-up blames link-time or profile-guided optimisation. The causes they document are vtable layouts compiled in from community headers, non-schema struct churn (about 45 layout commits after the July 2025 update), stripped binaries, behaviour changes, and a dependency chain that runs from the Valve build through s2sdk and Metamod to the framework and then the plugin. 
+ Source 1 comparison and update cadence Cadence 1.7–3× CS:GO; break rate the same order of magnitude; losing Linux symbols probably matters most 
+ CS2 does not update much more often than CS:GO did, and CounterStrikeSharp's gamedata breaks at roughly the rate SourceMod's CS:GO gamedata did. Three things are new in CS2: engine interfaces change far more often, Linux binaries carry no symbols, and every two to three months a large schema rewrite lands. 
+ Cadence 
+ GameTracking-CS2 has 416 builds (370 since launch): 92 in 2023 (from March), 111 in 2024, 106 in 2025 and 107 in 2026 up to Nov 23. The median gap is 2 days. CS:GO shipped 35–61 patch versions a year in 2017–22 (raw build counts are not in the data), so CS2 runs about 1.7–3 times faster by patch version. 
+ How many builds actually break CounterStrikeSharp 
+ 65 hand-checked fix commits cluster into 39 incidents (4, 13, 12 and 10 for 2023–26). 38 of 361 builds since October 2023, about 11%, needed a gamedata or SDK fix (20% with looser attribution). Every structural build was followed by a fix within 1–3 days, as were Armory, 1.40.8.5, 1.41.7.7, 1.41.9.2 and 1.41.9.7. About half of major builds triggered fixes (12 of 25) against about 16% of minor ones. Each signature gets rewritten 1.5–2 times a year. Inferred: that incident rate matches SourceMod on CS:GO in its active years, so the feeling that everything breaks on every update comes mostly from SDK vtable churn and from many plugins each carrying their own signatures. 
+ Structural builds 
+ Server schema changed in 60 of 245 builds since October 2024 (24%), usually in 1–4 classes such as CCSPlayerPawn, the game rules, weapons and movement services. Seven builds rewrote base classes: 
+ Date Build Server fields added / removed 
+ 2025-07-29 1.40.9.0 +207 / −113 
+ 2025-09-16 1.41.0.4 +16 / −17 
+ 2025-10-15 1.41.1.3 +15 / −9 
+ 2026-01-25 1.41.3.2 +85 / −45 
+ 2026-04-20 1.41.5.1 (AnimGraph 2) +140 / −41 
+ 2026-07-09 1.41.6.8 +79 / −57 
+ 2026-09-23 1.41.8.2 +67 / −27 
+ Armory (Oct 2024) changed 5,022 files, the most on record, but predates the schema dumps. 1.42.0.0 was mostly a version-number rollover from 1.41.9.9: 2 Linux binaries changed, about 15 server schema entries changed and no field offsets moved. Issue #1500 (Linux crash on map load) was opened on Nov 21, before 1.42.0.1, and remains unexplained for 1.42.0.0. The break in #1502 arrived with 1.42.0.1. Protobuf churn is small, a few hundred lines a year. 
+ Symbols: the clearest Source 1 difference 
+ On Linux, SourceMod could name functions by their mangled symbols ( @_ZN… ), which survive any recompile. CS:GO lost those symbols on 2016-11-28: SourceMod commit 6290834e2b swapped 12 symbol entries for byte patterns, nine fix commits followed within two days, and Linux signature changes went from 2–5 a year to 45, 34 and 14 in 2016–18. That jump is partly confounded: 64-bit Linux signatures were added in 2017, and Windows churn also rose in 2016. TF2 and CS:S kept their Linux symbols through their 64-bit ports; TF2's 2025 signature churn was 19 on Windows and 0 on Linux. CS2's libserver.so exports only CreateInterface , InstallSchemaBindings and a few metadata functions, and CounterStrikeSharp's gamedata has zero symbol entries. 
+ Offsets dominate everywhere: in SourceMod 75–96% of changed keys are vtable indices or member offsets (TF2 2025: 482 of 503). 
+ Interface versions did not protect CS:GO either 
+ hl2sdk-csgo kept VEngineServer023 , ServerGameDLL005 and VEngineCvar007 from 2012 while eiface.h was edited about 22 times for game updates. TF2 did bump ServerGameDLL in 2022. CS2's version strings are identical in samples from 1.38.6.0 (March 2023) to 1.42.0.1, while the cs2 eiface.h got about 40 vtable commits since late 2023: roughly 13 a year against about 2 for CS:GO. These are SDK commits, so they include reverse-engineering corrections as well as real Valve changes. The cs2 SDK branch gets 141–174 commits a year; csgo peaked at 44. 
+ Rebuild behaviour 
+ Depot manifests, tracked since 2026-10-04 (17 updates), show two modes. Game-only updates (7 of 17) change 1–4 Linux libraries, mainly libclient and libserver. Engine rebuilds change 11–33 of 60 Linux libraries and 50–56 of 102 Windows DLLs. libserver.so changed in 15 of 17 updates, including content-only ones; the only exceptions were client-only hotfixes. Inferred: the server module is rebuilt on essentially every server-side build, so raw offsets and fragile signatures drift even when the source did not change. Third-party libraries never change. 
+ Activity log What happened when 
+ 2026-11-24 · Plan approved; 5 research agents launched in parallel 
+ 2026-11-24 · Track A done: CounterStrikeSharp history classified (383 gamedata changes, 31 update clusters) 
+ 2026-11-24 · Track D done: 9 stacks compared, automatic regeneration pipelines found, cs_script scope mapped 
+ 2026-11-24 · Track B done: 1,347 SDK commits classified, 42 forced ABI episodes, interface versions never bumped 
+ 2026-11-24 · Track G started on request: backtest of incremental CounterStrikeSharp changes against past updates 
+ 2026-11-24 · Stack audit done: every stack hand-keeps engine slots; only s2script failed safely on 26879581; 7 improvement gaps listed 
+ 2026-11-24 · Stack census and track record added: 12 stacks, 9 builds; median fix ranges from ~2 h (s2script) to ~25 h (CounterStrikeSharp) 
+ 2026-11-24 · Adversarial review done: 2 claims refuted, 6 weakened, 1 confirmed; corrections applied throughout 
+ 2026-11-24 · Page restructured: high-level summary up top, evidence and details collapsed 
+ 2026-11-24 · Track F started on request: full stack comparison and gaps in the best stacks 
+ 2026-11-24 · Track C done: 1.42.0.0 broke no gamedata; build 26879581 inserted a virtual into ISource2Server; 82% auto-heal, 0% fuzzy 
+ 2026-11-24 · Synthesis drafted: short answer, taxonomy, intrinsic vs self-inflicted, toolkit design. Adversarial review started 
+ 2026-11-24 · Track E done: about 11% of CS2 builds needed a CounterStrikeSharp fix, near SourceMod-on-CS:GO rates; Linux symbols are the key Source 1 difference 

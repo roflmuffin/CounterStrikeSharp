@@ -1,0 +1,133 @@
+2026-10-07T12:04:41Z	2026-10-07T12:04:41Z	3f4110dc	Add branch move notice
+2026-10-06T17:37:00Z	2026-10-06T16:57:59Z	3ea5305b	Number ISource2Server unknown vfuncs by group
+2026-10-06T13:39:17Z	2026-10-06T12:23:08Z	89edba86	Add CPathParameters::m_nMidControlPointNumber
+2026-10-06T13:39:17Z	2026-10-06T12:23:08Z	48475d58	Update CHostStateMgr and CHostStateRequest members
+2026-10-06T13:39:17Z	2026-10-06T12:23:08Z	0b38c267	Update SchemaEnumeratorInfoData_t::m_nStaticMetadataCount type
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	8bac22e4	Update SolidFlags_t
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	ce83528e	Rename interaction layer 25 to VEHICLE_CLIP
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	fb024a80	Update CKeyValues_Data::Internal_SetName return type
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	9194d94e	Update CNetMessage vtable
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	b191f300	Pass entities by reference to ISource2GameEntities::OnPrePackEntities
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	30de8aa3	Update ISource2GameClients vtable
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	6ad1568a	Update IVEngineServer2 vtable
+2026-10-06T13:39:17Z	2026-10-06T12:21:59Z	33207d5e	Update IEngineServiceMgr vtable
+2026-10-06T13:39:17Z	2026-10-06T12:21:58Z	5811f874	Update INetworkMessages vtable
+2026-10-06T13:39:17Z	2026-10-06T12:21:58Z	ee7681b4	Update INetworkServerService vtable
+2026-10-06T13:39:17Z	2026-10-06T12:21:58Z	b400f6a9	Update ISource2Server vtable
+2026-10-06T13:39:17Z	2026-09-30T14:12:57Z	deefb86d	Update CUtlVectorMemory_Fixed alignment
+2026-10-05T19:21:47Z	2026-10-05T19:21:47Z	6b984874	Change FnCustomData_t to FnGetEnumInfoHandle_t
+2026-10-05T18:24:15Z	2026-10-05T18:24:15Z	38b6e707	Add CTransformWS
+2026-10-05T18:23:50Z	2026-10-05T18:23:50Z	93992af2	Add vec3ws_origin/quatws_identity
+2026-10-05T18:13:51Z	2026-10-05T18:13:51Z	9703fd1b	Add QuaternionWS stub
+2026-10-05T18:13:33Z	2026-10-05T18:13:33Z	038ac6bb	Make CUtlStringToken constexpr compatible
+2026-10-05T18:13:21Z	2026-10-05T17:48:00Z	b86c3532	Move GameTime_t to a separate file
+2026-10-05T17:46:09Z	2026-10-05T17:46:09Z	de825b9b	Update CNetworkSerializerField/ClassInfo
+2026-10-05T17:44:51Z	2026-10-05T17:44:51Z	96ad9efd	Update SchemaClassFieldData_t & SchemaEnumInfoData_t
+2026-10-04T18:39:41Z	2026-10-04T18:39:41Z	223fc8fa	Move CBaseGameSystem to CAutoGameSystem (#432)
+2026-10-03T17:37:19Z	2026-10-03T17:37:19Z	5fc47fd0	Update ICvar missing arg
+2026-09-30T19:48:12Z	2026-09-30T19:48:12Z	22087f53	Fix ctor member order in CVariantBase & minor additions
+2026-09-30T11:11:30Z	2026-09-30T11:11:30Z	a4ce39f7	Fix few compiler errors after CVariantBase update (#431)
+2026-09-29T20:47:20Z	2026-09-29T20:47:20Z	99855246	Update CVariantBase (#424)
+2026-09-29T12:42:29Z	2026-09-29T12:42:29Z	f9c04fdd	Update ISource2ServerConfig (#430)
+2026-09-28T13:41:59Z	2026-09-28T13:41:59Z	f24de742	Update Color alignment
+2026-09-28T13:24:23Z	2026-09-28T13:24:23Z	64e12ff5	Update interfaces.lib/.a
+2026-09-25T18:46:10Z	2026-09-25T18:46:10Z	394a726d	Reset cvar/cmd reg list roots in ConVar_Unregister (#429)
+2026-09-25T16:23:37Z	2026-09-25T16:23:37Z	fedf2673	Update CNetworkSerializerFieldInfo/ClassInfo
+2026-09-25T14:27:19Z	2026-09-25T14:27:19Z	2fa8e053	Extend ConVar_Unregister to actually unregister all cvars/cmds
+2026-09-24T18:12:43Z	2026-09-24T18:12:43Z	6315f010	Update SchemaClassFlags1_t & SchemaEnumFlags_t
+2026-09-24T16:12:10Z	2026-09-24T16:12:10Z	79250346	Expose ConCommand/ConVarRegList to convar.h
+2026-09-24T15:04:02Z	2026-09-24T15:04:02Z	99befe68	Update FTYPEDESC_* flags
+2026-09-23T16:19:40Z	2026-09-23T16:19:40Z	625bfd4e	Fix ScriptClassDesc_t declaration being missing (#428)
+2026-09-23T15:29:06Z	2026-09-23T15:29:06Z	1fb66226	Update ScriptFunctionBinding_t & ScriptDataType_t (#427)
+2026-09-23T14:03:17Z	2026-09-23T14:03:17Z	aeaa10b6	Update datamap_t, typedescription_t, CEntityClass, ComponentUnserializerClassInfo_t & INetworkGameServer vtable (#426)
+2026-09-23T13:43:35Z	2026-09-23T13:43:35Z	de67e746	cs2: Update protobufs
+2026-09-23T13:34:26Z	2026-09-23T13:34:26Z	5643d0ef	Update INetworkGameServer vtable (#423)
+2026-09-23T13:18:27Z	2026-09-23T13:18:27Z	8d169eed	Update CEntityInstance vtable (#422)
+2026-09-23T12:38:49Z	2026-09-23T12:38:49Z	d5801463	Update IFileSystem::String args
+2026-09-23T12:37:12Z	2026-09-23T12:37:12Z	6d95a49f	Update IFileSystem (#425)
+2026-09-23T12:25:37Z	2026-09-23T12:25:37Z	8920c6d0	Update EntityIOQueuePrioritizedEvent_t
+2026-09-23T12:24:15Z	2026-09-23T12:24:15Z	59c76ce2	Correct includes
+2026-09-23T12:23:27Z	2026-09-23T12:23:27Z	bfa22d42	Update return type of CEntityInstance::GetScriptDesc
+2026-09-21T20:00:31Z	2026-09-21T20:00:31Z	984726ae	Update IRefCounted & fix missing includes on some headers (#421)
+2026-09-21T17:40:09Z	2026-09-21T17:40:09Z	3ea69200	Add FCVAR_SNAPSHOT_IGNORED flag (#420)
+2026-09-21T11:57:19Z	2026-09-21T11:57:19Z	936d985f	Update CGlobalVarsBase (#419)
+2026-09-21T09:39:33Z	2026-09-21T09:39:33Z	58fd4588	Update CEntityClass & CEntityClassInfo (#418)
+2026-09-17T10:03:57Z	2026-09-17T10:03:57Z	3b9adbdf	cs2: Update Class_T (#414)
+2026-09-14T12:47:00Z	2026-09-14T12:47:00Z	cbb4b5bb	Extend CHandle::operator= overload (#412)
+2026-09-10T14:06:14Z	2026-09-10T14:06:14Z	d53b5f94	cs2: Update protobufs
+2026-08-25T11:39:35Z	2026-08-25T11:39:35Z	bd17582b	cs2: Update protobufs
+2026-08-18T15:50:16Z	2026-08-18T15:50:16Z	dadd5d70	Fix invalid memory access on CKeyValues3Table resize
+2026-08-16T10:40:48Z	2026-08-16T10:37:25Z	e5a8acad	Correct convar clamp bool function
+2026-07-28T17:33:20Z	2026-07-28T17:33:20Z	159cddd4	Update CUtlRBTree & CUtlOrderedMap methods (#407)
+2026-07-26T20:17:16Z	2026-07-26T20:17:16Z	17b5ecc9	Convert some generichash functions to constexpr (#408)
+2026-07-26T08:23:03Z	2026-07-26T08:23:03Z	487ba809	Restore coordsize.h
+2026-07-26T08:22:44Z	2026-07-26T08:22:44Z	70b5f526	Correct enum name typo
+2026-07-23T11:30:15Z	2026-07-23T11:30:15Z	e7ed969e	cs2: Fix InputBitMask_t 64-bit shifts (#406)
+2026-07-23T10:50:49Z	2026-07-23T10:50:49Z	c76f3bf4	cs2: Add cs2 specific input bits
+2026-07-23T10:50:26Z	2026-07-23T10:50:26Z	d71baaef	Add in_buttons.h
+2026-07-23T09:47:18Z	2026-07-23T09:47:18Z	fd0cd4b1	Fix missing include for CPlayerBitVec (#405)
+2026-07-22T20:16:21Z	2026-07-22T20:16:21Z	c9e9477d	Restore l2cache.h & correct ehandle.h includes
+2026-07-22T19:10:02Z	2026-07-22T19:10:02Z	24526b85	cs2: Update shareddefs.h
+2026-07-22T18:11:02Z	2026-07-22T18:11:02Z	b2e51a76	Split CUtlOrderedMap into CUtlOrderedMapBase (#403)
+2026-07-22T18:00:53Z	2026-07-22T18:00:53Z	363855e8	Clean up unused files
+2026-07-21T16:52:53Z	2026-07-21T16:52:53Z	80cf8554	Transition CUtlMap to CUtlOrderedMap (#402)
+2026-07-20T14:59:37Z	2026-07-20T14:59:37Z	b93efe9c	Fix invalid ptr access crash in CUtlSymbolTableLargeBase::AddString
+2026-07-18T12:30:55Z	2026-07-18T12:30:55Z	0e4b8211	Normalize CRLF line endings in dbg.h
+2026-07-17T14:47:37Z	2026-07-17T14:47:37Z	dc8e7324	Obsolete tier1.lib/.a & optimize murmurhash2 inlining
+2026-07-15T12:54:02Z	2026-07-15T12:54:02Z	daf6a227	Correct minor include issues
+2026-07-14T19:43:57Z	2026-07-14T19:43:57Z	1ec8cf5d	Remove circular dependency in utlvector.h
+2026-07-14T16:41:38Z	2026-07-14T16:41:38Z	142cc867	Move Q_mem* defines to platform.h
+2026-07-14T16:27:52Z	2026-07-14T16:27:52Z	43c79224	Transition CCommandBuffer to tier0 (#399)
+2026-07-14T16:24:26Z	2026-07-14T16:24:26Z	d870fa2e	Transition CUtlMemory to CUtlVectorMemory & add CUtlVectorBase (#401)
+2026-07-13T18:12:56Z	2026-07-13T18:12:56Z	3e163985	Add Vec3D (#400)
+2026-07-09T20:02:26Z	2026-07-09T20:02:26Z	5f891c90	Update INetworkGameServer (#397)
+2026-07-09T14:40:16Z	2026-07-09T14:40:16Z	8a620d7b	Update CEntityInstance::ScriptAcceptInput params
+2026-07-09T13:25:20Z	2026-07-09T13:25:20Z	7a247626	Update CGameTrace
+2026-07-09T12:14:17Z	2026-07-09T12:14:17Z	54c916b0	Update CEntityClass
+2026-07-09T10:15:51Z	2026-07-09T10:15:51Z	41d5adc5	Update SolidType_t
+2026-07-09T10:15:44Z	2026-07-09T10:15:44Z	dd6997bf	Update fieldtype_t
+2026-07-09T09:57:58Z	2026-07-09T09:57:58Z	37a1943b	Update IGameSystem (#395)
+2026-07-09T09:25:56Z	2026-07-09T09:25:56Z	189153e8	cs2: Update tier0.lib/so
+2026-07-09T09:24:32Z	2026-07-09T09:24:32Z	9b9bd8c2	cs2: Update protobufs
+2026-07-09T09:16:33Z	2026-06-27T15:29:06Z	eec6307d	Fix initialization order of KeyValues3 members
+2026-07-09T09:16:33Z	2026-06-27T15:03:11Z	b03eaa33	Update KeyValues3
+2026-07-09T09:16:33Z	2026-06-27T12:49:28Z	4cbbd5c7	Update IVEngineServer2
+2026-07-09T09:16:32Z	2026-06-27T12:35:20Z	46ed7ed6	Update interfaces.lib/a
+2026-07-09T09:16:32Z	2026-06-27T12:05:41Z	1bc5a618	Add VectorWS as a ConVar type
+2026-07-09T09:16:31Z	2026-06-27T12:03:53Z	11089e87	Update ICvar & CCvar
+2026-07-09T09:16:31Z	2026-06-27T12:03:13Z	383a02c0	Add VectorWS stub
+2026-07-09T09:16:30Z	2026-06-27T11:17:14Z	697df742	Obsolete stringtoken database usage
+2026-07-08T14:31:50Z	2026-07-08T14:31:50Z	f5836f20	Update INetworkGameServer (#394)
+2026-06-10T15:13:01Z	2026-06-10T15:13:01Z	9ab16fa9	Update CEntityClass
+2026-06-09T11:34:55Z	2026-06-09T11:34:55Z	d372df8a	Update EventQueuePrioritizedEvent_t
+2026-05-14T13:18:34Z	2026-05-14T13:18:34Z	b8dcaf14	Add CTypedBitVec (#387)
+2026-05-14T09:28:15Z	2026-05-14T09:28:15Z	ffee7f81	Update ILoggingListener, LoggingMetaData_t and LoggingChannel_t (#388)
+2026-05-10T19:19:23Z	2026-05-10T19:19:23Z	0df1f3b8	Fix Vector*::Random clang warnings (#384)
+2026-05-10T17:51:15Z	2026-05-10T17:51:15Z	4c1f27c6	Update CEntityInstance (#383)
+2026-04-30T11:41:24Z	2026-04-30T11:41:24Z	202e211e	Update CGameEntitySystem
+2026-04-28T16:44:52Z	2026-04-28T16:44:52Z	f6d269e0	Add packed handle logic for CEntityHandle
+2026-04-28T16:09:42Z	2026-04-28T16:09:42Z	c2ab8c79	Add missing include for CUtlLeanVector
+2026-04-22T17:41:57Z	2026-04-22T17:41:57Z	915ca88a	Update IVEngineServer2 (#382)
+2026-04-21T09:48:24Z	2026-04-21T09:48:24Z	a6649509	Fix igamesystem forward decls
+2026-04-21T09:14:40Z	2026-04-21T09:14:40Z	d476dcd3	cs2: Update protobufs
+2026-04-21T09:07:29Z	2026-04-21T09:05:24Z	5c1ef6f7	Correct CUtlLeanVector enum type
+2026-04-21T09:07:29Z	2026-04-14T12:32:52Z	bc55ad25	Correct CNetworkSerializerFieldInfo::m_PathExtension name
+2026-04-21T09:07:29Z	2026-04-09T15:52:13Z	0ec40488	Correct CUtlLeanVectorBase::Purge & EXTERNAL_BUFFER_MARKER
+2026-04-21T09:07:29Z	2026-04-09T15:10:58Z	11ede81c	Update INetworkGameServer
+2026-04-21T09:07:29Z	2026-04-09T12:13:04Z	67c75039	Update IGameSystem
+2026-04-21T09:07:29Z	2026-04-09T12:10:06Z	093fdccc	Update ISource2GameEntities
+2026-04-21T09:07:29Z	2026-04-09T12:09:56Z	9cfb8638	Update CGlobalVarsBase
+2026-04-21T09:07:29Z	2026-04-06T19:09:35Z	1af4ef8f	Update INetworkGameServer
+2026-04-21T09:07:29Z	2026-04-06T17:27:28Z	f933a7ac	Update CEntityInstance
+2026-04-21T09:07:29Z	2026-04-06T17:27:20Z	5ad24581	Update CEntityClass
+2026-04-21T09:07:29Z	2026-04-06T17:27:05Z	d343ffbc	Add CNetworkSerializerClass/FieldInfo
+2026-04-21T09:07:29Z	2026-04-06T17:23:41Z	6e0f9764	Update CUtlHash
+2026-04-21T09:07:29Z	2026-04-02T16:58:56Z	32f8c24e	Update INetworkMessages
+2026-04-21T09:07:29Z	2026-04-02T16:39:02Z	d5d585f8	Update IGameSystem
+2026-04-21T09:07:29Z	2026-04-02T16:35:26Z	c1ee8b6c	cs2: Update tier0.lib/.so
+2026-04-21T09:07:29Z	2026-04-02T16:34:29Z	aa4817fb	Update ThreadAtomic* tier0 exported methods
+2026-04-21T09:07:29Z	2026-04-02T16:29:38Z	8bb9fb5d	Update CEventQueue
+2026-04-21T09:07:29Z	2026-03-25T11:11:29Z	22bc35f9	Correct typo in CEntityIdentity
+2026-04-21T09:07:29Z	2026-03-20T15:28:03Z	31adecb4	Update CEntityInstance
+2026-04-21T09:07:29Z	2026-03-25T11:07:30Z	06b60a9d	Update SchemaClassInfoData_t
+2026-04-21T09:07:29Z	2026-03-20T15:53:53Z	0da05cff	Update IVEngineServer2

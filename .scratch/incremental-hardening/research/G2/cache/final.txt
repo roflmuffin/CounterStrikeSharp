@@ -1,0 +1,60 @@
+BROKEN {'pair': '1.41.8.1->1.41.8.2', 'name': 'CCSPlayer_WeaponServices_CanUse', 'lab': {'vtable': 'OK', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 0.87, 'sim_wrong': {}}
+BROKEN {'pair': '1.41.8.1->1.41.8.2', 'name': 'CCSPlayer_ItemServices_CanAcquire', 'lab': {'caller': 'OK', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 0.7, 'sim_wrong': {}}
+BROKEN {'pair': '1.41.8.1->1.41.8.2', 'name': 'CCSGameRules_TerminateRound', 'lab': {'ustring': 'OK', 'caller': 'WRONG', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 0.62, 'sim_wrong': {'caller': 0.03}}
+BROKEN {'pair': '1.41.8.1->1.41.8.2', 'name': 'CEntityInstance_AcceptInput', 'lab': {'caller': 'OK', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 0.61, 'sim_wrong': {}}
+BROKEN {'pair': '1.41.8.1->1.41.8.2', 'name': 'CBaseTrigger_StartTouch', 'lab': {'vtable': 'WRONG', 'hash': 'none'}, 'pol': {'any': False, 'priority': 'WRONG', 'agree2': 'abstain', 'agree2+global': 'abstain'}, 'sim_gt': 0.7, 'sim_wrong': {'vtable': 0.22}}
+BROKEN {'pair': '1.41.8.1->1.41.8.2', 'name': 'CEntityIOOutput_FireOutputInternal', 'lab': {'caller': 'WRONG', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': False, 'priority': 'WRONG', 'agree2': 'abstain', 'agree2+global': 'abstain'}, 'sim_gt': 0.7, 'sim_wrong': {'caller': 0.2}}
+BROKEN {'pair': '1.41.8.1->1.41.8.2', 'name': 'IGameSystem_InitAllSystems_pFirst', 'lab': {'ustring': 'OK', 'caller': 'OK', 'hash': 'OK', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'OK', 'agree2+global': 'OK'}, 'sim_gt': 1.0, 'sim_wrong': {}}
+BROKEN {'pair': '1.41.9.0->1.41.9.1a', 'name': 'CBaseTrigger_StartTouch', 'lab': {'hash': 'none', 'global': 'OK', 'vt_tailjmp': 'OK'}, 'pol': {'any': False, 'priority': 'none', 'agree2': 'abstain', 'agree2+global': 'abstain'}, 'sim_gt': 0.91, 'sim_wrong': {}}
+BROKEN {'pair': '1.41.9.1b->1.41.9.2', 'name': 'CCSPlayerPawnBase_PostThink', 'lab': {'ustring': 'OK', 'vtable': 'OK', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'OK', 'agree2+global': 'OK'}, 'sim_gt': 0.84, 'sim_wrong': {}}
+BROKEN {'pair': '1.41.9.1b->1.41.9.2', 'name': 'GetCSWeaponDataFromKey', 'lab': {'hash': 'none'}, 'pol': {'any': False, 'priority': 'none', 'agree2': 'abstain', 'agree2+global': 'abstain'}, 'sim_gt': 0.64, 'sim_wrong': {}}
+BROKEN {'pair': '1.41.9.6->1.41.9.7', 'name': 'ClientPrint', 'lab': {'caller': 'OK', 'hash': 'OK', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'OK', 'agree2+global': 'OK'}, 'sim_gt': 1.0, 'sim_wrong': {}}
+
+broken 11
+   ('caller', 'OK') 4
+   ('caller', 'WRONG') 2
+   ('global', 'OK') 9
+   ('hash', 'OK') 2
+   ('hash', 'none') 9
+   ('pol:agree2', 'OK') 3
+   ('pol:agree2', 'abstain') 8
+   ('pol:agree2+global', 'OK') 7
+   ('pol:agree2+global', 'abstain') 4
+   ('pol:any', False) 4
+   ('pol:any', True) 7
+   ('pol:priority', 'OK') 7
+   ('pol:priority', 'WRONG') 2
+   ('pol:priority', 'none') 2
+   ('ustring', 'OK') 3
+   ('vt_tailjmp', 'OK') 1
+   ('vtable', 'OK') 2
+   ('vtable', 'WRONG') 1
+unbroken 101
+   ('caller', 'OK') 61
+   ('caller', 'WRONG') 8
+   ('caller', 'none') 1
+   ('global', 'OK') 98
+   ('global', 'WRONG') 1
+   ('hash', 'OK') 71
+   ('hash', 'none') 18
+   ('pol:agree2', 'OK') 63
+   ('pol:agree2', 'abstain') 38
+   ('pol:agree2+global', 'OK') 94
+   ('pol:agree2+global', 'abstain') 7
+   ('pol:any', False) 6
+   ('pol:any', True) 95
+   ('pol:priority', 'OK') 95
+   ('pol:priority', 'WRONG') 3
+   ('pol:priority', 'none') 3
+   ('ustring', 'OK') 29
+   ('vt_tailjmp', 'OK') 17
+   ('vt_tailjmp', 'none') 3
+   ('vtable', 'OK') 10
+UNBROKEN-WRONG {'pair': '1.41.8.1->1.41.8.2', 'name': 'UTIL_ClientPrintAll', 'lab': {'caller': 'WRONG', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': False, 'priority': 'WRONG', 'agree2': 'abstain', 'agree2+global': 'abstain'}, 'sim_gt': 0.88, 'sim_wrong': {'caller': 0.12}}
+UNBROKEN-WRONG {'pair': '1.41.8.1->1.41.8.2', 'name': 'ClientPrint', 'lab': {'caller': 'WRONG', 'hash': 'none', 'global': 'WRONG'}, 'pol': {'any': False, 'priority': 'WRONG', 'agree2': 'abstain', 'agree2+global': 'abstain'}, 'sim_gt': 0.07, 'sim_wrong': {'caller': 0.06, 'global': 0.78}}
+UNBROKEN-WRONG {'pair': '1.41.8.1->1.41.8.2', 'name': 'GiveNamedItem', 'lab': {'ustring': 'OK', 'caller': 'WRONG', 'hash': 'none', 'global': 'OK', 'vt_tailjmp': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 0.96, 'sim_wrong': {'caller': 0.01}}
+UNBROKEN-WRONG {'pair': '1.41.8.1->1.41.8.2', 'name': 'UTIL_CreateEntityByName', 'lab': {'caller': 'WRONG', 'hash': 'OK', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 1.0, 'sim_wrong': {'caller': 0.27}}
+UNBROKEN-WRONG {'pair': '1.41.8.1->1.41.8.2', 'name': 'CBaseEntity_DispatchSpawn', 'lab': {'caller': 'WRONG', 'hash': 'none', 'global': 'OK'}, 'pol': {'any': False, 'priority': 'WRONG', 'agree2': 'abstain', 'agree2+global': 'abstain'}, 'sim_gt': 0.96, 'sim_wrong': {'caller': 0.14}}
+UNBROKEN-WRONG {'pair': '1.41.9.0->1.41.9.1a', 'name': 'UTIL_Remove', 'lab': {'caller': 'WRONG', 'hash': 'OK', 'global': 'OK', 'vt_tailjmp': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 1.0, 'sim_wrong': {'caller': 0.44}}
+UNBROKEN-WRONG {'pair': '1.41.9.0->1.41.9.1a', 'name': 'CCSGameRules_TerminateRound', 'lab': {'ustring': 'OK', 'caller': 'WRONG', 'hash': 'OK', 'global': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'OK', 'agree2+global': 'OK'}, 'sim_gt': 1.0, 'sim_wrong': {'caller': 0.0}}
+UNBROKEN-WRONG {'pair': '1.41.9.1b->1.41.9.2', 'name': 'UTIL_Remove', 'lab': {'caller': 'WRONG', 'hash': 'OK', 'global': 'OK', 'vt_tailjmp': 'OK'}, 'pol': {'any': True, 'priority': 'OK', 'agree2': 'abstain', 'agree2+global': 'OK'}, 'sim_gt': 1.0, 'sim_wrong': {'caller': 0.49}}

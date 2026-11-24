@@ -1,0 +1,183 @@
+c01357e8 2023-11-04 gd=1 nat=0 man=0 sch=0 sub=0 | 2/11 Gamedata Update (#18)
+0ddf6bcd 2023-11-15 gd=1 nat=0 man=0 sch=0 sub=0 | fix: new signature for `CBaseModelEntity_SetModel` (#84)
+0f72631e 2023-11-18 gd=1 nat=0 man=0 sch=0 sub=0 | Update CommitSuicide offset for 17-11-2023 update (#98)
+6147739c 2023-11-21 gd=1 nat=0 man=0 sch=0 sub=0 | hotfix: new signatures (#107)
+e12a7cb1 2023-11-28 gd=1 nat=0 man=0 sch=0 sub=0 | fix: wildcard bytes for signatures (resolves #123 and related issues) 
+74fd0e08 2023-12-14 gd=1 nat=0 man=1 sch=0 sub=0 | fix: offsets for `CBaseEntity` derived classes
+      M managed/TestPlugin/TestPlugin.cs
+e5c22369 2024-01-21 gd=1 nat=0 man=0 sch=0 sub=0 | fix(Offsets/Win): CCSPlayer_ItemServices.RemoveWeapons() (#271)
+f2b8044b 2024-02-08 gd=1 nat=0 man=7 sch=0 sub=0 | Update gamedata for Call To Arms Update (#311)
+      M managed/CounterStrikeSharp.API/CompatibilitySuppressions.xml
+      M managed/CounterStrikeSharp.API/Core/Model/CBaseEntity.cs
+      M managed/CounterStrikeSharp.API/Core/Model/CBasePlayerController.cs
+      M managed/CounterStrikeSharp.API/Core/Model/CCSPlayerController.cs
+      M managed/CounterStrikeSharp.API/Core/Model/CCSPlayerPawn.cs
+12c6f4d0 2024-02-08 gd=1 nat=0 man=0 sch=0 sub=0 | fix linux::CCSPlayerPawnBase_PostThink and windows::CEntityIOOutput_Fi
+8967c40b 2024-02-10 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update gamedata (thanks to xLeviNx)
+983d9149 2024-02-29 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update gamedata
+7cae4be9 2024-04-26 gd=1 nat=0 man=2 sch=0 sub=0 | Fix: new game update broke signatures  (#425)
+      M managed/CounterStrikeSharp.API/CompatibilitySuppressions.xml
+      M managed/CounterStrikeSharp.API/Core/GameEvents.g.cs
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CBaseCSGrenade.g.cs
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CBaseIssue.g.cs
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CCSGameRules.g.cs
+14224274 2024-04-28 gd=1 nat=0 man=0 sch=0 sub=0 | chore: update give named item sig for linux
+9a221b4e 2024-05-01 gd=0 nat=0 man=0 sch=0 sub=1 | chore: bump hl2sdk after update (#434)
+cafc4e23 2024-05-25 gd=1 nat=5 man=2 sch=0 sub=1 | Initial update after 2024-05-23 CS2 update (#461)
+      libraries/hl2sdk-cs2
+      src/core/globals.cpp
+      src/core/globals.h
+      src/core/managers/event_manager.cpp
+      src/core/managers/event_manager.h
+      src/mm_plugin.cpp
+      M managed/CounterStrikeSharp.API/Core/GameEvents.g.cs
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CAISound.g.cs
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CAI_Expresser.g.cs
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CBaseAnimGraph.g.cs
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CBaseAnimGraphController.g.cs
+3240a5e5 2024-05-26 gd=1 nat=0 man=0 sch=0 sub=0 | Update `GiveNamedItem` signature on Linux (#463)
+13ec19e4 2024-05-30 gd=1 nat=0 man=0 sch=0 sub=0 | Update `GiveNamedItem` signature on Linux (#467)
+eea64519 2024-05-31 gd=1 nat=0 man=0 sch=0 sub=0 | Update ``GiveNamedItem`` signature for linux (#470)
+54cc93e0 2024-06-13 gd=1 nat=0 man=0 sch=0 sub=0 | fix: CBasePlayerController_SetPawn signature (#493)
+2eaf7c2d 2024-06-13 gd=1 nat=0 man=0 sch=0 sub=0 | Fix AddResource offset for Linux (#479)
+f8451c28 2024-07-03 gd=1 nat=0 man=0 sch=0 sub=0 | Update gamedata.json (#521)
+aa40d81a 2024-08-10 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update gamedata json for update
+a82faeb5 2024-08-19 gd=1 nat=0 man=0 sch=0 sub=0 | Fix CBasePlayerController_SetPawn signature (#547)
+2c7f8961 2024-10-04 gd=1 nat=0 man=0 sch=0 sub=0 | fix: armory update broken signatures and offsets (#584)
+8a795de9 2024-10-06 gd=1 nat=0 man=0 sch=0 sub=0 | fix: CCSPlayerPawnBase_PostThink signature (#601)
+761380df 2024-10-19 gd=1 nat=0 man=0 sch=0 sub=0 | CCSPlayer_ItemServices_CanAcquire and GetCSWeaponDataFromKey signature
+b54f5c3d 2024-10-21 gd=1 nat=0 man=0 sch=0 sub=0 | fix: gamedata update (#631)
+461fc0ea 2024-12-20 gd=1 nat=0 man=0 sch=0 sub=0 | Fix `GiveNamedItem` and `CanAcquire` signatures (#713)
+ba860a92 2024-12-20 gd=0 nat=0 man=0 sch=0 sub=1 | fix: temporary patch hl2sdk entity listeners
+0ce4a290 2025-04-01 gd=1 nat=0 man=0 sch=0 sub=0 | Update CCSPlayer_ItemServices_CanAcquire signature (#832)
+68e6ffae 2025-04-04 gd=1 nat=0 man=0 sch=0 sub=0 | fix(gamedata): update `CCSPlayer_WeaponServices_CanUse` signature
+462ca522 2025-05-10 gd=0 nat=8 man=0 sch=0 sub=2 | chore(deps): upgrade metamod & hl2sdk (#856)
+      libraries/hl2sdk-cs2
+      libraries/metamod-source
+      src/core/gameconfig.cpp
+      src/core/globals.h
+      src/core/managers/con_command_manager.cpp
+      src/core/managers/con_command_manager.h
+      src/core/memory_module.h
+      src/mm_plugin.cpp
+bebeedf2 2025-07-03 gd=1 nat=0 man=0 sch=0 sub=0 | Fixes for game update 1.40.8.5 (03.07.2025) (#911)
+018bcba6 2025-07-05 gd=1 nat=0 man=0 sch=0 sub=0 | Continued: Fixes for game update 1.40.8.5 (03.07.2025) (#917)
+b7abd1d5 2025-07-29 gd=1 nat=0 man=0 sch=0 sub=0 | chore: update Gamedata for Patch 19388062
+1f30e561 2025-08-04 gd=1 nat=26 man=9 sch=0 sub=2 | fix: Update CS# for Patch 19388062 (#958)
+      libraries/hl2sdk-cs2
+      libraries/metamod-source
+      src/core/cs2_sdk/schema.cpp
+      src/core/cs2_sdk/schema.h
+      src/core/game_system.cpp
+      src/core/globals.cpp
+      src/core/globals.h
+      src/core/managers/chat_manager.cpp
+      M managed/CounterStrikeSharp.API/Core/API.cs
+      M managed/CounterStrikeSharp.API/Core/Model/CCSPlayerController.cs
+      M managed/CounterStrikeSharp.API/CounterStrikeSharp.API.csproj
+      M managed/CounterStrikeSharp.API/Modules/Cvars/ConVar.cs
+      M managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs
+356152a5 2025-08-04 gd=1 nat=3 man=0 sch=0 sub=0 | fix: revert chat command hooking back to detour of Host_Say
+      src/core/managers/chat_manager.cpp
+      src/core/managers/chat_manager.h
+      src/core/managers/con_command_manager.cpp
+f7c69a60 2025-08-15 gd=0 nat=0 man=0 sch=0 sub=2 | fix: update hl2sdk for patch 19602992 (Aug 14 2025) (#988)
+bf1ce2e8 2025-08-16 gd=1 nat=0 man=0 sch=0 sub=0 | chore(gamedata): update offsets & signatures
+624ca0f0 2025-08-18 gd=1 nat=0 man=1 sch=0 sub=0 | fix: re-add GetHitGroup with GameData backed offset
+      M managed/CounterStrikeSharp.API/Core/Model/CTakeDamageInfo.cs
+936b88d5 2025-08-21 gd=1 nat=0 man=0 sch=0 sub=0 | fix(gamedata): update `CBasePlayerController_SetPawn` signature
+72d66cb5 2025-08-29 gd=1 nat=0 man=0 sch=0 sub=0 | Update gamedata.json (#1020)
+54f8d5ef 2025-09-04 gd=1 nat=0 man=0 sch=0 sub=0 | Fixed offset values of Respawn and Slay for Windows (#1026)
+2c809713 2025-09-18 gd=1 nat=4 man=4 sch=0 sub=2 | fix: update for CS2 09-17-25 (patch 20022951) (#1037)
+      libraries/hl2sdk-cs2
+      libraries/metamod-source
+      src/core/game_system.cpp
+      src/core/game_system.h
+      src/scripting/natives/natives_engine.cpp
+      src/scripting/natives/natives_engine.yaml
+      M managed/CounterStrikeSharp.API/Core/API.cs
+      M managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs
+      M managed/CounterStrikeSharp.API/Modules/Utils/ResourceManifest.cs
+      M managed/CounterStrikeSharp.API/Server.cs
+37951f28 2025-10-15 gd=1 nat=0 man=2 sch=0 sub=0 | fix(update): update signatures and offsets for 1.41.1.3 Update (#1064)
+      M managed/CounterStrikeSharp.API/Modules/Entities/EntitySystem.cs
+      M managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs
+34598dd5 2025-10-16 gd=1 nat=1 man=1 sch=0 sub=0 | fix: update Sigs & CTakeDamageResult & EmitSound_t (#1071)
+      src/core/managers/entity_manager.h
+      M managed/CounterStrikeSharp.API/Core/Schema/Classes/CTakeDamageResult.g.cs
+      M managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs
+b4e83dfb 2025-10-30 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update linux signature for GetCSWeaponDataFromKey
+6461235c 2025-11-14 gd=1 nat=0 man=0 sch=0 sub=0 | chore: update signatures for GiveNamedItem (#1120)
+f9617b9a 2026-01-22 gd=0 nat=0 man=2 sch=93 sub=0 | fix(schema): update schema for 1.41.3.0
+      M managed/CounterStrikeSharp.SchemaGen/Program.cs
+      M managed/CounterStrikeSharp.SchemaGen/Schema/server.json
+      M managed/CounterStrikeSharp.Tests.Native/SchemaPropertyTests.cs
+fe3e32f3 2026-01-23 gd=1 nat=1 man=5 sch=0 sub=1 | fix: bump sdk & update gamedata for patch 1.41.3.x (#1187)
+      libraries/hl2sdk-cs2
+      src/mm_plugin.cpp
+      M managed/CounterStrikeSharp.API/Core/Model/CBaseEntity.cs
+      M managed/CounterStrikeSharp.Tests.Native/GameEventTests.cs
+      M managed/CounterStrikeSharp.Tests.Native/GameTests.cs
+      M managed/CounterStrikeSharp.Tests.Native/ListenerTests.cs
+      M managed/CounterStrikeSharp.Tests.Native/NativeTestsPlugin.cs
+32628275 2026-01-23 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update set state changed offset for linux
+9841c92e 2026-01-25 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update windows signatures for CCSPlayerPawnBase and CCSGameRules 
+4006494c 2026-02-26 gd=1 nat=0 man=0 sch=0 sub=0 | fix(gamedata): Update linux sig for CEntitySystem_AddEntityIOEvent (#1
+03a452ca 2026-03-19 gd=1 nat=0 man=0 sch=0 sub=0 | fix: Update Linux signatures for PostThink and TerminateRound (#1247)
+8a9fbe8f 2026-04-22 gd=1 nat=2 man=9 sch=143 sub=1 | fix: apply changes for AG2 update (#1279)
+      libraries/hl2sdk-cs2
+      src/core/cs2_sdk/schema.cpp
+      src/core/game_system.h
+      M managed/CounterStrikeSharp.API/Modules/Admin/AdminGroup.cs
+      M managed/CounterStrikeSharp.API/Modules/Admin/AdminPermissions.cs
+      M managed/CounterStrikeSharp.API/Modules/Extensions/CBasePlayerWeaponExtensions.cs
+      M managed/CounterStrikeSharp.API/Utilities.cs
+      M managed/CounterStrikeSharp.SchemaGen/NetworkClasses.cs
+d935b08c 2026-04-22 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update CBaseEntity_TakeDamageOld linux signature (#1287)
+0586daf3 2026-07-10 gd=1 nat=2 man=5 sch=179 sub=1 | fix: Update for latest CS2 Game Update [1.41.6.9] (#1348)
+      libraries/hl2sdk-cs2
+      src/core/managers/entity_manager.h
+      src/scripting/natives/natives_entities.cpp
+      M managed/CounterStrikeSharp.API/CompatibilitySuppressions.xml
+      M managed/CounterStrikeSharp.API/Core/Model/CEntityInstance.cs
+      M managed/CounterStrikeSharp.SchemaGen/Program.cs
+      M managed/CounterStrikeSharp.SchemaGen/Schema/server.json
+      M managed/CounterStrikeSharp.SchemaGen/SchemaFieldType.cs
+faa97820 2026-08-25 gd=1 nat=0 man=0 sch=0 sub=0 | fix: Update for latest CS2 Game Update [1.41.7.7]
+2f984988 2026-09-24 gd=1 nat=13 man=13 sch=1 sub=1 | fix: for update 1.41.8.2 (#1433)
+      libraries/hl2sdk-cs2
+      src/core/cs2_sdk/entity/dump.h
+      src/core/cs2_sdk/schema.cpp
+      src/core/globals.cpp
+      src/core/globals.h
+      src/core/managers/player_manager.cpp
+      src/core/managers/player_manager.h
+      src/mm_plugin.cpp
+      M managed/CounterStrikeSharp.API/CompatibilitySuppressions.xml
+      M managed/CounterStrikeSharp.API/ConVarFlags.cs
+      M managed/CounterStrikeSharp.Tests.Native/ConVarTests.cs
+      M managed/CounterStrikeSharp.Tests.Native/ConsoleTestReporterSink.cs
+      M managed/CounterStrikeSharp.Tests.Native/FrameSchedulingTests.cs
+bd1d9365 2026-09-24 gd=1 nat=0 man=0 sch=0 sub=0 | fix: update Windows PostThink signature (#1438)
+6d22cb54 2026-09-26 gd=1 nat=0 man=0 sch=0 sub=0 | fix: correct Windows IsPlayerPawn offset (#1445)
+c67396fa 2026-10-19 gd=1 nat=0 man=0 sch=0 sub=0 | fix: Update Linux signature for CBaseTrigger_StartTouch
+5465e2aa 2026-10-24 gd=1 nat=30 man=0 sch=0 sub=3 | fix: Game Update 1.41.9.2 (#1470)
+      libraries/Protobufs
+      libraries/hl2sdk-cs2
+      libraries/metamod-source
+      src/core/cs2_sdk/entity/dump.h
+      src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
+      src/core/cs2_sdk/schema.cpp
+      src/core/cs2_sdk/schema.h
+      src/core/game_system.cpp
+2eb9a57d 2026-11-12 gd=1 nat=10 man=1 sch=0 sub=1 | fix: Game Update 1.41.9.7
+      libraries/hl2sdk-cs2
+      src/core/UserMessage.cpp
+      src/core/UserMessage.h
+      src/core/managers/player_manager.cpp
+      src/core/managers/player_manager.h
+      src/core/managers/usermessage_manager.cpp
+      src/core/managers/usermessage_manager.h
+      src/mm_plugin.cpp
+      M managed/CounterStrikeSharp.Tests.Native/ConVarTests.cs
+c1b3d1f3 2026-11-13 gd=1 nat=0 man=0 sch=0 sub=0 | fix: restore nav mesh lookup on Windows (#1493)

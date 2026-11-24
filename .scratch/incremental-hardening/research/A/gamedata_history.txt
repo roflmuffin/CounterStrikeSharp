@@ -1,0 +1,153 @@
+65488944 2023-10-21 entries=3 +[sig/lin:3 sig/win:3] -[] ~[] | feat: add gamedata support, print to all example
+80ebbe74 2023-10-22 entries=4 +[sig/lin:1] -[] ~[] | feat: add GiveNamedItem function
+69c7db83 2023-10-28 entries=5 +[sig/lin:1] -[] ~[] | feat: add `UTIL_Remove` and `Remove()` on `CEntityInstance`
+ac69cc57 2023-10-28 entries=6 +[off/lin:1 off/win:1] -[] ~[] | feat: load offsets from gamedata.json
+67982446 2023-10-28 entries=7 +[off/lin:1 off/win:1] -[] ~[] | feat; add teleport function
+c01357e8 2023-11-04 entries=7 +[] -[off/win:2 sig/win:3] ~[off/lin:1 sig/lin:2] | 2/11 Gamedata Update (#18)
+     ~ CBasePlayerPawn_CommitSuicide(off/lin), GiveNamedItem(sig/lin), UTIL_Remove(sig/lin)
+7efbbc64 2023-11-05 entries=8 +[off/lin:1] -[] ~[] | fix: add gamedata for changeteam
+82c92f55 2023-11-09 entries=8 +[] -[] ~[] | chore: simplify auto-copy `configs` folder
+933fdf9d 2023-11-12 entries=11 +[off/lin:2 off/win:5 sig/lin:1 sig/win:6] -[] ~[] | [Windows] feat: Windows support (#52)
+43292bb1 2023-11-13 entries=12 +[sig/lin:1 sig/win:1] -[] ~[] | feat: `CBaseModelEntity_SetModel` (#72)
+0ddf6bcd 2023-11-15 entries=12 +[] -[] ~[sig/lin:1 sig/win:1] | fix: new signature for `CBaseModelEntity_SetModel` (#84)
+     ~ CBaseModelEntity_SetModel(sig/lin), CBaseModelEntity_SetModel(sig/win)
+0f72631e 2023-11-18 entries=12 +[] -[] ~[off/lin:1 off/win:1] | Update CommitSuicide offset for 17-11-2023 update (#98)
+     ~ CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win)
+bc71aa77 2023-11-19 entries=13 +[sig/lin:1 sig/win:1] -[] ~[] | feat: add `FireEventToClient` native
+50ce09a7 2023-11-19 entries=19 +[off/lin:3 off/win:3 sig/lin:3 sig/win:3] -[] ~[sig/lin:1 sig/win:1] | feat: new virtual functions with wrapper methods (#87)
+     ~ CBaseModelEntity_SetModel(sig/lin), CBaseModelEntity_SetModel(sig/win)
+6147739c 2023-11-21 entries=19 +[] -[] ~[sig/lin:4] | hotfix: new signatures (#107)
+     ~ CBaseEntity_DispatchSpawn(sig/lin), CBaseModelEntity_SetModel(sig/lin), CCSGameRules_TerminateRound(sig/lin), UTIL_CreateEntityByName(sig/lin)
+ea359641 2023-11-24 entries=21 +[off/lin:1 off/win:1 sig/lin:1 sig/win:1] -[] ~[] | Add methods to respawn players (#114)
+8b725d43 2023-11-24 entries=22 +[sig/lin:1 sig/win:1] -[] ~[] | Dynamic Hooks (#78)
+9a018f29 2023-11-24 entries=23 +[sig/lin:1 sig/win:1] -[] ~[] | feat: add player pawn post think signature
+6bc43444 2023-11-26 entries=25 +[sig/lin:2 sig/win:2] -[] ~[] | feat: add trigger touch start and end hooks
+e12a7cb1 2023-11-28 entries=25 +[] -[] ~[off/win:1 sig/lin:2] | fix: wildcard bytes for signatures (resolves #123 and related issues) 
+     ~ CBaseModelEntity_SetModel(sig/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/win), UTIL_CreateEntityByName(sig/lin)
+2a15a8de 2023-12-07 entries=26 +[sig/lin:1 sig/win:1] -[] ~[] | Add Entity Output Hooks (#174)
+74fd0e08 2023-12-14 entries=26 +[] -[] ~[off/lin:3 off/win:3] | fix: offsets for `CBaseEntity` derived classes
+     ~ CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win)
+563a5d7b 2023-12-15 entries=27 +[sig/lin:1 sig/win:1] -[] ~[] | feat: Added RemovePlayerItem() to CBasePlayerPawn. (#200)
+db63fdc0 2023-12-27 entries=28 +[sig/lin:1 sig/win:1] -[] ~[] | feat: add `AcceptInput` method to `CEntityInstance` (#228)
+6ea6d0a2 2023-12-27 entries=30 +[sig/lin:2 sig/win:2] -[] ~[] | feat: add state changed and network state changed handler (#229)
+e5c22369 2024-01-20 entries=30 +[] -[] ~[off/win:1] | fix(Offsets/Win): CCSPlayer_ItemServices.RemoveWeapons() (#271)
+     ~ CCSPlayer_ItemServices_RemoveWeapons(off/win)
+4f805b18 2024-01-22 entries=31 +[sig/lin:1 sig/win:1] -[] ~[] | Added canUse virtual method (#282)
+f2b8044b 2024-02-08 entries=31 +[sig/lin:1 sig/win:1] -[sig/lin:1 sig/win:1] ~[off/lin:4 off/win:4 sig/lin:5 sig/win:5] | Update gamedata for Call To Arms Update (#311)
+     ~ CBaseEntity_DispatchSpawn(sig/lin), CBaseModelEntity_SetModel(sig/lin), CBaseModelEntity_SetModel(sig/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CCSGameRules_TerminateRound(sig/lin), CCSGameRules_TerminateRound(sig/win), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayer_WeaponServices_CanUse(sig/win), CEntityIOOutput_FireOutputInternal(sig/lin), GameEventManager(off/lin), GameEventManager(off/win), LegacyGameEventListener(sig/lin), LegacyGameEventListener(sig/win), UTIL_CreateEntityByName(sig/win)
+12c6f4d0 2024-02-08 entries=31 +[] -[] ~[sig/lin:1 sig/win:1] | fix linux::CCSPlayerPawnBase_PostThink and windows::CEntityIOOutput_Fi
+     ~ CCSPlayerPawnBase_PostThink(sig/lin), CEntityIOOutput_FireOutputInternal(sig/win)
+8967c40b 2024-02-10 entries=31 +[] -[] ~[off/lin:2 off/win:2 sig/lin:3 sig/win:2] | fix: update gamedata (thanks to xLeviNx)
+     ~ CBaseModelEntity_SetModel(sig/lin), CBasePlayerController_SetPawn(sig/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CBaseTrigger_EndTouch(sig/lin), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), LegacyGameEventListener(sig/lin), LegacyGameEventListener(sig/win)
+983d9149 2024-02-29 entries=31 +[] -[] ~[off/lin:1 off/win:1] | fix: update gamedata
+     ~ CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win)
+12485be2 2024-03-02 entries=33 +[off/lin:1 off/win:1 sig/lin:1 sig/win:1] -[] ~[] | Adding the proper way to do resource precache (#358)
+7cae4be9 2024-04-26 entries=33 +[] -[] ~[sig/lin:2 sig/win:4] | Fix: new game update broke signatures  (#425)
+     ~ CBasePlayerPawn_RemovePlayerItem(sig/win), CCSGameRules_TerminateRound(sig/win), CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayerPawnBase_PostThink(sig/win), GiveNamedItem(sig/lin), GiveNamedItem(sig/win)
+25ca5dbe 2024-04-27 entries=34 +[off/lin:1 off/win:1] -[] ~[] | chore: use offsets for give named item (#427)
+14224274 2024-04-28 entries=34 +[] -[] ~[sig/lin:1] | chore: update give named item sig for linux
+     ~ GiveNamedItem(sig/lin)
+e3d2370e 2024-04-28 entries=34 +[] -[] ~[sig/lin:23 sig/win:23] | chore: use IDA style sigs for gamedata
+     ~ CBaseEntity_DispatchSpawn(sig/lin), CBaseEntity_DispatchSpawn(sig/win), CBaseEntity_TakeDamageOld(sig/lin), CBaseEntity_TakeDamageOld(sig/win), CBaseModelEntity_SetModel(sig/lin), CBaseModelEntity_SetModel(sig/win), CBasePlayerController_SetPawn(sig/lin), CBasePlayerController_SetPawn(sig/win), CBasePlayerPawn_RemovePlayerItem(sig/lin), CBasePlayerPawn_RemovePlayerItem(sig/win), CBaseTrigger_EndTouch(sig/lin), CBaseTrigger_EndTouch(sig/win), CBaseTrigger_StartTouch(sig/lin), CBaseTrigger_StartTouch(sig/win), CCSGameRules_TerminateRound(sig/lin), CCSGameRules_TerminateRound(sig/win), CCSPlayerController_SwitchTeam(sig/lin), CCSPlayerController_SwitchTeam(sig/win), CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayerPawnBase_PostThink(sig/win), CCSPlayer_WeaponServices_CanUse(sig/lin), CCSPlayer_WeaponServices_CanUse(sig/win), CEntityIOOutput_FireOutputInternal(sig/lin), CEntityIOOutput_FireOutputInternal(sig/win), CEntityInstance_AcceptInput(sig/lin), CEntityInstance_AcceptInput(sig/win), ClientPrint(sig/lin), ClientPrint(sig/win), GiveNamedItem(sig/lin), GiveNamedItem(sig/win), Host_Say(sig/lin), Host_Say(sig/win), IGameSystem_InitAllSystems_pFirst(sig/lin), IGameSystem_InitAllSystems_pFirst(sig/win), LegacyGameEventListener(sig/lin), LegacyGameEventListener(sig/win), NetworkStateChanged(sig/lin), NetworkStateChanged(sig/win), StateChanged(sig/lin), StateChanged(sig/win), UTIL_ClientPrintAll(sig/lin), UTIL_ClientPrintAll(sig/win), UTIL_CreateEntityByName(sig/lin), UTIL_CreateEntityByName(sig/win), UTIL_Remove(sig/lin), UTIL_Remove(sig/win)
+e270bdfd 2024-04-30 entries=35 +[sig/lin:1 sig/win:1] -[] ~[] | AcceptInput changes (#433)
+cafc4e23 2024-05-25 entries=36 +[sig/lin:1 sig/win:1] -[] ~[off/lin:4 off/win:4 sig/lin:6 sig/win:3] | Initial update after 2024-05-23 CS2 update (#461)
+     ~ CBaseEntity_TakeDamageOld(sig/lin), CBaseEntity_TakeDamageOld(sig/win), CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBasePlayerController_SetPawn(sig/lin), CBasePlayerController_SetPawn(sig/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CCSGameRules_TerminateRound(sig/lin), CCSGameRules_TerminateRound(sig/win), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), GiveNamedItem(sig/lin), Host_Say(sig/lin), LegacyGameEventListener(sig/lin)
+3240a5e5 2024-05-25 entries=36 +[] -[] ~[sig/lin:1] | Update `GiveNamedItem` signature on Linux (#463)
+     ~ GiveNamedItem(sig/lin)
+13ec19e4 2024-05-30 entries=36 +[] -[] ~[sig/lin:1] | Update `GiveNamedItem` signature on Linux (#467)
+     ~ GiveNamedItem(sig/lin)
+eea64519 2024-05-31 entries=36 +[] -[] ~[sig/lin:1] | Update ``GiveNamedItem`` signature for linux (#470)
+     ~ GiveNamedItem(sig/lin)
+54cc93e0 2024-06-13 entries=36 +[] -[] ~[sig/lin:1] | fix: CBasePlayerController_SetPawn signature (#493)
+     ~ CBasePlayerController_SetPawn(sig/lin)
+2eaf7c2d 2024-06-13 entries=36 +[] -[] ~[off/lin:1] | Fix AddResource offset for Linux (#479)
+     ~ CEntityResourceManifest_AddResource(off/lin)
+f8451c28 2024-07-03 entries=36 +[] -[] ~[sig/lin:1] | Update gamedata.json (#521)
+     ~ CBasePlayerController_SetPawn(sig/lin)
+aa40d81a 2024-08-10 entries=36 +[] -[] ~[sig/lin:1 sig/win:3] | fix: update gamedata json for update
+     ~ CCSPlayer_WeaponServices_CanUse(sig/lin), CCSPlayer_WeaponServices_CanUse(sig/win), ClientPrint(sig/win), StateChanged(sig/win)
+a82faeb5 2024-08-18 entries=36 +[] -[] ~[sig/lin:1 sig/win:1] | Fix CBasePlayerController_SetPawn signature (#547)
+     ~ CBasePlayerController_SetPawn(sig/lin), CBasePlayerController_SetPawn(sig/win)
+2c7f8961 2024-10-04 entries=36 +[] -[] ~[off/lin:7 off/win:7 sig/lin:3 sig/win:7] | fix: armory update broken signatures and offsets (#584)
+     ~ CBaseEntity_TakeDamageOld(sig/lin), CBaseEntity_TakeDamageOld(sig/win), CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CBaseTrigger_EndTouch(sig/win), CBaseTrigger_StartTouch(sig/win), CCSGameRules_TerminateRound(sig/win), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/win), CCSPlayer_ItemServices_GiveNamedItem(off/lin), CCSPlayer_ItemServices_GiveNamedItem(off/win), CCSPlayer_ItemServices_RemoveWeapons(off/lin), CCSPlayer_ItemServices_RemoveWeapons(off/win), CCSPlayer_WeaponServices_CanUse(sig/win), Host_Say(sig/lin), IGameSystem_InitAllSystems_pFirst(sig/lin), IGameSystem_InitAllSystems_pFirst(sig/win), StateChanged(sig/win)
+8a795de9 2024-10-06 entries=36 +[] -[] ~[sig/lin:1] | fix: CCSPlayerPawnBase_PostThink signature (#601)
+     ~ CCSPlayerPawnBase_PostThink(sig/lin)
+c2f212df 2024-10-17 entries=38 +[sig/lin:2 sig/win:2] -[] ~[] | Add GetCSWeaponDataFromKey and CCSPlayer_ItemServices_CanAcquire (#628
+761380df 2024-10-19 entries=38 +[] -[] ~[sig/lin:2 sig/win:2] | CCSPlayer_ItemServices_CanAcquire and GetCSWeaponDataFromKey signature
+     ~ CCSPlayer_ItemServices_CanAcquire(sig/lin), CCSPlayer_ItemServices_CanAcquire(sig/win), GetCSWeaponDataFromKey(sig/lin), GetCSWeaponDataFromKey(sig/win)
+b54f5c3d 2024-10-21 entries=38 +[] -[] ~[off/lin:1 off/win:1 sig/win:1] | fix: gamedata update (#631)
+     ~ CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CCSPlayer_WeaponServices_CanUse(sig/win)
+32c99b2e 2024-11-06 entries=39 +[off/lin:1 off/win:1] -[] ~[] | Implemented entity transmit feature (#608)
+1f904a52 2024-11-06 entries=40 +[off/lin:1 off/win:1] -[] ~[] | Added TargetType.PlayerAim (#639)
+461fc0ea 2024-12-20 entries=40 +[] -[] ~[sig/lin:1 sig/win:1] | Fix `GiveNamedItem` and `CanAcquire` signatures (#713)
+     ~ CCSPlayer_ItemServices_CanAcquire(sig/win), GiveNamedItem(sig/lin)
+bbc621ac 2025-03-23 entries=41 +[sig/lin:1 sig/win:1] -[] ~[] | feat: Implement `EmitSoundFilter` (#808)
+ded133f1 2025-03-23 entries=41 +[] -[] ~[sig/lin:1] | Fix `EmitSoundFilter` signature for linux (#815)
+     ~ CBaseEntity_EmitSoundFilter(sig/lin)
+0ce4a290 2025-04-01 entries=41 +[] -[] ~[sig/lin:1] | Update CCSPlayer_ItemServices_CanAcquire signature (#832)
+     ~ CCSPlayer_ItemServices_CanAcquire(sig/lin)
+68e6ffae 2025-04-04 entries=41 +[] -[] ~[sig/lin:1 sig/win:1] | fix(gamedata): update `CCSPlayer_WeaponServices_CanUse` signature
+     ~ CCSPlayer_WeaponServices_CanUse(sig/lin), CCSPlayer_WeaponServices_CanUse(sig/win)
+6f663164 2025-06-20 entries=42 +[sig/lin:1 sig/win:1] -[] ~[] | Improve FunctionReference trace logging with real user stack origin (#
+bebeedf2 2025-07-03 entries=42 +[] -[] ~[sig/lin:2] | Fixes for game update 1.40.8.5 (03.07.2025) (#911)
+     ~ GiveNamedItem(sig/lin), Host_Say(sig/lin)
+018bcba6 2025-07-04 entries=42 +[] -[] ~[sig/win:1] | Continued: Fixes for game update 1.40.8.5 (03.07.2025) (#917)
+     ~ GiveNamedItem(sig/win)
+b7abd1d5 2025-07-29 entries=40 +[] -[sig/lin:2 sig/win:2] ~[sig/lin:22 sig/win:18] | chore: update Gamedata for Patch 19388062
+     ~ CBaseEntity_DispatchSpawn(sig/lin), CBaseEntity_EmitSoundFilter(sig/lin), CBaseEntity_EmitSoundFilter(sig/win), CBaseEntity_TakeDamageOld(sig/lin), CBaseEntity_TakeDamageOld(sig/win), CBaseModelEntity_SetModel(sig/lin), CBaseModelEntity_SetModel(sig/win), CBasePlayerController_SetPawn(sig/lin), CBasePlayerController_SetPawn(sig/win), CBasePlayerPawn_RemovePlayerItem(sig/lin), CBaseTrigger_StartTouch(sig/lin), CBaseTrigger_StartTouch(sig/win), CCSGameRules_TerminateRound(sig/lin), CCSGameRules_TerminateRound(sig/win), CCSPlayerController_SwitchTeam(sig/lin), CCSPlayerController_SwitchTeam(sig/win), CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayer_ItemServices_CanAcquire(sig/lin), CCSPlayer_ItemServices_CanAcquire(sig/win), CCSPlayer_WeaponServices_CanUse(sig/lin), CCSPlayer_WeaponServices_CanUse(sig/win), CEntityIOOutput_FireOutputInternal(sig/win), CEntityInstance_AcceptInput(sig/lin), CEntityInstance_AcceptInput(sig/win), CEntitySystem_AddEntityIOEvent(sig/lin), CEntitySystem_AddEntityIOEvent(sig/win), CGameEventManager_Init(sig/lin), CheckTransmit(sig/lin), CheckTransmit(sig/win), ClientPrint(sig/lin), GetCSWeaponDataFromKey(sig/lin), GetCSWeaponDataFromKey(sig/win), GiveNamedItem(sig/lin), GiveNamedItem(sig/win), Host_Say(sig/lin), IGameSystem_InitAllSystems_pFirst(sig/win), LegacyGameEventListener(sig/lin), LegacyGameEventListener(sig/win), UTIL_ClientPrintAll(sig/lin), UTIL_ClientPrintAll(sig/win)
+1f30e561 2025-08-04 entries=42 +[off/lin:2 off/win:2 sig/lin:1 sig/win:1] -[sig/lin:1 sig/win:1] ~[off/lin:6 off/win:6 sig/lin:4 sig/win:3] | fix: Update CS# for Patch 19388062 (#958)
+     ~ CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CCSGameRules_FindPickerEntity(off/lin), CCSGameRules_FindPickerEntity(off/win), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CEntityIOOutput_FireOutputInternal(sig/lin), CEntityInstance_AcceptInput(sig/win), CheckTransmitPlayerSlot(off/lin), CheckTransmitPlayerSlot(off/win), ClientPrint(sig/lin), GetCSWeaponDataFromKey(sig/lin), GetCSWeaponDataFromKey(sig/win), IGameSystem_InitAllSystems_pFirst(sig/lin), IGameSystem_InitAllSystems_pFirst(sig/win)
+356152a5 2025-08-04 entries=43 +[sig/lin:1 sig/win:1] -[] ~[] | fix: revert chat command hooking back to detour of Host_Say
+bf1ce2e8 2025-08-16 entries=43 +[] -[] ~[off/lin:5 off/win:5 sig/lin:3 sig/win:1] | chore(gamedata): update offsets & signatures
+     ~ CBaseEntity_TakeDamageOld(sig/lin), CBaseEntity_TakeDamageOld(sig/win), CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBasePlayerController_SetPawn(sig/lin), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayer_ItemServices_GiveNamedItem(off/lin), CCSPlayer_ItemServices_GiveNamedItem(off/win), CCSPlayer_ItemServices_RemoveWeapons(off/lin), CCSPlayer_ItemServices_RemoveWeapons(off/win), CCSPlayer_WeaponServices_CanUse(sig/lin)
+624ca0f0 2025-08-18 entries=44 +[off/lin:1 off/win:1] -[] ~[] | fix: re-add GetHitGroup with GameData backed offset
+936b88d5 2025-08-21 entries=44 +[] -[] ~[sig/lin:1 sig/win:1] | fix(gamedata): update `CBasePlayerController_SetPawn` signature
+     ~ CBasePlayerController_SetPawn(sig/lin), CBasePlayerController_SetPawn(sig/win)
+72d66cb5 2025-08-28 entries=44 +[] -[] ~[off/lin:2 sig/lin:1] | Update gamedata.json (#1020)
+     ~ CBasePlayerPawn_CommitSuicide(off/lin), CCSPlayerController_Respawn(off/lin), CCSPlayerPawnBase_PostThink(sig/lin)
+54f8d5ef 2025-09-04 entries=44 +[] -[] ~[off/win:2] | Fixed offset values of Respawn and Slay for Windows (#1026)
+     ~ CBasePlayerPawn_CommitSuicide(off/win), CCSPlayerController_Respawn(off/win)
+2c809713 2025-09-18 entries=44 +[] -[] ~[off/lin:3 off/win:3 sig/lin:5 sig/win:1] | fix: update for CS2 09-17-25 (patch 20022951) (#1037)
+     ~ CBaseEntity_DispatchSpawn(sig/lin), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CBaseTrigger_StartTouch(sig/lin), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/win), CheckTransmit(sig/lin), GetCSWeaponDataFromKey(sig/lin), UTIL_ClientPrintAll(sig/win)
+37951f28 2025-10-15 entries=44 +[] -[] ~[off/lin:3 off/win:3 sig/lin:3 sig/win:3] | fix(update): update signatures and offsets for 1.41.1.3 Update (#1064)
+     ~ CBaseEntity_EmitSoundFilter(sig/lin), CBaseEntity_EmitSoundFilter(sig/win), CBaseEntity_TakeDamageOld(sig/lin), CBaseEntity_TakeDamageOld(sig/win), CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), GetCSWeaponDataFromKey(sig/lin), GetCSWeaponDataFromKey(sig/win)
+34598dd5 2025-10-16 entries=44 +[] -[] ~[sig/lin:1] | fix: update Sigs & CTakeDamageResult & EmitSound_t (#1071)
+     ~ CBaseEntity_TakeDamageOld(sig/lin)
+b4e83dfb 2025-10-30 entries=44 +[] -[] ~[sig/lin:1] | fix: update linux signature for GetCSWeaponDataFromKey
+     ~ GetCSWeaponDataFromKey(sig/lin)
+6461235c 2025-11-13 entries=44 +[] -[] ~[sig/lin:1 sig/win:1] | chore: update signatures for GiveNamedItem (#1120)
+     ~ GiveNamedItem(sig/lin), GiveNamedItem(sig/win)
+395b237d 2025-12-15 entries=45 +[off/lin:1 off/win:1] -[] ~[] | feat(listeners): add entity & player damage listeners (#1147)
+fe3e32f3 2026-01-23 entries=45 +[] -[] ~[off/lin:9 off/win:8 sig/lin:5 sig/win:1] | fix: bump sdk & update gamedata for patch 1.41.3.x (#1187)
+     ~ CBaseEntity_IsPlayerPawn(off/lin), CBaseEntity_IsPlayerPawn(off/win), CBaseEntity_TakeDamageOld(sig/lin), CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBasePlayerController_SetPawn(sig/lin), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/win), CCSPlayer_ItemServices_GiveNamedItem(off/lin), CCSPlayer_ItemServices_GiveNamedItem(off/win), CCSPlayer_ItemServices_RemoveWeapons(off/lin), CCSPlayer_ItemServices_RemoveWeapons(off/win), CEntityIOOutput_FireOutputInternal(sig/lin), CGameSceneNode_GetSkeletonInstance(off/lin), GetCSWeaponDataFromKey(sig/lin), LegacyGameEventListener(sig/win)
+32628275 2026-01-23 entries=45 +[] -[] ~[off/lin:1 off/win:1] | fix: update set state changed offset for linux
+     ~ SetStateChanged(off/lin), SetStateChanged(off/win)
+9841c92e 2026-01-25 entries=45 +[] -[] ~[sig/win:2] | fix: update windows signatures for CCSPlayerPawnBase and CCSGameRules 
+     ~ CCSGameRules_TerminateRound(sig/win), CCSPlayerPawnBase_PostThink(sig/win)
+4006494c 2026-02-25 entries=45 +[] -[] ~[sig/lin:1] | fix(gamedata): Update linux sig for CEntitySystem_AddEntityIOEvent (#1
+     ~ CEntitySystem_AddEntityIOEvent(sig/lin)
+03a452ca 2026-03-19 entries=45 +[] -[] ~[sig/lin:2] | fix: Update Linux signatures for PostThink and TerminateRound (#1247)
+     ~ CCSGameRules_TerminateRound(sig/lin), CCSPlayerPawnBase_PostThink(sig/lin)
+8a9fbe8f 2026-04-22 entries=45 +[] -[] ~[off/lin:11 off/win:11 sig/lin:15 sig/win:15] | fix: apply changes for AG2 update (#1279)
+     ~ CBaseEntity_DispatchSpawn(sig/lin), CBaseEntity_DispatchSpawn(sig/win), CBaseEntity_EmitSoundFilter(sig/lin), CBaseEntity_IsPlayerPawn(off/lin), CBaseEntity_IsPlayerPawn(off/win), CBaseEntity_TakeDamageOld(sig/win), CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBaseModelEntity_SetModel(sig/lin), CBaseModelEntity_SetModel(sig/win), CBasePlayerController_SetPawn(sig/lin), CBasePlayerController_SetPawn(sig/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CBasePlayerPawn_RemovePlayerItem(sig/lin), CBasePlayerPawn_RemovePlayerItem(sig/win), CBaseTrigger_EndTouch(sig/lin), CBaseTrigger_EndTouch(sig/win), CBaseTrigger_StartTouch(sig/lin), CCSGameRules_FindPickerEntity(off/lin), CCSGameRules_FindPickerEntity(off/win), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayerPawnBase_PostThink(sig/win), CCSPlayer_ItemServices_CanAcquire(sig/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/win), CCSPlayer_ItemServices_GiveNamedItem(off/lin), CCSPlayer_ItemServices_GiveNamedItem(off/win), CCSPlayer_ItemServices_RemoveWeapons(off/lin), CCSPlayer_ItemServices_RemoveWeapons(off/win), CCSPlayer_WeaponServices_CanUse(sig/lin), CCSPlayer_WeaponServices_CanUse(sig/win), CEntityInstance_AcceptInput(sig/lin), CGameEventManager_Init(sig/lin), CGameEventManager_Init(sig/win), CGameSceneNode_GetSkeletonInstance(off/lin), CGameSceneNode_GetSkeletonInstance(off/win), CheckTransmit(sig/win), GetCSWeaponDataFromKey(sig/lin), GiveNamedItem(sig/win), Host_Say(sig/win), NetworkStateChanged(sig/lin), SetStateChanged(off/lin), SetStateChanged(off/win), UTIL_ClientPrintAll(sig/lin), UTIL_ClientPrintAll(sig/win), UTIL_CreateEntityByName(sig/win), UTIL_Remove(sig/win)
+d935b08c 2026-04-22 entries=45 +[] -[] ~[sig/lin:1] | fix: update CBaseEntity_TakeDamageOld linux signature (#1287)
+     ~ CBaseEntity_TakeDamageOld(sig/lin)
+c6eff281 2026-06-16 entries=46 +[sig/lin:1 sig/win:1] -[] ~[] | feat: Implement basic definitions and essential methods for `CCSNavAre
+0586daf3 2026-07-10 entries=46 +[] -[] ~[off/lin:6 off/win:6 sig/lin:12 sig/win:5] | fix: Update for latest CS2 Game Update [1.41.6.9] (#1348)
+     ~ CBaseEntity_EmitSoundFilter(sig/lin), CBaseEntity_TakeDamageOld(sig/lin), CBaseModelEntity_SetModel(sig/lin), CBaseModelEntity_SetModel(sig/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CBaseTrigger_StartTouch(sig/lin), CCSGameRules_TerminateRound(sig/lin), CCSGameRules_TerminateRound(sig/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayerPawnBase_PostThink(sig/win), CCSPlayer_ItemServices_CanAcquire(sig/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/lin), CCSPlayer_ItemServices_DropActivePlayerWeapon(off/win), CCSPlayer_ItemServices_GiveNamedItem(off/lin), CCSPlayer_ItemServices_GiveNamedItem(off/win), CCSPlayer_ItemServices_RemoveWeapons(off/lin), CCSPlayer_ItemServices_RemoveWeapons(off/win), CCSPlayer_WeaponServices_CanUse(sig/win), CEntityInstance_AcceptInput(sig/lin), CGameSceneNode_GetSkeletonInstance(off/lin), CGameSceneNode_GetSkeletonInstance(off/win), CheckTransmit(sig/lin), ClientPrint(sig/lin), GetCSWeaponDataFromKey(sig/lin), Host_Say(sig/lin), LegacyGameEventListener(sig/win)
+faa97820 2026-08-25 entries=46 +[] -[] ~[sig/lin:1] | fix: Update for latest CS2 Game Update [1.41.7.7]
+     ~ CCSGameRules_TerminateRound(sig/lin)
+bd1d9365 2026-09-24 entries=46 +[] -[] ~[sig/win:1] | fix: update Windows PostThink signature (#1438)
+     ~ CCSPlayerPawnBase_PostThink(sig/win)
+2f984988 2026-09-24 entries=45 +[] -[sig/lin:1 sig/win:1] ~[off/lin:6 off/win:5 sig/lin:7 sig/win:5] | fix: for update 1.41.8.2 (#1433)
+     ~ CBaseEntity_IsPlayerPawn(off/lin), CBaseEntity_Teleport(off/lin), CBaseEntity_Teleport(off/win), CBaseModelEntity_SetModel(sig/win), CBasePlayerPawn_CommitSuicide(off/lin), CBasePlayerPawn_CommitSuicide(off/win), CBaseTrigger_StartTouch(sig/lin), CCSGameRules_FindPickerEntity(off/lin), CCSGameRules_FindPickerEntity(off/win), CCSGameRules_TerminateRound(sig/lin), CCSPlayerController_ChangeTeam(off/lin), CCSPlayerController_ChangeTeam(off/win), CCSPlayerController_Respawn(off/lin), CCSPlayerController_Respawn(off/win), CCSPlayer_ItemServices_CanAcquire(sig/lin), CCSPlayer_ItemServices_CanAcquire(sig/win), CCSPlayer_WeaponServices_CanUse(sig/lin), CEntityIOOutput_FireOutputInternal(sig/lin), CEntityIOOutput_FireOutputInternal(sig/win), CEntityInstance_AcceptInput(sig/lin), CEntityInstance_AcceptInput(sig/win), CEntitySystem_AddEntityIOEvent(sig/win), IGameSystem_InitAllSystems_pFirst(sig/lin)
+6d22cb54 2026-09-26 entries=45 +[] -[] ~[off/win:1] | fix: correct Windows IsPlayerPawn offset (#1445)
+     ~ CBaseEntity_IsPlayerPawn(off/win)
+c67396fa 2026-10-19 entries=45 +[] -[] ~[sig/lin:1] | fix: Update Linux signature for CBaseTrigger_StartTouch
+     ~ CBaseTrigger_StartTouch(sig/lin)
+5465e2aa 2026-10-24 entries=45 +[] -[] ~[sig/lin:2 sig/win:1] | fix: Game Update 1.41.9.2 (#1470)
+     ~ CCSPlayerPawnBase_PostThink(sig/lin), CCSPlayerPawnBase_PostThink(sig/win), GetCSWeaponDataFromKey(sig/lin)
+2eb9a57d 2026-11-12 entries=45 +[] -[] ~[sig/lin:1] | fix: Game Update 1.41.9.7
+     ~ ClientPrint(sig/lin)
+c1b3d1f3 2026-11-13 entries=45 +[] -[] ~[sig/win:1] | fix: restore nav mesh lookup on Windows (#1493)
+     ~ CCSNavArea_IsValidNavMesh(sig/win)

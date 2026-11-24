@@ -1,0 +1,63 @@
+2026-11-17T10:30:52Z	2026-11-17T10:30:52Z	0485c767	fix: schema char array out of bounds write error (#1499)
+2026-11-15T03:33:06Z	2026-11-15T03:33:06Z	35e3a650	fix: bound RunThink to player slots (#1495)
+2026-11-13T13:02:34Z	2026-11-13T13:02:34Z	c1b3d1f3	fix: restore nav mesh lookup on Windows (#1493)
+2026-11-12T12:04:02Z	2026-11-12T12:04:02Z	2273dd16	release: v1.0.380
+2026-11-12T11:57:30Z	2026-11-12T11:57:30Z	2eb9a57d	fix: Game Update 1.41.9.7
+2026-11-08T13:05:18Z	2026-11-08T13:05:18Z	1a23fef2	fix: format a native error message once, with a bound (#1485)
+2026-11-08T11:32:40Z	2026-11-08T11:32:40Z	19db7bbd	fix: handle timer removal during callbacks
+2026-11-08T11:18:57Z	2026-11-08T11:18:57Z	e87249ee	chore: update server sync script
+2026-11-05T04:15:57Z	2026-11-05T04:15:57Z	d0d812b2	feat: cache the game rules entity behind Utilities.GetGameRules (#1477)
+2026-11-02T23:45:46Z	2026-11-02T23:45:46Z	b517fb2b	fix: key memory function caches by argument and return types (#1476)
+2026-10-31T01:13:57Z	2026-10-31T01:13:57Z	f58e383b	release: v1.0.379
+2026-10-30T12:49:23Z	2026-10-30T12:49:23Z	5cbbd913	chore: Update Schema Definitions to 1.41.9.3 (#1471)
+2026-10-30T04:00:50Z	2026-10-30T04:00:50Z	57a2b06a	fix: do not persist failed entity list lookup (#1475)
+2026-10-28T01:07:24Z	2026-10-28T01:07:24Z	34c633f1	chore: update game events after 1.41.9.2
+2026-10-28T01:05:07Z	2026-10-28T01:05:07Z	d2b99dc1	chore: fix line endings in schema generator
+2026-10-28T01:03:40Z	2026-10-28T01:03:40Z	d8f6a3ec	fix: stale schema networked flags when accessed early (#1473)
+2026-10-25T05:20:44Z	2026-10-25T05:20:44Z	cf237b32	docs: add real ConVar example doc
+2026-10-25T05:01:31Z	2026-10-25T05:01:31Z	4f90d520	feat: add Convar<T> for real convar creation/deletion/access (#935)
+2026-10-23T14:17:40Z	2026-10-23T14:17:40Z	d9efaf83	release: v1.0.378
+2026-10-23T14:08:50Z	2026-10-23T14:08:50Z	86d3f07a	chore: Update Schema Definitions to 1.41.9.2 (#1447)
+2026-10-23T14:08:26Z	2026-10-23T14:08:26Z	5465e2aa	fix: Game Update 1.41.9.2 (#1470)
+2026-10-19T07:24:47Z	2026-10-19T07:24:47Z	428450ab	release: v1.0.377
+2026-10-19T07:16:41Z	2026-10-19T07:16:41Z	c67396fa	fix: Update Linux signature for CBaseTrigger_StartTouch
+2026-09-27T04:08:42Z	2026-09-27T04:08:42Z	653d651f	release: v1.0.376
+2026-09-26T11:40:01Z	2026-09-26T11:40:01Z	ffe84cfc	fix: set m_bIsSet when updating a custom hud dialog variable (#1434)
+2026-09-26T10:44:46Z	2026-09-26T10:44:46Z	6d22cb54	fix: correct Windows IsPlayerPawn offset (#1445)
+2026-09-26T10:25:59Z	2026-09-26T10:25:59Z	3aad8fc1	fix: share one writer for the combined logger (#1444)
+2026-09-26T10:11:47Z	2026-09-26T10:11:47Z	bc1efad5	fix: pass all four flags to CBasePlayerController::SetPawn (#1443)
+2026-09-26T10:02:19Z	2026-09-26T10:02:19Z	d90b0417	chore: Update Schema Definitions to 1.41.8.4 (#1437)
+2026-09-24T11:46:38Z	2026-09-24T11:46:38Z	751eb0c8	release: v1.0.375
+2026-09-24T11:42:56Z	2026-09-24T11:42:56Z	2f984988	fix: for update 1.41.8.2 (#1433)
+2026-09-24T11:02:11Z	2026-09-24T11:02:11Z	bd1d9365	fix: update Windows PostThink signature (#1438)
+2026-09-23T09:50:38Z	2026-09-23T09:50:38Z	505e466a	chore: Update Schema Definitions to 1.41.8.2 (#1404)
+2026-09-23T01:28:40Z	2026-09-23T01:28:40Z	a55cb8bc	feat: implement KHook (#1418)
+2026-09-07T01:20:07Z	2026-09-07T01:20:07Z	6c02f477	release: v1.0.374
+2026-09-07T01:08:46Z	2026-09-07T01:08:46Z	338b22c1	feat: Add `CustomHudLayout` api (#1410)
+2026-09-05T00:57:46Z	2026-09-05T00:57:46Z	28360939	Fix DropActivePlayerWeapon passing uninitialized vecDropMomentum (#1407)
+2026-08-26T08:23:45Z	2026-08-26T08:23:45Z	be766aac	chore: Update Schema Definitions to 1.41.7.7 (#1358)
+2026-08-25T13:40:46Z	2026-08-25T13:40:46Z	afa0c990	chore: bump checkout action to v7
+2026-08-25T13:39:21Z	2026-08-25T13:39:21Z	3a59f2de	release: v1.0.373
+2026-08-25T13:38:24Z	2026-08-25T13:38:24Z	faa97820	fix: Update for latest CS2 Game Update [1.41.7.7]
+2026-08-19T01:23:40Z	2026-08-19T01:23:40Z	d5c7f750	release: v1.0.372
+2026-08-19T01:02:36Z	2026-08-19T01:02:36Z	7ccf9950	feat: Add Ray/Hull Trace API (INavPhysicsInterface) (#1331)
+2026-07-12T10:31:23Z	2026-07-12T10:31:23Z	db2cd0fe	chore: Update Schema Definitions to 1.41.6.9 (#1356)
+2026-07-10T09:41:43Z	2026-07-10T09:41:43Z	3923c5d7	release: v1.0.371
+2026-07-10T09:39:35Z	2026-07-10T09:39:35Z	0586daf3	fix: Update for latest CS2 Game Update [1.41.6.9] (#1348)
+2026-06-27T01:42:04Z	2026-06-27T01:42:04Z	a9320227	release: v1.0.370
+2026-06-27T01:20:45Z	2026-06-27T01:20:45Z	99ae8565	fix: Correct the trigger timing of the C# `OnMapEnd` listener (#1338)
+2026-06-16T09:20:14Z	2026-06-16T09:20:14Z	c6eff281	feat: Implement basic definitions and essential methods for `CCSNavArea` (#1335)
+2026-06-16T08:49:40Z	2026-06-16T08:49:40Z	30c048ce	fix: normalize line endings on lf
+2026-06-14T12:57:48Z	2026-06-14T12:57:48Z	222f73d6	chore: Support CMake 4+ when configuring dyncall (#1333)
+2026-06-05T09:22:44Z	2026-06-05T09:22:44Z	1416e964	chore: update some .net10 tooling
+2026-06-02T03:22:38Z	2026-06-02T03:22:38Z	4c3d2fce	fix: Resolve `MaxEdictBits` confusion by separating edict and entity limits (#1330)
+2026-06-01T00:31:09Z	2026-06-01T00:31:09Z	0fc6848d	chore: Update Schema Definitions to 1.41.6.5 (#1327)
+2026-05-30T06:22:57Z	2026-05-30T06:22:57Z	18135871	release: v1.0.369
+2026-05-30T06:18:52Z	2026-05-30T06:18:52Z	492727e8	chore: upgrade to .NET 10 (LTS) (#1322)
+2026-05-18T10:47:50Z	2026-05-18T10:47:50Z	74bc0b47	feat: add `Task<TResult>` overload of `NextFrameAsync`
+2026-05-17T04:47:36Z	2026-05-17T04:47:36Z	c5fd0874	release: v1.0.368
+2026-05-17T01:36:47Z	2026-05-17T01:36:47Z	d1038fbc	chore: Update Schema Definitions to 1.41.6.1 (#1316)
+2026-04-22T12:49:40Z	2026-04-22T12:49:40Z	60a7239e	release: v1.0.367
+2026-04-22T12:40:10Z	2026-04-22T12:40:10Z	d935b08c	fix: update CBaseEntity_TakeDamageOld linux signature (#1287)
+2026-04-22T09:50:45Z	2026-04-22T09:50:45Z	08ff6763	release: v1.0.366
+2026-04-22T09:49:36Z	2026-04-22T09:49:36Z	8a9fbe8f	fix: apply changes for AG2 update (#1279)

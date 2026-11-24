@@ -1,0 +1,108 @@
+2026-11-12T05:00:31Z	2026-11-12T05:00:31Z	2f335653	GameUpdate: 2026/11/12 (#151)
+2026-11-12T03:58:18Z	2026-11-12T03:58:18Z	afd848cf	fix: touching list shuffle side effects
+2026-11-12T03:24:08Z	2026-11-12T03:24:08Z	76d48109	fix: resolver fallbacks and stale leftovers
+2026-11-08T17:47:59Z	2026-11-08T17:47:59Z	5251c87a	feat: new clantag support (#143)
+2026-11-06T08:17:36Z	2026-11-06T08:17:36Z	6e9ba3ae	fix: follow GCC vtable guard stubs when filtering ref candidates (#150)
+2026-11-05T10:10:55Z	2026-11-05T10:10:55Z	ede7c9dd	feat: keyvalues escape sequences
+2026-11-05T09:32:44Z	2026-11-05T09:32:44Z	1d908ea8	GameUpdate: 2026/11/05
+2026-11-05T09:05:10Z	2026-11-05T09:05:10Z	4299b543	fix: bounded connection ticket reads
+2026-11-05T08:54:43Z	2026-11-05T08:54:43Z	6f1347b4	fix: EquipWeapon forward and GiveNamedItem doc
+2026-10-29T17:32:46Z	2026-10-29T17:32:46Z	e24394a8	feat: steam api pointers and modern jump fields
+2026-10-29T15:40:46Z	2026-10-29T15:40:46Z	1cdf2080	fix: sync game enums
+2026-10-29T14:54:18Z	2026-10-29T14:54:18Z	6641c303	deps: update nuget
+2026-10-29T14:45:28Z	2026-10-29T14:45:28Z	68396153	fix: engine and core audit findings
+2026-10-29T12:49:57Z	2026-10-29T12:49:57Z	5a0b2a50	feat: runtime log listener
+2026-10-29T11:40:39Z	2026-10-29T11:40:39Z	26efcabd	feat: movedata econitemview
+2026-10-29T07:46:41Z	2026-10-29T07:46:41Z	90f6e1a0	fix: classname based entity type checks
+2026-10-29T06:58:20Z	2026-10-29T06:58:20Z	c7f76369	fix: native ABI and callback consistency issues
+2026-10-28T15:49:15Z	2026-10-28T15:49:15Z	75ec3742	fix: water ground jump
+2026-10-28T15:38:35Z	2026-10-28T15:38:35Z	88d6f3d7	feat: cs_script variables, hooks and layout
+2026-10-24T17:45:33Z	2026-10-24T17:45:33Z	6e3d84b3	fix: stringtable get userdata
+2026-10-23T13:57:26Z	2026-10-23T13:57:26Z	c73c2d33	feat: faster FindEntity
+2026-10-23T12:32:40Z	2026-10-23T12:32:40Z	73647e52	fix: timer, listener and hook dispatch
+2026-10-23T12:32:34Z	2026-10-23T12:32:34Z	93bb1bfa	chore: linux no-undefined linking
+2026-10-23T12:32:16Z	2026-10-23T12:32:16Z	790fbaa0	fix: trigger_push path simple direction
+2026-10-23T11:33:35Z	2026-10-23T11:33:35Z	cc5b82f2	chore: water jump velocity patch removal
+2026-10-23T11:33:28Z	2026-10-23T11:33:28Z	d7c33ea5	feat: dotnet crash dump supports
+2026-10-23T11:32:46Z	2026-10-23T11:32:46Z	134ab4ea	fix: named mutex process lock
+2026-10-23T09:33:22Z	2026-10-23T09:33:22Z	9998e99b	fix: GiveNamedItem hook
+2026-10-23T09:33:17Z	2026-10-23T09:33:17Z	c47d0134	chore: TracePlayerBBox removal
+2026-10-23T09:33:05Z	2026-10-23T09:33:05Z	4d2c1335	chore: increase message buffer
+2026-10-23T05:38:36Z	2026-10-23T05:38:36Z	7efe10c0	fix: IEngineServer vtable shift
+2026-10-23T02:00:43Z	2026-10-23T02:00:43Z	d8176fe7	GameUpdate: 2026/10/23
+2026-10-18T17:03:45Z	2026-10-18T17:03:45Z	c5440ce0	fix: engine interface declarations
+2026-10-18T16:59:57Z	2026-10-18T16:59:57Z	2ee0ff99	fix: hand-written struct layouts
+2026-10-18T16:51:59Z	2026-10-18T16:51:59Z	1db64702	docs: hl2sdk attribution
+2026-10-15T16:50:13Z	2026-10-15T16:50:13Z	f4e31169	fix: tier0-compatible command line parsing
+2026-10-15T13:59:57Z	2026-10-15T13:59:57Z	c13de169	revert: listen server ignore auth
+2026-10-15T13:14:59Z	2026-10-15T13:14:59Z	a2c1c22b	fix: run admin check for listen server host + fix argument parsing (#145)
+2026-10-15T12:39:05Z	2026-10-15T12:39:05Z	fb8f2b7c	fix: sm_mapGcBanInformation windows signature (#147)
+2026-10-13T18:28:57Z	2026-10-13T18:28:57Z	a6b23c4f	fix: respawn command skips spectators and unassigned players (#146)
+2026-10-08T23:48:10Z	2026-10-08T23:48:10Z	4cc6cdd6	GameUpdate: 2026/10/09
+2026-10-08T19:07:38Z	2026-10-08T19:07:38Z	e4bb95b4	fix: trace, xmm and field type declarations
+2026-10-08T19:07:20Z	2026-10-08T19:07:20Z	65f3eeec	fix: logic_case InValue with N.0 cases
+2026-10-08T18:58:57Z	2026-10-08T18:58:57Z	bcccaa75	fix: CheckMovingGround per-tick dedup
+2026-10-08T17:33:07Z	2026-10-08T17:33:07Z	7ea205b5	fix(schema): populate class size and alignment (#144)
+2026-10-08T01:33:09Z	2026-10-08T01:33:09Z	c87f0c80	ci: nuget trusted publishing
+2026-10-06T18:33:31Z	2026-10-06T18:33:31Z	9a62680a	fix: discord release links
+2026-10-06T17:32:43Z	2026-10-06T17:32:43Z	96c22317	perf: transmit manager optimization
+2026-10-06T16:21:00Z	2026-10-06T16:21:00Z	724fc972	feat: managed logging into engine
+2026-10-06T10:25:39Z	2026-10-06T10:25:39Z	f8dfe300	fix: 10/05 gamedata, protobuf and audit defects
+2026-10-06T09:28:47Z	2026-10-06T09:28:47Z	9d30eee4	fix: game_player_equip weapon list and grenades
+2026-10-06T09:11:17Z	2026-10-06T09:11:17Z	7b4a800c	fix: round-end timers on map change
+2026-10-06T08:56:42Z	2026-10-06T08:05:32Z	0a3f61f5	fix: trace filter init and struct layouts
+2026-10-06T07:30:03Z	2026-10-06T07:30:03Z	b9072cb3	style: clang-format
+2026-10-06T07:18:11Z	2026-10-06T07:18:11Z	650a0928	chore: cvar to control voice lagger (#135)
+2026-09-29T08:28:22Z	2026-09-29T08:28:22Z	a16a06d0	fix: pattern scan offset 0 and linux imported exports (#141)
+2026-09-29T07:41:03Z	2026-09-29T07:41:03Z	bae060d0	fix: failed to resolve cvar ptr references on linux + Resolve CanAcquire from cvar refs (#139)
+2026-09-25T20:44:57Z	2026-09-25T20:44:57Z	3918a96b	GameUpdate: 26/09/25 (#137)
+2026-09-23T20:13:00Z	2026-09-23T20:13:00Z	a91ea504	GameUpdate: 2026/09/23 (#136)
+2026-09-14T11:14:53Z	2026-09-14T11:14:53Z	6f682d91	feat: anti server lagger/cheats (#134)
+2026-09-14T05:19:39Z	2026-09-14T05:19:39Z	2f26d1fc	feat: custom_player_camera supports (#133)
+2026-09-14T05:17:19Z	2026-09-14T05:17:19Z	7fd429f8	feat: improve module functionality (#132)
+2026-09-10T01:58:00Z	2026-09-10T01:58:00Z	b4f63b1a	fix: steamRT3 apt
+2026-09-10T01:55:10Z	2026-09-10T01:55:10Z	940418b9	deps: update nuget packages
+2026-09-10T01:52:03Z	2026-09-10T01:52:03Z	2a74a660	GameUpdate: 26/09/10
+2026-09-04T17:53:54Z	2026-09-04T17:53:54Z	6fb230a7	fix: ban cache cross map #131
+2026-09-04T17:52:29Z	2026-09-04T17:52:29Z	7ec21c25	fix: client ms command #107
+2026-08-29T19:46:12Z	2026-08-29T19:46:12Z	a926ca6d	chore: update preserved entity list
+2026-08-29T17:50:01Z	2026-08-29T17:50:01Z	653c9ec5	refactor: native command release (#128)
+2026-08-29T15:08:01Z	2026-08-29T15:08:01Z	dd5d832c	feat: custom_hud_layout supports (#123)
+2026-08-28T06:12:44Z	2026-08-28T06:12:44Z	77e5421b	fix: ci not linking gcc14 libraries (#127)
+2026-08-27T18:31:42Z	2026-08-27T18:31:42Z	8fafa321	chore: update protobuf
+2026-08-27T18:29:50Z	2026-08-27T18:29:50Z	20f3c5a2	chore: mitigate client crashes related to Transmit
+2026-08-27T18:10:29Z	2026-08-27T18:10:29Z	0a35827c	feat: cs_script/V8 integration
+2026-08-27T17:06:15Z	2026-08-27T17:06:15Z	a5e448ab	fix: module unload lifecycle & leaked-registration sweep (#126)
+2026-08-27T16:39:09Z	2026-08-27T16:39:09Z	07f0d94b	fix: InvokeFrameActionAsync continuation inlining & cancellation token (#125)
+2026-08-26T18:57:54Z	2026-08-26T18:57:54Z	92e9c98c	fix: release action
+2026-08-26T17:01:36Z	2026-08-26T17:01:36Z	53cf9219	fix: client chat exploit and #119
+2026-08-26T15:56:39Z	2026-08-26T15:56:39Z	8e6dc394	feat: more dual addon api (#124)
+2026-08-26T15:44:33Z	2026-08-26T15:44:33Z	6ca6da14	deps: update nuget packages
+2026-08-26T15:36:40Z	2026-08-26T15:36:40Z	be62d8a9	fix: logging path
+2026-08-26T15:04:51Z	2026-08-26T15:04:51Z	5e135912	feat: water jump in modern jump
+2026-08-26T13:57:58Z	2026-08-26T13:57:58Z	1048919e	fix: evict stale ban/mute/gag cache when records are removed externally (#110)
+2026-08-25T12:10:42Z	2026-08-25T12:10:42Z	110b7a28	fix: update gamedata (#122)
+2026-08-25T10:08:11Z	2026-08-25T10:08:11Z	8ea86528	fix: SetSolid signature on windows (#121)
+2026-08-21T03:02:34Z	2026-08-21T03:02:34Z	ebe6f666	fix: add missing IsInGame check in HostSay (#119)
+2026-08-18T07:49:35Z	2026-08-18T07:49:35Z	4282a796	fix: missing return of EquipWeapon
+2026-08-18T03:18:49Z	2026-08-18T03:18:49Z	7e296ef9	fix(linux): isolate CoreCLR allocator (#118)
+2026-08-16T14:22:05Z	2026-08-16T14:22:05Z	e8c25e6b	fix: StopSoundEvents
+2026-08-08T19:33:09Z	2026-08-08T19:33:09Z	82cfa5a2	fix: shadow sig / incorrect vFn index / ABI (#116)
+2026-07-20T13:11:49Z	2026-07-20T13:11:49Z	9af8b617	fix: protobuf reflection on linux (#113)
+2026-07-17T22:40:36Z	2026-07-17T22:40:36Z	16944ed7	GameUpdate: 26/07/09 (#109)
+2026-07-17T22:32:14Z	2026-07-17T22:32:14Z	dfd62bf0	fix(AdminCommands): defer ban/kick disconnect to end of frame to avoid snapshot-send race (#104)
+2026-07-17T22:10:59Z	2026-07-17T22:10:59Z	3dfd4d82	fix: enable FIX_PLAYER_EQUIP_MANUALLY on Linux (#112)
+2026-06-19T05:14:50Z	2026-06-19T05:14:50Z	2c2356a1	fix: ``ExecuteStringCommand`` interactive with modules  (#108)
+2026-06-15T08:37:39Z	2026-06-15T08:37:39Z	b1d6256f	style: cleanup
+2026-06-15T08:33:17Z	2026-06-15T08:33:17Z	4fa5378b	feat: optimize performance of schema getter/setter (#105)
+2026-06-15T08:24:31Z	2026-06-15T08:24:31Z	867224df	deps: upgrade nuget packages
+2026-06-13T16:05:02Z	2026-06-13T16:05:02Z	bd399996	feat: improve function boundary detection via CFG + .eh_frame & add SetDefaultGloves & fix schema networkable (#103)
+2026-06-13T15:11:14Z	2026-06-13T15:11:14Z	9056403e	feat: add GetAllEntities API (#92)
+2026-06-13T13:41:46Z	2026-06-13T13:41:46Z	a6804d38	fix: Fixed Linux CI build failed (#106)
+2026-05-31T08:20:46Z	2026-05-31T08:20:46Z	9fc61be3	feat: PrintToCenterHtml (#102)
+2026-05-11T11:05:05Z	2026-05-11T11:05:05Z	d6b27f79	feat: admin command target & handler (#101)
+2026-05-05T05:37:48Z	2026-05-05T05:37:48Z	40358665	fix: fixed missing CUtlString constructor (#99)
+2026-05-01T09:59:36Z	2026-05-01T09:59:36Z	c9308ed5	fix: remove s_pCommandContextClient + improve error messages(#96)
+2026-05-01T03:53:31Z	2026-05-01T03:53:31Z	d28929a0	feat: more resource block type (#97)
+2026-04-23T02:10:51Z	2026-04-23T02:10:51Z	adc2f756	feat: improve cvar handle reference detection, add missing GetAimPunchService (#95)
+2026-04-22T10:36:00Z	2026-04-22T10:36:00Z	8151ce03	feat: AnimGraph2 update (#93)

@@ -1,0 +1,24 @@
+c01357e8 2023-11-04 Pawn_CommitSuicide[l]+1
+0f72631e 2023-11-18 Pawn_CommitSuicide[l]+1 Pawn_CommitSuicide[w]+1
+e12a7cb1 2023-11-28 IS_DropActivePlayerWeapon[w]-2
+74fd0e08 2023-12-14 PC_Respawn[l]+1 PC_Respawn[w]+1 Pawn_CommitSuicide[l]+1 Pawn_CommitSuicide[w]+1 BE_Teleport[l]+1 BE_Teleport[w]+1
+e5c22369 2024-01-20 IS_RemoveWeapons[w]-2
+f2b8044b 2024-02-08 PC_ChangeTeam[l]+3 PC_ChangeTeam[w]+3 PC_Respawn[l]+2 PC_Respawn[w]+2 Pawn_CommitSuicide[l]+2 Pawn_CommitSuicide[w]+2 GameEventManager[l]+2 GameEventManager[w]+2
+8967c40b 2024-02-10 PC_Respawn[l]+1 PC_Respawn[w]+1 Pawn_CommitSuicide[l]+1 Pawn_CommitSuicide[w]+1
+983d9149 2024-02-29 PC_Respawn[l]-1 PC_Respawn[w]-1
+cafc4e23 2024-05-25 PC_ChangeTeam[l]+5 PC_ChangeTeam[w]+5 PC_Respawn[l]+10 PC_Respawn[w]+10 Pawn_CommitSuicide[l]+12 Pawn_CommitSuicide[w]+12 BE_Teleport[l]+6 BE_Teleport[w]+6
+2eaf7c2d 2024-06-13 CEntityResourceManifest_AddResource[l]-2
+2c7f8961 2024-10-04 PC_ChangeTeam[l]+2 PC_ChangeTeam[w]+2 PC_Respawn[l]+3 PC_Respawn[w]+3 IS_GiveNamedItem[l]+2 IS_GiveNamedItem[w]+2 IS_DropActivePlayerWeapon[l]+2 IS_DropActivePlayerWeapon[w]+2 IS_RemoveWeapons[l]+2 IS_RemoveWeapons[w]+2 Pawn_CommitSuicide[l]+5 Pawn_CommitSuicide[w]+5 BE_Teleport[l]+2 BE_Teleport[w]+2
+b54f5c3d 2024-10-21 Pawn_CommitSuicide[l]+3 Pawn_CommitSuicide[w]+3
+1f30e561 2025-08-04 PC_ChangeTeam[l]+7 PC_ChangeTeam[w]+7 PC_Respawn[l]+19 PC_Respawn[w]+19 CCSGameRules_FindPickerEntity[l]-2 CCSGameRules_FindPickerEntity[w]-2 Pawn_CommitSuicide[l]+24 Pawn_CommitSuicide[w]+24 BE_Teleport[l]+9 BE_Teleport[w]+9 CheckTransmitPlayerSlot[l]-8 CheckTransmitPlayerSlot[w]-8
+bf1ce2e8 2025-08-16 PC_ChangeTeam[l]-1 PC_ChangeTeam[w]-1 PC_Respawn[l]-1 PC_Respawn[w]-1 IS_GiveNamedItem[l]-1 IS_GiveNamedItem[w]-1 IS_RemoveWeapons[l]+1 IS_RemoveWeapons[w]+1 BE_Teleport[l]-1 BE_Teleport[w]-1
+72d66cb5 2025-08-28 PC_Respawn[l]-1 Pawn_CommitSuicide[l]-1
+54f8d5ef 2025-09-04 PC_Respawn[w]-1 Pawn_CommitSuicide[w]-1
+2c809713 2025-09-18 PC_Respawn[l]+1 PC_Respawn[w]+1 IS_DropActivePlayerWeapon[l]+1 IS_DropActivePlayerWeapon[w]+1 Pawn_CommitSuicide[l]+5 Pawn_CommitSuicide[w]+5
+37951f28 2025-10-15 PC_ChangeTeam[l]+3 PC_ChangeTeam[w]+3 PC_Respawn[l]+2 PC_Respawn[w]+2 BE_Teleport[l]+3 BE_Teleport[w]+3
+fe3e32f3 2026-01-23 PC_ChangeTeam[l]-7 PC_ChangeTeam[w]-7 PC_Respawn[l]-5 PC_Respawn[w]-5 IS_GiveNamedItem[l]+1 IS_GiveNamedItem[w]+1 IS_DropActivePlayerWeapon[l]+1 IS_DropActivePlayerWeapon[w]+1 IS_RemoveWeapons[l]+1 IS_RemoveWeapons[w]+1 CGameSceneNode_GetSkeletonInstance[l]+1 BE_IsPlayerPawn[l]-6 BE_IsPlayerPawn[w]-6 Pawn_CommitSuicide[l]-8 Pawn_CommitSuicide[w]-8 BE_Teleport[l]-6 BE_Teleport[w]-6
+32628275 2026-01-23 SetStateChanged[l]+2 SetStateChanged[w]+2
+8a9fbe8f 2026-04-22 PC_ChangeTeam[l]+1 PC_ChangeTeam[w]+1 PC_Respawn[l]+1 PC_Respawn[w]+1 IS_GiveNamedItem[l]+1 IS_GiveNamedItem[w]+1 IS_DropActivePlayerWeapon[l]+1 IS_DropActivePlayerWeapon[w]+1 IS_RemoveWeapons[l]+1 IS_RemoveWeapons[w]+1 CGameSceneNode_GetSkeletonInstance[l]+1 CGameSceneNode_GetSkeletonInstance[w]+1 CCSGameRules_FindPickerEntity[l]+1 CCSGameRules_FindPickerEntity[w]+1 BE_IsPlayerPawn[l]+1 BE_IsPlayerPawn[w]+1 Pawn_CommitSuicide[l]-10 Pawn_CommitSuicide[w]-10 BE_Teleport[l]+1 BE_Teleport[w]+1 SetStateChanged[l]+1 SetStateChanged[w]+1
+0586daf3 2026-07-10 PC_Respawn[l]-3 PC_Respawn[w]-3 IS_GiveNamedItem[l]+3 IS_GiveNamedItem[w]+3 IS_DropActivePlayerWeapon[l]+3 IS_DropActivePlayerWeapon[w]+3 IS_RemoveWeapons[l]+3 IS_RemoveWeapons[w]+3 CGameSceneNode_GetSkeletonInstance[l]+3 CGameSceneNode_GetSkeletonInstance[w]+3 Pawn_CommitSuicide[l]-6 Pawn_CommitSuicide[w]-6
+2f984988 2026-09-24 PC_ChangeTeam[l]+2 PC_ChangeTeam[w]+2 PC_Respawn[l]+4 PC_Respawn[w]+4 CCSGameRules_FindPickerEntity[l]-1 CCSGameRules_FindPickerEntity[w]-1 BE_IsPlayerPawn[l]+2 Pawn_CommitSuicide[l]+3 Pawn_CommitSuicide[w]+3 BE_Teleport[l]+2 BE_Teleport[w]+2
+6d22cb54 2026-09-26 BE_IsPlayerPawn[w]+2

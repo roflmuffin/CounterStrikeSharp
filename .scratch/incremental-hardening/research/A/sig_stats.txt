@@ -1,0 +1,99 @@
+# Current signatures: bytes, wildcards, wildcard%, churn(lin/win), first added
+UTIL_ClientPrintAll                      lin  28B  0? (   0%)  win  25B  4? (  16%)  churn lin= 2 win= 3 commits= 3 since 2023-10-21
+ClientPrint                              lin  26B  4? (  15%)  win  15B  5? (  33%)  churn lin= 4 win= 1 commits= 5 since 2023-10-21
+CCSPlayerController_SwitchTeam           lin  11B  0? (   0%)  win  15B  4? (  27%)  churn lin= 1 win= 1 commits= 1 since 2023-10-21
+CBasePlayerController_SetPawn            lin  23B  4? (  17%)  win   9B  1? (  11%)  churn lin= 9 win= 6 commits=10 since 2024-02-08
+CCSPlayerPawnBase_PostThink              lin  36B 11? (  31%)  win  30B  9? (  30%)  churn lin=11 win= 6 commits=13 since 2023-11-24
+CGameEventManager_Init                   lin  21B  2? (  10%)  win  18B  2? (  11%)  churn lin= 2 win= 1 commits= 2 since 2024-05-25
+GiveNamedItem                            lin  43B 16? (  37%)  win  19B  3? (  16%)  churn lin=11 win= 5 commits=13 since 2023-10-22
+UTIL_Remove                              lin  16B  5? (  31%)  win  11B  1? (   9%)  churn lin= 1 win= 1 commits= 2 since 2023-10-28
+CBaseModelEntity_SetModel                lin  49B 11? (  22%)  win  68B 13? (  19%)  churn lin= 9 win= 7 commits=10 since 2023-11-13
+CCSPlayer_WeaponServices_CanUse          lin  47B 13? (  28%)  win  28B  3? (  11%)  churn lin= 6 win= 8 commits=10 since 2024-01-22
+CCSPlayer_ItemServices_CanAcquire        lin  26B  0? (   0%)  win  30B  3? (  10%)  churn lin= 6 win= 4 commits= 7 since 2024-10-17
+GetCSWeaponDataFromKey                   lin  17B  0? (   0%)  win  17B  2? (  12%)  churn lin=10 win= 4 commits=10 since 2024-10-17
+CCSGameRules_TerminateRound              lin  40B 12? (  30%)  win  14B  2? (  14%)  churn lin= 8 win= 7 commits=11 since 2023-11-19
+UTIL_CreateEntityByName                  lin  11B  4? (  36%)  win  12B  3? (  25%)  churn lin= 2 win= 2 commits= 4 since 2023-11-19
+CBaseEntity_DispatchSpawn                lin  16B  1? (   6%)  win  28B  6? (  21%)  churn lin= 5 win= 1 commits= 5 since 2023-11-19
+CBaseEntity_EmitSoundFilter              lin  34B  6? (  18%)  win  17B  2? (  12%)  churn lin= 5 win= 2 commits= 5 since 2025-03-23
+CEntityInstance_AcceptInput              lin  23B  4? (  17%)  win  27B  6? (  22%)  churn lin= 4 win= 3 commits= 5 since 2023-12-27
+CEntitySystem_AddEntityIOEvent           lin  16B  0? (   0%)  win  21B  3? (  14%)  churn lin= 2 win= 2 commits= 3 since 2024-04-30
+LegacyGameEventListener                  lin  28B  8? (  29%)  win  14B  5? (  36%)  churn lin= 4 win= 5 commits= 6 since 2023-11-19
+CBasePlayerPawn_RemovePlayerItem         lin  21B  4? (  19%)  win  26B  6? (  23%)  churn lin= 2 win= 2 commits= 3 since 2023-12-15
+CBaseEntity_TakeDamageOld                lin  19B  0? (   0%)  win  22B  5? (  23%)  churn lin= 9 win= 6 commits=10 since 2023-11-24
+CBaseTrigger_StartTouch                  lin  18B  0? (   0%)  win  11B  1? (   9%)  churn lin= 6 win= 2 commits= 7 since 2023-11-26
+CBaseTrigger_EndTouch                    lin  23B  4? (  17%)  win  10B  1? (  10%)  churn lin= 2 win= 2 commits= 3 since 2023-11-26
+CEntityIOOutput_FireOutputInternal       lin  32B  4? (  12%)  win  16B  3? (  19%)  churn lin= 4 win= 3 commits= 6 since 2023-12-07
+IGameSystem_InitAllSystems_pFirst        lin  13B  5? (  38%)  win  17B  8? (  47%)  churn lin= 3 win= 3 commits= 4 since 2024-03-02
+NetworkStateChanged                      lin  11B  1? (   9%)  win   9B  0? (   0%)  churn lin= 1 win= 0 commits= 1 since 2023-12-27
+Host_Say                                 lin  16B  0? (   0%)  win   9B  1? (  11%)  churn lin= 5 win= 1 commits= 6 since 2023-11-12
+CCSNavArea_IsValidNavMesh                lin  15B  5? (  33%)  win  12B  0? (   0%)  churn lin= 0 win= 1 commits= 1 since 2026-06-16
+linux: n=28 len min/median/max=11/22.0/49 wildcard% mean=16 median=17
+windows: n=28 len min/median/max=9/17.0/68 wildcard% mean=18 median=15
+
+# Current offsets: churn
+CCSPlayerController_ChangeTeam                win= 105 lin= 104 churn lin= 9 win= 9 commits= 9 since 2023-11-05
+CCSPlayerController_Respawn                   win= 274 lin= 276 churn lin=15 win=15 commits=16 since 2023-11-24
+CCSPlayer_ItemServices_GiveNamedItem          win=  23 lin=  24 churn lin= 5 win= 5 commits= 5 since 2024-04-27
+CCSPlayer_ItemServices_DropActivePlayerWeapon win=  26 lin=  27 churn lin= 5 win= 6 commits= 6 since 2023-11-19
+CCSPlayer_ItemServices_RemoveWeapons          win=  27 lin=  28 churn lin= 5 win= 6 commits= 6 since 2023-11-19
+CGameSceneNode_GetSkeletonInstance            win=  12 lin=  13 churn lin= 3 win= 2 commits= 3 since 2023-11-19
+CCSGameRules_FindPickerEntity                 win=  25 lin=  26 churn lin= 3 win= 3 commits= 3 since 2024-11-06
+CTakeDamageInfo_HitGroup                      win= 104 lin= 104 churn lin= 0 win= 0 commits= 0 since 2025-08-18
+CBaseEntity_IsPlayerPawn                      win= 171 lin= 170 churn lin= 3 win= 3 commits= 4 since 2025-12-15
+CBasePlayerPawn_CommitSuicide                 win= 387 lin= 387 churn lin=15 win=14 commits=16 since 2023-10-28
+CBaseEntity_Teleport                          win= 165 lin= 164 churn lin= 9 win= 9 commits= 9 since 2023-10-28
+GameEntitySystem                              win=  88 lin=  80 churn lin= 0 win= 0 commits= 0 since 2023-11-12
+GameEventManager                              win=  93 lin=  93 churn lin= 1 win= 1 commits= 1 since 2023-11-12
+CEntityResourceManifest_AddResource           win=   2 lin=   0 churn lin= 1 win= 0 commits= 1 since 2024-03-02
+CheckTransmitPlayerSlot                       win= 576 lin= 576 churn lin= 1 win= 1 commits= 1 since 2024-11-06
+SetStateChanged                               win=  28 lin=  29 churn lin= 2 win= 2 commits= 2 since 2025-08-04
+ISource2GameEntities::CheckTransmit           win=  12 lin=  13 churn lin= 0 win= 0 commits= 0 since 2025-08-04
+
+# Top churn overall (entry, total value changes both platforms, distinct commits)
+CCSPlayerController_Respawn                    30  16
+CBasePlayerPawn_CommitSuicide                  29  16
+CBaseEntity_Teleport                           18   9
+CCSPlayerController_ChangeTeam                 18   9
+CCSPlayerPawnBase_PostThink                    17  13
+GiveNamedItem                                  16  13
+CBaseModelEntity_SetModel                      16  10
+CCSGameRules_TerminateRound                    15  11
+CBasePlayerController_SetPawn                  15  10
+CBaseEntity_TakeDamageOld                      15  10
+CCSPlayer_WeaponServices_CanUse                14  10
+GetCSWeaponDataFromKey                         14  10
+CCSPlayer_ItemServices_DropActivePlayerWeapon  11   6
+CCSPlayer_ItemServices_RemoveWeapons           11   6
+CCSPlayer_ItemServices_GiveNamedItem           10   5
+CCSPlayer_ItemServices_CanAcquire              10   7
+LegacyGameEventListener                         9   6
+CBaseTrigger_StartTouch                         8   7
+CEntityIOOutput_FireOutputInternal              7   6
+CBaseEntity_EmitSoundFilter                     7   5
+CEntityInstance_AcceptInput                     7   5
+CBaseEntity_DispatchSpawn                       6   5
+Host_Say                                        6   6
+IGameSystem_InitAllSystems_pFirst               6   4
+CCSGameRules_FindPickerEntity                   6   3
+CBaseEntity_IsPlayerPawn                        6   4
+ClientPrint                                     5   5
+UTIL_ClientPrintAll                             5   3
+CheckTransmit                                   5   4
+CGameSceneNode_GetSkeletonInstance              5   3
+UTIL_CreateEntityByName                         4   4
+CBaseTrigger_EndTouch                           4   3
+CBasePlayerPawn_RemovePlayerItem                4   3
+CEntitySystem_AddEntityIOEvent                  4   3
+SetStateChanged                                 4   2
+CGameEventManager_Init                          3   2
+UTIL_Remove                                     2   2
+GameEventManager                                2   1
+StateChanged                                    2   2
+CCSPlayerController_SwitchTeam                  2   1
+CheckTransmitPlayerSlot                         2   1
+CEntityResourceManifest_AddResource             1   1
+NetworkStateChanged                             1   1
+CCSNavArea_IsValidNavMesh                       1   1
+
+Total value changes (excl cosmetic): 383 sig: 230 off: 153
+lin sig: 137 win sig: 93

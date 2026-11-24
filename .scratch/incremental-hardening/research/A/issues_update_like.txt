@@ -1,0 +1,143 @@
+2024-02-06T01:56 #308 Menus are not opening after update to v160
+2024-02-07T13:53 #309 Failed to find signature for 'CEntityIOOutput_FireOutputInternal'
+2024-02-08T04:04 #313 CCSPlayerController.Respawn() offsets
+2024-02-10T07:29 #317 auto update for CounterstrikeSharp? 
+2024-02-10T17:35 #318 cannot restart or unload reload plugins 
+2024-02-16T13:19 #326 crash server 
+2024-02-19T21:41 #332 admins not working
+2024-02-29T02:54 #354 NextFrame/NextWorldUpdate fails when nested
+2024-02-29T08:30 #356 server crash
+2024-03-02T05:47 #359 Whether or not you can get the full list of loaded plugins within a plugin
+2024-03-02T09:34 #360 Allow engine signatures in gamedata
+2024-03-02T15:26 #361 Chat colors not working for me
+2024-03-08T06:42 #369 Add ability to reload config
+2024-03-09T04:16 #370 Add option to disable auto loading of plugins
+2024-03-16T20:34 #383 map change crash
+2024-03-25T21:50 #390 JsonConverter for Vector and QAngle broken with dotnet 8
+2024-03-27T13:00 #391 CounterStrikeSharp NOT WORKING if its location is changed in the addons folder
+2024-04-08T17:29 #402 Support IDA/x64Dbg style signatures in FindSignature
+2024-04-08T20:08 #403 Crashing problem with bots
+2024-04-11T18:21 #409 Client not predicting value of AnimGraphUpdatedEnabled of a CBaseViewModel's anim graph
+2024-04-16T04:54 #419 not loading properly
+2024-04-19T00:49 #420 There is a bug in the hot overload of the overlay plugin
+2024-05-02T21:34 #439 event not working
+2024-05-07T17:41 #444 Plugin doesn't loaded with "CoreConfig file not found" error
+2024-05-08T03:38 #445 CounterstrikeSharp not loaded
+2024-05-23T22:58 #459 New CS2 Update Crashes server
+2024-05-26T09:59 #464 Plugins not load
+2024-05-30T11:33 #469 Failed to initialize .NET runtime
+2024-06-06T23:16 #482 [BUG] CNetworkViewOffsetVector doesn't seem to be working properly
+2024-06-09T10:59 #486 The server crashes if you write something in the chat
+2024-06-10T13:50 #488 Terminate Round Not Working
+2024-06-10T13:51 #489 Terminate Round Not Working
+2024-06-20T09:36 #506 No way to download CSS automatically
+2024-06-20T15:01 #508 Warcraft Exemple Crashing
+2024-06-23T16:30 #511 Failed to load admin data
+2024-06-28T21:57 #518 css_plugin load/unload problem
+2024-07-04T20:21 #524 Request : Add CGameClient::UpdateAcknowledgedFramecount if possible
+2024-08-03T20:29 #535 Failed to load game data
+2024-08-23T18:54 #558 many addons can't load after Aug 22th update.
+2024-08-27T12:00 #561 CNavGenParams causing a crash cssharp v260 metamod 1313
+2024-08-29T20:06 #566 css_plugins reload/restart targeting issue
+2024-10-03T23:34 #587 undefined symbol: AssertValidStringPtr
+2024-10-03T23:45 #588 [Issue] css not loading for CS2 after The Armory update (2 October 2024)
+2024-10-04T01:24 #590 CSSharp: Failed to find address for IGameSystem_InitAllSystems_pFirst
+2024-10-04T10:53 #591 Server Keeps Crashing after Map Change Command
+2024-10-04T14:33 #596 ISSUES: 2024/10/04 22:31 IN Linux Debian 11.0 Crash 
+2024-10-04T16:50 #598 Win 11 keeps crash after MM 1314 and CSS B271
+2024-10-05T07:16 #602 Metamod 1314 + CSS 272 crashes server on Win10
+2024-10-05T09:31 #603 Correct Signatures
+2024-10-05T09:54 #605 Error in signatures
+2024-10-06T10:02 #609 undefined symbol: AssertValidStringPtr
+2024-10-07T11:07 #611 TerminateRound crash Linux Servers
+2024-10-27T17:41 #645 Failed to load ZombieSharp.dll due to invalid function pointer
+2024-10-27T22:13 #646 Server crashing after map change command
+2024-11-04T14:52 #657 Error loading file or assembly SQLitePCLRaw.core
+2024-11-14T06:01 #672 Update the System.Text.Json
+2024-11-16T14:24 #677 VirtualFunctions.ClientPrint not working inside EventBulletImpact, working for EventItemPickup example
+2024-11-23T22:26 #686 CS# devs need to update canacquire signature
+2024-11-27T15:28 #693 Could not PreloadLibrary
+2024-11-30T16:32 #698 How to disable the automatic loading of plugins in a framework
+2024-12-02T20:10 #699 [BUG] @domain/root flag does not work with RequiresPermissionsOr annotation
+2024-12-20T00:38 #714 Addons Broken After Latest CS2 Update - December 20, 2024
+2024-12-20T09:11 #715 CSS fails to load latest update,
+2025-01-13T11:49 #735 BUG on NetworkedVector after v297 update
+2025-01-28T14:34 #752 ReplicateConVar does not work on mp_drop_knife_enable
+2025-03-24T17:07 #822 Crash server problem - CounterStrikeSharp.API.Core.FunctionReference+CallbackDelegate::Invoke
+2025-04-01T12:11 #833 Update CCSPlayer_WeaponServices_CanUse signature
+2025-05-23T15:23 #878 CounterStrikeSharp plugins won't load
+2025-05-27T08:26 #880 CSSharp Init failed -7fff7f6a
+2025-05-27T13:26 #881 Dotnet error (crashing server)
+2025-07-03T03:03 #912 CS2 updated caused many problems
+2025-07-03T11:01 #913 Server crashes imediately after CS2 yesterday update (2.7.2025) with CSS 1.0.319
+2025-07-10T20:25 #931 Now if you put an https it aborts the startup with autoupdate true
+2025-07-16T13:43 #939 Crash Server after CS2 Update
+2025-07-18T01:34 #944 crash due to CBaseEntity_TakeDamageOldFunc
+2025-07-19T19:37 #946 Server crashes with tv_broadcast 1 set and map change
+2025-07-24T14:25 #950 When I use the cm2network/cs2 docker image, I use counterstrikesharp-with-runtime-linux-1.0.328 and it crashes directly
+2025-07-28T22:10 #951 New cs2 version broke cssharp
+2025-08-04T22:57 #972 @aim crashes server
+2025-08-05T22:54 #975 crashes (EntityIOConnectionDesc_t -> Utilities.ReadStringUtf8)
+2025-08-08T13:32 #981 New version of timer kill causes game crash
+2025-08-15T04:08 #990 CS2 update 15 August causes crash on map change
+2025-08-15T09:33 #993 GiveNamedItem - Causing crashes
+2025-08-20T12:29 #1005 CBasePlayerController_SetPawn broken sig after 8/18/25 (1.40.9.6) update
+2025-08-23T11:41 #1013 "cannot enable executable stack as shared object requires: Invalid argument" when loading dedicated server
+2025-08-26T13:15 #1016 `VirtualFunctions.ClientPrint` causes server to crash
+2025-08-27T14:33 #1018 gamedata.json always overwritten with default version, ignoring AutoUpdate settings
+2025-10-03T11:38 #1056 Counterstrikesharp does not work after Fri, October 3 update
+2025-10-15T08:42 #1065 CS2 update (14.10.2025) broke CSSharp
+2025-10-15T13:25 #1069 CS2 update broke CSSharp 14.10
+2025-10-17T10:22 #1074 Git Install Failed
+2025-10-23T03:37 #1085 Update Dynohook
+2025-10-23T13:29 #1088 Command css_plugins not working. Can get any plugin to work.
+2025-10-27T01:43 #1091 Unloading and loading a plugin does not re-load types
+2025-10-27T23:34 #1092 CounterStrikeSharp does not load on my CS2 Linux dedicated server
+2025-11-04T18:56 #1106 SteamID changes / admins.json not working under -insecure mode
+2025-11-13T15:01 #1119 Crash server after last update
+2025-11-18T01:54 #1125 admins.json not loading
+2025-12-06T04:00 #1136 CTD (Crash to Desktop) when launching workshop map.
+2025-12-06T09:38 #1137 Crash update 06.12
+2025-12-06T20:29 #1139 Hi! After the latest CS2 update my Linux dedicated server started to crash when running CounterStrikeSharp.
+2025-12-12T17:39 #1145 Counter strike sharp not loading
+2025-12-15T09:24 #1148 v1.0.352 update  windows server,  crashes on startup
+2025-12-16T18:58 #1151 The server is crashing
+2026-01-05T23:01 #1166 Crash issue when killing the bot in version 1.0.355.
+2026-01-16T15:45 #1176 After the latest CS2 update / SDK changes (signatures/hl2sdk changes), CounterStrikeSharp shows a major server performance regression compared to v1.0.350
+2026-01-22T01:03 #1184 Official CS update
+2026-01-23T12:06 #1190 Utilities.SetStateChanged doesn't update UI
+2026-01-23T14:29 #1194 could not load “csgo/addons/metamod”
+2026-01-24T15:49 #1197 Please Adding "ItemPostFrame" Signature In "gamedata.json"
+2026-02-18T12:56 #1226 Server is crashing
+2026-03-10T23:22 #1239 Subject: GO TV Server crashes on map change with full players despite tv_autorecord 0 and tv_delay 0
+2026-03-20T12:52 #1250 CSSharp not loading at all | Debian 13
+2026-04-21T11:08 #1277 After today update cs2 server metamod cannot load plugin
+2026-04-21T16:55 #1283 CounterStrikeSharp fails to load after April 21 CS2 update (Metamod shows <ERROR> on clean install)
+2026-04-22T11:09 #1286 Failed to find signature for 'CBaseEntity_TakeDamageOld'
+2026-04-23T17:17 #1293 CBaseEntity_DispatchSpawn signature not found
+2026-05-29T17:06 #1323 no load cssharp
+2026-05-29T21:12 #1324 Server segfaults after CSSharp "Hooks added" on CS2 1.41.6.5 — undefined symbol CUtlMemoryBlockAllocator::Purge
+2026-06-15T07:06 #1334 CSSharp: Trying to get entry point "Bootstrap::Run" but failed.
+2026-06-22T18:57 #1337 SUSPECT (CRASH SERVER)
+2026-07-09T10:08 #1342 Latest CS2 Update Start Error
+2026-07-09T10:30 #1343 CSSHARP NOT LOADING AFTER UPDATE
+2026-07-10T05:31 #1352 CS2 update 1.41.6.9 breaks CounterStrikeSharp - undefined symbol: g_bUpdateStringTokenDatabase
+2026-07-10T13:33 #1353 Stack overflow immediately after "Hooks added." (v1.0.371, persists from v1.0.370)
+2026-07-19T12:40 #1365 CSS does not work with CS2 Server version 1.41.7.1
+2026-08-02T03:44 #1382 # CounterStrikeSharp v1.0.371 loads in Metamod but API/commands are missing after installation
+2026-08-11T07:54 #1388 update 10.08.26
+2026-09-09T12:46 #1415 v1.0.374 does not work with recent Metamod builds
+2026-09-11T13:37 #1420 is cssharp working ? can i get a working version until the update ?
+2026-09-23T15:29 #1435 broken after cs2 update
+2026-09-23T17:07 #1436 after update weaponpaints plugins became buggy. knife skin plugin is not working properly.
+2026-09-25T15:06 #1442 Teleport not working on Windows after 1.41.8.2, v1.0.375
+2026-09-26T13:55 #1446 Stack overflow crash at bot ChangeTeam/SetPawn on 1.41.8.4 with 1.0.376 master build (KHook-era); 1.0.374 unaffected
+2026-10-12T01:46 #1463 Schema lookup before map load permanently marks fields as not networked, breaking SetStateChanged for all plugins
+2026-10-15T09:26 #1464 Server crashes at startup after Oct 15 2026 CS2 update (PreloadLibrary CounterStrikeSharp.API.dll, error -2147483645 / 0x80000003)
+2026-10-15T18:14 #1465 Linux gamedata: CBaseTrigger_StartTouch signature broken after CS2 update (build 25947352)
+2026-10-23T01:27 #1466 Windows server crashes in `PlayerManager::OnAuthorized` after CS2 1.41.9.2 — `GetClientSteamID` returns a non-pointer (0x2da)
+2026-11-02T01:35 #1481 Linux server segfaults at exit after every `quit` (static ConCommand destructors call into tier0)
+2026-11-12T04:05 #1491 Windows CS2 Dedicated Server Crashes When CounterStrikeSharp Is Enabled After Latest CS2 Update
+2026-11-12T18:38 #1494 Linux gamedata: ClientPrint signature resolves to a CNavBFSLattice constructor (2000942 and 2000943)
+2026-11-21T16:37 #1500 Server crashes with CounterStrikeSharp 1.0.380 on Ubuntu/LINUX
+2026-11-24T01:42 #1502 Server segfaults at map load on CS2 build 26879581 (ISource2Server gained a virtual, needs s2sdk #128)

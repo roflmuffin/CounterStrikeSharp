@@ -1,0 +1,557 @@
+=== c72fbdc7 2023-11-05 feat: add reading & writing of ConVars
+    managed/CounterStrikeSharp.API/Core/API.cs             |  22 ++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Modules/Cvars/ConVar.cs | 154 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    src/scripting/natives/natives_commands.cpp             |  59 +++++++++++++++++++++++++++++++++++++++++++----------
+    src/scripting/natives/natives_commands.yaml            |   4 +++-
+=== 822115ed 2023-11-05 feat: add `ChangeTeam` offset
+    managed/CounterStrikeSharp.API/Core/Model/CCSPlayerController.cs | 27 ++++++++++++++++++++++-----
+=== 16c4ee2b 2023-11-06 fix: prevent crash when accessing StringValue of a non string ConVar
+    managed/CounterStrikeSharp.API/Modules/Cvars/ConVar.cs | 25 +++++++++++++++++++++----
+=== 44a85d12 2023-11-22 chore: upgrade hl2sdk, add protoc generation (#112)
+    CMakeLists.txt                       | 25 +++++++++++++++----------
+    libraries/hl2sdk-cs2                 |  2 +-
+    src/core/managers/player_manager.cpp | 16 +++++++++-------
+    src/core/managers/player_manager.h   |  4 ++--
+   SUBMODULE -Subproject commit 492b8f96630a153025618be8668ad049ebde8d99
+   SUBMODULE +Subproject commit 1d394d3365c34d0d8329536e1389c07a0f85d413
+=== 9a018f29 2023-11-24 feat: add player pawn post think signature
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs | 3 +++
+=== 1b194318 2023-12-05 chore: update hl2sdk, gitignore
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 1d394d3365c34d0d8329536e1389c07a0f85d413
+   SUBMODULE +Subproject commit d7ed4760645e5834fe96a46f486c9ee2e2f3961f
+=== 378c28df 2023-12-08 chore: bump hl2sdk version
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit d7ed4760645e5834fe96a46f486c9ee2e2f3961f
+   SUBMODULE +Subproject commit 93634522571546158941589835acbef2fe7add4e
+=== bcacc42d 2023-12-11 feat: Added support for custom gamedata files. (#194)
+    managed/CounterStrikeSharp.API/Core/GameData.cs | 34 +++++++++++++++++++++++++++++-----
+=== 8dbcb6d5 2023-12-27 chore: update hl2sdk (#227)
+    CMakeLists.txt                                             |  1 +
+    libraries/hl2sdk-cs2                                       |  2 +-
+    managed/CounterStrikeSharp.API/Modules/Events/GameEvent.cs |  3 +--
+    src/core/managers/entity_manager.h                         |  3 ---
+    src/mm_plugin.cpp                                          |  6 +++++-
+   SUBMODULE -Subproject commit 93634522571546158941589835acbef2fe7add4e
+   SUBMODULE +Subproject commit 2f9dd2e61a56c971b32b2d6b80361fead99af558
+=== 7b45a884 2023-12-28 chore: remove `schema::GetOffset` warning message
+    src/core/cs2_sdk/schema.cpp | 1 -
+=== f2b8044b 2024-02-08 Update gamedata for Call To Arms Update (#311)
+    managed/CounterStrikeSharp.API/Core/Model/CBaseEntity.cs           |  2 +-
+    managed/CounterStrikeSharp.API/Core/Model/CBasePlayerController.cs | 19 +++++++++++++++++++
+    managed/CounterStrikeSharp.API/Core/Model/CCSPlayerController.cs   |  3 ++-
+    managed/CounterStrikeSharp.API/Core/Model/CCSPlayerPawn.cs         | 24 +++++++++++++-----------
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs  |  8 +++-----
+=== 87f48cb3 2024-02-22 chore: update hl2sdk (#336)
+    CMakeLists.txt                           | 2 ++
+    libraries/hl2sdk-cs2                     | 2 +-
+    src/core/globals.cpp                     | 3 +++
+    src/core/globals.h                       | 2 ++
+    src/core/timer_system.cpp                | 2 +-
+    src/scripting/natives/natives_engine.cpp | 2 +-
+   SUBMODULE -Subproject commit 2f9dd2e61a56c971b32b2d6b80361fead99af558
+   SUBMODULE +Subproject commit 43bfe744a1af968664f5712e5b1290d48eee42b8
+=== a5399dd5 2024-02-26 feat: add `FakeConVar` class (#325)
+    managed/CounterStrikeSharp.API/Core/BasePlugin.cs                         |  39 +++++++++++++++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Modules/Cvars/FakeConVar.cs                | 140 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Modules/Cvars/Validators/IValidator.cs     |   6 ++++++
+    managed/CounterStrikeSharp.API/Modules/Cvars/Validators/RangeValidator.cs |  27 +++++++++++++++++++++++
+=== bc613233 2024-03-03 chore: migrate to protobufs submodule (#362)
+    CMakeLists.txt             | 4 ++--
+    libraries/GameTracking-CS2 | 1 -
+    libraries/Protobufs        | 1 +
+    src/protobuf/compile.sh    | 2 +-
+   SUBMODULE -Subproject commit 3556d2a923c6580e00e9a49a532a567180a5ad83
+   SUBMODULE +Subproject commit 686a0628e64846fcf4f20dd6910ac7a01aa5aef4
+=== d295589c 2024-03-13 fix: update collision groups (#376)
+    managed/CounterStrikeSharp.API/Modules/Entities/Constants/CollisionGroup.cs | 45 ++++++++++++++++++++++++---------------------
+=== ad6e1ca2 2024-04-11 chore: bump hl2sdk (#408)
+    CMakeLists.txt                                                              |   1 -
+    libraries/hl2sdk-cs2                                                        |   2 +-
+    src/core/cs2_sdk/interfaces/CUtlTSHash.h                                    | 130 ------------------------------------
+    src/core/cs2_sdk/interfaces/cs2_interfaces.cpp                              |   2 -
+    src/core/cs2_sdk/interfaces/cs2_interfaces.h                                |   2 -
+    src/core/cs2_sdk/interfaces/cschemasystem.h                                 | 418 --------------------------------------------------------------------------------------------------------------------
+    src/core/cs2_sdk/schema.cpp                                                 |  32 ++++-----
+    src/core/globals.cpp                                                        |   1 +
+    src/core/globals.h                                                          |   2 +
+    src/core/managers/con_command_manager.cpp                                   |  84 +++++++++++++-----------
+    src/core/managers/player_manager.cpp                                        |   5 --
+    src/core/managers/player_manager.h                                          |   1 -
+    src/mm_plugin.cpp                                                           |   1 +
+    src/scripting/natives/natives_schema.cpp                                    |   9 ++-
+   SUBMODULE -Subproject commit 43bfe744a1af968664f5712e5b1290d48eee42b8
+   SUBMODULE +Subproject commit aaaaaf040bedea0dba6300ff0fe0fc2da3373406
+=== f99f5840 2024-04-13 Add mising ``GameData.GetSignature`` to ``NetworkStateChangedFunc`` (#415)
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs | 2 +-
+=== dfc98598 2024-04-13 Make signature support IDA/x64Dbg style (#407)
+    src/core/gameconfig.cpp                  | 92 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--------------------------------------
+    src/core/gameconfig.h                    |  3 +--
+    src/core/memory.cpp                      | 57 ++++++++++++++++++++++++++++-----------------------------
+    src/core/memory_module.cpp               | 34 ++++++++++++++++++++--------------
+    src/core/memory_module.h                 |  4 +++-
+    src/scripting/natives/natives_memory.cpp | 13 -------------
+=== 25ca5dbe 2024-04-27 chore: use offsets for give named item (#427)
+    managed/CounterStrikeSharp.API/Core/Model/CCSPlayerController.cs    | 25 +++++++++++++++----------
+    managed/CounterStrikeSharp.API/Core/Model/CCSPlayer_ItemServices.cs | 11 ++++++++++-
+=== 0eebffd8 2024-04-27 Copy bytes of a module to prevent signature scanning failures and some minor changes (#414)
+    src/core/gameconfig.cpp    |  14 ++---
+    src/core/globals.cpp       |  13 +++--
+    src/core/globals.h         |   9 ++-
+    src/core/log.h             |   4 +-
+    src/core/memory.cpp        | 148 +---------------------------------------------
+    src/core/memory.h          |   3 -
+    src/core/memory_module.cpp | 532 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++------------
+    src/core/memory_module.h   |  69 ++++++++++++++++++----
+=== 9a221b4e 2024-05-01 chore: bump hl2sdk after update (#434)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit aaaaaf040bedea0dba6300ff0fe0fc2da3373406
+   SUBMODULE +Subproject commit 3fc8d0faf647829d293a7d1928539a2f1f0d2b90
+=== 928bc3f7 2024-05-08 chore(deps): update hl2sdk: bump libraries/hl2sdk-cs2 from `3fc8d0f` to `9ddef9a` (#446)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 3fc8d0faf647829d293a7d1928539a2f1f0d2b90
+   SUBMODULE +Subproject commit 9ddef9ac9a8249e8e78899310bf1a7a80815f968
+=== 41e7bee8 2024-05-08 chore(deps): update hl2sdk: bump libraries/metamod-source from `e857fbe` to `607301a` (#450)
+    libraries/metamod-source | 2 +-
+   SUBMODULE -Subproject commit e857fbe90c3f81e50a30246162732232fbbbc161
+   SUBMODULE +Subproject commit 607301adc3ed0ccc5916fd44bf7c52a54444f4bc
+=== aec696ab 2024-05-09 chore(deps): bump libraries/hl2sdk-cs2 from `9ddef9a` to `f7ed6a0` (#451)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 9ddef9ac9a8249e8e78899310bf1a7a80815f968
+   SUBMODULE +Subproject commit f7ed6a0086f24f23098afaaf840dc5ae27afef1a
+=== 02d5191e 2024-05-10 chore(deps): bump libraries/hl2sdk-cs2 from `f7ed6a0` to `36dd2db` (#452)
+    libraries/hl2sdk-cs2                       |   2 +-
+    src/core/managers/chat_manager.cpp         |  69 ++++++++++++++++++++++++++++++++++-----------------------------------
+    src/core/managers/chat_manager.h           |  17 ++++++++---------
+    src/core/managers/voice_manager.cpp        |  76 ++++++++++++++++++++++++++++++++++------------------------------------------
+    src/scripting/natives/natives_entities.cpp | 103 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++----------------------------------------
+    src/scripting/natives/natives_voice.cpp    |  56 ++++++++++++++++++++++++++++++++------------------------
+   SUBMODULE -Subproject commit f7ed6a0086f24f23098afaaf840dc5ae27afef1a
+   SUBMODULE +Subproject commit 36dd2db72155a78a9b90727e3a9714c9fbb9f64a
+=== cafc4e23 2024-05-25 Initial update after 2024-05-23 CS2 update (#461)
+    libraries/hl2sdk-cs2                                                                               |    2 +-
+    src/core/globals.cpp                                                                               |   43 +-
+    src/core/globals.h                                                                                 |   86 +--
+    src/core/managers/event_manager.cpp                                                                |  126 ++--
+    src/core/managers/event_manager.h                                                                  |   17 +-
+    src/mm_plugin.cpp                                                                                  |  105 ++-
+   SUBMODULE -Subproject commit 36dd2db72155a78a9b90727e3a9714c9fbb9f64a
+   SUBMODULE +Subproject commit 739c88fa85168a65db0dec6fd04090494b2bd009
+=== 8b486ecf 2024-06-13 chore(deps): bump libraries/hl2sdk-cs2 from `739c88f` to `4202f1c` (#494)
+    CMakeLists.txt                            |   2 --
+    libraries/hl2sdk-cs2                      |   2 +-
+    src/core/engine_trace.cpp                 |  69 ----------------------------------------------------------------
+    src/core/engine_trace.h                   |  52 -------------------------------------------------
+    src/core/managers/con_command_manager.cpp |   4 ++--
+    src/scripting/natives/natives_engine.cpp  | 161 ++++++++++++++++++++++++++++++------------------------------------------------------------------------------------------------------------------------
+   SUBMODULE -Subproject commit 739c88fa85168a65db0dec6fd04090494b2bd009
+   SUBMODULE +Subproject commit 4202f1c8648ee765af533f424558849acb8e296c
+=== 877b7c5a 2024-06-17 chore(deps): bump libraries/hl2sdk-cs2 from `4202f1c` to `4b31db7` (#496)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 4202f1c8648ee765af533f424558849acb8e296c
+   SUBMODULE +Subproject commit 4b31db750544992e755faebf344d98e9c09f27d1
+=== b7ea025b 2024-07-26 chore(deps): bump libraries/hl2sdk-cs2 from `4b31db7` to `a5d9f80` (#522)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 4b31db750544992e755faebf344d98e9c09f27d1
+   SUBMODULE +Subproject commit a5d9f803af02f2dab53fe69683a1c77d562ab7ba
+=== ce3ff449 2024-08-10 chore(deps): bump libraries/hl2sdk-cs2 from `a5d9f80` to `c57d5ab` (#542)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit a5d9f803af02f2dab53fe69683a1c77d562ab7ba
+   SUBMODULE +Subproject commit c57d5ab398abd4534e16071d25496e5141474dd9
+=== 28ce183c 2024-08-19 chore(deps): bump libraries/hl2sdk-cs2 from `c57d5ab` to `0b862d7` (#550)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit c57d5ab398abd4534e16071d25496e5141474dd9
+   SUBMODULE +Subproject commit 0b862d725a017390f921dc0e4f3fa2e3dfd92ff2
+=== bb38b1cb 2024-08-29 Cleanup Protobuf Generation (#562)
+    CMakeLists.txt                                      |    26 +-
+    src/protobuf/generated/clientmessages.pb.cc         |  1932 ----
+    src/protobuf/generated/clientmessages.pb.h          |  1979 ----
+    src/protobuf/generated/cs_gameevents.pb.cc          |  1360 ---
+    src/protobuf/generated/cs_gameevents.pb.h           |  1575 ----
+    src/protobuf/generated/cs_usercmd.pb.cc             |  1612 ----
+    src/protobuf/generated/cs_usercmd.pb.h              |  2190 -----
+    src/protobuf/generated/cstrike15_gcmessages.pb.cc   | 62736 ----------------------------------------------------------------------------------------------------------------------------
+    src/protobuf/generated/cstrike15_gcmessages.pb.h    | 69694 ------------------------------------------------------------------------------------------------------------------------------------------
+    src/protobuf/generated/cstrike15_usermessages.pb.cc | 26465 -----------------------------------------------------
+    src/protobuf/generated/cstrike15_usermessages.pb.h  | 27016 ------------------------------------------------------
+    src/protobuf/generated/engine_gcmessages.pb.cc      |   595 --
+    src/protobuf/generated/engine_gcmessages.pb.h       |   651 --
+    src/protobuf/generated/gameevents.pb.cc             |  5307 -----------
+    src/protobuf/generated/gameevents.pb.h              |  5591 -----------
+    src/protobuf/generated/gcsdk_gcmessages.pb.cc       | 15426 -------------------------------
+    src/protobuf/generated/gcsdk_gcmessages.pb.h        | 16732 ---------------------------------
+    src/protobuf/generated/netmessages.pb.cc            | 25456 ---------------------------------------------------
+    src/protobuf/generated/netmessages.pb.h             | 27284 ------------------------------------------------------
+    src/protobuf/generated/network_connection.pb.cc     |   432 -
+    src/protobuf/generated/network_connection.pb.h      |   225 -
+    src/protobuf/generated/networkbasetypes.pb.cc       | 10457 ---------------------
+    src/protobuf/generated/networkbasetypes.pb.h        | 11680 -----------------------
+    src/protobuf/generated/steammessages.pb.cc          | 28567 ---------------------------------------------------------
+    src/protobuf/generated/steammessages.pb.h           | 30554 -------------------------------------------------------------
+    src/protobuf/generated/te.pb.cc                     | 11624 -----------------------
+    src/protobuf/generated/te.pb.h                      | 14279 -----------------------------
+    src/protobuf/generated/usercmd.pb.cc                |  1791 ----
+    src/protobuf/generated/usercmd.pb.h                 |  2064 -----
+    src/protobuf/generated/usermessages.pb.cc           | 32677 -----------------------------------------------------------------
+    src/protobuf/generated/usermessages.pb.h            | 36768 -------------------------------------------------------------------------
+=== 23828153 2024-08-29 chore(deps): bump libraries/hl2sdk-cs2 from `0b862d7` to `f21e0c9` (#560)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 0b862d725a017390f921dc0e4f3fa2e3dfd92ff2
+   SUBMODULE +Subproject commit f21e0c9d8fc753520cb217ccfcb172d6561c7200
+=== 74ce0d29 2024-10-04 chore(deps): bump libraries/hl2sdk-cs2 from `f21e0c9` to `40a9bb9` (#586)
+    libraries/hl2sdk-cs2                | 2 +-
+    src/core/managers/voice_manager.cpp | 2 +-
+   SUBMODULE -Subproject commit f21e0c9d8fc753520cb217ccfcb172d6561c7200
+   SUBMODULE +Subproject commit 40a9bb9c0246eabd91d7abf98099607e024bb61c
+=== 5a354a25 2024-10-04 chore(deps): bump libraries/hl2sdk-cs2 from `40a9bb9` to `3c7b355` (#594)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 40a9bb9c0246eabd91d7abf98099607e024bb61c
+   SUBMODULE +Subproject commit 3c7b355da8633d818f3ca4f392451f35de0c1182
+=== e36d2e07 2024-10-05 chore(deps): bump libraries/hl2sdk-cs2 from `3c7b355` to `1f1d158` (#600)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 3c7b355da8633d818f3ca4f392451f35de0c1182
+   SUBMODULE +Subproject commit 1f1d1580fd40165ffe6ea647fd9f52836986968b
+=== b807c3ed 2024-10-06 chore(deps): bump libraries/hl2sdk-cs2 from `1f1d158` to `9be8cba` (#606)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 1f1d1580fd40165ffe6ea647fd9f52836986968b
+   SUBMODULE +Subproject commit 9be8cba3442eb3335bffc7c20bb8f078b03a856b
+=== 42dd270b 2024-10-06 chore(deps): bump libraries/Protobufs from `686a062` to `3ea793c` (#607)
+    libraries/Protobufs | 2 +-
+   SUBMODULE -Subproject commit 686a0628e64846fcf4f20dd6910ac7a01aa5aef4
+   SUBMODULE +Subproject commit 3ea793c41816f1c66cd0815f569211a604c81edf
+=== 5f959699 2024-10-10 [no ci] chore(deps): bump libraries/Protobufs from `3ea793c` to `76e070d` (#619)
+    libraries/Protobufs | 2 +-
+   SUBMODULE -Subproject commit 3ea793c41816f1c66cd0815f569211a604c81edf
+   SUBMODULE +Subproject commit 76e070dc65e4c0380d634ed3b9e7b4387cc05199
+=== 38e29531 2024-10-10 [no ci] chore(deps): bump libraries/hl2sdk-cs2 from `9be8cba` to `fc4b98f` (#620)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 9be8cba3442eb3335bffc7c20bb8f078b03a856b
+   SUBMODULE +Subproject commit fc4b98f1a729239d4ee6d7f22f2a3a581f970661
+=== ba860a92 2024-12-20 fix: temporary patch hl2sdk entity listeners
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit fc4b98f1a729239d4ee6d7f22f2a3a581f970661
+   SUBMODULE +Subproject commit 12c2d58783c6c21733d6eaa1e9be11522cd825e3
+=== 466da1b1 2024-12-20 chore: back to using hl2sdk
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 12c2d58783c6c21733d6eaa1e9be11522cd825e3
+   SUBMODULE +Subproject commit 14e77af283c6970de42773dd5a788a5195fec341
+=== 3c321be5 2024-12-24 [no ci] chore(deps): bump libraries/Protobufs from `76e070d` to `b46090a` (#717)
+    libraries/Protobufs | 2 +-
+   SUBMODULE -Subproject commit 76e070dc65e4c0380d634ed3b9e7b4387cc05199
+   SUBMODULE +Subproject commit b46090af9cc219763c20eda3cc906675bca4157a
+=== c1176a31 2024-12-24 [no ci] chore(deps): bump libraries/hl2sdk-cs2 from `14e77af` to `a658a0f` (#718)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 14e77af283c6970de42773dd5a788a5195fec341
+   SUBMODULE +Subproject commit a658a0f7efebc6f5428c24a0f2035048be387db4
+=== ac38ec24 2025-01-15 chore(deps): bump libraries/hl2sdk-cs2 from `a658a0f` to `a26ca82` (#739)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit a658a0f7efebc6f5428c24a0f2035048be387db4
+   SUBMODULE +Subproject commit a26ca82e875814130feb8d74fb450c92b5f2d76d
+=== 0f71e1ae 2025-01-19 feat: handle quotes for `FakeConVar<string>` (#743)
+    managed/CounterStrikeSharp.API/Modules/Cvars/FakeConVar.cs | 16 +++++++++++++---
+=== f72e6d5d 2025-01-27 feat: add ReplicateConVar (#751)
+    managed/CounterStrikeSharp.API/Core/API.cs                       | 12 ++++++++++++
+    managed/CounterStrikeSharp.API/Core/Model/CCSPlayerController.cs |  5 +++++
+    src/scripting/natives/natives_commands.cpp                       | 24 ++++++++++++++++++++++++
+    src/scripting/natives/natives_commands.yaml                      |  3 ++-
+=== 44d3c51b 2025-01-30 [no ci] chore(deps): bump libraries/Protobufs from `b46090a` to `157162d` (#753)
+    libraries/Protobufs | 2 +-
+   SUBMODULE -Subproject commit b46090af9cc219763c20eda3cc906675bca4157a
+   SUBMODULE +Subproject commit 157162d97b40f0757ab2e44c7afe8dbc272579b5
+=== 54ad6c0b 2025-03-17 feat: Expose Metamod `MetaFactory` to NativeAPI (#801)
+    CMakeLists.txt                                      |  1 +
+    managed/CounterStrikeSharp.API/Core/API.cs          | 11 +++++++++++
+    managed/CounterStrikeSharp.API/Core/Listeners.g.cs  |  6 ++++++
+    src/mm_plugin.cpp                                   |  4 ++++
+    src/mm_plugin.h                                     |  1 +
+    src/scripting/listeners/metamod.yaml                |  1 +
+    src/scripting/natives/natives_metamod.cpp           | 32 ++++++++++++++++++++++++++++++++
+    src/scripting/natives/natives_metamod.yaml          |  1 +
+=== e406b780 2025-03-17 [no ci] chore: update protobuf (#803)
+    libraries/Protobufs | 2 +-
+   SUBMODULE -Subproject commit 157162d97b40f0757ab2e44c7afe8dbc272579b5
+   SUBMODULE +Subproject commit 3d85413bf79463e5dcb3fde3b4e320b7f9604d81
+=== f1c10808 2025-03-24 fix(concommand): don't remove reference flags when running convar/concmd unlocker (#817)
+    src/core/managers/con_command_manager.cpp | 2 +-
+=== d7e23e82 2025-05-08 chore(deps): bump libraries/Protobufs from `3d85413` to `53da9bc` (#857)
+    libraries/Protobufs | 2 +-
+   SUBMODULE -Subproject commit 3d85413bf79463e5dcb3fde3b4e320b7f9604d81
+   SUBMODULE +Subproject commit 53da9bc320d370e2de4bd0d2a535e57a0e705a29
+=== 462ca522 2025-05-10 chore(deps): upgrade metamod & hl2sdk (#856)
+    libraries/hl2sdk-cs2                       |  2 +-
+    libraries/metamod-source                   |  2 +-
+    src/core/gameconfig.cpp                    |  1 -
+    src/core/globals.h                         |  4 ----
+    src/core/managers/con_command_manager.cpp  | 70 +++++++++++++++++++++++++++-------------------------------------------
+    src/core/managers/con_command_manager.h    |  7 +++----
+    src/core/memory_module.h                   |  1 -
+    src/mm_plugin.cpp                          |  3 ++-
+    src/mm_plugin.h                            |  4 +++-
+    src/scripting/natives/natives_commands.cpp | 56 ++++++++++++++++++++++++++++++++------------------------
+   SUBMODULE -Subproject commit a26ca82e875814130feb8d74fb450c92b5f2d76d
+   SUBMODULE +Subproject commit bc59586979ae55578a00e502fcf88f69f5588b52
+   SUBMODULE -Subproject commit 607301adc3ed0ccc5916fd44bf7c52a54444f4bc
+   SUBMODULE +Subproject commit 6091f15217cdde3a043c2d0dc6bf9bdf20bdbc13
+=== 0ae9227d 2025-07-07 chore(deps): bump libraries/metamod-source from `6091f15` to `b17dc63` (#906)
+    libraries/metamod-source | 2 +-
+   SUBMODULE -Subproject commit 6091f15217cdde3a043c2d0dc6bf9bdf20bdbc13
+   SUBMODULE +Subproject commit b17dc63de786b579869229eed1fb4cb80d2435d3
+=== 8ab61b00 2025-07-10 feat: Add Automatic Gamedata Updates (#925)
+    CMakeLists.txt                                              |     5 +
+    libraries/httplib/httplib.h                                 | 12818 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Core/CoreConfig.cs           |     8 +-
+    src/core/coreconfig.cpp                                     |     2 +
+    src/core/coreconfig.h                                       |     2 +
+    src/core/gameconfig_updater.cpp                             |    82 +
+    src/core/gameconfig_updater.h                               |     5 +
+    src/mm_plugin.cpp                                           |    11 +
+=== b5303d15 2025-07-10 Support operating `bytes` type protobuf field (#922)
+    managed/CounterStrikeSharp.API/Core/API.cs                         |  55 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Modules/UserMessages/UserMessage.cs |  39 +++++++++++++++++++++++++++++++++++++++
+    src/scripting/natives/natives_usermessages.cpp                     | 125 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    src/scripting/natives/natives_usermessages.yaml                    |   4 ++++
+=== a8eff60d 2025-07-10 fix: update core.example.json
+    managed/CounterStrikeSharp.API/Core/CoreConfig.cs           | 2 +-
+=== 1f30e561 2025-08-04 fix: Update CS# for Patch 19388062 (#958)
+    CMakeLists.txt                                                    |   1 +
+    libraries/hl2sdk-cs2                                              |   2 +-
+    libraries/metamod-source                                          |   2 +-
+    managed/CounterStrikeSharp.API/Core/API.cs                        | 188 ++++++++++++++++++++++++++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Core/Model/CCSPlayerController.cs  |   6 +-
+    managed/CounterStrikeSharp.API/Modules/Cvars/ConVar.cs            |  62 ++++++---------
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs |  56 +++++++------
+    src/core/cs2_sdk/schema.cpp                                       |  16 ++--
+    src/core/cs2_sdk/schema.h                                         | 115 +++++++++++++++++----------
+    src/core/game_system.cpp                                          |   4 +-
+    src/core/globals.cpp                                              |  23 +++++-
+    src/core/globals.h                                                |   3 +
+    src/core/managers/chat_manager.cpp                                |  46 +++++------
+    src/core/managers/chat_manager.h                                  |   4 +-
+    src/core/managers/con_command_manager.cpp                         |  21 +++++
+    src/core/managers/entity_manager.cpp                              |  61 +++++++++------
+    src/core/managers/entity_manager.h                                |  52 +++++++++---
+    src/core/managers/event_manager.cpp                               |   4 +-
+    src/core/managers/player_manager.cpp                              |   2 +-
+    src/core/memory_module.cpp                                        | 309 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+    src/core/memory_module.h                                          |  55 +++++++++++++
+    src/mm_plugin.cpp                                                 |  49 ++++++++++--
+    src/mm_plugin.h                                                   |   1 +
+    src/scripting/callback_manager.cpp                                |   2 +-
+    src/scripting/natives/natives_commands.cpp                        |   5 +-
+    src/scripting/natives/natives_convars.cpp                         | 542 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    src/scripting/natives/natives_convars.yaml                        |  13 +++
+    src/scripting/natives/natives_engine.cpp                          |  30 ++++++-
+    src/scripting/natives/natives_engine.yaml                         |   1 +
+    src/scripting/natives/natives_entities.cpp                        |   4 +-
+    src/scripting/natives/natives_schema.cpp                          |  23 ++++++
+    src/scripting/natives/natives_schema.yaml                         |   4 +-
+    src/scripting/natives/natives_usermessages.cpp                    |  28 ++++---
+   SUBMODULE -Subproject commit bc59586979ae55578a00e502fcf88f69f5588b52
+   SUBMODULE +Subproject commit f6ca58ae0ff3c6d0e83055252519e06e95ca14df
+   SUBMODULE -Subproject commit b17dc63de786b579869229eed1fb4cb80d2435d3
+   SUBMODULE +Subproject commit 5a282eb8fca984beaae49c9b68d6e944e5b9c6b3
+=== fedfe756 2025-08-04 fix: update GetHitGroup offset (#970)
+    managed/CounterStrikeSharp.API/Core/Model/CTakeDamageInfo.cs | 2 +-
+=== fa383cda 2025-08-05 chore: apply alliedmodders hl2sdk again (#974)
+    libraries/hl2sdk-cs2                           |  2 +-
+    src/core/managers/entity_manager.cpp           |  2 +-
+    src/core/managers/entity_manager.h             | 23 +++--------------------
+    src/core/recipientfilters.h                    | 54 +++++++++++++++++-------------------------------------
+    src/scripting/natives/natives_commands.cpp     |  5 ++---
+    src/scripting/natives/natives_engine.cpp       |  2 +-
+    src/scripting/natives/natives_entities.cpp     |  2 +-
+    src/scripting/natives/natives_usermessages.cpp | 29 +++++++++++------------------
+   SUBMODULE -Subproject commit f6ca58ae0ff3c6d0e83055252519e06e95ca14df
+   SUBMODULE +Subproject commit 7108a5d4a696afd77d40fb0a6e241677fd403bda
+=== f7c69a60 2025-08-14 fix: update hl2sdk for patch 19602992 (Aug 14 2025) (#988)
+    libraries/hl2sdk-cs2     | 2 +-
+    libraries/metamod-source | 2 +-
+   SUBMODULE -Subproject commit 7108a5d4a696afd77d40fb0a6e241677fd403bda
+   SUBMODULE +Subproject commit 0e115eb214213fcf9fd2455a2b1e74aacb9683d5
+   SUBMODULE -Subproject commit 5a282eb8fca984beaae49c9b68d6e944e5b9c6b3
+   SUBMODULE +Subproject commit c1cc0a6134b3503abb40e18227ef04619db33841
+=== d5fad8d8 2025-08-16 chore(deps): update hl2sdk
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 0e115eb214213fcf9fd2455a2b1e74aacb9683d5
+   SUBMODULE +Subproject commit 93ccb6b7b2ba8e4fcaca224ce21badbe35491280
+=== 624ca0f0 2025-08-18 fix: re-add GetHitGroup with GameData backed offset
+    managed/CounterStrikeSharp.API/Core/Model/CTakeDamageInfo.cs | 17 +++++++++++++++--
+=== 245f55da 2025-08-21 fix: update `FindPickerEntity` implementation (thanks @KillStr3aK)
+    managed/CounterStrikeSharp.API/Core/Model/CCSGameRules.cs | 22 ++++++++++++++++++++--
+=== 2c809713 2025-09-18 fix: update for CS2 09-17-25 (patch 20022951) (#1037)
+    libraries/hl2sdk-cs2                                              |  2 +-
+    libraries/metamod-source                                          |  2 +-
+    managed/CounterStrikeSharp.API/Core/API.cs                        | 10 ++++++++++
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs |  4 ++--
+    managed/CounterStrikeSharp.API/Modules/Utils/ResourceManifest.cs  |  8 +++++---
+    src/core/game_system.cpp                                          |  4 ++++
+    src/core/game_system.h                                            | 17 +++++++++++++++++
+    src/scripting/natives/natives_engine.cpp                          |  8 ++++++++
+    src/scripting/natives/natives_engine.yaml                         |  1 +
+   SUBMODULE -Subproject commit 93ccb6b7b2ba8e4fcaca224ce21badbe35491280
+   SUBMODULE +Subproject commit 0f84fcf129f20dcaed07f9628c3555ee9b0b0f6c
+   SUBMODULE -Subproject commit c1cc0a6134b3503abb40e18227ef04619db33841
+   SUBMODULE +Subproject commit 3f3136d483251032d162100eab78e75630997fe9
+=== 37951f28 2025-10-15 fix(update): update signatures and offsets for 1.41.1.3 Update (#1064)
+    managed/CounterStrikeSharp.API/Modules/Entities/EntitySystem.cs   |  5 +++--
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs |  4 ++--
+=== 7572722d 2025-10-15 chore(deps): bump libraries/metamod-source from `3f3136d` to `4399ff0` (#1067)
+    libraries/metamod-source | 2 +-
+   SUBMODULE -Subproject commit 3f3136d483251032d162100eab78e75630997fe9
+   SUBMODULE +Subproject commit 4399ff0fd4ad7a6620f6763afe6fc0e30005496a
+=== bf75d430 2025-10-16 chore(deps): bump libraries/hl2sdk-cs2 from `bc59586` to `9310e72` (#908)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 0f84fcf129f20dcaed07f9628c3555ee9b0b0f6c
+   SUBMODULE +Subproject commit 84a823db042b49d2f6934b770dafbf3a366cef26
+=== 34598dd5 2025-10-16 fix: update Sigs & CTakeDamageResult & EmitSound_t (#1071)
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctions.cs         |  4 ++--
+    src/core/managers/entity_manager.h                                        | 40 ++++++++++++++++++++++------------------
+=== a21f0b52 2025-10-18 fix: update ConVar flag retrieval that adapts to different Source 2 SDK versions (#1059)
+    src/scripting/natives/natives_convars.cpp | 72 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+=== fd8defc1 2025-11-06 chore(deps): bump libraries/Protobufs from `53da9bc` to `7af53a5` (#1109)
+    libraries/Protobufs | 2 +-
+   SUBMODULE -Subproject commit 53da9bc320d370e2de4bd0d2a535e57a0e705a29
+   SUBMODULE +Subproject commit 7af53a5e1c95852b4394d4789e9e707cc1c8dd35
+=== e4b1a353 2025-11-06 chore(deps): bump libraries/hl2sdk-cs2 from `84a823d` to `da981a8` (#1108)
+    libraries/hl2sdk-cs2        | 2 +-
+    src/core/recipientfilters.h | 1 +
+   SUBMODULE -Subproject commit 84a823db042b49d2f6934b770dafbf3a366cef26
+   SUBMODULE +Subproject commit da981a8984c74641d2a31732a0bac742bfea6e2d
+=== 0322548e 2025-11-06 chore(deps): bump libraries/metamod-source from `4399ff0` to `07c708a` (#1101)
+    libraries/metamod-source | 2 +-
+   SUBMODULE -Subproject commit 4399ff0fd4ad7a6620f6763afe6fc0e30005496a
+   SUBMODULE +Subproject commit 07c708a59e255243bd18f2b807efce6a9aa5ccaf
+=== ad731c16 2025-12-06 chore(deps): update hl2sdk
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit da981a8984c74641d2a31732a0bac742bfea6e2d
+   SUBMODULE +Subproject commit 3bb772f7c0652cd78089522ac58235b9b34f71d6
+=== 3990128c 2025-12-12 feat(memory): allow hooking of offset based virtual functions (#1143)
+    managed/CounterStrikeSharp.API/Modules/Memory/DataType.cs                                  |  17 ++++-
+    managed/CounterStrikeSharp.API/Modules/Memory/DynamicFunctions/BaseMemoryFunction.cs       |  91 +++++++++++++++++++++++--
+    managed/CounterStrikeSharp.API/Modules/Memory/DynamicFunctions/MemoryFunctionVoid.cs       | 373 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+    managed/CounterStrikeSharp.API/Modules/Memory/DynamicFunctions/MemoryFunctionWithReturn.cs | 362 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Modules/Memory/VTable.cs                                    | 181 +++++++++++++++++++++++++++++++++++++++++++++++++
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctionVoid.cs                       | 339 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++----------------------------------
+    managed/CounterStrikeSharp.API/Modules/Memory/VirtualFunctionWithReturn.cs                 | 348 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----------------------------------
+    src/scripting/natives/natives_memory.cpp                                                   | 124 ++++++++++++++++++++++++++++++++++
+    src/scripting/natives/natives_memory.yaml                                                  |   2 +
+=== 3485169d 2025-12-24 chore(deps): bump libraries/hl2sdk-cs2 from `3bb772f` to `6e735c1` (#1160)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 3bb772f7c0652cd78089522ac58235b9b34f71d6
+   SUBMODULE +Subproject commit 6e735c1f97ea3b95c2a04d8cf0da03035ce822a5
+=== 2eea759a 2026-01-13 chore(deps): bump libraries/hl2sdk-cs2 from `6e735c1` to `aba345d` (#1170)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 6e735c1f97ea3b95c2a04d8cf0da03035ce822a5
+   SUBMODULE +Subproject commit aba345d55e0d17fd1472bf321c192643906737b0
+=== fe3e32f3 2026-01-23 fix: bump sdk & update gamedata for patch 1.41.3.x (#1187)
+    libraries/hl2sdk-cs2                                         |   2 +-
+    managed/CounterStrikeSharp.API/Core/Model/CBaseEntity.cs     |  10 ++++++++++
+    src/mm_plugin.cpp                                            |  12 +-----------
+   SUBMODULE -Subproject commit aba345d55e0d17fd1472bf321c192643906737b0
+   SUBMODULE +Subproject commit 2530f5d9836dfa49a86d261df3aa9387e0e1ae24
+=== aa89325c 2026-02-23 chore(deps): bump libraries/hl2sdk-cs2 from `2530f5d` to `1227cc3` (#1228)
+    libraries/hl2sdk-cs2 | 2 +-
+   SUBMODULE -Subproject commit 2530f5d9836dfa49a86d261df3aa9387e0e1ae24
+   SUBMODULE +Subproject commit 1227cc399c2bbe402ffc609ad78259fb0d481f09
+=== 8a9fbe8f 2026-04-22 fix: apply changes for AG2 update (#1279)
+    libraries/hl2sdk-cs2                                                                                                          |     2 +-
+    managed/CounterStrikeSharp.API/Modules/Admin/AdminGroup.cs                                                                    |     6 +-
+    managed/CounterStrikeSharp.API/Modules/Admin/AdminPermissions.cs                                                              |    20 +-
+    managed/CounterStrikeSharp.API/Modules/Extensions/CBasePlayerWeaponExtensions.cs                                              |     2 +-
+    src/core/cs2_sdk/schema.cpp                                                                                                   |    38 +-
+    src/core/game_system.h                                                                                                        |     1 +
+   SUBMODULE -Subproject commit 1227cc399c2bbe402ffc609ad78259fb0d481f09
+   SUBMODULE +Subproject commit d476dcd30c614de08ecdaabb17cade27cca985c3
+=== 0586daf3 2026-07-10 fix: Update for latest CS2 Game Update [1.41.6.9] (#1348)
+    libraries/hl2sdk-cs2                                                                                                          |      2 +-
+    managed/CounterStrikeSharp.API/Core/Model/CEntityInstance.cs                                                                  |      2 +-
+    src/core/managers/entity_manager.h                                                                                            |      1 -
+    src/scripting/natives/natives_entities.cpp                                                                                    |      4 +-
+   SUBMODULE -Subproject commit d476dcd30c614de08ecdaabb17cade27cca985c3
+   SUBMODULE +Subproject commit 7a247626c342c91808daacabb9b5c417dcbab594
+=== 2f984988 2026-09-24 fix: for update 1.41.8.2 (#1433)
+    CMakeLists.txt                                                     |   1 -
+    libraries/hl2sdk-cs2                                               |   2 +-
+    src/core/cs2_sdk/entity/dump.h                                     |   2 ++
+    src/core/cs2_sdk/schema.cpp                                        |  14 ++++-----
+    src/core/globals.cpp                                               |   3 --
+    src/core/globals.h                                                 |   4 ---
+    src/core/managers/player_manager.cpp                               |  42 ---------------------------
+    src/core/managers/player_manager.h                                 |  16 -----------
+    src/mm_plugin.cpp                                                  |   2 +-
+    src/mm_plugin.h                                                    |   1 -
+    src/scripting/natives/natives_engine.cpp                           |  47 ------------------------------
+    src/scripting/natives/natives_engine.yaml                          |   3 --
+    src/scripting/natives/natives_entities.cpp                         |   1 +
+    src/scripting/natives/natives_raytrace.cpp                         |  14 +++++----
+    src/scripting/natives/natives_voice.cpp                            |   1 +
+   SUBMODULE -Subproject commit 7a247626c342c91808daacabb9b5c417dcbab594
+   SUBMODULE +Subproject commit 625bfd4e39816ad0e1eae3b3144a3b5425c5c7a0
+=== 5465e2aa 2026-10-24 fix: Game Update 1.41.9.2 (#1470)
+    CMakeLists.txt                                           |  4 ++--
+    libraries/Protobufs                                      |  2 +-
+    libraries/hl2sdk-cs2                                     |  2 +-
+    libraries/metamod-source                                 |  2 +-
+    src/core/cs2_sdk/entity/dump.h                           | 23 +++++++++--------------
+    src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h | 16 ++--------------
+    src/core/cs2_sdk/schema.cpp                              | 17 +++++++++--------
+    src/core/cs2_sdk/schema.h                                |  4 ++--
+    src/core/game_system.cpp                                 |  2 +-
+    src/core/game_system.h                                   | 18 ++----------------
+    src/core/gameconfig.h                                    |  2 +-
+    src/core/globals.cpp                                     |  2 +-
+    src/core/globals.h                                       | 12 +++++++++---
+    src/core/managers/chat_manager.cpp                       |  4 ++--
+    src/core/managers/con_command_manager.cpp                | 29 ++++++++++++++---------------
+    src/core/managers/entity_manager.cpp                     |  2 +-
+    src/core/managers/entity_manager.h                       |  3 ++-
+    src/core/managers/event_manager.h                        |  2 +-
+    src/core/managers/player_manager.cpp                     |  4 ++--
+    src/core/managers/usermessage_manager.cpp                |  4 ++--
+    src/core/managers/usermessage_manager.h                  |  2 +-
+    src/core/managers/voice_manager.cpp                      |  2 +-
+    src/core/memory_module.h                                 |  2 +-
+    src/core/timer_system.cpp                                |  2 +-
+    src/core/utils.h                                         |  2 +-
+    src/mm_plugin.cpp                                        | 10 ++++------
+    src/mm_plugin.h                                          |  5 ++++-
+    src/scripting/natives/natives_commands.cpp               |  4 ++--
+    src/scripting/natives/natives_convars.cpp                |  2 +-
+    src/scripting/natives/natives_cvariant.cpp               | 53 +++++++++++++++++++++++++++++++----------------------
+    src/scripting/natives/natives_engine.cpp                 |  6 +++---
+    src/scripting/natives/natives_events.cpp                 |  3 ++-
+    src/scripting/natives/natives_schema.cpp                 |  4 ++--
+    src/scripting/natives/natives_usermessages.cpp           |  2 +-
+   SUBMODULE -Subproject commit 9ce69f52d9159611cb075c5598e63290192ec5c0
+   SUBMODULE +Subproject commit 6c35e1ad6b5401e4f95cd0923e8145a23613516c
+   SUBMODULE -Subproject commit 625bfd4e39816ad0e1eae3b3144a3b5425c5c7a0
+   SUBMODULE +Subproject commit d4a8b46676ded25b9d956287ec40ef3c9e12c14c
+   SUBMODULE -Subproject commit fa6f80e4662e5b96cc2e97722d812f374581dfd8
+   SUBMODULE +Subproject commit 170058a2f0dbd58106b7c76bfe88a94672295356
+=== 4f90d520 2026-10-25 feat: add Convar<T> for real convar creation/deletion/access (#935)
+    CMakeLists.txt                                               |   2 +
+    managed/CounterStrikeSharp.API/Core/BasePlugin.cs            |  28 +++++++
+    managed/CounterStrikeSharp.API/Core/Listeners.g.cs           |   8 ++
+    managed/CounterStrikeSharp.API/Modules/Cvars/ConVar.cs       |   1 +
+    managed/CounterStrikeSharp.API/Modules/Cvars/ConVarOfT.cs    | 359 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    src/core/globals.cpp                                         |   2 +
+    src/core/managers/convar_manager.cpp                         |  76 +++++++++++++++++
+    src/core/managers/convar_manager.h                           |  27 +++++++
+    src/mm_plugin.cpp                                            |   6 +-
+    src/mm_plugin.h                                              |   1 +
+    src/scripting/natives/natives_convars.cpp                    | 150 +++++++++++++++++++++++++++++++++-
+    src/scripting/natives/natives_convars.yaml                   |   4 +
+=== 2eb9a57d 2026-11-12 fix: Game Update 1.41.9.7
+    libraries/hl2sdk-cs2                                     | 2 +-
+    src/core/UserMessage.cpp                                 | 4 ++--
+    src/core/UserMessage.h                                   | 7 +++----
+    src/core/managers/player_manager.cpp                     | 4 ++--
+    src/core/managers/player_manager.h                       | 3 ++-
+    src/core/managers/usermessage_manager.cpp                | 9 ++++-----
+    src/core/managers/usermessage_manager.h                  | 2 +-
+    src/mm_plugin.cpp                                        | 4 ----
+    src/scripting/natives/natives_commands.cpp               | 2 +-
+    src/scripting/natives/natives_engine.cpp                 | 2 +-
+    src/scripting/natives/natives_usermessages.cpp           | 6 +++---
+   SUBMODULE -Subproject commit d4a8b46676ded25b9d956287ec40ef3c9e12c14c
+   SUBMODULE +Subproject commit a508eb5ed5fb36f4067fa36a1c33f5fec7d73066

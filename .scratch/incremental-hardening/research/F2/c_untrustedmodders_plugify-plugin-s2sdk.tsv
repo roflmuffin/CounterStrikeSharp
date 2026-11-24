@@ -1,0 +1,361 @@
+2026-11-15T23:57:09Z	2026-11-15T23:57:09Z	0cbd133a	fix: remove call macro
+2026-11-15T23:56:45Z	2026-11-15T23:56:45Z	04623f9f	fix: refactor member and virtual call
+2026-11-15T23:22:48Z	2026-11-15T23:22:48Z	8c7322a9	fix: member calls on MSVC
+2026-11-15T22:41:57Z	2026-11-15T22:41:14Z	9d17a615	fix: crash on reload related to freed decorated names
+2026-11-15T21:06:29Z	2026-11-15T21:06:29Z	f50c0980	fix: unmount addons by their mounted path and reconnect once to apply overriding addon files
+2026-11-12T23:58:31Z	2026-11-12T23:58:31Z	1465d720	fix: drop the extra addon reconnect on join and map change
+2026-11-12T20:18:22Z	2026-11-12T20:09:06Z	c09d669c	chore(main): release 3.4.3
+2026-11-12T20:08:04Z	2026-11-12T20:08:04Z	3da92c4f	fix: FireOutputInternal delay argument order and hammer id storage, fixes #161
+2026-11-12T20:08:04Z	2026-11-12T20:08:04Z	e0215b90	fix: update sdk
+2026-11-12T00:41:02Z	2026-11-12T00:33:43Z	d351199c	chore(main): release 3.4.2
+2026-11-12T00:33:21Z	2026-11-12T00:33:21Z	d157aa44	fix: update sdk
+2026-11-11T10:45:15Z	2026-11-11T10:15:22Z	116e0510	chore(main): release 3.4.1
+2026-11-11T10:13:42Z	2026-11-11T10:13:42Z	3ffb296c	fix: update vote counts after each vote cast
+2026-11-10T21:03:22Z	2026-11-10T20:52:12Z	adb2371b	chore(main): release 3.4.0
+2026-11-10T20:50:52Z	2026-11-10T20:50:52Z	1d6abb35	fix: rename CCheckTransmitInfo wrapper methods to match exports
+2026-11-10T20:50:52Z	2026-11-10T20:50:52Z	eac09322	fix: reuse gameconfig only for the same set of paths
+2026-11-10T20:50:52Z	2026-11-10T20:50:52Z	258bb089	fix: track existing convars in CreateConVar so change hooks work
+2026-11-10T16:12:49Z	2026-11-10T16:12:49Z	12112dd0	fix: re-register removed commands and skip callback on failed add
+2026-11-10T12:51:08Z	2026-11-10T12:50:11Z	baffb399	feat: store configs as <plugin>.*.jsonc in per-plugin folders
+2026-11-10T10:35:27Z	2026-11-10T10:35:27Z	76eac99c	fix: build issue (2)
+2026-11-10T10:30:20Z	2026-11-10T10:30:20Z	2cce5d94	fix: build issue
+2026-11-09T21:35:48Z	2026-11-09T21:35:48Z	5a68210b	style: move schema refactor (3)
+2026-11-09T21:14:03Z	2026-11-09T21:14:03Z	c3078a46	style: move schema refactor (2)
+2026-11-09T20:54:09Z	2026-11-09T20:54:09Z	5c8d175a	style: move schema refactor
+2026-11-09T18:33:54Z	2026-11-09T18:33:54Z	4391146b	fix: check net channel in GetClientTime and GetClientLatency
+2026-11-09T15:38:17Z	2026-11-09T15:38:17Z	ed22e6f7	fix: zero-extend unsigned schema values and check array element types
+2026-11-09T15:38:17Z	2026-11-09T15:38:17Z	cd87ec77	fix: run ServerCommandEx commands right away and return their own output
+2026-11-09T15:38:17Z	2026-11-09T15:38:17Z	b7f0e220	fix: add uint64 values in PbAddUInt64 with AddUInt64
+2026-11-09T15:07:20Z	2026-11-09T10:43:44Z	cd81b353	chore: update sourcesdk
+2026-11-09T15:07:20Z	2026-11-09T10:41:37Z	e85d6ef8	fix: read manifest version from version.txt on every configure
+2026-11-09T11:57:26Z	2026-11-09T11:57:26Z	ffb986b2	style: rename getters to finders
+2026-11-09T11:49:57Z	2026-11-09T11:49:57Z	7101e462	style: remove optional
+2026-11-09T11:28:04Z	2026-11-09T11:28:04Z	756acbaa	style: move schema helpers to other file
+2026-11-09T11:07:01Z	2026-11-09T11:07:01Z	5a55c294	style: refactor schema
+2026-11-08T23:39:18Z	2026-11-08T23:39:18Z	ec2ad8b9	feat: add array schema methods
+2026-11-08T22:39:19Z	2026-11-08T22:39:19Z	6a96f956	fix: pass entity handles to EntityIO script functions as ehandle
+2026-11-08T22:13:40Z	2026-11-08T22:10:38Z	6a3b5c36	fix: remove model and body exports whose script functions the game no longer has
+2026-11-08T21:19:14Z	2026-11-08T21:19:14Z	18910aed	feat: add SendVoiceData to send Opus voice to clients
+2026-11-07T13:51:54Z	2026-11-07T13:51:54Z	79082da1	feat: add voice speaking listeners and HookClientVoiceData
+2026-11-07T07:02:44Z	2026-11-07T07:01:29Z	6d5bfb0e	chore(main): release 3.3.1
+2026-11-07T07:00:16Z	2026-11-07T07:00:16Z	edc848d4	fix: add remove, copy, escape and export methods for KeyValues
+2026-11-07T06:46:13Z	2026-11-07T06:46:13Z	3f680d33	fix: add load, save and iteration methods for KeyValues
+2026-11-06T23:34:26Z	2026-11-06T23:29:24Z	79534a08	chore(main): release 3.3.0
+2026-11-06T23:28:08Z	2026-11-06T23:28:08Z	6dcfb22b	feat: add chat flags and listen overrides for clients
+2026-11-06T23:08:17Z	2026-11-06T23:08:17Z	3c2ceca9	feat: add voice flags and listen overrides for clients
+2026-11-06T20:52:33Z	2026-11-06T20:52:33Z	c8ff7ec5	feat: add HookSendNetMessage to block net messages
+2026-11-06T18:56:44Z	2026-11-06T18:56:44Z	d94ded94	fix: remove deleted point_script from scripts list
+2026-11-06T18:38:47Z	2026-11-06T18:38:47Z	08d4caaf	fix: restore console cleaner
+2026-11-06T00:12:56Z	2026-11-06T00:01:48Z	7ef038c0	chore(main): release 3.2.0
+2026-11-06T00:01:13Z	2026-11-06T00:01:13Z	5962b4ea	fix: read and set the full recipient mask
+2026-11-06T00:01:13Z	2026-11-06T00:01:13Z	c0c907bc	fix: return render color by value
+2026-11-06T00:01:13Z	2026-11-06T00:01:13Z	c49e5c6f	fix: save KeyValues3 into text buffers
+2026-11-06T00:01:13Z	2026-11-06T00:01:13Z	13ca8e6a	fix: collect vote recipients from all slots
+2026-11-06T00:01:13Z	2026-11-06T00:01:13Z	7de8d558	fix: allow clearing the entity owner
+2026-11-06T00:01:13Z	2026-11-06T00:01:13Z	d74f424d	fix: pass the expected keys to TraceHull and default trace outputs
+2026-11-06T00:01:13Z	2026-11-06T00:01:13Z	9844f9b3	fix: keep other event hooks when unhooking one mode
+2026-11-05T23:39:28Z	2026-11-05T23:39:28Z	40545c25	fix: update zombie_mod to the current API
+2026-11-05T23:39:28Z	2026-11-05T23:39:28Z	5f8f00dc	docs: describe how ConnectClientOutput calls the script
+2026-11-05T23:39:28Z	2026-11-05T23:39:28Z	adf5da2d	fix: handle unknown modules in QueryInterface
+2026-11-05T23:39:28Z	2026-11-05T23:39:28Z	0867caff	fix: return zero latency for bots
+2026-11-05T23:19:11Z	2026-11-05T23:19:11Z	4330e9ed	fix: log the addon list once per connection
+2026-11-05T23:19:11Z	2026-11-05T23:19:11Z	41de0241	docs: describe how ConnectEntityOutput calls the script
+2026-11-05T23:09:32Z	2026-11-05T23:09:32Z	bbb5f525	fix: remove padding in Player
+2026-11-05T22:40:34Z	2026-11-05T22:32:23Z	5033c444	fix: raise addon connection timeout and add it to the config
+2026-11-05T22:30:39Z	2026-11-05T21:56:19Z	640fa0da	feat: track client sessions across map changes
+2026-11-04T23:21:00Z	2026-11-04T23:21:00Z	f63c9bba	fix: hide private addons from the server info message
+2026-11-04T23:12:25Z	2026-11-04T23:12:25Z	d1cb4095	fix: ignore server-only entities in SetTransmitInfoEntity
+2026-11-04T23:12:25Z	2026-11-04T23:12:25Z	7cdd2f5e	fix: return null when creating an unknown user message
+2026-11-04T23:12:25Z	2026-11-04T23:12:25Z	85d84a60	fix: strip the full chat trigger and leading spaces from commands
+2026-11-04T23:12:25Z	2026-11-04T23:12:25Z	23290f7f	fix: expire client addon cache on connect
+2026-11-04T23:12:25Z	2026-11-04T23:12:25Z	c5832a50	fix: connect entity and client outputs through a redirect to self
+2026-11-04T23:12:25Z	2026-11-04T23:12:25Z	9257c8c7	fix: pass attachment name in follow merge exports
+2026-11-04T12:15:07Z	2026-11-04T12:15:07Z	859c4988	fix: skip OnClientFullyConnect for SourceTV spectators
+2026-11-04T10:18:13Z	2026-11-04T10:18:13Z	3a49391b	fix: avoid DestroyDamageInfo double release in damage exports
+2026-11-03T22:23:10Z	2026-11-03T22:23:10Z	ff62885f	docs: note debug overlays that dedicated servers do not send
+2026-11-03T22:13:10Z	2026-11-03T22:13:10Z	4e15a3a9	feat: expose debug overlay helper functions in the API
+2026-11-03T21:56:29Z	2026-11-03T21:56:29Z	5520916e	fix: match game ABI in the remaining vector script bindings
+2026-11-03T21:42:53Z	2026-11-03T21:42:53Z	90f04d2e	fix: match game ABI in angle and vector script bindings
+2026-11-03T21:37:14Z	2026-11-03T21:37:14Z	0836db8e	fix: vscript debug
+2026-11-03T21:06:32Z	2026-11-03T21:06:32Z	fffca491	fix: remove unimplemented user flag exports
+2026-11-03T21:00:12Z	2026-11-03T21:00:12Z	026816fe	feat: expose listener priorities through On*_Register2 in the manifest
+2026-11-03T20:50:37Z	2026-11-03T20:50:37Z	e748c1d8	fix: print the no-access message once per command
+2026-11-03T20:46:10Z	2026-11-03T20:46:10Z	33a0ce73	fix: check admin command access with a Steam-validated SteamID
+2026-11-03T20:31:22Z	2026-11-03T20:31:22Z	71a931ef	fix: bind RandomFlt to the RandomFloatWrapper script function
+2026-11-03T20:21:19Z	2026-11-03T20:21:19Z	2c191483	fix: declare m_iTeamNum as uint8 to match the schema
+2026-11-03T20:15:57Z	2026-11-03T20:15:57Z	8597322b	fix: declare bool return of HookConVarChange and UnhookConVarChange in the manifest
+2026-11-03T20:13:07Z	2026-11-03T20:13:07Z	64081f7b	fix: keep output hook lists per call and honor Stop in entity output hooks
+2026-11-03T20:11:16Z	2026-11-03T20:11:16Z	10b17364	fix: create a child key in Kv1CreateKey instead of a peer
+2026-11-03T20:07:29Z	2026-11-03T20:07:29Z	350f6d75	fix: check nested message type in protobuf vector and color accessors
+2026-11-03T19:40:01Z	2026-11-03T19:40:01Z	338cde50	fix: remove extra string argument from FindInSphere
+2026-11-03T19:40:01Z	2026-11-03T19:40:01Z	4f086414	fix: skip post event hooks when an event is blocked in pre
+2026-11-03T12:20:01Z	2026-11-03T12:20:01Z	42e0c0e8	fix: return m_name from GetEntityName instead of the global name
+2026-11-03T07:19:55Z	2026-11-03T07:18:42Z	a0657c0c	fix: use targetname key when spawning point_script
+2026-11-02T23:14:25Z	2026-11-02T23:11:34Z	1a142533	chore(main): release 3.1.1
+2026-11-02T23:11:09Z	2026-11-02T23:11:09Z	4aef9d97	fix: skip size check for schema wrappers and chain entity
+2026-11-02T22:58:49Z	2026-11-02T22:58:49Z	3e6ac10b	fix: replace Cyrillic letter in schema mismatch warning
+2026-11-02T14:23:57Z	2026-11-02T14:20:12Z	9975034a	chore(main): release 3.1.0
+2026-11-02T14:19:24Z	2026-11-02T14:19:24Z	a909889a	feat: add private addons and addon exports
+2026-11-02T00:24:13Z	2026-11-02T00:20:47Z	9571269b	fix: bind `CNetworkGameServer` hooks to object lifecycle
+2026-10-30T12:26:58Z	2026-10-30T08:48:27Z	63748e15	chore(main): release 3.0.6
+2026-10-30T08:47:16Z	2026-10-30T08:47:10Z	3ef0ca6b	fix: skip configs without the key in GetGameConfig*All
+2026-10-29T18:29:11Z	2026-10-29T18:09:42Z	bf09d5ef	chore(main): release 3.0.5
+2026-10-29T18:09:19Z	2026-10-29T18:09:19Z	b47440cd	fix: port MultiAddonManager fixes from the metamod version (#150)
+2026-10-29T14:40:27Z	2026-10-29T14:40:27Z	b1701100	fix: prevent recursion with no delay
+2026-10-29T14:28:54Z	2026-10-29T14:28:54Z	bc479063	fix: change invalid ids to 0 for easy default initialization
+2026-10-28T16:29:18Z	2026-10-28T16:29:18Z	756e72b5	chore: update sourcesdk
+2026-10-26T18:47:31Z	2026-10-26T18:47:28Z	5e511d94	chore: add FixLoadMotd to settings
+2026-10-25T22:35:59Z	2026-10-25T22:02:25Z	71ae2f3f	chore(main): release 3.0.4
+2026-10-25T22:33:41Z	2026-10-25T22:33:41Z	5736ffd1	Revert "fix: don't cache missing vscript bindings"
+2026-10-25T22:05:52Z	2026-10-25T22:05:52Z	17d9b4f8	Revert "fix: call vscript members through member pointers and guard missing bindings"
+2026-10-25T22:05:43Z	2026-10-25T22:05:43Z	434309e6	Revert "fix(vscript): declare field bindings for debugger"
+2026-10-25T21:59:12Z	2026-10-25T21:59:12Z	9a4548d0	fix(vscript): declare field bindings for debugger
+2026-10-25T21:18:42Z	2026-10-25T21:18:42Z	7adef37b	fix: bump version polyhook and configs
+2026-10-25T20:49:26Z	2026-10-25T20:01:18Z	66d6da07	chore(main): release 3.0.3
+2026-10-25T20:00:47Z	2026-10-25T20:00:47Z	171a31fc	chore: update .gitignore
+2026-10-25T19:58:36Z	2026-10-25T19:58:36Z	65ab7038	fix: call vscript members through member pointers and guard missing bindings
+2026-10-25T19:11:21Z	2026-10-25T19:11:21Z	fe4c0287	fix: keep the workshop map when reloading mid-map
+2026-10-25T19:11:01Z	2026-10-25T19:11:01Z	f1307e69	fix: reload the current map when plugins are loaded mid-map
+2026-10-25T19:10:35Z	2026-10-25T19:10:35Z	4fa0ccfc	fix: read extra addon convars on plugin start
+2026-10-25T19:10:35Z	2026-10-25T19:10:35Z	9f417cc7	fix: remove game event listener on plugin unload
+2026-10-25T19:04:58Z	2026-10-25T19:04:58Z	37d88232	chore: suppress clangd consteval false positive
+2026-10-25T19:04:11Z	2026-10-25T19:04:11Z	25a3f3ec	fix: skip UpdatePlayers when Steam API is not available
+2026-10-25T19:04:02Z	2026-10-25T19:04:02Z	40feb9c1	fix: don't cache missing vscript bindings
+2026-10-25T19:02:29Z	2026-10-25T19:02:29Z	8d22b595	fix: unregister convars on plugin unload
+2026-10-24T23:05:37Z	2026-10-24T23:05:37Z	874721c7	fix: close dlopen handles so libraries can unload on reload
+2026-10-24T20:18:48Z	2026-10-24T20:18:48Z	f03111c7	fix: load multi_addon_manager config on plugin start
+2026-10-23T10:56:23Z	2026-10-23T10:47:31Z	0534d59a	chore(main): release 3.0.2
+2026-10-23T10:41:08Z	2026-10-23T10:41:08Z	17c98de8	fix: update sourcesdk for 1.41.9.2
+2026-10-23T07:10:46Z	2026-10-23T06:56:41Z	d1a484e9	chore(main): release 3.0.1
+2026-10-23T06:56:12Z	2026-10-23T06:56:12Z	8a60f4b0	chore: update sourcesdk
+2026-10-23T06:56:09Z	2026-10-23T06:56:09Z	697d7ea3	fix: update gamedata for 1.41.9.2
+2026-10-17T22:39:45Z	2026-10-17T22:38:27Z	77c81088	chore(main): release 3.0.0
+2026-10-17T22:37:36Z	2026-10-17T22:37:36Z	647d8c67	feat!: rework client connect and disconnect listeners
+2026-10-17T22:36:25Z	2026-10-17T22:36:25Z	3215f775	fix: client lookup and bot net channel crashes
+2026-10-17T22:35:06Z	2026-10-17T22:35:06Z	40a531e0	chore: update sourcesdk
+2026-10-17T14:48:13Z	2026-10-17T14:48:13Z	87de888d	feat!: rename TransmitInfoTargetSlot methods to TransmitInfoTargetSpawnGroup
+2026-10-17T14:47:55Z	2026-10-17T14:47:55Z	8135cfe2	feat!: update sourcesdk
+2026-10-16T22:41:00Z	2026-10-16T22:41:00Z	fe312c6a	fix: duplicate OnClientActive call and loadGame param name
+2026-10-16T17:46:55Z	2026-10-16T17:45:29Z	f48f070d	chore(main): release 2.18.5
+2026-10-16T17:44:59Z	2026-10-16T17:44:59Z	dce1e1d3	fix: permission dependency check
+2026-10-14T21:24:20Z	2026-10-14T21:23:30Z	09e10ff8	chore(main): release 2.18.4
+2026-10-14T21:22:39Z	2026-10-14T21:22:39Z	5e86c23d	fix: check command permission
+2026-10-14T21:22:19Z	2026-10-14T21:22:19Z	71e1ab92	fix: update permissions bindings to 1.3.1
+2026-10-14T20:51:03Z	2026-10-14T20:50:14Z	cc69ff67	chore(main): release 2.18.3
+2026-10-14T20:49:40Z	2026-10-14T20:49:40Z	11238200	fix: migrate conda packaging to rattler-build
+2026-10-14T17:46:35Z	2026-10-14T16:42:03Z	6728585b	fix: return CSource2Server::Init signature
+2026-10-06T05:51:40Z	2026-10-05T18:19:35Z	1df07b1b	chore(main): release 2.18.2
+2026-10-05T18:18:38Z	2026-10-05T18:18:38Z	efece3e9	fix: windows signatures
+2026-09-27T10:32:56Z	2026-09-27T10:32:56Z	59563c56	fix: minor fixes
+2026-09-27T10:32:02Z	2026-09-27T10:32:02Z	a3d7d61e	fix: replace callerHandle with activatorHandle
+2026-09-27T10:30:17Z	2026-09-27T10:30:17Z	ff555816	fix: signature SetEventPlayerController, GetSoundDuration
+2026-09-26T13:19:09Z	2026-09-26T13:19:09Z	8d3e0eda	fix: hoist shared prototypes and enums into top-level manifest arrays
+2026-09-26T12:55:05Z	2026-09-26T12:55:05Z	bd0a3373	fix: signature OnClientDisconnect
+2026-09-26T00:38:12Z	2026-09-26T00:37:18Z	9111ff4d	chore(main): release 2.18.1
+2026-09-26T00:36:46Z	2026-09-26T00:36:46Z	684885d0	fix: update deps
+2026-09-26T00:10:56Z	2026-09-23T18:13:09Z	db26956c	fix: mark hidden entities as dont_transmit to prevent client crash
+2026-09-25T08:12:00Z	2026-09-25T08:06:01Z	776eeeab	chore(main): release 2.18.0
+2026-09-25T08:05:33Z	2026-09-25T08:05:33Z	12d459b5	fix: update sourcesdk, entity output signatures
+2026-09-24T14:37:08Z	2026-09-24T14:37:08Z	b523bda5	feat: add new methods
+2026-09-24T14:36:48Z	2026-09-24T14:36:48Z	8a66121e	fix: update sourcesdk
+2026-09-24T14:32:28Z	2026-09-24T14:32:28Z	a1d8b6d6	fix: update sourcesdk
+2026-09-23T14:19:43Z	2026-09-23T14:19:43Z	8df15c8a	fix: update signatures and offsets
+2026-09-23T14:19:25Z	2026-09-23T14:19:25Z	8ebe6ffb	fix: update sourcesdk
+2026-09-02T21:02:33Z	2026-09-02T21:02:33Z	18575ed3	fix: update external `sourcesdk`
+2026-08-29T23:16:25Z	2026-08-29T23:16:25Z	9c8a122b	fix: offset `CBasePlayerPawn::CommitSuicide`
+2026-08-28T10:12:51Z	2026-08-28T10:12:09Z	f32a9684	chore(main): release 2.17.0
+2026-08-28T10:11:44Z	2026-08-28T10:11:44Z	ef75fec8	feat: add translation file to build
+2026-08-26T06:36:59Z	2026-08-26T06:36:19Z	ca53e8ac	chore(main): release 2.16.2
+2026-08-26T06:35:49Z	2026-08-26T06:35:49Z	8f2b0477	fix: update signature
+2026-08-25T08:22:39Z	2026-08-25T08:22:39Z	6ce9ddd4	fix: add `SetConVarDefault` in manifest
+2026-08-24T15:02:42Z	2026-08-24T15:01:33Z	86530fc0	chore(main): release 2.16.1
+2026-08-24T15:01:10Z	2026-08-24T15:01:10Z	378d1b4e	fix: remove error on missing resolver
+2026-08-23T15:58:59Z	2026-08-23T14:00:27Z	c91c4ecf	chore(main): release 2.16.0
+2026-08-23T12:41:59Z	2026-08-23T12:41:59Z	87c2853a	fix: add permission dependency for command registration
+2026-08-23T12:15:26Z	2026-08-23T12:15:26Z	7441f2b7	fix: build
+2026-08-23T12:15:17Z	2026-08-23T12:15:17Z	82d98ec8	style: small refactor of player slots usage
+2026-08-23T11:54:17Z	2026-08-23T11:54:17Z	38f37441	fix: rework localization a bit
+2026-08-23T11:28:29Z	2026-08-23T11:28:29Z	35a1ec95	fix: uncomment cs script fix
+2026-08-22T19:39:51Z	2026-08-22T19:39:51Z	23b9f84f	fix: add translation file to build
+2026-08-22T19:23:40Z	2026-08-22T19:23:40Z	8873e2d7	fix: uncomment v8 fix
+2026-08-22T19:23:33Z	2026-08-22T19:23:33Z	317772c4	fix: add translations for menus
+2026-08-22T18:22:13Z	2026-08-22T18:22:13Z	15319ad3	fix: add translation dependency
+2026-08-18T23:31:50Z	2026-08-18T23:31:50Z	33cfeddb	feat: add `OnSendNetMessage`/`OnSerializeMessage` listeners
+2026-08-18T21:15:38Z	2026-08-18T21:15:38Z	86477acb	fix: event not copied for post hook when pre hook registered first
+2026-08-16T19:49:19Z	2026-08-16T19:49:19Z	654906ac	fix: invalid param in teleport
+2026-08-15T19:49:46Z	2026-08-15T19:49:34Z	f87daa8a	fix: manifest and prevent passing null ptr to listeners
+2026-08-15T19:49:46Z	2026-08-15T19:49:17Z	e926fed4	fix: invalid fire output hook
+2026-08-04T10:49:43Z	2026-08-04T09:22:18Z	6fd0d3cd	chore(main): release 2.15.1
+2026-08-04T09:27:44Z	2026-08-04T09:27:44Z	dbcf89b8	style: remove commented element
+2026-08-04T09:21:54Z	2026-08-04T09:21:54Z	b06c5b27	fix: add missing handle alias to classes
+2026-08-02T23:39:46Z	2026-08-02T23:39:46Z	e63e2d87	style: small refactor
+2026-08-02T13:59:46Z	2026-08-02T13:59:11Z	e661ecd9	chore(main): release 2.15.0
+2026-08-02T13:58:50Z	2026-08-02T13:58:50Z	7511fcf0	feat: show a just-spawned pawn for one tick before hiding it (#125)
+2026-08-02T12:54:01Z	2026-08-02T12:54:01Z	619a8d59	fix: small refactor
+2026-08-02T12:53:43Z	2026-08-02T12:53:43Z	3b1785bc	fix: improve event lookup
+2026-08-02T12:53:26Z	2026-08-02T12:53:26Z	90b77098	fix: lin build
+2026-08-02T13:42:51Z	2026-08-02T13:41:03Z	60a49d20	chore(main): release 2.14.1
+2026-08-02T12:40:43Z	2026-08-02T12:40:43Z	c9544d1e	fix: update sdk
+2026-08-01T23:25:04Z	2026-08-01T23:00:34Z	8753ba68	chore(main): release 2.14.0
+2026-08-01T23:00:04Z	2026-08-01T23:00:04Z	8ea4d7b8	docs: update readme
+2026-08-01T21:50:58Z	2026-08-01T21:50:58Z	48e81826	fix: update menu methods
+2026-08-01T21:31:19Z	2026-08-01T21:31:19Z	7dc23c32	style: remove tests
+2026-08-01T21:20:52Z	2026-08-01T21:20:52Z	6d835c5a	fix(claude): more menu improvements
+2026-08-01T18:35:08Z	2026-08-01T18:35:08Z	b7ac47a9	fix(claude): add font style
+2026-08-01T18:30:08Z	2026-08-01T18:30:08Z	45f64396	fix(claude): add font class style
+2026-08-01T17:54:51Z	2026-08-01T17:54:51Z	6918ddae	fix(claude): move pagination to settings
+2026-08-01T16:01:23Z	2026-08-01T16:01:23Z	ec99dba7	fix(claude): add icons to buttons
+2026-08-01T15:16:44Z	2026-08-01T15:16:44Z	6c3d5b42	fix: some improvements (3)
+2026-08-01T14:47:07Z	2026-08-01T14:47:07Z	e8b1acbc	fix: some improvements (2)
+2026-08-01T11:35:59Z	2026-08-01T11:35:59Z	d90fdeff	fix: some improvements
+2026-08-01T01:11:54Z	2026-08-01T01:11:54Z	3d93b6dd	fix: issue with empty strings and _S_empty_rep due to static linkage for protobufs
+2026-08-01T01:09:47Z	2026-08-01T01:09:47Z	cbbadaaf	fix: rename prev opt
+2026-08-01T00:03:29Z	2026-08-01T00:03:29Z	dac45d40	fix: add menu sounds (2)
+2026-07-31T22:45:29Z	2026-07-31T22:45:29Z	84f6a246	fix: more menu improvements (2)
+2026-07-31T21:40:51Z	2026-07-31T21:40:51Z	dd8dc77f	fix: more menu improvements
+2026-07-31T16:59:40Z	2026-07-31T16:59:40Z	28e3b465	fix(claude): add icons to menus
+2026-07-31T16:35:58Z	2026-07-31T16:35:58Z	22b59fee	fix: improve formatting
+2026-07-31T15:55:59Z	2026-07-31T15:55:59Z	71e63f69	fix(claude): more menu improvements
+2026-07-31T15:38:39Z	2026-07-31T15:38:39Z	13346c62	fix: add aliases to config and timer ids
+2026-07-31T14:01:21Z	2026-07-31T14:01:21Z	651774bc	feat(claude): add menus api
+2026-07-21T20:35:13Z	2026-07-21T20:35:13Z	fca3bd31	fix: update `ResolveModule` signature
+2026-07-20T23:53:53Z	2026-07-20T23:53:53Z	fb5b2291	fix: update ScriptGetAddon on windows
+2026-07-20T16:47:46Z	2026-07-20T16:47:46Z	03a04e17	fix: `SetClientName`
+2026-07-20T16:31:26Z	2026-07-20T16:31:26Z	a536e802	fix: add setters for arrays
+2026-07-20T15:35:01Z	2026-07-20T14:37:37Z	e2885527	chore(main): release 2.13.0
+2026-07-20T14:37:08Z	2026-07-20T14:37:08Z	0bd5d1c4	feat: add `SetClientName`
+2026-07-13T20:50:36Z	2026-07-13T20:50:36Z	586cbe2f	fix: update multi addon manager
+2026-07-13T20:11:54Z	2026-07-13T20:11:54Z	8cef6e40	fix: add exluding option to gamedata refs
+2026-07-11T01:23:19Z	2026-07-10T20:48:30Z	00656594	chore(main): release 2.12.1
+2026-07-10T20:47:59Z	2026-07-10T20:47:59Z	81699f44	fix: update gamedata & sdk
+2026-07-09T13:32:08Z	2026-07-09T13:32:08Z	b147c94e	fix: update sdk
+2026-07-09T09:42:01Z	2026-07-09T09:37:03Z	499078ed	chore(main): release 2.12.0
+2026-07-09T09:24:31Z	2026-07-09T09:24:31Z	971f207e	fix: update sdk
+2026-07-09T09:24:22Z	2026-07-09T09:24:22Z	d2180641	fix: build on linux
+2026-07-05T17:48:44Z	2026-07-05T17:48:44Z	f89b83f9	fix: some issues with listeners
+2026-07-05T16:02:28Z	2026-07-05T16:02:28Z	96b756dd	fix: replace atomic flags by bools
+2026-07-05T15:28:26Z	2026-07-05T15:28:26Z	f42bf3fd	fix: more improvements
+2026-07-05T14:29:43Z	2026-07-05T14:29:43Z	9821d41a	fix: build
+2026-07-05T14:28:00Z	2026-07-05T14:28:00Z	aeb3ff86	fix: update deps
+2026-07-05T14:27:16Z	2026-07-05T14:26:54Z	db24a236	fix: update hashers
+2026-07-05T14:27:16Z	2026-07-05T14:17:08Z	011a008f	fix: add empty name checks
+2026-07-04T22:20:56Z	2026-07-04T22:20:56Z	bf159675	fix: compilation issues (2)
+2026-07-04T22:18:09Z	2026-07-04T22:18:09Z	e282fd86	fix: compilation issues
+2026-07-04T17:49:51Z	2026-07-04T17:49:51Z	6c9cf78c	fix: improve performance of listeners
+2026-07-03T19:51:16Z	2026-07-03T19:51:16Z	e73d2650	fix: remove listeners
+2026-07-03T19:35:33Z	2026-07-03T19:35:33Z	06c59718	fix: remove hybrid vectors
+2026-07-03T19:35:09Z	2026-07-03T19:35:09Z	45e21919	feat: rename transmit methods
+2026-06-30T17:44:50Z	2026-06-14T15:29:11Z	ccfb2889	fix: replace warn ignore by plugin's macro
+2026-06-30T17:44:50Z	2026-06-12T21:08:46Z	64f208eb	fix: improve performance of singletons and remove mutex from logger
+2026-06-30T17:44:50Z	2026-06-12T20:20:26Z	51c2fc35	fix: remove copy ctors
+2026-06-30T17:44:50Z	2026-06-12T20:01:50Z	42688689	style: remove unused
+2026-06-30T17:44:50Z	2026-06-12T20:00:50Z	395395ef	fix: add bitwise enum operators
+2026-06-29T20:03:14Z	2026-06-18T06:23:47Z	4c44a229	fix: transmit crash client
+2026-06-25T14:59:35Z	2026-06-25T14:58:40Z	7a9d86f1	chore(main): release 2.11.1
+2026-06-25T14:58:15Z	2026-06-25T14:58:15Z	197f6e9d	fix: redirect to server console when playerSlot < 0
+2026-06-14T23:49:00Z	2026-06-14T10:21:41Z	db0f7acd	chore(main): release 2.11.0
+2026-06-11T16:53:29Z	2026-06-08T19:23:51Z	753fbb21	fix: name and check
+2026-06-11T16:53:29Z	2026-06-06T18:29:09Z	026f9351	feat: add TransmitManager
+2026-06-11T14:56:39Z	2026-06-11T10:42:59Z	6334e47d	feat: add method ChangeClientTeam
+2026-06-11T14:56:39Z	2026-06-11T10:40:02Z	182870ec	fix: remove set pawn team
+2026-06-11T14:56:39Z	2026-06-11T10:34:32Z	93967984	feat: add changeteam and fix switchteam
+2026-06-09T11:23:09Z	2026-06-09T11:22:36Z	ae01404a	chore(main): release 2.10.0
+2026-06-09T11:17:24Z	2026-06-09T11:17:24Z	36b28d40	fix: rework entity listener hook params
+2026-06-09T10:57:37Z	2026-06-07T18:02:51Z	b9a4feb4	docs: add cmodule to lldb formatters
+2026-06-09T10:57:37Z	2026-06-07T18:02:31Z	b2b89a30	fix: add LoggingRareOptions_t to log
+2026-06-08T21:57:50Z	2026-06-08T21:57:50Z	99fd5ea7	feat: add IEntityListener hooks and new callback
+2026-06-07T23:11:11Z	2026-06-07T23:11:11Z	e7592d0a	fix: more improvements of CAddress
+2026-06-07T19:01:58Z	2026-06-07T19:01:58Z	12fd0280	fix: replace some algo by ranges variant
+2026-06-07T16:52:19Z	2026-06-07T16:52:19Z	3bd5f08e	fix: disable tier0 stripping
+2026-06-06T18:51:10Z	2026-06-06T18:51:10Z	e67f004a	fix: typo in formatter
+2026-06-06T18:24:38Z	2026-06-06T18:24:38Z	6d53cb60	fix: compilation fixes on windows
+2026-06-06T16:45:21Z	2026-06-06T16:45:21Z	7604443e	fix: more refactor
+2026-06-06T13:29:30Z	2026-06-06T13:29:18Z	c18a218e	fix: more improvements for MSVC
+2026-06-06T13:10:58Z	2026-06-06T12:51:14Z	57192083	fix: add more address wrappers
+2026-06-05T21:48:58Z	2026-06-05T21:48:58Z	0cdee82d	fix: cvar lookup
+2026-06-05T15:34:54Z	2026-06-05T15:34:54Z	fc477af6	fix: revert ref search by all occurrences
+2026-06-05T13:26:38Z	2026-06-05T13:26:38Z	594fdfa1	fix: remove par policy
+2026-06-05T13:08:01Z	2026-06-05T13:08:01Z	6c2fc078	fix: add more verbose warnings for gameconfigs
+2026-06-05T12:35:07Z	2026-06-05T12:35:07Z	25ba209c	fix: make ref search by all occurrences
+2026-06-05T12:34:41Z	2026-06-05T12:34:41Z	01260332	fix: some compilation warnings on win
+2026-06-04T22:14:03Z	2026-06-04T22:14:03Z	dcf6defd	fix: more improvements of configs
+2026-06-04T17:24:30Z	2026-06-04T17:24:30Z	f32f914c	fix: make interface querys run first
+2026-06-04T17:24:02Z	2026-06-04T17:24:02Z	eb506248	fix: other improvements of gameconfigs
+2026-06-04T14:11:25Z	2026-06-04T14:11:25Z	e0eb90ee	fix: some addr lookup improvements (2)
+2026-06-04T13:17:22Z	2026-06-04T13:17:22Z	4b9af095	fix: some addr lookup improvements
+2026-06-03T19:17:22Z	2026-06-03T19:17:22Z	01c7a8a9	style: small refactor of vtable dump function
+2026-06-03T18:48:54Z	2026-06-03T18:48:54Z	de5564e6	fix: revert changes to segments back
+2026-06-03T16:08:42Z	2026-06-03T16:08:42Z	04fbc725	style: small refactor (2)
+2026-06-03T16:07:28Z	2026-06-03T16:07:28Z	4829b515	style: small refactor
+2026-06-02T21:09:29Z	2026-06-02T21:09:29Z	67966cbc	style: minor improvements
+2026-06-02T21:24:32Z	2026-06-02T21:24:32Z	e5919d81	style: minor changes
+2026-06-02T21:14:31Z	2026-06-02T21:14:31Z	edb0db83	style: replace spaces by tabs
+2026-06-02T21:12:19Z	2026-06-02T21:12:19Z	6c420a29	style: replace spaces by tabs
+2026-06-02T20:09:37Z	2026-06-02T20:09:37Z	9cd271d2	fix: imrpove vtabledump on linux
+2026-06-01T11:27:25Z	2026-06-01T11:27:25Z	8f18bd4c	docs: update README.md
+2026-06-01T11:27:07Z	2026-06-01T11:27:07Z	8a19c74c	docs: update README_ru.md
+2026-06-01T11:25:57Z	2026-06-01T11:25:57Z	0b07cfef	docs: add russian translation
+2026-06-01T11:25:25Z	2026-06-01T11:25:25Z	697b6375	docs: add translation badge
+2026-06-01T11:06:57Z	2026-06-01T11:06:57Z	f7fb54b7	docs: add advantage section and some fixes
+2026-05-31T18:36:38Z	2026-05-31T13:19:52Z	a21e2b64	chore(main): release 2.9.1
+2026-05-31T16:04:51Z	2026-05-31T16:04:51Z	5e20bfbf	style: add GitHub Actions workflow for cleanup task
+2026-05-31T13:19:29Z	2026-05-31T13:19:29Z	688d8990	fix: start use handle for EmitSoundToClient
+2026-05-31T13:12:50Z	2026-05-29T10:53:27Z	5dd70ee5	fix: implement EmitSoundToClient with CS2 EmitSound_t layout
+2026-05-31T12:43:01Z	2026-05-31T12:43:01Z	cd60882b	fix: add semver constraints for deps
+2026-05-31T12:35:06Z	2026-05-31T12:35:06Z	e4302d66	fix: remove some old func
+2026-05-31T12:32:38Z	2026-05-31T12:32:38Z	aa35dc23	fix: update for new polyhook
+2026-05-31T12:32:21Z	2026-05-31T12:32:21Z	d078a0c1	style: refactor util headers
+2026-05-30T13:42:14Z	2026-05-30T13:35:48Z	6164159c	chore(main): release 2.9.0
+2026-05-30T13:35:22Z	2026-05-30T13:35:22Z	29cfff08	fix: small path changes
+2026-05-30T13:33:15Z	2026-05-30T13:33:15Z	316836e3	fix: module loading under different launchers
+2026-05-29T22:04:52Z	2026-05-29T22:04:52Z	2b02a1d8	fix: linux issues
+2026-05-28T17:44:40Z	2026-05-28T17:44:40Z	3606dc42	fix: small refactor of listeners
+2026-05-28T10:52:59Z	2026-05-28T10:52:59Z	be4e5aac	fix: add zydis
+2026-05-28T10:51:16Z	2026-05-28T10:51:16Z	8801b0f7	style: update .clang-format
+2026-05-28T10:02:41Z	2026-05-28T10:02:41Z	498e7274	fix: other hook improvements
+2026-05-28T09:49:35Z	2026-05-28T09:49:35Z	86a79372	fix: update polyhook
+2026-05-28T09:47:39Z	2026-05-28T09:47:39Z	07073983	fix: moving configs to plugin methods
+2026-05-28T09:46:36Z	2026-05-28T09:46:36Z	19a0e76a	fix: improve hooking manager
+2026-05-28T09:46:04Z	2026-05-28T09:46:04Z	489fa34d	fix: improve listeners by adding profiler scopes
+2026-05-28T09:44:17Z	2026-05-28T09:44:17Z	c368f2c3	style: small refactor
+2026-05-28T09:41:55Z	2026-05-28T09:41:37Z	08487bb4	fix: remove dep
+2026-05-28T09:41:31Z	2026-05-28T09:41:31Z	6f61d117	fix: add configs as plugify dep
+2026-05-27T14:36:49Z	2026-05-27T14:36:49Z	67ac7497	style: remove Hungarian notation vars
+2026-05-27T13:21:10Z	2026-05-27T13:21:10Z	5a2017e9	fix: add zydis
+2026-05-27T13:18:30Z	2026-05-27T13:18:30Z	4b2261c4	fix: improve gameconfig
+2026-05-27T13:15:46Z	2026-05-27T13:15:46Z	d6985e25	fix: remove dynlibutils code
+2026-05-27T00:27:57Z	2026-05-27T00:27:57Z	078321da	fix: some gcc warnings
+2026-05-26T19:22:12Z	2026-05-26T19:22:12Z	b2c8329b	feat: add module loader
+2026-05-26T18:05:00Z	2026-05-26T18:05:00Z	1e08a87d	fix: update schema
+2026-05-25T14:26:19Z	2026-05-25T14:25:37Z	2dcdce73	chore(main): release 2.8.3
+2026-05-25T14:25:14Z	2026-05-25T14:25:14Z	e5761788	fix: update for new sourcesdk
+2026-05-25T12:29:30Z	2026-05-25T12:29:30Z	8cbb919e	fix: add scopes check
+2026-05-25T11:30:16Z	2026-05-24T22:30:28Z	058dba30	chore(main): release 2.8.2
+2026-05-24T22:30:08Z	2026-05-24T22:30:08Z	f32a08ce	fix: update for new plugify
+2026-05-22T12:00:58Z	2026-05-19T20:07:24Z	34345459	chore(main): release 2.8.1
+2026-05-19T20:00:41Z	2026-05-19T20:00:41Z	e28373df	fix: update ResolveModule sigs and other addresses
+2026-05-16T09:12:54Z	2026-05-16T09:12:54Z	ebe63752	fix: `TerminateRound`, `BotNavIgnore`, `BotNavIgnorePatch`
+2026-05-09T23:06:49Z	2026-05-09T23:06:49Z	28fab476	fix: repair `CBasePlayerController::SetPawn` signature
+2026-05-09T23:06:15Z	2026-05-09T23:06:15Z	59146a2e	fix: remove compile warnings
+2026-04-25T14:28:37Z	2026-04-25T14:28:37Z	424aaeb7	fix: update emit sound to client
+2026-04-25T14:27:35Z	2026-04-25T14:27:35Z	69029086	fix: update methods in manifest
+2026-04-25T14:02:30Z	2026-04-24T10:30:34Z	4b342199	fix: EmitSoundToClient to vscsript
+2026-04-23T21:43:33Z	2026-04-23T21:21:13Z	8d981d6b	chore(main): release 2.8.0
+2026-04-23T21:20:49Z	2026-04-23T21:20:49Z	37d145cf	fix: update offsets
+2026-04-21T21:16:04Z	2026-04-21T21:16:04Z	0c3d8ae5	fix: typo in symbols
+2026-04-21T19:18:52Z	2026-04-21T19:18:52Z	300f5667	fix: update win sigs and lin build
+2026-04-21T16:39:04Z	2026-04-21T16:39:04Z	d6cf8439	fix: update network field detection
+2026-04-21T16:27:10Z	2026-04-21T16:27:10Z	d7fcaf28	fix: update linux gamedata
+2026-04-21T14:54:54Z	2026-04-21T14:54:54Z	fb9e6451	feat: update for new sourcesdk
+2026-04-20T17:52:51Z	2026-04-20T17:48:07Z	99cdc7a9	chore(main): release 2.7.6
+2026-04-20T17:47:50Z	2026-04-20T17:47:50Z	40ca0435	fix: force build
+2026-04-20T16:31:31Z	2026-04-20T16:30:34Z	4449c49b	chore(main): release 2.7.5
+2026-04-20T16:30:15Z	2026-04-20T16:30:15Z	b6aa7e97	fix: remove comments
+2026-04-20T16:29:20Z	2026-04-20T16:29:20Z	d59923a8	fix: update readme
+2026-04-19T18:46:11Z	2026-04-19T18:28:34Z	d43ba96f	chore(main): release 2.7.4
+2026-04-19T18:28:14Z	2026-04-19T18:27:57Z	fee302cf	fix: revert commented log
+2026-04-19T15:59:18Z	2026-04-19T15:58:33Z	78ff1b6b	chore(main): release 2.7.3
+2026-04-19T15:58:14Z	2026-04-19T15:58:14Z	251bc461	fix: remove commented log
+2026-04-19T15:25:18Z	2026-04-19T15:24:16Z	4a2f003e	chore(main): release 2.7.2
+2026-04-19T15:23:55Z	2026-04-19T15:23:55Z	cf56b5c6	fix: remove several patches from s2sdk
+2026-04-15T10:46:32Z	2026-04-15T10:46:32Z	5499f78d	fix: symbols for api hub

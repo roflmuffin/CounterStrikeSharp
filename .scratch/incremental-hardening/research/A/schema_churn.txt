@@ -1,0 +1,38 @@
+010b0b76 2023-10-22 props:-0/+0 files:-0/+0 | SDK Generation Overhaul (#9)
+7655c276 2023-11-02 props:-0/+0 files:-0/+0 | feat: add ref enum support to schema, update `GameTime_t` to use float
+d6fe9e10 2023-11-08 props:-0/+0 files:-0/+0 | Generate all missing schema properties (#40)
+15e12601 2023-11-19 props:-0/+0 files:-0/+0 | feat: update schema from 17.11.23 update
+1ad1828e 2023-12-17 props:-0/+0 files:-0/+0 | feat: Add `SchemaMember` attribute to schema objects` (#208)
+2d8f7be8 2024-02-11 props:-0/+4175 files:-0/+982 | Dev -> Main (Schema Updates) (#320)
+ad6e1ca2 2024-04-11 props:-5/+9 files:-0/+0 | chore: bump hl2sdk (#408)
+7cae4be9 2024-04-26 props:-115/+80 files:-0/+0 | Fix: new game update broke signatures  (#425)
+cafc4e23 2024-05-25 props:-142/+137 files:-4/+3 | Initial update after 2024-05-23 CS2 update (#461)
+b79fd19c 2024-07-26 props:-4/+1 files:-1/+0 | chore: update schema (#531)
+2b31f519 2024-10-05 props:-169/+259 files:-0/+73 | Update Schema for Armory Update (#592)
+6b430694 2024-12-24 props:-8/+27 files:-0/+3 | Update Schema to Latest (#721)
+414a59a3 2025-03-24 props:-16/+17 files:-0/+0 | fix(schema): inherited schema classes with clashing properties (#818)
+7025b626 2025-05-10 props:-42/+29 files:-14/+0 | chore(schema): update (mainly removal of danger zone classes)
+6f663164 2025-06-20 props:-0/+0 files:-0/+0 | Improve FunctionReference trace logging with real user stack origin (#
+22809e3e 2025-07-07 props:-2/+0 files:-1/+0 | feat: update schema for game update 1.40.8.5 (03.07.2025) (#921)
+af3bb528 2025-08-03 props:-223/+260 files:-23/+54 | chore: schema update for patch 19388062 (#962)
+ef4b8f94 2025-08-21 props:-6/+12 files:-3/+0 | feat(schema): update schema classes for build 19644975
+56e00740 2025-10-16 props:-67/+38 files:-7/+12 | fix: update schema for update
+f5054058 2025-10-27 props:-2/+5 files:-0/+1 | chore(schema): update schema to latest
+4ff2732d 2025-10-27 props:-0/+0 files:-0/+2 | feat(schema): update schema generator to use @GAMMACASE schema dumper 
+52550e31 2025-11-05 props:-0/+0 files:-0/+0 | chore: update server.json
+0318713c 2025-11-06 props:-0/+0 files:-0/+0 | chore(generators): re-organise generated files
+f9617b9a 2026-01-22 props:-84/+123 files:-5/+33 | fix(schema): update schema for 1.41.3.0
+c1d6bf4f 2026-01-23 props:-0/+1 files:-0/+0 | fix(schema): update schema after followup update
+60db1df2 2026-01-27 props:-5/+4 files:-0/+0 | chore(schema): Update Schema Definitions to 1.41.3.3 (#1206)
+c5437970 2026-02-13 props:-0/+2 files:-0/+0 | chore: Update Schema Definitions to 1.41.3.5 (#1222)
+4799da3e 2026-03-21 props:-0/+1 files:-0/+0 | chore: Update Schema Definitions to 1.41.4.1 (#1245)
+8a9fbe8f 2026-04-22 props:-99/+196 files:-6/+70 | fix: apply changes for AG2 update (#1279)
+d1038fbc 2026-05-17 props:-4/+4 files:-0/+0 | chore: Update Schema Definitions to 1.41.6.1 (#1316)
+0fc6848d 2026-06-01 props:-3/+0 files:-0/+0 | chore: Update Schema Definitions to 1.41.6.5 (#1327)
+0586daf3 2026-07-10 props:-87/+102 files:-13/+77 | fix: Update for latest CS2 Game Update [1.41.6.9] (#1348)
+db2cd0fe 2026-07-12 props:-0/+0 files:-0/+0 | chore: Update Schema Definitions to 1.41.6.9 (#1356)
+be766aac 2026-08-26 props:-0/+19 files:-0/+6 | chore: Update Schema Definitions to 1.41.7.7 (#1358)
+505e466a 2026-09-23 props:-67/+136 files:-6/+43 | chore: Update Schema Definitions to 1.41.8.2 (#1404)
+d90b0417 2026-09-26 props:-0/+1 files:-0/+0 | chore: Update Schema Definitions to 1.41.8.4 (#1437)
+86d3f07a 2026-10-24 props:-2/+5 files:-2/+1 | chore: Update Schema Definitions to 1.41.9.2 (#1447)
+5cbbd913 2026-10-30 props:-4/+4 files:-0/+0 | chore: Update Schema Definitions to 1.41.9.3 (#1471)

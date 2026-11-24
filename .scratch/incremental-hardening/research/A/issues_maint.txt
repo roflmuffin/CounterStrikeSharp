@@ -1,0 +1,73 @@
+######## #951
+TITLE: New cs2 version broke cssharp
+BODY: New version is needed
+[roflmuffin 2025-08-04T06:10] v1.0.329 is the first working version after the update
+######## #1184
+TITLE: Official CS update
+BODY: CounterStrikeSharp no longer works due to the official CS update. 1.41.3.1-14132
+
+
+######## #1342
+TITLE: Latest CS2 Update Start Error
+BODY: Plugin won't start on the latest CS2 Update (using latest MetaMod version fixed for this update an hour ago).
+
+counterstrikesharp.so: undefined symbol: g_bUpdateStringTokenDatabase
+
+######## #589
+TITLE: New Issues Linux SERVER ON 2024/10/04 8.25
+BODY: update metamod v1314;
+update counterstrikesharp v267;
+
+![13](https://github.com/user-attachments/assets/adb866a9-1415-4fd8-9af7-6790983820f4)
+![14](https://github.com/user-attachments/assets/4dd337f6-a891-45ce-9363-a32614961c53)
+
+crash servers.
+
+######## #459
+TITLE: New CS2 Update Crashes server
+BODY: 23-05 update causes crash with: [00:56:38.859] CSSharp: Failed to find signature for 'Host_Say'
+![image](https://github.com/roflmuffin/CounterStrikeSharp/assets/79339372/cfd27eba-a561-43e7-9f9f-481c45e64f1a)
+
+[zonical 2024-05-24T23:38] We are aware of this issue and a fix is currently being worked on.
+---
+[zonical 2024-05-25T09:11] Rolfmuffin has released a patch - v234. Not all of the offsets have been tested, so if any more issues arise, please create a new request. Ngā mihi nui.
+######## #1283
+TITLE: CounterStrikeSharp fails to load after April 21 CS2 update (Metamod shows <ERROR> on clean install)
+BODY: After the latest CS2 update (April 21 – AnimGraph2 rollout), CounterStrikeSharp no longer loads on our server.
+
+Environment:
+- Hosting: Fusiora (Pterodactyl container)
+- OS: Linux
+- CS2 Dedicated Server (latest version)
+
+What we did:
+- Clean reinstall of Metamod (latest dev build: 2.0.0-git1396)
+- Clean reinstall of CounterStrikeSharp (latest release: 1.0.365, with runtime)
+- No custom plugins, no configs restored (completely clean environment)
+- Verified correct installation paths and structure
+
+######## #1352
+TITLE: CS2 update 1.41.6.9 breaks CounterStrikeSharp - undefined symbol: g_bUpdateStringTokenDatabase
+BODY: ### Describe the bug
+After today's CS2 update (build 1.41.6.9), CounterStrikeSharp fails to load with an undefined symbol error. Metamod:Source loads fine on its own (tested with build 2.0.0.1403), but CSS fails.
+
+### Error message
+[META] Failed to load plugin addons/counterstrikesharp/bin/linuxsteamrt64/counterstrikesharp: 
+/path/to/game/csgo/addons/counterstrikesharp/bin/linuxsteamrt64/counterstrikesharp.so: 
+undefined symbol: g_bUpdateStringTokenDatabase
+
+### Versions
+- CS2 PatchVersion: 1.41
+
+######## #1324
+TITLE: Server segfaults after CSSharp "Hooks added" on CS2 1.41.6.5 — undefined symbol CUtlMemoryBlockAllocator::Purge
+BODY: Fresh Hetzner VPS, Ubuntu 24.04, after today's CS2 patch (1.41.6.5, build 23461178, released 2026-05-29 00:17 UTC).
+
+**Setup:**
+- CS2 dedicated, fresh SteamCMD install today
+- Tested Metamod builds: git1390, git1398, git1399, git1401 — all identical behavior
+- CSSharp `counterstrikesharp-with-runtime-linux-1.0.368.zip`
+- gameinfo.gi: `Game csgo/addons/metamod` right after `Game_LowViolence csgo_lv`
+
+**One extra detail that might help others:** Metamod was silently failing to load because the ser
+
