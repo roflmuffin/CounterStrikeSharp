@@ -75,6 +75,8 @@ set(SOURCE_FILES
     src/core/binding_resolver.cpp
     src/core/engine_features.h
     src/core/engine_features.cpp
+    src/core/core_bindings.h
+    src/core/core_bindings.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.cpp

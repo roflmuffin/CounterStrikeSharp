@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/binding_resolver.h"
 #include "core/globals.h"
 #include "core/memory_module.h"
 #include <tier0/keyvalues.h>
@@ -29,6 +30,8 @@ class CGameConfig
     void* GetAddress(const std::string& name, void* engine, void* server, char* error, int maxlen);
     modules::CModule** GetModule(const char* name);
     bool IsSymbol(const char* name);
+    // Gamedata as the Binding resolver reads it, for this OS.
+    const bindings::Gamedata& GetGamedata() const { return m_gamedata; }
     void* ResolveSignature(const char* name);
 
     static std::string GetDirectoryName(const std::string& directoryPathInput);
@@ -44,6 +47,7 @@ class CGameConfig
     std::unordered_map<std::string, void*> m_umAddresses;
     std::unordered_map<std::string, std::string> m_umLibraries;
     std::unordered_map<std::string, std::string> m_umPatches;
+    bindings::Gamedata m_gamedata;
 };
 
 } // namespace counterstrikesharp

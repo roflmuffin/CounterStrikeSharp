@@ -30,6 +30,9 @@ bool CGameConfig::Init(char* conf_error, int conf_error_size)
 
     try
     {
+        // Before the loop below: its operator[] inserts null entries into m_json.
+        m_gamedata = bindings::ParseGamedata(m_json, platform);
+
         for (auto& [k, v] : m_json.items())
         {
             if (v.contains("signatures"))
