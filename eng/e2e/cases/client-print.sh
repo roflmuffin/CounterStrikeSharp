@@ -26,6 +26,7 @@ status=0
 echo "== client-print: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
+    --expect-log 'Engine Features for build [^:]+: all 36 available' \
     --expect-no-log 'cssharp\.chat/client-print disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed ClientPrintTests.PrintToChatAll_Prints ClientPrintTests.PrintToChatAll_ThrowsTypedExceptionWhenDisabled \
@@ -36,9 +37,11 @@ echo "== client-print: ClientPrint ambiguous"
 "$run" "$@" --no-build \
     --gamedata-jq '.ClientPrint.signatures.linux = "55 48 89 E5"' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*ClientPrint \(ambiguous \([0-9]+ matches\)\)' \
+    --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
+    --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.chat/client-print disabled \(ClientPrint: ambiguous \([0-9]+ matches\)\)' \
     --expect-log '\[ClientPrintTests\] PrintToChatAll threw EngineFeatureUnavailableException: Engine Feature cssharp\.chat/client-print is disabled \(ClientPrint: ambiguous' \
-    --expect-log 'Memory function hook on UTIL_ClientPrintAll registered on disabled cssharp\.chat/client-print disabled \(ClientPrint: ambiguous' \
+    --expect-log 'Memory function hook on UTIL_ClientPrintAll registered on cssharp\.chat/client-print disabled \(ClientPrint: ambiguous' \
     --check "$(outcome failed ClientPrintTests.PrintToChatAll_Prints)" \
     --check "$(outcome passed ClientPrintTests.PrintToChatAll_ThrowsTypedExceptionWhenDisabled \
         ClientPrintTests.ClientPrintAllHook_FiresOnlyWhenAvailable ClientPrintTests.UnrelatedCoreFunction_StillWorks)" ||

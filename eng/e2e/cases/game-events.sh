@@ -30,7 +30,8 @@ status=0
 echo "== game-events: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-no-log 'Engine Feature cssharp\.(events|network)/[a-z-]+ disabled' \
+    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-no-log 'cssharp\.(events|network)/[a-z-]+ disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed GameEventTests.CreateEvent_ReturnsValidPointer GameEventTests.GameEvent_HighLevelApi_Works)" ||
     status=1
@@ -39,9 +40,10 @@ echo "== game-events: CGameEventManager_Init not found"
 "$run" "$@" --no-build \
     --gamedata-jq '.CGameEventManager_Init.signatures.linux = "DE AD BE EF 13 37 C0 DE 42 42"' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*CGameEventManager_Init \(not found\)' \
-    --expect-log 'Engine Feature cssharp\.events/game-events disabled \(CGameEventManager_Init: not found\), not registering game event hooks' \
+    --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
+    --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.events/game-events disabled \(CGameEventManager_Init: not found\)' \
-    --expect-log 'Game event handler registered on disabled cssharp\.events/game-events disabled \(CGameEventManager_Init: not found\); it will never fire' \
+    --expect-log 'Game event handler registered on cssharp\.events/game-events disabled \(CGameEventManager_Init: not found\); it will never fire' \
     --check "$(outcome failed GameEventTests.CanRegisterAndDeregisterEventHandlers GameEventTests.GameEvent_HighLevelApi_Works)" ||
     status=1
 
@@ -49,9 +51,10 @@ echo "== game-events: CGameEventManager RTTI vtable not found"
 "$run" "$@" --no-build \
     --server-patch 'game/csgo/bin/linuxsteamrt64/libserver.so:17CGameEventManager:17CGameEventManageX' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*CGameEventManager \(RTTI vtable not found\)' \
-    --expect-log 'Engine Feature cssharp\.events/game-events disabled \(CGameEventManager: RTTI vtable not found\), not registering game event hooks' \
+    --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
+    --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.events/game-events disabled \(CGameEventManager: RTTI vtable not found\)' \
-    --expect-log 'Game event handler registered on disabled cssharp\.events/game-events disabled \(CGameEventManager: RTTI vtable not found\); it will never fire' \
+    --expect-log 'Game event handler registered on cssharp\.events/game-events disabled \(CGameEventManager: RTTI vtable not found\); it will never fire' \
     --check "$(outcome failed GameEventTests.CanRegisterAndDeregisterEventHandlers GameEventTests.GameEvent_HighLevelApi_Works)" ||
     status=1
 

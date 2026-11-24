@@ -26,6 +26,7 @@ status=0
 echo "== entity-io: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
+    --expect-log 'Engine Features for build [^:]+: all 36 available' \
     --expect-no-log 'cssharp\.entity/(output-hooks|accept-input|add-io-event|emit-sound|dispatch-spawn) disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed EntityIOTests.AcceptInput_DoesNotThrow EntityIOTests.AddEntityIOEvent_WithLegacyOutputId_FiresOutput \
@@ -36,9 +37,10 @@ echo "== entity-io: CEntityIOOutput_FireOutputInternal not found"
 "$run" "$@" --no-build \
     --gamedata-jq '.CEntityIOOutput_FireOutputInternal.signatures.linux = "DE AD BE EF 13 37 C0 DE 42 42"' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*CEntityIOOutput_FireOutputInternal \(not found\)' \
-    --expect-log 'Engine Feature cssharp\.entity/output-hooks disabled \(CEntityIOOutput_FireOutputInternal: not found\), not registering entity output hooks' \
+    --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
+    --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.entity/output-hooks disabled \(CEntityIOOutput_FireOutputInternal: not found\)' \
-    --expect-log 'Entity output hook registered on disabled cssharp\.entity/output-hooks disabled \(CEntityIOOutput_FireOutputInternal: not found\); it will never fire' \
+    --expect-log 'Entity output hook registered on cssharp\.entity/output-hooks disabled \(CEntityIOOutput_FireOutputInternal: not found\); it will never fire' \
     --expect-no-log 'cssharp\.entity/(accept-input|add-io-event|emit-sound|dispatch-spawn) disabled' \
     --check "$(outcome passed EntityIOTests.AcceptInput_Kill_RemovesEntity EntityIOTests.HookEntityOutput_FiresOnlyWhenOutputHooksAreAvailable)" \
     --check "$(outcome failed EntityIOTests.AcceptInput_DoesNotThrow)" ||

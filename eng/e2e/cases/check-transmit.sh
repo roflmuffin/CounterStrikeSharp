@@ -14,7 +14,8 @@ echo "== check-transmit: ISource2GameEntities::CheckTransmit missing"
 "$run" "$@" \
     --gamedata-jq 'del(."ISource2GameEntities::CheckTransmit")' \
     --expect-log 'Bindings for build [^:]+: [0-9]+ of [0-9]+ failed: .*ISource2GameEntities::CheckTransmit \(missing from gamedata\)' \
-    --expect-log 'Engine Feature cssharp\.network/check-transmit disabled \(ISource2GameEntities::CheckTransmit: missing from gamedata\), not registering CheckTransmit hook' \
+    --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
+    --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.network/check-transmit disabled \(ISource2GameEntities::CheckTransmit: missing from gamedata\)' \
-    --expect-log 'CheckTransmit listener registered on disabled cssharp\.network/check-transmit disabled \(ISource2GameEntities::CheckTransmit: missing from gamedata\); it will never fire' \
+    --expect-log 'CheckTransmit listener registered on cssharp\.network/check-transmit disabled \(ISource2GameEntities::CheckTransmit: missing from gamedata\); it will never fire' \
     --expect-no-log 'Invalid virtual hook index'
