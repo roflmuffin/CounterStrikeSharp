@@ -177,5 +177,11 @@ A generator carries Slot Bindings forward to a new build by aligning the previou
 
 - Depends on spec A's base (tickets 03–05: doctest target, resolver and Resolution Report, report reaches plugins). Independent of spec A's add-ons.
 - Evidence: the spec B grilling numbers (vtable-shift history per interface, fingerprint false and true rates, identical-body counts, RTTI class map) and scripts in `.scratch/incremental-hardening/research/specB/`; the full archive at `~/dev/other/cssharp-hardening-research/scratchpad/`.
-- Suggested vertical shape for `/to-tickets`: a tracer that takes GameFrame alone through Slot Binding, Vtable Check, Heal, hook-by-index and the startup report, proven on the 1.41.9.7 → 1.42.0.1 pair and end-to-end; then the generator with bootstrap; then batches (remaining ISource2Server and IServerGameClients hooks; IVEngineServer2 and ICvar hooks and calls; never-moved interfaces' verification; game-class virtual offsets), each adding its real-build and end-to-end cases.
+- Sliced vertically into 11 tickets under `.scratch/hardening-b-boot-verify/issues/` (blockers first, each with a `Tier:` line):
+  - Tier 0 standalone: 01 exact-name RTTI lookup.
+  - Tier 1 base: 02 GameFrame verified at boot (tracer; fingerprint core, generator bootstrap mode, resolver interface) → 03 GameFrame heals a slot insert, and 04 generator carry-forward (03 and 04 in parallel).
+  - Tier 2 add-ons (each needs 03 + 04): 05 ISource2Server rest, 06 IServerGameClients, 07 IVEngineServer2, 08 ICvar, 09 game-class virtuals (also needs spec A 12), 10 never-moved interfaces.
+  - Tier 3 cleanup: 11 contract.
+  - **Must set:** 01–05, 07, 08, 09. **Later:** 06, 10, 11.
+  - External blockers: spec A 03 and 04 (for 02), spec A 05 (for 03), spec A 12 (for 09).
 - The PoC resolver (`~/dev/cs2-0downtime-mod-stack-poc`) plans interface slot bindings too (its ticket 03); if it matures, it plugs in as a second resolver adapter and as an alternative generator.

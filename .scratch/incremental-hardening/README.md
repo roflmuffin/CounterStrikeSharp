@@ -63,6 +63,12 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
 - Later: 08, 11, 13, 10, 14 (add-ons) → 15 (cleanup).
 - Spec B can start once the base (03–05) is done.
 
+## Spec B tiers
+
+- Must: 01 (standalone) → 02, 03, 04 (base) → 05, 07, 08, 09 (add-ons).
+- Later: 06, 10 (add-ons) → 11 (cleanup).
+- Needs spec A base (03–05); 09 also needs spec A 12.
+
 ## Backlog (not ticketed)
 
 - Managed VTable constructor passes symbol name and binary path in swapped order (found during the code survey; unrelated to hardening).
