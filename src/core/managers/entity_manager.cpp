@@ -15,6 +15,7 @@
  */
 
 #include "core/managers/entity_manager.h"
+#include "core/core_bindings.h"
 #include "core/function.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
@@ -102,17 +103,15 @@ void EntityManager::OnAllInitialized()
         return;
     }
 
-    CBaseEntity_TakeDamageOld = (decltype(CBaseEntity_TakeDamageOld))((
-        modules::server->FindSignature(globals::gameConfig->GetSignature("CBaseEntity_TakeDamageOld"))));
-    if (!CBaseEntity_TakeDamageOld)
+    // Take-damage listeners stay registrable when disabled; they just never fire (the detour is added in AllPluginsLoaded).
+    if (bindings::ShouldRegisterHooks(bindings::features::EntityTakeDamageHooks, "take damage hooks"))
     {
-        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_TakeDamageOld\'");
-        return;
+        CBaseEntity_TakeDamageOld =
+            reinterpret_cast<decltype(CBaseEntity_TakeDamageOld)>(bindings::GetBindingAddress("CBaseEntity_TakeDamageOld"));
+        Func_OnTakeDamage =
+            new ValveFunction((void*)CBaseEntity_TakeDamageOld, CALL_CONV,
+                              std::vector<DataType_t>{ DATA_TYPE_POINTER, DATA_TYPE_POINTER, DATA_TYPE_POINTER }, DATA_TYPE_LONG_LONG);
     }
-
-    Func_OnTakeDamage =
-        new ValveFunction((void*)CBaseEntity_TakeDamageOld, CALL_CONV,
-                          std::vector<DataType_t>{ DATA_TYPE_POINTER, DATA_TYPE_POINTER, DATA_TYPE_POINTER }, DATA_TYPE_LONG_LONG);
 
     m_hooks.AddFunction(reinterpret_cast<void*>(m_pFireOutputInternal), &DetourFireOutputInternal);
 

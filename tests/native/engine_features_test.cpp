@@ -92,6 +92,30 @@ TEST_CASE("The native Engine Feature catalog declares say-hooks on Host_Say")
     CHECK(FindNativeEngineFeature("cssharp.nope/nope") == nullptr);
 }
 
+TEST_CASE("Breaking either take-damage Binding disables take-damage-hooks")
+{
+    const auto* takeDamage = FindNativeEngineFeature(features::EntityTakeDamageHooks);
+    REQUIRE(takeDamage != nullptr);
+    CHECK(takeDamage->name == "cssharp.entity/take-damage-hooks");
+
+    const ResolutionReport bothResolved("b", { Resolved("CBaseEntity_TakeDamageOld"), Resolved("CBaseEntity_IsPlayerPawn") });
+    CHECK(EvaluateEngineFeature(bothResolved, *takeDamage).available);
+
+    const ResolutionReport signatureBroken(
+        "b", { Failed("CBaseEntity_TakeDamageOld", FailureReason::NotFound), Resolved("CBaseEntity_IsPlayerPawn") });
+    auto status = EvaluateEngineFeature(signatureBroken, *takeDamage);
+    CHECK_FALSE(status.available);
+    REQUIRE(status.failedBinding != nullptr);
+    CHECK(status.failedBinding->key == "CBaseEntity_TakeDamageOld");
+
+    const ResolutionReport offsetBroken(
+        "b", { Resolved("CBaseEntity_TakeDamageOld"), Failed("CBaseEntity_IsPlayerPawn", FailureReason::MissingForThisOs) });
+    status = EvaluateEngineFeature(offsetBroken, *takeDamage);
+    CHECK_FALSE(status.available);
+    REQUIRE(status.failedBinding != nullptr);
+    CHECK(status.failedBinding->key == "CBaseEntity_IsPlayerPawn");
+}
+
 TEST_CASE("The catalog is consistent: unique feature names, namespaced, and core Bindings declared once each")
 {
     std::set<std::string> names;

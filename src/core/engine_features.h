@@ -16,6 +16,8 @@ namespace counterstrikesharp::bindings {
 
 namespace features {
 inline constexpr std::string_view ChatSayHooks = "cssharp.chat/say-hooks";
+// ticket 11
+inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.
