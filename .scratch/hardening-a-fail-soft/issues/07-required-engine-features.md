@@ -16,4 +16,5 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API). ADR-0002.
 
 ## Comments
 
-- Resolved on `hardening/spec-a` (merge of `spec-a/07-required-engine-features`). `[RequiredEngineFeatures(...)]` (string or enum), pure `RequiredEngineFeatureCheck.GetRefusal`, wired after the min-API check in `PluginContext.Load`. Managed 82/82. E2E `eng/e2e/cases/required-engine-features.sh` (fixture plugin `managed/CounterStrikeSharp.Tests.RequiredEngineFeatures`): valid loads; Host_Say not found refuses it while NativeTestsPlugin loads.
+- Resolved on `hardening/spec-a` (merge of `spec-a/07-required-engine-features`). `[RequiredEngineFeatures(...)]` (string or enum), pure `RequiredEngineFeatureCheck.GetRefusal`, wired after the min-API check in `PluginContext.Load`. Managed 82/82. E2E `eng/e2e/cases/required-engine-features.sh` (fixture plugin `managed/CounterStrikeSharp.Tests.RequiresSayHooks`): valid loads; Host_Say not found refuses it while NativeTestsPlugin loads.
+- Fixture folder renamed to `managed/CounterStrikeSharp.Tests.RequiresSayHooks` during code review fixes.
