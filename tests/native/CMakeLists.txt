@@ -24,11 +24,18 @@ set(CSSHARP_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../..)
 # Production sources under test. Only add files that compile without the SDK.
 set(CSSHARP_TESTED_SOURCES
     ${CSSHARP_ROOT}/src/core/tick_scheduler.cpp
+    ${CSSHARP_ROOT}/src/core/signature.cpp
+    ${CSSHARP_ROOT}/src/core/binding_resolver.cpp
+    ${CSSHARP_ROOT}/src/core/engine_features.cpp
 )
 
 set(CSSHARP_TEST_SOURCES
     main.cpp
     tick_scheduler_test.cpp
+    signature_test.cpp
+    binding_resolver_test.cpp
+    engine_features_test.cpp
+    real_binary_test.cpp
 )
 
 add_executable(native_tests ${CSSHARP_TEST_SOURCES} ${CSSHARP_TESTED_SOURCES})
@@ -36,6 +43,11 @@ add_executable(native_tests ${CSSHARP_TEST_SOURCES} ${CSSHARP_TESTED_SOURCES})
 target_include_directories(native_tests PRIVATE
     ${CSSHARP_ROOT}/src
     ${CSSHARP_ROOT}/libraries/doctest
+    ${CSSHARP_ROOT}/libraries # vendored single headers only (nlohmann/json.hpp); no submodules
+)
+
+target_compile_definitions(native_tests PRIVATE
+    CSSHARP_GAMEDATA_PATH="${CSSHARP_ROOT}/configs/addons/counterstrikesharp/gamedata/gamedata.json"
 )
 
 add_test(NAME native_tests COMMAND native_tests)

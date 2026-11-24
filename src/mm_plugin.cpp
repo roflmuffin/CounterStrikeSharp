@@ -19,6 +19,7 @@
 #include "convar.h"
 #include "core/detours.h"
 #include "core/coreconfig.h"
+#include "core/core_bindings.h"
 #include "core/game_system.h"
 #include "core/gameconfig.h"
 #include "core/gameconfig_updater.h"
@@ -163,6 +164,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         }
 
         globals::Initialize();
+        bindings::ResolveCoreBindings();
 
         CSSHARP_CORE_INFO("Globals loaded.");
         globals::mmPlugin = &gPlugin;

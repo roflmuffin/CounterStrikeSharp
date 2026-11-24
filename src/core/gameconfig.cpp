@@ -2,6 +2,7 @@
 
 #include <fstream>
 
+#include "core/signature.h"
 #include "log.h"
 
 namespace counterstrikesharp {
@@ -29,6 +30,9 @@ bool CGameConfig::Init(char* conf_error, int conf_error_size)
 
     try
     {
+        // Before the loop below: its operator[] inserts null entries into m_json.
+        m_gamedata = bindings::ParseGamedata(m_json, platform);
+
         for (auto& [k, v] : m_json.items())
         {
             if (v.contains("signatures"))
@@ -211,66 +215,5 @@ std::string CGameConfig::GetDirectoryName(const std::string& directoryPathInput)
     return "";
 }
 
-std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
-{
-    if (src.empty())
-    {
-        return {};
-    }
-
-    auto hex_char_to_byte = [](char c) -> int16_t {
-        if (c >= '0' && c <= '9') return c - '0';
-        if (c >= 'A' && c <= 'F') return c - 'A' + 10;
-        if (c >= 'a' && c <= 'f') return c - 'a' + 10;
-
-        return -1;
-    };
-
-    std::vector<int16_t> result{};
-
-    const bool is_code_style = src[0] == '\\';
-
-    const std::string_view pattern = is_code_style ? R"(\x)" : " ";
-    const std::string_view wildcard = is_code_style ? "2A" : "?";
-
-    std::string::size_type pos = 0;
-
-    while (pos < src.size())
-    {
-        std::string::size_type found = src.find(pattern, pos);
-        if (found == std::string::npos)
-        {
-            found = src.size();
-        }
-        std::string_view str = src.substr(pos, found - pos);
-        pos = found + pattern.size();
-
-        if (str.empty()) continue;
-
-        std::string byte(str.data(), str.size());
-
-        if (byte.substr(0, wildcard.size()) == wildcard)
-        {
-            result.emplace_back(-1);
-            continue;
-        }
-
-        if (byte.size() != 2)
-        {
-            return {};
-        }
-
-        const auto high = hex_char_to_byte(byte[0]);
-        const auto low = hex_char_to_byte(byte[1]);
-
-        if (high < 0 || low < 0)
-        {
-            return {};
-        }
-
-        result.emplace_back((high << 4) | low);
-    }
-
-    return result;
-}
+std::vector<int16_t> CGameConfig::HexToByte(std::string_view src) { return ParseSignature(src); }
 } // namespace counterstrikesharp
