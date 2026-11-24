@@ -41,6 +41,43 @@ int16 GetSchemaOffset(ScriptContext& script_context)
     return m_key.offset;
 }
 
+// Offset of the field, or a negative status for a miss (see LOOKUP_SCHEMA_FIELD in natives_schema.yaml).
+constexpr int kSchemaClassMissing = -1;
+constexpr int kSchemaFieldMissing = -2;
+
+int LookupSchemaField(ScriptContext& script_context)
+{
+    auto className = script_context.GetArgument<const char*>(0);
+    auto memberName = script_context.GetArgument<const char*>(1);
+
+    const auto lookup = schema::LookupField(className, hash_32_fnv1a_const(className), memberName, hash_32_fnv1a_const(memberName));
+    switch (lookup.status)
+    {
+        case schema::LookupStatus::Found:
+            return lookup.key.offset;
+        case schema::LookupStatus::ClassMissing:
+            return kSchemaClassMissing;
+        case schema::LookupStatus::FieldMissing:
+            break;
+    }
+    return kSchemaFieldMissing;
+}
+
+// Looks up a field for a by-name read or write; throws to managed instead of returning offset 0 for a miss.
+static bool LookupSchemaFieldOrThrow(ScriptContext& script_context, const char* className, const char* memberName, SchemaKey& key)
+{
+    const auto lookup = schema::LookupField(className, hash_32_fnv1a_const(className), memberName, hash_32_fnv1a_const(memberName));
+    if (lookup.status == schema::LookupStatus::Found)
+    {
+        key = lookup.key;
+        return true;
+    }
+
+    script_context.ThrowNativeError("Schema field %s::%s not found (%s)", className, memberName,
+                                    lookup.status == schema::LookupStatus::ClassMissing ? "class missing" : "field missing");
+    return false;
+}
+
 bool IsSchemaFieldNetworked(ScriptContext& script_context)
 {
     auto className = script_context.GetArgument<const char*>(0);
@@ -58,6 +95,7 @@ int GetSchemaClassSize(ScriptContext& script_context)
     auto className = script_context.GetArgument<const char*>(0);
 
     CSchemaSystemTypeScope* pType = globals::schemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
+    if (!pType) return -1;
 
     SchemaClassInfoData_t* pClassInfo = pType->FindDeclaredClass(className).Get();
     if (!pClassInfo) return -1;
@@ -71,10 +109,9 @@ void GetSchemaValueByName(ScriptContext& script_context)
     auto returnType = script_context.GetArgument<DataType_t>(1);
     auto className = script_context.GetArgument<const char*>(2);
     auto memberName = script_context.GetArgument<const char*>(3);
-    auto classKey = hash_32_fnv1a_const(className);
-    auto memberKey = hash_32_fnv1a_const(memberName);
 
-    const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
+    SchemaKey m_key;
+    if (!LookupSchemaFieldOrThrow(script_context, className, memberName, m_key)) return;
 
     switch (returnType)
     {
@@ -143,10 +180,8 @@ void SetSchemaValueByName(ScriptContext& script_context)
         return;
     }
 
-    auto classKey = hash_32_fnv1a_const(className);
-    auto memberKey = hash_32_fnv1a_const(memberName);
-
-    const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
+    SchemaKey m_key;
+    if (!LookupSchemaFieldOrThrow(script_context, className, memberName, m_key)) return;
 
     switch (dataType)
     {
@@ -236,6 +271,7 @@ void SchemaNetworkStateChanged(ScriptContext& script_context)
 
 REGISTER_NATIVES(schema, {
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_OFFSET", GetSchemaOffset);
+    ScriptEngine::RegisterNativeHandler("LOOKUP_SCHEMA_FIELD", LookupSchemaField);
     ScriptEngine::RegisterNativeHandler("IS_SCHEMA_FIELD_NETWORKED", IsSchemaFieldNetworked);
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_VALUE_BY_NAME", GetSchemaValueByName);
     ScriptEngine::RegisterNativeHandler("SET_SCHEMA_VALUE_BY_NAME", SetSchemaValueByName);

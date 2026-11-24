@@ -12,6 +12,11 @@ BindingDeclaration Signature(std::string key) { return { std::move(key), Binding
 {
     return { std::move(className), BindingKind::RttiVtable, std::move(library) };
 }
+// A schema field native core code reads directly; key "Class::field", looked up in the server schema scope.
+[[maybe_unused]] BindingDeclaration SchemaField(const std::string& className, const std::string& fieldName)
+{
+    return { className + "::" + fieldName, BindingKind::SchemaField, "server" };
+}
 
 // The declaration table. One row per Engine Feature: its stable name and the Bindings (Gamedata keys) it needs.
 // Additive only. A Binding may appear in several rows; it is resolved once.
