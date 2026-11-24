@@ -80,7 +80,9 @@ void ResolveCoreBindings()
     AddModule(images, "tier0", modules::tier0);
     if (const auto server = images.find("server"); server != images.end()) server->second.findSchemaField = FindServerSchemaField;
 
-    coreReport = ResolveBindings(ReadBuildId(), globals::gameConfig->GetGamedata(), images, CoreBindingDeclarations());
+    // Every core Gamedata key, including those only managed code consumes (managed declares their Engine Features).
+    const auto& gamedata = globals::gameConfig->GetGamedata();
+    coreReport = ResolveBindings(ReadBuildId(), gamedata, images, CoreBindingDeclarations(gamedata));
 
     const auto summary = FormatBindingSummary(coreReport);
     const bool anyFailed = std::any_of(coreReport.Bindings().begin(), coreReport.Bindings().end(), [](const BindingResult& binding) {

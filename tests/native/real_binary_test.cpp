@@ -62,7 +62,7 @@ TEST_CASE("real server binary: core catalog and Gamedata signatures (optional fi
     const auto all = ResolveBindings("local", gamedata, modules, everySignature);
     std::cout << "all Gamedata signatures: " << FormatBindingSummary(all) << "\n";
 
-    const auto core = ResolveBindings("local", gamedata, modules, CoreBindingDeclarations());
+    const auto core = ResolveBindings("local", gamedata, modules, CoreBindingDeclarations(gamedata));
     std::cout << "core catalog: " << FormatBindingSummary(core) << "\n";
     for (const auto& feature : NativeEngineFeatures())
         CHECK_MESSAGE(EvaluateEngineFeature(core, feature).available, feature.name);

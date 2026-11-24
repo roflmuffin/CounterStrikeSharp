@@ -181,6 +181,16 @@ std::string DescribeFailure(const BindingResult& binding);
 // "Bindings for build 1.42.0.1/2000950: all 12 resolved"
 std::string FormatBindingSummary(const ResolutionReport& report);
 
+// --- Native -> managed boundary ---
+
+// The report as one JSON document for managed (the GET_RESOLUTION_REPORT native):
+// { "buildId": "...",
+//   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable", "resolved", "reason": <FailureReason name>,
+//                   "matchCount", "address", "offset", "library" } ],
+//   "features": [ { "name", "bindings": [ "<key>", ... ] } ] }   <- the native-owned Engine Features
+// Enum values travel by name (the C++ enumerator names), so managed never depends on their numeric values.
+std::string ResolutionReportToJson(const ResolutionReport& report, std::span<const EngineFeatureDeclaration> nativeFeatures);
+
 // Build id from the game's steam.inf ("PatchVersion/ServerVersion"), or "unknown".
 std::string ParseBuildId(std::string_view steamInf);
 

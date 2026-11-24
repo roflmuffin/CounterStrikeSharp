@@ -117,6 +117,7 @@ set(SOURCE_FILES
     src/core/customhudlayout.cpp
     src/core/customhudlayout.h
     src/scripting/natives/natives_customhud.cpp
+    src/scripting/natives/natives_bindings.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})

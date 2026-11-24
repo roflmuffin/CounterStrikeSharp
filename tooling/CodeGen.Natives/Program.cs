@@ -20,10 +20,14 @@ namespace CodeGen.Natives
 {
     class Program
     {
+        // No arguments: run every generator. Otherwise only the named ones: natives, engine-features, game-events.
         static void Main(string[] args)
         {
-            Generators.GenerateNatives();
-            Generators.GenerateGameEvents().GetAwaiter().GetResult();
+            bool Run(string generator) => args.Length == 0 || args.Contains(generator);
+
+            if (Run("natives")) Generators.GenerateNatives();
+            if (Run("engine-features")) Generators.GenerateEngineFeatures();
+            if (Run("game-events")) Generators.GenerateGameEvents().GetAwaiter().GetResult();
         }
     }
 }
