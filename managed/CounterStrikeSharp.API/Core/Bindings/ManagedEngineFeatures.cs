@@ -96,7 +96,7 @@ internal static class ManagedEngineFeatures
         [BindingDeclaration.Signature("CBaseEntity_DispatchSpawn")]);
 
     public static readonly EngineFeatureDeclaration EntityTakeDamageHooks = new("cssharp.entity/take-damage-hooks",
-        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld")]);
+        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld"), BindingDeclaration.Offset("CBaseEntity_IsPlayerPawn")]);
 
     // ticket 15: native-owned; CCheckTransmitInfoList reads the player slot of each transmit info.
     public static readonly EngineFeatureDeclaration NetworkCheckTransmit = new("cssharp.network/check-transmit",

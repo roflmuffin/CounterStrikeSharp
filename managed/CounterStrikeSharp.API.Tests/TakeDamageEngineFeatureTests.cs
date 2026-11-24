@@ -143,20 +143,25 @@ public class TakeDamageEngineFeatureTests : IDisposable
     }
 
     [Fact]
-    public void IsPlayerPawnKeepsWorkingWhenOnlyTheTakeDamageSignatureBroke()
+    public void CallingIsPlayerPawnWhileTakeDamageHooksIsDisabledThrowsTheTypedException()
     {
-        Assert.Equal(160, CBaseEntity.IsPlayerPawnOffset(TakeDamageOldNotFound()));
+        EngineFeatures.Current = TakeDamageOldNotFound();
+
+        var exception = Assert.Throws<EngineFeatureUnavailableException>(() => new CBaseEntity(IntPtr.Zero).IsPlayerPawn());
+        Assert.Equal(TakeDamageHooks, exception.EngineFeature);
+        Assert.Equal("CBaseEntity_TakeDamageOld", exception.Binding);
+        Assert.Equal(BindingFailureReason.NotFound, exception.Reason);
     }
 
     [Fact]
-    public void IsPlayerPawnThrowsTheTypedExceptionWhenItsOffsetIsMissing()
+    public void CallingIsPlayerPawnWithoutItsOffsetThrowsTheTypedException()
     {
-        var features = Features(
+        EngineFeatures.Current = Features(
             Resolved("CBaseEntity_TakeDamageOld", BindingKind.Signature),
             Failed("CBaseEntity_IsPlayerPawn", BindingKind.Offset, BindingFailureReason.MissingForThisOs),
             Resolved("CTakeDamageInfo_HitGroup", BindingKind.Offset, HitGroupOffset));
 
-        var exception = Assert.Throws<EngineFeatureUnavailableException>(() => CBaseEntity.IsPlayerPawnOffset(features));
+        var exception = Assert.Throws<EngineFeatureUnavailableException>(() => new CBaseEntity(IntPtr.Zero).IsPlayerPawn());
         Assert.Equal(TakeDamageHooks, exception.EngineFeature);
         Assert.Equal("CBaseEntity_IsPlayerPawn", exception.Binding);
         Assert.Equal(BindingFailureReason.MissingForThisOs, exception.Reason);
