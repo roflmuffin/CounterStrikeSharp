@@ -16,6 +16,12 @@ namespace counterstrikesharp::bindings {
 
 namespace features {
 inline constexpr std::string_view ChatSayHooks = "cssharp.chat/say-hooks";
+// ticket 08
+inline constexpr std::string_view EntityOutputHooks = "cssharp.entity/output-hooks";
+inline constexpr std::string_view EntityAcceptInput = "cssharp.entity/accept-input";
+inline constexpr std::string_view EntityAddIoEvent = "cssharp.entity/add-io-event";
+inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
+inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 // ticket 11
 inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
 } // namespace features

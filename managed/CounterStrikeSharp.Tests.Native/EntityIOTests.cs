@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Entities;
 using Moq;
 using Xunit;
 
@@ -108,6 +109,50 @@ public class EntityIOTests
             }
 
             FunctionReference.Remove(callback.Identifier);
+            entity.Remove();
+        }
+    }
+
+    // Accept-input does not depend on entity output hooks: it still works when they are disabled (ADR-0002).
+    [Fact]
+    public async Task AcceptInput_Kill_RemovesEntity()
+    {
+        var entity = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
+
+        Assert.NotNull(entity);
+
+        entity.AcceptInput("Kill");
+        await WaitOneFrame();
+
+        Assert.False(entity.IsValid);
+    }
+
+    // A plugin's entity output hook registers either way; it fires only when entity output hooks are available.
+    [Fact]
+    public async Task HookEntityOutput_FiresOnlyWhenOutputHooksAreAvailable()
+    {
+        var entity = Utilities.CreateEntityByName<CBaseModelEntity>("prop_dynamic");
+
+        Assert.NotNull(entity);
+
+        var fired = 0;
+        EntityIO.EntityOutputHandler handler = (_, _, _, _, _, _) =>
+        {
+            fired++;
+            return HookResult.Continue;
+        };
+
+        NativeTestsPlugin.Instance.HookEntityOutput("prop_dynamic", "OnUser3", handler);
+        try
+        {
+            entity.AcceptInput("FireUser3");
+            await WaitOneFrame();
+
+            Assert.Equal(EngineFeatures.IsAvailable(EngineFeature.EntityOutputHooks) ? 1 : 0, fired);
+        }
+        finally
+        {
+            NativeTestsPlugin.Instance.UnhookEntityOutput("prop_dynamic", "OnUser3", handler);
             entity.Remove();
         }
     }
