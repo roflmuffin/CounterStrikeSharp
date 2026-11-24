@@ -200,13 +200,5 @@ CounterStrikeSharp resolves every core Binding once at boot into a single immuta
 ## Further Notes
 
 - Evidence for the problem statement and the expected payoff: `.scratch/incremental-hardening/research/report.html` and `handoff.md`.
-- Slice vertically (tracer bullets), not by layer. Agreed shape:
-  - **Prefactor** (no blockers, parallel): P1–P5 the bug fixes above; P6 the C++ doctest target with one sanity test.
-  - **1a tracer, native:** `cssharp.chat/say-hooks` end to end on the native side: Binding resolver (strict uniqueness) for this key → Resolution Report → native skips the hook when disabled → early native log line. Builds the end-to-end harness (boot with this key broken, server stays up). Blocked by P6.
-  - **1b tracer, boundary:** report crosses to managed → availability query → minimal startup report. Blocked by 1a.
-  - **2 tracer, managed-consumed:** `cssharp.chat/client-print` via a lazy per-member core helper; calling it disabled throws the typed exception; other members unaffected. Blocked by 1b.
-  - **3 Required Engine Features:** plugin attribute → refusal at load, end to end. Blocked by 1b.
-  - **Migrate (expand–contract, each batch vertical, each adds its broken-key case to the end-to-end harness):** 4 entity IO + sound + dispatch-spawn; 5 events + network (today's load-fatal cases); 6 game-system events (today's segfault; also blocked by the +3 prefactor); 7 take-damage + hit group (all blocked by 1b); 8 managed player + game-rules; 9 managed items, entity, nav, skeleton (blocked by 2); 10 contract: no direct core Gamedata resolution remains, scattered logs removed, startup report is the only report (blocked by 4–9).
-  - **Independent:** 11 schema-field errors (blocked by P6); 12 plugin raw-signature warn/strict (blocked by 1a).
-  - Execution: prefactors (and the separate build archiver) → 1a → 1b → {2, 3, 4–7, 11, 12} → {8, 9} → 10. Drive 1a, 1b, 2, 3 with `/implement` per ticket (they set the patterns); the batch migrations suit `/implement-spec`.
+- Sliced vertically into 15 tickets under `.scratch/hardening-a-fail-soft/issues/` (blockers first; each file lists its blockers). Shape: prefactors 01–03 → tracer 04 (native, builds the end-to-end harness) → tracer 05 (report reaches plugins) → 06 ClientPrint tracer, 07 Required Engine Features, migration batches 08–12, independent 13 (schema) and 14 (plugin signatures) → 15 contract. Drive 04–07 with `/implement` per ticket (they set the patterns); 08–15 suit `/implement-spec`. The build archiver is separate: `.scratch/build-archiver/issues/`.
 - Unused Gamedata keys found during the survey (two offsets and one signature with no consumer) are left alone; the registry simply does not declare them.

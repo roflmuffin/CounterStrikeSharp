@@ -39,6 +39,10 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
 - Plugins may declare Required Engine Features; missing → that plugin refuses to load. ADR-0002.
 - Spec C: Gamedata stored per build id (accumulate, never overwrite in place); design there.
 
+## Backlog (not ticketed)
+
+- Managed VTable constructor passes symbol name and binary path in swapped order (found during the code survey; unrelated to hardening).
+
 ## Plan of record
 
 1. `/grill-with-docs`: decisions that span all items (T1 vs T1+T2, capability API, I1 migration, CI host, order). Writes `GLOSSARY.md` + `docs/adr/`.
