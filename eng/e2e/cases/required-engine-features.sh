@@ -11,7 +11,7 @@
 set -uo pipefail
 
 run=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/run.sh
-plugin=managed/CounterStrikeSharp.Tests.RequiredEngineFeatures/RequiresSayHooksTestPlugin.csproj
+plugin=managed/CounterStrikeSharp.Tests.RequiresSayHooks/RequiresSayHooksTestPlugin.csproj
 
 status=0
 
