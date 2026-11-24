@@ -6,7 +6,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Engine Feature catalog). Migrati
 
 **Blocked by:** 01, 06
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · must
 
@@ -15,3 +15,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Engine Feature catalog). Migrati
 - [ ] Offsets missing for the current OS disable their Engine Feature instead of calling slot 0
 - [ ] Managed unit tests cover at least one signature-backed and one offset-backed helper in each group
 - [ ] End-to-end harness gains a case breaking `CBasePlayerPawn_CommitSuicide`: server up, respawn and teleport still work
+
+## Comments
+
+- Resolved on `hardening/spec-a` (merge of `spec-a/12-managed-helpers-fail-soft`). 22 managed rows (+ managed rows reusing native names dispatch-spawn / take-damage-hooks); every `VirtualFunctions` member uses `CoreFunction.FromEngineFeature`; `FromGamedata` stopgap deleted; offset users read the report. Managed 149/149. E2E `eng/e2e/cases/commit-suicide.sh`: valid (all 32 available) + CommitSuicide linux offset deleted (only commit-suicide disabled, respawn + teleport work). Behaviour change: `GetAllNavAreas` throws the typed exception when nav-mesh is disabled (was empty list).
