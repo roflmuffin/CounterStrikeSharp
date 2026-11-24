@@ -47,11 +47,15 @@ CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInf
 
 void EntityManager::OnAllInitialized()
 {
-    m_hooks.AddGlobalIndex<ISource2GameEntities, void, CCheckTransmitInfoHack**, uint32_t, CBitVec<16384>&, CBitVec<16384>&,
-                           const Entity2Networkable_t**, const uint16*, uint32_t>(
-        globals::gameConfig->GetOffset("ISource2GameEntities::CheckTransmit"), *(void***)globals::gameEntities, this, nullptr,
-        &EntityManager::CheckTransmit);
+    // Created even when the CheckTransmit hook is disabled, so listeners still register (and never fire).
     check_transmit = globals::callbackManager.CreateCallback("CheckTransmit");
+    if (bindings::ShouldRegisterHooks(bindings::features::CheckTransmit, "CheckTransmit hook"))
+    {
+        m_hooks.AddGlobalIndex<ISource2GameEntities, void, CCheckTransmitInfoHack**, uint32_t, CBitVec<16384>&, CBitVec<16384>&,
+                               const Entity2Networkable_t**, const uint16*, uint32_t>(
+            static_cast<int>(*bindings::GetBindingOffset("ISource2GameEntities::CheckTransmit")), *(void***)globals::gameEntities, this,
+            nullptr, &EntityManager::CheckTransmit);
+    }
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");
     on_entity_deleted_callback = globals::callbackManager.CreateCallback("OnEntityDeleted");

@@ -19,6 +19,14 @@
 #                             '.Host_Say.signatures.linux = "55 48 89 E5"'  replace signature
 #                             '.CCSPlayerController_ChangeTeam.offsets.linux = 999'
 #   --core-jq FILTER        Apply a jq filter to the installed core.json. Repeatable.
+#   --server-patch PATH:OLD:NEW
+#                           Replace the byte string OLD (must occur exactly once) by NEW (same length)
+#                           in server file PATH (relative to the server root) for this run only, e.g.
+#                           to make an RTTI vtable unresolvable, which Gamedata cannot express:
+#                             'game/csgo/bin/linuxsteamrt64/libserver.so:17CGameEventManager:17CGameEventManageX'
+#                           Applied under the server lock as new inodes and restored from the pristine
+#                           server before the lock is released (also on failure; a run killed with
+#                           SIGKILL leaves it to the next run's start).
 #   --plugin DIR            Install a built plugin directory as plugins/<basename DIR>. Repeatable.
 #   --plugin-project PROJ   Build PROJ (.csproj, path relative to the repo root or absolute)
 #                           and install its output as plugins/<project name>. Repeatable.
@@ -90,7 +98,7 @@ STEAMCLIENT=${CSS_E2E_STEAMCLIENT:-$HOME/.cache/cs2-poc-steamcmd/linux64/steamcl
 do_build=1 build_only=0 do_smoke=1 require_pass=0
 map=de_dust2 boot_timeout=180 smoke_timeout=900 settle=10 out=""
 gamedata_file=""
-gamedata_jq=() core_jq=() plugins=() plugin_projects=() execs=() server_args=()
+gamedata_jq=() core_jq=() server_patches=() plugins=() plugin_projects=() execs=() server_args=()
 # Boot is done when every one of these extended regexes matches a console line.
 ready=('Finished loading plugin Native Tests' 'Host activate: Loading \(')
 expect=() expect_not=() checks=()
@@ -105,6 +113,7 @@ while [ $# -gt 0 ]; do
         --gamedata) gamedata_file=$(realpath "$2"); shift ;;
         --gamedata-jq) gamedata_jq+=("$2"); shift ;;
         --core-jq) core_jq+=("$2"); shift ;;
+        --server-patch) server_patches+=("$2"); shift ;;
         --plugin) plugins+=("$(realpath "$2")"); shift ;;
         --plugin-project) plugin_projects+=("$2"); shift ;;
         --map) map=$2; shift ;;
@@ -302,6 +311,39 @@ replace_file() {
     mv -f "$target.e2e-tmp" "$target"
 }
 
+# Server files patched by --server-patch go back to pristine before the lock is released (EXIT trap and end of
+# run), and at the start of a run in case an earlier one was killed outright.
+patched_list=$SERVER/.e2e-patched
+restore_patched() {
+    if [ -s "$patched_list" ]; then
+        while IFS= read -r rel; do
+            log "restoring pristine $rel"
+            replace_file "$SERVER/$rel" "$SERVER_SRC/$rel"
+            cmp -s "$SERVER/$rel" "$SERVER_SRC/$rel" || log "WARNING: $rel still differs from $SERVER_SRC"
+        done <"$patched_list"
+    fi
+    rm -f "$patched_list"
+}
+restore_patched
+trap restore_patched EXIT
+for spec in "${server_patches[@]}"; do
+    IFS=: read -r rel old new <<<"$spec"
+    [ -f "$SERVER_SRC/$rel" ] && [ -n "$old" ] && [ "${#old}" = "${#new}" ] ||
+        die "--server-patch needs PATH:OLD:NEW with an existing PATH and OLD, NEW of equal length: $spec"
+    echo "$rel" >>"$patched_list"
+    python3 -I -c '
+import sys
+src, dst, old, new = sys.argv[1], sys.argv[2], sys.argv[3].encode(), sys.argv[4].encode()
+data = open(src, "rb").read()
+count = data.count(old)
+if count != 1: sys.exit(f"{old!r} occurs {count} times in {src}, expected once")
+open(dst, "wb").write(data.replace(old, new))
+' "$SERVER_SRC/$rel" "$SERVER/$rel.e2e-tmp" "$old" "$new" || die "--server-patch failed: $spec"
+    chmod --reference="$SERVER_SRC/$rel" "$SERVER/$rel.e2e-tmp"
+    mv -f "$SERVER/$rel.e2e-tmp" "$SERVER/$rel"
+    log "patched $rel: $old -> $new"
+done
+
 log "installing Metamod ($MM_BUILD), CounterStrikeSharp and plugins"
 rm -rf "$addons"
 mkdir -p "$addons"
@@ -394,7 +436,7 @@ stop_server() {
     fi
     if [ -z "$server_exit" ]; then reap; fi
 }
-trap stop_server EXIT
+trap 'stop_server; restore_patched' EXIT
 trap 'exit 130' INT TERM HUP
 
 send() { log "console> $*"; printf '%s\n' "$*" >&8; }
@@ -466,6 +508,7 @@ if alive; then
     for _ in $(seq 1 30); do alive || break; sleep 0.5; done
 fi
 stop_server
+restore_patched
 trap - EXIT
 shutdown_exit=$server_exit
 

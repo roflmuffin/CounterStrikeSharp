@@ -16,6 +16,11 @@ namespace counterstrikesharp::bindings {
 
 namespace features {
 inline constexpr std::string_view ChatSayHooks = "cssharp.chat/say-hooks";
+// ticket 09
+inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
+inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";
+inline constexpr std::string_view StateChanged = "cssharp.network/state-changed";
+inline constexpr std::string_view CheckTransmit = "cssharp.network/check-transmit";
 // ticket 10
 inline constexpr std::string_view ServerGameSystemEvents = "cssharp.server/game-system-events";
 // ticket 08

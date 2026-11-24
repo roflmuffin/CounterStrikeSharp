@@ -19,6 +19,7 @@
 
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
+#include "core/core_bindings.h"
 #include "core/memory.h"
 #include "core/log.h"
 #include "schema.h"
@@ -248,8 +249,16 @@ void SetSchemaValueByName(ScriptContext& script_context)
     }
 }
 
+static bool StateChangedAvailable(ScriptContext& script_context)
+{
+    if (bindings::IsEngineFeatureAvailable(bindings::features::StateChanged)) return true;
+    script_context.ThrowNativeError("Engine Feature cssharp.network/state-changed is disabled");
+    return false;
+}
+
 void SchemaSetStateChanged(ScriptContext& script_context)
 {
+    if (!StateChangedAvailable(script_context)) return;
     auto instancePointer = script_context.GetArgument<void*>(0);
     auto offset = script_context.GetArgument<uint32_t>(1);
     auto nArrayIndex = script_context.GetArgument<uint32_t>(2);
@@ -260,6 +269,7 @@ void SchemaSetStateChanged(ScriptContext& script_context)
 
 void SchemaNetworkStateChanged(ScriptContext& script_context)
 {
+    if (!StateChangedAvailable(script_context)) return;
     auto instancePointer = script_context.GetArgument<void*>(0);
     auto offset = script_context.GetArgument<uint32_t>(1);
     auto nArrayIndex = script_context.GetArgument<uint32_t>(2);

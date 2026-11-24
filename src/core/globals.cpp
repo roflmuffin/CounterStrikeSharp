@@ -26,6 +26,7 @@
 #include <public/entity2/entitysystem.h>
 
 #include "core/hooks.h"
+#include "core/core_bindings.h"
 
 namespace counterstrikesharp {
 
@@ -125,36 +126,20 @@ void Initialize()
     if (!interfaces::pGameResourceServiceServer)
     {
         CSSHARP_CORE_ERROR("Failed to get CGameResourceServiceServer");
-        return;
     }
+}
 
-    GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
-        modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
+void InitializeHooks()
+{
+    // Each Engine Feature gates on its own Bindings; a miss disables only that feature.
+    GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(bindings::GetBindingAddress("LegacyGameEventListener"));
 
-    if (GetLegacyGameEventListener == nullptr)
-    {
-        CSSHARP_CORE_ERROR("Failed to find signature for \'GetLegacyGameEventListener\'");
-        return;
-    }
+    if (bindings::IsEngineFeatureAvailable(bindings::features::StateChanged))
+        NetworkStateChanged = reinterpret_cast<NetworkStateChanged_t*>(bindings::GetBindingAddress("NetworkStateChanged"));
 
-    GameEventManagerInit = reinterpret_cast<GameEventManagerInit_t*>(
-        modules::server->FindSignature(globals::gameConfig->GetSignature("CGameEventManager_Init")));
+    if (!bindings::ShouldRegisterHooks(bindings::features::GameEvents, "game event hooks")) return;
 
-    if (GameEventManagerInit == nullptr)
-    {
-        CSSHARP_CORE_ERROR("Failed to find signature for \'GameEventManagerInit\'");
-        return;
-    }
-
-    NetworkStateChanged =
-        reinterpret_cast<NetworkStateChanged_t*>(modules::server->FindSignature(globals::gameConfig->GetSignature("NetworkStateChanged")));
-
-    if (NetworkStateChanged == nullptr)
-    {
-        CSSHARP_CORE_ERROR("Failed to find signature for \'NetworkStateChanged\'");
-        return;
-    }
-
+    GameEventManagerInit = reinterpret_cast<GameEventManagerInit_t*>(bindings::GetBindingAddress("CGameEventManager_Init"));
     initializationHooks.AddFunction(reinterpret_cast<void*>(GameEventManagerInit), &OnGameEventManagerInit, &OnGameEventManagerInitialized);
 }
 

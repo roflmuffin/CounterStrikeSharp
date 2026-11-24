@@ -57,6 +57,12 @@ public enum EngineFeature
     /// <summary><c>cssharp.entity/trigger-touch-hooks</c></summary>
     EntityTriggerTouchHooks = 1371977122,
 
+    /// <summary><c>cssharp.events/fire-event-to-client</c></summary>
+    EventsFireEventToClient = 418056366,
+
+    /// <summary><c>cssharp.events/game-events</c></summary>
+    EventsGameEvents = -64556705,
+
     /// <summary><c>cssharp.game-rules/find-picker-entity</c></summary>
     GameRulesFindPickerEntity = 729567274,
 
@@ -86,6 +92,12 @@ public enum EngineFeature
 
     /// <summary><c>cssharp.nav/nav-mesh</c></summary>
     NavNavMesh = 556483738,
+
+    /// <summary><c>cssharp.network/check-transmit</c></summary>
+    NetworkCheckTransmit = -897261195,
+
+    /// <summary><c>cssharp.network/state-changed</c></summary>
+    NetworkStateChanged = -1875359226,
 
     /// <summary><c>cssharp.player/change-team</c></summary>
     PlayerChangeTeam = -655364455,
@@ -157,6 +169,12 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.entity/trigger-touch-hooks</c></summary>
     public const string EntityTriggerTouchHooks = "cssharp.entity/trigger-touch-hooks";
 
+    /// <summary><c>cssharp.events/fire-event-to-client</c></summary>
+    public const string EventsFireEventToClient = "cssharp.events/fire-event-to-client";
+
+    /// <summary><c>cssharp.events/game-events</c></summary>
+    public const string EventsGameEvents = "cssharp.events/game-events";
+
     /// <summary><c>cssharp.game-rules/find-picker-entity</c></summary>
     public const string GameRulesFindPickerEntity = "cssharp.game-rules/find-picker-entity";
 
@@ -186,6 +204,12 @@ public static class EngineFeatureNames
 
     /// <summary><c>cssharp.nav/nav-mesh</c></summary>
     public const string NavNavMesh = "cssharp.nav/nav-mesh";
+
+    /// <summary><c>cssharp.network/check-transmit</c></summary>
+    public const string NetworkCheckTransmit = "cssharp.network/check-transmit";
+
+    /// <summary><c>cssharp.network/state-changed</c></summary>
+    public const string NetworkStateChanged = "cssharp.network/state-changed";
 
     /// <summary><c>cssharp.player/change-team</c></summary>
     public const string PlayerChangeTeam = "cssharp.player/change-team";
@@ -226,6 +250,8 @@ public static class EngineFeatureNames
         EngineFeature.EntityTakeDamageHooks => EntityTakeDamageHooks,
         EngineFeature.EntityTeleport => EntityTeleport,
         EngineFeature.EntityTriggerTouchHooks => EntityTriggerTouchHooks,
+        EngineFeature.EventsFireEventToClient => EventsFireEventToClient,
+        EngineFeature.EventsGameEvents => EventsGameEvents,
         EngineFeature.GameRulesFindPickerEntity => GameRulesFindPickerEntity,
         EngineFeature.GameRulesTerminateRound => GameRulesTerminateRound,
         EngineFeature.ItemsCanAcquireHooks => ItemsCanAcquireHooks,
@@ -236,6 +262,8 @@ public static class EngineFeatureNames
         EngineFeature.ItemsWeaponCanUseHooks => ItemsWeaponCanUseHooks,
         EngineFeature.ItemsWeaponData => ItemsWeaponData,
         EngineFeature.NavNavMesh => NavNavMesh,
+        EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
+        EngineFeature.NetworkStateChanged => NetworkStateChanged,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
         EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
         EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,

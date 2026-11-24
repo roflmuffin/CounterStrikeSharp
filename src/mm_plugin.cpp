@@ -165,6 +165,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
         globals::Initialize();
         bindings::ResolveCoreBindings();
+        globals::InitializeHooks();
 
         CSSHARP_CORE_INFO("Globals loaded.");
         globals::mmPlugin = &gPlugin;
@@ -183,10 +184,11 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         m_hooks.Add(&IEngineServiceMgr::FindService, globals::engineServiceManager, this, nullptr,
                     &CounterStrikeSharpMMPlugin::Hook_FindService);
 
-        auto pCGameEventManagerVTable = (IGameEventManager2*)modules::server->FindVirtualTable("CGameEventManager");
-
-        m_hooks.AddGlobal(&IGameEventManager2::LoadEventsFromFile, reinterpret_cast<void**>(pCGameEventManagerVTable), this,
-                          &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr);
+        // Gated with the CGameEventManager_Init hook in globals::InitializeHooks (which logs when game events are disabled).
+        if (bindings::IsEngineFeatureAvailable(bindings::features::GameEvents))
+            m_hooks.AddGlobal(&IGameEventManager2::LoadEventsFromFile,
+                              reinterpret_cast<void**>(bindings::GetBindingAddress("CGameEventManager")), this,
+                              &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr);
 
         if (InitGameSystems())
         {

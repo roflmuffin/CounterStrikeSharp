@@ -11,6 +11,8 @@ internal static class ListenerEngineFeatures
 {
     private static readonly Dictionary<string, string> Features = new()
     {
+        // ticket 09
+        ["CheckTransmit"] = "cssharp.network/check-transmit",
         // ticket 10: fired from our game system (precache, entity think) and player think (button changes)
         ["OnServerPrecacheResources"] = "cssharp.server/game-system-events",
         ["OnServerPreEntityThink"] = "cssharp.server/game-system-events",
