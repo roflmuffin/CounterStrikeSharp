@@ -33,6 +33,12 @@ public enum EngineFeature
     /// <summary><c>cssharp.entity/output-hooks</c></summary>
     EntityOutputHooks = -1424924309,
 
+    /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
+    EntityTakeDamageHitGroup = 494872892,
+
+    /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
+    EntityTakeDamageHooks = 1288636203,
+
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
 }
@@ -61,6 +67,12 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.entity/output-hooks</c></summary>
     public const string EntityOutputHooks = "cssharp.entity/output-hooks";
 
+    /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
+    public const string EntityTakeDamageHitGroup = "cssharp.entity/take-damage-hit-group";
+
+    /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
+    public const string EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
+
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
 
@@ -74,6 +86,8 @@ public static class EngineFeatureNames
         EngineFeature.EntityDispatchSpawn => EntityDispatchSpawn,
         EngineFeature.EntityEmitSound => EntityEmitSound,
         EngineFeature.EntityOutputHooks => EntityOutputHooks,
+        EngineFeature.EntityTakeDamageHitGroup => EntityTakeDamageHitGroup,
+        EngineFeature.EntityTakeDamageHooks => EntityTakeDamageHooks,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
         _ => null,
     };

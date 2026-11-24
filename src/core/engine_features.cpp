@@ -33,6 +33,8 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::EntityAddIoEvent), { Signature("CEntitySystem_AddEntityIOEvent") } },
     { std::string(features::EntityEmitSound), { Signature("CBaseEntity_EmitSoundFilter") } },
     { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
+    // ticket 11
+    { std::string(features::EntityTakeDamageHooks), { Signature("CBaseEntity_TakeDamageOld"), Offset("CBaseEntity_IsPlayerPawn") } },
 };
 
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)

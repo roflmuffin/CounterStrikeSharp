@@ -16,6 +16,11 @@ internal static class ListenerEngineFeatures
         ["OnServerPreEntityThink"] = "cssharp.server/game-system-events",
         ["OnServerPostEntityThink"] = "cssharp.server/game-system-events",
         ["OnPlayerButtonsChanged"] = "cssharp.server/game-system-events",
+        // ticket 11
+        ["OnEntityTakeDamagePre"] = "cssharp.entity/take-damage-hooks",
+        ["OnEntityTakeDamagePost"] = "cssharp.entity/take-damage-hooks",
+        ["OnPlayerTakeDamagePre"] = "cssharp.entity/take-damage-hooks",
+        ["OnPlayerTakeDamagePost"] = "cssharp.entity/take-damage-hooks",
     };
 
     /// <summary>

@@ -24,6 +24,8 @@ inline constexpr std::string_view EntityAcceptInput = "cssharp.entity/accept-inp
 inline constexpr std::string_view EntityAddIoEvent = "cssharp.entity/add-io-event";
 inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
 inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
+// ticket 11
+inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.

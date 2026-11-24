@@ -19,10 +19,16 @@ internal static class ManagedEngineFeatures
     public static readonly EngineFeatureDeclaration ChatClientPrint = new("cssharp.chat/client-print",
         [BindingDeclaration.Signature("ClientPrint"), BindingDeclaration.Signature("UTIL_ClientPrintAll")]);
 
+    // ticket 11
+    public static readonly EngineFeatureDeclaration EntityTakeDamageHitGroup = new("cssharp.entity/take-damage-hit-group",
+        [BindingDeclaration.Offset("CTakeDamageInfo_HitGroup")]);
+
     /// <summary>Every managed Engine Feature. Keep after the fields above (static initialisation order).</summary>
     public static readonly IReadOnlyList<EngineFeatureDeclaration> All =
     [
         // ticket 06
         ChatClientPrint,
+        // ticket 11
+        EntityTakeDamageHitGroup,
     ];
 }
