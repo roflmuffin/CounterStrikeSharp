@@ -6,7 +6,9 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Logging;
 using FastGenericNew;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
@@ -14,7 +16,9 @@ public class Schema
 {
     record SchemaKey(string ClassName, string PropertyName);
 
-    private static Dictionary<SchemaKey, short> _schemaOffsets = new();
+    // Offset per field, or a negative miss from the native lookup (cached too, so a miss is logged once).
+    private static Dictionary<SchemaKey, int> _schemaOffsets = new();
+    private const int SchemaClassMissing = -1;
 
     private static HashSet<string> _cs2BadList = new HashSet<string>()
     {
@@ -65,14 +69,29 @@ public class Schema
             throw new Exception($"Cannot set or get '{className}::{propertyName}' with \"FollowCS2ServerGuidelines\" option enabled.");
         }
 
+        return GetFieldOffset(className, propertyName);
+    }
+
+    /// <exception cref="SchemaFieldNotFoundException">The class or field is not in the schema.</exception>
+    private static short GetFieldOffset(string className, string propertyName)
+    {
         var key = new SchemaKey(className, propertyName);
         if (!_schemaOffsets.TryGetValue(key, out var offset))
         {
-            offset = NativeAPI.GetSchemaOffset(className, propertyName);
+            offset = NativeAPI.LookupSchemaField(className, propertyName);
             _schemaOffsets.Add(key, offset);
+
+            if (offset < 0)
+            {
+                CoreLogging.Factory.CreateLogger("Schema").LogError(
+                    "Schema field {ClassName}::{FieldName} not found ({Reason}); accessing it throws",
+                    className, propertyName, offset == SchemaClassMissing ? "class missing" : "field missing");
+            }
         }
 
-        return offset;
+        if (offset < 0) throw new SchemaFieldNotFoundException(className, propertyName, offset == SchemaClassMissing);
+
+        return (short)offset;
     }
 
     public static bool IsSchemaFieldNetworked(string className, string propertyName)
@@ -84,6 +103,7 @@ public class Schema
     {
         if (handle == IntPtr.Zero) throw new ArgumentNullException(nameof(handle), "Schema target points to null.");
 
+        GetFieldOffset(className, propertyName);
         return NativeAPI.GetSchemaValueByName<T>(handle, (int)typeof(T).ToDataType(), className, propertyName);
     }
 
@@ -96,6 +116,7 @@ public class Schema
             throw new Exception($"Cannot set or get '{className}::{propertyName}' with \"FollowCS2ServerGuidelines\" option enabled.");
         }
 
+        GetFieldOffset(className, propertyName);
         NativeAPI.SetSchemaValueByName<T>(handle, (int)typeof(T).ToDataType(), className, propertyName, value);
     }
 

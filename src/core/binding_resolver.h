@@ -43,13 +43,14 @@ enum class BindingKind : std::uint8_t
     Signature, // Gamedata "signatures" (hex pattern, or "@symbol"), scanned in the module named by "library"
     Offset, // Gamedata "offsets"
     RttiVtable, // vtable found by RTTI class name (key) in the declaration's library; not in Gamedata
+    SchemaField, // schema field "Class::field" (key) in the declaration's library's schema scope; not in Gamedata
 };
 
 struct BindingDeclaration
 {
     std::string key; // Gamedata key, or the RTTI class name for RttiVtable
     BindingKind kind = BindingKind::Signature;
-    std::string library{}; // RttiVtable only: Gamedata-style library name to search ("server", "engine", ...)
+    std::string library{}; // RttiVtable, SchemaField: Gamedata-style library name to search ("server", "engine", ...)
 };
 
 struct ModuleSegment
@@ -59,11 +60,25 @@ struct ModuleSegment
     std::size_t size = 0;
 };
 
+enum class SchemaFieldStatus : std::uint8_t
+{
+    Found,
+    ClassMissing,
+    FieldMissing,
+};
+
+struct SchemaFieldLookup
+{
+    SchemaFieldStatus status = SchemaFieldStatus::ClassMissing;
+    std::int64_t offset = 0; // Found only
+};
+
 struct ModuleImage
 {
     std::vector<ModuleSegment> segments; // scanned for signatures (on-disk bytes where available)
     std::function<std::uintptr_t(std::string_view)> findSymbol; // optional, for "@symbol" signatures
     std::function<std::uintptr_t(std::string_view)> findVirtualTable; // optional, for RttiVtable
+    std::function<SchemaFieldLookup(std::string_view className, std::string_view fieldName)> findSchemaField; // optional, for SchemaField
 };
 
 // Keyed by the Gamedata "library" name.
@@ -99,7 +114,7 @@ struct BindingResult
     FailureReason reason = FailureReason::None;
     std::size_t matchCount = 0; // signatures: matches across all scanned segments
     std::uintptr_t address = 0; // Signature, RttiVtable
-    std::int64_t offset = 0; // Offset
+    std::int64_t offset = 0; // Offset, SchemaField
     std::string library{}; // module searched, if any
 
     [[nodiscard]] bool Resolved() const { return status == BindingStatus::Resolved; }

@@ -25,7 +25,7 @@ bool IsEngineFeatureAvailable(std::string_view feature);
 // Address of a resolved Signature or RttiVtable Binding; nullptr if it failed or is not declared.
 void* GetBindingAddress(std::string_view key);
 
-// Value of a resolved Offset Binding; nullopt if it failed or is not declared.
+// Value of a resolved Offset or SchemaField Binding; nullopt if it failed or is not declared.
 std::optional<std::int64_t> GetBindingOffset(std::string_view key);
 
 // Scans a raw (plugin-supplied) signature in the module named as for FindSignature, counting matches across all of its

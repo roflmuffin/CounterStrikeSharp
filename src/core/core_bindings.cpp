@@ -11,6 +11,7 @@
 #include "core/memory_module.h"
 #include "core/signature.h"
 #include "core/utils.h"
+#include "schema.h"
 
 namespace counterstrikesharp::bindings {
 namespace {
@@ -39,6 +40,25 @@ void AddModule(ModuleImages& images, const char* library, modules::CModule* modu
     images.emplace(library, ImageOf(module));
 }
 
+// Schema fields live in the server module's schema type scope.
+SchemaFieldLookup FindServerSchemaField(std::string_view className, std::string_view fieldName)
+{
+    const std::string classString(className);
+    const std::string fieldString(fieldName);
+    const auto lookup = schema::LookupField(classString.c_str(), hash_32_fnv1a_const(classString.c_str()), fieldString.c_str(),
+                                            hash_32_fnv1a_const(fieldString.c_str()));
+    switch (lookup.status)
+    {
+        case schema::LookupStatus::Found:
+            return { SchemaFieldStatus::Found, lookup.key.offset };
+        case schema::LookupStatus::FieldMissing:
+            return { SchemaFieldStatus::FieldMissing };
+        case schema::LookupStatus::ClassMissing:
+            break;
+    }
+    return { SchemaFieldStatus::ClassMissing };
+}
+
 std::string ReadBuildId()
 {
     std::ifstream stream(utils::GameDirectory() + "/steam.inf");
@@ -58,6 +78,7 @@ void ResolveCoreBindings()
     AddModule(images, "server", modules::server);
     AddModule(images, "vscript", modules::vscript);
     AddModule(images, "tier0", modules::tier0);
+    if (const auto server = images.find("server"); server != images.end()) server->second.findSchemaField = FindServerSchemaField;
 
     // Every core Gamedata key, including those only managed code consumes (managed declares their Engine Features).
     const auto& gamedata = globals::gameConfig->GetGamedata();
@@ -90,7 +111,8 @@ void* GetBindingAddress(std::string_view key)
 std::optional<std::int64_t> GetBindingOffset(std::string_view key)
 {
     const auto* binding = coreReport.Find(key);
-    if (binding == nullptr || !binding->Resolved() || binding->kind != BindingKind::Offset) return std::nullopt;
+    if (binding == nullptr || !binding->Resolved() || (binding->kind != BindingKind::Offset && binding->kind != BindingKind::SchemaField))
+        return std::nullopt;
     return binding->offset;
 }
 
