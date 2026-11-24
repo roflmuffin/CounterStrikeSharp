@@ -69,6 +69,14 @@ set(SOURCE_FILES
     src/scripting/natives/natives_convars.cpp
     src/core/memory_module.h
     src/core/memory_module.cpp
+    src/core/signature.h
+    src/core/signature.cpp
+    src/core/binding_resolver.h
+    src/core/binding_resolver.cpp
+    src/core/engine_features.h
+    src/core/engine_features.cpp
+    src/core/core_bindings.h
+    src/core/core_bindings.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
@@ -142,3 +150,9 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/configs ${CMAKE_BINARY_DIR}
 )
+
+option(COUNTERSTRIKESHARP_BUILD_TESTS "Build the native unit tests in tests/native" OFF)
+if(COUNTERSTRIKESHARP_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests/native)
+endif()

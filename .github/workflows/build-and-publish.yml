@@ -111,6 +111,13 @@ jobs:
           cmake -G Ninja -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
           cmake --build . --config ${{env.BUILD_TYPE}} -- -j16
 
+      - name: Native tests
+        run: |
+          cmake -S tests/native -B build-tests -G Ninja -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+          cmake --build build-tests -- -j16
+          cd build-tests
+          ctest --output-on-failure
+
       - name: Clean build directory
         run: |
           mkdir build/output/

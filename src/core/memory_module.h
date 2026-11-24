@@ -119,6 +119,9 @@ class CModule
 
     [[nodiscard]] bool IsInitialized() const { return m_bInitialized; }
 
+    // Executable segments as scanned for signatures (on-disk bytes for engine2 and server).
+    [[nodiscard]] const std::vector<Segments>& GetSegments() const { return m_vecSegments; }
+
     std::string m_pszModule{};
     std::string m_pszPath{};
     void* m_base{};

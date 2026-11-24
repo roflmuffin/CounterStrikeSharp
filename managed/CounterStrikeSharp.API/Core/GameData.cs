@@ -27,9 +27,17 @@ public class Signatures
 
 public class Offsets
 {
-    [JsonPropertyName("windows")] public int Windows { get; set; }
+    // Backing fields stay null when the entry is absent, so a missing per-OS offset is not mistaken for 0.
+    private int? _windows;
+    private int? _linux;
 
-    [JsonPropertyName("linux")] public int Linux { get; set; }
+    [JsonPropertyName("windows")] public int Windows { get => _windows ?? 0; set => _windows = value; }
+
+    [JsonPropertyName("linux")] public int Linux { get => _linux ?? 0; set => _linux = value; }
+
+    internal int? WindowsOrNull => _windows;
+
+    internal int? LinuxOrNull => _linux;
 }
 
 public sealed class GameDataProvider : IStartupService
@@ -128,16 +136,13 @@ public static class GameData
             throw new Exception($"No offsets found for {key} in gamedata.json");
         }
 
-        int offset;
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            offset = methodMetadata.Offsets?.Linux ?? throw new InvalidOperationException($"No Linux offset for {key} in gamedata.json");
-        }
-        else
-        {
-            offset = methodMetadata.Offsets?.Windows ?? throw new InvalidOperationException($"No Windows offset for {key} in gamedata.json");
+            return methodMetadata.Offsets.LinuxOrNull ??
+                   throw new InvalidOperationException($"Offset {key} is missing for this OS (Linux) in gamedata.json");
         }
 
-        return offset;
+        return methodMetadata.Offsets.WindowsOrNull ??
+               throw new InvalidOperationException($"Offset {key} is missing for this OS (Windows) in gamedata.json");
     }
 }
