@@ -103,6 +103,34 @@ BindingResult ResolveRttiVtable(BindingResult result, const ModuleImages& module
     return ResolvedAt(std::move(result), address);
 }
 
+// Key is "Class::field"; a key without "::" names a class and no field.
+BindingResult ResolveSchemaField(BindingResult result, const ModuleImages& modules)
+{
+    const std::string_view key = result.key;
+    const auto separator = key.rfind("::");
+    const std::string_view className = separator == std::string_view::npos ? key : key.substr(0, separator);
+    const std::string_view fieldName = separator == std::string_view::npos ? std::string_view{} : key.substr(separator + 2);
+
+    const auto module = modules.find(result.library);
+    const SchemaFieldLookup lookup = module != modules.end() && module->second.findSchemaField
+                                         ? module->second.findSchemaField(className, fieldName)
+                                         : SchemaFieldLookup{};
+
+    switch (lookup.status)
+    {
+        case SchemaFieldStatus::Found:
+            result.status = BindingStatus::Resolved;
+            result.reason = FailureReason::None;
+            result.offset = lookup.offset;
+            return result;
+        case SchemaFieldStatus::FieldMissing:
+            return Failed(std::move(result), FailureReason::SchemaFieldMissing);
+        case SchemaFieldStatus::ClassMissing:
+            break;
+    }
+    return Failed(std::move(result), FailureReason::SchemaClassMissing);
+}
+
 } // namespace
 
 Gamedata ParseGamedata(const nlohmann::json& root, std::string_view platform)
@@ -174,6 +202,9 @@ ResolutionReport ResolveBindings(std::string buildId,
                 break;
             case BindingKind::RttiVtable:
                 results.push_back(ResolveRttiVtable(std::move(result), modules));
+                break;
+            case BindingKind::SchemaField:
+                results.push_back(ResolveSchemaField(std::move(result), modules));
                 break;
         }
     }

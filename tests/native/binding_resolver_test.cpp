@@ -214,6 +214,43 @@ TEST_CASE("An RTTI vtable Binding resolves through the declared library's vtable
     CHECK(ResolveOne({}, {}, { "CGameEventManager", BindingKind::RttiVtable, "server" }).reason == FailureReason::RttiVtableNotFound);
 }
 
+TEST_CASE("A schema field Binding resolves to the field offset through the declared library's schema lookup")
+{
+    ModuleImage server;
+    server.findSchemaField = [](std::string_view className, std::string_view fieldName) -> SchemaFieldLookup {
+        if (className != "CBaseEntity") return { SchemaFieldStatus::ClassMissing };
+        if (fieldName != "m_iTeamNum") return { SchemaFieldStatus::FieldMissing };
+        return { SchemaFieldStatus::Found, 0x3E3 };
+    };
+    const ModuleImages modules{ { "server", server } };
+
+    auto found = ResolveOne({}, modules, { "CBaseEntity::m_iTeamNum", BindingKind::SchemaField, "server" });
+    CHECK(found.Resolved());
+    CHECK(found.reason == FailureReason::None);
+    CHECK(found.offset == 0x3E3);
+
+    auto noField = ResolveOne({}, modules, { "CBaseEntity::m_nope", BindingKind::SchemaField, "server" });
+    CHECK_FALSE(noField.Resolved());
+    CHECK(noField.reason == FailureReason::SchemaFieldMissing);
+
+    auto noClass = ResolveOne({}, modules, { "CNope::m_iTeamNum", BindingKind::SchemaField, "server" });
+    CHECK_FALSE(noClass.Resolved());
+    CHECK(noClass.reason == FailureReason::SchemaClassMissing);
+
+    SUBCASE("a module without a schema lookup, or not loaded, has no classes")
+    {
+        CHECK(ResolveOne({}, { { "server", ModuleImage{} } }, { "CBaseEntity::m_iTeamNum", BindingKind::SchemaField, "server" }).reason ==
+              FailureReason::SchemaClassMissing);
+        CHECK(ResolveOne({}, {}, { "CBaseEntity::m_iTeamNum", BindingKind::SchemaField, "server" }).reason ==
+              FailureReason::SchemaClassMissing);
+    }
+
+    SUBCASE("a key without a field part names no field")
+    {
+        CHECK(ResolveOne({}, modules, { "CBaseEntity", BindingKind::SchemaField, "server" }).reason == FailureReason::SchemaFieldMissing);
+    }
+}
+
 TEST_CASE("The Resolution Report records the build id and one result per declaration, findable by key")
 {
     FakeModule server{ { { 0x55, 0x48 } } };
