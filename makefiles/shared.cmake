@@ -24,6 +24,8 @@ set(LIBRARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries)
 set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
 set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
 
+include("${CMAKE_CURRENT_LIST_DIR}/patch_hl2sdk.cmake")
+
 set(SOURCESDK ${SOURCESDK_DIR}/${BRANCH})
 set(SOURCESDK_LIB ${SOURCESDK}/lib)
 
