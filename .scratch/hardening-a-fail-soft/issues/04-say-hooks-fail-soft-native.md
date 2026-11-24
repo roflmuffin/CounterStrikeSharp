@@ -6,7 +6,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md`. ADR-0002.
 
 **Blocked by:** 01, 03
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 1 base · must
 
@@ -20,3 +20,4 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md`. ADR-0002.
 ## Comments
 
 - Unit side merged to `hardening/spec-a` (`spec-a/04-say-hooks-fail-soft-native`): pure resolver `src/core/binding_resolver.*`, catalog `src/core/engine_features.*`, adapter `src/core/core_bindings.*`, doctest 27 cases. E2E criteria pending the harness (`spec-a/04a-e2e-harness`); ticket stays open until then. Native patterns: see orchestrator notes `patterns-native.md`.
+- Resolved: E2E done (`eng/e2e/cases/say-hooks.sh`: valid + Host_Say ambiguous, 4/4 runs). Fixed a real bug found by E2E: on-disk segment copies were read at the RVA instead of `p_offset` (0x1000 shift on 1.42.0.1), so strict on-disk scanning mis-resolved every Binding; now reads `p_offset` and falls back to loaded bytes if the copy does not match the image (`SegmentCopyMatchesImage`, doctested).
