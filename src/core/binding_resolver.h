@@ -185,7 +185,7 @@ std::string FormatBindingSummary(const ResolutionReport& report);
 
 // The report as one JSON document for managed (the GET_RESOLUTION_REPORT native):
 // { "buildId": "...",
-//   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable", "resolved", "reason": <FailureReason name>,
+//   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable"|"SchemaField", "resolved", "reason": <FailureReason name>,
 //                   "matchCount", "address", "offset", "library" } ],
 //   "features": [ { "name", "bindings": [ "<key>", ... ] } ] }   <- the native-owned Engine Features
 // Enum values travel by name (the C++ enumerator names), so managed never depends on their numeric values.

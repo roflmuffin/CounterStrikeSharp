@@ -13,7 +13,7 @@ BindingDeclaration RttiVtable(std::string className, std::string library)
     return { std::move(className), BindingKind::RttiVtable, std::move(library) };
 }
 // A schema field native core code reads directly; key "Class::field", looked up in the server schema scope.
-[[maybe_unused]] BindingDeclaration SchemaField(const std::string& className, const std::string& fieldName)
+BindingDeclaration SchemaField(const std::string& className, const std::string& fieldName)
 {
     return { className + "::" + fieldName, BindingKind::SchemaField, "server" };
 }
