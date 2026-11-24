@@ -6,7 +6,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Schema fields). I3.
 
 **Blocked by:** 04
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · later
 
@@ -18,3 +18,4 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Schema fields). I3.
 ## Comments
 
 - Merged to `hardening/spec-a` (`spec-a/13-missing-schema-field-throws`): native `schema::LookupField` + `LOOKUP_SCHEMA_FIELD`, resolver `BindingKind::SchemaField`, managed `SchemaFieldNotFoundException` (logged once per field), in-server tests in `NativeTestsPlugin/SchemaTests.cs`. Unit/builds pass. E2E pending harness; ticket stays open. Schema Bindings for native core fields to be declared by tickets 10 (RunThink fields) etc.
+- E2E verified (orchestrator, harness run on tip dcd95571, valid Gamedata): all 5 `SchemaTests` missing-field/class cases pass in the smoke suite, `Schema field CBaseEntity::m_cssharpDoesNotExist not found` logged exactly once per log sink, server stayed up. Resolved.
