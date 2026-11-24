@@ -152,7 +152,7 @@ namespace CounterStrikeSharp.API.Core
 
             // Game events disabled: the handler stays registered (deregistering still works) but never fires.
             if (EngineFeatures.Current.CheckRegistration(EngineFeatureNames.EventsGameEvents, "Game event handler",
-                    Logger ?? Application.Instance.Logger))
+                    Logger ?? Application.Instance.Logger, this))
             {
                 NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
             }
@@ -302,7 +302,7 @@ namespace CounterStrikeSharp.API.Core
 
             // Registers either way; on a disabled Engine Feature the listener never fires, so say so once.
             Bindings.ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, listenerName,
-                Logger ?? Application.Instance.Logger);
+                Logger ?? Application.Instance.Logger, this);
 
             var wrappedHandler = new Func<ScriptContext, HookResult>(context =>
             {
@@ -607,7 +607,7 @@ namespace CounterStrikeSharp.API.Core
 
             // On a disabled Engine Feature the hook stays registered but never fires (logged once).
             if (EngineFeatures.Current.CheckRegistration(EngineFeatureNames.EntityOutputHooks, "Entity output hook",
-                    Logger ?? Application.Instance.Logger))
+                    Logger ?? Application.Instance.Logger, this))
             {
                 NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             }

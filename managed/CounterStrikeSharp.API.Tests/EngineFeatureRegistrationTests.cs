@@ -71,6 +71,35 @@ public class EngineFeatureRegistrationTests
     }
 
     [Fact]
+    public void EachRegistrantIsWarnedOnce()
+    {
+        var set = SetWithSayHooks(resolved: false);
+        var logger = new CapturingLogger();
+        object firstPlugin = new(), secondPlugin = new();
+
+        Assert.False(set.CheckRegistration("cssharp.chat/say-hooks", "chat listener", logger, firstPlugin));
+        Assert.False(set.CheckRegistration("cssharp.chat/say-hooks", "chat listener", logger, secondPlugin));
+        Assert.False(set.CheckRegistration("cssharp.chat/say-hooks", "chat listener", logger, secondPlugin));
+
+        Assert.Equal(2, logger.Entries.Count);
+    }
+
+    [Fact]
+    public void EachPluginLoggerIsWarnedOnceWithoutAnExplicitRegistrant()
+    {
+        var set = SetWithSayHooks(resolved: false);
+        var firstPluginLogger = new CapturingLogger();
+        var secondPluginLogger = new CapturingLogger();
+
+        set.CheckRegistration("cssharp.chat/say-hooks", "chat listener", firstPluginLogger);
+        set.CheckRegistration("cssharp.chat/say-hooks", "chat listener", secondPluginLogger);
+        set.CheckRegistration("cssharp.chat/say-hooks", "chat listener", secondPluginLogger);
+
+        Assert.Single(firstPluginLogger.Entries);
+        Assert.Single(secondPluginLogger.Entries);
+    }
+
+    [Fact]
     public void UnknownFeatureIsTreatedAsDisabled()
     {
         var logger = new CapturingLogger();

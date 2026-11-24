@@ -26,10 +26,11 @@ internal static class ListenerEngineFeatures
     };
 
     /// <summary>
-    /// True if the listener can fire. Otherwise logs once per listener that it is registered on a disabled Engine
-    /// Feature and returns false; the caller keeps the registration either way.
+    /// True if the listener can fire. Otherwise logs once per listener and registrant that it is registered on a
+    /// disabled Engine Feature and returns false; the caller keeps the registration either way.
     /// </summary>
-    public static bool CheckRegistration(EngineFeatureSet features, string listenerName, ILogger logger) =>
+    public static bool CheckRegistration(EngineFeatureSet features, string listenerName, ILogger logger,
+        object? registrant = null) =>
         !Features.TryGetValue(listenerName, out var feature) ||
-        features.CheckRegistration(feature, $"{listenerName} listener", logger);
+        features.CheckRegistration(feature, $"{listenerName} listener", logger, registrant);
 }

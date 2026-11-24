@@ -65,6 +65,20 @@ public class ListenerEngineFeatureTests
     }
 
     [Fact]
+    public void ListenersOfDifferentPluginsAreEachWarnedOnce()
+    {
+        var set = SetWithGameSystemEvents(resolved: false);
+        var logger = new CapturingLogger();
+        object firstPlugin = new(), secondPlugin = new();
+
+        ListenerEngineFeatures.CheckRegistration(set, "OnServerPreEntityThink", logger, firstPlugin);
+        ListenerEngineFeatures.CheckRegistration(set, "OnServerPreEntityThink", logger, secondPlugin);
+        ListenerEngineFeatures.CheckRegistration(set, "OnServerPreEntityThink", logger, secondPlugin);
+
+        Assert.Equal(2, logger.Entries.Count);
+    }
+
+    [Fact]
     public void ListenerNotBackedByAnEngineFeatureIsUnaffected()
     {
         var logger = new CapturingLogger();

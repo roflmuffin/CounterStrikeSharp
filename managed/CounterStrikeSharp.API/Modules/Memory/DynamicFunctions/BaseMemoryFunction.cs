@@ -164,7 +164,7 @@ public abstract class BaseMemoryFunction : NativeObject
     public void Hook(Func<DynamicHook, HookResult> handler, HookMode mode)
     {
         // On a disabled Engine Feature the hook registers but never fires (logged once), instead of throwing.
-        if (_core != null && !_core.CanHook()) return;
+        if (_core != null && !_core.CanHook(handler.Method.Module.Assembly)) return;
 
         EnsureBound();
         NativeAPI.HookFunction(Handle, handler, mode == HookMode.Post);
