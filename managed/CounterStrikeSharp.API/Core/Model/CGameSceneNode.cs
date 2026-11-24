@@ -14,6 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Memory;
 
 namespace CounterStrikeSharp.API.Core;
@@ -24,10 +25,12 @@ public partial class CGameSceneNode
     /// Gets the <see cref="CSkeletonInstance"/> instance from the node.
     /// </summary>
     /// <exception cref="InvalidOperationException">GameSceneNode points to null</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/skeleton-instance</c> is disabled</exception>
     public CSkeletonInstance GetSkeletonInstance()
     {
+        var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.EntitySkeletonInstance, "CGameSceneNode_GetSkeletonInstance");
         if (Handle == IntPtr.Zero) throw new InvalidOperationException("GameSceneNode points to null.");
 
-        return new CSkeletonInstance(VirtualFunction.Create<nint, nint>(Handle, GameData.GetOffset("CGameSceneNode_GetSkeletonInstance"))(Handle));
+        return new CSkeletonInstance(VirtualFunction.Create<nint, nint>(Handle, offset)(Handle));
     }
 }

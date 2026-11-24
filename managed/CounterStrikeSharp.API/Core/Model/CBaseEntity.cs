@@ -25,8 +25,10 @@ public partial class CBaseEntity
     /// </summary>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     /// <exception cref="ArgumentException">At least one parameter must be specified</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/teleport</c> is disabled</exception>
     public void Teleport(Vector3? position = null, Vector3? angles = null, Vector3? velocity = null)
     {
+        var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.EntityTeleport, "CBaseEntity_Teleport");
         Guard.IsValidEntity(this);
 
         if (position == null && angles == null && velocity == null)
@@ -54,7 +56,7 @@ public partial class CBaseEntity
                 velocityPtr = &vel;
             }
 
-            VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(Handle,
+            VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, offset)(Handle,
                 (nint)positionPtr,
                 (nint)anglePtr, (nint)velocityPtr);
         }

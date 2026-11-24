@@ -24,6 +24,9 @@ public enum EngineFeature
     /// <summary><c>cssharp.entity/add-io-event</c></summary>
     EntityAddIoEvent = 251219268,
 
+    /// <summary><c>cssharp.entity/create</c></summary>
+    EntityCreate = 47771871,
+
     /// <summary><c>cssharp.entity/dispatch-spawn</c></summary>
     EntityDispatchSpawn = -1778353521,
 
@@ -33,11 +36,74 @@ public enum EngineFeature
     /// <summary><c>cssharp.entity/output-hooks</c></summary>
     EntityOutputHooks = -1424924309,
 
+    /// <summary><c>cssharp.entity/remove</c></summary>
+    EntityRemove = 1591563835,
+
+    /// <summary><c>cssharp.entity/set-model</c></summary>
+    EntitySetModel = 1467097005,
+
+    /// <summary><c>cssharp.entity/skeleton-instance</c></summary>
+    EntitySkeletonInstance = -644173420,
+
     /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
     EntityTakeDamageHitGroup = 494872892,
 
     /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
     EntityTakeDamageHooks = 1288636203,
+
+    /// <summary><c>cssharp.entity/teleport</c></summary>
+    EntityTeleport = -2127647280,
+
+    /// <summary><c>cssharp.entity/trigger-touch-hooks</c></summary>
+    EntityTriggerTouchHooks = 1371977122,
+
+    /// <summary><c>cssharp.game-rules/find-picker-entity</c></summary>
+    GameRulesFindPickerEntity = 729567274,
+
+    /// <summary><c>cssharp.game-rules/terminate-round</c></summary>
+    GameRulesTerminateRound = 1278438112,
+
+    /// <summary><c>cssharp.items/can-acquire-hooks</c></summary>
+    ItemsCanAcquireHooks = 87108642,
+
+    /// <summary><c>cssharp.items/drop-active-weapon</c></summary>
+    ItemsDropActiveWeapon = 1543227721,
+
+    /// <summary><c>cssharp.items/give-named-item</c></summary>
+    ItemsGiveNamedItem = -775215717,
+
+    /// <summary><c>cssharp.items/remove-player-item</c></summary>
+    ItemsRemovePlayerItem = 601419306,
+
+    /// <summary><c>cssharp.items/remove-weapons</c></summary>
+    ItemsRemoveWeapons = -340457828,
+
+    /// <summary><c>cssharp.items/weapon-can-use-hooks</c></summary>
+    ItemsWeaponCanUseHooks = -578115368,
+
+    /// <summary><c>cssharp.items/weapon-data</c></summary>
+    ItemsWeaponData = -1376424373,
+
+    /// <summary><c>cssharp.nav/nav-mesh</c></summary>
+    NavNavMesh = 556483738,
+
+    /// <summary><c>cssharp.player/change-team</c></summary>
+    PlayerChangeTeam = -655364455,
+
+    /// <summary><c>cssharp.player/commit-suicide</c></summary>
+    PlayerCommitSuicide = -525076719,
+
+    /// <summary><c>cssharp.player/post-think-hooks</c></summary>
+    PlayerPostThinkHooks = 1406403779,
+
+    /// <summary><c>cssharp.player/respawn</c></summary>
+    PlayerRespawn = -210670737,
+
+    /// <summary><c>cssharp.player/set-pawn</c></summary>
+    PlayerSetPawn = -628476704,
+
+    /// <summary><c>cssharp.player/switch-team</c></summary>
+    PlayerSwitchTeam = -936310331,
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
@@ -58,6 +124,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.entity/add-io-event</c></summary>
     public const string EntityAddIoEvent = "cssharp.entity/add-io-event";
 
+    /// <summary><c>cssharp.entity/create</c></summary>
+    public const string EntityCreate = "cssharp.entity/create";
+
     /// <summary><c>cssharp.entity/dispatch-spawn</c></summary>
     public const string EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 
@@ -67,11 +136,74 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.entity/output-hooks</c></summary>
     public const string EntityOutputHooks = "cssharp.entity/output-hooks";
 
+    /// <summary><c>cssharp.entity/remove</c></summary>
+    public const string EntityRemove = "cssharp.entity/remove";
+
+    /// <summary><c>cssharp.entity/set-model</c></summary>
+    public const string EntitySetModel = "cssharp.entity/set-model";
+
+    /// <summary><c>cssharp.entity/skeleton-instance</c></summary>
+    public const string EntitySkeletonInstance = "cssharp.entity/skeleton-instance";
+
     /// <summary><c>cssharp.entity/take-damage-hit-group</c></summary>
     public const string EntityTakeDamageHitGroup = "cssharp.entity/take-damage-hit-group";
 
     /// <summary><c>cssharp.entity/take-damage-hooks</c></summary>
     public const string EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
+
+    /// <summary><c>cssharp.entity/teleport</c></summary>
+    public const string EntityTeleport = "cssharp.entity/teleport";
+
+    /// <summary><c>cssharp.entity/trigger-touch-hooks</c></summary>
+    public const string EntityTriggerTouchHooks = "cssharp.entity/trigger-touch-hooks";
+
+    /// <summary><c>cssharp.game-rules/find-picker-entity</c></summary>
+    public const string GameRulesFindPickerEntity = "cssharp.game-rules/find-picker-entity";
+
+    /// <summary><c>cssharp.game-rules/terminate-round</c></summary>
+    public const string GameRulesTerminateRound = "cssharp.game-rules/terminate-round";
+
+    /// <summary><c>cssharp.items/can-acquire-hooks</c></summary>
+    public const string ItemsCanAcquireHooks = "cssharp.items/can-acquire-hooks";
+
+    /// <summary><c>cssharp.items/drop-active-weapon</c></summary>
+    public const string ItemsDropActiveWeapon = "cssharp.items/drop-active-weapon";
+
+    /// <summary><c>cssharp.items/give-named-item</c></summary>
+    public const string ItemsGiveNamedItem = "cssharp.items/give-named-item";
+
+    /// <summary><c>cssharp.items/remove-player-item</c></summary>
+    public const string ItemsRemovePlayerItem = "cssharp.items/remove-player-item";
+
+    /// <summary><c>cssharp.items/remove-weapons</c></summary>
+    public const string ItemsRemoveWeapons = "cssharp.items/remove-weapons";
+
+    /// <summary><c>cssharp.items/weapon-can-use-hooks</c></summary>
+    public const string ItemsWeaponCanUseHooks = "cssharp.items/weapon-can-use-hooks";
+
+    /// <summary><c>cssharp.items/weapon-data</c></summary>
+    public const string ItemsWeaponData = "cssharp.items/weapon-data";
+
+    /// <summary><c>cssharp.nav/nav-mesh</c></summary>
+    public const string NavNavMesh = "cssharp.nav/nav-mesh";
+
+    /// <summary><c>cssharp.player/change-team</c></summary>
+    public const string PlayerChangeTeam = "cssharp.player/change-team";
+
+    /// <summary><c>cssharp.player/commit-suicide</c></summary>
+    public const string PlayerCommitSuicide = "cssharp.player/commit-suicide";
+
+    /// <summary><c>cssharp.player/post-think-hooks</c></summary>
+    public const string PlayerPostThinkHooks = "cssharp.player/post-think-hooks";
+
+    /// <summary><c>cssharp.player/respawn</c></summary>
+    public const string PlayerRespawn = "cssharp.player/respawn";
+
+    /// <summary><c>cssharp.player/set-pawn</c></summary>
+    public const string PlayerSetPawn = "cssharp.player/set-pawn";
+
+    /// <summary><c>cssharp.player/switch-team</c></summary>
+    public const string PlayerSwitchTeam = "cssharp.player/switch-team";
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
@@ -83,11 +215,33 @@ public static class EngineFeatureNames
         EngineFeature.ChatSayHooks => ChatSayHooks,
         EngineFeature.EntityAcceptInput => EntityAcceptInput,
         EngineFeature.EntityAddIoEvent => EntityAddIoEvent,
+        EngineFeature.EntityCreate => EntityCreate,
         EngineFeature.EntityDispatchSpawn => EntityDispatchSpawn,
         EngineFeature.EntityEmitSound => EntityEmitSound,
         EngineFeature.EntityOutputHooks => EntityOutputHooks,
+        EngineFeature.EntityRemove => EntityRemove,
+        EngineFeature.EntitySetModel => EntitySetModel,
+        EngineFeature.EntitySkeletonInstance => EntitySkeletonInstance,
         EngineFeature.EntityTakeDamageHitGroup => EntityTakeDamageHitGroup,
         EngineFeature.EntityTakeDamageHooks => EntityTakeDamageHooks,
+        EngineFeature.EntityTeleport => EntityTeleport,
+        EngineFeature.EntityTriggerTouchHooks => EntityTriggerTouchHooks,
+        EngineFeature.GameRulesFindPickerEntity => GameRulesFindPickerEntity,
+        EngineFeature.GameRulesTerminateRound => GameRulesTerminateRound,
+        EngineFeature.ItemsCanAcquireHooks => ItemsCanAcquireHooks,
+        EngineFeature.ItemsDropActiveWeapon => ItemsDropActiveWeapon,
+        EngineFeature.ItemsGiveNamedItem => ItemsGiveNamedItem,
+        EngineFeature.ItemsRemovePlayerItem => ItemsRemovePlayerItem,
+        EngineFeature.ItemsRemoveWeapons => ItemsRemoveWeapons,
+        EngineFeature.ItemsWeaponCanUseHooks => ItemsWeaponCanUseHooks,
+        EngineFeature.ItemsWeaponData => ItemsWeaponData,
+        EngineFeature.NavNavMesh => NavNavMesh,
+        EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
+        EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
+        EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,
+        EngineFeature.PlayerRespawn => PlayerRespawn,
+        EngineFeature.PlayerSetPawn => PlayerSetPawn,
+        EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
         _ => null,
     };

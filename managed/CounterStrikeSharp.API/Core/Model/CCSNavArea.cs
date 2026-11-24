@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Memory;
 
@@ -211,7 +212,8 @@ public class CCSNavArea : NativeObject
     /// <summary>
     /// Gets all nav areas from the current nav mesh.
     /// </summary>
-    /// <returns>All nav areas, or an empty list if the nav mesh is unavailable.</returns>
+    /// <returns>All nav areas, or an empty list if no nav mesh is loaded.</returns>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.nav/nav-mesh</c> is disabled</exception>
     public static IReadOnlyList<CCSNavArea> GetAllNavAreas()
     {
         var navMeshAddress = GetNavMeshAddress();
@@ -258,18 +260,7 @@ public class CCSNavArea : NativeObject
 
     private static IntPtr GetNavMeshAddress()
     {
-        var signature = GameData.GetSignature("CCSNavArea_IsValidNavMesh");
-        if (string.IsNullOrWhiteSpace(signature))
-        {
-            return IntPtr.Zero;
-        }
-
-        var functionAddress = NativeAPI.FindSignature(Addresses.ServerPath, signature);
-        if (functionAddress == IntPtr.Zero)
-        {
-            return IntPtr.Zero;
-        }
-
+        var functionAddress = EngineFeatures.Current.GetAddress(ManagedEngineFeatures.NavMesh, "CCSNavArea_IsValidNavMesh");
         var relativeOffset = Marshal.ReadInt32(functionAddress + 3);
         var navMeshPointerAddress = functionAddress + relativeOffset + (IsWindows.Value ? 8 : 7);
         return navMeshPointerAddress == IntPtr.Zero ? IntPtr.Zero : Marshal.ReadIntPtr(navMeshPointerAddress);

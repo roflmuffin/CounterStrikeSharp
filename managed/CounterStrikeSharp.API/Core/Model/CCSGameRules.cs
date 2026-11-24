@@ -15,6 +15,7 @@
  */
 
 using System.Runtime.InteropServices;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 
@@ -43,14 +44,15 @@ public partial class CCSGameRules
     {
         // TODO: TEST!
         // the third parameter seems to be something like `CDefaultTypedEntityInstanceFilter<CBaseEntity>` but its optional (earlier it was a string?)
+        var offset = EngineFeatures.Current.GetOffset(ManagedEngineFeatures.GameRulesFindPickerEntity, "CCSGameRules_FindPickerEntity");
         if (IsWindows.Value)
         {
-            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, offset);
             return CCSGameRules_FindPickerEntity.Invoke(this, player, null);
         }
         else
         {
-            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, double, double, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, double, double, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, offset);
             return CCSGameRules_FindPickerEntity.Invoke(this, player, null, 0, 0); // on linux we have a fourth and fifth parameter aswell, but they are unused because the condition for them is always unmet.
         }
     }
