@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md`. ADR-0002.
 
 **Status:** ready-for-agent
 
+**Tier:** 1 base · must
+
 - [ ] Native unit tests (doctest) on synthetic images: unique match resolves; zero matches fails as not found; two matches fails as ambiguous with the count; match at the final position resolves; invalid hex fails as invalid pattern; missing key and missing per-OS entry fail with their reasons
 - [ ] The Resolution Report records the build id and, per Binding, status, reason, match count and address
 - [ ] Signatures are scanned in the module named by the Gamedata `library` field

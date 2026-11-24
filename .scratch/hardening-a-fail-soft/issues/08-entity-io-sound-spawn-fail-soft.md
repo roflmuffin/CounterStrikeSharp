@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Engine Feature catalog). Migrati
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · later
+
 - [ ] Each listed Engine Feature is declared with its Bindings and appears in the startup report
 - [ ] Breaking any one of their Bindings disables only that Engine Feature; the others keep working
 - [ ] Calling a disabled one throws the typed exception; hooks on a disabled one never fire and log once

@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API). ADR-0002.
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · must
+
 - [ ] Managed unit tests: a plugin requiring an available Engine Feature loads; one requiring a disabled Engine Feature is refused with a message naming feature, Binding and reason; an unknown name is reported clearly
 - [ ] The check sits beside the existing minimum-API-version check and produces the same style of refusal
 - [ ] End-to-end: with `Host_Say` broken, a test plugin requiring `cssharp.chat/say-hooks` is refused at load while other plugins load

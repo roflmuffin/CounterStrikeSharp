@@ -10,6 +10,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Prefactor).
 
 **Status:** ready-for-agent
 
+**Tier:** 0 standalone · must
+
 - [ ] With the game-system signature removed from Gamedata, the server boots (no segfault) and logs the miss
 - [ ] With dispatch-spawn unresolved, calling it from a plugin gives a clear error, no crash
 - [ ] With the legacy game-event listener unresolved, firing an event to a client gives a clear error, no crash

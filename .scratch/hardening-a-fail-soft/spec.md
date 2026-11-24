@@ -201,4 +201,10 @@ CounterStrikeSharp resolves every core Binding once at boot into a single immuta
 
 - Evidence for the problem statement and the expected payoff: `.scratch/incremental-hardening/research/report.html` and `handoff.md`.
 - Sliced vertically into 15 tickets under `.scratch/hardening-a-fail-soft/issues/` (blockers first; each file lists its blockers). Shape: prefactors 01–03 → tracer 04 (native, builds the end-to-end harness) → tracer 05 (report reaches plugins) → 06 ClientPrint tracer, 07 Required Engine Features, migration batches 08–12, independent 13 (schema) and 14 (plugin signatures) → 15 contract. Drive 04–07 with `/implement` per ticket (they set the patterns); 08–15 suit `/implement-spec`. The build archiver is separate: `.scratch/build-archiver/issues/`.
+- **Tiers** (each ticket carries a `Tier:` line):
+  - Tier 0 standalone (no base needed): 01, 02, plus the build archiver.
+  - Tier 1 base (required by every add-on and by specs B and C): 03, 04, 05.
+  - Tier 2 add-ons (each needs only the base; any subset, any order; 12 follows 06's pattern): 06, 07, 08, 09, 10, 11, 12, 13, 14.
+  - Tier 3 cleanup (after 08–12; deferrable, leaves two resolution paths until done): 15.
+  - **Must set** (~80% of spec A's value): 01, 02, archiver, 03, 04, 05, 06, 12, 07, 09. **Later**: 08, 11, 13, 10, 14, then 15. Spec B needs only the base.
 - Unused Gamedata keys found during the survey (two offsets and one signature with no consumer) are left alone; the registry simply does not declare them.

@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Native → managed boundary, Plu
 
 **Status:** ready-for-agent
 
+**Tier:** 1 base · must
+
 - [ ] Managed unit tests build Resolution Reports by hand and assert availability, the query API (available, reason, list) and the startup report text
 - [ ] Engine Feature identity is the namespaced string; the enum is generated from the names
 - [ ] End-to-end: with `Host_Say` broken, a test plugin sees `cssharp.chat/say-hooks` as unavailable with reason "not found" (or "ambiguous" with count), and the startup report lists it

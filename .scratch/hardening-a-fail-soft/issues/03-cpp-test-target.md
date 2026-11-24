@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Testing Decisions, seam 1 produc
 
 **Status:** ready-for-agent
 
+**Tier:** 1 base · must
+
 - [ ] The test target builds alongside the plugin without changing the plugin build output
 - [ ] CI runs the native tests on Linux and fails the build on a failing test
 - [ ] One sanity test exercising existing pure code (e.g. hex parsing) passes

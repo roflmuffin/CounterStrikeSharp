@@ -39,6 +39,12 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
 - Plugins may declare Required Engine Features; missing → that plugin refuses to load. ADR-0002.
 - Spec C: Gamedata stored per build id (accumulate, never overwrite in place); design there.
 
+## Spec A tiers
+
+- Must: 01, 02, build archiver (standalone) → 03, 04, 05 (base) → 06, 12, 07, 09 (add-ons).
+- Later: 08, 11, 13, 10, 14 (add-ons) → 15 (cleanup).
+- Spec B can start once the base (03–05) is done.
+
 ## Backlog (not ticketed)
 
 - Managed VTable constructor passes symbol name and binary path in swapped order (found during the code survey; unrelated to hardening).

@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API). ADR-0001 (no
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · later
+
 - [ ] An ambiguous plugin signature still resolves to the first match and logs one warning with the count
 - [ ] With strict mode on, the same signature fails with an "ambiguous" reason
 - [ ] A plugin signature that is not found logs a clear message at creation, and calling it throws a clear error

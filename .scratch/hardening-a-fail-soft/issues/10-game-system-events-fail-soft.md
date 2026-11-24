@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Fatal vs fail soft). Migration b
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · later
+
 - [ ] With the game-system signature broken, CounterStrikeSharp loads and reports game-system-events disabled
 - [ ] Listeners for precache and entity think register, log once, and never fire while disabled
 - [ ] End-to-end harness gains this case

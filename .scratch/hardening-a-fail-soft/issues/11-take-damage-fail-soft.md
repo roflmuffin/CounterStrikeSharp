@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Engine Feature catalog). Migrati
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · later
+
 - [ ] Breaking either take-damage Binding disables take-damage-hooks; entity and player take-damage listeners never fire and log once
 - [ ] Breaking the hit-group offset disables only take-damage-hit-group; reading it throws the typed exception
 - [ ] Creating a plugin memory function from a raw signature works even when the take-damage Gamedata key is absent

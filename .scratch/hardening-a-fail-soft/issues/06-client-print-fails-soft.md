@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (managed core helpers, typed exce
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · must
+
 - [ ] Managed unit tests: with a report where client-print failed, calling ClientPrint throws the typed exception carrying name, Binding and reason; other helpers in the same table still work
 - [ ] A missing Gamedata key for one helper no longer breaks every helper in the table
 - [ ] End-to-end: with `ClientPrint` broken, the server stays up, ClientPrint throws the typed exception, and an unrelated helper (e.g. entity creation) still works

@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Engine Feature catalog). Migrati
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · must
+
 - [ ] Every listed Engine Feature is declared with its Bindings (as in the spec's catalog) and appears in the startup report
 - [ ] Each fails independently: breaking one Binding disables only its Engine Features; calls throw the typed exception
 - [ ] Offsets missing for the current OS disable their Engine Feature instead of calling slot 0

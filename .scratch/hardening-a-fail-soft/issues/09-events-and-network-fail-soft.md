@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Fatal vs fail soft). Migration b
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · must
+
 - [ ] With the CheckTransmit offset removed, CounterStrikeSharp loads; check-transmit is disabled and reported
 - [ ] With the event manager RTTI vtable unresolvable, CounterStrikeSharp loads; game-events is disabled and reported
 - [ ] With the event-manager init Binding broken, game-events is reported disabled (not silently dead)

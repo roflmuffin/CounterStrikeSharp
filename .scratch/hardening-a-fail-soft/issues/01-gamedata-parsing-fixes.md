@@ -11,6 +11,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Prefactor).
 
 **Status:** ready-for-agent
 
+**Tier:** 0 standalone · must
+
 - [ ] A signature with an invalid hex token fails to parse, with a log naming the Gamedata key
 - [ ] A pattern placed at the last possible position of a segment is found by every scanner
 - [ ] Requesting an offset whose per-OS entry is absent raises a clear "missing for this OS" error, never 0

@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md`. Contract step of the migration.
 
 **Status:** ready-for-agent
 
+**Tier:** 3 cleanup · later
+
 - [ ] No core Gamedata lookup remains outside the resolver (plugin-supplied signatures excepted)
 - [ ] Every Engine Feature in the spec's catalog is declared and reported
 - [ ] The full end-to-end harness passes: every broken-key case leaves the server up with exactly the expected Engine Features disabled, and the native test suite passes for everything else

@@ -8,6 +8,8 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Schema fields). I3.
 
 **Status:** ready-for-agent
 
+**Tier:** 2 add-on · later
+
 - [ ] Accessing a field that does not exist throws the typed exception with class and field; a second access throws again but does not log again
 - [ ] An unknown class does not crash native lookups
 - [ ] Existing fields behave exactly as before
