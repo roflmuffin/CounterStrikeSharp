@@ -14,6 +14,18 @@ public enum EngineFeature
 {
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     ChatSayHooks = 2095797270,
+
+    /// <summary><c>cssharp.events/fire-event-to-client</c></summary>
+    EventsFireEventToClient = 418056366,
+
+    /// <summary><c>cssharp.events/game-events</c></summary>
+    EventsGameEvents = -64556705,
+
+    /// <summary><c>cssharp.network/check-transmit</c></summary>
+    NetworkCheckTransmit = -897261195,
+
+    /// <summary><c>cssharp.network/state-changed</c></summary>
+    NetworkStateChanged = -1875359226,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -22,10 +34,26 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     public const string ChatSayHooks = "cssharp.chat/say-hooks";
 
+    /// <summary><c>cssharp.events/fire-event-to-client</c></summary>
+    public const string EventsFireEventToClient = "cssharp.events/fire-event-to-client";
+
+    /// <summary><c>cssharp.events/game-events</c></summary>
+    public const string EventsGameEvents = "cssharp.events/game-events";
+
+    /// <summary><c>cssharp.network/check-transmit</c></summary>
+    public const string NetworkCheckTransmit = "cssharp.network/check-transmit";
+
+    /// <summary><c>cssharp.network/state-changed</c></summary>
+    public const string NetworkStateChanged = "cssharp.network/state-changed";
+
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
     {
         EngineFeature.ChatSayHooks => ChatSayHooks,
+        EngineFeature.EventsFireEventToClient => EventsFireEventToClient,
+        EngineFeature.EventsGameEvents => EventsGameEvents,
+        EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
+        EngineFeature.NetworkStateChanged => NetworkStateChanged,
         _ => null,
     };
 }

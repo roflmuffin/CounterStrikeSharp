@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Core.Commands;
@@ -150,7 +151,13 @@ namespace CounterStrikeSharp.API.Core
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => DeregisterEventHandler(name, handler, post));
 
-            NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
+            // Game events disabled: the handler stays registered (deregistering still works) but never fires.
+            if (EngineFeatures.Current.CheckRegistration(EngineFeatureNames.EventsGameEvents, "Game event handler",
+                    Logger ?? Application.Instance.Logger))
+            {
+                NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
+            }
+
             Handlers[handler] = subscriber;
         }
 
@@ -316,7 +323,14 @@ namespace CounterStrikeSharp.API.Core
             var subscriber =
                 new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(listenerName, handler); });
 
-            NativeAPI.AddListener(listenerName, subscriber.GetInputArgument());
+            // Listener on a disabled Engine Feature: stays registered but never fires.
+            var engineFeature = ListenerEngineFeatures.For(listenerName);
+            if (engineFeature == null || EngineFeatures.Current.CheckRegistration(engineFeature, $"{listenerName} listener",
+                    Logger ?? Application.Instance.Logger))
+            {
+                NativeAPI.AddListener(listenerName, subscriber.GetInputArgument());
+            }
+
             Listeners[handler] = subscriber;
         }
 

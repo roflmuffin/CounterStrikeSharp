@@ -39,9 +39,16 @@ namespace CounterStrikeSharp.API.Modules.Events
         {
         }
 
-        public GameEvent(string name, bool force) : this(NativeAPI.CreateEvent(name, force))
+        /// <exception cref="EngineFeatureUnavailableException">Game events (<c>cssharp.events/game-events</c>) are disabled.</exception>
+        public GameEvent(string name, bool force) : this(CreateEvent(name, force))
         {
             _freeable = true;
+        }
+
+        private static IntPtr CreateEvent(string name, bool force)
+        {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.EventsGameEvents);
+            return NativeAPI.CreateEvent(name, force);
         }
 
         public string EventName => NativeAPI.GetEventName(Handle);
@@ -135,13 +142,20 @@ namespace CounterStrikeSharp.API.Modules.Events
 
         protected void SetPlayer(string name, CCSPlayerController? player) => NativeAPI.SetEventPlayerController(Handle, name, player?.Handle ?? IntPtr.Zero);
 
+        /// <exception cref="EngineFeatureUnavailableException">Game events (<c>cssharp.events/game-events</c>) are disabled.</exception>
         public void FireEvent(bool dontBroadcast)
         {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.EventsGameEvents);
             NativeAPI.FireEvent(Handle, dontBroadcast);
             _freeable = false;
         }
 
-        public void FireEventToClient(CCSPlayerController player) => NativeAPI.FireEventToClient(Handle, (int)player.Index);
+        /// <exception cref="EngineFeatureUnavailableException"><c>cssharp.events/fire-event-to-client</c> is disabled.</exception>
+        public void FireEventToClient(CCSPlayerController player)
+        {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.EventsFireEventToClient);
+            NativeAPI.FireEventToClient(Handle, (int)player.Index);
+        }
 
         /// <summary>
         /// Used to manually free the event.

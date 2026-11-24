@@ -258,8 +258,10 @@ namespace CounterStrikeSharp.API
         /// <param name="fieldName" example="m_iHealth">Schema field name</param>
         /// <param name="extraOffset">Any additional offset to the schema field</param>
         /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+        /// <exception cref="EngineFeatureUnavailableException"><c>cssharp.network/state-changed</c> is disabled.</exception>
         public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
         {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.NetworkStateChanged);
             Guard.IsValidEntity(entity);
 
             if (!Schema.IsSchemaFieldNetworked(className, fieldName))
