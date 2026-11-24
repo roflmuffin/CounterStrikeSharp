@@ -1,3 +1,9 @@
+## What's Changed in v1.0.381
+* fix: temporarily patch s2sdk ([060a16f](https://github.com/roflmuffin/CounterStrikeSharp/commit/060a16f34f12a9c8a669e41308aecfd3a45fec23))
+* fix: schema char array out of bounds write error by [@makadore](https://github.com/makadore) in [#1499](https://github.com/roflmuffin/CounterStrikeSharp/pull/1499) ([0485c76](https://github.com/roflmuffin/CounterStrikeSharp/commit/0485c767339134c7cac16af1efdb951b222bf59e))
+* fix: bound RunThink to player slots by [@makadore](https://github.com/makadore) in [#1495](https://github.com/roflmuffin/CounterStrikeSharp/pull/1495) ([35e3a65](https://github.com/roflmuffin/CounterStrikeSharp/commit/35e3a65065dbb0f727bc252be079c879ca44393f))
+* fix: restore nav mesh lookup on Windows by [@unicbm](https://github.com/unicbm) in [#1493](https://github.com/roflmuffin/CounterStrikeSharp/pull/1493) ([c1b3d1f](https://github.com/roflmuffin/CounterStrikeSharp/commit/c1b3d1f386933d9cd9d9cb736e126cc93731374e))
+
 ## What's Changed in v1.0.380
 * fix: Game Update 1.41.9.7 ([2eb9a57](https://github.com/roflmuffin/CounterStrikeSharp/commit/2eb9a57d800b662e1d728188f7441fa0ede8bf57))
 * fix: format a native error message once, with a bound by [@makadore](https://github.com/makadore) in [#1485](https://github.com/roflmuffin/CounterStrikeSharp/pull/1485) ([1a23fef](https://github.com/roflmuffin/CounterStrikeSharp/commit/1a23fef2d479210a3517339fa8ab3bfb3e7ff67b))
