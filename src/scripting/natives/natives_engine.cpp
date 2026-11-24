@@ -98,6 +98,14 @@ void PrecacheModel(ScriptContext& script_context)
 void AddResource(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
+
+    if (!m_exportResourceManifest)
+    {
+        script_context.ThrowNativeError(
+            "AddResource is unavailable: no resource manifest (game system not registered, or called before OnServerPrecacheResources)");
+        return;
+    }
+
     m_exportResourceManifest->AddResource(name);
 }
 
