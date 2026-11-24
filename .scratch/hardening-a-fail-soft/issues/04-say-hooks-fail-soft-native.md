@@ -16,3 +16,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md`. ADR-0002.
 - [ ] End-to-end: with `Host_Say` broken in Gamedata the server boots and stays up, the chat hook is not registered, and the early native log names `Host_Say` and its reason
 - [ ] End-to-end: with valid Gamedata, chat hooks work as before
 - [ ] The end-to-end harness can boot the laptop server with a modified Gamedata file and collect the native test plugin's results file
+
+## Comments
+
+- Unit side merged to `hardening/spec-a` (`spec-a/04-say-hooks-fail-soft-native`): pure resolver `src/core/binding_resolver.*`, catalog `src/core/engine_features.*`, adapter `src/core/core_bindings.*`, doctest 27 cases. E2E criteria pending the harness (`spec-a/04a-e2e-harness`); ticket stays open until then. Native patterns: see orchestrator notes `patterns-native.md`.
