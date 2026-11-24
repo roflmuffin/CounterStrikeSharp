@@ -188,9 +188,10 @@ class CBaseEntity : public CEntityInstance
   public:
     bool IsPawn()
     {
-        // Only called from the take-damage hooks, which are registered only when this Binding resolved.
-        static int offset = static_cast<int>(counterstrikesharp::bindings::GetBindingOffset("CBaseEntity_IsPlayerPawn").value_or(-1));
-        return CALL_VIRTUAL(bool, offset, this);
+        // False while the Binding is unresolved: never calls through an unresolved vtable index.
+        static const auto offset = counterstrikesharp::bindings::GetBindingOffset("CBaseEntity_IsPlayerPawn");
+        if (!offset) return false;
+        return CALL_VIRTUAL(bool, static_cast<int>(*offset), this);
     }
 };
 
