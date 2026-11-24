@@ -244,6 +244,7 @@ namespace CounterStrikeSharp.API
             NextWorldUpdateAsync(task);
         }
 
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.chat/client-print</c> is disabled on this build.</exception>
         public static void PrintToChatAll(string message)
         {
             VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0, 0);
