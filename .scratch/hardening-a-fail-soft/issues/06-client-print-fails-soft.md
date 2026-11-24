@@ -6,7 +6,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (managed core helpers, typed exce
 
 **Blocked by:** 05
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · must
 
@@ -14,3 +14,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (managed core helpers, typed exce
 - [ ] A missing Gamedata key for one helper no longer breaks every helper in the table
 - [ ] End-to-end: with `ClientPrint` broken, the server stays up, ClientPrint throws the typed exception, and an unrelated helper (e.g. entity creation) still works
 - [ ] Registering a hook on a disabled Engine Feature succeeds, logs once, and never fires
+
+## Comments
+
+- Resolved on `hardening/spec-a` (merge of `spec-a/06-client-print-fails-soft`). Native `CREATE_VIRTUAL_FUNCTION_FROM_ADDRESS`; internal `CoreFunction.FromEngineFeature` / stopgap `FromGamedata`; all `VirtualFunctions` members lazy (public fields unchanged); `cssharp.chat/client-print` managed row. Managed 88/88. E2E `eng/e2e/cases/client-print.sh`: valid 192/0/4; ClientPrint ambiguous: server up, typed exception, hook warns once. Pattern for 12 in orchestrator notes `patterns-managed.md` ("Lazy core helper (t06)").
