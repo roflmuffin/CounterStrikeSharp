@@ -17,6 +17,21 @@ public enum EngineFeature
 
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     ChatSayHooks = 2095797270,
+
+    /// <summary><c>cssharp.entity/accept-input</c></summary>
+    EntityAcceptInput = 1580885254,
+
+    /// <summary><c>cssharp.entity/add-io-event</c></summary>
+    EntityAddIoEvent = 251219268,
+
+    /// <summary><c>cssharp.entity/dispatch-spawn</c></summary>
+    EntityDispatchSpawn = -1778353521,
+
+    /// <summary><c>cssharp.entity/emit-sound</c></summary>
+    EntityEmitSound = -654186022,
+
+    /// <summary><c>cssharp.entity/output-hooks</c></summary>
+    EntityOutputHooks = -1424924309,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -28,11 +43,31 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     public const string ChatSayHooks = "cssharp.chat/say-hooks";
 
+    /// <summary><c>cssharp.entity/accept-input</c></summary>
+    public const string EntityAcceptInput = "cssharp.entity/accept-input";
+
+    /// <summary><c>cssharp.entity/add-io-event</c></summary>
+    public const string EntityAddIoEvent = "cssharp.entity/add-io-event";
+
+    /// <summary><c>cssharp.entity/dispatch-spawn</c></summary>
+    public const string EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
+
+    /// <summary><c>cssharp.entity/emit-sound</c></summary>
+    public const string EntityEmitSound = "cssharp.entity/emit-sound";
+
+    /// <summary><c>cssharp.entity/output-hooks</c></summary>
+    public const string EntityOutputHooks = "cssharp.entity/output-hooks";
+
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
     {
         EngineFeature.ChatClientPrint => ChatClientPrint,
         EngineFeature.ChatSayHooks => ChatSayHooks,
+        EngineFeature.EntityAcceptInput => EntityAcceptInput,
+        EngineFeature.EntityAddIoEvent => EntityAddIoEvent,
+        EngineFeature.EntityDispatchSpawn => EntityDispatchSpawn,
+        EngineFeature.EntityEmitSound => EntityEmitSound,
+        EngineFeature.EntityOutputHooks => EntityOutputHooks,
         _ => null,
     };
 }
