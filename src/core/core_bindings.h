@@ -28,6 +28,10 @@ void* GetBindingAddress(std::string_view key);
 // Value of a resolved Offset Binding; nullopt if it failed or is not declared.
 std::optional<std::int64_t> GetBindingOffset(std::string_view key);
 
+// Scans a raw (plugin-supplied) signature in the module named as for FindSignature, counting matches across all of its
+// segments the same way core Bindings are counted. matchCount is 0 if the module is not loaded.
+SignatureScan ScanModuleSignature(const char* moduleName, std::string_view signature);
+
 // Gate for hook registration: true if the Engine Feature is available, otherwise logs why (naming what is skipped)
 // and returns false. The caller then skips registration instead of failing.
 bool ShouldRegisterHooks(std::string_view feature, std::string_view what);
