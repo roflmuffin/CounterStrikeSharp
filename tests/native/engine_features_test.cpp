@@ -199,6 +199,9 @@ TEST_CASE("Every failure reason and Binding kind has its own name on the wire")
 
     BindingResult vtable = Resolved("CGameEventManager");
     vtable.kind = BindingKind::RttiVtable;
-    const auto json = nlohmann::json::parse(ResolutionReportToJson(ResolutionReport("b", { vtable }), {}));
+    BindingResult schemaField = Resolved("CBaseEntity::m_iTeamNum");
+    schemaField.kind = BindingKind::SchemaField;
+    const auto json = nlohmann::json::parse(ResolutionReportToJson(ResolutionReport("b", { vtable, schemaField }), {}));
     CHECK(json["bindings"][0]["kind"] == "RttiVtable");
+    CHECK(json["bindings"][1]["kind"] == "SchemaField");
 }

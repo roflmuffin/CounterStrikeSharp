@@ -202,7 +202,8 @@ public class EngineFeatureTests
              "bindings":[
                {"key":"Host_Say","kind":"Signature","resolved":false,"reason":"Ambiguous","matchCount":2,"address":0,"offset":0,"library":"server"},
                {"key":"CBaseEntity_Teleport","kind":"Offset","resolved":true,"reason":"None","matchCount":0,"address":0,"offset":157,"library":""},
-               {"key":"ClientPrint","kind":"Signature","resolved":true,"reason":"None","matchCount":1,"address":139637976732212,"offset":0,"library":"server"}],
+               {"key":"ClientPrint","kind":"Signature","resolved":true,"reason":"None","matchCount":1,"address":139637976732212,"offset":0,"library":"server"},
+               {"key":"CBaseEntity::m_iTeamNum","kind":"SchemaField","resolved":false,"reason":"SchemaFieldMissing","matchCount":0,"address":0,"offset":0,"library":"server"}],
              "features":[{"name":"cssharp.chat/say-hooks","bindings":["Host_Say"]}]}
             """;
 
@@ -213,6 +214,8 @@ public class EngineFeatureTests
             report.Find("Host_Say"));
         Assert.Equal(157, report.Find("CBaseEntity_Teleport")!.Offset);
         Assert.Equal(unchecked((nint)0x7f0000001234), report.Find("ClientPrint")!.Address);
+        Assert.Equal(BindingKind.SchemaField, report.Find("CBaseEntity::m_iTeamNum")!.Kind);
+        Assert.Equal(BindingFailureReason.SchemaFieldMissing, report.Find("CBaseEntity::m_iTeamNum")!.Reason);
         Assert.Equal("cssharp.chat/say-hooks", Assert.Single(report.NativeFeatures).Name);
 
         var status = new EngineFeatureSet(report, []).GetStatus("cssharp.chat/say-hooks");

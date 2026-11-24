@@ -11,6 +11,7 @@ internal enum BindingKind
     Signature,
     Offset,
     RttiVtable,
+    SchemaField,
 }
 
 /// <summary>One Binding in the Resolution Report: resolved (with its address or offset) or failed (with a reason).</summary>

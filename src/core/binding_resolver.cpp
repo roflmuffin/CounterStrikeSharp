@@ -286,6 +286,8 @@ const char* KindName(BindingKind kind)
             return "Offset";
         case BindingKind::RttiVtable:
             return "RttiVtable";
+        case BindingKind::SchemaField:
+            return "SchemaField";
     }
     return "Unknown";
 }
