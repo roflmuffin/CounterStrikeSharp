@@ -13,6 +13,7 @@ public partial class CBaseEntity
 {
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     /// <exception cref="ArgumentNullException">At least one parameter must be specified</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/teleport</c> is disabled</exception>
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
         Teleport(position == null ? null : (Vector3)position, angles == null ? null : (Vector3)angles,

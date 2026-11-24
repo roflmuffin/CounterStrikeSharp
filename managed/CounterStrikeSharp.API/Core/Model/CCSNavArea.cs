@@ -166,6 +166,7 @@ public class CCSNavArea : NativeObject
     /// <param name="position">World position to compare against.</param>
     /// <param name="maximumDistance">Maximum search distance. A value less than or equal to zero disables the limit.</param>
     /// <returns>The closest nav area, or <see langword="null"/> if none was found.</returns>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.nav/nav-mesh</c> is disabled</exception>
     public static CCSNavArea? GetClosestNavArea(Vector position, float maximumDistance = -1)
     {
         return GetClosestNavArea(position, out _, maximumDistance);
@@ -178,6 +179,7 @@ public class CCSNavArea : NativeObject
     /// <param name="distance">Distance to the closest nav area, or <see cref="float.MaxValue"/> if none was found.</param>
     /// <param name="maximumDistance">Maximum search distance. A value less than or equal to zero disables the limit.</param>
     /// <returns>The closest nav area, or <see langword="null"/> if none was found.</returns>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.nav/nav-mesh</c> is disabled</exception>
     public static CCSNavArea? GetClosestNavArea(Vector position, out float distance, float maximumDistance = -1)
     {
         var navAreas = GetAllNavAreas();

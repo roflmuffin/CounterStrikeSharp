@@ -26,6 +26,7 @@ public partial class CBasePlayerPawn
     /// </summary>
     /// <param name="weapon"></param>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.items/remove-player-item</c> is disabled</exception>
     public void RemovePlayerItem(CBasePlayerWeapon weapon)
     {
         Guard.IsValidEntity(this);

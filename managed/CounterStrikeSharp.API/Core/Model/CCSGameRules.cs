@@ -28,6 +28,7 @@ public partial class CCSGameRules
     /// <summary>
     /// Terminate the round with the given delay and reason.
     /// </summary>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.game-rules/terminate-round</c> is disabled</exception>
     public void TerminateRound(float delay, RoundEndReason roundEndReason)
     {
         if (IsWindows.Value)
@@ -57,6 +58,7 @@ public partial class CCSGameRules
         }
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.game-rules/find-picker-entity</c> is disabled</exception>
     public T? FindPickerEntity<T>(CBasePlayerController player) where T : CBaseEntity
     {
         CBaseEntity? entity = FindPickerEntityInternal(player);
@@ -64,6 +66,7 @@ public partial class CCSGameRules
         return (entity?.IsValid ?? false) ? entity.As<T>() : null;
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.game-rules/find-picker-entity</c> is disabled</exception>
     public CCSPlayerController? GetClientAimTarget(CCSPlayerController player)
     {
         CCSPlayerPawn? pawn = FindPickerEntity<CCSPlayerPawn>(player);

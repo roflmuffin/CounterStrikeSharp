@@ -15,11 +15,13 @@ public partial class CCSPlayerController
     public CsTeam Team => (CsTeam)TeamNum;
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.items/give-named-item</c> is disabled</exception>
     public IntPtr GiveNamedItem(string item)
     {
         return GiveNamedItem<CEntityInstance>(item)?.Handle ?? IntPtr.Zero;
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.items/give-named-item</c> is disabled</exception>
     public T? GiveNamedItem<T>(string item) where T : CEntityInstance
     {
         Guard.IsValidEntity(this);
@@ -27,6 +29,7 @@ public partial class CCSPlayerController
         return PlayerPawn.Value?.ItemServices?.As<CCSPlayer_ItemServices>().GiveNamedItem<T>(item);
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.items/give-named-item</c> is disabled</exception>
     public IntPtr GiveNamedItem(CsItem item)
     {
         string? itemString = EnumUtils.GetEnumMemberAttributeValue(item);
@@ -70,9 +73,11 @@ public partial class CCSPlayerController
         NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Alert, message);
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.events/fire-event-to-client</c> or <c>cssharp.events/game-events</c> is disabled</exception>
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.events/fire-event-to-client</c> or <c>cssharp.events/game-events</c> is disabled</exception>
     public void PrintToCenterHtml(string message, int duration)
     {
         Guard.IsValidEntity(this);
@@ -91,6 +96,7 @@ public partial class CCSPlayerController
     /// Drops the active player weapon on the ground.
     /// </summary>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.items/drop-active-weapon</c> is disabled</exception>
     public void DropActiveWeapon()
     {
         Guard.IsValidEntity(this);
@@ -107,6 +113,7 @@ public partial class CCSPlayerController
     /// Removes every weapon from the player.
     /// </summary>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.items/remove-weapons</c> is disabled</exception>
     public void RemoveWeapons()
     {
         Guard.IsValidEntity(this);
@@ -120,6 +127,7 @@ public partial class CCSPlayerController
     /// <param name="explode"></param>
     /// <param name="force"></param>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.player/commit-suicide</c> is disabled</exception>
     public void CommitSuicide(bool explode, bool force)
     {
         Guard.IsValidEntity(this);
@@ -150,6 +158,7 @@ public partial class CCSPlayerController
     /// </summary>
     /// <param name="team">The team to switch to</param>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.player/switch-team</c> is disabled</exception>
     public void SwitchTeam(CsTeam team)
     {
         Guard.IsValidEntity(this);
@@ -345,6 +354,7 @@ public partial class CCSPlayerController
         }
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.entity/teleport</c> is disabled</exception>
     [Obsolete(
         "You are trying to call Teleport on a non-physical player. Maybe you mean Pawn? (See: https://docs.cssharp.dev/docs/guides/referencing-players.html#controllers--pawns)")]
     public new void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
