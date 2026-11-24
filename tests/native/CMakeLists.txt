@@ -35,6 +35,7 @@ set(CSSHARP_TEST_SOURCES
     signature_test.cpp
     binding_resolver_test.cpp
     engine_features_test.cpp
+    real_binary_test.cpp
 )
 
 add_executable(native_tests ${CSSHARP_TEST_SOURCES} ${CSSHARP_TESTED_SOURCES})
@@ -43,6 +44,10 @@ target_include_directories(native_tests PRIVATE
     ${CSSHARP_ROOT}/src
     ${CSSHARP_ROOT}/libraries/doctest
     ${CSSHARP_ROOT}/libraries # vendored single headers only (nlohmann/json.hpp); no submodules
+)
+
+target_compile_definitions(native_tests PRIVATE
+    CSSHARP_GAMEDATA_PATH="${CSSHARP_ROOT}/configs/addons/counterstrikesharp/gamedata/gamedata.json"
 )
 
 add_test(NAME native_tests COMMAND native_tests)
