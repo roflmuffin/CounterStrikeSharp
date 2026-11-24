@@ -26,6 +26,7 @@
 #include "tier0/dbg.h"
 #include "utils/virtual.h"
 #include "tier0/utlvector.h"
+#include "core/schema_field_status.h"
 
 #include <string>
 #include <vector>
@@ -126,16 +127,9 @@ static std::vector<std::string> CS2BadList = {
     "m_nMusicID",
 };
 
-enum class LookupStatus : uint8_t
-{
-    Found,
-    ClassMissing,
-    FieldMissing,
-};
-
 struct FieldLookup
 {
-    LookupStatus status;
+    counterstrikesharp::bindings::SchemaFieldStatus status;
     SchemaKey key; // valid only when status is Found
 };
 

@@ -54,11 +54,11 @@ int LookupSchemaField(ScriptContext& script_context)
     const auto lookup = schema::LookupField(className, hash_32_fnv1a_const(className), memberName, hash_32_fnv1a_const(memberName));
     switch (lookup.status)
     {
-        case schema::LookupStatus::Found:
+        case bindings::SchemaFieldStatus::Found:
             return lookup.key.offset;
-        case schema::LookupStatus::ClassMissing:
+        case bindings::SchemaFieldStatus::ClassMissing:
             return kSchemaClassMissing;
-        case schema::LookupStatus::FieldMissing:
+        case bindings::SchemaFieldStatus::FieldMissing:
             break;
     }
     return kSchemaFieldMissing;
@@ -68,14 +68,14 @@ int LookupSchemaField(ScriptContext& script_context)
 static bool LookupSchemaFieldOrThrow(ScriptContext& script_context, const char* className, const char* memberName, SchemaKey& key)
 {
     const auto lookup = schema::LookupField(className, hash_32_fnv1a_const(className), memberName, hash_32_fnv1a_const(memberName));
-    if (lookup.status == schema::LookupStatus::Found)
+    if (lookup.status == bindings::SchemaFieldStatus::Found)
     {
         key = lookup.key;
         return true;
     }
 
     script_context.ThrowNativeError("Schema field %s::%s not found (%s)", className, memberName,
-                                    lookup.status == schema::LookupStatus::ClassMissing ? "class missing" : "field missing");
+                                    lookup.status == bindings::SchemaFieldStatus::ClassMissing ? "class missing" : "field missing");
     return false;
 }
 

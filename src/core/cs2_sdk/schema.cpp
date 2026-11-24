@@ -35,6 +35,7 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
+using counterstrikesharp::bindings::SchemaFieldStatus;
 using SchemaKeyValueMap_t = CUtlOrderedMap<uint32_t, SchemaKey>;
 
 // Tracks whether networked flags were resolved when this table was built.
@@ -176,27 +177,27 @@ schema::FieldLookup schema::LookupField(const char* className, uint32_t classKey
         InitSchemaFieldsForClass(&schemaTableMap, className, classKey);
         tableMapIndex = schemaTableMap.Find(classKey);
         // Not cached when the type scope is unavailable, so a later lookup retries.
-        if (!schemaTableMap.IsValidIndex(tableMapIndex)) return { LookupStatus::ClassMissing, { 0, 0 } };
+        if (!schemaTableMap.IsValidIndex(tableMapIndex)) return { SchemaFieldStatus::ClassMissing, { 0, 0 } };
     }
 
     SchemaClassTable& table = schemaTableMap[tableMapIndex];
-    if (!table.classFound) return { LookupStatus::ClassMissing, { 0, 0 } };
+    if (!table.classFound) return { SchemaFieldStatus::ClassMissing, { 0, 0 } };
     if (!table.networkResolved && GetNetworkSerializerDatabase() != nullptr) ResolveNetworkedFlags(table, className);
 
     SchemaKeyValueMap_t* tableMap = table.fields;
     auto memberIndex = tableMap->Find(memberKey);
     if (!tableMap->IsValidIndex(memberIndex))
     {
-        return { LookupStatus::FieldMissing, { 0, 0 } };
+        return { SchemaFieldStatus::FieldMissing, { 0, 0 } };
     }
 
-    return { LookupStatus::Found, tableMap->Element(memberIndex) };
+    return { SchemaFieldStatus::Found, tableMap->Element(memberIndex) };
 }
 
 SchemaKey schema::GetOffset(const char* className, uint32_t classKey, const char* memberName, uint32_t memberKey)
 {
     const auto lookup = LookupField(className, classKey, memberName, memberKey);
-    return lookup.status == LookupStatus::Found ? lookup.key : SchemaKey{ 0, 0 };
+    return lookup.status == SchemaFieldStatus::Found ? lookup.key : SchemaKey{ 0, 0 };
 }
 
 void NetworkStateChanged(uintptr_t chainEntity, uint32_t offset, uint32_t nArrayIndex, uint32_t nPathIndex)

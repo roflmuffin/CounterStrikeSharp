@@ -47,16 +47,8 @@ SchemaFieldLookup FindServerSchemaField(std::string_view className, std::string_
     const std::string fieldString(fieldName);
     const auto lookup = schema::LookupField(classString.c_str(), hash_32_fnv1a_const(classString.c_str()), fieldString.c_str(),
                                             hash_32_fnv1a_const(fieldString.c_str()));
-    switch (lookup.status)
-    {
-        case schema::LookupStatus::Found:
-            return { SchemaFieldStatus::Found, lookup.key.offset };
-        case schema::LookupStatus::FieldMissing:
-            return { SchemaFieldStatus::FieldMissing };
-        case schema::LookupStatus::ClassMissing:
-            break;
-    }
-    return { SchemaFieldStatus::ClassMissing };
+    if (lookup.status != SchemaFieldStatus::Found) return { lookup.status };
+    return { SchemaFieldStatus::Found, lookup.key.offset };
 }
 
 std::string ReadBuildId()

@@ -18,6 +18,8 @@
 #undef snprintf
 #include <nlohmann/json.hpp>
 
+#include "core/schema_field_status.h"
+
 namespace counterstrikesharp::bindings {
 
 // --- Inputs ---
@@ -58,13 +60,6 @@ struct ModuleSegment
     std::uintptr_t address = 0; // where data[0] lives in the process
     const std::uint8_t* data = nullptr;
     std::size_t size = 0;
-};
-
-enum class SchemaFieldStatus : std::uint8_t
-{
-    Found,
-    ClassMissing,
-    FieldMissing,
 };
 
 struct SchemaFieldLookup
