@@ -1806,6 +1806,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static int LookupSchemaField(string classname, string propname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.PushString(classname);
+			ScriptContext.GlobalScriptContext.PushString(propname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x92A4F74);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return ScriptContext.GlobalScriptContext.GetResultPrimitive<int>();
+			}
+		}
+
         public static bool IsSchemaFieldNetworked(string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
