@@ -8,7 +8,7 @@ namespace {
 
 BindingDeclaration Signature(std::string key) { return { std::move(key), BindingKind::Signature }; }
 BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKind::Offset }; }
-[[maybe_unused]] BindingDeclaration RttiVtable(std::string className, std::string library)
+BindingDeclaration RttiVtable(std::string className, std::string library)
 {
     return { std::move(className), BindingKind::RttiVtable, std::move(library) };
 }
@@ -22,6 +22,11 @@ BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKin
 // Additive only. A Binding may appear in several rows; it is resolved once.
 const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
+    // ticket 09
+    { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
+    { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
+    { std::string(features::StateChanged), { Signature("NetworkStateChanged"), Offset("SetStateChanged") } },
+    { std::string(features::CheckTransmit), { Offset("ISource2GameEntities::CheckTransmit"), Offset("CheckTransmitPlayerSlot") } },
 };
 
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)
