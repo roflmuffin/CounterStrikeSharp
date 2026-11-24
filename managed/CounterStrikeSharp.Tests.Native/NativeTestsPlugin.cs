@@ -56,6 +56,7 @@ namespace NativeTestsPlugin
             // (cssharp.events/game-events, cssharp.network/check-transmit) is disabled; both do nothing.
             RegisterEventHandler<EventRoundStart>((_, _) => HookResult.Continue);
             RegisterListener<Listeners.CheckTransmit>(_ => { });
+            GameSystemTests.RegisterOnLoad(this);
             // Loading blocks the game thread, so we use NextFrame to run our tests asynchronously.
             // Uncomment to run the tests on load
             // Server.NextWorldUpdate(() => RunTests());

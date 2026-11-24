@@ -1,9 +1,11 @@
+using Microsoft.Extensions.Logging;
+
 namespace CounterStrikeSharp.API.Core.Bindings;
 
 /// <summary>
-/// Which Engine Feature's hooks fire a global listener (by its <see cref="Attributes.ListenerNameAttribute"/> name).
-/// <see cref="BasePlugin.RegisterListener{T}"/> gates on it: a listener on a disabled Engine Feature stays registered,
-/// logs once and never fires (ADR-0002). Listeners not listed here do not depend on a Binding.
+/// Which Engine Feature fires each listener (by <see cref="ListenerNameAttribute"/> name). A listener on a disabled
+/// Engine Feature still registers but never fires, so registering it logs once (ADR-0002). Listeners not listed here
+/// are not backed by an Engine Feature.
 /// </summary>
 internal static class ListenerEngineFeatures
 {
@@ -11,8 +13,18 @@ internal static class ListenerEngineFeatures
     {
         // ticket 09
         ["CheckTransmit"] = "cssharp.network/check-transmit",
+        // ticket 10: fired from our game system (precache, entity think) and player think (button changes)
+        ["OnServerPrecacheResources"] = "cssharp.server/game-system-events",
+        ["OnServerPreEntityThink"] = "cssharp.server/game-system-events",
+        ["OnServerPostEntityThink"] = "cssharp.server/game-system-events",
+        ["OnPlayerButtonsChanged"] = "cssharp.server/game-system-events",
     };
 
-    /// <summary>The Engine Feature backing the listener, or null if it needs none.</summary>
-    public static string? For(string listenerName) => Features.GetValueOrDefault(listenerName);
+    /// <summary>
+    /// True if the listener can fire. Otherwise logs once per listener that it is registered on a disabled Engine
+    /// Feature and returns false; the caller keeps the registration either way.
+    /// </summary>
+    public static bool CheckRegistration(EngineFeatureSet features, string listenerName, ILogger logger) =>
+        !Features.TryGetValue(listenerName, out var feature) ||
+        features.CheckRegistration(feature, $"{listenerName} listener", logger);
 }

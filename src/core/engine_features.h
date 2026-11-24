@@ -21,6 +21,8 @@ inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
 inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";
 inline constexpr std::string_view StateChanged = "cssharp.network/state-changed";
 inline constexpr std::string_view CheckTransmit = "cssharp.network/check-transmit";
+// ticket 10
+inline constexpr std::string_view ServerGameSystemEvents = "cssharp.server/game-system-events";
 // ticket 08
 inline constexpr std::string_view EntityOutputHooks = "cssharp.entity/output-hooks";
 inline constexpr std::string_view EntityAcceptInput = "cssharp.entity/accept-input";

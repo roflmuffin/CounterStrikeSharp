@@ -20,7 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
-using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Core.Commands;
@@ -301,6 +300,10 @@ namespace CounterStrikeSharp.API.Core
             Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
 
+            // Registers either way; on a disabled Engine Feature the listener never fires, so say so once.
+            Bindings.ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, listenerName,
+                Logger ?? Application.Instance.Logger);
+
             var wrappedHandler = new Func<ScriptContext, HookResult>(context =>
             {
                 var args = new object[parameterTypes.Length];
@@ -323,14 +326,7 @@ namespace CounterStrikeSharp.API.Core
             var subscriber =
                 new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(listenerName, handler); });
 
-            // Listener on a disabled Engine Feature: stays registered but never fires.
-            var engineFeature = ListenerEngineFeatures.For(listenerName);
-            if (engineFeature == null || EngineFeatures.Current.CheckRegistration(engineFeature, $"{listenerName} listener",
-                    Logger ?? Application.Instance.Logger))
-            {
-                NativeAPI.AddListener(listenerName, subscriber.GetInputArgument());
-            }
-
+            NativeAPI.AddListener(listenerName, subscriber.GetInputArgument());
             Listeners[handler] = subscriber;
         }
 

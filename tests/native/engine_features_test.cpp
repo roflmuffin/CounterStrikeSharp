@@ -169,6 +169,25 @@ TEST_CASE("An RTTI vtable Binding of the catalog is resolved by class name in it
     CHECK(DescribeFailure(*missing.Find("CGameEventManager")) == "RTTI vtable not found");
 }
 
+TEST_CASE("The native Engine Feature catalog declares game-system-events on the game-system signature and RunThink's schema fields")
+{
+    const auto* gameSystem = FindNativeEngineFeature(features::ServerGameSystemEvents);
+    REQUIRE(gameSystem != nullptr);
+    CHECK(gameSystem->name == "cssharp.server/game-system-events");
+
+    std::vector<std::pair<std::string, BindingKind>> bindings;
+    for (const auto& binding : gameSystem->bindings)
+        bindings.emplace_back(binding.key, binding.kind);
+    CHECK(bindings == std::vector<std::pair<std::string, BindingKind>>{
+                          { "IGameSystem_InitAllSystems_pFirst", BindingKind::Signature },
+                          { "CCSPlayerController::m_hPlayerPawn", BindingKind::SchemaField },
+                          { "CBasePlayerController::m_iConnected", BindingKind::SchemaField },
+                          { "CBasePlayerPawn::m_pMovementServices", BindingKind::SchemaField },
+                          { "CPlayer_MovementServices::m_nButtons", BindingKind::SchemaField },
+                          { "CInButtonState::m_pButtonStates", BindingKind::SchemaField },
+                      });
+}
+
 TEST_CASE("Entity IO, sound and spawn are separate Engine Features, each on its own Binding")
 {
     const std::vector<std::pair<std::string_view, std::string>> expected{

@@ -27,6 +27,11 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
     { std::string(features::StateChanged), { Signature("NetworkStateChanged"), Offset("SetStateChanged") } },
     { std::string(features::CheckTransmit), { Offset("ISource2GameEntities::CheckTransmit"), Offset("CheckTransmitPlayerSlot") } },
+    // ticket 10: our game system (precache, pre/post entity think) and player think (button changes) via RunThink.
+    { std::string(features::ServerGameSystemEvents),
+      { Signature("IGameSystem_InitAllSystems_pFirst"), SchemaField("CCSPlayerController", "m_hPlayerPawn"),
+        SchemaField("CBasePlayerController", "m_iConnected"), SchemaField("CBasePlayerPawn", "m_pMovementServices"),
+        SchemaField("CPlayer_MovementServices", "m_nButtons"), SchemaField("CInButtonState", "m_pButtonStates") } },
     // ticket 08
     { std::string(features::EntityOutputHooks), { Signature("CEntityIOOutput_FireOutputInternal") } },
     { std::string(features::EntityAcceptInput), { Signature("CEntityInstance_AcceptInput") } },
