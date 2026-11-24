@@ -7,7 +7,7 @@
 # Usage: eng/e2e/run.sh [options]
 #
 # Build:
-#   --no-build              Reuse the last staged package (skip native + managed builds).
+#   --no-build              Reuse this worktree's last staged package (skip native + managed builds).
 #   --build-only            Build and stage the package, then exit.
 #
 # Install (applied to the server copy only, never to this checkout):
@@ -78,8 +78,11 @@ MIRROR=$E2E_HOME/src
 NATIVE_MODE=${CSS_E2E_NATIVE:-container}
 SNIPER_IMAGE=${CSS_E2E_SNIPER_IMAGE:-registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest}
 NATIVE_BUILD=$E2E_HOME/build/native-$NATIVE_MODE
-MANAGED_BUILD=$E2E_HOME/build/managed
-PKG=$E2E_HOME/pkg
+# Per-worktree managed output and staged package, so parallel worktrees never
+# install each other's build between the build lock and the server lock.
+REPO_KEY=$(printf '%s' "$REPO" | sha1sum | cut -c1-10)
+MANAGED_BUILD=$E2E_HOME/build/managed-$REPO_KEY
+PKG=$E2E_HOME/pkg/$REPO_KEY
 SERVER=$E2E_HOME/server
 HOME_DIR=$E2E_HOME/home
 STEAMCLIENT=${CSS_E2E_STEAMCLIENT:-$HOME/.cache/cs2-poc-steamcmd/linux64/steamclient.so}
