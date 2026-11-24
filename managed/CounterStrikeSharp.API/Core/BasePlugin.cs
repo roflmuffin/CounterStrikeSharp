@@ -21,7 +21,6 @@ using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Modules.Admin;
@@ -295,8 +294,9 @@ namespace CounterStrikeSharp.API.Core
             Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
 
-            // Still registered on a disabled Engine Feature: native never fires it.
-            ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, listenerName, Application.Instance.Logger);
+            // Registers either way; on a disabled Engine Feature the listener never fires, so say so once.
+            Bindings.ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, listenerName,
+                Logger ?? Application.Instance.Logger);
 
             var wrappedHandler = new Func<ScriptContext, HookResult>(context =>
             {
