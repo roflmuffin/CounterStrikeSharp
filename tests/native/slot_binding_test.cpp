@@ -99,6 +99,30 @@ BindingResult Resolve(const json& gamedata, const FakeBuild& live, Platform plat
 }
 
 const std::vector<int> kOldBuild{ 1, 2, 3, 4, 5, 6, 7, 8 };
+
+// A larger build for Heals: bodies 1..40, so a slot in the middle can move up to the search range either way.
+std::vector<int> Bodies(int count)
+{
+    std::vector<int> bodies;
+    for (int id = 1; id <= count; ++id)
+        bodies.push_back(id);
+    return bodies;
+}
+
+// bodies with count new virtuals (ids from 100) inserted at position.
+std::vector<int> Inserted(std::vector<int> bodies, std::size_t position, int count)
+{
+    for (int i = 0; i < count; ++i)
+        bodies.insert(bodies.begin() + static_cast<std::ptrdiff_t>(position), 100 + i);
+    return bodies;
+}
+
+// bodies with count virtuals removed at position.
+std::vector<int> Removed(std::vector<int> bodies, std::size_t position, int count)
+{
+    bodies.erase(bodies.begin() + static_cast<std::ptrdiff_t>(position), bodies.begin() + static_cast<std::ptrdiff_t>(position) + count);
+    return bodies;
+}
 } // namespace
 
 TEST_CASE("A Slot Binding whose window matches the live vtable resolves at its Gamedata index")
@@ -130,11 +154,6 @@ TEST_CASE("A Slot Binding whose window does not match fails with fingerprint mis
         CHECK(result.status == BindingStatus::Failed);
         CHECK(result.reason == FailureReason::FingerprintMismatch);
         CHECK(DescribeFailure(result) == "fingerprint mismatch");
-    }
-    SUBCASE("a virtual was inserted before the slot (no Heal: the Binding fails instead of using the wrong function)")
-    {
-        const auto result = Resolve(gamedata, FakeBuild({ 1, 2, 3, 50, 4, 5, 6, 7, 8 }));
-        CHECK(result.reason == FailureReason::FingerprintMismatch);
     }
     SUBCASE("the vtable is shorter than the slot")
     {
@@ -319,4 +338,130 @@ TEST_CASE("Gamedata keys with a vtable are declared as Slot Bindings")
     };
     CHECK(kindOf("Some_Slot") == BindingKind::Slot);
     CHECK(kindOf("Some_Offset") == BindingKind::Offset);
+}
+
+TEST_CASE("A Slot Binding whose window moved within the search range heals at the new index, with evidence")
+{
+    const FakeBuild old(Bodies(40));
+    const json gamedata{ { kKey, SlotEntry(old, 20) } };
+    const auto recordedWindow = vtable::RecordSlot(old.Fingerprints(), 20).window;
+
+    std::vector<int> live;
+    std::int64_t expected = 0;
+    SUBCASE("one virtual inserted before the slot (as at 1.42.0.1)")
+    {
+        live = Inserted(Bodies(40), 5, 1);
+        expected = 21;
+    }
+    SUBCASE("three inserted")
+    {
+        live = Inserted(Bodies(40), 5, 3);
+        expected = 23;
+    }
+    SUBCASE("sixteen inserted: the edge of the search range")
+    {
+        live = Inserted(Bodies(40), 5, 16);
+        expected = 36;
+    }
+    SUBCASE("one removed before the slot")
+    {
+        live = Removed(Bodies(40), 5, 1);
+        expected = 19;
+    }
+    SUBCASE("sixteen removed")
+    {
+        live = Removed(Bodies(40), 2, 16);
+        expected = 4;
+    }
+
+    const auto result = Resolve(gamedata, FakeBuild(live));
+
+    CHECK(result.status == BindingStatus::Healed);
+    CHECK(result.Resolved());
+    CHECK(result.reason == FailureReason::None);
+    CHECK(result.offset == expected);
+    REQUIRE(result.slot);
+    CHECK(result.slot->statedIndex == 20);
+    CHECK(result.slot->match == vtable::SlotMatch::Heal);
+    REQUIRE(result.slot->window);
+    CHECK(*result.slot->window == recordedWindow);
+}
+
+TEST_CASE("A window that matches more than once nearby fails as an ambiguous heal")
+{
+    const json gamedata{ { kKey, SlotEntry(FakeBuild(kOldBuild), 4) } }; // window: bodies 4, 5, 6
+
+    // An insert before the slot, and a second copy of the window's three bodies further on.
+    const auto result = Resolve(gamedata, FakeBuild({ 1, 2, 3, 50, 4, 5, 6, 7, 4, 5, 6, 8 }));
+
+    CHECK(result.status == BindingStatus::Failed);
+    CHECK(result.reason == FailureReason::AmbiguousHeal);
+    CHECK(result.matchCount == 2);
+    CHECK(DescribeFailure(result) == "ambiguous heal (2 matches)");
+    CHECK(result.slot->match == vtable::SlotMatch::None);
+}
+
+TEST_CASE("A shift across identical function bodies fails, never heals")
+{
+    // Slot 4 shares its body (9) with slot 3: after one more copy is inserted, which copy moved is unknowable, even
+    // though the window [9, 9, 6] now matches exactly once, one slot later.
+    const json gamedata{ { kKey, SlotEntry(FakeBuild({ 1, 2, 3, 9, 9, 6, 7, 8 }), 4) } };
+
+    const auto result = Resolve(gamedata, FakeBuild({ 1, 2, 3, 9, 9, 9, 6, 7, 8 }));
+
+    CHECK(result.status == BindingStatus::Failed);
+    CHECK(result.reason == FailureReason::FingerprintMismatch);
+}
+
+TEST_CASE("A window that moved beyond the search range fails with fingerprint mismatch")
+{
+    const json gamedata{ { kKey, SlotEntry(FakeBuild(Bodies(40)), 20) } };
+
+    const auto result = Resolve(gamedata, FakeBuild(Inserted(Bodies(40), 5, 17)));
+
+    CHECK(result.status == BindingStatus::Failed);
+    CHECK(result.reason == FailureReason::FingerprintMismatch);
+}
+
+TEST_CASE("A healed Slot Binding counts as available, and the report shows the Heal with its evidence")
+{
+    const FakeBuild old(Bodies(40));
+    const auto fingerprints = old.Fingerprints();
+    const EngineFeatureDeclaration feature{ "cssharp.server/game-frame", { { kKey, BindingKind::Slot } } };
+
+    const auto report = ResolveBindings("b", ParseGamedata({ { kKey, SlotEntry(old, 20) } }, "linux"),
+                                        { { "server", FakeBuild(Inserted(Bodies(40), 5, 1)).Image() } }, feature.bindings);
+
+    CHECK(EvaluateEngineFeature(report, feature).available);
+    CHECK(DescribeUnavailable(report, feature) == "Engine Feature cssharp.server/game-frame is available");
+    CHECK(FormatBindingSummary(report) == "Bindings for build b: all 1 resolved, 1 healed");
+
+    const auto heals = FormatHeals(report);
+    REQUIRE(heals.size() == 1);
+    CHECK(heals[0] == "Healed ISource2Server::GameFrame: CSource2Server (server) slot 20 -> 21, window [" + fingerprints[19] + ", " +
+                          fingerprints[20] + ", " + fingerprints[21] + "] matched once within 16 slots");
+
+    const auto binding = json::parse(ResolutionReportToJson(report, {}))["bindings"][0];
+    CHECK(binding["status"] == "Healed");
+    CHECK(binding["resolved"] == true);
+    CHECK(binding["reason"] == "None");
+    CHECK(binding["offset"] == 21);
+    CHECK(binding["slot"]["statedIndex"] == 20);
+    CHECK(binding["slot"]["match"] == "Heal");
+    CHECK(binding["slot"]["window"] == json::array({ fingerprints[19], fingerprints[20], fingerprints[21] }));
+}
+
+TEST_CASE("The summary counts Heals next to failures, and a neighbour outside the vtable prints as null")
+{
+    const FakeBuild old(kOldBuild);
+    const std::vector<BindingDeclaration> declarations{ { kKey, BindingKind::Slot }, { "Missing", BindingKind::Slot } };
+    const json gamedata{ { kKey, SlotEntry(old, 0) }, { "Missing", { { "offsets", json::object() } } } };
+
+    const auto report =
+        ResolveBindings("b", ParseGamedata(gamedata, "linux"), { { "server", FakeBuild({ 50, 1, 2, 3, 4, 5, 6, 7, 8 }).Image() } }, declarations);
+
+    CHECK(FormatBindingSummary(report) == "Bindings for build b: 1 of 2 failed: Missing (missing for this OS); 1 healed");
+    const auto heals = FormatHeals(report);
+    REQUIRE(heals.size() == 1);
+    CHECK(heals[0].starts_with("Healed ISource2Server::GameFrame: CSource2Server (server) slot 0 -> 1, window [null, "));
 }

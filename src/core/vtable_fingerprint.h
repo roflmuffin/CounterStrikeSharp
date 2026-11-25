@@ -98,10 +98,26 @@ enum class SlotMatch : std::uint8_t
 {
     Window, // the whole window matches at the recorded index
     OwnFingerprint, // only the slot itself matches there, and it is unique nearby on both builds (a neighbour changed)
+    Heal, // the whole window matches exactly once elsewhere within kSearchRange: the slot moved there
     None,
 };
 
-// Checks a recorded Slot Binding against a live vtable at its recorded index.
+// Checks a recorded Slot Binding against a live vtable at its recorded index (Window, OwnFingerprint or None).
 SlotMatch CheckSlot(const SlotRecord& recorded, std::span<const Fingerprint> live);
+
+// Positions within kSearchRange of index, index itself excluded, where the whole window matches the live vtable.
+std::vector<std::size_t> WindowMatchesNear(const FingerprintWindow& window, std::span<const Fingerprint> live, std::size_t index);
+
+// Where a recorded Slot Binding is in a live vtable.
+struct SlotLocation
+{
+    SlotMatch match = SlotMatch::None;
+    std::size_t index = 0; // the live slot index; the recorded one unless healed (match != None only)
+    std::size_t windowMatches = 0; // None: positions nearby where the whole window matched (2 or more: ambiguous)
+};
+
+// The Vtable Check with Heal: CheckSlot at the recorded index, else the window's one match within kSearchRange. A slot
+// whose recorded neighbour has the same fingerprint (identical bodies) is never healed: which copy moved is unknowable.
+SlotLocation LocateSlot(const SlotRecord& recorded, std::span<const Fingerprint> live);
 
 } // namespace counterstrikesharp::vtable

@@ -112,6 +112,9 @@ void ResolveCoreBindings()
     if (anyFailed) CSSHARP_CORE_WARN("{}", summary);
     else
         CSSHARP_CORE_INFO("{}", summary);
+    // A Heal keeps the Engine Feature available, but the server runs on a location Gamedata does not state.
+    for (const auto& heal : FormatHeals(coreReport))
+        CSSHARP_CORE_WARN("{}", heal);
     for (const auto& warning : FormatVtableSizeWarnings(coreReport))
         CSSHARP_CORE_WARN("{}", warning);
 }

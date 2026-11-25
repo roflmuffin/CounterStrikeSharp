@@ -179,6 +179,7 @@ BindingResult ResolveSlot(BindingResult result, const Gamedata& gamedata, const 
     {
         result.slot->className = slot->className.value_or("");
         result.slot->recordedVtableSize = slot->vtableSize;
+        result.slot->window = slot->window;
         if (slot->library) result.library = *slot->library;
     }
     if (hasEntry && entry->second.offset) result.slot->statedIndex = *entry->second.offset;
@@ -205,12 +206,18 @@ BindingResult ResolveSlot(BindingResult result, const Gamedata& gamedata, const 
     result.slot->vtableSize = live.fingerprints.size();
 
     const vtable::SlotRecord recorded{ static_cast<std::size_t>(index), *slot->window, slot->uniqueNearby, slot->vtableSize };
-    result.slot->match = vtable::CheckSlot(recorded, live.fingerprints);
-    if (result.slot->match == vtable::SlotMatch::None) return Failed(std::move(result), FailureReason::FingerprintMismatch);
+    const auto location = vtable::LocateSlot(recorded, live.fingerprints);
+    result.slot->match = location.match;
+    if (location.match == vtable::SlotMatch::None)
+    {
+        if (location.windowMatches < 2) return Failed(std::move(result), FailureReason::FingerprintMismatch);
+        result.matchCount = location.windowMatches;
+        return Failed(std::move(result), FailureReason::AmbiguousHeal);
+    }
 
-    result.status = BindingStatus::Resolved;
+    result.status = location.match == vtable::SlotMatch::Heal ? BindingStatus::Healed : BindingStatus::Resolved;
     result.reason = FailureReason::None;
-    result.offset = index;
+    result.offset = static_cast<std::int64_t>(location.index);
     return result;
 }
 
@@ -384,6 +391,8 @@ std::string DescribeFailure(const BindingResult& binding)
             return "schema field missing";
         case FailureReason::FingerprintMismatch:
             return "fingerprint mismatch";
+        case FailureReason::AmbiguousHeal:
+            return "ambiguous heal (" + std::to_string(binding.matchCount) + " matches)";
     }
     return "unknown";
 }
@@ -406,9 +415,11 @@ std::string FormatBindingSummary(const ResolutionReport& report)
     std::string failed;
     std::size_t failedCount = 0;
     std::size_t unverifiedCount = 0;
+    std::size_t healedCount = 0;
     for (const auto& binding : bindings)
     {
         if (binding.status == BindingStatus::Unverified) ++unverifiedCount;
+        if (binding.status == BindingStatus::Healed) ++healedCount;
         if (binding.Resolved()) continue;
         failed += (failedCount++ == 0 ? "" : ", ") + binding.key + " (" + DescribeFailure(binding) + ")";
     }
@@ -417,8 +428,28 @@ std::string FormatBindingSummary(const ResolutionReport& report)
     if (failedCount == 0) line += "all " + std::to_string(bindings.size()) + " resolved";
     else
         line += std::to_string(failedCount) + " of " + std::to_string(bindings.size()) + " failed: " + failed;
-    if (unverifiedCount > 0) line += (failedCount == 0 ? ", " : "; ") + std::to_string(unverifiedCount) + " unverified";
+    const std::string separator = failedCount == 0 ? ", " : "; ";
+    if (healedCount > 0) line += separator + std::to_string(healedCount) + " healed";
+    if (unverifiedCount > 0) line += separator + std::to_string(unverifiedCount) + " unverified";
     return line;
+}
+
+std::vector<std::string> FormatHeals(const ResolutionReport& report)
+{
+    std::vector<std::string> lines;
+    for (const auto& binding : report.Bindings())
+    {
+        if (binding.status != BindingStatus::Healed || !binding.slot) continue;
+        const auto& slot = *binding.slot;
+        std::string window;
+        if (slot.window)
+            for (const auto& fingerprint : slot.window->slots)
+                window += (window.empty() ? "" : ", ") + fingerprint.value_or("null");
+        lines.push_back("Healed " + binding.key + ": " + slot.className + " (" + binding.library + ") slot " + std::to_string(slot.statedIndex) +
+                        " -> " + std::to_string(binding.offset) + ", window [" + window + "] matched once within " +
+                        std::to_string(vtable::kSearchRange) + " slots");
+    }
+    return lines;
 }
 
 std::vector<std::string> FormatVtableSizeWarnings(const ResolutionReport& report)
@@ -473,6 +504,8 @@ const char* StatusName(BindingStatus status)
             return "Failed";
         case BindingStatus::Unverified:
             return "Unverified";
+        case BindingStatus::Healed:
+            return "Healed";
     }
     return "Unknown";
 }
@@ -485,6 +518,8 @@ const char* MatchName(vtable::SlotMatch match)
             return "Window";
         case vtable::SlotMatch::OwnFingerprint:
             return "OwnFingerprint";
+        case vtable::SlotMatch::Heal:
+            return "Heal";
         case vtable::SlotMatch::None:
             return "None";
     }
@@ -515,6 +550,8 @@ const char* ReasonName(FailureReason reason)
             return "SchemaFieldMissing";
         case FailureReason::FingerprintMismatch:
             return "FingerprintMismatch";
+        case FailureReason::AmbiguousHeal:
+            return "AmbiguousHeal";
     }
     return "Unknown";
 }
@@ -541,7 +578,14 @@ std::string ResolutionReportToJson(const ResolutionReport& report, std::span<con
                               { "statedIndex", slot.statedIndex },
                               { "match", MatchName(slot.match) },
                               { "vtableSize", static_cast<std::uint64_t>(slot.vtableSize) },
-                              { "recordedVtableSize", slot.recordedVtableSize ? nlohmann::json(*slot.recordedVtableSize) : nlohmann::json(nullptr) } };
+                              { "recordedVtableSize", slot.recordedVtableSize ? nlohmann::json(*slot.recordedVtableSize) : nlohmann::json(nullptr) },
+                              { "window", nullptr } };
+            if (slot.window)
+            {
+                auto& window = entry["slot"]["window"] = nlohmann::json::array();
+                for (const auto& fingerprint : slot.window->slots)
+                    window.push_back(fingerprint ? nlohmann::json(*fingerprint) : nlohmann::json(nullptr));
+            }
         }
         bindings.push_back(std::move(entry));
     }

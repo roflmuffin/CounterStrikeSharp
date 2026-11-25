@@ -144,4 +144,25 @@ SlotMatch CheckSlot(const SlotRecord& recorded, std::span<const Fingerprint> liv
     return SlotMatch::None;
 }
 
+std::vector<std::size_t> WindowMatchesNear(const FingerprintWindow& window, std::span<const Fingerprint> live, std::size_t index)
+{
+    std::vector<std::size_t> matches;
+    const std::size_t first = index >= kSearchRange ? index - kSearchRange : 0;
+    for (std::size_t slot = first; slot <= index + kSearchRange && slot < live.size(); ++slot)
+        if (slot != index && WindowMatchesAt(window, live, slot)) matches.push_back(slot);
+    return matches;
+}
+
+SlotLocation LocateSlot(const SlotRecord& recorded, std::span<const Fingerprint> live)
+{
+    if (const auto match = CheckSlot(recorded, live); match != SlotMatch::None) return { match, recorded.index };
+
+    const auto& window = recorded.window.slots;
+    if (window[1] == window[0] || window[1] == window[2]) return {};
+
+    const auto matches = WindowMatchesNear(recorded.window, live, recorded.index);
+    if (matches.size() == 1) return { SlotMatch::Heal, matches[0], 1 };
+    return { SlotMatch::None, 0, matches.size() };
+}
+
 } // namespace counterstrikesharp::vtable
