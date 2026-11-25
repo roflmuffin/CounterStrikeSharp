@@ -252,6 +252,13 @@ void ConCommandManager::OnShutdown()
 {
     m_hooks.Clear();
 
+    for (ConCommand* command : {&css_dump_schema_command, &DumpLeaksCommand()})
+    {
+        if (!command->IsValidRef()) continue;
+        globals::cvars->UnregisterConCommandCallbacks(*command);
+        command->InvalidateRef();
+    }
+
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_pre);
     globals::callbackManager.ReleaseCallback(m_global_cmd.callback_post);
 }
