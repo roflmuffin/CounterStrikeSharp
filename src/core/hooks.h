@@ -94,6 +94,18 @@ class HookSet
         m_hooks.push_back(std::move(hook));
     }
 
+    // As Add, at a runtime slot index (e.g. a verified Slot Binding) instead of function's compiled position; function
+    // only supplies the signature. See core/slot_hooks.h.
+    template <class F, class Instance, class Context, class Pre, class Post>
+    void AddIndex(int index, F function, Instance* instance, Context* context, Pre pre, Post post)
+    {
+        if (!instance) throw std::runtime_error("Cannot hook a null instance");
+        if (index < 0) throw std::runtime_error("Invalid virtual hook index");
+        auto hook = std::make_unique<typename VirtualHookType<F>::Type>(static_cast<uint32_t>(index), context, pre, post);
+        hook->Add(instance);
+        m_hooks.push_back(std::move(hook));
+    }
+
     template <class F, class Context, class Pre, class Post> void AddGlobal(F function, void** vtable, Context* context, Pre pre, Post post)
     {
         auto hook = std::make_unique<typename VirtualHookType<F>::Type>(function, context, pre, post);

@@ -27,7 +27,7 @@ status=0
 echo "== commit-suicide: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed GameTests.Offset_CBasePlayerPawn_CommitSuicide GameTests.Offset_CCSPlayerController_Respawn \
         GameTests.Offset_CBaseEntity_Teleport PlayerHelperFailSoftTests.CommitSuicide_ThrowsTypedExceptionWhenDisabled \

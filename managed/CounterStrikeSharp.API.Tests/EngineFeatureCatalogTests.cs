@@ -12,6 +12,7 @@ public class EngineFeatureCatalogTests : IDisposable
     // "CGameEventManager" is the RTTI vtable Binding.
     private static readonly Dictionary<string, string[]> SpecCatalog = new()
     {
+        ["cssharp.server/game-frame"] = ["ISource2Server::GameFrame"],
         ["cssharp.events/game-events"] = ["CGameEventManager_Init", "CGameEventManager"],
         ["cssharp.events/fire-event-to-client"] = ["LegacyGameEventListener"],
         ["cssharp.network/state-changed"] = ["NetworkStateChanged", "SetStateChanged"],

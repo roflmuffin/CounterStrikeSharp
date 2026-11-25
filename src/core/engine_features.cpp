@@ -8,6 +8,8 @@ namespace {
 
 BindingDeclaration Signature(std::string key) { return { std::move(key), BindingKind::Signature }; }
 BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKind::Offset }; }
+// A vtable slot we hook or call: its index, class and fingerprint window come from Gamedata (ADR-0003).
+BindingDeclaration Slot(std::string key) { return { std::move(key), BindingKind::Slot }; }
 BindingDeclaration RttiVtable(std::string className, std::string library)
 {
     return { std::move(className), BindingKind::RttiVtable, std::move(library) };
@@ -22,6 +24,8 @@ BindingDeclaration SchemaField(const std::string& className, const std::string& 
 // Additive only. A Binding may appear in several rows; it is resolved once.
 const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
+    // Server lifecycle: ticks, timers and frame-scheduled tasks
+    { std::string(features::GameFrame), { Slot("ISource2Server::GameFrame") } },
     // Events and networking
     { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
@@ -63,7 +67,9 @@ std::vector<BindingDeclaration> CoreBindingDeclarations(const Gamedata& gamedata
     for (const auto& [key, entry] : gamedata)
     {
         if (Declared(bindings, key)) continue;
-        if (entry.hasSignatures) bindings.push_back(Signature(key));
+        if (entry.slot) bindings.push_back(Slot(key));
+        else if (entry.hasSignatures)
+            bindings.push_back(Signature(key));
         else if (entry.hasOffsets)
             bindings.push_back(Offset(key));
     }

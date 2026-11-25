@@ -1,0 +1,151 @@
+// Real-build tests against the shared build archive (~/dev/cs2-builds, or $CSSHARP_BUILD_ARCHIVE). Local only: each test
+// is skipped when the builds it needs are absent; Valve binaries are never committed.
+//   ./native_tests -tc="archive*" -s
+// The oracle test also needs the research oracle's fixture directory (Valve-derived, kept outside the repo):
+//   CSSHARP_FINGERPRINT_ORACLE=<dir with index.json> ./native_tests -tc="archive: fingerprints*" -s
+#include <doctest.h>
+
+#include <cstdlib>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <vector>
+
+#include "build_archive.h"
+#include "core/binding_resolver.h"
+#include "core/engine_features.h"
+#include "generator.h"
+
+using namespace counterstrikesharp;
+using namespace counterstrikesharp::generator;
+
+namespace {
+bool Archived(const char* build) { return FindArchivedModule(DefaultArchiveRoot(), build, "server").has_value(); }
+
+const char* OracleDirectory() { return std::getenv("CSSHARP_FINGERPRINT_ORACLE"); }
+
+GamedataJson CommittedGamedata()
+{
+    std::ifstream stream(CSSHARP_GAMEDATA_PATH);
+    REQUIRE(stream.good());
+    return GamedataJson::parse(stream);
+}
+
+// The build an archived module of the oracle's fixture names ("engine2") is loaded from, by Gamedata library name.
+std::string LibraryOf(const std::string& module) { return module == "engine2" ? "engine" : module; }
+
+constexpr const char* kGameFrame = "ISource2Server::GameFrame";
+
+bindings::ResolutionReport ResolveGameFrame(const LoadedModule& server)
+{
+    const auto gamedata = bindings::ParseGamedata(nlohmann::json::parse(CommittedGamedata().dump()), "linux");
+    const std::vector<bindings::BindingDeclaration> declarations{ { kGameFrame, bindings::BindingKind::Slot } };
+    return bindings::BuiltinResolver(bindings::Platform::Linux).Resolve("archive", gamedata, { { "server", server.Image() } }, declarations);
+}
+} // namespace
+
+TEST_CASE("archive: fingerprints match the research oracle for every slot of every fixture vtable (local)" *
+          doctest::skip(OracleDirectory() == nullptr))
+{
+    const std::filesystem::path oracle = OracleDirectory();
+    std::ifstream indexStream(oracle / "index.json");
+    REQUIRE(indexStream.good());
+    const auto index = nlohmann::json::parse(indexStream);
+
+    std::size_t compared = 0;
+    std::size_t underMaskedByOracle = 0;
+    for (const auto& fixture : index["fixtures"])
+    {
+        const auto build = fixture["build"].get<std::string>();
+        const auto library = LibraryOf(fixture["module"].get<std::string>());
+        const auto className = fixture["cls"].get<std::string>();
+        const auto file = fixture["file"].get<std::string>();
+        // A build may have fixtures from both its flat image and its real ELF; compare the one the archive serves.
+        const auto module = FindArchivedModule(DefaultArchiveRoot(), build, library);
+        if (!module || std::filesystem::path(fixture["image"].get<std::string>()).extension() != module->extension()) continue;
+        CAPTURE(file);
+
+        std::ifstream expectedStream(oracle / file);
+        REQUIRE(expectedStream.good());
+        const auto expected = nlohmann::json::parse(expectedStream);
+
+        const auto loaded = LoadedModule::Load(*module);
+        const auto fingerprints = loaded.Fingerprints(className);
+        const auto vtableAddress = loaded.FindVtable(className).address;
+
+        REQUIRE(fingerprints.size() == expected["size"].get<std::size_t>());
+        for (const auto& slot : expected["slots"])
+        {
+            const auto slotIndex = slot["idx"].get<std::size_t>();
+            CAPTURE(slotIndex);
+            if (fingerprints[slotIndex] == slot["fp"].get<std::string>()) continue;
+
+            // Known oracle defect: capstone sizes some 66-prefixed SSE RIP displacements as 2 bytes, so the oracle
+            // leaves the upper half unmasked. Accept a difference only where we zeroed bytes the oracle kept.
+            const auto ours = vtable::FingerprintFunction(loaded.Code(), *loaded.ReadVtableSlot(vtableAddress, slotIndex)).canonical;
+            const auto theirs = slot["canon"].get<std::string>();
+            CAPTURE(ours);
+            CAPTURE(theirs);
+            REQUIRE(ours.size() == theirs.size());
+            for (std::size_t i = 0; i < ours.size(); ++i)
+                if (ours[i] != theirs[i]) CHECK(ours[i] == '0');
+            ++underMaskedByOracle;
+        }
+        ++compared;
+    }
+    std::cout << "compared " << compared << " vtables with the oracle; " << underMaskedByOracle
+              << " slots differ only where the oracle left part of a displacement unmasked\n";
+    CHECK(compared > 0);
+}
+
+TEST_CASE("archive: bootstrapping GameFrame on 1.42.0.1 reproduces the committed Gamedata entry (local)" *
+          doctest::skip(!Archived("1.42.0.1")))
+{
+    const auto server = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "server");
+    const auto committed = CommittedGamedata().at(kGameFrame);
+
+    // Index 20: the SDK headers the plugin is built with for 1.42.0.1.
+    const auto generated = BootstrapSlotBinding(server.Fingerprints("CSource2Server"), { kGameFrame, "CSource2Server", "server", 20 }, committed);
+
+    CHECK(generated.warnings.empty());
+    CHECK(generated.entry == committed);
+}
+
+TEST_CASE("archive: committed GameFrame resolves on 1.42.0.1 by its window, with no size warning (local)" *
+          doctest::skip(!Archived("1.42.0.1")))
+{
+    const auto server = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "server");
+
+    const auto report = ResolveGameFrame(server);
+
+    const auto& gameFrame = report.Bindings().at(0);
+    CHECK(gameFrame.status == bindings::BindingStatus::Resolved);
+    CHECK(gameFrame.offset == 20);
+    CHECK(gameFrame.slot->match == vtable::SlotMatch::Window);
+    CHECK(gameFrame.slot->vtableSize == 105);
+    CHECK(bindings::FormatVtableSizeWarnings(report).empty());
+}
+
+TEST_CASE("archive: GameFrame on 1.41.9.7 sits one slot earlier with the same fingerprint; the 1.42.0.1 Binding fails there "
+          "rather than hooking the wrong function (local)" *
+          doctest::skip(!Archived("1.41.9.7")))
+{
+    const auto server = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.41.9.7", "server");
+    const auto fingerprints = server.Fingerprints("CSource2Server");
+    const auto committed = CommittedGamedata().at(kGameFrame);
+
+    // Index 19: the repo's pinned SDK headers, known correct for 1.41.9.7 (the bootstrap build).
+    const auto bootstrapped = BootstrapSlotBinding(fingerprints, { kGameFrame, "CSource2Server", "server", 19 });
+    CHECK(bootstrapped.warnings.empty());
+    CHECK(bootstrapped.entry["vtable"]["linux"]["window"][1] == committed["vtable"]["linux"]["window"][1]);
+    CHECK(bootstrapped.entry["vtable"]["linux"]["size"] == 104);
+
+    // No Heal yet: the insert at 1.42.0.1 makes the Gamedata index point at another function on the older build.
+    const auto report = ResolveGameFrame(server);
+    const auto& gameFrame = report.Bindings().at(0);
+    CHECK(gameFrame.status == bindings::BindingStatus::Failed);
+    CHECK(gameFrame.reason == bindings::FailureReason::FingerprintMismatch);
+    CHECK(gameFrame.slot->vtableSize == 104);
+    CHECK(gameFrame.slot->SizeChanged());
+}

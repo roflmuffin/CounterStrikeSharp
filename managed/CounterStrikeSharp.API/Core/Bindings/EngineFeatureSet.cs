@@ -91,19 +91,39 @@ internal sealed class EngineFeatureSet
 
     /// <summary>
     /// The startup report: one block with the build id, how many Engine Features are available, and each disabled one
-    /// with its failed Binding and reason. Same wording as native ("Engine Feature X disabled (Key: reason)").
+    /// with its failed Binding and reason. Same wording as native ("Engine Feature X disabled (Key: reason)"). Then
+    /// warnings: vtables whose size changed since Gamedata was generated (same wording as the native log), and Slot
+    /// Bindings used without a Vtable Check.
     /// </summary>
     public string FormatStartupReport()
     {
         var disabled = _all.Where(s => !s.IsAvailable).ToList();
-        var header = $"Engine Features for build {BuildId}: ";
-        if (disabled.Count == 0) return header + $"all {_all.Count} available";
-
-        var text = new StringBuilder(header)
-            .Append($"{_all.Count - disabled.Count} of {_all.Count} available, {disabled.Count} disabled:");
-        foreach (var status in disabled)
+        var text = new StringBuilder($"Engine Features for build {BuildId}: ");
+        if (disabled.Count == 0)
         {
-            text.Append("\n  ").Append(status);
+            text.Append($"all {_all.Count} available");
+        }
+        else
+        {
+            text.Append($"{_all.Count - disabled.Count} of {_all.Count} available, {disabled.Count} disabled:");
+            foreach (var status in disabled)
+            {
+                text.Append("\n  ").Append(status);
+            }
+        }
+
+        foreach (var vtable in Report.Bindings.Where(b => b.Slot is { SizeChanged: true })
+                     .GroupBy(b => (b.Slot!.ClassName, b.Library, b.Slot.VtableSize, b.Slot.RecordedVtableSize)))
+        {
+            text.Append($"\n  Vtable of {vtable.Key.ClassName} ({vtable.Key.Library}) has {vtable.Key.VtableSize} slots, ")
+                .Append($"Gamedata recorded {vtable.Key.RecordedVtableSize} ({string.Join(", ", vtable.Select(b => b.Key))})");
+        }
+
+        var unverified = Report.Bindings.Where(b => b.Unverified).Select(b => b.Key).ToList();
+        if (unverified.Count > 0)
+        {
+            text.Append($"\n  {unverified.Count} Slot Binding(s) unverified (no Vtable Check on this platform or no fingerprint ")
+                .Append($"window in Gamedata): {string.Join(", ", unverified)}");
         }
 
         return text.ToString();

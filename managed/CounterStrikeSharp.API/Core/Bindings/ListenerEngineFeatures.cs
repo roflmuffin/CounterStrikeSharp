@@ -13,6 +13,8 @@ internal static class ListenerEngineFeatures
     {
         // Chat (Host_Say)
         ["OnPlayerChat"] = EngineFeatureNames.ChatSayHooks,
+        // Server lifecycle (GameFrame)
+        ["OnTick"] = EngineFeatureNames.ServerGameFrame,
         // Networking
         ["CheckTransmit"] = EngineFeatureNames.NetworkCheckTransmit,
         // Fired from our game system (precache, entity think) and player think (button changes)

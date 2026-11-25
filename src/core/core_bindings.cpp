@@ -2,8 +2,13 @@
 
 #include <algorithm>
 #include <fstream>
+#include <memory>
 #include <sstream>
 #include <string>
+
+#ifndef _WIN32
+#include <dlfcn.h>
+#endif
 
 #include "core/gameconfig.h"
 #include "core/globals.h"
@@ -18,6 +23,19 @@ namespace {
 
 ResolutionReport coreReport;
 
+#ifdef _WIN32
+constexpr Platform kPlatform = Platform::Windows;
+#else
+constexpr Platform kPlatform = Platform::Linux;
+#endif
+
+// The resolver seam (ADR-0004): the only place core Bindings are located. Swap the adapter here.
+const IBindingResolver& Resolver()
+{
+    static const std::unique_ptr<IBindingResolver> resolver = std::make_unique<BuiltinResolver>(kPlatform);
+    return *resolver;
+}
+
 ModuleImage ImageOf(modules::CModule* module)
 {
     ModuleImage image;
@@ -31,6 +49,15 @@ ModuleImage ImageOf(modules::CModule* module)
     image.findVirtualTable = [module](std::string_view name) {
         return module->LookupVirtualTable(std::string(name));
     };
+#ifndef _WIN32
+    // A slot as the loader relocated it, not as it is now: Metamod patches ISource2Server::Init in place while plugins
+    // load, and hooks (ours, other plugins') replace the slots they hook.
+    image.readVtableSlot = [module](std::uintptr_t vtable, std::size_t index) {
+        return module->Relocations().At(vtable + index * sizeof(void*));
+    };
+    image.pureVirtual = reinterpret_cast<std::uintptr_t>(dlsym(RTLD_DEFAULT, "__cxa_pure_virtual"));
+    image.deletedVirtual = reinterpret_cast<std::uintptr_t>(dlsym(RTLD_DEFAULT, "__cxa_deleted_virtual"));
+#endif
     return image;
 }
 
@@ -74,7 +101,8 @@ void ResolveCoreBindings()
 
     // Every core Gamedata key, including those only managed code consumes (managed declares their Engine Features).
     const auto& gamedata = globals::gameConfig->GetGamedata();
-    coreReport = ResolveBindings(ReadBuildId(), gamedata, images, CoreBindingDeclarations(gamedata));
+    const auto declarations = CoreBindingDeclarations(gamedata);
+    coreReport = Resolver().Resolve(ReadBuildId(), gamedata, images, declarations);
 
     const auto summary = FormatBindingSummary(coreReport);
     const bool anyFailed = std::any_of(coreReport.Bindings().begin(), coreReport.Bindings().end(), [](const BindingResult& binding) {
@@ -84,6 +112,8 @@ void ResolveCoreBindings()
     if (anyFailed) CSSHARP_CORE_WARN("{}", summary);
     else
         CSSHARP_CORE_INFO("{}", summary);
+    for (const auto& warning : FormatVtableSizeWarnings(coreReport))
+        CSSHARP_CORE_WARN("{}", warning);
 }
 
 const ResolutionReport& CoreResolutionReport() { return coreReport; }
@@ -107,6 +137,13 @@ std::optional<std::int64_t> GetBindingOffset(std::string_view key)
     if (binding == nullptr || !binding->Resolved() || (binding->kind != BindingKind::Offset && binding->kind != BindingKind::SchemaField))
         return std::nullopt;
     return binding->offset;
+}
+
+std::optional<int> GetBindingSlot(std::string_view key)
+{
+    const auto* binding = coreReport.Find(key);
+    if (binding == nullptr || !binding->Resolved() || binding->kind != BindingKind::Slot || binding->offset < 0) return std::nullopt;
+    return static_cast<int>(binding->offset);
 }
 
 SignatureScan ScanModuleSignature(const char* moduleName, std::string_view signature)

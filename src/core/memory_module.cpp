@@ -464,6 +464,34 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
         return lastSymbol;
     };
 
+    m_dynamicTables.base = m_baseAddress;
+    for (auto* entry = dyn; entry->d_tag != DT_NULL; ++entry)
+    {
+        switch (entry->d_tag)
+        {
+            case DT_RELA:
+                m_dynamicTables.rela = reinterpret_cast<const void*>(entry->d_un.d_ptr);
+                break;
+            case DT_RELASZ:
+                m_dynamicTables.relaSize = entry->d_un.d_val;
+                break;
+            case DT_JMPREL:
+                m_dynamicTables.jmprel = reinterpret_cast<const void*>(entry->d_un.d_ptr);
+                break;
+            case DT_PLTRELSZ:
+                m_dynamicTables.jmprelSize = entry->d_un.d_val;
+                break;
+            case DT_SYMTAB:
+                m_dynamicTables.symbols = reinterpret_cast<const void*>(entry->d_un.d_ptr);
+                break;
+            case DT_STRTAB:
+                m_dynamicTables.strings = reinterpret_cast<const char*>(entry->d_un.d_ptr);
+                break;
+            default:
+                break;
+        }
+    }
+
     ElfW(Sym) * symbols{};
     ElfW(Word) * hash_ptr{};
 
@@ -756,6 +784,12 @@ void* CModule::FindVirtualTable(const std::string& name)
     return nullptr;
 }
 
+const elf::RelocatedWords& CModule::Relocations()
+{
+    if (!m_relocations) m_relocations.emplace();
+    return *m_relocations;
+}
+
 rtti::VtableLookup CModule::LookupVirtualTable(const std::string& name)
 {
     const auto address = reinterpret_cast<std::uintptr_t>(FindVirtualTable(name));
@@ -764,6 +798,15 @@ rtti::VtableLookup CModule::LookupVirtualTable(const std::string& name)
 #endif
 
 #ifndef _WIN32
+const elf::RelocatedWords& CModule::Relocations()
+{
+    if (!m_relocations)
+        m_relocations.emplace(m_dynamicTables, [](std::string_view name) {
+            return reinterpret_cast<std::uintptr_t>(dlsym(RTLD_DEFAULT, std::string(name).c_str()));
+        });
+    return *m_relocations;
+}
+
 rtti::VtableLookup CModule::LookupVirtualTable(const std::string& name)
 {
     std::vector<rtti::MemoryRegion> names;

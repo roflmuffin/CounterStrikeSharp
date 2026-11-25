@@ -1,6 +1,7 @@
 #include "core/binding_resolver.h"
 
 #include <algorithm>
+#include <tuple>
 #include <utility>
 
 #include "core/signature.h"
@@ -133,6 +134,117 @@ BindingResult ResolveSchemaField(BindingResult result, const ModuleImages& modul
     return Failed(std::move(result), FailureReason::SchemaClassMissing);
 }
 
+// Live fingerprints of one class's vtable, computed once per Resolve and shared by all its Slot Bindings.
+struct LiveVtable
+{
+    rtti::VtableLookup lookup;
+    std::vector<vtable::Fingerprint> fingerprints;
+};
+using LiveVtables = std::map<std::pair<std::string, std::string>, LiveVtable>;
+
+const LiveVtable& FingerprintLiveVtable(LiveVtables& cache, const ModuleImage& module, const std::string& library, const std::string& className)
+{
+    const auto key = std::make_pair(library, className);
+    if (const auto cached = cache.find(key); cached != cache.end()) return cached->second;
+
+    LiveVtable live;
+    live.lookup = module.findVirtualTable ? module.findVirtualTable(className) : rtti::VtableLookup{};
+    if (live.lookup.Found() && live.lookup.address != 0 && module.readVtableSlot)
+    {
+        const auto address = live.lookup.address;
+        live.fingerprints = vtable::FingerprintVtable({ [&](std::size_t index) {
+                                                           return module.readVtableSlot(address, index);
+                                                       },
+                                                        module.segments, module.pureVirtual, module.deletedVirtual });
+    }
+    return cache.emplace(key, std::move(live)).first->second;
+}
+
+BindingResult Unverified(BindingResult result, std::int64_t index)
+{
+    result.status = BindingStatus::Unverified;
+    result.reason = FailureReason::None;
+    result.offset = index;
+    return result;
+}
+
+BindingResult ResolveSlot(BindingResult result, const Gamedata& gamedata, const ModuleImages& modules, Platform platform, LiveVtables& cache)
+{
+    const auto entry = gamedata.find(result.key);
+    const bool hasEntry = entry != gamedata.end();
+    const SlotGamedata* slot = hasEntry && entry->second.slot ? &*entry->second.slot : nullptr;
+
+    result.slot = SlotEvidence{};
+    if (slot != nullptr)
+    {
+        result.slot->className = slot->className.value_or("");
+        result.slot->recordedVtableSize = slot->vtableSize;
+        if (slot->library) result.library = *slot->library;
+    }
+    if (hasEntry && entry->second.offset) result.slot->statedIndex = *entry->second.offset;
+
+    // No Vtable Check on Windows: the Gamedata index if there is one, else the caller's compiled header index.
+    if (platform == Platform::Windows) return Unverified(std::move(result), result.slot->statedIndex);
+
+    if (!hasEntry || !entry->second.hasOffsets) return Failed(std::move(result), FailureReason::MissingFromGamedata);
+    if (!entry->second.offset || *entry->second.offset < 0) return Failed(std::move(result), FailureReason::MissingForThisOs);
+    const auto index = *entry->second.offset;
+
+    // Gamedata without a window (e.g. from before Slot Bindings) is used as it is, and reported.
+    if (slot == nullptr || !slot->window) return Unverified(std::move(result), index);
+    if (!slot->className || !slot->library) return Failed(std::move(result), FailureReason::MissingFromGamedata);
+
+    const auto module = modules.find(*slot->library);
+    if (module == modules.end()) return Failed(std::move(result), FailureReason::NotFound);
+
+    const auto& live = FingerprintLiveVtable(cache, module->second, *slot->library, *slot->className);
+    result.matchCount = live.lookup.matchCount;
+    if (live.lookup.Ambiguous()) return Failed(std::move(result), FailureReason::Ambiguous);
+    if (!live.lookup.Found() || live.lookup.address == 0) return Failed(std::move(result), FailureReason::RttiVtableNotFound);
+    result.address = live.lookup.address;
+    result.slot->vtableSize = live.fingerprints.size();
+
+    const vtable::SlotRecord recorded{ static_cast<std::size_t>(index), *slot->window, slot->uniqueNearby, slot->vtableSize };
+    result.slot->match = vtable::CheckSlot(recorded, live.fingerprints);
+    if (result.slot->match == vtable::SlotMatch::None) return Failed(std::move(result), FailureReason::FingerprintMismatch);
+
+    result.status = BindingStatus::Resolved;
+    result.reason = FailureReason::None;
+    result.offset = index;
+    return result;
+}
+
+std::optional<vtable::FingerprintWindow> ParseWindow(const nlohmann::json& value)
+{
+    if (!value.is_array() || value.size() != 3) return std::nullopt;
+    vtable::FingerprintWindow window;
+    for (std::size_t position = 0; position < 3; ++position)
+    {
+        if (value[position].is_string()) window.slots[position] = value[position].get<std::string>();
+        else if (!value[position].is_null())
+            return std::nullopt;
+    }
+    if (!window.slots[1]) return std::nullopt; // the slot itself is always inside its vtable
+    return window;
+}
+
+SlotGamedata ParseSlot(const nlohmann::json& value, const std::string& os)
+{
+    SlotGamedata slot;
+    if (const auto className = value.find("class"); className != value.end() && className->is_string())
+        slot.className = className->get<std::string>();
+    if (const auto library = value.find("library"); library != value.end() && library->is_string()) slot.library = library->get<std::string>();
+    if (const auto platform = value.find(os); platform != value.end() && platform->is_object())
+    {
+        if (const auto window = platform->find("window"); window != platform->end()) slot.window = ParseWindow(*window);
+        if (const auto unique = platform->find("uniqueNearby"); unique != platform->end() && unique->is_boolean())
+            slot.uniqueNearby = unique->get<bool>();
+        if (const auto size = platform->find("size"); size != platform->end() && size->is_number_unsigned())
+            slot.vtableSize = size->get<std::size_t>();
+    }
+    return slot;
+}
+
 } // namespace
 
 SignatureScan ScanSignature(const ModuleImage& image, std::string_view signature)
@@ -171,6 +283,7 @@ Gamedata ParseGamedata(const nlohmann::json& root, std::string_view platform)
                 if (const auto offset = offsets->find(os); offset != offsets->end() && offset->is_number_integer())
                     entry.offset = offset->get<std::int64_t>();
             }
+            if (const auto slot = value.find("vtable"); slot != value.end() && slot->is_object()) entry.slot = ParseSlot(*slot, os);
         }
         gamedata.emplace(key, std::move(entry));
     }
@@ -190,13 +303,14 @@ const BindingResult* ResolutionReport::Find(std::string_view key) const
     return it == m_bindings.end() ? nullptr : &*it;
 }
 
-ResolutionReport ResolveBindings(std::string buildId,
-                                 const Gamedata& gamedata,
-                                 const ModuleImages& modules,
-                                 std::span<const BindingDeclaration> declarations)
+ResolutionReport BuiltinResolver::Resolve(std::string buildId,
+                                          const Gamedata& gamedata,
+                                          const ModuleImages& modules,
+                                          std::span<const BindingDeclaration> declarations) const
 {
     std::vector<BindingResult> results;
     results.reserve(declarations.size());
+    LiveVtables liveVtables;
 
     for (const auto& declaration : declarations)
     {
@@ -219,10 +333,21 @@ ResolutionReport ResolveBindings(std::string buildId,
             case BindingKind::SchemaField:
                 results.push_back(ResolveSchemaField(std::move(result), modules));
                 break;
+            case BindingKind::Slot:
+                results.push_back(ResolveSlot(std::move(result), gamedata, modules, m_platform, liveVtables));
+                break;
         }
     }
 
     return ResolutionReport(std::move(buildId), std::move(results));
+}
+
+ResolutionReport ResolveBindings(std::string buildId,
+                                 const Gamedata& gamedata,
+                                 const ModuleImages& modules,
+                                 std::span<const BindingDeclaration> declarations)
+{
+    return BuiltinResolver(Platform::Linux).Resolve(std::move(buildId), gamedata, modules, declarations);
 }
 
 EngineFeatureStatus EvaluateEngineFeature(const ResolutionReport& report, const EngineFeatureDeclaration& feature)
@@ -257,6 +382,8 @@ std::string DescribeFailure(const BindingResult& binding)
             return "schema class missing";
         case FailureReason::SchemaFieldMissing:
             return "schema field missing";
+        case FailureReason::FingerprintMismatch:
+            return "fingerprint mismatch";
     }
     return "unknown";
 }
@@ -278,15 +405,43 @@ std::string FormatBindingSummary(const ResolutionReport& report)
     const auto& bindings = report.Bindings();
     std::string failed;
     std::size_t failedCount = 0;
+    std::size_t unverifiedCount = 0;
     for (const auto& binding : bindings)
     {
+        if (binding.status == BindingStatus::Unverified) ++unverifiedCount;
         if (binding.Resolved()) continue;
         failed += (failedCount++ == 0 ? "" : ", ") + binding.key + " (" + DescribeFailure(binding) + ")";
     }
 
     std::string line = "Bindings for build " + report.BuildId() + ": ";
-    if (failedCount == 0) return line + "all " + std::to_string(bindings.size()) + " resolved";
-    return line + std::to_string(failedCount) + " of " + std::to_string(bindings.size()) + " failed: " + failed;
+    if (failedCount == 0) line += "all " + std::to_string(bindings.size()) + " resolved";
+    else
+        line += std::to_string(failedCount) + " of " + std::to_string(bindings.size()) + " failed: " + failed;
+    if (unverifiedCount > 0) line += (failedCount == 0 ? ", " : "; ") + std::to_string(unverifiedCount) + " unverified";
+    return line;
+}
+
+std::vector<std::string> FormatVtableSizeWarnings(const ResolutionReport& report)
+{
+    // One line per vtable, naming every Slot Binding in it.
+    std::vector<std::tuple<std::string, std::string, std::size_t, std::size_t, std::string>> vtables;
+    for (const auto& binding : report.Bindings())
+    {
+        if (!binding.slot || !binding.slot->SizeChanged()) continue;
+        const auto& slot = *binding.slot;
+        const auto same = std::find_if(vtables.begin(), vtables.end(), [&](const auto& vtable) {
+            return std::get<0>(vtable) == slot.className && std::get<1>(vtable) == binding.library;
+        });
+        if (same != vtables.end()) std::get<4>(*same) += ", " + binding.key;
+        else
+            vtables.emplace_back(slot.className, binding.library, slot.vtableSize, *slot.recordedVtableSize, binding.key);
+    }
+
+    std::vector<std::string> lines;
+    for (const auto& [className, library, size, recorded, keys] : vtables)
+        lines.push_back("Vtable of " + className + " (" + library + ") has " + std::to_string(size) + " slots, Gamedata recorded " +
+                        std::to_string(recorded) + " (" + keys + ")");
+    return lines;
 }
 
 namespace {
@@ -302,6 +457,36 @@ const char* KindName(BindingKind kind)
             return "RttiVtable";
         case BindingKind::SchemaField:
             return "SchemaField";
+        case BindingKind::Slot:
+            return "Slot";
+    }
+    return "Unknown";
+}
+
+const char* StatusName(BindingStatus status)
+{
+    switch (status)
+    {
+        case BindingStatus::Resolved:
+            return "Resolved";
+        case BindingStatus::Failed:
+            return "Failed";
+        case BindingStatus::Unverified:
+            return "Unverified";
+    }
+    return "Unknown";
+}
+
+const char* MatchName(vtable::SlotMatch match)
+{
+    switch (match)
+    {
+        case vtable::SlotMatch::Window:
+            return "Window";
+        case vtable::SlotMatch::OwnFingerprint:
+            return "OwnFingerprint";
+        case vtable::SlotMatch::None:
+            return "None";
     }
     return "Unknown";
 }
@@ -328,6 +513,8 @@ const char* ReasonName(FailureReason reason)
             return "SchemaClassMissing";
         case FailureReason::SchemaFieldMissing:
             return "SchemaFieldMissing";
+        case FailureReason::FingerprintMismatch:
+            return "FingerprintMismatch";
     }
     return "Unknown";
 }
@@ -338,14 +525,25 @@ std::string ResolutionReportToJson(const ResolutionReport& report, std::span<con
     auto bindings = nlohmann::json::array();
     for (const auto& binding : report.Bindings())
     {
-        bindings.push_back({ { "key", binding.key },
-                             { "kind", KindName(binding.kind) },
-                             { "resolved", binding.Resolved() },
-                             { "reason", ReasonName(binding.reason) },
-                             { "matchCount", static_cast<std::uint64_t>(binding.matchCount) },
-                             { "address", static_cast<std::uint64_t>(binding.address) },
-                             { "offset", binding.offset },
-                             { "library", binding.library } });
+        nlohmann::json entry{ { "key", binding.key },
+                              { "kind", KindName(binding.kind) },
+                              { "resolved", binding.Resolved() },
+                              { "status", StatusName(binding.status) },
+                              { "reason", ReasonName(binding.reason) },
+                              { "matchCount", static_cast<std::uint64_t>(binding.matchCount) },
+                              { "address", static_cast<std::uint64_t>(binding.address) },
+                              { "offset", binding.offset },
+                              { "library", binding.library } };
+        if (binding.slot)
+        {
+            const auto& slot = *binding.slot;
+            entry["slot"] = { { "class", slot.className },
+                              { "statedIndex", slot.statedIndex },
+                              { "match", MatchName(slot.match) },
+                              { "vtableSize", static_cast<std::uint64_t>(slot.vtableSize) },
+                              { "recordedVtableSize", slot.recordedVtableSize ? nlohmann::json(*slot.recordedVtableSize) : nlohmann::json(nullptr) } };
+        }
+        bindings.push_back(std::move(entry));
     }
 
     auto features = nlohmann::json::array();

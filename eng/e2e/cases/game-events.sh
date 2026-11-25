@@ -31,7 +31,7 @@ handler_never_fires='Game event handler registered on cssharp\.events/game-event
 echo "== game-events: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-no-log 'cssharp\.(events|network)/[a-z-]+ disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed GameEventTests.CreateEvent_ReturnsValidPointer GameEventTests.GameEvent_HighLevelApi_Works)" ||

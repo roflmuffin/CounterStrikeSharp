@@ -32,6 +32,9 @@ public enum BindingFailureReason
 
     /// <summary>The schema field does not exist.</summary>
     SchemaFieldMissing = 8,
+
+    /// <summary>A Slot Binding's fingerprint window does not match the class's live vtable at its index.</summary>
+    FingerprintMismatch = 9,
 }
 
 internal static class BindingFailureReasonExtensions
@@ -48,6 +51,7 @@ internal static class BindingFailureReasonExtensions
         BindingFailureReason.RttiVtableNotFound => "RTTI vtable not found",
         BindingFailureReason.SchemaClassMissing => "schema class missing",
         BindingFailureReason.SchemaFieldMissing => "schema field missing",
+        BindingFailureReason.FingerprintMismatch => "fingerprint mismatch",
         _ => "unknown",
     };
 }

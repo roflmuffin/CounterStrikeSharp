@@ -25,7 +25,7 @@ status=0
 echo "== say-hooks: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-no-log 'cssharp\.chat/say-hooks disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed CommandTests.CanTriggerCommandsWithSilentChatTrigger \

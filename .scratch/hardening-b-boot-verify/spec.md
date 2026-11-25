@@ -89,13 +89,14 @@ A generator carries Slot Bindings forward to a new build by aligning the previou
 
 ### Fingerprints, Vtable Check and Heal (ADR-0003)
 
-- Fingerprint: the first instructions of the slot's target function (up to 24, stopping at the first return or unconditional jump), with immediates and RIP-relative operands masked. This level measured 0.86% false changes over all slots and 2.6% on our slots across 8 archived builds.
+- Fingerprint: the first instructions of the slot's target function (up to 24, stopping at the first return or unconditional jump), with immediates and all memory displacements masked (RIP-relative and base + displacement; amended, ADR-0003: masking only RIP-relative operands gave 26 false failures of our slots over the archived pairs, all displacements 7, both with zero wrong). The whole-function level measured 0.86% false changes over all slots and 2.6% on our slots across 8 archived builds.
 - Vtable lookup by RTTI uses exact decorated-name matching (length prefix, not a substring of a longer name) and fails as ambiguous if more than one primary vtable matches.
-- Vtable Check per Slot Binding, on Linux: window matches at the stated index → resolved; otherwise search within ±16 slots for a position where the whole window matches; exactly one such position → healed at that index; zero or several → failed (reason: fingerprint mismatch or ambiguous heal). A slot whose own fingerprint is shared by an adjacent slot (identical bodies) never heals; a mismatch there fails.
+- Vtable Check per Slot Binding, on Linux: window matches at the stated index → resolved; otherwise the slot's own fingerprint matches at the stated index and is unique within ±16 slots both on the generation build (recorded in Gamedata) and in the live vtable → resolved (amended, ADR-0003: a changed neighbour alone no longer fails it; false failures 7 → 4, zero wrong); otherwise search within ±16 slots for a position where the whole window matches; exactly one such position → healed at that index; zero or several → failed (reason: fingerprint mismatch or ambiguous heal). A slot whose own fingerprint is shared by an adjacent slot (identical bodies) never heals; a mismatch there fails.
+- A Slot Binding without a fingerprint window in Gamedata (e.g. Gamedata from before Slot Bindings) is unverified: used at its Gamedata index, reported "unverified", never "failed".
 - The search range ±16 covers every shift of our slots observed in three years (largest: +12 at the tail of the engine service manager; +10 for game-class virtuals). It is a constant, not configuration.
 - A vtable whose size differs from the size recorded at generation time is a warning in the startup report, never a failure by itself.
 - The runtime never writes healed indices back to Gamedata.
-- An x86-64 instruction decoder is required at boot. Reuse one already linked into the plugin by its hooking libraries if available; otherwise add a small permissively licensed decoder.
+- An x86-64 instruction decoder is required at boot. Reuse one already linked into the plugin by its hooking libraries if available; otherwise add a small permissively licensed decoder. (None is linked: KHook's Zydis lives inside Metamod's binary. Zydis 4, MIT, is vendored as its amalgamation in `libraries/zydis`.)
 
 ### Resolver seam (ADR-0004)
 

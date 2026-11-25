@@ -11,6 +11,7 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
+add_subdirectory(libraries/zydis)
 
 
 include("makefiles/protobuf.cmake")
@@ -73,6 +74,11 @@ set(SOURCE_FILES
     src/core/signature.cpp
     src/core/rtti_vtable.h
     src/core/rtti_vtable.cpp
+    src/core/vtable_fingerprint.h
+    src/core/vtable_fingerprint.cpp
+    src/core/slot_hooks.h
+    src/core/elf_relocations.h
+    src/core/elf_relocations.cpp
     src/core/binding_resolver.h
     src/core/binding_resolver.cpp
     src/core/engine_features.h
@@ -146,7 +152,7 @@ elseif(WIN32)
 endif()
 
 # Libraries
-target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES} Protobufs)
+target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES} Protobufs zydis)
 
 add_custom_command(
     TARGET ${PROJECT_NAME} PRE_BUILD
