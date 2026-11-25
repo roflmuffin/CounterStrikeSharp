@@ -35,7 +35,7 @@ public class TakeDamageEngineFeatureTests : IDisposable
 
     // The native catalog row as it arrives with the report.
     private static readonly EngineFeatureDeclaration NativeTakeDamageHooks = new(TakeDamageHooks,
-        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld"), BindingDeclaration.Offset("CBaseEntity_IsPlayerPawn")]);
+        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld"), BindingDeclaration.Slot("CBaseEntity_IsPlayerPawn")]);
 
     private static EngineFeatureSet Features(BindingResult takeDamageOld, BindingResult isPlayerPawn, BindingResult hitGroup) =>
         new(new ResolutionReport("1.42.0.1/2000950", [takeDamageOld, isPlayerPawn, hitGroup], [NativeTakeDamageHooks]),
@@ -43,12 +43,12 @@ public class TakeDamageEngineFeatureTests : IDisposable
 
     private static EngineFeatureSet AllResolved() => Features(
         Resolved("CBaseEntity_TakeDamageOld", BindingKind.Signature),
-        Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Offset, 160),
+        Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Slot, 160),
         Resolved("CTakeDamageInfo_HitGroup", BindingKind.Offset, HitGroupOffset));
 
     private static EngineFeatureSet TakeDamageOldNotFound() => Features(
         Failed("CBaseEntity_TakeDamageOld", BindingKind.Signature, BindingFailureReason.NotFound),
-        Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Offset, 160),
+        Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Slot, 160),
         Resolved("CTakeDamageInfo_HitGroup", BindingKind.Offset, HitGroupOffset));
 
     public void Dispose() => EngineFeatures.Reset();
@@ -95,7 +95,7 @@ public class TakeDamageEngineFeatureTests : IDisposable
     {
         var features = Features(
             Resolved("CBaseEntity_TakeDamageOld", BindingKind.Signature),
-            Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Offset, 160),
+            Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Slot, 160),
             Failed("CTakeDamageInfo_HitGroup", BindingKind.Offset, BindingFailureReason.MissingForThisOs));
 
         Assert.True(features.IsAvailable(TakeDamageHooks));
@@ -108,7 +108,7 @@ public class TakeDamageEngineFeatureTests : IDisposable
     {
         EngineFeatures.Current = Features(
             Resolved("CBaseEntity_TakeDamageOld", BindingKind.Signature),
-            Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Offset, 160),
+            Resolved("CBaseEntity_IsPlayerPawn", BindingKind.Slot, 160),
             Failed("CTakeDamageInfo_HitGroup", BindingKind.Offset, BindingFailureReason.MissingFromGamedata));
 
         var exception = Assert.Throws<EngineFeatureUnavailableException>(() => new CTakeDamageInfo(0x1234).GetHitGroup());
@@ -158,7 +158,7 @@ public class TakeDamageEngineFeatureTests : IDisposable
     {
         EngineFeatures.Current = Features(
             Resolved("CBaseEntity_TakeDamageOld", BindingKind.Signature),
-            Failed("CBaseEntity_IsPlayerPawn", BindingKind.Offset, BindingFailureReason.MissingForThisOs),
+            Failed("CBaseEntity_IsPlayerPawn", BindingKind.Slot, BindingFailureReason.MissingForThisOs),
             Resolved("CTakeDamageInfo_HitGroup", BindingKind.Offset, HitGroupOffset));
 
         var exception = Assert.Throws<EngineFeatureUnavailableException>(() => new CBaseEntity(IntPtr.Zero).IsPlayerPawn());

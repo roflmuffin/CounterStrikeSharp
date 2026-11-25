@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -14,6 +15,12 @@ public class LoadedGameData
 {
     [JsonPropertyName("signatures")] public Signatures? Signatures { get; set; }
     [JsonPropertyName("offsets")] public Offsets? Offsets { get; set; }
+
+    /// <summary>
+    /// Slot Binding fields (class, library, fingerprint window; see <c>src/core/binding_resolver.h</c>): present when the
+    /// offset is a vtable slot index that native verifies at boot.
+    /// </summary>
+    [JsonInclude, JsonPropertyName("vtable")] internal JsonElement? Vtable { get; set; }
 }
 
 public class Signatures
@@ -122,6 +129,11 @@ public static class GameData
         return signature;
     }
 
+    /// <summary>
+    /// The Gamedata offset <paramref name="key"/> for this OS. For a vtable slot CounterStrikeSharp verifies at boot (a
+    /// Slot Binding, e.g. <c>CCSPlayerController_ChangeTeam</c>), the index the check verified or healed, which can differ
+    /// from the file after a Game update; throws <see cref="InvalidOperationException"/> if it could not be verified.
+    /// </summary>
     public static int GetOffset(string key)
     {
         if (!GameDataProvider.Methods.ContainsKey(key))
@@ -136,6 +148,11 @@ public static class GameData
             throw new Exception($"No offsets found for {key} in gamedata.json");
         }
 
+        if (methodMetadata.Vtable != null && VerifiedSlotIndex(key) is { } slot)
+        {
+            return slot;
+        }
+
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
             return methodMetadata.Offsets.LinuxOrNull ??
@@ -144,5 +161,24 @@ public static class GameData
 
         return methodMetadata.Offsets.WindowsOrNull ??
                throw new InvalidOperationException($"Offset {key} is missing for this OS (Windows) in gamedata.json");
+    }
+
+    /// <summary>
+    /// A Slot Binding's index as the boot Vtable Check verified or healed it (from the Resolution Report), so plugins
+    /// reading it by key follow a Heal like CounterStrikeSharp's own helpers. null when native did not resolve the key as
+    /// a Slot Binding (e.g. it is only in a plugin's own gamedata file) or has no index for it: Gamedata is read as before.
+    /// Throws when the Slot Binding failed: its Gamedata index does not hold the function on this build.
+    /// </summary>
+    private static int? VerifiedSlotIndex(string key)
+    {
+        var binding = EngineFeatures.Current.Report.Find(key);
+        if (binding is not { Kind: BindingKind.Slot }) return null;
+        if (!binding.Resolved)
+        {
+            throw new InvalidOperationException(
+                $"Offset {key} failed its Vtable Check on this build ({binding.Reason.Describe(binding.MatchCount)})");
+        }
+
+        return binding.Offset >= 0 ? checked((int)binding.Offset) : null;
     }
 }

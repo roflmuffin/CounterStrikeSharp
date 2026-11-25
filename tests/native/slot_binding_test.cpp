@@ -2,6 +2,8 @@
 #include <doctest.h>
 
 #include <cstdint>
+#include <fstream>
+#include <tuple>
 #include <string>
 #include <vector>
 
@@ -269,6 +271,30 @@ TEST_CASE("On Windows a Slot Binding is unverified at its Gamedata index, never 
     }
 }
 
+TEST_CASE("On Windows a game-class Slot Binding is unverified at its Gamedata index; without one it is missing for this OS")
+{
+    // Game-class virtuals have no compiled header index to fall back on, unlike interface methods.
+    const BindingDeclaration declaration{ kKey, BindingKind::Slot, {}, false };
+    const auto resolve = [&](const json& gamedata) {
+        const auto report = BuiltinResolver(Platform::Windows)
+                                .Resolve("b", ParseGamedata(gamedata, "windows"), { { "server", FakeBuild({ 9, 9, 9 }).Image() } },
+                                         std::span(&declaration, 1));
+        return report.Bindings().at(0);
+    };
+    auto gamedata = json{ { kKey, SlotEntry(FakeBuild(kOldBuild), 4) } };
+    gamedata[kKey]["offsets"]["windows"] = 3;
+
+    const auto unverified = resolve(gamedata);
+    CHECK(unverified.status == BindingStatus::Unverified);
+    CHECK(unverified.offset == 3);
+
+    gamedata[kKey]["offsets"].erase("windows");
+    const auto missing = resolve(gamedata);
+    CHECK(missing.status == BindingStatus::Failed);
+    CHECK(missing.reason == FailureReason::MissingForThisOs);
+    CHECK(resolve(json::object()).reason == FailureReason::MissingFromGamedata);
+}
+
 TEST_CASE("Unverified Slot Bindings count as available and are counted in the summary")
 {
     const FakeBuild build(kOldBuild);
@@ -338,6 +364,48 @@ TEST_CASE("Gamedata keys with a vtable are declared as Slot Bindings")
     };
     CHECK(kindOf("Some_Slot") == BindingKind::Slot);
     CHECK(kindOf("Some_Offset") == BindingKind::Offset);
+    // Only Gamedata declares it, so no native code calls it through a compiled method: no header index to fall back on.
+    const auto someSlot = std::find_if(declarations.begin(), declarations.end(), [](const BindingDeclaration& d) {
+        return d.key == "Some_Slot";
+    });
+    CHECK_FALSE(someSlot->headerIndex);
+}
+
+TEST_CASE("Game-class virtuals are Slot Bindings without a header index, even in Gamedata without their vtable fields")
+{
+    // e.g. an auto-updated gamedata.json from before Slot Bindings: still a Slot Binding, unverified at its index.
+    const FakeBuild build(kOldBuild);
+    const json upstream{ { "CBasePlayerPawn_CommitSuicide", { { "offsets", { { "linux", 4 }, { "windows", 4 } } } } },
+                         { "CTakeDamageInfo_HitGroup", { { "offsets", { { "linux", 104 }, { "windows", 104 } } } } } };
+    const auto gamedata = ParseGamedata(upstream, "linux");
+
+    const auto declarations = CoreBindingDeclarations(gamedata);
+    const auto find = [&](std::string_view key) {
+        const auto it = std::find_if(declarations.begin(), declarations.end(), [&](const BindingDeclaration& d) {
+            return d.key == key;
+        });
+        REQUIRE(it != declarations.end());
+        return *it;
+    };
+    for (const auto* key : { "ISource2GameEntities::CheckTransmit", "CCSPlayerController_ChangeTeam", "CCSPlayerController_Respawn",
+                             "CCSPlayer_ItemServices_GiveNamedItem", "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+                             "CCSPlayer_ItemServices_RemoveWeapons", "CGameSceneNode_GetSkeletonInstance", "CCSGameRules_FindPickerEntity",
+                             "CBaseEntity_IsPlayerPawn", "CBaseEntity_Teleport", "CBasePlayerPawn_CommitSuicide" })
+    {
+        CAPTURE(key);
+        CHECK(find(key).kind == BindingKind::Slot);
+        CHECK_FALSE(find(key).headerIndex);
+    }
+    // Struct field offsets are not Slot Bindings.
+    CHECK(find("CTakeDamageInfo_HitGroup").kind == BindingKind::Offset);
+    // Interface methods have a compiled header index (Windows falls back to it).
+    CHECK(find("ISource2Server::GameFrame").headerIndex);
+
+    const auto report = ResolveBindings("b", gamedata, { { "server", build.Image() } }, declarations);
+    const auto* commitSuicide = report.Find("CBasePlayerPawn_CommitSuicide");
+    REQUIRE(commitSuicide != nullptr);
+    CHECK(commitSuicide->status == BindingStatus::Unverified);
+    CHECK(commitSuicide->offset == 4);
 }
 
 TEST_CASE("A Slot Binding whose window moved within the search range heals at the new index, with evidence")
@@ -464,4 +532,42 @@ TEST_CASE("The summary counts Heals next to failures, and a neighbour outside th
     const auto heals = FormatHeals(report);
     REQUIRE(heals.size() == 1);
     CHECK(heals[0].starts_with("Healed ISource2Server::GameFrame: CSource2Server (server) slot 0 -> 1, window [null, "));
+}
+
+TEST_CASE("Committed Gamedata: every game-class virtual carries its Slot Binding fields; struct field offsets are unchanged")
+{
+    std::ifstream stream(CSSHARP_GAMEDATA_PATH);
+    REQUIRE(stream.good());
+    const auto committed = json::parse(stream);
+
+    std::size_t gameClassSlots = 0;
+    for (const auto& declaration : CoreBindingDeclarations({}))
+    {
+        if (declaration.kind != BindingKind::Slot || declaration.headerIndex) continue;
+        CAPTURE(declaration.key);
+        ++gameClassSlots;
+        const auto& entry = committed.at(declaration.key);
+        CHECK(entry["offsets"]["linux"].is_number_integer());
+        CHECK(entry["offsets"]["windows"].is_number_integer()); // Windows: unverified at its Gamedata index
+        CHECK(entry["vtable"]["class"].is_string());
+        CHECK(entry["vtable"]["library"] == "server");
+        CHECK(entry["vtable"]["linux"]["window"].size() == 3);
+        CHECK(entry["vtable"]["linux"]["size"].is_number_unsigned());
+        CHECK_FALSE(entry["vtable"].contains("windows"));
+    }
+    CHECK(gameClassSlots == 11);
+
+    // Struct field and other plain offsets: no Slot Binding fields, values as before.
+    const std::vector<std::tuple<const char*, int, int>> plainOffsets{
+        { "CTakeDamageInfo_HitGroup", 104, 104 }, { "CheckTransmitPlayerSlot", 576, 576 }, { "GameEntitySystem", 80, 88 },
+        { "GameEventManager", 93, 93 },          { "SetStateChanged", 29, 28 },
+    };
+    for (const auto& [key, linuxOffset, windowsOffset] : plainOffsets)
+    {
+        CAPTURE(key);
+        const auto& entry = committed.at(key);
+        CHECK_FALSE(entry.contains("vtable"));
+        CHECK(entry["offsets"]["linux"] == linuxOffset);
+        CHECK(entry["offsets"]["windows"] == windowsOffset);
+    }
 }

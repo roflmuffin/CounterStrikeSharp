@@ -129,7 +129,7 @@ TEST_CASE("The native catalog declares the event and network Engine Features, ga
     CHECK(features::CheckTransmit == "cssharp.network/check-transmit");
     REQUIRE(checkTransmit.size() == 2);
     CHECK(checkTransmit[0].key == "ISource2GameEntities::CheckTransmit");
-    CHECK(checkTransmit[0].kind == BindingKind::Offset);
+    CHECK(checkTransmit[0].kind == BindingKind::Slot);
     CHECK(checkTransmit[1].key == "CheckTransmitPlayerSlot");
     CHECK(checkTransmit[1].kind == BindingKind::Offset);
 }
@@ -271,6 +271,7 @@ TEST_CASE("Core Bindings are the catalog's Bindings plus every core Gamedata key
     const nlohmann::json root = {
         { "ClientPrint", { { "signatures", { { "library", "server" }, { "linux", "55 48" }, { "windows", "55" } } } } },
         { "CBaseEntity_Teleport", { { "offsets", { { "linux", 157 }, { "windows", 156 } } } } },
+        { "SomeStructField", { { "offsets", { { "linux", 104 }, { "windows", 104 } } } } },
         { "PatchOnly", { { "patches", nlohmann::json::object() } } },
     };
     const auto declarations = CoreBindingDeclarations(ParseGamedata(root, "linux"));
@@ -289,7 +290,9 @@ TEST_CASE("Core Bindings are the catalog's Bindings plus every core Gamedata key
     REQUIRE(find("ClientPrint") != nullptr);
     CHECK(find("ClientPrint")->kind == BindingKind::Signature);
     REQUIRE(find("CBaseEntity_Teleport") != nullptr);
-    CHECK(find("CBaseEntity_Teleport")->kind == BindingKind::Offset);
+    CHECK(find("CBaseEntity_Teleport")->kind == BindingKind::Slot); // a game-class virtual: a Slot Binding even without "vtable"
+    REQUIRE(find("SomeStructField") != nullptr);
+    CHECK(find("SomeStructField")->kind == BindingKind::Offset);
 
     CHECK(find("PatchOnly") == nullptr);
 

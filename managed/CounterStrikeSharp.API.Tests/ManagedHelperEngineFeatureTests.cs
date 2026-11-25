@@ -65,26 +65,26 @@ public class ManagedHelperEngineFeatureTests : IDisposable
     {
         { "cssharp.player/set-pawn", "CBasePlayerController_SetPawn", "Signature" },
         { "cssharp.player/switch-team", "CCSPlayerController_SwitchTeam", "Signature" },
-        { "cssharp.player/change-team", "CCSPlayerController_ChangeTeam", "Offset" },
-        { "cssharp.player/respawn", "CCSPlayerController_Respawn", "Offset" },
-        { "cssharp.player/commit-suicide", "CBasePlayerPawn_CommitSuicide", "Offset" },
+        { "cssharp.player/change-team", "CCSPlayerController_ChangeTeam", "Slot" },
+        { "cssharp.player/respawn", "CCSPlayerController_Respawn", "Slot" },
+        { "cssharp.player/commit-suicide", "CBasePlayerPawn_CommitSuicide", "Slot" },
         { "cssharp.player/post-think-hooks", "CCSPlayerPawnBase_PostThink", "Signature" },
         { "cssharp.game-rules/terminate-round", "CCSGameRules_TerminateRound", "Signature" },
-        { "cssharp.game-rules/find-picker-entity", "CCSGameRules_FindPickerEntity", "Offset" },
+        { "cssharp.game-rules/find-picker-entity", "CCSGameRules_FindPickerEntity", "Slot" },
         { "cssharp.entity/create", "UTIL_CreateEntityByName", "Signature" },
         { "cssharp.entity/remove", "UTIL_Remove", "Signature" },
         { "cssharp.entity/set-model", "CBaseModelEntity_SetModel", "Signature" },
-        { "cssharp.entity/teleport", "CBaseEntity_Teleport", "Offset" },
+        { "cssharp.entity/teleport", "CBaseEntity_Teleport", "Slot" },
         { "cssharp.entity/trigger-touch-hooks", "CBaseTrigger_StartTouch", "Signature" },
         { "cssharp.entity/trigger-touch-hooks", "CBaseTrigger_EndTouch", "Signature" },
-        { "cssharp.entity/skeleton-instance", "CGameSceneNode_GetSkeletonInstance", "Offset" },
+        { "cssharp.entity/skeleton-instance", "CGameSceneNode_GetSkeletonInstance", "Slot" },
         { "cssharp.items/give-named-item", "GiveNamedItem", "Signature" },
-        { "cssharp.items/give-named-item", "CCSPlayer_ItemServices_GiveNamedItem", "Offset" },
+        { "cssharp.items/give-named-item", "CCSPlayer_ItemServices_GiveNamedItem", "Slot" },
         { "cssharp.items/can-acquire-hooks", "CCSPlayer_ItemServices_CanAcquire", "Signature" },
         { "cssharp.items/weapon-can-use-hooks", "CCSPlayer_WeaponServices_CanUse", "Signature" },
         { "cssharp.items/remove-player-item", "CBasePlayerPawn_RemovePlayerItem", "Signature" },
-        { "cssharp.items/drop-active-weapon", "CCSPlayer_ItemServices_DropActivePlayerWeapon", "Offset" },
-        { "cssharp.items/remove-weapons", "CCSPlayer_ItemServices_RemoveWeapons", "Offset" },
+        { "cssharp.items/drop-active-weapon", "CCSPlayer_ItemServices_DropActivePlayerWeapon", "Slot" },
+        { "cssharp.items/remove-weapons", "CCSPlayer_ItemServices_RemoveWeapons", "Slot" },
         { "cssharp.items/weapon-data", "GetCSWeaponDataFromKey", "Signature" },
         { "cssharp.nav/nav-mesh", "CCSNavArea_IsValidNavMesh", "Signature" },
     };
@@ -102,6 +102,27 @@ public class ManagedHelperEngineFeatureTests : IDisposable
         Assert.Equal(Enum.Parse<BindingKind>(kind),
             ManagedEngineFeatures.All.Single(f => f.Name == feature).Bindings.Single(b => b.Key == key).Kind);
         Assert.Contains(feature, EngineFeatures.Current.FormatStartupReport());
+    }
+
+    [Fact]
+    public void AHealedGameClassVirtualStaysAvailableAndItsHelperCallsTheHealedIndex()
+    {
+        // Gamedata states CommitSuicide at 386; the boot Vtable Check found its window once, at 387.
+        InstallReport();
+        var bindings = EngineFeatures.Current.Report.Bindings
+            .Select(b => b.Key != "CBasePlayerPawn_CommitSuicide"
+                ? b
+                : b with { Offset = 387, Healed = true, Slot = new SlotEvidence("CBasePlayerPawn", 386, "Heal", 401, 401) })
+            .ToList();
+        EngineFeatures.Current = new EngineFeatureSet(new ResolutionReport(BuildId, bindings, []), ManagedEngineFeatures.All);
+
+        var status = EngineFeatures.GetStatus("cssharp.player/commit-suicide");
+        Assert.True(status.IsAvailable);
+        var heal = Assert.Single(status.Heals);
+        Assert.Equal((386, 387), (heal.OldIndex, heal.NewIndex));
+        Assert.Equal(387, EngineFeatures.Current.GetOffset(ManagedEngineFeatures.PlayerCommitSuicide, "CBasePlayerPawn_CommitSuicide"));
+        Assert.Contains("Healed CBasePlayerPawn_CommitSuicide: CBasePlayerPawn (server) slot 386 -> 387",
+            EngineFeatures.Current.FormatStartupReport());
     }
 
     [Fact]
