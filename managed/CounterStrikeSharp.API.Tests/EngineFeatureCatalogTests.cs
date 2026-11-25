@@ -13,6 +13,14 @@ public class EngineFeatureCatalogTests : IDisposable
     private static readonly Dictionary<string, string[]> SpecCatalog = new()
     {
         ["cssharp.server/game-frame"] = ["ISource2Server::GameFrame"],
+        ["cssharp.server/hibernation-events"] = ["ISource2Server::ServerHibernationUpdate"],
+        ["cssharp.server/steam-api-events"] = ["ISource2Server::GameServerSteamAPIActivated", "ISource2Server::GameServerSteamAPIDeactivated"],
+        ["cssharp.server/hostname-changed"] = ["ISource2Server::OnHostNameChanged"],
+        ["cssharp.server/fatal-shutdown"] = ["ISource2Server::PreFatalShutdown"],
+        ["cssharp.server/update-when-not-in-game"] = ["ISource2Server::UpdateWhenNotInGame"],
+        ["cssharp.server/pre-world-update"] = ["ISource2Server::PreWorldUpdate"],
+        ["cssharp.server/econ-item-system"] = ["ISource2Server::GetEconItemSystem"],
+        ["cssharp.server/is-paused"] = ["ISource2Server::IsPaused"],
         ["cssharp.events/game-events"] = ["CGameEventManager_Init", "CGameEventManager"],
         ["cssharp.events/fire-event-to-client"] = ["LegacyGameEventListener"],
         ["cssharp.network/state-changed"] = ["NetworkStateChanged", "SetStateChanged"],
