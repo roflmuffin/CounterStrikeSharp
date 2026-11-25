@@ -129,12 +129,23 @@ A generator carries Slot Bindings forward to a new build by aligning the previou
 | `cssharp.player/client-commands` | IServerGameClients ClientCommand |
 | `cssharp.player/voice-events` | IServerGameClients ClientVoice |
 | `cssharp.player/set-listening` | IVEngineServer2 SetClientListening |
+| `cssharp.server/execute-command` | IVEngineServer2 ServerCommand |
+| `cssharp.server/is-map-valid` | IVEngineServer2 IsMapValid |
+| `cssharp.server/precache-model` | IVEngineServer2 PrecacheGeneric |
+| `cssharp.player/user-id` | IVEngineServer2 GetPlayerUserId |
+| `cssharp.player/print-to-console` | IVEngineServer2 ClientPrintf |
+| `cssharp.player/get-convar-value` | IVEngineServer2 GetClientConVarValue |
+| `cssharp.player/set-fake-client-convar` | IVEngineServer2 SetFakeClientConVarValue |
+| `cssharp.player/execute-client-command` | IVEngineServer2 ClientCommand |
+| `cssharp.player/disconnect` | IVEngineServer2 DisconnectClient |
+| `cssharp.player/authorization` | IVEngineServer2 IsClientFullyAuthenticated, GetClientSteamID |
 | `cssharp.ui/custom-hud-layout` | IServerGameClients ClientSvcUserMessage |
 | `cssharp.commands/console-dispatch` | ICvar DispatchConCommand |
 | `cssharp.network/user-messages` | IGameEventSystem PostEventAbstract |
 
 - `cssharp.events/game-events` (spec A) additionally depends on the game event manager's LoadEventsFromFile and FireEvent Slot Bindings.
 - Each direct call on IVEngineServer2 and ICvar is a Slot Binding of the Engine Feature(s) whose plugin-visible API uses it, named under the same rule (one Engine Feature per plugin-visible API, `cssharp.<area>/<name>`). The ticket that migrates those calls enumerates them against the code and adds them to the catalog; names are permanent once added.
+- IVEngineServer2 (enumerated, ticket 07): 12 slots in use, the SetClientListening hook and 11 direct calls, all on CEngineServer in engine2. Plugin-visible APIs: `Server.ExecuteCommand`, `Server.IsMapValid`, `Server.PrecacheModel`; on `CCSPlayerController` `UserId`, `PrintToConsole`, `GetConVarValue`, `SetFakeClientConVar`, `ExecuteClientCommand`, `Disconnect`, setting `VoiceFlags` and `SetListenOverride` (set-listening), `AuthorizedSteamID` and the `OnClientAuthorized` listener (authorization). `GetGameDir` is no longer called: it runs before Gamedata is read, so the mod directory now comes from Metamod (`ISmmAPI::GetBaseDir`, the same engine value Metamod read to load the plugin). `GetPlayerNetInfo` was only used by dead CPlayer helpers, which were removed.
 - Existing spec A Engine Features backed by game-class virtual offsets keep their names; their Bindings simply become verified Slot Bindings.
 
 ### Generator (offline, ADR-0004)
