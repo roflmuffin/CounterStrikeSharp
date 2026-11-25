@@ -16,6 +16,7 @@
 
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -80,7 +81,13 @@ namespace CounterStrikeSharp.API
         /// Executes a command on the server, as if it was entered from the console.
         /// </summary>
         /// <param name="command"></param>
-        public static void ExecuteCommand(string command) => NativeAPI.IssueServerCommand(command);
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/execute-command</c> is
+        /// disabled</exception>
+        public static void ExecuteCommand(string command)
+        {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.ServerExecuteCommand);
+            NativeAPI.IssueServerCommand(command);
+        }
 
         public static string MapName => NativeAPI.GetMapName();
 
@@ -114,7 +121,13 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static float FrameTime => NativeAPI.GetGameFrameTime();
 
-        public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/precache-model</c> is
+        /// disabled</exception>
+        public static void PrecacheModel(string name)
+        {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.ServerPrecacheModel);
+            NativeAPI.PrecacheModel(name);
+        }
 
         /// <summary>
         /// <inheritdoc cref="RunOnTick"/>
@@ -278,7 +291,13 @@ namespace CounterStrikeSharp.API
             }
         }
 
-        public static bool IsMapValid(string mapName) => NativeAPI.IsMapValid(mapName);
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/is-map-valid</c> is
+        /// disabled</exception>
+        public static bool IsMapValid(string mapName)
+        {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.ServerIsMapValid);
+            return NativeAPI.IsMapValid(mapName);
+        }
 
         public static string[] GetMapList()
         {

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <engine2/ivengineserver2.h>
 #include <string>
 #include <filesystem>
 #include <regex>
@@ -11,15 +10,12 @@
 namespace counterstrikesharp {
 namespace utils {
 
+// The mod directory (game/csgo), as Metamod found it to load us. Not IVEngineServer2::GetGameDir: this runs before
+// Gamedata is read (it locates Gamedata), so that call could not go through a verified Slot Binding.
 static std::string gameDirectory;
 inline std::string GameDirectory()
 {
-    if (gameDirectory.empty())
-    {
-        CBufferStringGrowable<255> gamePath;
-        globals::engine->GetGameDir(gamePath);
-        gameDirectory = std::string(gamePath.Get());
-    }
+    if (gameDirectory.empty()) gameDirectory = std::string(globals::ismm->GetBaseDir());
 
     return gameDirectory;
 }

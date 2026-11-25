@@ -47,6 +47,18 @@ inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
 inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 // Take damage
 inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
+// Engine server (IVEngineServer2 in engine2: one hook and direct calls, by verified slot index)
+inline constexpr std::string_view PlayerSetListening = "cssharp.player/set-listening";
+inline constexpr std::string_view ServerExecuteCommand = "cssharp.server/execute-command";
+inline constexpr std::string_view ServerIsMapValid = "cssharp.server/is-map-valid";
+inline constexpr std::string_view ServerPrecacheModel = "cssharp.server/precache-model";
+inline constexpr std::string_view PlayerUserId = "cssharp.player/user-id";
+inline constexpr std::string_view PlayerPrintToConsole = "cssharp.player/print-to-console";
+inline constexpr std::string_view PlayerGetConVarValue = "cssharp.player/get-convar-value";
+inline constexpr std::string_view PlayerSetFakeClientConVar = "cssharp.player/set-fake-client-convar";
+inline constexpr std::string_view PlayerExecuteClientCommand = "cssharp.player/execute-client-command";
+inline constexpr std::string_view PlayerDisconnect = "cssharp.player/disconnect";
+inline constexpr std::string_view PlayerAuthorization = "cssharp.player/authorization";
 // Console commands and ConVars (ICvar, by verified slot index)
 inline constexpr std::string_view ConsoleDispatch = "cssharp.commands/console-dispatch";
 inline constexpr std::string_view AddCommand = "cssharp.commands/add-command";

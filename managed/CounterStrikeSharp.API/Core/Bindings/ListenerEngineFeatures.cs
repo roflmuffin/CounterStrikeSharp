@@ -48,14 +48,26 @@ internal static class ListenerEngineFeatures
         ["OnConVarChanged"] = EngineFeatureNames.ConvarsChangeEvents,
     };
 
+    // Listeners that also need further Engine Features. OnClientAuthorized fires from the IVEngineServer2 auth check.
+    private static readonly Dictionary<string, string[]> AlsoNeeded = new()
+    {
+        ["OnClientAuthorized"] = [EngineFeatureNames.PlayerAuthorization],
+    };
+
     /// <summary>
     /// True if the listener can fire. Otherwise logs once per listener and registrant that it is registered on a
     /// disabled Engine Feature and returns false; the caller keeps the registration either way.
     /// </summary>
     public static bool CheckRegistration(EngineFeatureSet features, string listenerName, ILogger logger,
-        object? registrant = null) =>
-        !Features.TryGetValue(listenerName, out var feature) ||
-        features.CheckRegistration(feature, $"{listenerName} listener", logger, registrant);
+        object? registrant = null)
+    {
+        var canFire = !Features.TryGetValue(listenerName, out var feature) ||
+                      features.CheckRegistration(feature, $"{listenerName} listener", logger, registrant);
+        if (AlsoNeeded.TryGetValue(listenerName, out var others))
+            foreach (var other in others)
+                canFire &= features.CheckRegistration(other, $"{listenerName} listener", logger, registrant);
+        return canFire;
+    }
 
     /// <summary>
     /// Command listeners (<see cref="BasePlugin.AddCommandListener"/>) see commands from two hooks: a player's typed

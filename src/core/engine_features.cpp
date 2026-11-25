@@ -61,6 +61,21 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
     // Take damage
     { std::string(features::EntityTakeDamageHooks), { Signature("CBaseEntity_TakeDamageOld"), Offset("CBaseEntity_IsPlayerPawn") } },
+    // Engine server (IVEngineServer2): each plugin-visible API on the slots it hooks or calls. Per-player voice overrides
+    // (VoiceFlags, SetListenOverride) apply in the SetClientListening hook; OnClientAuthorized and AuthorizedSteamID come
+    // from the auth check on every frame.
+    { std::string(features::PlayerSetListening), { Slot("IVEngineServer2::SetClientListening") } },
+    { std::string(features::ServerExecuteCommand), { Slot("IVEngineServer2::ServerCommand") } },
+    { std::string(features::ServerIsMapValid), { Slot("IVEngineServer2::IsMapValid") } },
+    { std::string(features::ServerPrecacheModel), { Slot("IVEngineServer2::PrecacheGeneric") } },
+    { std::string(features::PlayerUserId), { Slot("IVEngineServer2::GetPlayerUserId") } },
+    { std::string(features::PlayerPrintToConsole), { Slot("IVEngineServer2::ClientPrintf") } },
+    { std::string(features::PlayerGetConVarValue), { Slot("IVEngineServer2::GetClientConVarValue") } },
+    { std::string(features::PlayerSetFakeClientConVar), { Slot("IVEngineServer2::SetFakeClientConVarValue") } },
+    { std::string(features::PlayerExecuteClientCommand), { Slot("IVEngineServer2::ClientCommand") } },
+    { std::string(features::PlayerDisconnect), { Slot("IVEngineServer2::DisconnectClient") } },
+    { std::string(features::PlayerAuthorization),
+      { Slot("IVEngineServer2::IsClientFullyAuthenticated"), Slot("IVEngineServer2::GetClientSteamID") } },
     // Console commands and ConVars: every ICvar method we call, directly or through the SDK's convar.cpp (see
     // core/verified_cvar.h). The dispatch hook fires AddCommand callbacks and command listeners for console commands.
     { std::string(features::ConsoleDispatch), { Slot("ICvar::DispatchConCommand") } },

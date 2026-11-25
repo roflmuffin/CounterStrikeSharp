@@ -33,6 +33,8 @@
 #include "core/managers/player_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/tick_scheduler.h"
+#include "core/engine_server_calls.h"
+#include "scripting/engine_feature_natives.h"
 #include "core/game_system.h"
 #include "networksystem/inetworkmessages.h"
 #include "usermessages.pb.h"
@@ -55,7 +57,8 @@ const char* GetGameDirectory(ScriptContext& script_context) { return strdup(Plat
 bool IsMapValid(ScriptContext& script_context)
 {
     auto mapname = script_context.GetArgument<const char*>(0);
-    return globals::engine->IsMapValid(mapname) != 0;
+    if (!RequireEngineFeature(script_context, bindings::features::ServerIsMapValid)) return false;
+    return engine_server::IsMapValid(mapname);
 }
 
 float GetTickInterval(ScriptContext& script_context) { return globals::engine_fixed_tick_interval; }
@@ -83,16 +86,18 @@ int GetMaxClients(ScriptContext& script_context)
 void ServerCommand(ScriptContext& script_context)
 {
     auto command = script_context.GetArgument<const char*>(0);
+    if (!RequireEngineFeature(script_context, bindings::features::ServerExecuteCommand)) return;
 
     auto clean_command = std::string(command);
     clean_command.append("\n\0");
-    globals::engine->ServerCommand(clean_command.c_str());
+    engine_server::ServerCommand(clean_command.c_str());
 }
 
 void PrecacheModel(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
-    globals::engine->PrecacheGeneric(name);
+    if (!RequireEngineFeature(script_context, bindings::features::ServerPrecacheModel)) return;
+    engine_server::PrecacheGeneric(name);
 }
 
 void AddResource(ScriptContext& script_context)
@@ -190,7 +195,8 @@ void DisconnectClient(ScriptContext& scriptContext)
         return;
     }
 
-    globals::engineServer2->DisconnectClient(slot, disconnectReason);
+    if (!RequireEngineFeature(scriptContext, bindings::features::PlayerDisconnect)) return;
+    engine_server::DisconnectClient(slot, disconnectReason);
 }
 
 void ClientPrint(ScriptContext& scriptContext)

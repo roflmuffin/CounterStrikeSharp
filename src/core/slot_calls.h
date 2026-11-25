@@ -6,19 +6,47 @@
 //   static const auto slot = bindings::GetBindingSlot("ISource2Server::IsPaused");
 //   return CallSlot(slot, &ISource2Server::IsPaused, globals::server);
 
+#include <cstdint>
+#include <cstring>
 #include <optional>
+#include <stdexcept>
 #include <type_traits>
 #include <utility>
 
 namespace counterstrikesharp {
 
 namespace detail {
-template <class R, class C, class... Params, class... Args> R CallAtIndex(int index, C* instance, Args&&... args)
+// The member function pointer of type F that calls address directly (non-virtual, no this adjustment): Itanium
+// represents it as { address, 0 }, MSVC (single inheritance) as the address alone. Calling through it keeps the
+// method's own calling convention (class-type returns, C varargs), which a cast to a plain function would not on MSVC.
+template <class F> F MemberFunctionAt(void* address)
 {
-    // Itanium and x64 MSVC alike: a virtual is a plain function taking this first.
-    using Function = R (*)(C*, Params...);
+    static_assert(std::is_member_function_pointer_v<F>, "F must be a member function pointer");
+    struct Representation
+    {
+        void* address;
+        std::intptr_t rest[3];
+    } representation{ address, {} };
+    static_assert(sizeof(F) <= sizeof(Representation), "unsupported member function pointer representation");
+    F function;
+    std::memcpy(&function, &representation, sizeof(F));
+    return function;
+}
+
+template <class F, class C, class... Args> decltype(auto) CallAtIndex(int index, F method, C* instance, Args&&... args)
+{
+    (void)method; // only its type: the function called is the one at index
     auto** vtable = *reinterpret_cast<void***>(const_cast<std::remove_const_t<C>*>(instance));
-    return reinterpret_cast<Function>(vtable[index])(instance, std::forward<Args>(args)...);
+    const auto function = MemberFunctionAt<F>(vtable[index]);
+    return (instance->*function)(std::forward<Args>(args)...);
+}
+
+// What CallSlot returns on Linux without an index: R{}. A return type without a default value (e.g. CPlayerUserId)
+// requires the caller to check the index first.
+template <class R> R NoSlotResult()
+{
+    if constexpr (std::is_void_v<R> || std::is_default_constructible_v<R>) return R();
+    else throw std::logic_error("CallSlot without a Slot Binding index for a return type without a default value");
 }
 } // namespace detail
 
@@ -33,11 +61,10 @@ R CallSlot(std::optional<int> index, R (C::*method)(Params...), C* instance, Arg
 #ifdef _WIN32
         return (instance->*method)(std::forward<Args>(args)...);
 #else
-        (void)method;
-        return R();
+        return detail::NoSlotResult<R>();
 #endif
     }
-    return detail::CallAtIndex<R, C, Params...>(*index, instance, std::forward<Args>(args)...);
+    return detail::CallAtIndex(*index, method, instance, std::forward<Args>(args)...);
 }
 
 template <class R, class C, class... Params, class... Args>
@@ -48,11 +75,25 @@ R CallSlot(std::optional<int> index, R (C::*method)(Params...) const, const C* i
 #ifdef _WIN32
         return (instance->*method)(std::forward<Args>(args)...);
 #else
-        (void)method;
-        return R();
+        return detail::NoSlotResult<R>();
 #endif
     }
-    return detail::CallAtIndex<R, const C, Params...>(*index, instance, std::forward<Args>(args)...);
+    return detail::CallAtIndex(*index, method, instance, std::forward<Args>(args)...);
+}
+
+// A C-variadic method (printf-style); the variadic arguments are passed on unchanged.
+template <class R, class C, class... Params, class... Args>
+R CallSlot(std::optional<int> index, R (C::*method)(Params..., ...), C* instance, Args&&... args)
+{
+    if (!index)
+    {
+#ifdef _WIN32
+        return (instance->*method)(std::forward<Args>(args)...);
+#else
+        return detail::NoSlotResult<R>();
+#endif
+    }
+    return detail::CallAtIndex(*index, method, instance, std::forward<Args>(args)...);
 }
 
 } // namespace counterstrikesharp
