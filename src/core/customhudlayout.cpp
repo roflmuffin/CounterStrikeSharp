@@ -1,5 +1,6 @@
 #include "log.h"
 #include "customhudlayout.h"
+#include "core/slot_hooks.h"
 #include "scripting/callback_manager.h"
 #include "cstrike15_usermessages.pb.h"
 
@@ -14,8 +15,10 @@ CCSCustomHudLayout::~CCSCustomHudLayout() {}
 void CCSCustomHudLayout::OnAllInitialized()
 {
     on_custom_hud_clicked = globals::callbackManager.CreateCallback("OnCustomHudClicked");
-    m_hooks.Add(&IServerGameClients::ClientSvcUserMessage, globals::serverGameClients, this, nullptr,
-                &CCSCustomHudLayout::Hook_ClientSvcUserMessage);
+    // By the slot index the boot Vtable Check verified; disabled custom-hud-layout: OnCustomHudClicked never fires.
+    if (bindings::ShouldRegisterHooks(bindings::features::UiCustomHudLayout, "ClientSvcUserMessage hook"))
+        HookSlot(m_hooks, "IServerGameClients::ClientSvcUserMessage", &IServerGameClients::ClientSvcUserMessage,
+                 globals::serverGameClients, this, nullptr, &CCSCustomHudLayout::Hook_ClientSvcUserMessage);
 }
 
 void CCSCustomHudLayout::OnShutdown() { m_hooks.Clear(); }

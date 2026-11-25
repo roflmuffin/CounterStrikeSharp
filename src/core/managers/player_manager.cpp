@@ -40,6 +40,7 @@
 #include "core/core_bindings.h"
 #include "core/engine_server_calls.h"
 #include "core/log.h"
+#include "core/slot_hooks.h"
 #include "core/timer_system.h"
 #include "scripting/callback_manager.h"
 #include "player_manager.h"
@@ -54,13 +55,28 @@ void PlayerManager::OnStartup() {}
 
 void PlayerManager::OnAllInitialized()
 {
-    m_hooks.Add(&IServerGameClients::ClientConnect, globals::serverGameClients, this, &PlayerManager::OnClientConnect, nullptr);
-    m_hooks.Add(&IServerGameClients::ClientConnect, globals::serverGameClients, this, nullptr, &PlayerManager::OnClientConnect_Post);
-    m_hooks.Add(&IServerGameClients::ClientPutInServer, globals::serverGameClients, this, nullptr, &PlayerManager::OnClientPutInServer);
-    m_hooks.Add(&IServerGameClients::ClientDisconnect, globals::serverGameClients, this, &PlayerManager::OnClientDisconnect, nullptr);
-    m_hooks.Add(&IServerGameClients::ClientDisconnect, globals::serverGameClients, this, nullptr, &PlayerManager::OnClientDisconnect_Post);
-    m_hooks.Add(&IServerGameClients::ClientCommand, globals::serverGameClients, this, &PlayerManager::OnClientCommand, nullptr);
-    m_hooks.Add(&IServerGameClients::ClientVoice, globals::serverGameClients, this, nullptr, &PlayerManager::OnClientVoice);
+    // By the slot indices the boot Vtable Check verified, one Engine Feature per group. A disabled one hooks nothing:
+    // its listeners still register (the callbacks below are created regardless) and never fire.
+    auto* clients = globals::serverGameClients;
+    if (bindings::ShouldRegisterHooks(bindings::features::PlayerConnectionEvents, "client connection hooks"))
+    {
+        HookSlot(m_hooks, "IServerGameClients::ClientConnect", &IServerGameClients::ClientConnect, clients, this,
+                 &PlayerManager::OnClientConnect, nullptr);
+        HookSlot(m_hooks, "IServerGameClients::ClientConnect", &IServerGameClients::ClientConnect, clients, this, nullptr,
+                 &PlayerManager::OnClientConnect_Post);
+        HookSlot(m_hooks, "IServerGameClients::ClientPutInServer", &IServerGameClients::ClientPutInServer, clients, this, nullptr,
+                 &PlayerManager::OnClientPutInServer);
+        HookSlot(m_hooks, "IServerGameClients::ClientDisconnect", &IServerGameClients::ClientDisconnect, clients, this,
+                 &PlayerManager::OnClientDisconnect, nullptr);
+        HookSlot(m_hooks, "IServerGameClients::ClientDisconnect", &IServerGameClients::ClientDisconnect, clients, this, nullptr,
+                 &PlayerManager::OnClientDisconnect_Post);
+    }
+    if (bindings::ShouldRegisterHooks(bindings::features::PlayerClientCommands, "ClientCommand hook"))
+        HookSlot(m_hooks, "IServerGameClients::ClientCommand", &IServerGameClients::ClientCommand, clients, this,
+                 &PlayerManager::OnClientCommand, nullptr);
+    if (bindings::ShouldRegisterHooks(bindings::features::PlayerVoiceEvents, "ClientVoice hook"))
+        HookSlot(m_hooks, "IServerGameClients::ClientVoice", &IServerGameClients::ClientVoice, clients, this, nullptr,
+                 &PlayerManager::OnClientVoice);
 
     m_on_client_connect_callback = globals::callbackManager.CreateCallback("OnClientConnect");
     m_on_client_connected_callback = globals::callbackManager.CreateCallback("OnClientConnected");

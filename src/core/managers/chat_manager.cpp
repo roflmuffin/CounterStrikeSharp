@@ -63,7 +63,8 @@ KHook::Return<void> DetourHostSay(CEntityInstance* pController, CCommand& args, 
         KHook::Recall(m_pHostSay, KHook::Return<void>{ KHook::Action::Ignore }, pController, args, teamonly, unk1, unk2);
     }
 
-    if (bCommand)
+    // Chat triggers run commands registered with AddCommand; tokenizing and finding them goes through ICvar.
+    if (bCommand && bindings::IsEngineFeatureAvailable(bindings::features::AddCommand))
     {
         char* pszMessage = (char*)(args.ArgS() + prefix.length() + 1);
 

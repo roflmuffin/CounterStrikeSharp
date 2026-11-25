@@ -27,6 +27,11 @@ inline constexpr std::string_view PreWorldUpdate = "cssharp.server/pre-world-upd
 // Direct calls on ISource2Server, by verified slot index
 inline constexpr std::string_view EconItemSystem = "cssharp.server/econ-item-system";
 inline constexpr std::string_view IsPaused = "cssharp.server/is-paused";
+// Players and UI (hooks on IServerGameClients, by verified slot index)
+inline constexpr std::string_view PlayerConnectionEvents = "cssharp.player/connection-events";
+inline constexpr std::string_view PlayerClientCommands = "cssharp.player/client-commands";
+inline constexpr std::string_view PlayerVoiceEvents = "cssharp.player/voice-events";
+inline constexpr std::string_view UiCustomHudLayout = "cssharp.ui/custom-hud-layout";
 // Events and networking
 inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
 inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";
@@ -54,6 +59,15 @@ inline constexpr std::string_view PlayerSetFakeClientConVar = "cssharp.player/se
 inline constexpr std::string_view PlayerExecuteClientCommand = "cssharp.player/execute-client-command";
 inline constexpr std::string_view PlayerDisconnect = "cssharp.player/disconnect";
 inline constexpr std::string_view PlayerAuthorization = "cssharp.player/authorization";
+// Console commands and ConVars (ICvar, by verified slot index)
+inline constexpr std::string_view ConsoleDispatch = "cssharp.commands/console-dispatch";
+inline constexpr std::string_view AddCommand = "cssharp.commands/add-command";
+inline constexpr std::string_view ExecuteClientCommandFromServer = "cssharp.player/execute-client-command-from-server";
+inline constexpr std::string_view ConVarFind = "cssharp.convars/find";
+inline constexpr std::string_view ConVarRead = "cssharp.convars/read";
+inline constexpr std::string_view ConVarWrite = "cssharp.convars/write";
+inline constexpr std::string_view ConVarCreate = "cssharp.convars/create";
+inline constexpr std::string_view ConVarChangeEvents = "cssharp.convars/change-events";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.

@@ -6,13 +6,37 @@ Spec: `.scratch/hardening-b-boot-verify/spec.md` (Hooks and calls through Slot B
 
 **Blocked by:** 03, 04
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · must
 
-- [ ] The catalog lists every ICvar-backed Engine Feature with its Slot Bindings
-- [ ] Vtable Check works on the tier0 module (class CCvar)
-- [ ] Real-build test (local): zero wrong resolutions on the archived tier0 pair
-- [ ] A failed cvar Slot Binding disables only the Engine Features using it
-- [ ] End-to-end: console dispatch one off → heals, commands still dispatch; one corrupted cvar call → only its Engine Feature disabled
-- [ ] Windows behaves as today
+- [x] The catalog lists every ICvar-backed Engine Feature with its Slot Bindings
+- [x] Vtable Check works on the tier0 module (class CCvar)
+- [x] Real-build test (local): zero wrong resolutions on the archived tier0 pair
+- [x] A failed cvar Slot Binding disables only the Engine Features using it
+- [x] End-to-end: console dispatch one off → heals, commands still dispatch; one corrupted cvar call → only its Engine Feature disabled
+- [x] Windows behaves as today
+
+## Comments
+
+- Resolved on `spec-b/08-icvar-hook-and-calls`. Native doctest 108 cases / 2546 assertions pass locally with the archive (3 skipped: oracle and `CSSHARP_SERVER_BINARY`); CI mode (`CSSHARP_BUILD_ARCHIVE=/nonexistent`) 94 pass, 17 skipped. Managed unit tests 211 pass. E2E `eng/e2e/cases/icvar.sh`, three scenarios: valid ("all 77 resolved", all available, no Heal, all 10 `ICvarTests` pass; smoke 226/2 failed: known flaky `ConVarTests.BoolConVar`, `RealConVarTests.CreatedConVarIsAccessibleFromServerConsole`), healed (`ICvar::DispatchConCommand` stated at 19: "all 77 resolved, 1 healed", "Healed ICvar::DispatchConCommand: CCvar (tier0) slot 19 -> 20, window [...] matched once within 16 slots", all available, `ICvarTests` incl. the dispatch test pass, installed Gamedata byte-identical after the run; smoke 227/1 failed: `NativeObjectsTests.EnsureNativeHandle_IsFreed_Vector3`), corrupted (InstallGlobalChangeCallback own fingerprint zeroed: "1 of 77 failed: ICvar::InstallGlobalChangeCallback (fingerprint mismatch)", only `cssharp.convars/change-events` disabled, core commands still registered, only `ICvarTests.EngineFeature_IsAvailable(ConvarsChangeEvents)` fails among ICvarTests; the OnConVarChanged smoke tests fail as expected, server stays up). Server exits 139 on quit (known).
+- **Engine Features (permanent names; spec catalog table updated):**
+  | Engine Feature | ICvar Slot Bindings | Plugin-visible API |
+  |---|---|---|
+  | `cssharp.commands/console-dispatch` | DispatchConCommand (hook) | AddCommand callbacks and command listeners for console-issued commands, `OnClientCommandGlobalPre/Post` for them |
+  | `cssharp.commands/add-command` | FindConCommand, RegisterConCommand, GetConCommandData, UnregisterConCommandCallbacks, GetCharacterSet | `AddCommand`/`RemoveCommand` (`ADD_COMMAND`, `REMOVE_COMMAND`), chat triggers (`!cmd` tokenized), core `CON_COMMAND`s |
+  | `cssharp.player/execute-client-command-from-server` | GetCharacterSet, FindConCommand, DispatchConCommand (call) | `CCSPlayerController.ExecuteClientCommandFromServer` |
+  | `cssharp.convars/find` | FindConVar, GetConVarData | `ConVar.Find`, `FIND_CONVAR`, `GET_CONVAR_ACCESS_INDEX_BY_NAME` |
+  | `cssharp.convars/read` | GetConVarData | ConVar getters: value, flags, type, name, help text, bounds, validity |
+  | `cssharp.convars/write` | GetConVarData, CallFilterCallback, CallChangeCallback, CallGlobalChangeCallbacks, QueueThreadSetValue | ConVar setters: value, string value, flags, bounds |
+  | `cssharp.convars/create` | FindConVar, GetConVarData, RegisterConVar, UnregisterConVarCallbacks | `ConVar<T>` creation (`CREATE_CONVAR`), `DELETE_CONVAR` |
+  | `cssharp.convars/change-events` | InstallGlobalChangeCallback, RemoveGlobalChangeCallback, GetConVarData | `OnConVarChanged` listener |
+  16 Slot Bindings `ICvar::<Method>` (CCvar, tier0), bootstrapped by the generator on 1.42.0.1 at the SDK header indices (11, 14, 16, 17, 20–23, 32, 38, 39, 41–45; vtable size 46). ICvar did not change between the two archived builds, so the pinned and e2e SDKs agree. `RemoveGlobalChangeCallback` has `uniqueNearby: false` (its body recurs within ±16); it still resolves by window.
+- **Implicit calls through the SDK's `convar.cpp` (decision 8): covered fully.** `g_pCVar` (set right after `ResolveCoreBindings`) is now `bindings::VerifiedCvar(globals::cvars)` (`src/core/verified_cvar.{h,cpp}`): on Linux an `ICvar` subclass that forwards each of the 16 methods we use to the engine's CCvar at its verified (or healed) slot via ticket 05's `CallSlot`, so `ConVarRef`, `ConCommandRef`, `ConCommand`, `CConVar<T>`, `CCommand::Tokenize` and our own direct calls (switched from `globals::cvars->` to `g_pCVar->`) all follow a Heal. ICvar methods we never call (FindFirst/Next*, snapshots, IAppSystem, …) keep compiled calls on the engine's ICvar. A failed Binding does nothing and returns an empty value (invalid ref, nullptr, `false` for the filter so nothing is modified, an empty break set for `GetCharacterSet`); the natives refuse first. `GetMaxSplitScreenSlots` is a non-virtual inline that reads ICvar's private `int`, so the shim copies that int (and re-copies after `SetMaxSplitScreenSlots`). `globals::cvars` stays the engine instance, used for the hook. Windows: `VerifiedCvar` returns the engine's ICvar unchanged; ICvar Gamedata has no Windows index (nothing guessed), so the hook falls back to the compiled index and all calls are compiled, as before.
+- **Gating:** DispatchConCommand hooks via `HookSlot` behind `ShouldRegisterHooks(console-dispatch)`. `ConVar_Register` (core `CON_COMMAND`s) runs only when add-command is available, because the SDK calls `Plat_FatalError` when `RegisterConCommand` returns an invalid ref (same for `RegisterConVar`, hence create gates `CREATE_CONVAR`). Chat triggers are parsed only when add-command is available. The change callback is installed only when change-events is available (and removed only if installed). Command and ConVar natives throw `DescribeUnavailable(feature)` on a disabled feature. Managed: `CommandManager.RegisterCommand` keeps the definition and warns once ("Command registered on … disabled …; it will never fire") instead of calling the native; `RemoveCommand` skips the native then; `OnConVarChanged` maps to change-events in `ListenerEngineFeatures`.
+- **Tests:** `tests/native/icvar_bindings_test.cpp` (catalog rows; every ICvar slot backs a feature; each failed ICvar Binding disables exactly the features using it; healed/unverified keep them available; committed Gamedata shape, no Windows index; Windows resolves unverified at index −1). `tests/native/icvar_archive_test.cpp` (local): committed entries resolve by window at their index on 1.42.0.1 and 1.41.9.7, no Heal or size warning; bootstrapping on 1.41.9.7 and carrying forward reproduces the committed entries byte for byte; DispatchConCommand stated at 19 heals to 20 on the real tier0, a corrupted InstallGlobalChangeCallback fingerprint fails; every CCvar slot bootstrapped on 1.41.9.7 and resolved on 1.42.0.1 at its index and shifted ±1: 46 resolved, 83 healed, 9 failed, **0 wrong**. Managed `ICvarEngineFeatureTests` (per-key disabling, OnConVarChanged warns once, CommandManager on a disabled add-command never reaches the native). Smoke `ICvarTests` (all 8 features available; a server console command reaches its AddCommand callback and pre/post listeners through the hook, polling up to 32 frames; `ConVar.Find("mp_roundtime")` reads).
+- **Deviations / notes:**
+  - Ticket 05 merged first with its own `src/core/slot_calls.h` `CallSlot`; this branch's helper of the same name (Itanium member-pointer based) was dropped in the merge and the shim uses 05's.
+  - The existing `CommandTests` (`IssueServerCommand`, `CanTriggerCommandsWithSilentChatTrigger`, sometimes the others) fail in many of today's runs on every branch (they wait exactly one frame for the command buffer), so the e2e case asserts the new polling `ICvarTests` instead.
+  - `AddCommandListener` is not gated or logged: its registration's ICvar calls are harmless through the shim on a failed Binding, and its listeners fire for client-typed commands too (IServerGameClients ClientCommand, ticket 06), so "will never fire" would be wrong. `OnClientCommandGlobalPre/Post` are left out of `ListenerEngineFeatures` for the same reason (ticket 06 may map them to client-commands).
+  - The `archive_test.cpp` carry-forward test now tolerates other committed Slot Bindings (taken from ticket 05's version in the merge).

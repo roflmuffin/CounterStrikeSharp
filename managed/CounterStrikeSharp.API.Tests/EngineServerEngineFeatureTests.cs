@@ -2,7 +2,7 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.ValveConstants.Protobuf;
-using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Tests;
 
@@ -26,6 +26,8 @@ public class EngineServerEngineFeatureTests : IDisposable
         ["cssharp.player/execute-client-command"] = ["IVEngineServer2::ClientCommand"],
         ["cssharp.player/disconnect"] = ["IVEngineServer2::DisconnectClient"],
         ["cssharp.player/authorization"] = ["IVEngineServer2::IsClientFullyAuthenticated", "IVEngineServer2::GetClientSteamID"],
+        // Not IVEngineServer2: OnClientAuthorized also needs the connection hooks (a player is authorized once seen).
+        ["cssharp.player/connection-events"] = ["IServerGameClients::ClientConnect"],
     };
 
     // Not a valid entity: an API whose Engine Feature is available gets past its check and fails on the entity check,
@@ -112,12 +114,41 @@ public class EngineServerEngineFeatureTests : IDisposable
         Assert.Throws<InvalidOperationException>(() => InvalidController.PrintToConsole("hi"));
     }
 
-    [Fact]
-    public void OnClientAuthorizedRegisteredWhileAuthorizationIsDisabledWarnsThatItNeverFires()
+    private sealed class CapturingLogger : ILogger
     {
-        InstallReport("IVEngineServer2::IsClientFullyAuthenticated");
+        public List<string> Messages { get; } = new();
 
-        Assert.False(ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, "OnClientAuthorized",
-            NullLogger.Instance));
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
+
+        public bool IsEnabled(LogLevel logLevel) => true;
+
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception,
+            Func<TState, Exception?, string> formatter) => Messages.Add(formatter(state, exception));
+    }
+
+    [Theory]
+    [InlineData("IVEngineServer2::IsClientFullyAuthenticated", "cssharp.player/authorization")]
+    [InlineData("IServerGameClients::ClientConnect", "cssharp.player/connection-events")]
+    public void OnClientAuthorizedOnEitherOfItsDisabledEngineFeaturesWarnsOnce(string failedKey, string feature)
+    {
+        InstallReport(failedKey);
+        var logger = new CapturingLogger();
+
+        Assert.False(ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, "OnClientAuthorized", logger));
+        Assert.False(ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, "OnClientAuthorized", logger));
+
+        var message = Assert.Single(logger.Messages);
+        Assert.Equal($"OnClientAuthorized listener registered on {feature} disabled ({failedKey}: fingerprint mismatch); " +
+                     "it will never fire", message);
+    }
+
+    [Fact]
+    public void OnClientAuthorizedIsSilentWhileBothOfItsEngineFeaturesAreAvailable()
+    {
+        InstallReport("IVEngineServer2::ClientPrintf");
+        var logger = new CapturingLogger();
+
+        Assert.True(ListenerEngineFeatures.CheckRegistration(EngineFeatures.Current, "OnClientAuthorized", logger));
+        Assert.Empty(logger.Messages);
     }
 }

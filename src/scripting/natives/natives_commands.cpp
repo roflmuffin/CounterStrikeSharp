@@ -17,6 +17,7 @@
 #include <engine2/ivengineserver2.h>
 #include <networksystem/inetworkmessages.h>
 
+#include "core/core_bindings.h"
 #include "core/engine_server_calls.h"
 #include "core/log.h"
 #include "core/managers/con_command_manager.h"
@@ -31,6 +32,14 @@
 
 namespace counterstrikesharp {
 
+// Throws the native error for a disabled Engine Feature (its ICvar Slot Bindings failed) and returns false.
+static bool RequireEngineFeature(ScriptContext& script_context, std::string_view feature)
+{
+    if (bindings::IsEngineFeatureAvailable(feature)) return true;
+    script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(feature).c_str());
+    return false;
+}
+
 static void AddCommand(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
@@ -38,6 +47,7 @@ static void AddCommand(ScriptContext& script_context)
     auto server_only = script_context.GetArgument<bool>(2);
     auto flags = script_context.GetArgument<int>(3);
     auto callback = script_context.GetArgument<CallbackT>(4);
+    if (!RequireEngineFeature(script_context, bindings::features::AddCommand)) return;
 
     CSSHARP_CORE_TRACE("Adding command {}, {}, {}, {}, {}", name, description, server_only, flags, (void*)callback);
 
@@ -49,6 +59,7 @@ static void RemoveCommand(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
+    if (!RequireEngineFeature(script_context, bindings::features::AddCommand)) return;
 
     globals::conCommandManager.RemoveCommandListener(name, callback, HookMode::Pre);
     globals::conCommandManager.RemoveValveCommand(name);
@@ -145,16 +156,17 @@ static void IssueClientCommandFromServer(ScriptContext& script_context)
 {
     auto slot = script_context.GetArgument<int>(0);
     auto pszCommand = script_context.GetArgument<const char*>(1);
+    if (!RequireEngineFeature(script_context, bindings::features::ExecuteClientCommandFromServer)) return;
 
     CCommand args;
     args.Tokenize(pszCommand);
 
-    auto handle = globals::cvars->FindConCommand(args.Arg(0));
+    auto handle = g_pCVar->FindConCommand(args.Arg(0));
     if (!handle.IsValidRef()) return;
 
     CCommandContext context(CommandTarget_t::CT_NO_TARGET, CPlayerSlot(slot));
 
-    globals::cvars->DispatchConCommand(handle, context, args);
+    g_pCVar->DispatchConCommand(handle, context, args);
 }
 
 static const char* GetClientConVarValue(ScriptContext& script_context)
@@ -179,20 +191,25 @@ static void SetFakeClientConVarValue(ScriptContext& script_context)
 ConVarData* FindConVar(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
-    auto hCvarHandle = globals::cvars->FindConVar(name, true);
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarFind)) return nullptr;
+    auto hCvarHandle = g_pCVar->FindConVar(name, true);
 
     if (!hCvarHandle.IsValidRef())
     {
         return nullptr;
     }
 
-    return globals::cvars->GetConVarData(hCvarHandle);
+    return g_pCVar->GetConVarData(hCvarHandle);
 }
 
 void SetConVarStringValue(ScriptContext& script_context)
 {
     auto pCvar = script_context.GetArgument<ConVarData*>(0);
     auto value = script_context.GetArgument<const char*>(1);
+    // Finds the ConVar again by name, then sets it.
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarFind) ||
+        !RequireEngineFeature(script_context, bindings::features::ConVarWrite))
+        return;
 
     if (!pCvar)
     {
