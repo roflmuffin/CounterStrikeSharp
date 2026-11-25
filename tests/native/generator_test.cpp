@@ -123,6 +123,20 @@ TEST_CASE("Carry-forward moves a Slot Binding past an inserted virtual and refre
                     "linux": { "window": ["b", "c", "d"], "uniqueNearby": true, "size": 6 } } })"));
 }
 
+TEST_CASE("Carry-forward keeps the last slot where it is when the vtable grew past it, and moves it when it is still last")
+{
+    const auto previous = ServerBuild({ "a", "b", "c", "d", "e" });
+    const auto gamedata = GamedataWithGameFrame(previous, 4); // window [d, e, null]
+
+    const auto grown = CarryForward(gamedata, previous.Source(), ServerBuild({ "a", "b", "c", "d", "e", "f" }).Source());
+    REQUIRE(grown.carried.size() == 1);
+    CHECK(grown.carried[0].to == 4);
+
+    const auto moved = CarryForward(gamedata, previous.Source(), ServerBuild({ "a", "new", "b", "c", "d", "e" }).Source());
+    REQUIRE(moved.carried.size() == 1);
+    CHECK(moved.carried[0].to == 5);
+}
+
 TEST_CASE("Carry-forward onto an unchanged build changes nothing")
 {
     const auto build = ServerBuild({ "a", "b", "c", "d", "e" });
@@ -165,6 +179,15 @@ TEST_CASE("Carry-forward holds a Slot Binding whose window is ambiguous or gone 
         const auto result = CarryForward(gamedata, previous.Source(), next.Source());
         REQUIRE(result.held.size() == 1);
         CHECK(result.gamedata == gamedata);
+    }
+    SUBCASE("the last slot, moved while the vtable grew past it: its window's edge no longer matches")
+    {
+        const auto last = GamedataWithGameFrame(previous, 4); // window [d, e, null]
+        const auto next = ServerBuild({ "a", "new", "b", "c", "d", "e", "f" });
+        const auto result = CarryForward(last, previous.Source(), next.Source());
+        REQUIRE(result.held.size() == 1);
+        CHECK(result.held[0].reason.find("matches nowhere") != std::string::npos);
+        CHECK(result.gamedata == last);
     }
     SUBCASE("the class is gone")
     {

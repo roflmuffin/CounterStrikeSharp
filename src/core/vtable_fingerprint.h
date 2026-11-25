@@ -64,7 +64,7 @@ std::vector<Fingerprint> FingerprintVtable(const VtableSource& source);
 
 // --- Fingerprint windows ---
 
-// The fingerprints of slot index - 1, index and index + 1. A neighbour outside the vtable is nullopt and matches anything.
+// The fingerprints of slot index - 1, index and index + 1. A neighbour outside the vtable is nullopt.
 struct FingerprintWindow
 {
     std::array<std::optional<Fingerprint>, 3> slots;
@@ -75,7 +75,13 @@ struct FingerprintWindow
 FingerprintWindow WindowAt(std::span<const Fingerprint> vtable, std::size_t index);
 
 // Every recorded fingerprint of the window equals the slot at the same position around index (which must be in vtable).
+// A neighbour recorded outside the vtable matches anything: this is the check at a Slot Binding's recorded index, where
+// the slot has not moved, so a vtable that grew past it still verifies it.
 bool WindowMatchesAt(const FingerprintWindow& window, std::span<const Fingerprint> vtable, std::size_t index);
+
+// The whole window matches at index: as WindowMatchesAt, but a neighbour recorded outside the vtable matches only a
+// neighbour outside the vtable here. What finding a slot at any other index than the recorded one requires.
+bool WholeWindowMatchesAt(const FingerprintWindow& window, std::span<const Fingerprint> vtable, std::size_t index);
 
 // The slot's fingerprint occurs exactly once within kSearchRange slots on either side (itself included).
 bool UniqueNearby(std::span<const Fingerprint> vtable, std::size_t index);
@@ -105,8 +111,14 @@ enum class SlotMatch : std::uint8_t
 // Checks a recorded Slot Binding against a live vtable at its recorded index (Window, OwnFingerprint or None).
 SlotMatch CheckSlot(const SlotRecord& recorded, std::span<const Fingerprint> live);
 
-// Positions within kSearchRange of index, index itself excluded, where the whole window matches the live vtable.
+// Positions within kSearchRange of index, index itself excluded, where the whole window matches the live vtable
+// (WholeWindowMatchesAt): the Heal search.
 std::vector<std::size_t> WindowMatchesNear(const FingerprintWindow& window, std::span<const Fingerprint> live, std::size_t index);
+
+// Every position in the live vtable where the window matches: at the recorded index by WindowMatchesAt, anywhere else
+// by WholeWindowMatchesAt. The generator's carry-forward search (the same match rule as WindowMatchesNear, over the
+// whole vtable and including the recorded index).
+std::vector<std::size_t> WindowMatchesAnywhere(const FingerprintWindow& window, std::span<const Fingerprint> live, std::size_t index);
 
 // Where a recorded Slot Binding is in a live vtable.
 struct SlotLocation
