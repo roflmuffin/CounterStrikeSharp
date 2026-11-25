@@ -1,6 +1,7 @@
 using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Memory;
 using Xunit;
@@ -82,8 +83,12 @@ public class ServerGameClientsTests
             slot => Utilities.GetPlayerFromSlot(slot) == null, -1);
         Assert.True(probeSlot >= 0, $"no empty player slot among {Server.MaxPlayers}");
         var gameClients = ValveInterface.ServerGameClients.Pointer;
-        var clientCommand = VirtualFunction.CreateVoid<IntPtr, int, IntPtr>(gameClients,
-            GameData.GetOffset("IServerGameClients::ClientCommand"));
+        // GetOffset refuses a Slot Binding that failed its Vtable Check. The E2E case that disables client-commands only
+        // corrupts the recorded fingerprint, so the function still sits at the index Gamedata states: probe it there.
+        const string key = "IServerGameClients::ClientCommand";
+        var binding = EngineFeatures.Current.Report.Find(key);
+        var index = binding is { Resolved: false, Slot: { } evidence } ? checked((int)evidence.StatedIndex) : GameData.GetOffset(key);
+        var clientCommand = VirtualFunction.CreateVoid<IntPtr, int, IntPtr>(gameClients, index);
 
         var sent = false;
         var calls = 0;
