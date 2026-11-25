@@ -37,9 +37,9 @@ std::string LibraryOf(const std::string& module) { return module == "engine2" ? 
 
 constexpr const char* kGameFrame = "ISource2Server::GameFrame";
 
-bindings::ResolutionReport ResolveGameFrame(const LoadedModule& server)
+bindings::ResolutionReport ResolveGameFrame(const LoadedModule& server, const GamedataJson& gamedataJson)
 {
-    const auto gamedata = bindings::ParseGamedata(nlohmann::json::parse(CommittedGamedata().dump()), "linux");
+    const auto gamedata = bindings::ParseGamedata(nlohmann::json::parse(gamedataJson.dump()), "linux");
     const std::vector<bindings::BindingDeclaration> declarations{ { kGameFrame, bindings::BindingKind::Slot } };
     return bindings::BuiltinResolver(bindings::Platform::Linux).Resolve("archive", gamedata, { { "server", server.Image() } }, declarations);
 }
@@ -117,7 +117,7 @@ TEST_CASE("archive: committed GameFrame resolves on 1.42.0.1 by its window, with
 {
     const auto server = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "server");
 
-    const auto report = ResolveGameFrame(server);
+    const auto report = ResolveGameFrame(server, CommittedGamedata());
 
     const auto& gameFrame = report.Bindings().at(0);
     CHECK(gameFrame.status == bindings::BindingStatus::Resolved);
@@ -127,8 +127,8 @@ TEST_CASE("archive: committed GameFrame resolves on 1.42.0.1 by its window, with
     CHECK(bindings::FormatVtableSizeWarnings(report).empty());
 }
 
-TEST_CASE("archive: GameFrame on 1.41.9.7 sits one slot earlier with the same fingerprint; the 1.42.0.1 Binding fails there "
-          "rather than hooking the wrong function (local)" *
+TEST_CASE("archive: GameFrame on 1.41.9.7 sits one slot earlier with the same fingerprint; the 1.42.0.1 Binding heals "
+          "there at -1 (local)" *
           doctest::skip(!Archived("1.41.9.7")))
 {
     const auto server = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.41.9.7", "server");
@@ -141,13 +141,41 @@ TEST_CASE("archive: GameFrame on 1.41.9.7 sits one slot earlier with the same fi
     CHECK(bootstrapped.entry["vtable"]["linux"]["window"][1] == committed["vtable"]["linux"]["window"][1]);
     CHECK(bootstrapped.entry["vtable"]["linux"]["size"] == 104);
 
-    // No Heal yet: the insert at 1.42.0.1 makes the Gamedata index point at another function on the older build.
-    const auto report = ResolveGameFrame(server);
+    const auto report = ResolveGameFrame(server, CommittedGamedata());
     const auto& gameFrame = report.Bindings().at(0);
-    CHECK(gameFrame.status == bindings::BindingStatus::Failed);
-    CHECK(gameFrame.reason == bindings::FailureReason::FingerprintMismatch);
+    CHECK(gameFrame.status == bindings::BindingStatus::Healed);
+    CHECK(gameFrame.offset == 19);
+    CHECK(gameFrame.slot->statedIndex == 20);
     CHECK(gameFrame.slot->vtableSize == 104);
     CHECK(gameFrame.slot->SizeChanged());
+}
+
+TEST_CASE("archive: GameFrame's Slot Binding from 1.41.9.7 heals at +1 on 1.42.0.1 (local)" *
+          doctest::skip(!Archived("1.41.9.7") || !Archived("1.42.0.1")))
+{
+    const auto old = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.41.9.7", "server");
+    const auto bootstrapped = BootstrapSlotBinding(old.Fingerprints("CSource2Server"), { kGameFrame, "CSource2Server", "server", 19 });
+    GamedataJson gamedata = GamedataJson::object();
+    gamedata[kGameFrame] = bootstrapped.entry;
+
+    const auto live = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "server");
+    const auto report = ResolveGameFrame(live, gamedata);
+
+    const auto& gameFrame = report.Bindings().at(0);
+    CHECK(gameFrame.status == bindings::BindingStatus::Healed);
+    CHECK(gameFrame.Resolved());
+    CHECK(gameFrame.offset == 20);
+    REQUIRE(gameFrame.slot);
+    CHECK(gameFrame.slot->statedIndex == 19);
+    CHECK(gameFrame.slot->match == vtable::SlotMatch::Heal);
+    CHECK(gameFrame.slot->vtableSize == 105);
+    CHECK(gameFrame.slot->recordedVtableSize == 104u);
+
+    // The healed index is the one the committed 1.42.0.1 Gamedata states (bootstrapped from the e2e SDK headers).
+    CHECK(gameFrame.offset == CommittedGamedata()[kGameFrame]["offsets"]["linux"].get<std::int64_t>());
+    const auto heals = bindings::FormatHeals(report);
+    REQUIRE(heals.size() == 1);
+    MESSAGE(heals[0]);
 }
 
 // --- Carry-forward replays ---

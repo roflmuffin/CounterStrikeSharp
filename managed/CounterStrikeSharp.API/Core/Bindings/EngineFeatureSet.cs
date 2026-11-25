@@ -91,9 +91,9 @@ internal sealed class EngineFeatureSet
 
     /// <summary>
     /// The startup report: one block with the build id, how many Engine Features are available, and each disabled one
-    /// with its failed Binding and reason. Same wording as native ("Engine Feature X disabled (Key: reason)"). Then
-    /// warnings: vtables whose size changed since Gamedata was generated (same wording as the native log), and Slot
-    /// Bindings used without a Vtable Check.
+    /// with its failed Binding and reason. Same wording as native ("Engine Feature X disabled (Key: reason)"). Then every
+    /// Heal with its evidence and the vtables whose size changed since Gamedata was generated (same wording as the
+    /// native log), and Slot Bindings used without a Vtable Check.
     /// </summary>
     public string FormatStartupReport()
     {
@@ -110,6 +110,13 @@ internal sealed class EngineFeatureSet
             {
                 text.Append("\n  ").Append(status);
             }
+        }
+
+        foreach (var binding in Report.Bindings.Where(b => b is { Healed: true, Slot: not null }))
+        {
+            var window = string.Join(", ", (binding.Slot!.Window ?? []).Select(fingerprint => fingerprint ?? "null"));
+            text.Append($"\n  Healed {binding.Key}: {binding.Slot.ClassName} ({binding.Library}) slot {binding.Slot.StatedIndex} -> ")
+                .Append($"{binding.Offset}, window [{window}] matched once within {SlotSearchRange} slots");
         }
 
         foreach (var vtable in Report.Bindings.Where(b => b.Slot is { SizeChanged: true })
@@ -129,6 +136,9 @@ internal sealed class EngineFeatureSet
         return text.ToString();
     }
 
+    /// <summary>How far a Heal may move a slot (native <c>vtable::kSearchRange</c>).</summary>
+    private const int SlotSearchRange = 16;
+
     private BindingResult GetBinding(EngineFeatureDeclaration feature, string key)
     {
         if (!feature.Bindings.Any(b => b.Key == key))
@@ -140,15 +150,19 @@ internal sealed class EngineFeatureSet
 
     private EngineFeatureStatus Evaluate(EngineFeatureDeclaration feature)
     {
+        var heals = new List<SlotHeal>();
         foreach (var declaration in feature.Bindings)
         {
             var binding = Report.Find(declaration.Key);
             if (binding == null || (declaration.Kind != null && binding.Kind != declaration.Kind))
                 return new EngineFeatureStatus(feature.Name, true, declaration.Key, BindingFailureReason.MissingFromGamedata, 0);
             if (!binding.Resolved)
-                return new EngineFeatureStatus(feature.Name, true, binding.Key, binding.Reason, binding.MatchCount);
+                return new EngineFeatureStatus(feature.Name, true, binding.Key, binding.Reason, binding.MatchCount, heals);
+            if (binding is { Healed: true, Slot: { } slot })
+                heals.Add(new SlotHeal(binding.Key, slot.ClassName, binding.Library, checked((int)slot.StatedIndex),
+                    checked((int)binding.Offset), slot.Window ?? []));
         }
 
-        return new EngineFeatureStatus(feature.Name, true, null, BindingFailureReason.None, 0);
+        return new EngineFeatureStatus(feature.Name, true, null, BindingFailureReason.None, 0, heals);
     }
 }

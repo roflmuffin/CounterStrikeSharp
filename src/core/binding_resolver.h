@@ -115,6 +115,7 @@ enum class BindingStatus : std::uint8_t
     Resolved,
     Failed,
     Unverified, // Slot Binding used at its Gamedata index without a Vtable Check (Windows, or no window in Gamedata)
+    Healed, // Slot Binding found at another index than Gamedata states (a Heal); see SlotEvidence
 };
 
 // Closed set. Append only: values cross the native/managed boundary.
@@ -130,6 +131,7 @@ enum class FailureReason : std::uint8_t
     SchemaClassMissing,
     SchemaFieldMissing,
     FingerprintMismatch, // Slot Binding: the fingerprint window does not match the live vtable
+    AmbiguousHeal, // Slot Binding: the window does not match at its index and matches more than once nearby; see matchCount
 };
 
 // A Slot Binding's Vtable Check, as evidence for the report.
@@ -137,7 +139,8 @@ struct SlotEvidence
 {
     std::string className;
     std::int64_t statedIndex = -1; // the Gamedata index; -1 if Gamedata has none for this OS
-    vtable::SlotMatch match = vtable::SlotMatch::None; // how the window matched at the resolved index
+    vtable::SlotMatch match = vtable::SlotMatch::None; // how the window matched at the resolved index (Heal: elsewhere)
+    std::optional<vtable::FingerprintWindow> window; // the window Gamedata recorded; a Heal matched it at the new index
     std::size_t vtableSize = 0; // live; 0 if not checked
     std::optional<std::size_t> recordedVtableSize; // as Gamedata recorded it
 
@@ -151,13 +154,16 @@ struct BindingResult
     BindingKind kind = BindingKind::Signature;
     BindingStatus status = BindingStatus::Failed;
     FailureReason reason = FailureReason::None;
-    std::size_t matchCount = 0; // signatures: matches across all scanned segments; RttiVtable: primary vtables of the class
+    // Signatures: matches across all scanned segments; RttiVtable, Slot: primary vtables of the class; Slot failed with
+    // AmbiguousHeal: positions where the window matched
+    std::size_t matchCount = 0;
     std::uintptr_t address = 0; // Signature, RttiVtable
-    std::int64_t offset = 0; // Offset, SchemaField; Slot: the slot index to use (-1 on Windows without a Gamedata index)
+    // Offset, SchemaField; Slot: the slot index to use, the new one if healed (-1 on Windows without a Gamedata index)
+    std::int64_t offset = 0;
     std::string library{}; // module searched, if any
     std::optional<SlotEvidence> slot{}; // Slot only
 
-    // True when the Binding can be used: resolved, or (Slot Bindings) unverified.
+    // True when the Binding can be used: resolved, or (Slot Bindings) healed or unverified.
     [[nodiscard]] bool Resolved() const { return status != BindingStatus::Failed; }
 };
 
@@ -192,8 +198,10 @@ class IBindingResolver
 
 // The built-in adapter. Signatures must match exactly once across all segments of their module. A Slot Binding on Linux
 // resolves at its Gamedata index when its fingerprint window matches the live vtable of its class there (or only its
-// own fingerprint does, unique within the search range on both builds), and fails with FingerprintMismatch otherwise;
-// a size change of the vtable alone is a warning. On Windows, or without a window in Gamedata, it is unverified.
+// own fingerprint does, unique within the search range on both builds); otherwise it heals at the one index within the
+// search range where the whole window matches, and fails with FingerprintMismatch (no match, or identical neighbouring
+// bodies) or AmbiguousHeal (several). A size change of the vtable alone is a warning. On Windows, or without a window
+// in Gamedata, it is unverified. Healed indices live only in the report; Gamedata is never written.
 class BuiltinResolver final : public IBindingResolver
 {
   public:
@@ -258,7 +266,13 @@ std::string DescribeUnavailable(const ResolutionReport& report, const EngineFeat
 // "Bindings for build 1.42.0.1/2000950: 1 of 12 failed: Host_Say (not found)"
 // "Bindings for build 1.42.0.1/2000950: all 12 resolved"
 // "Bindings for build 1.42.0.1/2000950: all 12 resolved, 1 unverified"
+// "Bindings for build 1.42.0.1/2000950: all 12 resolved, 1 healed" (healed Bindings count as resolved)
 std::string FormatBindingSummary(const ResolutionReport& report);
+
+// One line per healed Slot Binding, with its evidence (managed's startup report uses the same wording), e.g.
+// "Healed ISource2Server::GameFrame: CSource2Server (server) slot 19 -> 20, window [<fp>, <fp>, <fp>] matched once within
+//  16 slots"; a neighbour outside the vtable prints as null.
+std::vector<std::string> FormatHeals(const ResolutionReport& report);
 
 // One line per Slot Binding whose class's vtable size differs from what Gamedata recorded, e.g.
 // "Vtable of CSource2Server (server) has 105 slots, Gamedata recorded 104 (ISource2Server::GameFrame)"
@@ -269,10 +283,12 @@ std::vector<std::string> FormatVtableSizeWarnings(const ResolutionReport& report
 // The report as one JSON document for managed (the GET_RESOLUTION_REPORT native):
 // { "buildId": "...",
 //   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable"|"SchemaField"|"Slot", "resolved",
-//                   "status": "Resolved"|"Failed"|"Unverified", "reason": <FailureReason name>,
+//                   "status": "Resolved"|"Failed"|"Unverified"|"Healed", "reason": <FailureReason name>,
 //                   "matchCount", "address", "offset", "library",
-//                   "slot": { "class", "statedIndex", "match": "Window"|"OwnFingerprint"|"None", "vtableSize",
-//                             "recordedVtableSize": <n>|null }   <- Slot only } ],
+//                   "slot": { "class", "statedIndex", "match": "Window"|"OwnFingerprint"|"Heal"|"None", "vtableSize",
+//                             "recordedVtableSize": <n>|null,
+//                             "window": [<fp>|null, <fp>, <fp>|null]|null }   <- Slot only } ],
+// A Heal's evidence: statedIndex is the old index, offset the new one, window the recorded window that matched there.
 //   "features": [ { "name", "bindings": [ "<key>", ... ] } ] }   <- the native-owned Engine Features
 // Enum values travel by name (the C++ enumerator names), so managed never depends on their numeric values.
 std::string ResolutionReportToJson(const ResolutionReport& report, std::span<const EngineFeatureDeclaration> nativeFeatures);
