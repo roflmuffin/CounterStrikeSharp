@@ -16,6 +16,8 @@ namespace counterstrikesharp::bindings {
 
 namespace features {
 inline constexpr std::string_view ChatSayHooks = "cssharp.chat/say-hooks";
+// Server lifecycle (hooks on ISource2Server, by verified slot index)
+inline constexpr std::string_view GameFrame = "cssharp.server/game-frame";
 // Events and networking
 inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
 inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";
@@ -38,8 +40,8 @@ std::span<const EngineFeatureDeclaration> NativeEngineFeatures();
 
 // Every core Binding resolved at boot, each key once: the Bindings of all catalog rows (with their declared kinds,
 // even when Gamedata lacks the key, so the report says why), then every other key in the core Gamedata by its section
-// ("signatures" -> Signature, else "offsets" -> Offset). So keys only managed code consumes are resolved and reported
-// too; managed declares which of its Engine Features need them.
+// ("vtable" -> Slot, else "signatures" -> Signature, else "offsets" -> Offset). So keys only managed code consumes are
+// resolved and reported too; managed declares which of its Engine Features need them.
 std::vector<BindingDeclaration> CoreBindingDeclarations(const Gamedata& gamedata);
 
 // nullptr if the name is not in the catalog.

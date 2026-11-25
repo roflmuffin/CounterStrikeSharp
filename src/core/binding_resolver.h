@@ -1,8 +1,10 @@
 #pragma once
 
 // Binding resolver: resolves declared Bindings against parsed Gamedata and the loaded module images into an immutable
-// Resolution Report (see GLOSSARY.md, ADR-0002). Pure: no SDK, Metamod or globals, so tests/native can drive it with
-// synthetic images. core/core_bindings.h is the adapter that feeds it the real modules at boot.
+// Resolution Report (see GLOSSARY.md, ADR-0002). Resolution sits behind one seam (ADR-0004): IBindingResolver, whose
+// only output is the report. BuiltinResolver is the built-in adapter: signature scanning, Gamedata offsets, RTTI vtables,
+// schema fields and the Vtable Check of Slot Bindings (ADR-0003). Pure: no SDK, Metamod or globals, so tests/native can
+// drive it with synthetic images. core/core_bindings.h feeds it the real modules at boot.
 
 #include <cstddef>
 #include <cstdint>
@@ -20,10 +22,27 @@
 
 #include "core/rtti_vtable.h"
 #include "core/schema_field_status.h"
+#include "core/vtable_fingerprint.h"
 
 namespace counterstrikesharp::bindings {
 
 // --- Inputs ---
+
+// The Slot Binding fields of a Gamedata key (additive; "offsets.<os>" keeps the slot index):
+//   "vtable": { "class": "CSource2Server", "library": "server",
+//               "linux": { "window": ["<fp index-1>" | null, "<fp index>", "<fp index+1>" | null],
+//                          "uniqueNearby": true, "size": 105 } }
+// class: the RTTI class whose primary vtable holds the slot; library: its module, named as for signatures. The window,
+// uniqueNearby and size were recorded by the Gamedata generator on one build (see core/vtable_fingerprint.h); null
+// marks a neighbour outside the vtable.
+struct SlotGamedata
+{
+    std::optional<std::string> className; // "vtable.class"
+    std::optional<std::string> library; // "vtable.library"
+    std::optional<vtable::FingerprintWindow> window; // "vtable.<os>.window"
+    bool uniqueNearby = false; // "vtable.<os>.uniqueNearby"
+    std::optional<std::size_t> vtableSize; // "vtable.<os>.size"
+};
 
 // One Gamedata key as seen by this OS.
 struct GamedataEntry
@@ -33,6 +52,7 @@ struct GamedataEntry
     std::optional<std::string> signature; // "signatures.<os>"
     bool hasOffsets = false;
     std::optional<std::int64_t> offset; // "offsets.<os>"
+    std::optional<SlotGamedata> slot; // "vtable", if present
 };
 
 using Gamedata = std::map<std::string, GamedataEntry, std::less<>>;
@@ -47,6 +67,13 @@ enum class BindingKind : std::uint8_t
     Offset, // Gamedata "offsets"
     RttiVtable, // vtable found by RTTI class name (key) in the declaration's library; not in Gamedata
     SchemaField, // schema field "Class::field" (key) in the declaration's library's schema scope; not in Gamedata
+    Slot, // Slot Binding: the Gamedata "offsets" slot index, verified by a Vtable Check against Gamedata "vtable"
+};
+
+enum class Platform : std::uint8_t
+{
+    Linux, // Slot Bindings are verified (Vtable Check)
+    Windows, // Slot Bindings are unverified: used at their Gamedata (header-derived) index
 };
 
 struct BindingDeclaration
@@ -56,12 +83,8 @@ struct BindingDeclaration
     std::string library{}; // RttiVtable, SchemaField: Gamedata-style library name to search ("server", "engine", ...)
 };
 
-struct ModuleSegment
-{
-    std::uintptr_t address = 0; // where data[0] lives in the process
-    const std::uint8_t* data = nullptr;
-    std::size_t size = 0;
-};
+// Executable code: where data[0] lives in the process, and its bytes (on-disk bytes where available).
+using ModuleSegment = vtable::CodeSegment;
 
 struct SchemaFieldLookup
 {
@@ -75,6 +98,11 @@ struct ModuleImage
     std::function<std::uintptr_t(std::string_view)> findSymbol; // optional, for "@symbol" signatures
     std::function<rtti::VtableLookup(std::string_view)> findVirtualTable; // optional, for RttiVtable
     std::function<SchemaFieldLookup(std::string_view className, std::string_view fieldName)> findSchemaField; // optional, for SchemaField
+    // For Slot: the original target of a vtable's slot (as loaded, even if a hook replaced the entry since), nullopt
+    // where the vtable's memory ends. Code is read from segments, so others' inline patches do not change fingerprints.
+    std::function<std::optional<std::uintptr_t>(std::uintptr_t vtable, std::size_t index)> readVtableSlot;
+    std::uintptr_t pureVirtual = 0; // address of __cxa_pure_virtual, 0 if unknown
+    std::uintptr_t deletedVirtual = 0; // address of __cxa_deleted_virtual, 0 if unknown
 };
 
 // Keyed by the Gamedata "library" name.
@@ -86,6 +114,7 @@ enum class BindingStatus : std::uint8_t
 {
     Resolved,
     Failed,
+    Unverified, // Slot Binding used at its Gamedata index without a Vtable Check (Windows, or no window in Gamedata)
 };
 
 // Closed set. Append only: values cross the native/managed boundary.
@@ -100,6 +129,20 @@ enum class FailureReason : std::uint8_t
     RttiVtableNotFound,
     SchemaClassMissing,
     SchemaFieldMissing,
+    FingerprintMismatch, // Slot Binding: the fingerprint window does not match the live vtable
+};
+
+// A Slot Binding's Vtable Check, as evidence for the report.
+struct SlotEvidence
+{
+    std::string className;
+    std::int64_t statedIndex = -1; // the Gamedata index; -1 if Gamedata has none for this OS
+    vtable::SlotMatch match = vtable::SlotMatch::None; // how the window matched at the resolved index
+    std::size_t vtableSize = 0; // live; 0 if not checked
+    std::optional<std::size_t> recordedVtableSize; // as Gamedata recorded it
+
+    // A warning, never a failure by itself: a Game update touched the class even if our slot did not move.
+    [[nodiscard]] bool SizeChanged() const { return vtableSize != 0 && recordedVtableSize && *recordedVtableSize != vtableSize; }
 };
 
 struct BindingResult
@@ -110,10 +153,12 @@ struct BindingResult
     FailureReason reason = FailureReason::None;
     std::size_t matchCount = 0; // signatures: matches across all scanned segments; RttiVtable: primary vtables of the class
     std::uintptr_t address = 0; // Signature, RttiVtable
-    std::int64_t offset = 0; // Offset, SchemaField
+    std::int64_t offset = 0; // Offset, SchemaField; Slot: the slot index to use (-1 on Windows without a Gamedata index)
     std::string library{}; // module searched, if any
+    std::optional<SlotEvidence> slot{}; // Slot only
 
-    [[nodiscard]] bool Resolved() const { return status == BindingStatus::Resolved; }
+    // True when the Binding can be used: resolved, or (Slot Bindings) unverified.
+    [[nodiscard]] bool Resolved() const { return status != BindingStatus::Failed; }
 };
 
 class ResolutionReport
@@ -131,7 +176,39 @@ class ResolutionReport
     std::vector<BindingResult> m_bindings;
 };
 
-// Resolves every declaration. Signatures must match exactly once across all segments of their module.
+// The resolver seam (ADR-0004): Gamedata and the loaded modules in, the Resolution Report out. Every Binding is resolved
+// through one of these; no other code locates Bindings in binaries. An external resolver plugs in as another adapter.
+class IBindingResolver
+{
+  public:
+    virtual ~IBindingResolver() = default;
+
+    // Resolves every declaration, in order, into one report.
+    [[nodiscard]] virtual ResolutionReport Resolve(std::string buildId,
+                                                   const Gamedata& gamedata,
+                                                   const ModuleImages& modules,
+                                                   std::span<const BindingDeclaration> declarations) const = 0;
+};
+
+// The built-in adapter. Signatures must match exactly once across all segments of their module. A Slot Binding on Linux
+// resolves at its Gamedata index when its fingerprint window matches the live vtable of its class there (or only its
+// own fingerprint does, unique within the search range on both builds), and fails with FingerprintMismatch otherwise;
+// a size change of the vtable alone is a warning. On Windows, or without a window in Gamedata, it is unverified.
+class BuiltinResolver final : public IBindingResolver
+{
+  public:
+    explicit BuiltinResolver(Platform platform) : m_platform(platform) {}
+
+    [[nodiscard]] ResolutionReport Resolve(std::string buildId,
+                                           const Gamedata& gamedata,
+                                           const ModuleImages& modules,
+                                           std::span<const BindingDeclaration> declarations) const override;
+
+  private:
+    Platform m_platform;
+};
+
+// Shorthand for BuiltinResolver(Platform::Linux).Resolve(...).
 ResolutionReport ResolveBindings(std::string buildId,
                                  const Gamedata& gamedata,
                                  const ModuleImages& modules,
@@ -180,14 +257,22 @@ std::string DescribeUnavailable(const ResolutionReport& report, const EngineFeat
 // One compact line for the early native log, e.g.
 // "Bindings for build 1.42.0.1/2000950: 1 of 12 failed: Host_Say (not found)"
 // "Bindings for build 1.42.0.1/2000950: all 12 resolved"
+// "Bindings for build 1.42.0.1/2000950: all 12 resolved, 1 unverified"
 std::string FormatBindingSummary(const ResolutionReport& report);
+
+// One line per Slot Binding whose class's vtable size differs from what Gamedata recorded, e.g.
+// "Vtable of CSource2Server (server) has 105 slots, Gamedata recorded 104 (ISource2Server::GameFrame)"
+std::vector<std::string> FormatVtableSizeWarnings(const ResolutionReport& report);
 
 // --- Native -> managed boundary ---
 
 // The report as one JSON document for managed (the GET_RESOLUTION_REPORT native):
 // { "buildId": "...",
-//   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable"|"SchemaField", "resolved", "reason": <FailureReason name>,
-//                   "matchCount", "address", "offset", "library" } ],
+//   "bindings": [ { "key", "kind": "Signature"|"Offset"|"RttiVtable"|"SchemaField"|"Slot", "resolved",
+//                   "status": "Resolved"|"Failed"|"Unverified", "reason": <FailureReason name>,
+//                   "matchCount", "address", "offset", "library",
+//                   "slot": { "class", "statedIndex", "match": "Window"|"OwnFingerprint"|"None", "vtableSize",
+//                             "recordedVtableSize": <n>|null }   <- Slot only } ],
 //   "features": [ { "name", "bindings": [ "<key>", ... ] } ] }   <- the native-owned Engine Features
 // Enum values travel by name (the C++ enumerator names), so managed never depends on their numeric values.
 std::string ResolutionReportToJson(const ResolutionReport& report, std::span<const EngineFeatureDeclaration> nativeFeatures);

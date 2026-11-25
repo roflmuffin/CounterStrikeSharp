@@ -134,6 +134,16 @@ TEST_CASE("The native catalog declares the event and network Engine Features, ga
     CHECK(checkTransmit[1].kind == BindingKind::Offset);
 }
 
+TEST_CASE("The native catalog declares game-frame on GameFrame's Slot Binding")
+{
+    const auto* gameFrame = FindNativeEngineFeature(features::GameFrame);
+    REQUIRE(gameFrame != nullptr);
+    CHECK(features::GameFrame == "cssharp.server/game-frame");
+    REQUIRE(gameFrame->bindings.size() == 1);
+    CHECK(gameFrame->bindings[0].key == "ISource2Server::GameFrame");
+    CHECK(gameFrame->bindings[0].kind == BindingKind::Slot);
+}
+
 TEST_CASE("An RTTI vtable Binding of the catalog is resolved by class name in its library, not taken from Gamedata")
 {
     // Gamedata never has the class name, and a Gamedata key with that name must not turn it into a Signature.
@@ -311,6 +321,7 @@ TEST_CASE("The Resolution Report crosses to managed as data: build id, every Bin
     CHECK(json["bindings"][0] == nlohmann::json{ { "key", "Host_Say" },
                                                  { "kind", "Signature" },
                                                  { "resolved", false },
+                                                 { "status", "Failed" },
                                                  { "reason", "Ambiguous" },
                                                  { "matchCount", 2 },
                                                  { "address", 0 },
@@ -331,7 +342,8 @@ TEST_CASE("Every failure reason and Binding kind has its own name on the wire")
     std::set<std::string> names;
     for (auto reason : { FailureReason::None, FailureReason::MissingFromGamedata, FailureReason::MissingForThisOs,
                          FailureReason::InvalidPattern, FailureReason::NotFound, FailureReason::Ambiguous,
-                         FailureReason::RttiVtableNotFound, FailureReason::SchemaClassMissing, FailureReason::SchemaFieldMissing })
+                         FailureReason::RttiVtableNotFound, FailureReason::SchemaClassMissing, FailureReason::SchemaFieldMissing,
+                         FailureReason::FingerprintMismatch })
     {
         const ResolutionReport report("b", { Failed("k", reason) });
         const auto json = nlohmann::json::parse(ResolutionReportToJson(report, {}));
@@ -343,9 +355,15 @@ TEST_CASE("Every failure reason and Binding kind has its own name on the wire")
     vtable.kind = BindingKind::RttiVtable;
     BindingResult schemaField = Resolved("CBaseEntity::m_iTeamNum");
     schemaField.kind = BindingKind::SchemaField;
-    const auto json = nlohmann::json::parse(ResolutionReportToJson(ResolutionReport("b", { vtable, schemaField }), {}));
+    BindingResult slot = Resolved("ISource2Server::GameFrame");
+    slot.kind = BindingKind::Slot;
+    slot.status = BindingStatus::Unverified;
+    const auto json = nlohmann::json::parse(ResolutionReportToJson(ResolutionReport("b", { vtable, schemaField, slot }), {}));
     CHECK(json["bindings"][0]["kind"] == "RttiVtable");
     CHECK(json["bindings"][1]["kind"] == "SchemaField");
+    CHECK(json["bindings"][2]["kind"] == "Slot");
+    CHECK(json["bindings"][2]["status"] == "Unverified");
+    CHECK(json["bindings"][2]["resolved"] == true);
 }
 
 TEST_CASE("Calling into a disabled Engine Feature is described in the wording of the managed typed exception")

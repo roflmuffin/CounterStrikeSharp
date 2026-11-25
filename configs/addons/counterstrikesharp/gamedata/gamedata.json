@@ -296,5 +296,23 @@
       "windows": "48 83 3D 90 39 56 01 00 0F 95 C0 C3",
       "linux": "48 8D 05 ? ? ? ? 48 83 38 ? 0F 95 C0 C3"
     }
+  },
+  "ISource2Server::GameFrame": {
+    "offsets": {
+      "linux": 20
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "1daf3b605a48b612",
+          "8573f973ef825f3f",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
   }
 }
