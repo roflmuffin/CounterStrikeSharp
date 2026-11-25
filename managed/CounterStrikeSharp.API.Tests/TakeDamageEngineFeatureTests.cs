@@ -86,7 +86,7 @@ public class TakeDamageEngineFeatureTests : IDisposable
     {
         var logger = new CapturingLogger();
 
-        Assert.True(ListenerEngineFeatures.CheckRegistration(TakeDamageOldNotFound(), "OnTick", logger));
+        Assert.True(ListenerEngineFeatures.CheckRegistration(TakeDamageOldNotFound(), "OnEntityCreated", logger));
         Assert.Empty(logger.Entries);
     }
 

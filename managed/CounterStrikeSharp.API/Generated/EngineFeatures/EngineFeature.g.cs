@@ -117,6 +117,9 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/switch-team</c></summary>
     PlayerSwitchTeam = -936310331,
 
+    /// <summary><c>cssharp.server/game-frame</c></summary>
+    ServerGameFrame = 62045269,
+
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
 }
@@ -229,6 +232,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/switch-team</c></summary>
     public const string PlayerSwitchTeam = "cssharp.player/switch-team";
 
+    /// <summary><c>cssharp.server/game-frame</c></summary>
+    public const string ServerGameFrame = "cssharp.server/game-frame";
+
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
 
@@ -270,6 +276,7 @@ public static class EngineFeatureNames
         EngineFeature.PlayerRespawn => PlayerRespawn,
         EngineFeature.PlayerSetPawn => PlayerSetPawn,
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
+        EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
         _ => null,
     };

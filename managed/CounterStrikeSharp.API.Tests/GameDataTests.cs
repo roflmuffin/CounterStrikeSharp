@@ -57,6 +57,37 @@ public class GameDataTests : IDisposable
     }
 
     [Fact]
+    public void SlotBindingFieldsDoNotChangeHowAnOffsetIsReadByKey()
+    {
+        // The additive Slot Binding shape (src/core/binding_resolver.h): class, library and fingerprint window under
+        // "vtable"; the slot index stays the per-OS offset.
+        LoadGameData($$"""
+                       { "ISource2Server::GameFrame": {
+                           "offsets": { "{{CurrentOs}}": 20 },
+                           "vtable": { "class": "CSource2Server", "library": "server",
+                                       "{{CurrentOs}}": { "window": [null, "8573f973ef825f3f", "dc3e8eb9a1a8f4c4"],
+                                                          "uniqueNearby": true, "size": 105 } } },
+                         "Foo": { "offsets": { "{{CurrentOs}}": 42 } } }
+                       """);
+
+        Assert.Equal(20, GameData.GetOffset("ISource2Server::GameFrame"));
+        Assert.Equal(42, GameData.GetOffset("Foo"));
+    }
+
+    [Fact]
+    public void TheShippedGamedataLoads()
+    {
+        var directory = new DirectoryInfo(AppContext.BaseDirectory);
+        while (directory != null && !Directory.Exists(Path.Combine(directory.FullName, "configs"))) directory = directory.Parent;
+        Assert.NotNull(directory);
+        LoadGameData(File.ReadAllText(Path.Combine(directory!.FullName, "configs", "addons", "counterstrikesharp", "gamedata",
+            "gamedata.json")));
+
+        Assert.Contains("ISource2Server::GameFrame", GameData.GameDataProvider.Methods.Keys);
+        Assert.Equal(387, GameData.GetOffset("CBasePlayerPawn_CommitSuicide"));
+    }
+
+    [Fact]
     public void GetOffsetThrowsWhenTheOffsetIsMissingForTheCurrentOs()
     {
         LoadGameData($$"""

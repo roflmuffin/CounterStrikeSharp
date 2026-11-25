@@ -101,7 +101,7 @@ public class ListenerEngineFeatureTests
     {
         var logger = new CapturingLogger();
 
-        Assert.True(ListenerEngineFeatures.CheckRegistration(SetWithGameSystemEvents(resolved: false), "OnTick", logger));
+        Assert.True(ListenerEngineFeatures.CheckRegistration(SetWithGameSystemEvents(resolved: false), "OnEntityCreated", logger));
         Assert.Empty(logger.Entries);
     }
 }

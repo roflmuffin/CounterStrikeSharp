@@ -377,6 +377,9 @@ namespace CounterStrikeSharp.API.Core
         /// <returns>An instance of the <see cref="Timer"/></returns>
         public Timer AddTimer(float interval, Action callback, TimerFlags? flags = null)
         {
+            // Timers run from GameFrame: on a disabled cssharp.server/game-frame they are kept but never fire.
+            EngineFeatures.Current.CheckRegistration(EngineFeatureNames.ServerGameFrame, "Timer",
+                Logger ?? Application.Instance.Logger, this);
             var timer = new Timer(interval, callback, flags ?? 0);
             Timers.Add(timer);
             return timer;
