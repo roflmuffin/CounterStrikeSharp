@@ -35,6 +35,12 @@ public enum BindingFailureReason
 
     /// <summary>A Slot Binding's fingerprint window does not match the class's live vtable at its index.</summary>
     FingerprintMismatch = 9,
+
+    /// <summary>
+    /// A Slot Binding's fingerprint window does not match at its index and matches more than once nearby, so it is not
+    /// healed; see the match count.
+    /// </summary>
+    AmbiguousHeal = 10,
 }
 
 internal static class BindingFailureReasonExtensions
@@ -52,6 +58,7 @@ internal static class BindingFailureReasonExtensions
         BindingFailureReason.SchemaClassMissing => "schema class missing",
         BindingFailureReason.SchemaFieldMissing => "schema field missing",
         BindingFailureReason.FingerprintMismatch => "fingerprint mismatch",
+        BindingFailureReason.AmbiguousHeal => $"ambiguous heal ({matchCount} matches)",
         _ => "unknown",
     };
 }

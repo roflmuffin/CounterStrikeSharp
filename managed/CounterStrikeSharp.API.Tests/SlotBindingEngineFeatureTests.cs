@@ -100,6 +100,85 @@ public class SlotBindingEngineFeatureTests
             features.FormatStartupReport());
     }
 
+    private static readonly string[] HealWindow = ["1daf3b605a48b612", "8573f973ef825f3f", "dc3e8eb9a1a8f4c4"];
+
+    // GameFrame stated at 19 (1.41.9.7 Gamedata), found at 20 (1.42.0.1).
+    private static BindingResult HealedGameFrame() =>
+        new(GameFrameKey, BindingKind.Slot, true, BindingFailureReason.None, 1, 0x1000, 20, "server",
+            Slot: new SlotEvidence("CSource2Server", 19, "Heal", 105, 104, HealWindow), Healed: true);
+
+    [Fact]
+    public void TheReportReadsAHealWithItsEvidence()
+    {
+        const string json = """
+            {"buildId":"1.42.0.1/2000950",
+             "bindings":[
+               {"key":"ISource2Server::GameFrame","kind":"Slot","resolved":true,"status":"Healed",
+                "reason":"None","matchCount":1,"address":4096,"offset":20,"library":"server",
+                "slot":{"class":"CSource2Server","statedIndex":19,"match":"Heal","vtableSize":105,"recordedVtableSize":104,
+                        "window":["1daf3b605a48b612","8573f973ef825f3f",null]}}],
+             "features":[{"name":"cssharp.server/game-frame","bindings":["ISource2Server::GameFrame"]}]}
+            """;
+
+        var gameFrame = ResolutionReport.FromJson(json).Find(GameFrameKey)!;
+
+        Assert.True(gameFrame.Resolved);
+        Assert.True(gameFrame.Healed);
+        Assert.False(gameFrame.Unverified);
+        Assert.Equal(20, gameFrame.Offset);
+        Assert.Equal(19, gameFrame.Slot!.StatedIndex);
+        Assert.Equal("Heal", gameFrame.Slot.Match);
+        Assert.Equal(["1daf3b605a48b612", "8573f973ef825f3f", null], gameFrame.Slot.Window);
+    }
+
+    [Fact]
+    public void AHealedGameFrameIsAvailableWithTheHealInItsStatus()
+    {
+        var status = Features(HealedGameFrame()).GetStatus(EngineFeatureNames.ServerGameFrame);
+
+        Assert.True(status.IsAvailable);
+        var heal = Assert.Single(status.Heals);
+        Assert.Equal(GameFrameKey, heal.Binding);
+        Assert.Equal("CSource2Server", heal.ClassName);
+        Assert.Equal("server", heal.Library);
+        Assert.Equal(19, heal.OldIndex);
+        Assert.Equal(20, heal.NewIndex);
+        Assert.Equal(HealWindow, heal.Window);
+        Assert.Equal("available, healed (ISource2Server::GameFrame: slot 19 -> 20)", status.Describe());
+        Assert.Equal("cssharp.server/game-frame available, healed (ISource2Server::GameFrame: slot 19 -> 20)", status.ToString());
+    }
+
+    [Fact]
+    public void AnUnhealedFeatureHasNoHeals()
+    {
+        var status = Features(Slot(true)).GetStatus(EngineFeatureNames.ServerGameFrame);
+
+        Assert.Empty(status.Heals);
+        Assert.Equal("cssharp.server/game-frame available", status.ToString());
+    }
+
+    [Fact]
+    public void TheStartupReportListsEveryHealWithItsEvidence()
+    {
+        // Same wording as native bindings::FormatHeals.
+        Assert.Equal(
+            $"Engine Features for build {BuildId}: all 1 available\n" +
+            "  Healed ISource2Server::GameFrame: CSource2Server (server) slot 19 -> 20, " +
+            "window [1daf3b605a48b612, 8573f973ef825f3f, dc3e8eb9a1a8f4c4] matched once within 16 slots\n" +
+            "  Vtable of CSource2Server (server) has 105 slots, Gamedata recorded 104 (ISource2Server::GameFrame)",
+            Features(HealedGameFrame()).FormatStartupReport());
+    }
+
+    [Fact]
+    public void AnAmbiguousHealDisablesGameFrame()
+    {
+        var status = Features(Slot(false, BindingFailureReason.AmbiguousHeal) with { MatchCount = 2 })
+            .GetStatus(EngineFeatureNames.ServerGameFrame);
+
+        Assert.False(status.IsAvailable);
+        Assert.Equal("ISource2Server::GameFrame: ambiguous heal (2 matches)", status.Describe());
+    }
+
     [Fact]
     public void OnTickOnADisabledGameFrameRegistersAndWarnsOnce()
     {

@@ -7,13 +7,14 @@ namespace CounterStrikeSharp.API.Core;
 public sealed class EngineFeatureStatus
 {
     internal EngineFeatureStatus(string name, bool isDeclared, string? failedBinding, BindingFailureReason reason,
-        int matchCount)
+        int matchCount, IReadOnlyList<SlotHeal>? heals = null)
     {
         Name = name;
         IsDeclared = isDeclared;
         FailedBinding = failedBinding;
         Reason = reason;
         MatchCount = matchCount;
+        Heals = heals ?? [];
     }
 
     internal static EngineFeatureStatus Unknown(string name) => new(name, false, null, BindingFailureReason.None, 0);
@@ -37,16 +38,23 @@ public sealed class EngineFeatureStatus
     public int MatchCount { get; }
 
     /// <summary>
+    /// The Engine Feature's Slot Bindings that were healed at boot (found at another vtable index than Gamedata states).
+    /// A healed Engine Feature is available; empty when nothing moved.
+    /// </summary>
+    public IReadOnlyList<SlotHeal> Heals { get; }
+
+    /// <summary>
     /// Why not, in the wording of the startup report: <c>"Host_Say: not found"</c>,
-    /// <c>"ClientPrint: ambiguous (2 matches)"</c>, <c>"available"</c> or <c>"unknown Engine Feature"</c>.
+    /// <c>"ClientPrint: ambiguous (2 matches)"</c>, <c>"available"</c>,
+    /// <c>"available, healed (ISource2Server::GameFrame: slot 19 -> 20)"</c> or <c>"unknown Engine Feature"</c>.
     /// </summary>
     public string Describe()
     {
         if (!IsDeclared) return "unknown Engine Feature";
-        if (IsAvailable) return "available";
+        if (IsAvailable) return Heals.Count == 0 ? "available" : $"available, healed ({string.Join(", ", Heals)})";
         return $"{FailedBinding}: {Reason.Describe(MatchCount)}";
     }
 
     /// <inheritdoc />
-    public override string ToString() => IsAvailable ? $"{Name} available" : $"{Name} disabled ({Describe()})";
+    public override string ToString() => IsAvailable ? $"{Name} {Describe()}" : $"{Name} disabled ({Describe()})";
 }

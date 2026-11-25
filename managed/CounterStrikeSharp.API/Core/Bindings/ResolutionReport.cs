@@ -17,10 +17,16 @@ internal enum BindingKind
 
 /// <summary>
 /// A Slot Binding's Vtable Check (mirrors <c>bindings::SlotEvidence</c>): the class whose vtable holds the slot, the
-/// Gamedata index, how the fingerprint window matched (Window, OwnFingerprint or None), and the live and recorded
-/// vtable sizes.
+/// Gamedata index, how the fingerprint window matched (Window, OwnFingerprint, Heal or None), the live and recorded
+/// vtable sizes, and the fingerprint window Gamedata recorded (null entries: neighbours outside the vtable).
 /// </summary>
-internal sealed record SlotEvidence(string ClassName, long StatedIndex, string Match, long VtableSize, long? RecordedVtableSize)
+internal sealed record SlotEvidence(
+    string ClassName,
+    long StatedIndex,
+    string Match,
+    long VtableSize,
+    long? RecordedVtableSize,
+    IReadOnlyList<string?>? Window = null)
 {
     /// <summary>A Game update changed the class's vtable size: a warning, never a failure by itself.</summary>
     public bool SizeChanged => VtableSize != 0 && RecordedVtableSize is { } recorded && recorded != VtableSize;
@@ -29,7 +35,8 @@ internal sealed record SlotEvidence(string ClassName, long StatedIndex, string M
 /// <summary>
 /// One Binding in the Resolution Report: resolved (with its address or offset) or failed (with a reason). A Slot
 /// Binding's offset is its slot index; <paramref name="Unverified"/> marks one used at its Gamedata index without a
-/// Vtable Check (it still counts as resolved).
+/// Vtable Check, <paramref name="Healed"/> one found at another index than Gamedata states (its offset is the new
+/// index, <see cref="SlotEvidence.StatedIndex"/> the old one). Both still count as resolved.
 /// </summary>
 internal sealed record BindingResult(
     string Key,
@@ -41,7 +48,8 @@ internal sealed record BindingResult(
     long Offset,
     string Library,
     bool Unverified = false,
-    SlotEvidence? Slot = null);
+    SlotEvidence? Slot = null,
+    bool Healed = false);
 
 /// <summary>
 /// The immutable Resolution Report for the running build (GLOSSARY.md): the build id, every core Binding as native
@@ -84,7 +92,9 @@ internal sealed class ResolutionReport
                 unchecked((nint)b.Address), b.Offset, b.Library, b.Status == "Unverified",
                 b.Slot == null
                     ? null
-                    : new SlotEvidence(b.Slot.Class, b.Slot.StatedIndex, b.Slot.Match, b.Slot.VtableSize, b.Slot.RecordedVtableSize))),
+                    : new SlotEvidence(b.Slot.Class, b.Slot.StatedIndex, b.Slot.Match, b.Slot.VtableSize, b.Slot.RecordedVtableSize,
+                        b.Slot.Window),
+                b.Status == "Healed")),
             dto.Features.Select(f => new EngineFeatureDeclaration(f.Name, f.Bindings.Select(BindingDeclaration.Any).ToList())));
     }
 
@@ -108,7 +118,13 @@ internal sealed class ResolutionReport
         string? Status,
         SlotDto? Slot);
 
-    private sealed record SlotDto(string Class, long StatedIndex, string Match, long VtableSize, long? RecordedVtableSize);
+    private sealed record SlotDto(
+        string Class,
+        long StatedIndex,
+        string Match,
+        long VtableSize,
+        long? RecordedVtableSize,
+        List<string?>? Window);
 
     private sealed record FeatureDto(string Name, List<string> Bindings);
 }
