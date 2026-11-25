@@ -321,3 +321,109 @@ TEST_CASE("archive: no slot of a 1.41.9.7 vtable is carried anywhere but where i
             std::cout << "  held " << held.key << ": " << held.reason << "\n";
     }
 }
+
+// --- IVEngineServer2 (CEngineServer, engine2) ---
+
+namespace {
+bool ArchivedEngine(const char* build) { return FindArchivedModule(DefaultArchiveRoot(), build, "engine").has_value(); }
+
+// Every Slot Binding of the Gamedata on CEngineServer, resolved against an engine2 build as at boot.
+bindings::ResolutionReport ResolveEngineServer(const LoadedModule& engine, const GamedataJson& gamedataJson)
+{
+    const auto gamedata = bindings::ParseGamedata(nlohmann::json::parse(gamedataJson.dump()), "linux");
+    std::vector<bindings::BindingDeclaration> declarations;
+    for (const auto& [key, entry] : gamedata)
+        if (entry.slot && entry.slot->className == "CEngineServer") declarations.push_back({ key, bindings::BindingKind::Slot });
+    return bindings::BuiltinResolver(bindings::Platform::Linux).Resolve("archive", gamedata, { { "engine", engine.Image() } }, declarations);
+}
+
+constexpr const char* kIsMapValid = "IVEngineServer2::IsMapValid";
+} // namespace
+
+TEST_CASE("archive: the committed IVEngineServer2 Slot Bindings resolve at their Gamedata index on both engine2 builds "
+          "(local)" *
+          doctest::skip(!ArchivedEngine("1.41.9.7") || !ArchivedEngine("1.42.0.1")))
+{
+    // engine2 did not move a slot between these builds: the 1.42.0.1 Gamedata is right for 1.41.9.7 too.
+    const auto committed = CommittedGamedata();
+    for (const char* build : { "1.41.9.7", "1.42.0.1" })
+    {
+        CAPTURE(build);
+        const auto engine = LoadedModule::FromArchive(DefaultArchiveRoot(), build, "engine");
+
+        const auto report = ResolveEngineServer(engine, committed);
+
+        CHECK(report.Bindings().size() >= 12);
+        for (const auto& binding : report.Bindings())
+        {
+            CAPTURE(binding.key);
+            CHECK(binding.status == bindings::BindingStatus::Resolved);
+            CHECK(binding.offset == committed[binding.key]["offsets"]["linux"].get<std::int64_t>());
+            REQUIRE(binding.slot);
+            CHECK(binding.slot->match == vtable::SlotMatch::Window);
+            CHECK(binding.slot->vtableSize == 123);
+        }
+        CHECK(bindings::FormatVtableSizeWarnings(report).empty());
+    }
+}
+
+TEST_CASE("archive: no CEngineServer slot of 1.41.9.7 resolves anywhere but at its own index on 1.42.0.1 (local)" *
+          doctest::skip(!ArchivedEngine("1.41.9.7") || !ArchivedEngine("1.42.0.1")))
+{
+    // Every slot of the vtable as a Slot Binding bootstrapped on 1.41.9.7, checked at boot on 1.42.0.1: zero wrong.
+    const auto old = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.41.9.7", "engine");
+    const auto fingerprints = old.Fingerprints("CEngineServer");
+    GamedataJson gamedata = GamedataJson::object();
+    for (std::size_t index = 0; index < fingerprints.size(); ++index)
+    {
+        const auto key = "CEngineServer::" + std::to_string(index);
+        gamedata[key] = BootstrapSlotBinding(fingerprints, { key, "CEngineServer", "engine", index }).entry;
+    }
+    const auto live = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "engine");
+
+    const auto report = ResolveEngineServer(live, gamedata);
+
+    REQUIRE(report.Bindings().size() == fingerprints.size());
+    std::size_t resolved = 0;
+    for (const auto& binding : report.Bindings())
+    {
+        CAPTURE(binding.key);
+        if (!binding.Resolved()) continue;
+        ++resolved;
+        CHECK(binding.offset == gamedata[binding.key]["offsets"]["linux"].get<std::int64_t>());
+    }
+    std::cout << "CEngineServer 1.41.9.7 -> 1.42.0.1: " << resolved << " of " << fingerprints.size()
+              << " slots resolved at their index, none elsewhere\n";
+}
+
+TEST_CASE("archive: IsMapValid stated one slot too low heals at +1 on 1.42.0.1; a corrupted fingerprint fails it alone "
+          "(local)" *
+          doctest::skip(!ArchivedEngine("1.42.0.1")))
+{
+    const auto engine = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "engine");
+
+    auto lowered = CommittedGamedata();
+    lowered[kIsMapValid]["offsets"]["linux"] = 32;
+    const auto healed = ResolveEngineServer(engine, lowered);
+    for (const auto& binding : healed.Bindings())
+    {
+        CAPTURE(binding.key);
+        CHECK(binding.Resolved());
+        if (binding.key != kIsMapValid) continue;
+        CHECK(binding.status == bindings::BindingStatus::Healed);
+        CHECK(binding.offset == 33);
+        REQUIRE(binding.slot);
+        CHECK(binding.slot->statedIndex == 32);
+    }
+    CHECK(bindings::FormatHeals(healed).size() == 1);
+
+    auto corrupted = CommittedGamedata();
+    corrupted[kIsMapValid]["vtable"]["linux"]["window"][1] = "0000000000000000";
+    const auto failed = ResolveEngineServer(engine, corrupted);
+    for (const auto& binding : failed.Bindings())
+    {
+        CAPTURE(binding.key);
+        CHECK(binding.Resolved() == (binding.key != kIsMapValid));
+        if (binding.key == kIsMapValid) CHECK(binding.reason == bindings::FailureReason::FingerprintMismatch);
+    }
+}
