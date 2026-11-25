@@ -45,6 +45,7 @@ set(CSSHARP_TEST_SOURCES
     vtable_fingerprint_test.cpp
     slot_binding_test.cpp
     real_binary_test.cpp
+    engine_server_test.cpp
 )
 
 # Vendored x86-64 decoder (plain files, no submodule); the plugin tree may have added it already.

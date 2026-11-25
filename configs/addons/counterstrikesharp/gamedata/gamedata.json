@@ -314,5 +314,221 @@
         "size": 105
       }
     }
+  },
+  "IVEngineServer2::SetClientListening": {
+    "offsets": {
+      "linux": 92
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "dc7bcee80662a56b",
+          "3f832944fdb2ced3",
+          "c9d009c1c86cd178"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::ServerCommand": {
+    "offsets": {
+      "linux": 45
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "705ac0392062d0da",
+          "d1a34484da92be2b",
+          "993cd95a9822df5e"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::IsMapValid": {
+    "offsets": {
+      "linux": 33
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "6f76dc236217eff7",
+          "0c7025d3071ef4d1",
+          "90f769c9959c9bfb"
+        ],
+        "uniqueNearby": false,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::PrecacheGeneric": {
+    "offsets": {
+      "linux": 37
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "487636fa06e74db0",
+          "0327604adcc996e7",
+          "fd94c82aa8567ba7"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::GetPlayerUserId": {
+    "offsets": {
+      "linux": 39
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "fd94c82aa8567ba7",
+          "8a9449fffd609d47",
+          "8a9449fffd609d47"
+        ],
+        "uniqueNearby": false,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::ClientPrintf": {
+    "offsets": {
+      "linux": 47
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "993cd95a9822df5e",
+          "011ddc9f8eaa6152",
+          "ae31dfdf8133e79e"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::GetClientConVarValue": {
+    "offsets": {
+      "linux": 53
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "dbdf053740994358",
+          "6138ff10264bed4e",
+          "0fca81f1217c37fa"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::SetFakeClientConVarValue": {
+    "offsets": {
+      "linux": 77
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "b0dcb1cdc2a4dee1",
+          "6f038cc439f08c47",
+          "267a60ffd2d66030"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::ClientCommand": {
+    "offsets": {
+      "linux": 46
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "d1a34484da92be2b",
+          "993cd95a9822df5e",
+          "011ddc9f8eaa6152"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::DisconnectClient": {
+    "offsets": {
+      "linux": 88
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "98219e885c9c4950",
+          "d009a51ca0cf163b",
+          "05606b38d6616afe"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::IsClientFullyAuthenticated": {
+    "offsets": {
+      "linux": 75
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "f9a4e331cdd955f9",
+          "f95eaadad9ba97b2",
+          "b0dcb1cdc2a4dee1"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::GetClientSteamID": {
+    "offsets": {
+      "linux": 70
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "90f769c9959c9bfb",
+          "ef7c576e501eade2",
+          "2a4b59d352f5d5b4"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
   }
 }

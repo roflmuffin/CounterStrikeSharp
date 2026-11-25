@@ -213,7 +213,7 @@ GamedataJson EverySlot(ArchivedBuild& build, const std::string& library, const s
 
 TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves GameFrame 19 -> 20 and reproduces the committed 1.42.0.1 "
           "Gamedata (local)" *
-          doctest::skip(!ArchivedPair({ "server" })))
+          doctest::skip(!ArchivedPair({ "server", "engine" })))
 {
     ArchivedBuild previous(DefaultArchiveRoot(), "1.41.9.7");
     ArchivedBuild next(DefaultArchiveRoot(), "1.42.0.1");
@@ -224,10 +224,18 @@ TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves GameFrame 19 ->
 
     CHECK(result.held.empty());
     CHECK(result.warnings.empty());
-    REQUIRE(result.carried.size() == 1);
-    CHECK(result.carried[0].key == kGameFrame);
-    CHECK(result.carried[0].from == 19);
-    CHECK(result.carried[0].to == 20);
+    // GameFrame moves; every other committed Slot Binding sits at the same index on both builds.
+    for (const auto& carried : result.carried)
+    {
+        CAPTURE(carried.key);
+        if (carried.key == kGameFrame)
+        {
+            CHECK(carried.from == 19);
+            CHECK(carried.to == 20);
+        }
+        else
+            CHECK(carried.from == carried.to);
+    }
     CHECK(result.gamedata == CommittedGamedata());
 }
 
