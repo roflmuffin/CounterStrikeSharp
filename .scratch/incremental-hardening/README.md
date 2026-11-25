@@ -69,6 +69,24 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
 - Later: 06, 10 (add-ons) → 11 (cleanup).
 - Needs spec A base (03–05); 09 also needs spec A 12.
 
+## Decisions (spec D grilling, own loader, 2026-11-25)
+
+- Goal: fewer unneeded dependencies + independence from Metamod-only failures. Not outage hours: a standalone CSSharp shared the root cause in 7/9 Metamod load failures (≤8% of 162 h). Evidence: `research/own-loader/findings.md`. ADR-0005 (amends ADR-0001).
+- Two modes, one package: Plugin Mode stays default on both OSes (unchanged, Metamod's KHook); Proxy Mode opt-in via one gameinfo line after Metamod's (ordering A: Metamod loads the Proxy as its game DLL). Lost line → automatic fallback to Plugin Mode.
+- Thin Metamod Bootstrap is the only code with Metamod headers; in Proxy Mode it only hands ISmmAPI over (MetaFactory). Host seam: Metamod host / own host.
+- KHook: Metamod's in Plugin Mode; own static, hidden-symbol, never-freed in Proxy Mode (spike first). CSSharp hooks outer next to Metamod plugins; documented.
+- Proxy: no SDK/tier0 imports, absolute paths, pure pass-through, slots 0/3/5 compare-before-restore, no byte sigs, ABI-matched core, fail open; `-css_fail_closed` launch param.
+- Pristine-copy sig scanning in both modes (shared with spec A I1). Own level lifecycle with event-order parity. OnMetamodAllPluginsLoaded always fires + OnAllPluginsLoaded alias. Read-only boot checker; no gameinfo auto-repair.
+- Linux first; Windows Proxy should follow (not must), Windows never worse than today. Promote Proxy Mode in docs after 3 updates/OS without a Proxy fix.
+- Non-goals: tier0/slot/struct decoupling, removing Metamod host or submodule, hosting/chain-loading Metamod, server_valve (spike), pinning Metamod, hours target.
+- Upstream RFC drafted (`hardening-d-own-loader/rfc.md`); posting is a human ticket (ADR-0001: fork PRs for now).
+
+## Spec D tiers
+
+- Must: 01, 02 (standalone) → 03, 04, 05 (base) → 06, 07, 08, 09, 10, 12 (add-ons) → 11 (coexistence validation, human).
+- Later: 13 Windows Proxy (should-follow), 14 CI jobs (needs spec C I7), 15 server_valve spike, 16 post RFC (human), 17 promote Proxy Mode (human).
+- Independent of specs A/B except 01, which spec A's resolver shares.
+
 ## Backlog (not ticketed)
 
 - Managed VTable constructor passes symbol name and binary path in swapped order (found during the code survey; unrelated to hardening).
@@ -80,4 +98,5 @@ Planning workspace for making CounterStrikeSharp survive CS2 game updates with f
    - `.scratch/hardening-a-fail-soft/`: I1 sig uniqueness, I3 schema miss → error, I2 per-feature failure + capability flags.
    - `.scratch/hardening-b-boot-verify/`: I4 Vtable Checks with Heal, I5 Slot Bindings (hooks + IVEngineServer2/ICvar calls + entity offsets), generator.
    - `.scratch/hardening-c-fast-fix/`: I6 signed build-keyed updater, I7 CI per build.
+   - `.scratch/hardening-d-own-loader/`: opt-in Proxy Mode (own loader) under Metamod (ADR-0005).
 3. `/implement-spec` or `/implement` per ticket.
