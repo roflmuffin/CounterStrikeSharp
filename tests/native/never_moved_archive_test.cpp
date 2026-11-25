@@ -70,7 +70,11 @@ bindings::ResolutionReport ResolveOn(ArchivedBuild& build, const GamedataJson& g
 {
     std::vector<bindings::BindingDeclaration> declarations;
     for (const auto& slot : kNeverMoved)
-        declarations.push_back({ slot.key, bindings::BindingKind::Slot, "", static_cast<std::int64_t>(slot.index) });
+    {
+        bindings::BindingDeclaration declaration{ slot.key, bindings::BindingKind::Slot };
+        declaration.compiledIndex = static_cast<std::int64_t>(slot.index);
+        declarations.push_back(declaration);
+    }
     const bindings::ModuleImages modules{ { "server", build.Module("server").Image() }, { "engine", build.Module("engine").Image() } };
     return bindings::BuiltinResolver(bindings::Platform::Linux)
         .Resolve(build.Build(), bindings::ParseGamedata(nlohmann::json::parse(gamedata.dump()), "linux"), modules, declarations);

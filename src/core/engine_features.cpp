@@ -10,6 +10,8 @@ BindingDeclaration Signature(std::string key) { return { std::move(key), Binding
 BindingDeclaration Offset(std::string key) { return { std::move(key), BindingKind::Offset }; }
 // A vtable slot we hook or call: its index, class and fingerprint window come from Gamedata (ADR-0003).
 BindingDeclaration Slot(std::string key) { return { std::move(key), BindingKind::Slot }; }
+// A game-class virtual called through its Gamedata index: a Slot Binding with no compiled header index to fall back on.
+BindingDeclaration ClassSlot(std::string key) { return { std::move(key), BindingKind::Slot, {}, false }; }
 BindingDeclaration RttiVtable(std::string className, std::string library)
 {
     return { std::move(className), BindingKind::RttiVtable, std::move(library) };
@@ -53,7 +55,7 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
         Slot("IEngineServiceMgr::RegisterLoopMode") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
     { std::string(features::StateChanged), { Signature("NetworkStateChanged"), Offset("SetStateChanged") } },
-    { std::string(features::CheckTransmit), { Offset("ISource2GameEntities::CheckTransmit"), Offset("CheckTransmitPlayerSlot") } },
+    { std::string(features::CheckTransmit), { ClassSlot("ISource2GameEntities::CheckTransmit"), Offset("CheckTransmitPlayerSlot") } },
     // Our game system (precache, pre/post entity think) and player think (button changes) via RunThink.
     { std::string(features::ServerGameSystemEvents),
       { Signature("IGameSystem_InitAllSystems_pFirst"), SchemaField("CCSPlayerController", "m_hPlayerPawn"),
@@ -66,7 +68,22 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::EntityEmitSound), { Signature("CBaseEntity_EmitSoundFilter") } },
     { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
     // Take damage
-    { std::string(features::EntityTakeDamageHooks), { Signature("CBaseEntity_TakeDamageOld"), Offset("CBaseEntity_IsPlayerPawn") } },
+    { std::string(features::EntityTakeDamageHooks), { Signature("CBaseEntity_TakeDamageOld"), ClassSlot("CBaseEntity_IsPlayerPawn") } },
+    // Engine server (IVEngineServer2): each plugin-visible API on the slots it hooks or calls. Per-player voice overrides
+    // (VoiceFlags, SetListenOverride) apply in the SetClientListening hook; OnClientAuthorized and AuthorizedSteamID come
+    // from the auth check on every frame.
+    { std::string(features::PlayerSetListening), { Slot("IVEngineServer2::SetClientListening") } },
+    { std::string(features::ServerExecuteCommand), { Slot("IVEngineServer2::ServerCommand") } },
+    { std::string(features::ServerIsMapValid), { Slot("IVEngineServer2::IsMapValid") } },
+    { std::string(features::ServerPrecacheModel), { Slot("IVEngineServer2::PrecacheGeneric") } },
+    { std::string(features::PlayerUserId), { Slot("IVEngineServer2::GetPlayerUserId") } },
+    { std::string(features::PlayerPrintToConsole), { Slot("IVEngineServer2::ClientPrintf") } },
+    { std::string(features::PlayerGetConVarValue), { Slot("IVEngineServer2::GetClientConVarValue") } },
+    { std::string(features::PlayerSetFakeClientConVar), { Slot("IVEngineServer2::SetFakeClientConVarValue") } },
+    { std::string(features::PlayerExecuteClientCommand), { Slot("IVEngineServer2::ClientCommand") } },
+    { std::string(features::PlayerDisconnect), { Slot("IVEngineServer2::DisconnectClient") } },
+    { std::string(features::PlayerAuthorization),
+      { Slot("IVEngineServer2::IsClientFullyAuthenticated"), Slot("IVEngineServer2::GetClientSteamID") } },
     // Console commands and ConVars: every ICvar method we call, directly or through the SDK's convar.cpp (see
     // core/verified_cvar.h). The dispatch hook fires AddCommand callbacks and command listeners for console commands.
     { std::string(features::ConsoleDispatch), { Slot("ICvar::DispatchConCommand") } },
@@ -100,6 +117,25 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
       { Slot("IGameEventSystem::PostEventAbstract"), Slot("IGameEventSystem::PostEventAbstract_Filter") } },
 };
 
+// Virtuals called through their Gamedata index on game-class objects (and CheckTransmit, hooked by index on the game
+// entities' vtable): Slot Bindings, verified and healed like the others. Managed helpers, plugins reading them by key
+// (GameData.GetOffset) and native code all use the index in the report. Declared as Slot Bindings even when Gamedata has
+// no "vtable" for them (e.g. an auto-updated gamedata.json from before Slot Bindings): then they are unverified at
+// their Gamedata index, as before. Struct field offsets are not here: they stay Offset Bindings.
+const std::vector<BindingDeclaration> kGameClassSlots{
+    ClassSlot("ISource2GameEntities::CheckTransmit"),
+    ClassSlot("CCSPlayerController_ChangeTeam"),
+    ClassSlot("CCSPlayerController_Respawn"),
+    ClassSlot("CCSPlayer_ItemServices_GiveNamedItem"),
+    ClassSlot("CCSPlayer_ItemServices_DropActivePlayerWeapon"),
+    ClassSlot("CCSPlayer_ItemServices_RemoveWeapons"),
+    ClassSlot("CGameSceneNode_GetSkeletonInstance"),
+    ClassSlot("CCSGameRules_FindPickerEntity"),
+    ClassSlot("CBaseEntity_IsPlayerPawn"),
+    ClassSlot("CBaseEntity_Teleport"),
+    ClassSlot("CBasePlayerPawn_CommitSuicide"),
+};
+
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)
 {
     return std::any_of(bindings.begin(), bindings.end(), [&](const BindingDeclaration& b) {
@@ -117,11 +153,14 @@ std::vector<BindingDeclaration> CoreBindingDeclarations(const Gamedata& gamedata
     for (const auto& feature : kEngineFeatures)
         for (const auto& binding : feature.bindings)
             if (!Declared(bindings, binding.key)) bindings.push_back(binding);
+    for (const auto& binding : kGameClassSlots)
+        if (!Declared(bindings, binding.key)) bindings.push_back(binding);
 
     for (const auto& [key, entry] : gamedata)
     {
         if (Declared(bindings, key)) continue;
-        if (entry.slot) bindings.push_back(Slot(key));
+        // Only Gamedata declares it, so no native code calls it through a compiled method.
+        if (entry.slot) bindings.push_back(ClassSlot(key));
         else if (entry.hasSignatures)
             bindings.push_back(Signature(key));
         else if (entry.hasOffsets)

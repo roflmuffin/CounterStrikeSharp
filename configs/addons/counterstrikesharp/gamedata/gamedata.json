@@ -24,12 +24,38 @@
     "offsets": {
       "windows": 105,
       "linux": 104
+    },
+    "vtable": {
+      "class": "CCSPlayerController",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "c8284f13ab615a48",
+          "9702f2031eeb67dc"
+        ],
+        "uniqueNearby": true,
+        "size": 279
+      }
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
       "windows": 274,
       "linux": 276
+    },
+    "vtable": {
+      "class": "CCSPlayerController",
+      "library": "server",
+      "linux": {
+        "window": [
+          "75304de80162c6aa",
+          "d4497dcc886c3f8f",
+          "5c7389eb26b829e5"
+        ],
+        "uniqueNearby": true,
+        "size": 279
+      }
     }
   },
   "CBasePlayerController_SetPawn": {
@@ -99,24 +125,76 @@
     "offsets": {
       "windows": 23,
       "linux": 24
+    },
+    "vtable": {
+      "class": "CCSPlayer_ItemServices",
+      "library": "server",
+      "linux": {
+        "window": [
+          "cf542668f1e41480",
+          "9693b8238eb2ffdd",
+          "b831949b3c79073a"
+        ],
+        "uniqueNearby": false,
+        "size": 29
+      }
     }
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
     "offsets": {
       "windows": 26,
       "linux": 27
+    },
+    "vtable": {
+      "class": "CCSPlayer_ItemServices",
+      "library": "server",
+      "linux": {
+        "window": [
+          "9693b8238eb2ffdd",
+          "bfd1b33c47ec7fc3",
+          "6deff071c505d03c"
+        ],
+        "uniqueNearby": true,
+        "size": 29
+      }
     }
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
     "offsets": {
       "windows": 27,
       "linux": 28
+    },
+    "vtable": {
+      "class": "CCSPlayer_ItemServices",
+      "library": "server",
+      "linux": {
+        "window": [
+          "bfd1b33c47ec7fc3",
+          "6deff071c505d03c",
+          null
+        ],
+        "uniqueNearby": true,
+        "size": 29
+      }
     }
   },
   "CGameSceneNode_GetSkeletonInstance": {
     "offsets": {
       "windows": 12,
       "linux": 13
+    },
+    "vtable": {
+      "class": "CGameSceneNode",
+      "library": "server",
+      "linux": {
+        "window": [
+          "4ae19ca9be0cead6",
+          "dc3e8eb9a1a8f4c4",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": false,
+        "size": 32
+      }
     }
   },
   "CCSGameRules_TerminateRound": {
@@ -130,6 +208,19 @@
     "offsets": {
       "windows": 25,
       "linux": 26
+    },
+    "vtable": {
+      "class": "CCSGameRules",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "d2379802d83542b2",
+          "ab817d4b9111e8f9"
+        ],
+        "uniqueNearby": true,
+        "size": 131
+      }
     }
   },
   "CTakeDamageInfo_HitGroup": {
@@ -170,6 +261,19 @@
     "offsets": {
       "windows": 171,
       "linux": 170
+    },
+    "vtable": {
+      "class": "CCSPlayerPawn",
+      "library": "server",
+      "linux": {
+        "window": [
+          "e60b0927a1d9a827",
+          "8c8ea0db4cba3598",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": false,
+        "size": 416
+      }
     }
   },
   "CEntitySystem_AddEntityIOEvent": {
@@ -190,6 +294,19 @@
     "offsets": {
       "windows": 387,
       "linux": 387
+    },
+    "vtable": {
+      "class": "CBasePlayerPawn",
+      "library": "server",
+      "linux": {
+        "window": [
+          "94fb8c66f9cd9341",
+          "db8bada8adf78b97",
+          "96b8b13a907b19f6"
+        ],
+        "uniqueNearby": true,
+        "size": 401
+      }
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
@@ -203,6 +320,19 @@
     "offsets": {
       "windows": 165,
       "linux": 164
+    },
+    "vtable": {
+      "class": "CBaseEntity",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "266cb1e2baaff18b",
+          "32559f3a773744cf"
+        ],
+        "uniqueNearby": true,
+        "size": 239
+      }
     }
   },
   "CBaseEntity_TakeDamageOld": {
@@ -281,6 +411,19 @@
     "offsets": {
       "windows": 12,
       "linux": 13
+    },
+    "vtable": {
+      "class": "CSource2GameEntities",
+      "library": "server",
+      "linux": {
+        "window": [
+          "00a9c3604d98e96e",
+          "0cb024786d7cb86a",
+          "51e357d4ba08b56d"
+        ],
+        "uniqueNearby": true,
+        "size": 21
+      }
     }
   },
   "Host_Say": {
@@ -870,6 +1013,222 @@
         ],
         "uniqueNearby": true,
         "size": 46
+      }
+    }
+  },
+  "IVEngineServer2::SetClientListening": {
+    "offsets": {
+      "linux": 92
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "dc7bcee80662a56b",
+          "3f832944fdb2ced3",
+          "c9d009c1c86cd178"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::ServerCommand": {
+    "offsets": {
+      "linux": 45
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "705ac0392062d0da",
+          "d1a34484da92be2b",
+          "993cd95a9822df5e"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::IsMapValid": {
+    "offsets": {
+      "linux": 33
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "6f76dc236217eff7",
+          "0c7025d3071ef4d1",
+          "90f769c9959c9bfb"
+        ],
+        "uniqueNearby": false,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::PrecacheGeneric": {
+    "offsets": {
+      "linux": 37
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "487636fa06e74db0",
+          "0327604adcc996e7",
+          "fd94c82aa8567ba7"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::GetPlayerUserId": {
+    "offsets": {
+      "linux": 39
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "fd94c82aa8567ba7",
+          "8a9449fffd609d47",
+          "8a9449fffd609d47"
+        ],
+        "uniqueNearby": false,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::ClientPrintf": {
+    "offsets": {
+      "linux": 47
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "993cd95a9822df5e",
+          "011ddc9f8eaa6152",
+          "ae31dfdf8133e79e"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::GetClientConVarValue": {
+    "offsets": {
+      "linux": 53
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "dbdf053740994358",
+          "6138ff10264bed4e",
+          "0fca81f1217c37fa"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::SetFakeClientConVarValue": {
+    "offsets": {
+      "linux": 77
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "b0dcb1cdc2a4dee1",
+          "6f038cc439f08c47",
+          "267a60ffd2d66030"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::ClientCommand": {
+    "offsets": {
+      "linux": 46
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "d1a34484da92be2b",
+          "993cd95a9822df5e",
+          "011ddc9f8eaa6152"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::DisconnectClient": {
+    "offsets": {
+      "linux": 88
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "98219e885c9c4950",
+          "d009a51ca0cf163b",
+          "05606b38d6616afe"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::IsClientFullyAuthenticated": {
+    "offsets": {
+      "linux": 75
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "f9a4e331cdd955f9",
+          "f95eaadad9ba97b2",
+          "b0dcb1cdc2a4dee1"
+        ],
+        "uniqueNearby": true,
+        "size": 123
+      }
+    }
+  },
+  "IVEngineServer2::GetClientSteamID": {
+    "offsets": {
+      "linux": 70
+    },
+    "vtable": {
+      "class": "CEngineServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "90f769c9959c9bfb",
+          "ef7c576e501eade2",
+          "2a4b59d352f5d5b4"
+        ],
+        "uniqueNearby": true,
+        "size": 123
       }
     }
   },

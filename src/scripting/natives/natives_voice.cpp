@@ -19,6 +19,7 @@
 
 #include "core/managers/player_manager.h"
 #include "scripting/autonative.h"
+#include "scripting/engine_feature_natives.h"
 #include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
@@ -28,6 +29,7 @@ void SetClientListening(ScriptContext& scriptContext)
     auto receiver = scriptContext.GetArgument<CEntityInstance*>(0);
     auto sender = scriptContext.GetArgument<CEntityInstance*>(1);
     auto listen = scriptContext.GetArgument<ListenOverride>(2);
+    if (!RequireEngineFeature(scriptContext, bindings::features::PlayerSetListening)) return;
 
     if (!receiver)
     {
@@ -92,6 +94,7 @@ void SetClientVoiceFlags(ScriptContext& scriptContext)
 {
     auto client = scriptContext.GetArgument<CEntityInstance*>(0);
     auto flags = scriptContext.GetArgument<VoiceFlag_t>(1);
+    if (!RequireEngineFeature(scriptContext, bindings::features::PlayerSetListening)) return;
 
     if (!client)
     {

@@ -177,7 +177,12 @@ BindingResult CheckCompiledIndex(BindingResult result, const std::optional<std::
     return Failed(std::move(result), FailureReason::CompiledSlotMoved);
 }
 
-BindingResult ResolveSlot(BindingResult result, const Gamedata& gamedata, const ModuleImages& modules, Platform platform, LiveVtables& cache)
+BindingResult ResolveSlot(BindingResult result,
+                          bool headerIndex,
+                          const Gamedata& gamedata,
+                          const ModuleImages& modules,
+                          Platform platform,
+                          LiveVtables& cache)
 {
     const auto entry = gamedata.find(result.key);
     const bool hasEntry = entry != gamedata.end();
@@ -193,11 +198,13 @@ BindingResult ResolveSlot(BindingResult result, const Gamedata& gamedata, const 
     }
     if (hasEntry && entry->second.offset) result.slot->statedIndex = *entry->second.offset;
 
-    // No Vtable Check on Windows: the Gamedata index if there is one, else the caller's compiled header index.
-    if (platform == Platform::Windows) return Unverified(std::move(result), result.slot->statedIndex);
+    // No Vtable Check on Windows: the Gamedata index if there is one, else the caller's compiled header index (-1), if
+    // it has one.
+    if (platform == Platform::Windows && headerIndex) return Unverified(std::move(result), result.slot->statedIndex);
 
     if (!hasEntry || !entry->second.hasOffsets) return Failed(std::move(result), FailureReason::MissingFromGamedata);
     if (!entry->second.offset || *entry->second.offset < 0) return Failed(std::move(result), FailureReason::MissingForThisOs);
+    if (platform == Platform::Windows) return Unverified(std::move(result), *entry->second.offset);
     const auto index = *entry->second.offset;
 
     // Gamedata without a window (e.g. from before Slot Bindings) is used as it is, and reported.
@@ -350,8 +357,8 @@ ResolutionReport BuiltinResolver::Resolve(std::string buildId,
                 results.push_back(ResolveSchemaField(std::move(result), modules));
                 break;
             case BindingKind::Slot:
-                results.push_back(
-                    CheckCompiledIndex(ResolveSlot(std::move(result), gamedata, modules, m_platform, liveVtables), declaration.compiledIndex));
+                results.push_back(CheckCompiledIndex(
+                    ResolveSlot(std::move(result), declaration.headerIndex, gamedata, modules, m_platform, liveVtables), declaration.compiledIndex));
                 break;
         }
     }

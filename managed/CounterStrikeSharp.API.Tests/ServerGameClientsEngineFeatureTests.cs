@@ -53,8 +53,7 @@ public class ServerGameClientsEngineFeatureTests
         { "OnClientPutInServer", EngineFeatureNames.PlayerConnectionEvents },
         { "OnClientDisconnect", EngineFeatureNames.PlayerConnectionEvents },
         { "OnClientDisconnectPost", EngineFeatureNames.PlayerConnectionEvents },
-        // A player is authorized only once its connection was seen.
-        { "OnClientAuthorized", EngineFeatureNames.PlayerConnectionEvents },
+        // OnClientAuthorized also needs cssharp.player/authorization: EngineServerEngineFeatureTests.
         { "OnClientVoice", EngineFeatureNames.PlayerVoiceEvents },
         { "OnCustomHudClicked", EngineFeatureNames.UiCustomHudLayout },
     };

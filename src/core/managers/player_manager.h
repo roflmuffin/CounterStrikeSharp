@@ -76,8 +76,6 @@ class CPlayer
     void Connect();
     void Disconnect();
     bool WasCountedAsInGame() const;
-    int GetUserId();
-    bool IsAuthStringValidated() const;
     void Authorize();
 
   public:
@@ -87,16 +85,12 @@ class CPlayer
     bool IsConnected() const;
     bool IsFakeClient() const;
     bool IsAuthorized() const;
-    void PrintToConsole(const char* message) const;
     //    void PrintToChat(const char *message);
     //    void PrintToHint(const char *message);
     //    void PrintToCenter(const char *message);
     bool IsInGame() const;
-    void Kick(const char* kickReason);
-    const char* GetKeyValue(const char* key) const;
     const char* GetIpAddress() const;
     int GetUserId() const;
-    float GetTimeConnected() const;
     void SetListen(CPlayerSlot slot, ListenOverride listen);
     void SetVoiceFlags(VoiceFlag_t flags);
     VoiceFlag_t GetVoiceFlags();
@@ -118,7 +112,6 @@ class CPlayer
     CPlayerBitVec m_selfMutes[64] = {};
     uint64 m_buttonState = ~0;
     void SetName(const char* name);
-    INetChannelInfo* GetNetInfo() const;
 };
 
 class PlayerManager : public GlobalClass

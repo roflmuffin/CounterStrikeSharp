@@ -95,7 +95,9 @@ json SlotEntry(const FakeBuild& build, std::size_t index)
 ResolutionReport Resolve(const json& gamedata, const FakeBuild& live, std::int64_t compiledIndex, Platform platform = Platform::Linux,
                          const char* os = "linux")
 {
-    const std::vector<BindingDeclaration> declarations{ { kKey, BindingKind::Slot, "", compiledIndex } };
+    BindingDeclaration declaration{ kKey, BindingKind::Slot };
+    declaration.compiledIndex = compiledIndex;
+    const std::vector<BindingDeclaration> declarations{ declaration };
     return BuiltinResolver(platform).Resolve("test-build", ParseGamedata(gamedata, os), { { "server", live.Image() } }, declarations);
 }
 

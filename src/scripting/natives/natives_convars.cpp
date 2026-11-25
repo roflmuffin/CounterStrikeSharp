@@ -19,6 +19,7 @@
 #include "core/core_bindings.h"
 #include "core/log.h"
 #include "scripting/autonative.h"
+#include "scripting/engine_feature_natives.h"
 #include "scripting/script_engine.h"
 
 // ---- Flag setter compatible with various SDKs ----
@@ -91,13 +92,7 @@ template <typename T> void SetAllFlagsCompat(T* data, uint64_t desired)
 namespace counterstrikesharp {
 
 // Every ConVar native reaches ICvar (FindConVar, GetConVarData, the set callbacks, RegisterConVar) through the verified
-// g_pCVar. On a disabled Engine Feature (cssharp.convars/*) it throws instead.
-static bool RequireEngineFeature(ScriptContext& script_context, std::string_view feature)
-{
-    if (bindings::IsEngineFeatureAvailable(feature)) return true;
-    script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(feature).c_str());
-    return false;
-}
+// g_pCVar. On a disabled Engine Feature (cssharp.convars/*) it throws instead (RequireEngineFeature).
 
 static void SetConvarFlags(ScriptContext& script_context)
 {

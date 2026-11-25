@@ -19,6 +19,7 @@
 #include "core/core_bindings.h"
 
 #include "core/core_bindings.h"
+#include "core/engine_server_calls.h"
 #include "core/log.h"
 #include "core/managers/con_command_manager.h"
 #include "core/managers/player_manager.h"
@@ -26,18 +27,11 @@
 #include "engine2/igameeventsystem.h"
 #include "scripting/autonative.h"
 #include "scripting/callback_manager.h"
+#include "scripting/engine_feature_natives.h"
 #include "scripting/script_engine.h"
 #include <networkbasetypes.pb.h>
 
 namespace counterstrikesharp {
-
-// Throws the native error for a disabled Engine Feature (its ICvar Slot Bindings failed) and returns false.
-static bool RequireEngineFeature(ScriptContext& script_context, std::string_view feature)
-{
-    if (bindings::IsEngineFeatureAvailable(feature)) return true;
-    script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(feature).c_str());
-    return false;
-}
 
 static void AddCommand(ScriptContext& script_context)
 {
@@ -146,8 +140,9 @@ static void IssueClientCommand(ScriptContext& script_context)
 {
     auto slot = script_context.GetArgument<int>(0);
     auto command = script_context.GetArgument<const char*>(1);
+    if (!RequireEngineFeature(script_context, bindings::features::PlayerExecuteClientCommand)) return;
 
-    globals::engine->ClientCommand(CPlayerSlot(slot), command);
+    engine_server::ClientCommand(CPlayerSlot(slot), command);
 }
 
 static void IssueClientCommandFromServer(ScriptContext& script_context)
@@ -171,8 +166,9 @@ static const char* GetClientConVarValue(ScriptContext& script_context)
 {
     auto playerSlot = script_context.GetArgument<int>(0);
     auto convarName = script_context.GetArgument<const char*>(1);
+    if (!RequireEngineFeature(script_context, bindings::features::PlayerGetConVarValue)) return nullptr;
 
-    return globals::engine->GetClientConVarValue(CPlayerSlot(playerSlot), convarName);
+    return engine_server::GetClientConVarValue(CPlayerSlot(playerSlot), convarName);
 }
 
 static void SetFakeClientConVarValue(ScriptContext& script_context)
@@ -180,8 +176,9 @@ static void SetFakeClientConVarValue(ScriptContext& script_context)
     auto playerSlot = script_context.GetArgument<int>(0);
     auto convarName = script_context.GetArgument<const char*>(1);
     auto convarValue = script_context.GetArgument<const char*>(2);
+    if (!RequireEngineFeature(script_context, bindings::features::PlayerSetFakeClientConVar)) return;
 
-    globals::engine->SetFakeClientConVarValue(CPlayerSlot(playerSlot), convarName, convarValue);
+    engine_server::SetFakeClientConVarValue(CPlayerSlot(playerSlot), convarName, convarValue);
 }
 
 ConVarData* FindConVar(ScriptContext& script_context)

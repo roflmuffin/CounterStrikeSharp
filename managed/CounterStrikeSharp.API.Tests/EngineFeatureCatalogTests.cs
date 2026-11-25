@@ -81,6 +81,18 @@ public class EngineFeatureCatalogTests : IDisposable
         ["cssharp.items/remove-weapons"] = ["CCSPlayer_ItemServices_RemoveWeapons"],
         ["cssharp.items/weapon-data"] = ["GetCSWeaponDataFromKey"],
         ["cssharp.nav/nav-mesh"] = ["CCSNavArea_IsValidNavMesh"],
+        // IVEngineServer2 (engine2's CEngineServer): its hook and direct calls, one Engine Feature per API
+        ["cssharp.player/set-listening"] = ["IVEngineServer2::SetClientListening"],
+        ["cssharp.server/execute-command"] = ["IVEngineServer2::ServerCommand"],
+        ["cssharp.server/is-map-valid"] = ["IVEngineServer2::IsMapValid"],
+        ["cssharp.server/precache-model"] = ["IVEngineServer2::PrecacheGeneric"],
+        ["cssharp.player/user-id"] = ["IVEngineServer2::GetPlayerUserId"],
+        ["cssharp.player/print-to-console"] = ["IVEngineServer2::ClientPrintf"],
+        ["cssharp.player/get-convar-value"] = ["IVEngineServer2::GetClientConVarValue"],
+        ["cssharp.player/set-fake-client-convar"] = ["IVEngineServer2::SetFakeClientConVarValue"],
+        ["cssharp.player/execute-client-command"] = ["IVEngineServer2::ClientCommand"],
+        ["cssharp.player/disconnect"] = ["IVEngineServer2::DisconnectClient"],
+        ["cssharp.player/authorization"] = ["IVEngineServer2::IsClientFullyAuthenticated", "IVEngineServer2::GetClientSteamID"],
         // Never-moved interfaces (Slot Bindings, direct calls compiled but verified)
         ["cssharp.server/startup"] = ["INetworkServerService::StartupServer"],
         ["cssharp.server/loop-mode"] = ["IEngineServiceMgr::RegisterLoopMode", "IEngineServiceMgr::FindService"],
@@ -133,7 +145,7 @@ public class EngineFeatureCatalogTests : IDisposable
     private static ResolutionReport CheckTransmitReport(bool slotResolved) =>
         new("1.42.0.1/2000950",
             [
-                new BindingResult("ISource2GameEntities::CheckTransmit", BindingKind.Offset, true, BindingFailureReason.None, 0, 0, 13,
+                new BindingResult("ISource2GameEntities::CheckTransmit", BindingKind.Slot, true, BindingFailureReason.None, 0, 0, 13,
                     ""),
                 slotResolved
                     ? new BindingResult("CheckTransmitPlayerSlot", BindingKind.Offset, true, BindingFailureReason.None, 0, 0, 624, "")
@@ -143,7 +155,7 @@ public class EngineFeatureCatalogTests : IDisposable
             [
                 new EngineFeatureDeclaration("cssharp.network/check-transmit",
                     [
-                        BindingDeclaration.Offset("ISource2GameEntities::CheckTransmit"),
+                        BindingDeclaration.Slot("ISource2GameEntities::CheckTransmit"),
                         BindingDeclaration.Offset("CheckTransmitPlayerSlot")
                     ]),
             ]);

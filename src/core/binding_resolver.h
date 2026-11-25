@@ -81,6 +81,10 @@ struct BindingDeclaration
     std::string key; // Gamedata key, or the RTTI class name for RttiVtable
     BindingKind kind = BindingKind::Signature;
     std::string library{}; // RttiVtable, SchemaField: Gamedata-style library name to search ("server", "engine", ...)
+    // Slot: the caller has a compiled header index to fall back on (interface methods from SDK headers), so on Windows a
+    // Slot Binding without a Gamedata index is unverified at it (offset -1). Game-class virtuals have none: there it
+    // fails as missing for this OS.
+    bool headerIndex = true;
     // Slot only: the slot index a compiled (header) call on this Binding uses. A compiled call cannot follow a Heal, so a
     // Binding verified at any other index fails with CompiledSlotMoved. Unverified Bindings are not compared.
     std::optional<std::int64_t> compiledIndex{};
