@@ -16,7 +16,10 @@
 
 #include "core/managers/server_manager.h"
 
+#include "core/core_bindings.h"
 #include "core/log.h"
+#include "core/slot_calls.h"
+#include "core/slot_hooks.h"
 #include "scripting/callback_manager.h"
 
 #include "core/game_system.h"
@@ -29,14 +32,31 @@ ServerManager::~ServerManager() = default;
 
 void ServerManager::OnAllInitialized()
 {
-    m_hooks.Add(&ISource2Server::ServerHibernationUpdate, globals::server, this, nullptr, &ServerManager::ServerHibernationUpdate);
-    m_hooks.Add(&ISource2Server::GameServerSteamAPIActivated, globals::server, this, nullptr, &ServerManager::GameServerSteamAPIActivated);
-    m_hooks.Add(&ISource2Server::GameServerSteamAPIDeactivated, globals::server, this, nullptr,
-                &ServerManager::GameServerSteamAPIDeactivated);
-    m_hooks.Add(&ISource2Server::OnHostNameChanged, globals::server, this, nullptr, &ServerManager::OnHostNameChanged);
-    m_hooks.Add(&ISource2Server::PreFatalShutdown, globals::server, this, nullptr, &ServerManager::PreFatalShutdown);
-    m_hooks.Add(&ISource2Server::UpdateWhenNotInGame, globals::server, this, nullptr, &ServerManager::UpdateWhenNotInGame);
-    m_hooks.Add(&ISource2Server::PreWorldUpdate, globals::server, this, nullptr, &ServerManager::PreWorldUpdate);
+    // By the slot index the boot Vtable Check verified (ADR-0003). A disabled Engine Feature skips its hook; listeners
+    // on it still register (their callbacks are created below) and never fire.
+    using namespace bindings;
+    if (ShouldRegisterHooks(features::HibernationEvents, "ServerHibernationUpdate hook"))
+        HookSlot(m_hooks, "ISource2Server::ServerHibernationUpdate", &ISource2Server::ServerHibernationUpdate, globals::server, this,
+                 nullptr, &ServerManager::ServerHibernationUpdate);
+    if (ShouldRegisterHooks(features::SteamApiEvents, "Steam API hooks"))
+    {
+        HookSlot(m_hooks, "ISource2Server::GameServerSteamAPIActivated", &ISource2Server::GameServerSteamAPIActivated, globals::server,
+                 this, nullptr, &ServerManager::GameServerSteamAPIActivated);
+        HookSlot(m_hooks, "ISource2Server::GameServerSteamAPIDeactivated", &ISource2Server::GameServerSteamAPIDeactivated,
+                 globals::server, this, nullptr, &ServerManager::GameServerSteamAPIDeactivated);
+    }
+    if (ShouldRegisterHooks(features::HostnameChanged, "OnHostNameChanged hook"))
+        HookSlot(m_hooks, "ISource2Server::OnHostNameChanged", &ISource2Server::OnHostNameChanged, globals::server, this, nullptr,
+                 &ServerManager::OnHostNameChanged);
+    if (ShouldRegisterHooks(features::FatalShutdown, "PreFatalShutdown hook"))
+        HookSlot(m_hooks, "ISource2Server::PreFatalShutdown", &ISource2Server::PreFatalShutdown, globals::server, this, nullptr,
+                 &ServerManager::PreFatalShutdown);
+    if (ShouldRegisterHooks(features::UpdateWhenNotInGame, "UpdateWhenNotInGame hook"))
+        HookSlot(m_hooks, "ISource2Server::UpdateWhenNotInGame", &ISource2Server::UpdateWhenNotInGame, globals::server, this, nullptr,
+                 &ServerManager::UpdateWhenNotInGame);
+    if (ShouldRegisterHooks(features::PreWorldUpdate, "PreWorldUpdate hook"))
+        HookSlot(m_hooks, "ISource2Server::PreWorldUpdate", &ISource2Server::PreWorldUpdate, globals::server, this, nullptr,
+                 &ServerManager::PreWorldUpdate);
 
     on_server_hibernation_update_callback = globals::callbackManager.CreateCallback("OnServerHibernationUpdate");
     on_server_steam_api_activated_callback = globals::callbackManager.CreateCallback("OnGameServerSteamAPIActivated");
@@ -68,9 +88,19 @@ void ServerManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(on_server_precache_resources);
 }
 
-void* ServerManager::GetEconItemSystem() { return globals::server->GetEconItemSystem(); }
+// Direct calls by verified slot index. Callers check the Engine Feature first (natives_server.cpp); the Resolution
+// Report is immutable after boot, so each index is looked up once.
+void* ServerManager::GetEconItemSystem()
+{
+    static const auto slot = bindings::GetBindingSlot("ISource2Server::GetEconItemSystem");
+    return CallSlot(slot, &ISource2Server::GetEconItemSystem, globals::server);
+}
 
-bool ServerManager::IsPaused() { return globals::server->IsPaused(); }
+bool ServerManager::IsPaused()
+{
+    static const auto slot = bindings::GetBindingSlot("ISource2Server::IsPaused");
+    return CallSlot(slot, &ISource2Server::IsPaused, globals::server);
+}
 
 KHook::Return<void> ServerManager::ServerHibernationUpdate(ISource2Server* hookThis, bool bHibernating)
 {
