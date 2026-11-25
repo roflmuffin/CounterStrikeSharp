@@ -57,6 +57,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
         private readonly IServiceProvider _applicationServiceProvider;
+        private bool _assemblyLoaded;
 
         public string FilePath => _path;
         private IServiceScope _serviceScope;
@@ -75,17 +76,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _path = path;
             PluginId = id;
 
-            Loader = PluginLoader.CreateFromAssemblyFile(path,
-                new[]
-                {
-                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>),
-                    typeof(ICommandManager)
-                }, config =>
-                {
-                    config.EnableHotReload = true;
-                    config.IsUnloadable = true;
-                    config.PreferSharedTypes = true;
-                });
+            Loader = CreateLoader();
 
             if (CoreConfig.PluginHotReloadEnabled)
             {
@@ -108,8 +99,29 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
                 _fileWatcher.Filter = "*.dll";
                 _fileWatcher.EnableRaisingEvents = true;
-                Loader.Reloaded += async (s, e) => await OnReloadedAsync(s, e);
             }
+        }
+
+        private PluginLoader CreateLoader()
+        {
+            var loader = PluginLoader.CreateFromAssemblyFile(_path,
+                new[]
+                {
+                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>),
+                    typeof(ICommandManager)
+                }, config =>
+                {
+                    config.EnableHotReload = true;
+                    config.IsUnloadable = true;
+                    config.PreferSharedTypes = true;
+                });
+
+            if (CoreConfig.PluginHotReloadEnabled)
+            {
+                loader.Reloaded += async (s, e) => await OnReloadedAsync(s, e);
+            }
+
+            return loader;
         }
 
         private Task OnReloadedAsync(object sender, PluginReloadedEventArgs eventargs)
@@ -118,6 +130,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             {
                 _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
                 Loader = eventargs.Loader;
+                _assemblyLoaded = false;
                 Unload(hotReload: true);
                 Load(hotReload: true);
                 Plugin.OnAllPluginsLoaded(hotReload: true);
@@ -130,9 +143,18 @@ namespace CounterStrikeSharp.API.Core.Plugin
         {
             if (State == PluginState.Loaded) return;
 
+            // A load context can only load the plugin assembly once, so a manual reload needs a fresh one.
+            if (_assemblyLoaded)
+            {
+                Loader.Dispose();
+                Loader = CreateLoader();
+                _assemblyLoaded = false;
+            }
+
             using (Loader.EnterContextualReflection())
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
+                _assemblyLoaded = true;
 
                 Type pluginType = defaultAssembly.GetExportedTypes()
                     .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
