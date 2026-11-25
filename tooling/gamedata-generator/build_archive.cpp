@@ -130,47 +130,23 @@ LoadedModule LoadedModule::Load(const std::filesystem::path& file)
         }
     }
 
-    for (const auto [table, size] : { std::pair{ rela, relaSize }, std::pair{ jmprel, jmprelSize } })
-    {
-        for (std::uint64_t at = table; table != 0 && at + sizeof(Elf64_Rela) <= table + size; at += sizeof(Elf64_Rela))
-        {
-            Elf64_Rela relocation;
-            read(at, relocation);
-            const auto type = ELF64_R_TYPE(relocation.r_info);
-            Elf64_Sym symbol{};
-            if (type != R_X86_64_RELATIVE) read(symtab + ELF64_R_SYM(relocation.r_info) * sizeof(Elf64_Sym), symbol);
+    for (const auto [table, size] : { std::pair{ rela, relaSize }, std::pair{ jmprel, jmprelSize }, std::pair{ symtab, std::uint64_t{ 1 } },
+                                      std::pair{ strtab, std::uint64_t{ 1 } } })
+        if (table != 0 && !inImage(table, size)) throw fail("dynamic table outside the image");
 
-            std::uint64_t value;
-            switch (type)
-            {
-                case R_X86_64_RELATIVE:
-                    value = baseAddress + relocation.r_addend;
-                    break;
-                case R_X86_64_64:
-                case R_X86_64_GLOB_DAT:
-                {
-                    const std::uint64_t addend = type == R_X86_64_64 ? relocation.r_addend : 0;
-                    if (symbol.st_shndx != SHN_UNDEF)
-                    {
-                        value = baseAddress + symbol.st_value + addend;
-                        break;
-                    }
-                    // Undefined: only the markers vtables need; everything else (libstdc++ typeinfo vtables) stays.
-                    const auto* name = reinterpret_cast<const char*>(base + strtab + symbol.st_name);
-                    if (!inImage(strtab + symbol.st_name, 1)) continue;
-                    if (std::strcmp(name, "__cxa_pure_virtual") == 0) value = kPureVirtualMarker;
-                    else if (std::strcmp(name, "__cxa_deleted_virtual") == 0)
-                        value = kDeletedVirtualMarker;
-                    else
-                        continue;
-                    break;
-                }
-                default:
-                    continue;
-            }
-            if (!inImage(relocation.r_offset, sizeof(value))) continue;
-            std::memcpy(base + relocation.r_offset, &value, sizeof(value));
-        }
+    // The same relocation reader the server uses for live vtables (core/elf_relocations.h). Undefined symbols: only
+    // the markers vtables need; everything else (e.g. libstdc++ typeinfo vtables) stays as on disk.
+    const elf::DynamicTables tables{ baseAddress, base + rela, relaSize, jmprel != 0 ? base + jmprel : nullptr, jmprelSize, base + symtab,
+                                     reinterpret_cast<const char*>(base + strtab) };
+    module.m_relocations = elf::RelocatedWords(tables, [](std::string_view name) -> std::uintptr_t {
+        if (name == "__cxa_pure_virtual") return kPureVirtualMarker;
+        if (name == "__cxa_deleted_virtual") return kDeletedVirtualMarker;
+        return 0;
+    });
+    for (const auto& [address, value] : module.m_relocations.All())
+    {
+        const auto offset = address - baseAddress;
+        if (inImage(offset, kWord)) std::memcpy(base + offset, &value, kWord);
     }
     module.m_pureVirtual = kPureVirtualMarker;
     module.m_deletedVirtual = kDeletedVirtualMarker;
@@ -199,18 +175,8 @@ rtti::VtableLookup LoadedModule::FindVtable(std::string_view className) const
 
 std::optional<std::uintptr_t> LoadedModule::ReadVtableSlot(std::uintptr_t vtable, std::size_t index) const
 {
-    const std::uintptr_t address = vtable + index * kWord;
-    for (const auto& region : m_data)
-    {
-        const auto start = reinterpret_cast<std::uintptr_t>(region.data);
-        if (address >= start && address + kWord <= start + region.size)
-        {
-            std::uint64_t value;
-            std::memcpy(&value, reinterpret_cast<const void*>(address), sizeof(value));
-            return value;
-        }
-    }
-    return std::nullopt;
+    // As at boot: a slot is a relocated word; the first word no relocation fills ends the vtable.
+    return m_relocations.At(vtable + index * kWord);
 }
 
 bindings::ModuleImage LoadedModule::Image() const

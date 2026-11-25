@@ -32,6 +32,7 @@ set(CSSHARP_TESTED_SOURCES
     ${CSSHARP_ROOT}/src/core/engine_features.cpp
     ${CSSHARP_ROOT}/src/core/rtti_vtable.cpp
     ${CSSHARP_ROOT}/src/core/vtable_fingerprint.cpp
+    ${CSSHARP_ROOT}/src/core/elf_relocations.cpp
 )
 
 set(CSSHARP_TEST_SOURCES
@@ -84,6 +85,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         ${CSSHARP_ROOT}/src/core/signature.cpp
         ${CSSHARP_ROOT}/src/core/rtti_vtable.cpp
         ${CSSHARP_ROOT}/src/core/vtable_fingerprint.cpp
+        ${CSSHARP_ROOT}/src/core/elf_relocations.cpp
     )
     target_link_libraries(gamedata-generator PRIVATE zydis)
     target_include_directories(gamedata-generator PRIVATE ${CSSHARP_ROOT}/src ${CSSHARP_ROOT}/libraries ${CSSHARP_GENERATOR_DIR})

@@ -25,6 +25,7 @@
 #include "core/gameconfig_updater.h"
 #include "core/global_listener.h"
 #include "core/log.h"
+#include "core/slot_hooks.h"
 #include "core/managers/entity_manager.h"
 #include "core/tick_scheduler.h"
 #include "core/timer_system.h"
@@ -176,7 +177,11 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
         on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
 
-        m_hooks.Add(&IServerGameDLL::GameFrame, globals::server, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_GameFrame);
+        // By the slot index the boot Vtable Check verified. Disabled game-frame: no ticks, timers or frame tasks; the
+        // server keeps running and the startup report names the failed Binding.
+        if (bindings::ShouldRegisterHooks(bindings::features::GameFrame, "GameFrame hook"))
+            HookSlot(m_hooks, "ISource2Server::GameFrame", &IServerGameDLL::GameFrame, globals::server, this, nullptr,
+                     &CounterStrikeSharpMMPlugin::Hook_GameFrame);
         m_hooks.Add(&INetworkServerService::StartupServer, globals::networkServerService, this, nullptr,
                     &CounterStrikeSharpMMPlugin::Hook_StartupServer);
         m_hooks.Add(&IEngineServiceMgr::RegisterLoopMode, globals::engineServiceManager, this,

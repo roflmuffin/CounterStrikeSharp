@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "core/binding_resolver.h"
+#include "core/elf_relocations.h"
 #include "core/rtti_vtable.h"
 #include "core/vtable_fingerprint.h"
 
@@ -49,7 +50,7 @@ class LoadedModule
     // Fingerprints of every slot of the class's primary vtable; throws std::runtime_error unless exactly one is found.
     [[nodiscard]] std::vector<vtable::Fingerprint> Fingerprints(std::string_view className) const;
 
-    // A vtable slot's target as loaded (nullopt outside the vtable data).
+    // A vtable slot's target as the loader relocated it (nullopt where no relocation fills the word).
     [[nodiscard]] std::optional<std::uintptr_t> ReadVtableSlot(std::uintptr_t vtable, std::size_t index) const;
 
     [[nodiscard]] const std::vector<vtable::CodeSegment>& Code() const { return m_code; }
@@ -62,6 +63,7 @@ class LoadedModule
     std::vector<rtti::MemoryRegion> m_names; // read-only data (typeinfo names)
     std::vector<rtti::MemoryRegion> m_data; // relocated read-only data (typeinfo, vtables)
     std::vector<vtable::CodeSegment> m_code;
+    elf::RelocatedWords m_relocations;
     std::uintptr_t m_pureVirtual = 0;
     std::uintptr_t m_deletedVirtual = 0;
 };
