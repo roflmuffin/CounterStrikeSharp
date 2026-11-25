@@ -290,6 +290,7 @@ namespace CounterStrikeSharp.API.Core
             var castedParameterTypes = typeof(T).GetMethod("Invoke").GetParameters()
                 .Select(p => p.GetCustomAttribute<CastFromAttribute>()?.Type)
                 .ToArray();
+            var invoker = MethodInvoker.Create(typeof(T).GetMethod("Invoke")!);
 
             Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
@@ -304,7 +305,7 @@ namespace CounterStrikeSharp.API.Core
                         args[i] = Activator.CreateInstance(parameterTypes[i], new[] { args[i] });
                 }
 
-                var result = handler.DynamicInvoke(args);
+                var result = invoker.Invoke(handler, args.AsSpan());
                 if (result is HookResult hookResult)
                 {
                     return hookResult;
