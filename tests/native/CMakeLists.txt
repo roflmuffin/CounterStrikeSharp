@@ -27,6 +27,7 @@ set(CSSHARP_TESTED_SOURCES
     ${CSSHARP_ROOT}/src/core/signature.cpp
     ${CSSHARP_ROOT}/src/core/binding_resolver.cpp
     ${CSSHARP_ROOT}/src/core/engine_features.cpp
+    ${CSSHARP_ROOT}/src/core/rtti_vtable.cpp
 )
 
 set(CSSHARP_TEST_SOURCES
@@ -35,6 +36,7 @@ set(CSSHARP_TEST_SOURCES
     signature_test.cpp
     binding_resolver_test.cpp
     engine_features_test.cpp
+    rtti_vtable_test.cpp
     real_binary_test.cpp
 )
 

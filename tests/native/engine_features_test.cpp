@@ -149,7 +149,9 @@ TEST_CASE("An RTTI vtable Binding of the catalog is resolved by class name in it
     CHECK(vtable->kind == BindingKind::RttiVtable);
 
     ModuleImage server;
-    server.findVirtualTable = [](std::string_view name) -> std::uintptr_t { return name == "CGameEventManager" ? 0x5000 : 0; };
+    server.findVirtualTable = [](std::string_view name) -> counterstrikesharp::rtti::VtableLookup {
+        return name == "CGameEventManager" ? counterstrikesharp::rtti::VtableLookup{ 0x5000, 1 } : counterstrikesharp::rtti::VtableLookup{};
+    };
     ModuleImages found;
     found.emplace("server", server);
     const auto* gameEvents = FindNativeEngineFeature(features::GameEvents);

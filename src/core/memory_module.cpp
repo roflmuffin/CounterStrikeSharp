@@ -755,56 +755,50 @@ void* CModule::FindVirtualTable(const std::string& name)
     Warning("Failed to find RTTI Complete Object Locator for %s\n", name.c_str());
     return nullptr;
 }
+
+rtti::VtableLookup CModule::LookupVirtualTable(const std::string& name)
+{
+    const auto address = reinterpret_cast<std::uintptr_t>(FindVirtualTable(name));
+    return { address, address != 0 ? 1u : 0u };
+}
 #endif
 
 #ifndef _WIN32
-void* CModule::FindVirtualTable(const std::string& name)
+rtti::VtableLookup CModule::LookupVirtualTable(const std::string& name)
 {
-    auto readOnlyData = GetSection(".rodata");
-    auto readOnlyRelocations = GetSection(".data.rel.ro");
+    std::vector<rtti::MemoryRegion> names;
+    std::vector<rtti::MemoryRegion> data;
+    for (const auto& section : m_sections)
+    {
+        const rtti::MemoryRegion region{ static_cast<const std::uint8_t*>(section.m_pBase), section.m_iSize };
+        if (section.m_szName == ".rodata") names.push_back(region);
+        else if (section.m_szName == ".data.rel.ro" || section.m_szName == ".data.rel.ro.local")
+            data.push_back(region);
+    }
 
-    if (!readOnlyData || !readOnlyRelocations)
+    if (names.empty() || data.empty())
     {
         Warning("Failed to find .rodata or .data.rel.ro section\n");
+        return {};
+    }
+
+    return rtti::FindPrimaryVtable(name, names, data);
+}
+
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    const auto lookup = LookupVirtualTable(name);
+    if (lookup.Ambiguous())
+    {
+        Warning("Ambiguous vtable for %s: %zu primary vtables match\n", name.c_str(), lookup.matchCount);
         return nullptr;
     }
-
-    std::string decoratedTableName = std::to_string(name.length()) + name;
-
-    SignatureIterator sigIt(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)decoratedTableName.c_str(),
-                            decoratedTableName.size() + 1);
-    void* classNameString = sigIt.FindNext(false);
-
-    if (!classNameString)
+    if (!lookup.Found())
     {
-        Warning("Failed to find type descriptor for %s\n", name.c_str());
+        Warning("Failed to find vtable for %s\n", name.c_str());
         return nullptr;
     }
-
-    SignatureIterator sigIt2(readOnlyRelocations->m_pBase, readOnlyRelocations->m_iSize, (const byte*)&classNameString, sizeof(void*));
-    void* typeName = sigIt2.FindNext(false);
-
-    if (!typeName)
-    {
-        Warning("Failed to find type name for %s\n", name.c_str());
-        return nullptr;
-    }
-
-    void* typeInfo = (void*)((uintptr_t)typeName - 0x8);
-
-    for (const auto& sectionName : { std::string_view(".data.rel.ro"), std::string_view(".data.rel.ro.local") })
-    {
-        auto section = GetSection(sectionName);
-        if (!section) continue;
-
-        SignatureIterator sigIt3(section->m_pBase, section->m_iSize, (const byte*)&typeInfo, sizeof(void*));
-
-        while (void* vtable = sigIt3.FindNext(false))
-            if (*(int64_t*)((uintptr_t)vtable - 0x8) == 0) return (void*)((uintptr_t)vtable + 0x8);
-    }
-
-    Warning("Failed to find vtable for %s\n", name.c_str());
-    return nullptr;
+    return reinterpret_cast<void*>(lookup.address);
 }
 #endif
 

@@ -30,6 +30,7 @@
 #include <link.h>
 #endif
 
+#include "core/rtti_vtable.h"
 #include "interface.h"
 #include "tier0/tier0_strtools.h"
 #undef snprintf
@@ -107,7 +108,12 @@ class CModule
 
     void* FindSymbol(const std::string& name);
 
+    // The class's primary vtable by RTTI, or nullptr (with a warning) if it is not found or ambiguous.
     void* FindVirtualTable(const std::string& name);
+
+    // As FindVirtualTable, with the number of matching primary vtables (exact class name only, on Linux). Windows
+    // reports at most one match: the first found, as before.
+    rtti::VtableLookup LookupVirtualTable(const std::string& name);
 
     Section* GetSection(const std::string_view name)
     {

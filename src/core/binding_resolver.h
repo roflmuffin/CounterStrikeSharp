@@ -18,6 +18,7 @@
 #undef snprintf
 #include <nlohmann/json.hpp>
 
+#include "core/rtti_vtable.h"
 #include "core/schema_field_status.h"
 
 namespace counterstrikesharp::bindings {
@@ -72,7 +73,7 @@ struct ModuleImage
 {
     std::vector<ModuleSegment> segments; // scanned for signatures (on-disk bytes where available)
     std::function<std::uintptr_t(std::string_view)> findSymbol; // optional, for "@symbol" signatures
-    std::function<std::uintptr_t(std::string_view)> findVirtualTable; // optional, for RttiVtable
+    std::function<rtti::VtableLookup(std::string_view)> findVirtualTable; // optional, for RttiVtable
     std::function<SchemaFieldLookup(std::string_view className, std::string_view fieldName)> findSchemaField; // optional, for SchemaField
 };
 
@@ -107,7 +108,7 @@ struct BindingResult
     BindingKind kind = BindingKind::Signature;
     BindingStatus status = BindingStatus::Failed;
     FailureReason reason = FailureReason::None;
-    std::size_t matchCount = 0; // signatures: matches across all scanned segments
+    std::size_t matchCount = 0; // signatures: matches across all scanned segments; RttiVtable: primary vtables of the class
     std::uintptr_t address = 0; // Signature, RttiVtable
     std::int64_t offset = 0; // Offset, SchemaField
     std::string library{}; // module searched, if any
