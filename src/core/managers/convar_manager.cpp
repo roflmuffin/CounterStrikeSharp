@@ -3,6 +3,7 @@
 #include <icvar.h>
 
 #include "convar.h"
+#include "core/core_bindings.h"
 #include "core/globals.h"
 #include "scripting/callback_manager.h"
 
@@ -31,14 +32,20 @@ void ConVarManager::OnAllInitialized()
     if (!globals::cvars || m_on_convar_changed_callback) return;
 
     m_on_convar_changed_callback = globals::callbackManager.CreateCallback("OnConVarChanged");
-    globals::cvars->InstallGlobalChangeCallback(&ConVarManager::ConVarGlobalChanged);
+    // Through the verified ICvar. Disabled change-events: OnConVarChanged listeners register but never fire.
+    if (bindings::ShouldRegisterHooks(bindings::features::ConVarChangeEvents, "ConVar change callback"))
+    {
+        g_pCVar->InstallGlobalChangeCallback(&ConVarManager::ConVarGlobalChanged);
+        m_change_callback_installed = true;
+    }
 }
 
 void ConVarManager::OnShutdown()
 {
-    if (globals::cvars && m_on_convar_changed_callback)
+    if (m_change_callback_installed)
     {
-        globals::cvars->RemoveGlobalChangeCallback(&ConVarManager::ConVarGlobalChanged);
+        g_pCVar->RemoveGlobalChangeCallback(&ConVarManager::ConVarGlobalChanged);
+        m_change_callback_installed = false;
     }
 
     if (m_on_convar_changed_callback)

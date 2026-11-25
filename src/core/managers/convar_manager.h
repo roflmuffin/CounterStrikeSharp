@@ -23,5 +23,6 @@ class ConVarManager : public GlobalClass
     static thread_local int s_convar_dispatch_depth;
     static thread_local std::vector<uint16> s_pending_convar_changes;
     ScriptCallback* m_on_convar_changed_callback = nullptr;
+    bool m_change_callback_installed = false;
 };
 } // namespace counterstrikesharp

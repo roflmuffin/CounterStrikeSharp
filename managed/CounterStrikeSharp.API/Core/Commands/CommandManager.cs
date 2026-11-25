@@ -35,7 +35,8 @@ public class CommandManager : ICommandManager
 
         _logger.LogDebug("Registering command {Command}", definition.Name);
 
-        if (!isRegistered)
+        // On a disabled cssharp.commands/add-command the definition is kept but the engine never sees it (logged once).
+        if (!isRegistered && EngineFeatures.Current.CheckRegistration(EngineFeatureNames.CommandsAddCommand, "Command", _logger, this))
         {
             NativeAPI.AddCommand(definition.Name, definition.Description,
                 definition.ExecutableBy == CommandUsage.SERVER_ONLY,
@@ -54,7 +55,8 @@ public class CommandManager : ICommandManager
 
         if (_commandDefinitions[definition.Name].Count == 0)
         {
-            NativeAPI.RemoveCommand(definition.Name, _internalFunctionReference);
+            if (EngineFeatures.IsAvailable(EngineFeatureNames.CommandsAddCommand))
+                NativeAPI.RemoveCommand(definition.Name, _internalFunctionReference);
             _commandDefinitions.Remove(definition.Name);
         }
     }
