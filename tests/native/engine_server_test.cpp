@@ -2,6 +2,8 @@
 // on it go through Slot Bindings, one Engine Feature per plugin-visible API.
 #include <doctest.h>
 
+#include <cstdarg>
+#include <cstdio>
 #include <fstream>
 #include <string>
 #include <string_view>
@@ -12,7 +14,9 @@
 
 #include "core/binding_resolver.h"
 #include "core/engine_features.h"
+#include "core/slot_calls.h"
 
+using namespace counterstrikesharp;
 using namespace counterstrikesharp::bindings;
 
 namespace {
@@ -85,4 +89,55 @@ TEST_CASE("Committed Gamedata states every IVEngineServer2 Slot Binding on CEngi
         // Windows keeps today's compiled header index: no Gamedata index, so the Binding is unverified there.
         CHECK_FALSE(root.at(key).at("offsets").contains("windows"));
     }
+}
+
+namespace {
+struct FakeUserId
+{
+    short value;
+};
+
+// Slots in declaration order: 0 First, 1 Second, 2 Print, 3 UserIdOf.
+class FakeEngineServer
+{
+  public:
+    virtual int First(int x) { return 100 + x; }
+    virtual int Second(int x) { return 200 + x; }
+    virtual void Print(int slot, const char* format, ...)
+    {
+        char buffer[64];
+        va_list args;
+        va_start(args, format);
+        std::vsnprintf(buffer, sizeof(buffer), format, args);
+        va_end(args);
+        printed = std::to_string(slot) + ":" + buffer;
+    }
+    virtual FakeUserId UserIdOf(int slot) { return { static_cast<short>(slot + 1) }; }
+
+    std::string printed;
+
+  protected:
+    ~FakeEngineServer() = default;
+};
+
+class LiveEngineServer final : public FakeEngineServer
+{
+  public:
+    ~LiveEngineServer() = default;
+};
+} // namespace
+
+TEST_CASE("A direct call through a Slot Binding runs the function at the given slot, not at the method's compiled position")
+{
+    LiveEngineServer engine;
+    FakeEngineServer* instance = &engine;
+
+    // The method only supplies the signature.
+    CHECK(CallAtSlot(1, &FakeEngineServer::First, instance, 5) == 205);
+    CHECK(CallAtSlot(0, &FakeEngineServer::Second, instance, 5) == 105);
+
+    CallAtSlot(2, &FakeEngineServer::Print, instance, 3, "%d-%s", 7, "x");
+    CHECK(engine.printed == "3:7-x");
+
+    CHECK(CallAtSlot(3, &FakeEngineServer::UserIdOf, instance, 41).value == 42);
 }

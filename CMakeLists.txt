@@ -77,6 +77,10 @@ set(SOURCE_FILES
     src/core/vtable_fingerprint.h
     src/core/vtable_fingerprint.cpp
     src/core/slot_hooks.h
+    src/core/slot_calls.h
+    src/core/engine_server_calls.h
+    src/core/engine_server_calls.cpp
+    src/scripting/engine_feature_natives.h
     src/core/elf_relocations.h
     src/core/elf_relocations.cpp
     src/core/binding_resolver.h
