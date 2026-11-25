@@ -26,7 +26,7 @@ public class GameClassSlotTests
     ];
 
     [Fact]
-    public void GameClassVirtuals_ReadByKey_AreTheVerifiedOrHealedIndex()
+    public void GameClassVirtuals_ReadByKey_FollowTheVtableCheck()
     {
         foreach (var key in Keys)
         {
