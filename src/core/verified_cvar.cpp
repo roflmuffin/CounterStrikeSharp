@@ -4,10 +4,15 @@
 #include <tier0/convar.h>
 
 #include <cstring>
+#include <mutex>
 #include <optional>
+#include <set>
+#include <string_view>
+#include <type_traits>
 #include <utility>
 
 #include "core/core_bindings.h"
+#include "core/log.h"
 #include "core/slot_calls.h"
 
 namespace counterstrikesharp::bindings {
@@ -20,40 +25,46 @@ ICvar* VerifiedCvar(ICvar* engine) { return engine; }
 
 namespace {
 
+void ReportNotASlotBinding(const char* method)
+{
+    static std::mutex mutex;
+    static std::set<std::string_view> reported;
+    std::lock_guard guard(mutex);
+    if (!reported.insert(method).second) return;
+    CSSHARP_CORE_ERROR("ICvar::{} was called, but it is not a Slot Binding (no verified slot index); not called", method);
+}
+
 class SlotForwardingCvar final : public ICvar
 {
   public:
     explicit SlotForwardingCvar(ICvar* engine) : m_engine(engine) { CopySplitScreenSlots(); }
 
-    // --- IAppSystem: never called by CounterStrikeSharp; compiled calls ---
-    bool Connect(CreateInterfaceFn factory) override { return m_engine->Connect(factory); }
-    void Disconnect() override { m_engine->Disconnect(); }
-    void* QueryInterface(const char* name) override { return m_engine->QueryInterface(name); }
-    InitReturnVal_t Init() override { return m_engine->Init(); }
-    void Shutdown() override { m_engine->Shutdown(); }
-    void PreShutdown() override { m_engine->PreShutdown(); }
-    const AppSystemInfo_t* GetDependencies() override { return m_engine->GetDependencies(); }
-    AppSystemTier_t GetTier() override { return m_engine->GetTier(); }
-    void Reconnect(CreateInterfaceFn factory, const char* name) override { m_engine->Reconnect(factory, name); }
-    bool IsSingleton() override { return m_engine->IsSingleton(); }
-    BuildType_t GetBuildType() override { return m_engine->GetBuildType(); }
+    // --- IAppSystem: never called by CounterStrikeSharp; not Slot Bindings ---
+    bool Connect(CreateInterfaceFn) override { return NotASlotBinding<bool>("Connect"); }
+    void Disconnect() override { NotASlotBinding("Disconnect"); }
+    void* QueryInterface(const char*) override { return NotASlotBinding<void*>("QueryInterface"); }
+    InitReturnVal_t Init() override { return NotASlotBinding<InitReturnVal_t>("Init"); }
+    void Shutdown() override { NotASlotBinding("Shutdown"); }
+    void PreShutdown() override { NotASlotBinding("PreShutdown"); }
+    const AppSystemInfo_t* GetDependencies() override { return NotASlotBinding<const AppSystemInfo_t*>("GetDependencies"); }
+    AppSystemTier_t GetTier() override { return NotASlotBinding<AppSystemTier_t>("GetTier"); }
+    void Reconnect(CreateInterfaceFn, const char*) override { NotASlotBinding("Reconnect"); }
+    bool IsSingleton() override { return NotASlotBinding<bool>("IsSingleton"); }
+    BuildType_t GetBuildType() override { return NotASlotBinding<BuildType_t>("GetBuildType"); }
 
-    // --- ICvar, in vtable order. Slot Bindings where CounterStrikeSharp calls them; compiled calls otherwise ---
+    // --- ICvar, in vtable order. Slot Bindings where CounterStrikeSharp calls them; refused otherwise ---
     ConVarRef FindConVar(const char* name, bool allowDefensive) override
     {
         return Forward(m_findConVar, &ICvar::FindConVar, ConVarRef(), name, allowDefensive);
     }
-    ConVarRef FindFirstConVar() override { return m_engine->FindFirstConVar(); }
-    ConVarRef FindNextConVar(ConVarRef previous) override { return m_engine->FindNextConVar(previous); }
+    ConVarRef FindFirstConVar() override { return NotASlotBinding<ConVarRef>("FindFirstConVar"); }
+    ConVarRef FindNextConVar(ConVarRef) override { return NotASlotBinding<ConVarRef>("FindNextConVar"); }
     void CallChangeCallback(ConVarRef cvar, const CSplitScreenSlot slot, const CVValue_t* newValue, const CVValue_t* oldValue,
                             ConVarUserInfoSet_t* userInfo) override
     {
         ForwardVoid(m_callChangeCallback, &ICvar::CallChangeCallback, cvar, slot, newValue, oldValue, userInfo);
     }
-    void IterateConVarCallbacks(ConVarRef cvar, FnCvarCallbacksReader_t callback) override
-    {
-        m_engine->IterateConVarCallbacks(cvar, std::move(callback));
-    }
+    void IterateConVarCallbacks(ConVarRef, FnCvarCallbacksReader_t) override { NotASlotBinding("IterateConVarCallbacks"); }
     // An unusable filter refuses the change: the value is not modified.
     bool CallFilterCallback(ConVarRef cvar, const CSplitScreenSlot slot, const CVValue_t* newValue, const CVValue_t* oldValue,
                             ConVarUserInfoSet_t* userInfo) override
@@ -65,8 +76,8 @@ class SlotForwardingCvar final : public ICvar
     {
         return Forward(m_findConCommand, &ICvar::FindConCommand, ConCommandRef(), name, allowDefensive);
     }
-    ConCommandRef FindFirstConCommand() override { return m_engine->FindFirstConCommand(); }
-    ConCommandRef FindNextConCommand(ConCommandRef previous) override { return m_engine->FindNextConCommand(previous); }
+    ConCommandRef FindFirstConCommand() override { return NotASlotBinding<ConCommandRef>("FindFirstConCommand"); }
+    ConCommandRef FindNextConCommand(ConCommandRef) override { return NotASlotBinding<ConCommandRef>("FindNextConCommand"); }
     void DispatchConCommand(ConCommandRef command, const CCommandContext& context, const CCommand& args) override
     {
         ForwardVoid(m_dispatchConCommand, &ICvar::DispatchConCommand, command, context, args);
@@ -86,18 +97,14 @@ class SlotForwardingCvar final : public ICvar
         ForwardVoid(m_callGlobalChangeCallbacks, &ICvar::CallGlobalChangeCallbacks, ref, slot, newValue, oldValue, userInfo);
     }
 
-    void ResetConVarsToDefaultValuesByFlag(uint64 flag) override { m_engine->ResetConVarsToDefaultValuesByFlag(flag); }
-    void SetMaxSplitScreenSlots(int slots) override
-    {
-        m_engine->SetMaxSplitScreenSlots(slots);
-        CopySplitScreenSlots();
-    }
-    void RegisterCreationListeners(IConVarListener* callbacks) override { m_engine->RegisterCreationListeners(callbacks); }
-    void RemoveCreationListeners(IConVarListener* callbacks) override { m_engine->RemoveCreationListeners(callbacks); }
-    void ResetConVarsToDefaultValuesByName(const char* prefix) override { m_engine->ResetConVarsToDefaultValuesByName(prefix); }
-    ConVarSnapshot_t* TakeConVarSnapshot() override { return m_engine->TakeConVarSnapshot(); }
-    void ResetConVarsToSnapshot(ConVarSnapshot_t* snapshot) override { m_engine->ResetConVarsToSnapshot(snapshot); }
-    void DestroyConVarSnapshot(ConVarSnapshot_t* snapshot) override { m_engine->DestroyConVarSnapshot(snapshot); }
+    void ResetConVarsToDefaultValuesByFlag(uint64) override { NotASlotBinding("ResetConVarsToDefaultValuesByFlag"); }
+    void SetMaxSplitScreenSlots(int) override { NotASlotBinding("SetMaxSplitScreenSlots"); }
+    void RegisterCreationListeners(IConVarListener*) override { NotASlotBinding("RegisterCreationListeners"); }
+    void RemoveCreationListeners(IConVarListener*) override { NotASlotBinding("RemoveCreationListeners"); }
+    void ResetConVarsToDefaultValuesByName(const char*) override { NotASlotBinding("ResetConVarsToDefaultValuesByName"); }
+    ConVarSnapshot_t* TakeConVarSnapshot() override { return NotASlotBinding<ConVarSnapshot_t*>("TakeConVarSnapshot"); }
+    void ResetConVarsToSnapshot(ConVarSnapshot_t*) override { NotASlotBinding("ResetConVarsToSnapshot"); }
+    void DestroyConVarSnapshot(ConVarSnapshot_t*) override { NotASlotBinding("DestroyConVarSnapshot"); }
 
     // An unusable character set tokenizes on whitespace only (no break characters) rather than crash.
     characterset_t* GetCharacterSet() override
@@ -105,17 +112,11 @@ class SlotForwardingCvar final : public ICvar
         static characterset_t noBreakCharacters{};
         return Forward(m_getCharacterSet, &ICvar::GetCharacterSet, &noBreakCharacters);
     }
-    void SetConVarsFromGameInfo(KeyValues* keyValues) override { m_engine->SetConVarsFromGameInfo(keyValues); }
-    void StripDevelopmentFlags() override { m_engine->StripDevelopmentFlags(); }
-    int GetTotalUserInfoCvarsByteSize() override { return m_engine->GetTotalUserInfoCvarsByteSize(); }
-    void CopyUserInfoCvarDefaults(ConVarUserInfoSet_t buffer, int from, int to, bool copyOrCleanup) override
-    {
-        m_engine->CopyUserInfoCvarDefaults(buffer, from, to, copyOrCleanup);
-    }
-    void GetCompletionResults(const CCommand& command, CUtlVector<CUtlString>& completions, bool* successful) override
-    {
-        m_engine->GetCompletionResults(command, completions, successful);
-    }
+    void SetConVarsFromGameInfo(KeyValues*) override { NotASlotBinding("SetConVarsFromGameInfo"); }
+    void StripDevelopmentFlags() override { NotASlotBinding("StripDevelopmentFlags"); }
+    int GetTotalUserInfoCvarsByteSize() override { return NotASlotBinding<int>("GetTotalUserInfoCvarsByteSize"); }
+    void CopyUserInfoCvarDefaults(ConVarUserInfoSet_t, int, int, bool) override { NotASlotBinding("CopyUserInfoCvarDefaults"); }
+    void GetCompletionResults(const CCommand&, CUtlVector<CUtlString>&, bool*) override { NotASlotBinding("GetCompletionResults"); }
 
     void RegisterConVar(const ConVarCreation_t& setup, uint64 additionalFlags, ConVarRef* ref, ConVarData** data) override
     {
@@ -125,7 +126,7 @@ class SlotForwardingCvar final : public ICvar
     {
         ForwardVoid(m_unregisterConVarCallbacks, &ICvar::UnregisterConVarCallbacks, cvar);
     }
-    void LockConVarValueInitialisation(bool state) override { m_engine->LockConVarValueInitialisation(state); }
+    void LockConVarValueInitialisation(bool) override { NotASlotBinding("LockConVarValueInitialisation"); }
     ConVarData* GetConVarData(ConVarRef cvar) override
     {
         return Forward(m_getConVarData, &ICvar::GetConVarData, static_cast<ConVarData*>(nullptr), cvar);
@@ -150,6 +151,15 @@ class SlotForwardingCvar final : public ICvar
     }
 
   private:
+    // A method CounterStrikeSharp never calls has no Slot Binding, so nothing verified a slot index for it: it is
+    // refused (logged once, empty value) instead of called at its compiled header position. A new caller adds the
+    // method as a Slot Binding first.
+    template <class R = void> R NotASlotBinding(const char* method)
+    {
+        ReportNotASlotBinding(method);
+        if constexpr (!std::is_void_v<R>) return R{};
+    }
+
     template <class F, class R, class... Args> R Forward(const std::optional<int>& slot, F method, R unusable, Args&&... args)
     {
         if (!slot) return unusable;

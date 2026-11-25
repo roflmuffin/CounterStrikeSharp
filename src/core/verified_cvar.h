@@ -7,8 +7,9 @@
 // CCvar in tier0, ADR-0003) and is called on the engine's CCvar at its verified (or healed) slot index, never at the
 // compiled header position. A method whose Slot Binding failed does nothing and returns an empty value (invalid
 // reference, nullptr, false); the Engine Features using it are disabled, so plugin-visible APIs refuse before reaching
-// it. Methods CounterStrikeSharp never calls keep their compiled calls. GetMaxSplitScreenSlots (not virtual) reads a
-// copy kept in sync.
+// it. Methods CounterStrikeSharp never calls have no Slot Binding and are never called at their compiled header
+// position: they are refused (logged once, empty value). GetMaxSplitScreenSlots (not virtual) reads a copy taken when
+// the forwarding ICvar is created.
 //
 // On Windows (no Vtable Check) it is the engine's ICvar itself: compiled calls, as before Slot Bindings.
 
