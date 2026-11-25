@@ -225,7 +225,8 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="mode">Whether to hook before or after the command is executed.</param>
         public void AddCommandListener(string? name, CommandInfo.CommandListenerCallback handler, HookMode mode = HookMode.Pre)
         {
-            // Registers either way: on a disabled cssharp.player/client-commands, client-typed commands never reach it.
+            // Registers either way: on a disabled cssharp.player/client-commands (client-typed commands) or
+            // cssharp.commands/console-dispatch (console-issued commands), those commands never reach it.
             Bindings.ListenerEngineFeatures.CheckCommandListenerRegistration(EngineFeatures.Current,
                 Logger ?? Application.Instance.Logger, this);
 

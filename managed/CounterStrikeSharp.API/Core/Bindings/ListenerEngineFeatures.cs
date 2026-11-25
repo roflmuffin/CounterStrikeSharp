@@ -58,12 +58,18 @@ internal static class ListenerEngineFeatures
         features.CheckRegistration(feature, $"{listenerName} listener", logger, registrant);
 
     /// <summary>
-    /// Command listeners (<see cref="BasePlugin.AddCommandListener"/>) see commands a player types through the
-    /// IServerGameClients ClientCommand hook. On a disabled <c>cssharp.player/client-commands</c> they still register
-    /// (and still see console-dispatched commands), but client-typed commands never reach them, so this logs once and
-    /// returns false.
+    /// Command listeners (<see cref="BasePlugin.AddCommandListener"/>) see commands from two hooks: a player's typed
+    /// commands through IServerGameClients ClientCommand (<c>cssharp.player/client-commands</c>) and console-issued
+    /// commands through ICvar DispatchConCommand (<c>cssharp.commands/console-dispatch</c>). They always register; for
+    /// each of the two Engine Features that is disabled this logs once that those commands never reach the listener,
+    /// and returns false if either is disabled.
     /// </summary>
-    public static bool CheckCommandListenerRegistration(EngineFeatureSet features, ILogger logger, object? registrant = null) =>
-        features.CheckRegistration(EngineFeatureNames.PlayerClientCommands, "Command listener on client-typed commands", logger,
-            registrant);
+    public static bool CheckCommandListenerRegistration(EngineFeatureSet features, ILogger logger, object? registrant = null)
+    {
+        var clientTyped = features.CheckRegistration(EngineFeatureNames.PlayerClientCommands,
+            "Command listener on client-typed commands", logger, registrant);
+        var consoleIssued = features.CheckRegistration(EngineFeatureNames.CommandsConsoleDispatch,
+            "Command listener on console-issued commands", logger, registrant);
+        return clientTyped && consoleIssued;
+    }
 }
