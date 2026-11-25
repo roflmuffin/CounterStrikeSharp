@@ -1,19 +1,32 @@
 #pragma once
 
 // Calling a method through its Slot Binding (ADR-0003): at the slot index the boot Vtable Check verified (or healed),
-// not at the compiled header position. The caller gates on the method's Engine Feature first and looks the index up
-// once (the Resolution Report is immutable after boot):
-//   static const auto slot = bindings::GetBindingSlot("ISource2Server::IsPaused");
-//   return CallSlot(slot, &ISource2Server::IsPaused, globals::server);
+// not at the compiled header position. The caller gates on the method's Engine Feature first; the index is read from
+// the current Resolution Report on each call (an indexed lookup), so a new report is followed:
+//   constexpr SlotMethod kIsPaused{ bindings::slots::ISource2Server_IsPaused, &ISource2Server::IsPaused };
+//   return CallSlot(kIsPaused, globals::server);
 
 #include <cstdint>
 #include <cstring>
 #include <optional>
 #include <stdexcept>
+#include <string_view>
 #include <type_traits>
 #include <utility>
 
+#include "core/core_bindings.h"
+
 namespace counterstrikesharp {
+
+// A Slot Binding of a method: its Gamedata key (core/slot_binding_keys.h) and the method, whose type is the call's or
+// hook's signature (and, on Windows, gives its compiled header index).
+template <class F> struct SlotMethod
+{
+    static_assert(std::is_member_function_pointer_v<F>, "F must be a member function pointer");
+    std::string_view key;
+    F method;
+};
+template <class F> SlotMethod(std::string_view, F) -> SlotMethod<F>;
 
 namespace detail {
 // The member function pointer of type F that calls address directly (non-virtual, no this adjustment): Itanium
@@ -94,6 +107,19 @@ R CallSlot(std::optional<int> index, R (C::*method)(Params..., ...), C* instance
 #endif
     }
     return detail::CallAtIndex(*index, method, instance, std::forward<Args>(args)...);
+}
+
+// Calls slot.method on instance at the index report states for the Slot Binding (see CallSlot above).
+template <class F, class C, class... Args>
+decltype(auto) CallSlot(const bindings::ResolutionReport& report, const SlotMethod<F>& slot, C* instance, Args&&... args)
+{
+    return CallSlot(bindings::SlotIndexOf(report, slot.key), slot.method, instance, std::forward<Args>(args)...);
+}
+
+// As above, on the core Resolution Report.
+template <class F, class C, class... Args> decltype(auto) CallSlot(const SlotMethod<F>& slot, C* instance, Args&&... args)
+{
+    return CallSlot(bindings::CoreResolutionReport(), slot, instance, std::forward<Args>(args)...);
 }
 
 } // namespace counterstrikesharp

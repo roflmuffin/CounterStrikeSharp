@@ -25,6 +25,7 @@
 #include "core/gameconfig_updater.h"
 #include "core/global_listener.h"
 #include "core/log.h"
+#include "core/slot_binding_keys.h"
 #include "core/slot_hooks.h"
 #include "core/verified_cvar.h"
 #include "core/managers/entity_manager.h"
@@ -184,24 +185,25 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         // By the slot index the boot Vtable Check verified. Disabled game-frame: no ticks, timers or frame tasks; the
         // server keeps running and the startup report names the failed Binding.
         if (bindings::ShouldRegisterHooks(bindings::features::GameFrame, "GameFrame hook"))
-            HookSlot(m_hooks, "ISource2Server::GameFrame", &IServerGameDLL::GameFrame, globals::server, this, nullptr,
-                     &CounterStrikeSharpMMPlugin::Hook_GameFrame);
+            HookSlot(m_hooks, SlotMethod{ bindings::slots::ISource2Server_GameFrame, &IServerGameDLL::GameFrame }, globals::server, this,
+                     nullptr, &CounterStrikeSharpMMPlugin::Hook_GameFrame);
         // Never-moved interfaces, hooked by verified slot index too. Disabled startup: no entity system or OnMapStart;
         // disabled loop-mode: game event hooks registered before the game loop are never flushed (game-events needs it).
         if (bindings::ShouldRegisterHooks(bindings::features::Startup, "StartupServer hook"))
-            HookSlot(m_hooks, "INetworkServerService::StartupServer", &INetworkServerService::StartupServer, globals::networkServerService,
-                     this, nullptr, &CounterStrikeSharpMMPlugin::Hook_StartupServer);
+            HookSlot(m_hooks, SlotMethod{ bindings::slots::INetworkServerService_StartupServer, &INetworkServerService::StartupServer },
+                     globals::networkServerService, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_StartupServer);
         if (bindings::ShouldRegisterHooks(bindings::features::LoopMode, "loop mode hooks"))
         {
-            HookSlot(m_hooks, "IEngineServiceMgr::RegisterLoopMode", &IEngineServiceMgr::RegisterLoopMode, globals::engineServiceManager,
-                     this, &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, nullptr);
-            HookSlot(m_hooks, "IEngineServiceMgr::FindService", &IEngineServiceMgr::FindService, globals::engineServiceManager, this,
-                     nullptr, &CounterStrikeSharpMMPlugin::Hook_FindService);
+            HookSlot(m_hooks, SlotMethod{ bindings::slots::IEngineServiceMgr_RegisterLoopMode, &IEngineServiceMgr::RegisterLoopMode },
+                     globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, nullptr);
+            HookSlot(m_hooks, SlotMethod{ bindings::slots::IEngineServiceMgr_FindService, &IEngineServiceMgr::FindService },
+                     globals::engineServiceManager, this, nullptr, &CounterStrikeSharpMMPlugin::Hook_FindService);
         }
 
         // Gated with the CGameEventManager_Init hook in globals::InitializeHooks (which logs when game events are disabled).
         if (bindings::IsEngineFeatureAvailable(bindings::features::GameEvents))
-            HookSlotVTable(m_hooks, "IGameEventManager2::LoadEventsFromFile", &IGameEventManager2::LoadEventsFromFile,
+            HookSlotVTable(m_hooks,
+                           SlotMethod{ bindings::slots::IGameEventManager2_LoadEventsFromFile, &IGameEventManager2::LoadEventsFromFile },
                            reinterpret_cast<void**>(bindings::GetBindingAddress("CGameEventManager")), this,
                            &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr);
 

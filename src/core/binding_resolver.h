@@ -183,12 +183,18 @@ class ResolutionReport
 
     [[nodiscard]] const std::string& BuildId() const { return m_buildId; }
     [[nodiscard]] const std::vector<BindingResult>& Bindings() const { return m_bindings; }
+    // By key, through an index built with the report (no scan): native code reads Bindings by key on hot paths.
     [[nodiscard]] const BindingResult* Find(std::string_view key) const;
 
   private:
     std::string m_buildId;
     std::vector<BindingResult> m_bindings;
+    std::map<std::string, std::size_t, std::less<>> m_index; // key -> position in m_bindings
 };
+
+// The slot index to use for a usable Slot Binding (resolved, healed or unverified); nullopt if it failed, is not a Slot
+// Binding, is not in the report, or (Windows) has no Gamedata index, where the caller's compiled header index applies.
+std::optional<int> SlotIndexOf(const ResolutionReport& report, std::string_view key);
 
 // The resolver seam (ADR-0004): Gamedata and the loaded modules in, the Resolution Report out. Every Binding is resolved
 // through one of these; no other code locates Bindings in binaries. An external resolver plugs in as another adapter.

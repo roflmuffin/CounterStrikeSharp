@@ -147,12 +147,7 @@ std::optional<std::int64_t> GetBindingOffset(std::string_view key)
     return binding->offset;
 }
 
-std::optional<int> GetBindingSlot(std::string_view key)
-{
-    const auto* binding = coreReport.Find(key);
-    if (binding == nullptr || !binding->Resolved() || binding->kind != BindingKind::Slot || binding->offset < 0) return std::nullopt;
-    return static_cast<int>(binding->offset);
-}
+std::optional<int> GetBindingSlot(std::string_view key) { return SlotIndexOf(coreReport, key); }
 
 SignatureScan ScanModuleSignature(const char* moduleName, std::string_view signature)
 {

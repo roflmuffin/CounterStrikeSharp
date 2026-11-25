@@ -29,7 +29,10 @@ void* GetBindingAddress(std::string_view key);
 std::optional<std::int64_t> GetBindingOffset(std::string_view key);
 
 // Slot index of a verified (or unverified) Slot Binding; nullopt if it failed, is not declared, or (Windows) has no
-// Gamedata index, in which case the caller's compiled header index applies. See HookSet::AddBySlot.
+// Gamedata index, in which case the caller's compiled header index applies (see core/slot_calls.h, core/slot_hooks.h).
+//
+// These lookups read the current report by key through its index on every call, so they stay cheap on hot paths and
+// follow a new report when one replaces it (ADR-0002); callers do not cache their results.
 std::optional<int> GetBindingSlot(std::string_view key);
 
 // Scans a raw (plugin-supplied) signature in the module named as for FindSignature, counting matches across all of its
