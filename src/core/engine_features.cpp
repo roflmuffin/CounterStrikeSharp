@@ -26,6 +26,16 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
     // Server lifecycle: ticks, timers and frame-scheduled tasks
     { std::string(features::GameFrame), { Slot("ISource2Server::GameFrame") } },
+    // The other ISource2Server hooks (server lifecycle listeners) and its direct calls
+    { std::string(features::HibernationEvents), { Slot("ISource2Server::ServerHibernationUpdate") } },
+    { std::string(features::SteamApiEvents),
+      { Slot("ISource2Server::GameServerSteamAPIActivated"), Slot("ISource2Server::GameServerSteamAPIDeactivated") } },
+    { std::string(features::HostnameChanged), { Slot("ISource2Server::OnHostNameChanged") } },
+    { std::string(features::FatalShutdown), { Slot("ISource2Server::PreFatalShutdown") } },
+    { std::string(features::UpdateWhenNotInGame), { Slot("ISource2Server::UpdateWhenNotInGame") } },
+    { std::string(features::PreWorldUpdate), { Slot("ISource2Server::PreWorldUpdate") } },
+    { std::string(features::EconItemSystem), { Slot("ISource2Server::GetEconItemSystem") } },
+    { std::string(features::IsPaused), { Slot("ISource2Server::IsPaused") } },
     // Events and networking
     { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },

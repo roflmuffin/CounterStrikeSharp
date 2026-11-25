@@ -15,6 +15,14 @@ internal static class ListenerEngineFeatures
         ["OnPlayerChat"] = EngineFeatureNames.ChatSayHooks,
         // Server lifecycle (GameFrame)
         ["OnTick"] = EngineFeatureNames.ServerGameFrame,
+        // Server lifecycle (the other ISource2Server hooks)
+        ["OnServerHibernationUpdate"] = EngineFeatureNames.ServerHibernationEvents,
+        ["OnGameServerSteamAPIActivated"] = EngineFeatureNames.ServerSteamApiEvents,
+        ["OnGameServerSteamAPIDeactivated"] = EngineFeatureNames.ServerSteamApiEvents,
+        ["OnHostNameChanged"] = EngineFeatureNames.ServerHostnameChanged,
+        ["OnPreFatalShutdown"] = EngineFeatureNames.ServerFatalShutdown,
+        ["OnUpdateWhenNotInGame"] = EngineFeatureNames.ServerUpdateWhenNotInGame,
+        ["OnServerPreWorldUpdate"] = EngineFeatureNames.ServerPreWorldUpdate,
         // Player authorization (IVEngineServer2 auth checks on every frame)
         ["OnClientAuthorized"] = EngineFeatureNames.PlayerAuthorization,
         // Networking

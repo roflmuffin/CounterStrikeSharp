@@ -92,9 +92,15 @@ TEST_CASE("Committed Gamedata states every IVEngineServer2 Slot Binding on CEngi
 }
 
 namespace {
-struct FakeUserId
+// Like CPlayerUserId: a class returned by value, with no default value.
+class FakeUserId
 {
-    short value;
+  public:
+    explicit FakeUserId(int value) : m_value(static_cast<unsigned short>(value)) {}
+    int Get() const { return m_value; }
+
+  private:
+    unsigned short m_value;
 };
 
 // Slots in declaration order: 0 First, 1 Second, 2 Print, 3 UserIdOf.
@@ -112,7 +118,7 @@ class FakeEngineServer
         va_end(args);
         printed = std::to_string(slot) + ":" + buffer;
     }
-    virtual FakeUserId UserIdOf(int slot) { return { static_cast<short>(slot + 1) }; }
+    virtual FakeUserId UserIdOf(int slot) { return FakeUserId(slot + 1); }
 
     std::string printed;
 
@@ -127,17 +133,21 @@ class LiveEngineServer final : public FakeEngineServer
 };
 } // namespace
 
-TEST_CASE("A direct call through a Slot Binding runs the function at the given slot, not at the method's compiled position")
+TEST_CASE("CallSlot runs the function at the given slot for the engine server's call shapes: C varargs and class returns")
 {
     LiveEngineServer engine;
     FakeEngineServer* instance = &engine;
 
     // The method only supplies the signature.
-    CHECK(CallAtSlot(1, &FakeEngineServer::First, instance, 5) == 205);
-    CHECK(CallAtSlot(0, &FakeEngineServer::Second, instance, 5) == 105);
+    CHECK(CallSlot(1, &FakeEngineServer::First, instance, 5) == 205);
 
-    CallAtSlot(2, &FakeEngineServer::Print, instance, 3, "%d-%s", 7, "x");
+    CallSlot(2, &FakeEngineServer::Print, instance, 3, "%d-%s", 7, "x");
     CHECK(engine.printed == "3:7-x");
 
-    CHECK(CallAtSlot(3, &FakeEngineServer::UserIdOf, instance, 41).value == 42);
+    CHECK(CallSlot(3, &FakeEngineServer::UserIdOf, instance, 41).Get() == 42);
+
+    // Without an index nothing is called (Linux); a return type without a default value is the caller's to check first.
+    CallSlot(std::nullopt, &FakeEngineServer::Print, instance, 1, "%s", "y");
+    CHECK(engine.printed == "3:7-x");
+    CHECK_THROWS_AS(CallSlot(std::nullopt, &FakeEngineServer::UserIdOf, instance, 1), std::logic_error);
 }
