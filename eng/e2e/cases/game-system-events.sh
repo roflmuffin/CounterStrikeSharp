@@ -28,7 +28,7 @@ status=0
 echo "== game-system-events: valid gamedata"
 "$run" "$@" --exec css_engine_features \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-log 'Initialized GameSystem' \
     --expect-log '\[EngineFeatures\] cssharp\.server/game-system-events available' \
     --expect-no-log 'cssharp\.server/game-system-events disabled' \

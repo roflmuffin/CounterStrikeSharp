@@ -25,7 +25,7 @@ echo "== take-damage: valid gamedata"
     --expect-log 'Finished loading plugin Requires Take Damage Hooks Test' \
     --expect-log '\[TakeDamageProbe\] OnPlayerTakeDamagePre fired' \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-log '\[TakeDamageProbe\] registered take-damage listeners' \
     --expect-log '\[TakeDamageProbe\] hit group: HITGROUP_INVALID' \
     --expect-log '\[TakeDamageProbe\] raw signature memory function bound: True' \

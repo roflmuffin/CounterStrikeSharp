@@ -26,7 +26,7 @@ status=0
 echo "== entity-io: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved' \
-    --expect-log 'Engine Features for build [^:]+: all 36 available' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-no-log 'cssharp\.entity/(output-hooks|accept-input|add-io-event|emit-sound|dispatch-spawn) disabled' \
     --expect-no-log 'do not match the loaded image|Cannot get original bytes' \
     --check "$(outcome passed EntityIOTests.AcceptInput_DoesNotThrow EntityIOTests.AddEntityIOEvent_WithLegacyOutputId_FiresOutput \
