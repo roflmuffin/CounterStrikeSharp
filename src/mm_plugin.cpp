@@ -182,18 +182,24 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
         if (bindings::ShouldRegisterHooks(bindings::features::GameFrame, "GameFrame hook"))
             HookSlot(m_hooks, "ISource2Server::GameFrame", &IServerGameDLL::GameFrame, globals::server, this, nullptr,
                      &CounterStrikeSharpMMPlugin::Hook_GameFrame);
-        m_hooks.Add(&INetworkServerService::StartupServer, globals::networkServerService, this, nullptr,
-                    &CounterStrikeSharpMMPlugin::Hook_StartupServer);
-        m_hooks.Add(&IEngineServiceMgr::RegisterLoopMode, globals::engineServiceManager, this,
-                    &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, nullptr);
-        m_hooks.Add(&IEngineServiceMgr::FindService, globals::engineServiceManager, this, nullptr,
-                    &CounterStrikeSharpMMPlugin::Hook_FindService);
+        // Never-moved interfaces, hooked by verified slot index too. Disabled startup: no entity system or OnMapStart;
+        // disabled loop-mode: game event hooks registered before the game loop are never flushed (game-events needs it).
+        if (bindings::ShouldRegisterHooks(bindings::features::Startup, "StartupServer hook"))
+            HookSlot(m_hooks, "INetworkServerService::StartupServer", &INetworkServerService::StartupServer, globals::networkServerService,
+                     this, nullptr, &CounterStrikeSharpMMPlugin::Hook_StartupServer);
+        if (bindings::ShouldRegisterHooks(bindings::features::LoopMode, "loop mode hooks"))
+        {
+            HookSlot(m_hooks, "IEngineServiceMgr::RegisterLoopMode", &IEngineServiceMgr::RegisterLoopMode, globals::engineServiceManager,
+                     this, &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, nullptr);
+            HookSlot(m_hooks, "IEngineServiceMgr::FindService", &IEngineServiceMgr::FindService, globals::engineServiceManager, this,
+                     nullptr, &CounterStrikeSharpMMPlugin::Hook_FindService);
+        }
 
         // Gated with the CGameEventManager_Init hook in globals::InitializeHooks (which logs when game events are disabled).
         if (bindings::IsEngineFeatureAvailable(bindings::features::GameEvents))
-            m_hooks.AddGlobal(&IGameEventManager2::LoadEventsFromFile,
-                              reinterpret_cast<void**>(bindings::GetBindingAddress("CGameEventManager")), this,
-                              &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr);
+            HookSlotVTable(m_hooks, "IGameEventManager2::LoadEventsFromFile", &IGameEventManager2::LoadEventsFromFile,
+                           reinterpret_cast<void**>(bindings::GetBindingAddress("CGameEventManager")), this,
+                           &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile, nullptr);
 
         // .NET failing to start is fatal (ADR-0002): CounterStrikeSharp refuses to load. Undo what the managers registered
         // with the engine; the guard removes every hook. Before the game system, which cannot be taken out again.
@@ -237,8 +243,10 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_StartupServer(INetworkServe
 
     globals::timerSystem.OnStartupServer();
 
+    // Null while cssharp.server/global-vars is disabled: the map name is unknown, the entity system still starts.
+    const auto* globalVars = globals::getGlobalVars();
     on_activate_callback->ScriptContext().Reset();
-    on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
+    on_activate_callback->ScriptContext().Push(globalVars ? globalVars->mapname.ToCStr() : "");
     on_activate_callback->Execute();
     return { KHook::Action::Ignore };
 }

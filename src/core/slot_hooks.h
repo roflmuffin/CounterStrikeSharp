@@ -30,4 +30,17 @@ bool HookSlot(HookSet& hooks, std::string_view key, F method, Instance* instance
     return true;
 }
 
+// As HookSlot, for every instance sharing vtable (e.g. a class's vtable found by RTTI).
+template <class F, class Context, class Pre, class Post>
+bool HookSlotVTable(HookSet& hooks, std::string_view key, F method, void** vtable, Context* context, Pre pre, Post post)
+{
+    auto index = bindings::GetBindingSlot(key);
+#ifdef _WIN32
+    if (!index) index = KHook::GetVtableIndex(method);
+#endif
+    if (!index) return false;
+    hooks.AddVTableIndex(*index, method, vtable, context, pre, post);
+    return true;
+}
+
 } // namespace counterstrikesharp

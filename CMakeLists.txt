@@ -85,6 +85,8 @@ set(SOURCE_FILES
     src/core/engine_features.cpp
     src/core/core_bindings.h
     src/core/core_bindings.cpp
+    src/core/compiled_slots.h
+    src/core/compiled_slots.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.cpp

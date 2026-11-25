@@ -113,6 +113,17 @@ class HookSet
         m_hooks.push_back(std::move(hook));
     }
 
+    // As AddGlobal, at a runtime slot index (e.g. a verified Slot Binding); function only supplies the signature.
+    template <class F, class Context, class Pre, class Post>
+    void AddVTableIndex(int index, F function, void** vtable, Context* context, Pre pre, Post post)
+    {
+        if (!vtable) throw std::runtime_error("Cannot hook a null vtable");
+        if (index < 0) throw std::runtime_error("Invalid virtual hook index");
+        auto hook = std::make_unique<typename VirtualHookType<F>::Type>(static_cast<uint32_t>(index), context, pre, post);
+        hook->AddVTable(vtable);
+        m_hooks.push_back(std::move(hook));
+    }
+
     template <class C, class R, class... Args, class Context, class Pre, class Post>
     void AddGlobalIndex(int index, void** vtable, Context* context, Pre pre, Post post)
     {

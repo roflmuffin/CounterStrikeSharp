@@ -14,6 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 #include "core/UserMessage.h"
+#include "core/core_bindings.h"
 #include "core/globals.h"
 #include "core/log.h"
 #include "core/managers/usermessage_manager.h"
@@ -733,6 +734,11 @@ static void UserMessageSetRecipients(ScriptContext& scriptContext)
 static void UserMessageSend(ScriptContext& scriptContext)
 {
     auto message = scriptContext.GetArgument<UserMessage*>(0);
+    if (!bindings::IsEngineFeatureAvailable(bindings::features::UserMessages))
+    {
+        scriptContext.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::UserMessages).c_str());
+        return;
+    }
 
     CRecipientFilter filter{};
 
