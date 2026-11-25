@@ -6,13 +6,34 @@ Spec: `.scratch/hardening-b-boot-verify/spec.md` (Hooks and calls through Slot B
 
 **Blocked by:** 03, 04
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · must
 
-- [ ] The catalog lists every IVEngineServer2-backed Engine Feature with its Slot Bindings
-- [ ] Vtable Check works on the engine2 module (class CEngineServer, exact-name lookup)
-- [ ] Real-build test (local): zero wrong resolutions on the archived engine2 pair
-- [ ] A failed engine Slot Binding disables only the Engine Features using it; calls throw the typed exception
-- [ ] End-to-end: one engine call's Slot Binding one off → heals; one corrupted → only its Engine Feature disabled, server up
-- [ ] Windows behaves as today
+- [x] The catalog lists every IVEngineServer2-backed Engine Feature with its Slot Bindings
+- [x] Vtable Check works on the engine2 module (class CEngineServer, exact-name lookup)
+- [x] Real-build test (local): zero wrong resolutions on the archived engine2 pair
+- [x] A failed engine Slot Binding disables only the Engine Features using it; calls throw the typed exception
+- [x] End-to-end: one engine call's Slot Binding one off → heals; one corrupted → only its Engine Feature disabled, server up
+- [x] Windows behaves as today (not compiled or run here; see Comments)
+
+## Comments
+
+- Resolved on `spec-b/07-ivengineserver2-hook-and-calls`. Native doctest: 104 cases / 2125 assertions pass locally with the archive (3 skipped: oracle and `CSSHARP_SERVER_BINARY` tests); CI mode (`CSSHARP_BUILD_ARCHIVE=/nonexistent`) 91 pass, 16 skipped. Managed unit tests 209 pass (before the final merge of 06/08). E2E `eng/e2e/cases/ivengineserver2.sh`, all three scenarios green: valid ("all 73 resolved", "all 56 available", no Heal, all 17 `EngineServerTests` pass), healed (`IsMapValid` stated at 32 heals to 33; native Heal line, startup report, `css_engine_features` shows "available, healed (IVEngineServer2::IsMapValid: slot 32 -> 33)", IsMapValid tests pass, installed Gamedata byte-identical after the run), corrupted (only `cssharp.server/is-map-valid` disabled, `Server.IsMapValid` throws the typed exception, frames/timers and every other engine call work, server up). Smoke failures in those runs are the known flaky ones (`RealConVarTests.CreatedConVarIsAccessibleFromServerConsole`, `CommandTests.CanTriggerCommandsWithSilentChatTrigger`/`IssueServerCommand`, `GameEventTests.CanRegisterAndDeregisterEventHandlers`; the CommandTests also fail on the base build 4f052381 in other runs).
+- **Enumeration (decision 8):** 12 IVEngineServer2 slots in use, all on CEngineServer (engine2), Linux index = SDK header index (identical in the 1.41.9.7 and 1.42.0.1 headers): SetClientListening 92 (hook), ServerCommand 45, IsMapValid 33, PrecacheGeneric 37, GetPlayerUserId 39, ClientPrintf 47, GetClientConVarValue 53, SetFakeClientConVarValue 77, ClientCommand 46, DisconnectClient 88, IsClientFullyAuthenticated 75, GetClientSteamID 70. Not the spec's "about 20".
+  - `GetGameDir` is no longer called: it runs before Gamedata is read (it locates Gamedata and steam.inf), so it cannot be verified first. `utils::GameDirectory()` now takes `ISmmAPI::GetBaseDir()`, which Metamod fills from the same engine call to find and load our plugin, so it is proven right by our being loaded.
+  - `GetPlayerNetInfo` was only used by dead `CPlayer` helpers. Removed with them: `Kick`, `PrintToConsole`, `GetKeyValue`, `GetNetInfo`, `GetTimeConnected`, `IsAuthStringValidated` and the non-const `GetUserId` (no callers).
+- **New Engine Features (permanent; spec catalog table updated):** `cssharp.player/set-listening` (SetClientListening hook: setting `VoiceFlags`, `SetListenOverride`), `cssharp.server/execute-command` (`Server.ExecuteCommand`), `cssharp.server/is-map-valid` (`Server.IsMapValid`), `cssharp.server/precache-model` (`Server.PrecacheModel`), `cssharp.player/user-id` (`UserId`), `cssharp.player/print-to-console` (`PrintToConsole`), `cssharp.player/get-convar-value` (`GetConVarValue`), `cssharp.player/set-fake-client-convar` (`SetFakeClientConVar`), `cssharp.player/execute-client-command` (`ExecuteClientCommand`), `cssharp.player/disconnect` (`Disconnect`), `cssharp.player/authorization` (IsClientFullyAuthenticated + GetClientSteamID: the `OnClientAuthorized` listener and `AuthorizedSteamID`). Names follow the API (verb form, like change-team/respawn). Generated enum members: `PlayerGetConvarValue`, `PlayerSetFakeClientConvar` (the generator's casing of "convar").
+- **What landed:**
+  - Gamedata: 12 `IVEngineServer2::<Method>` Slot Bindings (class `CEngineServer`, library `engine`), bootstrapped on 1.42.0.1 with `gamedata-generator bootstrap`; no `offsets.windows` (Windows uses the compiled index, unverified, as today).
+  - `src/core/engine_server_calls.{h,cpp}`: one function per call, each through `CallSlot(GetBindingSlot("IVEngineServer2::X"), ...)` with the index looked up once. Natives gate first with `RequireEngineFeature` (new `src/scripting/engine_feature_natives.h`, the spec A wording). `RunAuthChecks` returns early while authorization is disabled. The user-id lookup writes skip a negative id (before, `GetPlayerUserId` = -1 indexed the table at -1). SetClientListening is hooked with `HookSlot`, gated by `ShouldRegisterHooks`. The voice setter natives throw while set-listening is disabled; getters do not.
+  - Managed: every API above calls `EngineFeatures.Current.ThrowIfUnavailable` before the native call (and before the entity check); `OnClientAuthorized` → `cssharp.player/authorization` in `ListenerEngineFeatures`.
+  - Tests: `tests/native/engine_server_test.cpp` (catalog rows, committed Gamedata shape and header indices, `CallSlot` with C varargs and a class return without a default value); `archive_test.cpp`: committed Bindings resolve by window on both 1.41.9.7 and 1.42.0.1 engine2; **every CEngineServer slot bootstrapped on 1.41.9.7 resolves on 1.42.0.1 at its own index, 123 of 123, none elsewhere** (zero wrong; engine2 moved nothing in that pair, the only archived engine2 pair); IsMapValid at 32 heals to 33, a corrupted fingerprint fails only it. Managed `EngineServerEngineFeatureTests` (typed exception per API, one failed Binding disables only its feature, OnClientAuthorized warns). Smoke `EngineServerTests` (17).
+- **Merge with ticket 05 (`CallSlot`):** adopted 05's `src/core/slot_calls.h` instead of my parallel helper. Changes to it: (1) it calls through a member function pointer built from the slot's address instead of casting to a plain function, because MSVC x64 returns class types from member functions through a hidden pointer (a plain-function cast would break `CPlayerUserId` once Windows has Gamedata indices); (2) a C-variadic overload (`ClientCommand`); (3) on Linux without an index, a return type with no default value (`CPlayerUserId`) throws `std::logic_error` instead of failing to compile; `GetPlayerUserId` checks the index first. 05's tests pass unchanged.
+- **Deviations / notes:**
+  - `PrintToConsole` on a bot crashes the server in the engine's `ClientPrintf` (found by the first e2e run; the removed CPlayer helper skipped fake clients, the native never did). That is behaviour from before this ticket, so the smoke test does not call it on a bot. A guard in the native is a separate fix.
+  - `DisconnectClient` now goes through `globals::engine` (same instance as `globals::engineServer2`: same factory and interface version string).
+  - `ClientCommand` still passes the command as the format string, as before.
+  - Windows: not compiled or run here. No Windows Gamedata index, so `GetBindingSlot` is nullopt and `CallSlot`/`HookSlot` use the compiled header call/index, as before.
+  - The archive carry-forward test from ticket 04 hard-coded "1 carried"; it now checks that only the ISource2Server Bindings move and needs the engine module too.
+  - For the final review: natives_server.cpp (05) has its own local `ThrowUnavailable`; `RequireEngineFeature` could replace it. `HookSlot` and `CallSlot` each hold the Windows fallback.
