@@ -27,6 +27,11 @@ inline constexpr std::string_view PreWorldUpdate = "cssharp.server/pre-world-upd
 // Direct calls on ISource2Server, by verified slot index
 inline constexpr std::string_view EconItemSystem = "cssharp.server/econ-item-system";
 inline constexpr std::string_view IsPaused = "cssharp.server/is-paused";
+// Players and UI (hooks on IServerGameClients, by verified slot index)
+inline constexpr std::string_view PlayerConnectionEvents = "cssharp.player/connection-events";
+inline constexpr std::string_view PlayerClientCommands = "cssharp.player/client-commands";
+inline constexpr std::string_view PlayerVoiceEvents = "cssharp.player/voice-events";
+inline constexpr std::string_view UiCustomHudLayout = "cssharp.ui/custom-hud-layout";
 // Events and networking
 inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
 inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";
@@ -42,6 +47,15 @@ inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
 inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 // Take damage
 inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
+// Console commands and ConVars (ICvar, by verified slot index)
+inline constexpr std::string_view ConsoleDispatch = "cssharp.commands/console-dispatch";
+inline constexpr std::string_view AddCommand = "cssharp.commands/add-command";
+inline constexpr std::string_view ExecuteClientCommandFromServer = "cssharp.player/execute-client-command-from-server";
+inline constexpr std::string_view ConVarFind = "cssharp.convars/find";
+inline constexpr std::string_view ConVarRead = "cssharp.convars/read";
+inline constexpr std::string_view ConVarWrite = "cssharp.convars/write";
+inline constexpr std::string_view ConVarCreate = "cssharp.convars/create";
+inline constexpr std::string_view ConVarChangeEvents = "cssharp.convars/change-events";
 // Interfaces that never shifted a slot we use: hooks by verified slot index, direct calls compiled but verified
 inline constexpr std::string_view Startup = "cssharp.server/startup";
 inline constexpr std::string_view LoopMode = "cssharp.server/loop-mode";
