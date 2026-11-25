@@ -34,6 +34,8 @@ public class ServerGameClientsEngineFeatureTests
         new(EngineFeatureNames.PlayerClientCommands, [BindingDeclaration.Any("IServerGameClients::ClientCommand")]),
         new(EngineFeatureNames.PlayerVoiceEvents, [BindingDeclaration.Any("IServerGameClients::ClientVoice")]),
         new(EngineFeatureNames.UiCustomHudLayout, [BindingDeclaration.Any("IServerGameClients::ClientSvcUserMessage")]),
+        // Command listeners also see console-issued commands through the ICvar dispatch hook (ticket 08).
+        new(EngineFeatureNames.CommandsConsoleDispatch, [BindingDeclaration.Any("ICvar::DispatchConCommand")]),
     ];
 
     private static EngineFeatureSet WithFailed(string? failedKey)
@@ -133,5 +135,19 @@ public class ServerGameClientsEngineFeatureTests
         var message = Assert.Single(logger.Messages);
         Assert.Equal("Command listener on client-typed commands registered on cssharp.player/client-commands disabled " +
                      "(IServerGameClients::ClientCommand: fingerprint mismatch); it will never fire", message);
+    }
+
+    [Fact]
+    public void CommandListenersWarnOnceOnDisabledConsoleDispatch()
+    {
+        var set = WithFailed("ICvar::DispatchConCommand");
+        var logger = new CapturingLogger();
+
+        Assert.False(ListenerEngineFeatures.CheckCommandListenerRegistration(set, logger));
+        Assert.False(ListenerEngineFeatures.CheckCommandListenerRegistration(set, logger));
+
+        var message = Assert.Single(logger.Messages);
+        Assert.Equal("Command listener on console-issued commands registered on cssharp.commands/console-dispatch disabled " +
+                     "(ICvar::DispatchConCommand: fingerprint mismatch); it will never fire", message);
     }
 }
