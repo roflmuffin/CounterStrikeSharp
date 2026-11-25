@@ -42,6 +42,15 @@ inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
 inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 // Take damage
 inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
+// Console commands and ConVars (ICvar, by verified slot index)
+inline constexpr std::string_view ConsoleDispatch = "cssharp.commands/console-dispatch";
+inline constexpr std::string_view AddCommand = "cssharp.commands/add-command";
+inline constexpr std::string_view ExecuteClientCommandFromServer = "cssharp.player/execute-client-command-from-server";
+inline constexpr std::string_view ConVarFind = "cssharp.convars/find";
+inline constexpr std::string_view ConVarRead = "cssharp.convars/read";
+inline constexpr std::string_view ConVarWrite = "cssharp.convars/write";
+inline constexpr std::string_view ConVarCreate = "cssharp.convars/create";
+inline constexpr std::string_view ConVarChangeEvents = "cssharp.convars/change-events";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.

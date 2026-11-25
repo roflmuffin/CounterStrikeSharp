@@ -16,6 +16,7 @@
 
 #include <type_traits>
 
+#include "core/core_bindings.h"
 #include "core/log.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
@@ -89,8 +90,18 @@ template <typename T> void SetAllFlagsCompat(T* data, uint64_t desired)
 
 namespace counterstrikesharp {
 
+// Every ConVar native reaches ICvar (FindConVar, GetConVarData, the set callbacks, RegisterConVar) through the verified
+// g_pCVar. On a disabled Engine Feature (cssharp.convars/*) it throws instead.
+static bool RequireEngineFeature(ScriptContext& script_context, std::string_view feature)
+{
+    if (bindings::IsEngineFeatureAvailable(feature)) return true;
+    script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(feature).c_str());
+    return false;
+}
+
 static void SetConvarFlags(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarWrite)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
 
@@ -106,6 +117,7 @@ static void SetConvarFlags(ScriptContext& script_context)
 
 static void GetConvarFlags(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
 
@@ -120,6 +132,7 @@ static void GetConvarFlags(ScriptContext& script_context)
 
 static void GetConvarType(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
 
@@ -134,6 +147,7 @@ static void GetConvarType(ScriptContext& script_context)
 
 static void GetConvarName(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
 
@@ -148,6 +162,7 @@ static void GetConvarName(ScriptContext& script_context)
 
 static void GetConvarHelpText(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
 
@@ -167,6 +182,7 @@ static void GetConvarHelpText(ScriptContext& script_context)
 
 static void IsConvarValid(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     ConVarRefAbstract ref(convarAccessIndex);
     script_context.SetResult(ref.IsValidRef() && ref.IsConVarDataValid() && ref.IsConVarDataAvailable());
@@ -174,6 +190,7 @@ static void IsConvarValid(ScriptContext& script_context)
 
 static void GetConvarAccessIndexByName(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarFind)) return;
     auto convarName = script_context.GetArgument<const char*>(0);
     ConVarRef ref(convarName);
 
@@ -188,6 +205,7 @@ static void GetConvarAccessIndexByName(ScriptContext& script_context)
 
 static void GetConvarValueAsString(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
     CSplitScreenSlot server(0);
@@ -213,6 +231,7 @@ static void GetConvarValueAsString(ScriptContext& script_context)
 
 static void SetConvarValueAsString(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarWrite)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
     CSplitScreenSlot server(0);
@@ -239,6 +258,7 @@ static void SetConvarValueAsString(ScriptContext& script_context)
 
 static void GetConvarValue(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto cvar = ConVarRefAbstract(convarAccessIndex);
     CSplitScreenSlot server(0);
@@ -406,6 +426,7 @@ static ConVarData* GetConvarBoundData(ScriptContext& script_context)
 
 static void HasConvarBound(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto data = GetConvarBoundData(script_context);
     if (!data) return;
 
@@ -415,6 +436,7 @@ static void HasConvarBound(ScriptContext& script_context)
 
 template <bool Write> static void AccessConvarBound(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, Write ? bindings::features::ConVarWrite : bindings::features::ConVarRead)) return;
     auto data = GetConvarBoundData(script_context);
     if (!data) return;
 
@@ -476,6 +498,7 @@ template <bool Write> static void AccessConvarBound(ScriptContext& script_contex
 
 static void GetConvarValueAddress(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarRead)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto cvar = ConVarRefAbstract(convarAccessIndex);
     CSplitScreenSlot server(0);
@@ -497,6 +520,7 @@ static void GetConvarValueAddress(ScriptContext& script_context)
 
 static void SetConvarValue(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarWrite)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto cvar = ConVarRefAbstract(convarAccessIndex);
     CSplitScreenSlot server(0);
@@ -606,6 +630,7 @@ static void SetConvarValue(ScriptContext& script_context)
 
 static void CreateConVar(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarCreate)) return;
     auto name = script_context.GetArgument<const char*>(0);
     auto type = script_context.GetArgument<EConVarType>(1);
     auto helpText = script_context.GetArgument<const char*>(2);
@@ -710,6 +735,7 @@ static void CreateConVar(ScriptContext& script_context)
 
 static void DeleteConVar(ScriptContext& script_context)
 {
+    if (!RequireEngineFeature(script_context, bindings::features::ConVarCreate)) return;
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
     auto ref = ConVarRefAbstract(convarAccessIndex);
 

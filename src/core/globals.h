@@ -86,6 +86,7 @@ extern IPhysicsSurfaceProps* physicsSurfaceProps;
 extern IMDLCache* modelCache;
 extern IVoiceServer* voiceServer;
 extern CDotNetManager dotnetManager;
+// The engine's ICvar, for hooks. Calls go through g_pCVar, the verified ICvar (core/verified_cvar.h).
 extern ICvar* cvars;
 extern ISource2Server* server;
 extern CGlobalEntityList* globalEntityList;

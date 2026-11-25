@@ -18,6 +18,27 @@ public enum EngineFeature
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     ChatSayHooks = 2095797270,
 
+    /// <summary><c>cssharp.commands/add-command</c></summary>
+    CommandsAddCommand = -861877729,
+
+    /// <summary><c>cssharp.commands/console-dispatch</c></summary>
+    CommandsConsoleDispatch = -1314429302,
+
+    /// <summary><c>cssharp.convars/change-events</c></summary>
+    ConvarsChangeEvents = 1882013728,
+
+    /// <summary><c>cssharp.convars/create</c></summary>
+    ConvarsCreate = 1368476526,
+
+    /// <summary><c>cssharp.convars/find</c></summary>
+    ConvarsFind = -354104003,
+
+    /// <summary><c>cssharp.convars/read</c></summary>
+    ConvarsRead = -1177757182,
+
+    /// <summary><c>cssharp.convars/write</c></summary>
+    ConvarsWrite = -624576795,
+
     /// <summary><c>cssharp.entity/accept-input</c></summary>
     EntityAcceptInput = 1580885254,
 
@@ -105,6 +126,9 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     PlayerCommitSuicide = -525076719,
 
+    /// <summary><c>cssharp.player/execute-client-command-from-server</c></summary>
+    PlayerExecuteClientCommandFromServer = -489531223,
+
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     PlayerPostThinkHooks = 1406403779,
 
@@ -156,6 +180,27 @@ public static class EngineFeatureNames
 
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     public const string ChatSayHooks = "cssharp.chat/say-hooks";
+
+    /// <summary><c>cssharp.commands/add-command</c></summary>
+    public const string CommandsAddCommand = "cssharp.commands/add-command";
+
+    /// <summary><c>cssharp.commands/console-dispatch</c></summary>
+    public const string CommandsConsoleDispatch = "cssharp.commands/console-dispatch";
+
+    /// <summary><c>cssharp.convars/change-events</c></summary>
+    public const string ConvarsChangeEvents = "cssharp.convars/change-events";
+
+    /// <summary><c>cssharp.convars/create</c></summary>
+    public const string ConvarsCreate = "cssharp.convars/create";
+
+    /// <summary><c>cssharp.convars/find</c></summary>
+    public const string ConvarsFind = "cssharp.convars/find";
+
+    /// <summary><c>cssharp.convars/read</c></summary>
+    public const string ConvarsRead = "cssharp.convars/read";
+
+    /// <summary><c>cssharp.convars/write</c></summary>
+    public const string ConvarsWrite = "cssharp.convars/write";
 
     /// <summary><c>cssharp.entity/accept-input</c></summary>
     public const string EntityAcceptInput = "cssharp.entity/accept-input";
@@ -244,6 +289,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     public const string PlayerCommitSuicide = "cssharp.player/commit-suicide";
 
+    /// <summary><c>cssharp.player/execute-client-command-from-server</c></summary>
+    public const string PlayerExecuteClientCommandFromServer = "cssharp.player/execute-client-command-from-server";
+
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     public const string PlayerPostThinkHooks = "cssharp.player/post-think-hooks";
 
@@ -291,6 +339,13 @@ public static class EngineFeatureNames
     {
         EngineFeature.ChatClientPrint => ChatClientPrint,
         EngineFeature.ChatSayHooks => ChatSayHooks,
+        EngineFeature.CommandsAddCommand => CommandsAddCommand,
+        EngineFeature.CommandsConsoleDispatch => CommandsConsoleDispatch,
+        EngineFeature.ConvarsChangeEvents => ConvarsChangeEvents,
+        EngineFeature.ConvarsCreate => ConvarsCreate,
+        EngineFeature.ConvarsFind => ConvarsFind,
+        EngineFeature.ConvarsRead => ConvarsRead,
+        EngineFeature.ConvarsWrite => ConvarsWrite,
         EngineFeature.EntityAcceptInput => EntityAcceptInput,
         EngineFeature.EntityAddIoEvent => EntityAddIoEvent,
         EngineFeature.EntityCreate => EntityCreate,
@@ -320,6 +375,7 @@ public static class EngineFeatureNames
         EngineFeature.NetworkStateChanged => NetworkStateChanged,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
         EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
+        EngineFeature.PlayerExecuteClientCommandFromServer => PlayerExecuteClientCommandFromServer,
         EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,
         EngineFeature.PlayerRespawn => PlayerRespawn,
         EngineFeature.PlayerSetPawn => PlayerSetPawn,

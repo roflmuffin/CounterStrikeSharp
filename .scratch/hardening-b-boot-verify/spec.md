@@ -131,6 +131,13 @@ A generator carries Slot Bindings forward to a new build by aligning the previou
 | `cssharp.player/set-listening` | IVEngineServer2 SetClientListening |
 | `cssharp.ui/custom-hud-layout` | IServerGameClients ClientSvcUserMessage |
 | `cssharp.commands/console-dispatch` | ICvar DispatchConCommand |
+| `cssharp.commands/add-command` | ICvar FindConCommand, RegisterConCommand, GetConCommandData, UnregisterConCommandCallbacks, GetCharacterSet |
+| `cssharp.player/execute-client-command-from-server` | ICvar GetCharacterSet, FindConCommand, DispatchConCommand |
+| `cssharp.convars/find` | ICvar FindConVar, GetConVarData |
+| `cssharp.convars/read` | ICvar GetConVarData |
+| `cssharp.convars/write` | ICvar GetConVarData, CallFilterCallback, CallChangeCallback, CallGlobalChangeCallbacks, QueueThreadSetValue |
+| `cssharp.convars/create` | ICvar FindConVar, GetConVarData, RegisterConVar, UnregisterConVarCallbacks |
+| `cssharp.convars/change-events` | ICvar InstallGlobalChangeCallback, RemoveGlobalChangeCallback, GetConVarData |
 | `cssharp.network/user-messages` | IGameEventSystem PostEventAbstract |
 
 - `cssharp.events/game-events` (spec A) additionally depends on the game event manager's LoadEventsFromFile and FireEvent Slot Bindings.

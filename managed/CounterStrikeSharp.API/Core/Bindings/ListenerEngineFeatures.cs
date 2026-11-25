@@ -35,6 +35,8 @@ internal static class ListenerEngineFeatures
         ["OnEntityTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
         ["OnPlayerTakeDamagePre"] = EngineFeatureNames.EntityTakeDamageHooks,
         ["OnPlayerTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
+        // ConVars (ICvar global change callback)
+        ["OnConVarChanged"] = EngineFeatureNames.ConvarsChangeEvents,
     };
 
     /// <summary>

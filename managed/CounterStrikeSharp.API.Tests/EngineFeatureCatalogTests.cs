@@ -21,6 +21,25 @@ public class EngineFeatureCatalogTests : IDisposable
         ["cssharp.server/pre-world-update"] = ["ISource2Server::PreWorldUpdate"],
         ["cssharp.server/econ-item-system"] = ["ISource2Server::GetEconItemSystem"],
         ["cssharp.server/is-paused"] = ["ISource2Server::IsPaused"],
+        ["cssharp.commands/console-dispatch"] = ["ICvar::DispatchConCommand"],
+        ["cssharp.commands/add-command"] =
+        [
+            "ICvar::FindConCommand", "ICvar::RegisterConCommand", "ICvar::GetConCommandData", "ICvar::UnregisterConCommandCallbacks",
+            "ICvar::GetCharacterSet"
+        ],
+        ["cssharp.player/execute-client-command-from-server"] =
+            ["ICvar::GetCharacterSet", "ICvar::FindConCommand", "ICvar::DispatchConCommand"],
+        ["cssharp.convars/find"] = ["ICvar::FindConVar", "ICvar::GetConVarData"],
+        ["cssharp.convars/read"] = ["ICvar::GetConVarData"],
+        ["cssharp.convars/write"] =
+        [
+            "ICvar::GetConVarData", "ICvar::CallFilterCallback", "ICvar::CallChangeCallback", "ICvar::CallGlobalChangeCallbacks",
+            "ICvar::QueueThreadSetValue"
+        ],
+        ["cssharp.convars/create"] =
+            ["ICvar::FindConVar", "ICvar::GetConVarData", "ICvar::RegisterConVar", "ICvar::UnregisterConVarCallbacks"],
+        ["cssharp.convars/change-events"] =
+            ["ICvar::InstallGlobalChangeCallback", "ICvar::RemoveGlobalChangeCallback", "ICvar::GetConVarData"],
         ["cssharp.events/game-events"] = ["CGameEventManager_Init", "CGameEventManager"],
         ["cssharp.events/fire-event-to-client"] = ["LegacyGameEventListener"],
         ["cssharp.network/state-changed"] = ["NetworkStateChanged", "SetStateChanged"],
