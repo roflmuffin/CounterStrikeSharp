@@ -1,8 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
+using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
+/// <remarks>
+/// Every member reaches ICvar through an Engine Feature (<c>cssharp.convars/find</c>, <c>read</c>, <c>write</c>,
+/// <c>create</c>) and throws <see cref="EngineFeatureUnavailableException"/> while it is disabled.
+/// </remarks>
 public class ConVarBase : IEquatable<ConVarBase>
 {
     internal const ushort InvalidAccessIndex = ushort.MaxValue;
@@ -18,27 +23,68 @@ public class ConVarBase : IEquatable<ConVarBase>
         _identityAccessIndex = accessIndex;
     }
 
-    public string Name => NativeAPI.GetConvarName(AccessIndex);
-    public string Description => NativeAPI.GetConvarHelpText(AccessIndex);
+    // Before calling into the native, so a disabled Engine Feature throws the typed exception (the native refuses too).
+    private protected static void Require(string feature) => EngineFeatures.Current.ThrowIfUnavailable(feature);
+
+    public string Name
+    {
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarName(AccessIndex);
+        }
+    }
+
+    public string Description
+    {
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarHelpText(AccessIndex);
+        }
+    }
 
     /// <summary>
     /// The underlying data type of the ConVar.
     /// </summary>
-    public ConVarType Type => (ConVarType)NativeAPI.GetConvarType(AccessIndex);
+    public ConVarType Type
+    {
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return (ConVarType)NativeAPI.GetConvarType(AccessIndex);
+        }
+    }
 
     /// <summary>
     /// The ConVar flags as defined by <see cref="ConVarFlags"/>.
     /// </summary>
     public ConVarFlags Flags
     {
-        get => (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
-        set => NativeAPI.SetConvarFlags(AccessIndex, (ulong)value);
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
+        }
+        set
+        {
+            Require(EngineFeatureNames.ConvarsWrite);
+            NativeAPI.SetConvarFlags(AccessIndex, (ulong)value);
+        }
     }
 
     public string ValueAsString
     {
-        get => NativeAPI.GetConvarValueAsString(AccessIndex);
-        set => NativeAPI.SetConvarValueAsString(AccessIndex, value);
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarValueAsString(AccessIndex);
+        }
+        set
+        {
+            Require(EngineFeatureNames.ConvarsWrite);
+            NativeAPI.SetConvarValueAsString(AccessIndex, value);
+        }
     }
 
     /// <summary>
@@ -65,11 +111,19 @@ public class ConVarBase : IEquatable<ConVarBase>
         if (AccessIndex == InvalidAccessIndex)
             throw new InvalidOperationException("Cannot delete a ConVar that has not been created or found.");
 
+        Require(EngineFeatureNames.ConvarsCreate);
         NativeAPI.DeleteConvar(AccessIndex);
         AccessIndex = InvalidAccessIndex;
     }
 
-    public bool IsValid => NativeAPI.IsConvarValid(AccessIndex);
+    public bool IsValid
+    {
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.IsConvarValid(AccessIndex);
+        }
+    }
 
     public ConVar<T> As<T>()
     {
@@ -144,6 +198,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
         if (options.DefaultValue is null)
             throw new ArgumentNullException(nameof(options.DefaultValue));
 
+        Require(EngineFeatureNames.ConvarsCreate);
         var accessIndex = NativeAPI.CreateConvar(options.Name, (short)GetValueType(), options.Description, (UInt64)options.Flags,
             options.HasMinValue, options.HasMaxValue,
             options.DefaultValue,
@@ -168,8 +223,16 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
     /// </remarks>
     public T MinValue
     {
-        get => NativeAPI.GetConvarBound<T>(AccessIndex, true, (short)GetValueType());
-        set => NativeAPI.SetConvarBound(AccessIndex, true, (short)GetValueType(), value);
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarBound<T>(AccessIndex, true, (short)GetValueType());
+        }
+        set
+        {
+            Require(EngineFeatureNames.ConvarsWrite);
+            NativeAPI.SetConvarBound(AccessIndex, true, (short)GetValueType(), value);
+        }
     }
 
     /// <summary>
@@ -182,8 +245,16 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
     /// </remarks>
     public T MaxValue
     {
-        get => NativeAPI.GetConvarBound<T>(AccessIndex, false, (short)GetValueType());
-        set => NativeAPI.SetConvarBound(AccessIndex, false, (short)GetValueType(), value);
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarBound<T>(AccessIndex, false, (short)GetValueType());
+        }
+        set
+        {
+            Require(EngineFeatureNames.ConvarsWrite);
+            NativeAPI.SetConvarBound(AccessIndex, false, (short)GetValueType(), value);
+        }
     }
 
     /// <summary>Tries to read the lower bound, returning false and default(T) when it is not set.</summary>
@@ -196,6 +267,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
 
     private bool TryGetBound(bool minimum, [MaybeNullWhen(false)] out T value)
     {
+        Require(EngineFeatureNames.ConvarsRead);
         var type = (short)GetValueType();
         if (!NativeAPI.HasConvarBound(AccessIndex, minimum, type))
         {
@@ -292,6 +364,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
         }
         set
         {
+            Require(EngineFeatureNames.ConvarsWrite);
             var expectedType = GetValueType();
             if (Type != expectedType)
                 throw new InvalidOperationException(
@@ -306,6 +379,7 @@ public class ConVar<T> : ConVarBase, IEquatable<ConVar<T>>
 
     public static ConVar<T>? Find(string name)
     {
+        Require(EngineFeatureNames.ConvarsFind);
         var accessIndex = NativeAPI.GetConvarAccessIndexByName(name);
         if (accessIndex == 0) return null;
 

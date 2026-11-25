@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
@@ -12,21 +13,54 @@ public class ConVar
         AccessIndex = accessIndex;
     }
 
-    public string Name => NativeAPI.GetConvarName(AccessIndex);
-    public string Description => NativeAPI.GetConvarHelpText(AccessIndex);
+    // Before calling into the native, so a disabled Engine Feature (cssharp.convars/*) throws the typed exception.
+    private static void Require(string feature) => EngineFeatures.Current.ThrowIfUnavailable(feature);
+
+    public string Name
+    {
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarName(AccessIndex);
+        }
+    }
+
+    public string Description
+    {
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarHelpText(AccessIndex);
+        }
+    }
 
     /// <summary>
     /// The underlying data type of the ConVar.
     /// </summary>
-    public ConVarType Type => (ConVarType)NativeAPI.GetConvarType(AccessIndex);
+    public ConVarType Type
+    {
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return (ConVarType)NativeAPI.GetConvarType(AccessIndex);
+        }
+    }
 
     /// <summary>
     /// The ConVar flags as defined by <see cref="ConVarFlags"/>.
     /// </summary>
     public ConVarFlags Flags
     {
-        get => (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
-        set => NativeAPI.SetConvarFlags(AccessIndex, (ulong)value);
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
+        }
+        set
+        {
+            Require(EngineFeatureNames.ConvarsWrite);
+            NativeAPI.SetConvarFlags(AccessIndex, (ulong)value);
+        }
     }
 
     /// <summary>
@@ -88,6 +122,7 @@ public class ConVar
                 throw new InvalidOperationException("Reference types must be accessed using `GetReferenceValue`");
         }
 
+        Require(EngineFeatureNames.ConvarsRead);
         var address = NativeAPI.GetConvarValueAddress(AccessIndex);
         if (address == IntPtr.Zero)
         {
@@ -99,6 +134,7 @@ public class ConVar
 
     public void SetValue<T>(T value)
     {
+        Require(EngineFeatureNames.ConvarsWrite);
         NativeAPI.SetConvarValue(AccessIndex, value);
     }
 
@@ -109,6 +145,7 @@ public class ConVar
     /// <returns></returns>
     public T GetNativeValue<T>() where T : NativeObject
     {
+        Require(EngineFeatureNames.ConvarsRead);
         return NativeAPI.GetConvarValue<T>(AccessIndex);
     }
 
@@ -119,8 +156,16 @@ public class ConVar
     /// </remarks>
     public string StringValue
     {
-        get => NativeAPI.GetConvarValueAsString(AccessIndex);
-        set => NativeAPI.SetConvarValueAsString(AccessIndex, value);
+        get
+        {
+            Require(EngineFeatureNames.ConvarsRead);
+            return NativeAPI.GetConvarValueAsString(AccessIndex);
+        }
+        set
+        {
+            Require(EngineFeatureNames.ConvarsWrite);
+            NativeAPI.SetConvarValueAsString(AccessIndex, value);
+        }
     }
 
     /// <summary>
@@ -154,6 +199,7 @@ public class ConVar
     /// <returns></returns>
     public static ConVar? Find(string name)
     {
+        Require(EngineFeatureNames.ConvarsFind);
         var accessIndex = NativeAPI.GetConvarAccessIndexByName(name);
         if (accessIndex == 0) return null;
 

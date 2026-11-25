@@ -2,6 +2,7 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Cvars;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Tests;
@@ -125,5 +126,44 @@ public class ICvarEngineFeatureTests : IDisposable
         Assert.Single(logger.Messages, message =>
             message == "Command registered on cssharp.commands/add-command disabled " +
             "(ICvar::RegisterConCommand: fingerprint mismatch); it will never fire");
+    }
+
+    // Not a valid entity, and access index 1 names no ConVar: an API whose Engine Feature is available would get past its
+    // check and reach NativeAPI, which is not available here.
+    private static readonly CCSPlayerController InvalidController = new(IntPtr.Zero);
+    private static readonly ConVar<int> SomeConVar = new(1);
+
+    public static TheoryData<string, string, Action> Calls => new()
+    {
+        { "ICvar::FindConVar", EngineFeatureNames.ConvarsFind, () => ConVar<int>.Find("sv_cheats") },
+        { "ICvar::GetConVarData", EngineFeatureNames.ConvarsRead, () => _ = SomeConVar.Value },
+        { "ICvar::GetConVarData", EngineFeatureNames.ConvarsRead, () => _ = SomeConVar.Name },
+        { "ICvar::GetConVarData", EngineFeatureNames.ConvarsRead, () => _ = SomeConVar.IsValid },
+        { "ICvar::QueueThreadSetValue", EngineFeatureNames.ConvarsWrite, () => SomeConVar.Value = 1 },
+        { "ICvar::CallFilterCallback", EngineFeatureNames.ConvarsWrite, () => SomeConVar.Flags = ConVarFlags.FCVAR_NONE },
+        { "ICvar::CallChangeCallback", EngineFeatureNames.ConvarsWrite, () => SomeConVar.MaxValue = 2 },
+        { "ICvar::RegisterConVar", EngineFeatureNames.ConvarsCreate, () => _ = new ConVar<int>("css_test", "test", 1) },
+        { "ICvar::UnregisterConVarCallbacks", EngineFeatureNames.ConvarsCreate, () => SomeConVar.Delete() },
+#pragma warning disable CS0618 // the obsolete ConVar gates the same way
+        { "ICvar::FindConVar", EngineFeatureNames.ConvarsFind, () => ConVar.Find("sv_cheats") },
+        { "ICvar::GetConVarData", EngineFeatureNames.ConvarsRead, () => _ = new ConVar(1).StringValue },
+        { "ICvar::CallGlobalChangeCallbacks", EngineFeatureNames.ConvarsWrite, () => new ConVar(1).SetValue(1) },
+#pragma warning restore CS0618
+        {
+            "ICvar::DispatchConCommand", EngineFeatureNames.PlayerExecuteClientCommandFromServer,
+            () => InvalidController.ExecuteClientCommandFromServer("kill")
+        },
+    };
+
+    [Theory]
+    [MemberData(nameof(Calls))]
+    public void CallingAnApiWhoseSlotBindingFailedThrowsTheTypedException(string failedKey, string feature, Action call)
+    {
+        EngineFeatures.Current = SetWith(failedKey);
+
+        var exception = Assert.Throws<EngineFeatureUnavailableException>(call);
+
+        Assert.Equal(feature, exception.EngineFeature);
+        Assert.Equal(failedKey, exception.Binding);
     }
 }

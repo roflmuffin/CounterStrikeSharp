@@ -298,8 +298,11 @@ public partial class CCSPlayerController
     /// </summary>
     /// <param name="command"></param>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature
+    /// <c>cssharp.player/execute-client-command-from-server</c> is disabled</exception>
     public void ExecuteClientCommandFromServer(string command)
     {
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.PlayerExecuteClientCommandFromServer);
         Guard.IsValidEntity(this);
 
         NativeAPI.IssueClientCommandFromServer(Slot, command);
