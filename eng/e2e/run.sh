@@ -529,6 +529,8 @@ shutdown_exit=$server_exit
 
 # Collect logs.
 cp "$native_log" "$out/counterstrikesharp-native.log" 2>/dev/null || true
+# As the server left it, to compare with gamedata.installed.json (the runtime never writes Gamedata).
+cp "$gd" "$out/gamedata.after-run.json" 2>/dev/null || true
 if [ -d "$addons/counterstrikesharp/logs" ]; then
     cp -a "$addons/counterstrikesharp/logs" "$out/css-logs"
 fi

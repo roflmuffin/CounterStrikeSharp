@@ -5,7 +5,10 @@
 #   eng/e2e/cases/game-frame.sh [run.sh options...]     e.g. --no-build
 #
 # valid:     GameFrame's fingerprint window matches the live CSource2Server vtable at its Gamedata index; every Binding
-#            resolves (none unverified, no vtable size warning); ticks, timers and next-frame tasks run.
+#            resolves (none unverified or healed, no vtable size warning); ticks, timers and next-frame tasks run.
+# healed:    Gamedata states GameFrame one slot too low, as 1.41.9.7 Gamedata would on 1.42.0.1; the window matches
+#            once, one slot later, so the Binding heals at 20: the native log and the startup report list the Heal,
+#            plugins see it in the Engine Feature status, ticks and timers run, and the installed Gamedata is unchanged.
 # corrupted: GameFrame's own fingerprint in Gamedata is wrong; the Binding fails with "fingerprint mismatch", only
 #            game-frame is disabled, the startup report names it and the server stays up. No smoke test (it waits on
 #            frames, which no longer tick).
@@ -29,10 +32,25 @@ echo "== game-frame: valid gamedata"
 "$run" "$@" \
     --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
-    --expect-no-log 'unverified|Vtable of [A-Za-z0-9_]+ \([a-z0-9]+\) has [0-9]+ slots' \
+    --expect-no-log 'unverified|[Hh]ealed|Vtable of [A-Za-z0-9_]+ \([a-z0-9]+\) has [0-9]+ slots' \
     --check "$(outcome passed GameFrameTests.GameFrame_IsVerifiedAndAvailable GameFrameTests.GameFrame_Ticks \
         TimerTests.CreateTimer_ExecutesCallback FrameSchedulingTests.QueueTaskForNextFrame_ExecutesCallback \
         FrameSchedulingTests.NextFrame_HighLevelApi_ExecutesCallback)" ||
+    status=1
+
+echo "== game-frame: GameFrame one slot too low (1.41.9.7 Gamedata on 1.42.0.1)"
+"$run" "$@" --no-build \
+    --gamedata-jq '."ISource2Server::GameFrame".offsets.linux = 19 | ."ISource2Server::GameFrame".vtable.linux.size = 104' \
+    --exec css_engine_features \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed$' \
+    --expect-log 'Healed ISource2Server::GameFrame: CSource2Server \(server\) slot 19 -> 20, window \[[0-9a-f]{16}, [0-9a-f]{16}, [0-9a-f]{16}\] matched once within 16 slots' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
+    --expect-log '^ +Healed ISource2Server::GameFrame: CSource2Server \(server\) slot 19 -> 20, window ' \
+    --expect-log '\[EngineFeatures\] cssharp\.server/game-frame available, healed \(ISource2Server::GameFrame: slot 19 -> 20\)' \
+    --check "$(outcome passed GameFrameTests.GameFrame_IsVerifiedAndAvailable GameFrameTests.GameFrame_Ticks \
+        TimerTests.CreateTimer_ExecutesCallback FrameSchedulingTests.QueueTaskForNextFrame_ExecutesCallback \
+        FrameSchedulingTests.NextFrame_HighLevelApi_ExecutesCallback)" \
+    --check 'cmp gamedata.installed.json gamedata.after-run.json && jq -e ".\"ISource2Server::GameFrame\".offsets.linux == 19" gamedata.after-run.json' ||
     status=1
 
 echo "== game-frame: GameFrame's fingerprint corrupted"
