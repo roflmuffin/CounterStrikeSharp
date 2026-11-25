@@ -5,7 +5,8 @@
 #   eng/e2e/cases/game-frame.sh [run.sh options...]     e.g. --no-build
 #
 # valid:     GameFrame's fingerprint window matches the live CSource2Server vtable at its Gamedata index; every Binding
-#            resolves (none unverified or healed, no vtable size warning); ticks, timers and next-frame tasks run.
+#            resolves (none healed, GameFrame not unverified, no vtable size warning); ticks, timers and next-frame tasks
+#            run. Slot Bindings in modules not fingerprinted yet (network messages, schema system) are unverified.
 # healed:    Gamedata states GameFrame one slot too low, as 1.41.9.7 Gamedata would on 1.42.0.1; the window matches
 #            once, one slot later, so the Binding heals at 20: the native log and the startup report list the Heal,
 #            plugins see it in the Engine Feature status, ticks and timers run, and the installed Gamedata is unchanged.
@@ -30,9 +31,9 @@ status=0
 
 echo "== game-frame: valid gamedata"
 "$run" "$@" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
-    --expect-no-log 'unverified|[Hh]ealed|Vtable of [A-Za-z0-9_]+ \([a-z0-9]+\) has [0-9]+ slots' \
+    --expect-no-log 'unverified.*ISource2Server::GameFrame|[Hh]ealed|Vtable of [A-Za-z0-9_]+ \([a-z0-9]+\) has [0-9]+ slots' \
     --check "$(outcome passed GameFrameTests.GameFrame_IsVerifiedAndAvailable GameFrameTests.GameFrame_Ticks \
         TimerTests.CreateTimer_ExecutesCallback FrameSchedulingTests.QueueTaskForNextFrame_ExecutesCallback \
         FrameSchedulingTests.NextFrame_HighLevelApi_ExecutesCallback)" ||
@@ -42,7 +43,7 @@ echo "== game-frame: GameFrame one slot too low (1.41.9.7 Gamedata on 1.42.0.1)"
 "$run" "$@" --no-build \
     --gamedata-jq '."ISource2Server::GameFrame".offsets.linux = 19 | ."ISource2Server::GameFrame".vtable.linux.size = 104' \
     --exec css_engine_features \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed(, [0-9]+ unverified)?$' \
     --expect-log 'Healed ISource2Server::GameFrame: CSource2Server \(server\) slot 19 -> 20, window \[[0-9a-f]{16}, [0-9a-f]{16}, [0-9a-f]{16}\] matched once within 16 slots' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-log '^ +Healed ISource2Server::GameFrame: CSource2Server \(server\) slot 19 -> 20, window ' \
