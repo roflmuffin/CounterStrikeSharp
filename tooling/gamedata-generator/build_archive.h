@@ -8,7 +8,10 @@
 
 #include <cstdint>
 #include <filesystem>
+#include <functional>
+#include <map>
 #include <optional>
+#include <span>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -66,6 +69,29 @@ class LoadedModule
     elf::RelocatedWords m_relocations;
     std::uintptr_t m_pureVirtual = 0;
     std::uintptr_t m_deletedVirtual = 0;
+};
+
+// One build of the archive, its modules loaded on demand and kept.
+class ArchivedBuild
+{
+  public:
+    // Throws std::runtime_error naming the build and archive when the build is not in it.
+    ArchivedBuild(std::filesystem::path root, std::string build);
+
+    // Loads these libraries' modules now; throws std::runtime_error naming the build and module when one is missing or
+    // unreadable.
+    void Require(std::span<const std::string> libraries);
+
+    [[nodiscard]] const std::string& Build() const { return m_build; }
+    [[nodiscard]] const LoadedModule& Module(const std::string& library);
+
+    // Class vtable fingerprints by library and class, for the generator's carry-forward (valid while this lives).
+    [[nodiscard]] std::function<std::vector<vtable::Fingerprint>(std::string_view, std::string_view)> Vtables();
+
+  private:
+    std::filesystem::path m_root;
+    std::string m_build;
+    std::map<std::string, LoadedModule, std::less<>> m_modules;
 };
 
 } // namespace counterstrikesharp::generator
