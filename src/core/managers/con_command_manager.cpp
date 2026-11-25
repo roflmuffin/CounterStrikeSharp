@@ -41,8 +41,10 @@
 #include <algorithm>
 
 #include "core/coreconfig.h"
+#include "core/core_bindings.h"
 #include "core/log.h"
 #include "core/memory.h"
+#include "core/slot_hooks.h"
 #include "core/utils.h"
 #include "interfaces/cs2_interfaces.h"
 #include "metamod_oslink.h"
@@ -198,8 +200,15 @@ ConCommandManager::~ConCommandManager() {}
 
 void ConCommandManager::OnAllInitialized()
 {
-    m_hooks.Add(&ICvar::DispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand, nullptr);
-    m_hooks.Add(&ICvar::DispatchConCommand, globals::cvars, this, nullptr, &ConCommandManager::Hook_DispatchConCommand_Post);
+    // By the slot index the boot Vtable Check verified, on the engine's ICvar (not the forwarding g_pCVar). Disabled
+    // console-dispatch: console-issued commands run without our callbacks or listeners; the server keeps running.
+    if (bindings::ShouldRegisterHooks(bindings::features::ConsoleDispatch, "DispatchConCommand hooks"))
+    {
+        HookSlot(m_hooks, "ICvar::DispatchConCommand", &ICvar::DispatchConCommand, globals::cvars, this,
+                 &ConCommandManager::Hook_DispatchConCommand, nullptr);
+        HookSlot(m_hooks, "ICvar::DispatchConCommand", &ICvar::DispatchConCommand, globals::cvars, this, nullptr,
+                 &ConCommandManager::Hook_DispatchConCommand_Post);
+    }
 
     m_global_cmd.callback_pre = globals::callbackManager.CreateCallback("OnClientCommandGlobalPre");
     m_global_cmd.callback_post = globals::callbackManager.CreateCallback("OnClientCommandGlobalPost");
@@ -235,7 +244,7 @@ void UnlockConCommands()
     int unhiddenConCommands = 0;
 
     ConCommandData* currentConCommand = nullptr;
-    ConCommandData* invalidConCommand = globals::cvars->GetConCommandData(ConCommandRef());
+    ConCommandData* invalidConCommand = g_pCVar->GetConCommandData(ConCommandRef());
     ConCommandRef ref = ConCommandRef((uint16)0);
 
     ConCommandData* data = g_pCVar->GetConCommandData(ConCommandRef());
@@ -285,10 +294,10 @@ void ConCommandManager::AddCommandListener(const char* name, CallbackT callback,
         pInfo = new ConCommandInfo();
         m_cmd_lookup[strName] = pInfo;
 
-        ConCommandRef hExistingCommand = globals::cvars->FindConCommand(name);
+        ConCommandRef hExistingCommand = g_pCVar->FindConCommand(name);
         if (hExistingCommand.IsValidRef())
         {
-            pInfo->command = globals::cvars->GetConCommandData(hExistingCommand);
+            pInfo->command = g_pCVar->GetConCommandData(hExistingCommand);
         }
     }
 
@@ -337,7 +346,7 @@ void ConCommandManager::RemoveCommandListener(const char* name, CallbackT callba
 
 bool ConCommandManager::AddValveCommand(const char* name, const char* description, bool server_only, int flags)
 {
-    ConCommandRef hExistingCommand = globals::cvars->FindConCommand(name);
+    ConCommandRef hExistingCommand = g_pCVar->FindConCommand(name);
     if (hExistingCommand.IsValidRef()) return false;
 
     auto conCommand = new ConCommand(strdup(name), CommandCallback, description ? strdup(description) : "", flags);
@@ -358,14 +367,14 @@ bool ConCommandManager::AddValveCommand(const char* name, const char* descriptio
 
 bool ConCommandManager::RemoveValveCommand(const char* name)
 {
-    auto hFoundCommand = globals::cvars->FindConCommand(name);
+    auto hFoundCommand = g_pCVar->FindConCommand(name);
 
     if (!hFoundCommand.IsValidRef())
     {
         return false;
     }
 
-    globals::cvars->UnregisterConCommandCallbacks(hFoundCommand);
+    g_pCVar->UnregisterConCommandCallbacks(hFoundCommand);
 
     auto pInfo = m_cmd_lookup[std::string(name)];
     if (!pInfo)
@@ -484,7 +493,7 @@ ConCommandManager::Hook_DispatchConCommand_Post(ICvar* hookThis, ConCommandRef c
 }
 bool ConCommandManager::IsValidValveCommand(const char* name)
 {
-    ConCommandRef pCmd = globals::cvars->FindConCommand(name);
+    ConCommandRef pCmd = g_pCVar->FindConCommand(name);
     return pCmd.IsValidRef();
 }
 

@@ -26,6 +26,7 @@
 #include "core/global_listener.h"
 #include "core/log.h"
 #include "core/slot_hooks.h"
+#include "core/verified_cvar.h"
 #include "core/managers/entity_manager.h"
 #include "core/tick_scheduler.h"
 #include "core/timer_system.h"
@@ -166,6 +167,9 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
         globals::Initialize();
         bindings::ResolveCoreBindings();
+        // From here on every ICvar call (ours and the SDK's ConVar/ConCommand code) goes through verified slots.
+        ICvar* const verifiedCvar = bindings::VerifiedCvar(globals::cvars);
+        g_pCVar = verifiedCvar;
         globals::InitializeHooks();
 
         CSSHARP_CORE_INFO("Globals loaded.");
@@ -213,9 +217,13 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
         CSSHARP_CORE_INFO("Hooks added.");
 
-        // Used by Metamod Console Commands
-        g_pCVar = globals::cvars;
-        ConVar_Register(FCVAR_RELEASE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL);
+        // Used by Metamod Console Commands. The SDK aborts the process if a registration fails, so on a disabled
+        // add-command (its ICvar Slot Bindings) our own console commands are not registered.
+        g_pCVar = verifiedCvar;
+        if (bindings::IsEngineFeatureAvailable(bindings::features::AddCommand))
+            ConVar_Register(FCVAR_RELEASE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL);
+        else
+            CSSHARP_CORE_WARN("{}, not registering core console commands", bindings::DescribeUnavailable(bindings::features::AddCommand));
 
         guard.succeeded = true;
         return true;
