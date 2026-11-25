@@ -20,4 +20,4 @@ never_fires+='\(ISource2GameEntities::CheckTransmit: missing from gamedata\); it
     --expect-no-log 'not registering|Failed to initialize GameSystem' \
     --expect-log '^ +cssharp\.network/check-transmit disabled \(ISource2GameEntities::CheckTransmit: missing from gamedata\)' \
     --expect-log "$never_fires" \
-    --expect-no-log 'Invalid virtual hook index'
+    --expect-no-log 'Invalid virtual hook (slot )?index'

@@ -144,7 +144,7 @@ TEST_CASE("archive: fingerprints match the research oracle for every slot of eve
     CHECK(compared > 0);
 }
 
-TEST_CASE("archive: bootstrapping GameFrame on 1.42.0.1 reproduces the committed Gamedata entry (local)" *
+TEST_CASE("archive: bootstrapping GameFrame on 1.42.0.1 reproduces the committed Slot Binding (local)" *
           doctest::skip(!Archived("1.42.0.1")))
 {
     const auto server = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "server");

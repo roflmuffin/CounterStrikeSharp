@@ -19,7 +19,7 @@ std::string JoinIndices(std::span<const std::size_t> indices)
     return joined;
 }
 
-// The previous Gamedata entry of a Slot Binding as the resolver reads it on Linux.
+// A Slot Binding of the previous Gamedata as the resolver reads it on Linux.
 bindings::GamedataEntry ParseEntry(const std::string& key, const GamedataJson& entry)
 {
     const auto parsed = bindings::ParseGamedata(nlohmann::json{ { key, nlohmann::json::parse(entry.dump()) } }, "linux");
@@ -51,7 +51,7 @@ struct Hold : std::runtime_error
     using std::runtime_error::runtime_error;
 };
 
-// Where the Slot Binding of a previous Gamedata entry sits on the next build, or Hold.
+// Where a Slot Binding of the previous Gamedata sits on the next build, or Hold.
 std::size_t AlignSlot(const bindings::GamedataEntry& entry, VtableCache& previousBuild, VtableCache& nextBuild)
 {
     const auto& slot = *entry.slot;

@@ -17,8 +17,9 @@ class ICvar;
 
 namespace counterstrikesharp::bindings {
 
-// Points the returned ICvar at engine's methods through the boot Resolution Report. Call after ResolveCoreBindings and
-// assign to g_pCVar before anything uses ConVars or commands; calling it again rebuilds it (plugin reload).
+// Points the returned ICvar at engine's methods through the core Resolution Report (each call reads the current slot
+// index). Call after ResolveCoreBindings and assign to g_pCVar before anything uses ConVars or commands; calling it
+// again rebuilds it (plugin reload).
 ICvar* VerifiedCvar(ICvar* engine);
 
 } // namespace counterstrikesharp::bindings

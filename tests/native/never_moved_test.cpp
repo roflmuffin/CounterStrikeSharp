@@ -80,7 +80,7 @@ json WindowJson(const vtable::FingerprintWindow& window)
     return slots;
 }
 
-// The Gamedata entry the generator records for slot index of build.
+// The Slot Binding the generator records for slot index of build.
 json SlotEntry(const FakeBuild& build, std::size_t index)
 {
     const auto record = vtable::RecordSlot(build.Fingerprints(), index);
