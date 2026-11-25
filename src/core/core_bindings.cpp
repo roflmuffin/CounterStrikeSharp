@@ -1,6 +1,7 @@
 #include "core/core_bindings.h"
 
 #include <algorithm>
+#include <chrono>
 #include <fstream>
 #include <memory>
 #include <sstream>
@@ -92,6 +93,7 @@ std::string ReadBuildId()
 
 void ResolveCoreBindings()
 {
+    const auto start = std::chrono::steady_clock::now();
     // Same library names as CGameConfig::GetModule.
     ModuleImages images;
     AddModule(images, "engine", modules::engine);
@@ -108,6 +110,13 @@ void ResolveCoreBindings()
         for (const auto& compiled : CompiledSlots())
             if (declaration.kind == BindingKind::Slot && declaration.key == compiled.key) declaration.compiledIndex = compiled.index;
     coreReport = Resolver().Resolve(ReadBuildId(), gamedata, images, declarations);
+    // Boot cost of resolving (signature scans, RTTI lookups, Vtable Checks), so a slow boot can be told apart.
+    const std::chrono::duration<double, std::milli> elapsed = std::chrono::steady_clock::now() - start;
+    const auto slotBindings = std::count_if(coreReport.Bindings().begin(), coreReport.Bindings().end(), [](const BindingResult& binding) {
+        return binding.kind == BindingKind::Slot;
+    });
+    CSSHARP_CORE_INFO("Resolution took {:.1f} ms for {} Bindings ({} Slot Bindings)", elapsed.count(), coreReport.Bindings().size(),
+                      slotBindings);
 
     const auto summary = FormatBindingSummary(coreReport);
     const bool anyFailed = std::any_of(coreReport.Bindings().begin(), coreReport.Bindings().end(), [](const BindingResult& binding) {
