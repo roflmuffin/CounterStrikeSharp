@@ -1,6 +1,8 @@
 // Optional local fixture: resolves RTTI vtables, the core catalog and every Gamedata signature against a real server
 // binary, loaded as the dynamic loader maps it (tooling/gamedata-generator/build_archive.h).
-// Skipped unless CSSHARP_SERVER_BINARY points at a libserver.so (never committed). Linux only.
+// Skipped unless CSSHARP_SERVER_BINARY points at a libserver.so (never committed). Linux only. The engine and tier0
+// modules (IVEngineServer2 and ICvar Slot Bindings) are loaded from next to it (archive layout) or from the install's
+// game/bin/linuxsteamrt64; Engine Features with a Binding in a module not found there are left out and listed.
 //   CSSHARP_SERVER_BINARY=~/.cache/cs2-14201/game/csgo/bin/linuxsteamrt64/libserver.so ./native_tests -tc="*real*" -s
 #include <doctest.h>
 
@@ -9,7 +11,10 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 #include <iterator>
+#include <optional>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -26,6 +31,28 @@ std::string TypeinfoNameOf(std::uintptr_t vtable)
 {
     const auto* typeinfo = *reinterpret_cast<const std::uintptr_t* const*>(vtable - sizeof(std::uintptr_t));
     return reinterpret_cast<const char*>(typeinfo[1]);
+}
+
+// A sibling module of the server binary: in the same directory (build archive), or in an install's
+// game/bin/linuxsteamrt64 (libserver.so lives in game/csgo/bin/linuxsteamrt64).
+std::optional<std::filesystem::path> FindSiblingModule(const std::filesystem::path& server, const std::string& fileName)
+{
+    const auto directory = server.parent_path();
+    for (const auto& candidate : { directory / fileName, directory / ".." / ".." / ".." / "bin" / "linuxsteamrt64" / fileName })
+        if (std::filesystem::exists(candidate)) return candidate;
+    return std::nullopt;
+}
+
+// The Gamedata library a Binding is searched in ("server" when Gamedata names none).
+std::string LibraryOf(const BindingDeclaration& binding, const Gamedata& gamedata)
+{
+    if (binding.kind == BindingKind::RttiVtable || binding.kind == BindingKind::SchemaField)
+        return binding.library.empty() ? "server" : binding.library;
+    const auto entry = gamedata.find(binding.key);
+    if (entry == gamedata.end()) return "server";
+    if (binding.kind == BindingKind::Slot && entry->second.slot && entry->second.slot->library) return *entry->second.slot->library;
+    if (binding.kind == BindingKind::Signature && entry->second.library) return *entry->second.library;
+    return "server";
 }
 } // namespace
 
@@ -57,9 +84,19 @@ TEST_CASE("real server binary: core catalog and Gamedata signatures (optional fi
     REQUIRE(gamedataStream.good());
     const auto gamedata = ParseGamedata(nlohmann::json::parse(gamedataStream), "linux");
 
-    const auto server = LoadedModule::Load(std::getenv("CSSHARP_SERVER_BINARY"));
-    const ModuleImages modules{ { "server", server.Image() } };
+    const std::filesystem::path serverPath = std::getenv("CSSHARP_SERVER_BINARY");
+    const auto server = LoadedModule::Load(serverPath);
+    ModuleImages modules{ { "server", server.Image() } };
     REQUIRE_FALSE(modules.at("server").segments.empty());
+    std::vector<LoadedModule> siblings;
+    siblings.reserve(2); // the images point into these
+    for (const auto& [library, fileName] : { std::pair{ "engine", "libengine2.so" }, std::pair{ "tier0", "libtier0.so" } })
+    {
+        const auto file = FindSiblingModule(serverPath, fileName);
+        if (!file) continue;
+        siblings.push_back(LoadedModule::Load(*file));
+        modules.emplace(library, siblings.back().Image());
+    }
     const BuiltinResolver resolver(Platform::Linux);
 
     std::vector<BindingDeclaration> everySignature;
@@ -79,12 +116,22 @@ TEST_CASE("real server binary: core catalog and Gamedata signatures (optional fi
 
     const auto core = resolver.Resolve("local", gamedata, modules, coreDeclarations);
     std::cout << "core catalog (without schema fields): " << FormatBindingSummary(core) << "\n";
+    std::set<std::string> leftOut;
     for (auto feature : NativeEngineFeatures())
     {
         std::erase_if(feature.bindings, [&](const BindingDeclaration& binding) {
             return !notSchema(binding);
         });
+        if (std::ranges::any_of(feature.bindings, [&](const BindingDeclaration& binding) {
+                return !modules.contains(LibraryOf(binding, gamedata));
+            }))
+        {
+            leftOut.insert(feature.name);
+            continue;
+        }
         CHECK_MESSAGE(EvaluateEngineFeature(core, feature).available, feature.name);
     }
+    for (const auto& name : leftOut)
+        std::cout << "left out (a Binding's module is not next to the server binary): " << name << "\n";
 }
 #endif
