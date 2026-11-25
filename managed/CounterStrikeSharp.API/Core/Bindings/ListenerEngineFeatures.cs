@@ -46,6 +46,8 @@ internal static class ListenerEngineFeatures
         ["OnPlayerTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
         // ConVars (ICvar global change callback)
         ["OnConVarChanged"] = EngineFeatureNames.ConvarsChangeEvents,
+        // Never-moved interfaces (StartupServer)
+        ["OnMapStart"] = EngineFeatureNames.ServerStartup,
     };
 
     // Listeners that also need further Engine Features. OnClientAuthorized fires from the IVEngineServer2 auth check.

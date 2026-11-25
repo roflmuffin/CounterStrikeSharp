@@ -84,7 +84,7 @@ struct CarryForwardResult
 CarryForwardResult CarryForward(const GamedataJson& previousGamedata, const VtableFingerprints& previousBuild, const VtableFingerprints& nextBuild);
 
 // The Gamedata library names the Slot Bindings of a Gamedata file live in (each once, sorted), so a caller can check the
-// archive has both builds' modules before carrying forward.
+// archive has both builds' modules before carrying forward. Slot Bindings without a window need none: they are held.
 std::vector<std::string> SlotBindingLibraries(const GamedataJson& gamedata);
 
 } // namespace counterstrikesharp::generator

@@ -21,6 +21,7 @@
 
 #include "core/UserMessage.h"
 #include "core/log.h"
+#include "core/slot_hooks.h"
 #include "core/managers/player_manager.h"
 #include "engine2/igameeventsystem.h"
 #include "scripting/callback_manager.h"
@@ -34,9 +35,12 @@ UserMessageManager::~UserMessageManager() {}
 
 void UserMessageManager::OnAllInitialized()
 {
-    m_hooks.Add(static_cast<void (IGameEventSystem::*)(CSplitScreenSlot, bool, int, const uint64*, NetMessageInfo_t*, const CNetMessage*,
-                                                       unsigned long, NetChannelBufType_t)>(&IGameEventSystem::PostEventAbstract),
-                globals::gameEventSystem, this, &UserMessageManager::Hook_PostEvent, nullptr);
+    // Disabled user-messages: user message hooks register but never fire.
+    if (!bindings::ShouldRegisterHooks(bindings::features::UserMessages, "user message hook")) return;
+    HookSlot(m_hooks, "IGameEventSystem::PostEventAbstract",
+             static_cast<void (IGameEventSystem::*)(CSplitScreenSlot, bool, int, const uint64*, NetMessageInfo_t*, const CNetMessage*,
+                                                    unsigned long, NetChannelBufType_t)>(&IGameEventSystem::PostEventAbstract),
+             globals::gameEventSystem, this, &UserMessageManager::Hook_PostEvent, nullptr);
 }
 
 void UserMessageManager::OnShutdown() { m_hooks.Clear(); }

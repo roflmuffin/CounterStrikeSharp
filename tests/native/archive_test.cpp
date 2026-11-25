@@ -286,6 +286,15 @@ GamedataJson GamedataFor14197(const LoadedModule& server)
     return gamedata;
 }
 
+// Slot Bindings with no Linux window (unverified, e.g. in modules the archive does not hold): the generator holds them.
+std::size_t WindowlessSlotBindings(const GamedataJson& gamedata)
+{
+    std::size_t count = 0;
+    for (const auto& [key, entry] : gamedata.items())
+        if (entry.contains("vtable") && !entry["vtable"].contains("linux")) ++count;
+    return count;
+}
+
 // Gamedata with one Slot Binding per slot of a class's vtable on a build, keyed "<Class>::<index>".
 GamedataJson EverySlot(ArchivedBuild& build, const std::string& library, const std::string& className)
 {
@@ -311,7 +320,7 @@ TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves every ISource2S
 
     const auto result = CarryForward(gamedata, previous.Vtables(), next.Vtables());
 
-    CHECK(result.held.empty());
+    CHECK(result.held.size() == WindowlessSlotBindings(gamedata));
     CHECK(result.warnings.empty());
     std::size_t moved = 0;
     for (const auto& carried : result.carried)
@@ -331,7 +340,7 @@ TEST_CASE("archive: carrying the committed Gamedata onto the same build changes 
 
     const auto result = CarryForward(CommittedGamedata(), build.Vtables(), build.Vtables());
 
-    CHECK(result.held.empty());
+    CHECK(result.held.size() == WindowlessSlotBindings(CommittedGamedata()));
     for (const auto& carried : result.carried)
         CHECK(carried.from == carried.to);
     CHECK(result.gamedata == CommittedGamedata());

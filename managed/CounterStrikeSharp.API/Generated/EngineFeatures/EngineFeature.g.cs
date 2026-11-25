@@ -120,6 +120,9 @@ public enum EngineFeature
     /// <summary><c>cssharp.network/state-changed</c></summary>
     NetworkStateChanged = -1875359226,
 
+    /// <summary><c>cssharp.network/user-messages</c></summary>
+    NetworkUserMessages = 756971208,
+
     /// <summary><c>cssharp.player/authorization</c></summary>
     PlayerAuthorization = 1965307022,
 
@@ -189,6 +192,9 @@ public enum EngineFeature
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
 
+    /// <summary><c>cssharp.server/global-vars</c></summary>
+    ServerGlobalVars = 1565050601,
+
     /// <summary><c>cssharp.server/hibernation-events</c></summary>
     ServerHibernationEvents = 1910400260,
 
@@ -201,11 +207,17 @@ public enum EngineFeature
     /// <summary><c>cssharp.server/is-paused</c></summary>
     ServerIsPaused = 386829384,
 
+    /// <summary><c>cssharp.server/loop-mode</c></summary>
+    ServerLoopMode = -291675781,
+
     /// <summary><c>cssharp.server/pre-world-update</c></summary>
     ServerPreWorldUpdate = 1796896305,
 
     /// <summary><c>cssharp.server/precache-model</c></summary>
     ServerPrecacheModel = -1957277102,
+
+    /// <summary><c>cssharp.server/startup</c></summary>
+    ServerStartup = 1052299120,
 
     /// <summary><c>cssharp.server/steam-api-events</c></summary>
     ServerSteamApiEvents = 1980117002,
@@ -328,6 +340,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.network/state-changed</c></summary>
     public const string NetworkStateChanged = "cssharp.network/state-changed";
 
+    /// <summary><c>cssharp.network/user-messages</c></summary>
+    public const string NetworkUserMessages = "cssharp.network/user-messages";
+
     /// <summary><c>cssharp.player/authorization</c></summary>
     public const string PlayerAuthorization = "cssharp.player/authorization";
 
@@ -397,6 +412,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
 
+    /// <summary><c>cssharp.server/global-vars</c></summary>
+    public const string ServerGlobalVars = "cssharp.server/global-vars";
+
     /// <summary><c>cssharp.server/hibernation-events</c></summary>
     public const string ServerHibernationEvents = "cssharp.server/hibernation-events";
 
@@ -409,11 +427,17 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.server/is-paused</c></summary>
     public const string ServerIsPaused = "cssharp.server/is-paused";
 
+    /// <summary><c>cssharp.server/loop-mode</c></summary>
+    public const string ServerLoopMode = "cssharp.server/loop-mode";
+
     /// <summary><c>cssharp.server/pre-world-update</c></summary>
     public const string ServerPreWorldUpdate = "cssharp.server/pre-world-update";
 
     /// <summary><c>cssharp.server/precache-model</c></summary>
     public const string ServerPrecacheModel = "cssharp.server/precache-model";
+
+    /// <summary><c>cssharp.server/startup</c></summary>
+    public const string ServerStartup = "cssharp.server/startup";
 
     /// <summary><c>cssharp.server/steam-api-events</c></summary>
     public const string ServerSteamApiEvents = "cssharp.server/steam-api-events";
@@ -463,6 +487,7 @@ public static class EngineFeatureNames
         EngineFeature.NavNavMesh => NavNavMesh,
         EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
         EngineFeature.NetworkStateChanged => NetworkStateChanged,
+        EngineFeature.NetworkUserMessages => NetworkUserMessages,
         EngineFeature.PlayerAuthorization => PlayerAuthorization,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
         EngineFeature.PlayerClientCommands => PlayerClientCommands,
@@ -486,12 +511,15 @@ public static class EngineFeatureNames
         EngineFeature.ServerFatalShutdown => ServerFatalShutdown,
         EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
+        EngineFeature.ServerGlobalVars => ServerGlobalVars,
         EngineFeature.ServerHibernationEvents => ServerHibernationEvents,
         EngineFeature.ServerHostnameChanged => ServerHostnameChanged,
         EngineFeature.ServerIsMapValid => ServerIsMapValid,
         EngineFeature.ServerIsPaused => ServerIsPaused,
+        EngineFeature.ServerLoopMode => ServerLoopMode,
         EngineFeature.ServerPreWorldUpdate => ServerPreWorldUpdate,
         EngineFeature.ServerPrecacheModel => ServerPrecacheModel,
+        EngineFeature.ServerStartup => ServerStartup,
         EngineFeature.ServerSteamApiEvents => ServerSteamApiEvents,
         EngineFeature.ServerUpdateWhenNotInGame => ServerUpdateWhenNotInGame,
         EngineFeature.UiCustomHudLayout => UiCustomHudLayout,

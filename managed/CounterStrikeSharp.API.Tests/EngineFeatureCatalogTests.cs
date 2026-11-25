@@ -93,6 +93,11 @@ public class EngineFeatureCatalogTests : IDisposable
         ["cssharp.player/execute-client-command"] = ["IVEngineServer2::ClientCommand"],
         ["cssharp.player/disconnect"] = ["IVEngineServer2::DisconnectClient"],
         ["cssharp.player/authorization"] = ["IVEngineServer2::IsClientFullyAuthenticated", "IVEngineServer2::GetClientSteamID"],
+        // Never-moved interfaces (Slot Bindings, direct calls compiled but verified)
+        ["cssharp.server/startup"] = ["INetworkServerService::StartupServer"],
+        ["cssharp.server/loop-mode"] = ["IEngineServiceMgr::RegisterLoopMode", "IEngineServiceMgr::FindService"],
+        ["cssharp.server/global-vars"] = ["INetworkServerService::GetIGameServer", "INetworkGameServer::GetGlobals"],
+        ["cssharp.network/user-messages"] = ["IGameEventSystem::PostEventAbstract", "IGameEventSystem::PostEventAbstract_Filter"],
     };
 
     public void Dispose() => EngineFeatures.Reset();

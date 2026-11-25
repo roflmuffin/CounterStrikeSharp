@@ -32,9 +32,9 @@ status=0
 
 echo "== game-class-virtuals: valid gamedata"
 "$run" "$@" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
-    --expect-no-log 'unverified|[Hh]ealed|Vtable of [A-Za-z0-9_]+ \([a-z0-9]+\) has [0-9]+ slots' \
+    --expect-no-log 'unverified.*(CCSPlayer|CBase|CGameSceneNode|CCSGameRules|ISource2GameEntities)|[Hh]ealed|Vtable of [A-Za-z0-9_]+ \([a-z0-9]+\) has [0-9]+ slots' \
     --expect-log "${read_by_key}387 \\(verified\\)" \
     --expect-log '\[GameClassSlotTests\] CCSPlayerController_ChangeTeam read by key: 104 \(verified\)' \
     --check "$(outcome passed GameClassSlotTests.GameClassVirtuals_ReadByKey_FollowTheVtableCheck \
@@ -46,7 +46,7 @@ echo "== game-class-virtuals: valid gamedata"
 echo "== game-class-virtuals: CommitSuicide one slot too low"
 "$run" "$@" --no-build \
     --gamedata-jq ".$key.offsets.linux = 386" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed(, [0-9]+ unverified)?$' \
     --expect-log "Healed $key: CBasePlayerPawn \\(server\\) slot 386 -> 387, window \\[[0-9a-f]{16}, [0-9a-f]{16}, [0-9a-f]{16}\\] matched once within 16 slots" \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-log "^ +Healed $key: CBasePlayerPawn \\(server\\) slot 386 -> 387, window " \

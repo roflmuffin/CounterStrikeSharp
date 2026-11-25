@@ -29,7 +29,7 @@ status=0
 
 echo "== icvar: valid gamedata"
 "$run" "$@" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-no-log 'Healed ICvar|Vtable of CCvar|not registering core console commands' \
     --check "$(only_failed)" ||
@@ -38,7 +38,7 @@ echo "== icvar: valid gamedata"
 echo "== icvar: DispatchConCommand one slot too low"
 "$run" "$@" --no-build \
     --gamedata-jq '."ICvar::DispatchConCommand".offsets.linux = 19' \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-log '^ +Healed ICvar::DispatchConCommand: CCvar \(tier0\) slot 19 -> 20, window ' \
     --check "$(only_failed)" \

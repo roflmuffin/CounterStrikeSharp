@@ -68,6 +68,11 @@ inline constexpr std::string_view ConVarRead = "cssharp.convars/read";
 inline constexpr std::string_view ConVarWrite = "cssharp.convars/write";
 inline constexpr std::string_view ConVarCreate = "cssharp.convars/create";
 inline constexpr std::string_view ConVarChangeEvents = "cssharp.convars/change-events";
+// Interfaces that never shifted a slot we use: hooks by verified slot index, direct calls compiled but verified
+inline constexpr std::string_view Startup = "cssharp.server/startup";
+inline constexpr std::string_view LoopMode = "cssharp.server/loop-mode";
+inline constexpr std::string_view GlobalVars = "cssharp.server/global-vars";
+inline constexpr std::string_view UserMessages = "cssharp.network/user-messages";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.

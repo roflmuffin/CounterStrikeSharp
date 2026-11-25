@@ -331,7 +331,12 @@ int PlayerManager::ListenClient() const { return m_listen_client; }
 
 int PlayerManager::NumPlayers() const { return m_player_count; }
 
-int PlayerManager::MaxClients() const { return globals::getGlobalVars()->maxClients; }
+// -1 (no valid slot) without global vars: before a map, or cssharp.server/global-vars disabled.
+int PlayerManager::MaxClients() const
+{
+    const auto* globalVars = globals::getGlobalVars();
+    return globalVars ? globalVars->maxClients : -1;
+}
 
 CPlayer* PlayerManager::GetPlayerBySlot(int client) const
 {

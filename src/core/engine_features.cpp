@@ -46,7 +46,13 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::PlayerVoiceEvents), { Slot("IServerGameClients::ClientVoice") } },
     { std::string(features::UiCustomHudLayout), { Slot("IServerGameClients::ClientSvcUserMessage") } },
     // Events and networking
-    { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
+    // Plus every game event manager slot it hooks or calls, and the loop-mode hook that flushes event hooks registered
+    // before the game loop exists.
+    { std::string(features::GameEvents),
+      { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server"), Slot("IGameEventManager2::LoadEventsFromFile"),
+        Slot("IGameEventManager2::AddListener"), Slot("IGameEventManager2::FindListener"), Slot("IGameEventManager2::RemoveListener"),
+        Slot("IGameEventManager2::CreateEvent"), Slot("IGameEventManager2::FireEvent"), Slot("IGameEventManager2::FreeEvent"),
+        Slot("IEngineServiceMgr::RegisterLoopMode") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
     { std::string(features::StateChanged), { Signature("NetworkStateChanged"), Offset("SetStateChanged") } },
     { std::string(features::CheckTransmit), { ClassSlot("ISource2GameEntities::CheckTransmit"), Offset("CheckTransmitPlayerSlot") } },
@@ -98,6 +104,17 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
       { Slot("ICvar::FindConVar"), Slot("ICvar::GetConVarData"), Slot("ICvar::RegisterConVar"), Slot("ICvar::UnregisterConVarCallbacks") } },
     { std::string(features::ConVarChangeEvents),
       { Slot("ICvar::InstallGlobalChangeCallback"), Slot("ICvar::RemoveGlobalChangeCallback"), Slot("ICvar::GetConVarData") } },
+    // Interfaces that never shifted a slot we use. Hooks follow the verified index; direct calls stay compiled, so their
+    // Bindings fail when verified anywhere but the compiled index (core_bindings.cpp supplies it).
+    // Map start: entity system, OnMapStart.
+    { std::string(features::Startup), { Slot("INetworkServerService::StartupServer") } },
+    // Game loop start (flushes early game event hooks).
+    { std::string(features::LoopMode), { Slot("IEngineServiceMgr::RegisterLoopMode"), Slot("IEngineServiceMgr::FindService") } },
+    // Tick count, current time, frame time, map name, max players.
+    { std::string(features::GlobalVars), { Slot("INetworkServerService::GetIGameServer"), Slot("INetworkGameServer::GetGlobals") } },
+    // User message hooks and sends, client prints, replicated convars.
+    { std::string(features::UserMessages),
+      { Slot("IGameEventSystem::PostEventAbstract"), Slot("IGameEventSystem::PostEventAbstract_Filter") } },
 };
 
 // Virtuals called through their Gamedata index on game-class objects (and CheckTransmit, hooked by index on the game

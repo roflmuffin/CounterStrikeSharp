@@ -41,9 +41,9 @@ status=0
 echo "== server-game-clients: valid gamedata"
 # shellcheck disable=SC2086
 "$run" "$@" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
-    --expect-no-log 'unverified|[Hh]ealed|Vtable of CSource2GameClients' \
+    --expect-no-log 'unverified.*IServerGameClients|[Hh]ealed|Vtable of CSource2GameClients' \
     --check "$(outcome passed $available $listeners)" \
     --expect-log '\[ServerGameClientsTests\] connection-events available: True; connects [1-9]' \
     --expect-log '\[ServerGameClientsTests\] client-commands available: True; sent True, listener calls 1' ||
@@ -55,7 +55,7 @@ echo "== server-game-clients: connection hooks one slot too low"
     --gamedata-jq '."IServerGameClients::ClientPutInServer".offsets.linux = 12' \
     --gamedata-jq '."IServerGameClients::ClientDisconnect".offsets.linux = 15' \
     --exec css_engine_features \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 3 healed$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 3 healed(, [0-9]+ unverified)?$' \
     --expect-log "Healed IServerGameClients::ClientConnect: CSource2GameClients \\(server\\) slot 11 -> 12, $window" \
     --expect-log "Healed IServerGameClients::ClientPutInServer: CSource2GameClients \\(server\\) slot 12 -> 13, $window" \
     --expect-log "Healed IServerGameClients::ClientDisconnect: CSource2GameClients \\(server\\) slot 15 -> 16, $window" \

@@ -47,7 +47,7 @@ status=0
 
 echo "== isource2server: valid gamedata"
 "$run" "$@" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-no-log '[Hh]ealed|Vtable of CSource2Server' \
     --check "$(only_failed)" \
@@ -65,7 +65,7 @@ done
 shift_all="${shift_all%,}) as \$k (.; .[\$k].offsets.linux -= 1 | .[\$k].vtable.linux.size = 104)"
 "$run" "$@" --no-build \
     --gamedata-jq "$shift_all" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 10 healed$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 10 healed(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     "${heals[@]}" \
     --check "$(only_failed)" \

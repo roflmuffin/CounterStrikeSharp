@@ -99,6 +99,9 @@ const float engine_fixed_tick_interval = 0.015625f;
 
 static HookSet initializationHooks;
 
+// cssharp.server/global-vars, read once after the boot Resolution Report (getGlobalVars runs every frame).
+static bool globalVarsAvailable = false;
+
 static KHook::Return<void> OnGameEventManagerInit(IGameEventManager2* manager)
 {
     gameEventManager = manager;
@@ -132,6 +135,7 @@ void Initialize()
 void InitializeHooks()
 {
     // Each Engine Feature gates on its own Bindings; a miss disables only that feature.
+    globalVarsAvailable = bindings::IsEngineFeatureAvailable(bindings::features::GlobalVars);
     GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(bindings::GetBindingAddress("LegacyGameEventListener"));
 
     if (bindings::IsEngineFeatureAvailable(bindings::features::StateChanged))
@@ -145,6 +149,7 @@ void InitializeHooks()
 
 CGlobalVars* getGlobalVars()
 {
+    if (!globalVarsAvailable) return nullptr;
     INetworkGameServer* server = networkServerService->GetIGameServer();
     if (!server) return nullptr;
     return networkServerService->GetIGameServer()->GetGlobals();

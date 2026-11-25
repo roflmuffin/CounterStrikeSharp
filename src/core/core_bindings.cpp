@@ -10,6 +10,7 @@
 #include <dlfcn.h>
 #endif
 
+#include "core/compiled_slots.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
 #include "core/log.h"
@@ -101,7 +102,11 @@ void ResolveCoreBindings()
 
     // Every core Gamedata key, including those only managed code consumes (managed declares their Engine Features).
     const auto& gamedata = globals::gameConfig->GetGamedata();
-    const auto declarations = CoreBindingDeclarations(gamedata);
+    auto declarations = CoreBindingDeclarations(gamedata);
+    // Compiled direct calls cannot follow a Heal: their Slot Bindings must verify at the compiled index.
+    for (auto& declaration : declarations)
+        for (const auto& compiled : CompiledSlots())
+            if (declaration.kind == BindingKind::Slot && declaration.key == compiled.key) declaration.compiledIndex = compiled.index;
     coreReport = Resolver().Resolve(ReadBuildId(), gamedata, images, declarations);
 
     const auto summary = FormatBindingSummary(coreReport);

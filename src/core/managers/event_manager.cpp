@@ -32,6 +32,7 @@
 #include "core/managers/event_manager.h"
 
 #include "core/log.h"
+#include "core/slot_hooks.h"
 #include "scripting/callback_manager.h"
 #include "vprof.h"
 
@@ -58,7 +59,9 @@ void EventManager::OnAllInitialized() {}
 void EventManager::OnAllInitialized_Post()
 {
     m_hooks.Clear();
-    m_hooks.Add(&IGameEventManager2::FireEvent, globals::gameEventManager, this, &EventManager::OnFireEvent, nullptr);
+    // Only reached with cssharp.events/game-events available (its init hook calls this), so the Binding is verified.
+    HookSlot(m_hooks, "IGameEventManager2::FireEvent", &IGameEventManager2::FireEvent, globals::gameEventManager, this,
+             &EventManager::OnFireEvent, nullptr);
 }
 
 void EventManager::OnShutdown()

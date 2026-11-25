@@ -120,7 +120,12 @@ public class UserMessage : NativeObject, IDisposable
     // public UserMessage ReadRepeatedMessage(string fieldName, int index ) => NativeAPI.PbReadrepeatedmessage(this, fieldName, index);
     // public UserMessage AddMessage(string fieldName) => NativeAPI.PbAddmessage(this, fieldName);
 
-    public void Send() => NativeAPI.UsermessageSend(this);
+    /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.network/user-messages</c> is disabled</exception>
+    public void Send()
+    {
+        Core.EngineFeatures.Current.ThrowIfUnavailable(Core.EngineFeatureNames.NetworkUserMessages);
+        NativeAPI.UsermessageSend(this);
+    }
 
     public void Send(RecipientFilter recipientFilter)
     {

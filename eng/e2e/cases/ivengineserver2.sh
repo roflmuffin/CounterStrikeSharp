@@ -42,7 +42,7 @@ status=0
 
 echo "== ivengineserver2: valid gamedata"
 "$run" "$@" \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved(, [0-9]+ unverified)?$' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-no-log '[Hh]ealed|Vtable of CEngineServer' \
     --check "$(only_failed)" \
@@ -53,7 +53,7 @@ echo "== ivengineserver2: IsMapValid one slot too low"
 "$run" "$@" --no-build \
     --gamedata-jq '."IVEngineServer2::IsMapValid".offsets.linux = 32' \
     --exec css_engine_features \
-    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed$' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed(, [0-9]+ unverified)?$' \
     --expect-log 'Healed IVEngineServer2::IsMapValid: CEngineServer \(engine\) slot 32 -> 33, window \[[0-9a-f]{16}, [0-9a-f]{16}, [0-9a-f]{16}\] matched once within 16 slots' \
     --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' \
     --expect-log '^ +Healed IVEngineServer2::IsMapValid: CEngineServer \(engine\) slot 32 -> 33, window ' \

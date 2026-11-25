@@ -89,7 +89,8 @@ namespace CounterStrikeSharp.API
             NativeAPI.IssueServerCommand(command);
         }
 
-        public static string MapName => NativeAPI.GetMapName();
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/global-vars</c> is disabled</exception>
+        public static string MapName => GlobalVars(NativeAPI.GetMapName);
 
         /// <summary>
         /// Returns the total time the server has been running in seconds.
@@ -102,13 +103,15 @@ namespace CounterStrikeSharp.API
         /// e.g. 70.046875 would represent 70 seconds of map time and the 4483rd tick of the server (70.046875 / 0.015625).
         /// </summary>
         /// <remarks>Increments even when server is hibernating</remarks>
-        public static float CurrentTime => NativeAPI.GetCurrentTime();
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/global-vars</c> is disabled</exception>
+        public static float CurrentTime => GlobalVars(NativeAPI.GetCurrentTime);
 
         /// <summary>
         /// Returns the current map tick count.
         /// CS2 is a 64 tick server, so the value will increment by 64 every second.
         /// </summary>
-        public static int TickCount => NativeAPI.GetTickCount();
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/global-vars</c> is disabled</exception>
+        public static int TickCount => GlobalVars(NativeAPI.GetTickCount);
 
         /// <summary>
         /// Returns the total time the server has been running in seconds.
@@ -119,7 +122,15 @@ namespace CounterStrikeSharp.API
         /// <summary>
         /// Returns the time spent on last server or client frame
         /// </summary>
-        public static float FrameTime => NativeAPI.GetGameFrameTime();
+        /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/global-vars</c> is disabled</exception>
+        public static float FrameTime => GlobalVars(NativeAPI.GetGameFrameTime);
+
+        // Map name, times, tick count and max players are read from the engine's global vars.
+        private static T GlobalVars<T>(Func<T> read)
+        {
+            Core.EngineFeatures.Current.ThrowIfUnavailable(Core.EngineFeatureNames.ServerGlobalVars);
+            return read();
+        }
 
         /// <exception cref="Core.EngineFeatureUnavailableException">Engine Feature <c>cssharp.server/precache-model</c> is
         /// disabled</exception>
@@ -285,7 +296,7 @@ namespace CounterStrikeSharp.API
         {
             get
             {
-                _maxPlayers ??= NativeAPI.GetMaxClients();
+                _maxPlayers ??= GlobalVars(NativeAPI.GetMaxClients);
 
                 return _maxPlayers.Value;
             }
