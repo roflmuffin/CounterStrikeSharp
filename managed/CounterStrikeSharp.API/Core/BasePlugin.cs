@@ -225,6 +225,11 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="mode">Whether to hook before or after the command is executed.</param>
         public void AddCommandListener(string? name, CommandInfo.CommandListenerCallback handler, HookMode mode = HookMode.Pre)
         {
+            // Registers either way: on a disabled cssharp.player/client-commands (client-typed commands) or
+            // cssharp.commands/console-dispatch (console-issued commands), those commands never reach it.
+            Bindings.ListenerEngineFeatures.CheckCommandListenerRegistration(EngineFeatures.Current,
+                Logger ?? Application.Instance.Logger, this);
+
             var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
             {
                 var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
@@ -395,6 +400,9 @@ namespace CounterStrikeSharp.API.Core
         /// <returns>An instance of the <see cref="Timer"/></returns>
         public Timer AddTickTimer(int tickInterval, Action callback, TimerFlags? flags = null)
         {
+            // Like AddTimer: run from GameFrame, kept but never fired on a disabled cssharp.server/game-frame.
+            EngineFeatures.Current.CheckRegistration(EngineFeatureNames.ServerGameFrame, "Timer",
+                Logger ?? Application.Instance.Logger, this);
             var timer = new Timer(tickInterval * Server.TickInterval, callback, flags ?? 0);
             Timers.Add(timer);
             return timer;

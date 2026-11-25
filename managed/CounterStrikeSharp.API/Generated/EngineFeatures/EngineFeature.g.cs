@@ -18,6 +18,27 @@ public enum EngineFeature
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     ChatSayHooks = 2095797270,
 
+    /// <summary><c>cssharp.commands/add-command</c></summary>
+    CommandsAddCommand = -861877729,
+
+    /// <summary><c>cssharp.commands/console-dispatch</c></summary>
+    CommandsConsoleDispatch = -1314429302,
+
+    /// <summary><c>cssharp.convars/change-events</c></summary>
+    ConvarsChangeEvents = 1882013728,
+
+    /// <summary><c>cssharp.convars/create</c></summary>
+    ConvarsCreate = 1368476526,
+
+    /// <summary><c>cssharp.convars/find</c></summary>
+    ConvarsFind = -354104003,
+
+    /// <summary><c>cssharp.convars/read</c></summary>
+    ConvarsRead = -1177757182,
+
+    /// <summary><c>cssharp.convars/write</c></summary>
+    ConvarsWrite = -624576795,
+
     /// <summary><c>cssharp.entity/accept-input</c></summary>
     EntityAcceptInput = 1580885254,
 
@@ -102,8 +123,17 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/change-team</c></summary>
     PlayerChangeTeam = -655364455,
 
+    /// <summary><c>cssharp.player/client-commands</c></summary>
+    PlayerClientCommands = -2126044321,
+
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     PlayerCommitSuicide = -525076719,
+
+    /// <summary><c>cssharp.player/connection-events</c></summary>
+    PlayerConnectionEvents = 2139873301,
+
+    /// <summary><c>cssharp.player/execute-client-command-from-server</c></summary>
+    PlayerExecuteClientCommandFromServer = -489531223,
 
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     PlayerPostThinkHooks = 1406403779,
@@ -117,11 +147,41 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/switch-team</c></summary>
     PlayerSwitchTeam = -936310331,
 
+    /// <summary><c>cssharp.player/voice-events</c></summary>
+    PlayerVoiceEvents = -674643371,
+
+    /// <summary><c>cssharp.server/econ-item-system</c></summary>
+    ServerEconItemSystem = 732765624,
+
+    /// <summary><c>cssharp.server/fatal-shutdown</c></summary>
+    ServerFatalShutdown = 1952110924,
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     ServerGameFrame = 62045269,
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
+
+    /// <summary><c>cssharp.server/hibernation-events</c></summary>
+    ServerHibernationEvents = 1910400260,
+
+    /// <summary><c>cssharp.server/hostname-changed</c></summary>
+    ServerHostnameChanged = 504295971,
+
+    /// <summary><c>cssharp.server/is-paused</c></summary>
+    ServerIsPaused = 386829384,
+
+    /// <summary><c>cssharp.server/pre-world-update</c></summary>
+    ServerPreWorldUpdate = 1796896305,
+
+    /// <summary><c>cssharp.server/steam-api-events</c></summary>
+    ServerSteamApiEvents = 1980117002,
+
+    /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
+    ServerUpdateWhenNotInGame = 88681160,
+
+    /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
+    UiCustomHudLayout = 518878300,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -132,6 +192,27 @@ public static class EngineFeatureNames
 
     /// <summary><c>cssharp.chat/say-hooks</c></summary>
     public const string ChatSayHooks = "cssharp.chat/say-hooks";
+
+    /// <summary><c>cssharp.commands/add-command</c></summary>
+    public const string CommandsAddCommand = "cssharp.commands/add-command";
+
+    /// <summary><c>cssharp.commands/console-dispatch</c></summary>
+    public const string CommandsConsoleDispatch = "cssharp.commands/console-dispatch";
+
+    /// <summary><c>cssharp.convars/change-events</c></summary>
+    public const string ConvarsChangeEvents = "cssharp.convars/change-events";
+
+    /// <summary><c>cssharp.convars/create</c></summary>
+    public const string ConvarsCreate = "cssharp.convars/create";
+
+    /// <summary><c>cssharp.convars/find</c></summary>
+    public const string ConvarsFind = "cssharp.convars/find";
+
+    /// <summary><c>cssharp.convars/read</c></summary>
+    public const string ConvarsRead = "cssharp.convars/read";
+
+    /// <summary><c>cssharp.convars/write</c></summary>
+    public const string ConvarsWrite = "cssharp.convars/write";
 
     /// <summary><c>cssharp.entity/accept-input</c></summary>
     public const string EntityAcceptInput = "cssharp.entity/accept-input";
@@ -217,8 +298,17 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/change-team</c></summary>
     public const string PlayerChangeTeam = "cssharp.player/change-team";
 
+    /// <summary><c>cssharp.player/client-commands</c></summary>
+    public const string PlayerClientCommands = "cssharp.player/client-commands";
+
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     public const string PlayerCommitSuicide = "cssharp.player/commit-suicide";
+
+    /// <summary><c>cssharp.player/connection-events</c></summary>
+    public const string PlayerConnectionEvents = "cssharp.player/connection-events";
+
+    /// <summary><c>cssharp.player/execute-client-command-from-server</c></summary>
+    public const string PlayerExecuteClientCommandFromServer = "cssharp.player/execute-client-command-from-server";
 
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     public const string PlayerPostThinkHooks = "cssharp.player/post-think-hooks";
@@ -232,17 +322,54 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/switch-team</c></summary>
     public const string PlayerSwitchTeam = "cssharp.player/switch-team";
 
+    /// <summary><c>cssharp.player/voice-events</c></summary>
+    public const string PlayerVoiceEvents = "cssharp.player/voice-events";
+
+    /// <summary><c>cssharp.server/econ-item-system</c></summary>
+    public const string ServerEconItemSystem = "cssharp.server/econ-item-system";
+
+    /// <summary><c>cssharp.server/fatal-shutdown</c></summary>
+    public const string ServerFatalShutdown = "cssharp.server/fatal-shutdown";
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     public const string ServerGameFrame = "cssharp.server/game-frame";
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
 
+    /// <summary><c>cssharp.server/hibernation-events</c></summary>
+    public const string ServerHibernationEvents = "cssharp.server/hibernation-events";
+
+    /// <summary><c>cssharp.server/hostname-changed</c></summary>
+    public const string ServerHostnameChanged = "cssharp.server/hostname-changed";
+
+    /// <summary><c>cssharp.server/is-paused</c></summary>
+    public const string ServerIsPaused = "cssharp.server/is-paused";
+
+    /// <summary><c>cssharp.server/pre-world-update</c></summary>
+    public const string ServerPreWorldUpdate = "cssharp.server/pre-world-update";
+
+    /// <summary><c>cssharp.server/steam-api-events</c></summary>
+    public const string ServerSteamApiEvents = "cssharp.server/steam-api-events";
+
+    /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
+    public const string ServerUpdateWhenNotInGame = "cssharp.server/update-when-not-in-game";
+
+    /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
+    public const string UiCustomHudLayout = "cssharp.ui/custom-hud-layout";
+
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
     {
         EngineFeature.ChatClientPrint => ChatClientPrint,
         EngineFeature.ChatSayHooks => ChatSayHooks,
+        EngineFeature.CommandsAddCommand => CommandsAddCommand,
+        EngineFeature.CommandsConsoleDispatch => CommandsConsoleDispatch,
+        EngineFeature.ConvarsChangeEvents => ConvarsChangeEvents,
+        EngineFeature.ConvarsCreate => ConvarsCreate,
+        EngineFeature.ConvarsFind => ConvarsFind,
+        EngineFeature.ConvarsRead => ConvarsRead,
+        EngineFeature.ConvarsWrite => ConvarsWrite,
         EngineFeature.EntityAcceptInput => EntityAcceptInput,
         EngineFeature.EntityAddIoEvent => EntityAddIoEvent,
         EngineFeature.EntityCreate => EntityCreate,
@@ -271,13 +398,26 @@ public static class EngineFeatureNames
         EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
         EngineFeature.NetworkStateChanged => NetworkStateChanged,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
+        EngineFeature.PlayerClientCommands => PlayerClientCommands,
         EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
+        EngineFeature.PlayerConnectionEvents => PlayerConnectionEvents,
+        EngineFeature.PlayerExecuteClientCommandFromServer => PlayerExecuteClientCommandFromServer,
         EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,
         EngineFeature.PlayerRespawn => PlayerRespawn,
         EngineFeature.PlayerSetPawn => PlayerSetPawn,
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
+        EngineFeature.PlayerVoiceEvents => PlayerVoiceEvents,
+        EngineFeature.ServerEconItemSystem => ServerEconItemSystem,
+        EngineFeature.ServerFatalShutdown => ServerFatalShutdown,
         EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
+        EngineFeature.ServerHibernationEvents => ServerHibernationEvents,
+        EngineFeature.ServerHostnameChanged => ServerHostnameChanged,
+        EngineFeature.ServerIsPaused => ServerIsPaused,
+        EngineFeature.ServerPreWorldUpdate => ServerPreWorldUpdate,
+        EngineFeature.ServerSteamApiEvents => ServerSteamApiEvents,
+        EngineFeature.ServerUpdateWhenNotInGame => ServerUpdateWhenNotInGame,
+        EngineFeature.UiCustomHudLayout => UiCustomHudLayout,
         _ => null,
     };
 }

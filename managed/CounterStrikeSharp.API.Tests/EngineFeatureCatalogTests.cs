@@ -13,6 +13,38 @@ public class EngineFeatureCatalogTests : IDisposable
     private static readonly Dictionary<string, string[]> SpecCatalog = new()
     {
         ["cssharp.server/game-frame"] = ["ISource2Server::GameFrame"],
+        ["cssharp.server/hibernation-events"] = ["ISource2Server::ServerHibernationUpdate"],
+        ["cssharp.server/steam-api-events"] = ["ISource2Server::GameServerSteamAPIActivated", "ISource2Server::GameServerSteamAPIDeactivated"],
+        ["cssharp.server/hostname-changed"] = ["ISource2Server::OnHostNameChanged"],
+        ["cssharp.server/fatal-shutdown"] = ["ISource2Server::PreFatalShutdown"],
+        ["cssharp.server/update-when-not-in-game"] = ["ISource2Server::UpdateWhenNotInGame"],
+        ["cssharp.server/pre-world-update"] = ["ISource2Server::PreWorldUpdate"],
+        ["cssharp.server/econ-item-system"] = ["ISource2Server::GetEconItemSystem"],
+        ["cssharp.server/is-paused"] = ["ISource2Server::IsPaused"],
+        ["cssharp.commands/console-dispatch"] = ["ICvar::DispatchConCommand"],
+        ["cssharp.commands/add-command"] =
+        [
+            "ICvar::FindConCommand", "ICvar::RegisterConCommand", "ICvar::GetConCommandData", "ICvar::UnregisterConCommandCallbacks",
+            "ICvar::GetCharacterSet"
+        ],
+        ["cssharp.player/execute-client-command-from-server"] =
+            ["ICvar::GetCharacterSet", "ICvar::FindConCommand", "ICvar::DispatchConCommand"],
+        ["cssharp.convars/find"] = ["ICvar::FindConVar", "ICvar::GetConVarData"],
+        ["cssharp.convars/read"] = ["ICvar::GetConVarData"],
+        ["cssharp.convars/write"] =
+        [
+            "ICvar::GetConVarData", "ICvar::CallFilterCallback", "ICvar::CallChangeCallback", "ICvar::CallGlobalChangeCallbacks",
+            "ICvar::QueueThreadSetValue"
+        ],
+        ["cssharp.convars/create"] =
+            ["ICvar::FindConVar", "ICvar::GetConVarData", "ICvar::RegisterConVar", "ICvar::UnregisterConVarCallbacks"],
+        ["cssharp.convars/change-events"] =
+            ["ICvar::InstallGlobalChangeCallback", "ICvar::RemoveGlobalChangeCallback", "ICvar::GetConVarData"],
+        ["cssharp.player/connection-events"] =
+            ["IServerGameClients::ClientConnect", "IServerGameClients::ClientPutInServer", "IServerGameClients::ClientDisconnect"],
+        ["cssharp.player/client-commands"] = ["IServerGameClients::ClientCommand"],
+        ["cssharp.player/voice-events"] = ["IServerGameClients::ClientVoice"],
+        ["cssharp.ui/custom-hud-layout"] = ["IServerGameClients::ClientSvcUserMessage"],
         ["cssharp.events/game-events"] = ["CGameEventManager_Init", "CGameEventManager"],
         ["cssharp.events/fire-event-to-client"] = ["LegacyGameEventListener"],
         ["cssharp.network/state-changed"] = ["NetworkStateChanged", "SetStateChanged"],

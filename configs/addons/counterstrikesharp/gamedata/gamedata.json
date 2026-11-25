@@ -457,5 +457,563 @@
         "size": 105
       }
     }
+  },
+  "ISource2Server::PreWorldUpdate": {
+    "offsets": {
+      "linux": 16
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "b20db4b1b8d0207c",
+          "583e27fa25243677",
+          "ddf98d2f8dadfc53"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::ServerHibernationUpdate": {
+    "offsets": {
+      "linux": 23
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "197e441f627935d4",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::IsPaused": {
+    "offsets": {
+      "linux": 32
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "f6b990b719007865",
+          "dc80d3b495cc4ffa",
+          "3e43fca5b7e38146"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::GameServerSteamAPIActivated": {
+    "offsets": {
+      "linux": 42
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "df017fc1acc527db",
+          "0d1eb032363eb9af"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::GameServerSteamAPIDeactivated": {
+    "offsets": {
+      "linux": 43
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "df017fc1acc527db",
+          "0d1eb032363eb9af",
+          "e73a2da93b478fdd"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::OnHostNameChanged": {
+    "offsets": {
+      "linux": 44
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "0d1eb032363eb9af",
+          "e73a2da93b478fdd",
+          "dea434b79d9f7a5e"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::PreFatalShutdown": {
+    "offsets": {
+      "linux": 45
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "e73a2da93b478fdd",
+          "dea434b79d9f7a5e",
+          "1b9385a7d1a78034"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::UpdateWhenNotInGame": {
+    "offsets": {
+      "linux": 46
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "dea434b79d9f7a5e",
+          "1b9385a7d1a78034",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::GetEconItemSystem": {
+    "offsets": {
+      "linux": 47
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "1b9385a7d1a78034",
+          "dc3e8eb9a1a8f4c4",
+          "11e12bb585e2924f"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "IServerGameClients::ClientConnect": {
+    "offsets": {
+      "linux": 12
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "4d5c43e2e916cc48",
+          "208eed64076ceb23",
+          "30675a24621abb16"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientPutInServer": {
+    "offsets": {
+      "linux": 13
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "208eed64076ceb23",
+          "30675a24621abb16",
+          "1e28b2f430b4d108"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientDisconnect": {
+    "offsets": {
+      "linux": 16
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "fd9db3d3fed75247",
+          "08348b31f6cd632e",
+          "a00b3b1fa27ffbd8"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientCommand": {
+    "offsets": {
+      "linux": 17
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "08348b31f6cd632e",
+          "a00b3b1fa27ffbd8",
+          "422f6af6d1252adb"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientVoice": {
+    "offsets": {
+      "linux": 27
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "65220729779005ec",
+          "81e088b52d912e47",
+          "0c8366d1b83a2527"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientSvcUserMessage": {
+    "offsets": {
+      "linux": 38
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "6926706b30a364f2",
+          "5ec98b59d6f95cd3",
+          "fb440b10c5ab00c4"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::FindConVar": {
+    "offsets": {
+      "linux": 11
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "8c8ea0db4cba3598",
+          "2bb5730ab3d8730f",
+          "4451fe08ff2967ce"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::CallChangeCallback": {
+    "offsets": {
+      "linux": 14
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "a296b97f6424883e",
+          "dd839dec8befc5b3",
+          "54759f176673594e"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::CallFilterCallback": {
+    "offsets": {
+      "linux": 16
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "54759f176673594e",
+          "31d492dddcf3d75f",
+          "a9ed15ec41b8f1b3"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::FindConCommand": {
+    "offsets": {
+      "linux": 17
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "31d492dddcf3d75f",
+          "a9ed15ec41b8f1b3",
+          "9f7e8114c7cee38f"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::DispatchConCommand": {
+    "offsets": {
+      "linux": 20
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "33c546e54ad0d960",
+          "cca3327c0b5a8476",
+          "613acff8af6aa3ed"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::InstallGlobalChangeCallback": {
+    "offsets": {
+      "linux": 21
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "cca3327c0b5a8476",
+          "613acff8af6aa3ed",
+          "d269f434c1e9d94c"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::RemoveGlobalChangeCallback": {
+    "offsets": {
+      "linux": 22
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "613acff8af6aa3ed",
+          "d269f434c1e9d94c",
+          "b61faafc8e27ee3b"
+        ],
+        "uniqueNearby": false,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::CallGlobalChangeCallbacks": {
+    "offsets": {
+      "linux": 23
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "d269f434c1e9d94c",
+          "b61faafc8e27ee3b",
+          "d5675913a056f28e"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::GetCharacterSet": {
+    "offsets": {
+      "linux": 32
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "6fad63c8ab1ce435",
+          "5a5d213d60677a32",
+          "07544f79f6e53fa4"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::RegisterConVar": {
+    "offsets": {
+      "linux": 38
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "c1e7736e17dfd8d3",
+          "6ff006be4c450e95",
+          "1a11c7e48abf78db"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::UnregisterConVarCallbacks": {
+    "offsets": {
+      "linux": 39
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "6ff006be4c450e95",
+          "1a11c7e48abf78db",
+          "f1a3e2308a32c628"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::GetConVarData": {
+    "offsets": {
+      "linux": 41
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "f1a3e2308a32c628",
+          "c423b338fac2a896",
+          "e548c34ccac6a7d0"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::RegisterConCommand": {
+    "offsets": {
+      "linux": 42
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "c423b338fac2a896",
+          "e548c34ccac6a7d0",
+          "e9c24e2faed92deb"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::UnregisterConCommandCallbacks": {
+    "offsets": {
+      "linux": 43
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "e548c34ccac6a7d0",
+          "e9c24e2faed92deb",
+          "f91f9de1a14d3e6f"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::GetConCommandData": {
+    "offsets": {
+      "linux": 44
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "e9c24e2faed92deb",
+          "f91f9de1a14d3e6f",
+          "d1c11506bffa2b17"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "ICvar::QueueThreadSetValue": {
+    "offsets": {
+      "linux": 45
+    },
+    "vtable": {
+      "class": "CCvar",
+      "library": "tier0",
+      "linux": {
+        "window": [
+          "f91f9de1a14d3e6f",
+          "d1c11506bffa2b17",
+          null
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
   }
 }

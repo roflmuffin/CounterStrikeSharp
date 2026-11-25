@@ -15,6 +15,23 @@ internal static class ListenerEngineFeatures
         ["OnPlayerChat"] = EngineFeatureNames.ChatSayHooks,
         // Server lifecycle (GameFrame)
         ["OnTick"] = EngineFeatureNames.ServerGameFrame,
+        // Server lifecycle (the other ISource2Server hooks)
+        ["OnServerHibernationUpdate"] = EngineFeatureNames.ServerHibernationEvents,
+        ["OnGameServerSteamAPIActivated"] = EngineFeatureNames.ServerSteamApiEvents,
+        ["OnGameServerSteamAPIDeactivated"] = EngineFeatureNames.ServerSteamApiEvents,
+        ["OnHostNameChanged"] = EngineFeatureNames.ServerHostnameChanged,
+        ["OnPreFatalShutdown"] = EngineFeatureNames.ServerFatalShutdown,
+        ["OnUpdateWhenNotInGame"] = EngineFeatureNames.ServerUpdateWhenNotInGame,
+        ["OnServerPreWorldUpdate"] = EngineFeatureNames.ServerPreWorldUpdate,
+        // Players and UI (IServerGameClients hooks). A player is authorized only once its connection was seen.
+        ["OnClientConnect"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientConnected"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientPutInServer"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientDisconnect"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientDisconnectPost"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientAuthorized"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientVoice"] = EngineFeatureNames.PlayerVoiceEvents,
+        ["OnCustomHudClicked"] = EngineFeatureNames.UiCustomHudLayout,
         // Networking
         ["CheckTransmit"] = EngineFeatureNames.NetworkCheckTransmit,
         // Fired from our game system (precache, entity think) and player think (button changes)
@@ -27,6 +44,8 @@ internal static class ListenerEngineFeatures
         ["OnEntityTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
         ["OnPlayerTakeDamagePre"] = EngineFeatureNames.EntityTakeDamageHooks,
         ["OnPlayerTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
+        // ConVars (ICvar global change callback)
+        ["OnConVarChanged"] = EngineFeatureNames.ConvarsChangeEvents,
     };
 
     /// <summary>
@@ -37,4 +56,20 @@ internal static class ListenerEngineFeatures
         object? registrant = null) =>
         !Features.TryGetValue(listenerName, out var feature) ||
         features.CheckRegistration(feature, $"{listenerName} listener", logger, registrant);
+
+    /// <summary>
+    /// Command listeners (<see cref="BasePlugin.AddCommandListener"/>) see commands from two hooks: a player's typed
+    /// commands through IServerGameClients ClientCommand (<c>cssharp.player/client-commands</c>) and console-issued
+    /// commands through ICvar DispatchConCommand (<c>cssharp.commands/console-dispatch</c>). They always register; for
+    /// each of the two Engine Features that is disabled this logs once that those commands never reach the listener,
+    /// and returns false if either is disabled.
+    /// </summary>
+    public static bool CheckCommandListenerRegistration(EngineFeatureSet features, ILogger logger, object? registrant = null)
+    {
+        var clientTyped = features.CheckRegistration(EngineFeatureNames.PlayerClientCommands,
+            "Command listener on client-typed commands", logger, registrant);
+        var consoleIssued = features.CheckRegistration(EngineFeatureNames.CommandsConsoleDispatch,
+            "Command listener on console-issued commands", logger, registrant);
+        return clientTyped && consoleIssued;
+    }
 }

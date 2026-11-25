@@ -28,6 +28,23 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
     // Server lifecycle: ticks, timers and frame-scheduled tasks
     { std::string(features::GameFrame), { Slot("ISource2Server::GameFrame") } },
+    // The other ISource2Server hooks (server lifecycle listeners) and its direct calls
+    { std::string(features::HibernationEvents), { Slot("ISource2Server::ServerHibernationUpdate") } },
+    { std::string(features::SteamApiEvents),
+      { Slot("ISource2Server::GameServerSteamAPIActivated"), Slot("ISource2Server::GameServerSteamAPIDeactivated") } },
+    { std::string(features::HostnameChanged), { Slot("ISource2Server::OnHostNameChanged") } },
+    { std::string(features::FatalShutdown), { Slot("ISource2Server::PreFatalShutdown") } },
+    { std::string(features::UpdateWhenNotInGame), { Slot("ISource2Server::UpdateWhenNotInGame") } },
+    { std::string(features::PreWorldUpdate), { Slot("ISource2Server::PreWorldUpdate") } },
+    { std::string(features::EconItemSystem), { Slot("ISource2Server::GetEconItemSystem") } },
+    { std::string(features::IsPaused), { Slot("ISource2Server::IsPaused") } },
+    // Players and UI: client connections, client-typed commands, voice and custom HUD clicks
+    { std::string(features::PlayerConnectionEvents),
+      { Slot("IServerGameClients::ClientConnect"), Slot("IServerGameClients::ClientPutInServer"),
+        Slot("IServerGameClients::ClientDisconnect") } },
+    { std::string(features::PlayerClientCommands), { Slot("IServerGameClients::ClientCommand") } },
+    { std::string(features::PlayerVoiceEvents), { Slot("IServerGameClients::ClientVoice") } },
+    { std::string(features::UiCustomHudLayout), { Slot("IServerGameClients::ClientSvcUserMessage") } },
     // Events and networking
     { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
@@ -46,6 +63,26 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
     // Take damage
     { std::string(features::EntityTakeDamageHooks), { Signature("CBaseEntity_TakeDamageOld"), ClassSlot("CBaseEntity_IsPlayerPawn") } },
+    // Console commands and ConVars: every ICvar method we call, directly or through the SDK's convar.cpp (see
+    // core/verified_cvar.h). The dispatch hook fires AddCommand callbacks and command listeners for console commands.
+    { std::string(features::ConsoleDispatch), { Slot("ICvar::DispatchConCommand") } },
+    // Registering a command, and tokenizing chat triggers into one.
+    { std::string(features::AddCommand),
+      { Slot("ICvar::FindConCommand"), Slot("ICvar::RegisterConCommand"), Slot("ICvar::GetConCommandData"),
+        Slot("ICvar::UnregisterConCommandCallbacks"), Slot("ICvar::GetCharacterSet") } },
+    { std::string(features::ExecuteClientCommandFromServer),
+      { Slot("ICvar::GetCharacterSet"), Slot("ICvar::FindConCommand"), Slot("ICvar::DispatchConCommand") } },
+    // ConVars: find by name; read (value, flags, type, name, help text, bounds); write (value, flags, bounds); create and
+    // delete; the global change listener.
+    { std::string(features::ConVarFind), { Slot("ICvar::FindConVar"), Slot("ICvar::GetConVarData") } },
+    { std::string(features::ConVarRead), { Slot("ICvar::GetConVarData") } },
+    { std::string(features::ConVarWrite),
+      { Slot("ICvar::GetConVarData"), Slot("ICvar::CallFilterCallback"), Slot("ICvar::CallChangeCallback"),
+        Slot("ICvar::CallGlobalChangeCallbacks"), Slot("ICvar::QueueThreadSetValue") } },
+    { std::string(features::ConVarCreate),
+      { Slot("ICvar::FindConVar"), Slot("ICvar::GetConVarData"), Slot("ICvar::RegisterConVar"), Slot("ICvar::UnregisterConVarCallbacks") } },
+    { std::string(features::ConVarChangeEvents),
+      { Slot("ICvar::InstallGlobalChangeCallback"), Slot("ICvar::RemoveGlobalChangeCallback"), Slot("ICvar::GetConVarData") } },
 };
 
 // Virtuals called through their Gamedata index on game-class objects (and CheckTransmit, hooked by index on the game
