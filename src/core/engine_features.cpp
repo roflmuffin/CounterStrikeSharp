@@ -136,6 +136,17 @@ const std::vector<BindingDeclaration> kGameClassSlots{
     ClassSlot("CBasePlayerPawn_CommitSuicide"),
 };
 
+// Interface methods only compiled calls use, in modules the boot does not fingerprint yet (network messages, schema
+// system); no Engine Feature lists them, so they are declared only where Gamedata has them. Interface Slot Bindings
+// like the others: on Windows unverified at their compiled header index, as before Slot Bindings, never failed for want
+// of a Windows index in Gamedata.
+const std::vector<BindingDeclaration> kCompiledInterfaceSlots{
+    Slot("INetworkMessages::FindNetworkMessagePartial"),
+    Slot("INetworkMessages::FindNetworkMessageById"),
+    Slot("CSchemaSystem::GlobalTypeScope"),
+    Slot("CSchemaSystem::FindTypeScopeForModule"),
+};
+
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)
 {
     return std::any_of(bindings.begin(), bindings.end(), [&](const BindingDeclaration& b) {
@@ -159,8 +170,13 @@ std::vector<BindingDeclaration> CoreBindingDeclarations(const Gamedata& gamedata
     for (const auto& [key, entry] : gamedata)
     {
         if (Declared(bindings, key)) continue;
-        // Only Gamedata declares it, so no native code calls it through a compiled method.
-        if (entry.slot) bindings.push_back(ClassSlot(key));
+        if (entry.slot)
+        {
+            const auto compiled = std::find_if(kCompiledInterfaceSlots.begin(), kCompiledInterfaceSlots.end(),
+                                               [&](const BindingDeclaration& b) { return b.key == key; });
+            // Otherwise only Gamedata declares it, so no native code calls it through a compiled method.
+            bindings.push_back(compiled != kCompiledInterfaceSlots.end() ? *compiled : ClassSlot(key));
+        }
         else if (entry.hasSignatures)
             bindings.push_back(Signature(key));
         else if (entry.hasOffsets)
