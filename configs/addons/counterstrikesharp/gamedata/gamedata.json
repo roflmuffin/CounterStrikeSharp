@@ -314,5 +314,113 @@
         "size": 105
       }
     }
+  },
+  "IServerGameClients::ClientConnect": {
+    "offsets": {
+      "linux": 12
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "4d5c43e2e916cc48",
+          "208eed64076ceb23",
+          "30675a24621abb16"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientPutInServer": {
+    "offsets": {
+      "linux": 13
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "208eed64076ceb23",
+          "30675a24621abb16",
+          "1e28b2f430b4d108"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientDisconnect": {
+    "offsets": {
+      "linux": 16
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "fd9db3d3fed75247",
+          "08348b31f6cd632e",
+          "a00b3b1fa27ffbd8"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientCommand": {
+    "offsets": {
+      "linux": 17
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "08348b31f6cd632e",
+          "a00b3b1fa27ffbd8",
+          "422f6af6d1252adb"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientVoice": {
+    "offsets": {
+      "linux": 27
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "65220729779005ec",
+          "81e088b52d912e47",
+          "0c8366d1b83a2527"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
+  },
+  "IServerGameClients::ClientSvcUserMessage": {
+    "offsets": {
+      "linux": 38
+    },
+    "vtable": {
+      "class": "CSource2GameClients",
+      "library": "server",
+      "linux": {
+        "window": [
+          "6926706b30a364f2",
+          "5ec98b59d6f95cd3",
+          "fb440b10c5ab00c4"
+        ],
+        "uniqueNearby": true,
+        "size": 46
+      }
+    }
   }
 }

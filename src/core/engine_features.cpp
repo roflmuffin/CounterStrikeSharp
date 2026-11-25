@@ -26,6 +26,13 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
     // Server lifecycle: ticks, timers and frame-scheduled tasks
     { std::string(features::GameFrame), { Slot("ISource2Server::GameFrame") } },
+    // Players and UI: client connections, client-typed commands, voice and custom HUD clicks
+    { std::string(features::PlayerConnectionEvents),
+      { Slot("IServerGameClients::ClientConnect"), Slot("IServerGameClients::ClientPutInServer"),
+        Slot("IServerGameClients::ClientDisconnect") } },
+    { std::string(features::PlayerClientCommands), { Slot("IServerGameClients::ClientCommand") } },
+    { std::string(features::PlayerVoiceEvents), { Slot("IServerGameClients::ClientVoice") } },
+    { std::string(features::UiCustomHudLayout), { Slot("IServerGameClients::ClientSvcUserMessage") } },
     // Events and networking
     { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
