@@ -31,13 +31,13 @@ internal static class ManagedEngineFeatures
         [BindingDeclaration.Signature("CCSPlayerController_SwitchTeam")]);
 
     public static readonly EngineFeatureDeclaration PlayerChangeTeam = new("cssharp.player/change-team",
-        [BindingDeclaration.Offset("CCSPlayerController_ChangeTeam")]);
+        [BindingDeclaration.Slot("CCSPlayerController_ChangeTeam")]);
 
     public static readonly EngineFeatureDeclaration PlayerRespawn = new("cssharp.player/respawn",
-        [BindingDeclaration.Offset("CCSPlayerController_Respawn")]);
+        [BindingDeclaration.Slot("CCSPlayerController_Respawn")]);
 
     public static readonly EngineFeatureDeclaration PlayerCommitSuicide = new("cssharp.player/commit-suicide",
-        [BindingDeclaration.Offset("CBasePlayerPawn_CommitSuicide")]);
+        [BindingDeclaration.Slot("CBasePlayerPawn_CommitSuicide")]);
 
     public static readonly EngineFeatureDeclaration PlayerPostThinkHooks = new("cssharp.player/post-think-hooks",
         [BindingDeclaration.Signature("CCSPlayerPawnBase_PostThink")]);
@@ -46,7 +46,7 @@ internal static class ManagedEngineFeatures
         [BindingDeclaration.Signature("CCSGameRules_TerminateRound")]);
 
     public static readonly EngineFeatureDeclaration GameRulesFindPickerEntity = new("cssharp.game-rules/find-picker-entity",
-        [BindingDeclaration.Offset("CCSGameRules_FindPickerEntity")]);
+        [BindingDeclaration.Slot("CCSGameRules_FindPickerEntity")]);
 
     public static readonly EngineFeatureDeclaration EntityCreate = new("cssharp.entity/create",
         [BindingDeclaration.Signature("UTIL_CreateEntityByName")]);
@@ -58,16 +58,16 @@ internal static class ManagedEngineFeatures
         [BindingDeclaration.Signature("CBaseModelEntity_SetModel")]);
 
     public static readonly EngineFeatureDeclaration EntityTeleport = new("cssharp.entity/teleport",
-        [BindingDeclaration.Offset("CBaseEntity_Teleport")]);
+        [BindingDeclaration.Slot("CBaseEntity_Teleport")]);
 
     public static readonly EngineFeatureDeclaration EntityTriggerTouchHooks = new("cssharp.entity/trigger-touch-hooks",
         [BindingDeclaration.Signature("CBaseTrigger_StartTouch"), BindingDeclaration.Signature("CBaseTrigger_EndTouch")]);
 
     public static readonly EngineFeatureDeclaration EntitySkeletonInstance = new("cssharp.entity/skeleton-instance",
-        [BindingDeclaration.Offset("CGameSceneNode_GetSkeletonInstance")]);
+        [BindingDeclaration.Slot("CGameSceneNode_GetSkeletonInstance")]);
 
     public static readonly EngineFeatureDeclaration ItemsGiveNamedItem = new("cssharp.items/give-named-item",
-        [BindingDeclaration.Signature("GiveNamedItem"), BindingDeclaration.Offset("CCSPlayer_ItemServices_GiveNamedItem")]);
+        [BindingDeclaration.Signature("GiveNamedItem"), BindingDeclaration.Slot("CCSPlayer_ItemServices_GiveNamedItem")]);
 
     public static readonly EngineFeatureDeclaration ItemsCanAcquireHooks = new("cssharp.items/can-acquire-hooks",
         [BindingDeclaration.Signature("CCSPlayer_ItemServices_CanAcquire")]);
@@ -79,10 +79,10 @@ internal static class ManagedEngineFeatures
         [BindingDeclaration.Signature("CBasePlayerPawn_RemovePlayerItem")]);
 
     public static readonly EngineFeatureDeclaration ItemsDropActiveWeapon = new("cssharp.items/drop-active-weapon",
-        [BindingDeclaration.Offset("CCSPlayer_ItemServices_DropActivePlayerWeapon")]);
+        [BindingDeclaration.Slot("CCSPlayer_ItemServices_DropActivePlayerWeapon")]);
 
     public static readonly EngineFeatureDeclaration ItemsRemoveWeapons = new("cssharp.items/remove-weapons",
-        [BindingDeclaration.Offset("CCSPlayer_ItemServices_RemoveWeapons")]);
+        [BindingDeclaration.Slot("CCSPlayer_ItemServices_RemoveWeapons")]);
 
     public static readonly EngineFeatureDeclaration ItemsWeaponData = new("cssharp.items/weapon-data",
         [BindingDeclaration.Signature("GetCSWeaponDataFromKey")]);
@@ -96,7 +96,7 @@ internal static class ManagedEngineFeatures
         [BindingDeclaration.Signature("CBaseEntity_DispatchSpawn")]);
 
     public static readonly EngineFeatureDeclaration EntityTakeDamageHooks = new("cssharp.entity/take-damage-hooks",
-        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld"), BindingDeclaration.Offset("CBaseEntity_IsPlayerPawn")]);
+        [BindingDeclaration.Signature("CBaseEntity_TakeDamageOld"), BindingDeclaration.Slot("CBaseEntity_IsPlayerPawn")]);
 
     // Native-owned; CCheckTransmitInfoList reads the player slot of each transmit info.
     public static readonly EngineFeatureDeclaration NetworkCheckTransmit = new("cssharp.network/check-transmit",

@@ -96,7 +96,7 @@ public class EngineFeatureCatalogTests : IDisposable
     private static ResolutionReport CheckTransmitReport(bool slotResolved) =>
         new("1.42.0.1/2000950",
             [
-                new BindingResult("ISource2GameEntities::CheckTransmit", BindingKind.Offset, true, BindingFailureReason.None, 0, 0, 13,
+                new BindingResult("ISource2GameEntities::CheckTransmit", BindingKind.Slot, true, BindingFailureReason.None, 0, 0, 13,
                     ""),
                 slotResolved
                     ? new BindingResult("CheckTransmitPlayerSlot", BindingKind.Offset, true, BindingFailureReason.None, 0, 0, 624, "")
@@ -106,7 +106,7 @@ public class EngineFeatureCatalogTests : IDisposable
             [
                 new EngineFeatureDeclaration("cssharp.network/check-transmit",
                     [
-                        BindingDeclaration.Offset("ISource2GameEntities::CheckTransmit"),
+                        BindingDeclaration.Slot("ISource2GameEntities::CheckTransmit"),
                         BindingDeclaration.Offset("CheckTransmitPlayerSlot")
                     ]),
             ]);
