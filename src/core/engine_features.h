@@ -18,6 +18,15 @@ namespace features {
 inline constexpr std::string_view ChatSayHooks = "cssharp.chat/say-hooks";
 // Server lifecycle (hooks on ISource2Server, by verified slot index)
 inline constexpr std::string_view GameFrame = "cssharp.server/game-frame";
+inline constexpr std::string_view HibernationEvents = "cssharp.server/hibernation-events";
+inline constexpr std::string_view SteamApiEvents = "cssharp.server/steam-api-events";
+inline constexpr std::string_view HostnameChanged = "cssharp.server/hostname-changed";
+inline constexpr std::string_view FatalShutdown = "cssharp.server/fatal-shutdown";
+inline constexpr std::string_view UpdateWhenNotInGame = "cssharp.server/update-when-not-in-game";
+inline constexpr std::string_view PreWorldUpdate = "cssharp.server/pre-world-update";
+// Direct calls on ISource2Server, by verified slot index
+inline constexpr std::string_view EconItemSystem = "cssharp.server/econ-item-system";
+inline constexpr std::string_view IsPaused = "cssharp.server/is-paused";
 // Players and UI (hooks on IServerGameClients, by verified slot index)
 inline constexpr std::string_view PlayerConnectionEvents = "cssharp.player/connection-events";
 inline constexpr std::string_view PlayerClientCommands = "cssharp.player/client-commands";

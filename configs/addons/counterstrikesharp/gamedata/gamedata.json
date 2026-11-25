@@ -315,6 +315,168 @@
       }
     }
   },
+  "ISource2Server::PreWorldUpdate": {
+    "offsets": {
+      "linux": 16
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "b20db4b1b8d0207c",
+          "583e27fa25243677",
+          "ddf98d2f8dadfc53"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::ServerHibernationUpdate": {
+    "offsets": {
+      "linux": 23
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "197e441f627935d4",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::IsPaused": {
+    "offsets": {
+      "linux": 32
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "f6b990b719007865",
+          "dc80d3b495cc4ffa",
+          "3e43fca5b7e38146"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::GameServerSteamAPIActivated": {
+    "offsets": {
+      "linux": 42
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "df017fc1acc527db",
+          "0d1eb032363eb9af"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::GameServerSteamAPIDeactivated": {
+    "offsets": {
+      "linux": 43
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "df017fc1acc527db",
+          "0d1eb032363eb9af",
+          "e73a2da93b478fdd"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::OnHostNameChanged": {
+    "offsets": {
+      "linux": 44
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "0d1eb032363eb9af",
+          "e73a2da93b478fdd",
+          "dea434b79d9f7a5e"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::PreFatalShutdown": {
+    "offsets": {
+      "linux": 45
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "e73a2da93b478fdd",
+          "dea434b79d9f7a5e",
+          "1b9385a7d1a78034"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::UpdateWhenNotInGame": {
+    "offsets": {
+      "linux": 46
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "dea434b79d9f7a5e",
+          "1b9385a7d1a78034",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
+  "ISource2Server::GetEconItemSystem": {
+    "offsets": {
+      "linux": 47
+    },
+    "vtable": {
+      "class": "CSource2Server",
+      "library": "server",
+      "linux": {
+        "window": [
+          "1b9385a7d1a78034",
+          "dc3e8eb9a1a8f4c4",
+          "11e12bb585e2924f"
+        ],
+        "uniqueNearby": true,
+        "size": 105
+      }
+    }
+  },
   "IServerGameClients::ClientConnect": {
     "offsets": {
       "linux": 12

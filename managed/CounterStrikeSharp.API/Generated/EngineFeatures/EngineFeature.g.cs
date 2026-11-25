@@ -126,11 +126,35 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/voice-events</c></summary>
     PlayerVoiceEvents = -674643371,
 
+    /// <summary><c>cssharp.server/econ-item-system</c></summary>
+    ServerEconItemSystem = 732765624,
+
+    /// <summary><c>cssharp.server/fatal-shutdown</c></summary>
+    ServerFatalShutdown = 1952110924,
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     ServerGameFrame = 62045269,
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
+
+    /// <summary><c>cssharp.server/hibernation-events</c></summary>
+    ServerHibernationEvents = 1910400260,
+
+    /// <summary><c>cssharp.server/hostname-changed</c></summary>
+    ServerHostnameChanged = 504295971,
+
+    /// <summary><c>cssharp.server/is-paused</c></summary>
+    ServerIsPaused = 386829384,
+
+    /// <summary><c>cssharp.server/pre-world-update</c></summary>
+    ServerPreWorldUpdate = 1796896305,
+
+    /// <summary><c>cssharp.server/steam-api-events</c></summary>
+    ServerSteamApiEvents = 1980117002,
+
+    /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
+    ServerUpdateWhenNotInGame = 88681160,
 
     /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
     UiCustomHudLayout = 518878300,
@@ -253,11 +277,35 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/voice-events</c></summary>
     public const string PlayerVoiceEvents = "cssharp.player/voice-events";
 
+    /// <summary><c>cssharp.server/econ-item-system</c></summary>
+    public const string ServerEconItemSystem = "cssharp.server/econ-item-system";
+
+    /// <summary><c>cssharp.server/fatal-shutdown</c></summary>
+    public const string ServerFatalShutdown = "cssharp.server/fatal-shutdown";
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     public const string ServerGameFrame = "cssharp.server/game-frame";
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
+
+    /// <summary><c>cssharp.server/hibernation-events</c></summary>
+    public const string ServerHibernationEvents = "cssharp.server/hibernation-events";
+
+    /// <summary><c>cssharp.server/hostname-changed</c></summary>
+    public const string ServerHostnameChanged = "cssharp.server/hostname-changed";
+
+    /// <summary><c>cssharp.server/is-paused</c></summary>
+    public const string ServerIsPaused = "cssharp.server/is-paused";
+
+    /// <summary><c>cssharp.server/pre-world-update</c></summary>
+    public const string ServerPreWorldUpdate = "cssharp.server/pre-world-update";
+
+    /// <summary><c>cssharp.server/steam-api-events</c></summary>
+    public const string ServerSteamApiEvents = "cssharp.server/steam-api-events";
+
+    /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
+    public const string ServerUpdateWhenNotInGame = "cssharp.server/update-when-not-in-game";
 
     /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
     public const string UiCustomHudLayout = "cssharp.ui/custom-hud-layout";
@@ -303,8 +351,16 @@ public static class EngineFeatureNames
         EngineFeature.PlayerSetPawn => PlayerSetPawn,
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
         EngineFeature.PlayerVoiceEvents => PlayerVoiceEvents,
+        EngineFeature.ServerEconItemSystem => ServerEconItemSystem,
+        EngineFeature.ServerFatalShutdown => ServerFatalShutdown,
         EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
+        EngineFeature.ServerHibernationEvents => ServerHibernationEvents,
+        EngineFeature.ServerHostnameChanged => ServerHostnameChanged,
+        EngineFeature.ServerIsPaused => ServerIsPaused,
+        EngineFeature.ServerPreWorldUpdate => ServerPreWorldUpdate,
+        EngineFeature.ServerSteamApiEvents => ServerSteamApiEvents,
+        EngineFeature.ServerUpdateWhenNotInGame => ServerUpdateWhenNotInGame,
         EngineFeature.UiCustomHudLayout => UiCustomHudLayout,
         _ => null,
     };
