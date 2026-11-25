@@ -51,7 +51,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 
     public override int GetHashCode()
     {
-        return this.Handle.GetHashCode();
+        return this.EntityHandle.GetHashCode();
     }
 
     public static bool operator ==(CEntityInstance? left, CEntityInstance? right)
