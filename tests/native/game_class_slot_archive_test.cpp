@@ -48,6 +48,9 @@ const std::vector<GameClassSlot> kSlots{
     { "CBaseEntity_IsPlayerPawn", "CCSPlayerPawn", 168, 170 },
     { "CBaseEntity_Teleport", "CBaseEntity", 162, 164 },
     { "CBasePlayerPawn_CommitSuicide", "CBasePlayerPawn", 384, 387 },
+    // CEntityInstance::NetworkStateChanged, called on entities: 29 since the 2026-04-22 fix (8a9fbe8f), before every
+    // archived build; the SDK headers known correct for 1.41.9.7 put it at 29 too.
+    { "SetStateChanged", "CBaseEntity", 29, 29 },
 };
 
 std::size_t IndexOn(const GameClassSlot& slot, const std::string& build) { return build == "1.41.8.1" ? slot.before : slot.after; }

@@ -60,7 +60,7 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
         Slot(slots::IGameEventManager2_FireEvent), Slot(slots::IGameEventManager2_FreeEvent),
         Slot(slots::IEngineServiceMgr_RegisterLoopMode) } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
-    { std::string(features::StateChanged), { Signature("NetworkStateChanged"), Offset("SetStateChanged") } },
+    { std::string(features::StateChanged), { Signature("NetworkStateChanged"), ClassSlot(slots::SetStateChanged) } },
     { std::string(features::CheckTransmit), { ClassSlot(slots::CheckTransmit), Offset("CheckTransmitPlayerSlot") } },
     // Our game system (precache, pre/post entity think) and player think (button changes) via RunThink.
     { std::string(features::ServerGameSystemEvents),
@@ -143,6 +143,7 @@ const std::vector<BindingDeclaration> kGameClassSlots{
     ClassSlot(slots::CBaseEntity_IsPlayerPawn),
     ClassSlot("CBaseEntity_Teleport"),
     ClassSlot("CBasePlayerPawn_CommitSuicide"),
+    ClassSlot(slots::SetStateChanged),
 };
 
 // Interface methods only compiled calls use, in modules the boot does not fingerprint yet (network messages, schema

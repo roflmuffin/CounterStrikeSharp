@@ -583,12 +583,12 @@ TEST_CASE("Committed Gamedata: every game-class virtual carries its Slot Binding
         CHECK(entry["vtable"]["linux"]["size"].is_number_unsigned());
         CHECK_FALSE(entry["vtable"].contains("windows"));
     }
-    CHECK(gameClassSlots == 11);
+    CHECK(gameClassSlots == 12);
 
     // Struct field and other plain offsets: no Slot Binding fields, values as before.
     const std::vector<std::tuple<const char*, int, int>> plainOffsets{
         { "CTakeDamageInfo_HitGroup", 104, 104 }, { "CheckTransmitPlayerSlot", 576, 576 }, { "GameEntitySystem", 80, 88 },
-        { "GameEventManager", 93, 93 },          { "SetStateChanged", 29, 28 },
+        { "GameEventManager", 93, 93 },
     };
     for (const auto& [key, linuxOffset, windowsOffset] : plainOffsets)
     {

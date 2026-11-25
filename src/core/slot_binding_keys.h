@@ -84,5 +84,6 @@ inline constexpr std::string_view CSchemaSystem_FindTypeScopeForModule = "CSchem
 // Game-class virtuals native code calls or hooks through their Gamedata index
 inline constexpr std::string_view CheckTransmit = "ISource2GameEntities::CheckTransmit";
 inline constexpr std::string_view CBaseEntity_IsPlayerPawn = "CBaseEntity_IsPlayerPawn";
+inline constexpr std::string_view SetStateChanged = "SetStateChanged"; // CEntityInstance::NetworkStateChanged
 
 } // namespace counterstrikesharp::bindings::slots

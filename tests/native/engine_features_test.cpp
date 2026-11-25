@@ -123,7 +123,8 @@ TEST_CASE("The native catalog declares the event and network Engine Features, ga
     CHECK(stateChanged[0].key == "NetworkStateChanged");
     CHECK(stateChanged[0].kind == BindingKind::Signature);
     CHECK(stateChanged[1].key == "SetStateChanged");
-    CHECK(stateChanged[1].kind == BindingKind::Offset);
+    CHECK(stateChanged[1].kind == BindingKind::Slot); // a game-class virtual (CEntityInstance::NetworkStateChanged)
+    CHECK_FALSE(stateChanged[1].headerIndex);
 
     const auto checkTransmit = bindingsOf(features::CheckTransmit);
     CHECK(features::CheckTransmit == "cssharp.network/check-transmit");
