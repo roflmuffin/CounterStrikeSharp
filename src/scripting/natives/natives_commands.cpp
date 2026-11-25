@@ -32,14 +32,6 @@
 
 namespace counterstrikesharp {
 
-// Throws the native error for a disabled Engine Feature (its ICvar Slot Bindings failed) and returns false.
-static bool RequireEngineFeature(ScriptContext& script_context, std::string_view feature)
-{
-    if (bindings::IsEngineFeatureAvailable(feature)) return true;
-    script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(feature).c_str());
-    return false;
-}
-
 static void AddCommand(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
