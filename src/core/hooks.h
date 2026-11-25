@@ -85,17 +85,8 @@ class HookSet
             hooks->Clear();
     }
 
-    template <class F, class Instance, class Context, class Pre, class Post>
-    void Add(F function, Instance* instance, Context* context, Pre pre, Post post)
-    {
-        if (!instance) throw std::runtime_error("Cannot hook a null instance");
-        auto hook = std::make_unique<typename VirtualHookType<F>::Type>(function, context, pre, post);
-        hook->Add(instance);
-        m_hooks.push_back(std::move(hook));
-    }
-
-    // As Add, at a runtime slot index (e.g. a verified Slot Binding) instead of function's compiled position; function
-    // only supplies the signature. See core/slot_hooks.h.
+    // Virtual hooks are registered only at a runtime slot index (a Slot Binding's verified index, see
+    // core/slot_hooks.h), never at a member function's compiled header position; function only supplies the signature.
     template <class F, class Instance, class Context, class Pre, class Post>
     void AddIndex(int index, F function, Instance* instance, Context* context, Pre pre, Post post)
     {
@@ -106,14 +97,7 @@ class HookSet
         m_hooks.push_back(std::move(hook));
     }
 
-    template <class F, class Context, class Pre, class Post> void AddGlobal(F function, void** vtable, Context* context, Pre pre, Post post)
-    {
-        auto hook = std::make_unique<typename VirtualHookType<F>::Type>(function, context, pre, post);
-        hook->AddVTable(vtable);
-        m_hooks.push_back(std::move(hook));
-    }
-
-    // As AddGlobal, at a runtime slot index (e.g. a verified Slot Binding); function only supplies the signature.
+    // As AddIndex, for every instance sharing vtable.
     template <class F, class Context, class Pre, class Post>
     void AddVTableIndex(int index, F function, void** vtable, Context* context, Pre pre, Post post)
     {
