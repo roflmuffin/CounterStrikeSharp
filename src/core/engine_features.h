@@ -27,6 +27,11 @@ inline constexpr std::string_view PreWorldUpdate = "cssharp.server/pre-world-upd
 // Direct calls on ISource2Server, by verified slot index
 inline constexpr std::string_view EconItemSystem = "cssharp.server/econ-item-system";
 inline constexpr std::string_view IsPaused = "cssharp.server/is-paused";
+// Players and UI (hooks on IServerGameClients, by verified slot index)
+inline constexpr std::string_view PlayerConnectionEvents = "cssharp.player/connection-events";
+inline constexpr std::string_view PlayerClientCommands = "cssharp.player/client-commands";
+inline constexpr std::string_view PlayerVoiceEvents = "cssharp.player/voice-events";
+inline constexpr std::string_view UiCustomHudLayout = "cssharp.ui/custom-hud-layout";
 // Events and networking
 inline constexpr std::string_view GameEvents = "cssharp.events/game-events";
 inline constexpr std::string_view FireEventToClient = "cssharp.events/fire-event-to-client";

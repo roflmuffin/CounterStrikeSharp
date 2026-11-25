@@ -36,6 +36,13 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::PreWorldUpdate), { Slot("ISource2Server::PreWorldUpdate") } },
     { std::string(features::EconItemSystem), { Slot("ISource2Server::GetEconItemSystem") } },
     { std::string(features::IsPaused), { Slot("ISource2Server::IsPaused") } },
+    // Players and UI: client connections, client-typed commands, voice and custom HUD clicks
+    { std::string(features::PlayerConnectionEvents),
+      { Slot("IServerGameClients::ClientConnect"), Slot("IServerGameClients::ClientPutInServer"),
+        Slot("IServerGameClients::ClientDisconnect") } },
+    { std::string(features::PlayerClientCommands), { Slot("IServerGameClients::ClientCommand") } },
+    { std::string(features::PlayerVoiceEvents), { Slot("IServerGameClients::ClientVoice") } },
+    { std::string(features::UiCustomHudLayout), { Slot("IServerGameClients::ClientSvcUserMessage") } },
     // Events and networking
     { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },

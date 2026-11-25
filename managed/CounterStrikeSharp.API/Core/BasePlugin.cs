@@ -225,6 +225,10 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="mode">Whether to hook before or after the command is executed.</param>
         public void AddCommandListener(string? name, CommandInfo.CommandListenerCallback handler, HookMode mode = HookMode.Pre)
         {
+            // Registers either way: on a disabled cssharp.player/client-commands, client-typed commands never reach it.
+            Bindings.ListenerEngineFeatures.CheckCommandListenerRegistration(EngineFeatures.Current,
+                Logger ?? Application.Instance.Logger, this);
+
             var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
             {
                 var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;

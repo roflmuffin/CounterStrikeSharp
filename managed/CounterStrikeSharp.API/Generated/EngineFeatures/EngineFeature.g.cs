@@ -123,8 +123,14 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/change-team</c></summary>
     PlayerChangeTeam = -655364455,
 
+    /// <summary><c>cssharp.player/client-commands</c></summary>
+    PlayerClientCommands = -2126044321,
+
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     PlayerCommitSuicide = -525076719,
+
+    /// <summary><c>cssharp.player/connection-events</c></summary>
+    PlayerConnectionEvents = 2139873301,
 
     /// <summary><c>cssharp.player/execute-client-command-from-server</c></summary>
     PlayerExecuteClientCommandFromServer = -489531223,
@@ -140,6 +146,9 @@ public enum EngineFeature
 
     /// <summary><c>cssharp.player/switch-team</c></summary>
     PlayerSwitchTeam = -936310331,
+
+    /// <summary><c>cssharp.player/voice-events</c></summary>
+    PlayerVoiceEvents = -674643371,
 
     /// <summary><c>cssharp.server/econ-item-system</c></summary>
     ServerEconItemSystem = 732765624,
@@ -170,6 +179,9 @@ public enum EngineFeature
 
     /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
     ServerUpdateWhenNotInGame = 88681160,
+
+    /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
+    UiCustomHudLayout = 518878300,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -286,8 +298,14 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/change-team</c></summary>
     public const string PlayerChangeTeam = "cssharp.player/change-team";
 
+    /// <summary><c>cssharp.player/client-commands</c></summary>
+    public const string PlayerClientCommands = "cssharp.player/client-commands";
+
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     public const string PlayerCommitSuicide = "cssharp.player/commit-suicide";
+
+    /// <summary><c>cssharp.player/connection-events</c></summary>
+    public const string PlayerConnectionEvents = "cssharp.player/connection-events";
 
     /// <summary><c>cssharp.player/execute-client-command-from-server</c></summary>
     public const string PlayerExecuteClientCommandFromServer = "cssharp.player/execute-client-command-from-server";
@@ -303,6 +321,9 @@ public static class EngineFeatureNames
 
     /// <summary><c>cssharp.player/switch-team</c></summary>
     public const string PlayerSwitchTeam = "cssharp.player/switch-team";
+
+    /// <summary><c>cssharp.player/voice-events</c></summary>
+    public const string PlayerVoiceEvents = "cssharp.player/voice-events";
 
     /// <summary><c>cssharp.server/econ-item-system</c></summary>
     public const string ServerEconItemSystem = "cssharp.server/econ-item-system";
@@ -333,6 +354,9 @@ public static class EngineFeatureNames
 
     /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
     public const string ServerUpdateWhenNotInGame = "cssharp.server/update-when-not-in-game";
+
+    /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
+    public const string UiCustomHudLayout = "cssharp.ui/custom-hud-layout";
 
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
@@ -374,12 +398,15 @@ public static class EngineFeatureNames
         EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
         EngineFeature.NetworkStateChanged => NetworkStateChanged,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
+        EngineFeature.PlayerClientCommands => PlayerClientCommands,
         EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
+        EngineFeature.PlayerConnectionEvents => PlayerConnectionEvents,
         EngineFeature.PlayerExecuteClientCommandFromServer => PlayerExecuteClientCommandFromServer,
         EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,
         EngineFeature.PlayerRespawn => PlayerRespawn,
         EngineFeature.PlayerSetPawn => PlayerSetPawn,
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
+        EngineFeature.PlayerVoiceEvents => PlayerVoiceEvents,
         EngineFeature.ServerEconItemSystem => ServerEconItemSystem,
         EngineFeature.ServerFatalShutdown => ServerFatalShutdown,
         EngineFeature.ServerGameFrame => ServerGameFrame,
@@ -390,6 +417,7 @@ public static class EngineFeatureNames
         EngineFeature.ServerPreWorldUpdate => ServerPreWorldUpdate,
         EngineFeature.ServerSteamApiEvents => ServerSteamApiEvents,
         EngineFeature.ServerUpdateWhenNotInGame => ServerUpdateWhenNotInGame,
+        EngineFeature.UiCustomHudLayout => UiCustomHudLayout,
         _ => null,
     };
 }

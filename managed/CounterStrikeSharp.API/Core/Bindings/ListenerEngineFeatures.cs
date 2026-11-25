@@ -23,6 +23,15 @@ internal static class ListenerEngineFeatures
         ["OnPreFatalShutdown"] = EngineFeatureNames.ServerFatalShutdown,
         ["OnUpdateWhenNotInGame"] = EngineFeatureNames.ServerUpdateWhenNotInGame,
         ["OnServerPreWorldUpdate"] = EngineFeatureNames.ServerPreWorldUpdate,
+        // Players and UI (IServerGameClients hooks). A player is authorized only once its connection was seen.
+        ["OnClientConnect"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientConnected"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientPutInServer"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientDisconnect"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientDisconnectPost"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientAuthorized"] = EngineFeatureNames.PlayerConnectionEvents,
+        ["OnClientVoice"] = EngineFeatureNames.PlayerVoiceEvents,
+        ["OnCustomHudClicked"] = EngineFeatureNames.UiCustomHudLayout,
         // Networking
         ["CheckTransmit"] = EngineFeatureNames.NetworkCheckTransmit,
         // Fired from our game system (precache, entity think) and player think (button changes)
@@ -47,4 +56,14 @@ internal static class ListenerEngineFeatures
         object? registrant = null) =>
         !Features.TryGetValue(listenerName, out var feature) ||
         features.CheckRegistration(feature, $"{listenerName} listener", logger, registrant);
+
+    /// <summary>
+    /// Command listeners (<see cref="BasePlugin.AddCommandListener"/>) see commands a player types through the
+    /// IServerGameClients ClientCommand hook. On a disabled <c>cssharp.player/client-commands</c> they still register
+    /// (and still see console-dispatched commands), but client-typed commands never reach them, so this logs once and
+    /// returns false.
+    /// </summary>
+    public static bool CheckCommandListenerRegistration(EngineFeatureSet features, ILogger logger, object? registrant = null) =>
+        features.CheckRegistration(EngineFeatureNames.PlayerClientCommands, "Command listener on client-typed commands", logger,
+            registrant);
 }

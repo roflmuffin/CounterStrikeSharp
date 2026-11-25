@@ -46,6 +46,7 @@ set(CSSHARP_TEST_SOURCES
     slot_binding_test.cpp
     isource2server_test.cpp
     icvar_bindings_test.cpp
+    server_game_clients_test.cpp
     real_binary_test.cpp
 )
 
