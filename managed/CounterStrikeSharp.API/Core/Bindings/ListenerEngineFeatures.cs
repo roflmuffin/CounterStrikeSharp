@@ -50,10 +50,11 @@ internal static class ListenerEngineFeatures
         ["OnMapStart"] = EngineFeatureNames.ServerStartup,
     };
 
-    // Listeners that also need further Engine Features. OnClientAuthorized fires from the IVEngineServer2 auth check.
+    // Listeners that also need further Engine Features. OnClientAuthorized fires from the IVEngineServer2 auth check, which
+    // runs on every game frame.
     private static readonly Dictionary<string, string[]> AlsoNeeded = new()
     {
-        ["OnClientAuthorized"] = [EngineFeatureNames.PlayerAuthorization],
+        ["OnClientAuthorized"] = [EngineFeatureNames.PlayerAuthorization, EngineFeatureNames.ServerGameFrame],
     };
 
     /// <summary>
