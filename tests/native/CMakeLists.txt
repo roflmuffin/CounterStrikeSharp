@@ -44,7 +44,7 @@ set(CSSHARP_TEST_SOURCES
     rtti_vtable_test.cpp
     vtable_fingerprint_test.cpp
     slot_binding_test.cpp
-    slot_calls_test.cpp
+    isource2server_test.cpp
     icvar_bindings_test.cpp
     real_binary_test.cpp
 )

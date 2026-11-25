@@ -153,11 +153,11 @@ class SlotForwardingCvar final : public ICvar
     template <class F, class R, class... Args> R Forward(const std::optional<int>& slot, F method, R unusable, Args&&... args)
     {
         if (!slot) return unusable;
-        return CallSlot(*slot, method, m_engine, std::forward<Args>(args)...);
+        return CallSlot(slot, method, m_engine, std::forward<Args>(args)...);
     }
     template <class F, class... Args> void ForwardVoid(const std::optional<int>& slot, F method, Args&&... args)
     {
-        if (slot) CallSlot(*slot, method, m_engine, std::forward<Args>(args)...);
+        if (slot) CallSlot(slot, method, m_engine, std::forward<Args>(args)...);
     }
 
     // ICvar's only data member (int m_MaxSplitScreenSlots), read by the inline GetMaxSplitScreenSlots; private to ICvar,

@@ -1,41 +1,58 @@
 #pragma once
 
-// Calling a virtual method through a slot index (a verified Slot Binding, ADR-0003) instead of its compiled header
-// position, so a direct call follows the Gamedata (and a Heal) the way hooks do through core/slot_hooks.h.
-//
-// Itanium C++ ABI only (Linux): a pointer to a virtual member function is { 1 + byte offset in the vtable, this
-// adjustment }. Windows keeps its compiled calls (no Vtable Check there).
+// Calling a method through its Slot Binding (ADR-0003): at the slot index the boot Vtable Check verified (or healed),
+// not at the compiled header position. The caller gates on the method's Engine Feature first and looks the index up
+// once (the Resolution Report is immutable after boot):
+//   static const auto slot = bindings::GetBindingSlot("ISource2Server::IsPaused");
+//   return CallSlot(slot, &ISource2Server::IsPaused, globals::server);
 
-#include <cstddef>
-#include <cstdint>
-#include <cstring>
+#include <optional>
+#include <type_traits>
 #include <utility>
 
 namespace counterstrikesharp {
 
-#ifndef _WIN32
-// A pointer to member function of type F that dispatches through vtable slot index. F names a virtual method of the
-// class whose primary vtable holds the slot (no this adjustment).
-template <class F> F MethodAtSlot(int index)
+namespace detail {
+template <class R, class C, class... Params, class... Args> R CallAtIndex(int index, C* instance, Args&&... args)
 {
-    struct ItaniumMemberFunction
+    // Itanium and x64 MSVC alike: a virtual is a plain function taking this first.
+    using Function = R (*)(C*, Params...);
+    auto** vtable = *reinterpret_cast<void***>(const_cast<std::remove_const_t<C>*>(instance));
+    return reinterpret_cast<Function>(vtable[index])(instance, std::forward<Args>(args)...);
+}
+} // namespace detail
+
+// Calls method on instance at the Slot Binding's index. On Windows Slot Bindings are unverified: without a Gamedata
+// index the compiled call is made, as before Slot Bindings. On Linux a missing index (Engine Feature not checked by
+// the caller) returns R{} instead of calling anything.
+template <class R, class C, class... Params, class... Args>
+R CallSlot(std::optional<int> index, R (C::*method)(Params...), C* instance, Args&&... args)
+{
+    if (!index)
     {
-        std::uintptr_t pointer;
-        std::ptrdiff_t adjustment;
-    };
-    static_assert(sizeof(F) == sizeof(ItaniumMemberFunction), "Itanium pointer to member function expected");
-    const ItaniumMemberFunction raw{ static_cast<std::uintptr_t>(index) * sizeof(void*) + 1, 0 };
-    F method;
-    std::memcpy(&method, &raw, sizeof(method));
-    return method;
+#ifdef _WIN32
+        return (instance->*method)(std::forward<Args>(args)...);
+#else
+        (void)method;
+        return R();
+#endif
+    }
+    return detail::CallAtIndex<R, C, Params...>(*index, instance, std::forward<Args>(args)...);
 }
 
-// Calls instance's virtual at slot index with method's signature; method itself is not called.
-template <class F, class Instance, class... Args> decltype(auto) CallSlot(int index, F method, Instance* instance, Args&&... args)
+template <class R, class C, class... Params, class... Args>
+R CallSlot(std::optional<int> index, R (C::*method)(Params...) const, const C* instance, Args&&... args)
 {
-    (void)method;
-    return (instance->*MethodAtSlot<F>(index))(std::forward<Args>(args)...);
-}
+    if (!index)
+    {
+#ifdef _WIN32
+        return (instance->*method)(std::forward<Args>(args)...);
+#else
+        (void)method;
+        return R();
 #endif
+    }
+    return detail::CallAtIndex<R, const C, Params...>(*index, instance, std::forward<Args>(args)...);
+}
 
 } // namespace counterstrikesharp
