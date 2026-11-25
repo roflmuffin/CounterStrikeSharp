@@ -2,80 +2,65 @@
 
 #include "core/core_bindings.h"
 #include "core/globals.h"
+#include "core/slot_binding_keys.h"
 #include "core/slot_calls.h"
 
 namespace counterstrikesharp::engine_server {
 
-// Each index is looked up once, on the first call (after boot; the Resolution Report is immutable then).
+namespace {
+namespace slots = bindings::slots;
 
-void ServerCommand(const char* command)
-{
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::ServerCommand");
-    CallSlot(index, &IVEngineServer2::ServerCommand, globals::engine, command);
-}
+constexpr SlotMethod kServerCommand{ slots::IVEngineServer2_ServerCommand, &IVEngineServer2::ServerCommand };
+constexpr SlotMethod kIsMapValid{ slots::IVEngineServer2_IsMapValid, &IVEngineServer2::IsMapValid };
+constexpr SlotMethod kPrecacheGeneric{ slots::IVEngineServer2_PrecacheGeneric, &IVEngineServer2::PrecacheGeneric };
+constexpr SlotMethod kGetPlayerUserId{ slots::IVEngineServer2_GetPlayerUserId, &IVEngineServer2::GetPlayerUserId };
+constexpr SlotMethod kClientPrintf{ slots::IVEngineServer2_ClientPrintf, &IVEngineServer2::ClientPrintf };
+constexpr SlotMethod kGetClientConVarValue{ slots::IVEngineServer2_GetClientConVarValue, &IVEngineServer2::GetClientConVarValue };
+constexpr SlotMethod kSetFakeClientConVarValue{ slots::IVEngineServer2_SetFakeClientConVarValue,
+                                                &IVEngineServer2::SetFakeClientConVarValue };
+constexpr SlotMethod kClientCommand{ slots::IVEngineServer2_ClientCommand, &IVEngineServer2::ClientCommand };
+constexpr SlotMethod kDisconnectClient{ slots::IVEngineServer2_DisconnectClient, &IVEngineServer2::DisconnectClient };
+constexpr SlotMethod kIsClientFullyAuthenticated{ slots::IVEngineServer2_IsClientFullyAuthenticated,
+                                                  &IVEngineServer2::IsClientFullyAuthenticated };
+constexpr SlotMethod kGetClientSteamID{ slots::IVEngineServer2_GetClientSteamID, &IVEngineServer2::GetClientSteamID };
+} // namespace
 
-bool IsMapValid(const char* mapName)
-{
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::IsMapValid");
-    return CallSlot(index, &IVEngineServer2::IsMapValid, globals::engine, mapName) != 0;
-}
+void ServerCommand(const char* command) { CallSlot(kServerCommand, globals::engine, command); }
 
-void PrecacheGeneric(const char* name)
-{
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::PrecacheGeneric");
-    CallSlot(index, &IVEngineServer2::PrecacheGeneric, globals::engine, name, false);
-}
+bool IsMapValid(const char* mapName) { return CallSlot(kIsMapValid, globals::engine, mapName) != 0; }
+
+void PrecacheGeneric(const char* name) { CallSlot(kPrecacheGeneric, globals::engine, name, false); }
 
 int GetPlayerUserId(CPlayerSlot slot)
 {
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::GetPlayerUserId");
 #ifndef _WIN32
-    if (!index) return -1; // CPlayerUserId has no default value
+    if (!bindings::GetBindingSlot(kGetPlayerUserId.key)) return -1; // CPlayerUserId has no default value
 #endif
-    return CallSlot(index, &IVEngineServer2::GetPlayerUserId, globals::engine, slot).Get();
+    return CallSlot(kGetPlayerUserId, globals::engine, slot).Get();
 }
 
-void ClientPrintf(CPlayerSlot slot, const char* message)
-{
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::ClientPrintf");
-    CallSlot(index, &IVEngineServer2::ClientPrintf, globals::engine, slot, message);
-}
+void ClientPrintf(CPlayerSlot slot, const char* message) { CallSlot(kClientPrintf, globals::engine, slot, message); }
 
 const char* GetClientConVarValue(CPlayerSlot slot, const char* name)
 {
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::GetClientConVarValue");
-    return CallSlot(index, &IVEngineServer2::GetClientConVarValue, globals::engine, slot, name);
+    return CallSlot(kGetClientConVarValue, globals::engine, slot, name);
 }
 
 void SetFakeClientConVarValue(CPlayerSlot slot, const char* name, const char* value)
 {
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::SetFakeClientConVarValue");
-    CallSlot(index, &IVEngineServer2::SetFakeClientConVarValue, globals::engine, slot, name, value);
+    CallSlot(kSetFakeClientConVarValue, globals::engine, slot, name, value);
 }
 
 // As before: the command is the format string.
-void ClientCommand(CPlayerSlot slot, const char* command)
-{
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::ClientCommand");
-    CallSlot(index, &IVEngineServer2::ClientCommand, globals::engine, slot, command);
-}
+void ClientCommand(CPlayerSlot slot, const char* command) { CallSlot(kClientCommand, globals::engine, slot, command); }
 
 void DisconnectClient(CPlayerSlot slot, ENetworkDisconnectionReason reason)
 {
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::DisconnectClient");
-    CallSlot(index, &IVEngineServer2::DisconnectClient, globals::engine, slot, reason, static_cast<const char*>(nullptr));
+    CallSlot(kDisconnectClient, globals::engine, slot, reason, static_cast<const char*>(nullptr));
 }
 
-bool IsClientFullyAuthenticated(CPlayerSlot slot)
-{
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::IsClientFullyAuthenticated");
-    return CallSlot(index, &IVEngineServer2::IsClientFullyAuthenticated, globals::engine, slot);
-}
+bool IsClientFullyAuthenticated(CPlayerSlot slot) { return CallSlot(kIsClientFullyAuthenticated, globals::engine, slot); }
 
-const CSteamID* GetClientSteamID(CPlayerSlot slot)
-{
-    static const auto index = bindings::GetBindingSlot("IVEngineServer2::GetClientSteamID");
-    return CallSlot(index, &IVEngineServer2::GetClientSteamID, globals::engine, slot);
-}
+const CSteamID* GetClientSteamID(CPlayerSlot slot) { return CallSlot(kGetClientSteamID, globals::engine, slot); }
 
 } // namespace counterstrikesharp::engine_server

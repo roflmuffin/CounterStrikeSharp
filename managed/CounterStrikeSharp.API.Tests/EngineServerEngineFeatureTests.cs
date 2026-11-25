@@ -28,6 +28,8 @@ public class EngineServerEngineFeatureTests : IDisposable
         ["cssharp.player/authorization"] = ["IVEngineServer2::IsClientFullyAuthenticated", "IVEngineServer2::GetClientSteamID"],
         // Not IVEngineServer2: OnClientAuthorized also needs the connection hooks (a player is authorized once seen).
         ["cssharp.player/connection-events"] = ["IServerGameClients::ClientConnect"],
+        // Nor this: the auth check that fires OnClientAuthorized runs on every game frame.
+        ["cssharp.server/game-frame"] = ["ISource2Server::GameFrame"],
     };
 
     // Not a valid entity: an API whose Engine Feature is available gets past its check and fails on the entity check,
@@ -129,7 +131,8 @@ public class EngineServerEngineFeatureTests : IDisposable
     [Theory]
     [InlineData("IVEngineServer2::IsClientFullyAuthenticated", "cssharp.player/authorization")]
     [InlineData("IServerGameClients::ClientConnect", "cssharp.player/connection-events")]
-    public void OnClientAuthorizedOnEitherOfItsDisabledEngineFeaturesWarnsOnce(string failedKey, string feature)
+    [InlineData("ISource2Server::GameFrame", "cssharp.server/game-frame")]
+    public void OnClientAuthorizedOnAnyOfItsDisabledEngineFeaturesWarnsOnce(string failedKey, string feature)
     {
         InstallReport(failedKey);
         var logger = new CapturingLogger();
@@ -143,7 +146,7 @@ public class EngineServerEngineFeatureTests : IDisposable
     }
 
     [Fact]
-    public void OnClientAuthorizedIsSilentWhileBothOfItsEngineFeaturesAreAvailable()
+    public void OnClientAuthorizedIsSilentWhileAllOfItsEngineFeaturesAreAvailable()
     {
         InstallReport("IVEngineServer2::ClientPrintf");
         var logger = new CapturingLogger();

@@ -79,7 +79,7 @@ json WindowJson(const vtable::FingerprintWindow& window)
     return slots;
 }
 
-// The Gamedata entry the generator records for slot index of build (Linux only, like the generator's bootstrap).
+// The Slot Binding the generator records for slot index of build (Linux only, like the generator's bootstrap).
 json SlotEntry(const FakeBuild& build, std::size_t index)
 {
     const auto record = vtable::RecordSlot(build.Fingerprints(), index);
@@ -203,6 +203,33 @@ TEST_CASE("Slots at either end of the vtable resolve: a neighbour outside the vt
     const FakeBuild build(kOldBuild);
     CHECK(Resolve({ { kKey, SlotEntry(build, 0) } }, build).slot->match == vtable::SlotMatch::Window);
     CHECK(Resolve({ { kKey, SlotEntry(build, 7) } }, build).slot->match == vtable::SlotMatch::Window); // neighbours outside
+    // At its stated index the slot has not moved: a vtable grown past it still verifies it.
+    CHECK(Resolve({ { kKey, SlotEntry(build, 7) } }, FakeBuild({ 1, 2, 3, 4, 5, 6, 7, 8, 60 })).slot->match == vtable::SlotMatch::Window);
+}
+
+TEST_CASE("A Heal needs the whole recorded window: a neighbour recorded outside the vtable is outside it at the new index too")
+{
+    const json gamedata{ { kKey, SlotEntry(FakeBuild(kOldBuild), 7) } }; // the last slot: window [7, 8, null]
+
+    SUBCASE("moved by an insert and still the last slot: heals")
+    {
+        const auto result = Resolve(gamedata, FakeBuild({ 1, 2, 100, 3, 4, 5, 6, 7, 8 }));
+        CHECK(result.status == BindingStatus::Healed);
+        CHECK(result.offset == 8);
+    }
+    SUBCASE("moved by an insert while the vtable also grew past it: two of three fingerprints are not enough")
+    {
+        const auto result = Resolve(gamedata, FakeBuild({ 1, 2, 100, 3, 4, 5, 6, 7, 8, 60 }));
+        CHECK(result.status == BindingStatus::Failed);
+        CHECK(result.reason == FailureReason::FingerprintMismatch);
+    }
+    SUBCASE("the first slot never heals: nothing can be outside the vtable before any other index")
+    {
+        const json first{ { kKey, SlotEntry(FakeBuild(kOldBuild), 0) } }; // window [null, 1, 2]
+        const auto result = Resolve(first, FakeBuild({ 100, 1, 2, 3, 4, 5, 6, 7, 8 }));
+        CHECK(result.status == BindingStatus::Failed);
+        CHECK(result.reason == FailureReason::FingerprintMismatch);
+    }
 }
 
 TEST_CASE("A Slot Binding fails when its class's vtable cannot be found by RTTI")
@@ -523,15 +550,16 @@ TEST_CASE("The summary counts Heals next to failures, and a neighbour outside th
 {
     const FakeBuild old(kOldBuild);
     const std::vector<BindingDeclaration> declarations{ { kKey, BindingKind::Slot }, { "Missing", BindingKind::Slot } };
-    const json gamedata{ { kKey, SlotEntry(old, 0) }, { "Missing", { { "offsets", json::object() } } } };
+    const json gamedata{ { kKey, SlotEntry(old, 7) }, { "Missing", { { "offsets", json::object() } } } };
 
     const auto report =
-        ResolveBindings("b", ParseGamedata(gamedata, "linux"), { { "server", FakeBuild({ 50, 1, 2, 3, 4, 5, 6, 7, 8 }).Image() } }, declarations);
+        ResolveBindings("b", ParseGamedata(gamedata, "linux"), { { "server", FakeBuild({ 1, 50, 2, 3, 4, 5, 6, 7, 8 }).Image() } }, declarations);
 
     CHECK(FormatBindingSummary(report) == "Bindings for build b: 1 of 2 failed: Missing (missing for this OS); 1 healed");
     const auto heals = FormatHeals(report);
     REQUIRE(heals.size() == 1);
-    CHECK(heals[0].starts_with("Healed ISource2Server::GameFrame: CSource2Server (server) slot 0 -> 1, window [null, "));
+    CHECK(heals[0].starts_with("Healed ISource2Server::GameFrame: CSource2Server (server) slot 7 -> 8, window ["));
+    CHECK(heals[0].find(", null] matched once") != std::string::npos);
 }
 
 TEST_CASE("Committed Gamedata: every game-class virtual carries its Slot Binding fields; struct field offsets are unchanged")
@@ -555,12 +583,12 @@ TEST_CASE("Committed Gamedata: every game-class virtual carries its Slot Binding
         CHECK(entry["vtable"]["linux"]["size"].is_number_unsigned());
         CHECK_FALSE(entry["vtable"].contains("windows"));
     }
-    CHECK(gameClassSlots == 11);
+    CHECK(gameClassSlots == 12);
 
     // Struct field and other plain offsets: no Slot Binding fields, values as before.
     const std::vector<std::tuple<const char*, int, int>> plainOffsets{
         { "CTakeDamageInfo_HitGroup", 104, 104 }, { "CheckTransmitPlayerSlot", 576, 576 }, { "GameEntitySystem", 80, 88 },
-        { "GameEventManager", 93, 93 },          { "SetStateChanged", 29, 28 },
+        { "GameEventManager", 93, 93 },
     };
     for (const auto& [key, linuxOffset, windowsOffset] : plainOffsets)
     {

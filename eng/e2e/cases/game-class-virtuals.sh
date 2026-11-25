@@ -12,6 +12,7 @@
 # corrupted: CommitSuicide's own fingerprint in Gamedata is wrong; only commit-suicide is disabled (fingerprint
 #            mismatch), CommitSuicide throws the typed exception, respawn and teleport still work, reading the offset by
 #            key throws instead of returning a wrong index, and the server stays up.
+# SetStateChanged one off: CEntityInstance::NetworkStateChanged (cssharp.network/state-changed) stated at 28 heals at 29.
 # Exits non-zero if any case fails; each case's output dir is printed by run.sh.
 set -uo pipefail
 
@@ -70,6 +71,14 @@ typed_exception+="Engine Feature cssharp\\.player/commit-suicide is disabled \\(
     --check "$(outcome passed GameClassSlotTests.GameClassVirtuals_ReadByKey_FollowTheVtableCheck \
         GameTests.Offset_CBaseEntity_Teleport PlayerHelperFailSoftTests.CommitSuicide_ThrowsTypedExceptionWhenDisabled \
         PlayerHelperFailSoftTests.RespawnAndTeleport_WorkWithoutCommitSuicide)" ||
+    status=1
+
+echo "== game-class-virtuals: SetStateChanged one slot too low"
+"$run" "$@" --no-build \
+    --gamedata-jq '.SetStateChanged.offsets.linux = 28' \
+    --expect-log 'Bindings for build [^:]+: all [0-9]+ resolved, 1 healed(, [0-9]+ unverified)?$' \
+    --expect-log 'Healed SetStateChanged: CBaseEntity \(server\) slot 28 -> 29, window \[[0-9a-f]{16}, [0-9a-f]{16}, [0-9a-f]{16}\] matched once' \
+    --expect-log 'Engine Features for build [^:]+: all [0-9]+ available' ||
     status=1
 
 exit $status

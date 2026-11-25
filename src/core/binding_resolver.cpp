@@ -316,14 +316,22 @@ Gamedata ParseGamedata(const nlohmann::json& root, std::string_view platform)
 ResolutionReport::ResolutionReport(std::string buildId, std::vector<BindingResult> bindings)
     : m_buildId(std::move(buildId)), m_bindings(std::move(bindings))
 {
+    // The first Binding of a key wins, as a scan in order would find it.
+    for (std::size_t position = 0; position < m_bindings.size(); ++position)
+        m_index.emplace(m_bindings[position].key, position);
 }
 
 const BindingResult* ResolutionReport::Find(std::string_view key) const
 {
-    const auto it = std::find_if(m_bindings.begin(), m_bindings.end(), [&](const BindingResult& binding) {
-        return binding.key == key;
-    });
-    return it == m_bindings.end() ? nullptr : &*it;
+    const auto it = m_index.find(key);
+    return it == m_index.end() ? nullptr : &m_bindings[it->second];
+}
+
+std::optional<int> SlotIndexOf(const ResolutionReport& report, std::string_view key)
+{
+    const auto* binding = report.Find(key);
+    if (binding == nullptr || !binding->Resolved() || binding->kind != BindingKind::Slot || binding->offset < 0) return std::nullopt;
+    return static_cast<int>(binding->offset);
 }
 
 ResolutionReport BuiltinResolver::Resolve(std::string buildId,

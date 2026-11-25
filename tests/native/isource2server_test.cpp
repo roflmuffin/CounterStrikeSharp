@@ -22,7 +22,7 @@ constexpr std::uintptr_t kCodeAddress = 0x500000;
 constexpr std::uintptr_t kVtableAddress = 0x900000;
 constexpr std::uintptr_t kPureVirtual = 0x42;
 
-// Engine Feature -> its ISource2Server Slot Bindings (spec B's table, plus one Engine Feature per direct call).
+// Engine Feature -> its ISource2Server Slot Bindings (one Engine Feature per hook, plus one per direct call).
 const std::vector<std::pair<std::string_view, std::vector<std::string>>> kFeatures{
     { features::GameFrame, { "ISource2Server::GameFrame" } },
     { features::HibernationEvents, { "ISource2Server::ServerHibernationUpdate" } },
@@ -246,5 +246,21 @@ TEST_CASE("CallSlot calls the method at the Slot Binding's index, not at its com
     // No index (the Binding failed): nothing is called.
     CHECK(CallSlot(std::nullopt, &Calls::First, &calls, 10) == 0);
     CHECK(CallSlot(std::nullopt, &Calls::Third, &constCalls, 10) == 0);
+#endif
+}
+
+TEST_CASE("CallSlot through a SlotMethod calls at the index the given report states, and follows a new report")
+{
+    constexpr SlotMethod kFirst{ "Calls::First", &Calls::First };
+    const auto reportWith = [](std::int64_t index, BindingStatus status) {
+        return ResolutionReport("b", { { "Calls::First", BindingKind::Slot, status, FailureReason::None, 0, 0, index } });
+    };
+    Calls calls;
+
+    CHECK(CallSlot(reportWith(2, BindingStatus::Resolved), kFirst, &calls, 10) == 11);
+    CHECK(CallSlot(reportWith(3, BindingStatus::Healed), kFirst, &calls, 10) == 12);
+#ifndef _WIN32
+    CHECK(CallSlot(reportWith(3, BindingStatus::Failed), kFirst, &calls, 10) == 0);
+    CHECK(CallSlot(ResolutionReport(), kFirst, &calls, 10) == 0);
 #endif
 }

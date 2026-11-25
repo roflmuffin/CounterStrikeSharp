@@ -1,6 +1,7 @@
 #include "core/log.h"
 #include "scripting/script_engine.h"
 #include "scripting/autonative.h"
+#include "scripting/engine_feature_natives.h"
 
 #include "core/customhudlayout.h"
 
@@ -53,6 +54,8 @@ void SetHasClassForPlayer(ScriptContext& scriptContext)
 
 void SetDialogVariableString(ScriptContext& scriptContext)
 {
+    // Builds a dialog variable string with the game's vtable (an RTTI Binding of this Engine Feature).
+    if (!RequireEngineFeature(scriptContext, bindings::features::UiCustomHudLayout)) return;
     auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
     if (!pCustomHudLayout) return;
 
@@ -65,6 +68,8 @@ void SetDialogVariableString(ScriptContext& scriptContext)
 
 void SetDialogVariableStringForPlayer(ScriptContext& scriptContext)
 {
+    // Builds a dialog variable string with the game's vtable (an RTTI Binding of this Engine Feature).
+    if (!RequireEngineFeature(scriptContext, bindings::features::UiCustomHudLayout)) return;
     auto pCustomHudLayout = GetCustomHudLayout(scriptContext);
     if (!pCustomHudLayout) return;
 

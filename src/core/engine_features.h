@@ -80,7 +80,7 @@ std::span<const EngineFeatureDeclaration> NativeEngineFeatures();
 
 // Every core Binding resolved at boot, each key once: the Bindings of all catalog rows (with their declared kinds,
 // even when Gamedata lacks the key, so the report says why), the game-class virtuals (Slot Bindings without a header
-// index, whatever their Gamedata entry looks like), then every other key in the core Gamedata by its section
+// index, whatever Gamedata holds for them), then every other key in the core Gamedata by its section
 // ("vtable" -> Slot, else "signatures" -> Signature, else "offsets" -> Offset). So keys only managed code consumes are
 // resolved and reported too; managed declares which of its Engine Features need them.
 std::vector<BindingDeclaration> CoreBindingDeclarations(const Gamedata& gamedata);

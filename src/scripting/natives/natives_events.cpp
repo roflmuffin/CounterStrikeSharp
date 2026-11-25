@@ -19,6 +19,7 @@
 
 #include "core/managers/event_manager.h"
 #include "scripting/autonative.h"
+#include "scripting/engine_feature_natives.h"
 #include "igameevents.h"
 #include <entity2/entitysystem.h>
 
@@ -48,9 +49,7 @@ static void UnhookEvent(ScriptContext& script_context)
 static bool GameEventManagerAvailable(ScriptContext& script_context)
 {
     if (globals::gameEventManager) return true;
-    if (!bindings::IsEngineFeatureAvailable(bindings::features::GameEvents))
-        script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::GameEvents).c_str());
-    else
+    if (RequireEngineFeature(script_context, bindings::features::GameEvents))
         script_context.ThrowNativeError("Game event manager is not available yet");
     return false;
 }

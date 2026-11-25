@@ -5,17 +5,31 @@
 #include <regex>
 #include <algorithm>
 
+#ifdef _WIN32
+#include <engine2/ivengineserver2.h>
+#endif
+
 #include "core/globals.h"
 
 namespace counterstrikesharp {
 namespace utils {
 
-// The mod directory (game/csgo), as Metamod found it to load us. Not IVEngineServer2::GetGameDir: this runs before
-// Gamedata is read (it locates Gamedata), so that call could not go through a verified Slot Binding.
+// The mod directory (game/csgo). On Linux as Metamod found it to load us, not IVEngineServer2::GetGameDir: this runs
+// before Gamedata is read (it locates Gamedata), so that call could not go through a verified Slot Binding. Windows
+// has no Vtable Check and keeps the compiled engine call, as before Slot Bindings.
 static std::string gameDirectory;
 inline std::string GameDirectory()
 {
-    if (gameDirectory.empty()) gameDirectory = std::string(globals::ismm->GetBaseDir());
+    if (gameDirectory.empty())
+    {
+#ifdef _WIN32
+        CBufferStringGrowable<255> gamePath;
+        globals::engine->GetGameDir(gamePath);
+        gameDirectory = std::string(gamePath.Get());
+#else
+        gameDirectory = std::string(globals::ismm->GetBaseDir());
+#endif
+    }
 
     return gameDirectory;
 }

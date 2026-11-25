@@ -134,6 +134,12 @@ public static class GameData
     /// Slot Binding, e.g. <c>CCSPlayerController_ChangeTeam</c>), the index the check verified or healed, which can differ
     /// from the file after a Game update; throws <see cref="InvalidOperationException"/> if it could not be verified.
     /// </summary>
+    /// <remarks>
+    /// A failed Slot Binding throws rather than falling back to the index in the file: after a Game update that index may
+    /// hold another function, and calling it would be silently wrong. Catch the exception to degrade gracefully.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">The key is a Slot Binding whose Vtable Check failed on this build, or
+    /// has no offset for this OS.</exception>
     public static int GetOffset(string key)
     {
         if (!GameDataProvider.Methods.ContainsKey(key))

@@ -18,6 +18,7 @@
 #include <sstream>
 
 #include "scripting/autonative.h"
+#include "scripting/engine_feature_natives.h"
 #include "scripting/script_engine.h"
 #include "core/core_bindings.h"
 #include "core/memory.h"
@@ -251,9 +252,7 @@ void SetSchemaValueByName(ScriptContext& script_context)
 
 static bool StateChangedAvailable(ScriptContext& script_context)
 {
-    if (bindings::IsEngineFeatureAvailable(bindings::features::StateChanged)) return true;
-    script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::StateChanged).c_str());
-    return false;
+    return RequireEngineFeature(script_context, bindings::features::StateChanged);
 }
 
 void SchemaSetStateChanged(ScriptContext& script_context)

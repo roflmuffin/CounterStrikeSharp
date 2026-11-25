@@ -11,29 +11,6 @@
 namespace counterstrikesharp::generator {
 namespace {
 
-// Every index in [first, last] of the vtable where the window matches.
-std::vector<std::size_t> WindowMatches(const vtable::FingerprintWindow& window, std::span<const vtable::Fingerprint> fingerprints, std::size_t first, std::size_t last)
-{
-    std::vector<std::size_t> matches;
-    for (std::size_t index = first; index <= last && index < fingerprints.size(); ++index)
-        if (vtable::WindowMatchesAt(window, fingerprints, index)) matches.push_back(index);
-    return matches;
-}
-
-std::vector<std::size_t> WindowMatches(const vtable::FingerprintWindow& window, std::span<const vtable::Fingerprint> fingerprints)
-{
-    return fingerprints.empty() ? std::vector<std::size_t>{} : WindowMatches(window, fingerprints, 0, fingerprints.size() - 1);
-}
-
-// Other indices within the search range where the window matches too. A boot-time Heal could not tell them apart.
-std::vector<std::size_t> OtherWindowMatchesNearby(std::span<const vtable::Fingerprint> fingerprints, const vtable::SlotRecord& record)
-{
-    const std::size_t first = record.index >= vtable::kSearchRange ? record.index - vtable::kSearchRange : 0;
-    auto matches = WindowMatches(record.window, fingerprints, first, record.index + vtable::kSearchRange);
-    std::erase(matches, record.index);
-    return matches;
-}
-
 std::string JoinIndices(std::span<const std::size_t> indices)
 {
     std::string joined;
@@ -42,7 +19,7 @@ std::string JoinIndices(std::span<const std::size_t> indices)
     return joined;
 }
 
-// The previous Gamedata entry of a Slot Binding as the resolver reads it on Linux.
+// A Slot Binding of the previous Gamedata as the resolver reads it on Linux.
 bindings::GamedataEntry ParseEntry(const std::string& key, const GamedataJson& entry)
 {
     const auto parsed = bindings::ParseGamedata(nlohmann::json{ { key, nlohmann::json::parse(entry.dump()) } }, "linux");
@@ -74,7 +51,7 @@ struct Hold : std::runtime_error
     using std::runtime_error::runtime_error;
 };
 
-// Where the Slot Binding of a previous Gamedata entry sits on the next build, or Hold.
+// Where a Slot Binding of the previous Gamedata sits on the next build, or Hold.
 std::size_t AlignSlot(const bindings::GamedataEntry& entry, VtableCache& previousBuild, VtableCache& nextBuild)
 {
     const auto& slot = *entry.slot;
@@ -103,10 +80,12 @@ std::size_t AlignSlot(const bindings::GamedataEntry& entry, VtableCache& previou
         throw Hold("its window does not match the previous build at index " + std::to_string(index) + " (Gamedata is not for that build)");
     const auto window = vtable::WindowAt(previous, index);
 
-    if (const auto inPrevious = WindowMatches(window, previous); inPrevious.size() != 1)
+    // The boot-time match rule (core/vtable_fingerprint.h) over the whole vtable: a carried index is one a Heal would
+    // also accept, and a window found more than once anywhere is never carried.
+    if (const auto inPrevious = vtable::WindowMatchesAnywhere(window, previous, index); inPrevious.size() != 1)
         throw Hold("ambiguous: its window occurs at " + JoinIndices(inPrevious) + " on the previous build");
 
-    const auto inNext = WindowMatches(window, next);
+    const auto inNext = vtable::WindowMatchesAnywhere(window, next, index);
     if (inNext.empty()) throw Hold("its window matches nowhere in " + *slot.className + "'s vtable on the next build");
     if (inNext.size() > 1) throw Hold("ambiguous: its window matches at " + JoinIndices(inNext) + " on the next build");
     return inNext.front();
@@ -141,7 +120,8 @@ GeneratedSlotBinding BootstrapSlotBinding(std::span<const vtable::Fingerprint> f
     slot["linux"] = SlotRecordJson(record);
     generated.entry = std::move(entry);
 
-    if (const auto others = OtherWindowMatchesNearby(fingerprints, record); !others.empty())
+    // Other indices nearby where the window matches too: a boot-time Heal could not tell them apart.
+    if (const auto others = vtable::WindowMatchesNear(record.window, fingerprints, record.index); !others.empty())
         generated.warnings.push_back(request.key + ": its window also matches at " + JoinIndices(others) +
                                      " (identical bodies nearby); a slot shift there fails instead of healing");
     const auto& own = *record.window.slots[1];

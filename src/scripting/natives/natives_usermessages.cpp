@@ -20,6 +20,7 @@
 #include "core/managers/usermessage_manager.h"
 #include "engine2/igameeventsystem.h"
 #include "scripting/autonative.h"
+#include "scripting/engine_feature_natives.h"
 
 #include "core/recipientfilters.h"
 
@@ -734,11 +735,7 @@ static void UserMessageSetRecipients(ScriptContext& scriptContext)
 static void UserMessageSend(ScriptContext& scriptContext)
 {
     auto message = scriptContext.GetArgument<UserMessage*>(0);
-    if (!bindings::IsEngineFeatureAvailable(bindings::features::UserMessages))
-    {
-        scriptContext.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::UserMessages).c_str());
-        return;
-    }
+    if (!RequireEngineFeature(scriptContext, bindings::features::UserMessages)) return;
 
     CRecipientFilter filter{};
 

@@ -8,6 +8,7 @@
 
 #include "core/globals.h"
 #include "core/hooks.h"
+#include "core/slot_binding_keys.h"
 #include "engine2/igameeventsystem.h"
 #include "engine2/inetworkgameserver.h"
 
@@ -25,28 +26,29 @@ using PostEventToFilter = void (IGameEventSystem::*)(CSplitScreenSlot, bool, IRe
 
 std::span<const CompiledSlot> CompiledSlots()
 {
-    static const std::vector<CompiledSlot> slots{
+    namespace slots = bindings::slots;
+    static const std::vector<CompiledSlot> compiled{
         // Game event manager (natives_events.cpp, event_manager.cpp, chat_manager.cpp)
-        Compiled("IGameEventManager2::LoadEventsFromFile", &IGameEventManager2::LoadEventsFromFile),
-        Compiled("IGameEventManager2::AddListener", &IGameEventManager2::AddListener),
-        Compiled("IGameEventManager2::FindListener", &IGameEventManager2::FindListener),
-        Compiled("IGameEventManager2::RemoveListener", &IGameEventManager2::RemoveListener),
-        Compiled("IGameEventManager2::CreateEvent", &IGameEventManager2::CreateEvent),
-        Compiled("IGameEventManager2::FireEvent", &IGameEventManager2::FireEvent),
-        Compiled("IGameEventManager2::FreeEvent", &IGameEventManager2::FreeEvent),
+        Compiled(slots::IGameEventManager2_LoadEventsFromFile, &IGameEventManager2::LoadEventsFromFile),
+        Compiled(slots::IGameEventManager2_AddListener, &IGameEventManager2::AddListener),
+        Compiled(slots::IGameEventManager2_FindListener, &IGameEventManager2::FindListener),
+        Compiled(slots::IGameEventManager2_RemoveListener, &IGameEventManager2::RemoveListener),
+        Compiled(slots::IGameEventManager2_CreateEvent, &IGameEventManager2::CreateEvent),
+        Compiled(slots::IGameEventManager2_FireEvent, &IGameEventManager2::FireEvent),
+        Compiled(slots::IGameEventManager2_FreeEvent, &IGameEventManager2::FreeEvent),
         // Game event system (client prints, user message sends, replicated convars)
-        Compiled("IGameEventSystem::PostEventAbstract", static_cast<PostEventToClients>(&IGameEventSystem::PostEventAbstract)),
-        Compiled("IGameEventSystem::PostEventAbstract_Filter", static_cast<PostEventToFilter>(&IGameEventSystem::PostEventAbstract)),
+        Compiled(slots::IGameEventSystem_PostEventAbstract, static_cast<PostEventToClients>(&IGameEventSystem::PostEventAbstract)),
+        Compiled(slots::IGameEventSystem_PostEventAbstract_Filter, static_cast<PostEventToFilter>(&IGameEventSystem::PostEventAbstract)),
         // Global vars (globals::getGlobalVars)
-        Compiled("INetworkServerService::GetIGameServer", &INetworkServerService::GetIGameServer),
-        Compiled("INetworkGameServer::GetGlobals", &INetworkGameServer::GetGlobals),
+        Compiled(slots::INetworkServerService_GetIGameServer, &INetworkServerService::GetIGameServer),
+        Compiled(slots::INetworkGameServer_GetGlobals, &INetworkGameServer::GetGlobals),
         // Not fingerprinted yet (modules not archived): unverified, so not compared until they have a window
-        Compiled("INetworkMessages::FindNetworkMessagePartial", &INetworkMessages::FindNetworkMessagePartial),
-        Compiled("INetworkMessages::FindNetworkMessageById", &INetworkMessages::FindNetworkMessageById),
-        Compiled("CSchemaSystem::GlobalTypeScope", &CSchemaSystem::GlobalTypeScope),
-        Compiled("CSchemaSystem::FindTypeScopeForModule", &CSchemaSystem::FindTypeScopeForModule),
+        Compiled(slots::INetworkMessages_FindNetworkMessagePartial, &INetworkMessages::FindNetworkMessagePartial),
+        Compiled(slots::INetworkMessages_FindNetworkMessageById, &INetworkMessages::FindNetworkMessageById),
+        Compiled(slots::CSchemaSystem_GlobalTypeScope, &CSchemaSystem::GlobalTypeScope),
+        Compiled(slots::CSchemaSystem_FindTypeScopeForModule, &CSchemaSystem::FindTypeScopeForModule),
     };
-    return slots;
+    return compiled;
 }
 
 } // namespace counterstrikesharp::bindings

@@ -21,7 +21,7 @@ public class EventsAndNetworkEngineFeatureTests : IDisposable
                     "server"),
                 new BindingResult("NetworkStateChanged", BindingKind.Signature, true, BindingFailureReason.None, 1, 0x6000, 0,
                     "server"),
-                new BindingResult("SetStateChanged", BindingKind.Offset, false, BindingFailureReason.MissingForThisOs, 0, 0, 0, ""),
+                new BindingResult("SetStateChanged", BindingKind.Slot, false, BindingFailureReason.MissingForThisOs, 0, 0, 0, ""),
             ],
             [
                 new EngineFeatureDeclaration("cssharp.events/game-events",
@@ -30,7 +30,7 @@ public class EventsAndNetworkEngineFeatureTests : IDisposable
                 new EngineFeatureDeclaration("cssharp.events/fire-event-to-client",
                     [BindingDeclaration.Signature("LegacyGameEventListener")]),
                 new EngineFeatureDeclaration("cssharp.network/state-changed",
-                    [BindingDeclaration.Signature("NetworkStateChanged"), BindingDeclaration.Offset("SetStateChanged")]),
+                    [BindingDeclaration.Signature("NetworkStateChanged"), BindingDeclaration.Slot("SetStateChanged")]),
             ]);
         EngineFeatures.Current = new EngineFeatureSet(report, []);
     }

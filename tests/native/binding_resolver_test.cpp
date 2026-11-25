@@ -327,3 +327,34 @@ TEST_CASE("ScanSignature counts every match of a raw signature across segments a
         CHECK(scan.matchCount == 0);
     }
 }
+
+TEST_CASE("A report finds each Binding by key, also after it was copied or moved, and gives a Slot Binding's usable index")
+{
+    std::vector<BindingResult> bindings;
+    for (int i = 0; i < 40; ++i)
+        bindings.push_back({ "Key" + std::to_string(i), BindingKind::Offset, BindingStatus::Resolved, FailureReason::None, 0, 0, i });
+    bindings.push_back({ "Slot", BindingKind::Slot, BindingStatus::Healed, FailureReason::None, 0, 0, 21 });
+    bindings.push_back({ "Unverified", BindingKind::Slot, BindingStatus::Unverified, FailureReason::None, 0, 0, 7 });
+    bindings.push_back({ "NoIndex", BindingKind::Slot, BindingStatus::Unverified, FailureReason::None, 0, 0, -1 });
+    bindings.push_back({ "Failed", BindingKind::Slot, BindingStatus::Failed, FailureReason::FingerprintMismatch, 0, 0, 3 });
+    const ResolutionReport original("b", bindings);
+
+    const ResolutionReport copy = original;
+    ResolutionReport moved;
+    moved = ResolutionReport(original);
+
+    for (const auto* report : std::vector<const ResolutionReport*>{ &original, &copy, &moved })
+    {
+        REQUIRE(report->Find("Key17") != nullptr);
+        CHECK(report->Find("Key17")->offset == 17);
+        CHECK(report->Find("Key17") >= &report->Bindings().front());
+        CHECK(report->Find("Key17") <= &report->Bindings().back());
+        CHECK(report->Find("Key40") == nullptr);
+        CHECK(SlotIndexOf(*report, "Slot") == 21);
+        CHECK(SlotIndexOf(*report, "Unverified") == 7);
+        CHECK(SlotIndexOf(*report, "NoIndex") == std::nullopt); // Windows without a Gamedata index: the compiled one applies
+        CHECK(SlotIndexOf(*report, "Failed") == std::nullopt);
+        CHECK(SlotIndexOf(*report, "Key3") == std::nullopt); // not a Slot Binding
+        CHECK(SlotIndexOf(*report, "Absent") == std::nullopt);
+    }
+}

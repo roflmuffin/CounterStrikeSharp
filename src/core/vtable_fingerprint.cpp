@@ -117,6 +117,11 @@ bool WindowMatchesAt(const FingerprintWindow& window, std::span<const Fingerprin
     return true;
 }
 
+bool WholeWindowMatchesAt(const FingerprintWindow& window, std::span<const Fingerprint> vtable, std::size_t index)
+{
+    return index < vtable.size() && WindowAt(vtable, index) == window;
+}
+
 bool UniqueNearby(std::span<const Fingerprint> vtable, std::size_t index)
 {
     if (index >= vtable.size()) return false;
@@ -144,13 +149,36 @@ SlotMatch CheckSlot(const SlotRecord& recorded, std::span<const Fingerprint> liv
     return SlotMatch::None;
 }
 
-std::vector<std::size_t> WindowMatchesNear(const FingerprintWindow& window, std::span<const Fingerprint> live, std::size_t index)
+namespace {
+// Positions in [first, last] of the live vtable where the window matches: at index by WindowMatchesAt (if index is to
+// be included), elsewhere by WholeWindowMatchesAt.
+std::vector<std::size_t> WindowMatchesBetween(const FingerprintWindow& window,
+                                              std::span<const Fingerprint> live,
+                                              std::size_t index,
+                                              std::size_t first,
+                                              std::size_t last,
+                                              bool includeIndex)
 {
     std::vector<std::size_t> matches;
-    const std::size_t first = index >= kSearchRange ? index - kSearchRange : 0;
-    for (std::size_t slot = first; slot <= index + kSearchRange && slot < live.size(); ++slot)
-        if (slot != index && WindowMatchesAt(window, live, slot)) matches.push_back(slot);
+    for (std::size_t slot = first; slot <= last && slot < live.size(); ++slot)
+    {
+        const bool match = slot == index ? includeIndex && WindowMatchesAt(window, live, slot) : WholeWindowMatchesAt(window, live, slot);
+        if (match) matches.push_back(slot);
+    }
     return matches;
+}
+} // namespace
+
+std::vector<std::size_t> WindowMatchesNear(const FingerprintWindow& window, std::span<const Fingerprint> live, std::size_t index)
+{
+    const std::size_t first = index >= kSearchRange ? index - kSearchRange : 0;
+    return WindowMatchesBetween(window, live, index, first, index + kSearchRange, false);
+}
+
+std::vector<std::size_t> WindowMatchesAnywhere(const FingerprintWindow& window, std::span<const Fingerprint> live, std::size_t index)
+{
+    if (live.empty()) return {};
+    return WindowMatchesBetween(window, live, index, 0, live.size() - 1, true);
 }
 
 SlotLocation LocateSlot(const SlotRecord& recorded, std::span<const Fingerprint> live)

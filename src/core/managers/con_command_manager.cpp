@@ -44,6 +44,7 @@
 #include "core/core_bindings.h"
 #include "core/log.h"
 #include "core/memory.h"
+#include "core/slot_binding_keys.h"
 #include "core/slot_hooks.h"
 #include "core/utils.h"
 #include "interfaces/cs2_interfaces.h"
@@ -204,10 +205,9 @@ void ConCommandManager::OnAllInitialized()
     // console-dispatch: console-issued commands run without our callbacks or listeners; the server keeps running.
     if (bindings::ShouldRegisterHooks(bindings::features::ConsoleDispatch, "DispatchConCommand hooks"))
     {
-        HookSlot(m_hooks, "ICvar::DispatchConCommand", &ICvar::DispatchConCommand, globals::cvars, this,
-                 &ConCommandManager::Hook_DispatchConCommand, nullptr);
-        HookSlot(m_hooks, "ICvar::DispatchConCommand", &ICvar::DispatchConCommand, globals::cvars, this, nullptr,
-                 &ConCommandManager::Hook_DispatchConCommand_Post);
+        constexpr SlotMethod kDispatchConCommand{ bindings::slots::ICvar_DispatchConCommand, &ICvar::DispatchConCommand };
+        HookSlot(m_hooks, kDispatchConCommand, globals::cvars, this, &ConCommandManager::Hook_DispatchConCommand, nullptr);
+        HookSlot(m_hooks, kDispatchConCommand, globals::cvars, this, nullptr, &ConCommandManager::Hook_DispatchConCommand_Post);
     }
 
     m_global_cmd.callback_pre = globals::callbackManager.CreateCallback("OnClientCommandGlobalPre");

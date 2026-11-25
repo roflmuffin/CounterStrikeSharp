@@ -21,6 +21,7 @@
 #include "core/globals.h"
 #include "core/log.h"
 #include "core/recipientfilters.h"
+#include "core/slot_binding_keys.h"
 #include "core/cs2_sdk/entity/dump.h"
 
 #include <vector>
@@ -53,8 +54,8 @@ void EntityManager::OnAllInitialized()
     {
         m_hooks.AddGlobalIndex<ISource2GameEntities, void, CCheckTransmitInfoHack**, uint32_t, CBitVec<16384>&, CBitVec<16384>&,
                                const Entity2Networkable_t**, const uint16*, uint32_t>(
-            *bindings::GetBindingSlot("ISource2GameEntities::CheckTransmit"), *(void***)globals::gameEntities, this,
-            nullptr, &EntityManager::CheckTransmit);
+            *bindings::GetBindingSlot(bindings::slots::CheckTransmit), *(void***)globals::gameEntities, this, nullptr,
+            &EntityManager::CheckTransmit);
     }
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");

@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include "core/core_bindings.h"
 #include "core/hooks.h"
 #include "utlstring.h"
 #include "globals.h"
@@ -38,6 +39,8 @@ enum EHudPanelClassStatus_t : int
 
 struct HUDPanelDialogVariableString_t
 {
+    static constexpr const char* kRttiName = "HUDPanelDialogVariableString_t";
+
   private:
     virtual void unk00() {}
 
@@ -45,9 +48,9 @@ struct HUDPanelDialogVariableString_t
     HUDPanelDialogVariableString_t(uint16 nPanelIdIndex, uint16 nDialogVariableIndex, CUtlString sValue, bool bIsSet)
         : m_nPanelIdIndex(nPanelIdIndex), m_nDialogVariableIndex(nDialogVariableIndex), m_sValue(sValue), m_bIsSet(bIsSet)
     {
-        // Since we're constructing a new object, the vtable pointer will be incorrect so fix it
-        static const auto pVTable = counterstrikesharp::modules::server->FindVirtualTable("HUDPanelDialogVariableString_t");
-        ((void**)this)[0] = pVTable;
+        // Since we're constructing a new object, the vtable pointer will be incorrect so fix it: the game's vtable, an RTTI
+        // Binding of cssharp.ui/custom-hud-layout (callers check that Engine Feature first).
+        ((void**)this)[0] = counterstrikesharp::bindings::GetBindingAddress(kRttiName);
     }
 
     bool operator==(const HUDPanelDialogVariableString_t& other) const

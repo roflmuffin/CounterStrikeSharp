@@ -133,7 +133,7 @@ TEST_CASE("A vtable's fingerprints end at the first slot that is not code; pure 
     CHECK(FingerprintVtable(vtable.Source(2)).size() == 2); // readable memory ends
 }
 
-TEST_CASE("A window records the slot and its neighbours; a neighbour outside the vtable matches anything")
+TEST_CASE("A window records the slot and its neighbours; at the recorded index a neighbour outside the vtable matches anything")
 {
     const auto vtable = Fingerprints({ "a", "b", "c" });
 
@@ -147,6 +147,23 @@ TEST_CASE("A window records the slot and its neighbours; a neighbour outside the
     CHECK_FALSE(WindowMatchesAt(first, Fingerprints({ "a", "x" }), 0));
     CHECK_FALSE(WindowMatchesAt(WindowAt(vtable, 1), Fingerprints({ "a", "b" }), 1)); // recorded neighbour missing live
     CHECK_FALSE(WindowMatchesAt(WindowAt(vtable, 1), Fingerprints({ "a" }), 5));
+}
+
+TEST_CASE("The whole window matches only where a neighbour recorded outside the vtable is outside it too")
+{
+    const auto last = WindowAt(Fingerprints({ "a", "b", "c" }), 2); // [b, c, null]
+
+    CHECK(WholeWindowMatchesAt(last, Fingerprints({ "x", "b", "c" }), 2));
+    CHECK_FALSE(WholeWindowMatchesAt(last, Fingerprints({ "x", "b", "c", "d" }), 2));
+    CHECK(WindowMatchesAt(last, Fingerprints({ "x", "b", "c", "d" }), 2));
+    CHECK_FALSE(WholeWindowMatchesAt(WindowAt(Fingerprints({ "a", "b" }), 0), Fingerprints({ "z", "a", "b" }), 1));
+    CHECK_FALSE(WholeWindowMatchesAt(last, Fingerprints({ "b", "c" }), 5));
+
+    // The Heal search uses the whole window; the carry-forward search too, except at the recorded index.
+    CHECK(WindowMatchesNear(last, Fingerprints({ "n", "x", "b", "c", "d" }), 2).empty());
+    CHECK(WindowMatchesNear(last, Fingerprints({ "n", "x", "b", "c" }), 2) == std::vector<std::size_t>{ 3 });
+    CHECK(WindowMatchesAnywhere(last, Fingerprints({ "x", "b", "c", "d" }), 2) == std::vector<std::size_t>{ 2 });
+    CHECK(WindowMatchesAnywhere(last, Fingerprints({ "n", "x", "b", "c", "d" }), 2).empty());
 }
 
 TEST_CASE("A slot is unique nearby when its fingerprint occurs once within the search range")

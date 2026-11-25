@@ -33,12 +33,12 @@ struct SlotBindingRequest
 
 struct GeneratedSlotBinding
 {
-    GamedataJson entry; // the key's Gamedata entry with its Slot Binding fields set
+    GamedataJson entry; // the key's Gamedata json with its Slot Binding fields set
     std::vector<std::string> warnings; // things a maintainer should look at; the entry is still emitted
 };
 
 // Bootstrap: records the Slot Binding for request.index of a class's vtable (its fingerprints on one build, e.g.
-// LoadedModule::Fingerprints), merged into the key's existing Gamedata entry (other fields, e.g. a Windows index, are
+// LoadedModule::Fingerprints), merged into the key's existing Gamedata json (other fields, e.g. a Windows index, are
 // kept). Throws std::runtime_error if the index is outside the vtable.
 GeneratedSlotBinding BootstrapSlotBinding(std::span<const vtable::Fingerprint> fingerprints,
                                           const SlotBindingRequest& request,

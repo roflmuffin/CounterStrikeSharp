@@ -68,9 +68,7 @@ float GetTickInterval(ScriptContext& script_context) { return globals::engine_fi
 static CGlobalVars* GlobalVars(ScriptContext& script_context)
 {
     if (auto* globalVars = globals::getGlobalVars()) return globalVars;
-    if (!bindings::IsEngineFeatureAvailable(bindings::features::GlobalVars))
-        script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::GlobalVars).c_str());
-    else
+    if (RequireEngineFeature(script_context, bindings::features::GlobalVars))
         script_context.ThrowNativeError("Global Variables not initialized yet.");
     return nullptr;
 }
@@ -223,11 +221,7 @@ void ClientPrint(ScriptContext& scriptContext)
     auto hudDestination = scriptContext.GetArgument<int>(1);
     auto message = scriptContext.GetArgument<const char*>(2);
 
-    if (!bindings::IsEngineFeatureAvailable(bindings::features::UserMessages))
-    {
-        scriptContext.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::UserMessages).c_str());
-        return;
-    }
+    if (!RequireEngineFeature(scriptContext, bindings::features::UserMessages)) return;
 
     NetMessageInfo_t* pNetMsg = globals::networkMessages->FindNetworkMessagePartial("TextMsg");
     auto data = pNetMsg->AllocateMessage()->ToPB<CUserMessageTextMsg>();

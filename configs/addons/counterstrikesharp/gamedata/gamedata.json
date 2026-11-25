@@ -405,6 +405,19 @@
     "offsets": {
       "windows": 28,
       "linux": 29
+    },
+    "vtable": {
+      "class": "CBaseEntity",
+      "library": "server",
+      "linux": {
+        "window": [
+          "8c8ea0db4cba3598",
+          "72ce7e6ced38b240",
+          "88c9453a35c67898"
+        ],
+        "uniqueNearby": true,
+        "size": 239
+      }
     }
   },
   "ISource2GameEntities::CheckTransmit": {

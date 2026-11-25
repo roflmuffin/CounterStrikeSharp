@@ -16,7 +16,6 @@
 
 #include <engine2/ivengineserver2.h>
 #include <networksystem/inetworkmessages.h>
-#include "core/core_bindings.h"
 
 #include "core/core_bindings.h"
 #include "core/engine_server_calls.h"
@@ -225,11 +224,7 @@ void ReplicateConVar(ScriptContext& script_context)
     auto name = script_context.GetArgument<const char*>(1);
     auto value = script_context.GetArgument<const char*>(2);
 
-    if (!bindings::IsEngineFeatureAvailable(bindings::features::UserMessages))
-    {
-        script_context.ThrowNativeError("%s", bindings::DescribeUnavailable(bindings::features::UserMessages).c_str());
-        return;
-    }
+    if (!RequireEngineFeature(script_context, bindings::features::UserMessages)) return;
 
     NetMessageInfo_t* pNetMsg = globals::networkMessages->FindNetworkMessagePartial("SetConVar");
     auto msg = pNetMsg->AllocateMessage()->ToPB<CNETMsg_SetConVar>();

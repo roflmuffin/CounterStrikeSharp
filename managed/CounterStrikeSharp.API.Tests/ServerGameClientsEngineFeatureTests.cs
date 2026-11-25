@@ -1,13 +1,17 @@
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Bindings;
+using CounterStrikeSharp.API.Modules.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Tests;
 
 // The IServerGameClients hooks as Slot Bindings: connection events, client commands, voice and custom HUD clicks are
 // separate Engine Features, and listeners on a disabled one register, log once and never fire (ADR-0002, ADR-0003).
-public class ServerGameClientsEngineFeatureTests
+[Collection(nameof(EngineFeaturesApiTests))]
+public class ServerGameClientsEngineFeatureTests : IDisposable
 {
+    public void Dispose() => EngineFeatures.Reset();
+
     private const string BuildId = "1.42.0.1/2000950";
 
     private sealed class CapturingLogger : ILogger
@@ -33,8 +37,12 @@ public class ServerGameClientsEngineFeatureTests
         ]),
         new(EngineFeatureNames.PlayerClientCommands, [BindingDeclaration.Any("IServerGameClients::ClientCommand")]),
         new(EngineFeatureNames.PlayerVoiceEvents, [BindingDeclaration.Any("IServerGameClients::ClientVoice")]),
-        new(EngineFeatureNames.UiCustomHudLayout, [BindingDeclaration.Any("IServerGameClients::ClientSvcUserMessage")]),
-        // Command listeners also see console-issued commands through the ICvar dispatch hook (ticket 08).
+        new(EngineFeatureNames.UiCustomHudLayout,
+        [
+            BindingDeclaration.Any("IServerGameClients::ClientSvcUserMessage"),
+            BindingDeclaration.Any("HUDPanelDialogVariableString_t"),
+        ]),
+        // Command listeners also see console-issued commands through the ICvar dispatch hook.
         new(EngineFeatureNames.CommandsConsoleDispatch, [BindingDeclaration.Any("ICvar::DispatchConCommand")]),
     ];
 
@@ -148,5 +156,18 @@ public class ServerGameClientsEngineFeatureTests
         var message = Assert.Single(logger.Messages);
         Assert.Equal("Command listener on console-issued commands registered on cssharp.commands/console-dispatch disabled " +
                      "(ICvar::DispatchConCommand: fingerprint mismatch); it will never fire", message);
+    }
+
+    [Fact]
+    public void SettingADialogVariableWithoutTheGamesVtableThrowsTheTypedException()
+    {
+        EngineFeatures.Current = WithFailed("HUDPanelDialogVariableString_t");
+        var hud = new CCSCustomHudLayout(IntPtr.Zero);
+
+        var exception = Assert.Throws<EngineFeatureUnavailableException>(() => hud.SetDialogVariableString("panel", "variable", "x"));
+        Assert.Equal(EngineFeatureNames.UiCustomHudLayout, exception.EngineFeature);
+        Assert.Equal("HUDPanelDialogVariableString_t", exception.Binding);
+        Assert.Throws<EngineFeatureUnavailableException>(() =>
+            hud.SetDialogVariableStringForPlayer(new CCSPlayerController(IntPtr.Zero), "panel", "variable", "x"));
     }
 }
