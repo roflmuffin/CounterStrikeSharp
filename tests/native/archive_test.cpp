@@ -5,11 +5,13 @@
 //   CSSHARP_FINGERPRINT_ORACLE=<dir with index.json> ./native_tests -tc="archive: fingerprints*" -s
 #include <doctest.h>
 
+#include <algorithm>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "build_archive.h"
@@ -36,6 +38,49 @@ GamedataJson CommittedGamedata()
 std::string LibraryOf(const std::string& module) { return module == "engine2" ? "engine" : module; }
 
 constexpr const char* kGameFrame = "ISource2Server::GameFrame";
+
+// Every ISource2Server slot CounterStrikeSharp hooks or calls, at its index on the bootstrap build 1.41.9.7 (the repo's
+// pinned SDK headers). At 1.42.0.1 Valve inserted a virtual at 14, so each sits one slot later there.
+const std::vector<std::pair<std::string, std::size_t>> kISource2ServerSlots{
+    { "ISource2Server::PreWorldUpdate", 15 },          { "ISource2Server::GameFrame", 19 },
+    { "ISource2Server::ServerHibernationUpdate", 22 }, { "ISource2Server::IsPaused", 31 },
+    { "ISource2Server::GameServerSteamAPIActivated", 41 }, { "ISource2Server::GameServerSteamAPIDeactivated", 42 },
+    { "ISource2Server::OnHostNameChanged", 43 },       { "ISource2Server::PreFatalShutdown", 44 },
+    { "ISource2Server::UpdateWhenNotInGame", 45 },     { "ISource2Server::GetEconItemSystem", 46 },
+};
+
+bool IsISource2ServerSlot(const std::string& key)
+{
+    return std::any_of(kISource2ServerSlots.begin(), kISource2ServerSlots.end(), [&](const auto& slot) {
+        return slot.first == key;
+    });
+}
+
+std::vector<std::string> ISource2ServerKeys()
+{
+    std::vector<std::string> keys;
+    for (const auto& slot : kISource2ServerSlots)
+        keys.push_back(slot.first);
+    return keys;
+}
+
+GamedataJson BootstrappedOn14197(const LoadedModule& server)
+{
+    const auto fingerprints = server.Fingerprints("CSource2Server");
+    GamedataJson gamedata = GamedataJson::object();
+    for (const auto& [key, index] : kISource2ServerSlots)
+        gamedata[key] = BootstrapSlotBinding(fingerprints, { key, "CSource2Server", "server", index }).entry;
+    return gamedata;
+}
+
+bindings::ResolutionReport ResolveSlots(const LoadedModule& server, const GamedataJson& gamedataJson, const std::vector<std::string>& keys)
+{
+    const auto gamedata = bindings::ParseGamedata(nlohmann::json::parse(gamedataJson.dump()), "linux");
+    std::vector<bindings::BindingDeclaration> declarations;
+    for (const auto& key : keys)
+        declarations.push_back({ key, bindings::BindingKind::Slot });
+    return bindings::BuiltinResolver(bindings::Platform::Linux).Resolve("archive", gamedata, { { "server", server.Image() } }, declarations);
+}
 
 bindings::ResolutionReport ResolveGameFrame(const LoadedModule& server, const GamedataJson& gamedataJson)
 {
@@ -178,6 +223,47 @@ TEST_CASE("archive: GameFrame's Slot Binding from 1.41.9.7 heals at +1 on 1.42.0
     MESSAGE(heals[0]);
 }
 
+TEST_CASE("archive: all ISource2Server Slot Bindings bootstrapped on 1.41.9.7 heal at +1 on 1.42.0.1, none wrong (local)" *
+          doctest::skip(!Archived("1.41.9.7") || !Archived("1.42.0.1")))
+{
+    const auto old = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.41.9.7", "server");
+    const auto live = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "server");
+
+    const auto report = ResolveSlots(live, BootstrappedOn14197(old), ISource2ServerKeys());
+
+    // Truth: the committed 1.42.0.1 indices, from the SDK headers that build is known to match.
+    const auto committed = CommittedGamedata();
+    REQUIRE(report.Bindings().size() == kISource2ServerSlots.size());
+    for (const auto& binding : report.Bindings())
+    {
+        CAPTURE(binding.key);
+        CHECK(binding.status == bindings::BindingStatus::Healed);
+        REQUIRE(binding.slot);
+        CHECK(binding.offset == static_cast<std::int64_t>(binding.slot->statedIndex) + 1);
+        CHECK(binding.offset == committed.at(binding.key)["offsets"]["linux"].get<std::int64_t>());
+    }
+    CHECK(bindings::FormatHeals(report).size() == kISource2ServerSlots.size());
+    CHECK(bindings::FormatBindingSummary(report) == "Bindings for build archive: all 10 resolved, 10 healed");
+}
+
+TEST_CASE("archive: the committed ISource2Server Slot Bindings resolve on 1.42.0.1 by their windows, none healed (local)" *
+          doctest::skip(!Archived("1.42.0.1")))
+{
+    const auto server = LoadedModule::FromArchive(DefaultArchiveRoot(), "1.42.0.1", "server");
+
+    const auto report = ResolveSlots(server, CommittedGamedata(), ISource2ServerKeys());
+
+    REQUIRE(report.Bindings().size() == kISource2ServerSlots.size());
+    for (const auto& binding : report.Bindings())
+    {
+        CAPTURE(binding.key);
+        CHECK(binding.status == bindings::BindingStatus::Resolved);
+        REQUIRE(binding.slot);
+        CHECK(binding.slot->match == vtable::SlotMatch::Window);
+    }
+    CHECK(bindings::FormatVtableSizeWarnings(report).empty());
+}
+
 // --- Carry-forward replays ---
 
 namespace {
@@ -189,11 +275,14 @@ bool ArchivedPair(std::initializer_list<const char*> libraries)
     return true;
 }
 
-// The committed Gamedata with GameFrame bootstrapped on 1.41.9.7 at the pinned SDK's index 19 (the bootstrap build).
+// The committed Gamedata with every ISource2Server Slot Binding bootstrapped on 1.41.9.7 at the pinned SDK's index (the
+// bootstrap build).
 GamedataJson GamedataFor14197(const LoadedModule& server)
 {
     auto gamedata = CommittedGamedata();
-    gamedata[kGameFrame] = BootstrapSlotBinding(server.Fingerprints("CSource2Server"), { kGameFrame, "CSource2Server", "server", 19 }, gamedata[kGameFrame]).entry;
+    const auto fingerprints = server.Fingerprints("CSource2Server");
+    for (const auto& [key, index] : kISource2ServerSlots)
+        gamedata[key] = BootstrapSlotBinding(fingerprints, { key, "CSource2Server", "server", index }, gamedata[key]).entry;
     return gamedata;
 }
 
@@ -211,8 +300,8 @@ GamedataJson EverySlot(ArchivedBuild& build, const std::string& library, const s
 }
 } // namespace
 
-TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves GameFrame 19 -> 20 and reproduces the committed 1.42.0.1 "
-          "Gamedata (local)" *
+TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves every ISource2Server Slot Binding one slot up and "
+          "reproduces the committed 1.42.0.1 Gamedata (local)" *
           doctest::skip(!ArchivedPair({ "server" })))
 {
     ArchivedBuild previous(DefaultArchiveRoot(), "1.41.9.7");
@@ -224,10 +313,15 @@ TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves GameFrame 19 ->
 
     CHECK(result.held.empty());
     CHECK(result.warnings.empty());
-    REQUIRE(result.carried.size() == 1);
-    CHECK(result.carried[0].key == kGameFrame);
-    CHECK(result.carried[0].from == 19);
-    CHECK(result.carried[0].to == 20);
+    std::size_t moved = 0;
+    for (const auto& carried : result.carried)
+    {
+        CAPTURE(carried.key);
+        // Only CSource2Server gained a virtual; Slot Bindings of other classes stay where they are.
+        CHECK(carried.to == (IsISource2ServerSlot(carried.key) ? carried.from + 1 : carried.from));
+        if (carried.to != carried.from) ++moved;
+    }
+    CHECK(moved == kISource2ServerSlots.size());
     CHECK(result.gamedata == CommittedGamedata());
 }
 
@@ -247,22 +341,10 @@ TEST_CASE("archive: the ISource2Server slots CounterStrikeSharp uses all carry f
           doctest::skip(!ArchivedPair({ "server" })))
 {
     // SDK header indices: pinned SDK (1.41.9.7-correct) -> the e2e SDK (1.42.0.1-correct).
-    const std::vector<std::pair<const char*, std::size_t>> methods{
-        { "PreWorldUpdate", 15 },          { "GameFrame", 19 },
-        { "ServerHibernationUpdate", 22 }, { "IsPaused", 31 },
-        { "GameServerSteamAPIActivated", 41 }, { "GameServerSteamAPIDeactivated", 42 },
-        { "OnHostNameChanged", 43 },       { "PreFatalShutdown", 44 },
-        { "UpdateWhenNotInGame", 45 },     { "GetEconItemSystem", 46 },
-    };
+    const auto& methods = kISource2ServerSlots;
     ArchivedBuild previous(DefaultArchiveRoot(), "1.41.9.7");
     ArchivedBuild next(DefaultArchiveRoot(), "1.42.0.1");
-    const auto fingerprints = previous.Vtables()("server", "CSource2Server");
-    GamedataJson gamedata = GamedataJson::object();
-    for (const auto& [method, index] : methods)
-    {
-        const auto key = std::string("ISource2Server::") + method;
-        gamedata[key] = BootstrapSlotBinding(fingerprints, { key, "CSource2Server", "server", index }).entry;
-    }
+    const auto gamedata = BootstrappedOn14197(previous.Module("server"));
 
     const auto result = CarryForward(gamedata, previous.Vtables(), next.Vtables());
 
