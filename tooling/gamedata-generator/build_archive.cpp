@@ -61,6 +61,31 @@ LoadedModule LoadedModule::FromArchive(const std::filesystem::path& root, std::s
     return Load(*file);
 }
 
+ArchivedBuild::ArchivedBuild(std::filesystem::path root, std::string build) : m_root(std::move(root)), m_build(std::move(build))
+{
+    if (!std::filesystem::is_directory(m_root / m_build)) throw std::runtime_error("build " + m_build + " is not in the build archive " + m_root.string());
+}
+
+void ArchivedBuild::Require(std::span<const std::string> libraries)
+{
+    for (const auto& library : libraries)
+        (void)Module(library);
+}
+
+const LoadedModule& ArchivedBuild::Module(const std::string& library)
+{
+    auto it = m_modules.find(library);
+    if (it == m_modules.end()) it = m_modules.emplace(library, LoadedModule::FromArchive(m_root, m_build, library)).first;
+    return it->second;
+}
+
+std::function<std::vector<vtable::Fingerprint>(std::string_view, std::string_view)> ArchivedBuild::Vtables()
+{
+    return [this](std::string_view library, std::string_view className) {
+        return Module(std::string(library)).Fingerprints(className);
+    };
+}
+
 LoadedModule LoadedModule::Load(const std::filesystem::path& file)
 {
     const auto bytes = ReadFile(file);

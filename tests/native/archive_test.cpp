@@ -149,3 +149,139 @@ TEST_CASE("archive: GameFrame on 1.41.9.7 sits one slot earlier with the same fi
     CHECK(gameFrame.slot->vtableSize == 104);
     CHECK(gameFrame.slot->SizeChanged());
 }
+
+// --- Carry-forward replays ---
+
+namespace {
+bool ArchivedPair(std::initializer_list<const char*> libraries)
+{
+    for (const char* build : { "1.41.9.7", "1.42.0.1" })
+        for (const char* library : libraries)
+            if (!FindArchivedModule(DefaultArchiveRoot(), build, library)) return false;
+    return true;
+}
+
+// The committed Gamedata with GameFrame bootstrapped on 1.41.9.7 at the pinned SDK's index 19 (the bootstrap build).
+GamedataJson GamedataFor14197(const LoadedModule& server)
+{
+    auto gamedata = CommittedGamedata();
+    gamedata[kGameFrame] = BootstrapSlotBinding(server.Fingerprints("CSource2Server"), { kGameFrame, "CSource2Server", "server", 19 }, gamedata[kGameFrame]).entry;
+    return gamedata;
+}
+
+// Gamedata with one Slot Binding per slot of a class's vtable on a build, keyed "<Class>::<index>".
+GamedataJson EverySlot(ArchivedBuild& build, const std::string& library, const std::string& className)
+{
+    const auto fingerprints = build.Vtables()(library, className);
+    GamedataJson gamedata = GamedataJson::object();
+    for (std::size_t index = 0; index < fingerprints.size(); ++index)
+    {
+        const auto key = className + "::" + std::to_string(index);
+        gamedata[key] = BootstrapSlotBinding(fingerprints, { key, className, library, index }).entry;
+    }
+    return gamedata;
+}
+} // namespace
+
+TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves GameFrame 19 -> 20 and reproduces the committed 1.42.0.1 "
+          "Gamedata (local)" *
+          doctest::skip(!ArchivedPair({ "server" })))
+{
+    ArchivedBuild previous(DefaultArchiveRoot(), "1.41.9.7");
+    ArchivedBuild next(DefaultArchiveRoot(), "1.42.0.1");
+    const auto gamedata = GamedataFor14197(previous.Module("server"));
+    REQUIRE(gamedata != CommittedGamedata());
+
+    const auto result = CarryForward(gamedata, previous.Vtables(), next.Vtables());
+
+    CHECK(result.held.empty());
+    CHECK(result.warnings.empty());
+    REQUIRE(result.carried.size() == 1);
+    CHECK(result.carried[0].key == kGameFrame);
+    CHECK(result.carried[0].from == 19);
+    CHECK(result.carried[0].to == 20);
+    CHECK(result.gamedata == CommittedGamedata());
+}
+
+TEST_CASE("archive: carrying the committed Gamedata onto the same build changes nothing (local)" * doctest::skip(!Archived("1.42.0.1")))
+{
+    ArchivedBuild build(DefaultArchiveRoot(), "1.42.0.1");
+
+    const auto result = CarryForward(CommittedGamedata(), build.Vtables(), build.Vtables());
+
+    CHECK(result.held.empty());
+    for (const auto& carried : result.carried)
+        CHECK(carried.from == carried.to);
+    CHECK(result.gamedata == CommittedGamedata());
+}
+
+TEST_CASE("archive: the ISource2Server slots CounterStrikeSharp uses all carry forward one slot up at 1.42.0.1 (local)" *
+          doctest::skip(!ArchivedPair({ "server" })))
+{
+    // SDK header indices: pinned SDK (1.41.9.7-correct) -> the e2e SDK (1.42.0.1-correct).
+    const std::vector<std::pair<const char*, std::size_t>> methods{
+        { "PreWorldUpdate", 15 },          { "GameFrame", 19 },
+        { "ServerHibernationUpdate", 22 }, { "IsPaused", 31 },
+        { "GameServerSteamAPIActivated", 41 }, { "GameServerSteamAPIDeactivated", 42 },
+        { "OnHostNameChanged", 43 },       { "PreFatalShutdown", 44 },
+        { "UpdateWhenNotInGame", 45 },     { "GetEconItemSystem", 46 },
+    };
+    ArchivedBuild previous(DefaultArchiveRoot(), "1.41.9.7");
+    ArchivedBuild next(DefaultArchiveRoot(), "1.42.0.1");
+    const auto fingerprints = previous.Vtables()("server", "CSource2Server");
+    GamedataJson gamedata = GamedataJson::object();
+    for (const auto& [method, index] : methods)
+    {
+        const auto key = std::string("ISource2Server::") + method;
+        gamedata[key] = BootstrapSlotBinding(fingerprints, { key, "CSource2Server", "server", index }).entry;
+    }
+
+    const auto result = CarryForward(gamedata, previous.Vtables(), next.Vtables());
+
+    CHECK(result.held.empty());
+    REQUIRE(result.carried.size() == methods.size());
+    for (std::size_t i = 0; i < methods.size(); ++i)
+    {
+        CAPTURE(result.carried[i].key);
+        CHECK(result.carried[i].to == methods[i].second + 1);
+    }
+}
+
+TEST_CASE("archive: no slot of a 1.41.9.7 vtable is carried anywhere but where it went at 1.42.0.1 (local)" *
+          doctest::skip(!ArchivedPair({ "server", "engine", "tier0" })))
+{
+    // The one change between these builds in these classes: CSource2Server gained a virtual at index 14. Every other
+    // class kept its layout. A slot is either carried to exactly that index or held; never moved anywhere else.
+    struct ClassCase
+    {
+        const char* library;
+        const char* className;
+        std::size_t insertedAt;
+    };
+    constexpr std::size_t kNone = ~std::size_t{ 0 };
+    const std::vector<ClassCase> classes{
+        { "server", "CSource2Server", 14 },     { "server", "CSource2GameClients", kNone }, { "server", "CSource2GameEntities", kNone },
+        { "server", "CGameEventManager", kNone }, { "engine", "CEngineServer", kNone },      { "engine", "CGameEventSystem", kNone },
+        { "tier0", "CCvar", kNone },
+    };
+    ArchivedBuild previous(DefaultArchiveRoot(), "1.41.9.7");
+    ArchivedBuild next(DefaultArchiveRoot(), "1.42.0.1");
+
+    for (const auto& [library, className, insertedAt] : classes)
+    {
+        CAPTURE(className);
+        const auto gamedata = EverySlot(previous, library, className);
+
+        const auto result = CarryForward(gamedata, previous.Vtables(), next.Vtables());
+
+        CHECK(result.carried.size() + result.held.size() == gamedata.size());
+        for (const auto& carried : result.carried)
+        {
+            CAPTURE(carried.key);
+            CHECK(carried.to == (carried.from >= insertedAt ? carried.from + 1 : carried.from));
+        }
+        std::cout << className << ": " << result.carried.size() << " of " << gamedata.size() << " slots carried, " << result.held.size() << " held\n";
+        for (const auto& held : result.held)
+            std::cout << "  held " << held.key << ": " << held.reason << "\n";
+    }
+}
