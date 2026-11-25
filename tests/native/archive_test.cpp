@@ -224,10 +224,21 @@ TEST_CASE("archive: carrying the 1.41.9.7 Gamedata forward moves GameFrame 19 ->
 
     CHECK(result.held.empty());
     CHECK(result.warnings.empty());
-    REQUIRE(result.carried.size() == 1);
-    CHECK(result.carried[0].key == kGameFrame);
-    CHECK(result.carried[0].from == 19);
-    CHECK(result.carried[0].to == 20);
+    // GameFrame moves; every other committed Slot Binding is the same on both builds and stays.
+    std::size_t gameFrames = 0;
+    for (const auto& carried : result.carried)
+    {
+        CAPTURE(carried.key);
+        if (carried.key == kGameFrame)
+        {
+            ++gameFrames;
+            CHECK(carried.from == 19);
+            CHECK(carried.to == 20);
+        }
+        else
+            CHECK(carried.from == carried.to);
+    }
+    CHECK(gameFrames == 1);
     CHECK(result.gamedata == CommittedGamedata());
 }
 

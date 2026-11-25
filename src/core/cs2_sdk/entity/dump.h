@@ -188,8 +188,9 @@ class CBaseEntity : public CEntityInstance
   public:
     bool IsPawn()
     {
-        // False while the Binding is unresolved: never calls through an unresolved vtable index.
-        static const auto offset = counterstrikesharp::bindings::GetBindingOffset("CBaseEntity_IsPlayerPawn");
+        // The verified (or healed) slot index from the Resolution Report. False while the Slot Binding failed: never
+        // calls through an index that does not hold IsPlayerPawn.
+        static const auto offset = counterstrikesharp::bindings::GetBindingSlot("CBaseEntity_IsPlayerPawn");
         if (!offset) return false;
         return CALL_VIRTUAL(bool, static_cast<int>(*offset), this);
     }

@@ -24,12 +24,38 @@
     "offsets": {
       "windows": 105,
       "linux": 104
+    },
+    "vtable": {
+      "class": "CCSPlayerController",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "c8284f13ab615a48",
+          "9702f2031eeb67dc"
+        ],
+        "uniqueNearby": true,
+        "size": 279
+      }
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
       "windows": 274,
       "linux": 276
+    },
+    "vtable": {
+      "class": "CCSPlayerController",
+      "library": "server",
+      "linux": {
+        "window": [
+          "75304de80162c6aa",
+          "d4497dcc886c3f8f",
+          "5c7389eb26b829e5"
+        ],
+        "uniqueNearby": true,
+        "size": 279
+      }
     }
   },
   "CBasePlayerController_SetPawn": {
@@ -99,24 +125,76 @@
     "offsets": {
       "windows": 23,
       "linux": 24
+    },
+    "vtable": {
+      "class": "CCSPlayer_ItemServices",
+      "library": "server",
+      "linux": {
+        "window": [
+          "cf542668f1e41480",
+          "9693b8238eb2ffdd",
+          "b831949b3c79073a"
+        ],
+        "uniqueNearby": false,
+        "size": 29
+      }
     }
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
     "offsets": {
       "windows": 26,
       "linux": 27
+    },
+    "vtable": {
+      "class": "CCSPlayer_ItemServices",
+      "library": "server",
+      "linux": {
+        "window": [
+          "9693b8238eb2ffdd",
+          "bfd1b33c47ec7fc3",
+          "6deff071c505d03c"
+        ],
+        "uniqueNearby": true,
+        "size": 29
+      }
     }
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
     "offsets": {
       "windows": 27,
       "linux": 28
+    },
+    "vtable": {
+      "class": "CCSPlayer_ItemServices",
+      "library": "server",
+      "linux": {
+        "window": [
+          "bfd1b33c47ec7fc3",
+          "6deff071c505d03c",
+          null
+        ],
+        "uniqueNearby": true,
+        "size": 29
+      }
     }
   },
   "CGameSceneNode_GetSkeletonInstance": {
     "offsets": {
       "windows": 12,
       "linux": 13
+    },
+    "vtable": {
+      "class": "CGameSceneNode",
+      "library": "server",
+      "linux": {
+        "window": [
+          "4ae19ca9be0cead6",
+          "dc3e8eb9a1a8f4c4",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": false,
+        "size": 32
+      }
     }
   },
   "CCSGameRules_TerminateRound": {
@@ -130,6 +208,19 @@
     "offsets": {
       "windows": 25,
       "linux": 26
+    },
+    "vtable": {
+      "class": "CCSGameRules",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "d2379802d83542b2",
+          "ab817d4b9111e8f9"
+        ],
+        "uniqueNearby": true,
+        "size": 131
+      }
     }
   },
   "CTakeDamageInfo_HitGroup": {
@@ -170,6 +261,19 @@
     "offsets": {
       "windows": 171,
       "linux": 170
+    },
+    "vtable": {
+      "class": "CCSPlayerPawn",
+      "library": "server",
+      "linux": {
+        "window": [
+          "e60b0927a1d9a827",
+          "8c8ea0db4cba3598",
+          "dc3e8eb9a1a8f4c4"
+        ],
+        "uniqueNearby": false,
+        "size": 416
+      }
     }
   },
   "CEntitySystem_AddEntityIOEvent": {
@@ -190,6 +294,19 @@
     "offsets": {
       "windows": 387,
       "linux": 387
+    },
+    "vtable": {
+      "class": "CBasePlayerPawn",
+      "library": "server",
+      "linux": {
+        "window": [
+          "94fb8c66f9cd9341",
+          "db8bada8adf78b97",
+          "96b8b13a907b19f6"
+        ],
+        "uniqueNearby": true,
+        "size": 401
+      }
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
@@ -203,6 +320,19 @@
     "offsets": {
       "windows": 165,
       "linux": 164
+    },
+    "vtable": {
+      "class": "CBaseEntity",
+      "library": "server",
+      "linux": {
+        "window": [
+          "082fe507b4e9d81d",
+          "266cb1e2baaff18b",
+          "32559f3a773744cf"
+        ],
+        "uniqueNearby": true,
+        "size": 239
+      }
     }
   },
   "CBaseEntity_TakeDamageOld": {
@@ -281,6 +411,19 @@
     "offsets": {
       "windows": 12,
       "linux": 13
+    },
+    "vtable": {
+      "class": "CSource2GameEntities",
+      "library": "server",
+      "linux": {
+        "window": [
+          "00a9c3604d98e96e",
+          "0cb024786d7cb86a",
+          "51e357d4ba08b56d"
+        ],
+        "uniqueNearby": true,
+        "size": 21
+      }
     }
   },
   "Host_Say": {

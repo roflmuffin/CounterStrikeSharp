@@ -53,7 +53,7 @@ void EntityManager::OnAllInitialized()
     {
         m_hooks.AddGlobalIndex<ISource2GameEntities, void, CCheckTransmitInfoHack**, uint32_t, CBitVec<16384>&, CBitVec<16384>&,
                                const Entity2Networkable_t**, const uint16*, uint32_t>(
-            static_cast<int>(*bindings::GetBindingOffset("ISource2GameEntities::CheckTransmit")), *(void***)globals::gameEntities, this,
+            *bindings::GetBindingSlot("ISource2GameEntities::CheckTransmit"), *(void***)globals::gameEntities, this,
             nullptr, &EntityManager::CheckTransmit);
     }
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
