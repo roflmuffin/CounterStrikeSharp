@@ -18,35 +18,20 @@
 #include "core/log.h"
 #include "core/managers/server_manager.h"
 #include "scripting/autonative.h"
+#include "scripting/engine_feature_natives.h"
 
 namespace counterstrikesharp {
 
-// Each direct call on ISource2Server is its own Engine Feature: disabled, the native throws instead of calling. The
-// Resolution Report is immutable after boot, so availability is read once.
-static void ThrowUnavailable(ScriptContext& scriptContext, std::string_view feature)
-{
-    scriptContext.ThrowNativeError("%s", bindings::DescribeUnavailable(feature).c_str());
-}
-
+// Each direct call on ISource2Server is its own Engine Feature: disabled, the native throws instead of calling.
 static void* GetEconItemSystem(ScriptContext& scriptContext)
 {
-    static const bool available = bindings::IsEngineFeatureAvailable(bindings::features::EconItemSystem);
-    if (!available)
-    {
-        ThrowUnavailable(scriptContext, bindings::features::EconItemSystem);
-        return nullptr;
-    }
+    if (!RequireEngineFeature(scriptContext, bindings::features::EconItemSystem)) return nullptr;
     return globals::serverManager.GetEconItemSystem();
 }
 
 static bool IsServerPaused(ScriptContext& scriptContext)
 {
-    static const bool available = bindings::IsEngineFeatureAvailable(bindings::features::IsPaused);
-    if (!available)
-    {
-        ThrowUnavailable(scriptContext, bindings::features::IsPaused);
-        return false;
-    }
+    if (!RequireEngineFeature(scriptContext, bindings::features::IsPaused)) return false;
     return globals::serverManager.IsPaused();
 }
 
