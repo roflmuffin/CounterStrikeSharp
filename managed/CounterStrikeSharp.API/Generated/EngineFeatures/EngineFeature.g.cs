@@ -102,8 +102,14 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/change-team</c></summary>
     PlayerChangeTeam = -655364455,
 
+    /// <summary><c>cssharp.player/client-commands</c></summary>
+    PlayerClientCommands = -2126044321,
+
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     PlayerCommitSuicide = -525076719,
+
+    /// <summary><c>cssharp.player/connection-events</c></summary>
+    PlayerConnectionEvents = 2139873301,
 
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     PlayerPostThinkHooks = 1406403779,
@@ -117,11 +123,17 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/switch-team</c></summary>
     PlayerSwitchTeam = -936310331,
 
+    /// <summary><c>cssharp.player/voice-events</c></summary>
+    PlayerVoiceEvents = -674643371,
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     ServerGameFrame = 62045269,
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
+
+    /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
+    UiCustomHudLayout = 518878300,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -217,8 +229,14 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/change-team</c></summary>
     public const string PlayerChangeTeam = "cssharp.player/change-team";
 
+    /// <summary><c>cssharp.player/client-commands</c></summary>
+    public const string PlayerClientCommands = "cssharp.player/client-commands";
+
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     public const string PlayerCommitSuicide = "cssharp.player/commit-suicide";
+
+    /// <summary><c>cssharp.player/connection-events</c></summary>
+    public const string PlayerConnectionEvents = "cssharp.player/connection-events";
 
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     public const string PlayerPostThinkHooks = "cssharp.player/post-think-hooks";
@@ -232,11 +250,17 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/switch-team</c></summary>
     public const string PlayerSwitchTeam = "cssharp.player/switch-team";
 
+    /// <summary><c>cssharp.player/voice-events</c></summary>
+    public const string PlayerVoiceEvents = "cssharp.player/voice-events";
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     public const string ServerGameFrame = "cssharp.server/game-frame";
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
+
+    /// <summary><c>cssharp.ui/custom-hud-layout</c></summary>
+    public const string UiCustomHudLayout = "cssharp.ui/custom-hud-layout";
 
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
@@ -271,13 +295,17 @@ public static class EngineFeatureNames
         EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
         EngineFeature.NetworkStateChanged => NetworkStateChanged,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
+        EngineFeature.PlayerClientCommands => PlayerClientCommands,
         EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
+        EngineFeature.PlayerConnectionEvents => PlayerConnectionEvents,
         EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,
         EngineFeature.PlayerRespawn => PlayerRespawn,
         EngineFeature.PlayerSetPawn => PlayerSetPawn,
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
+        EngineFeature.PlayerVoiceEvents => PlayerVoiceEvents,
         EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
+        EngineFeature.UiCustomHudLayout => UiCustomHudLayout,
         _ => null,
     };
 }
