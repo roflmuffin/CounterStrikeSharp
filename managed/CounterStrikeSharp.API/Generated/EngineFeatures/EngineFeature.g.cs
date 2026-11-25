@@ -99,17 +99,38 @@ public enum EngineFeature
     /// <summary><c>cssharp.network/state-changed</c></summary>
     NetworkStateChanged = -1875359226,
 
+    /// <summary><c>cssharp.player/authorization</c></summary>
+    PlayerAuthorization = 1965307022,
+
     /// <summary><c>cssharp.player/change-team</c></summary>
     PlayerChangeTeam = -655364455,
 
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     PlayerCommitSuicide = -525076719,
 
+    /// <summary><c>cssharp.player/disconnect</c></summary>
+    PlayerDisconnect = 107220795,
+
+    /// <summary><c>cssharp.player/execute-client-command</c></summary>
+    PlayerExecuteClientCommand = -1133793676,
+
+    /// <summary><c>cssharp.player/get-convar-value</c></summary>
+    PlayerGetConvarValue = -650377593,
+
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     PlayerPostThinkHooks = 1406403779,
 
+    /// <summary><c>cssharp.player/print-to-console</c></summary>
+    PlayerPrintToConsole = -225566614,
+
     /// <summary><c>cssharp.player/respawn</c></summary>
     PlayerRespawn = -210670737,
+
+    /// <summary><c>cssharp.player/set-fake-client-convar</c></summary>
+    PlayerSetFakeClientConvar = 1796428001,
+
+    /// <summary><c>cssharp.player/set-listening</c></summary>
+    PlayerSetListening = 1645425979,
 
     /// <summary><c>cssharp.player/set-pawn</c></summary>
     PlayerSetPawn = -628476704,
@@ -117,11 +138,23 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/switch-team</c></summary>
     PlayerSwitchTeam = -936310331,
 
+    /// <summary><c>cssharp.player/user-id</c></summary>
+    PlayerUserId = 2053091048,
+
+    /// <summary><c>cssharp.server/execute-command</c></summary>
+    ServerExecuteCommand = -651637590,
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     ServerGameFrame = 62045269,
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
+
+    /// <summary><c>cssharp.server/is-map-valid</c></summary>
+    ServerIsMapValid = 1615776103,
+
+    /// <summary><c>cssharp.server/precache-model</c></summary>
+    ServerPrecacheModel = -1957277102,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -214,17 +247,38 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.network/state-changed</c></summary>
     public const string NetworkStateChanged = "cssharp.network/state-changed";
 
+    /// <summary><c>cssharp.player/authorization</c></summary>
+    public const string PlayerAuthorization = "cssharp.player/authorization";
+
     /// <summary><c>cssharp.player/change-team</c></summary>
     public const string PlayerChangeTeam = "cssharp.player/change-team";
 
     /// <summary><c>cssharp.player/commit-suicide</c></summary>
     public const string PlayerCommitSuicide = "cssharp.player/commit-suicide";
 
+    /// <summary><c>cssharp.player/disconnect</c></summary>
+    public const string PlayerDisconnect = "cssharp.player/disconnect";
+
+    /// <summary><c>cssharp.player/execute-client-command</c></summary>
+    public const string PlayerExecuteClientCommand = "cssharp.player/execute-client-command";
+
+    /// <summary><c>cssharp.player/get-convar-value</c></summary>
+    public const string PlayerGetConvarValue = "cssharp.player/get-convar-value";
+
     /// <summary><c>cssharp.player/post-think-hooks</c></summary>
     public const string PlayerPostThinkHooks = "cssharp.player/post-think-hooks";
 
+    /// <summary><c>cssharp.player/print-to-console</c></summary>
+    public const string PlayerPrintToConsole = "cssharp.player/print-to-console";
+
     /// <summary><c>cssharp.player/respawn</c></summary>
     public const string PlayerRespawn = "cssharp.player/respawn";
+
+    /// <summary><c>cssharp.player/set-fake-client-convar</c></summary>
+    public const string PlayerSetFakeClientConvar = "cssharp.player/set-fake-client-convar";
+
+    /// <summary><c>cssharp.player/set-listening</c></summary>
+    public const string PlayerSetListening = "cssharp.player/set-listening";
 
     /// <summary><c>cssharp.player/set-pawn</c></summary>
     public const string PlayerSetPawn = "cssharp.player/set-pawn";
@@ -232,11 +286,23 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/switch-team</c></summary>
     public const string PlayerSwitchTeam = "cssharp.player/switch-team";
 
+    /// <summary><c>cssharp.player/user-id</c></summary>
+    public const string PlayerUserId = "cssharp.player/user-id";
+
+    /// <summary><c>cssharp.server/execute-command</c></summary>
+    public const string ServerExecuteCommand = "cssharp.server/execute-command";
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     public const string ServerGameFrame = "cssharp.server/game-frame";
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
+
+    /// <summary><c>cssharp.server/is-map-valid</c></summary>
+    public const string ServerIsMapValid = "cssharp.server/is-map-valid";
+
+    /// <summary><c>cssharp.server/precache-model</c></summary>
+    public const string ServerPrecacheModel = "cssharp.server/precache-model";
 
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
@@ -270,14 +336,25 @@ public static class EngineFeatureNames
         EngineFeature.NavNavMesh => NavNavMesh,
         EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
         EngineFeature.NetworkStateChanged => NetworkStateChanged,
+        EngineFeature.PlayerAuthorization => PlayerAuthorization,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
         EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
+        EngineFeature.PlayerDisconnect => PlayerDisconnect,
+        EngineFeature.PlayerExecuteClientCommand => PlayerExecuteClientCommand,
+        EngineFeature.PlayerGetConvarValue => PlayerGetConvarValue,
         EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,
+        EngineFeature.PlayerPrintToConsole => PlayerPrintToConsole,
         EngineFeature.PlayerRespawn => PlayerRespawn,
+        EngineFeature.PlayerSetFakeClientConvar => PlayerSetFakeClientConvar,
+        EngineFeature.PlayerSetListening => PlayerSetListening,
         EngineFeature.PlayerSetPawn => PlayerSetPawn,
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
+        EngineFeature.PlayerUserId => PlayerUserId,
+        EngineFeature.ServerExecuteCommand => ServerExecuteCommand,
         EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
+        EngineFeature.ServerIsMapValid => ServerIsMapValid,
+        EngineFeature.ServerPrecacheModel => ServerPrecacheModel,
         _ => null,
     };
 }

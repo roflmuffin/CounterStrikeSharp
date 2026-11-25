@@ -15,6 +15,8 @@ internal static class ListenerEngineFeatures
         ["OnPlayerChat"] = EngineFeatureNames.ChatSayHooks,
         // Server lifecycle (GameFrame)
         ["OnTick"] = EngineFeatureNames.ServerGameFrame,
+        // Player authorization (IVEngineServer2 auth checks on every frame)
+        ["OnClientAuthorized"] = EngineFeatureNames.PlayerAuthorization,
         // Networking
         ["CheckTransmit"] = EngineFeatureNames.NetworkCheckTransmit,
         // Fired from our game system (precache, entity think) and player think (button changes)

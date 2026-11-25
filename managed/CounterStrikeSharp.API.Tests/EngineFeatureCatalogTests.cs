@@ -49,6 +49,18 @@ public class EngineFeatureCatalogTests : IDisposable
         ["cssharp.items/remove-weapons"] = ["CCSPlayer_ItemServices_RemoveWeapons"],
         ["cssharp.items/weapon-data"] = ["GetCSWeaponDataFromKey"],
         ["cssharp.nav/nav-mesh"] = ["CCSNavArea_IsValidNavMesh"],
+        // IVEngineServer2 (engine2's CEngineServer): its hook and direct calls, one Engine Feature per API
+        ["cssharp.player/set-listening"] = ["IVEngineServer2::SetClientListening"],
+        ["cssharp.server/execute-command"] = ["IVEngineServer2::ServerCommand"],
+        ["cssharp.server/is-map-valid"] = ["IVEngineServer2::IsMapValid"],
+        ["cssharp.server/precache-model"] = ["IVEngineServer2::PrecacheGeneric"],
+        ["cssharp.player/user-id"] = ["IVEngineServer2::GetPlayerUserId"],
+        ["cssharp.player/print-to-console"] = ["IVEngineServer2::ClientPrintf"],
+        ["cssharp.player/get-convar-value"] = ["IVEngineServer2::GetClientConVarValue"],
+        ["cssharp.player/set-fake-client-convar"] = ["IVEngineServer2::SetFakeClientConVarValue"],
+        ["cssharp.player/execute-client-command"] = ["IVEngineServer2::ClientCommand"],
+        ["cssharp.player/disconnect"] = ["IVEngineServer2::DisconnectClient"],
+        ["cssharp.player/authorization"] = ["IVEngineServer2::IsClientFullyAuthenticated", "IVEngineServer2::GetClientSteamID"],
     };
 
     public void Dispose() => EngineFeatures.Reset();
