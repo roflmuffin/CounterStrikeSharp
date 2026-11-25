@@ -71,6 +71,8 @@ set(SOURCE_FILES
     src/core/memory_module.cpp
     src/core/signature.h
     src/core/signature.cpp
+    src/core/rtti_vtable.h
+    src/core/rtti_vtable.cpp
     src/core/binding_resolver.h
     src/core/binding_resolver.cpp
     src/core/engine_features.h

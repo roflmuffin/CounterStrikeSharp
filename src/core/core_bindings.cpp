@@ -29,7 +29,7 @@ ModuleImage ImageOf(modules::CModule* module)
         return reinterpret_cast<std::uintptr_t>(module->FindSymbol(std::string(name)));
     };
     image.findVirtualTable = [module](std::string_view name) {
-        return reinterpret_cast<std::uintptr_t>(module->FindVirtualTable(std::string(name)));
+        return module->LookupVirtualTable(std::string(name));
     };
     return image;
 }

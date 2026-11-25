@@ -201,17 +201,26 @@ TEST_CASE("A symbol signature resolves through the module's symbol lookup")
 TEST_CASE("An RTTI vtable Binding resolves through the declared library's vtable lookup")
 {
     ModuleImage server;
-    server.findVirtualTable = [](std::string_view name) -> std::uintptr_t {
-        return name == "CGameEventManager" ? 0x5000 : 0;
+    server.findVirtualTable = [](std::string_view name) -> counterstrikesharp::rtti::VtableLookup {
+        if (name == "CGameEventManager") return { 0x5000, 1 };
+        if (name == "CTwice") return { 0, 2 };
+        return {};
     };
     const ModuleImages modules{ { "server", server } };
 
     auto found = ResolveOne({}, modules, { "CGameEventManager", BindingKind::RttiVtable, "server" });
     CHECK(found.Resolved());
     CHECK(found.address == 0x5000);
+    CHECK(found.matchCount == 1);
 
     CHECK(ResolveOne({}, modules, { "CNope", BindingKind::RttiVtable, "server" }).reason == FailureReason::RttiVtableNotFound);
     CHECK(ResolveOne({}, {}, { "CGameEventManager", BindingKind::RttiVtable, "server" }).reason == FailureReason::RttiVtableNotFound);
+
+    auto twice = ResolveOne({}, modules, { "CTwice", BindingKind::RttiVtable, "server" });
+    CHECK_FALSE(twice.Resolved());
+    CHECK(twice.reason == FailureReason::Ambiguous);
+    CHECK(twice.matchCount == 2);
+    CHECK(twice.address == 0);
 }
 
 TEST_CASE("A schema field Binding resolves to the field offset through the declared library's schema lookup")

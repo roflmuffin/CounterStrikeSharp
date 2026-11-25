@@ -97,10 +97,12 @@ BindingResult ResolveOffset(BindingResult result, const Gamedata& gamedata)
 BindingResult ResolveRttiVtable(BindingResult result, const ModuleImages& modules)
 {
     const auto module = modules.find(result.library);
-    const std::uintptr_t address =
-        module != modules.end() && module->second.findVirtualTable ? module->second.findVirtualTable(result.key) : 0;
-    if (address == 0) return Failed(std::move(result), FailureReason::RttiVtableNotFound);
-    return ResolvedAt(std::move(result), address);
+    const auto lookup = module != modules.end() && module->second.findVirtualTable ? module->second.findVirtualTable(result.key)
+                                                                                   : rtti::VtableLookup{};
+    result.matchCount = lookup.matchCount;
+    if (lookup.Ambiguous()) return Failed(std::move(result), FailureReason::Ambiguous);
+    if (!lookup.Found() || lookup.address == 0) return Failed(std::move(result), FailureReason::RttiVtableNotFound);
+    return ResolvedAt(std::move(result), lookup.address);
 }
 
 // Key is "Class::field"; a key without "::" names a class and no field.
