@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2014 Bas Timmer/NTAuthority et al.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -86,6 +86,8 @@ namespace CounterStrikeSharp.API.Core
 
         private readonly object ms_lock = new object();
 
+        private List<NativeObject>? ms_nativeOwners;
+
         internal object Lock => ms_lock;
 
         internal fxScriptContext m_extContext = new fxScriptContext();
@@ -103,6 +105,11 @@ namespace CounterStrikeSharp.API.Core
         [SecurityCritical]
         private void InternalReset()
         {
+            if (!isCleanupLocked)
+            {
+                ms_nativeOwners?.Clear();
+            }
+
             m_extContext.numArguments = 0;
             m_extContext.numResults = 0;
             m_extContext.hasError = 0;
@@ -115,9 +122,16 @@ namespace CounterStrikeSharp.API.Core
             if (!isCleanupLocked)
             {
                 isCleanupLocked = true;
-                InvokeNativeInternal();
-                GlobalCleanUp();
-                isCleanupLocked = false;
+                try
+                {
+                    InvokeNativeInternal();
+                }
+                finally
+                {
+                    ms_nativeOwners?.Clear();
+                    isCleanupLocked = false;
+                    GlobalCleanUp();
+                }
                 return;
             }
 
@@ -220,6 +234,11 @@ namespace CounterStrikeSharp.API.Core
             }
             else if (arg is InputArgument ia)
             {
+                if (ia.Owner is { } owner)
+                {
+                    (ms_nativeOwners ??= new()).Add(owner);
+                }
+
                 Push(context, ia.Value);
 
                 return;

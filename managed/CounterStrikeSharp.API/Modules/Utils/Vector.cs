@@ -15,8 +15,6 @@
  */
 
 using System.Numerics;
-using System.Threading;
-using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
 namespace CounterStrikeSharp.API.Modules.Utils
@@ -57,32 +55,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 return;
             }
 
-            if (_ownedHandle != IntPtr.Zero)
-            {
-                SetHandle(_ownedHandle);
-                return;
-            }
-
-            var allocated = Marshal.AllocHGlobal(sizeof(float) * 3);
-
-            unsafe
-            {
-                var buffer = (float*)allocated;
-                buffer[0] = _x;
-                buffer[1] = _y;
-                buffer[2] = _z;
-            }
-
-            var existing = Interlocked.CompareExchange(ref _ownedHandle, allocated, IntPtr.Zero);
-            if (existing != IntPtr.Zero)
-            {
-                Marshal.FreeHGlobal(allocated);
-                SetHandle(existing);
-                return;
-            }
-
-            NativeHandleTracker.Track(this, allocated);
-            SetHandle(allocated);
+            SetHandle(NativeHandleTracker.Allocate(this, ref _ownedHandle, [_x, _y, _z]));
         }
 
         public unsafe ref float X => ref GetElementRef(0);
@@ -161,6 +134,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 float* outAng = stackalloc float[3];
                 NativeAPI.VectorAngles(vecPtr, IntPtr.Zero, (IntPtr)outAng);
+                GC.KeepAlive(this);
 
                 angle.X = outAng[0];
                 angle.Y = outAng[1];
@@ -208,6 +182,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 float* outAng = stackalloc float[3];
                 NativeAPI.VectorAngles(vecPtr, upPtr, (IntPtr)outAng);
+                GC.KeepAlive(this);
+                GC.KeepAlive(up);
 
                 angle.X = outAng[0];
                 angle.Y = outAng[1];

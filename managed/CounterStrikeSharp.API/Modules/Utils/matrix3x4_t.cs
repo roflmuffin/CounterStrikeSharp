@@ -15,8 +15,6 @@
  */
 
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
 
@@ -132,41 +130,8 @@ public partial class matrix3x4_t : NativeObject
             return;
         }
 
-        if (_ownedHandle != IntPtr.Zero)
-        {
-            SetHandle(_ownedHandle);
-            return;
-        }
-
-        var allocated = Marshal.AllocHGlobal(sizeof(float) * 12);
-
-        unsafe
-        {
-            var buffer = (float*)allocated;
-            buffer[0] = _m00;
-            buffer[1] = _m01;
-            buffer[2] = _m02;
-            buffer[3] = _m03;
-            buffer[4] = _m10;
-            buffer[5] = _m11;
-            buffer[6] = _m12;
-            buffer[7] = _m13;
-            buffer[8] = _m20;
-            buffer[9] = _m21;
-            buffer[10] = _m22;
-            buffer[11] = _m23;
-        }
-
-        var existing = Interlocked.CompareExchange(ref _ownedHandle, allocated, IntPtr.Zero);
-        if (existing != IntPtr.Zero)
-        {
-            Marshal.FreeHGlobal(allocated);
-            SetHandle(existing);
-            return;
-        }
-
-        NativeHandleTracker.Track(this, allocated);
-        SetHandle(allocated);
+        SetHandle(NativeHandleTracker.Allocate(this, ref _ownedHandle,
+            [_m00, _m01, _m02, _m03, _m10, _m11, _m12, _m13, _m20, _m21, _m22, _m23]));
     }
 
     public override string ToString()

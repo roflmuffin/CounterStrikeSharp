@@ -14,8 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System.Threading;
-using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
 namespace CounterStrikeSharp.API.Modules.Utils
@@ -81,33 +79,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 return;
             }
 
-            if (_ownedHandle != IntPtr.Zero)
-            {
-                SetHandle(_ownedHandle);
-                return;
-            }
-
-            var allocated = Marshal.AllocHGlobal(sizeof(float) * 4);
-
-            unsafe
-            {
-                var buffer = (float*)allocated;
-                buffer[0] = _x;
-                buffer[1] = _y;
-                buffer[2] = _z;
-                buffer[3] = _w;
-            }
-
-            var existing = Interlocked.CompareExchange(ref _ownedHandle, allocated, IntPtr.Zero);
-            if (existing != IntPtr.Zero)
-            {
-                Marshal.FreeHGlobal(allocated);
-                SetHandle(existing);
-                return;
-            }
-
-            NativeHandleTracker.Track(this, allocated);
-            SetHandle(allocated);
+            SetHandle(NativeHandleTracker.Allocate(this, ref _ownedHandle, [_x, _y, _z, _w]));
         }
 
         public override string ToString()
