@@ -7,6 +7,7 @@
 #ifdef __linux__
 #include <algorithm>
 #include <cstdlib>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -58,8 +59,23 @@ TEST_CASE("real server binary: core catalog and Gamedata signatures (optional fi
     const auto gamedata = ParseGamedata(nlohmann::json::parse(gamedataStream), "linux");
 
     const auto server = LoadedModule::Load(std::getenv("CSSHARP_SERVER_BINARY"));
-    const ModuleImages modules{ { "server", server.Image() } };
+    ModuleImages modules{ { "server", server.Image() } };
     REQUIRE_FALSE(modules.at("server").segments.empty());
+    // Slot Bindings in engine2 and tier0: from beside the server binary (build archive layout) or the game install's
+    // game/bin/linuxsteamrt64 (server binary in game/csgo/bin/linuxsteamrt64).
+    std::vector<LoadedModule> others;
+    others.reserve(2); // images point into their module
+    for (const auto& [library, file] : { std::pair{ "engine", "libengine2.so" }, std::pair{ "tier0", "libtier0.so" } })
+    {
+        const std::filesystem::path serverDirectory = std::filesystem::path(std::getenv("CSSHARP_SERVER_BINARY")).parent_path();
+        for (const auto& candidate : { serverDirectory / file, serverDirectory / "../../../bin/linuxsteamrt64" / file })
+        {
+            if (!std::filesystem::exists(candidate)) continue;
+            others.push_back(LoadedModule::Load(candidate));
+            modules.emplace(library, others.back().Image());
+            break;
+        }
+    }
     const BuiltinResolver resolver(Platform::Linux);
 
     std::vector<BindingDeclaration> everySignature;

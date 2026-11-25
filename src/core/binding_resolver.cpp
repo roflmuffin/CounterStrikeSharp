@@ -168,6 +168,15 @@ BindingResult Unverified(BindingResult result, std::int64_t index)
     return result;
 }
 
+// A compiled call goes to its header index whatever the Vtable Check found: verified elsewhere, the call would hit
+// another function. Only verified results are compared; an unverified Binding is used at the index Gamedata states.
+BindingResult CheckCompiledIndex(BindingResult result, const std::optional<std::int64_t>& compiledIndex)
+{
+    const bool verified = result.status == BindingStatus::Resolved || result.status == BindingStatus::Healed;
+    if (!compiledIndex || !verified || result.offset == *compiledIndex) return result;
+    return Failed(std::move(result), FailureReason::CompiledSlotMoved);
+}
+
 BindingResult ResolveSlot(BindingResult result, const Gamedata& gamedata, const ModuleImages& modules, Platform platform, LiveVtables& cache)
 {
     const auto entry = gamedata.find(result.key);
@@ -341,7 +350,8 @@ ResolutionReport BuiltinResolver::Resolve(std::string buildId,
                 results.push_back(ResolveSchemaField(std::move(result), modules));
                 break;
             case BindingKind::Slot:
-                results.push_back(ResolveSlot(std::move(result), gamedata, modules, m_platform, liveVtables));
+                results.push_back(
+                    CheckCompiledIndex(ResolveSlot(std::move(result), gamedata, modules, m_platform, liveVtables), declaration.compiledIndex));
                 break;
         }
     }
@@ -393,6 +403,8 @@ std::string DescribeFailure(const BindingResult& binding)
             return "fingerprint mismatch";
         case FailureReason::AmbiguousHeal:
             return "ambiguous heal (" + std::to_string(binding.matchCount) + " matches)";
+        case FailureReason::CompiledSlotMoved:
+            return "compiled call's slot moved";
     }
     return "unknown";
 }
@@ -552,6 +564,8 @@ const char* ReasonName(FailureReason reason)
             return "FingerprintMismatch";
         case FailureReason::AmbiguousHeal:
             return "AmbiguousHeal";
+        case FailureReason::CompiledSlotMoved:
+            return "CompiledSlotMoved";
     }
     return "Unknown";
 }

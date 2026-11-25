@@ -33,6 +33,11 @@ inline constexpr std::string_view EntityEmitSound = "cssharp.entity/emit-sound";
 inline constexpr std::string_view EntityDispatchSpawn = "cssharp.entity/dispatch-spawn";
 // Take damage
 inline constexpr std::string_view EntityTakeDamageHooks = "cssharp.entity/take-damage-hooks";
+// Interfaces that never shifted a slot we use: hooks by verified slot index, direct calls compiled but verified
+inline constexpr std::string_view Startup = "cssharp.server/startup";
+inline constexpr std::string_view LoopMode = "cssharp.server/loop-mode";
+inline constexpr std::string_view GlobalVars = "cssharp.server/global-vars";
+inline constexpr std::string_view UserMessages = "cssharp.network/user-messages";
 } // namespace features
 
 // Every native Engine Feature, in declaration order.

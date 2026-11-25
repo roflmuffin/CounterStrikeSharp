@@ -25,9 +25,17 @@ BindingDeclaration SchemaField(const std::string& className, const std::string& 
 const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::ChatSayHooks), { Signature("Host_Say") } },
     // Server lifecycle: ticks, timers and frame-scheduled tasks
-    { std::string(features::GameFrame), { Slot("ISource2Server::GameFrame") } },
+    // Its handler reads the tick count and current time from the global vars.
+    { std::string(features::GameFrame),
+      { Slot("ISource2Server::GameFrame"), Slot("INetworkServerService::GetIGameServer"), Slot("INetworkGameServer::GetGlobals") } },
     // Events and networking
-    { std::string(features::GameEvents), { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server") } },
+    // Plus every game event manager slot it hooks or calls, and the loop-mode hook that flushes event hooks registered
+    // before the game loop exists.
+    { std::string(features::GameEvents),
+      { Signature("CGameEventManager_Init"), RttiVtable("CGameEventManager", "server"), Slot("IGameEventManager2::LoadEventsFromFile"),
+        Slot("IGameEventManager2::AddListener"), Slot("IGameEventManager2::FindListener"), Slot("IGameEventManager2::RemoveListener"),
+        Slot("IGameEventManager2::CreateEvent"), Slot("IGameEventManager2::FireEvent"), Slot("IGameEventManager2::FreeEvent"),
+        Slot("IEngineServiceMgr::RegisterLoopMode") } },
     { std::string(features::FireEventToClient), { Signature("LegacyGameEventListener") } },
     { std::string(features::StateChanged), { Signature("NetworkStateChanged"), Offset("SetStateChanged") } },
     { std::string(features::CheckTransmit), { Offset("ISource2GameEntities::CheckTransmit"), Offset("CheckTransmitPlayerSlot") } },
@@ -44,6 +52,17 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
     { std::string(features::EntityDispatchSpawn), { Signature("CBaseEntity_DispatchSpawn") } },
     // Take damage
     { std::string(features::EntityTakeDamageHooks), { Signature("CBaseEntity_TakeDamageOld"), Offset("CBaseEntity_IsPlayerPawn") } },
+    // Interfaces that never shifted a slot we use. Hooks follow the verified index; direct calls stay compiled, so their
+    // Bindings fail when verified anywhere but the compiled index (core_bindings.cpp supplies it).
+    // Map start: entity system, OnMapStart.
+    { std::string(features::Startup), { Slot("INetworkServerService::StartupServer") } },
+    // Game loop start (flushes early game event hooks).
+    { std::string(features::LoopMode), { Slot("IEngineServiceMgr::RegisterLoopMode"), Slot("IEngineServiceMgr::FindService") } },
+    // Tick count, current time, frame time, map name, max players.
+    { std::string(features::GlobalVars), { Slot("INetworkServerService::GetIGameServer"), Slot("INetworkGameServer::GetGlobals") } },
+    // User message hooks and sends, client prints, replicated convars.
+    { std::string(features::UserMessages),
+      { Slot("IGameEventSystem::PostEventAbstract"), Slot("IGameEventSystem::PostEventAbstract_Filter") } },
 };
 
 bool Declared(const std::vector<BindingDeclaration>& bindings, std::string_view key)

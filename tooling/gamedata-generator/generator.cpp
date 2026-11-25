@@ -185,7 +185,9 @@ std::vector<std::string> SlotBindingLibraries(const GamedataJson& gamedata)
     std::set<std::string> libraries;
     if (gamedata.is_object())
         for (const auto& [key, value] : gamedata.items())
-            if (const auto entry = ParseEntry(key, value); entry.slot && entry.slot->library) libraries.insert(*entry.slot->library);
+            // Without a window a Slot Binding is held before any module is read (e.g. one in a module not archived).
+            if (const auto entry = ParseEntry(key, value); entry.slot && entry.slot->library && entry.slot->window)
+                libraries.insert(*entry.slot->library);
     return { libraries.begin(), libraries.end() };
 }
 

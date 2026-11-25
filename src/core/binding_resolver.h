@@ -81,6 +81,9 @@ struct BindingDeclaration
     std::string key; // Gamedata key, or the RTTI class name for RttiVtable
     BindingKind kind = BindingKind::Signature;
     std::string library{}; // RttiVtable, SchemaField: Gamedata-style library name to search ("server", "engine", ...)
+    // Slot only: the slot index a compiled (header) call on this Binding uses. A compiled call cannot follow a Heal, so a
+    // Binding verified at any other index fails with CompiledSlotMoved. Unverified Bindings are not compared.
+    std::optional<std::int64_t> compiledIndex{};
 };
 
 // Executable code: where data[0] lives in the process, and its bytes (on-disk bytes where available).
@@ -132,6 +135,7 @@ enum class FailureReason : std::uint8_t
     SchemaFieldMissing,
     FingerprintMismatch, // Slot Binding: the fingerprint window does not match the live vtable
     AmbiguousHeal, // Slot Binding: the window does not match at its index and matches more than once nearby; see matchCount
+    CompiledSlotMoved, // Slot Binding of a compiled call: verified (or healed) at another index than the compiled one
 };
 
 // A Slot Binding's Vtable Check, as evidence for the report.
@@ -201,7 +205,8 @@ class IBindingResolver
 // own fingerprint does, unique within the search range on both builds); otherwise it heals at the one index within the
 // search range where the whole window matches, and fails with FingerprintMismatch (no match, or identical neighbouring
 // bodies) or AmbiguousHeal (several). A size change of the vtable alone is a warning. On Windows, or without a window
-// in Gamedata, it is unverified. Healed indices live only in the report; Gamedata is never written.
+// in Gamedata, it is unverified. A Slot Binding declared with a compiledIndex that resolves or heals at another index
+// fails with CompiledSlotMoved (its evidence kept). Healed indices live only in the report; Gamedata is never written.
 class BuiltinResolver final : public IBindingResolver
 {
   public:

@@ -105,7 +105,7 @@ TEST_CASE("The native catalog declares the event and network Engine Features, ga
 
     const auto gameEvents = bindingsOf(features::GameEvents);
     CHECK(features::GameEvents == "cssharp.events/game-events");
-    REQUIRE(gameEvents.size() == 2);
+    REQUIRE(gameEvents.size() >= 2);
     CHECK(gameEvents[0].key == "CGameEventManager_Init");
     CHECK(gameEvents[0].kind == BindingKind::Signature);
     CHECK(gameEvents[1].key == "CGameEventManager");
@@ -139,7 +139,7 @@ TEST_CASE("The native catalog declares game-frame on GameFrame's Slot Binding")
     const auto* gameFrame = FindNativeEngineFeature(features::GameFrame);
     REQUIRE(gameFrame != nullptr);
     CHECK(features::GameFrame == "cssharp.server/game-frame");
-    REQUIRE(gameFrame->bindings.size() == 1);
+    REQUIRE_FALSE(gameFrame->bindings.empty());
     CHECK(gameFrame->bindings[0].key == "ISource2Server::GameFrame");
     CHECK(gameFrame->bindings[0].kind == BindingKind::Slot);
 }

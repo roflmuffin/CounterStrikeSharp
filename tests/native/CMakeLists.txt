@@ -44,6 +44,7 @@ set(CSSHARP_TEST_SOURCES
     rtti_vtable_test.cpp
     vtable_fingerprint_test.cpp
     slot_binding_test.cpp
+    never_moved_test.cpp
     real_binary_test.cpp
 )
 
@@ -57,7 +58,7 @@ endif()
 set(CSSHARP_GENERATOR_DIR ${CSSHARP_ROOT}/tooling/gamedata-generator)
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     list(APPEND CSSHARP_TESTED_SOURCES ${CSSHARP_GENERATOR_DIR}/build_archive.cpp ${CSSHARP_GENERATOR_DIR}/generator.cpp)
-    list(APPEND CSSHARP_TEST_SOURCES generator_test.cpp archive_test.cpp)
+    list(APPEND CSSHARP_TEST_SOURCES generator_test.cpp archive_test.cpp never_moved_archive_test.cpp)
 endif()
 
 add_executable(native_tests ${CSSHARP_TEST_SOURCES} ${CSSHARP_TESTED_SOURCES})

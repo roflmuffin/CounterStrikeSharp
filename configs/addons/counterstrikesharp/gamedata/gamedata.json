@@ -314,5 +314,293 @@
         "size": 105
       }
     }
+  },
+  "IGameEventManager2::LoadEventsFromFile": {
+    "offsets": {
+      "linux": 2
+    },
+    "vtable": {
+      "class": "CGameEventManager",
+      "library": "server",
+      "linux": {
+        "window": [
+          "4c1969889b06efcb",
+          "fffa5c090f6e6ccf",
+          "7dc4b168b2778290"
+        ],
+        "uniqueNearby": true,
+        "size": 17
+      }
+    }
+  },
+  "IGameEventManager2::AddListener": {
+    "offsets": {
+      "linux": 4
+    },
+    "vtable": {
+      "class": "CGameEventManager",
+      "library": "server",
+      "linux": {
+        "window": [
+          "7dc4b168b2778290",
+          "8a4b12fb94aecd0d",
+          "0372c01249de5019"
+        ],
+        "uniqueNearby": true,
+        "size": 17
+      }
+    }
+  },
+  "IGameEventManager2::FindListener": {
+    "offsets": {
+      "linux": 5
+    },
+    "vtable": {
+      "class": "CGameEventManager",
+      "library": "server",
+      "linux": {
+        "window": [
+          "8a4b12fb94aecd0d",
+          "0372c01249de5019",
+          "09a42fe7fb779ff3"
+        ],
+        "uniqueNearby": true,
+        "size": 17
+      }
+    }
+  },
+  "IGameEventManager2::RemoveListener": {
+    "offsets": {
+      "linux": 6
+    },
+    "vtable": {
+      "class": "CGameEventManager",
+      "library": "server",
+      "linux": {
+        "window": [
+          "0372c01249de5019",
+          "09a42fe7fb779ff3",
+          "878a822908b0c27a"
+        ],
+        "uniqueNearby": true,
+        "size": 17
+      }
+    }
+  },
+  "IGameEventManager2::CreateEvent": {
+    "offsets": {
+      "linux": 7
+    },
+    "vtable": {
+      "class": "CGameEventManager",
+      "library": "server",
+      "linux": {
+        "window": [
+          "09a42fe7fb779ff3",
+          "878a822908b0c27a",
+          "e3790165e6bf1695"
+        ],
+        "uniqueNearby": true,
+        "size": 17
+      }
+    }
+  },
+  "IGameEventManager2::FireEvent": {
+    "offsets": {
+      "linux": 8
+    },
+    "vtable": {
+      "class": "CGameEventManager",
+      "library": "server",
+      "linux": {
+        "window": [
+          "878a822908b0c27a",
+          "e3790165e6bf1695",
+          "f98decce9427247e"
+        ],
+        "uniqueNearby": true,
+        "size": 17
+      }
+    }
+  },
+  "IGameEventManager2::FreeEvent": {
+    "offsets": {
+      "linux": 11
+    },
+    "vtable": {
+      "class": "CGameEventManager",
+      "library": "server",
+      "linux": {
+        "window": [
+          "5ef8f4f93dbdddea",
+          "dbf7a91a88f2636b",
+          "a62be849fff78660"
+        ],
+        "uniqueNearby": true,
+        "size": 17
+      }
+    }
+  },
+  "IGameEventSystem::PostEventAbstract": {
+    "offsets": {
+      "linux": 15
+    },
+    "vtable": {
+      "class": "CGameEventSystem",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "37c446014ae98f5d",
+          "d2b8d77c76dba448",
+          "f989637dc9d898a6"
+        ],
+        "uniqueNearby": true,
+        "size": 21
+      }
+    }
+  },
+  "IGameEventSystem::PostEventAbstract_Filter": {
+    "offsets": {
+      "linux": 16
+    },
+    "vtable": {
+      "class": "CGameEventSystem",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "d2b8d77c76dba448",
+          "f989637dc9d898a6",
+          "ecd06ab571417419"
+        ],
+        "uniqueNearby": true,
+        "size": 21
+      }
+    }
+  },
+  "INetworkServerService::GetIGameServer": {
+    "offsets": {
+      "linux": 24
+    },
+    "vtable": {
+      "class": "CNetworkServerService",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "4c1969889b06efcb",
+          "634b56de9249008c",
+          "89ceba1f4db0ec0e"
+        ],
+        "uniqueNearby": true,
+        "size": 53
+      }
+    }
+  },
+  "INetworkServerService::StartupServer": {
+    "offsets": {
+      "linux": 27
+    },
+    "vtable": {
+      "class": "CNetworkServerService",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "1471696fb0b01962",
+          "a8458dd6250be866",
+          "8b6228a966355370"
+        ],
+        "uniqueNearby": true,
+        "size": 53
+      }
+    }
+  },
+  "INetworkGameServer::GetGlobals": {
+    "offsets": {
+      "linux": 7
+    },
+    "vtable": {
+      "class": "CNetworkGameServer",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "3e6f9d52906a3a9d",
+          "01f5b2b532433417",
+          "73732c6cdce84808"
+        ],
+        "uniqueNearby": true,
+        "size": 90
+      }
+    }
+  },
+  "IEngineServiceMgr::RegisterLoopMode": {
+    "offsets": {
+      "linux": 13
+    },
+    "vtable": {
+      "class": "CEngineServiceMgr",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "b99755dc10649ce2",
+          "0fc4cb7da79ba5ea",
+          "a9e3a86ee65b1eaa"
+        ],
+        "uniqueNearby": true,
+        "size": 61
+      }
+    }
+  },
+  "IEngineServiceMgr::FindService": {
+    "offsets": {
+      "linux": 17
+    },
+    "vtable": {
+      "class": "CEngineServiceMgr",
+      "library": "engine",
+      "linux": {
+        "window": [
+          "4679536fbf423601",
+          "5e3212e2286968b4",
+          "972e971c1fdaf40e"
+        ],
+        "uniqueNearby": true,
+        "size": 61
+      }
+    }
+  },
+  "INetworkMessages::FindNetworkMessagePartial": {
+    "offsets": {
+      "linux": 10
+    },
+    "vtable": {
+      "class": "CNetworkMessages",
+      "library": "networksystem"
+    }
+  },
+  "INetworkMessages::FindNetworkMessageById": {
+    "offsets": {
+      "linux": 27
+    },
+    "vtable": {
+      "class": "CNetworkMessages",
+      "library": "networksystem"
+    }
+  },
+  "CSchemaSystem::GlobalTypeScope": {
+    "offsets": {
+      "linux": 11
+    },
+    "vtable": {
+      "class": "CSchemaSystem",
+      "library": "schemasystem"
+    }
+  },
+  "CSchemaSystem::FindTypeScopeForModule": {
+    "offsets": {
+      "linux": 13
+    },
+    "vtable": {
+      "class": "CSchemaSystem",
+      "library": "schemasystem"
+    }
   }
 }
