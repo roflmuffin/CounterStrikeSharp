@@ -50,25 +50,31 @@ public partial class CCSPlayerController
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.network/user-messages</c> is disabled</exception>
     public void PrintToChat(string message)
     {
         Guard.IsValidEntity(this);
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.NetworkUserMessages);
 
         NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Chat, message);
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.network/user-messages</c> is disabled</exception>
     public void PrintToCenter(string message)
     {
         Guard.IsValidEntity(this);
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.NetworkUserMessages);
 
         NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Center, message);
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.network/user-messages</c> is disabled</exception>
     public void PrintToCenterAlert(string message)
     {
         Guard.IsValidEntity(this);
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.NetworkUserMessages);
 
         NativeAPI.ClientPrint(this.Slot, (int)HudDestination.Alert, message);
     }
@@ -365,8 +371,10 @@ public partial class CCSPlayerController
         base.Teleport(position, angles, velocity);
     }
 
+    /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.network/user-messages</c> is disabled</exception>
     public void ReplicateConVar(string conVar, string value)
     {
+        EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.NetworkUserMessages);
         NativeAPI.ReplicateConvar(Slot, conVar, value);
     }
 }

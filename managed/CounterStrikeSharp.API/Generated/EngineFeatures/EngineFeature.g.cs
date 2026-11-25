@@ -99,6 +99,9 @@ public enum EngineFeature
     /// <summary><c>cssharp.network/state-changed</c></summary>
     NetworkStateChanged = -1875359226,
 
+    /// <summary><c>cssharp.network/user-messages</c></summary>
+    NetworkUserMessages = 756971208,
+
     /// <summary><c>cssharp.player/change-team</c></summary>
     PlayerChangeTeam = -655364455,
 
@@ -122,6 +125,15 @@ public enum EngineFeature
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     ServerGameSystemEvents = -1560303083,
+
+    /// <summary><c>cssharp.server/global-vars</c></summary>
+    ServerGlobalVars = 1565050601,
+
+    /// <summary><c>cssharp.server/loop-mode</c></summary>
+    ServerLoopMode = -291675781,
+
+    /// <summary><c>cssharp.server/startup</c></summary>
+    ServerStartup = 1052299120,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -214,6 +226,9 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.network/state-changed</c></summary>
     public const string NetworkStateChanged = "cssharp.network/state-changed";
 
+    /// <summary><c>cssharp.network/user-messages</c></summary>
+    public const string NetworkUserMessages = "cssharp.network/user-messages";
+
     /// <summary><c>cssharp.player/change-team</c></summary>
     public const string PlayerChangeTeam = "cssharp.player/change-team";
 
@@ -237,6 +252,15 @@ public static class EngineFeatureNames
 
     /// <summary><c>cssharp.server/game-system-events</c></summary>
     public const string ServerGameSystemEvents = "cssharp.server/game-system-events";
+
+    /// <summary><c>cssharp.server/global-vars</c></summary>
+    public const string ServerGlobalVars = "cssharp.server/global-vars";
+
+    /// <summary><c>cssharp.server/loop-mode</c></summary>
+    public const string ServerLoopMode = "cssharp.server/loop-mode";
+
+    /// <summary><c>cssharp.server/startup</c></summary>
+    public const string ServerStartup = "cssharp.server/startup";
 
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
@@ -270,6 +294,7 @@ public static class EngineFeatureNames
         EngineFeature.NavNavMesh => NavNavMesh,
         EngineFeature.NetworkCheckTransmit => NetworkCheckTransmit,
         EngineFeature.NetworkStateChanged => NetworkStateChanged,
+        EngineFeature.NetworkUserMessages => NetworkUserMessages,
         EngineFeature.PlayerChangeTeam => PlayerChangeTeam,
         EngineFeature.PlayerCommitSuicide => PlayerCommitSuicide,
         EngineFeature.PlayerPostThinkHooks => PlayerPostThinkHooks,
@@ -278,6 +303,9 @@ public static class EngineFeatureNames
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
         EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
+        EngineFeature.ServerGlobalVars => ServerGlobalVars,
+        EngineFeature.ServerLoopMode => ServerLoopMode,
+        EngineFeature.ServerStartup => ServerStartup,
         _ => null,
     };
 }

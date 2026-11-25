@@ -49,6 +49,11 @@ public class EngineFeatureCatalogTests : IDisposable
         ["cssharp.items/remove-weapons"] = ["CCSPlayer_ItemServices_RemoveWeapons"],
         ["cssharp.items/weapon-data"] = ["GetCSWeaponDataFromKey"],
         ["cssharp.nav/nav-mesh"] = ["CCSNavArea_IsValidNavMesh"],
+        // Never-moved interfaces (Slot Bindings, direct calls compiled but verified)
+        ["cssharp.server/startup"] = ["INetworkServerService::StartupServer"],
+        ["cssharp.server/loop-mode"] = ["IEngineServiceMgr::RegisterLoopMode", "IEngineServiceMgr::FindService"],
+        ["cssharp.server/global-vars"] = ["INetworkServerService::GetIGameServer", "INetworkGameServer::GetGlobals"],
+        ["cssharp.network/user-messages"] = ["IGameEventSystem::PostEventAbstract", "IGameEventSystem::PostEventAbstract_Filter"],
     };
 
     public void Dispose() => EngineFeatures.Reset();

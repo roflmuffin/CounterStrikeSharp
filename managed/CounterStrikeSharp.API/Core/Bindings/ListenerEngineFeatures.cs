@@ -27,6 +27,8 @@ internal static class ListenerEngineFeatures
         ["OnEntityTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
         ["OnPlayerTakeDamagePre"] = EngineFeatureNames.EntityTakeDamageHooks,
         ["OnPlayerTakeDamagePost"] = EngineFeatureNames.EntityTakeDamageHooks,
+        // Never-moved interfaces (StartupServer)
+        ["OnMapStart"] = EngineFeatureNames.ServerStartup,
     };
 
     /// <summary>

@@ -41,6 +41,12 @@ public enum BindingFailureReason
     /// healed; see the match count.
     /// </summary>
     AmbiguousHeal = 10,
+
+    /// <summary>
+    /// A Slot Binding of a direct call that stays compiled was verified (or healed) at another slot than the one the call
+    /// was compiled with; a compiled call cannot follow it.
+    /// </summary>
+    CompiledSlotMoved = 11,
 }
 
 internal static class BindingFailureReasonExtensions
@@ -59,6 +65,7 @@ internal static class BindingFailureReasonExtensions
         BindingFailureReason.SchemaFieldMissing => "schema field missing",
         BindingFailureReason.FingerprintMismatch => "fingerprint mismatch",
         BindingFailureReason.AmbiguousHeal => $"ambiguous heal ({matchCount} matches)",
+        BindingFailureReason.CompiledSlotMoved => "compiled call's slot moved",
         _ => "unknown",
     };
 }

@@ -623,6 +623,9 @@ namespace CounterStrikeSharp.API.Core
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => UnhookUserMessage(messageId, handler));
 
+            // On a disabled Engine Feature the hook stays registered but never fires (logged once).
+            EngineFeatures.Current.CheckRegistration(EngineFeatureNames.NetworkUserMessages, "User message hook",
+                Logger ?? Application.Instance.Logger, this);
             NativeAPI.HookUsermessage(messageId, subscriber.GetInputArgument(), mode);
             Handlers[handler] = subscriber;
         }
