@@ -28,7 +28,8 @@ const std::vector<ClientsFeature> kClientsFeatures{
       { "IServerGameClients::ClientConnect", "IServerGameClients::ClientPutInServer", "IServerGameClients::ClientDisconnect" } },
     { features::PlayerClientCommands, { "IServerGameClients::ClientCommand" } },
     { features::PlayerVoiceEvents, { "IServerGameClients::ClientVoice" } },
-    { features::UiCustomHudLayout, { "IServerGameClients::ClientSvcUserMessage" } },
+    // Plus the RTTI vtable a dialog variable string is built with.
+    { features::UiCustomHudLayout, { "IServerGameClients::ClientSvcUserMessage", "HUDPanelDialogVariableString_t" } },
 };
 
 std::vector<std::string> AllClientsKeys()
@@ -50,7 +51,7 @@ BindingResult Slot(std::string key, BindingStatus status, FailureReason reason =
 }
 } // namespace
 
-TEST_CASE("The native catalog declares the IServerGameClients Engine Features on their Slot Bindings")
+TEST_CASE("The native catalog declares the IServerGameClients Engine Features on their Slot Bindings (and custom-hud-layout's RTTI vtable)")
 {
     CHECK(features::PlayerConnectionEvents == "cssharp.player/connection-events");
     CHECK(features::PlayerClientCommands == "cssharp.player/client-commands");
@@ -66,7 +67,9 @@ TEST_CASE("The native catalog declares the IServerGameClients Engine Features on
         for (std::size_t i = 0; i < keys.size(); ++i)
         {
             CHECK(feature->bindings[i].key == keys[i]);
-            CHECK(feature->bindings[i].kind == BindingKind::Slot);
+            const bool rtti = keys[i] == "HUDPanelDialogVariableString_t";
+            CHECK(feature->bindings[i].kind == (rtti ? BindingKind::RttiVtable : BindingKind::Slot));
+            if (rtti) CHECK(feature->bindings[i].library == "server");
         }
     }
 }

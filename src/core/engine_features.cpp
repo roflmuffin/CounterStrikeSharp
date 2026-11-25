@@ -47,7 +47,9 @@ const std::vector<EngineFeatureDeclaration> kEngineFeatures{
         Slot(slots::IServerGameClients_ClientDisconnect) } },
     { std::string(features::PlayerClientCommands), { Slot(slots::IServerGameClients_ClientCommand) } },
     { std::string(features::PlayerVoiceEvents), { Slot(slots::IServerGameClients_ClientVoice) } },
-    { std::string(features::UiCustomHudLayout), { Slot(slots::IServerGameClients_ClientSvcUserMessage) } },
+    // Custom HUD clicks, and dialog variable strings built with the game's vtable.
+    { std::string(features::UiCustomHudLayout),
+      { Slot(slots::IServerGameClients_ClientSvcUserMessage), RttiVtable("HUDPanelDialogVariableString_t", "server") } },
     // Events and networking
     // Plus every game event manager slot it hooks or calls, and the loop-mode hook that flushes event hooks registered
     // before the game loop exists.

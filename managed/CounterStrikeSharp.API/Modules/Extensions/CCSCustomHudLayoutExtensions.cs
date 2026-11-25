@@ -16,10 +16,17 @@ public static class CCSCustomHudLayoutExtensions
             NativeAPI.SetHasClassForPlayer(customHud.Handle, player.Handle, panelid, classname, hasclass);
         }
 
-        public void SetDialogVariableString(string panelid, string variablename, string value) => NativeAPI.SetDialogVariableString(customHud.Handle, panelid, variablename, value);
+        /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.ui/custom-hud-layout</c> is disabled</exception>
+        public void SetDialogVariableString(string panelid, string variablename, string value)
+        {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.UiCustomHudLayout);
+            NativeAPI.SetDialogVariableString(customHud.Handle, panelid, variablename, value);
+        }
 
+        /// <exception cref="EngineFeatureUnavailableException">Engine Feature <c>cssharp.ui/custom-hud-layout</c> is disabled</exception>
         public void SetDialogVariableStringForPlayer(CCSPlayerController player, string panelid, string variablename, string value)
         {
+            EngineFeatures.Current.ThrowIfUnavailable(EngineFeatureNames.UiCustomHudLayout);
             if (player == null || player.Handle == IntPtr.Zero)
             {
                 throw new ArgumentNullException(nameof(player));

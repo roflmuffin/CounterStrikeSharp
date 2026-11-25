@@ -44,7 +44,7 @@ public class EngineFeatureCatalogTests : IDisposable
             ["IServerGameClients::ClientConnect", "IServerGameClients::ClientPutInServer", "IServerGameClients::ClientDisconnect"],
         ["cssharp.player/client-commands"] = ["IServerGameClients::ClientCommand"],
         ["cssharp.player/voice-events"] = ["IServerGameClients::ClientVoice"],
-        ["cssharp.ui/custom-hud-layout"] = ["IServerGameClients::ClientSvcUserMessage"],
+        ["cssharp.ui/custom-hud-layout"] = ["IServerGameClients::ClientSvcUserMessage", "HUDPanelDialogVariableString_t"],
         ["cssharp.events/game-events"] = ["CGameEventManager_Init", "CGameEventManager"],
         ["cssharp.events/fire-event-to-client"] = ["LegacyGameEventListener"],
         ["cssharp.network/state-changed"] = ["NetworkStateChanged", "SetStateChanged"],
