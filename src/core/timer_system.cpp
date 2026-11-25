@@ -89,9 +89,11 @@ void TimerSystem::OnStartupServer()
 
 void TimerSystem::OnGameFrame(bool simulating)
 {
-    if (simulating && m_has_map_ticked)
+    // Without global vars (cssharp.server/global-vars disabled) timers advance by the fixed tick interval.
+    const auto* globalVars = globals::getGlobalVars();
+    if (simulating && m_has_map_ticked && globalVars != nullptr)
     {
-        timers::universal_time += globals::getGlobalVars()->curtime - m_last_ticked_time;
+        timers::universal_time += globalVars->curtime - m_last_ticked_time;
         if (!m_has_map_simulated)
         {
             m_has_map_simulated = true;
@@ -102,7 +104,7 @@ void TimerSystem::OnGameFrame(bool simulating)
         timers::universal_time += globals::engine_fixed_tick_interval;
     }
 
-    m_last_ticked_time = globals::getGlobalVars()->curtime;
+    if (globalVars != nullptr) m_last_ticked_time = globalVars->curtime;
     m_has_map_ticked = true;
 
     RunFrame();

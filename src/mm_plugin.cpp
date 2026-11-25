@@ -292,11 +292,13 @@ KHook::Return<void> CounterStrikeSharpMMPlugin::Hook_GameFrame(IServerGameDLL* h
     DynamicHook::CollectRetired();
     globals::timerSystem.OnGameFrame(simulating);
 
-    auto callbacks = globals::tickScheduler.getCallbacks(globals::getGlobalVars()->tickcount);
+    // Tick-scheduled tasks need the tick count: none run while cssharp.server/global-vars is disabled.
+    const auto* globalVars = globals::getGlobalVars();
+    if (globalVars == nullptr) return { KHook::Action::Ignore };
+    auto callbacks = globals::tickScheduler.getCallbacks(globalVars->tickcount);
     if (callbacks.size() > 0)
     {
-        CSSHARP_CORE_TRACE("Executing frame specific tasks of size: {0} on tick number {1}", callbacks.size(),
-                           globals::getGlobalVars()->tickcount);
+        CSSHARP_CORE_TRACE("Executing frame specific tasks of size: {0} on tick number {1}", callbacks.size(), globalVars->tickcount);
 
         for (auto& callback : callbacks)
         {

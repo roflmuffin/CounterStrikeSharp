@@ -395,6 +395,9 @@ namespace CounterStrikeSharp.API.Core
         /// <returns>An instance of the <see cref="Timer"/></returns>
         public Timer AddTickTimer(int tickInterval, Action callback, TimerFlags? flags = null)
         {
+            // Like AddTimer: run from GameFrame, kept but never fired on a disabled cssharp.server/game-frame.
+            EngineFeatures.Current.CheckRegistration(EngineFeatureNames.ServerGameFrame, "Timer",
+                Logger ?? Application.Instance.Logger, this);
             var timer = new Timer(tickInterval * Server.TickInterval, callback, flags ?? 0);
             Timers.Add(timer);
             return timer;

@@ -288,12 +288,6 @@ TEST_CASE("game-events also needs every game event manager slot it calls or hook
         CHECK_MESSAGE(Declares(features::GameEvents, key), key);
 }
 
-TEST_CASE("game-frame also needs the global vars its handler reads (tick count, current time)")
-{
-    CHECK(Declares(features::GameFrame, "INetworkServerService::GetIGameServer"));
-    CHECK(Declares(features::GameFrame, "INetworkGameServer::GetGlobals"));
-}
-
 // --- The committed Gamedata ---
 
 namespace {

@@ -16,6 +16,7 @@
 
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
@@ -41,6 +42,13 @@ namespace CounterStrikeSharp.API
         internal static void OnWorldUpdate()
         {
             ExecuteTickTasks(_onWorldUpdateTaskQueue);
+        }
+
+        // A task is queued even while the hook that runs it is disabled; it then never runs, and the first one warns.
+        private static void CheckFrameTask(string api)
+        {
+            if (Application.Instance is { } application)
+                FrameTaskEngineFeatures.CheckRegistration(EngineFeatures.Current, api, application.Logger);
         }
 
         private static void ExecuteTickTasks(ConcurrentQueue<Action> taskQueue)
@@ -125,6 +133,7 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task RunOnTickAsync(int tick, Action task)
         {
+            CheckFrameTask(nameof(RunOnTick));
             var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
             NativeAPI.QueueTaskForFrame(tick, functionReference);
             return functionReference.CompletionTask;
@@ -146,6 +155,7 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task NextFrameAsync(Action task)
         {
+            CheckFrameTask(nameof(NextFrame));
             var tcs = new TaskCompletionSource();
 
             _onTickTaskQueue.Enqueue(() =>
@@ -170,6 +180,7 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task<TResult> NextFrameAsync<TResult>(Func<TResult> task)
         {
+            CheckFrameTask(nameof(NextFrame));
             var tcs = new TaskCompletionSource<TResult>();
 
             _onTickTaskQueue.Enqueue(() =>
@@ -203,6 +214,7 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task NextWorldUpdateAsync(Action task)
         {
+            CheckFrameTask(nameof(NextWorldUpdate));
             var tcs = new TaskCompletionSource();
 
             _onWorldUpdateTaskQueue.Enqueue(() =>
@@ -227,6 +239,7 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task<TResult> NextWorldUpdateAsync<TResult>(Func<TResult> task)
         {
+            CheckFrameTask(nameof(NextWorldUpdate));
             var tcs = new TaskCompletionSource<TResult>();
 
             _onWorldUpdateTaskQueue.Enqueue(() =>

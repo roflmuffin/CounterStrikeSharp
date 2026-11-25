@@ -120,6 +120,12 @@ public enum EngineFeature
     /// <summary><c>cssharp.player/switch-team</c></summary>
     PlayerSwitchTeam = -936310331,
 
+    /// <summary><c>cssharp.server/econ-item-system</c></summary>
+    ServerEconItemSystem = 732765624,
+
+    /// <summary><c>cssharp.server/fatal-shutdown</c></summary>
+    ServerFatalShutdown = 1952110924,
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     ServerGameFrame = 62045269,
 
@@ -129,11 +135,29 @@ public enum EngineFeature
     /// <summary><c>cssharp.server/global-vars</c></summary>
     ServerGlobalVars = 1565050601,
 
+    /// <summary><c>cssharp.server/hibernation-events</c></summary>
+    ServerHibernationEvents = 1910400260,
+
+    /// <summary><c>cssharp.server/hostname-changed</c></summary>
+    ServerHostnameChanged = 504295971,
+
+    /// <summary><c>cssharp.server/is-paused</c></summary>
+    ServerIsPaused = 386829384,
+
     /// <summary><c>cssharp.server/loop-mode</c></summary>
     ServerLoopMode = -291675781,
 
+    /// <summary><c>cssharp.server/pre-world-update</c></summary>
+    ServerPreWorldUpdate = 1796896305,
+
     /// <summary><c>cssharp.server/startup</c></summary>
     ServerStartup = 1052299120,
+
+    /// <summary><c>cssharp.server/steam-api-events</c></summary>
+    ServerSteamApiEvents = 1980117002,
+
+    /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
+    ServerUpdateWhenNotInGame = 88681160,
 }
 
 /// <summary>The stable string names of the <see cref="EngineFeature"/> values.</summary>
@@ -247,6 +271,12 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.player/switch-team</c></summary>
     public const string PlayerSwitchTeam = "cssharp.player/switch-team";
 
+    /// <summary><c>cssharp.server/econ-item-system</c></summary>
+    public const string ServerEconItemSystem = "cssharp.server/econ-item-system";
+
+    /// <summary><c>cssharp.server/fatal-shutdown</c></summary>
+    public const string ServerFatalShutdown = "cssharp.server/fatal-shutdown";
+
     /// <summary><c>cssharp.server/game-frame</c></summary>
     public const string ServerGameFrame = "cssharp.server/game-frame";
 
@@ -256,11 +286,29 @@ public static class EngineFeatureNames
     /// <summary><c>cssharp.server/global-vars</c></summary>
     public const string ServerGlobalVars = "cssharp.server/global-vars";
 
+    /// <summary><c>cssharp.server/hibernation-events</c></summary>
+    public const string ServerHibernationEvents = "cssharp.server/hibernation-events";
+
+    /// <summary><c>cssharp.server/hostname-changed</c></summary>
+    public const string ServerHostnameChanged = "cssharp.server/hostname-changed";
+
+    /// <summary><c>cssharp.server/is-paused</c></summary>
+    public const string ServerIsPaused = "cssharp.server/is-paused";
+
     /// <summary><c>cssharp.server/loop-mode</c></summary>
     public const string ServerLoopMode = "cssharp.server/loop-mode";
 
+    /// <summary><c>cssharp.server/pre-world-update</c></summary>
+    public const string ServerPreWorldUpdate = "cssharp.server/pre-world-update";
+
     /// <summary><c>cssharp.server/startup</c></summary>
     public const string ServerStartup = "cssharp.server/startup";
+
+    /// <summary><c>cssharp.server/steam-api-events</c></summary>
+    public const string ServerSteamApiEvents = "cssharp.server/steam-api-events";
+
+    /// <summary><c>cssharp.server/update-when-not-in-game</c></summary>
+    public const string ServerUpdateWhenNotInGame = "cssharp.server/update-when-not-in-game";
 
     /// <summary>The name of an Engine Feature value; null for a value this version does not know.</summary>
     public static string? GetName(this EngineFeature feature) => feature switch
@@ -301,11 +349,19 @@ public static class EngineFeatureNames
         EngineFeature.PlayerRespawn => PlayerRespawn,
         EngineFeature.PlayerSetPawn => PlayerSetPawn,
         EngineFeature.PlayerSwitchTeam => PlayerSwitchTeam,
+        EngineFeature.ServerEconItemSystem => ServerEconItemSystem,
+        EngineFeature.ServerFatalShutdown => ServerFatalShutdown,
         EngineFeature.ServerGameFrame => ServerGameFrame,
         EngineFeature.ServerGameSystemEvents => ServerGameSystemEvents,
         EngineFeature.ServerGlobalVars => ServerGlobalVars,
+        EngineFeature.ServerHibernationEvents => ServerHibernationEvents,
+        EngineFeature.ServerHostnameChanged => ServerHostnameChanged,
+        EngineFeature.ServerIsPaused => ServerIsPaused,
         EngineFeature.ServerLoopMode => ServerLoopMode,
+        EngineFeature.ServerPreWorldUpdate => ServerPreWorldUpdate,
         EngineFeature.ServerStartup => ServerStartup,
+        EngineFeature.ServerSteamApiEvents => ServerSteamApiEvents,
+        EngineFeature.ServerUpdateWhenNotInGame => ServerUpdateWhenNotInGame,
         _ => null,
     };
 }
