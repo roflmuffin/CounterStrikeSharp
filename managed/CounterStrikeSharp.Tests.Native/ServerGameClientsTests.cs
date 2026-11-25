@@ -1,6 +1,8 @@
 using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Memory;
 using Xunit;
 
 namespace NativeTestsPlugin;
@@ -50,7 +52,10 @@ public class ServerGameClientsTests
             NativeAPI.RemoveListener("OnClientConnect", onConnect);
             NativeAPI.RemoveListener("OnClientPutInServer", onPutInServer);
             NativeAPI.RemoveListener("OnClientDisconnect", onDisconnect);
+            // Leave a bot in the server, as other tests expect a player.
+            Server.ExecuteCommand("bot_quota_mode normal; bot_quota 1");
         }
+        await WaitUntilAsync(() => Utilities.GetPlayers().Any(p => p.IsBot), "a bot to rejoin");
 
         Console.WriteLine($"[ServerGameClientsTests] connection-events available: {ConnectionEventsAvailable}; " +
                           $"connects {connects}, put in server {putInServers}, disconnects {disconnects}");
@@ -67,31 +72,52 @@ public class ServerGameClientsTests
     }
 
     [Fact]
-    public async Task ClientTypedCommand_ReachesCommandListeners_OnlyWhileClientCommandsIsAvailable()
+    public async Task ClientCommand_ReachesCommandListeners_OnlyWhileClientCommandsIsAvailable()
     {
-        // Not a registered console command, so only the ClientCommand hook can see it.
-        const string command = "css_itest_client_typed";
+        // Bots never send commands to the server, so the test calls IServerGameClients::ClientCommand itself, through
+        // the vtable (where the hook sits), for an empty player slot: the game ignores a command from a slot with no
+        // player, so only our hook can pass it on to the command's listeners.
+        const string command = "css_itest_client_command";
+        var probeSlot = Enumerable.Range(0, Server.MaxPlayers).Reverse().FirstOrDefault(
+            slot => Utilities.GetPlayerFromSlot(slot) == null, -1);
+        Assert.True(probeSlot >= 0, $"no empty player slot among {Server.MaxPlayers}");
+        var gameClients = ValveInterface.ServerGameClients.Pointer;
+        var clientCommand = VirtualFunction.CreateVoid<IntPtr, int, IntPtr>(gameClients,
+            GameData.GetOffset("IServerGameClients::ClientCommand"));
+
+        var sent = false;
         var calls = 0;
-        var listener = FunctionReference.Create((int slot, IntPtr commandInfo) =>
+        var callback = FunctionReference.Create((int slot, IntPtr commandInfo) =>
         {
-            calls++;
+            if (!sent)
+            {
+                // From the server console: send the same command as if the probe slot's player had typed it.
+                sent = true;
+                clientCommand(gameClients, probeSlot, commandInfo);
+            }
+            else if (slot == probeSlot)
+            {
+                calls++;
+            }
+
             return HookResult.Continue;
         });
 
-        var (player, _) = await CreateTestPlayerAsync();
-        NativeAPI.AddCommandListener(command, listener, false);
+        NativeAPI.AddCommand(command, "client command probe", true, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND, callback);
         try
         {
-            player.ExecuteClientCommand(command);
+            NativeAPI.IssueServerCommand(command);
             await WaitOneFrame();
             await WaitOneFrame();
         }
         finally
         {
-            NativeAPI.RemoveCommandListener(command, listener, false);
+            NativeAPI.RemoveCommand(command, callback);
         }
 
-        Console.WriteLine($"[ServerGameClientsTests] client-commands available: {ClientCommandsAvailable}; listener calls {calls}");
+        Console.WriteLine($"[ServerGameClientsTests] client-commands available: {ClientCommandsAvailable}; sent {sent}, " +
+                          $"listener calls {calls} (probe slot {probeSlot})");
+        Assert.True(sent, "the server command did not run");
         Assert.Equal(ClientCommandsAvailable ? 1 : 0, calls);
     }
 
