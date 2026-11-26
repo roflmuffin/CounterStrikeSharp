@@ -207,4 +207,10 @@ CounterStrikeSharp resolves every core Binding once at boot into a single immuta
   - Tier 2 add-ons (each needs only the base; any subset, any order; 12 follows 06's pattern): 06, 07, 08, 09, 10, 11, 12, 13, 14.
   - Tier 3 cleanup (after 08–12; deferrable, leaves two resolution paths until done): 15.
   - **Must set** (~80% of spec A's value): 01, 02, archiver, 03, 04, 05, 06, 12, 07, 09. **Later**: 08, 11, 13, 10, 14, then 15. Spec B needs only the base.
+- **Follow-up (ticket 16, after the upstream-note alignment):**
+  - operator `FailMode: disable | crash` (default `disable`) and `HealEnabled` (spec B Heal; default `true`);
+  - schema misses warn first by default (`SchemaMissMode: warn | throw`) instead of throwing straight away;
+  - plugin signatures that are ambiguous or not found get their own block in the report.
+
+  This supersedes the "throws" wording under Schema fields until the default flips to `throw`.
 - Unused Gamedata keys found during the survey (two offsets and one signature with no consumer) are left alone; the registry simply does not declare them.

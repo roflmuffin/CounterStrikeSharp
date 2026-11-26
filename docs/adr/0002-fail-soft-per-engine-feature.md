@@ -13,7 +13,9 @@ Facts are separated from policy:
 - An Engine Feature's identity is a stable, namespaced string name (e.g. `cssharp.entity/take-damage-hooks`), never renamed or reused; the managed enum is a generated convenience over those names.
 - Fail soft is CounterStrikeSharp's default, not the plugin's: a plugin may declare the Engine Features it requires, and if any is disabled that plugin refuses to load, loudly. A server running with, say, take-damage hooks off is a different program, and for match integrity the plugin, not the framework, decides whether that is acceptable. Plugins that declare nothing behave as before.
 
+Amended (spec A ticket 16): operators also get a server-wide `FailMode` setting. It defaults to `disable` (fail soft as above); `crash` stops the server after the startup report if any core Engine Feature is disabled. Fail soft stays the default, and plugin-declared Required Engine Features still decide per plugin. The switch exists for competitive and anti-cheat servers that would rather not run than run with a hook missing. The same ticket makes schema misses warn first (ADR-0001) and lists plugin signatures that are ambiguous or not found in their own report block.
+
 ## Considered Options
 
-- **Fail fast** (refuse to load on any miss): honest, but turns every minor Game update into a full outage.
+- **Fail fast** (refuse to load on any miss): honest, but turns every minor Game update into a full outage. Kept as the operator's opt-in `FailMode: crash`, not the default.
 - **Silent no-op** for disabled Engine Features: hides broken behaviour (e.g. a round that never terminates).
