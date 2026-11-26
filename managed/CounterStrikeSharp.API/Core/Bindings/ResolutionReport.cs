@@ -61,9 +61,10 @@ internal sealed class ResolutionReport
     private readonly Dictionary<string, BindingResult> _bindings;
 
     public ResolutionReport(string buildId, IEnumerable<BindingResult> bindings,
-        IEnumerable<EngineFeatureDeclaration> nativeFeatures)
+        IEnumerable<EngineFeatureDeclaration> nativeFeatures, bool healEnabled = true)
     {
         BuildId = buildId;
+        HealEnabled = healEnabled;
         Bindings = bindings.ToList();
         NativeFeatures = nativeFeatures.ToList();
         _bindings = new Dictionary<string, BindingResult>();
@@ -71,6 +72,9 @@ internal sealed class ResolutionReport
     }
 
     public string BuildId { get; }
+
+    /// <summary>False when the operator turned Heal off (<c>HealEnabled: false</c>): a Slot Binding that moved failed.</summary>
+    public bool HealEnabled { get; }
 
     public IReadOnlyList<BindingResult> Bindings { get; }
 
@@ -95,7 +99,8 @@ internal sealed class ResolutionReport
                     : new SlotEvidence(b.Slot.Class, b.Slot.StatedIndex, b.Slot.Match, b.Slot.VtableSize, b.Slot.RecordedVtableSize,
                         b.Slot.Window),
                 b.Status == "Healed")),
-            dto.Features.Select(f => new EngineFeatureDeclaration(f.Name, f.Bindings.Select(BindingDeclaration.Any).ToList())));
+            dto.Features.Select(f => new EngineFeatureDeclaration(f.Name, f.Bindings.Select(BindingDeclaration.Any).ToList())),
+            dto.HealEnabled ?? true);
     }
 
     private static readonly JsonSerializerOptions JsonOptions = new()
@@ -104,7 +109,7 @@ internal sealed class ResolutionReport
         Converters = { new JsonStringEnumConverter() },
     };
 
-    private sealed record ReportDto(string BuildId, List<BindingDto> Bindings, List<FeatureDto> Features);
+    private sealed record ReportDto(string BuildId, List<BindingDto> Bindings, List<FeatureDto> Features, bool? HealEnabled = null);
 
     private sealed record BindingDto(
         string Key,

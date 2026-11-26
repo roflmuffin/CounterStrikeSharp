@@ -16,6 +16,8 @@
 
 #include "core/coreconfig.h"
 
+#include <algorithm>
+#include <cctype>
 #include <fstream>
 
 #include "core/log.h"
@@ -62,6 +64,14 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         UnlockConVars = m_json.value("UnlockConVars", UnlockConVars);
         AutoUpdateEnabled = m_json.value("AutoUpdateEnabled", AutoUpdateEnabled);
         AutoUpdateURL = m_json.value("AutoUpdateURL", AutoUpdateURL);
+        FailMode = m_json.value("FailMode", FailMode);
+        std::transform(FailMode.begin(), FailMode.end(), FailMode.begin(), [](unsigned char c) { return std::tolower(c); });
+        if (FailMode != "disable" && FailMode != "crash")
+        {
+            CSSHARP_CORE_WARN("CoreConfig FailMode \"{}\" is not \"disable\" or \"crash\", using \"disable\"", FailMode);
+            FailMode = "disable";
+        }
+        HealEnabled = m_json.value("HealEnabled", HealEnabled);
     }
     catch (const std::exception& ex)
     {

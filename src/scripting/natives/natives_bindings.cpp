@@ -14,7 +14,13 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+#include <cstdio>
+#include <cstdlib>
+
 #include "core/core_bindings.h"
+#include "core/coreconfig.h"
+#include "core/globals.h"
+#include "core/log.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
@@ -27,5 +33,26 @@ static std::string GetResolutionReport(ScriptContext& script_context)
     return bindings::ResolutionReportToJson(bindings::CoreResolutionReport(), bindings::NativeEngineFeatures());
 }
 
-REGISTER_NATIVES(bindings, { ScriptEngine::RegisterNativeHandler("GET_RESOLUTION_REPORT", GetResolutionReport); })
+// The operator's FailMode: crash. Managed decides (it has the whole Engine Feature catalog), logs the startup report and
+// the fatal error naming the disabled Engine Features, then calls this. Refused unless the operator set FailMode to
+// crash, so it never stops a fail soft server.
+static void FailModeStopServer(ScriptContext& script_context)
+{
+    if (!globals::coreConfig->IsFailModeCrash())
+    {
+        script_context.ThrowNativeError("FailMode is \"%s\", not \"crash\": not stopping the server", globals::coreConfig->FailMode.c_str());
+        return;
+    }
+
+    CSSHARP_CORE_CRITICAL("FailMode is crash and a core Engine Feature is disabled: stopping the server");
+    Log::GetCoreLogger()->flush();
+    std::fflush(nullptr);
+    // No destructors or exit handlers: the process is mid Metamod load, and the game's own teardown is not safe here.
+    std::_Exit(EXIT_FAILURE);
+}
+
+REGISTER_NATIVES(bindings, {
+    ScriptEngine::RegisterNativeHandler("GET_RESOLUTION_REPORT", GetResolutionReport);
+    ScriptEngine::RegisterNativeHandler("FAIL_MODE_STOP_SERVER", FailModeStopServer);
+})
 } // namespace counterstrikesharp

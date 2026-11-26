@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Linq;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Logging;
 
@@ -10,7 +11,8 @@ namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 /// Creates native functions from raw signatures passed in by plugins (directly, or from Gamedata files they ship).
 /// Keeps first-match binding, but counts the matches once per signature: an ambiguous signature is warned about once
 /// with its match count, or rejected in strict mode. A signature that cannot be bound is logged once at creation and
-/// remembered, so calling the function throws a clear error instead of "Invalid function pointer".
+/// remembered, so calling the function throws a clear error instead of "Invalid function pointer". Every outcome is
+/// recorded for the plugin signatures report (<see cref="Core.Bindings.PluginSignatures"/>).
 /// </summary>
 internal static class SignatureFunctions
 {
@@ -45,19 +47,37 @@ internal static class SignatureFunctions
     internal static IntPtr Create(string signature, string binaryPath, DataType returnType, DataType[] argumentTypes, bool strict)
     {
         var signatureKey = $"{binaryPath}:{signature}";
+        var matchCount = MatchCounts.GetOrAdd(signatureKey, _ => Count(binaryPath, signature));
+        var function = Bind(signatureKey, signature, binaryPath, returnType, argumentTypes, strict, matchCount);
+
+        var outcome = function != IntPtr.Zero
+            ? matchCount > 1 ? PluginSignatureOutcome.Ambiguous : PluginSignatureOutcome.Resolved
+            : matchCount switch
+            {
+                > 1 when strict => PluginSignatureOutcome.AmbiguousRejected,
+                0 => PluginSignatureOutcome.NotFound,
+                InvalidPattern => PluginSignatureOutcome.InvalidPattern,
+                _ => PluginSignatureOutcome.Unbound, // matched (or not counted), but no function could be created
+            };
+        PluginSignatures.Record(binaryPath, signature, matchCount, outcome);
+        return function;
+    }
+
+    private static IntPtr Bind(string signatureKey, string signature, string binaryPath, DataType returnType, DataType[] argumentTypes,
+        bool strict, int matchCount)
+    {
+        // Before the cache: a strict caller rejects an ambiguous signature even if a non-strict one already bound it.
+        if (matchCount > 1 && strict)
+        {
+            Fail(signatureKey, signature, binaryPath, $"ambiguous ({matchCount} matches)");
+            return IntPtr.Zero;
+        }
+
         var cacheKey = BaseMemoryFunction.FunctionCacheKey(signatureKey, returnType, argumentTypes);
         if (CreatedFunctions.TryGetValue(cacheKey, out var function)) return function;
 
-        var matchCount = MatchCounts.GetOrAdd(signatureKey, _ => Count(binaryPath, signature));
-
         if (matchCount > 1)
         {
-            if (strict)
-            {
-                Fail(signatureKey, signature, binaryPath, $"ambiguous ({matchCount} matches)");
-                return IntPtr.Zero;
-            }
-
             if (AmbiguityWarned.TryAdd(signatureKey, 0))
             {
                 Logger.LogWarning(

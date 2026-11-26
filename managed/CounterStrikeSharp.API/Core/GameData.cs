@@ -126,6 +126,8 @@ public static class GameData
             signature = methodMetadata.Signatures?.Windows ?? throw new InvalidOperationException($"No Windows signature for {key} in gamedata.json");
         }
 
+        // So the plugin signatures report names the key when a plugin resolves this signature.
+        Bindings.PluginSignatures.NoteGamedataKey(signature, key);
         return signature;
     }
 

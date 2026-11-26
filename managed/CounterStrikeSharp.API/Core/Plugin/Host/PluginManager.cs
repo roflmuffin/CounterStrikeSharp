@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Capabilities;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
@@ -123,6 +124,9 @@ public class PluginManager : IPluginManager
                 _logger.LogError(e, "OnAllPluginsLoaded failed");
             }
         }
+
+        PluginSignatures.AllPluginsLoaded = true;
+        PluginSignatures.LogReport(_logger);
     }
 
     private bool TryLoadExternalLibrary(AssemblyName assemblyName, out Assembly? assembly)

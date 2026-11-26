@@ -182,6 +182,7 @@ BindingResult ResolveSlot(BindingResult result,
                           const Gamedata& gamedata,
                           const ModuleImages& modules,
                           Platform platform,
+                          bool heal,
                           LiveVtables& cache)
 {
     const auto entry = gamedata.find(result.key);
@@ -222,7 +223,9 @@ BindingResult ResolveSlot(BindingResult result,
     result.slot->vtableSize = live.fingerprints.size();
 
     const vtable::SlotRecord recorded{ static_cast<std::size_t>(index), *slot->window, slot->uniqueNearby, slot->vtableSize };
-    const auto location = vtable::LocateSlot(recorded, live.fingerprints);
+    // Heal off: the Vtable Check at the Gamedata index only.
+    const auto location = heal ? vtable::LocateSlot(recorded, live.fingerprints)
+                               : vtable::SlotLocation{ vtable::CheckSlot(recorded, live.fingerprints), recorded.index, 0 };
     result.slot->match = location.match;
     if (location.match == vtable::SlotMatch::None)
     {
@@ -313,8 +316,8 @@ Gamedata ParseGamedata(const nlohmann::json& root, std::string_view platform)
     return gamedata;
 }
 
-ResolutionReport::ResolutionReport(std::string buildId, std::vector<BindingResult> bindings)
-    : m_buildId(std::move(buildId)), m_bindings(std::move(bindings))
+ResolutionReport::ResolutionReport(std::string buildId, std::vector<BindingResult> bindings, bool healEnabled)
+    : m_buildId(std::move(buildId)), m_bindings(std::move(bindings)), m_healEnabled(healEnabled)
 {
     // The first Binding of a key wins, as a scan in order would find it.
     for (std::size_t position = 0; position < m_bindings.size(); ++position)
@@ -366,12 +369,12 @@ ResolutionReport BuiltinResolver::Resolve(std::string buildId,
                 break;
             case BindingKind::Slot:
                 results.push_back(CheckCompiledIndex(
-                    ResolveSlot(std::move(result), declaration.headerIndex, gamedata, modules, m_platform, liveVtables), declaration.compiledIndex));
+                    ResolveSlot(std::move(result), declaration.headerIndex, gamedata, modules, m_platform, m_options.heal, liveVtables), declaration.compiledIndex));
                 break;
         }
     }
 
-    return ResolutionReport(std::move(buildId), std::move(results));
+    return ResolutionReport(std::move(buildId), std::move(results), m_options.heal);
 }
 
 ResolutionReport ResolveBindings(std::string buildId,
@@ -458,6 +461,7 @@ std::string FormatBindingSummary(const ResolutionReport& report)
     const std::string separator = failedCount == 0 ? ", " : "; ";
     if (healedCount > 0) line += separator + std::to_string(healedCount) + " healed";
     if (unverifiedCount > 0) line += separator + std::to_string(unverifiedCount) + " unverified";
+    if (!report.HealEnabled()) line += separator + "healing off";
     return line;
 }
 
@@ -629,7 +633,10 @@ std::string ResolutionReportToJson(const ResolutionReport& report, std::span<con
     }
 
     return nlohmann::json{
-        { "buildId", report.BuildId() }, { "bindings", std::move(bindings) }, { "features", std::move(features) }
+        { "buildId", report.BuildId() },
+        { "healEnabled", report.HealEnabled() },
+        { "bindings", std::move(bindings) },
+        { "features", std::move(features) }
     }.dump();
 }
 

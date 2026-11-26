@@ -12,6 +12,7 @@
 #endif
 
 #include "core/compiled_slots.h"
+#include "core/coreconfig.h"
 #include "core/gameconfig.h"
 #include "core/globals.h"
 #include "core/log.h"
@@ -31,10 +32,12 @@ constexpr Platform kPlatform = Platform::Windows;
 constexpr Platform kPlatform = Platform::Linux;
 #endif
 
-// The resolver seam (ADR-0004): the only place core Bindings are located. Swap the adapter here.
+// The resolver seam (ADR-0004): the only place core Bindings are located. Swap the adapter here. Heal follows the
+// operator's HealEnabled setting.
 const IBindingResolver& Resolver()
 {
-    static const std::unique_ptr<IBindingResolver> resolver = std::make_unique<BuiltinResolver>(kPlatform);
+    static const std::unique_ptr<IBindingResolver> resolver =
+        std::make_unique<BuiltinResolver>(kPlatform, ResolverOptions{ globals::coreConfig->HealEnabled });
     return *resolver;
 }
 

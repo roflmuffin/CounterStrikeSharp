@@ -6,7 +6,8 @@ using Microsoft.Extensions.Logging;
 namespace CounterStrikeSharp.API.Tests;
 
 // Plugin raw signatures against a faked scan: first match kept, ambiguity warned once (or rejected in strict mode),
-// not-found reported at creation and on call.
+// not-found reported at creation and on call. Uses static state, shared with the plugin signatures report tests.
+[Collection(nameof(PluginSignatureTests))]
 public class PluginSignatureTests : IDisposable
 {
     private const string BinaryPath = "/game/csgo/bin/linuxsteamrt64/libserver.so";
