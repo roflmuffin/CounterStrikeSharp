@@ -562,6 +562,85 @@ TEST_CASE("The summary counts Heals next to failures, and a neighbour outside th
     CHECK(heals[0].find(", null] matched once") != std::string::npos);
 }
 
+namespace {
+ResolutionReport ResolveWithHealOff(const json& gamedata, const FakeBuild& live, Platform platform = Platform::Linux, const char* os = "linux")
+{
+    const BuiltinResolver builtin(platform, ResolverOptions{ .heal = false });
+    const std::vector<BindingDeclaration> declarations{ { kKey, BindingKind::Slot } };
+    return builtin.Resolve("b", ParseGamedata(gamedata, os), { { "server", live.Image() } }, declarations);
+}
+} // namespace
+
+TEST_CASE("Heal off: a Slot Binding whose window matches at its Gamedata index still resolves there")
+{
+    const FakeBuild build(kOldBuild);
+
+    const auto report = ResolveWithHealOff({ { kKey, SlotEntry(build, 4) } }, build);
+
+    REQUIRE(report.Bindings().size() == 1);
+    CHECK(report.Bindings()[0].status == BindingStatus::Resolved);
+    CHECK(report.Bindings()[0].offset == 4);
+    CHECK_FALSE(report.HealEnabled());
+    CHECK(FormatBindingSummary(report) == "Bindings for build b: all 1 resolved, healing off");
+}
+
+TEST_CASE("Heal off: a slot that moved fails as fingerprint mismatch instead of healing, and the report says healing is off")
+{
+    const json gamedata{ { kKey, SlotEntry(FakeBuild(Bodies(40)), 20) } };
+
+    const auto report = ResolveWithHealOff(gamedata, FakeBuild(Inserted(Bodies(40), 5, 1)));
+
+    REQUIRE(report.Bindings().size() == 1);
+    const auto& result = report.Bindings()[0];
+    CHECK(result.status == BindingStatus::Failed);
+    CHECK(result.reason == FailureReason::FingerprintMismatch);
+    REQUIRE(result.slot);
+    CHECK(result.slot->match == vtable::SlotMatch::None);
+    CHECK(FormatHeals(report).empty());
+    CHECK(FormatBindingSummary(report) == "Bindings for build b: 1 of 1 failed: ISource2Server::GameFrame (fingerprint mismatch); healing off");
+    CHECK(json::parse(ResolutionReportToJson(report, {}))["healEnabled"] == false);
+
+    const EngineFeatureDeclaration feature{ "cssharp.server/game-frame", { { kKey, BindingKind::Slot } } };
+    CHECK_FALSE(EvaluateEngineFeature(report, feature).available);
+}
+
+TEST_CASE("Heal off: a window that would match more than once nearby fails as fingerprint mismatch, not an ambiguous heal")
+{
+    const json gamedata{ { kKey, SlotEntry(FakeBuild(kOldBuild), 4) } };
+
+    const auto report = ResolveWithHealOff(gamedata, FakeBuild({ 1, 2, 3, 50, 4, 5, 6, 7, 4, 5, 6, 8 }));
+
+    CHECK(report.Bindings()[0].reason == FailureReason::FingerprintMismatch);
+    CHECK(report.Bindings()[0].matchCount == 1); // the class's primary vtables, as for any Vtable Check
+}
+
+TEST_CASE("Heal off has no effect on Windows: Slot Bindings stay unverified at their Gamedata index")
+{
+    const FakeBuild build(kOldBuild);
+    json gamedata{ { kKey, SlotEntry(build, 4) } };
+    gamedata[kKey]["offsets"]["windows"] = 4;
+
+    const auto report = ResolveWithHealOff(gamedata, FakeBuild(Inserted(kOldBuild, 1, 1)), Platform::Windows, "windows");
+
+    CHECK(report.Bindings()[0].status == BindingStatus::Unverified);
+    CHECK(report.Bindings()[0].offset == 4);
+    CHECK(report.HealEnabled()); // nothing to turn off: the report does not claim healing is off
+    CHECK(FormatBindingSummary(report).find("healing off") == std::string::npos);
+}
+
+TEST_CASE("Heal is on by default, and the report says so in its JSON")
+{
+    const FakeBuild build(kOldBuild);
+    const BuiltinResolver builtin(Platform::Linux);
+    const std::vector<BindingDeclaration> declarations{ { kKey, BindingKind::Slot } };
+
+    const auto report = builtin.Resolve("b", ParseGamedata({ { kKey, SlotEntry(build, 4) } }, "linux"), { { "server", build.Image() } }, declarations);
+
+    CHECK(report.HealEnabled());
+    CHECK(ResolutionReport().HealEnabled());
+    CHECK(json::parse(ResolutionReportToJson(report, {}))["healEnabled"] == true);
+}
+
 TEST_CASE("Committed Gamedata: every game-class virtual carries its Slot Binding fields; struct field offsets are unchanged")
 {
     std::ifstream stream(CSSHARP_GAMEDATA_PATH);

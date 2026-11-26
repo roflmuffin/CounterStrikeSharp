@@ -93,7 +93,7 @@ internal sealed class EngineFeatureSet
     /// The startup report: one block with the build id, how many Engine Features are available, and each disabled one
     /// with its failed Binding and reason. Same wording as native ("Engine Feature X disabled (Key: reason)"). Then every
     /// Heal with its evidence and the vtables whose size changed since Gamedata was generated (same wording as the
-    /// native log), and Slot Bindings used without a Vtable Check.
+    /// native log), Slot Bindings used without a Vtable Check, and whether the operator turned Heal off.
     /// </summary>
     public string FormatStartupReport()
     {
@@ -131,6 +131,34 @@ internal sealed class EngineFeatureSet
         {
             text.Append($"\n  {unverified.Count} Slot Binding(s) unverified (no Vtable Check on this platform or no fingerprint ")
                 .Append($"window in Gamedata): {string.Join(", ", unverified)}");
+        }
+
+        if (!Report.HealEnabled)
+        {
+            text.Append("\n  Healing is off (HealEnabled: false): a Slot Binding that moved fails as fingerprint mismatch");
+        }
+
+        return text.ToString();
+    }
+
+    /// <summary>
+    /// The fatal error for the operator's <see cref="FailMode.Crash"/>: names every disabled Engine Feature with its failed
+    /// Binding and reason, in the startup report's wording. Null when the server keeps running: fail mode
+    /// <see cref="FailMode.Disable"/>, or every Engine Feature available (a Heal counts as available). Only core Engine
+    /// Features count; plugin signatures and schema misses are not in this set.
+    /// </summary>
+    public string? FormatFailModeError(FailMode failMode)
+    {
+        if (failMode != FailMode.Crash) return null;
+
+        var disabled = _all.Where(s => !s.IsAvailable).ToList();
+        if (disabled.Count == 0) return null;
+
+        var text = new StringBuilder($"FailMode is crash and {disabled.Count} of {_all.Count} core Engine Features ")
+            .Append(disabled.Count == 1 ? "is" : "are").Append($" disabled on build {BuildId}, stopping the server:");
+        foreach (var status in disabled)
+        {
+            text.Append("\n  ").Append(status);
         }
 
         return text.ToString();

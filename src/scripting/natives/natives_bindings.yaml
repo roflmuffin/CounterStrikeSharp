@@ -1,1 +1,2 @@
 GET_RESOLUTION_REPORT: -> string
+FAIL_MODE_STOP_SERVER: -> void

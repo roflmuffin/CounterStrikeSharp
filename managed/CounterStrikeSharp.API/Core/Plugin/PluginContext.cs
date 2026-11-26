@@ -18,6 +18,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Core.Bindings;
 using CounterStrikeSharp.API.Core.Capabilities;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
@@ -44,6 +45,9 @@ namespace CounterStrikeSharp.API.Core.Plugin
     public class PluginContext : IPluginContext, ISelfPluginControl
     {
         public PluginState State { get; set; } = PluginState.Unregistered;
+
+        // The plugin's assembly name: how its plugin signatures are attributed.
+        private string? _assemblyName;
         public IPlugin Plugin { get; private set; }
 
         private PluginLoader Loader { get; set; }
@@ -102,6 +106,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         {
                             _logger.LogInformation("Plugin {Name} has been deleted, unloading...", Plugin.ModuleName);
                             Unload(true);
+                            PluginSignatures.ForgetPlugin(_assemblyName);
                         }
                     });
                 };
@@ -133,131 +138,146 @@ namespace CounterStrikeSharp.API.Core.Plugin
             using (Loader.EnterContextualReflection())
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
-
-                Type pluginType = defaultAssembly.GetExportedTypes()
-                    .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
-
-                if (pluginType == null) throw new Exception("Unable to find plugin in assembly");
-
-                var serviceCollection = new ServiceCollection();
-
-                serviceCollection.Scan(scan =>
-                    scan.FromAssemblies(defaultAssembly)
-                        .AddClasses(c => c.AssignableTo<IPlugin>())
-                        .AsSelf()
-                        .WithSingletonLifetime()
-                );
-
-                serviceCollection.AddLogging(builder =>
-                {
-                    builder.ClearProviders();
-                    builder.AddSerilog(new LoggerConfiguration()
-                        .Enrich.FromLogContext()
-                        .Enrich.With(new PluginNameEnricher(this))
-                        .WriteTo.Console(
-                            outputTemplate:
-                            "{Timestamp:HH:mm:ss} [{Level:u4}] (plugin:{PluginName}) {Message:lj}{NewLine}{Exception}")
-                        .WriteTo.File(
-                            Path.Join(new[]
-                            {
-                                _hostConfiguration.RootPath, "logs",
-                                $"log-{pluginType.Assembly.GetName().Name}.txt"
-                            }), rollingInterval: RollingInterval.Day,
-                            outputTemplate:
-                            "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] plugin:{PluginName} {Message:lj}{NewLine}{Exception}")
-                        .WriteTo.Logger(CoreLogging.CombinedLogger)
-                        .CreateLogger());
-                });
-
-                Type interfaceType = typeof(IPluginServiceCollection<>).MakeGenericType(pluginType);
-                Type[] serviceCollectionConfiguratorTypes = AppDomain.CurrentDomain.GetAssemblies()
-                    .SelectMany(assembly => assembly.GetTypes())
-                    .Where(type => interfaceType.IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract)
-                    .ToArray();
-
-                if (serviceCollectionConfiguratorTypes.Any())
-                {
-                    foreach (var t in serviceCollectionConfiguratorTypes)
-                    {
-                        var pluginServiceCollection = Activator.CreateInstance(t);
-                        MethodInfo method = t.GetMethod("ConfigureServices");
-                        method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
-                    }
-                }
-
-                serviceCollection.AddScoped<ICommandManager>(c => _commandManager);
-                serviceCollection.DecorateSingleton<ICommandManager, PluginCommandManagerDecorator>();
-
-                serviceCollection.AddSingleton<IPluginContext>(this);
-                serviceCollection.TryAddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
-                serviceCollection.TryAddTransient(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
-                serviceCollection.TryAddTransient(typeof(IStringLocalizer), typeof(StringLocalizer));
-                ServiceProvider = serviceCollection.BuildServiceProvider();
-
-                var minimumApiVersion = pluginType.GetCustomAttribute<MinimumApiVersion>()?.Version;
-                var currentVersion = Api.GetVersion();
-
-                // Ignore version 0 for local development
-                if (currentVersion > 0 && minimumApiVersion != null && minimumApiVersion > currentVersion)
-                    throw new Exception(
-                        $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
-
-                if (RequiredEngineFeatureCheck.DeclaresAny(pluginType) &&
-                    RequiredEngineFeatureCheck.GetRefusal(pluginType, Path.GetFileName(_path), EngineFeatures.Current) is
-                        { } refusal)
-                    throw new Exception(refusal);
-
-                _logger.LogInformation("Loading plugin {Name}", pluginType.Assembly.GetName().Name);
-
-                _serviceScope = ServiceProvider.CreateScope();
-
-                Plugin = _serviceScope.ServiceProvider.GetRequiredService(pluginType) as IPlugin;
-
-                if (Plugin == null) throw new Exception("Unable to create plugin instance");
-
-                State = PluginState.Loading;
-
-                Plugin.ModulePath = _path;
-                Plugin.Logger = _serviceScope.ServiceProvider.GetRequiredService<ILoggerFactory>()
-                    .CreateLogger(pluginType);
-                Plugin.CommandManager = _serviceScope.ServiceProvider.GetRequiredService<ICommandManager>();
-                Plugin.RegisterAllAttributes(Plugin);
-                Plugin.Localizer = ServiceProvider.GetRequiredService<IStringLocalizer>();
-                Plugin.Logger = ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(pluginType);
-
-                Plugin.InitializeConfig(Plugin, pluginType);
-
-                if (Plugin is BasePlugin basePlugin)
-                {
-                    basePlugin.SelfControl = this;
-                }
-
-                this.TerminationReason = string.Empty;
+                _assemblyName = defaultAssembly.GetName().Name!;
+                PluginSignatures.BeginPluginLoad(_assemblyName, defaultAssembly);
                 try
                 {
-                    Plugin.Load(hotReload);
+                    LoadPlugin(defaultAssembly, hotReload);
                 }
-                catch (Exception ex)
+                finally
                 {
-                    if ((ex.InnerException ?? ex) is PluginTerminationException pluginEx)
-                    {
-                        _logger.LogCritical("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, pluginEx.TerminationReason);
-                        this.TerminationReason = pluginEx.TerminationReason;
-                    }
-                    else
-                    {
-                        _logger.LogError(ex, "Failed to load plugin {Name}", Plugin.ModuleName);
-                        this.TerminationReason = ex.Message ?? "Unknown";
-                    }
+                    // After the initial load the block is logged once by the manager; from then on after every (re)load.
+                    if (PluginSignatures.AllPluginsLoaded) PluginSignatures.LogReport(_logger);
+                }
+            }
+        }
 
-                    Unload(hotReload);
-                    return;
+        private void LoadPlugin(Assembly defaultAssembly, bool hotReload)
+        {
+            Type pluginType = defaultAssembly.GetExportedTypes()
+                .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
+
+            if (pluginType == null) throw new Exception("Unable to find plugin in assembly");
+
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection.Scan(scan =>
+                scan.FromAssemblies(defaultAssembly)
+                    .AddClasses(c => c.AssignableTo<IPlugin>())
+                    .AsSelf()
+                    .WithSingletonLifetime()
+            );
+
+            serviceCollection.AddLogging(builder =>
+            {
+                builder.ClearProviders();
+                builder.AddSerilog(new LoggerConfiguration()
+                    .Enrich.FromLogContext()
+                    .Enrich.With(new PluginNameEnricher(this))
+                    .WriteTo.Console(
+                        outputTemplate:
+                        "{Timestamp:HH:mm:ss} [{Level:u4}] (plugin:{PluginName}) {Message:lj}{NewLine}{Exception}")
+                    .WriteTo.File(
+                        Path.Join(new[]
+                        {
+                            _hostConfiguration.RootPath, "logs",
+                            $"log-{pluginType.Assembly.GetName().Name}.txt"
+                        }), rollingInterval: RollingInterval.Day,
+                        outputTemplate:
+                        "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] plugin:{PluginName} {Message:lj}{NewLine}{Exception}")
+                    .WriteTo.Logger(CoreLogging.CombinedLogger)
+                    .CreateLogger());
+            });
+
+            Type interfaceType = typeof(IPluginServiceCollection<>).MakeGenericType(pluginType);
+            Type[] serviceCollectionConfiguratorTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(type => interfaceType.IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract)
+                .ToArray();
+
+            if (serviceCollectionConfiguratorTypes.Any())
+            {
+                foreach (var t in serviceCollectionConfiguratorTypes)
+                {
+                    var pluginServiceCollection = Activator.CreateInstance(t);
+                    MethodInfo method = t.GetMethod("ConfigureServices");
+                    method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
+                }
+            }
+
+            serviceCollection.AddScoped<ICommandManager>(c => _commandManager);
+            serviceCollection.DecorateSingleton<ICommandManager, PluginCommandManagerDecorator>();
+
+            serviceCollection.AddSingleton<IPluginContext>(this);
+            serviceCollection.TryAddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
+            serviceCollection.TryAddTransient(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
+            serviceCollection.TryAddTransient(typeof(IStringLocalizer), typeof(StringLocalizer));
+            ServiceProvider = serviceCollection.BuildServiceProvider();
+
+            var minimumApiVersion = pluginType.GetCustomAttribute<MinimumApiVersion>()?.Version;
+            var currentVersion = Api.GetVersion();
+
+            // Ignore version 0 for local development
+            if (currentVersion > 0 && minimumApiVersion != null && minimumApiVersion > currentVersion)
+                throw new Exception(
+                    $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. " +
+                    $"The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
+
+            if (RequiredEngineFeatureCheck.DeclaresAny(pluginType) &&
+                RequiredEngineFeatureCheck.GetRefusal(pluginType, Path.GetFileName(_path), EngineFeatures.Current) is
+                    { } refusal)
+                throw new Exception(refusal);
+
+            _logger.LogInformation("Loading plugin {Name}", pluginType.Assembly.GetName().Name);
+
+            _serviceScope = ServiceProvider.CreateScope();
+
+            Plugin = _serviceScope.ServiceProvider.GetRequiredService(pluginType) as IPlugin;
+
+            if (Plugin == null) throw new Exception("Unable to create plugin instance");
+
+            State = PluginState.Loading;
+
+            Plugin.ModulePath = _path;
+            Plugin.Logger = _serviceScope.ServiceProvider.GetRequiredService<ILoggerFactory>()
+                .CreateLogger(pluginType);
+            Plugin.CommandManager = _serviceScope.ServiceProvider.GetRequiredService<ICommandManager>();
+            Plugin.RegisterAllAttributes(Plugin);
+            Plugin.Localizer = ServiceProvider.GetRequiredService<IStringLocalizer>();
+            Plugin.Logger = ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(pluginType);
+
+            Plugin.InitializeConfig(Plugin, pluginType);
+
+            if (Plugin is BasePlugin basePlugin)
+            {
+                basePlugin.SelfControl = this;
+            }
+
+            this.TerminationReason = string.Empty;
+            try
+            {
+                Plugin.Load(hotReload);
+            }
+            catch (Exception ex)
+            {
+                if ((ex.InnerException ?? ex) is PluginTerminationException pluginEx)
+                {
+                    _logger.LogCritical("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, pluginEx.TerminationReason);
+                    this.TerminationReason = pluginEx.TerminationReason;
+                }
+                else
+                {
+                    _logger.LogError(ex, "Failed to load plugin {Name}", Plugin.ModuleName);
+                    this.TerminationReason = ex.Message ?? "Unknown";
                 }
 
-                _logger.LogInformation("Finished loading plugin {Name}", Plugin.ModuleName);
-
-                State = PluginState.Loaded;
+                Unload(hotReload);
+                return;
             }
+
+            _logger.LogInformation("Finished loading plugin {Name}", Plugin.ModuleName);
+
+            State = PluginState.Loaded;
         }
 
 
@@ -265,6 +285,8 @@ namespace CounterStrikeSharp.API.Core.Plugin
         {
             if (State == PluginState.Unloaded) return;
 
+            // Unloaded for good (not reloaded, not a failed load): its plugin signatures no longer apply.
+            if (!hotReload && State == PluginState.Loaded) PluginSignatures.ForgetPlugin(_assemblyName);
             State = PluginState.Unloaded;
             var cachedName = Plugin.ModuleName;
 

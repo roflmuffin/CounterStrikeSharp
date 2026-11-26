@@ -10,5 +10,8 @@
     "UnlockConVars": true,
     "AutoUpdateEnabled": true,
     "AutoUpdateURL": "http://gamedata.cssharp.dev",
-    "MaximumFrameTasksExecutedPerTick": 1024
+    "MaximumFrameTasksExecutedPerTick": 1024,
+    "FailMode": "disable",
+    "HealEnabled": true,
+    "SchemaMissMode": "warn"
 }

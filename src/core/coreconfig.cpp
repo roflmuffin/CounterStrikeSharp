@@ -16,6 +16,8 @@
 
 #include "core/coreconfig.h"
 
+#include <algorithm>
+#include <cctype>
 #include <fstream>
 
 #include "core/log.h"
@@ -62,6 +64,7 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         UnlockConVars = m_json.value("UnlockConVars", UnlockConVars);
         AutoUpdateEnabled = m_json.value("AutoUpdateEnabled", AutoUpdateEnabled);
         AutoUpdateURL = m_json.value("AutoUpdateURL", AutoUpdateURL);
+        ReadOperatorSettings();
     }
     catch (const std::exception& ex)
     {
@@ -70,6 +73,31 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
     }
 
     return true;
+}
+
+// Same rules as managed CoreConfig: case-insensitive, surrounding whitespace ignored, and a value that is not one of the
+// modes (or not of the right type) falls back to the default for that key only, with a warning.
+void CCoreConfig::ReadOperatorSettings()
+{
+    FailMode = "disable";
+    if (const auto failMode = m_json.find("FailMode"); failMode != m_json.end() && !failMode->is_null())
+    {
+        std::string mode = failMode->is_string() ? failMode->get<std::string>() : std::string();
+        mode.erase(0, mode.find_first_not_of(" \t\r\n"));
+        mode.erase(mode.find_last_not_of(" \t\r\n") + 1);
+        std::transform(mode.begin(), mode.end(), mode.begin(), [](unsigned char c) { return std::tolower(c); });
+        if (failMode->is_string() && (mode.empty() || mode == "disable" || mode == "crash")) FailMode = mode.empty() ? "disable" : mode;
+        else
+            CSSHARP_CORE_WARN("CoreConfig FailMode {} is not \"disable\" or \"crash\", using \"disable\"", failMode->dump());
+    }
+
+    HealEnabled = true;
+    if (const auto heal = m_json.find("HealEnabled"); heal != m_json.end() && !heal->is_null())
+    {
+        if (heal->is_boolean()) HealEnabled = heal->get<bool>();
+        else
+            CSSHARP_CORE_WARN("CoreConfig HealEnabled {} is not true or false, using true", heal->dump());
+    }
 }
 
 const std::string CCoreConfig::GetPath() const { return m_sPath; }

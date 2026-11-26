@@ -36,6 +36,14 @@ _Avoid_: gamedata status, binding state
 An Engine Feature a plugin declares it cannot run without; if it is disabled, that plugin does not load.
 _Avoid_: dependency (ambiguous with plugin dependencies)
 
+**Fail Mode**:
+The operator's server-wide choice of what a disabled core Engine Feature does: `disable` (fail soft, the default) keeps the server running without it; `crash` logs the startup report and stops the server. The server-wide counterpart of a plugin's Required Engine Features.
+_Avoid_: strict mode (that is the per-signature opt-in for plugin signatures)
+
+**Plugin Signature**:
+A signature a plugin resolves itself, raw or from a Gamedata file it ships. Reported per plugin with its match count and outcome, apart from the Resolution Report; it never disables an Engine Feature or triggers the Fail Mode.
+_Avoid_: Binding (Bindings are CounterStrikeSharp's own)
+
 **Game update**:
 A new CS2 build shipped by Valve. It may move or remove things Bindings point at.
 _Avoid_: patch (ambiguous with binary patches)

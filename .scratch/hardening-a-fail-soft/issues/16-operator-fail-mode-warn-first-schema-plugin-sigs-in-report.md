@@ -11,7 +11,7 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API, Schema fields
 
 **Blocked by:** 05, 07, 13, 14 (all resolved); spec B 03 for the heal switch (resolved on `hardening/impl`)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Tier:** 2 add-on · must
 
@@ -24,3 +24,23 @@ Spec: `.scratch/hardening-a-fail-soft/spec.md` (Plugin-facing API, Schema fields
 - [ ] Plugins can list plugin-signature entries through the query API
 - [ ] Managed unit tests for config parsing and defaults, the warn-mode accessors, and plugin-signature report formatting
 - [ ] Windows behaves the same, except that `HealEnabled` has no effect there (no Heal on Windows)
+
+## What was built
+
+Branch `spec-a/16-operator-fail-mode-warn-first-schema-plugin-sigs` (base `hardening/impl` 2526fe5f).
+
+1. **FailMode.** core.json `FailMode: disable | crash` (default `disable`). It is read by native (`CCoreConfig`) and by managed (`CoreConfig.FailMode`), and both use the same rules: case-insensitive, surrounding whitespace ignored, and an unknown value or wrong type falls back to `disable` for that key only, with a warning. After the startup report, `EngineFeatures.ApplyFailMode` logs a critical "FailMode is crash and N of M core Engine Features is/are disabled on build X, stopping the server:" followed by the disabled features in the startup report's wording. It then calls the new native `FAIL_MODE_STOP_SERVER`, which logs, flushes and `_Exit(1)`s before plugins load. The native refuses unless FailMode is crash and a core Binding failed, so a plugin cannot use it on a healthy server. Healed Bindings count as available.
+2. **HealEnabled.** core.json `HealEnabled` (default `true`), read by native into `ResolverOptions{ heal }` of `BuiltinResolver`. With it off, a Slot Binding gets only the Vtable Check at its Gamedata index, and a moved slot fails as `FingerprintMismatch` (never `AmbiguousHeal`). `ResolutionReport::HealEnabled()` goes to managed as JSON `healEnabled`. The native summary line ends with "; healing off" (or ", healing off"), and the startup report adds "Healing is off (HealEnabled: false): ...". On Windows the report always says Heal is on, because there is no Vtable Check and so no Heal to turn off.
+3. **SchemaMissMode.** core.json `SchemaMissMode: warn | throw` (default `warn`). In warn mode, the first access to a missing field logs one warning ("... reads return the default value and writes are dropped. A later release will throw instead (SchemaMissMode: throw)"). Accessors return `default` (strings `""`) or a throwaway location (`GetRef`, `GetFixedArray`), drop writes, and never touch offset 0. `Schema.GetSchemaOffset` still throws in both modes, because its caller adds the offset to a pointer itself. Throw mode behaves as ticket 13.
+4. **Plugin Signatures.** `SignatureFunctions.Create` records one `PluginSignatureEntry` (plugin, signature, Gamedata key(s) if read via `GameData.GetSignature`, module, match count, outcome, strict) per plugin, module, signature and strict mode. The plugin is the first stack frame outside the core and runtime load contexts, mapped to the plugin's assembly name. `EngineFeatures.GetPluginSignatures()` lists them. The block "Plugin signatures: N of M ambiguous or failed:" is logged after the initial plugin load and after each later (re)load. A plugin's entries are replaced on reload and dropped on a permanent unload. Core signatures are never recorded.
+
+**Also fixed (found here):** since ticket 13, `Utilities.SetStateChanged` threw `SchemaFieldNotFoundException` for every class without `__m_pChainEntity`, which is all but 22 component classes (e.g. `CBaseEntity`, `CCSPlayerController`). The chain probe is now quiet (`Schema.TryGetSchemaOffset`, misses not cached) and treats a miss as no chain. Strict mode now rejects an ambiguous signature even after a non-strict caller bound it (the strict check used to run after the function cache).
+
+**Deviations:** `GetSchemaValue_MissingField_ThrowsInsteadOfReadingOffsetZero` (ticket 13) now returns early unless `SchemaMissMode` is throw. The e2e throw case runs it, and a new warn-mode twin covers the default. `PluginSignatureOutcome` has two outcomes beyond the four listed: `InvalidPattern` and `Unbound`. The `PluginContext.Load` body moved into `LoadPlugin` so the block can be logged in a `finally`.
+
+**Code review** (two-axis, 2526fe5f..a8c500be). All findings were fixed except two. The `LoadPlugin` move stays because the try/finally needs it. `ResolverOptions` stays a struct.
+
+**Tests:** native doctest, CI mode (`CSSHARP_BUILD_ARCHIVE=/nonexistent`): 130 pass, 31 skipped (+5 heal-off cases). With the archive and `CSSHARP_SERVER_BINARY`, `contract: every committed Slot Binding verifies...` aborts (SIGABRT) on clean `hardening/impl` too. That failure is pre-existing and not investigated. Managed: 316 pass (+42: config parsing and defaults, FailMode decision, heal-off report, warn and throw accessors, the plugin signature report). E2E: all 19 cases pass in one run, including the new `eng/e2e/cases/fail-mode.sh`. It covers crash with Host_Say ambiguous (exit 1, startup report before the fatal error, `" Crash "` with whitespace), crash with 10 healed Slot Bindings (keeps running), HealEnabled false (fingerprint mismatch, "healing off"), the smoke suite's schema tests in warn and in throw mode, and a fixture plugin (`managed/CounterStrikeSharp.Tests.PluginSignatures`) whose block shows up again after `css_plugins reload`. Windows was not compiled.
+
+**Left over:** flip `SchemaMissMode` to `throw` after at least one release (later ticket). The archive contract-test abort.
+

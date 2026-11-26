@@ -57,11 +57,43 @@ public static class EngineFeatures
     /// <summary>Every Engine Feature this version declares, with its status, ordered by name.</summary>
     public static IReadOnlyList<EngineFeatureStatus> GetAll() => Current.GetAll();
 
+    /// <summary>
+    /// Every signature plugins resolved so far (memory functions and virtual functions created from a raw signature or a
+    /// plugin's Gamedata), one entry per plugin, module and signature, ordered by plugin. Separate from the Engine
+    /// Features: a plugin signature never disables one. A plugin's entries are replaced when it loads again.
+    /// </summary>
+    public static IReadOnlyList<PluginSignatureEntry> GetPluginSignatures() => PluginSignatures.All;
+
     /// <summary>Builds the set from the native report and logs the startup report (one block).</summary>
     internal static void LogStartupReport(ILogger logger)
     {
         var current = Current;
         logger.Log(current.AnyDisabled ? LogLevel.Warning : LogLevel.Information, "{StartupReport}",
             current.FormatStartupReport());
+    }
+
+    /// <summary>Stops the server (native). Tests replace it.</summary>
+    internal static Action StopServer = NativeAPI.FailModeStopServer;
+
+    /// <summary>
+    /// The operator's <see cref="FailMode"/>, applied after the startup report: with <see cref="FailMode.Crash"/> and any
+    /// core Engine Feature disabled, logs the fatal error naming them and stops the server. Returns false if it did not
+    /// stop the server (normally, the server keeps running).
+    /// </summary>
+    internal static bool ApplyFailMode(ILogger logger, FailMode failMode)
+    {
+        if (Current.FormatFailModeError(failMode) is not { } error) return false;
+
+        logger.LogCritical("{FailModeError}", error);
+        try
+        {
+            StopServer();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Could not stop the server for FailMode crash; it keeps running with the Engine Features above disabled");
+            return false;
+        }
     }
 }

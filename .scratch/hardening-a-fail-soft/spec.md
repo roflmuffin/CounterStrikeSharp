@@ -168,15 +168,19 @@ CounterStrikeSharp resolves every core Binding once at boot into a single immuta
 - A plugin class attribute declaring Required Engine Features by name, checked at plugin load next to the existing minimum-API-version check, with the same style of clear refusal message.
 - A typed exception for a missing schema field, carrying class and field name; logged once per field.
 - Raw signatures passed by plugins: first match retained; a warning with the match count when ambiguous; an opt-in strict flag that fails on ambiguity instead.
+- (Ticket 16) Plugin Signatures as a separate list next to the Engine Features (`EngineFeatures.GetPluginSignatures()`): plugin, signature or Gamedata key, module, match count, outcome.
 
 ### Schema fields (I3)
 
 - Native schema lookup reports class-missing and field-missing explicitly instead of returning offset 0, and never dereferences a missing class.
 - Managed schema access caches the explicit "missing" result and throws the typed exception on access; it never reads or writes at offset 0 for a missing field.
+- (Ticket 16) Warn first: core.json `SchemaMissMode` is `warn` by default for now. A missing field logs one warning per field saying it will throw in a later release; the accessors return the type's default value (an empty string for strings) and drop writes. `throw` is the behaviour above. `Schema.GetSchemaOffset` throws in both modes, since its caller adds the offset to a pointer itself. A later ticket flips the default to `throw` after at least one release.
 
 ### Startup report
 
 - One block after managed load: the build id, the count of available Engine Features, and for each disabled one its name, the failed Binding and the reason. Consistent wording and severity, replacing the scattered error/critical/warning/silent messages for core Binding failures.
+- (Ticket 16) It says when Heal is off (`HealEnabled: false`; never on Windows, which has no Heal). With `FailMode: crash` and any core Engine Feature disabled, a fatal error naming them follows the block and the server stops (exit code 1) before plugins load. The stop native refuses unless FailMode is crash and a core Binding failed. Both config readers (native and managed) take the modes case-insensitively, ignore surrounding whitespace, and fall back to the default for that key only (with a warning) on an unknown value or wrong type.
+- (Ticket 16) A separate "plugin signatures" block lists the Plugin Signatures not resolved to exactly one match (ambiguous, not found, invalid, or rejected under strict mode), with plugin and match count. It is logged once after all plugins have loaded and again after each plugin (re)load. A plugin's entries are replaced when it loads again and dropped when it is unloaded for good.
 
 ## Testing Decisions
 

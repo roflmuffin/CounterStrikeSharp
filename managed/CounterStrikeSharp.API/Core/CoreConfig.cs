@@ -70,6 +70,12 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("MaximumFrameTasksExecutedPerTick")]
         public int MaximumFrameTasksExecutedPerTick { get; set; } = 1024;
+
+        // Kept as raw JSON so a typo or a wrong type falls back to the default for this key only (with a warning), not for
+        // the whole file. HealEnabled is read by native only (the resolver); the Resolution Report says whether it was on.
+        [JsonPropertyName("FailMode")] public JsonElement? FailMode { get; set; }
+
+        [JsonPropertyName("SchemaMissMode")] public JsonElement? SchemaMissMode { get; set; }
     }
 
     /// <summary>
@@ -127,6 +133,51 @@ namespace CounterStrikeSharp.API.Core
         public static bool UnlockConVars => _coreConfig.UnlockConVars;
 
         public static int MaximumFrameTasksExecutedPerTick => _coreConfig.MaximumFrameTasksExecutedPerTick;
+
+        /// <summary>
+        /// What happens when a core Engine Feature is disabled after boot resolution (<c>"FailMode"</c> in core.json):
+        /// <see cref="Core.FailMode.Disable"/> (the default) keeps the server running without it;
+        /// <see cref="Core.FailMode.Crash"/> logs the startup report and stops the server. Read once at startup.
+        /// </summary>
+        public static FailMode FailMode { get; internal set; } = FailMode.Disable;
+
+        /// <summary>
+        /// What accessing a schema field missing from the running build does (<c>"SchemaMissMode"</c> in core.json):
+        /// <see cref="Core.SchemaMissMode.Warn"/> (the default for now) logs one warning per field, reads return the
+        /// type's default value and writes are dropped; <see cref="Core.SchemaMissMode.Throw"/> throws
+        /// <see cref="Modules.Memory.SchemaFieldNotFoundException"/>. A later release makes <c>Throw</c> the default.
+        /// </summary>
+        public static SchemaMissMode SchemaMissMode { get; internal set; } = SchemaMissMode.Warn;
+
+        /// <summary>
+        /// The mode named by <paramref name="value"/> (case-insensitive), or <paramref name="fallback"/> if it is
+        /// absent; null if it names no mode.
+        /// </summary>
+        internal static TMode? ParseMode<TMode>(string? value, TMode fallback) where TMode : struct, Enum
+        {
+            if (string.IsNullOrWhiteSpace(value)) return fallback;
+            return Enum.TryParse<TMode>(value.Trim(), ignoreCase: true, out var mode) && Enum.IsDefined(mode) && !int.TryParse(value, out _)
+                ? mode
+                : null;
+        }
+
+        private static TMode ReadMode<TMode>(string key, JsonElement? value, TMode fallback, ILogger logger) where TMode : struct, Enum
+        {
+            var text = value is { ValueKind: JsonValueKind.String } element ? element.GetString() : null;
+            var absent = value is null or { ValueKind: JsonValueKind.Null };
+            if ((absent || text != null) && ParseMode(text, fallback) is { } mode) return mode;
+
+            var modes = string.Join(", ", Enum.GetNames<TMode>().Select(n => $"\"{n.ToLowerInvariant()}\""));
+            logger.LogWarning("Core configuration {Key} {Value} is not one of {Modes}, using \"{Fallback}\"", key,
+                value?.GetRawText(), modes, fallback.ToString().ToLowerInvariant());
+            return fallback;
+        }
+
+        internal static void ApplyModes(CoreConfigData data, ILogger logger)
+        {
+            FailMode = ReadMode("FailMode", data.FailMode, FailMode.Disable, logger);
+            SchemaMissMode = ReadMode("SchemaMissMode", data.SchemaMissMode, SchemaMissMode.Warn, logger);
+        }
     }
 
     public partial class CoreConfig : IStartupService
@@ -187,6 +238,8 @@ namespace CounterStrikeSharp.API.Core
                     _coreConfigPath);
             }
 
+            ApplyModes(_coreConfig, _logger);
+
             var serverCulture = CultureInfo.GetCultures(CultureTypes.AllCultures)
                 .FirstOrDefault(x => x.Name == ServerLanguage);
             if (serverCulture == null)
@@ -212,5 +265,29 @@ namespace CounterStrikeSharp.API.Core
 
             _logger.LogInformation("Successfully loaded core configuration");
         }
+    }
+
+    /// <summary>
+    /// The operator's choice when a core Engine Feature is disabled after boot resolution (ADR-0002).
+    /// </summary>
+    public enum FailMode
+    {
+        /// <summary>Fail soft: the server keeps running and only that Engine Feature is off.</summary>
+        Disable,
+
+        /// <summary>Log the startup report, then stop the server with a fatal error naming the disabled Engine Features.</summary>
+        Crash,
+    }
+
+    /// <summary>
+    /// What accessing a schema field that is missing from the running build does.
+    /// </summary>
+    public enum SchemaMissMode
+    {
+        /// <summary>Log one warning per field; reads return the type's default value and writes are dropped.</summary>
+        Warn,
+
+        /// <summary>Throw <see cref="Modules.Memory.SchemaFieldNotFoundException"/> on every access.</summary>
+        Throw,
     }
 }

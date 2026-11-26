@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection.Metadata;
@@ -17,8 +18,23 @@ public class Schema
     record SchemaKey(string ClassName, string PropertyName);
 
     // Offset per field, or a negative miss from the native lookup (cached too, so a miss is logged once).
-    private static Dictionary<SchemaKey, int> _schemaOffsets = new();
+    private static readonly ConcurrentDictionary<SchemaKey, int> _schemaOffsets = new();
     private const int SchemaClassMissing = -1;
+
+    // Seams for unit tests (NativeAPI is not callable outside the server).
+    internal static Func<string, string, int> LookupField = NativeAPI.LookupSchemaField;
+
+    private static ILogger? _logger;
+
+    // Setting null restores the core logger.
+    [System.Diagnostics.CodeAnalysis.AllowNull]
+    internal static ILogger Logger
+    {
+        get => _logger ??= CoreLogging.Factory.CreateLogger("Schema");
+        set => _logger = value;
+    }
+
+    internal static void ClearCache() => _schemaOffsets.Clear();
 
     private static HashSet<string> _cs2BadList = new HashSet<string>()
     {
@@ -62,48 +78,111 @@ public class Schema
 
     public static int GetClassSize(string className) => NativeAPI.GetSchemaClassSize(className);
 
+    /// <summary>
+    /// The offset of a schema field in its class. Unlike the accessors below, this throws for a missing field in every
+    /// <see cref="CoreConfig.SchemaMissMode"/>: the caller would add the offset to a pointer itself.
+    /// </summary>
+    /// <exception cref="SchemaFieldNotFoundException">The class or field is not in the schema.</exception>
     public static short GetSchemaOffset(string className, string propertyName)
+    {
+        ThrowIfGuidelinesBlock(className, propertyName);
+
+        var offset = LookupOffset(className, propertyName);
+        if (offset < 0) throw MissException(className, propertyName, offset);
+
+        return (short)offset;
+    }
+
+    /// <summary>
+    /// The offset, or false without logging if the field is missing (for fields only some classes have). A miss found
+    /// this way is not cached, so a later access through an accessor still logs it.
+    /// </summary>
+    internal static bool TryGetSchemaOffset(string className, string propertyName, out short offset)
+    {
+        var key = new SchemaKey(className, propertyName);
+        var found = _schemaOffsets.TryGetValue(key, out var cached) ? cached : LookupField(className, propertyName);
+        if (found >= 0) _schemaOffsets.TryAdd(key, found);
+        offset = found < 0 ? (short)0 : (short)found;
+        return found >= 0;
+    }
+
+    private static void ThrowIfGuidelinesBlock(string className, string propertyName)
     {
         if (CoreConfig.FollowCS2ServerGuidelines && _cs2BadList.Contains(propertyName))
         {
             throw new Exception($"Cannot set or get '{className}::{propertyName}' with \"FollowCS2ServerGuidelines\" option enabled.");
         }
-
-        return GetFieldOffset(className, propertyName);
     }
 
-    /// <exception cref="SchemaFieldNotFoundException">The class or field is not in the schema.</exception>
-    private static short GetFieldOffset(string className, string propertyName)
+    private static bool MissThrows => CoreConfig.SchemaMissMode == SchemaMissMode.Throw;
+
+    private static string DescribeMiss(int offset) => offset == SchemaClassMissing ? "class missing" : "field missing";
+
+    private static SchemaFieldNotFoundException MissException(string className, string propertyName, int offset) =>
+        new(className, propertyName, offset == SchemaClassMissing);
+
+    // The cached native lookup: the offset, or a negative miss. The first miss of a field is logged once, in the wording
+    // of the current SchemaMissMode.
+    private static int LookupOffset(string className, string propertyName)
     {
         var key = new SchemaKey(className, propertyName);
-        if (!_schemaOffsets.TryGetValue(key, out var offset))
-        {
-            offset = NativeAPI.LookupSchemaField(className, propertyName);
-            _schemaOffsets.Add(key, offset);
+        if (_schemaOffsets.TryGetValue(key, out var offset)) return offset;
 
-            if (offset < 0)
-            {
-                CoreLogging.Factory.CreateLogger("Schema").LogError(
-                    "Schema field {ClassName}::{FieldName} not found ({Reason}); accessing it throws",
-                    className, propertyName, offset == SchemaClassMissing ? "class missing" : "field missing");
-            }
+        offset = LookupField(className, propertyName);
+        if (!_schemaOffsets.TryAdd(key, offset) || offset >= 0) return offset;
+
+        if (MissThrows)
+        {
+            Logger.LogError("Schema field {ClassName}::{FieldName} not found ({Reason}); accessing it throws",
+                className, propertyName, DescribeMiss(offset));
+        }
+        else
+        {
+            Logger.LogWarning(
+                "Schema field {ClassName}::{FieldName} not found ({Reason}); reads return the default value and writes are dropped. " +
+                "A later release will throw instead (SchemaMissMode: throw)",
+                className, propertyName, DescribeMiss(offset));
         }
 
-        if (offset < 0) throw new SchemaFieldNotFoundException(className, propertyName, offset == SchemaClassMissing);
-
-        return (short)offset;
+        return offset;
     }
+
+    /// <summary>
+    /// The offset of a field for an accessor, or null for a missing field in <see cref="SchemaMissMode.Warn"/>: the
+    /// accessor then returns the type's default value or drops the write. Never 0 for a missing field.
+    /// </summary>
+    /// <exception cref="SchemaFieldNotFoundException">The field is missing and the mode is <see cref="SchemaMissMode.Throw"/>.</exception>
+    private static short? AccessorOffset(string className, string propertyName)
+    {
+        var offset = LookupOffset(className, propertyName);
+        if (offset >= 0) return (short)offset;
+        if (MissThrows) throw MissException(className, propertyName, offset);
+        return null;
+    }
+
+    // Same, after the FollowCS2ServerGuidelines check.
+    private static short? GuardedAccessorOffset(string className, string propertyName)
+    {
+        ThrowIfGuidelinesBlock(className, propertyName);
+        return AccessorOffset(className, propertyName);
+    }
+
+    // A location nothing else reads: a missing field's reads see the default value, its writes go nowhere.
+    private static ref T Discard<T>() => ref (new T[1])[0];
 
     public static bool IsSchemaFieldNetworked(string className, string propertyName)
     {
         return NativeAPI.IsSchemaFieldNetworked(className, propertyName);
     }
 
+    // Accessors: a missing field throws SchemaFieldNotFoundException in SchemaMissMode.Throw; in Warn, reads return the
+    // type's default value (an empty string for strings) and writes are dropped.
+
     public static T GetSchemaValue<T>(IntPtr handle, string className, string propertyName)
     {
         if (handle == IntPtr.Zero) throw new ArgumentNullException(nameof(handle), "Schema target points to null.");
 
-        GetFieldOffset(className, propertyName);
+        if (AccessorOffset(className, propertyName) == null) return default!;
         return NativeAPI.GetSchemaValueByName<T>(handle, (int)typeof(T).ToDataType(), className, propertyName);
     }
 
@@ -111,12 +190,7 @@ public class Schema
     {
         if (handle == IntPtr.Zero) throw new ArgumentNullException(nameof(handle), "Schema target points to null.");
 
-        if (CoreConfig.FollowCS2ServerGuidelines && _cs2BadList.Contains(propertyName))
-        {
-            throw new Exception($"Cannot set or get '{className}::{propertyName}' with \"FollowCS2ServerGuidelines\" option enabled.");
-        }
-
-        GetFieldOffset(className, propertyName);
+        if (GuardedAccessorOffset(className, propertyName) == null) return;
         NativeAPI.SetSchemaValueByName<T>(handle, (int)typeof(T).ToDataType(), className, propertyName, value);
     }
 
@@ -124,14 +198,16 @@ public class Schema
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
-        return FastNew.CreateInstance<T, IntPtr>(pointer + GetSchemaOffset(className, memberName));
+        if (GuardedAccessorOffset(className, memberName) is not { } offset) return default!;
+        return FastNew.CreateInstance<T, IntPtr>(pointer + offset);
     }
 
     public static unsafe ref T GetRef<T>(IntPtr pointer, string className, string memberName)
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
-        return ref Unsafe.AsRef<T>((void*)(pointer + GetSchemaOffset(className, memberName)));
+        if (GuardedAccessorOffset(className, memberName) is not { } offset) return ref Discard<T>();
+        return ref Unsafe.AsRef<T>((void*)(pointer + offset));
     }
 
     public static T GetPointer<T>(IntPtr pointer)
@@ -149,7 +225,8 @@ public class Schema
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
-        var pointerTo = Marshal.ReadIntPtr(pointer + GetSchemaOffset(className, memberName));
+        if (GuardedAccessorOffset(className, memberName) is not { } offset) return default!;
+        var pointerTo = Marshal.ReadIntPtr(pointer + offset);
         if (pointerTo == IntPtr.Zero)
         {
             return default;
@@ -162,7 +239,8 @@ public class Schema
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
-        Span<T> span = new((void*)(pointer + GetSchemaOffset(className, memberName)), count);
+        if (GuardedAccessorOffset(className, memberName) is not { } offset) return new T[count];
+        Span<T> span = new((void*)(pointer + offset), count);
         return span;
     }
 
@@ -173,7 +251,7 @@ public class Schema
     /// <returns></returns>
     public static string GetString(IntPtr pointer, string className, string memberName)
     {
-        return GetSchemaValue<string>(pointer, className, memberName);
+        return GetSchemaValue<string>(pointer, className, memberName) ?? string.Empty;
     }
 
     /// <summary>
@@ -186,7 +264,8 @@ public class Schema
     /// <returns></returns>
     public static string GetUtf8String(IntPtr pointer, string className, string memberName)
     {
-        return Utilities.ReadStringUtf8(pointer + GetSchemaOffset(className, memberName));
+        if (GuardedAccessorOffset(className, memberName) is not { } offset) return string.Empty;
+        return Utilities.ReadStringUtf8(pointer + offset);
     }
 
     // Used to write to `string_t` and `char*` pointer type strings
@@ -198,7 +277,9 @@ public class Schema
     // Used to write to the char[] specified at the schema location, i.e. char m_iszPlayerName[128]; 
     internal unsafe static void SetStringBytes(IntPtr pointer, string className, string memberName, string value, int maxLength)
     {
-        var handle = GetSchemaValue<IntPtr>(pointer, className, memberName);
+        if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
+        if (GuardedAccessorOffset(className, memberName) == null) return;
+        var handle = NativeAPI.GetSchemaValueByName<IntPtr>(pointer, (int)DataType.DATA_TYPE_POINTER, className, memberName);
 
         var bytes = Encoding.UTF8.GetBytes(value);
         if (bytes.Length >= maxLength)
@@ -216,10 +297,11 @@ public class Schema
 
     public static T GetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName)
     {
+        if (GuardedAccessorOffset(className, memberName) is not { } offset) return default!;
         var type = typeof(T);
         object result = type switch
         {
-            _ when type == typeof(Color) => Marshaling.ColorMarshaler.NativeToManaged(pointer + GetSchemaOffset(className, memberName)),
+            _ when type == typeof(Color) => Marshaling.ColorMarshaler.NativeToManaged(pointer + offset),
             _ => throw new NotSupportedException(),
         };
 
@@ -228,11 +310,12 @@ public class Schema
 
     public static void SetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName, T value)
     {
+        if (GuardedAccessorOffset(className, memberName) is not { } offset) return;
         var type = typeof(T);
         switch (type)
         {
             case var _ when value is Color c:
-                Marshaling.ColorMarshaler.ManagedToNative(pointer + GetSchemaOffset(className, memberName), c);
+                Marshaling.ColorMarshaler.ManagedToNative(pointer + offset, c);
                 break;
             default:
                 throw new NotSupportedException();

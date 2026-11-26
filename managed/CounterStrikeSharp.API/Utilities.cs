@@ -251,7 +251,9 @@ namespace CounterStrikeSharp.API
             return FastNew.CreateInstance<T, IntPtr>(pointerTo);
         }
 
-        private static int FindSchemaChain(string className) => Schema.GetSchemaOffset(className, "__m_pChainEntity");
+        // Only some classes have a chain entity: a miss is the normal case, not a missing field to report.
+        private static int FindSchemaChain(string className) =>
+            Schema.TryGetSchemaOffset(className, "__m_pChainEntity", out var offset) ? offset : 0;
 
         /// <summary>
         /// Marks a field as changed for network transmission.
