@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-A .NET plugin framework for Counter-Strike 2 dedicated servers. A native Metamod plugin binds to the game binaries; managed plugins use the API it exposes.
+A .NET plugin framework for Counter-Strike 2 dedicated servers. A native core, loaded as a Metamod plugin (Plugin Mode) or through its own Proxy (Proxy Mode), binds to the game binaries; managed plugins use the API it exposes.
 
 ## Game binding
 
@@ -39,3 +39,25 @@ _Avoid_: dependency (ambiguous with plugin dependencies)
 **Game update**:
 A new CS2 build shipped by Valve. It may move or remove things Bindings point at.
 _Avoid_: patch (ambiguous with binary patches)
+
+## Loading
+
+**Host**:
+What CounterStrikeSharp's core runs on: the provider of engine and server factories, level start/end, console output and the KHook instance. One of two kinds per process: the Metamod host or the own host.
+_Avoid_: platform, environment
+
+**Plugin Mode**:
+CounterStrikeSharp loaded by Metamod as a Metamod plugin, using Metamod's KHook. The default install, and how CounterStrikeSharp has always loaded.
+_Avoid_: Metamod mode, legacy mode
+
+**Proxy Mode**:
+CounterStrikeSharp loaded through its own Proxy as the game DLL, using its own KHook. Opted into with one `gameinfo.gi` line; works with or without Metamod installed.
+_Avoid_: standalone (ambiguous: Proxy Mode may run alongside Metamod), own-loader mode
+
+**Proxy**:
+CounterStrikeSharp's `libserver.so`/`server.dll` that sits where the engine (or Metamod's loader) expects the game DLL, loads the real server and the core, and passes every interface through unchanged.
+_Avoid_: loader (Metamod's loader is also a loader), shim
+
+**Bootstrap**:
+The thin Metamod plugin shipped with CounterStrikeSharp. In Plugin Mode it loads the core; in Proxy Mode it only hands Metamod's API to the already-running core so `MetaFactory` works. The only code that includes Metamod headers.
+_Avoid_: shim, stub

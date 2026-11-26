@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>CS2 Update Breakage Study</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
@@ -6,15 +7,15 @@
 :root{
   --bg:#f3f4f6; --surface:#ffffff; --fg:#1b2230; --muted:#5d6676; --line:#d9dde4;
   --accent:#2f5fb3; --done:#2e7d4f; --run:#b26a00; --todo:#8a93a3; --code:#eef1f6;
-  --track:#e6e9ee; --s-inc:#2a78d6; --s-ide:#eb6834; --s-chk:#1baf7a; --s-hdr:#8b93a1; --bad:#c43c3b;
+  --track:#e6e9ee; --s-inc:#2a78d6; --s-a:#a9cbf2; --s-ab:#649fe4; --s-ide:#eb6834; --s-chk:#1baf7a; --s-hdr:#8b93a1; --s-pub:#163f7d; --s-ipub:#a63c0e; --s-icore:#5a1d04; --k-data:#0d8a8c; --k-chk:#7652c8; --k-mix:#c08400; --k-hdr:#7f8aa3; --bad:#c43c3b;
   --display:"Space Grotesk",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#12161d; --surface:#1a2029; --fg:#e3e7ee; --muted:#9aa3b2; --line:#2b3340;
-  --accent:#7ea6ec; --done:#5cc48a; --run:#e6a23c; --todo:#6c7586; --code:#202733; --track:#262e3a; --s-inc:#3987e5; --s-ide:#d95926; --s-chk:#199e70; --s-hdr:#6c7586; --bad:#e66767; color-scheme:dark}}
+  --accent:#7ea6ec; --done:#5cc48a; --run:#e6a23c; --todo:#6c7586; --code:#202733; --track:#262e3a; --s-inc:#3987e5; --s-a:#1c3f6b; --s-ab:#2b62a6; --s-ide:#d95926; --s-chk:#199e70; --s-hdr:#6c7586; --s-pub:#a9cdfa; --s-ipub:#ffb38c; --s-icore:#ffe1d1; --k-data:#2fb6b8; --k-chk:#a690f2; --k-mix:#e3a72a; --k-hdr:#7d879e; --bad:#e66767; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12161d; --surface:#1a2029; --fg:#e3e7ee; --muted:#9aa3b2; --line:#2b3340;
-  --accent:#7ea6ec; --done:#5cc48a; --run:#e6a23c; --todo:#6c7586; --code:#202733; --track:#262e3a; --s-inc:#3987e5; --s-ide:#d95926; --s-chk:#199e70; --s-hdr:#6c7586; --bad:#e66767; color-scheme:dark}
+  --accent:#7ea6ec; --done:#5cc48a; --run:#e6a23c; --todo:#6c7586; --code:#202733; --track:#262e3a; --s-inc:#3987e5; --s-a:#1c3f6b; --s-ab:#2b62a6; --s-ide:#d95926; --s-chk:#199e70; --s-hdr:#6c7586; --s-pub:#a9cdfa; --s-ipub:#ffb38c; --s-icore:#ffe1d1; --k-data:#2fb6b8; --k-chk:#a690f2; --k-mix:#e3a72a; --k-hdr:#7d879e; --bad:#e66767; color-scheme:dark}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.6}
 .wrap{max-width:860px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
@@ -55,22 +56,50 @@ a{color:var(--accent)}
 .cb-head>span{color:var(--muted);font-size:.85rem}
 .cb-cap{margin-left:auto;font-family:var(--mono);font-size:.76rem!important}
 .cb-cap b{color:var(--fg);font-variant-numeric:tabular-nums}
-.cb-row{display:grid;grid-template-columns:92px 1fr 64px 48px;gap:10px;align-items:center;font-size:.85rem}
+.cb-row{display:grid;grid-template-columns:104px 1fr 76px 48px;gap:10px;align-items:center;font-size:.85rem}
 .cb-lab{color:var(--muted)}
 .cb-track{position:relative;height:14px;background:var(--track);border-radius:4px;cursor:default}
 .cb-fill{position:absolute;inset:0 auto 0 0;border-radius:4px;min-width:0}
-.cb-fill.inc{background:var(--s-inc)} .cb-fill.ide{background:var(--s-ide)} .cb-fill.chk{background:var(--s-chk)}
+.cb-fill.inc{background:var(--s-inc)} .cb-fill.ide{background:var(--s-ide)} .cb-fill.chk{background:var(--s-icore)}
+.cb-val{white-space:nowrap}
 .cb-val,.cb-red{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
 .cb-red{color:var(--done);font-weight:500}
-.cb-note{font-size:.8rem;color:var(--muted);padding-left:102px}
+.cb-note{font-size:.8rem;color:var(--muted);padding-left:114px}
+.sw.ref{background:var(--s-hdr)} .sw.ext{background:repeating-linear-gradient(135deg,var(--s-hdr) 0 3px,transparent 3px 6px);outline:1px solid var(--s-hdr)}
+.cb-fill.ref{background:var(--s-hdr)}
+.cb-fill.pub{background:var(--s-pub)} .sw.pub{background:var(--s-pub)}
+.cb-fill.ipub{background:var(--s-ipub)} .sw.ipub{background:var(--s-ipub)}
+.cb-fill.ext{background:repeating-linear-gradient(135deg,var(--s-hdr) 0 3px,transparent 3px 6px);box-shadow:inset 0 0 0 1px var(--s-hdr)}
+.cb-fill[data-tip]{cursor:default}
+.cb-fill[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:0;bottom:calc(100% + 6px);z-index:5;background:var(--fg);color:var(--bg);font-size:.75rem;padding:4px 8px;border-radius:4px;white-space:nowrap;pointer-events:none}
+.cb-fill:hover{filter:brightness(1.08)}
+.cb-steps{font-size:.78rem;color:var(--muted);padding-left:114px;margin-top:-2px;display:flex;flex-wrap:wrap;gap:2px 6px;align-items:center}
+.cb-steps .arr{color:var(--line)}
+.cb-steps i.dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:0}
+.dot.ref{background:var(--s-hdr)}.dot.inc{background:var(--s-inc)}.dot.pub{background:var(--s-pub)}.dot.ide{background:var(--s-ide)}.dot.ipub{background:var(--s-ipub)}.dot.chk{background:var(--s-icore)}
+.sw.chk{background:var(--s-icore)}
+.sw.sa,.cb-fill.sa,.dot.sa{background:var(--s-a)} .sw.sab,.cb-fill.sab,.dot.sab{background:var(--s-ab)}
+.cb-steps .nc{font-style:italic}
+.specs{display:grid;gap:10px;margin-top:6px}
+.spec{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s-inc);border-radius:8px;padding:12px 16px;display:grid;gap:4px}
+.spec.a{border-left-color:var(--s-a)}.spec.ab{border-left-color:var(--s-ab)}.spec.d{border-left-color:var(--todo)}
+.spec-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.spec-h strong{font-family:var(--display);font-size:1.02rem}
+.spec-h .v{margin-left:auto}
+.spec p{margin:0;font-size:.92rem}
+.spec .gets{color:var(--muted);font-size:.86rem}
+.spec .gets b{color:var(--fg);font-weight:600}
+.cb-row.ref-first{border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
+.cb-up{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--bad);font-weight:500}
+.cb-dim{font-family:var(--mono);text-align:right;color:var(--muted)}
 .cb-track[data-tip]:hover::after,.cb-track[data-tip]:focus-visible::after{content:attr(data-tip);position:absolute;left:0;bottom:calc(100% + 6px);z-index:5;background:var(--fg);color:var(--bg);font-size:.75rem;padding:4px 8px;border-radius:4px;white-space:nowrap;pointer-events:none}
-@media (max-width:520px){.cb-row{grid-template-columns:72px 1fr 52px 40px;gap:6px}.cb-note{padding-left:0}.cb-cap{margin-left:0}}
+@media (max-width:520px){.cb-row{grid-template-columns:76px 1fr 68px 44px;gap:6px}.cb-note,.cb-steps{padding-left:0}.cb-cap{margin-left:0}}
 
 
 .sv{display:grid;gap:4px;margin:8px 0}
 .sv-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.8rem;color:var(--muted);margin-bottom:6px}
 .sv-legend span{display:inline-flex;align-items:center;gap:6px}
-.sw.c-data{background:var(--s-inc)} .sw.c-chk{background:var(--s-chk)} .sw.c-mix{background:var(--s-ide)} .sw.c-hdr{background:var(--s-hdr)}
+.sw.c-data{background:var(--k-data)} .sw.c-chk{background:var(--k-chk)} .sw.c-mix{background:var(--k-mix)} .sw.c-hdr{background:var(--k-hdr)}
 .sv-med-key{display:inline-block;width:2px;height:14px;background:var(--fg)}
 .sv-row{display:grid;grid-template-columns:minmax(120px,1.1fr) 3fr 56px minmax(110px,1.2fr);gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:.86rem}
 .sv-axis{border-bottom:0;padding:0;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
@@ -80,7 +109,7 @@ a{color:var(--accent)}
 .sv-ticks span:first-child{transform:none}.sv-ticks span:last-child{transform:translateX(-100%)}
 .sv-grid{position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
 .sv-dot{position:absolute;top:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;box-shadow:0 0 0 1.5px var(--bg);cursor:default}
-.sv-dot.c-data{background:var(--s-inc)}.sv-dot.c-chk{background:var(--s-chk)}.sv-dot.c-mix{background:var(--s-ide)}.sv-dot.c-hdr{background:var(--s-hdr)}
+.sv-dot.c-data{background:var(--k-data)}.sv-dot.c-chk{background:var(--k-chk)}.sv-dot.c-mix{background:var(--k-mix)}.sv-dot.c-hdr{background:var(--k-hdr)}
 .sv-med{position:absolute;top:4px;bottom:4px;width:2px;margin-left:-1px;background:var(--fg)}
 .sv-open{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.72rem;color:var(--run);border:1px dashed var(--run);border-radius:4px;padding:0 4px;white-space:nowrap;cursor:default}
 .sv-mv{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
@@ -107,6 +136,7 @@ summary::-webkit-details-marker{display:none}
 summary .st{font-family:var(--display);font-weight:700;font-size:1.02rem}
 summary .st::before{content:"+";display:inline-block;width:1.1em;color:var(--accent);font-family:var(--mono)}
 details[open] summary .st::before{content:"\2212"}
+summary .st .ok{color:var(--done);font-family:var(--body);margin-left:4px}
 summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
 .db{padding:0 16px 16px;display:grid;gap:4px}
 .v{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
@@ -115,32 +145,60 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
 .compact li{margin-bottom:4px}
 
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* polish pass */
+h2{font-size:1.45rem;letter-spacing:-.01em}
+section.r{padding-top:30px;border-top:1px solid var(--line)}
+.lede{font-size:1.18rem;line-height:1.5}
+.keys li::marker{color:var(--accent)}
+.stats{gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:8px;padding:10px 12px}
+.tbl{border:1px solid var(--line);border-radius:8px;background:var(--surface);margin:6px 0 4px}
+.tbl th{background:var(--bg);position:sticky;top:0}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl tbody tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.v{display:inline-block;padding:2px 8px;border-radius:99px;background:color-mix(in srgb,currentColor 13%,transparent)}
+summary{transition:background .15s}
+summary:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+summary:hover .st{color:var(--accent)}
+details[open]>summary{border-bottom:1px solid var(--line);margin-bottom:12px}
+details{overflow:hidden}
+.cb{gap:7px;padding:14px 16px}
+.cb-head strong{font-family:var(--display);font-size:1rem}
+.cb-lab strong{font-weight:600;color:var(--fg)}
+.cb-track{height:16px}
+.lg{display:grid;gap:6px}
+.lg-g{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
+.lg-g b{font-weight:600;color:var(--fg);min-width:140px}
+@media (max-width:520px){.lg-g b{min-width:0;width:100%}}
+.churn>.cb-legend{padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.meta{line-height:1.55}
+@media (prefers-reduced-motion:reduce){summary{transition:none}}
 </style>
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Live research log · CounterStrikeSharp / Metamod:Source / hl2sdk-cs2</div>
+    <div class="eyebrow">Research report · CounterStrikeSharp / Metamod:Source / hl2sdk-cs2</div>
     <h1>CS2 Update Breakage Study</h1>
-    <p class="meta">Why does the CS2 plugin stack break on game updates, how much of that is unavoidable, and could a new toolkit hold up better? Reference build: CS2 <code>1.42.0.0</code> (Nov 19 2026). Last updated <span id="updated">2026-11-24, all tracks and review complete</span>.</p>
+    <p class="meta">Why does the CS2 plugin stack break on game updates, how much of that is unavoidable, and could a new toolkit hold up better? Reference build: CS2 <code>1.42.0.0</code> (Nov 20 2026). Last updated <span id="updated">2026-11-25, backwards-compatibility notes added to the plan</span>.</p>
   </header>
   <nav class="toc" aria-label="Sections">
-    <a href="#answer">Answer</a><a href="#taxonomy">What breaks</a><a href="#design">Toolkit design</a><a href="#stacks">Stacks</a><a href="#backtest">Backtest</a><a href="#review">Review</a><a href="#evidence">Evidence</a>
+    <a href="#answer">Answer</a><a href="#taxonomy">What breaks</a><a href="#design">Toolkit design</a><a href="#stacks">Stacks</a><a href="#plan">The plan</a><a href="#backtest">Backtest</a><a href="#review">Review</a><a href="#evidence">Evidence</a>
   </nav>
 
   <details class="ev" id="progress">
-    <summary><span class="st">Research steps · 11 of 11 done</span><span class="chips"><span class="pill done">Plan</span><span class="pill done">A CSSharp</span><span class="pill done">B SDK</span><span class="pill done">C Binaries</span><span class="pill done">D Ecosystem</span><span class="pill done">E Source 1</span><span class="pill done">Synthesis</span><span class="pill done">F Stacks</span><span class="pill done">G Backtest</span><span class="pill done">Review</span><span class="pill done">H Degraded time</span></span></summary>
+    <summary><span class="st">Research steps · 11 of 11 done <span class="ok">✓</span></span><span class="tk">Plan, tracks 1–8 (CounterStrikeSharp history, SDK, binaries, ecosystem, Source 1, stacks, backtest, degraded time), synthesis and adversarial review</span></summary>
     <div class="db">
     <ul class="steps">
       <li><span class="pill done">done</span><div>Plan investigation<span class="d">7 breakage hypotheses, 5 research tracks, synthesis, adversarial review</span></div></li>
-      <li><span class="pill done">done</span><div>A · CounterStrikeSharp breakage history<span class="d">Every game-update commit classified: signatures, vtable offsets, struct offsets, SDK refactors, protobufs</span></div></li>
-      <li><span class="pill done">done</span><div>B · hl2sdk-cs2 and Metamod:Source history<span class="d">Header-level churn per update, loader issues, why plugins need recompiling</span></div></li>
-      <li><span class="pill done">done</span><div>C · Binary and disassembly analysis<span class="d">Scan current gamedata against 1.42.0.0, diff against older builds, auto-heal experiment</span></div></li>
-      <li><span class="pill done">done</span><div>D · Ecosystem and official surfaces<span class="d">SwiftlyS2, ModSharp, Plugify, CS2Fixes, offset dumpers, cs_script, RCON/logs/GOTV</span></div></li>
-      <li><span class="pill done">done</span><div>E · Source 1 baseline and update cadence<span class="d">SourceMod gamedata churn, symbol stripping, CS2 build frequency and schema churn</span></div></li>
+      <li><span class="pill done">done</span><div>Track 1 · CounterStrikeSharp breakage history<span class="d">Every game-update commit classified: signatures, vtable offsets, struct offsets, SDK refactors, protobufs</span></div></li>
+      <li><span class="pill done">done</span><div>Track 2 · hl2sdk-cs2 and Metamod:Source history<span class="d">Header-level churn per update, loader issues, why plugins need recompiling</span></div></li>
+      <li><span class="pill done">done</span><div>Track 3 · Binary and disassembly analysis<span class="d">Scan current gamedata against 1.42.0.0, diff against older builds, auto-heal experiment</span></div></li>
+      <li><span class="pill done">done</span><div>Track 4 · Ecosystem and official surfaces<span class="d">SwiftlyS2, ModSharp, Plugify, CS2Fixes, offset dumpers, cs_script, RCON/logs/GOTV</span></div></li>
+      <li><span class="pill done">done</span><div>Track 5 · Source 1 baseline and update cadence<span class="d">SourceMod gamedata churn, symbol stripping, CS2 build frequency and schema churn</span></div></li>
       <li><span class="pill done">done</span><div>Synthesis<span class="d">Taxonomy, intrinsic vs avoidable, resilient toolkit design</span></div></li>
-      <li><span class="pill done">done</span><div>F · Stack comparison<span class="d">Code audit of ModSharp, SwiftlyS2, s2script, Plugify, Deadworks; census and track record of every CS2 stack; where the best can still improve</span></div></li>
-      <li><span class="pill done">done</span><div>G · Backtest of incremental CounterStrikeSharp changes<span class="d">Replay every past fix under three scenarios (incremental, incremental plus auto-regeneration, ideal); empirical resolver test across breaking updates with independent ground truth</span></div></li>
-      <li><span class="pill done">done</span><div>H · What degraded time costs<span class="d">Which features go down during degraded hours, for how long, and which server types feel it</span></div></li>
+      <li><span class="pill done">done</span><div>Track 6 · Stack comparison<span class="d">Code audit of ModSharp, SwiftlyS2, s2script, Plugify, Deadworks; census and track record of every CS2 stack; where the best can still improve</span></div></li>
+      <li><span class="pill done">done</span><div>Track 7 · Backtest of incremental CounterStrikeSharp changes<span class="d">Replay every past fix under three scenarios (incremental, incremental plus auto-regeneration, ideal); empirical resolver test across breaking updates with independent ground truth</span></div></li>
+      <li><span class="pill done">done</span><div>Track 8 · What degraded time costs<span class="d">Which features go down during degraded hours, for how long, and which server types feel it</span></div></li>
       <li><span class="pill done">done</span><div>Adversarial review<span class="d">A fresh agent tries to refute the key claims</span></div></li>
     </ul>
     </div>
@@ -152,12 +210,12 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <ul class="keys">
       <li><strong>Intrinsic:</strong> no Valve plugin ABI; stripped binaries rebuilt on nearly every update; engine interfaces change layout about monthly while their version strings stay the same; gameplay refactors.</li>
       <li><strong>Self-inflicted:</strong> engine vtable slots compiled in from a reverse-engineered header chain; first-match prologue signatures; hand-kept indices and offsets; cascading startup failures.</li>
-      <li><strong>Proof point:</strong> build 26879581 (1.42.0.1) added one virtual to <code>ISource2Server</code>. CounterStrikeSharp crashes until an upstream SDK fix lands; a user's 8-byte binary patch already works around it. cs2kz was back in 3.5 h through a forked SDK. ModSharp's GameFrame detour is unaffected, but two of its JSON slot hooks shifted too, and fixing them is a data change, not a rebuild.</li>
+      <li><strong>Proof point:</strong> build 26879581 (1.42.0.1) added one virtual to <code>ISource2Server</code>. CounterStrikeSharp crashes until an upstream SDK fix lands; a user's 8-byte binary patch already works around it. cs2kz was back in about 3 h through a forked SDK. ModSharp's GameFrame detour is unaffected, but two of its JSON slot hooks shifted too, and fixing them is a data change, not a rebuild.</li>
       <li><strong>Feasibility (promising, small sample):</strong> on real breaking updates (Sep–Nov 2026), requiring two agreeing anchors healed 6 of 10 broken signatures and 6 of 6 moved vtable offsets with zero wrong answers; the rest went to a human. Accepting a single anchor was 20% silently wrong, and fuzzy byte matching failed outright. Not yet tested on an AnimGraph 2-scale update.</li>
     </ul>
     <div class="stats">
       <div class="stat"><b>~11%</b><span>of CS2 builds needed a CounterStrikeSharp fix</span></div>
-      <div class="stat"><b>−62% · −46%</b><span>releases · outage hours with incremental CounterStrikeSharp changes (model)</span></div>
+      <div class="stat"><b>−62% · −46%</b><span>releases · outage hours with specs A–C (model)</span></div>
       <div class="stat"><b>0</b><span>fixes needed for name-based bindings in 3 years</span></div>
       <div class="stat"><b>6/10 · 6/6</b><span>broken signatures · moved offsets auto-healed with 0 wrong on real breaks (small n)</span></div>
     </div>
@@ -168,8 +226,8 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <div class="tbl"><table>
       <thead><tr><th>Class</th><th>How often</th><th>Avoidable?</th></tr></thead>
       <tbody>
-        <tr><td>Byte-pattern signatures</td><td>154 changes; each rewritten 1.5–2× a year</td><td><span class="v a">mostly avoidable</span></td></tr>
-        <tr><td>Vfunc indices in gamedata</td><td>75 changes; 6–11 of 17 move at once</td><td><span class="v a">mostly avoidable</span></td></tr>
+        <tr><td>Byte-pattern signatures</td><td>154 entry changes in update clusters; each rewritten 1.5–2× a year</td><td><span class="v a">mostly avoidable</span></td></tr>
+        <tr><td>Vfunc indices in gamedata</td><td>75 entry changes; big updates move 6–11 of the 17 offset entries at once</td><td><span class="v a">mostly avoidable</span></td></tr>
         <tr><td>Engine vtables compiled from headers</td><td>42 SDK episodes; causing today's outage</td><td><span class="v a">mostly avoidable</span></td></tr>
         <tr><td>tier0 link errors</td><td>4–5 incidents</td><td><span class="v a">avoidable</span></td></tr>
         <tr><td>Loader (<code>gameinfo.gi</code>)</td><td>every update</td><td><span class="v p">partly</span></td></tr>
@@ -183,13 +241,13 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
   <details class="ev sub" id="taxonomy-full">
     <summary><span class="st">Root causes and mitigations per class</span><span class="tk">The full table: what causes each class and how a toolkit would handle it</span></summary>
     <div class="db">
-    <p>Counts are from CounterStrikeSharp's history (track A) unless noted. "Verdict" says whether a well-designed in-process toolkit could avoid the class.</p>
+    <p>Counts are from CounterStrikeSharp's history (track 1) unless noted. "Verdict" says whether a well-designed in-process toolkit could avoid the class.</p>
     <div class="tbl"><table>
       <thead><tr><th>Class</th><th>How often</th><th>Root cause</th><th>Verdict</th><th>Mitigation</th></tr></thead>
       <tbody>
-        <tr><td>Byte-pattern signatures</td><td>154 entry changes; each signature rewritten 1.5–2× a year</td><td>Stripped binaries; whole-function codegen drift (saved-register sets, register allocation, inlining, unity builds)</td><td>Needing addresses is intrinsic; finding them by prologue bytes is avoidable</td><td>Unique-string, caller-plus-ordinal and RTTI anchors, uniqueness checks, two anchors that agree (82% healed on a real update)</td></tr>
-        <tr><td>Vfunc indices in gamedata</td><td>75 changes; big updates move 6–11 of 17 at once</td><td>A virtual added to a base class shifts every derived class</td><td>Layout change intrinsic; hand maintenance avoidable</td><td>RTTI vtables plus per-slot fingerprint alignment (s2script shows <code>Class[19]→20</code> automatically)</td></tr>
-        <tr><td>Engine-interface vtables compiled in from headers</td><td>42 forced SDK episodes in ~3 years; #1502 open now</td><td>C++ fixes slots at compile time; Valve never bumps interface versions; community headers lag</td><td>Mostly avoidable. Rare in aggregate (2 CSSharp incidents) but the slowest to recover, because the fix waits on upstream headers</td><td>Cheap: slot indices in gamedata plus an RTTI vtable-size check at boot. Full runtime fingerprinting is harder: 25–30% of interface slots have identical bodies</td></tr>
+        <tr><td>Byte-pattern signatures</td><td>154 entry changes in update clusters; each signature rewritten 1.5–2× a year</td><td>Stripped binaries; whole-function codegen drift (saved-register sets, register allocation, inlining, unity builds)</td><td>Needing addresses is intrinsic; finding them by prologue bytes is avoidable</td><td>Unique-string, caller-plus-ordinal and RTTI anchors, uniqueness checks, two anchors that agree (6 of 10 broken signatures healed on real breaking updates, 0 wrong)</td></tr>
+        <tr><td>Vfunc indices in gamedata</td><td>75 entry changes; big updates move 6–11 of the 17 offset entries at once</td><td>A virtual added to a base class shifts every derived class</td><td>Layout change intrinsic; hand maintenance avoidable</td><td>RTTI vtables plus per-slot fingerprint alignment (s2script shows <code>Class[19]→20</code> automatically)</td></tr>
+        <tr><td>Engine-interface vtables compiled in from headers</td><td>42 forced SDK episodes in ~3 years; #1502 open now</td><td>C++ fixes slots at compile time; Valve never bumps interface versions; community headers lag</td><td>Mostly avoidable. The sole cause in 2 CSSharp incidents and one item among several in 13, but the slowest to recover, because the fix waits on upstream headers</td><td>Cheap: slot indices in gamedata plus an RTTI vtable-size check at boot. Full runtime fingerprinting is harder: 25–30% of interface slots have identical bodies</td></tr>
         <tr><td>Non-schema struct offsets</td><td>~12 CSSharp incidents; ~45 SDK layout commits after Jul 2025</td><td>Engine internals have no reflection</td><td>Largely intrinsic; reducible</td><td>Touch as few as possible; extract displacements from anchored accessor functions; assert them in a boot self-test</td></tr>
         <tr><td>SDK API refactors</td><td>~11 (ConVar ×3, filters, entity listeners)</td><td>Valve refactors subsystems; the SDK's reverse-engineering catches up</td><td>Partly intrinsic</td><td>Wrap a minimal own interface around each subsystem instead of exposing SDK types</td></tr>
         <tr><td>Schema renames and removals</td><td>607 properties, 58 classes; 7 structural builds in 16 months</td><td>Gameplay refactors (AnimGraph 2, damage pipeline)</td><td>Intrinsic</td><td>Versioned API, rename aliases, warnings to plugin authors; offsets themselves never break</td></tr>
@@ -209,14 +267,14 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <h3>Intrinsic to any in-process CS2 addon</h3>
     <ul>
       <li>No Valve plugin API or ABI. Every hook targets internal, non-exported code.</li>
-      <li>Stripped Linux binaries. On Source 1, symbol names made Linux signatures nearly immortal: TF2 had 0 Linux signature changes in 2025, and CS:GO went from 2–5 a year to 45 when its symbols were stripped in 2016.</li>
+      <li>Stripped Linux binaries. On Source 1, symbol names made Linux signatures nearly immortal: TF2 had 0 Linux signature changes in 2025, and CS:GO went from 2–5 a year to 45 when its symbols were stripped in 2016 (partly confounded by 64-bit signatures; see the Source 1 comparison).</li>
       <li>The server module is rebuilt on nearly every update, so code shifts even when its source did not change.</li>
       <li>Engine-interface layouts change about once a month, with unchanged version strings, so nothing reports the mismatch.</li>
       <li>Engine-internal structs without reflection, and gameplay refactors that remove or rename fields and change behaviour.</li>
     </ul>
     <h3>Self-inflicted by today's stack</h3>
     <ul>
-      <li>Binding engine interfaces through compiled C++ headers. One inserted virtual leaves the fix waiting on the upstream headers before CounterStrikeSharp can ship a release. It is rare (2 incidents) but has the slowest recovery, and it causes the current outage. Holding slot indices as data would turn it into a gamedata update.</li>
+      <li>Binding engine interfaces through compiled C++ headers. One inserted virtual leaves the fix waiting on the upstream headers before CounterStrikeSharp can ship a release. It was the sole cause only twice (one item among several in 13 incidents) but has the slowest recovery, and it causes the current outage. Holding slot indices as data would turn it into a gamedata update.</li>
       <li>Prologue-only signatures with first-match scanning. The ClientPrint signature currently binds to an unrelated constructor (#1494).</li>
       <li>Hand-maintained vtable indices that move together and could be re-derived mechanically.</li>
       <li>Hard-coded struct offsets in native and managed code, where schema lookup or an extracted displacement would do.</li>
@@ -269,7 +327,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       <li>per-signature lazy resolution instead of one static initializer</li>
       <li>an error, not offset 0, for missing schema fields</li>
       <li>an RTTI cross-check of vtable offsets</li>
-      <li>resolving <code>ISource2Server</code> methods by fingerprint and detouring them, instead of KHook slot hooks from s2sdk</li>
+      <li>engine-interface slots as data, verified and healed at boot by fingerprint, instead of slot indices compiled in from s2sdk</li>
       <li>signed gamedata keyed by build ID on both operating systems</li>
       <li>a CI job that boots each new build and runs the 180 native tests</li>
     </ul>
@@ -291,13 +349,13 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       <div class="sv-row"><span class="sv-name"><strong>ModSharp</strong><small>own loader · ~50 plugins</small></span><span class="sv-track"><span class="sv-grid" style="left:0.0%"></span><span class="sv-grid" style="left:17.9%"></span><span class="sv-grid" style="left:35.8%"></span><span class="sv-grid" style="left:53.7%"></span><span class="sv-grid" style="left:71.6%"></span><span class="sv-grid" style="left:89.5%"></span><span class="sv-dot c-mix" style="left:41.6%;margin-top:-5px" data-tip="Oct 22: 5 h" tabindex="0"></span><span class="sv-dot c-mix" style="left:46.3%;margin-top:-5px" data-tip="Nov 11: 6 h" tabindex="0"></span><span class="sv-dot c-mix" style="left:56.8%;margin-top:-5px" data-tip="Nov 5: 9 h" tabindex="0"></span><span class="sv-dot c-mix" style="left:65.2%;margin-top:-5px" data-tip="Aug: 12.5 h" tabindex="0"></span><span class="sv-dot c-mix" style="left:77.4%;margin-top:-5px" data-tip="Sep: 20 h" tabindex="0"></span><span class="sv-dot c-mix" style="left:83.1%;margin-top:-5px" data-tip="Jul: 25 h" tabindex="0"></span><span class="sv-dot c-mix" style="left:92.6%;margin-top:-5px" data-tip="AG2 Apr: 36 h" tabindex="0"></span><span class="sv-med" style="left:65.2%"></span></span><span class="sv-mv">12 h</span><span class="sv-st warn">runs; Steam hooks silently wrong</span></div>
       <div class="sv-row"><span class="sv-name"><strong>CS2Fixes</strong><small>Metamod · single-purpose</small></span><span class="sv-track"><span class="sv-grid" style="left:0.0%"></span><span class="sv-grid" style="left:17.9%"></span><span class="sv-grid" style="left:35.8%"></span><span class="sv-grid" style="left:53.7%"></span><span class="sv-grid" style="left:71.6%"></span><span class="sv-grid" style="left:89.5%"></span><span class="sv-dot c-hdr" style="left:17.9%;margin-top:-5px" data-tip="Aug: 2 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:28.4%;margin-top:-5px" data-tip="Nov 5: 3 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:41.6%;margin-top:-5px" data-tip="Oct 22: 5 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:73.2%;margin-top:-5px" data-tip="Sep: 17 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:78.6%;margin-top:-5px" data-tip="Jul: 21 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:84.2%;margin-top:-5px" data-tip="Nov 11: 26 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:85.1%;margin-top:-12px" data-tip="AG2 Apr: 27 h" tabindex="0"></span><span class="sv-med" style="left:73.2%"></span></span><span class="sv-mv">17 h</span><span class="sv-st na">unknown</span></div>
       <div class="sv-row"><span class="sv-name"><strong>CounterStrikeSharp</strong><small>Metamod · ~350–525 plugins, hosting default</small></span><span class="sv-track"><span class="sv-grid" style="left:0.0%"></span><span class="sv-grid" style="left:17.9%"></span><span class="sv-grid" style="left:35.8%"></span><span class="sv-grid" style="left:53.7%"></span><span class="sv-grid" style="left:71.6%"></span><span class="sv-grid" style="left:89.5%"></span><span class="sv-dot c-hdr" style="left:66.3%;margin-top:-5px" data-tip="Nov 11: 13 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:68.2%;margin-top:-12px" data-tip="Aug: 14 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:70.0%;margin-top:-12px" data-tip="Oct 22: 15 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:91.8%;margin-top:-5px" data-tip="AG2 Apr: 35 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:91.8%;margin-top:-12px" data-tip="Jul: 35 h" tabindex="0"></span><span class="sv-dot c-hdr" style="left:92.6%;margin-top:2px" data-tip="Sep: 36 h" tabindex="0"></span><span class="sv-med" style="left:83.1%"></span></span><span class="sv-mv">25 h</span><span class="sv-st bad">crashing; not fixed</span></div>
-      <p class="meta">Each dot is one breaking build since April 2026: hours from build to the first commit that restored function (log scale, n = 2–7 per stack). Hover for the build. Metamod was unaffected by most builds. Builds a stack was not broken by are not shown; CounterStrikeSharp's 1.42.0.1 break is still open, so it has no dot.</p>
+      <p class="meta">Each dot is one breaking build since April 2026: hours from build to the first commit that restored function (log scale, n = 2–7 per stack). Hover for the build. Metamod was unaffected by most builds. Builds a stack was not broken by are not shown. CounterStrikeSharp's 1.42.0.1 break is still open, so it has no dot and its median of 25 h is flattering; the other stacks' medians include their 1.42.0.1 fixes.</p>
     </div>
     <details class="ev sub" id="stacks-table"><summary><span class="st">Details per stack</span><span class="tk">Loader, where vtable slots come from, median fix, 1.42.0.1 status, ecosystem size</span></summary><div class="db">
     <div class="tbl"><table>
       <thead><tr><th>Stack</th><th>Loader</th><th>Vtable slots from</th><th>Median fix</th><th>1.42.0.1</th><th>Ecosystem</th></tr></thead>
       <tbody>
-        <tr><td>s2script</td><td>Metamod</td><td>headers, checked at boot</td><td>~2 h (n=4)</td><td>hooks switched off safely; fix PR in ~1.7 h</td><td>pre-1.0, Linux only, 17 bundled plugins</td></tr>
+        <tr><td>s2script</td><td>Metamod</td><td>headers, checked at boot</td><td>~2 h (n=4)</td><td>hooks switched off safely; first fix commit ~1.5 h, PR merged ~1.7 h</td><td>pre-1.0, Linux first (Windows in progress), 17 bundled plugins</td></tr>
         <tr><td>SwiftlyS2</td><td>own</td><td>data (hooks), headers (calls)</td><td>~5 h</td><td>JSON fix in git after 4.6 h, no release yet; silent mis-hooks until then</td><td>~165 repos</td></tr>
         <tr><td>cs2kz</td><td>Metamod</td><td>headers</td><td>~10 h</td><td>3.2 h (SDK fork)</td><td>single-purpose</td></tr>
         <tr><td>Metamod:Source</td><td>own</td><td>headers</td><td>~10 h</td><td>unaffected</td><td>foundation</td></tr>
@@ -323,7 +381,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       <li><strong>Missing everywhere:</strong> a resolve cache keyed by build ID, an archive of past binaries with slot history, signed gamedata, and Windows parity for the offline tooling.</li>
       <li><strong>Several anchors per target.</strong> Valve rewording one string broke a ModSharp binding on Nov 12.</li>
     </ol>
-    <p>Inferred: combining these is mostly engineering, not research. The hard residue is the same as before: behaviour changes, schema rewrites, and the 25–30% of interface slots that are indistinguishable by body. The bigger obstacle is adoption: CounterStrikeSharp's ecosystem is 3–10× any other, so a new toolkit likely needs a CounterStrikeSharp-compatible API, or the fixes should go into CounterStrikeSharp itself.</p>
+    <p>Inferred: combining these is mostly engineering, not research. The hard residue is the same as before: behaviour changes, schema rewrites, and the 25–30% of interface slots that are indistinguishable by body. The bigger obstacle is adoption: CounterStrikeSharp's ecosystem is 2–3× the next largest (SwiftlyS2) and far larger than the rest, so a new toolkit likely needs a CounterStrikeSharp-compatible API, or the fixes should go into CounterStrikeSharp itself.</p>
       </div>
     </details>
     <details class="ev sub" id="stacks-audit">
@@ -340,7 +398,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
           </tbody>
         </table></div>
         <h3>ModSharp</h3>
-        <p>It stands in for the server module and hooks only IAppSystem slots 0 and 3, which never move. It finds functions in order: VScript binding table, then refs (string, ConVar and vtable cross-references intersected, filtered by vtable membership), with a signature only to break ties. Of 178 address entries, 116 are signature-only, 47 have refs and 9 use VScript. Zydis-based resolvers re-derive vfunc indices and struct offsets from the instructions that use them, but most overwrite gamedata from a single derivation. GameFrame is a detour located by a ConVar, a game-system class and <code>CSource2Server</code> membership, so it survived. The Steam API hooks use hand indices 41 and 42, which moved to 42 and 43. Any failed entry ends the process with a forced minidump. Updates are manual commits, usually the same or next day.</p>
+        <p>It stands in for the server module and hooks only IAppSystem slots 0 and 3, which never move. It finds functions in order: VScript binding table, then refs (string, ConVar and vtable cross-references intersected, filtered by vtable membership), with a signature only to break ties. Of 178 address entries, 120 are signature-only (4 of them on one OS only), 49 have refs and 9 use VScript. Zydis-based resolvers re-derive vfunc indices and struct offsets from the instructions that use them, but most overwrite gamedata from a single derivation. GameFrame is a detour located by a ConVar, a game-system class and <code>CSource2Server</code> membership, so it survived. The Steam API hooks use hand indices 41 and 42, which moved to 42 and 43. Any failed entry ends the process with a forced minidump. Updates are manual commits, usually the same or next day.</p>
         <h3>SwiftlyS2</h3>
         <p>Its loader finds engine init by the first match of a startup string. Gamedata is fully hand-written (66 signatures, 131 offsets and indices). Signature scans take the first match. Hooks are vtable slots from <code>offsets.jsonc</code>, and schema fields resolve by hashed name in generated C#. A missing offset returns 0, so a hook lands on the destructor. For 1.42.0.1 the JSON fix landed in git at 03:39 UTC (<code>67ef29b7</code>), but the latest release predates it. S2GDU, the headless-IDA consensus tool, regenerates signatures and tracks slots by the nearest slot of compatible size. It needs a licensed IDA, publishes to a non-public repo and is not wired in yet.</p>
         <h3>s2script</h3>
@@ -367,7 +425,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
             <tr><td>VoltMod</td><td>C++23</td><td>own, Metamod optional</td><td>5</td><td>a handful</td><td>MIT</td><td>?</td><td>new (Feb 2026)</td></tr>
             <tr><td>CS2Fixes</td><td>C++ monolith, no plugin API</td><td>Metamod</td><td>364</td><td>n/a</td><td>GPLv3</td><td>W+L</td><td>active</td></tr>
             <tr><td>cs2kz-metamod</td><td>C++ monolith</td><td>Metamod</td><td>212</td><td>n/a</td><td>AGPLv3</td><td>W+L</td><td>active</td></tr>
-            <tr><td>Valve cs_script</td><td>TypeScript in maps</td><td>engine</td><td>–</td><td>~13 repos</td><td>Valve</td><td>W+L</td><td>official; map logic only</td></tr>
+            <tr><td>Valve cs_script</td><td>TypeScript / JavaScript in maps</td><td>engine</td><td>–</td><td>~13 repos</td><td>Valve</td><td>W+L</td><td>official; map logic only</td></tr>
             <tr><td>SourceMod</td><td colspan="7">No CS2 support and no port announced</td></tr>
           </tbody>
         </table></div>
@@ -394,44 +452,122 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
         <p>Hours from build (GameTracking commit time, ±1 h) to the first commit that restored function. "ok" means not broken. CS2Fixes times are on its dev branch; merges to main lag 1–4 weeks. Some breaks were partial (a single signature), not crashes.</p>
         <h3>Observations</h3>
         <ul>
-          <li>1.42.0.0 changed 456 schema entries but only 2 binaries and broke no one, which shows runtime schema resolution works.</li>
+          <li>1.42.0.0 changed 456 schema entries across all modules (about 15 in the server) but only 2 binaries and broke no one, which shows runtime schema resolution works.</li>
           <li>1.42.0.1 was a clean test of design: stacks with vtable slots in data files fixed it with a JSON edit (SwiftlyS2 GameFrame 19→20 in <code>offsets.jsonc</code>), while header-based stacks needed an SDK change and a rebuild.</li>
           <li>Inferred: CounterStrikeSharp's fixes land 09:00–14:00 UTC the next day while Valve ships around 23:00 UTC, which fits a single maintainer's time zone.</li>
           <li>Surface size confounds the ranking: s2script and cs2kz expose fewer signatures. But SwiftlyS2 has a large surface and still recovers about 5× faster than CounterStrikeSharp, so data-driven offsets and process explain part of the gap.</li>
           <li>SwiftlyS2's "Game Sync" bot opens schema and protobuf regeneration PRs within about an hour of a build; s2script's bot reads new builds from Steam directly.</li>
           <li>Standalone loaders (SwiftlyS2, ModSharp, Plugify, VoltMod) avoid Metamod but mostly reuse its <code>gameinfo.gi</code> trick. Metamod-based C++ stacks all wait on the upstream SDK when engine interfaces change.</li>
-          <li>Lock-in favours CounterStrikeSharp: its plugin ecosystem is 3–10× any other, hosting panels ship Metamod plus CounterStrikeSharp by default, and major plugins such as MatchZy exist only for it.</li>
+          <li>Lock-in favours CounterStrikeSharp: its plugin ecosystem is 2–3× the next largest and far larger than the rest, hosting panels ship Metamod plus CounterStrikeSharp by default, and major plugins such as MatchZy exist only for it.</li>
         </ul>
+      </div>
+    </details>
+  </section>
+
+  <section class="r" id="plan">
+    <h2>The plan: four specs</h2>
+    <p>The incremental package (T1) is split into specs, built in order A → B → C. D is a separate, opt-in track. Each spec's effect is in the backtest bars below as a cumulative step.</p>
+    <div class="specs">
+      <div class="spec a">
+        <div class="spec-h"><strong>A · Fail soft per Engine Feature</strong><span class="meta">I1–I3 · 15 tickets, 10 must</span><span class="v a">ready</span></div>
+        <p>Every core binding resolves once at boot into one report. A signature must match exactly once. A miss disables only the features that need it; the server stays up. Missing schema fields throw instead of reading offset 0. Plugins can ask whether a feature works, or declare it required.</p>
+        <p class="gets">Gets: crashes from broken signatures become "feature off" (−14% outage hours). Every fix still ships as a release, so release and commit counts don't move.</p>
+      </div>
+      <div class="spec ab">
+        <div class="spec-h"><strong>B · Vtable Checks, Slot Bindings and Heal</strong><span class="meta">I4–I5 · 11 tickets, 8 must · needs A's base</span><span class="v a">ready</span></div>
+        <p>Engine-interface slots (ISource2Server, IVEngineServer2, ICvar) and game-class virtuals (Respawn, Teleport…) move out of compiled headers into gamedata, each with a fingerprint of its neighbours. At boot each one is verified; if exactly one nearby slot matches, it heals there. A generator carries them to new builds.</p>
+        <p class="gets">Gets: offset-only and slot-only updates need nothing (6 incidents, incl. today's 1.42.0.1); <b>A–B: −15% releases, −22% outage hours</b>. Not covered: IGameSystem, which CSSharp implements itself.</p>
+      </div>
+      <div class="spec">
+        <div class="spec-h"><strong>C · Fast fix: signed updater and CI per build</strong><span class="meta">I6–I7 · not written yet</span><span class="v i">planned</span></div>
+        <p>Signed gamedata keyed by build ID, downloaded on both OSes. A CI job boots each new build and runs the native tests. A pushed blank binding works as a kill switch.</p>
+        <p class="gets">Gets: most fixes become a data push instead of a release, and the kill switch turns the IGameSystem and semantic crashes into "feature off". <b>A–C: −62% releases, −46% outage hours</b>, the old T1 result. It doesn't make humans faster, so total broken time stays where B left it; cutting it further needs auto-publish (T2).</p>
+      </div>
+      <div class="spec d">
+        <div class="spec-h"><strong>D · Own loader as opt-in Proxy Mode</strong><span class="meta">17 tickets, 11 must + 1 human · independent</span><span class="v a">ready</span></div>
+        <p>An optional <code>gameinfo.gi</code> line makes a small CSSharp proxy Metamod's game DLL. CSSharp then runs on its own host and KHook, keeps Metamod plugins working, and falls back to today's Plugin Mode if the line is lost. Linux first.</p>
+        <p class="gets">Gets: CSSharp keeps running when only Metamod breaks (Metamod #278 and #288: ~14–17 days each on some Linux servers). <b>No change in the bars below</b>: in 7 of 9 Metamod load failures CSSharp shared the root cause (tier0, SDK structs), so a loader alone saves ≤8% of Metamod's 162 h.</p>
+      </div>
+    </div>
+    <p style="margin-top:12px"><strong>Backwards compatibility.</strong> The maintainer's one condition is backwards compatibility, and the plugin API is additive throughout (ADR-0001). A few changes still alter behaviour, but only on paths that are already broken today. Three of them need the maintainer's OK before upstreaming: schema misses that throw, strict core signatures, and the Linux updater.</p>
+    <details class="ev sub" id="compat">
+      <summary><span class="st">Behaviour changes to raise with the maintainer</span><span class="tk">What each spec changes for plugins and operators, and how to soften it</span></summary>
+      <div class="db">
+        <div class="tbl"><table>
+          <thead><tr><th>Change</th><th>Spec</th><th>Who notices</th><th>Verdict</th><th>Mitigation / ask</th></tr></thead>
+          <tbody>
+            <tr><td>A missing schema field throws a typed exception instead of reading or writing at offset 0</td><td>A</td><td>Plugin authors whose field was renamed or removed: silent garbage becomes an exception inside their handler</td><td><span class="v i">needs OK</span></td><td>Arguably a bug fix. Option: one release in warn-first mode (log once, return a default value), then throw</td></tr>
+            <tr><td>A managed per-OS offset missing from gamedata is reported as missing, not 0</td><td>A</td><td>Plugins reading <code>GameData</code> offsets</td><td><span class="v i">needs OK</span></td><td>Same class as the schema change; ship them together</td></tr>
+            <tr><td>Core signatures must match exactly once, otherwise their Engine Feature is disabled</td><td>A</td><td>Operators: a signature that works today only because the first match happens to be right now turns a feature off</td><td><span class="v i">needs OK</span></td><td>Audit core gamedata for ambiguous signatures before release (19 historical signatures match several places; TerminateRound was ambiguous one update before it broke)</td></tr>
+            <tr><td>Calling a disabled Engine Feature throws a typed exception; registering a hook on one warns instead of throwing</td><td>A</td><td>Plugin authors, only when something is already broken (today: crash or "Invalid function pointer")</td><td><span class="v p">failure path only</span></td><td>None needed; <code>catch (Exception)</code> still catches it</td></tr>
+            <tr><td>Raw signatures supplied by plugins</td><td>A</td><td>Plugin authors</td><td><span class="v a">compatible</span></td><td>First match kept; new warning when ambiguous; strict mode is opt-in</td></tr>
+            <tr><td>One startup report replaces scattered error, critical and warning lines</td><td>A</td><td>Operators and anyone scraping logs</td><td><span class="v p">log text only</span></td><td>Mention in release notes</td></tr>
+            <tr><td>Boot Heal moves a Slot Binding to a shifted slot; a vtable size change logs a warning</td><td>B</td><td>Operators, only on a build that would crash today</td><td><span class="v p">failure path only</span></td><td>Heals only on an exactly-unique match, otherwise the feature is disabled. The gamedata shape gains optional fields only, so existing tools still read it</td></tr>
+            <tr><td>Signed, build-keyed gamedata updater also on Linux</td><td>C</td><td>Operators: new network behaviour on Linux</td><td><span class="v i">needs OK</span></td><td>Off by default or opt-in on Linux; who holds the signing key is the maintainer's call (spec not written yet)</td></tr>
+            <tr><td>Proxy Mode: CSSharp hooks sit outside Metamod plugins' hooks</td><td>D</td><td>Only operators who add the <code>gameinfo.gi</code> line</td><td><span class="v a">opt-in</span></td><td>Plugin Mode stays the default, with the same <code>.vdf</code> and hook order; a lost line falls back to it. Cost to the maintainer: a second binary to ship</td></tr>
+          </tbody>
+        </table></div>
+        <p class="meta">Purely additive, no ask needed: <code>IsAvailable</code>, Required Engine Features (opt-in per plugin), permanent Engine Feature names with a generated enum, new gamedata keys, and <code>OnMetamodAllPluginsLoaded</code> kept with a new alias. Maintainer decisions besides the ones above: the Engine Feature naming scheme (a permanent API commitment), the new doctest C++ test target, and where per-build CI runs.</p>
+      </div>
+    </details>
+    <details class="ev sub" id="plan-matrix">
+      <summary><span class="st">Which spec moves which number</span><span class="tk">Cumulative backtest values per step, and what stays for the ideal stack</span></summary>
+      <div class="db">
+        <div class="tbl"><table>
+          <thead><tr><th>Metric (3 years)</th><th>Today</th><th>A</th><th>A–B</th><th>A–C</th><th>A–D</th><th>Ideal</th></tr></thead>
+          <tbody>
+            <tr><td>Releases needed</td><td>39</td><td>39</td><td>33</td><td><strong>15</strong></td><td>15</td><td>8</td></tr>
+            <tr><td>Fix commits</td><td>66</td><td>66</td><td>57</td><td><strong>18</strong></td><td>18</td><td>10</td></tr>
+            <tr><td>Follow-up corrections</td><td>25</td><td>25</td><td>20</td><td><strong>4</strong></td><td>4</td><td>2</td></tr>
+            <tr><td>Outage hours</td><td>606</td><td>522</td><td>471</td><td><strong>329</strong></td><td>329</td><td>0</td></tr>
+            <tr><td>Effective outage hours</td><td>635</td><td>583</td><td>532</td><td><strong>460</strong></td><td>460</td><td>415</td></tr>
+            <tr><td>Broken or degraded hours</td><td>1,871</td><td>1,871</td><td>1,712</td><td><strong>1,712</strong></td><td>1,712</td><td>1,689</td></tr>
+          </tbody>
+        </table></div>
+        <p class="meta">Method: the T1 model's hand-labelled outcome per incident, with each spec's part removed. Without C, every fix is a release and there is no kill switch, so IGameSystem (G) and semantic (M) crashes stay crashes. Without B, slot and vfunc-offset shifts stay undetected and still crash. New since the earlier T1 run: spec B heals moved offsets and slots at boot, so 6 offset- or slot-only incidents count as avoided, which trims A–C's broken-or-degraded hours (1,871 → 1,712) and effective outage (464 → 460). Script: <code>research/specsplit/split.py</code>.</p>
       </div>
     </details>
   </section>
 
   <section class="r" id="backtest">
     <h2>Backtest: how far would incremental changes go?</h2>
-    <p>All 39 CounterStrikeSharp update incidents since November 2023 were replayed under three scenarios. This is a model with stated assumptions, not a measurement. The scenario definitions, interpretation and an empirical check on real breaking updates are in the expandable sections below.</p>
-    <div class="churn" role="group" aria-label="Churn per metric, today versus incremental versus ideal">
-      <div class="cb-legend"><span><i class="sw track"></i>Today (full track)</span><span><i class="sw inc"></i>Incremental CounterStrikeSharp</span><span><i class="sw ide"></i>Ideal stack</span></div>
+    <p>All 39 CounterStrikeSharp update incidents since November 2023 were replayed, once per spec step (A, A–B, A–C, A–D) and for the ideal stack. This is a model with stated assumptions, not a measurement. The scenario definitions, interpretation and an empirical check on real breaking updates are in the expandable sections below. D (own loader) changes none of these numbers; its gain is Metamod-only outages, which are not in this history.</p>
+    <p class="meta"><strong>Terms.</strong> <em>T1</em> or <em>incremental</em>: specs A–C together. <em>T2</em>: T1 plus automatic regeneration of gamedata from anchors. <em>Auto-publish</em>: CI publishes regenerated gamedata within about an hour when two anchors agree, otherwise a human approves. <em>Ideal stack</em>: a toolkit with every design point above (own loader, no compiled engine headers, runtime struct offsets, rename aliases). <em>Core auto-heal</em>: the ideal stack also re-derives the bindings behind core features (chat commands, game events, networked writes, tick) without a human. <em>Effective outage</em>: crashed, or a core feature down.</p>
+    <div class="churn" role="group" aria-label="Churn per metric: CounterStrikeSharp today and with incremental changes, the ideal stack, and other stacks">
+      <div class="cb-legend lg"><div class="lg-g"><b>CounterStrikeSharp</b><span><i class="sw ref"></i>today</span><span><i class="sw sa"></i>A</span><span><i class="sw sab"></i>A–B</span><span><i class="sw inc"></i>A–C (= A–D)</span><span><i class="sw pub"></i>+ auto-publish (T2, not planned)</span></div><div class="lg-g"><b>Ideal stack</b><span><i class="sw ide"></i>base</span><span><i class="sw ipub"></i>+ auto-publish</span><span><i class="sw chk"></i>+ core auto-heal</span></div><div class="lg-g"><b>Other stacks</b><span><i class="sw ref"></i>Metamod:Source</span><span><i class="sw ext"></i>scaled from a shorter history (s2script Jul–Nov, SwiftlyS2 Apr–Nov 2026)</span></div></div>
       <div class="cb">
-        <div class="cb-head"><strong>Releases needed</strong> <span>incidents needing a code change · today 39</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">incremental captures <b>77%</b> of ideal gain</span></div>
-        <div class="cb-row"><span class="cb-lab">Incremental</span><span class="cb-track" data-tip="Incremental: 15 of 39 today (−62%)" tabindex="0"><span class="cb-fill inc" style="width:38.5%"></span></span><span class="cb-val">15</span><span class="cb-red">−62%</span></div>
-        <div class="cb-row"><span class="cb-lab">Ideal</span><span class="cb-track" data-tip="Ideal: 8 of 39 today (−79%)" tabindex="0"><span class="cb-fill ide" style="width:20.5%"></span></span><span class="cb-val">8</span><span class="cb-red">−79%</span></div>
-        <div class="cb-note">/yr: 13 → 5 → 2.7</div>
+        <div class="cb-head"><strong>Releases needed</strong> <span>incidents needing a code change · today 39</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">A–C captures <b>77%</b> of ideal gain</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>CSSharp</strong></span><span class="cb-track"><span class="cb-fill ref" style="width:100.0%" data-tip="today: 39"></span><span class="cb-fill sa" style="width:100.0%" data-tip="A: 39"></span><span class="cb-fill sab" style="width:84.6%" data-tip="A–B: 33"></span><span class="cb-fill inc" style="width:38.5%" data-tip="A–C and A–D: 15"></span></span><span class="cb-val">15</span><span class="cb-red">−62%</span></div>
+        <div class="cb-steps"><span><i class="dot ref"></i>today 39</span> <span class="arr">→</span> <span><i class="dot sa"></i>A 39</span> <span class="arr">→</span> <span><i class="dot sab"></i>A–B 33</span> <span class="arr">→</span> <span><i class="dot inc"></i>A–C 15</span> <span class="arr">→</span> <span class="nc">A–D no change</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>Ideal stack</strong></span><span class="cb-track"><span class="cb-fill ide" style="width:20.5%" data-tip="base: 8"></span></span><span class="cb-val">8</span><span class="cb-red">−79%</span></div>
+        <div class="cb-row ref-first"><span class="cb-lab">s2script</span><span class="cb-track"><span class="cb-fill ext" style="width:84.6%" data-tip="s2script: counts on the builds since Jul 2026, scaled by the ratio to CounterStrikeSharp on the same builds: 6 vs 7 → ~33"></span></span><span class="cb-val">~33</span><span class="cb-dim"></span></div>
+        <div class="cb-row"><span class="cb-lab">SwiftlyS2</span><span class="cb-track"><span class="cb-fill ext" style="width:87.2%" data-tip="SwiftlyS2: counts on the builds since Apr 2026, scaled by the ratio to CounterStrikeSharp on the same builds (upper bound): 7 vs 8 → ~34"></span></span><span class="cb-val">~34</span><span class="cb-dim"></span></div>
+        <div class="cb-row"><span class="cb-lab">Metamod</span><span class="cb-track"><span class="cb-fill ref" style="width:23.1%" data-tip="Metamod:Source: 9 load failures needing a rebuild, Nov 2023–Nov 2026"></span></span><span class="cb-val">9</span><span class="cb-dim"></span></div>
+        <div class="cb-note">Per year: today 13 → A–C 5 → ideal 2.7</div>
       </div>
       <div class="cb">
-        <div class="cb-head"><strong>Fix commits</strong> <span>needing code or a release · today 66</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">incremental captures <b>86%</b> of ideal gain</span></div>
-        <div class="cb-row"><span class="cb-lab">Incremental</span><span class="cb-track" data-tip="Incremental: 18 of 66 today (−73%)" tabindex="0"><span class="cb-fill inc" style="width:27.3%"></span></span><span class="cb-val">18</span><span class="cb-red">−73%</span></div>
-        <div class="cb-row"><span class="cb-lab">Ideal</span><span class="cb-track" data-tip="Ideal: 10 of 66 today (−85%)" tabindex="0"><span class="cb-fill ide" style="width:15.2%"></span></span><span class="cb-val">10</span><span class="cb-red">−85%</span></div>
+        <div class="cb-head"><strong>Fix commits</strong> <span>needing code or a release · today 66</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">A–C captures <b>86%</b> of ideal gain</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>CSSharp</strong></span><span class="cb-track"><span class="cb-fill ref" style="width:100.0%" data-tip="today: 66"></span><span class="cb-fill sa" style="width:100.0%" data-tip="A: 66"></span><span class="cb-fill sab" style="width:86.4%" data-tip="A–B: 57"></span><span class="cb-fill inc" style="width:27.3%" data-tip="A–C and A–D: 18"></span></span><span class="cb-val">18</span><span class="cb-red">−73%</span></div>
+        <div class="cb-steps"><span><i class="dot ref"></i>today 66</span> <span class="arr">→</span> <span><i class="dot sa"></i>A 66</span> <span class="arr">→</span> <span><i class="dot sab"></i>A–B 57</span> <span class="arr">→</span> <span><i class="dot inc"></i>A–C 18</span> <span class="arr">→</span> <span class="nc">A–D no change</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>Ideal stack</strong></span><span class="cb-track"><span class="cb-fill ide" style="width:15.2%" data-tip="base: 10"></span></span><span class="cb-val">10</span><span class="cb-red">−85%</span></div>
+        <div class="cb-row ref-first"><span class="cb-lab">Metamod</span><span class="cb-track"><span class="cb-fill ref" style="width:18.2%" data-tip="Metamod:Source: 12 fix commits, mostly rebuild triggers after an SDK fix"></span></span><span class="cb-val">12</span><span class="cb-dim"></span></div>
       </div>
       <div class="cb">
-        <div class="cb-head"><strong>Follow-up corrections</strong> <span>needing code · today 25</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">incremental captures <b>91%</b> of ideal gain</span></div>
-        <div class="cb-row"><span class="cb-lab">Incremental</span><span class="cb-track" data-tip="Incremental: 4 of 25 today (−84%)" tabindex="0"><span class="cb-fill inc" style="width:16.0%"></span></span><span class="cb-val">4</span><span class="cb-red">−84%</span></div>
-        <div class="cb-row"><span class="cb-lab">Ideal</span><span class="cb-track" data-tip="Ideal: 2 of 25 today (−92%)" tabindex="0"><span class="cb-fill ide" style="width:8.0%"></span></span><span class="cb-val">2</span><span class="cb-red">−92%</span></div>
+        <div class="cb-head"><strong>Follow-up corrections</strong> <span>needing code · today 25</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">A–C captures <b>91%</b> of ideal gain</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>CSSharp</strong></span><span class="cb-track"><span class="cb-fill ref" style="width:100.0%" data-tip="today: 25"></span><span class="cb-fill sa" style="width:100.0%" data-tip="A: 25"></span><span class="cb-fill sab" style="width:80.0%" data-tip="A–B: 20"></span><span class="cb-fill inc" style="width:16.0%" data-tip="A–C and A–D: 4"></span></span><span class="cb-val">4</span><span class="cb-red">−84%</span></div>
+        <div class="cb-steps"><span><i class="dot ref"></i>today 25</span> <span class="arr">→</span> <span><i class="dot sa"></i>A 25</span> <span class="arr">→</span> <span><i class="dot sab"></i>A–B 20</span> <span class="arr">→</span> <span><i class="dot inc"></i>A–C 4</span> <span class="arr">→</span> <span class="nc">A–D no change</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>Ideal stack</strong></span><span class="cb-track"><span class="cb-fill ide" style="width:8.0%" data-tip="base: 2"></span></span><span class="cb-val">2</span><span class="cb-red">−92%</span></div>
+        <div class="cb-row ref-first"><span class="cb-lab">Metamod</span><span class="cb-track"><span class="cb-fill ref" style="width:12.0%" data-tip="Metamod:Source: 3 follow-up commits"></span></span><span class="cb-val">3</span><span class="cb-dim"></span></div>
       </div>
       <div class="cb">
-        <div class="cb-head"><strong>Outage hours</strong> <span>crashed or not loading · today 606 h</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">incremental captures <b>46%</b> of ideal gain</span></div>
-        <div class="cb-row"><span class="cb-lab">Incremental</span><span class="cb-track" data-tip="Incremental: 329 h of 606 h today (−46%)" tabindex="0"><span class="cb-fill inc" style="width:54.3%"></span></span><span class="cb-val">329 h</span><span class="cb-red">−46%</span></div>
-        <div class="cb-row"><span class="cb-lab">Ideal</span><span class="cb-track" data-tip="Ideal: 0 h of 606 h today (−100%)" tabindex="0"><span class="cb-fill ide" style="width:0.0%"></span></span><span class="cb-val">0 h</span><span class="cb-red">−100%</span></div>
-        <div class="cb-note">ideal: all become degraded time</div>
+        <div class="cb-head"><strong>Outage hours</strong> <span>crashed or not loading · today 606 h</span><span class="cb-cap" title="Share of the ideal stack's reduction that the incremental changes already deliver">A–C captures <b>46%</b> of ideal gain</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>CSSharp</strong></span><span class="cb-track"><span class="cb-fill ref" style="width:100.0%" data-tip="today: 606 h"></span><span class="cb-fill sa" style="width:86.1%" data-tip="A: 522 h"></span><span class="cb-fill sab" style="width:77.7%" data-tip="A–B: 471 h"></span><span class="cb-fill inc" style="width:54.3%" data-tip="A–C and A–D: 329 h"></span></span><span class="cb-val">329 h</span><span class="cb-red">−46%</span></div>
+        <div class="cb-steps"><span><i class="dot ref"></i>today 606 h</span> <span class="arr">→</span> <span><i class="dot sa"></i>A 522 h</span> <span class="arr">→</span> <span><i class="dot sab"></i>A–B 471 h</span> <span class="arr">→</span> <span><i class="dot inc"></i>A–C 329 h</span> <span class="arr">→</span> <span class="nc">A–D no change</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>Ideal stack</strong></span><span class="cb-track"><span class="cb-fill ide" style="width:0.0%" data-tip="base: 0 h"></span></span><span class="cb-val">0 h</span><span class="cb-red">−100%</span></div>
+        <div class="cb-row ref-first"><span class="cb-lab">s2script</span><span class="cb-track"><span class="cb-fill ext" style="width:23.4%" data-tip="s2script: counts on the builds since Jul 2026, scaled by the ratio to CounterStrikeSharp on the same builds: 23 h vs 99 h → ~142 h"></span></span><span class="cb-val">~142 h</span><span class="cb-dim"></span></div>
+        <div class="cb-row"><span class="cb-lab">SwiftlyS2</span><span class="cb-track"><span class="cb-fill ext" style="width:74.4%" data-tip="SwiftlyS2: counts on the builds since Apr 2026, scaled by the ratio to CounterStrikeSharp on the same builds (upper bound): 100 h vs 134 h → ~451 h"></span></span><span class="cb-val">~451 h</span><span class="cb-dim"></span></div>
+        <div class="cb-row"><span class="cb-lab">Metamod</span><span class="cb-track"><span class="cb-fill ref" style="width:26.7%" data-tip="Metamod:Source: 162 h from build to the first fixed dev build, 9 load failures"></span></span><span class="cb-val">162 h</span><span class="cb-dim"></span></div>
+        <div class="cb-note">Auto-publish does not change crash hours; the ideal stack turns them all into degraded time.</div>
       </div>
     </div>
     <h3>What the degraded hours cost</h3>
@@ -439,26 +575,41 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <div class="churn">
       <div class="cb">
         <div class="cb-head"><strong>Effective outage</strong> <span>crashed, or a core feature down · today 635 h</span></div>
-        <div class="cb-row"><span class="cb-lab">Incremental</span><span class="cb-track" data-tip="Incremental: 464 h of 635 h today (−27%)" tabindex="0"><span class="cb-fill inc" style="width:73.1%"></span></span><span class="cb-val">464 h</span><span class="cb-red">−27%</span></div>
-        <div class="cb-row"><span class="cb-lab">Ideal</span><span class="cb-track" data-tip="Ideal: 415 h of 635 h today (−35%)" tabindex="0"><span class="cb-fill ide" style="width:65.4%"></span></span><span class="cb-val">415 h</span><span class="cb-red">−35%</span></div>
-        <div class="cb-row"><span class="cb-lab">Ideal + core auto-heal</span><span class="cb-track" data-tip="Ideal with Host_Say, event listener and NetworkStateChanged healed automatically: 216 h (−66%)" tabindex="0"><span class="cb-fill chk" style="width:34.0%"></span></span><span class="cb-val">216 h</span><span class="cb-red">−66%</span></div>
-        <div class="cb-note">What is left is the code-fix incidents: July 2025 (146 h), May 2024 (35 h), AnimGraph 2 (35 h).</div>
+        <div class="cb-row"><span class="cb-lab"><strong>CSSharp</strong></span><span class="cb-track"><span class="cb-fill ref" style="width:100.0%" data-tip="today: 635 h"></span><span class="cb-fill sa" style="width:91.8%" data-tip="A: 583 h"></span><span class="cb-fill sab" style="width:83.8%" data-tip="A–B: 532 h"></span><span class="cb-fill inc" style="width:72.4%" data-tip="A–C and A–D: 460 h"></span><span class="cb-fill pub" style="width:67.1%" data-tip="+ auto-publish (T2, not planned): ~426 h"></span></span><span class="cb-val">460 h</span><span class="cb-red">−28%</span></div>
+        <div class="cb-steps"><span><i class="dot ref"></i>today 635 h</span> <span class="arr">→</span> <span><i class="dot sa"></i>A 583 h</span> <span class="arr">→</span> <span><i class="dot sab"></i>A–B 532 h</span> <span class="arr">→</span> <span><i class="dot inc"></i>A–C 460 h</span> <span class="arr">→</span> <span class="nc">A–D no change</span> <span class="arr">·</span> <span><i class="dot pub"></i>+ auto-publish (T2) ~426 h</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>Ideal stack</strong></span><span class="cb-track"><span class="cb-fill ide" style="width:65.4%" data-tip="base: 415 h"></span><span class="cb-fill ipub" style="width:49.9%" data-tip="+ auto-publish: ~317 h"></span><span class="cb-fill chk" style="width:35.0%" data-tip="+ core auto-heal: ~222 h"></span></span><span class="cb-val">~222 h</span><span class="cb-red">−65%</span></div>
+        <div class="cb-steps"><span><i class="dot ide"></i>base 415 h</span> <span class="arr">→</span> <span><i class="dot ipub"></i>+ auto-publish ~317 h</span> <span class="arr">→</span> <span><i class="dot chk"></i>+ core auto-heal ~222 h</span></div>
+        <div class="cb-row ref-first"><span class="cb-lab">s2script</span><span class="cb-track"><span class="cb-fill ext" style="width:24.9%" data-tip="s2script: counts on the builds since Jul 2026, scaled by the ratio to CounterStrikeSharp on the same builds: ~25 h vs 99 h → ~158 h"></span></span><span class="cb-val">~158 h</span><span class="cb-dim"></span></div>
+        <div class="cb-row"><span class="cb-lab">SwiftlyS2</span><span class="cb-track"><span class="cb-fill ext" style="width:74.3%" data-tip="SwiftlyS2: counts on the builds since Apr 2026, scaled by the ratio to CounterStrikeSharp on the same builds (upper bound): 100 h vs 134 h → ~472 h"></span></span><span class="cb-val">~472 h</span><span class="cb-dim"></span></div>
+        <div class="cb-row"><span class="cb-lab">Metamod</span><span class="cb-track"><span class="cb-fill ref" style="width:25.5%" data-tip="Metamod:Source: 162 h; Metamod down means every plugin is down"></span></span><span class="cb-val">162 h</span><span class="cb-dim"></span></div>
+        <div class="cb-note">With core auto-heal, what is left is mostly the code-fix incidents: July 2025 (146 h), May 2024 (35 h), AnimGraph 2 (35 h).</div>
+      </div>
+      <div class="cb">
+        <div class="cb-head"><strong>Broken or degraded</strong> <span>crashed, or any feature down · today 1,871 h</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>CSSharp</strong></span><span class="cb-track"><span class="cb-fill ref" style="width:100.0%" data-tip="today: 1,871 h"></span><span class="cb-fill sa" style="width:100.0%" data-tip="A: 1,871 h"></span><span class="cb-fill sab" style="width:91.5%" data-tip="A–B: 1,712 h"></span><span class="cb-fill inc" style="width:91.5%" data-tip="A–C and A–D: 1,712 h"></span><span class="cb-fill pub" style="width:74.6%" data-tip="+ auto-publish (T2, not planned): ~1,396 h"></span></span><span class="cb-val">1,712 h</span><span class="cb-red">−8%</span></div>
+        <div class="cb-steps"><span><i class="dot ref"></i>today 1,871 h</span> <span class="arr">→</span> <span><i class="dot sa"></i>A 1,871 h</span> <span class="arr">→</span> <span><i class="dot sab"></i>A–B 1,712 h</span> <span class="arr">→</span> <span><i class="dot inc"></i>A–C 1,712 h</span> <span class="arr">→</span> <span class="nc">A–D no change</span> <span class="arr">·</span> <span><i class="dot pub"></i>+ auto-publish (T2) ~1,396 h</span></div>
+        <div class="cb-row"><span class="cb-lab"><strong>Ideal stack</strong></span><span class="cb-track"><span class="cb-fill ide" style="width:90.3%" data-tip="base: 1,689 h"></span><span class="cb-fill ipub" style="width:70.7%" data-tip="+ auto-publish: ~1,323 h"></span></span><span class="cb-val">~1,323 h</span><span class="cb-red">−29%</span></div>
+        <div class="cb-steps"><span><i class="dot ide"></i>base 1,689 h</span> <span class="arr">→</span> <span><i class="dot ipub"></i>+ auto-publish ~1,323 h</span></div>
+        <div class="cb-row ref-first"><span class="cb-lab">Metamod</span><span class="cb-track"><span class="cb-fill ref" style="width:8.7%" data-tip="Metamod:Source: 162 h; it loads or it doesn’t, so it has no degraded state"></span></span><span class="cb-val">162 h</span><span class="cb-dim"></span></div>
+        <div class="cb-note">Auto-publish moves the total; the other changes only make it milder. Core auto-heal barely moves it (~1,305 h vs ~1,323 h): it decides which features are down, not for how long.</div>
       </div>
     </div>
     <ul class="compact">
-      <li><strong>Total broken time barely moves; its severity does.</strong> Broken-or-degraded wall-clock hours stay about the same (1,871 today and with the incremental changes, 1,689 ideal). What changes is that most of it becomes "some features off" instead of "server down".</li>
-      <li><strong>Most degraded time is slow human fixes, not big breaks.</strong> Seven gamedata-only incidents that took over 100 h each make up 932 h, 60% of the incremental scenario's degraded time, and each touched only 1–6 bindings. Auto-publishing or maintainers in other time zones fix this; architecture doesn't.</li>
+      <li><strong>Total broken time barely moves, unless gamedata publishes itself.</strong> A–C trims it to 1,712 h (−8%, all from B healing offset- and slot-only updates) and the base ideal stack only reaches 1,689 h; most of it becomes "some features off" instead of "server down". CI that publishes re-derived gamedata within about an hour, when two anchors agree (T2, not in specs A–D), cuts it to about 1,396 h (−25%) and effective outage to about 426 h (−33%); those two values come from the earlier T1 run, before B's boot heal was counted. The model uses the measured heal rates: all moved offsets and ~60% of broken signatures; targets with no anchor, such as StartTouch, always wait for a human.</li>
+      <li><strong>The ideal stack’s lead on total broken time is small.</strong> With the same auto-publish rule it reaches about 1,323 h (−29%) and 317 h effective outage (−50%), with no crash hours. It turns former crashes into degraded hours, and what remains needs a human (anchor-less signatures, behaviour changes, schema renames), timed with CounterStrikeSharp’s historical fix times.</li>
+      <li><strong>Most degraded time is slow human fixes, not big breaks.</strong> Six gamedata-only incidents that took over 100 h each make up 824 h, 60% of A–C's degraded time (1,383 h), and each touched only 1–6 bindings. Auto-publishing or maintainers in other time zones fix this; architecture doesn't.</li>
       <li><strong>The longest-degraded features are mostly niche:</strong> weapons, player management (CommitSuicide alone is 597 h), entity spawn, round control, PostThink and triggers. None of seven popular plugins sampled uses PostThink or the trigger signatures. The ideal stack's automatic offset healing cuts slay, teleport and respawn downtime to almost nothing.</li>
       <li><strong>Every server type is touched, few are crippled.</strong> Competitive, retakes, DM with skins and admin servers have at least one used feature off for 50–85% of degraded hours, but core features only 7–9% (incremental) or 23–25% (ideal, which inherits former outages).</li>
     </ul>
     <details class="ev sub" id="degraded-detail">
       <summary><span class="st">Feature map, hours per feature, and impact by server type</span><span class="tk">Which bindings back which plugin features, and how long each group would be down</span></summary>
       <div class="db">
+        <p class="meta">The hours and server-type tables below come from the earlier T1 run ("incremental"), before spec B's boot heal was counted. With it, A–C has 1,383 degraded hours with a core feature down for 131 h.</p>
         <h3>Bindings behind each feature group</h3>
         <div class="tbl"><table>
           <thead><tr><th>Group</th><th>Bindings</th><th>What plugins lose</th><th>Criticality</th></tr></thead>
           <tbody>
-            <tr><td>Tick and timers</td><td>GameFrame slot, GetGlobals</td><td>OnTick, AddTimer, NextFrame, CurrentTime</td><td>core (broken only by 1.42.0.1; the detour protects it)</td></tr>
+            <tr><td>Tick and timers</td><td>GameFrame slot, GetGlobals</td><td>OnTick, AddTimer, NextFrame, CurrentTime</td><td>core (broken only by 1.42.0.1; spec B's boot heal protects it)</td></tr>
             <tr><td>Chat commands</td><td>Host_Say, RegisterConCommand slot</td><td><code>!cmd</code> triggers, console commands, ConVar registration</td><td>core</td></tr>
             <tr><td>Game events</td><td>LegacyGameEventListener, GameEventManager init</td><td>event handlers, FireEvent</td><td>core</td></tr>
             <tr><td>Networked writes</td><td>NetworkStateChanged, SetStateChanged</td><td>clients don't see money, score or model edits</td><td>core</td></tr>
@@ -518,14 +669,15 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
         <p class="meta">Assumptions: degradation runs from build to first fix release. Gamedata-only fixes take the observed human fix time. A changed entry counts as broken on all OSes, which overstates single-OS changes. In the ideal case vfunc offsets heal automatically and signatures do not, which overstates degradation given the measured ~60% two-anchor healing. Measured to follow-up releases instead of first fixes, degraded time is 2,352 h (incremental) and 2,498 h (ideal).</p>
       </div>
     </details>
-    <p class="meta">Incidents fixed with no human at all: 0% today, 0% incremental, ~18% ideal (probably understated; see the empirical check).</p>
-    <p><strong>The incremental changes deliver about 75–80% of the ideal stack's reduction in releases and about half of its reduction in outage.</strong> The ideal stack adds about 7 fewer code releases over three years. It turns the remaining ~110 outage hours a year into degraded time, with the server up and some features off. About 18% of incidents need no human at all; the real-update test suggests more, since two agreeing anchors healed about 60% of broken signatures against the 25% the model assumed, but the model was not re-run with that rate.</p>
-    <p class="meta">Total broken-or-degraded hours barely change in either scenario: a human still makes the data fix, and fixes land the morning after Valve's ~23:00 UTC releases. Only auto-publishing or maintainers in other time zones shorten that. Human effort hours are not measured, because there is no effort data in the history. The remaining gap needs the structural changes: own loader, no compiled SDK headers, and runtime struct offsets.</p>
+    <p class="meta">Reference bars are actual history, not a model. Metamod:Source is counted directly over the same Nov 2023–Nov 2026 window: 9 updates where it failed to load, each fixed by an SDK update plus a rebuild. Its surface is tiny (a few hooks, no gamedata), so it is a floor, not a peer. Two single-setup Linux reports (Metamod #278, #288) are left out. s2script's track record here starts in July 2026, and SwiftlyS2’s history here starts in April 2026. For each, its counts on those builds are set against CounterStrikeSharp’s on the same builds, and that ratio is applied to the 3-year totals, so their bars are extrapolated from 6 and 7 incidents. Both are left off the commit cards, because commit counts mostly reflect each repo’s commit style, not how much an update cost. SwiftlyS2’s bars are an upper bound: every break counts as an outage, though August’s may only have switched features off (−34% if so). AnimGraph 2 (45 h) and July (36 h) are 80% of its outage hours; on the three breaking builds since September it was down 8 h against CounterStrikeSharp’s 64 h. Hours run from the build to the first fix commit; s2script’s September 2026 break (16 signatures, fixed after 5 days) switched features off rather than crashing.</p>
+    <p class="meta">Incidents fixed with no human at all: 0% today, 0% with A, ~15% with A–B or A–C (6 offset- or slot-only incidents heal at boot), ~18% ideal (probably understated; see the empirical check).</p>
+    <p><strong>The incremental changes deliver about 75–80% of the ideal stack's reduction in releases and about half of its reduction in outage.</strong> The ideal stack adds about 7 fewer code releases over three years. It turns the remaining ~110 outage hours a year into degraded time, with the server up and some features off. About 18% of incidents need no human at all; the real-update test suggests more, since two agreeing anchors healed about 60% of broken signatures against the 25% the model assumed, but the T2 and ideal columns were not re-run with that rate (only the auto-publish bars use it).</p>
+    <p class="meta">Total broken-or-degraded hours barely change in either scenario: a human still makes the data fix, and fixes land the morning after Valve's ~23:00 UTC releases. Only auto-publishing or maintainers in other time zones shorten that (auto-publish modelled above: −25% incremental, −29% ideal). Human effort hours are not measured, because there is no effort data in the history. The remaining gap needs the structural changes: own loader, no compiled SDK headers, and runtime struct offsets.</p>
     <details class="ev sub" id="backtest-scenarios">
       <summary><span class="st">Scenarios and full results</span><span class="tk">What T1, T2 and the ideal stack include, and the result for each</span></summary>
       <div class="db">
     <ul class="keys">
-      <li><strong>Incremental (T1):</strong> uniqueness check, per-feature failure, schema errors instead of offset 0, boot vtable-size check, engine slots in gamedata with a GameFrame detour, signed build-keyed gamedata on both OSes, CI that boots each build.</li>
+      <li><strong>Incremental (T1 = specs A–C):</strong> uniqueness check, per-feature failure, schema errors instead of offset 0 (A); boot vtable checks with slots in gamedata, healed at boot (B; replaces the earlier GameFrame-detour idea); signed build-keyed gamedata on both OSes and CI that boots each build (C). The table below is the earlier T1 run; with B's heal, the 6 offset- or slot-only incidents move from data-only to avoided (see "Which spec moves which number").</li>
       <li><strong>T2:</strong> T1 plus automatic regeneration from anchors. Results publish automatically only when two anchors agree; otherwise a human approves.</li>
       <li><strong>Ideal:</strong> T2 plus its own loader, no compiled engine headers, <code>dlsym</code> instead of tier0 imports, struct offsets extracted from code and checked at boot, and rename aliases.</li>
     </ul>
@@ -545,8 +697,8 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       <summary><span class="st">What this means</span><span class="tk">T1 halves downtime; T2 saves effort, not downtime; 8 incidents are irreducible; humans stay on the critical path</span></summary>
       <div class="db">
     <ul class="compact">
-      <li><strong>T1 gets most of the way on work, half on downtime.</strong> Most fixes become a gamedata push with no release, and crash hours roughly halve. The 1.42.0.1 break would have been a non-event: the GameFrame detour survives and the boot check disables the other shifted hooks until a data edit.</li>
-      <li><strong>T2 saves human effort, not downtime.</strong> It mostly re-derives vfunc offsets automatically (Respawn and CommitSuicide alone changed about 30 times each). Signatures mostly still need approval because few have two agreeing anchors.</li>
+      <li><strong>T1 gets most of the way on work, half on downtime.</strong> Most fixes become a gamedata push with no release, and crash hours roughly halve. The 1.42.0.1 break would have been a non-event: spec B's boot check heals all 10 shifted <code>ISource2Server</code> hooks, GameFrame included.</li>
+      <li><strong>T2's regeneration alone saves human effort, not downtime; only auto-publishing its results shortens broken time (about −25%).</strong> It mostly re-derives vfunc offsets automatically (Respawn and CommitSuicide alone changed about 30 times each). Signatures mostly still need approval because few have two agreeing anchors.</li>
       <li><strong>The remaining T1 outages come from two things:</strong> tier0 and loader link breaks (Armory, July 2025, July 2026) and hard-coded struct layouts. Only the ideal design removes those.</li>
       <li><strong>The worst outage is not fixable by T1:</strong> July 2025 (about 6 days). Metamod itself broke, struct layouts and NetworkStateChanged semantics changed, and the ConVar rewrite was needed. Even the ideal stack would only have turned it into 6 days with features disabled.</li>
       <li><strong>Irreducible in every scenario:</strong> 8 incidents with semantic or prototype changes, including AnimGraph 2 in April 2026, the Nov 2026 net message change and the Feb 2024 update.</li>
@@ -557,7 +709,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <details class="ev sub" id="backtest-empirical">
       <summary><span class="st">Empirical check on real breaking updates</span><span class="tk">Two agreeing anchors healed 6/10 broken signatures and 6/6 moved offsets with 0 wrong; also found the root cause of #1494</span></summary>
       <div class="db">
-    <p>Old binaries were reconstructed from public IDA databases (Swiftly-Tracker/CS2-IDA-Dumps, validated byte-for-byte against a real build). They only go back to September 2026, so this covers four breaking pairs from 1.41.8.2 to 1.41.9.7: 10 broken signatures and 6 moved vtable offsets. Ground truth is CounterStrikeSharp's own fixed gamedata. The earlier test had no broken signatures and used each signature's own hit as ground truth.</p>
+    <p>Old binaries were reconstructed from public IDA databases (Swiftly-Tracker/CS2-IDA-Dumps, validated byte-for-byte against a real build). They only go back to September 2026, so this covers four breaking update pairs from 1.41.8.2 to 1.41.9.7: 10 broken signatures and 6 moved vtable offsets. Ground truth is CounterStrikeSharp's own fixed gamedata. The earlier test had no broken signatures and used each signature's own hit as ground truth.</p>
     <div class="tbl"><table>
       <thead><tr><th>Policy</th><th>Broken signatures (10)</th><th>Moved offsets (6)</th></tr></thead>
       <tbody>
@@ -567,7 +719,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       </tbody>
     </table></div>
     <ul class="compact">
-      <li><strong>The T2 column above is conservative.</strong> The model assumed about 25% of signatures would auto-heal; measured, two-anchor agreement healed about 60% of broken ones and all moved offsets. With n=16 from one big update pair, this still needs replicating on an AnimGraph 2-scale update.</li>
+      <li><strong>The T2 column above is conservative.</strong> The model assumed about 25% of signatures would auto-heal; measured, two-anchor agreement healed about 60% of broken ones and all moved offsets. With n=16 across four update pairs, this still needs replicating on an AnimGraph 2-scale update.</li>
       <li><strong>Silent wrong bindings are real.</strong> At 1.41.8.2 the ClientPrint signature silently moved, uniquely, onto a <code>CNavBFSLattice</code> constructor and stayed there. The 1.41.9.7 "fix" lengthened the signature onto that same wrong function, which explains open issue #1494. TerminateRound also bound to a <code>player_connect</code> handler at 1.41.8.2 after being ambiguous one update earlier, so a uniqueness check would have warned an update ahead.</li>
       <li><strong>The incremental package catches most but not all.</strong> Of 11 real breaks, 8 already fail loudly today, uniqueness adds 1, and size checks catch all 6 offset moves. ClientPrint stays undetectable without a semantic check such as comparing caller sets or similarity, which the two-anchor rule would have flagged.</li>
       <li><strong>Why anchors missed:</strong> the virtual StartTouch became a thin wrapper that tail-jumps to an outlined body; caller ordinals shift when the caller changes (caller plus ordinal caused almost all wrong answers); GetCSWeaponDataFromKey has no strings anywhere nearby. Following tail jumps and treating caller ordinals as a weak tie-breaker would help.</li>
@@ -591,47 +743,47 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       </div>
     </details>
     <details class="ev sub" id="backtest-table">
-      <summary><span class="st">Per-incident outcomes</span><span class="tk">39 incidents: A avoided, D data-only, S softer (feature off, still needs code), U unchanged</span></summary>
+      <summary><span class="st">Per-incident outcomes</span><span class="tk">39 incidents: avoided, data-only, softer (feature off, still needs code) or same</span></summary>
       <div class="db">
         <p>Item codes: S signature, O vfunc index, V vtable compiled from headers, G IGameSystem implemented by CounterStrikeSharp, T hard-coded struct layout, L tier0 or loader link, R SDK refactor, N schema rename, M semantic or prototype change, A ambiguous old signature. Impact: F feature broken, C crash, L framework fails to load. Fix time is hours to the first release with the fix, and to the last follow-up.</p>
         <div class="tbl"><table>
-          <thead><tr><th>#</th><th>Date / build</th><th>Items</th><th>Impact</th><th>Fix h</th><th>Commits (follow-ups)</th><th>T1 / T2 / Ideal</th></tr></thead>
+          <thead><tr><th>#</th><th>Date / build</th><th>Items</th><th>Impact</th><th>Fix h</th><th>Commits (follow-ups)</th><th>T1 · T2 · Ideal</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>2023-11-02 1.39.6.6</td><td>S O</td><td>F</td><td>125</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>2</td><td>2023-11-09</td><td>S O A</td><td>F</td><td>147 / 288</td><td>3 (2)</td><td>D / D / D</td></tr>
-            <tr><td>3</td><td>2023-11-21</td><td>S O</td><td>F</td><td>174</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>4</td><td>2023-12-14</td><td>O</td><td>F</td><td>5</td><td>1</td><td>D / A / A</td></tr>
-            <tr><td>5</td><td>2024-01-19</td><td>O</td><td>F</td><td>42</td><td>1</td><td>D / A / A</td></tr>
-            <tr><td>6</td><td>2024-02-07 Call to Arms</td><td>L S A O T M</td><td>L</td><td>30 / 73</td><td>3 (2)</td><td>U / U / S</td></tr>
-            <tr><td>7</td><td>2024-02-28</td><td>O</td><td>F</td><td>4</td><td>1</td><td>D / A / A</td></tr>
-            <tr><td>8</td><td>2024-04-25</td><td>S N V</td><td>F</td><td>7 / 120</td><td>3 (2)</td><td>S / S / D</td></tr>
-            <tr><td>9</td><td>2024-05-23</td><td>S O M V G N</td><td>C</td><td>35 / 169</td><td>4 (3)</td><td>S / S / S</td></tr>
-            <tr><td>10–13</td><td>2024-06 to 2024-08</td><td>S (O)</td><td>F</td><td>15–101</td><td>1–2 each</td><td>D / D / D</td></tr>
-            <tr><td>14</td><td>2024-10-02 Armory</td><td>L S O V N</td><td>C+L</td><td>39 / 76</td><td>2 (1)</td><td>U / U / D</td></tr>
-            <tr><td>15</td><td>2024-10-15</td><td>S O</td><td>F</td><td>74 / 121</td><td>2 (1)</td><td>D / D / D</td></tr>
-            <tr><td>16</td><td>2024-12-19</td><td>S T</td><td>L</td><td>13</td><td>2 (1)</td><td>U / U / D</td></tr>
-            <tr><td>17</td><td>2025-03-31</td><td>S</td><td>F</td><td>3 / 74</td><td>2 (1)</td><td>D / D / D</td></tr>
-            <tr><td>18</td><td>2025-05-07</td><td>R T (ConVar)</td><td>?</td><td>52</td><td>1</td><td>U / U / D</td></tr>
-            <tr><td>19</td><td>2025-07-02</td><td>S A</td><td>C</td><td>32 / 98</td><td>2 (1)</td><td>D / D / D</td></tr>
-            <tr><td>20</td><td>2025-07-28 P19388062</td><td>L S A O T M R V G N</td><td>L</td><td>146 / 157</td><td>3 (1)</td><td>U / U / S</td></tr>
-            <tr><td>21</td><td>2025-08-14</td><td>V G S O T</td><td>C</td><td>4 / 148</td><td>4 (3)</td><td>S / S / D</td></tr>
-            <tr><td>22–23</td><td>2025-08-26 / 09-03</td><td>O</td><td>F</td><td>108 / 1</td><td>1 each</td><td>D / A / A</td></tr>
-            <tr><td>24</td><td>2025-09-16</td><td>V G S O M</td><td>C?</td><td>32</td><td>1</td><td>S / S / S</td></tr>
-            <tr><td>25</td><td>2025-10-14</td><td>S O T M N</td><td>L</td><td>32</td><td>2 (1)</td><td>U / U / S</td></tr>
-            <tr><td>26</td><td>2025-10-29</td><td>S</td><td>F</td><td>2</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>27</td><td>2025-11-12</td><td>S</td><td>C</td><td>52</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>28</td><td>2025-12-06</td><td>G V</td><td>C</td><td>23</td><td>1</td><td>S / S / A</td></tr>
-            <tr><td>29</td><td>2026-01-21</td><td>S A O V G T N</td><td>L</td><td>35 / 78</td><td>4 (2)</td><td>U / U / D</td></tr>
-            <tr><td>30</td><td>2026-02-23</td><td>S A</td><td>F</td><td>51</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>31</td><td>2026-03-12</td><td>S</td><td>F</td><td>173</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>32</td><td>2026-04-20 AnimGraph 2</td><td>S A O V G M N</td><td>L</td><td>35 / 38</td><td>2 (1)</td><td>S / S / S</td></tr>
-            <tr><td>33</td><td>2026-07-08</td><td>L S A O V G M N</td><td>L</td><td>35</td><td>1</td><td>U / U / S</td></tr>
-            <tr><td>34</td><td>2026-08-24</td><td>S</td><td>F</td><td>14</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>35</td><td>2026-09-23</td><td>S A O V R N</td><td>C</td><td>36 / 76</td><td>3 (1)</td><td>D / D / D</td></tr>
-            <tr><td>36</td><td>2026-10-15</td><td>S (no anchor)</td><td>F</td><td>104</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>37</td><td>2026-10-22</td><td>V S R</td><td>C</td><td>15</td><td>1</td><td>D / D / D</td></tr>
-            <tr><td>38</td><td>2026-11-11</td><td>M (net message) S A</td><td>C</td><td>13 / 38</td><td>2 (1)</td><td>S / S / S</td></tr>
-            <tr><td>39</td><td>2026-11-23 1.42.0.1</td><td>V</td><td>C</td><td>open</td><td>0</td><td>D / A / A</td></tr>
+            <tr><td>1</td><td>2023-11-02 1.39.6.6</td><td>S O</td><td>F</td><td>125</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>2</td><td>2023-11-09</td><td>S O A</td><td>F</td><td>147 / 288</td><td>3 (2)</td><td>data · data · data</td></tr>
+            <tr><td>3</td><td>2023-11-21</td><td>S O</td><td>F</td><td>174</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>4</td><td>2023-12-14</td><td>O</td><td>F</td><td>5</td><td>1</td><td>data · avoided · avoided</td></tr>
+            <tr><td>5</td><td>2024-01-19</td><td>O</td><td>F</td><td>42</td><td>1</td><td>data · avoided · avoided</td></tr>
+            <tr><td>6</td><td>2024-02-07 Call to Arms</td><td>L S A O T M</td><td>L</td><td>30 / 73</td><td>3 (2)</td><td>same · same · softer</td></tr>
+            <tr><td>7</td><td>2024-02-28</td><td>O</td><td>F</td><td>4</td><td>1</td><td>data · avoided · avoided</td></tr>
+            <tr><td>8</td><td>2024-04-25</td><td>S N V</td><td>F</td><td>7 / 120</td><td>3 (2)</td><td>softer · softer · data</td></tr>
+            <tr><td>9</td><td>2024-05-23</td><td>S O M V G N</td><td>C</td><td>35 / 169</td><td>4 (3)</td><td>softer · softer · softer</td></tr>
+            <tr><td>10–13</td><td>2024-06 to 2024-08</td><td>S (O)</td><td>F</td><td>15–101</td><td>1–2 each</td><td>data · data · data</td></tr>
+            <tr><td>14</td><td>2024-10-02 Armory</td><td>L S O V N</td><td>C+L</td><td>39 / 76</td><td>2 (1)</td><td>same · same · data</td></tr>
+            <tr><td>15</td><td>2024-10-15</td><td>S O</td><td>F</td><td>74 / 121</td><td>2 (1)</td><td>data · data · data</td></tr>
+            <tr><td>16</td><td>2024-12-19</td><td>S T</td><td>L</td><td>13</td><td>2 (1)</td><td>same · same · data</td></tr>
+            <tr><td>17</td><td>2025-03-31</td><td>S</td><td>F</td><td>3 / 74</td><td>2 (1)</td><td>data · data · data</td></tr>
+            <tr><td>18</td><td>2025-05-07</td><td>R T (ConVar)</td><td>?</td><td>52</td><td>1</td><td>same · same · data</td></tr>
+            <tr><td>19</td><td>2025-07-02</td><td>S A</td><td>C</td><td>32 / 98</td><td>2 (1)</td><td>data · data · data</td></tr>
+            <tr><td>20</td><td>2025-07-28 P19388062</td><td>L S A O T M R V G N</td><td>L</td><td>146 / 157</td><td>3 (1)</td><td>same · same · softer</td></tr>
+            <tr><td>21</td><td>2025-08-14</td><td>V G S O T</td><td>C</td><td>4 / 148</td><td>4 (3)</td><td>softer · softer · data</td></tr>
+            <tr><td>22–23</td><td>2025-08-26 / 09-03</td><td>O</td><td>F</td><td>108 / 1</td><td>1 each</td><td>data · avoided · avoided</td></tr>
+            <tr><td>24</td><td>2025-09-16</td><td>V G S O M</td><td>C?</td><td>32</td><td>1</td><td>softer · softer · softer</td></tr>
+            <tr><td>25</td><td>2025-10-14</td><td>S O T M N</td><td>L</td><td>32</td><td>2 (1)</td><td>same · same · softer</td></tr>
+            <tr><td>26</td><td>2025-10-29</td><td>S</td><td>F</td><td>2</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>27</td><td>2025-11-12</td><td>S</td><td>C</td><td>52</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>28</td><td>2025-12-06</td><td>G V</td><td>C</td><td>23</td><td>1</td><td>softer · softer · avoided</td></tr>
+            <tr><td>29</td><td>2026-01-21</td><td>S A O V G T N</td><td>L</td><td>35 / 78</td><td>4 (2)</td><td>same · same · data</td></tr>
+            <tr><td>30</td><td>2026-02-23</td><td>S A</td><td>F</td><td>51</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>31</td><td>2026-03-12</td><td>S</td><td>F</td><td>173</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>32</td><td>2026-04-20 AnimGraph 2</td><td>S A O V G M N</td><td>L</td><td>35 / 38</td><td>2 (1)</td><td>softer · softer · softer</td></tr>
+            <tr><td>33</td><td>2026-07-08</td><td>L S A O V G M N</td><td>L</td><td>35</td><td>1</td><td>same · same · softer</td></tr>
+            <tr><td>34</td><td>2026-08-24</td><td>S</td><td>F</td><td>14</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>35</td><td>2026-09-23</td><td>S A O V R N</td><td>C</td><td>36 / 76</td><td>3 (1)</td><td>data · data · data</td></tr>
+            <tr><td>36</td><td>2026-10-15</td><td>S (no anchor)</td><td>F</td><td>104</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>37</td><td>2026-10-22</td><td>V S R</td><td>C</td><td>15</td><td>1</td><td>data · data · data</td></tr>
+            <tr><td>38</td><td>2026-11-11</td><td>M (net message) S A</td><td>C</td><td>13 / 38</td><td>2 (1)</td><td>softer · softer · softer</td></tr>
+            <tr><td>39</td><td>2026-11-23 1.42.0.1</td><td>V</td><td>C</td><td>open</td><td>0</td><td>data · avoided · avoided</td></tr>
           </tbody>
         </table></div>
         <p>Assumptions: an incident's outcome is its worst item. A signed data push that blanks a binding acts as a kill switch, which turns many crashes into softer outcomes. T2 publishes automatically only when two anchors agree. Slot shifts found by unambiguous neighbour alignment count as avoided, which is untested on a breaking update. Two incidents with no CounterStrikeSharp commit (#1324 and #1500) are excluded.</p>
@@ -650,7 +802,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       <tbody>
         <tr><td>82% auto-heal on a real update</td><td><span class="v i">refuted as worded</span></td><td>Tested only on signatures that still worked, with the signature's address as ground truth. 24% have two agreeing anchors. Untested on a breaking update.</td></tr>
         <tr><td>ModSharp needed nothing because it detours</td><td><span class="v i">refuted</span></td><td>Its GameFrame detour survives, but 2 JSON slot hooks shifted. The fix is a data change. Its public mirror is stale since Nov 12.</td></tr>
-        <tr><td>Compiled-in interface vtables are the costliest choice</td><td><span class="v p">weakened</span></td><td>2 incidents in total, but the slowest recovery. An 8-byte binary patch fixes 1.42.0.1, so no full chain rebuild is needed in practice.</td></tr>
+        <tr><td>Compiled-in interface vtables are the costliest choice</td><td><span class="v p">weakened</span></td><td>Sole cause in 2 incidents (part of 13), but the slowest recovery. An 8-byte binary patch fixes 1.42.0.1, so no full chain rebuild is needed in practice.</td></tr>
         <tr><td>Runtime slot fingerprinting is enough</td><td><span class="v p">weakened</span></td><td>25–30% of interface slots have identical bodies, shared bodies back many slots, and line-number strings break fingerprints.</td></tr>
         <tr><td>26879581 inserted a virtual at slot 14</td><td><span class="v a">holds</span></td><td>Confirmed independently: 104 → 105 slots; 14→15, 19→20, 41→42.</td></tr>
         <tr><td>1.42.0.0 broke no CSSharp Linux gamedata</td><td><span class="v p">weakened</span></td><td>Matching once is not the same as correct (ClientPrint was already wrong), and #1500 was reported on 1.42.0.0 and is unexplained.</td></tr>
@@ -666,19 +818,19 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
 
   <section class="r" id="evidence">
     <h2>Evidence</h2>
-    <p>Research tracks A–E. Expand any of them for the numbers and sources.</p>
+    <p>Research tracks 1–5. Expand any of them for the numbers and sources.</p>
     <div class="evs">
 
   <details class="ev" id="cssharp">
     <summary><span class="st">CounterStrikeSharp history</span><span class="tk">383 gamedata changes over 31 update rounds; name-based bindings never broke; fixes take ~1 day plus follow-ups</span></summary>
     <div class="db">
-    <p>180 of 903 commits (20%) exist only to keep up with the game: gamedata, schema dump or SDK/Metamod/protobuf submodule bumps. <code>gamedata.json</code> alone has 92 commits from 28 authors, with 383 value changes (230 signatures, 153 offsets) across 31 update clusters. Items marked <em>inferred</em> are judgment calls; the rest is counted from git and issues.</p>
+    <p>180 of 903 commits (20%) exist only to keep up with the game: gamedata, schema dump or SDK/Metamod/protobuf submodule bumps. <code>gamedata.json</code> alone has 92 commits from 28 authors, with 383 value changes counted per OS (230 signatures, 153 offsets). Grouped into 31 update clusters and counted once per entry, that is 154 signature and 75 vfunc-index changes, the figures used in the tables below. Items marked <em>inferred</em> are judgment calls; the rest is counted from git and issues.</p>
     <h3>Breakage by class</h3>
     <div class="tbl"><table>
       <thead><tr><th>Class</th><th>Count</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td>Byte-pattern signatures</td><td>154 entry changes</td><td>Linux median 22 bytes, 16% wildcards; Windows median 17 bytes, 18% wildcards</td></tr>
-        <tr><td>Vfunc indices in gamedata</td><td>75 entry changes</td><td>CBaseEntity indices move together on both OSes: one update shifted ChangeTeam +7, Teleport +9, Respawn +19, CommitSuicide +24</td></tr>
+        <tr><td>Byte-pattern signatures</td><td>154 entry changes (230 per-OS value changes)</td><td>Linux median 22 bytes, 16% wildcards; Windows median 17 bytes, 18% wildcards</td></tr>
+        <tr><td>Vfunc indices in gamedata</td><td>75 entry changes (in the 153 per-OS offset changes)</td><td>CBaseEntity indices move together on both OSes: one update shifted ChangeTeam +7, Teleport +9, Respawn +19, CommitSuicide +24</td></tr>
         <tr><td>Vtable shifts compiled in from SDK headers</td><td>2 recent</td><td>IVEngineServer2 +1 slot in 1.41.9.2 caused crashes until s2sdk was bumped. ISource2Server +1 slot in build 26879581 is open now (#1502): the GameFrame hook lands on ApplyGameSettings.</td></tr>
         <tr><td>Hardcoded struct offsets</td><td>~12</td><td>EntityIdentity size 0x78→0x70, SubclassID +8→+4, CPlayerPawnComponent +0x30→+0x38, entity-listener vector, transmit-info padding</td></tr>
         <tr><td>SDK API refactors</td><td>~11</td><td>ConVar system rewritten three times, recipient filters, entity listeners, CGlobalVars, the hl2sdk→s2sdk move (34 files)</td></tr>
@@ -728,7 +880,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <p>The Oct–Nov 2026 spike is a tool-assisted cleanup campaign (474 commits by one author, headers renamed to Valve's file names, an AGENTS.md for coding agents), not game updates. The renames broke downstream builds on their own (Metamod PR #289).</p>
     <h3>Where the churn is</h3>
     <p>Commits touching virtuals since launch: IVEngineServer2 21, ICvar 20 (plus ConVar struct layout), INetworkGameServer 17, IGameSystem 16, IFileSystem 15, ISource2GameClients 12, CEntityInstance 12. IGameSystem has one virtual per game event, so every new event shifts the slots after it. Among methods Metamod and CounterStrikeSharp call, <code>IVEngineServer2::GetServerGlobals</code> moved 9 times, ClientPrintf, GetGameDir and SetClientListening 8 times each, ServerCommand 7 times, <code>ICvar::RegisterConCommand</code> 6 times.</p>
-    <p>The slots Metamod itself hooks (loop mode, engine service manager, client callbacks, FireEvent, PostEventAbstract, GameFrame, AddSearchPath) were unchanged in the SDK from October 2023 until now. The <code>ISource2Server</code> insertion behind #1502 is the first one, and the SDK has not caught up yet (s2sdk PR #128).</p>
+    <p>The slots Metamod's core hooks (<code>ISource2ServerConfig</code>, loop mode, engine service manager, client callbacks, FireEvent, PostEventAbstract, AddSearchPath) have been unchanged in the SDK since October 2023, which is why Metamod itself rarely breaks. The <code>ISource2Server</code> insertion behind #1502 does not touch them, so Metamod was unaffected; it hits plugins that hook <code>ISource2Server</code> through the old header. The SDK has not caught up yet (s2sdk PR #128).</p>
     <h3>Interface versions never change</h3>
     <p><code>Source2Server001</code>, <code>Source2EngineToServer001</code>, <code>Source2GameClients001</code>, <code>SchemaSystem_001</code> and others date from 2015; <code>VEngineCvar007</code> and <code>VFileSystem017</code> from 2010. Source 1 was not much better: CS:GO also kept its version strings through about 22 interface edits, and only TF2 bumped one, in 2022. In CS2 none has changed, so <code>CreateInterface</code> keeps succeeding and hands back an object whose vtable no longer matches the header. Version checks cannot catch the mismatch.</p>
     <h3>tier0 link breaks</h3>
@@ -737,7 +889,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <p>A virtual call compiles to <code>[vtable + 8×N]</code>, with N fixed by declaration order. KHook and SourceHook read the slot from the member-function pointer at compile time. Struct offsets (CEntityInstance, ConVarData, Utl containers, CGlobalVarsBase, KeyValues3) are baked in too, and inline header code plus static SDK libraries import tier0 symbols directly. Every plugin built against the old headers is wrong until it is rebuilt.</p>
     <h3>Metamod:Source</h3>
     <p>A <code>Game csgo/addons/metamod</code> line in <code>gameinfo.gi</code> makes the engine load Metamod's loader as if it were <code>libserver.so</code>. The loader then finds and loads the real server binary and patches its Connect/Init through hand-written mirror classes that touch only IAppSystem slots 0, 1 and 3, which have never moved. Metamod's own source almost never changes for an update: 12 CS2 "Trigger build" commits touch only <code>pushbuild.txt</code>, alongside about 21 SDK manifest bumps. Only two provider changes were forced by SDK API changes (CBufferString Jan 2025, ConVar Feb 2025). Twelve real "broken after update" issues were fixed the same day to two days later, except one that took about 15 days.</p>
-    <p>Outside the SDK, every update overwrites <code>gameinfo.gi</code> and users must re-add the line (MM#257), and in Sep–Oct 2025 CS2 changed its library paths. SourceHook was removed from master in September 2026 (<code>a12f3cd</code>) in favour of KHook, with detours and signature lookup, which moved the plugin API from 17 to 18, so SourceHook-era plugins no longer load.</p>
+    <p>Outside the SDK, every update overwrites <code>gameinfo.gi</code> and users must re-add the line (Metamod #257), and in Sep–Oct 2025 CS2 changed its library paths. SourceHook was removed from master in September 2026 (<code>a12f3cd</code>) in favour of KHook, with detours and signature lookup, which moved the plugin API from 17 to 18, so SourceHook-era plugins no longer load.</p>
     <h3>Stable versus churning</h3>
     <div class="tbl"><table>
       <thead><tr><th>Stable for three years</th><th>Churns</th></tr></thead>
@@ -753,13 +905,13 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
   <details class="ev" id="binary">
     <summary><span class="st">The binaries</span><span class="tk">26879581 shifted ISource2Server; prologue signatures are fragile by construction; anchors re-found 24–82% of functions on a quiet update</span></summary>
     <div class="db">
-    <p>Three Linux server builds were diffed: 1.41.9.7 (Nov 12), 1.42.0.0 (Nov 19, the local install) and build 26879581 (Nov 23, which tracker sources label 1.42.0.1). Anonymous Steam access only returns the current manifest, so older builds could not be fetched; for big past updates this track disassembled old and new signature bytes from gamedata git history and used 179 third-party schema dumps. Items marked <em>inferred</em> are judgment calls; the rest is measured.</p>
+    <p>Three Linux server builds were diffed: 1.41.9.7 (Nov 11), 1.42.0.0 (Nov 20, the local install) and build 26879581 (Nov 23, which tracker sources label 1.42.0.1). Anonymous Steam access only returns the current manifest, so older builds could not be fetched; for big past updates this track disassembled old and new signature bytes from gamedata git history and used 179 third-party schema dumps. Items marked <em>inferred</em> are judgment calls; the rest is measured.</p>
     <h3>What the binary looks like</h3>
     <p><code>libserver.so</code> is stripped and built with GCC 14.2 (Steam Runtime 3) and the mold linker, not clang, as unity builds with frame pointers on. It exports about 8 game symbols (<code>CreateInterface</code>, <code>InstallSchemaBindings</code>, a few metadata functions). It keeps full Itanium RTTI: 7,127 typeinfos and 3,877 classes with vtables. <code>.eh_frame</code> covers only 5% of <code>.text</code>, so a function map has to come from a linear sweep plus call and relocation targets (79.5k functions).</p>
     <h3>Live test against CounterStrikeSharp's gamedata</h3>
-    <p>All 28 CounterStrikeSharp Linux signatures match exactly once on all three builds, and all 11 vtable-index offsets point at the same function (fingerprint-checked). The 49 CS2Fixes and 66 SwiftlyS2 signatures also all survive. From 1.41.9.7 to 1.42.0.0, no vtable changed size (0 of 3,821), no schema offset moved (0 of 6,774) and only 106 of 58,967 functions changed after masking addresses. <strong>1.42.0.0 broke none of CounterStrikeSharp's Linux gamedata.</strong></p>
+    <p>All 28 CounterStrikeSharp Linux signatures match exactly once on all three builds, and all 11 vtable-index offsets on <code>libserver</code> classes (of 14 in total; the rest are on engine interfaces) point at the same function (fingerprint-checked). The 49 CS2Fixes and 66 SwiftlyS2 signatures also all survive. From 1.41.9.7 to 1.42.0.0, no vtable changed size (0 of 3,821), no schema offset moved (0 of 6,774) and only 106 of 58,967 functions changed after masking addresses. <strong>1.42.0.0 broke none of CounterStrikeSharp's Linux gamedata.</strong></p>
     <h3>The actual break: build 26879581</h3>
-    <p>The <code>CSource2Server</code> vtable grows from 104 to 105 slots. A new virtual sits at slot 14, a four-instruction forwarder, so WriteSignonMessages moves 14→15 and GameFrame 19→20. Inferred: the s2sdk <code>ISource2Server</code> header (last changed Oct 6) predates this, so every hook resolved from a compile-time index lands on its neighbour. That covers Metamod's GameFrame and CounterStrikeSharp's ServerHibernationUpdate, GameServerSteamAPIActivated, OnHostNameChanged, UpdateWhenNotInGame, PreWorldUpdate and others. No signature check can catch this, because nothing compiled-in is a signature.</p>
+    <p>The <code>CSource2Server</code> vtable grows from 104 to 105 slots. A new virtual sits at slot 14, a four-instruction forwarder, so WriteSignonMessages moves 14→15 and GameFrame 19→20. Inferred: the s2sdk <code>ISource2Server</code> header (last changed Oct 6) predates this, so every hook resolved from a compile-time index lands on its neighbour. That covers every plugin hooking <code>ISource2Server</code> through the old header, such as CounterStrikeSharp's GameFrame, ServerHibernationUpdate, GameServerSteamAPIActivated, OnHostNameChanged, UpdateWhenNotInGame, PreWorldUpdate and others. No signature check can catch this, because nothing compiled-in is a signature.</p>
     <h3>Code drift on a quiet update</h3>
     <p>Only 21–24% of matched libserver functions (34% in libengine2) are byte-identical between consecutive builds, yet 99.5–99.8% are identical once RIP-relative and rel32 values are masked. Whole regions slide by 0x700–0x2100 bytes, with 78–299 distinct shift values per pair. Raw offsets into code are therefore never safe, even when Valve changed almost nothing.</p>
     <h3>Why past signatures broke</h3>
@@ -779,7 +931,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     </table></div>
     <p>About 60% come from whole-function code generation (register pressure, inlining, unity-build ripple), so prologue signatures are fragile by construction. 19 historical signatures now match several places; with first-match scanning a stale signature silently binds to the wrong function.</p>
     <h3>Vtables and schema</h3>
-    <p>Big updates move 6–11 of the 17 offsets at once (Jan 23 2026: 10 of 17; Apr 22 2026: 11 of 17), because one virtual added to a base class shifts every derived class. Schema field tables are static <code>.data</code> records (class name, size, count, then <code>{name, type, offset}</code> entries) and can be extracted offline: 948 classes and 6,774 fields, agreeing 5,160 of 5,160 with a runtime dump. Across the tracker dumps, 26% of consecutive builds moved some offset, sometimes thousands (2,269 fields and 301 class sizes in April 2026). That is harmless to name-based lookup and fatal to hard-coded offsets such as <code>CTakeDamageInfo_HitGroup=104</code> or <code>CheckTransmitPlayerSlot=576</code>.</p>
+    <p>Big updates move 6–11 of the 17 gamedata offset entries at once (Jan 23 2026: 10 of 17; Apr 22 2026: 11 of 17), because one virtual added to a base class shifts every derived class. Schema field tables are static <code>.data</code> records (class name, size, count, then <code>{name, type, offset}</code> entries) and can be extracted offline: 948 classes and 6,774 fields, agreeing 5,160 of 5,160 with a runtime dump. Across the tracker dumps, 26% of consecutive builds moved some offset, sometimes thousands (2,269 fields and 301 class sizes in April 2026). That is harmless to name-based lookup and fatal to hard-coded offsets such as <code>CTakeDamageInfo_HitGroup=104</code> or <code>CheckTransmitPlayerSlot=576</code>.</p>
     <h3>Stable anchors</h3>
     <p>20.7% of functions reference a string and 6.9% reference a string no other function uses. 38.9% sit in a vtable. A unique string or vtable slot covers 44.5% of functions; one extra call hop covers 58.7%. ConCommands and ConVars are registered in static initializers, entity factories are static records and game event names are static pointer arrays. Example chain: string <code>13CCSPlayerPawn</code> → typeinfo → vtable (416 slots) → slot 356, exactly where CounterStrikeSharp's PostThink signature lands.</p>
     <h3>Auto-heal experiment</h3>
@@ -792,7 +944,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
         <tr><td>Vtable slot</td><td>13 / 14</td></tr>
       </tbody>
     </table></div>
-    <p>The one vtable miss is IsValidNavMesh, which moved 32→33 with the inserted virtual; it returned the wrong function with no warning, so without a second anchor misses are not always detectable. A unique whole-function hash heals 109 of 120. Targets with no anchor are data signatures in the middle of a function and leaf functions without strings (for CounterStrikeSharp: RemovePlayerItem, StartTouch, InitAllSystems). This was a quiet update, so 82% is an upper bound.</p>
+    <p>The one vtable miss is IsValidNavMesh, which moved 32→33 with the inserted virtual; it returned the wrong function with no warning, so without a second anchor misses are not always detectable. A unique whole-function hash heals 109 of the 120 targets whose signature starts at a function boundary. Targets with no anchor are data signatures in the middle of a function and leaf functions without strings (for CounterStrikeSharp: RemovePlayerItem, StartTouch, InitAllSystems). This was a quiet update, so 82% is an upper bound.</p>
     <p><strong>Review correction.</strong> The test set kept only signatures that matched once in both builds, so plain signatures scored 100% on it. "Correct" meant "same address the signature finds", which counts the known-wrong ClientPrint binding (#1494) as healed. The 139 rows are 104 unique functions, only 25 of which have two or more anchors (about 24% under a two-anchor rule). 48 rely only on caller plus call ordinal, with ordinals up to 95. The 0% fuzzy result came from a harder set (months-old broken signatures) that the anchor method was never run on, so the two numbers are not directly comparable.</p>
     <p>Fuzzy matching fails. On 100 broken historical signatures with known current targets, abstracting operands found 1 correctly, abstracting registers found 0, mnemonics alone gave 0 (27 ambiguous, 62 wrong), and best-similarity gave 0 because the top scores all tied. GCC prologues are too uniform for loosened byte patterns to stay unique.</p>
     </div>
@@ -801,7 +953,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
   <details class="ev" id="ecosystem">
     <summary><span class="st">How other projects cope</span><span class="tk">Newer stacks skip Metamod and headers; automatic regeneration exists; cs_script is map-bound</span></summary>
     <div class="db">
-    <p>Valve shipped 8 CS2 server builds in 25 days (1.41.9.4 on Oct 30 to 1.42.0.1 on Nov 23). On the latest build CounterStrikeSharp is broken (#1502): Valve inserted one virtual into <code>ISource2Server</code>, so the GameFrame hook at slot 19 now lands on ApplyGameSettings and the server segfaults. The fix is waiting on s2sdk PR #128. cs2kz was running again in about 3.5 hours by pointing its submodule at a contributor's fork of the SDK.</p>
+    <p>Valve shipped 8 CS2 server builds in 24 days (1.41.9.4 on Oct 30 to 1.42.0.1 on Nov 23). On the latest build CounterStrikeSharp is broken (#1502): Valve inserted one virtual into <code>ISource2Server</code>, so the GameFrame hook at slot 19 now lands on ApplyGameSettings and the server segfaults. The fix is waiting on s2sdk PR #128. cs2kz was running again in about 3 hours by pointing its submodule at a contributor's fork of the SDK.</p>
     <h3>Newer stacks bypass Metamod and the SDK headers</h3>
     <ul>
       <li><strong>SwiftlyS2</strong> loads through its own small server proxy (~500 lines) that finds engine init by a string reference. It uses <code>s2binlib</code>, a Rust library that reads the binary on disk: RTTI vtable lookup, string references, pattern scans.</li>
@@ -821,12 +973,12 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
       <thead><tr><th>Stack</th><th>Binds through</th><th>Resilience technique</th><th>Observed recovery</th></tr></thead>
       <tbody>
         <tr><td>CounterStrikeSharp</td><td>Metamod, s2sdk headers, gamedata JSON</td><td>Gamedata download (signatures and offsets only)</td><td>1.41.9.7 ~17.5 h; Jul 2025 ~6 days; 1.42.0.1 still broken</td></tr>
-        <tr><td>SwiftlyS2</td><td>Own loader, s2binlib, s2sdk fork, JSON incl. vtable indices</td><td>String-ref loader, RTTI vtables, validator CI, S2GDU</td><td>1.41.9.7 core fix ~4 h; inferred: likely also hit by 1.42.0.1</td></tr>
-        <tr><td>ModSharp</td><td>Own loader, own headers</td><td>VScript table, refs, voted runtime resolution, detours not vtables</td><td>1.41.9.6 ~9.5 h; 1.41.9.7 ~11 h; 1.42.0.1: GameFrame fine, 2 slot hooks shifted (unconfirmed)</td></tr>
+        <tr><td>SwiftlyS2</td><td>Own loader, s2binlib, s2sdk fork, JSON incl. vtable indices</td><td>String-ref loader, RTTI vtables, validator CI, S2GDU</td><td>1.41.9.7 core fix ~4 h; 1.42.0.1 JSON fix ~4.6 h, not yet released</td></tr>
+        <tr><td>ModSharp</td><td>Own loader, own headers</td><td>VScript table, refs, voted runtime resolution, detours not vtables</td><td>1.41.9.6 ~9.5 h; 1.41.9.7 ~11 h; 1.42.0.1: GameFrame fine, 2 slot hooks shifted (from code; fix status unknown, public mirror stale)</td></tr>
         <tr><td>Plugify s2sdk</td><td>Own launcher or Metamod</td><td>Refs, lightly used</td><td>1.41.9.7 ~6 h</td></tr>
         <tr><td>CS2Fixes</td><td>Metamod plugin, signatures</td><td>VScript bindings, runtime lookups</td><td>1.41.9.6 ~4 h; 1.41.9.7 ~30 h</td></tr>
-        <tr><td>cs2kz</td><td>Metamod plugin, signatures</td><td>Forks the SDK when upstream lags</td><td>1.41.9.7 ~9 h; 1.42.0.1 ~3.5 h</td></tr>
-        <tr><td>s2script</td><td>Metamod, s2sdk fork, TypeScript on V8</td><td>5-min watcher, vtable fingerprints, offline regeneration, AI PRs</td><td>Report within 20 min; last 4 builds clean</td></tr>
+        <tr><td>cs2kz</td><td>Metamod plugin, signatures</td><td>Forks the SDK when upstream lags</td><td>1.41.9.7 ~4.4–9 h; 1.42.0.1 ~3.2 h</td></tr>
+        <tr><td>s2script</td><td>Metamod, s2sdk fork, TypeScript on V8</td><td>5-min watcher, vtable fingerprints, offline regeneration, AI PRs</td><td>Report within 20 min; 4 breaking builds fixed, median ~2 h</td></tr>
         <tr><td>cs2-dumper</td><td>External memory reads (client)</td><td>Schema and interface walk plus ~30 patterns</td><td>Hours to a day</td></tr>
         <tr><td>Deadworks (Deadlock)</td><td>Own executable</td><td>Build database plus 30-min regeneration cron</td><td>Minutes to 30 min, by design</td></tr>
       </tbody>
@@ -845,7 +997,7 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <h3>Cadence</h3>
     <p>GameTracking-CS2 has 416 builds (370 since launch): 92 in 2023 (from March), 111 in 2024, 106 in 2025 and 107 in 2026 up to Nov 23. The median gap is 2 days. CS:GO shipped 35–61 patch versions a year in 2017–22 (raw build counts are not in the data), so CS2 runs about 1.7–3 times faster by patch version.</p>
     <h3>How many builds actually break CounterStrikeSharp</h3>
-    <p>65 hand-checked fix commits cluster into 39 incidents (4, 13, 12 and 10 for 2023–26). <strong>38 of 361 builds since October 2023, about 11%, needed a gamedata or SDK fix</strong> (20% with looser attribution). Every structural build was followed by a fix within 1–3 days, as were Armory, 1.40.8.5, 1.41.7.7, 1.41.9.2 and 1.41.9.7. About half of major builds triggered fixes (12 of 25) against about 16% of minor ones. Each signature gets rewritten 1.5–2 times a year. Inferred: that incident rate matches SourceMod on CS:GO in its active years, so the feeling that everything breaks on every update comes mostly from SDK vtable churn and from many plugins each carrying their own signatures.</p>
+    <p>66 hand-checked fix commits cluster into 39 incidents (4, 12, 12 and 11 for 2023–26). <strong>38 of 361 builds since October 2023, about 11%, needed a gamedata or SDK fix</strong> (20% with looser attribution). Every structural build was followed by a fix within 1–3 days, as were Armory, 1.40.8.5, 1.41.7.7, 1.41.9.2 and 1.41.9.7. About half of major builds triggered fixes (12 of 25) against about 16% of minor ones. Each signature gets rewritten 1.5–2 times a year. Inferred: that incident rate matches SourceMod on CS:GO in its active years, so the feeling that everything breaks on every update comes mostly from SDK vtable churn and from many plugins each carrying their own signatures.</p>
     <h3>Structural builds</h3>
     <p>Server schema changed in 60 of 245 builds since October 2024 (24%), usually in 1–4 classes such as CCSPlayerPawn, the game rules, weapons and movement services. Seven builds rewrote base classes:</p>
     <div class="tbl"><table>
@@ -878,6 +1030,18 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     <summary><span class="st">Activity log</span><span class="tk">What happened when</span></summary>
     <div class="db">
     <div class="log" id="log">
+      <div>2026-11-25 · <span>Counts reconciled from source data: 17 offset entries = 14 vtable indices + 3 struct offsets (11 checkable in libserver); 154 vs 230 signature changes explained; ModSharp 120 + 49 + 9 = 178; hash heal base explained</span></div>
+      <div>2026-11-25 · <span>Added backwards-compatibility notes to the plan: behaviour changes per spec, and the ones that need the maintainer's OK (schema misses that throw, strict core signatures, Linux updater)</span></div>
+      <div>2026-11-25 · <span>Consistency pass after an outside read: Metamod unaffected by 1.42.0.1 (its core hooks no ISource2Server slot), stale detour and 82% wording fixed, degraded tables marked as the earlier run, terms defined, research tracks renumbered 1–8, outcome codes spelled out</span></div>
+      <div>2026-11-25 · <span>Added "The plan: four specs" and split the backtest bars into cumulative steps A, A–B, A–C, A–D; B's boot heal now counts offset- and slot-only incidents as avoided</span></div>
+      <div>2026-11-25 · <span>Tidy-up: own colours for the stacks chart, grouped backtest legend, one colour family per stack, quieter progress panel</span></div>
+      <div>2026-11-25 · <span>Page restyled: clearer section breaks, tables, verdict tags and panels</span></div>
+      <div>2026-11-25 · <span>Backtest bars collapsed: one row per stack, with today, incremental, auto-publish and core auto-heal drawn as nested segments</span></div>
+      <div>2026-11-25 · <span>Core auto-heal bar rebased on Ideal + auto-publish (~222 h effective outage); note that it leaves broken-or-degraded hours unchanged</span></div>
+      <div>2026-11-25 · <span>Added "Ideal + auto-publish" bars (−29% broken-or-degraded, −50% effective outage); the plain ideal bar had assumed no signature self-heals</span></div>
+      <div>2026-11-25 · <span>Added a broken-or-degraded card and an "incremental + auto-publish" scenario: −25% total broken time, −33% effective outage, using the measured heal rates</span></div>
+      <div>2026-11-25 · <span>Added SwiftlyS2 reference bars (−12% releases, −26% outage hours, upper bound); s2script removed from the commit cards</span></div>
+      <div>2026-11-25 · <span>Backtest bars gained reference rows: CounterStrikeSharp today, Metamod:Source (actual, 9 load failures, 162 h) and s2script (scaled from Jul–Nov 2026)</span></div>
       <div>2026-11-24 · <span>Plan approved; 5 research agents launched in parallel</span></div>
       <div>2026-11-24 · <span>Track A done: CounterStrikeSharp history classified (383 gamedata changes, 31 update clusters)</span></div>
       <div>2026-11-24 · <span>Track D done: 9 stacks compared, automatic regeneration pipelines found, cs_script scope mapped</span></div>
@@ -902,3 +1066,5 @@ summary .tk{color:var(--muted);font-size:.9rem;padding-left:1.1em}
     </div>
   </details>
 </div>
+
+</body></html>

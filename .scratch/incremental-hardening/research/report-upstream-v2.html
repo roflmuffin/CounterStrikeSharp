@@ -1,0 +1,414 @@
+<title>CS2 Update Breakage Summary</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one reading column (~66ch) for prose; figures and tables step out to a wider measure. Engineering-memo feel: slot grids, mono numerals. */
+:root {
+  --paper: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #18202b;
+  --muted: #5a6575;
+  --rule: #d9dee6;
+  --accent: #1f5bb8;
+  --accent-soft: #e2eaf8;
+  --warn: #a2560a;
+  --warn-soft: #fbead4;
+  --ok: #1d7550;
+  --ok-soft: #dcf0e5;
+  --bar-base: #8c96a6;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-head: "IBM Plex Sans Condensed", "Arial Narrow", "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --step--1: 0.84rem;
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-2: 1.5rem;
+  --step-3: 2.2rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10151c; --surface: #171d26; --ink: #e5e9ef; --muted: #9aa5b5; --rule: #2b3441;
+    --accent: #84aaf0; --accent-soft: #1b2a45; --warn: #eaa45a; --warn-soft: #3a2914;
+    --ok: #6cc797; --ok-soft: #15302a; --bar-base: #6b7585; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10151c; --surface: #171d26; --ink: #e5e9ef; --muted: #9aa5b5; --rule: #2b3441;
+  --accent: #84aaf0; --accent-soft: #1b2a45; --warn: #eaa45a; --warn-soft: #3a2914;
+  --ok: #6cc797; --ok-soft: #15302a; --bar-base: #6b7585; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 2.5rem 4rem;
+}
+main { max-width: 52rem; margin: 0 auto; display: grid; gap: 3rem; }
+.prose { max-width: 40rem; }
+section { display: grid; gap: 1rem; min-width: 0; }
+h1, h2, h3 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: var(--step-3); letter-spacing: -0.01em; }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+p { margin: 0; }
+ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.6rem; }
+a { color: var(--accent); }
+code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
+.eyebrow { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.dek { font-size: var(--step-1); color: var(--muted); max-width: 40rem; }
+.small { font-size: var(--step--1); color: var(--muted); }
+dfn { font-style: normal; font-weight: 600; }
+
+header { display: grid; gap: 0.9rem; border-bottom: 1px solid var(--rule); padding-bottom: 2rem; }
+
+/* Short answer */
+.answer { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1.4rem 1.5rem; display: grid; gap: 1rem; }
+.answer ul { gap: 0.9rem; }
+.answer li::marker { color: var(--accent); }
+
+/* Slot diagram */
+figure { margin: 0; display: grid; gap: 0.6rem; min-width: 0; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.slots svg { display: block; width: 100%; min-width: 600px; height: auto; }
+figcaption { font-size: var(--step--1); color: var(--muted); max-width: 44rem; }
+.svg-ink { fill: var(--ink); }
+.svg-muted { fill: var(--muted); }
+.svg-cell { fill: var(--surface); stroke: var(--rule); }
+.svg-new { fill: var(--warn-soft); stroke: var(--warn); }
+.svg-hit { fill: var(--warn-soft); stroke: var(--warn); }
+.svg-gf { fill: var(--accent-soft); stroke: var(--accent); }
+.svg-frame { fill: none; stroke: var(--warn); stroke-dasharray: 5 4; stroke-width: 1.5; }
+.svg-arrow { stroke: var(--muted); stroke-width: 1.3; fill: none; }
+.svg-warn { fill: var(--warn); }
+
+/* Tables */
+table { border-collapse: collapse; width: 100%; font-size: 0.94rem; }
+th, td { text-align: left; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--font-mono); white-space: nowrap; }
+tr.byname td { background: var(--ok-soft); }
+tr.byname td:first-child { padding-left: 0.6rem; }
+.breaks td:first-child { font-weight: 500; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 0.78rem; padding: 0.05rem 0.45rem; border-radius: 3px; white-space: nowrap; }
+.tag.av { background: var(--accent-soft); color: var(--accent); }
+.tag.part { background: var(--surface); color: var(--muted); border: 1px solid var(--rule); }
+.tag.intr { background: var(--warn-soft); color: var(--warn); }
+.tag.ok { background: var(--surface); color: var(--ok); border: 1px solid var(--ok); }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 1rem; }
+.step { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.2rem; display: grid; gap: 0.55rem; align-content: start; min-width: 0; }
+.step.optional { background: transparent; border-style: dashed; }
+.step-head { display: flex; gap: 0.7rem; align-items: baseline; }
+.step-letter { font-family: var(--font-mono); font-weight: 500; font-size: 1.05rem; color: var(--accent); min-width: 1.2rem; }
+.optional .step-letter { color: var(--muted); }
+.step h3 { font-size: 1.08rem; }
+.step p { font-size: 0.95rem; }
+.effect { font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 0.55rem; }
+.effect strong { color: var(--ink); font-weight: 600; }
+.pill { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 99px; padding: 0 0.5rem; margin-left: auto; white-space: nowrap; }
+
+/* Backtest bars */
+.panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr)); gap: 1.5rem 2rem; }
+.panel { display: grid; gap: 0.5rem; min-width: 0; align-content: start; }
+.panel h3 { font-size: 1.02rem; }
+.panel .def { font-size: var(--step--1); color: var(--muted); min-height: 2.6em; }
+.bars { display: grid; gap: 0.32rem; }
+.bar-row { display: grid; grid-template-columns: 4.6rem 1fr 6.4rem; align-items: center; gap: 0.6rem; font-size: 0.86rem; }
+.bar-row .lbl { font-family: var(--font-mono); color: var(--muted); white-space: nowrap; }
+.track { height: 0.95rem; position: relative; }
+.fill { height: 100%; background: var(--accent); border-radius: 0 2px 2px 0; min-width: 2px; }
+.bar-row.today .fill { background: var(--bar-base); }
+.bar-row.ideal .fill { background: transparent; border: 1.5px dashed var(--muted); }
+.bar-row.auto .fill { background: repeating-linear-gradient(135deg, var(--accent-soft) 0 4px, transparent 4px 8px); border: 1.5px solid var(--accent); }
+.bar-row.sep { border-top: 1px solid var(--rule); padding-top: 0.32rem; }
+.val { font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.val .d { color: var(--muted); font-size: 0.78rem; margin-left: 0.35rem; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: var(--step--1); color: var(--muted); }
+.legend span { display: inline-flex; gap: 0.4rem; align-items: center; }
+.sw { width: 1rem; height: 0.7rem; display: inline-block; border-radius: 1px; }
+.sw.today { background: var(--bar-base); }
+.sw.step { background: var(--accent); }
+.sw.ideal { border: 1.5px dashed var(--muted); }
+.sw.auto { background: repeating-linear-gradient(135deg, var(--accent-soft) 0 3px, transparent 3px 6px); border: 1.5px solid var(--accent); }
+
+.callout { border-left: 3px solid var(--rule); padding: 0.2rem 0 0.2rem 1rem; color: var(--muted); font-size: 0.95rem; }
+
+/* Appendix */
+details { border-top: 1px solid var(--rule); }
+details:last-of-type { border-bottom: 1px solid var(--rule); }
+summary { cursor: pointer; padding: 0.9rem 0; list-style: none; display: flex; gap: 0.8rem; align-items: baseline; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "+"; font-family: var(--font-mono); color: var(--accent); width: 1rem; flex: none; }
+details[open] summary::before { content: "−"; }
+summary strong { font-family: var(--font-head); font-weight: 600; font-size: 1.08rem; }
+summary span { color: var(--muted); font-size: var(--step--1); }
+summary:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.details-body { padding: 0 0 1.4rem 1.8rem; display: grid; gap: 0.9rem; min-width: 0; }
+@media (max-width: 34rem) { .details-body { padding-left: 0; } }
+footer { font-size: var(--step--1); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 1.2rem; }
+</style>
+
+<main>
+
+<header>
+  <div class="eyebrow">CounterStrikeSharp · discussion note · November 2026</div>
+  <h1>CS2 Update Breakage Summary</h1>
+  <p class="dek">Why CS2 updates break CounterStrikeSharp, which part of that is avoidable, and what a step-by-step hardening path would have saved over the last three years.</p>
+  <p class="prose">This note summarises a study of 39 <dfn>incidents</dfn> between November 2023 and November 2026: CS2 updates that needed a CounterStrikeSharp fix. About 11% of CS2 builds in the period needed one. Everything comes from public data: CounterStrikeSharp's git history and issue tracker, the Metamod:Source and s2sdk (hl2sdk-cs2) histories, and Linux dedicated-server binaries. The savings figures come from a backtest, which replays each past incident as if the proposed changes had been in place. It is a model with stated assumptions, not a measurement. The note is meant to start a discussion; it is not a roadmap.</p>
+</header>
+
+<section aria-labelledby="short">
+  <div class="answer">
+    <h2 id="short">The short answer</h2>
+    <ul>
+      <li><strong>Breaks come from binding by position.</strong> A <dfn>binding</dfn> is how the framework finds something inside the game: a function, a virtual-function <dfn>slot</dfn> (its index in a vtable), or a field. Byte-pattern signatures, slot numbers and struct offsets bind by position, and they account for most recurring fixes. Bindings by name (schema fields, game events, ConVars, net messages) needed no value fixes in three years.</li>
+      <li><strong>Some of it is intrinsic.</strong> Valve offers no plugin ABI. Linux server binaries are stripped and rebuilt on nearly every update. Engine interfaces change layout about once a month while their version strings never change, so nothing reports the mismatch. Gameplay refactors rename fields and change behaviour.</li>
+      <li><strong>Much of it is avoidable without a rewrite.</strong> Valve's changes are intrinsic; much of the breakage they cause is not. Three incremental steps would have cut the releases needed from 39 to 15 and the hours spent crashed or not loading from 606 to 329 in the backtest. A fourth, optional step keeps CounterStrikeSharp up when only Metamod breaks.</li>
+      <li><strong>1.42.0.1 shows the difference.</strong> Valve inserted one virtual function into <code>ISource2Server</code>. Stacks that keep slot numbers in a data file fixed it with a JSON edit. Stacks that take slots from compiled SDK headers needed an SDK change and a rebuild, or a community binary patch in the meantime.</li>
+    </ul>
+  </div>
+
+  <figure class="slots">
+    <div class="scroll" role="img" aria-label="ISource2Server slots 13 to 20 before and after build 1.42.0.1. A new virtual at slot 14 shifts later slots by one, so a hook compiled at slot 19 now patches ApplyGameSettings instead of GameFrame.">
+      <svg viewBox="0 0 680 184" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, ui-monospace, monospace">
+        <defs>
+          <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="svg-muted"/></marker>
+        </defs>
+        <text x="482" y="16" text-anchor="middle" font-size="11.5" class="svg-warn">hook compiled at slot 19</text>
+        <g font-size="11" class="svg-muted" text-anchor="middle">
+          <text x="124" y="42">13</text><text x="190" y="42">14</text><text x="252" y="42">…</text>
+          <text x="344" y="42">18</text><text x="482" y="42">19</text><text x="609" y="42">20</text>
+        </g>
+        <text x="0" y="78" font-size="12" class="svg-ink">1.42.0.0</text>
+        <text x="0" y="146" font-size="12" class="svg-ink">1.42.0.1</text>
+        <!-- row 1 -->
+        <rect x="100" y="54" width="48" height="38" rx="3" class="svg-cell"/>
+        <rect x="154" y="54" width="72" height="38" rx="3" class="svg-cell"/>
+        <rect x="278" y="54" width="132" height="38" rx="3" class="svg-cell"/>
+        <text x="344" y="78" text-anchor="middle" font-size="11.5" class="svg-ink">ApplyGameSettings</text>
+        <rect x="416" y="54" width="132" height="38" rx="3" class="svg-gf"/>
+        <text x="482" y="78" text-anchor="middle" font-size="11.5" class="svg-ink">GameFrame</text>
+        <rect x="554" y="54" width="110" height="38" rx="3" class="svg-cell"/>
+        <!-- row 2 -->
+        <rect x="100" y="122" width="48" height="38" rx="3" class="svg-cell"/>
+        <rect x="154" y="122" width="72" height="38" rx="3" class="svg-new"/>
+        <text x="190" y="146" text-anchor="middle" font-size="11.5" class="svg-warn">new</text>
+        <rect x="278" y="122" width="132" height="38" rx="3" class="svg-cell"/>
+        <rect x="416" y="122" width="132" height="38" rx="3" class="svg-hit"/>
+        <text x="482" y="146" text-anchor="middle" font-size="11.5" class="svg-ink">ApplyGameSettings</text>
+        <rect x="554" y="122" width="110" height="38" rx="3" class="svg-gf"/>
+        <text x="609" y="146" text-anchor="middle" font-size="11.5" class="svg-ink">GameFrame</text>
+        <!-- shift arrows -->
+        <line x1="344" y1="93" x2="476" y2="120" class="svg-arrow" marker-end="url(#ah)"/>
+        <line x1="482" y1="93" x2="603" y2="120" class="svg-arrow" marker-end="url(#ah)"/>
+        <!-- compiled slot frame -->
+        <rect x="411" y="49" width="142" height="116" rx="5" class="svg-frame"/>
+        <text x="100" y="180" font-size="10.5" class="svg-muted">every slot from 14 on moves +1 · 104 → 105 slots</text>
+      </svg>
+    </div>
+    <figcaption><code>ISource2Server</code> on Linux, build 1.42.0.1 (Nov 23 2026). The hook compiled at slot 19 now patches <code>ApplyGameSettings</code>, and the server crashes. At the time of writing (Nov 25) CounterStrikeSharp is waiting on s2sdk PR #128 (CounterStrikeSharp #1502); a community 8-byte binary patch works around it. SwiftlyS2 changed GameFrame from 19 to 20 in its offsets file. Metamod:Source itself was unaffected because it hooks no <code>ISource2Server</code> slot.</figcaption>
+  </figure>
+</section>
+
+<section aria-labelledby="breaks">
+  <h2 id="breaks">What breaks</h2>
+  <p class="prose">The classes below are ranked roughly by how much repeated work they cause. "Avoidable" means an in-process framework designed for it could stop the class from needing a release; it does not mean Valve stops changing the code.</p>
+  <div class="scroll">
+    <table class="breaks">
+      <thead><tr><th>Class</th><th>How often</th><th>Avoidable?</th></tr></thead>
+      <tbody>
+        <tr><td>Byte-pattern signatures</td><td>Each signature is rewritten 1.5–2× a year</td><td><span class="tag av">mostly</span></td></tr>
+        <tr><td>Virtual-function offsets in gamedata</td><td>One virtual added to a base class shifts every derived class; Respawn, CommitSuicide, Teleport and ChangeTeam move on most big updates</td><td><span class="tag av">mostly</span></td></tr>
+        <tr><td>Engine-interface slots compiled from SDK headers</td><td>42 forced SDK changes in ~3 years, about one a month. Sole cause in 2 incidents and part of 13, but the slowest to recover</td><td><span class="tag av">mostly</span></td></tr>
+        <tr><td>tier0 link errors</td><td>4–5 incidents where an engine base-library (tier0) symbol the build imports was removed or renamed</td><td><span class="tag av">avoidable</span></td></tr>
+        <tr><td>Loading through <code>gameinfo.gi</code></td><td>Every update overwrites the file</td><td><span class="tag part">partly</span></td></tr>
+        <tr><td>Struct offsets outside the schema</td><td>~12 incidents</td><td><span class="tag part">reducible</span></td></tr>
+        <tr><td>SDK API refactors</td><td>~11 incidents; the ConVar system alone was rewritten three times</td><td><span class="tag part">partly</span></td></tr>
+        <tr><td>Schema renames and behaviour changes</td><td>7 builds that reshaped schema classes in 16 months; ~9 behaviour changes</td><td><span class="tag intr">intrinsic</span></td></tr>
+        <tr class="byname"><td>Anything bound by name</td><td>Schema fields, game events, ConVars, net messages: 0 value fixes in 3 years</td><td><span class="tag ok">works</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">Several things already work well and are worth keeping. Schema access by name held up: 1.42.0.0 changed 456 schema entries across all modules without breaking any stack's schema lookups. <dfn>Gamedata</dfn>, the JSON file of signatures and offsets, already keeps many fixes out of C++. And the 180 native tests are a ready-made smoke test for new builds; today they run by hand inside a live server.</p>
+</section>
+
+<section aria-labelledby="path">
+  <h2 id="path">A possible incremental path</h2>
+  <p class="prose">Steps A to C build on each other. D is separate and optional. Plugin-facing changes are additions, with one exception: a missing schema field throws instead of silently reading offset 0. The effect lines are cumulative backtest results over the 39 incidents.</p>
+  <div class="steps">
+    <article class="step">
+      <div class="step-head"><span class="step-letter">A</span><h3>Fail soft, per feature</h3></div>
+      <p>Every core binding resolves once at boot into one report. A signature must match exactly once. A miss disables only the features that need it, and the server stays up. Plugins can ask whether a feature works, or declare it required.</p>
+      <p class="effect">Crashes from broken signatures become "feature off": <strong>outage 606 → 522 h</strong>. Every fix still ships as a release.</p>
+    </article>
+    <article class="step">
+      <div class="step-head"><span class="step-letter">B</span><h3>Slots as data, checked and healed at boot</h3></div>
+      <p>Engine-interface slots (<code>ISource2Server</code>, <code>IVEngineServer2</code>, <code>ICvar</code>) and game-class virtuals move from compiled headers into gamedata, each with a fingerprint of the slot's code and its neighbours'. At boot each is checked against the live vtable. If exactly one nearby slot matches, the binding moves there.</p>
+      <p class="effect">Updates that only move offsets or slots need no fix (6 incidents, including 1.42.0.1): <strong>releases 39 → 33, outage → 471 h</strong>.</p>
+    </article>
+    <article class="step">
+      <div class="step-head"><span class="step-letter">C</span><h3>Signed gamedata updates and CI per build</h3></div>
+      <p>Gamedata becomes signed, keyed to the game build, and downloaded on both operating systems. A CI job boots each new build and runs the native tests. Pushing gamedata with one binding left empty works as a kill switch for that feature.</p>
+      <p class="effect">Most fixes become a gamedata update without a release: <strong>releases → 15, outage → 329 h</strong>. Humans still write the fixes, so total broken time stays where B left it.</p>
+    </article>
+    <article class="step optional">
+      <div class="step-head"><span class="step-letter">D</span><h3>Own loader, opt-in</h3><span class="pill">optional</span></div>
+      <p>One extra <code>gameinfo.gi</code> line lets a small CounterStrikeSharp proxy load as Metamod's game module, so CounterStrikeSharp runs on its own host. Metamod plugins keep working. Without the line, or if an update removes it, behaviour is exactly as today.</p>
+      <p class="effect">Keeps CounterStrikeSharp up when only Metamod breaks (Metamod:Source #278 and #288 affected some Linux servers for about 14–17 days each). <strong>No change to the backtest</strong>; see below.</p>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="backtest">
+  <h2 id="backtest">What the backtest says</h2>
+  <p class="prose">Each step's cumulative effect on the 39 incidents. Outage hours, when servers were crashed or not loading, is the headline metric; the other two show how much milder the remaining breaks get. The <dfn>ideal stack</dfn> is a yardstick, not a proposal: a hypothetical framework with every hardening in place: own loader, no compiled engine headers, struct offsets checked at boot, rename aliases for schema fields, auto-publish of regenerated gamedata, and core-feature bindings re-derived without a human. Its remaining hours are fixes only a human can make: signatures with no anchor, behaviour changes and schema renames.</p>
+  <div class="legend" aria-hidden="true">
+    <span><i class="sw today"></i>today</span>
+    <span><i class="sw step"></i>after step</span>
+    <span><i class="sw auto"></i>A–C plus auto-publish (beyond A–D)</span>
+    <span><i class="sw ideal"></i>ideal stack (reference)</span>
+  </div>
+  <div class="panels">
+    <div class="panel">
+      <h3>Releases needed</h3>
+      <p class="def">Incidents that needed a code change and a release.</p>
+      <div class="bars">
+        <div class="bar-row today"><span class="lbl">today</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">39</span></div>
+        <div class="bar-row"><span class="lbl">A</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">39<span class="d">0%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–B</span><div class="track"><div class="fill" style="width:84.6%"></div></div><span class="val">33<span class="d">−15%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–C</span><div class="track"><div class="fill" style="width:38.5%"></div></div><span class="val">15<span class="d">−62%</span></span></div>
+        <div class="bar-row ideal sep"><span class="lbl">ideal</span><div class="track"><div class="fill" style="width:20.5%"></div></div><span class="val">8<span class="d">−79%</span></span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Outage hours</h3>
+      <p class="def">Server crashed or framework not loading.</p>
+      <div class="bars">
+        <div class="bar-row today"><span class="lbl">today</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">606</span></div>
+        <div class="bar-row"><span class="lbl">A</span><div class="track"><div class="fill" style="width:86.1%"></div></div><span class="val">522<span class="d">−14%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–B</span><div class="track"><div class="fill" style="width:77.7%"></div></div><span class="val">471<span class="d">−22%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–C</span><div class="track"><div class="fill" style="width:54.3%"></div></div><span class="val">329<span class="d">−46%</span></span></div>
+        <div class="bar-row ideal sep"><span class="lbl">ideal</span><div class="track"><div class="fill" style="width:0;min-width:0;border:0"></div></div><span class="val">0<span class="d">−100%</span></span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Effective outage hours</h3>
+      <p class="def">Crashed, or a core feature down: chat commands, game events, networked field writes or the tick.</p>
+      <div class="bars">
+        <div class="bar-row today"><span class="lbl">today</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">635</span></div>
+        <div class="bar-row"><span class="lbl">A</span><div class="track"><div class="fill" style="width:91.8%"></div></div><span class="val">583<span class="d">−8%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–B</span><div class="track"><div class="fill" style="width:83.8%"></div></div><span class="val">532<span class="d">−16%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–C</span><div class="track"><div class="fill" style="width:72.4%"></div></div><span class="val">460<span class="d">−28%</span></span></div>
+        <div class="bar-row auto"><span class="lbl">+ auto</span><div class="track"><div class="fill" style="width:67.1%"></div></div><span class="val">~426<span class="d">−33%</span></span></div>
+        <div class="bar-row ideal sep"><span class="lbl">ideal</span><div class="track"><div class="fill" style="width:35.0%"></div></div><span class="val">~222<span class="d">−65%</span></span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Broken or degraded hours</h3>
+      <p class="def">Crashed, or any feature down.</p>
+      <div class="bars">
+        <div class="bar-row today"><span class="lbl">today</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">1,871</span></div>
+        <div class="bar-row"><span class="lbl">A</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">1,871<span class="d">0%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–B</span><div class="track"><div class="fill" style="width:91.5%"></div></div><span class="val">1,712<span class="d">−8%</span></span></div>
+        <div class="bar-row"><span class="lbl">A–C</span><div class="track"><div class="fill" style="width:91.5%"></div></div><span class="val">1,712<span class="d">−8%</span></span></div>
+        <div class="bar-row auto"><span class="lbl">+ auto</span><div class="track"><div class="fill" style="width:74.6%"></div></div><span class="val">~1,396<span class="d">−25%</span></span></div>
+        <div class="bar-row ideal sep"><span class="lbl">ideal</span><div class="track"><div class="fill" style="width:69.7%"></div></div><span class="val">~1,305<span class="d">−30%</span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="prose" style="display:grid;gap:1rem">
+    <p>Steps A to C deliver about three quarters of the ideal stack's reduction in releases and about half of its reduction in outage hours. The remaining outage hours come from link breaks and hard-coded struct layouts, which the steps do not touch.</p>
+    <p><dfn>Auto-publish</dfn> means CI publishes regenerated gamedata within about an hour when two independent ways of locating a binding agree, and asks a human otherwise. It is not part of A–D. After B, it is the only change in the model that shortens total broken time substantially; the other changes make breaks milder, not shorter. Its two values come from an earlier model run and are approximate.</p>
+    <p class="callout">D changes none of these numbers. In 7 of 9 Metamod load failures in the same period, CounterStrikeSharp shared the root cause (tier0 imports, SDK structs), so a separate loader alone would save at most 8% of Metamod's 162 outage hours. D's gain is Metamod-only failures: the other 2 of those 9, plus single-setup reports such as Metamod:Source #278 and #288, which are not counted in these hours. None of them is one of the 39 CounterStrikeSharp incidents.</p>
+  </div>
+</section>
+
+<section aria-labelledby="notfix" class="prose">
+  <h2 id="notfix">What it does not fix</h2>
+  <ul>
+    <li><strong>tier0 and loader link breaks, and hard-coded struct layouts.</strong> These cause the 329 outage hours left after C, including the worst one, July 2025 (about six days). Only removing static SDK imports and checking struct offsets at boot would address them.</li>
+    <li><strong><code>IGameSystem</code>.</strong> CounterStrikeSharp implements this interface itself, so the vtable is its own and slot data cannot heal it. It was involved in 8 incidents. With C's kill switch these crashes become "feature off", but they still need a code fix.</li>
+    <li><strong>Behaviour changes and schema renames.</strong> 8 incidents with changed behaviour or function prototypes are irreducible in every scenario, including the February 2024 update and AnimGraph 2 (Valve's animation-system rework, April 2026). Rename aliases soften schema renames; removals and new semantics still need a human.</li>
+    <li><strong>Silent wrong matches.</strong> A signature can match exactly once and still hit the wrong function. The ClientPrint signature binds to an unrelated constructor today (CounterStrikeSharp #1494). Catching that needs a second, independent anchor, which is beyond A–D.</li>
+    <li><strong>Human fix latency.</strong> Fixes typically land 09–14 UTC after Valve's releases around 23:00 UTC. Six gamedata-only incidents that took over 100 hours each make up about 60% of the degraded time left after C. Beyond B's 8%, total broken time only drops with auto-publish.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="conf" class="prose">
+  <h2 id="conf">How confident to be</h2>
+  <ul>
+    <li><strong>The backtest is a model.</strong> Each incident's outcome under each step is hand-labelled from its items; the worst item decides. Hours run from the build to the first release with the fix. Single-OS changes count as broken on both OSes, which overstates degraded time.</li>
+    <li><strong>The healing test is small.</strong> On four real breaking update pairs (Sep–Nov 2026), requiring two agreeing anchors (independent ways to locate the same function, such as a unique string reference or an RTTI vtable slot) found 6 of 10 broken signatures and 6 of 6 moved vtable offsets with zero wrong answers, 16 cases in all; the rest went to a human. Accepting a single anchor was wrong 20% of the time, silently. It has not been tried on an update the size of AnimGraph 2.</li>
+    <li><strong>Binary analysis is Linux-only.</strong> Windows binaries (MSVC, identical-code folding) were not analysed.</li>
+    <li><strong>An adversarial review was done.</strong> A separate pass re-checked the main claims with its own scripts: 2 refuted, 6 weakened, 1 confirmed. The main corrections: an earlier, higher auto-heal rate was withdrawn because it was measured on signatures that still worked; compiled interface slots turned out to be the sole cause of only 2 incidents, though the slowest to recover; fingerprinting a slot alone is ambiguous (25–30% of interface slots share identical code), which is why B compares neighbours too; the ~11% rate is the same order of magnitude per year as SourceMod's CS:GO incidents, but no per-build comparison was made. The central conclusion held: most breakage comes from binding by position, and those bindings can be verified or re-derived mechanically.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="appendix">
+  <h2 id="appendix">Appendix</h2>
+  <div>
+    <details>
+      <summary><strong>Numbers per step</strong><span>All backtest metrics, Nov 2023 – Nov 2026</span></summary>
+      <div class="details-body">
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Metric</th><th class="num">Today</th><th class="num">A</th><th class="num">A–B</th><th class="num">A–C</th><th class="num">A–D</th><th class="num">Ideal</th></tr></thead>
+            <tbody>
+              <tr><td>Releases needed</td><td class="num">39</td><td class="num">39</td><td class="num">33</td><td class="num">15</td><td class="num">15</td><td class="num">8</td></tr>
+              <tr><td>Fix commits</td><td class="num">66</td><td class="num">66</td><td class="num">57</td><td class="num">18</td><td class="num">18</td><td class="num">10</td></tr>
+              <tr><td>Follow-up corrections</td><td class="num">25</td><td class="num">25</td><td class="num">20</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+              <tr><td>Outage hours (crash or not loading)</td><td class="num">606</td><td class="num">522</td><td class="num">471</td><td class="num">329</td><td class="num">329</td><td class="num">0</td></tr>
+              <tr><td>Effective outage hours</td><td class="num">635</td><td class="num">583</td><td class="num">532</td><td class="num">460</td><td class="num">460</td><td class="num">~222</td></tr>
+              <tr><td>Broken or degraded hours</td><td class="num">1,871</td><td class="num">1,871</td><td class="num">1,712</td><td class="num">1,712</td><td class="num">1,712</td><td class="num">~1,305</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small">Follow-up corrections are fixes to a fix; today they follow in about 11 of 15 major breaks. With auto-publish on top of A–C: effective outage about 426 h, broken or degraded about 1,396 h. Releases per year: today 13, after A–C 5, ideal 2.7. The ideal stack's hours build up in layers: its architecture alone gives 415 h effective outage and 1,689 h broken or degraded; adding auto-publish gives about 317 h and 1,323 h; re-deriving core-feature bindings without a human gives about 222 h and 1,305 h. The ideal column uses the full stack. Values marked ~ come from an earlier model run.</p>
+      </div>
+    </details>
+    <details>
+      <summary><strong>How other stacks compare</strong><span>Median hours to fix since April 2026</span></summary>
+      <div class="details-body">
+        <p class="small">s2script, SwiftlyS2, ModSharp and Plugify are other CS2 plugin frameworks; cs2kz and CS2Fixes are single-purpose Metamod plugins. Read the medians with care: surface size confounds them. Hours from the build to the first commit that restored function, n = 2–7 breaking builds per stack. s2script and cs2kz bind far fewer signatures than CounterStrikeSharp, and a larger surface breaks more often. SwiftlyS2 has a large surface, which suggests slots in data and its update process explain part of its gap. CounterStrikeSharp's median excludes the still-open 1.42.0.1 break. CS2Fixes times are on its dev branch. ModSharp's status is inferred from its code.</p>
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Stack</th><th>Vtable slots from</th><th class="num">Median fix</th><th>1.42.0.1</th></tr></thead>
+            <tbody>
+              <tr><td>s2script</td><td>headers, checked at boot</td><td class="num">~2 h</td><td>hooks switched off safely; fixed in ~1.5 h</td></tr>
+              <tr><td>SwiftlyS2</td><td>data (hooks), headers (calls)</td><td class="num">~5 h</td><td>JSON fix after 4.6 h</td></tr>
+              <tr><td>cs2kz</td><td>headers</td><td class="num">~10 h</td><td>~3 h via a forked SDK</td></tr>
+              <tr><td>Metamod:Source</td><td>headers</td><td class="num">~10 h</td><td>unaffected</td></tr>
+              <tr><td>Plugify s2sdk</td><td>headers</td><td class="num">~12 h</td><td>header fixed, awaiting a binary release</td></tr>
+              <tr><td>ModSharp</td><td>detours plus JSON</td><td class="num">~12.5 h</td><td>runs; two JSON slot hooks shifted</td></tr>
+              <tr><td>CS2Fixes</td><td>headers</td><td class="num">~17 h</td><td>unknown</td></tr>
+              <tr><td>CounterStrikeSharp</td><td>headers</td><td class="num">~25 h</td><td>open at the time of writing</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </details>
+    <details>
+      <summary><strong>Method notes</strong><span>Sources, incident definition, how hours are counted</span></summary>
+      <div class="details-body">
+        <ul>
+          <li>Incidents: 66 hand-checked CounterStrikeSharp fix commits grouped into 39 incidents, Nov 2023 to Nov 2026. The last, 1.42.0.1, is still open and is modelled from its known cause. By build, 38 of 361 CS2 builds since October 2023 needed a gamedata or SDK fix. Two reported breaks with no CounterStrikeSharp commit (CounterStrikeSharp #1324 and #1500) are excluded.</li>
+          <li>Build times are commit times in SteamDB's public GameTracking-CS2 repository, in UTC (±1 h): 1.41.9.7 on Nov 11, 1.42.0.0 on Nov 20, 1.42.0.1 on Nov 23 2026.</li>
+          <li>Each incident is broken into items (signature, offset, compiled slot, struct layout, link error, SDK refactor, schema rename, behaviour change). A step removes the items it handles; the incident's outcome is then its worst remaining item: avoided, data push, feature off, or crash.</li>
+          <li>Degraded time runs from the build to the first fix release. Effective outage counts degraded time as outage while a core feature is down.</li>
+          <li>The healing test used old binaries rebuilt from public IDA databases (checked byte-for-byte against a real build), with CounterStrikeSharp's own later gamedata as ground truth.</li>
+          <li>The SDK history covers 1,347 hl2sdk-cs2 / s2sdk commits since March 2023, matched against 200 CS2 update posts.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer>Built from public repositories, issue trackers and Linux server binaries. Figures are as of November 25 2026; the backtest is a model with the assumptions above.</footer>
+
+</main>
