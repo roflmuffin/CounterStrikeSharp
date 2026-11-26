@@ -182,7 +182,8 @@ class ResolutionReport
     ResolutionReport(std::string buildId, std::vector<BindingResult> bindings, bool healEnabled = true);
 
     [[nodiscard]] const std::string& BuildId() const { return m_buildId; }
-    // False when the operator turned Heal off: Slot Bindings were only checked at their Gamedata index.
+    // False when the operator turned Heal off: Slot Bindings were only checked at their Gamedata index. Always true on
+    // Windows, which has no Vtable Check and so no Heal to turn off.
     [[nodiscard]] bool HealEnabled() const { return m_healEnabled; }
     [[nodiscard]] const std::vector<BindingResult>& Bindings() const { return m_bindings; }
     // By key, through an index built with the report (no scan): native code reads Bindings by key on hot paths.

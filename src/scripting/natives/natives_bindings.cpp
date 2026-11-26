@@ -14,6 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+#include <algorithm>
 #include <cstdio>
 #include <cstdlib>
 
@@ -34,8 +35,8 @@ static std::string GetResolutionReport(ScriptContext& script_context)
 }
 
 // The operator's FailMode: crash. Managed decides (it has the whole Engine Feature catalog), logs the startup report and
-// the fatal error naming the disabled Engine Features, then calls this. Refused unless the operator set FailMode to
-// crash, so it never stops a fail soft server.
+// the fatal error naming the disabled Engine Features, then calls this. Natives are public, so native refuses too:
+// unless the operator set FailMode to crash and a core Binding failed (no Engine Feature can be disabled otherwise).
 static void FailModeStopServer(ScriptContext& script_context)
 {
     if (!globals::coreConfig->IsFailModeCrash())
@@ -43,11 +44,17 @@ static void FailModeStopServer(ScriptContext& script_context)
         script_context.ThrowNativeError("FailMode is \"%s\", not \"crash\": not stopping the server", globals::coreConfig->FailMode.c_str());
         return;
     }
+    const auto& bindings = bindings::CoreResolutionReport().Bindings();
+    if (std::none_of(bindings.begin(), bindings.end(), [](const bindings::BindingResult& binding) { return !binding.Resolved(); }))
+    {
+        script_context.ThrowNativeError("Every core Binding resolved, so no core Engine Feature is disabled: not stopping the server");
+        return;
+    }
 
     CSSHARP_CORE_CRITICAL("FailMode is crash and a core Engine Feature is disabled: stopping the server");
     Log::GetCoreLogger()->flush();
     std::fflush(nullptr);
-    // No destructors or exit handlers: the process is mid Metamod load, and the game's own teardown is not safe here.
+    // No destructors or exit handlers: the process is mid load (before plugins), and the game's own teardown is not safe here.
     std::_Exit(EXIT_FAILURE);
 }
 

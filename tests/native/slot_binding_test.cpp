@@ -624,6 +624,8 @@ TEST_CASE("Heal off has no effect on Windows: Slot Bindings stay unverified at t
 
     CHECK(report.Bindings()[0].status == BindingStatus::Unverified);
     CHECK(report.Bindings()[0].offset == 4);
+    CHECK(report.HealEnabled()); // nothing to turn off: the report does not claim healing is off
+    CHECK(FormatBindingSummary(report).find("healing off") == std::string::npos);
 }
 
 TEST_CASE("Heal is on by default, and the report says so in its JSON")

@@ -44,7 +44,7 @@ status=0
 echo "== fail-mode: FailMode crash, Host_Say ambiguous"
 out=$(mktemp -d)
 "$run" "$@" --out "$out" --no-css-ready \
-    --core-jq '.FailMode = "crash"' \
+    --core-jq '.FailMode = " Crash "' \
     --gamedata-jq '.Host_Say.signatures.linux = "55 48 89 E5"' \
     --expect-log 'Engine Features for build [^:]+: [0-9]+ of [0-9]+ available, 1 disabled:' \
     --expect-log 'FailMode is crash and 1 of [0-9]+ core Engine Features is disabled on build [^,]+, stopping the server:' \
@@ -93,7 +93,7 @@ echo "== fail-mode: SchemaMissMode throw"
     status=1
 
 echo "== fail-mode: plugin signatures in the report, again after a reload"
-sigs='Plugin signatures: 2 of [0-9]+ ambiguous or not found:'
+sigs='Plugin signatures: 2 of [0-9]+ ambiguous or failed:'
 "$run" "$@" --no-build --no-smoke \
     --plugin-project managed/CounterStrikeSharp.Tests.PluginSignatures/PluginSignaturesTestPlugin.csproj \
     --exec 'css_plugins reload PluginSignaturesTest' \

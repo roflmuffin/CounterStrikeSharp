@@ -161,6 +161,17 @@ public sealed class SchemaMissModeTests : IDisposable
         Assert.Empty(_logger.Entries);
     }
 
+    [Fact]
+    public void AFieldFirstProbedStillWarnsWhenAnAccessorReadsIt()
+    {
+        UseMode(SchemaMissMode.Warn);
+        Assert.False(Schema.TryGetSchemaOffset("CBaseEntity", "m_cssharpMissing", out _));
+
+        _ = Schema.GetRef<int>(_entity, "CBaseEntity", "m_cssharpMissing");
+
+        Assert.Equal(LogLevel.Warning, Assert.Single(_logger.Entries).Level);
+    }
+
     private sealed class CapturingLogger : ILogger
     {
         public List<(LogLevel Level, string Message)> Entries { get; } = new();

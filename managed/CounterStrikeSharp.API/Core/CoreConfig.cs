@@ -71,13 +71,11 @@ namespace CounterStrikeSharp.API.Core
         [JsonPropertyName("MaximumFrameTasksExecutedPerTick")]
         public int MaximumFrameTasksExecutedPerTick { get; set; } = 1024;
 
-        // Kept as text so a typo falls back to the default for this key only (with a warning), not for the whole file.
-        [JsonPropertyName("FailMode")] public string? FailMode { get; set; }
+        // Kept as raw JSON so a typo or a wrong type falls back to the default for this key only (with a warning), not for
+        // the whole file. HealEnabled is read by native only (the resolver); the Resolution Report says whether it was on.
+        [JsonPropertyName("FailMode")] public JsonElement? FailMode { get; set; }
 
-        [JsonPropertyName("SchemaMissMode")] public string? SchemaMissMode { get; set; }
-
-        // Read by native (the resolver); here so the file round-trips. The Resolution Report says whether it was on.
-        [JsonPropertyName("HealEnabled")] public bool HealEnabled { get; set; } = true;
+        [JsonPropertyName("SchemaMissMode")] public JsonElement? SchemaMissMode { get; set; }
     }
 
     /// <summary>
@@ -141,7 +139,7 @@ namespace CounterStrikeSharp.API.Core
         /// <see cref="Core.FailMode.Disable"/> (the default) keeps the server running without it;
         /// <see cref="Core.FailMode.Crash"/> logs the startup report and stops the server. Read once at startup.
         /// </summary>
-        public static FailMode FailMode { get; private set; } = FailMode.Disable;
+        public static FailMode FailMode { get; internal set; } = FailMode.Disable;
 
         /// <summary>
         /// What accessing a schema field missing from the running build does (<c>"SchemaMissMode"</c> in core.json):
@@ -163,12 +161,15 @@ namespace CounterStrikeSharp.API.Core
                 : null;
         }
 
-        private static TMode ReadMode<TMode>(string key, string? value, TMode fallback, ILogger logger) where TMode : struct, Enum
+        private static TMode ReadMode<TMode>(string key, JsonElement? value, TMode fallback, ILogger logger) where TMode : struct, Enum
         {
-            if (ParseMode(value, fallback) is { } mode) return mode;
+            var text = value is { ValueKind: JsonValueKind.String } element ? element.GetString() : null;
+            var absent = value is null or { ValueKind: JsonValueKind.Null };
+            if ((absent || text != null) && ParseMode(text, fallback) is { } mode) return mode;
 
-            logger.LogWarning("Core configuration {Key} \"{Value}\" is not one of {Modes}, using \"{Fallback}\"", key, value,
-                string.Join(", ", Enum.GetNames<TMode>().Select(n => $"\"{n.ToLowerInvariant()}\"")), fallback.ToString().ToLowerInvariant());
+            var modes = string.Join(", ", Enum.GetNames<TMode>().Select(n => $"\"{n.ToLowerInvariant()}\""));
+            logger.LogWarning("Core configuration {Key} {Value} is not one of {Modes}, using \"{Fallback}\"", key,
+                value?.GetRawText(), modes, fallback.ToString().ToLowerInvariant());
             return fallback;
         }
 

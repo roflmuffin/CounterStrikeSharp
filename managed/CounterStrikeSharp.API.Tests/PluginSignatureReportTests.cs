@@ -86,7 +86,7 @@ public sealed class PluginSignatureReportTests : IDisposable
         var block = _logger.Entries.Last();
         Assert.Equal(LogLevel.Warning, block.Level);
         Assert.Equal(
-            "Plugin signatures: 2 of 3 ambiguous or not found:\n" +
+            "Plugin signatures: 2 of 3 ambiguous or failed:\n" +
             $"  MyPlugin: \"{Sig("ambiguous")}\" in libserver.so: ambiguous (3 matches), first match used\n" +
             $"  MyPlugin: \"{Sig("missing")}\" in libserver.so: not found", block.Message);
     }
@@ -148,7 +148,7 @@ public sealed class PluginSignatureReportTests : IDisposable
     }
 
     [Fact]
-    public void StrictRejectsAnAmbiguousSignatureEvenAfterANonStrictCallerBoundIt()
+    public void StrictRejectsAnAmbiguousSignatureEvenAfterANonStrictCallerBoundItAndBothAreReported()
     {
         Resolve(Sig("ambiguous"), 3);
         _matchCounts[Sig("ambiguous")] = 3;
@@ -156,7 +156,30 @@ public sealed class PluginSignatureReportTests : IDisposable
         var strict = new MemoryFunctionVoid<int>(Sig("ambiguous"), BinaryPath, strict: true);
 
         Assert.Equal(IntPtr.Zero, strict.Handle);
-        Assert.Equal(PluginSignatureOutcome.AmbiguousRejected, Assert.Single(EngineFeatures.GetPluginSignatures()).Outcome);
+        Assert.Equal([(false, PluginSignatureOutcome.Ambiguous), (true, PluginSignatureOutcome.AmbiguousRejected)],
+            EngineFeatures.GetPluginSignatures().Select(e => (e.Strict, e.Outcome)));
+    }
+
+    [Fact]
+    public void GamedataKeysSharingASignatureAreAllNamed()
+    {
+        PluginSignatures.NoteGamedataKey(Sig("shared"), "B_Function");
+        PluginSignatures.NoteGamedataKey(Sig("shared"), "A_Function");
+        Resolve(Sig("shared"), 1);
+
+        Assert.Equal("A_Function, B_Function", Assert.Single(EngineFeatures.GetPluginSignatures()).GamedataKey);
+    }
+
+    [Fact]
+    public void APluginUnloadedForGoodLosesItsEntries()
+    {
+        Resolve(Sig("mine"), 3);
+        _plugin = "OtherPlugin";
+        Resolve(Sig("other"), 3);
+
+        PluginSignatures.ForgetPlugin("MyPlugin");
+
+        Assert.Equal(["OtherPlugin"], EngineFeatures.GetPluginSignatures().Select(e => e.Plugin));
     }
 
     [Fact]

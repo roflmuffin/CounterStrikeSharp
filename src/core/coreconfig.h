@@ -56,6 +56,7 @@ class CCoreConfig
     bool IsPublicChatTrigger(const std::string& message, std::string& prefix) const;
 
   private:
+    void ReadOperatorSettings();
     bool IsTriggerInternal(std::vector<std::string> triggers, const std::string& message, std::string& prefix) const;
 
   private:

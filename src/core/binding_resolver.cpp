@@ -374,7 +374,8 @@ ResolutionReport BuiltinResolver::Resolve(std::string buildId,
         }
     }
 
-    return ResolutionReport(std::move(buildId), std::move(results), m_options.heal);
+    // Heal needs a Vtable Check, so where there is none (Windows) there is no healing to turn off.
+    return ResolutionReport(std::move(buildId), std::move(results), m_options.heal || m_platform == Platform::Windows);
 }
 
 ResolutionReport ResolveBindings(std::string buildId,

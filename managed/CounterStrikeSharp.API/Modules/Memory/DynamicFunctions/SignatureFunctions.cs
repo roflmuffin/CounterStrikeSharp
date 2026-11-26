@@ -59,7 +59,7 @@ internal static class SignatureFunctions
                 InvalidPattern => PluginSignatureOutcome.InvalidPattern,
                 _ => PluginSignatureOutcome.Unbound, // matched (or not counted), but no function could be created
             };
-        PluginSignatures.Record(binaryPath, signature, matchCount, outcome);
+        PluginSignatures.Record(binaryPath, signature, strict, matchCount, outcome);
         return function;
     }
 

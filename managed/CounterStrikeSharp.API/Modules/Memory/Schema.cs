@@ -88,15 +88,20 @@ public class Schema
         ThrowIfGuidelinesBlock(className, propertyName);
 
         var offset = LookupOffset(className, propertyName);
-        if (offset < 0) throw new SchemaFieldNotFoundException(className, propertyName, offset == SchemaClassMissing);
+        if (offset < 0) throw MissException(className, propertyName, offset);
 
         return (short)offset;
     }
 
-    /// <summary>The offset, or false without logging if the field is missing (for fields only some classes have).</summary>
+    /// <summary>
+    /// The offset, or false without logging if the field is missing (for fields only some classes have). A miss found
+    /// this way is not cached, so a later access through an accessor still logs it.
+    /// </summary>
     internal static bool TryGetSchemaOffset(string className, string propertyName, out short offset)
     {
-        var found = LookupOffset(className, propertyName, logMiss: false);
+        var key = new SchemaKey(className, propertyName);
+        var found = _schemaOffsets.TryGetValue(key, out var cached) ? cached : LookupField(className, propertyName);
+        if (found >= 0) _schemaOffsets.TryAdd(key, found);
         offset = found < 0 ? (short)0 : (short)found;
         return found >= 0;
     }
@@ -109,28 +114,34 @@ public class Schema
         }
     }
 
-    // The cached native lookup: the offset, or a negative miss. The first miss of a field is logged once (unless a
-    // caller only probes), in the wording of the current SchemaMissMode.
-    private static int LookupOffset(string className, string propertyName, bool logMiss = true)
+    private static bool MissThrows => CoreConfig.SchemaMissMode == SchemaMissMode.Throw;
+
+    private static string DescribeMiss(int offset) => offset == SchemaClassMissing ? "class missing" : "field missing";
+
+    private static SchemaFieldNotFoundException MissException(string className, string propertyName, int offset) =>
+        new(className, propertyName, offset == SchemaClassMissing);
+
+    // The cached native lookup: the offset, or a negative miss. The first miss of a field is logged once, in the wording
+    // of the current SchemaMissMode.
+    private static int LookupOffset(string className, string propertyName)
     {
         var key = new SchemaKey(className, propertyName);
         if (_schemaOffsets.TryGetValue(key, out var offset)) return offset;
 
         offset = LookupField(className, propertyName);
-        if (!_schemaOffsets.TryAdd(key, offset) || offset >= 0 || !logMiss) return offset;
+        if (!_schemaOffsets.TryAdd(key, offset) || offset >= 0) return offset;
 
-        var reason = offset == SchemaClassMissing ? "class missing" : "field missing";
-        if (CoreConfig.SchemaMissMode == SchemaMissMode.Throw)
+        if (MissThrows)
         {
             Logger.LogError("Schema field {ClassName}::{FieldName} not found ({Reason}); accessing it throws",
-                className, propertyName, reason);
+                className, propertyName, DescribeMiss(offset));
         }
         else
         {
             Logger.LogWarning(
                 "Schema field {ClassName}::{FieldName} not found ({Reason}); reads return the default value and writes are dropped. " +
                 "A later release will throw instead (SchemaMissMode: throw)",
-                className, propertyName, reason);
+                className, propertyName, DescribeMiss(offset));
         }
 
         return offset;
@@ -145,8 +156,7 @@ public class Schema
     {
         var offset = LookupOffset(className, propertyName);
         if (offset >= 0) return (short)offset;
-        if (CoreConfig.SchemaMissMode == SchemaMissMode.Throw)
-            throw new SchemaFieldNotFoundException(className, propertyName, offset == SchemaClassMissing);
+        if (MissThrows) throw MissException(className, propertyName, offset);
         return null;
     }
 
@@ -267,8 +277,9 @@ public class Schema
     // Used to write to the char[] specified at the schema location, i.e. char m_iszPlayerName[128]; 
     internal unsafe static void SetStringBytes(IntPtr pointer, string className, string memberName, string value, int maxLength)
     {
+        if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
         if (GuardedAccessorOffset(className, memberName) == null) return;
-        var handle = GetSchemaValue<IntPtr>(pointer, className, memberName);
+        var handle = NativeAPI.GetSchemaValueByName<IntPtr>(pointer, (int)DataType.DATA_TYPE_POINTER, className, memberName);
 
         var bytes = Encoding.UTF8.GetBytes(value);
         if (bytes.Length >= maxLength)

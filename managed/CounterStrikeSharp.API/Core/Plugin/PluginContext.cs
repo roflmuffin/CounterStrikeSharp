@@ -45,6 +45,9 @@ namespace CounterStrikeSharp.API.Core.Plugin
     public class PluginContext : IPluginContext, ISelfPluginControl
     {
         public PluginState State { get; set; } = PluginState.Unregistered;
+
+        // The plugin's assembly name: how its plugin signatures are attributed.
+        private string? _assemblyName;
         public IPlugin Plugin { get; private set; }
 
         private PluginLoader Loader { get; set; }
@@ -103,6 +106,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         {
                             _logger.LogInformation("Plugin {Name} has been deleted, unloading...", Plugin.ModuleName);
                             Unload(true);
+                            PluginSignatures.ForgetPlugin(_assemblyName);
                         }
                     });
                 };
@@ -134,7 +138,8 @@ namespace CounterStrikeSharp.API.Core.Plugin
             using (Loader.EnterContextualReflection())
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
-                PluginSignatures.BeginPluginLoad(defaultAssembly.GetName().Name!, defaultAssembly);
+                _assemblyName = defaultAssembly.GetName().Name!;
+                PluginSignatures.BeginPluginLoad(_assemblyName, defaultAssembly);
                 try
                 {
                     LoadPlugin(defaultAssembly, hotReload);
@@ -215,7 +220,8 @@ namespace CounterStrikeSharp.API.Core.Plugin
             // Ignore version 0 for local development
             if (currentVersion > 0 && minimumApiVersion != null && minimumApiVersion > currentVersion)
                 throw new Exception(
-                    $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
+                    $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. " +
+                    $"The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
 
             if (RequiredEngineFeatureCheck.DeclaresAny(pluginType) &&
                 RequiredEngineFeatureCheck.GetRefusal(pluginType, Path.GetFileName(_path), EngineFeatures.Current) is
@@ -279,6 +285,8 @@ namespace CounterStrikeSharp.API.Core.Plugin
         {
             if (State == PluginState.Unloaded) return;
 
+            // Unloaded for good (not reloaded, not a failed load): its plugin signatures no longer apply.
+            if (!hotReload && State == PluginState.Loaded) PluginSignatures.ForgetPlugin(_assemblyName);
             State = PluginState.Unloaded;
             var cachedName = Plugin.ModuleName;
 
